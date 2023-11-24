@@ -4,6 +4,12 @@ These are type stubs for MNE-Python. They contain docstrings for
 a more convenient user experience when using static analysis tools
 like Pylance in VS Code.
 
+## Installation
+
+```shell
+pip install https://github.com/hoechenberger/men-python-stubs/archive/refs/heads/main.zip
+```
+
 ## Notes
 
 * The name of this repository is `mne-python-stubs`,
