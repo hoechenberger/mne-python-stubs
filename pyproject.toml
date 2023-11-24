@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "types-mne"
+version = "1.6.0-20231124"
+description = "Type stubs with docstrings for MNE-Python."
+authors = [
+    { name = "Richard Höchenberger", email = "richard.hoechenberger@gmail.com" },
+]
+license = "BSD-3-Clause"
+readme = "README.md"
+classifiers = ["Typing :: Stubs Only"]
+dependencies = ["mne[full]>=1.6.0,<=1.7.0"]
+
+[tool.hatch.build]
+include = ["typings/mne/**/*.pyi", "typings/mne/py.typed"]
+
+# Once a wheel is being built, we move the package contents from
+# typings/mne to mne-stubs, which will be deployed to site-packages/
+[tool.hatch.build.targets.wheel.sources]
+"typings/mne" = "mne-stubs"
