@@ -12,7 +12,10 @@ authors = [
 license = "BSD-3-Clause"
 readme = "README.md"
 classifiers = ["Typing :: Stubs Only"]
-dependencies = ["mne[full]>=1.6.0,<=1.7.0"]
+dependencies = ["mne>=1.6.0,<=1.7.0"]
+
+[project.optional-dependencies]
+dev = ["mne[full]", "mypy>=1.7.0,<=1.8.0", "black==23.10.1", "ruff==0.1.6"]
 
 [tool.hatch.build]
 include = ["typings/mne/**/*.pyi", "typings/mne/py.typed"]

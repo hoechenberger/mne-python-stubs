@@ -3,8 +3,11 @@ import ast
 import dataclasses
 import importlib
 import shutil
+import subprocess
 from pathlib import Path
 
+import black
+import black.mode
 from mypy import stubgen
 
 # Module exclusion patterns
@@ -146,12 +149,34 @@ for stub_path in stub_paths:
 
                 method.body[0].value.value = expanded_docstring
 
+    # Clean the stub file contents
+    print(f"🧽 Cleaning stub file: {stub_path}")
+    unparsed = ast.unparse(module_ast)
+    unparsed_cleaned = (
+        unparsed.replace(": Incomplete | None=", "=")
+        .replace(", verbose as verbose,", ",")
+        .replace(", verbose as verbose", "")
+        .replace("import verbose as verbose,", "import")
+        .replace("from ..utils import verbose as verbose", "")
+        .replace("from ...utils import verbose as verbose", "")
+        .replace("`~", "")
+    )
+    unparsed_cleaned = black.format_str(
+        unparsed_cleaned,
+        mode=black.Mode(
+            target_versions=set([black.mode.TargetVersion.PY311]), is_pyi=True
+        ),
+    )
+    del unparsed
+
     # Write modified stub to disk
     print(f"💾 Writing stub file to disk: {stub_path}")
-    unparsed = ast.unparse(module_ast)
-    stub_path.write_text(unparsed, encoding="utf-8")
+    stub_path.write_text(unparsed_cleaned, encoding="utf-8")
 
 print("💾 Writing py.typed file")
 (stubs_out_dir / "mne" / "py.typed").write_text("partial\n", encoding="utf-8")
+
+print("🏁 Running ruff on stub files")
+subprocess.run(["ruff", f"{stubs_out_dir}/mne", "--fix"])
 
 print("\n💚 Done! Happy typing!")
