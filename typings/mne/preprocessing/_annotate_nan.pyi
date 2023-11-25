@@ -1,15 +1,14 @@
 from ..annotations import Annotations as Annotations
-from ..utils import verbose as verbose
-from _typeshed import Incomplete
 
-def annotate_nan(raw, *, verbose: Incomplete | None=...):
+
+def annotate_nan(raw, *, verbose=...):
     """Detect segments with NaN and return a new Annotations instance.
 
     Parameters
     ----------
     raw : instance of Raw
         Data to find segments with NaN values.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

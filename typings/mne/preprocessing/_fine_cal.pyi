@@ -1,9 +1,17 @@
 from .._fiff.pick import pick_info as pick_info, pick_types as pick_types
 from ..io import BaseRaw as BaseRaw
-from ..utils import check_fname as check_fname, logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import check_fname as check_fname, logger as logger
 
-def compute_fine_calibration(raw, n_imbalance: int=..., t_window: float=..., ext_order: int=..., origin=..., cross_talk: Incomplete | None=..., calibration: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_fine_calibration(
+    raw,
+    n_imbalance: int = ...,
+    t_window: float = ...,
+    ext_order: int = ...,
+    origin=...,
+    cross_talk=...,
+    calibration=...,
+    verbose=...,
+):
     """Compute fine calibration from empty-room data.
 
     Parameters
@@ -17,30 +25,30 @@ def compute_fine_calibration(raw, n_imbalance: int=..., t_window: float=..., ext
     t_window : float
         Time window to use for surface normal rotation in seconds.
         Default is 10.
-    
+
     ext_order : int
         Order of external component of spherical expansion.
         Default is 2, which is lower than the default (3) for
         :func:`mne.preprocessing.maxwell_filter` because it tends to yield
         more stable parameter estimates.
-    
+
     origin : array-like, shape (3,) | str
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using :func:`~mne.bem.fit_sphere_to_headshape`
+        origin fit using :func:mne.bem.fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
         options or specifying the origin manually.
-    
+
     cross_talk : str | None
         Path to the FIF file with cross-talk correction information.
     calibration : dict | None
         Dictionary with existing calibration. If provided, the magnetometer
         imbalances and adjusted normals will be used and only the gradiometer
         imbalances will be estimated (see step 2 in Notes below).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -1,7 +1,8 @@
-from .utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from .utils import logger as logger
 
-def rescale(data, times, baseline, mode: str=..., copy: bool=..., picks: Incomplete | None=..., verbose: Incomplete | None=...):
+def rescale(
+    data, times, baseline, mode: str = ..., copy: bool = ..., picks=..., verbose=...
+):
     """Rescale (baseline correct) data.
 
     Parameters
@@ -11,7 +12,7 @@ def rescale(data, times, baseline, mode: str=..., copy: bool=..., picks: Incompl
         dimension should be time.
     times : 1D array
         Time instants is seconds.
-    
+
     baseline : None | tuple of length 2
         The time interval to consider as "baseline" when applying baseline
         correction. If ``None``, do not apply baseline correction.
@@ -20,7 +21,7 @@ def rescale(data, times, baseline, mode: str=..., copy: bool=..., picks: Incompl
         If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
-    
+
         .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
     mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio'
@@ -42,7 +43,7 @@ def rescale(data, times, baseline, mode: str=..., copy: bool=..., picks: Incompl
         Whether to return a new instance or modify in place.
     picks : list of int | None
         Data to process along the axis=-2 (None, default, processes all).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

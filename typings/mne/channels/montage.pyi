@@ -5,8 +5,16 @@ from .._fiff.open import fiff_open as fiff_open
 from .._fiff.pick import channel_type as channel_type, pick_types as pick_types
 from .._freesurfer import get_mni_fiducials as get_mni_fiducials
 from ..defaults import HEAD_SIZE_DEFAULT as HEAD_SIZE_DEFAULT
-from ..transforms import Transform as Transform, apply_trans as apply_trans, get_ras_to_neuromag_trans as get_ras_to_neuromag_trans
-from ..utils import copy_function_doc_to_method_doc as copy_function_doc_to_method_doc, fill_doc as fill_doc, verbose as verbose, warn as warn
+from ..transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    get_ras_to_neuromag_trans as get_ras_to_neuromag_trans,
+)
+from ..utils import (
+    copy_function_doc_to_method_doc as copy_function_doc_to_method_doc,
+    fill_doc as fill_doc,
+    warn as warn,
+)
 from ..utils.docs import docdict as docdict
 from ..viz import plot_montage as plot_montage
 from _typeshed import Incomplete
@@ -17,10 +25,9 @@ class _BuiltinStandardMontage:
     name: str
     description: str
 
-    def __init__(self, name, description) -> None:
-        ...
+    def __init__(self, name, description) -> None: ...
 
-def get_builtin_montages(*, descriptions: bool=...):
+def get_builtin_montages(*, descriptions: bool = ...):
     """Get a list of all standard montages shipping with MNE-Python.
 
     The names of the montages can be passed to :func:`make_standard_montage`.
@@ -45,7 +52,9 @@ def get_builtin_montages(*, descriptions: bool=...):
         If ``descriptions=True``, a list of tuples ``(name, description)``.
     """
 
-def make_dig_montage(ch_pos: Incomplete | None=..., nasion: Incomplete | None=..., lpa: Incomplete | None=..., rpa: Incomplete | None=..., hsp: Incomplete | None=..., hpi: Incomplete | None=..., coord_frame: str=...):
+def make_dig_montage(
+    ch_pos=..., nasion=..., lpa=..., rpa=..., hsp=..., hpi=..., coord_frame: str = ...
+):
     """Make montage from arrays.
 
     Parameters
@@ -99,70 +108,9 @@ def make_dig_montage(ch_pos: Incomplete | None=..., nasion: Incomplete | None=..
 class DigMontage:
     """Remove the fiducial points from a montage.
 
-        Parameters
-        ----------
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
-
-        Returns
-        -------
-        inst : instance of DigMontage
-            The instance, modified in-place.
-
-        Notes
-        -----
-        MNE will transform a montage to the internal "head" coordinate
-        frame if the fiducials are present. Under most circumstances, this
-        is ideal as it standardizes the coordinate frame for things like
-        plotting. However, in some circumstances, such as saving a ``raw``
-        with intracranial data to BIDS format, the coordinate frame
-        should not be changed by removing fiducials.
-        """
-    dig: Incomplete
-    ch_names: Incomplete
-
-    def __init__(self, *, dig: Incomplete | None=..., ch_names: Incomplete | None=...) -> None:
-        ...
-
-    def plot(self, scale_factor: int=..., show_names: bool=..., kind: str=..., show: bool=..., sphere: Incomplete | None=..., *, axes: Incomplete | None=..., verbose: Incomplete | None=...):
-        """Plot a montage.
-
     Parameters
     ----------
-    scale_factor : float
-        Determines the size of the points.
-    show_names : bool | list
-        Whether to display all channel names. If a list, only the channel
-        names in the list are shown. Defaults to True.
-    kind : str
-        Whether to plot the montage as '3d' or 'topomap' (default).
-    show : bool
-        Show figure if True.
-    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
-        The sphere parameters to use for the head outline. Can be array-like of
-        shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
-        to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
-        radius from that object. If ``'auto'`` the sphere is fit to digitization
-        points. If ``'eeglab'`` the head circle is defined by EEG electrodes
-        ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
-        it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
-        default) is equivalent to ``'auto'`` when enough extra digitization points
-        are available, and (0, 0, 0, 0.095) otherwise.
-    
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
-    
-    axes : instance of Axes | instance of Axes3D | None
-        Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
-        of Axes3D. If None (default), a new axes will be created.
 
-        .. versionadded:: 1.4
-    
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -171,27 +119,96 @@ class DigMontage:
 
     Returns
     -------
-    fig : instance of matplotlib.figure.Figure
-        The figure object.
+    inst : instance of DigMontage
+        The instance, modified in-place.
+
+    Notes
+    -----
+    MNE will transform a montage to the internal "head" coordinate
+    frame if the fiducials are present. Under most circumstances, this
+    is ideal as it standardizes the coordinate frame for things like
+    plotting. However, in some circumstances, such as saving a ``raw``
+    with intracranial data to BIDS format, the coordinate frame
+    should not be changed by removing fiducials.
     """
 
-    def rename_channels(self, mapping, allow_duplicates: bool=...) -> None:
+    dig: Incomplete
+    ch_names: Incomplete
+
+    def __init__(self, *, dig=..., ch_names=...) -> None: ...
+    def plot(
+        self,
+        scale_factor: int = ...,
+        show_names: bool = ...,
+        kind: str = ...,
+        show: bool = ...,
+        sphere=...,
+        *,
+        axes=...,
+        verbose=...,
+    ):
+        """Plot a montage.
+
+        Parameters
+        ----------
+        scale_factor : float
+            Determines the size of the points.
+        show_names : bool | list
+            Whether to display all channel names. If a list, only the channel
+            names in the list are shown. Defaults to True.
+        kind : str
+            Whether to plot the montage as '3d' or 'topomap' (default).
+        show : bool
+            Show figure if True.
+        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
+            The sphere parameters to use for the head outline. Can be array-like of
+            shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
+            to give just the radius (origin assumed 0, 0, 0). Can also be an instance
+            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            radius from that object. If ``'auto'`` the sphere is fit to digitization
+            points. If ``'eeglab'`` the head circle is defined by EEG electrodes
+            ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
+            it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
+            default) is equivalent to ``'auto'`` when enough extra digitization points
+            are available, and (0, 0, 0, 0.095) otherwise.
+
+            .. versionadded:: 0.20
+            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+
+        axes : instance of Axes | instance of Axes3D | None
+            Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
+            of Axes3D. If None (default), a new axes will be created.
+
+            .. versionadded:: 1.4
+
+        verbose : bool | str | int | None
+            Control verbosity of the logging output. If ``None``, use the default
+            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            :func:`mne.verbose` for details. Should only be passed as a keyword
+            argument.
+
+        Returns
+        -------
+        fig : instance of matplotlib.figure.Figure
+            The figure object.
+        """
+    def rename_channels(self, mapping, allow_duplicates: bool = ...) -> None:
         """Rename the channels.
 
         Parameters
         ----------
-        
+
         mapping : dict | callable
             A dictionary mapping the old channel to a new channel name
             e.g. ``{'EEG061' : 'EEG161'}``. Can also be a callable function
             that takes and returns a string.
-        
+
             .. versionchanged:: 0.10.0
                Support for a callable function.
         allow_duplicates : bool
             If True (default False), allow duplicates, which will automatically
             be renamed with ``-N`` at the end.
-        
+
             .. versionadded:: 0.22.0
 
         Returns
@@ -199,26 +216,24 @@ class DigMontage:
         inst : instance of DigMontage
             The instance. Operates in-place.
         """
-
-    def save(self, fname, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
         """Save digitization points to FIF.
 
         Parameters
         ----------
         fname : path-like
             The filename to use. Should end in .fif or .fif.gz.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-
     def __iadd__(self, other):
         """Add two DigMontages in place.
 
@@ -228,7 +243,6 @@ class DigMontage:
         and if fiducials are present they should share the same coordinate
         system and location values.
         """
-
     def copy(self):
         """Copy the DigMontage object.
 
@@ -237,10 +251,8 @@ class DigMontage:
         dig : instance of DigMontage
             The copied DigMontage instance.
         """
-
     def __add__(self, other):
         """Add two DigMontages."""
-
     def __eq__(self, other):
         """Compare different DigMontage objects for equality.
 
@@ -248,7 +260,6 @@ class DigMontage:
         -------
         Boolean output from comparison of .dig
         """
-
     def get_positions(self):
         """Get all channel and fiducial positions.
 
@@ -273,23 +284,21 @@ class DigMontage:
                     'hpi': None
                 }
         """
-
-    def apply_trans(self, trans, verbose: Incomplete | None=...) -> None:
+    def apply_trans(self, trans, verbose=...) -> None:
         """Apply a transformation matrix to the montage.
 
         Parameters
         ----------
         trans : instance of mne.transforms.Transform
             The transformation matrix to be applied.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-
-    def add_estimated_fiducials(self, subject, subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+    def add_estimated_fiducials(self, subject, subjects_dir=..., verbose=...):
         """Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
 
         This takes a montage with the ``mri`` coordinate frame,
@@ -300,15 +309,15 @@ class DigMontage:
 
         Parameters
         ----------
-        
+
         subject : str
             The FreeSurfer subject name.
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
             variable.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -333,18 +342,17 @@ class DigMontage:
         and then use ``mne.channels.compute_native_head_t(montage)``
         to get the head <-> MRI transform.
         """
-
-    def add_mni_fiducials(self, subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+    def add_mni_fiducials(self, subjects_dir=..., verbose=...):
         """Add fiducials to a montage in MNI space.
 
         Parameters
         ----------
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
             variable.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -366,13 +374,12 @@ class DigMontage:
         those coordinate to be transformed to "head" space (origin
         between LPA and RPA).
         """
-
-    def remove_fiducials(self, verbose: Incomplete | None=...):
+    def remove_fiducials(self, verbose=...):
         """Remove the fiducial points from a montage.
 
         Parameters
         ----------
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -393,6 +400,7 @@ class DigMontage:
         with intracranial data to BIDS format, the coordinate frame
         should not be changed by removing fiducials.
         """
+
 VALID_SCALES: Incomplete
 
 def transform_to_head(montage):
@@ -490,7 +498,7 @@ def read_dig_fif(fname):
     make_dig_montage
     """
 
-def read_dig_hpts(fname, unit: str=...):
+def read_dig_hpts(fname, unit: str = ...):
     """Read historical ``.hpts`` MNE-C files.
 
     Parameters
@@ -610,7 +618,7 @@ def read_dig_captrak(fname):
     make_dig_montage
     """
 
-def read_dig_localite(fname, nasion: Incomplete | None=..., lpa: Incomplete | None=..., rpa: Incomplete | None=...):
+def read_dig_localite(fname, nasion=..., lpa=..., rpa=...):
     """Read Localite .csv file.
 
     Parameters
@@ -641,7 +649,7 @@ def read_dig_localite(fname, nasion: Incomplete | None=..., lpa: Incomplete | No
     make_dig_montage
     """
 
-def read_dig_polhemus_isotrak(fname, ch_names: Incomplete | None=..., unit: str=...):
+def read_dig_polhemus_isotrak(fname, ch_names=..., unit: str = ...):
     """Read Polhemus digitizer data from a file.
 
     Parameters
@@ -675,7 +683,9 @@ def read_dig_polhemus_isotrak(fname, ch_names: Incomplete | None=..., unit: str=
     read_dig_localite
     """
 
-def read_polhemus_fastscan(fname, unit: str=..., on_header_missing: str=..., *, verbose: Incomplete | None=...):
+def read_polhemus_fastscan(
+    fname, unit: str = ..., on_header_missing: str = ..., *, verbose=...
+):
     """Read Polhemus FastSCAN digitizer data from a ``.txt`` file.
 
     Parameters
@@ -685,13 +695,13 @@ def read_polhemus_fastscan(fname, unit: str=..., on_header_missing: str=..., *, 
     unit : ``'m'`` | ``'cm'`` | ``'mm'``
         Unit of the digitizer file. Polhemus FastSCAN systems data is usually
         exported in millimeters. Defaults to ``'mm'``.
-    
+
     on_header_missing : str
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when the FastSCAN header is missing.
-    
+
         .. versionadded:: 0.22
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -709,7 +719,7 @@ def read_polhemus_fastscan(fname, unit: str=..., on_header_missing: str=..., *, 
     make_dig_montage
     """
 
-def read_custom_montage(fname, head_size=..., coord_frame: Incomplete | None=...):
+def read_custom_montage(fname, head_size=..., coord_frame=...):
     """Read a montage from a file.
 
     Parameters
@@ -759,7 +769,7 @@ def compute_dev_head_t(montage):
     Parameters
     ----------
     montage : DigMontage
-        The `~mne.channels.DigMontage` must contain the fiducials in head
+        The mne.channels.DigMontage` must contain the fiducials in head
         coordinate system and hpi points in both head and
         meg device coordinate system.
 
@@ -769,7 +779,7 @@ def compute_dev_head_t(montage):
         A Device-to-Head transformation matrix.
     """
 
-def compute_native_head_t(montage, *, on_missing: str=..., verbose: Incomplete | None=...):
+def compute_native_head_t(montage, *, on_missing: str = ..., verbose=...):
     """Compute the native-to-head transformation for a montage.
 
     This uses the fiducials in the native space to transform to compute the
@@ -779,13 +789,13 @@ def compute_native_head_t(montage, *, on_missing: str=..., verbose: Incomplete |
     ----------
     montage : instance of DigMontage
         The montage.
-    
+
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when some necessary fiducial points are missing.
 
         .. versionadded:: 1.2
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -798,7 +808,7 @@ def compute_native_head_t(montage, *, on_missing: str=..., verbose: Incomplete |
         A native-to-head transformation matrix.
     """
 
-def make_standard_montage(kind, head_size: str=...):
+def make_standard_montage(kind, head_size: str = ...):
     """Read a generic (built-in) standard montage that ships with MNE-Python.
 
     Parameters

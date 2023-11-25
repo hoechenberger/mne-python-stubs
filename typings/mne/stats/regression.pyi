@@ -3,9 +3,8 @@ from ..epochs import BaseEpochs as BaseEpochs
 from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
 from ..source_estimate import SourceEstimate as SourceEstimate
 from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
-from _typeshed import Incomplete
 
-def linear_regression(inst, design_matrix, names: Incomplete | None=...):
+def linear_regression(inst, design_matrix, names=...):
     """Fit Ordinary Least Squares (OLS) regression.
 
     Parameters
@@ -45,7 +44,20 @@ def linear_regression(inst, design_matrix, names: Incomplete | None=...):
         ``(n_channels, n_timepoints)``.
     """
 
-def linear_regression_raw(raw, events, event_id: Incomplete | None=..., tmin: float=..., tmax: int=..., covariates: Incomplete | None=..., reject: Incomplete | None=..., flat: Incomplete | None=..., tstep: float=..., decim: int=..., picks: Incomplete | None=..., solver: str=...):
+def linear_regression_raw(
+    raw,
+    events,
+    event_id=...,
+    tmin: float = ...,
+    tmax: int = ...,
+    covariates=...,
+    reject=...,
+    flat=...,
+    tstep: float = ...,
+    decim: int = ...,
+    picks=...,
+    solver: str = ...,
+):
     """Estimate regression-based evoked potentials/fields by linear modeling.
 
     This models the full M/EEG time course, including correction for
@@ -114,13 +126,13 @@ def linear_regression_raw(raw, events, event_id: Incomplete | None=..., tmin: fl
         recommended for data recorded at high sampling frequencies, as
         otherwise huge intermediate matrices have to be created and inverted.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     solver : str | callable
         Either a function which takes as its inputs the sparse predictor

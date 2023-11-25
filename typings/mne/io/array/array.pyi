@@ -1,6 +1,5 @@
-from ...utils import fill_doc as fill_doc, logger as logger, verbose as verbose
+from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
 
 class RawArray(BaseRaw):
     """Raw object from numpy array.
@@ -9,7 +8,7 @@ class RawArray(BaseRaw):
     ----------
     data : array, shape (n_channels, n_times)
         The channels' time series. See notes for proper units of measure.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Consider using :func:`mne.create_info` to populate
         this structure. This may be modified in place by the class.
@@ -23,7 +22,7 @@ class RawArray(BaseRaw):
         double floating point precision.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -48,5 +47,6 @@ class RawArray(BaseRaw):
     * AU: misc
     """
 
-    def __init__(self, data, info, first_samp: int=..., copy: str=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self, data, info, first_samp: int = ..., copy: str = ..., verbose=...
+    ) -> None: ...

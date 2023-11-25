@@ -3,11 +3,23 @@ from ..dipole import Dipole as Dipole
 from ..forward import is_fixed_orient as is_fixed_orient
 from ..minimum_norm.inverse import combine_xyz as combine_xyz
 from ..source_estimate import SourceEstimate as SourceEstimate
-from ..utils import check_random_state as check_random_state, logger as logger, sum_squared as sum_squared, verbose as verbose, warn as warn
-from .mxne_optim import groups_norm2 as groups_norm2, iterative_mixed_norm_solver as iterative_mixed_norm_solver, iterative_tf_mixed_norm_solver as iterative_tf_mixed_norm_solver, mixed_norm_solver as mixed_norm_solver, norm_epsilon_inf as norm_epsilon_inf, norm_l2inf as norm_l2inf, tf_mixed_norm_solver as tf_mixed_norm_solver
-from _typeshed import Incomplete
+from ..utils import (
+    check_random_state as check_random_state,
+    logger as logger,
+    sum_squared as sum_squared,
+    warn as warn,
+)
+from .mxne_optim import (
+    groups_norm2 as groups_norm2,
+    iterative_mixed_norm_solver as iterative_mixed_norm_solver,
+    iterative_tf_mixed_norm_solver as iterative_tf_mixed_norm_solver,
+    mixed_norm_solver as mixed_norm_solver,
+    norm_epsilon_inf as norm_epsilon_inf,
+    norm_l2inf as norm_l2inf,
+    tf_mixed_norm_solver as tf_mixed_norm_solver,
+)
 
-def make_stc_from_dipoles(dipoles, src, verbose: Incomplete | None=...):
+def make_stc_from_dipoles(dipoles, src, verbose=...):
     """Convert a list of spatio-temporal dipoles into a SourceEstimate.
 
     Parameters
@@ -16,7 +28,7 @@ def make_stc_from_dipoles(dipoles, src, verbose: Incomplete | None=...):
         The dipoles to convert.
     src : instance of SourceSpaces
         The source space used to generate the forward operator.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -29,7 +41,31 @@ def make_stc_from_dipoles(dipoles, src, verbose: Incomplete | None=...):
         The source estimate.
     """
 
-def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth: float=..., maxit: int=..., tol: float=..., active_set_size: int=..., debias: bool=..., time_pca: bool=..., weights: Incomplete | None=..., weights_min: float=..., solver: str=..., n_mxne_iter: int=..., return_residual: bool=..., return_as_dipoles: bool=..., dgap_freq: int=..., rank: Incomplete | None=..., pick_ori: Incomplete | None=..., sure_alpha_grid: str=..., random_state: Incomplete | None=..., verbose: Incomplete | None=...):
+def mixed_norm(
+    evoked,
+    forward,
+    noise_cov,
+    alpha: str = ...,
+    loose: str = ...,
+    depth: float = ...,
+    maxit: int = ...,
+    tol: float = ...,
+    active_set_size: int = ...,
+    debias: bool = ...,
+    time_pca: bool = ...,
+    weights=...,
+    weights_min: float = ...,
+    solver: str = ...,
+    n_mxne_iter: int = ...,
+    return_residual: bool = ...,
+    return_as_dipoles: bool = ...,
+    dgap_freq: int = ...,
+    rank=...,
+    pick_ori=...,
+    sure_alpha_grid: str = ...,
+    random_state=...,
+    verbose=...,
+):
     """Mixed-norm estimate (MxNE) and iterative reweighted MxNE (irMxNE).
 
     Compute L1/L2 mixed-norm solution :footcite:`GramfortEtAl2012` or L0.5/L2
@@ -51,11 +87,11 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
 
         .. versionchanged:: 0.24
           The default was changed to ``'sure'``.
-    
+
     loose : float | 'auto' | dict
         Value that weights the source variances of the dipole components
         that are parallel (tangential) to the cortical surface. Can be:
-    
+
         - float between 0 and 1 (inclusive)
             If 0, then the solution is computed with fixed orientation.
             If 1, it corresponds to free orientations.
@@ -65,7 +101,7 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
         - dict
             Mapping from the key for a given source space type (surface, volume,
             discrete) to the loose value. Useful mostly for mixed source spaces.
-    
+
     depth : None | float | dict
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
@@ -73,7 +109,7 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
         It can also be a :class:`dict` containing keyword arguments to pass to
         :func:`mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
-    
+
         .. versionchanged:: 0.20
            Depth bias ignored for ``method='eLORETA'``.
     maxit : int
@@ -108,14 +144,14 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
     dgap_freq : int or np.inf
         The duality gap is evaluated every dgap_freq iterations. Ignored if
         solver is 'cd'.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -129,7 +165,7 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -137,29 +173,29 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.18
-    
+
     pick_ori : None | "normal" | "vector"
-    
+
         Options:
-    
+
         - ``None``
             Pooling is performed by taking the norm of loose/free
             orientations. In case of a fixed source space no norm is computed
@@ -167,7 +203,7 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
         - ``"normal"``
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
-    
+
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a :class:`mne.VectorSourceEstimate`
@@ -183,7 +219,7 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
         epsilon used for the SURE computation. Defaults to None.
 
         .. versionadded:: 0.24
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -207,7 +243,31 @@ def mixed_norm(evoked, forward, noise_cov, alpha: str=..., loose: str=..., depth
     .. footbibliography::
     """
 
-def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., maxit: int=..., tol: float=..., weights: Incomplete | None=..., weights_min: float=..., pca: bool=..., debias: bool=..., wsize: int=..., tstep: int=..., window: float=..., return_residual: bool=..., return_as_dipoles: bool=..., alpha: Incomplete | None=..., l1_ratio: Incomplete | None=..., dgap_freq: int=..., rank: Incomplete | None=..., pick_ori: Incomplete | None=..., n_tfmxne_iter: int=..., verbose: Incomplete | None=...):
+def tf_mixed_norm(
+    evoked,
+    forward,
+    noise_cov,
+    loose: str = ...,
+    depth: float = ...,
+    maxit: int = ...,
+    tol: float = ...,
+    weights=...,
+    weights_min: float = ...,
+    pca: bool = ...,
+    debias: bool = ...,
+    wsize: int = ...,
+    tstep: int = ...,
+    window: float = ...,
+    return_residual: bool = ...,
+    return_as_dipoles: bool = ...,
+    alpha=...,
+    l1_ratio=...,
+    dgap_freq: int = ...,
+    rank=...,
+    pick_ori=...,
+    n_tfmxne_iter: int = ...,
+    verbose=...,
+):
     """Time-Frequency Mixed-norm estimate (TF-MxNE).
 
     Compute L1/L2 + L1 mixed-norm solution on time-frequency
@@ -222,11 +282,11 @@ def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., 
         Forward operator.
     noise_cov : instance of Covariance
         Noise covariance to compute whitener.
-    
+
     loose : float | 'auto' | dict
         Value that weights the source variances of the dipole components
         that are parallel (tangential) to the cortical surface. Can be:
-    
+
         - float between 0 and 1 (inclusive)
             If 0, then the solution is computed with fixed orientation.
             If 1, it corresponds to free orientations.
@@ -236,7 +296,7 @@ def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., 
         - dict
             Mapping from the key for a given source space type (surface, volume,
             discrete) to the loose value. Useful mostly for mixed source spaces.
-    
+
     depth : None | float | dict
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
@@ -244,7 +304,7 @@ def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., 
         It can also be a :class:`dict` containing keyword arguments to pass to
         :func:`mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
-    
+
         .. versionchanged:: 0.20
            Depth bias ignored for ``method='eLORETA'``.
     maxit : int
@@ -294,14 +354,14 @@ def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., 
         * l1_ratio. 0 means no time regularization a.k.a. MxNE.
     dgap_freq : int or np.inf
         The duality gap is evaluated every dgap_freq iterations.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -315,7 +375,7 @@ def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., 
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -323,29 +383,29 @@ def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., 
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.18
-    
+
     pick_ori : None | "normal" | "vector"
-    
+
         Options:
-    
+
         - ``None``
             Pooling is performed by taking the norm of loose/free
             orientations. In case of a fixed source space no norm is computed
@@ -353,14 +413,14 @@ def tf_mixed_norm(evoked, forward, noise_cov, loose: str=..., depth: float=..., 
         - ``"normal"``
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
-    
+
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a :class:`mne.VectorSourceEstimate`
             object.
     n_tfmxne_iter : int
         Number of TF-MxNE iterations. If > 1, iterative reweighting is applied.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

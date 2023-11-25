@@ -1,6 +1,10 @@
 import abc
 from ...transforms import apply_trans as apply_trans
-from ...utils import copy_base_doc_to_subclass_doc as copy_base_doc_to_subclass_doc, deprecated as deprecated, warn as warn
+from ...utils import (
+    copy_base_doc_to_subclass_doc as copy_base_doc_to_subclass_doc,
+    deprecated as deprecated,
+    warn as warn,
+)
 from ._abstract import Figure3D as Figure3D, _AbstractRenderer
 from ._utils import ALLOWED_QUIVER_MODES as ALLOWED_QUIVER_MODES
 from _typeshed import Incomplete
@@ -18,29 +22,29 @@ class PyVistaFigure(Figure3D):
     mne.viz.create_3d_figure
     """
 
-    def __init__(self) -> None:
-        ...
+    def __init__(self) -> None: ...
 
 class _Projection:
     """Modify visibility attribute of the sensors."""
+
     xy: Incomplete
     pts: Incomplete
     plotter: Incomplete
 
     def __init__(self, *, xy, pts, plotter) -> None:
         """Store input projection information into attributes."""
-
     def visible(self, state) -> None:
         """Modify visibility attribute of the sensors."""
 
 class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     """Remove the given mesh from the scene.
 
-        Parameters
-        ----------
-        mesh_data : tuple | Surface
-            The mesh to remove.
-        """
+    Parameters
+    ----------
+    mesh_data : tuple | Surface
+        The mesh to remove.
+    """
+
     font_family: str
     tube_n_sides: int
     antialias: Incomplete
@@ -49,22 +53,34 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     figure: Incomplete
     plotter: Incomplete
 
-    def __init__(self, fig: Incomplete | None=..., size=..., bgcolor: str=..., name: str=..., show: bool=..., shape=..., notebook: Incomplete | None=..., smooth_shading: bool=..., splash: bool=..., multi_samples: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        fig=...,
+        size=...,
+        bgcolor: str = ...,
+        name: str = ...,
+        show: bool = ...,
+        shape=...,
+        notebook=...,
+        smooth_shading: bool = ...,
+        splash: bool = ...,
+        multi_samples=...,
+    ) -> None: ...
     def subplot(self, x, y) -> None:
         """Set the active subplot."""
-
     def scene(self):
         """Return scene handle."""
-
-    def update_lighting(self) -> None:
-        ...
-
+    def update_lighting(self) -> None: ...
     def set_interaction(self, interaction) -> None:
         """Set interaction mode."""
-
-    def legend(self, labels, border: bool=..., size: float=..., face: str=..., loc: str=...):
+    def legend(
+        self,
+        labels,
+        border: bool = ...,
+        size: float = ...,
+        face: str = ...,
+        loc: str = ...,
+    ):
         """Add a legend to the scene.
 
         Parameters
@@ -89,11 +105,44 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
             * Circle: ``"o"`` or ``'circle'``
             * Rectangle: ``"r"`` or ``'rectangle'``
         """
-
-    def polydata(self, mesh, color: Incomplete | None=..., opacity: float=..., normals: Incomplete | None=..., backface_culling: bool=..., scalars: Incomplete | None=..., colormap: Incomplete | None=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., interpolate_before_map: bool=..., representation: str=..., line_width: float=..., polygon_offset: Incomplete | None=..., **kwargs):
-        ...
-
-    def mesh(self, x, y, z, triangles, color, opacity: float=..., *, backface_culling: bool=..., scalars: Incomplete | None=..., colormap: Incomplete | None=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., interpolate_before_map: bool=..., representation: str=..., line_width: float=..., normals: Incomplete | None=..., polygon_offset: Incomplete | None=..., **kwargs):
+    def polydata(
+        self,
+        mesh,
+        color=...,
+        opacity: float = ...,
+        normals=...,
+        backface_culling: bool = ...,
+        scalars=...,
+        colormap=...,
+        vmin=...,
+        vmax=...,
+        interpolate_before_map: bool = ...,
+        representation: str = ...,
+        line_width: float = ...,
+        polygon_offset=...,
+        **kwargs,
+    ): ...
+    def mesh(
+        self,
+        x,
+        y,
+        z,
+        triangles,
+        color,
+        opacity: float = ...,
+        *,
+        backface_culling: bool = ...,
+        scalars=...,
+        colormap=...,
+        vmin=...,
+        vmax=...,
+        interpolate_before_map: bool = ...,
+        representation: str = ...,
+        line_width: float = ...,
+        normals=...,
+        polygon_offset=...,
+        **kwargs,
+    ):
         """Add a mesh in the scene.
 
         Parameters
@@ -146,8 +195,20 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         surface :
             Handle of the mesh in the scene.
         """
-
-    def contour(self, surface, scalars, contours, width: float=..., opacity: float=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., colormap: Incomplete | None=..., normalized_colormap: bool=..., kind: str=..., color: Incomplete | None=...):
+    def contour(
+        self,
+        surface,
+        scalars,
+        contours,
+        width: float = ...,
+        opacity: float = ...,
+        vmin=...,
+        vmax=...,
+        colormap=...,
+        normalized_colormap: bool = ...,
+        kind: str = ...,
+        color=...,
+    ):
         """Add a contour in the scene.
 
         Parameters
@@ -179,8 +240,19 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
         """
-
-    def surface(self, surface, color: Incomplete | None=..., opacity: float=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., colormap: Incomplete | None=..., normalized_colormap: bool=..., scalars: Incomplete | None=..., backface_culling: bool=..., polygon_offset: Incomplete | None=...):
+    def surface(
+        self,
+        surface,
+        color=...,
+        opacity: float = ...,
+        vmin=...,
+        vmax=...,
+        colormap=...,
+        normalized_colormap: bool = ...,
+        scalars=...,
+        backface_culling: bool = ...,
+        polygon_offset=...,
+    ):
         """Add a surface in the scene.
 
         Parameters
@@ -208,8 +280,16 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         polygon_offset : float
             If not None, the factor used to resolve coincident topology.
         """
-
-    def sphere(self, center, color, scale, opacity: float=..., resolution: int=..., backface_culling: bool=..., radius: Incomplete | None=...):
+    def sphere(
+        self,
+        center,
+        color,
+        scale,
+        opacity: float = ...,
+        resolution: int = ...,
+        backface_culling: bool = ...,
+        radius=...,
+    ):
         """Add sphere in the scene.
 
         Parameters
@@ -234,8 +314,20 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
             Replace the glyph scaling by a fixed radius value for each
             sphere.
         """
-
-    def tube(self, origin, destination, radius: float=..., color: str=..., scalars: Incomplete | None=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., colormap: str=..., normalized_colormap: bool=..., reverse_lut: bool=..., opacity: Incomplete | None=...):
+    def tube(
+        self,
+        origin,
+        destination,
+        radius: float = ...,
+        color: str = ...,
+        scalars=...,
+        vmin=...,
+        vmax=...,
+        colormap: str = ...,
+        normalized_colormap: bool = ...,
+        reverse_lut: bool = ...,
+        opacity=...,
+    ):
         """Add tube in the scene.
 
         Parameters
@@ -274,8 +366,35 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         surface :
             Handle of the tube in the scene.
         """
-
-    def quiver3d(self, x, y, z, u, v, w, color, scale, mode, resolution: int=..., glyph_height: Incomplete | None=..., glyph_center: Incomplete | None=..., glyph_resolution: Incomplete | None=..., opacity: float=..., scale_mode: str=..., scalars: Incomplete | None=..., colormap: Incomplete | None=..., backface_culling: bool=..., line_width: float=..., name: Incomplete | None=..., glyph_width: Incomplete | None=..., glyph_depth: Incomplete | None=..., glyph_radius: float=..., solid_transform: Incomplete | None=..., *, clim: Incomplete | None=...):
+    def quiver3d(
+        self,
+        x,
+        y,
+        z,
+        u,
+        v,
+        w,
+        color,
+        scale,
+        mode,
+        resolution: int = ...,
+        glyph_height=...,
+        glyph_center=...,
+        glyph_resolution=...,
+        opacity: float = ...,
+        scale_mode: str = ...,
+        scalars=...,
+        colormap=...,
+        backface_culling: bool = ...,
+        line_width: float = ...,
+        name=...,
+        glyph_width=...,
+        glyph_depth=...,
+        glyph_radius: float = ...,
+        solid_transform=...,
+        *,
+        clim=...,
+    ):
         """Add quiver3d in the scene.
 
         Parameters
@@ -338,8 +457,15 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         surface :
             Handle of the quiver in the scene.
         """
-
-    def text2d(self, x_window, y_window, text, size: int=..., color: str=..., justification: Incomplete | None=...):
+    def text2d(
+        self,
+        x_window,
+        y_window,
+        text,
+        size: int = ...,
+        color: str = ...,
+        justification=...,
+    ):
         """Add 2d text in the scene.
 
         Parameters
@@ -359,8 +485,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
         """
-
-    def text3d(self, x, y, z, text, scale, color: str=...):
+    def text3d(self, x, y, z, text, scale, color: str = ...):
         """Add 2d text in the scene.
 
         Parameters
@@ -380,8 +505,15 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
         """
-
-    def scalarbar(self, source, color: str=..., title: Incomplete | None=..., n_labels: int=..., bgcolor: Incomplete | None=..., **extra_kwargs):
+    def scalarbar(
+        self,
+        source,
+        color: str = ...,
+        title=...,
+        n_labels: int = ...,
+        bgcolor=...,
+        **extra_kwargs,
+    ):
         """Add a scalar bar in the scene.
 
         Parameters
@@ -397,17 +529,23 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         bgcolor :
             The color of the background when there is transparency.
         """
-
     def show(self) -> None:
         """Render the scene."""
-
     def close(self) -> None:
         """Close the scene."""
-
-    def get_camera(self, *, rigid: Incomplete | None=...):
-        ...
-
-    def set_camera(self, azimuth: Incomplete | None=..., elevation: Incomplete | None=..., distance: Incomplete | None=..., focalpoint: Incomplete | None=..., roll: Incomplete | None=..., *, rigid: Incomplete | None=..., update: bool=..., reset_camera: Incomplete | None=...) -> None:
+    def get_camera(self, *, rigid=...): ...
+    def set_camera(
+        self,
+        azimuth=...,
+        elevation=...,
+        distance=...,
+        focalpoint=...,
+        roll=...,
+        *,
+        rigid=...,
+        update: bool = ...,
+        reset_camera=...,
+    ) -> None:
         """Configure the camera of the scene.
 
         Parameters
@@ -425,12 +563,11 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         reset_camera : bool
            Deprecated, used ``distance="auto"`` instead.
         """
-
     def reset_camera(self) -> None:
         """Reset the camera properties.
-.. warning:: DEPRECATED: reset_camera is deprecated and will be removed in 1.7, use set_camera(distance='auto') instead."""
-
-    def screenshot(self, mode: str=..., filename: Incomplete | None=...):
+        .. warning:: DEPRECATED: reset_camera is deprecated and will be removed in 1.7, use set_camera(distance='auto') instead.
+        """
+    def screenshot(self, mode: str = ..., filename=...):
         """Take a screenshot of the scene.
 
         Parameters
@@ -441,7 +578,6 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         filename : str | None
             If not None, save the figure to the disk.
         """
-
     def project(self, xyz, ch_names):
         """Convert 3d points to a 2d perspective.
 
@@ -452,7 +588,6 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         ch_names : array, shape(_n_points,)
             Names of the channels.
         """
-
     def remove_mesh(self, mesh_data) -> None:
         """Remove the given mesh from the scene.
 
@@ -463,6 +598,5 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         """
 
 class _SafeBackgroundPlotter(BackgroundPlotter):
-
     def __del__(self) -> None:
         """Delete the qt plotter."""

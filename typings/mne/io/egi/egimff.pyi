@@ -5,9 +5,10 @@ from ..._fiff.proj import setup_proj as setup_proj
 from ...annotations import Annotations as Annotations
 from ...channels.montage import make_dig_montage as make_dig_montage
 from ...evoked import EvokedArray as EvokedArray
-from ...utils import logger as logger, verbose as verbose, warn as warn
+from ...utils import logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 from _typeshed import Incomplete
+
 REFERENCE_NAMES: Incomplete
 
 class _FixedOffset(datetime.tzinfo):
@@ -16,26 +17,32 @@ class _FixedOffset(datetime.tzinfo):
     Adapted from the official Python documentation.
     """
 
-    def __init__(self, offset) -> None:
-        ...
-
-    def utcoffset(self, dt):
-        ...
-
-    def tzname(self, dt):
-        ...
-
-    def dst(self, dt):
-        ...
+    def __init__(self, offset) -> None: ...
+    def utcoffset(self, dt): ...
+    def tzname(self, dt): ...
+    def dst(self, dt): ...
 
 class RawMff(BaseRaw):
     """Init the RawMff class."""
+
     event_id: Incomplete
 
-    def __init__(self, input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., include: Incomplete | None=..., exclude: Incomplete | None=..., preload: bool=..., channel_naming: str=..., verbose: Incomplete | None=...) -> None:
+    def __init__(
+        self,
+        input_fname,
+        eog=...,
+        misc=...,
+        include=...,
+        exclude=...,
+        preload: bool = ...,
+        channel_naming: str = ...,
+        verbose=...,
+    ) -> None:
         """Init the RawMff class."""
 
-def read_evokeds_mff(fname, condition: Incomplete | None=..., channel_naming: str=..., baseline: Incomplete | None=..., verbose: Incomplete | None=...):
+def read_evokeds_mff(
+    fname, condition=..., channel_naming: str = ..., baseline=..., verbose=...
+):
     """Read averaged MFF file as EvokedArray or list of EvokedArray.
 
     Parameters
@@ -60,7 +67,7 @@ def read_evokeds_mff(fname, condition: Incomplete | None=..., channel_naming: st
         of the baseline period and subtracting it from the data. The baseline
         (a, b) includes both endpoints, i.e. all timepoints t such that
         a <= t <= b.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

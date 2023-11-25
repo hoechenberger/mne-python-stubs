@@ -1,7 +1,12 @@
-from ..utils import check_random_state as check_random_state, fill_doc as fill_doc, logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import (
+    check_random_state as check_random_state,
+    fill_doc as fill_doc,
+    logger as logger,
+)
 
-def power_iteration_kron(A, C, max_iter: int=..., tol: float=..., random_state: int=...):
+def power_iteration_kron(
+    A, C, max_iter: int = ..., tol: float = ..., random_state: int = ...
+):
     """Find the largest singular value for the matrix kron(C.T, A).
 
     It uses power iterations.
@@ -14,11 +19,11 @@ def power_iteration_kron(A, C, max_iter: int=..., tol: float=..., random_state: 
         An array
     max_iter : int
         Maximum number of iterations
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -33,7 +38,9 @@ def power_iteration_kron(A, C, max_iter: int=..., tol: float=..., random_state: 
     http://en.wikipedia.org/wiki/Power_iteration
     """
 
-def compute_bias(M, G, X, max_iter: int=..., tol: float=..., n_orient: int=..., verbose: Incomplete | None=...):
+def compute_bias(
+    M, G, X, max_iter: int = ..., tol: float = ..., n_orient: int = ..., verbose=...
+):
     """Compute scaling to correct amplitude bias.
 
     It solves the following optimization problem using FISTA:
@@ -61,7 +68,7 @@ def compute_bias(M, G, X, max_iter: int=..., tol: float=..., n_orient: int=..., 
         The tolerance on convergence.
     n_orient : int
         The number of orientations (1 for fixed and 3 otherwise).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

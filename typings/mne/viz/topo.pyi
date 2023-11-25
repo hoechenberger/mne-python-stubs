@@ -1,9 +1,22 @@
 from .._fiff.pick import channel_type as channel_type, pick_types as pick_types
 from ..utils import Bunch as Bunch, fill_doc as fill_doc
-from .utils import DraggableColorbar as DraggableColorbar, add_background_image as add_background_image, plt_show as plt_show
-from _typeshed import Incomplete
+from .utils import (
+    DraggableColorbar as DraggableColorbar,
+    add_background_image as add_background_image,
+    plt_show as plt_show,
+)
 
-def iter_topography(info, layout: Incomplete | None=..., on_pick: Incomplete | None=..., fig: Incomplete | None=..., fig_facecolor: str=..., axis_facecolor: str=..., axis_spinecolor: str=..., layout_scale: Incomplete | None=..., legend: bool=...):
+def iter_topography(
+    info,
+    layout=...,
+    on_pick=...,
+    fig=...,
+    fig_facecolor: str = ...,
+    axis_facecolor: str = ...,
+    axis_spinecolor: str = ...,
+    layout_scale=...,
+    legend: bool = ...,
+):
     """Create iterator over channel positions.
 
     This function returns a generator that unpacks into
@@ -14,7 +27,7 @@ def iter_topography(info, layout: Incomplete | None=..., on_pick: Incomplete | N
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     layout : instance of mne.channels.Layout | None
@@ -52,12 +65,29 @@ def iter_topography(info, layout: Incomplete | None=..., on_pick: Incomplete | N
             The related channel index.
     """
 
-def plot_topo_image_epochs(epochs, layout: Incomplete | None=..., sigma: float=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., colorbar: Incomplete | None=..., order: Incomplete | None=..., cmap: str=..., layout_scale: float=..., title: Incomplete | None=..., scalings: Incomplete | None=..., border: str=..., fig_facecolor: str=..., fig_background: Incomplete | None=..., font_color: str=..., show: bool=...):
+def plot_topo_image_epochs(
+    epochs,
+    layout=...,
+    sigma: float = ...,
+    vmin=...,
+    vmax=...,
+    colorbar=...,
+    order=...,
+    cmap: str = ...,
+    layout_scale: float = ...,
+    title=...,
+    scalings=...,
+    border: str = ...,
+    fig_facecolor: str = ...,
+    fig_background=...,
+    font_color: str = ...,
+    show: bool = ...,
+):
     """Plot Event Related Potential / Fields image on topographies.
 
     Parameters
     ----------
-    epochs : instance of :class:`~mne.Epochs`
+    epochs : instance of :class:mne.Epochs`
         The epochs.
     layout : instance of Layout
         System specific sensor positions.

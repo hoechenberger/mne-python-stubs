@@ -1,8 +1,7 @@
 from ..io import BaseRaw as BaseRaw
-from ..utils import logger as logger, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from ..utils import logger as logger, warn as warn
 
-def realign_raw(raw, other, t_raw, t_other, verbose: Incomplete | None=...) -> None:
+def realign_raw(raw, other, t_raw, t_other, verbose=...) -> None:
     """Realign two simultaneous recordings.
 
     Due to clock drift, recordings at a given same sample rate made by two
@@ -23,7 +22,7 @@ def realign_raw(raw, other, t_raw, t_other, verbose: Incomplete | None=...) -> N
             find_events(raw)[:, 0] / raw.info["sfreq"] - raw.first_time
     t_other : array-like, shape (n_events,)
         The times of shared events in ``other`` relative to ``other.times[0]``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

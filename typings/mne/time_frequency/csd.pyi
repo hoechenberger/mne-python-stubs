@@ -1,11 +1,18 @@
 from .._fiff.pick import pick_channels as pick_channels
 from ..parallel import parallel_func as parallel_func
-from ..utils import ProgressBar as ProgressBar, copy_function_doc_to_method_doc as copy_function_doc_to_method_doc, logger as logger, verbose as verbose, warn as warn
+from ..utils import (
+    ProgressBar as ProgressBar,
+    copy_function_doc_to_method_doc as copy_function_doc_to_method_doc,
+    logger as logger,
+    warn as warn,
+)
 from ..viz.misc import plot_csd as plot_csd
 from .tfr import EpochsTFR as EpochsTFR, morlet as morlet
 from _typeshed import Incomplete
 
-def pick_channels_csd(csd, include=..., exclude=..., ordered: Incomplete | None=..., copy: bool=..., *, verbose: Incomplete | None=...):
+def pick_channels_csd(
+    csd, include=..., exclude=..., ordered=..., copy: bool = ..., *, verbose=...
+):
     """Pick channels from cross-spectral density matrix.
 
     Parameters
@@ -16,11 +23,11 @@ def pick_channels_csd(csd, include=..., exclude=..., ordered: Incomplete | None=
         List of channels to include (if empty, include all available).
     exclude : list of str
         Channels to exclude (if empty, do not exclude any).
-    
+
     ordered : bool
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
-    
+
         .. versionadded:: 0.20.0
         .. versionchanged:: 1.5
             The default changed from False in 1.4 to True in 1.5.
@@ -29,7 +36,7 @@ def pick_channels_csd(csd, include=..., exclude=..., ordered: Incomplete | None=
         modified channels. If False, channels are modified in-place.
 
         .. versionadded:: 0.20.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -45,25 +52,26 @@ def pick_channels_csd(csd, include=..., exclude=..., ordered: Incomplete | None=
 class CrossSpectralDensity:
     """Pick channels from this cross-spectral density matrix.
 
-        Parameters
-        ----------
-        ch_names : list of str
-            List of channels to keep. All other channels are dropped.
-        ordered : bool
-            If True (default False), ensure that the order of the channels
-            matches the order of ``ch_names``.
+    Parameters
+    ----------
+    ch_names : list of str
+        List of channels to keep. All other channels are dropped.
+    ordered : bool
+        If True (default False), ensure that the order of the channels
+        matches the order of ``ch_names``.
 
-        Returns
-        -------
-        csd : instance of CrossSpectralDensity.
-            The modified cross-spectral density object.
+    Returns
+    -------
+    csd : instance of CrossSpectralDensity.
+        The modified cross-spectral density object.
 
-        Notes
-        -----
-        Operates in-place.
+    Notes
+    -----
+    Operates in-place.
 
-        .. versionadded:: 0.20.0
-        """
+    .. versionadded:: 0.20.0
+    """
+
     ch_names: Incomplete
     tmin: Incomplete
     tmax: Incomplete
@@ -71,13 +79,12 @@ class CrossSpectralDensity:
     n_fft: Incomplete
     projs: Incomplete
 
-    def __init__(self, data, ch_names, frequencies, n_fft, tmin: Incomplete | None=..., tmax: Incomplete | None=..., projs: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self, data, ch_names, frequencies, n_fft, tmin=..., tmax=..., projs=...
+    ) -> None: ...
     @property
     def n_channels(self):
         """Number of time series defined in this CSD object."""
-
     def __len__(self) -> int:
         """Return number of frequencies.
 
@@ -86,8 +93,7 @@ class CrossSpectralDensity:
         n_freqs : int
             The number of frequencies.
         """
-
-    def sum(self, fmin: Incomplete | None=..., fmax: Incomplete | None=...):
+    def sum(self, fmin=..., fmax=...):
         """Calculate the sum CSD in the given frequency range(s).
 
         If the exact given frequencies are not available, the nearest
@@ -111,8 +117,7 @@ class CrossSpectralDensity:
         csd : instance of CrossSpectralDensity
             The CSD matrix, summed across the given frequency range(s).
         """
-
-    def mean(self, fmin: Incomplete | None=..., fmax: Incomplete | None=...):
+    def mean(self, fmin=..., fmax=...):
         """Calculate the mean CSD in the given frequency range(s).
 
         Parameters
@@ -133,8 +138,7 @@ class CrossSpectralDensity:
         csd : instance of CrossSpectralDensity
             The CSD matrix, averaged across the given frequency range(s).
         """
-
-    def pick_frequency(self, freq: Incomplete | None=..., index: Incomplete | None=...):
+    def pick_frequency(self, freq=..., index=...):
         """Get a CrossSpectralDensity object with only the given frequency.
 
         Parameters
@@ -156,8 +160,7 @@ class CrossSpectralDensity:
         --------
         get_data
         """
-
-    def get_data(self, frequency: Incomplete | None=..., index: Incomplete | None=..., as_cov: bool=...):
+    def get_data(self, frequency=..., index=..., as_cov: bool = ...):
         """Get the CSD matrix for a given frequency as NumPy array.
 
         If there is only one matrix defined in the CSD object, calling this
@@ -188,41 +191,47 @@ class CrossSpectralDensity:
         --------
         pick_frequency
         """
-
-    def plot(self, info: Incomplete | None=..., mode: str=..., colorbar: bool=..., cmap: str=..., n_cols: Incomplete | None=..., show: bool=...):
+    def plot(
+        self,
+        info=...,
+        mode: str = ...,
+        colorbar: bool = ...,
+        cmap: str = ...,
+        n_cols=...,
+        show: bool = ...,
+    ):
         """Plot CSD matrices.
 
-    A sub-plot is created for each frequency. If an info object is passed to
-    the function, different channel types are plotted in different figures.
+        A sub-plot is created for each frequency. If an info object is passed to
+        the function, different channel types are plotted in different figures.
 
-    Parameters
-    ----------
-    info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
-        Used to split the figure by channel-type, if provided.
-        By default, the CSD matrix is plotted as a whole.
-    mode : 'csd' | 'coh'
-        Whether to plot the cross-spectral density ('csd', the default), or
-        the coherence ('coh') between the channels.
-    colorbar : bool
-        Whether to show a colorbar. Defaults to ``True``.
-    cmap : str | None
-        The matplotlib colormap to use. Defaults to None, which means the
-        colormap will default to matplotlib's default.
-    n_cols : int | None
-        CSD matrices are plotted in a grid. This parameter controls how
-        many matrix to plot side by side before starting a new row. By
-        default, a number will be chosen to make the grid as square as
-        possible.
-    show : bool
-        Whether to show the figure. Defaults to ``True``.
+        Parameters
+        ----------
+        info : mne.Info | None
+            The :class:`mne.Info` object with information about the sensors and methods of measurement.
+            Used to split the figure by channel-type, if provided.
+            By default, the CSD matrix is plotted as a whole.
+        mode : 'csd' | 'coh'
+            Whether to plot the cross-spectral density ('csd', the default), or
+            the coherence ('coh') between the channels.
+        colorbar : bool
+            Whether to show a colorbar. Defaults to ``True``.
+        cmap : str | None
+            The matplotlib colormap to use. Defaults to None, which means the
+            colormap will default to matplotlib's default.
+        n_cols : int | None
+            CSD matrices are plotted in a grid. This parameter controls how
+            many matrix to plot side by side before starting a new row. By
+            default, a number will be chosen to make the grid as square as
+            possible.
+        show : bool
+            Whether to show the figure. Defaults to ``True``.
 
-    Returns
-    -------
-    fig : list of Figure
-        The figures created by this function.
-    """
-
+        Returns
+        -------
+        fig : list of Figure
+            The figures created by this function.
+        """
     def __getitem__(self, sel):
         """Subselect frequencies.
 
@@ -236,8 +245,7 @@ class CrossSpectralDensity:
         csd : instance of CrossSpectralDensity
             A new CSD instance with the subset of frequencies.
         """
-
-    def save(self, fname, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
         """Save the CSD to an HDF5 file.
 
         Parameters
@@ -245,13 +253,13 @@ class CrossSpectralDensity:
         fname : path-like
             The name of the file to save the CSD to. The extension ``'.h5'``
             will be appended if the given filename doesn't have it already.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
             .. versionadded:: 1.0
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -264,7 +272,6 @@ class CrossSpectralDensity:
         --------
         read_csd : For reading CSD objects from a file.
         """
-
     def copy(self):
         """Return copy of the CrossSpectralDensity object.
 
@@ -273,8 +280,7 @@ class CrossSpectralDensity:
         copy : instance of CrossSpectralDensity
             A copy of the object.
         """
-
-    def pick_channels(self, ch_names, ordered: bool=...):
+    def pick_channels(self, ch_names, ordered: bool = ...):
         """Pick channels from this cross-spectral density matrix.
 
         Parameters
@@ -316,7 +322,19 @@ def read_csd(fname):
     CrossSpectralDensity.save : For saving CSD objects.
     """
 
-def csd_fourier(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., picks: Incomplete | None=..., n_fft: Incomplete | None=..., projs: Incomplete | None=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def csd_fourier(
+    epochs,
+    fmin: int = ...,
+    fmax=...,
+    tmin=...,
+    tmax=...,
+    picks=...,
+    n_fft=...,
+    projs=...,
+    n_jobs=...,
+    *,
+    verbose=...,
+):
     """Estimate cross-spectral density from an array using short-time fourier.
 
     Parameters
@@ -334,13 +352,13 @@ def csd_fourier(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tm
         Maximum time instant to consider, in seconds. If ``None`` end at last
         sample.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     n_fft : int | None
         Length of the FFT. If ``None``, the exact number of samples between
@@ -355,7 +373,7 @@ def csd_fourier(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tm
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -376,7 +394,21 @@ def csd_fourier(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tm
     csd_multitaper
     """
 
-def csd_array_fourier(X, sfreq, t0: int=..., fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., ch_names: Incomplete | None=..., n_fft: Incomplete | None=..., projs: Incomplete | None=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def csd_array_fourier(
+    X,
+    sfreq,
+    t0: int = ...,
+    fmin: int = ...,
+    fmax=...,
+    tmin=...,
+    tmax=...,
+    ch_names=...,
+    n_fft=...,
+    projs=...,
+    n_jobs=...,
+    *,
+    verbose=...,
+):
     """Estimate cross-spectral density from an array using short-time fourier.
 
     Parameters
@@ -415,7 +447,7 @@ def csd_array_fourier(X, sfreq, t0: int=..., fmin: int=..., fmax=..., tmin: Inco
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -436,7 +468,22 @@ def csd_array_fourier(X, sfreq, t0: int=..., fmin: int=..., fmax=..., tmin: Inco
     csd_multitaper
     """
 
-def csd_multitaper(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., picks: Incomplete | None=..., n_fft: Incomplete | None=..., bandwidth: Incomplete | None=..., adaptive: bool=..., low_bias: bool=..., projs: Incomplete | None=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def csd_multitaper(
+    epochs,
+    fmin: int = ...,
+    fmax=...,
+    tmin=...,
+    tmax=...,
+    picks=...,
+    n_fft=...,
+    bandwidth=...,
+    adaptive: bool = ...,
+    low_bias: bool = ...,
+    projs=...,
+    n_jobs=...,
+    *,
+    verbose=...,
+):
     """Estimate cross-spectral density from epochs using a multitaper method.
 
     Parameters
@@ -454,13 +501,13 @@ def csd_multitaper(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=...,
         Maximum time instant to consider, in seconds. If ``None`` end at last
         sample.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     n_fft : int | None
         Length of the FFT. If ``None``, the exact number of samples between
@@ -482,7 +529,7 @@ def csd_multitaper(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=...,
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -503,7 +550,25 @@ def csd_multitaper(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=...,
     csd_morlet
     """
 
-def csd_array_multitaper(X, sfreq, t0: int=..., fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., ch_names: Incomplete | None=..., n_fft: Incomplete | None=..., bandwidth: Incomplete | None=..., adaptive: bool=..., low_bias: bool=..., projs: Incomplete | None=..., n_jobs: Incomplete | None=..., max_iter: int=..., *, verbose: Incomplete | None=...):
+def csd_array_multitaper(
+    X,
+    sfreq,
+    t0: int = ...,
+    fmin: int = ...,
+    fmax=...,
+    tmin=...,
+    tmax=...,
+    ch_names=...,
+    n_fft=...,
+    bandwidth=...,
+    adaptive: bool = ...,
+    low_bias: bool = ...,
+    projs=...,
+    n_jobs=...,
+    max_iter: int = ...,
+    *,
+    verbose=...,
+):
     """Estimate cross-spectral density from an array using a multitaper method.
 
     Parameters
@@ -549,12 +614,12 @@ def csd_array_multitaper(X, sfreq, t0: int=..., fmin: int=..., fmax=..., tmin: I
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     max_iter : int
         Maximum number of iterations to reach convergence when combining the
         tapered spectra with adaptive weights (see argument ``adaptive``). This
         argument has not effect if ``adaptive`` is set to ``False``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -575,7 +640,20 @@ def csd_array_multitaper(X, sfreq, t0: int=..., fmin: int=..., fmax=..., tmin: I
     csd_multitaper
     """
 
-def csd_morlet(epochs, frequencies, tmin: Incomplete | None=..., tmax: Incomplete | None=..., picks: Incomplete | None=..., n_cycles: int=..., use_fft: bool=..., decim: int=..., projs: Incomplete | None=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def csd_morlet(
+    epochs,
+    frequencies,
+    tmin=...,
+    tmax=...,
+    picks=...,
+    n_cycles: int = ...,
+    use_fft: bool = ...,
+    decim: int = ...,
+    projs=...,
+    n_jobs=...,
+    *,
+    verbose=...,
+):
     """Estimate cross-spectral density from epochs using Morlet wavelets.
 
     Parameters
@@ -591,13 +669,13 @@ def csd_morlet(epochs, frequencies, tmin: Incomplete | None=..., tmax: Incomplet
         Maximum time instant to consider, in seconds. If ``None`` end at last
         sample.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     n_cycles : float | list of float | None
         Number of cycles to use when constructing Morlet wavelets. Fixed number
@@ -622,7 +700,7 @@ def csd_morlet(epochs, frequencies, tmin: Incomplete | None=..., tmax: Incomplet
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -643,7 +721,22 @@ def csd_morlet(epochs, frequencies, tmin: Incomplete | None=..., tmax: Incomplet
     csd_multitaper
     """
 
-def csd_array_morlet(X, sfreq, frequencies, t0: int=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., ch_names: Incomplete | None=..., n_cycles: int=..., use_fft: bool=..., decim: int=..., projs: Incomplete | None=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def csd_array_morlet(
+    X,
+    sfreq,
+    frequencies,
+    t0: int = ...,
+    tmin=...,
+    tmax=...,
+    ch_names=...,
+    n_cycles: int = ...,
+    use_fft: bool = ...,
+    decim: int = ...,
+    projs=...,
+    n_jobs=...,
+    *,
+    verbose=...,
+):
     """Estimate cross-spectral density from an array using Morlet wavelets.
 
     Parameters
@@ -690,7 +783,7 @@ def csd_array_morlet(X, sfreq, frequencies, t0: int=..., tmin: Incomplete | None
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -711,7 +804,7 @@ def csd_array_morlet(X, sfreq, frequencies, t0: int=..., tmin: Incomplete | None
     csd_multitaper
     """
 
-def csd_tfr(epochs_tfr, tmin: Incomplete | None=..., tmax: Incomplete | None=..., picks: Incomplete | None=..., projs: Incomplete | None=..., verbose: Incomplete | None=...):
+def csd_tfr(epochs_tfr, tmin=..., tmax=..., picks=..., projs=..., verbose=...):
     """Compute covariance matrices across frequencies for TFR epochs.
 
     Parameters
@@ -726,19 +819,19 @@ def csd_tfr(epochs_tfr, tmin: Incomplete | None=..., tmax: Incomplete | None=...
         Maximum time instant to consider, in seconds. If ``None`` end at last
         sample.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     projs : list of Projection | None
         List of projectors to store in the CSD object. Defaults to ``None``,
         which means the projectors defined in the EpochsTFR object will be
         copied.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -1,12 +1,15 @@
-from ..utils import logger as logger, verbose as verbose
+from ..utils import logger as logger
 from .constants import FIFF as FIFF
 from .matrix import write_named_matrix as write_named_matrix
 from .tag import read_tag as read_tag
 from .tree import dir_tree_find as dir_tree_find
-from .write import end_block as end_block, start_block as start_block, write_int as write_int
-from _typeshed import Incomplete
+from .write import (
+    end_block as end_block,
+    start_block as start_block,
+    write_int as write_int,
+)
 
-def read_ctf_comp(fid, node, chs, verbose: Incomplete | None=...):
+def read_ctf_comp(fid, node, chs, verbose=...):
     """Read the CTF software compensation data from the given node.
 
     Parameters
@@ -18,7 +21,7 @@ def read_ctf_comp(fid, node, chs, verbose: Incomplete | None=...):
     chs : list
         The list of channels from info['chs'] to match with
         compensators that are read.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

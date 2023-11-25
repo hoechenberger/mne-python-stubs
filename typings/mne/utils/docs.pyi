@@ -1,6 +1,7 @@
 from ..defaults import HEAD_SIZE_DEFAULT as HEAD_SIZE_DEFAULT
 from ._bunch import BunchConst as BunchConst
 from _typeshed import Incomplete
+
 docdict: Incomplete
 mem: str
 comb: str
@@ -185,7 +186,7 @@ def linkcode_resolve(domain, info):
     Adapted from SciPy (doc/source/conf.py).
     """
 
-def open_docs(kind: Incomplete | None=..., version: Incomplete | None=...) -> None:
+def open_docs(kind=..., version=...) -> None:
     """Launch a new web browser tab with the MNE documentation.
 
     Parameters
@@ -203,23 +204,22 @@ def open_docs(kind: Incomplete | None=..., version: Incomplete | None=...) -> No
 class _decorator:
     """Call.
 
-        Parameters
-        ----------
-        obj : object
-            Object to call.
+    Parameters
+    ----------
+    obj : object
+        Object to call.
 
-        Returns
-        -------
-        obj : object
-            The modified object.
-        """
+    Returns
+    -------
+    obj : object
+        The modified object.
+    """
+
     kind: Incomplete
     extra: Incomplete
     msg: Incomplete
 
-    def __init__(self, extra) -> None:
-        ...
-
+    def __init__(self, extra) -> None: ...
     def __call__(self, obj):
         """Call.
 
@@ -251,7 +251,7 @@ class deprecated(_decorator):
         and in a sphinx warning box in the docstring.
     """
 
-def deprecated_alias(dep_name, func, removed_in: Incomplete | None=...) -> None:
+def deprecated_alias(dep_name, func, removed_in=...) -> None:
     """Inject a deprecated alias into the namespace."""
 
 class legacy(_decorator):
@@ -269,5 +269,4 @@ class legacy(_decorator):
         and in a sphinx warning box in the docstring.
     """
 
-    def __init__(self, alt, extra: str=...) -> None:
-        ...
+    def __init__(self, alt, extra: str = ...) -> None: ...

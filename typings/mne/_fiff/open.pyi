@@ -1,4 +1,4 @@
-from ..utils import logger as logger, verbose as verbose, warn as warn
+from ..utils import logger as logger, warn as warn
 from .constants import FIFF as FIFF
 from .tag import Tag as Tag, read_tag as read_tag, read_tag_info as read_tag_info
 from .tree import dir_tree_find as dir_tree_find, make_dir_tree as make_dir_tree
@@ -6,27 +6,22 @@ from _typeshed import Incomplete
 
 class _NoCloseRead:
     """Create a wrapper that will not close when used as a context manager."""
+
     fid: Incomplete
 
-    def __init__(self, fid) -> None:
-        ...
+    def __init__(self, fid) -> None: ...
+    def __enter__(self): ...
+    def __exit__(
+        self,
+        type_: type[BaseException] | None,
+        value: BaseException | None,
+        traceback: types.TracebackType | None,
+    ) -> None: ...
+    def close(self) -> None: ...
+    def seek(self, offset, whence=...): ...
+    def read(self, size: int = ...): ...
 
-    def __enter__(self):
-        ...
-
-    def __exit__(self, type_: type[BaseException] | None, value: BaseException | None, traceback: types.TracebackType | None) -> None:
-        ...
-
-    def close(self) -> None:
-        ...
-
-    def seek(self, offset, whence=...):
-        ...
-
-    def read(self, size: int=...):
-        ...
-
-def fiff_open(fname, preload: bool=..., verbose: Incomplete | None=...):
+def fiff_open(fname, preload: bool = ..., verbose=...):
     """Open a FIF file.
 
     Parameters
@@ -37,7 +32,7 @@ def fiff_open(fname, preload: bool=..., verbose: Incomplete | None=...):
         If True, all data from the file is read into a memory buffer. This
         requires more memory, but can be faster for I/O operations that require
         frequent seeks.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -55,7 +50,17 @@ def fiff_open(fname, preload: bool=..., verbose: Incomplete | None=...):
         A list of tags.
     """
 
-def show_fiff(fname, indent: str=..., read_limit=..., max_str: int=..., output=..., tag: Incomplete | None=..., *, show_bytes: bool=..., verbose: Incomplete | None=...):
+def show_fiff(
+    fname,
+    indent: str = ...,
+    read_limit=...,
+    max_str: int = ...,
+    output=...,
+    tag=...,
+    *,
+    show_bytes: bool = ...,
+    verbose=...,
+):
     """Show FIFF information.
 
     This function is similar to mne_show_fiff.
@@ -79,7 +84,7 @@ def show_fiff(fname, indent: str=..., read_limit=..., max_str: int=..., output=.
         is shown.
     show_bytes : bool
         If True (default False), print the byte offsets of each tag.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

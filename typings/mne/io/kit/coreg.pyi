@@ -1,7 +1,17 @@
-from ...channels.montage import read_custom_montage as read_custom_montage, read_dig_polhemus_isotrak as read_dig_polhemus_isotrak, read_polhemus_fastscan as read_polhemus_fastscan
-from ...transforms import Transform as Transform, als_ras_trans as als_ras_trans, apply_trans as apply_trans, get_ras_to_neuromag_trans as get_ras_to_neuromag_trans
+from ...channels.montage import (
+    read_custom_montage as read_custom_montage,
+    read_dig_polhemus_isotrak as read_dig_polhemus_isotrak,
+    read_polhemus_fastscan as read_polhemus_fastscan,
+)
+from ...transforms import (
+    Transform as Transform,
+    als_ras_trans as als_ras_trans,
+    apply_trans as apply_trans,
+    get_ras_to_neuromag_trans as get_ras_to_neuromag_trans,
+)
 from ...utils import warn as warn
 from .constants import FIFF as FIFF, KIT as KIT
+
 INT32: str
 FLOAT64: str
 

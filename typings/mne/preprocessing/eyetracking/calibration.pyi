@@ -1,30 +1,41 @@
 from ...utils import fill_doc as fill_doc, logger as logger
 from ...viz.utils import plt_show as plt_show
-from _typeshed import Incomplete
 
 class Calibration(dict):
     """Visualize calibration.
 
-        Parameters
-        ----------
-        show_offsets : bool
-            Whether to display the offset (in visual degrees) of each calibration
-            point or not. Defaults to ``True``.
-        axes : instance of matplotlib.axes.Axes | None
-            Axes to draw the calibration positions to. If ``None`` (default), a new axes
-            will be created.
-        show : bool
-            Whether to show the figure or not. Defaults to ``True``.
+    Parameters
+    ----------
+    show_offsets : bool
+        Whether to display the offset (in visual degrees) of each calibration
+        point or not. Defaults to ``True``.
+    axes : instance of matplotlib.axes.Axes | None
+        Axes to draw the calibration positions to. If ``None`` (default), a new axes
+        will be created.
+    show : bool
+        Whether to show the figure or not. Defaults to ``True``.
 
-        Returns
-        -------
-        fig : instance of matplotlib.figure.Figure
-            The resulting figure object for the calibration plot.
-        """
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
+        The resulting figure object for the calibration plot.
+    """
 
-    def __init__(self, *, onset, model, eye, avg_error, max_error, positions, offsets, gaze, screen_size: Incomplete | None=..., screen_distance: Incomplete | None=..., screen_resolution: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        *,
+        onset,
+        model,
+        eye,
+        avg_error,
+        max_error,
+        positions,
+        offsets,
+        gaze,
+        screen_size=...,
+        screen_distance=...,
+        screen_resolution=...,
+    ) -> None: ...
     def copy(self):
         """Copy the instance.
 
@@ -33,8 +44,7 @@ class Calibration(dict):
         cal : instance of Calibration
             The copied Calibration.
         """
-
-    def plot(self, show_offsets: bool=..., axes: Incomplete | None=..., show: bool=...):
+    def plot(self, show_offsets: bool = ..., axes=..., show: bool = ...):
         """Visualize calibration.
 
         Parameters
@@ -54,7 +64,9 @@ class Calibration(dict):
             The resulting figure object for the calibration plot.
         """
 
-def read_eyelink_calibration(fname, screen_size: Incomplete | None=..., screen_distance: Incomplete | None=..., screen_resolution: Incomplete | None=...):
+def read_eyelink_calibration(
+    fname, screen_size=..., screen_distance=..., screen_resolution=...
+):
     """Return info on calibrations collected in an eyelink file.
 
     Parameters
@@ -76,6 +88,6 @@ def read_eyelink_calibration(fname, screen_size: Incomplete | None=..., screen_d
     Returns
     -------
     calibrations : list
-        A list of :class:`~mne.preprocessing.eyetracking.Calibration` instances, one for
+        A list of :class:mne.preprocessing.eyetracking.Calibration` instances, one for
         each eye of every calibration that was performed during the recording session.
     """

@@ -1,7 +1,6 @@
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def stft(x, wsize, tstep: Incomplete | None=..., verbose: Incomplete | None=...):
+def stft(x, wsize, tstep=..., verbose=...):
     """STFT Short-Term Fourier Transform using a sine window.
 
     The transformation is designed to be a tight frame that can be
@@ -16,7 +15,7 @@ def stft(x, wsize, tstep: Incomplete | None=..., verbose: Incomplete | None=...)
     tstep : int
         Step between successive windows in samples (must be a multiple of 2,
         a divider of wsize and smaller than wsize/2) (default: wsize/2).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -35,7 +34,7 @@ def stft(x, wsize, tstep: Incomplete | None=..., verbose: Incomplete | None=...)
     stftfreq
     """
 
-def istft(X, tstep: Incomplete | None=..., Tx: Incomplete | None=...):
+def istft(X, tstep=..., Tx=...):
     """ISTFT Inverse Short-Term Fourier Transform using a sine window.
 
     Parameters
@@ -58,7 +57,7 @@ def istft(X, tstep: Incomplete | None=..., Tx: Incomplete | None=...):
     stft
     """
 
-def stftfreq(wsize, sfreq: Incomplete | None=...):
+def stftfreq(wsize, sfreq=...):
     """Compute frequencies of stft transformation.
 
     Parameters

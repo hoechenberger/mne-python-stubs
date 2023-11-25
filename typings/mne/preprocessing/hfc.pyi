@@ -1,9 +1,16 @@
 from .._fiff.pick import pick_info as pick_info
 from .._fiff.proj import Projection as Projection
-from ..utils import verbose as verbose
-from _typeshed import Incomplete
 
-def compute_proj_hfc(info, order: int=..., picks: str=..., exclude: str=..., *, accuracy: str=..., verbose: Incomplete | None=...):
+
+def compute_proj_hfc(
+    info,
+    order: int = ...,
+    picks: str = ...,
+    exclude: str = ...,
+    *,
+    accuracy: str = ...,
+    verbose=...,
+):
     """Generate projectors to perform homogeneous/harmonic correction to data.
 
     Remove evironmental fields from magentometer data by assuming it is
@@ -12,7 +19,7 @@ def compute_proj_hfc(info, order: int=..., picks: str=..., exclude: str=..., *, 
 
     Parameters
     ----------
-    
+
     info : mne.Info | None
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     order : int
@@ -30,7 +37,7 @@ def compute_proj_hfc(info, order: int=..., picks: str=..., exclude: str=..., *, 
     accuracy : str
         Can be ``"point"``, ``"normal"`` or ``"accurate"`` (default), defines
         which level of coil definition accuracy is used to generate model.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -39,7 +46,7 @@ def compute_proj_hfc(info, order: int=..., picks: str=..., exclude: str=..., *, 
 
     Returns
     -------
-    
+
     projs : list of Projection
         List of computed projection vectors.
 

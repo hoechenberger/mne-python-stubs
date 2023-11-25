@@ -1,7 +1,13 @@
 from .utils import plt_show as plt_show
-from _typeshed import Incomplete
 
-def circular_layout(node_names, node_order, start_pos: int=..., start_between: bool=..., group_boundaries: Incomplete | None=..., group_sep: int=...):
+def circular_layout(
+    node_names,
+    node_order,
+    start_pos: int = ...,
+    start_between: bool = ...,
+    group_boundaries=...,
+    group_sep: int = ...,
+):
     """Create layout arranging nodes on a circle.
 
     Parameters
@@ -30,7 +36,7 @@ def circular_layout(node_names, node_order, start_pos: int=..., start_between: b
         Node angles in degrees.
     """
 
-def plot_channel_labels_circle(labels, colors: Incomplete | None=..., picks: Incomplete | None=..., **kwargs):
+def plot_channel_labels_circle(labels, colors=..., picks=..., **kwargs):
     """Plot labels for each channel in a circle plot.
 
     .. note:: This primarily makes sense for sEEG channels where each

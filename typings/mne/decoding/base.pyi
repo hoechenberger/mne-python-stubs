@@ -1,33 +1,32 @@
 from ..fixes import BaseEstimator as BaseEstimator
 from ..parallel import parallel_func as parallel_func
-from ..utils import verbose as verbose, warn as warn
+from ..utils import warn as warn
 from _typeshed import Incomplete
 
 class LinearModel(BaseEstimator):
     """Estimate the coefficients of the linear model.
 
-        Save the coefficients in the attribute ``filters_`` and
-        computes the attribute ``patterns_``.
+    Save the coefficients in the attribute ``filters_`` and
+    computes the attribute ``patterns_``.
 
-        Parameters
-        ----------
-        X : array, shape (n_samples, n_features)
-            The training input samples to estimate the linear coefficients.
-        y : array, shape (n_samples, [n_targets])
-            The target values.
-        **fit_params : dict of string -> object
-            Parameters to pass to the fit method of the estimator.
+    Parameters
+    ----------
+    X : array, shape (n_samples, n_features)
+        The training input samples to estimate the linear coefficients.
+    y : array, shape (n_samples, [n_targets])
+        The target values.
+    **fit_params : dict of string -> object
+        Parameters to pass to the fit method of the estimator.
 
-        Returns
-        -------
-        self : instance of LinearModel
-            Returns the modified instance.
-        """
+    Returns
+    -------
+    self : instance of LinearModel
+        Returns the modified instance.
+    """
+
     model: Incomplete
 
-    def __init__(self, model: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(self, model=...) -> None: ...
     def __getattr__(self, attr):
         """Wrap to model for some attributes."""
     patterns_: Incomplete
@@ -52,12 +51,10 @@ class LinearModel(BaseEstimator):
         self : instance of LinearModel
             Returns the modified instance.
         """
-
     @property
-    def filters_(self):
-        ...
+    def filters_(self): ...
 
-def get_coef(estimator, attr: str=..., inverse_transform: bool=...):
+def get_coef(estimator, attr: str = ..., inverse_transform: bool = ...):
     """Retrieve the coefficients of an estimator ending with a Linear Model.
 
     This is typically useful to retrieve "spatial filters" or "spatial
@@ -84,7 +81,18 @@ def get_coef(estimator, attr: str=..., inverse_transform: bool=...):
     .. footbibliography::
     """
 
-def cross_val_multiscore(estimator, X, y: Incomplete | None=..., groups: Incomplete | None=..., scoring: Incomplete | None=..., cv: Incomplete | None=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=..., fit_params: Incomplete | None=..., pre_dispatch: str=...):
+def cross_val_multiscore(
+    estimator,
+    X,
+    y=...,
+    groups=...,
+    scoring=...,
+    cv=...,
+    n_jobs=...,
+    verbose=...,
+    fit_params=...,
+    pre_dispatch: str = ...,
+):
     """Evaluate a score by cross-validation.
 
     Parameters
@@ -128,7 +136,7 @@ def cross_val_multiscore(estimator, X, y: Incomplete | None=..., groups: Incompl
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

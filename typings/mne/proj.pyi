@@ -1,16 +1,25 @@
 from ._fiff.constants import FIFF as FIFF
 from ._fiff.open import fiff_open as fiff_open
-from ._fiff.pick import pick_types as pick_types, pick_types_forward as pick_types_forward
-from ._fiff.proj import Projection as Projection, make_eeg_average_ref_proj as make_eeg_average_ref_proj, make_projector as make_projector
+from ._fiff.pick import (
+    pick_types as pick_types,
+    pick_types_forward as pick_types_forward,
+)
+from ._fiff.proj import (
+    Projection as Projection,
+    make_eeg_average_ref_proj as make_eeg_average_ref_proj,
+    make_projector as make_projector,
+)
 from ._fiff.write import start_and_end_file as start_and_end_file
 from .epochs import Epochs as Epochs
 from .event import make_fixed_length_events as make_fixed_length_events
-from .forward import convert_forward_solution as convert_forward_solution, is_fixed_orient as is_fixed_orient
+from .forward import (
+    convert_forward_solution as convert_forward_solution,
+    is_fixed_orient as is_fixed_orient,
+)
 from .parallel import parallel_func as parallel_func
-from .utils import check_fname as check_fname, logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from .utils import check_fname as check_fname, logger as logger
 
-def read_proj(fname, verbose: Incomplete | None=...):
+def read_proj(fname, verbose=...):
     """Read projections from a FIF file.
 
     Parameters
@@ -18,7 +27,7 @@ def read_proj(fname, verbose: Incomplete | None=...):
     fname : path-like
         The name of file containing the projections vectors. It should end with
         ``-proj.fif`` or ``-proj.fif.gz``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -35,7 +44,7 @@ def read_proj(fname, verbose: Incomplete | None=...):
     write_proj
     """
 
-def write_proj(fname, projs, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+def write_proj(fname, projs, *, overwrite: bool = ..., verbose=...) -> None:
     """Write projections to a FIF file.
 
     Parameters
@@ -45,13 +54,13 @@ def write_proj(fname, projs, *, overwrite: bool=..., verbose: Incomplete | None=
         ``-proj.fif`` or ``-proj.fif.gz``.
     projs : list of Projection
         The list of projection vectors.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -65,7 +74,16 @@ def write_proj(fname, projs, *, overwrite: bool=..., verbose: Incomplete | None=
     read_proj
     """
 
-def compute_proj_epochs(epochs, n_grad: int=..., n_mag: int=..., n_eeg: int=..., n_jobs: Incomplete | None=..., desc_prefix: Incomplete | None=..., meg: str=..., verbose: Incomplete | None=...):
+def compute_proj_epochs(
+    epochs,
+    n_grad: int = ...,
+    n_mag: int = ...,
+    n_eeg: int = ...,
+    n_jobs=...,
+    desc_prefix=...,
+    meg: str = ...,
+    verbose=...,
+):
     """Compute SSP (signal-space projection) vectors on epoched data.
 
     This function aims to find those SSP vectors that
@@ -78,7 +96,7 @@ def compute_proj_epochs(epochs, n_grad: int=..., n_mag: int=..., n_eeg: int=...,
     ----------
     epochs : instance of Epochs
         The epochs containing the artifact.
-    
+
     n_grad : int | float between ``0`` and ``1``
         Number of vectors for gradiometers. Either an integer or a float between 0 and 1
         to select the number of vectors to explain the cumulative variance greater than
@@ -109,7 +127,7 @@ def compute_proj_epochs(epochs, n_grad: int=..., n_mag: int=..., n_eeg: int=...,
         projectors computed for MEG will be ``n_mag``.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -126,7 +144,15 @@ def compute_proj_epochs(epochs, n_grad: int=..., n_mag: int=..., n_eeg: int=...,
     compute_proj_raw, compute_proj_evoked
     """
 
-def compute_proj_evoked(evoked, n_grad: int=..., n_mag: int=..., n_eeg: int=..., desc_prefix: Incomplete | None=..., meg: str=..., verbose: Incomplete | None=...):
+def compute_proj_evoked(
+    evoked,
+    n_grad: int = ...,
+    n_mag: int = ...,
+    n_eeg: int = ...,
+    desc_prefix=...,
+    meg: str = ...,
+    verbose=...,
+):
     """Compute SSP (signal-space projection) vectors on evoked data.
 
     This function aims to find those SSP vectors that
@@ -139,7 +165,7 @@ def compute_proj_evoked(evoked, n_grad: int=..., n_mag: int=..., n_eeg: int=...,
     ----------
     evoked : instance of Evoked
         The Evoked obtained by averaging the artifact.
-    
+
     n_grad : int | float between ``0`` and ``1``
         Number of vectors for gradiometers. Either an integer or a float between 0 and 1
         to select the number of vectors to explain the cumulative variance greater than
@@ -164,7 +190,7 @@ def compute_proj_evoked(evoked, n_grad: int=..., n_mag: int=..., n_eeg: int=...,
         projectors computed for MEG will be ``n_mag``.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -181,7 +207,20 @@ def compute_proj_evoked(evoked, n_grad: int=..., n_mag: int=..., n_eeg: int=...,
     compute_proj_raw, compute_proj_epochs
     """
 
-def compute_proj_raw(raw, start: int=..., stop: Incomplete | None=..., duration: int=..., n_grad: int=..., n_mag: int=..., n_eeg: int=..., reject: Incomplete | None=..., flat: Incomplete | None=..., n_jobs: Incomplete | None=..., meg: str=..., verbose: Incomplete | None=...):
+def compute_proj_raw(
+    raw,
+    start: int = ...,
+    stop=...,
+    duration: int = ...,
+    n_grad: int = ...,
+    n_mag: int = ...,
+    n_eeg: int = ...,
+    reject=...,
+    flat=...,
+    n_jobs=...,
+    meg: str = ...,
+    verbose=...,
+):
     """Compute SSP (signal-space projection) vectors on continuous data.
 
     This function aims to find those SSP vectors that
@@ -201,7 +240,7 @@ def compute_proj_raw(raw, start: int=..., stop: Incomplete | None=..., duration:
     duration : float | None
         Duration (in seconds) to chunk data into for SSP
         If duration is ``None``, data will not be chunked.
-    
+
     n_grad : int | float between ``0`` and ``1``
         Number of vectors for gradiometers. Either an integer or a float between 0 and 1
         to select the number of vectors to explain the cumulative variance greater than
@@ -215,10 +254,10 @@ def compute_proj_raw(raw, start: int=..., stop: Incomplete | None=..., duration:
         to select the number of vectors to explain the cumulative variance greater than
         ``n_eeg``.
     reject : dict | None
-        Epoch PTP rejection threshold used if ``duration != None``. See `~mne.Epochs`.
+        Epoch PTP rejection threshold used if ``duration != None``. See mne.Epochs`.
     flat : dict | None
         Epoch flatness rejection threshold used if ``duration != None``. See
-        `~mne.Epochs`.
+        mne.Epochs`.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the :mod:`joblib` package.
@@ -234,7 +273,7 @@ def compute_proj_raw(raw, start: int=..., stop: Incomplete | None=..., duration:
         projectors computed for MEG will be ``n_mag``.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -251,7 +290,9 @@ def compute_proj_raw(raw, start: int=..., stop: Incomplete | None=..., duration:
     compute_proj_epochs, compute_proj_evoked
     """
 
-def sensitivity_map(fwd, projs: Incomplete | None=..., ch_type: str=..., mode: str=..., exclude=..., *, verbose: Incomplete | None=...):
+def sensitivity_map(
+    fwd, projs=..., ch_type: str = ..., mode: str = ..., exclude=..., *, verbose=...
+):
     """Compute sensitivity map.
 
     Such maps are used to know how much sources are visible by a type
@@ -273,7 +314,7 @@ def sensitivity_map(fwd, projs: Incomplete | None=..., ch_type: str=..., mode: s
     exclude : list of str | str
         List of channels to exclude. If empty do not exclude any (default).
         If ``'bads'``, exclude channels in ``fwd['info']['bads']``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -1,6 +1,5 @@
-from _typeshed import Incomplete
 
-def create_lut(cmap, n_colors: int=..., center: Incomplete | None=...):
+def create_lut(cmap, n_colors: int = ..., center=...):
     """Return a colormap suitable for setting as a LUT."""
 
 def scale_sequential_lut(lut_table, fmin, fmid, fmax):
@@ -9,7 +8,9 @@ def scale_sequential_lut(lut_table, fmin, fmid, fmax):
 def get_fill_colors(cols, n_fill):
     """Get the fill colors for the middle of divergent colormaps."""
 
-def calculate_lut(lut_table, alpha, fmin, fmid, fmax, center: Incomplete | None=..., transparent: bool=...):
+def calculate_lut(
+    lut_table, alpha, fmin, fmid, fmax, center=..., transparent: bool = ...
+):
     """Transparent color map calculation.
 
     A colormap may be sequential or divergent. When the colormap is

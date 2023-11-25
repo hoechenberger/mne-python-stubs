@@ -1,33 +1,40 @@
-from ...utils import fill_doc as fill_doc, logger as logger, verbose as verbose
+from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
 
-def read_raw_eyelink(fname, *, create_annotations: bool=..., apply_offsets: bool=..., find_overlaps: bool=..., overlap_threshold: float=..., verbose: Incomplete | None=...):
+def read_raw_eyelink(
+    fname,
+    *,
+    create_annotations: bool = ...,
+    apply_offsets: bool = ...,
+    find_overlaps: bool = ...,
+    overlap_threshold: float = ...,
+    verbose=...,
+):
     """Reader for an Eyelink ``.asc`` file.
 
     Parameters
     ----------
-    
+
     fname : path-like
         Path to the eyelink file (``.asc``).
-    
+
     create_annotations : bool | list (default True)
-        Whether to create :class:`~mne.Annotations` from occular events
+        Whether to create :class:mne.Annotations` from occular events
         (blinks, fixations, saccades) and experiment messages. If a list, must
         contain one or more of ``['fixations', 'saccades',' blinks', messages']``.
-        If True, creates :class:`~mne.Annotations` for both occular events and
+        If True, creates :class:mne.Annotations` for both occular events and
         experiment messages.
-    
+
     apply_offsets : bool (default False)
-        Adjusts the onset time of the :class:`~mne.Annotations` created from Eyelink
+        Adjusts the onset time of the :class:mne.Annotations` created from Eyelink
         experiment messages, if offset values exist in the ASCII file. If False, any
         offset-like values will be prepended to the annotation description.
-    
+
     find_overlaps : bool (default False)
         Combine left and right eye :class:`mne.Annotations` (blinks, fixations,
         saccades) if their start times and their stop times are both not
         separated by more than overlap_threshold.
-    
+
     overlap_threshold : float (default 0.05)
         Time in seconds. Threshold of allowable time-gap between both the start and
         stop times of the left and right eyes. If the gap is larger than the threshold,
@@ -38,7 +45,7 @@ def read_raw_eyelink(fname, *, create_annotations: bool=..., apply_offsets: bool
         the left and right eyes are separated by less than 50 ms, and the blink stop
         times of the left and right eyes are separated by less than 50 ms, then the
         blink will be merged into a single :class:`mne.Annotations`.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -68,27 +75,27 @@ class RawEyelink(BaseRaw):
 
     Parameters
     ----------
-    
+
     fname : path-like
         Path to the eyelink file (``.asc``).
-    
+
     create_annotations : bool | list (default True)
-        Whether to create :class:`~mne.Annotations` from occular events
+        Whether to create :class:mne.Annotations` from occular events
         (blinks, fixations, saccades) and experiment messages. If a list, must
         contain one or more of ``['fixations', 'saccades',' blinks', messages']``.
-        If True, creates :class:`~mne.Annotations` for both occular events and
+        If True, creates :class:mne.Annotations` for both occular events and
         experiment messages.
-    
+
     apply_offsets : bool (default False)
-        Adjusts the onset time of the :class:`~mne.Annotations` created from Eyelink
+        Adjusts the onset time of the :class:mne.Annotations` created from Eyelink
         experiment messages, if offset values exist in the ASCII file. If False, any
         offset-like values will be prepended to the annotation description.
-    
+
     find_overlaps : bool (default False)
         Combine left and right eye :class:`mne.Annotations` (blinks, fixations,
         saccades) if their start times and their stop times are both not
         separated by more than overlap_threshold.
-    
+
     overlap_threshold : float (default 0.05)
         Time in seconds. Threshold of allowable time-gap between both the start and
         stop times of the left and right eyes. If the gap is larger than the threshold,
@@ -99,7 +106,7 @@ class RawEyelink(BaseRaw):
         the left and right eyes are separated by less than 50 ms, and the blink stop
         times of the left and right eyes are separated by less than 50 ms, then the
         blink will be merged into a single :class:`mne.Annotations`.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -111,5 +118,13 @@ class RawEyelink(BaseRaw):
     mne.io.Raw : Documentation of attribute and methods.
     """
 
-    def __init__(self, fname, *, create_annotations: bool=..., apply_offsets: bool=..., find_overlaps: bool=..., overlap_threshold: float=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        fname,
+        *,
+        create_annotations: bool = ...,
+        apply_offsets: bool = ...,
+        find_overlaps: bool = ...,
+        overlap_threshold: float = ...,
+        verbose=...,
+    ) -> None: ...

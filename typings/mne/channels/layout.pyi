@@ -8,35 +8,34 @@ from _typeshed import Incomplete
 class Layout:
     """Plot the sensor positions.
 
-        Parameters
-        ----------
-        picks : list | slice | None
-            Channels to include. Slices and lists of integers will be interpreted as channel indices.
-            None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
-        show_axes : bool
-            Show layout axes if True. Defaults to False.
-        show : bool
-            Show figure if True. Defaults to True.
+    Parameters
+    ----------
+    picks : list | slice | None
+        Channels to include. Slices and lists of integers will be interpreted as channel indices.
+        None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
+    show_axes : bool
+        Show layout axes if True. Defaults to False.
+    show : bool
+        Show figure if True. Defaults to True.
 
-        Returns
-        -------
-        fig : instance of matplotlib.figure.Figure
-            Figure containing the sensor topography.
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
+        Figure containing the sensor topography.
 
-        Notes
-        -----
-        .. versionadded:: 0.12.0
-        """
+    Notes
+    -----
+    .. versionadded:: 0.12.0
+    """
+
     box: Incomplete
     pos: Incomplete
     names: Incomplete
     ids: Incomplete
     kind: Incomplete
 
-    def __init__(self, box, pos, names, ids, kind) -> None:
-        ...
-
-    def save(self, fname, overwrite: bool=...) -> None:
+    def __init__(self, box, pos, names, ids, kind) -> None: ...
+    def save(self, fname, overwrite: bool = ...) -> None:
         """Save Layout to disk.
 
         Parameters
@@ -50,8 +49,7 @@ class Layout:
         --------
         read_layout
         """
-
-    def plot(self, picks: Incomplete | None=..., show_axes: bool=..., show: bool=...):
+    def plot(self, picks=..., show_axes: bool = ..., show: bool = ...):
         """Plot the sensor positions.
 
         Parameters
@@ -74,7 +72,7 @@ class Layout:
         .. versionadded:: 0.12.0
         """
 
-def read_layout(fname: Incomplete | None=..., *, scale: bool=...):
+def read_layout(fname=..., *, scale: bool = ...):
     """Read layout from a file.
 
     Parameters
@@ -148,12 +146,19 @@ def read_layout(fname: Incomplete | None=..., *, scale: bool=...):
        +----------------------+
     """
 
-def make_eeg_layout(info, radius: float=..., width: Incomplete | None=..., height: Incomplete | None=..., exclude: str=..., csd: bool=...):
+def make_eeg_layout(
+    info,
+    radius: float = ...,
+    width=...,
+    height=...,
+    exclude: str = ...,
+    csd: bool = ...,
+):
     """Create .lout file from EEG electrode digitization.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     radius : float
@@ -180,20 +185,20 @@ def make_eeg_layout(info, radius: float=..., width: Incomplete | None=..., heigh
     make_grid_layout, generate_2d_layout
     """
 
-def make_grid_layout(info, picks: Incomplete | None=..., n_col: Incomplete | None=...):
+def make_grid_layout(info, picks=..., n_col=...):
     """Generate .lout file for custom data, i.e., ICA sources.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all good misc channels.
     n_col : int | None
         Number of columns to generate. If None, a square grid will be produced.
@@ -208,12 +213,12 @@ def make_grid_layout(info, picks: Incomplete | None=..., n_col: Incomplete | Non
     make_eeg_layout, generate_2d_layout
     """
 
-def find_layout(info, ch_type: Incomplete | None=..., exclude: str=...):
+def find_layout(info, ch_type=..., exclude: str = ...):
     """Choose a layout based on the channels in the info 'chs' field.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     ch_type : {'mag', 'grad', 'meg', 'eeg'} | None
@@ -231,7 +236,17 @@ def find_layout(info, ch_type: Incomplete | None=..., exclude: str=...):
         None if layout not found.
     """
 
-def generate_2d_layout(xy, w: float=..., h: float=..., pad: float=..., ch_names: Incomplete | None=..., ch_indices: Incomplete | None=..., name: str=..., bg_image: Incomplete | None=..., normalize: bool=...):
+def generate_2d_layout(
+    xy,
+    w: float = ...,
+    h: float = ...,
+    pad: float = ...,
+    ch_names=...,
+    ch_indices=...,
+    name: str = ...,
+    bg_image=...,
+    normalize: bool = ...,
+):
     """Generate a custom 2D layout from xy points.
 
     Generates a 2-D layout for plotting with plot_topo methods and

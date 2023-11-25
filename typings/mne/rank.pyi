@@ -1,10 +1,16 @@
 from ._fiff.meas_info import Info as Info
 from ._fiff.pick import pick_channels_cov as pick_channels_cov, pick_info as pick_info
 from ._fiff.proj import make_projector as make_projector
-from .utils import fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from .utils import fill_doc as fill_doc, logger as logger, warn as warn
 
-def estimate_rank(data, tol: str=..., return_singular: bool=..., norm: bool=..., tol_kind: str=..., verbose: Incomplete | None=...):
+def estimate_rank(
+    data,
+    tol: str = ...,
+    return_singular: bool = ...,
+    norm: bool = ...,
+    tol_kind: str = ...,
+    verbose=...,
+):
     """Estimate the rank of data.
 
     This function will normalize the rows of the data (typically
@@ -15,7 +21,7 @@ def estimate_rank(data, tol: str=..., return_singular: bool=..., norm: bool=...,
     ----------
     data : array
         Data to estimate the rank of (should be 2-dimensional).
-    
+
     tol : float | 'auto'
         Tolerance for singular values to consider non-zero in
         calculating the rank. The singular values are calculated
@@ -28,13 +34,13 @@ def estimate_rank(data, tol: str=..., return_singular: bool=..., norm: bool=...,
     norm : bool
         If True, data will be scaled by their estimated row-wise norm.
         Else data are assumed to be scaled. Defaults to True.
-    
+
     tol_kind : str
         Can be: "absolute" (default) or "relative". Only used if ``tol`` is a
         float, because when ``tol`` is a string the mode is implicitly relative.
         After applying the chosen scale factors / normalization to the data,
         the singular values are computed, and the rank is then taken as:
-    
+
         - ``'absolute'``
             The number of singular values ``s`` greater than ``tol``.
             This mode can fail if your data do not adhere to typical
@@ -43,7 +49,7 @@ def estimate_rank(data, tol: str=..., return_singular: bool=..., norm: bool=...,
             The number of singular values ``s`` greater than ``tol * s.max()``.
             This mode can fail if you have one or more large components in the
             data (e.g., artifacts).
-    
+
         .. versionadded:: 0.21.0
 
     Returns
@@ -55,7 +61,17 @@ def estimate_rank(data, tol: str=..., return_singular: bool=..., norm: bool=...,
         thresholded to determine the rank are also returned.
     """
 
-def compute_rank(inst, rank: Incomplete | None=..., scalings: Incomplete | None=..., info: Incomplete | None=..., tol: str=..., proj: bool=..., tol_kind: str=..., on_rank_mismatch: str=..., verbose: Incomplete | None=...):
+def compute_rank(
+    inst,
+    rank=...,
+    scalings=...,
+    info=...,
+    tol: str = ...,
+    proj: bool = ...,
+    tol_kind: str = ...,
+    on_rank_mismatch: str = ...,
+    verbose=...,
+):
     """Compute the rank of data or noise covariance.
 
     This function will normalize the rows of the data (typically
@@ -66,14 +82,14 @@ def compute_rank(inst, rank: Incomplete | None=..., scalings: Incomplete | None=
     ----------
     inst : instance of Raw, Epochs, or Covariance
         Raw measurements to compute the rank from or the covariance.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -87,7 +103,7 @@ def compute_rank(inst, rank: Incomplete | None=..., scalings: Incomplete | None=
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -95,31 +111,31 @@ def compute_rank(inst, rank: Incomplete | None=..., scalings: Incomplete | None=
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
     scalings : dict | None (default None)
         Defaults to ``dict(mag=1e15, grad=1e13, eeg=1e6)``.
         These defaults will scale different channel types
         to comparable values.
-    
+
     info : mne.Info | None
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Only necessary if ``inst`` is a :class:`mne.Covariance`
         object (since this does not provide ``inst.info``).
-    
+
     tol : float | 'auto'
         Tolerance for singular values to consider non-zero in
         calculating the rank. The singular values are calculated
@@ -129,13 +145,13 @@ def compute_rank(inst, rank: Incomplete | None=..., scalings: Incomplete | None=
     proj : bool
         If True, all projs in ``inst`` and ``info`` will be applied or
         considered when ``rank=None`` or ``rank='info'``.
-    
+
     tol_kind : str
         Can be: "absolute" (default) or "relative". Only used if ``tol`` is a
         float, because when ``tol`` is a string the mode is implicitly relative.
         After applying the chosen scale factors / normalization to the data,
         the singular values are computed, and the rank is then taken as:
-    
+
         - ``'absolute'``
             The number of singular values ``s`` greater than ``tol``.
             This mode can fail if your data do not adhere to typical
@@ -144,17 +160,17 @@ def compute_rank(inst, rank: Incomplete | None=..., scalings: Incomplete | None=
             The number of singular values ``s`` greater than ``tol * s.max()``.
             This mode can fail if you have one or more large components in the
             data (e.g., artifacts).
-    
+
         .. versionadded:: 0.21.0
-    
+
     on_rank_mismatch : str
         If an explicit MEG value is passed, what to do when it does not match
         an empirically computed rank (only used for covariances).
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
-    
+
         .. versionadded:: 0.23
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

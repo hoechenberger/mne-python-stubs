@@ -4,9 +4,20 @@ from ...annotations import Annotations as Annotations
 from ...utils import fill_doc as fill_doc, warn as warn
 from ..base import BaseRaw as BaseRaw
 from ._utils import CNTEventType3 as CNTEventType3
-from _typeshed import Incomplete
 
-def read_raw_cnt(input_fname, eog=..., misc=..., ecg=..., emg=..., data_format: str=..., date_format: str=..., *, header: str=..., preload: bool=..., verbose: Incomplete | None=...):
+def read_raw_cnt(
+    input_fname,
+    eog=...,
+    misc=...,
+    ecg=...,
+    emg=...,
+    data_format: str = ...,
+    date_format: str = ...,
+    *,
+    header: str = ...,
+    preload: bool = ...,
+    verbose=...,
+):
     """Read CNT data as raw object.
 
     .. Note::
@@ -61,14 +72,14 @@ def read_raw_cnt(input_fname, eog=..., misc=..., ecg=..., emg=..., data_format: 
         Defaults to ``'auto'``.
 
         .. versionadded:: 1.6
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -134,7 +145,7 @@ class RawCNT(BaseRaw):
         are formatted. If auto, reads using old and new header and
         if either contain a bad channel make channel bad.
         Defaults to ``'auto'``.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -151,7 +162,7 @@ class RawCNT(BaseRaw):
                      :func:`mne.events_from_annotations` instead.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -163,5 +174,17 @@ class RawCNT(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, input_fname, eog=..., misc=..., ecg=..., emg=..., data_format: str=..., date_format: str=..., *, header: str=..., preload: bool=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        eog=...,
+        misc=...,
+        ecg=...,
+        emg=...,
+        data_format: str = ...,
+        date_format: str = ...,
+        *,
+        header: str = ...,
+        preload: bool = ...,
+        verbose=...,
+    ) -> None: ...

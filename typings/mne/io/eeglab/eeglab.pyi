@@ -1,16 +1,31 @@
 from ..._fiff.constants import FIFF as FIFF
 from ..._fiff.meas_info import create_info as create_info
-from ...annotations import Annotations as Annotations, read_annotations as read_annotations
+from ...annotations import (
+    Annotations as Annotations,
+    read_annotations as read_annotations,
+)
 from ...channels import make_dig_montage as make_dig_montage
 from ...defaults import DEFAULTS as DEFAULTS
 from ...epochs import BaseEpochs as BaseEpochs
 from ...event import read_events as read_events
-from ...utils import Bunch as Bunch, fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ...utils import (
+    Bunch as Bunch,
+    fill_doc as fill_doc,
+    logger as logger,
+    warn as warn,
+)
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
+
 CAL: float
 
-def read_raw_eeglab(input_fname, eog=..., preload: bool=..., uint16_codec: Incomplete | None=..., montage_units: str=..., verbose: Incomplete | None=...):
+def read_raw_eeglab(
+    input_fname,
+    eog=...,
+    preload: bool = ...,
+    uint16_codec=...,
+    montage_units: str = ...,
+    verbose=...,
+):
     """Read an EEGLAB .set file.
 
     Parameters
@@ -22,7 +37,7 @@ def read_raw_eeglab(input_fname, eog=..., preload: bool=..., uint16_codec: Incom
         Names or indices of channels that should be designated EOG channels.
         If 'auto', the channel names containing ``EOG`` or ``EYE`` are used.
         Defaults to empty tuple.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -31,24 +46,24 @@ def read_raw_eeglab(input_fname, eog=..., preload: bool=..., uint16_codec: Incom
         on the hard drive (slower, requires less memory).
         Note that ``preload=False`` will be effective only if the data is
         stored in a separate binary file.
-    
+
     uint16_codec : str | None
         If your set file contains non-ascii characters, sometimes reading
         it may fail and give rise to error message stating that "buffer is
         too small". ``uint16_codec`` allows to specify what codec (for example:
         'latin1' or 'utf-8') should be used when reading character arrays and
         can therefore help you solve this problem.
-    
+
     montage_units : str
         Units that channel positions are represented in. Defaults to "mm"
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
-    
+
         .. versionadded:: 1.3
 
         .. versionchanged:: 1.6
            Support for ``'auto'`` was added and is the new default.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -70,7 +85,16 @@ def read_raw_eeglab(input_fname, eog=..., preload: bool=..., uint16_codec: Incom
     .. versionadded:: 0.11.0
     """
 
-def read_epochs_eeglab(input_fname, events: Incomplete | None=..., event_id: Incomplete | None=..., eog=..., *, uint16_codec: Incomplete | None=..., montage_units: str=..., verbose: Incomplete | None=...):
+def read_epochs_eeglab(
+    input_fname,
+    events=...,
+    event_id=...,
+    eog=...,
+    *,
+    uint16_codec=...,
+    montage_units: str = ...,
+    verbose=...,
+):
     """Reader function for EEGLAB epochs files.
 
     Parameters
@@ -99,24 +123,24 @@ def read_epochs_eeglab(input_fname, events: Incomplete | None=..., event_id: Inc
         Names or indices of channels that should be designated EOG channels.
         If 'auto', the channel names containing ``EOG`` or ``EYE`` are used.
         Defaults to empty tuple.
-    
+
     uint16_codec : str | None
         If your set file contains non-ascii characters, sometimes reading
         it may fail and give rise to error message stating that "buffer is
         too small". ``uint16_codec`` allows to specify what codec (for example:
         'latin1' or 'utf-8') should be used when reading character arrays and
         can therefore help you solve this problem.
-    
+
     montage_units : str
         Units that channel positions are represented in. Defaults to "mm"
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
-    
+
         .. versionadded:: 1.3
 
         .. versionchanged:: 1.6
            Support for ``'auto'`` was added and is the new default.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -149,7 +173,7 @@ class RawEEGLAB(BaseRaw):
         Names or indices of channels that should be designated EOG channels.
         If 'auto', the channel names containing ``EOG`` or ``EYE`` are used.
         Defaults to empty tuple.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -158,21 +182,21 @@ class RawEEGLAB(BaseRaw):
         on the hard drive (slower, requires less memory).
         Note that preload=False will be effective only if the data is stored
         in a separate binary file.
-    
+
     uint16_codec : str | None
         If your set file contains non-ascii characters, sometimes reading
         it may fail and give rise to error message stating that "buffer is
         too small". ``uint16_codec`` allows to specify what codec (for example:
         'latin1' or 'utf-8') should be used when reading character arrays and
         can therefore help you solve this problem.
-    
+
     montage_units : str
         Units that channel positions are represented in. Defaults to "mm"
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
-    
+
         .. versionadded:: 1.3
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -188,8 +212,16 @@ class RawEEGLAB(BaseRaw):
     .. versionadded:: 0.11.0
     """
 
-    def __init__(self, input_fname, eog=..., preload: bool=..., *, uint16_codec: Incomplete | None=..., montage_units: str=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        eog=...,
+        preload: bool = ...,
+        *,
+        uint16_codec=...,
+        montage_units: str = ...,
+        verbose=...,
+    ) -> None: ...
 
 class EpochsEEGLAB(BaseEpochs):
     """Epochs from EEGLAB .set file.
@@ -262,5 +294,19 @@ class EpochsEEGLAB(BaseEpochs):
     .. versionadded:: 0.11.0
     """
 
-    def __init__(self, input_fname, events: Incomplete | None=..., event_id: Incomplete | None=..., tmin: int=..., baseline: Incomplete | None=..., reject: Incomplete | None=..., flat: Incomplete | None=..., reject_tmin: Incomplete | None=..., reject_tmax: Incomplete | None=..., eog=..., uint16_codec: Incomplete | None=..., montage_units: str=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        events=...,
+        event_id=...,
+        tmin: int = ...,
+        baseline=...,
+        reject=...,
+        flat=...,
+        reject_tmin=...,
+        reject_tmax=...,
+        eog=...,
+        uint16_codec=...,
+        montage_units: str = ...,
+        verbose=...,
+    ) -> None: ...

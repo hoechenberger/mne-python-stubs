@@ -1,6 +1,16 @@
-from _typeshed import Incomplete
 
-def clean_ecg_eog(in_fif_fname, out_fif_fname: Incomplete | None=..., eog: bool=..., ecg: bool=..., ecg_proj_fname: Incomplete | None=..., eog_proj_fname: Incomplete | None=..., ecg_event_fname: Incomplete | None=..., eog_event_fname: Incomplete | None=..., in_path: str=..., quiet: bool=...) -> None:
+def clean_ecg_eog(
+    in_fif_fname,
+    out_fif_fname=...,
+    eog: bool = ...,
+    ecg: bool = ...,
+    ecg_proj_fname=...,
+    eog_proj_fname=...,
+    ecg_event_fname=...,
+    eog_event_fname=...,
+    in_path: str = ...,
+    quiet: bool = ...,
+) -> None:
     """Clean ECG from raw fif file.
 
     Parameters

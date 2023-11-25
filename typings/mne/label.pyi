@@ -1,44 +1,65 @@
 from .morph_map import read_morph_map as read_morph_map
 from .parallel import parallel_func as parallel_func
-from .source_estimate import SourceEstimate as SourceEstimate, VolSourceEstimate as VolSourceEstimate, extract_label_time_course as extract_label_time_course, spatial_src_adjacency as spatial_src_adjacency
-from .source_space._source_space import SourceSpaces as SourceSpaces, add_source_space_distances as add_source_space_distances
-from .surface import complete_surface_info as complete_surface_info, fast_cross_3d as fast_cross_3d, mesh_dist as mesh_dist, mesh_edges as mesh_edges, read_surface as read_surface
-from .utils import check_random_state as check_random_state, fill_doc as fill_doc, get_subjects_dir as get_subjects_dir, logger as logger, verbose as verbose, warn as warn
+from .source_estimate import (
+    SourceEstimate as SourceEstimate,
+    VolSourceEstimate as VolSourceEstimate,
+    extract_label_time_course as extract_label_time_course,
+    spatial_src_adjacency as spatial_src_adjacency,
+)
+from .source_space._source_space import (
+    SourceSpaces as SourceSpaces,
+    add_source_space_distances as add_source_space_distances,
+)
+from .surface import (
+    complete_surface_info as complete_surface_info,
+    fast_cross_3d as fast_cross_3d,
+    mesh_dist as mesh_dist,
+    mesh_edges as mesh_edges,
+    read_surface as read_surface,
+)
+from .utils import (
+    check_random_state as check_random_state,
+    fill_doc as fill_doc,
+    get_subjects_dir as get_subjects_dir,
+    logger as logger,
+    warn as warn,
+)
 from _typeshed import Incomplete
 
 class Label:
     """Compute the surface area of a label.
 
-        Parameters
-        ----------
-        
-        subject : str | None
-            Subject which this label belongs to. Should only be specified if it is not
-            specified in the label.
-        
-        subjects_dir : path-like | None
-            The path to the directory containing the FreeSurfer subjects
-            reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
-            variable.
-        surface : str
-            The surface along which to do the computations, defaults to ``'white'``
-            (the gray-white matter boundary).
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
+    Parameters
+    ----------
 
-        Returns
-        -------
-        area : float
-            The area (in m²) of the label.
+    subject : str | None
+        Subject which this label belongs to. Should only be specified if it is not
+        specified in the label.
 
-        Notes
-        -----
-        ..versionadded:: 0.24
-        """
+    subjects_dir : path-like | None
+        The path to the directory containing the FreeSurfer subjects
+        reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
+        variable.
+    surface : str
+        The surface along which to do the computations, defaults to ``'white'``
+        (the gray-white matter boundary).
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Returns
+    -------
+    area : float
+        The area (in m²) of the label.
+
+    Notes
+    -----
+    ..versionadded:: 0.24
+    """
+
     vertices: Incomplete
     pos: Incomplete
     values: Incomplete
@@ -49,9 +70,20 @@ class Label:
     name: Incomplete
     filename: Incomplete
 
-    def __init__(self, vertices=..., pos: Incomplete | None=..., values: Incomplete | None=..., hemi: Incomplete | None=..., comment: str=..., name: Incomplete | None=..., filename: Incomplete | None=..., subject: Incomplete | None=..., color: Incomplete | None=..., *, verbose: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        vertices=...,
+        pos=...,
+        values=...,
+        hemi=...,
+        comment: str = ...,
+        name=...,
+        filename=...,
+        subject=...,
+        color=...,
+        *,
+        verbose=...,
+    ) -> None: ...
     def __len__(self) -> int:
         """Return the number of vertices.
 
@@ -60,13 +92,10 @@ class Label:
         n_vertices : int
             The number of vertices.
         """
-
     def __add__(self, other):
         """Add Labels."""
-
     def __sub__(self, other):
         """Subtract Labels."""
-
     def save(self, filename) -> None:
         """Write to disk as FreeSurfer \\*.label file.
 
@@ -80,7 +109,6 @@ class Label:
         Note that due to file specification limitations, the Label's subject
         and color attributes are not saved to disk.
         """
-
     def copy(self):
         """Copy the label instance.
 
@@ -89,8 +117,7 @@ class Label:
         label : instance of Label
             The copied label.
         """
-
-    def fill(self, src, name: Incomplete | None=...):
+    def fill(self, src, name=...):
         """Fill the surface between sources for a source space label.
 
         Parameters
@@ -116,8 +143,7 @@ class Label:
         Label.restrict
         Label.smooth
         """
-
-    def restrict(self, src, name: Incomplete | None=...):
+    def restrict(self, src, name=...):
         """Restrict a label to a source space.
 
         Parameters
@@ -140,8 +166,15 @@ class Label:
         -----
         .. versionadded:: 0.20
         """
-
-    def smooth(self, subject: Incomplete | None=..., smooth: int=..., grade: Incomplete | None=..., subjects_dir: Incomplete | None=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+    def smooth(
+        self,
+        subject=...,
+        smooth: int = ...,
+        grade=...,
+        subjects_dir=...,
+        n_jobs=...,
+        verbose=...,
+    ):
         """Smooth the label.
 
         Useful for filling in labels made in a
@@ -149,7 +182,7 @@ class Label:
 
         Parameters
         ----------
-        
+
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
             specified in the label.
@@ -169,7 +202,7 @@ class Label:
             computing vertex locations. If one array is used, it is assumed
             that all vertices belong to the hemisphere of the label. To create
             a label filling the surface, use None.
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -181,7 +214,7 @@ class Label:
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
             a :class:`joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -199,8 +232,16 @@ class Label:
         on the new surface are required, consider using mne.read_surface
         with ``label.vertices``.
         """
-
-    def morph(self, subject_from: Incomplete | None=..., subject_to: Incomplete | None=..., smooth: int=..., grade: Incomplete | None=..., subjects_dir: Incomplete | None=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+    def morph(
+        self,
+        subject_from=...,
+        subject_to=...,
+        smooth: int = ...,
+        grade=...,
+        subjects_dir=...,
+        n_jobs=...,
+        verbose=...,
+    ):
         """Morph the label.
 
         Useful for transforming a label from one subject to another.
@@ -227,7 +268,7 @@ class Label:
             computing vertex locations. If one array is used, it is assumed
             that all vertices belong to the hemisphere of the label. To create
             a label filling the surface, use None.
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -239,7 +280,7 @@ class Label:
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
             a :class:`joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -261,8 +302,9 @@ class Label:
         on the new surface are required, consider using `mne.read_surface`
         with ``label.vertices``.
         """
-
-    def split(self, parts: int=..., subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., freesurfer: bool=...):
+    def split(
+        self, parts: int = ..., subject=..., subjects_dir=..., freesurfer: bool = ...
+    ):
         """Split the Label into two or more parts.
 
         Parameters
@@ -273,11 +315,11 @@ class Label:
             or 'contiguous' to split the label into connected components.
             If a number or 'contiguous' is specified, names of the new labels
             will be the input label's name with div1, div2 etc. appended.
-        
+
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
             specified in the label.
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -305,8 +347,7 @@ class Label:
         spherical surface, projects all label vertex coordinates onto this
         axis, and divides them at regular spatial intervals.
         """
-
-    def get_vertices_used(self, vertices: Incomplete | None=...):
+    def get_vertices_used(self, vertices=...):
         """Get the source space's vertices inside the label.
 
         Parameters
@@ -320,8 +361,7 @@ class Label:
         label_verts : ndarray of in, shape (n_label_vertices,)
             The vertices of the label corresponding used by the data.
         """
-
-    def get_tris(self, tris, vertices: Incomplete | None=...):
+    def get_tris(self, tris, vertices=...):
         """Get the source space's triangles inside the label.
 
         Parameters
@@ -338,8 +378,13 @@ class Label:
         label_tris : ndarray of int, shape (n_tris, 3)
             The subset of tris used by the label.
         """
-
-    def center_of_mass(self, subject: Incomplete | None=..., restrict_vertices: bool=..., subjects_dir: Incomplete | None=..., surf: str=...):
+    def center_of_mass(
+        self,
+        subject=...,
+        restrict_vertices: bool = ...,
+        subjects_dir=...,
+        surf: str = ...,
+    ):
         """Compute the center of mass of the label.
 
         This function computes the spatial center of mass on the surface
@@ -347,7 +392,7 @@ class Label:
 
         Parameters
         ----------
-        
+
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
             specified in the label.
@@ -358,7 +403,7 @@ class Label:
             SourceSpaces (as of 0.13), the returned vertex will be from
             the given source space. For most accuruate estimates, do not
             restrict vertices.
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -388,17 +433,18 @@ class Label:
         ----------
         .. footbibliography::
         """
-
-    def distances_to_outside(self, subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., surface: str=..., *, verbose: Incomplete | None=...):
+    def distances_to_outside(
+        self, subject=..., subjects_dir=..., surface: str = ..., *, verbose=...
+    ):
         """Compute the distance from each vertex to outside the label.
 
         Parameters
         ----------
-        
+
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
             specified in the label.
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -406,7 +452,7 @@ class Label:
         surface : str
             The surface along which to do the computations, defaults to ``'white'``
             (the gray-white matter boundary).
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -428,17 +474,18 @@ class Label:
 
         .. versionadded:: 0.24
         """
-
-    def compute_area(self, subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., surface: str=..., *, verbose: Incomplete | None=...):
+    def compute_area(
+        self, subject=..., subjects_dir=..., surface: str = ..., *, verbose=...
+    ):
         """Compute the surface area of a label.
 
         Parameters
         ----------
-        
+
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
             specified in the label.
-        
+
         subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -446,7 +493,7 @@ class Label:
         surface : str
             The surface along which to do the computations, defaults to ``'white'``
             (the gray-white matter boundary).
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -465,6 +512,7 @@ class Label:
 
 class BiHemiLabel:
     """Subtract labels."""
+
     lh: Incomplete
     rh: Incomplete
     name: Incomplete
@@ -472,9 +520,7 @@ class BiHemiLabel:
     color: Incomplete
     hemi: str
 
-    def __init__(self, lh, rh, name: Incomplete | None=..., color: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(self, lh, rh, name=..., color=...) -> None: ...
     def __len__(self) -> int:
         """Return the number of vertices.
 
@@ -483,21 +529,19 @@ class BiHemiLabel:
         n_vertices : int
             The number of vertices.
         """
-
     def __add__(self, other):
         """Add labels."""
-
     def __sub__(self, other):
         """Subtract labels."""
 
-def read_label(filename, subject: Incomplete | None=..., color: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def read_label(filename, subject=..., color=..., *, verbose=...):
     """Read FreeSurfer Label file.
 
     Parameters
     ----------
     filename : str
         Path to label file.
-    
+
     subject : str | None
         Subject which this label belongs to. Should only be specified if it is not
         specified in the label.
@@ -509,7 +553,7 @@ def read_label(filename, subject: Incomplete | None=..., color: Incomplete | Non
         Default label color and alpha (e.g., ``(1., 0., 0., 1.)`` for red).
         Note that due to file specification limitations, the color isn't saved
         to or loaded from files written to disk.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -532,7 +576,7 @@ def read_label(filename, subject: Incomplete | None=..., color: Incomplete | Non
     write_labels_to_annot
     """
 
-def write_label(filename, label, verbose: Incomplete | None=...) -> None:
+def write_label(filename, label, verbose=...) -> None:
     """Write a FreeSurfer label.
 
     Parameters
@@ -541,7 +585,7 @@ def write_label(filename, label, verbose: Incomplete | None=...) -> None:
         Path to label file to produce.
     label : Label
         The label object to save.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -558,7 +602,9 @@ def write_label(filename, label, verbose: Incomplete | None=...) -> None:
     color attributes are not saved to disk.
     """
 
-def split_label(label, parts: int=..., subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., freesurfer: bool=...):
+def split_label(
+    label, parts: int = ..., subject=..., subjects_dir=..., freesurfer: bool = ...
+):
     """Split a Label into two or more parts.
 
     Parameters
@@ -570,11 +616,11 @@ def split_label(label, parts: int=..., subject: Incomplete | None=..., subjects_
         posterior to anterior), or the number of new labels to create (default
         is 2). If a number is specified, names of the new labels will be the
         input label's name with div1, div2 etc. appended.
-    
+
     subject : str | None
         Subject which this label belongs to. Should only be specified if it is not
         specified in the label.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -614,7 +660,14 @@ def label_sign_flip(label, src):
         Sign flip vector (contains 1 or -1).
     """
 
-def stc_to_label(stc, src: Incomplete | None=..., smooth: bool=..., connected: bool=..., subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def stc_to_label(
+    stc,
+    src=...,
+    smooth: bool = ...,
+    connected: bool = ...,
+    subjects_dir=...,
+    verbose=...,
+):
     """Compute a label from the non-zero sources in an stc object.
 
     Parameters
@@ -633,12 +686,12 @@ def stc_to_label(stc, src: Incomplete | None=..., smooth: bool=..., connected: b
         If True a list of connected labels will be returned in each
         hemisphere. The labels are ordered in decreasing order depending
         of the maximum value in the stc.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -656,7 +709,18 @@ def stc_to_label(stc, src: Incomplete | None=..., smooth: bool=..., connected: b
         If no Label is available in an hemisphere, an empty list is returned.
     """
 
-def grow_labels(subject, seeds, extents, hemis, subjects_dir: Incomplete | None=..., n_jobs: Incomplete | None=..., overlap: bool=..., names: Incomplete | None=..., surface: str=..., colors: Incomplete | None=...):
+def grow_labels(
+    subject,
+    seeds,
+    extents,
+    hemis,
+    subjects_dir=...,
+    n_jobs=...,
+    overlap: bool = ...,
+    names=...,
+    surface: str = ...,
+    colors=...,
+):
     """Generate circular labels in source space with region growing.
 
     This function generates a number of labels in source space by growing
@@ -666,7 +730,7 @@ def grow_labels(subject, seeds, extents, hemis, subjects_dir: Incomplete | None=
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     seeds : int | list
@@ -676,7 +740,7 @@ def grow_labels(subject, seeds, extents, hemis, subjects_dir: Incomplete | None=
         Extents (radius in mm) of the labels.
     hemis : array | int
         Hemispheres to use for the labels (0: left, 1: right).
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -721,7 +785,9 @@ def grow_labels(subject, seeds, extents, hemis, subjects_dir: Incomplete | None=
     used for each label.
     """
 
-def random_parcellation(subject, n_parcel, hemi, subjects_dir: Incomplete | None=..., surface: str=..., random_state: Incomplete | None=...):
+def random_parcellation(
+    subject, n_parcel, hemi, subjects_dir=..., surface: str = ..., random_state=...
+):
     """Generate random cortex parcellation by growing labels.
 
     This function generates a number of labels which don't intersect and
@@ -730,7 +796,7 @@ def random_parcellation(subject, n_parcel, hemi, subjects_dir: Incomplete | None
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     n_parcel : int
@@ -739,7 +805,7 @@ def random_parcellation(subject, n_parcel, hemi, subjects_dir: Incomplete | None
         Hemisphere id (ie ``'lh'``, ``'rh'``, ``'both'``). In the case
         of ``'both'``, both hemispheres are processed with ``(n_parcel // 2)``
         parcels per hemisphere.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -747,11 +813,11 @@ def random_parcellation(subject, n_parcel, hemi, subjects_dir: Incomplete | None
     surface : str
         The surface along which to do the computations, defaults to ``'white'``
         (the gray-white matter boundary).
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -762,14 +828,24 @@ def random_parcellation(subject, n_parcel, hemi, subjects_dir: Incomplete | None
         Random cortex parcellation.
     """
 
-def read_labels_from_annot(subject, parc: str=..., hemi: str=..., surf_name: str=..., annot_fname: Incomplete | None=..., regexp: Incomplete | None=..., subjects_dir: Incomplete | None=..., sort: bool=..., verbose: Incomplete | None=...):
+def read_labels_from_annot(
+    subject,
+    parc: str = ...,
+    hemi: str = ...,
+    surf_name: str = ...,
+    annot_fname=...,
+    regexp=...,
+    subjects_dir=...,
+    sort: bool = ...,
+    verbose=...,
+):
     """Read labels from a FreeSurfer annotation file.
 
     Note: Only cortical labels will be returned.
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     parc : str
@@ -786,7 +862,7 @@ def read_labels_from_annot(subject, parc: str=..., hemi: str=..., surf_name: str
         Regular expression or substring to select particular labels from the
         parcellation. E.g. ``'superior'`` will return all labels in which this
         substring is contained.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -795,7 +871,7 @@ def read_labels_from_annot(subject, parc: str=..., hemi: str=..., surf_name: str
         If true, labels will be sorted by name before being returned.
 
         .. versionadded:: 0.21.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -813,7 +889,14 @@ def read_labels_from_annot(subject, parc: str=..., hemi: str=..., surf_name: str
     morph_labels
     """
 
-def morph_labels(labels, subject_to, subject_from: Incomplete | None=..., subjects_dir: Incomplete | None=..., surf_name: str=..., verbose: Incomplete | None=...):
+def morph_labels(
+    labels,
+    subject_to,
+    subject_from=...,
+    subjects_dir=...,
+    surf_name: str = ...,
+    verbose=...,
+):
     """Morph a set of labels.
 
     This is useful when morphing a set of non-overlapping labels (such as those
@@ -829,14 +912,14 @@ def morph_labels(labels, subject_to, subject_from: Incomplete | None=..., subjec
     subject_from : str | None
         The subject to morph labels from. Can be None if the labels
         have the ``.subject`` property defined.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
     surf_name : str
         Surface used to obtain vertex locations, e.g., ``'white'``, ``'pial'``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -862,7 +945,9 @@ def morph_labels(labels, subject_to, subject_from: Incomplete | None=..., subjec
     .. versionadded:: 0.18
     """
 
-def labels_to_stc(labels, values, tmin: int=..., tstep: int=..., subject: Incomplete | None=..., src: Incomplete | None=..., verbose: Incomplete | None=...):
+def labels_to_stc(
+    labels, values, tmin: int = ..., tstep: int = ..., subject=..., src=..., verbose=...
+):
     """Convert a set of labels and values to a STC.
 
     This function is meant to work like the opposite of
@@ -870,19 +955,19 @@ def labels_to_stc(labels, values, tmin: int=..., tstep: int=..., subject: Incomp
 
     Parameters
     ----------
-    
+
     labels : Label | BiHemiLabel | list | tuple | str
         If using a surface or mixed source space, this should be the
-        :class:`~mne.Label`'s for which to extract the time course.
+        :class:mne.Label`'s for which to extract the time course.
         If working with whole-brain volume source estimates, this must be one of:
-    
+
         - a string path to a FreeSurfer atlas for the subject (e.g., their
           'aparc.a2009s+aseg.mgz') to extract time courses for all volumes in the
           atlas
         - a two-element list or tuple, the first element being a path to an atlas,
           and the second being a list or dict of ``volume_labels`` to extract
           (see :func:`mne.setup_volume_source_space` for details).
-    
+
         .. versionchanged:: 0.21.0
            Support for volume source estimates.
     values : ndarray, shape (n_labels, ...)
@@ -891,10 +976,10 @@ def labels_to_stc(labels, values, tmin: int=..., tstep: int=..., subject: Incomp
         The tmin to use for the STC.
     tstep : float
         The tstep to use for the STC.
-    
+
     subject : str
         The FreeSurfer subject name.
-    
+
     src : instance of SourceSpaces
         The source spaces for the source time courses.
         Can be omitted if using a surface source space, in which case
@@ -902,7 +987,7 @@ def labels_to_stc(labels, values, tmin: int=..., tstep: int=..., subject: Incomp
         Required if using a volumetric source space.
 
         .. versionadded:: 0.22
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -925,21 +1010,33 @@ def labels_to_stc(labels, values, tmin: int=..., tstep: int=..., subject: Incomp
     .. versionadded:: 0.18
     """
 
-def write_labels_to_annot(labels, subject: Incomplete | None=..., parc: Incomplete | None=..., overwrite: bool=..., subjects_dir: Incomplete | None=..., annot_fname: Incomplete | None=..., colormap: str=..., hemi: str=..., sort: bool=..., table_name=..., verbose: Incomplete | None=...):
+def write_labels_to_annot(
+    labels,
+    subject=...,
+    parc=...,
+    overwrite: bool = ...,
+    subjects_dir=...,
+    annot_fname=...,
+    colormap: str = ...,
+    hemi: str = ...,
+    sort: bool = ...,
+    table_name=...,
+    verbose=...,
+):
     """Create a FreeSurfer annotation from a list of labels.
 
     Parameters
     ----------
     labels : list with instances of mne.Label
         The labels to create a parcellation from.
-    
+
     subject : str
         The FreeSurfer subject name.
     parc : str | None
         The parcellation name to use.
     overwrite : bool
         Overwrite files if they already exist.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -961,7 +1058,7 @@ def write_labels_to_annot(labels, subject: Incomplete | None=..., parc: Incomple
         The table name to use for the colortable.
 
         .. versionadded:: 0.21.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -978,12 +1075,22 @@ def write_labels_to_annot(labels, subject: Incomplete | None=..., parc: Incomple
     named ``"unknown"``.
     """
 
-def select_sources(subject, label, location: str=..., extent: float=..., grow_outside: bool=..., subjects_dir: Incomplete | None=..., name: Incomplete | None=..., random_state: Incomplete | None=..., surf: str=...):
+def select_sources(
+    subject,
+    label,
+    location: str = ...,
+    extent: float = ...,
+    grow_outside: bool = ...,
+    subjects_dir=...,
+    name=...,
+    random_state=...,
+    surf: str = ...,
+):
     """Select sources from a label.
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     label : instance of Label | str
@@ -1000,18 +1107,18 @@ def select_sources(subject, label, location: str=..., extent: float=..., grow_ou
     grow_outside : bool
         Let the region grow outside the original label where location was
         defined.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
     name : None | str
         Assign name to the new label.
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.

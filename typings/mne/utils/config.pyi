@@ -1,6 +1,5 @@
 from ._logging import logger as logger, warn as warn
 from .docs import fill_doc as fill_doc
-from _typeshed import Incomplete
 
 def set_cache_dir(cache_dir) -> None:
     """Set the directory to be used for temporary file storage.
@@ -27,7 +26,7 @@ def set_memmap_min_size(memmap_min_size) -> None:
         Use None to disable memmaping of large arrays.
     """
 
-def get_config_path(home_dir: Incomplete | None=...):
+def get_config_path(home_dir=...):
     """Get path to standard mne-python config file.
 
     Parameters
@@ -44,7 +43,9 @@ def get_config_path(home_dir: Incomplete | None=...):
         system, this will be ~/.mne/mne-python.json.
     """
 
-def get_config(key: Incomplete | None=..., default: Incomplete | None=..., raise_error: bool=..., home_dir: Incomplete | None=..., use_env: bool=...):
+def get_config(
+    key=..., default=..., raise_error: bool = ..., home_dir=..., use_env: bool = ...
+):
     """Read MNE-Python preferences from environment or config file.
 
     Parameters
@@ -79,7 +80,7 @@ def get_config(key: Incomplete | None=..., default: Incomplete | None=..., raise
     set_config
     """
 
-def set_config(key, value, home_dir: Incomplete | None=..., set_env: bool=...) -> None:
+def set_config(key, value, home_dir=..., set_env: bool = ...) -> None:
     """Set a MNE-Python preference key in the config file and environment.
 
     Parameters
@@ -101,7 +102,7 @@ def set_config(key, value, home_dir: Incomplete | None=..., set_env: bool=...) -
     get_config
     """
 
-def get_subjects_dir(subjects_dir: Incomplete | None=..., raise_error: bool=...):
+def get_subjects_dir(subjects_dir=..., raise_error: bool = ...):
     """Safely use subjects_dir input to return SUBJECTS_DIR.
 
     Parameters
@@ -119,7 +120,14 @@ def get_subjects_dir(subjects_dir: Incomplete | None=..., raise_error: bool=...)
         The SUBJECTS_DIR value.
     """
 
-def sys_info(fid: Incomplete | None=..., show_paths: bool=..., *, dependencies: str=..., unicode: bool=..., check_version: bool=...) -> None:
+def sys_info(
+    fid=...,
+    show_paths: bool = ...,
+    *,
+    dependencies: str = ...,
+    unicode: bool = ...,
+    check_version: bool = ...,
+) -> None:
     """Print system information.
 
     This function prints system information useful when triaging bugs.

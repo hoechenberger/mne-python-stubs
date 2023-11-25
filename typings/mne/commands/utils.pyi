@@ -1,4 +1,3 @@
-from _typeshed import Incomplete
 
 def load_module(name, path):
     """Load module from .py/.pyc file.
@@ -17,7 +16,7 @@ def load_module(name, path):
 
     """
 
-def get_optparser(cmdpath, usage: Incomplete | None=..., prog_prefix: str=..., version: Incomplete | None=...):
+def get_optparser(cmdpath, usage=..., prog_prefix: str = ..., version=...):
     """Create OptionParser with cmd specific settings (e.g., prog value)."""
 
 def main() -> None:

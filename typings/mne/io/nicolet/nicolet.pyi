@@ -1,9 +1,17 @@
 from ..._fiff.constants import FIFF as FIFF
 from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
 
-def read_raw_nicolet(input_fname, ch_type, eog=..., ecg=..., emg=..., misc=..., preload: bool=..., verbose: Incomplete | None=...):
+def read_raw_nicolet(
+    input_fname,
+    ch_type,
+    eog=...,
+    ecg=...,
+    emg=...,
+    misc=...,
+    preload: bool = ...,
+    verbose=...,
+):
     """Read Nicolet data as raw object.
 
     ..note:: This reader takes data files with the extension ``.data`` as an
@@ -33,14 +41,14 @@ def read_raw_nicolet(input_fname, ch_type, eog=..., ecg=..., emg=..., misc=..., 
     misc : list or tuple
         Names of channels or list of indices that should be designated
         MISC channels. Defaults to empty tuple.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -90,5 +98,14 @@ class RawNicolet(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, input_fname, ch_type, eog=..., ecg=..., emg=..., misc=..., preload: bool=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        ch_type,
+        eog=...,
+        ecg=...,
+        emg=...,
+        misc=...,
+        preload: bool = ...,
+        verbose=...,
+    ) -> None: ...

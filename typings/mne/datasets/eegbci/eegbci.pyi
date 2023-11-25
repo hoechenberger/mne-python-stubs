@@ -1,8 +1,8 @@
-from ...utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ...utils import logger as logger
+
 EEGMI_URL: str
 
-def data_path(url, path: Incomplete | None=..., force_update: bool=..., update_path: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def data_path(url, path=..., force_update: bool = ..., update_path=..., *, verbose=...):
     """Get path to local copy of EEGMMI dataset URL.
 
     This is a low-level function useful for getting a local copy of a remote EEGBCI
@@ -16,7 +16,7 @@ def data_path(url, path: Incomplete | None=..., force_update: bool=..., update_p
     path : None | path-like
         Location of where to look for the EEGBCI data. If ``None``, the environment
         variable or config parameter ``MNE_DATASETS_EEGBCI_PATH`` is used. If neither
-        exists, the ``~/mne_data`` directory is used. If the EEGBCI dataset is not found
+        exists, the `/mne_data`` directory is used. If the EEGBCI dataset is not found
         under the given path, the data will be automatically downloaded to the specified
         folder.
     force_update : bool
@@ -24,7 +24,7 @@ def data_path(url, path: Incomplete | None=..., force_update: bool=..., update_p
     update_path : bool | None
         If ``True``, set ``MNE_DATASETS_EEGBCI_PATH`` in the configuration to the given
         path. If ``None``, the user is prompted.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -45,7 +45,7 @@ def data_path(url, path: Incomplete | None=..., force_update: bool=..., update_p
         >>> url = "http://www.physionet.org/physiobank/database/eegmmidb/"
         >>> eegbci.data_path(url, "~/datasets") # doctest:+SKIP
 
-    This would download the given EEGBCI data file to the ``~/datasets`` folder and
+    This would download the given EEGBCI data file to the `/datasets`` folder and
     prompt the user to store this path in the config (if it does not already exist).
 
     References
@@ -53,7 +53,15 @@ def data_path(url, path: Incomplete | None=..., force_update: bool=..., update_p
     .. footbibliography::
     """
 
-def load_data(subject, runs, path: Incomplete | None=..., force_update: bool=..., update_path: Incomplete | None=..., base_url=..., verbose: Incomplete | None=...):
+def load_data(
+    subject,
+    runs,
+    path=...,
+    force_update: bool = ...,
+    update_path=...,
+    base_url=...,
+    verbose=...,
+):
     """Get paths to local copies of EEGBCI dataset files.
 
     This will fetch data for the EEGBCI dataset :footcite:`SchalkEtAl2004`, which is
@@ -68,7 +76,7 @@ def load_data(subject, runs, path: Incomplete | None=..., force_update: bool=...
     path : None | path-like
         Location of where to look for the EEGBCI data. If ``None``, the environment
         variable or config parameter ``MNE_DATASETS_EEGBCI_PATH`` is used. If neither
-        exists, the ``~/mne_data`` directory is used. If the EEGBCI dataset is not found
+        exists, the `/mne_data`` directory is used. If the EEGBCI dataset is not found
         under the given path, the data will be automatically downloaded to the specified
         folder.
     force_update : bool
@@ -78,7 +86,7 @@ def load_data(subject, runs, path: Incomplete | None=..., force_update: bool=...
         path. If ``None``, the user is prompted.
     base_url : str
         The URL root for the data.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

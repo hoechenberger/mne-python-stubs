@@ -1,8 +1,14 @@
 from ..source_estimate import SourceEstimate as SourceEstimate
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def resolution_metrics(resmat, src, function: str=..., metric: str=..., threshold: float=..., verbose: Incomplete | None=...):
+def resolution_metrics(
+    resmat,
+    src,
+    function: str = ...,
+    metric: str = ...,
+    threshold: float = ...,
+    verbose=...,
+):
     """Compute spatial resolution metrics for linear solvers.
 
     Parameters
@@ -44,7 +50,7 @@ def resolution_metrics(resmat, src, function: str=..., metric: str=..., threshol
     threshold : float
         Amplitude fraction threshold for spatial extent metric 'maxrad_ext'.
         Defaults to 0.5.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

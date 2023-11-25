@@ -2,72 +2,95 @@ from .._fiff.constants import FIFF as FIFF
 from .._fiff.matrix import write_named_matrix as write_named_matrix
 from .._fiff.meas_info import Info as Info, write_info as write_info
 from .._fiff.open import fiff_open as fiff_open
-from .._fiff.pick import pick_channels as pick_channels, pick_channels_forward as pick_channels_forward, pick_info as pick_info, pick_types as pick_types
+from .._fiff.pick import (
+    pick_channels as pick_channels,
+    pick_channels_forward as pick_channels_forward,
+    pick_info as pick_info,
+    pick_types as pick_types,
+)
 from .._fiff.tag import find_tag as find_tag, read_tag as read_tag
 from .._fiff.tree import dir_tree_find as dir_tree_find
-from .._fiff.write import end_block as end_block, start_and_end_file as start_and_end_file, start_block as start_block, write_coord_trans as write_coord_trans, write_id as write_id, write_int as write_int, write_string as write_string
+from .._fiff.write import (
+    end_block as end_block,
+    start_and_end_file as start_and_end_file,
+    start_block as start_block,
+    write_coord_trans as write_coord_trans,
+    write_id as write_id,
+    write_int as write_int,
+    write_string as write_string,
+)
 from ..epochs import BaseEpochs as BaseEpochs
 from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
 from ..io import BaseRaw as BaseRaw, RawArray as RawArray
 from ..label import Label as Label
-from ..source_space._source_space import find_source_space_hemi as find_source_space_hemi
-from ..transforms import invert_transform as invert_transform, transform_surface_to as transform_surface_to, write_trans as write_trans
-from ..utils import check_fname as check_fname, fill_doc as fill_doc, get_subjects_dir as get_subjects_dir, has_mne_c as has_mne_c, logger as logger, repr_html as repr_html, run_subprocess as run_subprocess, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from ..source_space._source_space import (
+    find_source_space_hemi as find_source_space_hemi,
+)
+from ..transforms import (
+    invert_transform as invert_transform,
+    transform_surface_to as transform_surface_to,
+    write_trans as write_trans,
+)
+from ..utils import (
+    check_fname as check_fname,
+    fill_doc as fill_doc,
+    get_subjects_dir as get_subjects_dir,
+    has_mne_c as has_mne_c,
+    logger as logger,
+    repr_html as repr_html,
+    run_subprocess as run_subprocess,
+    warn as warn,
+)
 
 class Forward(dict):
     """Pick channels from this forward operator.
 
-        Parameters
-        ----------
-        ch_names : list of str
-            List of channels to include.
-        ordered : bool
-            If true (default False), treat ``include`` as an ordered list
-            rather than a set.
+    Parameters
+    ----------
+    ch_names : list of str
+        List of channels to include.
+    ordered : bool
+        If true (default False), treat ``include`` as an ordered list
+        rather than a set.
 
-        Returns
-        -------
-        fwd : instance of Forward.
-            The modified forward model.
+    Returns
+    -------
+    fwd : instance of Forward.
+        The modified forward model.
 
-        Notes
-        -----
-        Operates in-place.
+    Notes
+    -----
+    Operates in-place.
 
-        .. versionadded:: 0.20.0
-        """
+    .. versionadded:: 0.20.0
+    """
 
     def copy(self):
         """Copy the Forward instance."""
-
-    def save(self, fname, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
         """Save the forward solution.
 
         Parameters
         ----------
-        
+
         fname : path-like
             File name to save the forward solution to. It should end with
             ``-fwd.fif`` or ``-fwd.fif.gz`` to save to FIF, or ``-fwd.h5`` to save to
             HDF5.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-
     @property
-    def ch_names(self):
-        ...
-
-    def pick_channels(self, ch_names, ordered: bool=...):
+    def ch_names(self): ...
+    def pick_channels(self, ch_names, ordered: bool = ...):
         """Pick channels from this forward operator.
 
         Parameters
@@ -90,7 +113,7 @@ class Forward(dict):
         .. versionadded:: 0.20.0
         """
 
-def read_forward_solution(fname, include=..., exclude=..., *, ordered: Incomplete | None=..., verbose: Incomplete | None=...):
+def read_forward_solution(fname, include=..., exclude=..., *, ordered=..., verbose=...):
     """Read a forward solution a.k.a. lead field.
 
     Parameters
@@ -103,15 +126,15 @@ def read_forward_solution(fname, include=..., exclude=..., *, ordered: Incomplet
         are included.
     exclude : list, optional
         List of names of channels to exclude. If empty include all channels.
-    
+
     ordered : bool
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
-    
+
         .. versionadded:: 0.20.0
         .. versionchanged:: 1.5
             The default changed from False in 1.4 to True in 1.5.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -143,7 +166,15 @@ def read_forward_solution(fname, include=..., exclude=..., *, ordered: Incomplet
     forward solution with :func:`read_forward_solution`.
     """
 
-def convert_forward_solution(fwd, surf_ori: bool=..., force_fixed: bool=..., copy: bool=..., use_cps: bool=..., *, verbose: Incomplete | None=...):
+def convert_forward_solution(
+    fwd,
+    surf_ori: bool = ...,
+    force_fixed: bool = ...,
+    copy: bool = ...,
+    use_cps: bool = ...,
+    *,
+    verbose=...,
+):
     """Convert forward solution between different source orientations.
 
     Parameters
@@ -157,11 +188,11 @@ def convert_forward_solution(fwd, surf_ori: bool=..., force_fixed: bool=..., cop
         If True, force fixed source orientation mode.
     copy : bool
         Whether to return a new instance or modify in place.
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -174,23 +205,23 @@ def convert_forward_solution(fwd, surf_ori: bool=..., force_fixed: bool=..., cop
         The modified forward solution.
     """
 
-def write_forward_solution(fname, fwd, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+def write_forward_solution(fname, fwd, overwrite: bool = ..., verbose=...) -> None:
     """Write forward solution to a file.
 
     Parameters
     ----------
-    
+
     fname : path-like
         File name to save the forward solution to. It should end with
         ``-fwd.fif`` or ``-fwd.fif.gz`` to save to FIF, or ``-fwd.h5`` to save to
         HDF5.
     fwd : Forward
         Forward solution.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -217,7 +248,7 @@ def write_forward_solution(fname, fwd, overwrite: bool=..., verbose: Incomplete 
     forward solution with :func:`read_forward_solution`.
     """
 
-def is_fixed_orient(forward, orig: bool=...):
+def is_fixed_orient(forward, orig: bool = ...):
     """Check if the forward operator is fixed orientation.
 
     Parameters
@@ -241,23 +272,23 @@ def write_forward_meas_info(fid, info) -> None:
     ----------
     fid : file id
         The file id
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     """
 
-def compute_orient_prior(forward, loose: str=..., verbose: Incomplete | None=...):
+def compute_orient_prior(forward, loose: str = ..., verbose=...):
     """Compute orientation prior.
 
     Parameters
     ----------
     forward : instance of Forward
         Forward operator.
-    
+
     loose : float | 'auto' | dict
         Value that weights the source variances of the dipole components
         that are parallel (tangential) to the cortical surface. Can be:
-    
+
         - float between 0 and 1 (inclusive)
             If 0, then the solution is computed with fixed orientation.
             If 1, it corresponds to free orientations.
@@ -267,7 +298,7 @@ def compute_orient_prior(forward, loose: str=..., verbose: Incomplete | None=...
         - dict
             Mapping from the key for a given source space type (surface, volume,
             discrete) to the loose value. Useful mostly for mixed source spaces.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -284,14 +315,24 @@ def compute_orient_prior(forward, loose: str=..., verbose: Incomplete | None=...
     compute_depth_prior
     """
 
-def compute_depth_prior(forward, info, exp: float=..., limit: float=..., limit_depth_chs: bool=..., combine_xyz: str=..., noise_cov: Incomplete | None=..., rank: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_depth_prior(
+    forward,
+    info,
+    exp: float = ...,
+    limit: float = ...,
+    limit_depth_chs: bool = ...,
+    combine_xyz: str = ...,
+    noise_cov=...,
+    rank=...,
+    verbose=...,
+):
     """Compute depth prior for depth weighting.
 
     Parameters
     ----------
     forward : instance of Forward
         The forward solution.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     exp : float
@@ -318,14 +359,14 @@ def compute_depth_prior(forward, info, exp: float=..., limit: float=..., limit_d
         ``limit_depth_chs='whiten'``.
 
         .. versionadded:: 0.18
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -339,7 +380,7 @@ def compute_depth_prior(forward, info, exp: float=..., limit: float=..., limit_d
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -347,25 +388,25 @@ def compute_depth_prior(forward, info, exp: float=..., limit: float=..., limit_d
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -416,7 +457,16 @@ def compute_depth_prior(forward, info, exp: float=..., limit: float=..., limit_d
           SI units (such as EEG being orders of magnitude larger than MEG).
     """
 
-def apply_forward(fwd, stc, info, start: Incomplete | None=..., stop: Incomplete | None=..., use_cps: bool=..., on_missing: str=..., verbose: Incomplete | None=...):
+def apply_forward(
+    fwd,
+    stc,
+    info,
+    start=...,
+    stop=...,
+    use_cps: bool = ...,
+    on_missing: str = ...,
+    verbose=...,
+):
     """Project source space currents to sensor space using a forward operator.
 
     The sensor space data is computed for all channels present in fwd. Use
@@ -434,27 +484,27 @@ def apply_forward(fwd, stc, info, start: Incomplete | None=..., stop: Incomplete
         Forward operator to use.
     stc : SourceEstimate
         The source estimate from which the sensor space data is computed.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     start : int, optional
         Index of first time sample (index not time is seconds).
     stop : int, optional
         Index of first time sample not to include (index not time is seconds).
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
         .. versionadded:: 0.15
-    
+
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "raise".
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -471,7 +521,16 @@ def apply_forward(fwd, stc, info, start: Incomplete | None=..., stop: Incomplete
     apply_forward_raw: Compute sensor space data and return a Raw object.
     """
 
-def apply_forward_raw(fwd, stc, info, start: Incomplete | None=..., stop: Incomplete | None=..., on_missing: str=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def apply_forward_raw(
+    fwd,
+    stc,
+    info,
+    start=...,
+    stop=...,
+    on_missing: str = ...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Project source space currents to sensor space using a forward operator.
 
     The sensor space data is computed for all channels present in fwd. Use
@@ -489,27 +548,27 @@ def apply_forward_raw(fwd, stc, info, start: Incomplete | None=..., stop: Incomp
         Forward operator to use.
     stc : SourceEstimate
         The source estimate from which the sensor space data is computed.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     start : int, optional
         Index of first time sample (index not time is seconds).
     stop : int, optional
         Index of first time sample not to include (index not time is seconds).
-    
+
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "raise".
 
         .. versionadded:: 0.18
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
         .. versionadded:: 0.21
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -526,7 +585,7 @@ def apply_forward_raw(fwd, stc, info, start: Incomplete | None=..., stop: Incomp
     apply_forward: Compute sensor space data and return an Evoked object.
     """
 
-def restrict_forward_to_stc(fwd, stc, on_missing: str=...):
+def restrict_forward_to_stc(fwd, stc, on_missing: str = ...):
     """Restrict forward operator to active sources in a source estimate.
 
     Parameters
@@ -535,7 +594,7 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str=...):
         Forward operator.
     stc : instance of SourceEstimate
         Source estimate.
-    
+
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
@@ -573,7 +632,7 @@ def restrict_forward_to_label(fwd, labels):
     restrict_forward_to_stc
     """
 
-def average_forward_solutions(fwds, weights: Incomplete | None=..., verbose: Incomplete | None=...):
+def average_forward_solutions(fwds, weights=..., verbose=...):
     """Average forward solutions.
 
     Parameters
@@ -585,7 +644,7 @@ def average_forward_solutions(fwds, weights: Incomplete | None=..., verbose: Inc
         Weights to apply to each forward solution in averaging. If None,
         forward solutions will be equally weighted. Weights must be
         non-negative, and will be adjusted to sum to one.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

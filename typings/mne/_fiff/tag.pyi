@@ -18,6 +18,7 @@ class Tag:
     pos : int
         Position of Tag is the original file.
     """
+
     kind: Incomplete
     type: Incomplete
     size: Incomplete
@@ -25,16 +26,13 @@ class Tag:
     pos: Incomplete
     data: Incomplete
 
-    def __init__(self, kind, type_, size, next, pos: Incomplete | None=...) -> None:
-        ...
-
-    def __eq__(self, tag):
-        ...
+    def __init__(self, kind, type_, size, next, pos=...) -> None: ...
+    def __eq__(self, tag): ...
 
 def read_tag_info(fid):
     """Read Tag info (or header)."""
 
-def read_tag(fid, pos: Incomplete | None=..., shape: Incomplete | None=..., rlims: Incomplete | None=...):
+def read_tag(fid, pos=..., shape=..., rlims=...):
     """Read a Tag from a file at a given position.
 
     Parameters

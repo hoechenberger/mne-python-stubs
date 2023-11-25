@@ -1,15 +1,20 @@
 import numpy as np
-from ..fixes import has_numba as has_numba, jit as jit, stable_cumsum as stable_cumsum, svd_flip as svd_flip
-from ._logging import logger as logger, verbose as verbose, warn as warn
+from ..fixes import (
+    has_numba as has_numba,
+    jit as jit,
+    stable_cumsum as stable_cumsum,
+    svd_flip as svd_flip,
+)
+from ._logging import logger as logger, warn as warn
 from .check import check_random_state as check_random_state
 from .docs import fill_doc as fill_doc
 from _typeshed import Incomplete
 from collections.abc import Generator
 
-def split_list(v, n, idx: bool=...) -> Generator[Incomplete, None, None]:
+def split_list(v, n, idx: bool = ...) -> Generator[Incomplete, None, None]:
     """Split list in n (approx) equal pieces, possibly giving indices."""
 
-def array_split_idx(ary, indices_or_sections, axis: int=..., n_per_split: int=...):
+def array_split_idx(ary, indices_or_sections, axis: int = ..., n_per_split: int = ...):
     """Do what numpy.array_split does, but add indices."""
 
 def create_chunks(sequence, size):
@@ -40,7 +45,7 @@ def sum_squared(X):
 def compute_corr(x, y):
     """Compute pearson correlations between a vector and a matrix."""
 
-def random_permutation(n_samples, random_state: Incomplete | None=...):
+def random_permutation(n_samples, random_state=...):
     """Emulate the randperm matlab function.
 
     It returns a vector containing a random permutation of the
@@ -62,11 +67,11 @@ def random_permutation(n_samples, random_state: Incomplete | None=...):
     n_samples : int
         End point of the sequence to be permuted (excluded, i.e., the end point
         is equal to n_samples-1)
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -77,7 +82,7 @@ def random_permutation(n_samples, random_state: Incomplete | None=...):
         Randomly permuted sequence between 0 and n-1.
     """
 
-def hashfunc(fname, block_size: int=..., hash_type: str=...):
+def hashfunc(fname, block_size: int = ..., hash_type: str = ...):
     """Calculate the hash for a file.
 
     Parameters
@@ -93,7 +98,7 @@ def hashfunc(fname, block_size: int=..., hash_type: str=...):
         The hexadecimal digest of the hash.
     """
 
-def create_slices(start, stop, step: Incomplete | None=..., length: int=...):
+def create_slices(start, stop, step=..., length: int = ...):
     """Generate slices of time indexes.
 
     Parameters
@@ -114,7 +119,7 @@ def create_slices(start, stop, step: Incomplete | None=..., length: int=...):
         List of slice objects.
     """
 
-def grand_average(all_inst, interpolate_bads: bool=..., drop_bads: bool=...):
+def grand_average(all_inst, interpolate_bads: bool = ..., drop_bads: bool = ...):
     """Make grand average of a list of Evoked or AverageTFR data.
 
     For :class:`mne.Evoked` data, the function interpolates bad channels based
@@ -154,14 +159,10 @@ def grand_average(all_inst, interpolate_bads: bool=..., drop_bads: bool=...):
     """
 
 class _HashableNdarray(np.ndarray):
+    def __hash__(self): ...
+    def __eq__(self, other): ...
 
-    def __hash__(self):
-        ...
-
-    def __eq__(self, other):
-        ...
-
-def object_hash(x, h: Incomplete | None=...):
+def object_hash(x, h=...):
     """Hash a reasonable python object.
 
     Parameters
@@ -178,7 +179,7 @@ def object_hash(x, h: Incomplete | None=...):
         The digest resulting from the hash.
     """
 
-def object_size(x, memo: Incomplete | None=...):
+def object_size(x, memo=...):
     """Estimate the size of a reasonable python object.
 
     Parameters
@@ -196,7 +197,7 @@ def object_size(x, memo: Incomplete | None=...):
         The estimated size in bytes of the object.
     """
 
-def object_diff(a, b, pre: str=..., *, allclose: bool=...):
+def object_diff(a, b, pre: str = ..., *, allclose: bool = ...):
     """Compute all differences between two python variables.
 
     Parameters
@@ -219,14 +220,12 @@ def object_diff(a, b, pre: str=..., *, allclose: bool=...):
 
 class _PCA:
     """Principal component analysis (PCA)."""
+
     n_components: Incomplete
     whiten: Incomplete
 
-    def __init__(self, n_components: Incomplete | None=..., whiten: bool=...) -> None:
-        ...
-
-    def fit_transform(self, X, y: Incomplete | None=...):
-        ...
+    def __init__(self, n_components=..., whiten: bool = ...) -> None: ...
+    def fit_transform(self, X, y=...): ...
 
 class _ReuseCycle:
     """Cycle over a variable, preferring to reuse earlier indices.
@@ -234,18 +233,12 @@ class _ReuseCycle:
     Requires the values in ``x`` to be hashable and unique. This holds
     nicely for matplotlib's color cycle, which gives HTML hex color strings.
     """
+
     indices: Incomplete
     popped: Incomplete
     x: Incomplete
 
-    def __init__(self, x) -> None:
-        ...
-
-    def __iter__(self):
-        ...
-
-    def __next__(self):
-        ...
-
-    def restore(self, val) -> None:
-        ...
+    def __init__(self, x) -> None: ...
+    def __iter__(self): ...
+    def __next__(self): ...
+    def restore(self, val) -> None: ...

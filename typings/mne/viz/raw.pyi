@@ -1,9 +1,46 @@
 from .._fiff.pick import pick_channels as pick_channels, pick_types as pick_types
 from ..filter import create_filter as create_filter
-from ..utils import legacy as legacy, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import legacy as legacy
 
-def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: float=..., n_channels: int=..., bgcolor: str=..., color: Incomplete | None=..., bad_color: str=..., event_color: str=..., scalings: Incomplete | None=..., remove_dc: bool=..., order: Incomplete | None=..., show_options: bool=..., title: Incomplete | None=..., show: bool=..., block: bool=..., highpass: Incomplete | None=..., lowpass: Incomplete | None=..., filtorder: int=..., clipping=..., show_first_samp: bool=..., proj: bool=..., group_by: str=..., butterfly: bool=..., decim: str=..., noise_cov: Incomplete | None=..., event_id: Incomplete | None=..., show_scrollbars: bool=..., show_scalebars: bool=..., time_format: str=..., precompute: Incomplete | None=..., use_opengl: Incomplete | None=..., *, theme: Incomplete | None=..., overview_mode: Incomplete | None=..., splash: bool=..., verbose: Incomplete | None=...):
+def plot_raw(
+    raw,
+    events=...,
+    duration: float = ...,
+    start: float = ...,
+    n_channels: int = ...,
+    bgcolor: str = ...,
+    color=...,
+    bad_color: str = ...,
+    event_color: str = ...,
+    scalings=...,
+    remove_dc: bool = ...,
+    order=...,
+    show_options: bool = ...,
+    title=...,
+    show: bool = ...,
+    block: bool = ...,
+    highpass=...,
+    lowpass=...,
+    filtorder: int = ...,
+    clipping=...,
+    show_first_samp: bool = ...,
+    proj: bool = ...,
+    group_by: str = ...,
+    butterfly: bool = ...,
+    decim: str = ...,
+    noise_cov=...,
+    event_id=...,
+    show_scrollbars: bool = ...,
+    show_scalebars: bool = ...,
+    time_format: str = ...,
+    precompute=...,
+    use_opengl=...,
+    *,
+    theme=...,
+    overview_mode=...,
+    splash: bool = ...,
+    verbose=...,
+):
     """Plot raw data.
 
     Parameters
@@ -34,7 +71,7 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
 
     bad_color : color object
         Color to make bad channels.
-    
+
     event_color : color object | dict | None
         Color(s) to use for :term:`events`. To show all :term:`events` in the same
         color, pass any matplotlib-compatible color. To color events differently,
@@ -43,7 +80,7 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         key ``-1``). If ``None``, colors are chosen from the current Matplotlib
         color cycle.
         Defaults to ``'cyan'``.
-    
+
     scalings : 'auto' | dict | None
         Scaling factors for the traces. If a dictionary where any
         value is ``'auto'``, the scaling factor is set to match the 99.5th
@@ -51,11 +88,11 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         channel types) are set to ``'auto'``. If any values are ``'auto'`` and the
         data is not preloaded, a subset up to 100 MB will be loaded. If ``None``,
         defaults to::
-    
+
             dict(mag=1e-12, grad=4e-11, eeg=20e-6, eog=150e-6, ecg=5e-4,
                  emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                  resp=1, chpi=1e-4, whitened=1e2)
-    
+
         .. note::
             A particular scaling value ``s`` corresponds to half of the visualized
             signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
@@ -94,7 +131,7 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
     filtorder : int
         Filtering order. 0 will use FIR filtering with MNE defaults.
         Other values will construct an IIR filter of the given order
-        and apply it with :func:`~scipy.signal.filtfilt` (making the effective
+        and apply it with :func:scipy.signal.filtfilt` (making the effective
         order twice ``filtorder``). Filtering may produce some edge artifacts
         (at the left and right edges) of the signals during display.
 
@@ -118,7 +155,7 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         Individual projectors can be enabled/disabled interactively (see
         Notes). This argument only affects the plot; use ``raw.apply_proj()``
         to modify the data stored in the Raw object.
-    
+
     group_by : str
         How to group channels. ``'type'`` groups by channel type,
         ``'original'`` plots in the order of ch_names, ``'selection'`` uses
@@ -155,29 +192,29 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         the event numbers).
 
         .. versionadded:: 0.16.0
-    
+
     show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
-    
+
         .. versionadded:: 0.19.0
-    
+
     show_scalebars : bool
         Whether to show scale bars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`s` while the plot window is focused.
         Default is ``True``.
 
         .. versionadded:: 0.20.0
-    
+
     time_format : 'float' | 'clock'
         Style of time labels on the horizontal axis. If ``'float'``, labels will be
         number of seconds from the start of the recording. If ``'clock'``,
         labels will show "clock time" (hours/minutes/seconds) inferred from
         ``raw.info['meas_date']``. Default is ``'float'``.
-    
+
         .. versionadded:: 0.24
-    
+
     precompute : bool | str
         Whether to load all data (not just the visible portion) into RAM and
         apply preprocessing (e.g., projectors) to the full data array in a separate
@@ -186,11 +223,11 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         ``'auto'``. ``'auto'`` compares available RAM space to the expected size of
         the precomputed data, and precomputes only if enough RAM is available.
         This is only used with the Qt backend.
-    
+
         .. versionadded:: 0.24
         .. versionchanged:: 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
-    
+
     use_opengl : bool | None
         Whether to use OpenGL when rendering the plot (requires ``pyopengl``).
         May increase performance, but effect is dependent on system CPU and
@@ -198,9 +235,9 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         None, which will use False unless the user configuration variable
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
         see :func:`mne.set_config`.
-    
+
         .. versionadded:: 0.24
-    
+
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
         custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
@@ -211,7 +248,7 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         Only supported by the ``'qt'`` backend.
 
         .. versionadded:: 1.0
-    
+
     overview_mode : str | None
         Can be "channels", "empty", or "hidden" to set the overview bar mode
         for the ``'qt'`` backend. If None (default), the config option
@@ -219,13 +256,13 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
         if it's not found.
 
         .. versionadded:: 1.1
-    
+
     splash : bool
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
 
         .. versionadded:: 1.6
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -234,7 +271,7 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
 
     Returns
     -------
-    
+
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
@@ -274,7 +311,7 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
     can set the default for your computer via
     :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
-    
+
     .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
     .. note:: To report issues with the PyQtGraph backend, please use the
@@ -282,11 +319,38 @@ def plot_raw(raw, events: Incomplete | None=..., duration: float=..., start: flo
               of ``mne-qt-browser``.
     """
 
-def plot_raw_psd(raw, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., proj: bool=..., n_fft: Incomplete | None=..., n_overlap: int=..., reject_by_annotation: bool=..., picks: Incomplete | None=..., ax: Incomplete | None=..., color: str=..., xscale: str=..., area_mode: str=..., area_alpha: float=..., dB: bool=..., estimate: str=..., show: bool=..., n_jobs: Incomplete | None=..., average: bool=..., line_alpha: Incomplete | None=..., spatial_colors: bool=..., sphere: Incomplete | None=..., window: str=..., exclude: str=..., verbose: Incomplete | None=...):
+def plot_raw_psd(
+    raw,
+    fmin: int = ...,
+    fmax=...,
+    tmin=...,
+    tmax=...,
+    proj: bool = ...,
+    n_fft=...,
+    n_overlap: int = ...,
+    reject_by_annotation: bool = ...,
+    picks=...,
+    ax=...,
+    color: str = ...,
+    xscale: str = ...,
+    area_mode: str = ...,
+    area_alpha: float = ...,
+    dB: bool = ...,
+    estimate: str = ...,
+    show: bool = ...,
+    n_jobs=...,
+    average: bool = ...,
+    line_alpha=...,
+    spatial_colors: bool = ...,
+    sphere=...,
+    window: str = ...,
+    exclude: str = ...,
+    verbose=...,
+):
     """.. warning:: LEGACY: New code should use Raw.compute_psd().plot().
 
     Plot power or amplitude spectra.
-    
+
     Separate plots are drawn for each channel type. When the data have been
     processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
     indicate the boundaries of the filter. The line noise frequency is also
@@ -318,17 +382,17 @@ def plot_raw_psd(raw, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax
         ``True``, spans with annotations whose description begins with
         ``bad`` will be omitted.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     ax : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new :class:`~matplotlib.figure.Figure`
-        will be created with the correct number of axes. If :class:`~matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+        The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
+        will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
     color : str | tuple
         A matplotlib-compatible color to use. Has no effect when
         spatial_colors=True.
@@ -377,14 +441,14 @@ def plot_raw_psd(raw, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+        of a spherical :class:mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
         it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
-    
+
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
     window : str | float | tuple
@@ -397,7 +461,7 @@ def plot_raw_psd(raw, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax
         channels marked "bad", if any).
 
         .. versionadded:: 0.24.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -413,10 +477,30 @@ def plot_raw_psd(raw, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-    of :class:`~mne.io.Raw`, :class:`~mne.Epochs`, or :class:`~mne.Evoked`).
+    of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
     """
 
-def plot_raw_psd_topo(raw, tmin: float=..., tmax: Incomplete | None=..., fmin: float=..., fmax: float=..., proj: bool=..., *, n_fft: int=..., n_overlap: int=..., dB: bool=..., layout: Incomplete | None=..., color: str=..., fig_facecolor: str=..., axis_facecolor: str=..., axes: Incomplete | None=..., block: bool=..., show: bool=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def plot_raw_psd_topo(
+    raw,
+    tmin: float = ...,
+    tmax=...,
+    fmin: float = ...,
+    fmax: float = ...,
+    proj: bool = ...,
+    *,
+    n_fft: int = ...,
+    n_overlap: int = ...,
+    dB: bool = ...,
+    layout=...,
+    color: str = ...,
+    fig_facecolor: str = ...,
+    axis_facecolor: str = ...,
+    axes=...,
+    block: bool = ...,
+    show: bool = ...,
+    n_jobs=...,
+    verbose=...,
+):
     """.. warning:: LEGACY: New code should use Raw.compute_psd().plot_topo().
 
     Plot power spectral density, separately for each channel.
@@ -455,8 +539,8 @@ def plot_raw_psd_topo(raw, tmin: float=..., tmax: Incomplete | None=..., fmin: f
         A matplotlib-compatible color to use for the axis background.
         Defaults to black.
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new :class:`~matplotlib.figure.Figure`
-        will be created with the correct number of axes. If :class:`~matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single :class:`~matplotlib.axes.Axes` object).Default is ``None``.
+        The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
+        will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single :class:matplotlib.axes.Axes` object).Default is ``None``.
     block : bool
         Whether to halt program execution until the figure is closed.
         May not work on all systems / platforms. Defaults to False.
@@ -469,7 +553,7 @@ def plot_raw_psd_topo(raw, tmin: float=..., tmax: Incomplete | None=..., fmin: f
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

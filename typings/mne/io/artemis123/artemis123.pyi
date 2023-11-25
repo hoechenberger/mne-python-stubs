@@ -1,11 +1,20 @@
 from ..._fiff._digitization import DigPoint as DigPoint
 from ..._fiff.constants import FIFF as FIFF
-from ...transforms import Transform as Transform, apply_trans as apply_trans, get_ras_to_neuromag_trans as get_ras_to_neuromag_trans
-from ...utils import logger as logger, verbose as verbose, warn as warn
+from ...transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    get_ras_to_neuromag_trans as get_ras_to_neuromag_trans,
+)
+from ...utils import logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
 
-def read_raw_artemis123(input_fname, preload: bool=..., verbose: Incomplete | None=..., pos_fname: Incomplete | None=..., add_head_trans: bool=...):
+def read_raw_artemis123(
+    input_fname,
+    preload: bool = ...,
+    verbose=...,
+    pos_fname=...,
+    add_head_trans: bool = ...,
+):
     """Read Artemis123 data as raw object.
 
     Parameters
@@ -14,14 +23,14 @@ def read_raw_artemis123(input_fname, preload: bool=..., verbose: Incomplete | No
         Path to the data file (extension ``.bin``). The header file with the
         same file name stem and an extension ``.txt`` is expected to be found
         in the same directory.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -60,5 +69,11 @@ class RawArtemis123(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, input_fname, preload: bool=..., verbose: Incomplete | None=..., pos_fname: Incomplete | None=..., add_head_trans: bool=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        preload: bool = ...,
+        verbose=...,
+        pos_fname=...,
+        add_head_trans: bool = ...,
+    ) -> None: ...

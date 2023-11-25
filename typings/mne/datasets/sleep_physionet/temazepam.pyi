@@ -1,10 +1,12 @@
-from ...utils import verbose as verbose
 from ._utils import TEMAZEPAM_SLEEP_RECORDS as TEMAZEPAM_SLEEP_RECORDS
 from _typeshed import Incomplete
+
 data_path: Incomplete
 BASE_URL: str
 
-def fetch_data(subjects, path: Incomplete | None=..., force_update: bool=..., base_url=..., *, verbose: Incomplete | None=...):
+def fetch_data(
+    subjects, path=..., force_update: bool = ..., base_url=..., *, verbose=...
+):
     """Get paths to local copies of PhysioNet Polysomnography dataset files.
 
     This will fetch data from the publicly available subjects from PhysioNet's
@@ -31,7 +33,7 @@ def fetch_data(subjects, path: Incomplete | None=..., force_update: bool=..., ba
         Force update of the dataset even if a local copy exists.
     base_url : str
         The base URL to download from.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

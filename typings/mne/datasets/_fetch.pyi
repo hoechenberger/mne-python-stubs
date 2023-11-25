@@ -1,8 +1,23 @@
 from ..utils import logger as logger, warn as warn
-from .config import MISC_VERSIONED as MISC_VERSIONED, RELEASES as RELEASES, TESTING_VERSIONED as TESTING_VERSIONED
-from _typeshed import Incomplete
+from .config import (
+    MISC_VERSIONED as MISC_VERSIONED,
+    RELEASES as RELEASES,
+    TESTING_VERSIONED as TESTING_VERSIONED,
+)
 
-def fetch_dataset(dataset_params, processor: Incomplete | None=..., path: Incomplete | None=..., force_update: bool=..., update_path: bool=..., download: bool=..., check_version: bool=..., return_version: bool=..., accept: bool=..., auth: Incomplete | None=..., token: Incomplete | None=...):
+def fetch_dataset(
+    dataset_params,
+    processor=...,
+    path=...,
+    force_update: bool = ...,
+    update_path: bool = ...,
+    download: bool = ...,
+    check_version: bool = ...,
+    return_version: bool = ...,
+    accept: bool = ...,
+    auth=...,
+    token=...,
+):
     """Fetch an MNE-compatible dataset using pooch.
 
     Parameters
@@ -24,7 +39,7 @@ def fetch_dataset(dataset_params, processor: Incomplete | None=..., path: Incomp
         ``dataset_params['config_key']`` is defined, and if so, whether that
         config key exists in the MNE-Python config file. If so, the configured
         path is used; if not, the location is set to the value of the
-        ``MNE_DATA`` config key (if it exists), or ``~/mne_data`` otherwise.
+        ``MNE_DATA`` config key (if it exists), or `/mne_data`` otherwise.
     force_update : bool
         Force update of the dataset even if a local copy exists.
         Default is False.

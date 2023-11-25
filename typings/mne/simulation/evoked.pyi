@@ -4,10 +4,19 @@ from ..epochs import BaseEpochs as BaseEpochs
 from ..evoked import Evoked as Evoked
 from ..forward import apply_forward as apply_forward
 from ..io import BaseRaw as BaseRaw
-from ..utils import check_random_state as check_random_state, logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import check_random_state as check_random_state, logger as logger
 
-def simulate_evoked(fwd, stc, info, cov: Incomplete | None=..., nave: int=..., iir_filter: Incomplete | None=..., random_state: Incomplete | None=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def simulate_evoked(
+    fwd,
+    stc,
+    info,
+    cov=...,
+    nave: int = ...,
+    iir_filter=...,
+    random_state=...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Generate noisy evoked data.
 
     .. note:: No projections from ``info`` will be present in the
@@ -22,7 +31,7 @@ def simulate_evoked(fwd, stc, info, cov: Incomplete | None=..., nave: int=..., i
         A forward solution.
     stc : SourceEstimate object
         The source time courses.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Used to generate the evoked.
     cov : Covariance object | None
@@ -33,21 +42,21 @@ def simulate_evoked(fwd, stc, info, cov: Incomplete | None=..., nave: int=..., i
         .. versionadded:: 0.15.0
     iir_filter : None | array
         IIR filter coefficients (denominator) e.g. [1, -1, 0.2].
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
         .. versionadded:: 0.15
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -77,7 +86,7 @@ def simulate_evoked(fwd, stc, info, cov: Incomplete | None=..., nave: int=..., i
     .. versionadded:: 0.10.0
     """
 
-def add_noise(inst, cov, iir_filter: Incomplete | None=..., random_state: Incomplete | None=..., verbose: Incomplete | None=...):
+def add_noise(inst, cov, iir_filter=..., random_state=..., verbose=...):
     """Create noise as a multivariate Gaussian.
 
     The spatial covariance of the noise is given from the cov matrix.
@@ -90,15 +99,15 @@ def add_noise(inst, cov, iir_filter: Incomplete | None=..., random_state: Incomp
         The noise covariance.
     iir_filter : None | array-like
         IIR filter coefficients (denominator).
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

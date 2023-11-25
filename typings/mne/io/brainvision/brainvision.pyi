@@ -1,8 +1,16 @@
 from ..._fiff.constants import FIFF as FIFF
-from ...annotations import Annotations as Annotations, read_annotations as read_annotations
+from ...annotations import (
+    Annotations as Annotations,
+    read_annotations as read_annotations,
+)
 from ...channels import make_dig_montage as make_dig_montage
 from ...defaults import HEAD_SIZE_DEFAULT as HEAD_SIZE_DEFAULT
-from ...utils import _DefaultEventParser, fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ...utils import (
+    _DefaultEventParser,
+    fill_doc as fill_doc,
+    logger as logger,
+    warn as warn,
+)
 from ..base import BaseRaw as BaseRaw
 from _typeshed import Incomplete
 
@@ -25,14 +33,14 @@ class RawBrainVision(BaseRaw):
     scale : float
         The scaling factor for EEG data. Unless specified otherwise by
         header file, units are in microvolts. Default scale factor is 1.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -48,12 +56,27 @@ class RawBrainVision(BaseRaw):
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """
+
     impedances: Incomplete
 
-    def __init__(self, vhdr_fname, eog=..., misc: str=..., scale: float=..., preload: bool=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        vhdr_fname,
+        eog=...,
+        misc: str = ...,
+        scale: float = ...,
+        preload: bool = ...,
+        verbose=...,
+    ) -> None: ...
 
-def read_raw_brainvision(vhdr_fname, eog=..., misc: str=..., scale: float=..., preload: bool=..., verbose: Incomplete | None=...):
+def read_raw_brainvision(
+    vhdr_fname,
+    eog=...,
+    misc: str = ...,
+    scale: float = ...,
+    preload: bool = ...,
+    verbose=...,
+):
     """Reader for Brain Vision EEG file.
 
     Parameters
@@ -72,14 +95,14 @@ def read_raw_brainvision(vhdr_fname, eog=..., misc: str=..., scale: float=..., p
     scale : float
         The scaling factor for EEG data. Unless specified otherwise by
         header file, units are in microvolts. Default scale factor is 1.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

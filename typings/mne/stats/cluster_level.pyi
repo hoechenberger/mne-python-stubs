@@ -1,12 +1,21 @@
 from ..fixes import has_numba as has_numba, jit as jit
 from ..parallel import parallel_func as parallel_func
-from ..source_estimate import MixedSourceEstimate as MixedSourceEstimate, SourceEstimate as SourceEstimate, VolSourceEstimate as VolSourceEstimate
+from ..source_estimate import (
+    MixedSourceEstimate as MixedSourceEstimate,
+    SourceEstimate as SourceEstimate,
+    VolSourceEstimate as VolSourceEstimate,
+)
 from ..source_space import SourceSpaces as SourceSpaces
-from ..utils import ProgressBar as ProgressBar, check_random_state as check_random_state, logger as logger, split_list as split_list, verbose as verbose, warn as warn
+from ..utils import (
+    ProgressBar as ProgressBar,
+    check_random_state as check_random_state,
+    logger as logger,
+    split_list as split_list,
+    warn as warn,
+)
 from .parametric import f_oneway as f_oneway, ttest_1samp_no_p as ttest_1samp_no_p
-from _typeshed import Incomplete
 
-def bin_perm_rep(ndim, a: int=..., b: int=...):
+def bin_perm_rep(ndim, a: int = ..., b: int = ...):
     """Ndim permutations with repetitions of (a,b).
 
     Returns an array with all the possible permutations with repetitions of
@@ -26,7 +35,24 @@ def bin_perm_rep(ndim, a: int=..., b: int=...):
            [1, 1, 1]])
     """
 
-def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations: int=..., tail: int=..., stat_fun: Incomplete | None=..., adjacency: Incomplete | None=..., n_jobs: Incomplete | None=..., seed: Incomplete | None=..., max_step: int=..., exclude: Incomplete | None=..., step_down_p: int=..., t_power: int=..., out_type: str=..., check_disjoint: bool=..., buffer_size: int=..., verbose: Incomplete | None=...):
+def permutation_cluster_test(
+    X,
+    threshold=...,
+    n_permutations: int = ...,
+    tail: int = ...,
+    stat_fun=...,
+    adjacency=...,
+    n_jobs=...,
+    seed=...,
+    max_step: int = ...,
+    exclude=...,
+    step_down_p: int = ...,
+    t_power: int = ...,
+    out_type: str = ...,
+    check_disjoint: bool = ...,
+    buffer_size: int = ...,
+    verbose=...,
+):
     """Cluster-level statistical permutation test.
 
     For a list of :class:`NumPy arrays <numpy.ndarray>` of data,
@@ -51,7 +77,7 @@ def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations
         dimension represented in the ``adjacency`` parameter
         (e.g., spectral data should be provided as
         ``(observations, frequencies, channels/vertices)``).
-    
+
     threshold : float | dict | None
         The so-called "cluster forming threshold" in the form of a test statistic
         (note: this is not an alpha level / "p-value").
@@ -64,21 +90,21 @@ def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations
         :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
-    
+
     n_permutations : int
         The number of permutations to compute.
-    
+
     tail : int
         If tail is 1, the statistic is thresholded above threshold.
         If tail is -1, the statistic is thresholded below threshold.
         If tail is 0, the statistic is thresholded on both sides of
         the distribution.
-    
+
     stat_fun : callable | None
         Function called to calculate the test statistic. Must accept 1D-array as
         input and return a 1D array. If ``None`` (the default), uses
         `mne.stats.f_oneway`.
-    
+
     adjacency : scipy.sparse.spmatrix | None | False
         Defines adjacency between locations in the data, where "locations" can be
         spatial vertices, frequency bins, time points, etc. For spatial vertices
@@ -103,15 +129,15 @@ def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    
+
     max_step : int
         Maximum distance between samples along the second axis of ``X`` to be
         considered adjacent (typically the second axis is the "time" dimension).
@@ -120,25 +146,25 @@ def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations
         :func:`mne.channels.find_ch_adjacency`), and not via sensors **and**
         further dimensions such as time points (e.g., via an additional call of
         :func:`mne.stats.combine_adjacency`).
-    
+
     exclude : bool array or None
         Mask to apply to the data to exclude certain points from clustering
         (e.g., medial wall vertices). Should be the same shape as ``X``.
         If ``None``, no points are excluded.
-    
+
     step_down_p : float
         To perform a step-down-in-jumps test, pass a p-value for clusters to
         exclude from each successive iteration. Default is zero, perform no
         step-down test (since no clusters will be smaller than this value).
         Setting this to a reasonable value, e.g. 0.05, can increase sensitivity
         but costs computation time.
-    
+
     t_power : float
         Power to raise the statistical values (usually F-values) by before
         summing (sign will be retained). Note that ``t_power=0`` will give a
         count of locations in each cluster, ``t_power=1`` will weight each location
         by its statistical score.
-    
+
     out_type : 'mask' | 'indices'
         Output format of clusters within a list.
         If ``'mask'``, returns a list of boolean arrays,
@@ -149,19 +175,19 @@ def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations
         given cluster along the given dimension. Note that for large datasets,
         ``'indices'`` may use far less memory than ``'mask'``.
         Default is ``'indices'``.
-    
+
     check_disjoint : bool
         Whether to check if the connectivity matrix can be separated into disjoint
         sets before clustering. This may lead to faster clustering, especially if
         the second dimension of ``X`` (usually the "time" dimension) is large.
-    
+
     buffer_size : int | None
         Block size to use when computing test statistics. This can significantly
         reduce memory usage when ``n_jobs > 1`` and memory sharing between
         processes is enabled (see :func:`mne.set_cache_dir`), because ``X`` will be
         shared between processes and each process only needs to allocate space for
         a small block of locations at a time.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -181,10 +207,10 @@ def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations
 
     Notes
     -----
-    
+
     For computing a ``threshold`` based on a p-value, use the conversion
     from :meth:`scipy.stats.rv_continuous.ppf`::
-    
+
         pval = 0.001  # arbitrary
         dfn = n_conditions - 1  # degrees of freedom numerator
         dfd = n_observations - n_conditions  # degrees of freedom denominator
@@ -195,7 +221,24 @@ def permutation_cluster_test(X, threshold: Incomplete | None=..., n_permutations
     .. footbibliography::
     """
 
-def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permutations: int=..., tail: int=..., stat_fun: Incomplete | None=..., adjacency: Incomplete | None=..., n_jobs: Incomplete | None=..., seed: Incomplete | None=..., max_step: int=..., exclude: Incomplete | None=..., step_down_p: int=..., t_power: int=..., out_type: str=..., check_disjoint: bool=..., buffer_size: int=..., verbose: Incomplete | None=...):
+def permutation_cluster_1samp_test(
+    X,
+    threshold=...,
+    n_permutations: int = ...,
+    tail: int = ...,
+    stat_fun=...,
+    adjacency=...,
+    n_jobs=...,
+    seed=...,
+    max_step: int = ...,
+    exclude=...,
+    step_down_p: int = ...,
+    t_power: int = ...,
+    out_type: str = ...,
+    check_disjoint: bool = ...,
+    buffer_size: int = ...,
+    verbose=...,
+):
     """Non-parametric cluster-level paired t-test.
 
     For details, see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
@@ -209,7 +252,7 @@ def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permut
         time series over channels), or 3D (e.g., time-frequencies over
         channels) associated with the kth observation. For spatiotemporal data,
         see also :func:`mne.stats.spatio_temporal_cluster_1samp_test`.
-    
+
     threshold : float | dict | None
         The so-called "cluster forming threshold" in the form of a test statistic
         (note: this is not an alpha level / "p-value").
@@ -222,22 +265,22 @@ def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permut
         :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
-    
+
     n_permutations : int | 'all'
         The number of permutations to compute. Can be 'all' to perform
         an exact test.
-    
+
     tail : int
         If tail is 1, the statistic is thresholded above threshold.
         If tail is -1, the statistic is thresholded below threshold.
         If tail is 0, the statistic is thresholded on both sides of
         the distribution.
-    
+
     stat_fun : callable | None
         Function called to calculate the test statistic. Must accept 1D-array as
         input and return a 1D array. If ``None`` (the default), uses
         `mne.stats.ttest_1samp_no_p`.
-    
+
     adjacency : scipy.sparse.spmatrix | None | False
         Defines adjacency between locations in the data, where "locations" can be
         spatial vertices, frequency bins, time points, etc. For spatial vertices
@@ -262,15 +305,15 @@ def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permut
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    
+
     max_step : int
         Maximum distance between samples along the second axis of ``X`` to be
         considered adjacent (typically the second axis is the "time" dimension).
@@ -279,25 +322,25 @@ def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permut
         :func:`mne.channels.find_ch_adjacency`), and not via sensors **and**
         further dimensions such as time points (e.g., via an additional call of
         :func:`mne.stats.combine_adjacency`).
-    
+
     exclude : bool array or None
         Mask to apply to the data to exclude certain points from clustering
         (e.g., medial wall vertices). Should be the same shape as ``X``.
         If ``None``, no points are excluded.
-    
+
     step_down_p : float
         To perform a step-down-in-jumps test, pass a p-value for clusters to
         exclude from each successive iteration. Default is zero, perform no
         step-down test (since no clusters will be smaller than this value).
         Setting this to a reasonable value, e.g. 0.05, can increase sensitivity
         but costs computation time.
-    
+
     t_power : float
         Power to raise the statistical values (usually t-values) by before
         summing (sign will be retained). Note that ``t_power=0`` will give a
         count of locations in each cluster, ``t_power=1`` will weight each location
         by its statistical score.
-    
+
     out_type : 'mask' | 'indices'
         Output format of clusters within a list.
         If ``'mask'``, returns a list of boolean arrays,
@@ -308,19 +351,19 @@ def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permut
         given cluster along the given dimension. Note that for large datasets,
         ``'indices'`` may use far less memory than ``'mask'``.
         Default is ``'indices'``.
-    
+
     check_disjoint : bool
         Whether to check if the connectivity matrix can be separated into disjoint
         sets before clustering. This may lead to faster clustering, especially if
         the second dimension of ``X`` (usually the "time" dimension) is large.
-    
+
     buffer_size : int | None
         Block size to use when computing test statistics. This can significantly
         reduce memory usage when ``n_jobs > 1`` and memory sharing between
         processes is enabled (see :func:`mne.set_cache_dir`), because ``X`` will be
         shared between processes and each process only needs to allocate space for
         a small block of locations at a time.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -353,14 +396,14 @@ def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permut
     computes a 1-sample t-test (by default) and uses sign flipping (always)
     to perform permutations. This might not be suitable for the case where
     there is truly a single observation under test; see :ref:`disc-stats`.
-    
+
     For computing a ``threshold`` based on a p-value, use the conversion
     from :meth:`scipy.stats.rv_continuous.ppf`::
-    
+
         pval = 0.001  # arbitrary
         df = n_observations - 1  # degrees of freedom for the test
         thresh = scipy.stats.t.ppf(1 - pval / 2, df)  # two-tailed, t distribution
-    
+
     For a one-tailed test (``tail=1``), don't divide the p-value by 2.
     For testing the lower tail (``tail=-1``), don't subtract ``pval`` from 1.
 
@@ -379,7 +422,24 @@ def permutation_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permut
     .. footbibliography::
     """
 
-def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_permutations: int=..., tail: int=..., stat_fun: Incomplete | None=..., adjacency: Incomplete | None=..., n_jobs: Incomplete | None=..., seed: Incomplete | None=..., max_step: int=..., spatial_exclude: Incomplete | None=..., step_down_p: int=..., t_power: int=..., out_type: str=..., check_disjoint: bool=..., buffer_size: int=..., verbose: Incomplete | None=...):
+def spatio_temporal_cluster_1samp_test(
+    X,
+    threshold=...,
+    n_permutations: int = ...,
+    tail: int = ...,
+    stat_fun=...,
+    adjacency=...,
+    n_jobs=...,
+    seed=...,
+    max_step: int = ...,
+    spatial_exclude=...,
+    step_down_p: int = ...,
+    t_power: int = ...,
+    out_type: str = ...,
+    check_disjoint: bool = ...,
+    buffer_size: int = ...,
+    verbose=...,
+):
     """Non-parametric cluster-level paired t-test for spatio-temporal data.
 
     This function provides a convenient wrapper for
@@ -396,7 +456,7 @@ def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_pe
         difference between paired samples (observations) in two conditions.
         The second, and optionally third, dimensions correspond to the
         time or time-frequency data. And, the last dimension should be spatial.
-    
+
     threshold : float | dict | None
         The so-called "cluster forming threshold" in the form of a test statistic
         (note: this is not an alpha level / "p-value").
@@ -409,22 +469,22 @@ def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_pe
         :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
-    
+
     n_permutations : int | 'all'
         The number of permutations to compute. Can be 'all' to perform
         an exact test.
-    
+
     tail : int
         If tail is 1, the statistic is thresholded above threshold.
         If tail is -1, the statistic is thresholded below threshold.
         If tail is 0, the statistic is thresholded on both sides of
         the distribution.
-    
+
     stat_fun : callable | None
         Function called to calculate the test statistic. Must accept 1D-array as
         input and return a 1D array. If ``None`` (the default), uses
         `mne.stats.ttest_1samp_no_p`.
-    
+
     adjacency : scipy.sparse.spmatrix | None | False
         Defines adjacency between locations in the data, where "locations" can be
         spatial vertices, frequency bins, time points, etc. For spatial vertices
@@ -449,15 +509,15 @@ def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_pe
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    
+
     max_step : int
         Maximum distance between samples along the second axis of ``X`` to be
         considered adjacent (typically the second axis is the "time" dimension).
@@ -468,20 +528,20 @@ def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_pe
         :func:`mne.stats.combine_adjacency`).
     spatial_exclude : list of int or None
         List of spatial indices to exclude from clustering.
-    
+
     step_down_p : float
         To perform a step-down-in-jumps test, pass a p-value for clusters to
         exclude from each successive iteration. Default is zero, perform no
         step-down test (since no clusters will be smaller than this value).
         Setting this to a reasonable value, e.g. 0.05, can increase sensitivity
         but costs computation time.
-    
+
     t_power : float
         Power to raise the statistical values (usually t-values) by before
         summing (sign will be retained). Note that ``t_power=0`` will give a
         count of locations in each cluster, ``t_power=1`` will weight each location
         by its statistical score.
-    
+
     out_type : 'mask' | 'indices'
         Output format of clusters within a list.
         If ``'mask'``, returns a list of boolean arrays,
@@ -492,19 +552,19 @@ def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_pe
         given cluster along the given dimension. Note that for large datasets,
         ``'indices'`` may use far less memory than ``'mask'``.
         Default is ``'indices'``.
-    
+
     check_disjoint : bool
         Whether to check if the connectivity matrix can be separated into disjoint
         sets before clustering. This may lead to faster clustering, especially if
         the second dimension of ``X`` (usually the "time" dimension) is large.
-    
+
     buffer_size : int | None
         Block size to use when computing test statistics. This can significantly
         reduce memory usage when ``n_jobs > 1`` and memory sharing between
         processes is enabled (see :func:`mne.set_cache_dir`), because ``X`` will be
         shared between processes and each process only needs to allocate space for
         a small block of locations at a time.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -524,14 +584,14 @@ def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_pe
 
     Notes
     -----
-    
+
     For computing a ``threshold`` based on a p-value, use the conversion
     from :meth:`scipy.stats.rv_continuous.ppf`::
-    
+
         pval = 0.001  # arbitrary
         df = n_observations - 1  # degrees of freedom for the test
         thresh = scipy.stats.t.ppf(1 - pval / 2, df)  # two-tailed, t distribution
-    
+
     For a one-tailed test (``tail=1``), don't divide the p-value by 2.
     For testing the lower tail (``tail=-1``), don't subtract ``pval`` from 1.
 
@@ -540,7 +600,24 @@ def spatio_temporal_cluster_1samp_test(X, threshold: Incomplete | None=..., n_pe
     .. footbibliography::
     """
 
-def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutations: int=..., tail: int=..., stat_fun: Incomplete | None=..., adjacency: Incomplete | None=..., n_jobs: Incomplete | None=..., seed: Incomplete | None=..., max_step: int=..., spatial_exclude: Incomplete | None=..., step_down_p: int=..., t_power: int=..., out_type: str=..., check_disjoint: bool=..., buffer_size: int=..., verbose: Incomplete | None=...):
+def spatio_temporal_cluster_test(
+    X,
+    threshold=...,
+    n_permutations: int = ...,
+    tail: int = ...,
+    stat_fun=...,
+    adjacency=...,
+    n_jobs=...,
+    seed=...,
+    max_step: int = ...,
+    spatial_exclude=...,
+    step_down_p: int = ...,
+    t_power: int = ...,
+    out_type: str = ...,
+    check_disjoint: bool = ...,
+    buffer_size: int = ...,
+    verbose=...,
+):
     """Non-parametric cluster-level test for spatio-temporal data.
 
     This function provides a convenient wrapper for
@@ -559,7 +636,7 @@ def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutat
         The second, and optionally third, dimensions correspond to the
         time or time-frequency data. And, the last dimension should be spatial.
         All dimensions except the first should match across all groups.
-    
+
     threshold : float | dict | None
         The so-called "cluster forming threshold" in the form of a test statistic
         (note: this is not an alpha level / "p-value").
@@ -572,21 +649,21 @@ def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutat
         :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
-    
+
     n_permutations : int
         The number of permutations to compute.
-    
+
     tail : int
         If tail is 1, the statistic is thresholded above threshold.
         If tail is -1, the statistic is thresholded below threshold.
         If tail is 0, the statistic is thresholded on both sides of
         the distribution.
-    
+
     stat_fun : callable | None
         Function called to calculate the test statistic. Must accept 1D-array as
         input and return a 1D array. If ``None`` (the default), uses
         `mne.stats.f_oneway`.
-    
+
     adjacency : scipy.sparse.spmatrix | None | False
         Defines adjacency between locations in the data, where "locations" can be
         spatial vertices, frequency bins, time points, etc. For spatial vertices
@@ -611,15 +688,15 @@ def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutat
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    
+
     max_step : int
         Maximum distance between samples along the second axis of ``X`` to be
         considered adjacent (typically the second axis is the "time" dimension).
@@ -630,20 +707,20 @@ def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutat
         :func:`mne.stats.combine_adjacency`).
     spatial_exclude : list of int or None
         List of spatial indices to exclude from clustering.
-    
+
     step_down_p : float
         To perform a step-down-in-jumps test, pass a p-value for clusters to
         exclude from each successive iteration. Default is zero, perform no
         step-down test (since no clusters will be smaller than this value).
         Setting this to a reasonable value, e.g. 0.05, can increase sensitivity
         but costs computation time.
-    
+
     t_power : float
         Power to raise the statistical values (usually F-values) by before
         summing (sign will be retained). Note that ``t_power=0`` will give a
         count of locations in each cluster, ``t_power=1`` will weight each location
         by its statistical score.
-    
+
     out_type : 'mask' | 'indices'
         Output format of clusters within a list.
         If ``'mask'``, returns a list of boolean arrays,
@@ -654,19 +731,19 @@ def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutat
         given cluster along the given dimension. Note that for large datasets,
         ``'indices'`` may use far less memory than ``'mask'``.
         Default is ``'indices'``.
-    
+
     check_disjoint : bool
         Whether to check if the connectivity matrix can be separated into disjoint
         sets before clustering. This may lead to faster clustering, especially if
         the second dimension of ``X`` (usually the "time" dimension) is large.
-    
+
     buffer_size : int | None
         Block size to use when computing test statistics. This can significantly
         reduce memory usage when ``n_jobs > 1`` and memory sharing between
         processes is enabled (see :func:`mne.set_cache_dir`), because ``X`` will be
         shared between processes and each process only needs to allocate space for
         a small block of locations at a time.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -686,10 +763,10 @@ def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutat
 
     Notes
     -----
-    
+
     For computing a ``threshold`` based on a p-value, use the conversion
     from :meth:`scipy.stats.rv_continuous.ppf`::
-    
+
         pval = 0.001  # arbitrary
         dfn = n_conditions - 1  # degrees of freedom numerator
         dfd = n_observations - n_conditions  # degrees of freedom denominator
@@ -700,7 +777,14 @@ def spatio_temporal_cluster_test(X, threshold: Incomplete | None=..., n_permutat
     .. footbibliography::
     """
 
-def summarize_clusters_stc(clu, p_thresh: float=..., tstep: float=..., tmin: int=..., subject: str=..., vertices: Incomplete | None=...):
+def summarize_clusters_stc(
+    clu,
+    p_thresh: float = ...,
+    tstep: float = ...,
+    tmin: int = ...,
+    subject: str = ...,
+    vertices=...,
+):
     """Assemble summary SourceEstimate from spatiotemporal cluster results.
 
     This helps visualizing results from spatio-temporal-clustering

@@ -1,7 +1,30 @@
-from ..utils import check_random_state as check_random_state, logger as logger, random_permutation as random_permutation, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import (
+    check_random_state as check_random_state,
+    logger as logger,
+    random_permutation as random_permutation,
+)
 
-def infomax(data, weights: Incomplete | None=..., l_rate: Incomplete | None=..., block: Incomplete | None=..., w_change: float=..., anneal_deg: float=..., anneal_step: float=..., extended: bool=..., n_subgauss: int=..., kurt_size: int=..., ext_blocks: int=..., max_iter: int=..., random_state: Incomplete | None=..., blowup: float=..., blowup_fac: float=..., n_small_angle: int=..., use_bias: bool=..., verbose: Incomplete | None=..., return_n_iter: bool=...):
+def infomax(
+    data,
+    weights=...,
+    l_rate=...,
+    block=...,
+    w_change: float = ...,
+    anneal_deg: float = ...,
+    anneal_step: float = ...,
+    extended: bool = ...,
+    n_subgauss: int = ...,
+    kurt_size: int = ...,
+    ext_blocks: int = ...,
+    max_iter: int = ...,
+    random_state=...,
+    blowup: float = ...,
+    blowup_fac: float = ...,
+    n_small_angle: int = ...,
+    use_bias: bool = ...,
+    verbose=...,
+    return_n_iter: bool = ...,
+):
     """Run (extended) Infomax ICA decomposition on raw data.
 
     Parameters
@@ -48,11 +71,11 @@ def infomax(data, weights: Incomplete | None=..., l_rate: Incomplete | None=...,
         Defaults to 1.
     max_iter : int
         The maximum number of iterations. Defaults to 200.
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -71,7 +94,7 @@ def infomax(data, weights: Incomplete | None=..., l_rate: Incomplete | None=...,
     use_bias : bool
         This quantity indicates if the bias should be computed.
         Defaults to True.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

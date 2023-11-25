@@ -1,18 +1,34 @@
 from .._fiff.constants import FIFF as FIFF
 from .._fiff.meas_info import Info as Info
 from .._fiff.open import show_fiff as show_fiff
-from .._fiff.pick import channel_indices_by_type as channel_indices_by_type, channel_type as channel_type, pick_channels as pick_channels, pick_channels_cov as pick_channels_cov, pick_info as pick_info
+from .._fiff.pick import (
+    channel_indices_by_type as channel_indices_by_type,
+    channel_type as channel_type,
+    pick_channels as pick_channels,
+    pick_channels_cov as pick_channels_cov,
+    pick_info as pick_info,
+)
 from .._fiff.proj import Projection as Projection, setup_proj as setup_proj
 from ..rank import compute_rank as compute_rank
 from ..transforms import apply_trans as apply_trans
-from ..utils import check_version as check_version, fill_doc as fill_doc, get_config as get_config, logger as logger, verbose as verbose, warn as warn
-from .ui_events import ColormapRange as ColormapRange, publish as publish, subscribe as subscribe
+from ..utils import (
+    check_version as check_version,
+    fill_doc as fill_doc,
+    get_config as get_config,
+    logger as logger,
+    warn as warn,
+)
+from .ui_events import (
+    ColormapRange as ColormapRange,
+    publish as publish,
+    subscribe as subscribe,
+)
 from _typeshed import Incomplete
 
 def safe_event(fun, *args, **kwargs):
     """Protect against Qt exiting on event-handling errors."""
 
-def plt_show(show: bool=..., fig: Incomplete | None=..., **kwargs) -> None:
+def plt_show(show: bool = ..., fig=..., **kwargs) -> None:
     """Show a figure while suppressing warnings.
 
     Parameters
@@ -25,7 +41,7 @@ def plt_show(show: bool=..., fig: Incomplete | None=..., **kwargs) -> None:
         Extra arguments for :func:`matplotlib.pyplot.show`.
     """
 
-def mne_analyze_colormap(limits=..., format: str=...):
+def mne_analyze_colormap(limits=..., format: str = ...):
     """Return a colormap similar to that used by mne_analyze.
 
     Parameters
@@ -50,7 +66,16 @@ def mne_analyze_colormap(limits=..., format: str=...):
     that are scaled by the plotting function to span [-fmax, fmax].
     """
 
-def compare_fiff(fname_1, fname_2, fname_out: Incomplete | None=..., show: bool=..., indent: str=..., read_limit=..., max_str: int=..., verbose: Incomplete | None=...):
+def compare_fiff(
+    fname_1,
+    fname_2,
+    fname_out=...,
+    show: bool = ...,
+    indent: str = ...,
+    read_limit=...,
+    max_str: int = ...,
+    verbose=...,
+):
     """Compare the contents of two fiff files using diff and show_fiff.
 
     Parameters
@@ -72,7 +97,7 @@ def compare_fiff(fname_1, fname_2, fname_out: Incomplete | None=..., show: bool=
     max_str : int
         Max number of characters of string representation to print for
         each tag's data.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -105,18 +130,19 @@ def figure_nobar(*args, **kwargs):
 class ClickableImage:
     """Turn coordinates into an MNE Layout object.
 
-        Normalizes by the image you used to generate clicks
+    Normalizes by the image you used to generate clicks
 
-        Parameters
-        ----------
-        **kwargs : dict
-            Arguments are passed to generate_2d_layout.
+    Parameters
+    ----------
+    **kwargs : dict
+        Arguments are passed to generate_2d_layout.
 
-        Returns
-        -------
-        layout : instance of Layout
-            The layout.
-        """
+    Returns
+    -------
+    layout : instance of Layout
+        The layout.
+    """
+
     coords: Incomplete
     imdata: Incomplete
     fig: Incomplete
@@ -127,7 +153,6 @@ class ClickableImage:
 
     def __init__(self, imdata, **kwargs) -> None:
         """Display the image for clicking."""
-
     def onclick(self, event) -> None:
         """Handle Mouse clicks.
 
@@ -136,7 +161,6 @@ class ClickableImage:
         event : matplotlib.backend_bases.Event
             The matplotlib object that we use to get x/y position.
         """
-
     def plot_clicks(self, **kwargs) -> None:
         """Plot the x/y positions stored in self.coords.
 
@@ -145,7 +169,6 @@ class ClickableImage:
         **kwargs : dict
             Arguments are passed to imshow in displaying the bg image.
         """
-
     def to_layout(self, **kwargs):
         """Turn coordinates into an MNE Layout object.
 
@@ -162,7 +185,7 @@ class ClickableImage:
             The layout.
         """
 
-def add_background_image(fig, im, set_ratios: Incomplete | None=...):
+def add_background_image(fig, im, set_ratios=...):
     """Add a background image to a plot.
 
     Adds the image specified in ``im`` to the
@@ -194,12 +217,29 @@ def add_background_image(fig, im, set_ratios: Incomplete | None=...):
     .. versionadded:: 0.9.0
     """
 
-def plot_sensors(info, kind: str=..., ch_type: Incomplete | None=..., title: Incomplete | None=..., show_names: bool=..., ch_groups: Incomplete | None=..., to_sphere: bool=..., axes: Incomplete | None=..., block: bool=..., show: bool=..., sphere: Incomplete | None=..., pointsize: Incomplete | None=..., linewidth: int=..., *, cmap: Incomplete | None=..., verbose: Incomplete | None=...):
+def plot_sensors(
+    info,
+    kind: str = ...,
+    ch_type=...,
+    title=...,
+    show_names: bool = ...,
+    ch_groups=...,
+    to_sphere: bool = ...,
+    axes=...,
+    block: bool = ...,
+    show: bool = ...,
+    sphere=...,
+    pointsize=...,
+    linewidth: int = ...,
+    *,
+    cmap=...,
+    verbose=...,
+):
     """Plot sensors positions.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     kind : str
@@ -236,7 +276,7 @@ def plot_sensors(info, kind: str=..., ch_type: Incomplete | None=..., title: Inc
         subject's head. Has no effect when ``kind='3d'``. Defaults to True.
 
         .. versionadded:: 0.14.0
-    
+
     axes : instance of Axes | instance of Axes3D | None
         Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
         of Axes3D. If None (default), a new axes will be created.
@@ -253,14 +293,14 @@ def plot_sensors(info, kind: str=..., ch_type: Incomplete | None=..., title: Inc
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+        of a spherical :class:mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
         it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
-    
+
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
     pointsize : float | None
@@ -272,7 +312,7 @@ def plot_sensors(info, kind: str=..., ch_type: Incomplete | None=..., title: Inc
         Colormap for coloring ch_groups. Has effect only when ``ch_groups``
         is list of list. If None, set to ``matplotlib.rcParams["image.cmap"]``.
         Defaults to None.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -301,6 +341,7 @@ def plot_sensors(info, kind: str=..., ch_type: Incomplete | None=..., title: Inc
 
 class DraggableColorbar:
     """Handle scroll."""
+
     cbar: Incomplete
     mappable: Incomplete
     kind: Incomplete
@@ -311,8 +352,7 @@ class DraggableColorbar:
     index: Incomplete
     lims: Incomplete
 
-    def __init__(self, cbar, mappable, kind, ch_type) -> None:
-        ...
+    def __init__(self, cbar, mappable, kind, ch_type) -> None: ...
     cidpress: Incomplete
     cidrelease: Incomplete
     cidmotion: Incomplete
@@ -321,24 +361,20 @@ class DraggableColorbar:
 
     def connect(self) -> None:
         """Connect to all the events we need."""
-
     def on_press(self, event) -> None:
         """Handle button press."""
-
     def key_press(self, event) -> None:
         """Handle key press."""
-
     def on_motion(self, event) -> None:
         """Handle mouse movements."""
-
     def on_release(self, event) -> None:
         """Handle release."""
-
     def on_scroll(self, event) -> None:
         """Handle scroll."""
 
 class SelectFromCollection:
     """Disconnect the lasso selector."""
+
     canvas: Incomplete
     collection: Incomplete
     ch_names: Incomplete
@@ -355,29 +391,32 @@ class SelectFromCollection:
     selection: Incomplete
     callbacks: Incomplete
 
-    def __init__(self, ax, collection, ch_names, alpha_other: float=..., linewidth_other: float=..., alpha_selected: int=..., linewidth_selected: int=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        ax,
+        collection,
+        ch_names,
+        alpha_other: float = ...,
+        linewidth_other: float = ...,
+        alpha_selected: int = ...,
+        linewidth_selected: int = ...,
+    ) -> None: ...
     def on_select(self, verts) -> None:
         """Select a subset from the collection."""
-
     def select_one(self, ind) -> None:
         """Select or deselect one sensor."""
-
     def notify(self) -> None:
         """Notify listeners that a selection has been made."""
-
     def select_many(self, inds) -> None:
         """Select many sensors using indices (for predefined selections)."""
-
     def style_sensors(self, inds) -> None:
         """Style selected sensors as "active"."""
-
     def disconnect(self) -> None:
         """Disconnect the lasso selector."""
 
 class DraggableLine:
     """Remove the line."""
+
     line: Incomplete
     press: Incomplete
     x0: Incomplete
@@ -387,21 +426,15 @@ class DraggableLine:
     cidrelease: Incomplete
     cidmotion: Incomplete
 
-    def __init__(self, line, modify_callback, drag_callback) -> None:
-        ...
-
+    def __init__(self, line, modify_callback, drag_callback) -> None: ...
     def set_x(self, x) -> None:
         """Repoisition the line."""
-
     def on_press(self, event) -> None:
         """Store button press if on top of the line."""
-
     def on_motion(self, event) -> None:
         """Move the line on drag."""
-
     def on_release(self, event) -> None:
         """Handle release."""
-
     def remove(self) -> None:
         """Remove the line."""
 
@@ -427,7 +460,13 @@ def centers_to_edges(*arrays):
     [array([-0.05, 0.05, 0.15, 0.25, 0.35]), array([15., 25., 35., 45.])]
     """
 
-def concatenate_images(images, axis: int=..., bgcolor: str=..., centered: bool=..., n_channels: int=...):
+def concatenate_images(
+    images,
+    axis: int = ...,
+    bgcolor: str = ...,
+    centered: bool = ...,
+    n_channels: int = ...,
+):
     """Concatenate a list of images.
 
     Parameters

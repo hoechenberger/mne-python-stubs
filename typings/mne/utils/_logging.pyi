@@ -3,16 +3,14 @@ from .docs import fill_doc as fill_doc
 from _typeshed import Incomplete
 from collections.abc import Generator
 from io import StringIO
+
 logger: Incomplete
 
 class _FrameFilter(logging.Filter):
     add_frames: int
 
-    def __init__(self) -> None:
-        ...
-
-    def filter(self, record):
-        ...
+    def __init__(self) -> None: ...
+    def filter(self, record): ...
 
 def verbose(function: _FuncT) -> _FuncT:
     """Verbose decorator to allow functions to override log-level.
@@ -59,13 +57,13 @@ class use_log_level:
 
     Parameters
     ----------
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
-    
+
     add_frames : int | None
         If int, enable (>=1) or disable (0) the printing of stack frame
         information using formatting. Default (None) does not change the
@@ -94,16 +92,11 @@ class use_log_level:
     This message will be printed!
     """
 
-    def __init__(self, verbose: Incomplete | None=..., *, add_frames: Incomplete | None=...) -> None:
-        ...
+    def __init__(self, verbose=..., *, add_frames=...) -> None: ...
+    def __enter__(self) -> None: ...
+    def __exit__(self, *args) -> None: ...
 
-    def __enter__(self) -> None:
-        ...
-
-    def __exit__(self, *args) -> None:
-        ...
-
-def set_log_level(verbose: Incomplete | None=..., return_old_level: bool=..., add_frames: Incomplete | None=...):
+def set_log_level(verbose=..., return_old_level: bool = ..., add_frames=...):
     """Set the logging level.
 
     Parameters
@@ -117,7 +110,7 @@ def set_log_level(verbose: Incomplete | None=..., return_old_level: bool=..., ad
         it doesn't exist, defaults to INFO.
     return_old_level : bool
         If True, return the old verbosity level.
-    
+
     add_frames : int | None
         If int, enable (>=1) or disable (0) the printing of stack frame
         information using formatting. Default (None) does not change the
@@ -129,7 +122,7 @@ def set_log_level(verbose: Incomplete | None=..., return_old_level: bool=..., ad
         The old level. Only returned if ``return_old_level`` is True.
     """
 
-def set_log_file(fname: Incomplete | None=..., output_format: str=..., overwrite: Incomplete | None=...) -> None:
+def set_log_file(fname=..., output_format: str = ..., overwrite=...) -> None:
     """Set the log to print to a file.
 
     Parameters
@@ -153,7 +146,7 @@ def set_log_file(fname: Incomplete | None=..., output_format: str=..., overwrite
 class ClosingStringIO(StringIO):
     """Get the value."""
 
-    def getvalue(self, close: bool=...):
+    def getvalue(self, close: bool = ...):
         """Get the value."""
 
 class catch_logging:
@@ -162,16 +155,12 @@ class catch_logging:
     This will remove all other logging handlers, and return the handler to
     stdout when complete.
     """
+
     verbose: Incomplete
 
-    def __init__(self, verbose: Incomplete | None=...) -> None:
-        ...
-
-    def __enter__(self):
-        ...
-
-    def __exit__(self, *args) -> None:
-        ...
+    def __init__(self, verbose=...) -> None: ...
+    def __enter__(self): ...
+    def __exit__(self, *args) -> None: ...
 
 class WrapStdOut:
     """Dynamically wrap to sys.stdout.
@@ -180,10 +169,9 @@ class WrapStdOut:
     sphinx-gallery) work properly.
     """
 
-    def __getattr__(self, name):
-        ...
+    def __getattr__(self, name): ...
 
-def warn(message, category=..., module: str=..., ignore_namespaces=...) -> None:
+def warn(message, category=..., module: str = ..., ignore_namespaces=...) -> None:
     """Emit a warning with trace outside the mne namespace.
 
     This function takes arguments like warnings.warn, and sends messages
@@ -206,7 +194,7 @@ def warn(message, category=..., module: str=..., ignore_namespaces=...) -> None:
         .. versionadded:: 0.24
     """
 
-def filter_out_warnings(warn_record, category: Incomplete | None=..., match: Incomplete | None=...) -> None:
+def filter_out_warnings(warn_record, category=..., match=...) -> None:
     """Remove particular records from ``warn_record``.
 
     This helper takes a list of :class:`warnings.WarningMessage` objects,
@@ -221,7 +209,9 @@ def filter_out_warnings(warn_record, category: Incomplete | None=..., match: Inc
         text or regex that matches the error message to filter out
     """
 
-def wrapped_stdout(indent: str=..., cull_newlines: bool=...) -> Generator[None, None, None]:
+def wrapped_stdout(
+    indent: str = ..., cull_newlines: bool = ...
+) -> Generator[None, None, None]:
     """Wrap stdout writes to logger.info, with an optional indent prefix.
 
     Parameters

@@ -1,8 +1,9 @@
 from ..parallel import parallel_func as parallel_func
-from ..utils import check_random_state as check_random_state, logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import check_random_state as check_random_state, logger as logger
 
-def permutation_t_test(X, n_permutations: int=..., tail: int=..., n_jobs: Incomplete | None=..., seed: Incomplete | None=..., verbose: Incomplete | None=...):
+def permutation_t_test(
+    X, n_permutations: int = ..., tail: int = ..., n_jobs=..., seed=..., verbose=...
+):
     """One sample/paired sample permutation test based on a t-statistic.
 
     This function can perform the test on one variable or
@@ -36,15 +37,15 @@ def permutation_t_test(X, n_permutations: int=..., tail: int=..., n_jobs: Incomp
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -72,7 +73,9 @@ def permutation_t_test(X, n_permutations: int=..., tail: int=..., n_jobs: Incomp
     .. footbibliography::
     """
 
-def bootstrap_confidence_interval(arr, ci: float=..., n_bootstraps: int=..., stat_fun: str=..., random_state: Incomplete | None=...):
+def bootstrap_confidence_interval(
+    arr, ci: float = ..., n_bootstraps: int = ..., stat_fun: str = ..., random_state=...
+):
     """Get confidence intervals from non-parametric bootstrap.
 
     Parameters

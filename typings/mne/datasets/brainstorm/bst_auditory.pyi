@@ -1,7 +1,13 @@
-from ...utils import verbose as verbose
-from _typeshed import Incomplete
 
-def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: bool=..., download: bool=..., accept: bool=..., *, verbose: Incomplete | None=...):
+def data_path(
+    path=...,
+    force_update: bool = ...,
+    update_path: bool = ...,
+    download: bool = ...,
+    accept: bool = ...,
+    *,
+    verbose=...,
+):
     """Get path to local copy of brainstorm (bst_auditory) dataset.
 
     Parameters
@@ -24,7 +30,7 @@ def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: 
         it will not be downloaded and the path will be returned as
         '' (empty string). This is mostly used for debugging purposes
         and can be safely ignored by most users.
-        
+
     accept : bool
         If True (default False), accept the license terms of this dataset.
     verbose : bool | str | int | None
@@ -36,8 +42,7 @@ def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: 
     Returns
     -------
     path : instance of Path
-        Path to brainstorm (bst_auditory) dataset directory.
-"""
+        Path to brainstorm (bst_auditory) dataset directory."""
 
 def get_version():
     """Get version of the local brainstorm dataset.
@@ -46,8 +51,7 @@ def get_version():
     -------
     version : str | None
         Version of the brainstorm local dataset, or None if the dataset
-        does not exist locally.
-"""
+        does not exist locally."""
 
 def description() -> None:
     """Get description of brainstorm (bst_auditory) dataset."""

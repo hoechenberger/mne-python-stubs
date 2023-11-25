@@ -6,22 +6,32 @@ from ..._fiff.tree import dir_tree_find as dir_tree_find
 from ...annotations import Annotations as Annotations
 from ...channels import fix_mag_coil_types as fix_mag_coil_types
 from ...event import AcqParserFIF as AcqParserFIF
-from ...utils import check_fname as check_fname, fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ...utils import (
+    check_fname as check_fname,
+    fill_doc as fill_doc,
+    logger as logger,
+    warn as warn,
+)
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
 
 class Raw(BaseRaw):
     """The AcqParserFIF for the measurement info.
 
-        See Also
-        --------
-        mne.AcqParserFIF
-        """
+    See Also
+    --------
+    mne.AcqParserFIF
+    """
+
     preload: bool
 
-    def __init__(self, fname, allow_maxshield: bool=..., preload: bool=..., on_split_missing: str=..., verbose: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        fname,
+        allow_maxshield: bool = ...,
+        preload: bool = ...,
+        on_split_missing: str = ...,
+        verbose=...,
+    ) -> None: ...
     def fix_mag_coil_types(self):
         """Fix Elekta magnetometer coil types.
 
@@ -50,7 +60,6 @@ class Raw(BaseRaw):
                   current estimates computed by the MNE software is very small.
                   Therefore the use of mne_fix_mag_coil_types is not mandatory.
         """
-
     @property
     def acqparser(self):
         """The AcqParserFIF for the measurement info.
@@ -60,7 +69,13 @@ class Raw(BaseRaw):
         mne.AcqParserFIF
         """
 
-def read_raw_fif(fname, allow_maxshield: bool=..., preload: bool=..., on_split_missing: str=..., verbose: Incomplete | None=...):
+def read_raw_fif(
+    fname,
+    allow_maxshield: bool = ...,
+    preload: bool = ...,
+    on_split_missing: str = ...,
+    verbose=...,
+):
     """Reader function for Raw FIF data.
 
     Parameters
@@ -80,20 +95,20 @@ def read_raw_fif(fname, allow_maxshield: bool=..., preload: bool=..., on_split_m
         generally not be loaded directly, but should first be processed using
         SSS/tSSS to remove the compensation signals that may also affect brain
         activity. Can also be "yes" to load without eliciting a warning.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     on_split_missing : str
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when split file is missing.
-    
+
         .. versionadded:: 0.22
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

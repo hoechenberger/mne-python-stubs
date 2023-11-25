@@ -1,8 +1,7 @@
 from ..parallel import parallel_func as parallel_func
-from ..utils import logger as logger, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from ..utils import logger as logger, warn as warn
 
-def dpss_windows(N, half_nbw, Kmax, *, sym: bool=..., norm: Incomplete | None=..., low_bias: bool=...):
+def dpss_windows(N, half_nbw, Kmax, *, sym: bool = ..., norm=..., low_bias: bool = ...):
     """Compute Discrete Prolate Spheroidal Sequences.
 
     Will give of orders [0,Kmax-1] for a given frequency-spacing multiple
@@ -52,7 +51,22 @@ def dpss_windows(N, half_nbw, Kmax, *, sym: bool=..., norm: Incomplete | None=..
     .. footbibliography::
     """
 
-def psd_array_multitaper(x, sfreq, fmin: float=..., fmax=..., bandwidth: Incomplete | None=..., adaptive: bool=..., low_bias: bool=..., normalization: str=..., remove_dc: bool=..., output: str=..., n_jobs: Incomplete | None=..., *, max_iter: int=..., verbose: Incomplete | None=...):
+def psd_array_multitaper(
+    x,
+    sfreq,
+    fmin: float = ...,
+    fmax=...,
+    bandwidth=...,
+    adaptive: bool = ...,
+    low_bias: bool = ...,
+    normalization: str = ...,
+    remove_dc: bool = ...,
+    output: str = ...,
+    n_jobs=...,
+    *,
+    max_iter: int = ...,
+    verbose=...,
+):
     """Compute power spectral density (PSD) using a multi-taper method.
 
     The power spectral density is computed with DPSS
@@ -81,7 +95,7 @@ def psd_array_multitaper(x, sfreq, fmin: float=..., fmax=..., bandwidth: Incompl
         Normalization strategy. If "full", the PSD will be normalized by the
         sampling rate as well as the length of the signal (as in
         :ref:`Nitime <nitime:users-guide>`). Default is ``'length'``.
-    
+
     remove_dc : bool
         If ``True``, the mean is subtracted from each segment before computing
         its spectrum.
@@ -99,12 +113,12 @@ def psd_array_multitaper(x, sfreq, fmin: float=..., fmax=..., bandwidth: Incompl
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     max_iter : int
         Maximum number of iterations to reach convergence when combining the
         tapered spectra with adaptive weights (see argument ``adaptive``). This
         argument has not effect if ``adaptive`` is set to ``False``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -138,12 +152,25 @@ def psd_array_multitaper(x, sfreq, fmin: float=..., fmax=..., bandwidth: Incompl
     .. footbibliography::
     """
 
-def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mean: bool=..., time_bandwidth: float=..., use_fft: bool=..., decim: int=..., output: str=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def tfr_array_multitaper(
+    epoch_data,
+    sfreq,
+    freqs,
+    n_cycles: float = ...,
+    zero_mean: bool = ...,
+    time_bandwidth: float = ...,
+    use_fft: bool = ...,
+    decim: int = ...,
+    output: str = ...,
+    n_jobs=...,
+    *,
+    verbose=...,
+):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
-    Same computation as `~mne.time_frequency.tfr_multitaper`, but operates on
-    :class:`NumPy arrays <numpy.ndarray>` instead of `~mne.Epochs` or
-    `~mne.Evoked` objects.
+    Same computation as mne.time_frequency.tfr_multitaper`, but operates on
+    :class:`NumPy arrays <numpy.ndarray>` instead of mne.Epochs` or
+    mne.Evoked` objects.
 
     Parameters
     ----------
@@ -151,10 +178,10 @@ def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mea
         The epochs.
     sfreq : float
         Sampling frequency of the data in Hz.
-    
+
     freqs : array of float, shape (n_freqs,)
         The frequencies of interest in Hz.
-    
+
     n_cycles : int | array of int, shape (n_freqs,)
         Number of cycles in the wavelet, either a fixed number or one per
         frequency. The number of cycles ``n_cycles`` and the frequencies of
@@ -163,7 +190,7 @@ def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mea
         and about time and frequency smoothing.
     zero_mean : bool
         If True, make sure the wavelets have a mean of zero. Defaults to True.
-    
+
     time_bandwidth : float ``≥ 2.0``
         Product between the temporal window length (in seconds) and the *full*
         frequency bandwidth (in Hz). This product can be seen as the surface of the
@@ -172,14 +199,14 @@ def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mea
         for additional information.
     use_fft : bool
         Use the FFT for convolutions or not. Defaults to True.
-    
+
     decim : int | slice, default 1
         To reduce memory usage, decimation factor after time-frequency
         decomposition.
-    
+
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
-    
+
         .. note::
             Decimation is done after convolutions and may create aliasing
             artifacts.
@@ -199,7 +226,7 @@ def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mea
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -231,37 +258,37 @@ def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mea
 
     Notes
     -----
-    
+
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows
     allow more precise frequency estimates; shorter temporal windows "smear"
     frequency estimates while providing more precise timing information.
-    
+
     Time-frequency representations are computed using a sliding temporal window.
     Either the temporal window has a fixed length independent of frequency, or the
     temporal window decreases in length with increased frequency.
-    
+
     .. image:: https://www.fieldtriptoolbox.org/assets/img/tutorial/timefrequencyanalysis/figure1.png
-    
+
     *Figure: Time and frequency smoothing. (a) For a fixed length temporal window
     the time and frequency smoothing remains fixed. (b) For temporal windows that
     decrease with frequency, the temporal smoothing decreases and the frequency
     smoothing increases with frequency.*
     Source: `FieldTrip tutorial: Time-frequency analysis using Hanning window,
     multitapers and wavelets <https://www.fieldtriptoolbox.org/tutorial/timefrequencyanalysis>`_.
-    
+
     In MNE-Python, the multitaper temporal window length is defined by the arguments
     ``freqs`` and ``n_cycles``, respectively defining the frequencies of interest
     and the number of cycles: :math:`T = \\frac{\\mathtt{n\\_cycles}}{\\mathtt{freqs}}`
-    
+
     A fixed number of cycles for all frequencies will yield a temporal window which
     decreases with frequency. For example, ``freqs=np.arange(1, 6, 2)`` and
     ``n_cycles=2`` yields ``T=array([2., 0.7, 0.4])``.
-    
+
     To use a temporal window with fixed length, the number of cycles has to be
     defined based on the frequency. For example, ``freqs=np.arange(1, 6, 2)`` and
     ``n_cycles=freqs / 2`` yields ``T=array([0.5, 0.5, 0.5])``.
-    
+
     In MNE-Python's multitaper functions, the frequency bandwidth is
     additionally affected by the parameter ``time_bandwidth``.
     The ``n_cycles`` parameter determines the temporal window length based on the
@@ -272,7 +299,7 @@ def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mea
     determined by :math:`\\frac{\\mathrm{time~bandwidth}}{\\mathrm{time~window}}`, and
     thus passing a larger ``time_bandwidth`` value will increase the frequency
     bandwidth (thereby decreasing the frequency *resolution*).
-    
+
     The increased frequency bandwidth is reached by averaging spectral estimates
     obtained from multiple tapers. Thus, ``time_bandwidth`` also determines the
     number of tapers used. MNE-Python uses only "good" tapers (tapers with minimal
@@ -283,16 +310,16 @@ def tfr_array_multitaper(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mea
     ``time_bandwidth`` low) means fewer tapers will be used, which undermines what
     is unique about multitaper methods — namely their ability to improve accuracy /
     reduce noise in the power estimates by using several (orthogonal) tapers.
-    
+
     .. warning::
-    
-        In `~mne.time_frequency.tfr_array_multitaper` and
-        `~mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
+
+        In mne.time_frequency.tfr_array_multitaper` and
+        mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
         product of the temporal window length with the *full* frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
-    
-        This is not the case for `~mne.time_frequency.psd_array_multitaper` where
+
+        This is not the case for mne.time_frequency.psd_array_multitaper` where
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 

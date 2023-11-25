@@ -1,138 +1,171 @@
-from ..utils import check_fname as check_fname, fill_doc as fill_doc, logger as logger, object_diff as object_diff, repr_html as repr_html, verbose as verbose, warn as warn
+from ..utils import (
+    check_fname as check_fname,
+    fill_doc as fill_doc,
+    logger as logger,
+    object_diff as object_diff,
+    repr_html as repr_html,
+    warn as warn,
+)
 from ._digitization import DigPoint as DigPoint, write_dig as write_dig
 from .compensator import get_current_comp as get_current_comp
 from .constants import FIFF as FIFF
 from .ctf_comp import write_ctf_comp as write_ctf_comp
 from .open import fiff_open as fiff_open
-from .pick import channel_type as channel_type, get_channel_type_constants as get_channel_type_constants, pick_types as pick_types
+from .pick import (
+    channel_type as channel_type,
+    get_channel_type_constants as get_channel_type_constants,
+    pick_types as pick_types,
+)
 from .proj import Projection as Projection
 from .tag import find_tag as find_tag, read_tag as read_tag
 from .tree import dir_tree_find as dir_tree_find
-from .write import DATE_NONE as DATE_NONE, end_block as end_block, start_and_end_file as start_and_end_file, start_block as start_block, write_ch_info as write_ch_info, write_coord_trans as write_coord_trans, write_dig_points as write_dig_points, write_float as write_float, write_float_matrix as write_float_matrix, write_id as write_id, write_int as write_int, write_julian as write_julian, write_name_list_sanitized as write_name_list_sanitized, write_string as write_string
+from .write import (
+    DATE_NONE as DATE_NONE,
+    end_block as end_block,
+    start_and_end_file as start_and_end_file,
+    start_block as start_block,
+    write_ch_info as write_ch_info,
+    write_coord_trans as write_coord_trans,
+    write_dig_points as write_dig_points,
+    write_float as write_float,
+    write_float_matrix as write_float_matrix,
+    write_id as write_id,
+    write_int as write_int,
+    write_julian as write_julian,
+    write_name_list_sanitized as write_name_list_sanitized,
+    write_string as write_string,
+)
 from _typeshed import Incomplete
+
 b = bytes
 
 class MontageMixin:
     """Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
 
-        Parameters
-        ----------
-        
-        montage : None | str | DigMontage
-            A montage containing channel positions. If a string or
-            :class:`~mne.channels.DigMontage` is
-            specified, the existing channel information will be updated with the
-            channel positions from the montage. Valid strings are the names of the
-            built-in montages that ship with MNE-Python; you can list those via
-            :func:`mne.channels.get_builtin_montages`.
-            If ``None`` (default), the channel positions will be removed from the
-            :class:`~mne.Info`.
-        
-        match_case : bool
-            If True (default), channel name matching will be case sensitive.
-        
-            .. versionadded:: 0.20
-        
-        match_alias : bool | dict
-            Whether to use a lookup table to match unrecognized channel location names
-            to their known aliases. If True, uses the mapping in
-            ``mne.io.constants.CHANNEL_LOC_ALIASES``. If a :class:`dict` is passed, it
-            will be used instead, and should map from non-standard channel names to
-            names in the specified ``montage``. Default is ``False``.
-        
-            .. versionadded:: 0.23
-        
-        on_missing : 'raise' | 'warn' | 'ignore'
-            Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
-            warning, or ``'ignore'`` to ignore when channels have missing coordinates.
-        
-            .. versionadded:: 0.20.1
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
+    Parameters
+    ----------
 
-        Returns
-        -------
-        inst : instance of Raw | Epochs | Evoked
-            The instance, modified in-place.
+    montage : None | str | DigMontage
+        A montage containing channel positions. If a string or
+        :class:mne.channels.DigMontage` is
+        specified, the existing channel information will be updated with the
+        channel positions from the montage. Valid strings are the names of the
+        built-in montages that ship with MNE-Python; you can list those via
+        :func:`mne.channels.get_builtin_montages`.
+        If ``None`` (default), the channel positions will be removed from the
+        :class:mne.Info`.
 
-        See Also
-        --------
-        mne.channels.make_standard_montage
-        mne.channels.make_dig_montage
-        mne.channels.read_custom_montage
+    match_case : bool
+        If True (default), channel name matching will be case sensitive.
 
-        Notes
-        -----
-        .. warning::
-            Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
-            a montage. Other channel types (e.g., MEG channels) should have
-            their positions defined properly using their data reading
-            functions.
-        .. warning::
-            Applying a montage will only set locations of channels that exist
-            at the time it is applied. This means when
-            :ref:`re-referencing <tut-set-eeg-ref>`
-            make sure to apply the montage only after calling
-            :func:`mne.add_reference_channels`
-        """
+        .. versionadded:: 0.20
+
+    match_alias : bool | dict
+        Whether to use a lookup table to match unrecognized channel location names
+        to their known aliases. If True, uses the mapping in
+        ``mne.io.constants.CHANNEL_LOC_ALIASES``. If a :class:`dict` is passed, it
+        will be used instead, and should map from non-standard channel names to
+        names in the specified ``montage``. Default is ``False``.
+
+        .. versionadded:: 0.23
+
+    on_missing : 'raise' | 'warn' | 'ignore'
+        Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
+        warning, or ``'ignore'`` to ignore when channels have missing coordinates.
+
+        .. versionadded:: 0.20.1
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Returns
+    -------
+    inst : instance of Raw | Epochs | Evoked
+        The instance, modified in-place.
+
+    See Also
+    --------
+    mne.channels.make_standard_montage
+    mne.channels.make_dig_montage
+    mne.channels.read_custom_montage
+
+    Notes
+    -----
+    .. warning::
+        Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
+        a montage. Other channel types (e.g., MEG channels) should have
+        their positions defined properly using their data reading
+        functions.
+    .. warning::
+        Applying a montage will only set locations of channels that exist
+        at the time it is applied. This means when
+        :ref:`re-referencing <tut-set-eeg-ref>`
+        make sure to apply the montage only after calling
+        :func:`mne.add_reference_channels`
+    """
 
     def get_montage(self):
         """Get a DigMontage from instance.
 
         Returns
         -------
-        
+
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
-            :class:`~mne.channels.DigMontage` is
+            :class:mne.channels.DigMontage` is
             specified, the existing channel information will be updated with the
             channel positions from the montage. Valid strings are the names of the
             built-in montages that ship with MNE-Python; you can list those via
             :func:`mne.channels.get_builtin_montages`.
             If ``None`` (default), the channel positions will be removed from the
-            :class:`~mne.Info`.
+            :class:mne.Info`.
         """
-
-    def set_montage(self, montage, match_case: bool=..., match_alias: bool=..., on_missing: str=..., verbose: Incomplete | None=...):
+    def set_montage(
+        self,
+        montage,
+        match_case: bool = ...,
+        match_alias: bool = ...,
+        on_missing: str = ...,
+        verbose=...,
+    ):
         """Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
 
         Parameters
         ----------
-        
+
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
-            :class:`~mne.channels.DigMontage` is
+            :class:mne.channels.DigMontage` is
             specified, the existing channel information will be updated with the
             channel positions from the montage. Valid strings are the names of the
             built-in montages that ship with MNE-Python; you can list those via
             :func:`mne.channels.get_builtin_montages`.
             If ``None`` (default), the channel positions will be removed from the
-            :class:`~mne.Info`.
-        
+            :class:mne.Info`.
+
         match_case : bool
             If True (default), channel name matching will be case sensitive.
-        
+
             .. versionadded:: 0.20
-        
+
         match_alias : bool | dict
             Whether to use a lookup table to match unrecognized channel location names
             to their known aliases. If True, uses the mapping in
             ``mne.io.constants.CHANNEL_LOC_ALIASES``. If a :class:`dict` is passed, it
             will be used instead, and should map from non-standard channel names to
             names in the specified ``montage``. Default is ``False``.
-        
+
             .. versionadded:: 0.23
-        
+
         on_missing : 'raise' | 'warn' | 'ignore'
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when channels have missing coordinates.
-        
+
             .. versionadded:: 0.20.1
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -164,40 +197,41 @@ class MontageMixin:
             make sure to apply the montage only after calling
             :func:`mne.add_reference_channels`
         """
+
 channel_type_constants: Incomplete
 
 class SetChannelsMixin(MontageMixin):
     """Set the measurement start date.
 
-        Parameters
-        ----------
-        meas_date : datetime | float | tuple | None
-            The new measurement date.
-            If datetime object, it must be timezone-aware and in UTC.
-            A tuple of (seconds, microseconds) or float (alias for
-            ``(meas_date, 0)``) can also be passed and a datetime
-            object will be automatically created. If None, will remove
-            the time reference.
+    Parameters
+    ----------
+    meas_date : datetime | float | tuple | None
+        The new measurement date.
+        If datetime object, it must be timezone-aware and in UTC.
+        A tuple of (seconds, microseconds) or float (alias for
+        ``(meas_date, 0)``) can also be passed and a datetime
+        object will be automatically created. If None, will remove
+        the time reference.
 
-        Returns
-        -------
-        inst : instance of Raw | Epochs | Evoked
-            The modified raw instance. Operates in place.
+    Returns
+    -------
+    inst : instance of Raw | Epochs | Evoked
+        The modified raw instance. Operates in place.
 
-        See Also
-        --------
-        mne.io.Raw.anonymize
+    See Also
+    --------
+    mne.io.Raw.anonymize
 
-        Notes
-        -----
-        If you want to remove all time references in the file, call
-        :func:`mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
-        after calling ``inst.set_meas_date(None)``.
+    Notes
+    -----
+    If you want to remove all time references in the file, call
+    :func:`mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
+    after calling ``inst.set_meas_date(None)``.
 
-        .. versionadded:: 0.20
-        """
+    .. versionadded:: 0.20
+    """
 
-    def set_channel_types(self, mapping, *, on_unit_change: str=..., verbose: Incomplete | None=...):
+    def set_channel_types(self, mapping, *, on_unit_change: str = ..., verbose=...):
         """Specify the sensor types of channels.
 
         Parameters
@@ -210,7 +244,7 @@ class SetChannelsMixin(MontageMixin):
             automatically to match the new sensor type.
 
             .. versionadded:: 1.4
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -236,26 +270,25 @@ class SetChannelsMixin(MontageMixin):
 
         .. versionadded:: 0.9.0
         """
-
-    def rename_channels(self, mapping, allow_duplicates: bool=..., *, verbose: Incomplete | None=...):
+    def rename_channels(self, mapping, allow_duplicates: bool = ..., *, verbose=...):
         """Rename channels.
 
         Parameters
         ----------
-        
+
         mapping : dict | callable
             A dictionary mapping the old channel to a new channel name
             e.g. ``{'EEG061' : 'EEG161'}``. Can also be a callable function
             that takes and returns a string.
-        
+
             .. versionchanged:: 0.10.0
                Support for a callable function.
         allow_duplicates : bool
             If True (default False), allow duplicates, which will automatically
             be renamed with ``-N`` at the end.
-        
+
             .. versionadded:: 0.22.0
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -274,8 +307,21 @@ class SetChannelsMixin(MontageMixin):
         -----
         .. versionadded:: 0.9.0
         """
-
-    def plot_sensors(self, kind: str=..., ch_type: Incomplete | None=..., title: Incomplete | None=..., show_names: bool=..., ch_groups: Incomplete | None=..., to_sphere: bool=..., axes: Incomplete | None=..., block: bool=..., show: bool=..., sphere: Incomplete | None=..., *, verbose: Incomplete | None=...):
+    def plot_sensors(
+        self,
+        kind: str = ...,
+        ch_type=...,
+        title=...,
+        show_names: bool = ...,
+        ch_groups=...,
+        to_sphere: bool = ...,
+        axes=...,
+        block: bool = ...,
+        show: bool = ...,
+        sphere=...,
+        *,
+        verbose=...,
+    ):
         """Plot sensor positions.
 
         Parameters
@@ -327,17 +373,17 @@ class SetChannelsMixin(MontageMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+            of a spherical :class:mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
             it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
-        
+
             .. versionadded:: 0.20
             .. versionchanged:: 1.1 Added ``'eeglab'`` option.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -363,26 +409,25 @@ class SetChannelsMixin(MontageMixin):
 
         .. versionadded:: 0.12.0
         """
-
-    def anonymize(self, daysback: Incomplete | None=..., keep_his: bool=..., verbose: Incomplete | None=...):
+    def anonymize(self, daysback=..., keep_his: bool = ..., verbose=...):
         """Anonymize measurement information in place.
 
         Parameters
         ----------
-        
+
         daysback : int | None
             Number of days to subtract from all dates.
             If ``None`` (default), the acquisition date, ``info['meas_date']``,
             will be set to ``January 1ˢᵗ, 2000``. This parameter is ignored if
             ``info['meas_date']`` is ``None`` (i.e., no acquisition date has been set).
-        
+
         keep_his : bool
             If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
             Defaults to ``False``.
-        
+
             .. warning:: This could mean that ``info`` is not fully
                          anonymized. Use with caution.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -396,10 +441,10 @@ class SetChannelsMixin(MontageMixin):
 
         Notes
         -----
-        
+
         Removes potentially identifying information if it exists in ``info``.
         Specifically for each of the following we use:
-        
+
         - meas_date, file_id, meas_id
                 A default value, or as specified by ``daysback``.
         - subject_info
@@ -415,15 +460,14 @@ class SetChannelsMixin(MontageMixin):
                 Dates use the ``meas_date`` logic, and experimenter a default string.
         - helium_info, device_info
                 Dates use the ``meas_date`` logic, meta info uses defaults.
-        
+
         If ``info['meas_date']`` is ``None``, it will remain ``None`` during processing
         the above fields.
-        
+
         Operates in place.
 
         .. versionadded:: 0.13.0
         """
-
     def set_meas_date(self, meas_date):
         """Set the measurement start date.
 
@@ -458,27 +502,27 @@ class SetChannelsMixin(MontageMixin):
 class ContainsMixin:
     """Get a list of channel type for each channel.
 
-        Parameters
-        ----------
-        picks : str | array-like | slice | None
-            Channels to include. Slices and lists of integers will be interpreted as 
-            channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-            string values "all" to pick all channels, or "data" to pick :term:`data 
-            channels`. None (default) will pick all channels. Note that channels in 
-            ``info['bads']`` *will be included* if their names or indices are 
-            explicitly provided.
-        unique : bool
-            Whether to return only unique channel types. Default is ``False``.
-        only_data_chs : bool
-            Whether to ignore non-data channels. Default is ``False``.
+    Parameters
+    ----------
+    picks : str | array-like | slice | None
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all channels. Note that channels in
+        ``info['bads']`` *will be included* if their names or indices are
+        explicitly provided.
+    unique : bool
+        Whether to return only unique channel types. Default is ``False``.
+    only_data_chs : bool
+        Whether to ignore non-data channels. Default is ``False``.
 
-        Returns
-        -------
-        channel_types : list
-            The channel types.
-        """
+    Returns
+    -------
+    channel_types : list
+        The channel types.
+    """
 
     def __contains__(self, ch_type) -> bool:
         """Check channel type membership.
@@ -504,24 +548,24 @@ class ContainsMixin:
             False
 
         """
-
     @property
     def compensation_grade(self):
         """The current gradient compensation grade."""
-
-    def get_channel_types(self, picks: Incomplete | None=..., unique: bool=..., only_data_chs: bool=...):
+    def get_channel_types(
+        self, picks=..., unique: bool = ..., only_data_chs: bool = ...
+    ):
         """Get a list of channel type for each channel.
 
         Parameters
         ----------
         picks : str | array-like | slice | None
-            Channels to include. Slices and lists of integers will be interpreted as 
-            channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-            string values "all" to pick all channels, or "data" to pick :term:`data 
-            channels`. None (default) will pick all channels. Note that channels in 
-            ``info['bads']`` *will be included* if their names or indices are 
+            Channels to include. Slices and lists of integers will be interpreted as
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+            string values "all" to pick all channels, or "data" to pick :term:`data
+            channels`. None (default) will pick all channels. Note that channels in
+            ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
         unique : bool
             Whether to return only unique channel types. Default is ``False``.
@@ -537,36 +581,25 @@ class ContainsMixin:
 class MNEBadsList(list):
     """Subclass of bads that checks inplace operations."""
 
-    def __init__(self, *, bads, info) -> None:
-        ...
-
-    def extend(self, iterable):
-        ...
-
-    def append(self, x):
-        ...
-
-    def __iadd__(self, x):
-        ...
+    def __init__(self, *, bads, info) -> None: ...
+    def extend(self, iterable): ...
+    def append(self, x): ...
+    def __iadd__(self, x): ...
 
 class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     """Write measurement info in fif file.
 
-        Parameters
-        ----------
-        fname : path-like
-            The name of the file. Should end by ``'-info.fif'``.
-        """
+    Parameters
+    ----------
+    fname : path-like
+        The name of the file. Should end by ``'-info.fif'``.
+    """
 
-    def __init__(self, *args, **kwargs) -> None:
-        ...
-
+    def __init__(self, *args, **kwargs) -> None: ...
     def __setitem__(self, key, val) -> None:
         """Attribute setter."""
-
-    def update(self, other: Incomplete | None=..., **kwargs) -> None:
+    def update(self, other=..., **kwargs) -> None:
         """Update method using __setitem__()."""
-
     def copy(self):
         """Copy the instance.
 
@@ -575,7 +608,6 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         info : instance of Info
             The copied info.
         """
-
     def normalize_proj(self) -> None:
         """(Re-)Normalize projection vectors after subselection.
 
@@ -590,14 +622,10 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         function if you're confident that the projection vectors still
         adequately capture the original signal of interest.
         """
-
     def __deepcopy__(self, memodict):
         """Make a deepcopy."""
-
     @property
-    def ch_names(self):
-        ...
-
+    def ch_names(self): ...
     def save(self, fname) -> None:
         """Write measurement info in fif file.
 
@@ -607,14 +635,14 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
             The name of the file. Should end by ``'-info.fif'``.
         """
 
-def read_fiducials(fname, verbose: Incomplete | None=...):
+def read_fiducials(fname, verbose=...):
     """Read fiducials from a fiff file.
 
     Parameters
     ----------
     fname : path-like
         The filename to read.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -630,7 +658,9 @@ def read_fiducials(fname, verbose: Incomplete | None=...):
         ``mne.io.constants.FIFF.FIFFV_COORD_...``).
     """
 
-def write_fiducials(fname, pts, coord_frame: str=..., *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+def write_fiducials(
+    fname, pts, coord_frame: str = ..., *, overwrite: bool = ..., verbose=...
+) -> None:
     """Write fiducials to a fiff file.
 
     Parameters
@@ -647,13 +677,13 @@ def write_fiducials(fname, pts, coord_frame: str=..., *, overwrite: bool=..., ve
         ``'ctf_meg'``, and ``'unknown'``
         If an integer, must be one of the constants defined as
         ``mne.io.constants.FIFF.FIFFV_COORD_...``.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -661,14 +691,14 @@ def write_fiducials(fname, pts, coord_frame: str=..., *, overwrite: bool=..., ve
         argument.
     """
 
-def read_info(fname, verbose: Incomplete | None=...):
+def read_info(fname, verbose=...):
     """Read measurement info from a file.
 
     Parameters
     ----------
     fname : path-like
         File name.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -677,7 +707,7 @@ def read_info(fname, verbose: Incomplete | None=...):
 
     Returns
     -------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     """
@@ -698,7 +728,7 @@ def read_bad_channels(fid, node):
         A list of bad channel's names.
     """
 
-def read_meas_info(fid, tree, clean_bads: bool=..., verbose: Incomplete | None=...):
+def read_meas_info(fid, tree, clean_bads: bool = ..., verbose=...):
     """Read the measurement info.
 
     Parameters
@@ -711,7 +741,7 @@ def read_meas_info(fid, tree, clean_bads: bool=..., verbose: Incomplete | None=.
         If True, clean info['bads'] before running consistency check.
         Should only be needed for old files where we did not check bads
         before saving.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -720,21 +750,21 @@ def read_meas_info(fid, tree, clean_bads: bool=..., verbose: Incomplete | None=.
 
     Returns
     -------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     meas : dict
         Node in tree that contains the info.
     """
 
-def write_meas_info(fid, info, data_type: Incomplete | None=..., reset_range: bool=...) -> None:
+def write_meas_info(fid, info, data_type=..., reset_range: bool = ...) -> None:
     """Write measurement info into a file id (from a fif file).
 
     Parameters
     ----------
     fid : file
         Open file descriptor.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     data_type : int
@@ -749,14 +779,14 @@ def write_meas_info(fid, info, data_type: Incomplete | None=..., reset_range: bo
     Tags are written in a particular order for compatibility with maxfilter.
     """
 
-def write_info(fname, info, data_type: Incomplete | None=..., reset_range: bool=...) -> None:
+def write_info(fname, info, data_type=..., reset_range: bool = ...) -> None:
     """Write measurement info in fif file.
 
     Parameters
     ----------
     fname : path-like
         The name of the file. Should end by ``-info.fif``.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     data_type : int
@@ -767,7 +797,7 @@ def write_info(fname, info, data_type: Incomplete | None=..., reset_range: bool=
         If True, info['chs'][k]['range'] will be set to unity.
     """
 
-def create_info(ch_names, sfreq, ch_types: str=..., verbose: Incomplete | None=...):
+def create_info(ch_names, sfreq, ch_types: str = ..., verbose=...):
     """Create a basic Info instance suitable for use with create_raw.
 
     Parameters
@@ -784,7 +814,7 @@ def create_info(ch_names, sfreq, ch_types: str=..., verbose: Incomplete | None=.
         'seeg', 'dbs', 'ecog', 'mag', 'eeg', 'ref_meg', 'grad', 'emg', 'hbr'
         'eyetrack' or 'hbo'.
         If str, then all channels are assumed to be of the same type.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -793,7 +823,7 @@ def create_info(ch_names, sfreq, ch_types: str=..., verbose: Incomplete | None=.
 
     Returns
     -------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
 
@@ -816,9 +846,10 @@ def create_info(ch_names, sfreq, ch_types: str=..., verbose: Incomplete | None=.
     * Am: dipole
     * AU: misc
     """
+
 RAW_INFO_FIELDS: Incomplete
 
-def anonymize_info(info, daysback: Incomplete | None=..., keep_his: bool=..., verbose: Incomplete | None=...):
+def anonymize_info(info, daysback=..., keep_his: bool = ..., verbose=...):
     """Anonymize measurement information in place.
 
     .. warning:: If ``info`` is part of an object like
@@ -830,23 +861,23 @@ def anonymize_info(info, daysback: Incomplete | None=..., keep_his: bool=..., ve
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    
+
     daysback : int | None
         Number of days to subtract from all dates.
         If ``None`` (default), the acquisition date, ``info['meas_date']``,
         will be set to ``January 1ˢᵗ, 2000``. This parameter is ignored if
         ``info['meas_date']`` is ``None`` (i.e., no acquisition date has been set).
-    
+
     keep_his : bool
         If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
         Defaults to ``False``.
-    
+
         .. warning:: This could mean that ``info`` is not fully
                      anonymized. Use with caution.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -860,10 +891,10 @@ def anonymize_info(info, daysback: Incomplete | None=..., keep_his: bool=..., ve
 
     Notes
     -----
-    
+
     Removes potentially identifying information if it exists in ``info``.
     Specifically for each of the following we use:
-    
+
     - meas_date, file_id, meas_id
             A default value, or as specified by ``daysback``.
     - subject_info
@@ -879,9 +910,9 @@ def anonymize_info(info, daysback: Incomplete | None=..., keep_his: bool=..., ve
             Dates use the ``meas_date`` logic, and experimenter a default string.
     - helium_info, device_info
             Dates use the ``meas_date`` logic, meta info uses defaults.
-    
+
     If ``info['meas_date']`` is ``None``, it will remain ``None`` during processing
     the above fields.
-    
+
     Operates in place.
     """

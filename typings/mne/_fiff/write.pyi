@@ -2,10 +2,12 @@ from ..utils import logger as logger
 from .constants import FIFF as FIFF
 from _typeshed import Incomplete
 from collections.abc import Generator
+
 DATE_NONE: Incomplete
 
-def write_nop(fid, last: bool=...) -> None:
+def write_nop(fid, last: bool = ...) -> None:
     """Write a FIFF_NOP."""
+
 INT32_MAX: int
 
 def write_int(fid, kind, data) -> None:
@@ -70,7 +72,7 @@ def get_machid():
 def get_new_file_id():
     """Create a new file ID tag."""
 
-def write_id(fid, kind, id_: Incomplete | None=...) -> None:
+def write_id(fid, kind, id_=...) -> None:
     """Write fiff id."""
 
 def start_block(fid, kind) -> None:
@@ -79,7 +81,7 @@ def start_block(fid, kind) -> None:
 def end_block(fid, kind) -> None:
     """Write a FIFF_BLOCK_END tag."""
 
-def start_file(fname, id_: Incomplete | None=...):
+def start_file(fname, id_=...):
     """Open a fif file for writing and writes the compulsory header tags.
 
     Parameters
@@ -92,10 +94,10 @@ def start_file(fname, id_: Incomplete | None=...):
         ID to use for the FIFF_FILE_ID.
     """
 
-def start_and_end_file(fname, id_: Incomplete | None=...) -> Generator[Incomplete, None, None]:
+def start_and_end_file(fname, id_=...) -> Generator[Incomplete, None, None]:
     """Start and (if successfully written) close the file."""
 
-def check_fiff_length(fid, close: bool=...) -> None:
+def check_fiff_length(fid, close: bool = ...) -> None:
     """Ensure our file hasn't grown too large to work properly."""
 
 def end_file(fid) -> None:
@@ -107,7 +109,7 @@ def write_coord_trans(fid, trans) -> None:
 def write_ch_info(fid, ch) -> None:
     """Write a channel information record to a fif file."""
 
-def write_dig_points(fid, dig, block: bool=..., coord_frame: Incomplete | None=...) -> None:
+def write_dig_points(fid, dig, block: bool = ..., coord_frame=...) -> None:
     """Write a set of digitizer data points into a fif file."""
 
 def write_float_sparse_rcs(fid, kind, mat):
@@ -116,5 +118,5 @@ def write_float_sparse_rcs(fid, kind, mat):
 def write_float_sparse_ccs(fid, kind, mat):
     """Write a single-precision sparse compressed column matrix tag."""
 
-def write_float_sparse(fid, kind, mat, fmt: str=...) -> None:
+def write_float_sparse(fid, kind, mat, fmt: str = ...) -> None:
     """Write a single-precision floating-point sparse matrix tag."""

@@ -1,36 +1,36 @@
 import abc
-from ..utils import get_config as get_config, logger as logger, set_config as set_config, verbose as verbose
+from ..utils import get_config as get_config, logger as logger, set_config as set_config
 from .backends._utils import VALID_BROWSE_BACKENDS as VALID_BROWSE_BACKENDS
 from _typeshed import Incomplete
 from abc import ABC
 from collections.abc import Generator
+
 MNE_BROWSER_BACKEND: Incomplete
 backend: Incomplete
 
 class BrowserParams:
     """Container object for 2D browser parameters."""
+
     close_key: str
 
-    def __init__(self, **kwargs) -> None:
-        ...
+    def __init__(self, **kwargs) -> None: ...
 
 class BrowserBase(ABC, metaclass=abc.ABCMeta):
     """Pass a fake keypress to the figure.
 
-        Parameters
-        ----------
-        key : str
-            The key to fake (e.g., ``'a'``).
-        fig : instance of Figure
-            The figure to pass the keypress to.
-        """
+    Parameters
+    ----------
+    key : str
+        The key to fake (e.g., ``'a'``).
+    fig : instance of Figure
+        The figure to pass the keypress to.
+    """
+
     backend_name: Incomplete
     mne: Incomplete
 
-    def __init__(self, **kwargs) -> None:
-        ...
-
-    def fake_keypress(self, key, fig: Incomplete | None=...):
+    def __init__(self, **kwargs) -> None: ...
+    def fake_keypress(self, key, fig=...):
         """Pass a fake keypress to the figure.
 
         Parameters
@@ -41,7 +41,7 @@ class BrowserBase(ABC, metaclass=abc.ABCMeta):
             The figure to pass the keypress to.
         """
 
-def set_browser_backend(backend_name, verbose: Incomplete | None=...):
+def set_browser_backend(backend_name, verbose=...):
     """Set the 2D browser backend for MNE.
 
     The backend will be set as specified and operations will use
@@ -54,7 +54,7 @@ def set_browser_backend(backend_name, verbose: Incomplete | None=...):
         of each backend (``'qt'``, ``'matplotlib'``). The ``'qt'`` browser
         requires `mne-qt-browser
         <https://github.com/mne-tools/mne-qt-browser>`__.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -4,78 +4,119 @@ from .._fiff.open import fiff_open as fiff_open
 from .._fiff.pick import channel_type as channel_type
 from .._fiff.tag import find_tag as find_tag, read_tag as read_tag
 from .._fiff.tree import dir_tree_find as dir_tree_find
-from .._fiff.write import end_block as end_block, start_and_end_file as start_and_end_file, start_block as start_block, write_coord_trans as write_coord_trans, write_float_matrix as write_float_matrix, write_float_sparse_rcs as write_float_sparse_rcs, write_id as write_id, write_int as write_int, write_int_matrix as write_int_matrix, write_string as write_string
-from .._freesurfer import get_mni_fiducials as get_mni_fiducials, get_volume_labels_from_aseg as get_volume_labels_from_aseg, read_freesurfer_lut as read_freesurfer_lut
-from ..bem import ConductorModel as ConductorModel, read_bem_surfaces as read_bem_surfaces
+from .._fiff.write import (
+    end_block as end_block,
+    start_and_end_file as start_and_end_file,
+    start_block as start_block,
+    write_coord_trans as write_coord_trans,
+    write_float_matrix as write_float_matrix,
+    write_float_sparse_rcs as write_float_sparse_rcs,
+    write_id as write_id,
+    write_int as write_int,
+    write_int_matrix as write_int_matrix,
+    write_string as write_string,
+)
+from .._freesurfer import (
+    get_mni_fiducials as get_mni_fiducials,
+    get_volume_labels_from_aseg as get_volume_labels_from_aseg,
+    read_freesurfer_lut as read_freesurfer_lut,
+)
+from ..bem import (
+    ConductorModel as ConductorModel,
+    read_bem_surfaces as read_bem_surfaces,
+)
 from ..parallel import parallel_func as parallel_func
-from ..surface import complete_surface_info as complete_surface_info, fast_cross_3d as fast_cross_3d, mesh_dist as mesh_dist, read_surface as read_surface
-from ..transforms import Transform as Transform, apply_trans as apply_trans, combine_transforms as combine_transforms, invert_transform as invert_transform
-from ..utils import check_fname as check_fname, fill_doc as fill_doc, get_subjects_dir as get_subjects_dir, logger as logger, object_size as object_size, sizeof_fmt as sizeof_fmt, verbose as verbose, warn as warn
+from ..surface import (
+    complete_surface_info as complete_surface_info,
+    fast_cross_3d as fast_cross_3d,
+    mesh_dist as mesh_dist,
+    read_surface as read_surface,
+)
+from ..transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    combine_transforms as combine_transforms,
+    invert_transform as invert_transform,
+)
+from ..utils import (
+    check_fname as check_fname,
+    fill_doc as fill_doc,
+    get_subjects_dir as get_subjects_dir,
+    logger as logger,
+    object_size as object_size,
+    sizeof_fmt as sizeof_fmt,
+    warn as warn,
+)
 from ..viz import plot_alignment as plot_alignment
 from _typeshed import Incomplete
 
 class SourceSpaces(list):
     """Export source spaces to nifti or mgz file.
 
-        Parameters
-        ----------
-        fname : path-like
-            Name of nifti or mgz file to write.
-        include_surfaces : bool
-            If True, include surface source spaces.
-        include_discrete : bool
-            If True, include discrete source spaces.
-        dest : ``'mri'`` | ``'surf'``
-            If ``'mri'`` the volume is defined in the coordinate system of the
-            original T1 image. If ``'surf'`` the coordinate system of the
-            FreeSurfer surface is used (Surface RAS).
-        trans : dict, str, or None
-            Either a transformation filename (usually made using mne_analyze)
-            or an info dict (usually opened using read_trans()). If string, an
-            ending of ``.fif`` or ``.fif.gz`` will be assumed to be in FIF
-            format, any other ending will be assumed to be a text file with a
-            4x4 transformation matrix (like the ``--trans`` MNE-C option.
-            Must be provided if source spaces are in head coordinates and
-            include_surfaces and mri_resolution are True.
-        mri_resolution : bool | str
-            If True, the image is saved in MRI resolution
-            (e.g. 256 x 256 x 256), and each source region (surface or
-            segmentation volume) filled in completely. If "sparse", only a
-            single voxel in the high-resolution MRI is filled in for each
-            source point.
+    Parameters
+    ----------
+    fname : path-like
+        Name of nifti or mgz file to write.
+    include_surfaces : bool
+        If True, include surface source spaces.
+    include_discrete : bool
+        If True, include discrete source spaces.
+    dest : ``'mri'`` | ``'surf'``
+        If ``'mri'`` the volume is defined in the coordinate system of the
+        original T1 image. If ``'surf'`` the coordinate system of the
+        FreeSurfer surface is used (Surface RAS).
+    trans : dict, str, or None
+        Either a transformation filename (usually made using mne_analyze)
+        or an info dict (usually opened using read_trans()). If string, an
+        ending of ``.fif`` or ``.fif.gz`` will be assumed to be in FIF
+        format, any other ending will be assumed to be a text file with a
+        4x4 transformation matrix (like the ``--trans`` MNE-C option.
+        Must be provided if source spaces are in head coordinates and
+        include_surfaces and mri_resolution are True.
+    mri_resolution : bool | str
+        If True, the image is saved in MRI resolution
+        (e.g. 256 x 256 x 256), and each source region (surface or
+        segmentation volume) filled in completely. If "sparse", only a
+        single voxel in the high-resolution MRI is filled in for each
+        source point.
 
-            .. versionchanged:: 0.21.0
-               Support for ``"sparse"`` was added.
-        use_lut : bool
-            If True, assigns a numeric value to each source space that
-            corresponds to a color on the freesurfer lookup table.
-        
-        overwrite : bool
-            If True (default False), overwrite the destination file if it
-            exists.
+        .. versionchanged:: 0.21.0
+           Support for ``"sparse"`` was added.
+    use_lut : bool
+        If True, assigns a numeric value to each source space that
+        corresponds to a color on the freesurfer lookup table.
 
-            .. versionadded:: 0.19
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
+    overwrite : bool
+        If True (default False), overwrite the destination file if it
+        exists.
 
-        Notes
-        -----
-        This method requires nibabel.
-        """
+        .. versionadded:: 0.19
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Notes
+    -----
+    This method requires nibabel.
+    """
+
     info: Incomplete
 
-    def __init__(self, source_spaces, info: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(self, source_spaces, info=...) -> None: ...
     @property
-    def kind(self):
-        ...
-
-    def plot(self, head: bool=..., brain: Incomplete | None=..., skull: Incomplete | None=..., subjects_dir: Incomplete | None=..., trans: Incomplete | None=..., verbose: Incomplete | None=...):
+    def kind(self): ...
+    def plot(
+        self,
+        head: bool = ...,
+        brain=...,
+        skull=...,
+        subjects_dir=...,
+        trans=...,
+        verbose=...,
+    ):
         """Plot the source space.
 
         Parameters
@@ -103,7 +144,7 @@ class SourceSpaces(list):
             produced during coregistration. If trans is None, an identity
             matrix is assumed. This is only needed when the source space is in
             head coordinates.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -115,13 +156,10 @@ class SourceSpaces(list):
         fig : instance of Figure3D
             The figure.
         """
-
     def __getitem__(self, *args, **kwargs):
         """Get an item."""
-
     def __add__(self, other):
         """Combine source spaces."""
-
     def copy(self):
         """Make a copy of the source spaces.
 
@@ -130,30 +168,38 @@ class SourceSpaces(list):
         src : instance of SourceSpaces
             The copied source spaces.
         """
-
     def __deepcopy__(self, memodict):
         """Make a deepcopy."""
-
-    def save(self, fname, overwrite: bool=..., *, verbose: Incomplete | None=...) -> None:
+    def save(self, fname, overwrite: bool = ..., *, verbose=...) -> None:
         """Save the source spaces to a fif file.
 
         Parameters
         ----------
         fname : path-like
             File to write, which should end with ``-src.fif`` or ``-src.fif.gz``.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-
-    def export_volume(self, fname, include_surfaces: bool=..., include_discrete: bool=..., dest: str=..., trans: Incomplete | None=..., mri_resolution: bool=..., use_lut: bool=..., overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+    def export_volume(
+        self,
+        fname,
+        include_surfaces: bool = ...,
+        include_discrete: bool = ...,
+        dest: str = ...,
+        trans=...,
+        mri_resolution: bool = ...,
+        use_lut: bool = ...,
+        overwrite: bool = ...,
+        verbose=...,
+    ) -> None:
         """Export source spaces to nifti or mgz file.
 
         Parameters
@@ -188,13 +234,13 @@ class SourceSpaces(list):
         use_lut : bool
             If True, assigns a numeric value to each source space that
             corresponds to a color on the freesurfer lookup table.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
             .. versionadded:: 0.19
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -206,7 +252,7 @@ class SourceSpaces(list):
         This method requires nibabel.
         """
 
-def read_source_spaces(fname, patch_stats: bool=..., verbose: Incomplete | None=...):
+def read_source_spaces(fname, patch_stats: bool = ..., verbose=...):
     """Read the source spaces from a FIF file.
 
     Parameters
@@ -216,7 +262,7 @@ def read_source_spaces(fname, patch_stats: bool=..., verbose: Incomplete | None=
         ``-src.fif.gz``.
     patch_stats : bool, optional (default False)
         Calculate and add cortical patch statistics to the surfaces.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -265,7 +311,7 @@ def label_src_vertno_sel(label, src):
         Indices of the selected vertices in sourse space.
     """
 
-def write_source_spaces(fname, src, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+def write_source_spaces(fname, src, *, overwrite: bool = ..., verbose=...) -> None:
     """Write source spaces to a file.
 
     Parameters
@@ -275,11 +321,11 @@ def write_source_spaces(fname, src, *, overwrite: bool=..., verbose: Incomplete 
         ``-src.fif.gz``.
     src : instance of SourceSpaces
         The source spaces (as returned by read_source_spaces).
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -291,12 +337,21 @@ def write_source_spaces(fname, src, *, overwrite: bool=..., verbose: Incomplete 
     read_source_spaces
     """
 
-def setup_source_space(subject, spacing: str=..., surface: str=..., subjects_dir: Incomplete | None=..., add_dist: bool=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def setup_source_space(
+    subject,
+    spacing: str = ...,
+    surface: str = ...,
+    subjects_dir=...,
+    add_dist: bool = ...,
+    n_jobs=...,
+    *,
+    verbose=...,
+):
     """Set up bilateral hemisphere surface-based source space with subsampling.
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     spacing : str
@@ -309,7 +364,7 @@ def setup_source_space(subject, spacing: str=..., surface: str=..., subjects_dir
            Support for integers for distance-based spacing.
     surface : str
         The surface to use.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -329,7 +384,7 @@ def setup_source_space(subject, spacing: str=..., surface: str=..., subjects_dir
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         Ignored if ``add_dist=='patch'``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -346,7 +401,24 @@ def setup_source_space(subject, spacing: str=..., surface: str=..., subjects_dir
     setup_volume_source_space
     """
 
-def setup_volume_source_space(subject: Incomplete | None=..., pos: float=..., mri: Incomplete | None=..., sphere: Incomplete | None=..., bem: Incomplete | None=..., surface: Incomplete | None=..., mindist: float=..., exclude: float=..., subjects_dir: Incomplete | None=..., volume_label: Incomplete | None=..., add_interpolator: bool=..., sphere_units: str=..., single_volume: bool=..., *, n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def setup_volume_source_space(
+    subject=...,
+    pos: float = ...,
+    mri=...,
+    sphere=...,
+    bem=...,
+    surface=...,
+    mindist: float = ...,
+    exclude: float = ...,
+    subjects_dir=...,
+    volume_label=...,
+    add_interpolator: bool = ...,
+    sphere_units: str = ...,
+    single_volume: bool = ...,
+    *,
+    n_jobs=...,
+    verbose=...,
+):
     """Set up a volume source space with grid spacing or discrete source space.
 
     Parameters
@@ -381,9 +453,9 @@ def setup_volume_source_space(subject: Incomplete | None=..., pos: float=..., mr
         None (the default) uses a head-digitization fit.
     bem : path-like | None | ConductorModel
         Define source space bounds using a BEM file (specifically the inner
-        skull surface) or a :class:`~mne.bem.ConductorModel` for a 1-layer of 3-layers
-        BEM. See :func:`~mne.make_bem_model` and :func:`~mne.make_bem_solution` to
-        create a :class:`~mne.bem.ConductorModel`. If provided, ``surface`` must be
+        skull surface) or a :class:mne.bem.ConductorModel` for a 1-layer of 3-layers
+        BEM. See :func:mne.make_bem_model` and :func:mne.make_bem_solution` to
+        create a :class:mne.bem.ConductorModel`. If provided, ``surface`` must be
         None.
     surface : path-like | dict | None
         Define source space bounds using a FreeSurfer surface file. Can
@@ -394,7 +466,7 @@ def setup_volume_source_space(subject: Incomplete | None=..., pos: float=..., mr
     exclude : float
         Exclude points closer than this distance (mm) from the center of mass
         of the bounding surface.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -433,7 +505,7 @@ def setup_volume_source_space(subject: Incomplete | None=..., pos: float=..., mr
         value for ``n_jobs``.
 
         .. versionadded:: 1.6
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -479,7 +551,7 @@ def setup_volume_source_space(subject: Incomplete | None=..., pos: float=..., mr
     ``aseg.mgz``).
     """
 
-def add_source_space_distances(src, dist_limit=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def add_source_space_distances(src, dist_limit=..., n_jobs=..., *, verbose=...):
     """Compute inter-source distances along the cortical surface.
 
     This function will also try to add patch info for the source space.
@@ -504,7 +576,7 @@ def add_source_space_distances(src, dist_limit=..., n_jobs: Incomplete | None=..
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         Ignored if ``dist_limit==0.``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -537,7 +609,7 @@ def get_volume_labels_from_src(src, subject, subjects_dir):
     ----------
     src : instance of SourceSpaces
         The source space containing the volume regions.
-    
+
     subject : str
         The FreeSurfer subject name.
     subjects_dir : str
@@ -549,7 +621,14 @@ def get_volume_labels_from_src(src, subject, subjects_dir):
         List of Label of segmented volumes included in src space.
     """
 
-def morph_source_spaces(src_from, subject_to, surf: str=..., subject_from: Incomplete | None=..., subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def morph_source_spaces(
+    src_from,
+    subject_to,
+    surf: str = ...,
+    subject_from=...,
+    subjects_dir=...,
+    verbose=...,
+):
     """Morph an existing source space to a different subject.
 
     .. warning:: This can be used in place of morphing source estimates for
@@ -569,7 +648,7 @@ def morph_source_spaces(src_from, subject_to, surf: str=..., subject_from: Incom
         to be provided, since it is stored in the source space itself.
     subjects_dir : path-like | None
         Path to ``SUBJECTS_DIR`` if it is not set in the environment.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -586,7 +665,7 @@ def morph_source_spaces(src_from, subject_to, surf: str=..., subject_from: Incom
     .. versionadded:: 0.10.0
     """
 
-def compute_distance_to_sensors(src, info, picks: Incomplete | None=..., trans: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_distance_to_sensors(src, info, picks=..., trans=..., verbose=...):
     """Compute distances between vertices and sensors.
 
     Parameters
@@ -594,25 +673,25 @@ def compute_distance_to_sensors(src, info, picks: Incomplete | None=..., trans: 
     src : instance of SourceSpaces
         The object with vertex positions for which to compute distances to
         sensors.
-    
+
     info : mne.Info | None
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Must contain sensor positions to which distances shall
         be computed.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    
+
     trans : str | dict | instance of Transform
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
         during coregistration. Can also be ``'fsaverage'`` to use the built-in
         fsaverage transformation.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

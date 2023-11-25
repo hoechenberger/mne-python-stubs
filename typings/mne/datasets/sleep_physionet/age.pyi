@@ -1,10 +1,19 @@
-from ...utils import verbose as verbose
 from ._utils import AGE_SLEEP_RECORDS as AGE_SLEEP_RECORDS
 from _typeshed import Incomplete
+
 data_path: Incomplete
 BASE_URL: str
 
-def fetch_data(subjects, recording=..., path: Incomplete | None=..., force_update: bool=..., base_url=..., on_missing: str=..., *, verbose: Incomplete | None=...):
+def fetch_data(
+    subjects,
+    recording=...,
+    path=...,
+    force_update: bool = ...,
+    base_url=...,
+    on_missing: str = ...,
+    *,
+    verbose=...,
+):
     """Get paths to local copies of PhysioNet Polysomnography dataset files.
 
     This will fetch data from the publicly available subjects from PhysioNet's
@@ -43,7 +52,7 @@ def fetch_data(subjects, recording=..., path: Incomplete | None=..., force_updat
         are 'raise' | 'warn' | 'ignore'. Default is 'error'. If on_missing
         is 'warn' it will proceed but warn, if 'ignore' it will proceed
         silently.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

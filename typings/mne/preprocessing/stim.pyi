@@ -3,9 +3,17 @@ from ..event import find_events as find_events
 from ..evoked import Evoked as Evoked
 from ..io import BaseRaw as BaseRaw
 from ..utils import fill_doc as fill_doc
-from _typeshed import Incomplete
 
-def fix_stim_artifact(inst, events: Incomplete | None=..., event_id: Incomplete | None=..., tmin: float=..., tmax: float=..., mode: str=..., stim_channel: Incomplete | None=..., picks: Incomplete | None=...):
+def fix_stim_artifact(
+    inst,
+    events=...,
+    event_id=...,
+    tmin: float = ...,
+    tmax: float = ...,
+    mode: str = ...,
+    stim_channel=...,
+    picks=...,
+):
     """Eliminate stimulation's artifacts from instance.
 
     .. note:: This function operates in-place, consider passing
@@ -31,13 +39,13 @@ def fix_stim_artifact(inst, events: Incomplete | None=..., event_id: Incomplete 
     stim_channel : str | None
         Stim channel to use.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
     Returns

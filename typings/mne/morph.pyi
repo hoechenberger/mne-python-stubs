@@ -2,10 +2,35 @@ from .morph_map import read_morph_map as read_morph_map
 from .parallel import parallel_func as parallel_func
 from .source_space._source_space import SourceSpaces as SourceSpaces
 from .surface import mesh_edges as mesh_edges, read_surface as read_surface
-from .utils import BunchConst as BunchConst, ProgressBar as ProgressBar, check_version as check_version, fill_doc as fill_doc, get_subjects_dir as get_subjects_dir, logger as logger, use_log_level as use_log_level, verbose as verbose, warn as warn
+from .utils import (
+    BunchConst as BunchConst,
+    ProgressBar as ProgressBar,
+    check_version as check_version,
+    fill_doc as fill_doc,
+    get_subjects_dir as get_subjects_dir,
+    logger as logger,
+    use_log_level as use_log_level,
+    warn as warn,
+)
 from _typeshed import Incomplete
 
-def compute_source_morph(src, subject_from: Incomplete | None=..., subject_to: str=..., subjects_dir: Incomplete | None=..., zooms: str=..., niter_affine=..., niter_sdr=..., spacing: int=..., smooth: Incomplete | None=..., warn: bool=..., xhemi: bool=..., sparse: bool=..., src_to: Incomplete | None=..., precompute: bool=..., verbose: Incomplete | None=...):
+def compute_source_morph(
+    src,
+    subject_from=...,
+    subject_to: str = ...,
+    subjects_dir=...,
+    zooms: str = ...,
+    niter_affine=...,
+    niter_sdr=...,
+    spacing: int = ...,
+    smooth=...,
+    warn: bool = ...,
+    xhemi: bool = ...,
+    sparse: bool = ...,
+    src_to=...,
+    precompute: bool = ...,
+    verbose=...,
+):
     """Create a SourceMorph from one subject to another.
 
     Method is based on spherical morphing by FreeSurfer for surface
@@ -28,7 +53,7 @@ def compute_source_morph(src, subject_from: Incomplete | None=..., subject_to: s
 
         .. versionchanged:: 0.20
            Support for subject_to=None.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -99,7 +124,7 @@ def compute_source_morph(src, subject_from: Incomplete | None=..., subject_to: s
         later if desired) for more information.
 
         .. versionadded:: 0.22
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -144,22 +169,23 @@ def compute_source_morph(src, subject_from: Incomplete | None=..., subject_to: s
 class SourceMorph:
     """Save the morph for source estimates to a file.
 
-        Parameters
-        ----------
-        fname : path-like
-            The path to the file. ``'-morph.h5'`` will be added if fname does
-            not end with ``'.h5'``.
-        
-        overwrite : bool
-            If True (default False), overwrite the destination file if it
-            exists.
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
-        """
+    Parameters
+    ----------
+    fname : path-like
+        The path to the file. ``'-morph.h5'`` will be added if fname does
+        not end with ``'.h5'``.
+
+    overwrite : bool
+        If True (default False), overwrite the destination file if it
+        exists.
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+    """
+
     subject_from: Incomplete
     subject_to: Incomplete
     kind: Incomplete
@@ -178,10 +204,36 @@ class SourceMorph:
     vol_morph_mat: Incomplete
     vertices_to: Incomplete
 
-    def __init__(self, subject_from, subject_to, kind, zooms, niter_affine, niter_sdr, spacing, smooth, xhemi, morph_mat, vertices_to, shape, affine, pre_affine, sdr_morph, src_data, vol_morph_mat, *, verbose: Incomplete | None=...) -> None:
-        ...
-
-    def apply(self, stc_from, output: str=..., mri_resolution: bool=..., mri_space: Incomplete | None=..., verbose: Incomplete | None=...):
+    def __init__(
+        self,
+        subject_from,
+        subject_to,
+        kind,
+        zooms,
+        niter_affine,
+        niter_sdr,
+        spacing,
+        smooth,
+        xhemi,
+        morph_mat,
+        vertices_to,
+        shape,
+        affine,
+        pre_affine,
+        sdr_morph,
+        src_data,
+        vol_morph_mat,
+        *,
+        verbose=...,
+    ) -> None: ...
+    def apply(
+        self,
+        stc_from,
+        output: str = ...,
+        mri_resolution: bool = ...,
+        mri_space=...,
+        verbose=...,
+    ):
         """Morph source space data.
 
         Parameters
@@ -200,7 +252,7 @@ class SourceMorph:
         mri_space : bool | None
             Whether the image to world registration should be in mri space. The
             default (None) is mri_space=mri_resolution.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -212,13 +264,12 @@ class SourceMorph:
         stc_to : VolSourceEstimate | SourceEstimate | VectorSourceEstimate | Nifti1Image | Nifti2Image
             The morphed source estimates.
         """
-
-    def compute_vol_morph_mat(self, *, verbose: Incomplete | None=...):
+    def compute_vol_morph_mat(self, *, verbose=...):
         """Compute the sparse matrix representation of the volumetric morph.
 
         Parameters
         ----------
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -247,8 +298,7 @@ class SourceMorph:
 
         .. versionadded:: 0.22
         """
-
-    def save(self, fname, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+    def save(self, fname, overwrite: bool = ..., verbose=...) -> None:
         """Save the morph for source estimates to a file.
 
         Parameters
@@ -256,11 +306,11 @@ class SourceMorph:
         fname : path-like
             The path to the file. ``'-morph.h5'`` will be added if fname does
             not end with ``'.h5'``.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -282,7 +332,7 @@ def read_source_morph(fname):
         The loaded morph.
     """
 
-def grade_to_vertices(subject, grade, subjects_dir: Incomplete | None=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def grade_to_vertices(subject, grade, subjects_dir=..., n_jobs=..., verbose=...):
     """Convert a grade to source space vertices for a given subject.
 
     Parameters
@@ -299,7 +349,7 @@ def grade_to_vertices(subject, grade, subjects_dir: Incomplete | None=..., n_job
         computing vertex locations. Note that if subject='fsaverage'
         and 'grade=5', this set of vertices will automatically be used
         (instead of computed) for speed, since this is a common morph.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -311,7 +361,7 @@ def grade_to_vertices(subject, grade, subjects_dir: Incomplete | None=..., n_job
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

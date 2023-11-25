@@ -7,23 +7,23 @@ def rng_uniform(rng):
 class BaseEstimator:
     """Set the parameters of this estimator.
 
-        The method works on simple estimators as well as on nested objects
-        (such as pipelines). The latter have parameters of the form
-        ``<component>__<parameter>`` so that it's possible to update each
-        component of a nested object.
+    The method works on simple estimators as well as on nested objects
+    (such as pipelines). The latter have parameters of the form
+    ``<component>__<parameter>`` so that it's possible to update each
+    component of a nested object.
 
-        Parameters
-        ----------
-        **params : dict
-            Parameters.
+    Parameters
+    ----------
+    **params : dict
+        Parameters.
 
-        Returns
-        -------
-        inst : instance
-            The object.
-        """
+    Returns
+    -------
+    inst : instance
+        The object.
+    """
 
-    def get_params(self, deep: bool=...):
+    def get_params(self, deep: bool = ...):
         """Get parameters for this estimator.
 
         Parameters
@@ -37,7 +37,6 @@ class BaseEstimator:
         params : dict
             Parameter names mapped to their values.
         """
-
     def set_params(self, **params):
         """Set the parameters of this estimator.
 
@@ -57,7 +56,7 @@ class BaseEstimator:
             The object.
         """
 
-def empirical_covariance(X, assume_centered: bool=...):
+def empirical_covariance(X, assume_centered: bool = ...):
     """Compute the Maximum likelihood covariance estimator.
 
     Parameters
@@ -80,24 +79,25 @@ def empirical_covariance(X, assume_centered: bool=...):
 class EmpiricalCovariance(BaseEstimator):
     """Compute the squared Mahalanobis distances of given observations.
 
-        Parameters
-        ----------
-        observations : array-like, shape = [n_observations, n_features]
-            The observations, the Mahalanobis distances of the which we
-            compute. Observations are assumed to be drawn from the same
-            distribution than the data used in fit.
+    Parameters
+    ----------
+    observations : array-like, shape = [n_observations, n_features]
+        The observations, the Mahalanobis distances of the which we
+        compute. Observations are assumed to be drawn from the same
+        distribution than the data used in fit.
 
-        Returns
-        -------
-        mahalanobis_distance : array, shape = [n_observations,]
-            Squared Mahalanobis distances of the observations.
-        """
+    Returns
+    -------
+    mahalanobis_distance : array, shape = [n_observations,]
+        Squared Mahalanobis distances of the observations.
+    """
+
     store_precision: Incomplete
     assume_centered: Incomplete
 
-    def __init__(self, store_precision: bool=..., assume_centered: bool=...) -> None:
-        ...
-
+    def __init__(
+        self, store_precision: bool = ..., assume_centered: bool = ...
+    ) -> None: ...
     def get_precision(self):
         """Getter for the precision matrix.
 
@@ -109,7 +109,7 @@ class EmpiricalCovariance(BaseEstimator):
         """
     location_: Incomplete
 
-    def fit(self, X, y: Incomplete | None=...):
+    def fit(self, X, y=...):
         """Fit the Maximum Likelihood Estimator covariance model.
 
         Parameters
@@ -125,8 +125,7 @@ class EmpiricalCovariance(BaseEstimator):
         self : object
             Returns self.
         """
-
-    def score(self, X_test, y: Incomplete | None=...):
+    def score(self, X_test, y=...):
         """Compute the log-likelihood of a Gaussian dataset.
 
         Uses ``self.covariance_`` as an estimator of its covariance matrix.
@@ -147,8 +146,9 @@ class EmpiricalCovariance(BaseEstimator):
             The likelihood of the data set with `self.covariance_` as an
             estimator of its covariance matrix.
         """
-
-    def error_norm(self, comp_cov, norm: str=..., scaling: bool=..., squared: bool=...):
+    def error_norm(
+        self, comp_cov, norm: str = ..., scaling: bool = ..., squared: bool = ...
+    ):
         """Compute the Mean Squared Error between two covariance estimators.
 
         Parameters
@@ -173,7 +173,6 @@ class EmpiricalCovariance(BaseEstimator):
         The Mean Squared Error (in the sense of the Frobenius norm) between
         `self` and `comp_cov` covariance estimators.
         """
-
     def mahalanobis(self, observations):
         """Compute the squared Mahalanobis distances of given observations.
 
@@ -210,10 +209,8 @@ def log_likelihood(emp_cov, precision):
     sample mean of the log-likelihood
     """
 
-def svd_flip(u, v, u_based_decision: bool=...):
-    ...
-
-def stable_cumsum(arr, axis: Incomplete | None=..., rtol: float=..., atol: float=...):
+def svd_flip(u, v, u_based_decision: bool = ...): ...
+def stable_cumsum(arr, axis=..., rtol: float = ..., atol: float = ...):
     """Use high precision for cumsum and check that final value matches sum.
 
     Parameters
@@ -228,16 +225,23 @@ def stable_cumsum(arr, axis: Incomplete | None=..., rtol: float=..., atol: float
     atol : float
         Absolute tolerance, see ``np.allclose``
     """
+
 prange: Incomplete
 
-def jit(nopython: bool=..., nogil: bool=..., fastmath: bool=..., cache: bool=..., **kwargs):
-    ...
+def jit(
+    nopython: bool = ...,
+    nogil: bool = ...,
+    fastmath: bool = ...,
+    cache: bool = ...,
+    **kwargs,
+): ...
+
 has_numba: bool
 prange = range
 bincount = np.bincount
 
-def pinvh(a, rtol: Incomplete | None=...):
+def pinvh(a, rtol=...):
     """Compute a pseudo-inverse of a Hermitian matrix."""
 
-def pinv(a, rtol: Incomplete | None=...):
+def pinv(a, rtol=...):
     """Compute a pseudo-inverse of a matrix."""

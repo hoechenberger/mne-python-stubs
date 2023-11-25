@@ -1,7 +1,12 @@
-from .utils import fill_doc as fill_doc, get_config as get_config, logger as logger, sizeof_fmt as sizeof_fmt, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from .utils import (
+    fill_doc as fill_doc,
+    get_config as get_config,
+    logger as logger,
+    sizeof_fmt as sizeof_fmt,
+    warn as warn,
+)
 
-def get_cuda_memory(kind: str=...):
+def get_cuda_memory(kind: str = ...):
     """Get the amount of free memory for CUDA operations.
 
     Parameters
@@ -15,7 +20,7 @@ def get_cuda_memory(kind: str=...):
         The amount of available or total memory as a human-readable string.
     """
 
-def init_cuda(ignore_config: bool=..., verbose: Incomplete | None=...) -> None:
+def init_cuda(ignore_config: bool = ..., verbose=...) -> None:
     """Initialize CUDA functionality.
 
     This function attempts to load the necessary interfaces
@@ -31,7 +36,7 @@ def init_cuda(ignore_config: bool=..., verbose: Incomplete | None=...) -> None:
     ----------
     ignore_config : bool
         If True, ignore the config value MNE_USE_CUDA and force init.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -39,14 +44,14 @@ def init_cuda(ignore_config: bool=..., verbose: Incomplete | None=...) -> None:
         argument.
     """
 
-def set_cuda_device(device_id, verbose: Incomplete | None=...) -> None:
+def set_cuda_device(device_id, verbose=...) -> None:
     """Set the CUDA device temporarily for the current session.
 
     Parameters
     ----------
     device_id : int
         Numeric ID of the CUDA-capable device you want MNE-Python to use.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

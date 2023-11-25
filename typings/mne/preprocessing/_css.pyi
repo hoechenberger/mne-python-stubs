@@ -1,8 +1,9 @@
 from ..evoked import Evoked as Evoked
-from ..utils import verbose as verbose
-from _typeshed import Incomplete
 
-def cortical_signal_suppression(evoked, picks: Incomplete | None=..., mag_picks: Incomplete | None=..., grad_picks: Incomplete | None=..., n_proj: int=..., *, verbose: Incomplete | None=...):
+
+def cortical_signal_suppression(
+    evoked, picks=..., mag_picks=..., grad_picks=..., n_proj: int = ..., *, verbose=...
+):
     """Apply cortical signal suppression (CSS) to evoked data.
 
     Parameters
@@ -11,13 +12,13 @@ def cortical_signal_suppression(evoked, picks: Incomplete | None=..., mag_picks:
         The evoked object to use for CSS. Must contain magnetometer,
         gradiometer, and EEG channels.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     mag_picks : array-like of int
         Array of the magnetometer channel indices that will be used to find
@@ -29,7 +30,7 @@ def cortical_signal_suppression(evoked, picks: Incomplete | None=..., mag_picks:
         be used.
     n_proj : int
         The number of projection vectors.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

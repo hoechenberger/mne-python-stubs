@@ -16,14 +16,9 @@ class _TempDir(str):
     object (an alternative could be using the atexit module instead).
     """
 
-    def __new__(self):
-        ...
-
-    def __init__(self) -> None:
-        ...
-
-    def __del__(self) -> None:
-        ...
+    def __new__(self): ...
+    def __init__(self) -> None: ...
+    def __del__(self) -> None: ...
 
 def requires_mne(func):
     """Decorate a function as requiring MNE."""
@@ -37,43 +32,37 @@ def requires_openmeeg_mark():
 def requires_freesurfer(arg):
     """Require Freesurfer."""
 
-def requires_good_network(func):
-    ...
-
+def requires_good_network(func): ...
 def run_command_if_main() -> None:
     """Run a given command if it's __main__."""
 
 class ArgvSetter:
     """Temporarily set sys.argv."""
+
     argv: Incomplete
     stdout: Incomplete
     stderr: Incomplete
 
-    def __init__(self, args=..., disable_stdout: bool=..., disable_stderr: bool=...) -> None:
-        ...
+    def __init__(
+        self, args=..., disable_stdout: bool = ..., disable_stderr: bool = ...
+    ) -> None: ...
     orig_argv: Incomplete
     orig_stdout: Incomplete
     orig_stderr: Incomplete
 
-    def __enter__(self):
-        ...
-
-    def __exit__(self, *args) -> None:
-        ...
+    def __enter__(self): ...
+    def __exit__(self, *args) -> None: ...
 
 class SilenceStdout:
     """Silence stdout."""
+
     close: Incomplete
 
-    def __init__(self, close: bool=...) -> None:
-        ...
+    def __init__(self, close: bool = ...) -> None: ...
     stdout: Incomplete
 
-    def __enter__(self):
-        ...
-
-    def __exit__(self, *args) -> None:
-        ...
+    def __enter__(self): ...
+    def __exit__(self, *args) -> None: ...
 
 def has_mne_c():
     """Check for MNE-C."""
@@ -84,13 +73,15 @@ def has_freesurfer():
 def buggy_mkl_svd(function):
     """Decorate tests that make calls to SVD and intermittently fail."""
 
-def assert_and_remove_boundary_annot(annotations, n: int=...) -> None:
+def assert_and_remove_boundary_annot(annotations, n: int = ...) -> None:
     """Assert that there are boundary annotations and remove them."""
 
 def assert_object_equal(a, b) -> None:
     """Assert two objects are equal."""
 
-def assert_meg_snr(actual, desired, min_tol, med_tol: float=..., chpi_med_tol: float=..., msg: Incomplete | None=...) -> None:
+def assert_meg_snr(
+    actual, desired, min_tol, med_tol: float = ..., chpi_med_tol: float = ..., msg=...
+) -> None:
     """Assert channel SNR of a certain level.
 
     Mostly useful for operations like Maxwell filtering that modify
@@ -103,5 +94,5 @@ def assert_snr(actual, desired, tol) -> None:
 def assert_stcs_equal(stc1, stc2) -> None:
     """Check that two STC are equal."""
 
-def assert_dig_allclose(info_py, info_bin, limit: Incomplete | None=...) -> None:
+def assert_dig_allclose(info_py, info_bin, limit=...) -> None:
     """Assert dig allclose."""

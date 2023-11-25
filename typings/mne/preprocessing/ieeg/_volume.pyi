@@ -1,9 +1,8 @@
 from ...channels import DigMontage as DigMontage, make_dig_montage as make_dig_montage
 from ...transforms import Transform as Transform, apply_trans as apply_trans
-from ...utils import verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from ...utils import warn as warn
 
-def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose: Incomplete | None=...):
+def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=...):
     """Warp a montage to a template with image volumes using SDR.
 
     .. note:: This is likely only applicable for channels inside the brain
@@ -13,20 +12,20 @@ def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose: Incomp
     ----------
     montage : instance of mne.channels.DigMontage
         The montage object containing the channels.
-    
+
     moving : instance of SpatialImage
         The image to morph ("from" volume).
-    
+
     static : instance of SpatialImage
         The image to align with ("to" volume).
-    
+
     reg_affine : ndarray of float, shape (4, 4)
         The affine that registers one volume to another.
-    
+
     sdr_morph : instance of dipy.align.DiffeomorphicMap
         The class that applies the the symmetric diffeomorphic registration
         (SDR) morph.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -39,7 +38,15 @@ def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose: Incomp
         The modified montage object containing the channels.
     """
 
-def make_montage_volume(montage, base_image, thresh: float=..., max_peak_dist: int=..., voxels_max: int=..., use_min: bool=..., verbose: Incomplete | None=...):
+def make_montage_volume(
+    montage,
+    base_image,
+    thresh: float = ...,
+    max_peak_dist: int = ...,
+    voxels_max: int = ...,
+    use_min: bool = ...,
+    verbose=...,
+):
     """Make a volume from intracranial electrode contact locations.
 
     Find areas of the input volume with intensity greater than
@@ -68,7 +75,7 @@ def make_montage_volume(montage, base_image, thresh: float=..., max_peak_dist: i
     use_min : bool
         Whether to hypointensities in the volume as channel locations.
         Default False uses hyperintensities.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

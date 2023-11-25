@@ -1,9 +1,33 @@
 from ..bem import fit_sphere_to_headshape as fit_sphere_to_headshape
 from ..io import read_raw_fif as read_raw_fif
-from ..utils import deprecated as deprecated, logger as logger, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from ..utils import deprecated as deprecated, logger as logger, warn as warn
 
-def apply_maxfilter(in_fname, out_fname, origin: Incomplete | None=..., frame: str=..., bad: Incomplete | None=..., autobad: str=..., skip: Incomplete | None=..., force: bool=..., st: bool=..., st_buflen: float=..., st_corr: float=..., mv_trans: Incomplete | None=..., mv_comp: bool=..., mv_headpos: bool=..., mv_hp: Incomplete | None=..., mv_hpistep: Incomplete | None=..., mv_hpisubt: Incomplete | None=..., mv_hpicons: bool=..., linefreq: Incomplete | None=..., cal: Incomplete | None=..., ctc: Incomplete | None=..., mx_args: str=..., overwrite: bool=..., verbose: Incomplete | None=...):
+def apply_maxfilter(
+    in_fname,
+    out_fname,
+    origin=...,
+    frame: str = ...,
+    bad=...,
+    autobad: str = ...,
+    skip=...,
+    force: bool = ...,
+    st: bool = ...,
+    st_buflen: float = ...,
+    st_corr: float = ...,
+    mv_trans=...,
+    mv_comp: bool = ...,
+    mv_headpos: bool = ...,
+    mv_hp=...,
+    mv_hpistep=...,
+    mv_hpisubt=...,
+    mv_hpicons: bool = ...,
+    linefreq=...,
+    cal=...,
+    ctc=...,
+    mx_args: str = ...,
+    overwrite: bool = ...,
+    verbose=...,
+):
     """.. warning:: DEPRECATED: apply_maxfilter will be removed in 1.7, use mne.preprocessing.maxwell_filter or the MEGIN command-line utility maxfilter and mne.bem.fit_sphere_to_headshape instead..
 
     Apply NeuroMag MaxFilter to raw data.
@@ -65,11 +89,11 @@ def apply_maxfilter(in_fname, out_fname, origin: Incomplete | None=..., frame: s
         Path to Cross-talk compensation file.
     mx_args : str
         Additional command line arguments to pass to MaxFilter.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

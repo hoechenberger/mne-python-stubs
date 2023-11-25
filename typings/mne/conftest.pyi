@@ -5,10 +5,16 @@ from mne.channels import read_layout as read_layout
 from mne.coreg import create_default_subject as create_default_subject
 from mne.datasets import testing as testing
 from mne.fixes import has_numba as has_numba
-from mne.io import read_raw_ctf as read_raw_ctf, read_raw_fif as read_raw_fif, read_raw_nirx as read_raw_nirx, read_raw_snirf as read_raw_snirf
+from mne.io import (
+    read_raw_ctf as read_raw_ctf,
+    read_raw_fif as read_raw_fif,
+    read_raw_nirx as read_raw_nirx,
+    read_raw_snirf as read_raw_snirf,
+)
 from mne.stats import cluster_level as cluster_level
 from mne.utils import Bunch as Bunch, numerics as numerics
 from mne.viz._figure import use_browser_backend as use_browser_backend
+
 test_path: Incomplete
 s_path: Incomplete
 fname_evoked: Incomplete
@@ -122,25 +128,32 @@ def garbage_collect() -> Generator[None, None, None]:
 
 def mpl_backend(garbage_collect) -> Generator[Incomplete, None, None]:
     """Use for epochs/ica when not implemented with pyqtgraph yet."""
+
 pre_2_0_skip_modules: Incomplete
 pre_2_0_skip_funcs: Incomplete
 
 def pg_backend(request, garbage_collect) -> Generator[Incomplete, None, None]:
     """Use for pyqtgraph-specific test-functions."""
 
-def browser_backend(request, garbage_collect, monkeypatch) -> Generator[Incomplete, None, None]:
+def browser_backend(
+    request, garbage_collect, monkeypatch
+) -> Generator[Incomplete, None, None]:
     """Parametrizes the name of the browser backend."""
 
 def renderer(request, options_3d, garbage_collect) -> Generator[Incomplete, None, None]:
     """Yield the 3D backends."""
 
-def renderer_pyvistaqt(request, options_3d, garbage_collect) -> Generator[Incomplete, None, None]:
+def renderer_pyvistaqt(
+    request, options_3d, garbage_collect
+) -> Generator[Incomplete, None, None]:
     """Yield the PyVista backend."""
 
 def renderer_notebook(request, options_3d) -> Generator[Incomplete, None, None]:
     """Yield the 3D notebook renderer."""
 
-def renderer_interactive_pyvistaqt(request, options_3d, qt_windows_closed) -> Generator[Incomplete, None, None]:
+def renderer_interactive_pyvistaqt(
+    request, options_3d, qt_windows_closed
+) -> Generator[Incomplete, None, None]:
     """Yield the interactive PyVista backend."""
 
 def renderer_interactive(request, options_3d) -> Generator[Incomplete, None, None]:
@@ -176,22 +189,14 @@ def fake_retrieve(monkeypatch, download_is_error) -> Generator[Incomplete, None,
 class _FakeFetch:
     call_args_list: Incomplete
 
-    def __init__(self) -> None:
-        ...
-
+    def __init__(self) -> None: ...
     @property
-    def call_count(self):
-        ...
+    def call_count(self): ...
     path: Incomplete
 
-    def __call__(self, *args, **kwargs):
-        ...
-
-    def fetch(self, fname) -> None:
-        ...
-
-    def load_registry(self, registry) -> None:
-        ...
+    def __call__(self, *args, **kwargs): ...
+    def fetch(self, fname) -> None: ...
+    def load_registry(self, registry) -> None: ...
 
 def options_3d() -> Generator[None, None, None]:
     """Disable advanced 3d rendering."""

@@ -1,10 +1,18 @@
 from ..annotations import Annotations as Annotations
 from ..fixes import jit as jit
 from ..io import BaseRaw as BaseRaw
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def annotate_amplitude(raw, peak: Incomplete | None=..., flat: Incomplete | None=..., bad_percent: int=..., min_duration: float=..., picks: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def annotate_amplitude(
+    raw,
+    peak=...,
+    flat=...,
+    bad_percent: int = ...,
+    min_duration: float = ...,
+    picks=...,
+    *,
+    verbose=...,
+):
     """Annotate raw data based on peak-to-peak amplitude.
 
     Creates annotations ``BAD_peak`` or ``BAD_flat`` for spans of data where
@@ -14,7 +22,7 @@ def annotate_amplitude(raw, peak: Incomplete | None=..., flat: Incomplete | None
     should be annotated with either ``BAD_peak`` or ``BAD_flat`` are returned
     in ``bads`` instead.
     Note that the annotations and the bads are not automatically added to the
-    :class:`~mne.io.Raw` object; use :meth:`~mne.io.Raw.set_annotations` and
+    :class:mne.io.Raw` object; use :meth:mne.io.Raw.set_annotations` and
     :class:`info['bads'] <mne.Info>` to do so.
 
     Parameters
@@ -35,7 +43,7 @@ def annotate_amplitude(raw, peak: Incomplete | None=..., flat: Incomplete | None
         If float, the minimum acceptable PTP is applied to all channels.
     bad_percent : float
         The percentage of the time a channel can be above or below thresholds.
-        Below this percentage, :class:`~mne.Annotations` are created.
+        Below this percentage, :class:mne.Annotations` are created.
         Above this percentage, the channel involved is return in ``bads``. Note
         the returned ``bads`` are not automatically added to
         :class:`info['bads'] <mne.Info>`.
@@ -47,15 +55,15 @@ def annotate_amplitude(raw, peak: Incomplete | None=..., flat: Incomplete | None
         For some systems, adjacent time samples with exactly the same value are
         not totally uncommon. Defaults to ``0.005`` (5 ms).
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -73,7 +81,7 @@ def annotate_amplitude(raw, peak: Incomplete | None=..., flat: Incomplete | None
     -----
     This function does not use a window to detect small peak-to-peak or large
     peak-to-peak amplitude changes as the ``reject`` and ``flat`` argument from
-    :class:`~mne.Epochs` does. Instead, it looks at the difference between
+    :class:mne.Epochs` does. Instead, it looks at the difference between
     consecutive samples.
 
     - When used to detect segments below ``flat``, at least ``min_duration``

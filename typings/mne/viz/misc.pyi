@@ -1,23 +1,40 @@
 from .._fiff.constants import FIFF as FIFF
-from .._fiff.pick import pick_channels as pick_channels, pick_info as pick_info, pick_types as pick_types
+from .._fiff.pick import (
+    pick_channels as pick_channels,
+    pick_info as pick_info,
+    pick_types as pick_types,
+)
 from .._fiff.proj import make_projector as make_projector
 from ..defaults import DEFAULTS as DEFAULTS
 from ..filter import estimate_ringing_samples as estimate_ringing_samples
 from ..rank import compute_rank as compute_rank
 from ..surface import read_surface as read_surface
 from ..transforms import apply_trans as apply_trans
-from ..utils import fill_doc as fill_doc, get_subjects_dir as get_subjects_dir, logger as logger, verbose as verbose, warn as warn
+from ..utils import (
+    fill_doc as fill_doc,
+    get_subjects_dir as get_subjects_dir,
+    logger as logger,
+    warn as warn,
+)
 from .utils import plt_show as plt_show
-from _typeshed import Incomplete
 
-def plot_cov(cov, info, exclude=..., colorbar: bool=..., proj: bool=..., show_svd: bool=..., show: bool=..., verbose: Incomplete | None=...):
+def plot_cov(
+    cov,
+    info,
+    exclude=...,
+    colorbar: bool = ...,
+    proj: bool = ...,
+    show_svd: bool = ...,
+    show: bool = ...,
+    verbose=...,
+):
     """Plot Covariance data.
 
     Parameters
     ----------
     cov : instance of Covariance
         The covariance matrix.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     exclude : list of str | str
@@ -32,7 +49,7 @@ def plot_cov(cov, info, exclude=..., colorbar: bool=..., proj: bool=..., show_sv
         type. We show square roots ie. standard deviations.
     show : bool
         Show figure if True.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -59,7 +76,15 @@ def plot_cov(cov, info, exclude=..., colorbar: bool=..., proj: bool=..., show_sv
        Approximate ranks for each channel type are shown with red dashed lines.
     """
 
-def plot_source_spectrogram(stcs, freq_bins, tmin: Incomplete | None=..., tmax: Incomplete | None=..., source_index: Incomplete | None=..., colorbar: bool=..., show: bool=...):
+def plot_source_spectrogram(
+    stcs,
+    freq_bins,
+    tmin=...,
+    tmax=...,
+    source_index=...,
+    colorbar: bool = ...,
+    show: bool = ...,
+):
     """Plot source power in time-freqency grid.
 
     Parameters
@@ -87,15 +112,26 @@ def plot_source_spectrogram(stcs, freq_bins, tmin: Incomplete | None=..., tmax: 
         The figure.
     """
 
-def plot_bem(subject, subjects_dir: Incomplete | None=..., orientation: str=..., slices: Incomplete | None=..., brain_surfaces: Incomplete | None=..., src: Incomplete | None=..., show: bool=..., show_indices: bool=..., mri: str=..., show_orientation: bool=...):
+def plot_bem(
+    subject,
+    subjects_dir=...,
+    orientation: str = ...,
+    slices=...,
+    brain_surfaces=...,
+    src=...,
+    show: bool = ...,
+    show_indices: bool = ...,
+    mri: str = ...,
+    show_orientation: bool = ...,
+):
     """Plot BEM contours on anatomical MRI slices.
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -163,12 +199,23 @@ def plot_bem(subject, subjects_dir: Incomplete | None=..., orientation: str=...,
     slice.
     """
 
-def plot_events(events, sfreq: Incomplete | None=..., first_samp: int=..., color: Incomplete | None=..., event_id: Incomplete | None=..., axes: Incomplete | None=..., equal_spacing: bool=..., show: bool=..., on_missing: str=..., verbose: Incomplete | None=...):
+def plot_events(
+    events,
+    sfreq=...,
+    first_samp: int = ...,
+    color=...,
+    event_id=...,
+    axes=...,
+    equal_spacing: bool = ...,
+    show: bool = ...,
+    on_missing: str = ...,
+    verbose=...,
+):
     """Plot :term:`events` to get a visual display of the paradigm.
 
     Parameters
     ----------
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
@@ -196,16 +243,16 @@ def plot_events(events, sfreq: Incomplete | None=..., first_samp: int=..., color
         Use equal spacing between events in y-axis.
     show : bool
         Show figure if True.
-    
+
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when event numbers from ``event_id`` are missing from
         :term:`events`. When numbers from :term:`events` are missing from
         ``event_id`` they will be ignored and a warning emitted; consider
         using ``verbose='error'`` in this case.
-    
+
         .. versionadded:: 0.21
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -222,7 +269,7 @@ def plot_events(events, sfreq: Incomplete | None=..., first_samp: int=..., color
     .. versionadded:: 0.9.0
     """
 
-def plot_dipole_amplitudes(dipoles, colors: Incomplete | None=..., show: bool=...):
+def plot_dipole_amplitudes(dipoles, colors=..., show: bool = ...):
     """Plot the amplitude traces of a set of dipoles.
 
     Parameters
@@ -244,7 +291,7 @@ def plot_dipole_amplitudes(dipoles, colors: Incomplete | None=..., show: bool=..
     .. versionadded:: 0.9.0
     """
 
-def adjust_axes(axes, remove_spines=..., grid: bool=...) -> None:
+def adjust_axes(axes, remove_spines=..., grid: bool = ...) -> None:
     """Adjust some properties of axes.
 
     Parameters
@@ -257,7 +304,23 @@ def adjust_axes(axes, remove_spines=..., grid: bool=...) -> None:
         Turn grid on (True) or off (False).
     """
 
-def plot_filter(h, sfreq, freq: Incomplete | None=..., gain: Incomplete | None=..., title: Incomplete | None=..., color: str=..., flim: Incomplete | None=..., fscale: str=..., alim=..., show: bool=..., compensate: bool=..., plot=..., axes: Incomplete | None=..., *, dlim: Incomplete | None=...):
+def plot_filter(
+    h,
+    sfreq,
+    freq=...,
+    gain=...,
+    title=...,
+    color: str = ...,
+    flim=...,
+    fscale: str = ...,
+    alim=...,
+    show: bool = ...,
+    compensate: bool = ...,
+    plot=...,
+    axes=...,
+    *,
+    dlim=...,
+):
     """Plot properties of a filter.
 
     Parameters
@@ -331,7 +394,19 @@ def plot_filter(h, sfreq, freq: Incomplete | None=..., gain: Incomplete | None=.
     .. versionadded:: 0.14
     """
 
-def plot_ideal_filter(freq, gain, axes: Incomplete | None=..., title: str=..., flim: Incomplete | None=..., fscale: str=..., alim=..., color: str=..., alpha: float=..., linestyle: str=..., show: bool=...):
+def plot_ideal_filter(
+    freq,
+    gain,
+    axes=...,
+    title: str = ...,
+    flim=...,
+    fscale: str = ...,
+    alim=...,
+    color: str = ...,
+    alpha: float = ...,
+    linestyle: str = ...,
+    show: bool = ...,
+):
     """Plot an ideal filter response.
 
     Parameters
@@ -384,7 +459,15 @@ def plot_ideal_filter(freq, gain, axes: Incomplete | None=..., title: str=..., f
         <...Figure...>
     """
 
-def plot_csd(csd, info: Incomplete | None=..., mode: str=..., colorbar: bool=..., cmap: Incomplete | None=..., n_cols: Incomplete | None=..., show: bool=...):
+def plot_csd(
+    csd,
+    info=...,
+    mode: str = ...,
+    colorbar: bool = ...,
+    cmap=...,
+    n_cols=...,
+    show: bool = ...,
+):
     """Plot CSD matrices.
 
     A sub-plot is created for each frequency. If an info object is passed to
@@ -394,7 +477,7 @@ def plot_csd(csd, info: Incomplete | None=..., mode: str=..., colorbar: bool=...
     ----------
     csd : instance of CrossSpectralDensity
         The CSD matrix to plot.
-    
+
     info : mne.Info | None
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
         Used to split the figure by channel-type, if provided.
@@ -421,20 +504,20 @@ def plot_csd(csd, info: Incomplete | None=..., mode: str=..., colorbar: bool=...
         The figures created by this function.
     """
 
-def plot_chpi_snr(snr_dict, axes: Incomplete | None=...):
+def plot_chpi_snr(snr_dict, axes=...):
     """Plot time-varying SNR estimates of the HPI coils.
 
     Parameters
     ----------
     snr_dict : dict
-        The dictionary returned by `~mne.chpi.compute_chpi_snr`. Must have keys
+        The dictionary returned by mne.chpi.compute_chpi_snr`. Must have keys
         ``times``, ``freqs``, ``TYPE_snr``, ``TYPE_power``, and ``TYPE_resid``
         (where ``TYPE`` can be ``mag`` or ``grad`` or both).
     axes : None | list of matplotlib.axes.Axes
         Figure axes in which to draw the SNR, power, and residual plots. The
         number of axes should be 3× the number of MEG sensor types present in
         ``snr_dict``. If ``None`` (the default), a new
-        `~matplotlib.figure.Figure` is created with the required number of
+        matplotlib.figure.Figure` is created with the required number of
         axes.
 
     Returns
@@ -446,7 +529,7 @@ def plot_chpi_snr(snr_dict, axes: Incomplete | None=...):
 
     Notes
     -----
-    If you supply a list of existing `~matplotlib.axes.Axes`, then the figure
+    If you supply a list of existing matplotlib.axes.Axes`, then the figure
     legend will not be drawn automatically. If you still want it, running
     ``fig.legend(loc='right', title='cHPI frequencies')`` will recreate it.
 

@@ -3,16 +3,26 @@ from ._fiff.open import fiff_open as fiff_open
 from ._fiff.pick import pick_channels as pick_channels
 from ._fiff.tag import read_tag as read_tag
 from ._fiff.tree import dir_tree_find as dir_tree_find
-from ._fiff.write import end_block as end_block, start_and_end_file as start_and_end_file, start_block as start_block, write_int as write_int
-from .utils import check_fname as check_fname, fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ._fiff.write import (
+    end_block as end_block,
+    start_and_end_file as start_and_end_file,
+    start_block as start_block,
+    write_int as write_int,
+)
+from .utils import (
+    check_fname as check_fname,
+    fill_doc as fill_doc,
+    logger as logger,
+    warn as warn,
+)
 from _typeshed import Incomplete
 
-def pick_events(events, include: Incomplete | None=..., exclude: Incomplete | None=..., step: bool=...):
+def pick_events(events, include=..., exclude=..., step: bool = ...):
     """Select some :term:`events`.
 
     Parameters
     ----------
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
@@ -36,7 +46,9 @@ def pick_events(events, include: Incomplete | None=..., exclude: Incomplete | No
         The list of events.
     """
 
-def define_target_events(events, reference_id, target_id, sfreq, tmin, tmax, new_id: Incomplete | None=..., fill_na: Incomplete | None=...):
+def define_target_events(
+    events, reference_id, target_id, sfreq, tmin, tmax, new_id=..., fill_na=...
+):
     """Define new events by co-occurrence of existing events.
 
     This function can be used to evaluate events depending on the
@@ -73,7 +85,15 @@ def define_target_events(events, reference_id, target_id, sfreq, tmin, tmax, new
         Time lag between reference and target in milliseconds.
     """
 
-def read_events(filename, include: Incomplete | None=..., exclude: Incomplete | None=..., mask: Incomplete | None=..., mask_type: str=..., return_event_id: bool=..., verbose: Incomplete | None=...):
+def read_events(
+    filename,
+    include=...,
+    exclude=...,
+    mask=...,
+    mask_type: str = ...,
+    return_event_id: bool = ...,
+    verbose=...,
+):
     """Read :term:`events` from fif or text file.
 
     See :ref:`tut-events-vs-annotations` and :ref:`tut-event-arrays`
@@ -108,7 +128,7 @@ def read_events(filename, include: Incomplete | None=..., exclude: Incomplete | 
         ``-annot.fif`` files produced with MNE-C ``mne_browse_raw``.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -117,7 +137,7 @@ def read_events(filename, include: Incomplete | None=..., exclude: Incomplete | 
 
     Returns
     -------
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
@@ -138,7 +158,7 @@ def read_events(filename, include: Incomplete | None=..., exclude: Incomplete | 
     :func:`mne.find_events`.
     """
 
-def write_events(filename, events, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+def write_events(filename, events, *, overwrite: bool = ..., verbose=...) -> None:
     """Write :term:`events` to file.
 
     Parameters
@@ -150,16 +170,16 @@ def write_events(filename, events, *, overwrite: bool=..., verbose: Incomplete |
         ``.lst``, ``.txt``) events are written as plain text.
         Note that new format event files do not contain
         the ``"time"`` column (used to be the second column).
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -171,7 +191,9 @@ def write_events(filename, events, *, overwrite: bool=..., verbose: Incomplete |
     read_events
     """
 
-def find_stim_steps(raw, pad_start: Incomplete | None=..., pad_stop: Incomplete | None=..., merge: int=..., stim_channel: Incomplete | None=...):
+def find_stim_steps(
+    raw, pad_start=..., pad_stop=..., merge: int = ..., stim_channel=...
+):
     """Find all steps in data from a stim channel.
 
     Parameters
@@ -209,7 +231,19 @@ def find_stim_steps(raw, pad_start: Incomplete | None=..., pad_stop: Incomplete 
     find_events : More sophisticated options for finding events in a Raw file.
     """
 
-def find_events(raw, stim_channel: Incomplete | None=..., output: str=..., consecutive: str=..., min_duration: int=..., shortest_event: int=..., mask: Incomplete | None=..., uint_cast: bool=..., mask_type: str=..., initial_event: bool=..., verbose: Incomplete | None=...):
+def find_events(
+    raw,
+    stim_channel=...,
+    output: str = ...,
+    consecutive: str = ...,
+    min_duration: int = ...,
+    shortest_event: int = ...,
+    mask=...,
+    uint_cast: bool = ...,
+    mask_type: str = ...,
+    initial_event: bool = ...,
+    verbose=...,
+):
     """Find :term:`events` from raw file.
 
     See :ref:`tut-events-vs-annotations` and :ref:`tut-event-arrays`
@@ -265,7 +299,7 @@ def find_events(raw, stim_channel: Incomplete | None=..., output: str=..., conse
         at t=0s is present.
 
         .. versionadded:: 0.16
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -274,7 +308,7 @@ def find_events(raw, stim_channel: Incomplete | None=..., output: str=..., conse
 
     Returns
     -------
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
@@ -366,7 +400,7 @@ def find_events(raw, stim_channel: Incomplete | None=..., output: str=..., conse
               2 '0000010'
     """
 
-def merge_events(events, ids, new_id, replace_events: bool=...):
+def merge_events(events, ids, new_id, replace_events: bool = ...):
     """Merge a set of :term:`events`.
 
     Parameters
@@ -417,7 +451,7 @@ def shift_time_events(events, ids, tshift, sfreq):
 
     Parameters
     ----------
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
@@ -436,7 +470,15 @@ def shift_time_events(events, ids, tshift, sfreq):
         The new events.
     """
 
-def make_fixed_length_events(raw, id: int=..., start: int=..., stop: Incomplete | None=..., duration: float=..., first_samp: bool=..., overlap: float=...):
+def make_fixed_length_events(
+    raw,
+    id: int = ...,
+    start: int = ...,
+    stop=...,
+    duration: float = ...,
+    first_samp: bool = ...,
+    overlap: float = ...,
+):
     """Make a set of :term:`events` separated by a fixed duration.
 
     Parameters
@@ -466,7 +508,7 @@ def make_fixed_length_events(raw, id: int=..., start: int=..., stop: Incomplete 
 
     Returns
     -------
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
@@ -503,76 +545,75 @@ def concatenate_events(events, first_samps, last_samps):
 class AcqParserFIF:
     """Get averaging parameters for a condition (averaging category).
 
-        Output is designed to be used with the Epochs class to extract the
-        corresponding epochs.
+    Output is designed to be used with the Epochs class to extract the
+    corresponding epochs.
 
-        Parameters
-        ----------
-        raw : Raw object
-            An instance of Raw.
-        condition : None | str | dict | list of dict
-            Condition or a list of conditions. Conditions can be strings
-            (DACQ comment field, e.g. 'Auditory left') or category dicts
-            (e.g. acqp['Auditory left'], where acqp is an instance of
-            AcqParserFIF). If None, get all conditions marked active in
-            DACQ.
-        stim_channel : None | str | list of str
-            Name of the stim channel or all the stim channels
-            affected by the trigger. If None, the config variables
-            'MNE_STIM_CHANNEL', 'MNE_STIM_CHANNEL_1', 'MNE_STIM_CHANNEL_2',
-            etc. are read. If these are not found, it will fall back to
-            'STI101' or 'STI 014' if present, then fall back to the first
-            channel of type 'stim', if present.
-        mask : int | None
-            The value of the digital mask to apply to the stim channel values.
-            If None (default), no masking is performed.
-        uint_cast : bool
-            If True (default False), do a cast to ``uint16`` on the channel
-            data. This can be used to fix a bug with STI101 and STI014 in
-            Neuromag acquisition setups that use channel STI016 (channel 16
-            turns data into e.g. -32768), similar to ``mne_fix_stim14 --32``
-            in MNE-C.
-        mask_type : 'and' | 'not_and'
-            The type of operation between the mask and the trigger.
-            Choose 'and' for MNE-C masking behavior.
-        delayed_lookup : bool
-            If True, use the 'delayed lookup' procedure implemented in Elekta
-            software. When a trigger transition occurs, the lookup of
-            the new trigger value will not happen immediately at the following
-            sample, but with a 1-sample delay. This allows a slight
-            asynchrony between trigger onsets, when they are intended to be
-            synchronous. If you have accurate hardware and want to detect
-            transitions with a resolution of one sample, use
-            delayed_lookup=False.
+    Parameters
+    ----------
+    raw : Raw object
+        An instance of Raw.
+    condition : None | str | dict | list of dict
+        Condition or a list of conditions. Conditions can be strings
+        (DACQ comment field, e.g. 'Auditory left') or category dicts
+        (e.g. acqp['Auditory left'], where acqp is an instance of
+        AcqParserFIF). If None, get all conditions marked active in
+        DACQ.
+    stim_channel : None | str | list of str
+        Name of the stim channel or all the stim channels
+        affected by the trigger. If None, the config variables
+        'MNE_STIM_CHANNEL', 'MNE_STIM_CHANNEL_1', 'MNE_STIM_CHANNEL_2',
+        etc. are read. If these are not found, it will fall back to
+        'STI101' or 'STI 014' if present, then fall back to the first
+        channel of type 'stim', if present.
+    mask : int | None
+        The value of the digital mask to apply to the stim channel values.
+        If None (default), no masking is performed.
+    uint_cast : bool
+        If True (default False), do a cast to ``uint16`` on the channel
+        data. This can be used to fix a bug with STI101 and STI014 in
+        Neuromag acquisition setups that use channel STI016 (channel 16
+        turns data into e.g. -32768), similar to ``mne_fix_stim14 --32``
+        in MNE-C.
+    mask_type : 'and' | 'not_and'
+        The type of operation between the mask and the trigger.
+        Choose 'and' for MNE-C masking behavior.
+    delayed_lookup : bool
+        If True, use the 'delayed lookup' procedure implemented in Elekta
+        software. When a trigger transition occurs, the lookup of
+        the new trigger value will not happen immediately at the following
+        sample, but with a 1-sample delay. This allows a slight
+        asynchrony between trigger onsets, when they are intended to be
+        synchronous. If you have accurate hardware and want to detect
+        transitions with a resolution of one sample, use
+        delayed_lookup=False.
 
-        Returns
-        -------
-        conds_data : dict or list of dict
-            Each dict has the following keys:
+    Returns
+    -------
+    conds_data : dict or list of dict
+        Each dict has the following keys:
 
-            events : array, shape (n_epochs_out, 3)
-                List of zero time points (t0) for the epochs matching the
-                condition. Use as the ``events`` parameter to Epochs. Note
-                that these are not (necessarily) actual events.
-            event_id : dict
-                Name of condition and index compatible with ``events``.
-                Should be passed as the ``event_id`` parameter to Epochs.
-            tmin : float
-                Epoch starting time relative to t0. Use as the ``tmin``
-                parameter to Epochs.
-            tmax : float
-                Epoch ending time relative to t0. Use as the ``tmax``
-                parameter to Epochs.
-        """
+        events : array, shape (n_epochs_out, 3)
+            List of zero time points (t0) for the epochs matching the
+            condition. Use as the ``events`` parameter to Epochs. Note
+            that these are not (necessarily) actual events.
+        event_id : dict
+            Name of condition and index compatible with ``events``.
+            Should be passed as the ``event_id`` parameter to Epochs.
+        tmin : float
+            Epoch starting time relative to t0. Use as the ``tmin``
+            parameter to Epochs.
+        tmax : float
+            Epoch ending time relative to t0. Use as the ``tmax``
+            parameter to Epochs.
+    """
+
     acq_dict: Incomplete
     compat: bool
     stimsource: Incomplete
     reject: Incomplete
     flat: Incomplete
 
-    def __init__(self, info) -> None:
-        ...
-
+    def __init__(self, info) -> None: ...
     def __getitem__(self, item):
         """Return an averaging category, or list of categories.
 
@@ -621,7 +662,6 @@ class AcqParserFIF:
                 by the user after collecting the epochs.
 
         """
-
     def __len__(self) -> int:
         """Return number of averaging categories marked active in DACQ.
 
@@ -630,22 +670,28 @@ class AcqParserFIF:
         n_cat : int
             The number of categories.
         """
-
     @property
     def categories(self):
         """Return list of averaging categories ordered by DACQ index.
 
         Only returns categories marked active in DACQ.
         """
-
     @property
     def events(self):
         """Return events ordered by DACQ index.
 
         Only returns events that are in use (referred to by a category).
         """
-
-    def get_condition(self, raw, condition: Incomplete | None=..., stim_channel: Incomplete | None=..., mask: Incomplete | None=..., uint_cast: Incomplete | None=..., mask_type: str=..., delayed_lookup: bool=...):
+    def get_condition(
+        self,
+        raw,
+        condition=...,
+        stim_channel=...,
+        mask=...,
+        uint_cast=...,
+        mask_type: str = ...,
+        delayed_lookup: bool = ...,
+    ):
         """Get averaging parameters for a condition (averaging category).
 
         Output is designed to be used with the Epochs class to extract the
@@ -710,7 +756,7 @@ class AcqParserFIF:
                 parameter to Epochs.
         """
 
-def match_event_names(event_names, keys, *, on_missing: str=...):
+def match_event_names(event_names, keys, *, on_missing: str = ...):
     """Search a collection of event names for matching (sub-)groups of events.
 
     This function is particularly helpful when using grouped event names
@@ -756,7 +802,7 @@ def match_event_names(event_names, keys, *, on_missing: str=...):
         ['auditory/left', 'auditory/right', 'visual/left']
     """
 
-def count_events(events, ids: Incomplete | None=...):
+def count_events(events, ids=...):
     """Count events.
 
     Parameters

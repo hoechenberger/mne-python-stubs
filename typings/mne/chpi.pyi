@@ -1,15 +1,33 @@
 from ._fiff.constants import FIFF as FIFF
 from ._fiff.meas_info import Info as Info
-from ._fiff.pick import pick_channels as pick_channels, pick_channels_regexp as pick_channels_regexp, pick_info as pick_info, pick_types as pick_types
+from ._fiff.pick import (
+    pick_channels as pick_channels,
+    pick_channels_regexp as pick_channels_regexp,
+    pick_info as pick_info,
+    pick_types as pick_types,
+)
 from ._fiff.proj import Projection as Projection, setup_proj as setup_proj
-from .cov import compute_whitener as compute_whitener, make_ad_hoc_cov as make_ad_hoc_cov
+from .cov import (
+    compute_whitener as compute_whitener,
+    make_ad_hoc_cov as make_ad_hoc_cov,
+)
 from .event import find_events as find_events
 from .fixes import jit as jit
 from .io import BaseRaw as BaseRaw
 from .io.kit.constants import KIT as KIT
-from .transforms import als_ras_trans as als_ras_trans, apply_trans as apply_trans, invert_transform as invert_transform, quat_to_rot as quat_to_rot, rot_to_quat as rot_to_quat
-from .utils import ProgressBar as ProgressBar, logger as logger, use_log_level as use_log_level, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from .transforms import (
+    als_ras_trans as als_ras_trans,
+    apply_trans as apply_trans,
+    invert_transform as invert_transform,
+    quat_to_rot as quat_to_rot,
+    rot_to_quat as rot_to_quat,
+)
+from .utils import (
+    ProgressBar as ProgressBar,
+    logger as logger,
+    use_log_level as use_log_level,
+    warn as warn,
+)
 
 def read_head_pos(fname):
     """Read MaxFilter-formatted head position parameters.
@@ -78,14 +96,14 @@ def head_pos_to_trans_rot_t(quats):
     write_head_pos
     """
 
-def extract_chpi_locs_ctf(raw, verbose: Incomplete | None=...):
+def extract_chpi_locs_ctf(raw, verbose=...):
     """Extract cHPI locations from CTF data.
 
     Parameters
     ----------
     raw : instance of Raw
         Raw data with CTF cHPI information.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -94,7 +112,7 @@ def extract_chpi_locs_ctf(raw, verbose: Incomplete | None=...):
 
     Returns
     -------
-    
+
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
@@ -109,12 +127,12 @@ def extract_chpi_locs_ctf(raw, verbose: Incomplete | None=...):
     - ``HLC003[123]\\\\*`` - rpa
 
     This extracts these positions for use with
-    :func:`~mne.chpi.compute_head_pos`.
+    :func:mne.chpi.compute_head_pos`.
 
     .. versionadded:: 0.20
     """
 
-def extract_chpi_locs_kit(raw, stim_channel: str=..., *, verbose: Incomplete | None=...):
+def extract_chpi_locs_kit(raw, stim_channel: str = ..., *, verbose=...):
     """Extract cHPI locations from KIT data.
 
     Parameters
@@ -123,7 +141,7 @@ def extract_chpi_locs_kit(raw, stim_channel: str=..., *, verbose: Incomplete | N
         Raw data with KIT cHPI information.
     stim_channel : str
         The stimulus channel that encodes HPI measurement intervals.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -132,7 +150,7 @@ def extract_chpi_locs_kit(raw, stim_channel: str=..., *, verbose: Incomplete | N
 
     Returns
     -------
-    
+
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
@@ -142,21 +160,21 @@ def extract_chpi_locs_kit(raw, stim_channel: str=..., *, verbose: Incomplete | N
     .. versionadded:: 0.23
     """
 
-def get_chpi_info(info, on_missing: str=..., verbose: Incomplete | None=...):
+def get_chpi_info(info, on_missing: str = ..., verbose=...):
     """Retrieve cHPI information from the data.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    
+
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when no cHPI information can be found. If ``'ignore'`` or
         ``'warn'``, all return values will be empty arrays or ``None``. If
         ``'raise'``, an exception will be raised.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -178,29 +196,36 @@ def get_chpi_info(info, on_missing: str=..., verbose: Incomplete | None=...):
     .. versionadded:: 0.24
     """
 
-def compute_head_pos(info, chpi_locs, dist_limit: float=..., gof_limit: float=..., adjust_dig: bool=..., verbose: Incomplete | None=...):
+def compute_head_pos(
+    info,
+    chpi_locs,
+    dist_limit: float = ...,
+    gof_limit: float = ...,
+    adjust_dig: bool = ...,
+    verbose=...,
+):
     """Compute time-varying head positions.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    
+
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
-        Typically obtained by :func:`~mne.chpi.compute_chpi_locs` or
-        :func:`~mne.chpi.extract_chpi_locs_ctf`.
+        Typically obtained by :func:mne.chpi.compute_chpi_locs` or
+        :func:mne.chpi.extract_chpi_locs_ctf`.
     dist_limit : float
         Minimum distance (m) to accept for coil position fitting.
     gof_limit : float
         Minimum goodness of fit to accept for each coil.
-    
+
     adjust_dig : bool
         If True, adjust the digitization locations used for fitting based on
         the positions localized at the start of the file.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -224,7 +249,15 @@ def compute_head_pos(info, chpi_locs, dist_limit: float=..., gof_limit: float=..
     .. versionadded:: 0.20
     """
 
-def compute_chpi_snr(raw, t_step_min: float=..., t_window: str=..., ext_order: int=..., tmin: int=..., tmax: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_chpi_snr(
+    raw,
+    t_step_min: float = ...,
+    t_window: str = ...,
+    ext_order: int = ...,
+    tmin: int = ...,
+    tmax=...,
+    verbose=...,
+):
     """Compute time-varying estimates of cHPI SNR.
 
     Parameters
@@ -233,25 +266,25 @@ def compute_chpi_snr(raw, t_step_min: float=..., t_window: str=..., ext_order: i
         Raw data with cHPI information.
     t_step_min : float
         Minimum time step to use.
-    
+
     t_window : float
         Time window to use to estimate the amplitudes, default is
         0.2 (200 ms).
-    
+
     ext_order : int
         The external order for SSS-like interfence suppression.
         The SSS bases are used as projection vectors during fitting.
-    
+
         .. versionchanged:: 0.20
             Added ``ext_order=1`` by default, which should improve
             detection of true HPI signals.
-    
+
     tmin : float
         Start time of the raw data to use in seconds (must be >= 0).
-    
+
     tmax : float
         End time of the raw data to use in seconds (cannot exceed data duration).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -275,7 +308,15 @@ def compute_chpi_snr(raw, t_step_min: float=..., t_window: str=..., ext_order: i
     .. versionadded:: 0.24
     """
 
-def compute_chpi_amplitudes(raw, t_step_min: float=..., t_window: str=..., ext_order: int=..., tmin: int=..., tmax: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_chpi_amplitudes(
+    raw,
+    t_step_min: float = ...,
+    t_window: str = ...,
+    ext_order: int = ...,
+    tmin: int = ...,
+    tmax=...,
+    verbose=...,
+):
     """Compute time-varying cHPI amplitudes.
 
     Parameters
@@ -284,25 +325,25 @@ def compute_chpi_amplitudes(raw, t_step_min: float=..., t_window: str=..., ext_o
         Raw data with cHPI information.
     t_step_min : float
         Minimum time step to use.
-    
+
     t_window : float
         Time window to use to estimate the amplitudes, default is
         0.2 (200 ms).
-    
+
     ext_order : int
         The external order for SSS-like interfence suppression.
         The SSS bases are used as projection vectors during fitting.
-    
+
         .. versionchanged:: 0.20
             Added ``ext_order=1`` by default, which should improve
             detection of true HPI signals.
-    
+
     tmin : float
         Start time of the raw data to use in seconds (must be >= 0).
-    
+
     tmax : float
         End time of the raw data to use in seconds (cannot exceed data duration).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -311,7 +352,7 @@ def compute_chpi_amplitudes(raw, t_step_min: float=..., t_window: str=..., ext_o
 
     Returns
     -------
-    
+
     chpi_amplitudes : dict
         The time-varying cHPI coil amplitudes, with entries
         "times", "proj", and "slopes".
@@ -339,20 +380,27 @@ def compute_chpi_amplitudes(raw, t_step_min: float=..., t_window: str=..., ext_o
     2. The reciprocal of the smallest difference between HPI and line freqs.
           Ensures that neighboring frequencies can be disambiguated.
 
-    The output is meant to be used with :func:`~mne.chpi.compute_chpi_locs`.
+    The output is meant to be used with :func:mne.chpi.compute_chpi_locs`.
 
     .. versionadded:: 0.20
     """
 
-def compute_chpi_locs(info, chpi_amplitudes, t_step_max: float=..., too_close: str=..., adjust_dig: bool=..., verbose: Incomplete | None=...):
+def compute_chpi_locs(
+    info,
+    chpi_amplitudes,
+    t_step_max: float = ...,
+    too_close: str = ...,
+    adjust_dig: bool = ...,
+    verbose=...,
+):
     """Compute locations of each cHPI coils over time.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    
+
     chpi_amplitudes : dict
         The time-varying cHPI coil amplitudes, with entries
         "times", "proj", and "slopes".
@@ -362,11 +410,11 @@ def compute_chpi_locs(info, chpi_amplitudes, t_step_max: float=..., too_close: s
     too_close : str
         How to handle HPI positions too close to the sensors,
         can be ``'raise'`` (default), ``'warning'``, or ``'info'``.
-    
+
     adjust_dig : bool
         If True, adjust the digitization locations used for fitting based on
         the positions localized at the start of the file.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -375,7 +423,7 @@ def compute_chpi_locs(info, chpi_amplitudes, t_step_max: float=..., too_close: s
 
     Returns
     -------
-    
+
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
@@ -405,7 +453,15 @@ def compute_chpi_locs(info, chpi_amplitudes, t_step_max: float=..., too_close: s
     .. versionadded:: 0.20
     """
 
-def filter_chpi(raw, include_line: bool=..., t_step: float=..., t_window: str=..., ext_order: int=..., allow_line_only: bool=..., verbose: Incomplete | None=...):
+def filter_chpi(
+    raw,
+    include_line: bool = ...,
+    t_step: float = ...,
+    t_window: str = ...,
+    ext_order: int = ...,
+    allow_line_only: bool = ...,
+    verbose=...,
+):
     """Remove cHPI and line noise from data.
 
     .. note:: This function will only work properly if cHPI was on
@@ -419,15 +475,15 @@ def filter_chpi(raw, include_line: bool=..., t_step: float=..., t_window: str=..
         If True, also filter line noise.
     t_step : float
         Time step to use for estimation, default is 0.01 (10 ms).
-    
+
     t_window : float
         Time window to use to estimate the amplitudes, default is
         0.2 (200 ms).
-    
+
     ext_order : int
         The external order for SSS-like interfence suppression.
         The SSS bases are used as projection vectors during fitting.
-    
+
         .. versionchanged:: 0.20
             Added ``ext_order=1`` by default, which should improve
             detection of true HPI signals.
@@ -436,7 +492,7 @@ def filter_chpi(raw, include_line: bool=..., t_step: float=..., t_window: str=..
         which only allows the function to run when cHPI information is present.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -458,20 +514,20 @@ def filter_chpi(raw, include_line: bool=..., t_step: float=..., t_window: str=..
     .. versionadded:: 0.12
     """
 
-def get_active_chpi(raw, *, on_missing: str=..., verbose: Incomplete | None=...):
+def get_active_chpi(raw, *, on_missing: str = ..., verbose=...):
     """Determine how many HPI coils were active for a time point.
 
     Parameters
     ----------
     raw : instance of Raw
         Raw data with cHPI information.
-    
+
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when no cHPI information can be found. If ``'ignore'`` or
         ``'warn'``, all return values will be empty arrays or ``None``. If
         ``'raise'``, an exception will be raised.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

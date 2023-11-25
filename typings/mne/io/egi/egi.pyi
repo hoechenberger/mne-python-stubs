@@ -1,9 +1,18 @@
 from ..._fiff.constants import FIFF as FIFF
-from ...utils import logger as logger, verbose as verbose, warn as warn
+from ...utils import logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 from _typeshed import Incomplete
 
-def read_raw_egi(input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., include: Incomplete | None=..., exclude: Incomplete | None=..., preload: bool=..., channel_naming: str=..., verbose: Incomplete | None=...):
+def read_raw_egi(
+    input_fname,
+    eog=...,
+    misc=...,
+    include=...,
+    exclude=...,
+    preload: bool = ...,
+    channel_naming: str = ...,
+    verbose=...,
+):
     """Read EGI simple binary as raw object.
 
     .. note:: This function attempts to create a synthetic trigger channel.
@@ -29,7 +38,7 @@ def read_raw_egi(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
        trigger. Defaults to None. If None, channels that have more than
        one event and the ``sync`` and ``TREV`` channels will be
        ignored.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -44,7 +53,7 @@ def read_raw_egi(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
         effective default prior to 0.14.0 was ``'EEG %03d'``.
 
          .. versionadded:: 0.14.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -79,7 +88,17 @@ def read_raw_egi(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
 
 class RawEGI(BaseRaw):
     """Raw object from EGI simple binary file."""
+
     event_id: Incomplete
 
-    def __init__(self, input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., include: Incomplete | None=..., exclude: Incomplete | None=..., preload: bool=..., channel_naming: str=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        eog=...,
+        misc=...,
+        include=...,
+        exclude=...,
+        preload: bool = ...,
+        channel_naming: str = ...,
+        verbose=...,
+    ) -> None: ...

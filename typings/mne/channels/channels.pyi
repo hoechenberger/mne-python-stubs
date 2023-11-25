@@ -1,15 +1,33 @@
 from .._fiff.constants import FIFF as FIFF
-from .._fiff.meas_info import Info as Info, MontageMixin as MontageMixin, create_info as create_info
-from .._fiff.pick import channel_indices_by_type as channel_indices_by_type, channel_type as channel_type, pick_channels as pick_channels, pick_info as pick_info, pick_types as pick_types
+from .._fiff.meas_info import (
+    Info as Info,
+    MontageMixin as MontageMixin,
+    create_info as create_info,
+)
+from .._fiff.pick import (
+    channel_indices_by_type as channel_indices_by_type,
+    channel_type as channel_type,
+    pick_channels as pick_channels,
+    pick_info as pick_info,
+    pick_types as pick_types,
+)
 from .._fiff.proj import setup_proj as setup_proj
-from .._fiff.reference import add_reference_channels as add_reference_channels, set_eeg_reference as set_eeg_reference
+from .._fiff.reference import (
+    add_reference_channels as add_reference_channels,
+    set_eeg_reference as set_eeg_reference,
+)
 from ..defaults import HEAD_SIZE_DEFAULT as HEAD_SIZE_DEFAULT
-from ..utils import fill_doc as fill_doc, legacy as legacy, logger as logger, verbose as verbose, warn as warn
+from ..utils import (
+    fill_doc as fill_doc,
+    legacy as legacy,
+    logger as logger,
+    warn as warn,
+)
 from _typeshed import Incomplete
 from dataclasses import dataclass
 from typing import Union
 
-def equalize_channels(instances, copy: bool=..., verbose: Incomplete | None=...):
+def equalize_channels(instances, copy: bool = ..., verbose=...):
     """Equalize channel picks and ordering across multiple MNE-Python objects.
 
     First, all channels that are not common to each object are dropped. Then,
@@ -29,7 +47,7 @@ def equalize_channels(instances, copy: bool=..., verbose: Incomplete | None=...)
         default) the dropping and re-ordering of channels happens in-place.
 
         .. versionadded:: 0.20.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -57,9 +75,9 @@ def unify_bad_channels(insts):
     Parameters
     ----------
     insts : list
-        List of instances (:class:`~mne.io.Raw`, :class:`~mne.Epochs`,
-        :class:`~mne.Evoked`, :class:`~mne.time_frequency.Spectrum`,
-        :class:`~mne.time_frequency.EpochsSpectrum`) across which to unify bad channels.
+        List of instances (:class:mne.io.Raw`, :class:mne.Epochs`,
+        :class:mne.Evoked`, :class:mne.time_frequency.Spectrum`,
+        :class:mne.time_frequency.EpochsSpectrum`) across which to unify bad channels.
 
     Returns
     -------
@@ -82,119 +100,128 @@ def unify_bad_channels(insts):
 class ReferenceMixin(MontageMixin):
     """Specify which reference to use for EEG data.
 
-        Use this function to explicitly specify the desired reference for EEG.
-        This can be either an existing electrode or a new virtual channel.
-        This function will re-reference the data according to the desired
-        reference.
+    Use this function to explicitly specify the desired reference for EEG.
+    This can be either an existing electrode or a new virtual channel.
+    This function will re-reference the data according to the desired
+    reference.
 
-        Parameters
-        ----------
-        
-        ref_channels : list of str | str
-            Can be:
-        
-            - The name(s) of the channel(s) used to construct the reference.
-            - ``'average'`` to apply an average reference (default)
-            - ``'REST'`` to use the Reference Electrode Standardization Technique
-              infinity reference :footcite:`Yao2001`.
-            - An empty list, in which case MNE will not attempt any re-referencing of
-              the data
-        
-        projection : bool
-            If ``ref_channels='average'`` this argument specifies if the
-            average reference should be computed as a projection (True) or not
-            (False; default). If ``projection=True``, the average reference is
-            added as a projection and is not applied to the data (it can be
-            applied afterwards with the ``apply_proj`` method). If
-            ``projection=False``, the average reference is directly applied to
-            the data. If ``ref_channels`` is not ``'average'``, ``projection``
-            must be set to ``False`` (the default in this case).
-        
-        ch_type : list of str | str
-            The name of the channel type to apply the reference to.
-            Valid channel types are ``'auto'``, ``'eeg'``, ``'ecog'``, ``'seeg'``,
-            ``'dbs'``. If ``'auto'``, the first channel type of eeg, ecog, seeg or dbs
-            that is found (in that order) will be selected.
-        
-            .. versionadded:: 0.19
-            .. versionchanged:: 1.2
-               ``list-of-str`` is now supported with ``projection=True``.
-        
-        forward : instance of Forward | None
-            Forward solution to use. Only used with ``ref_channels='REST'``.
-        
-            .. versionadded:: 0.21
-        
-        joint : bool
-            How to handle list-of-str ``ch_type``. If False (default), one projector
-            is created per channel type. If True, one projector is created across
-            all channel types. This is only used when ``projection=True``.
-        
-            .. versionadded:: 1.2
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
+    Parameters
+    ----------
 
-        Returns
-        -------
-        inst : instance of Raw | Epochs | Evoked
-            Data with EEG channels re-referenced. If ``ref_channels='average'``
-            and ``projection=True`` a projection will be added instead of
-            directly re-referencing the data.
-        
-        See Also
-        --------
-        mne.set_bipolar_reference : Convenience function for creating bipolar
-                                references.
-        
-        Notes
-        -----
-        Some common referencing schemes and the corresponding value for the
-        ``ref_channels`` parameter:
-        
-        - Average reference:
-            A new virtual reference electrode is created by averaging the current
-            EEG signal by setting ``ref_channels='average'``. Bad EEG channels are
-            automatically excluded if they are properly set in ``info['bads']``.
-        
-        - A single electrode:
-            Set ``ref_channels`` to a list containing the name of the channel that
-            will act as the new reference, for example ``ref_channels=['Cz']``.
-        
-        - The mean of multiple electrodes:
-            A new virtual reference electrode is created by computing the average
-            of the current EEG signal recorded from two or more selected channels.
-            Set ``ref_channels`` to a list of channel names, indicating which
-            channels to use. For example, to apply an average mastoid reference,
-            when using the 10-20 naming scheme, set ``ref_channels=['M1', 'M2']``.
-        
-        - REST
-            The given EEG electrodes are referenced to a point at infinity using the
-            lead fields in ``forward``, which helps standardize the signals.
-        
-        1. If a reference is requested that is not the average reference, this
-           function removes any pre-existing average reference projections.
-        
-        2. During source localization, the EEG signal should have an average
-           reference.
-        
-        3. In order to apply a reference, the data must be preloaded. This is not
-           necessary if ``ref_channels='average'`` and ``projection=True``.
-        
-        4. For an average or REST reference, bad EEG channels are automatically
-           excluded if they are properly set in ``info['bads']``.
-        
-        .. versionadded:: 0.9.0
-        
-        References
-        ----------
-        .. footbibliography::
-        """
+    ref_channels : list of str | str
+        Can be:
 
-    def set_eeg_reference(self, ref_channels: str=..., projection: bool=..., ch_type: str=..., forward: Incomplete | None=..., *, joint: bool=..., verbose: Incomplete | None=...):
+        - The name(s) of the channel(s) used to construct the reference.
+        - ``'average'`` to apply an average reference (default)
+        - ``'REST'`` to use the Reference Electrode Standardization Technique
+          infinity reference :footcite:`Yao2001`.
+        - An empty list, in which case MNE will not attempt any re-referencing of
+          the data
+
+    projection : bool
+        If ``ref_channels='average'`` this argument specifies if the
+        average reference should be computed as a projection (True) or not
+        (False; default). If ``projection=True``, the average reference is
+        added as a projection and is not applied to the data (it can be
+        applied afterwards with the ``apply_proj`` method). If
+        ``projection=False``, the average reference is directly applied to
+        the data. If ``ref_channels`` is not ``'average'``, ``projection``
+        must be set to ``False`` (the default in this case).
+
+    ch_type : list of str | str
+        The name of the channel type to apply the reference to.
+        Valid channel types are ``'auto'``, ``'eeg'``, ``'ecog'``, ``'seeg'``,
+        ``'dbs'``. If ``'auto'``, the first channel type of eeg, ecog, seeg or dbs
+        that is found (in that order) will be selected.
+
+        .. versionadded:: 0.19
+        .. versionchanged:: 1.2
+           ``list-of-str`` is now supported with ``projection=True``.
+
+    forward : instance of Forward | None
+        Forward solution to use. Only used with ``ref_channels='REST'``.
+
+        .. versionadded:: 0.21
+
+    joint : bool
+        How to handle list-of-str ``ch_type``. If False (default), one projector
+        is created per channel type. If True, one projector is created across
+        all channel types. This is only used when ``projection=True``.
+
+        .. versionadded:: 1.2
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Returns
+    -------
+    inst : instance of Raw | Epochs | Evoked
+        Data with EEG channels re-referenced. If ``ref_channels='average'``
+        and ``projection=True`` a projection will be added instead of
+        directly re-referencing the data.
+
+    See Also
+    --------
+    mne.set_bipolar_reference : Convenience function for creating bipolar
+                            references.
+
+    Notes
+    -----
+    Some common referencing schemes and the corresponding value for the
+    ``ref_channels`` parameter:
+
+    - Average reference:
+        A new virtual reference electrode is created by averaging the current
+        EEG signal by setting ``ref_channels='average'``. Bad EEG channels are
+        automatically excluded if they are properly set in ``info['bads']``.
+
+    - A single electrode:
+        Set ``ref_channels`` to a list containing the name of the channel that
+        will act as the new reference, for example ``ref_channels=['Cz']``.
+
+    - The mean of multiple electrodes:
+        A new virtual reference electrode is created by computing the average
+        of the current EEG signal recorded from two or more selected channels.
+        Set ``ref_channels`` to a list of channel names, indicating which
+        channels to use. For example, to apply an average mastoid reference,
+        when using the 10-20 naming scheme, set ``ref_channels=['M1', 'M2']``.
+
+    - REST
+        The given EEG electrodes are referenced to a point at infinity using the
+        lead fields in ``forward``, which helps standardize the signals.
+
+    1. If a reference is requested that is not the average reference, this
+       function removes any pre-existing average reference projections.
+
+    2. During source localization, the EEG signal should have an average
+       reference.
+
+    3. In order to apply a reference, the data must be preloaded. This is not
+       necessary if ``ref_channels='average'`` and ``projection=True``.
+
+    4. For an average or REST reference, bad EEG channels are automatically
+       excluded if they are properly set in ``info['bads']``.
+
+    .. versionadded:: 0.9.0
+
+    References
+    ----------
+    .. footbibliography::
+    """
+
+    def set_eeg_reference(
+        self,
+        ref_channels: str = ...,
+        projection: bool = ...,
+        ch_type: str = ...,
+        forward=...,
+        *,
+        joint: bool = ...,
+        verbose=...,
+    ):
         """Specify which reference to use for EEG data.
 
         Use this function to explicitly specify the desired reference for EEG.
@@ -204,17 +231,17 @@ class ReferenceMixin(MontageMixin):
 
         Parameters
         ----------
-        
+
         ref_channels : list of str | str
             Can be:
-        
+
             - The name(s) of the channel(s) used to construct the reference.
             - ``'average'`` to apply an average reference (default)
             - ``'REST'`` to use the Reference Electrode Standardization Technique
               infinity reference :footcite:`Yao2001`.
             - An empty list, in which case MNE will not attempt any re-referencing of
               the data
-        
+
         projection : bool
             If ``ref_channels='average'`` this argument specifies if the
             average reference should be computed as a projection (True) or not
@@ -224,29 +251,29 @@ class ReferenceMixin(MontageMixin):
             ``projection=False``, the average reference is directly applied to
             the data. If ``ref_channels`` is not ``'average'``, ``projection``
             must be set to ``False`` (the default in this case).
-        
+
         ch_type : list of str | str
             The name of the channel type to apply the reference to.
             Valid channel types are ``'auto'``, ``'eeg'``, ``'ecog'``, ``'seeg'``,
             ``'dbs'``. If ``'auto'``, the first channel type of eeg, ecog, seeg or dbs
             that is found (in that order) will be selected.
-        
+
             .. versionadded:: 0.19
             .. versionchanged:: 1.2
                ``list-of-str`` is now supported with ``projection=True``.
-        
+
         forward : instance of Forward | None
             Forward solution to use. Only used with ``ref_channels='REST'``.
-        
+
             .. versionadded:: 0.21
-        
+
         joint : bool
             How to handle list-of-str ``ch_type``. If False (default), one projector
             is created per channel type. If True, one projector is created across
             all channel types. This is only used when ``projection=True``.
-        
+
             .. versionadded:: 1.2
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -259,51 +286,51 @@ class ReferenceMixin(MontageMixin):
             Data with EEG channels re-referenced. If ``ref_channels='average'``
             and ``projection=True`` a projection will be added instead of
             directly re-referencing the data.
-        
+
         See Also
         --------
         mne.set_bipolar_reference : Convenience function for creating bipolar
                                 references.
-        
+
         Notes
         -----
         Some common referencing schemes and the corresponding value for the
         ``ref_channels`` parameter:
-        
+
         - Average reference:
             A new virtual reference electrode is created by averaging the current
             EEG signal by setting ``ref_channels='average'``. Bad EEG channels are
             automatically excluded if they are properly set in ``info['bads']``.
-        
+
         - A single electrode:
             Set ``ref_channels`` to a list containing the name of the channel that
             will act as the new reference, for example ``ref_channels=['Cz']``.
-        
+
         - The mean of multiple electrodes:
             A new virtual reference electrode is created by computing the average
             of the current EEG signal recorded from two or more selected channels.
             Set ``ref_channels`` to a list of channel names, indicating which
             channels to use. For example, to apply an average mastoid reference,
             when using the 10-20 naming scheme, set ``ref_channels=['M1', 'M2']``.
-        
+
         - REST
             The given EEG electrodes are referenced to a point at infinity using the
             lead fields in ``forward``, which helps standardize the signals.
-        
+
         1. If a reference is requested that is not the average reference, this
            function removes any pre-existing average reference projections.
-        
+
         2. During source localization, the EEG signal should have an average
            reference.
-        
+
         3. In order to apply a reference, the data must be preloaded. This is not
            necessary if ``ref_channels='average'`` and ``projection=True``.
-        
+
         4. For an average or REST reference, bad EEG channels are automatically
            excluded if they are properly set in ``info['bads']``.
-        
+
         .. versionadded:: 0.9.0
-        
+
         References
         ----------
         .. footbibliography::
@@ -312,32 +339,63 @@ class ReferenceMixin(MontageMixin):
 class UpdateChannelsMixin:
     """Add reference channels to data that consists of all zeros.
 
-        Adds reference channels to data that were not included during
-        recording. This is useful when you need to re-reference your data
-        to different channels. These added channels will consist of all zeros.
+    Adds reference channels to data that were not included during
+    recording. This is useful when you need to re-reference your data
+    to different channels. These added channels will consist of all zeros.
 
-        Parameters
-        ----------
-        
-        ref_channels : str | list of str
-            Name of the electrode(s) which served as the reference in the
-            recording. If a name is provided, a corresponding channel is added
-            and its data is set to 0. This is useful for later re-referencing.
+    Parameters
+    ----------
 
-        Returns
-        -------
-        inst : instance of Raw | Epochs | Evoked
-               The modified instance.
-        """
+    ref_channels : str | list of str
+        Name of the electrode(s) which served as the reference in the
+        recording. If a name is provided, a corresponding channel is added
+        and its data is set to 0. This is useful for later re-referencing.
 
-    def pick_types(self, meg: bool=..., eeg: bool=..., stim: bool=..., eog: bool=..., ecg: bool=..., emg: bool=..., ref_meg: str=..., *, misc: bool=..., resp: bool=..., chpi: bool=..., exci: bool=..., ias: bool=..., syst: bool=..., seeg: bool=..., dipole: bool=..., gof: bool=..., bio: bool=..., ecog: bool=..., fnirs: bool=..., csd: bool=..., dbs: bool=..., temperature: bool=..., gsr: bool=..., eyetrack: bool=..., include=..., exclude: str=..., selection: Incomplete | None=..., verbose: Incomplete | None=...):
+    Returns
+    -------
+    inst : instance of Raw | Epochs | Evoked
+           The modified instance.
+    """
+
+    def pick_types(
+        self,
+        meg: bool = ...,
+        eeg: bool = ...,
+        stim: bool = ...,
+        eog: bool = ...,
+        ecg: bool = ...,
+        emg: bool = ...,
+        ref_meg: str = ...,
+        *,
+        misc: bool = ...,
+        resp: bool = ...,
+        chpi: bool = ...,
+        exci: bool = ...,
+        ias: bool = ...,
+        syst: bool = ...,
+        seeg: bool = ...,
+        dipole: bool = ...,
+        gof: bool = ...,
+        bio: bool = ...,
+        ecog: bool = ...,
+        fnirs: bool = ...,
+        csd: bool = ...,
+        dbs: bool = ...,
+        temperature: bool = ...,
+        gsr: bool = ...,
+        eyetrack: bool = ...,
+        include=...,
+        exclude: str = ...,
+        selection=...,
+        verbose=...,
+    ):
         """.. warning:: LEGACY: New code should use inst.pick(...).
 
         Pick some channels by type and names.
 
         Parameters
         ----------
-        
+
         meg : bool | str
             If True include MEG channels. If string it can be 'mag', 'grad',
             'planar1' or 'planar2' to select only magnetometers, all
@@ -405,7 +463,7 @@ class UpdateChannelsMixin:
             in ``info['bads']``.
         selection : list of str
             Restrict sensor channels (MEG, EEG, etc.) to this list of channel names.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -425,8 +483,7 @@ class UpdateChannelsMixin:
         -----
         .. versionadded:: 0.9.0
         """
-
-    def pick_channels(self, ch_names, ordered: Incomplete | None=..., *, verbose: Incomplete | None=...):
+    def pick_channels(self, ch_names, ordered=..., *, verbose=...):
         """.. warning:: LEGACY: New code should use inst.pick(...).
 
         Pick some channels.
@@ -435,15 +492,15 @@ class UpdateChannelsMixin:
         ----------
         ch_names : list
             The list of channels to select.
-        
+
         ordered : bool
             If True (default False), ensure that the order of the channels in
             the modified instance matches the order of ``ch_names``.
-        
+
             .. versionadded:: 0.20.0
             .. versionchanged:: 1.5
                 The default changed from False in 1.4 to True in 1.5.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -471,25 +528,24 @@ class UpdateChannelsMixin:
 
         .. versionadded:: 0.9.0
         """
-
-    def pick(self, picks, exclude=..., *, verbose: Incomplete | None=...):
+    def pick(self, picks, exclude=..., *, verbose=...):
         """Pick a subset of channels.
 
         Parameters
         ----------
         picks : str | array-like | slice | None
-            Channels to include. Slices and lists of integers will be interpreted as 
-            channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-            string values "all" to pick all channels, or "data" to pick :term:`data 
-            channels`. None (default) will pick all channels. Note that channels in 
-            ``info['bads']`` *will be included* if their names or indices are 
+            Channels to include. Slices and lists of integers will be interpreted as
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+            string values "all" to pick all channels, or "data" to pick :term:`data
+            channels`. None (default) will pick all channels. Note that channels in
+            ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
         exclude : list | str
             Set of channels to exclude, only used when picking based on
             types (e.g., exclude="bads" when picks="meg").
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -503,7 +559,6 @@ class UpdateChannelsMixin:
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
         """
-
     def reorder_channels(self, ch_names):
         """Reorder channels.
 
@@ -530,19 +585,18 @@ class UpdateChannelsMixin:
 
         .. versionadded:: 0.16.0
         """
-
-    def drop_channels(self, ch_names, on_missing: str=...):
+    def drop_channels(self, ch_names, on_missing: str = ...):
         """Drop channel(s).
 
         Parameters
         ----------
         ch_names : iterable or str
             Iterable (e.g. list) of channel name(s) or channel name to remove.
-        
+
         on_missing : 'raise' | 'warn' | 'ignore'
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
-        
+
             .. versionadded:: 0.23.0
 
         Returns
@@ -563,7 +617,7 @@ class UpdateChannelsMixin:
     info: Incomplete
     picks: Incomplete
 
-    def add_channels(self, add_list, force_update_info: bool=...):
+    def add_channels(self, add_list, force_update_info: bool = ...):
         """Append new channels to the instance.
 
         Parameters
@@ -592,7 +646,6 @@ class UpdateChannelsMixin:
         If ``self`` is a Raw instance that has been preloaded into a
         :obj:`numpy.memmap` instance, the memmap will be resized.
         """
-
     def add_reference_channels(self, ref_channels):
         """Add reference channels to data that consists of all zeros.
 
@@ -602,7 +655,7 @@ class UpdateChannelsMixin:
 
         Parameters
         ----------
-        
+
         ref_channels : str | list of str
             Name of the electrode(s) which served as the reference in the
             recording. If a name is provided, a corresponding channel is added
@@ -617,65 +670,73 @@ class UpdateChannelsMixin:
 class InterpolationMixin:
     """Interpolate bad MEG and EEG channels.
 
-        Operates in place.
+    Operates in place.
 
-        Parameters
-        ----------
-        reset_bads : bool
-            If True, remove the bads from info.
-        mode : str
-            Either ``'accurate'`` or ``'fast'``, determines the quality of the
-            Legendre polynomial expansion used for interpolation of channels
-            using the minimum-norm method.
-        origin : array-like, shape (3,) | str
-            Origin of the sphere in the head coordinate frame and in meters.
-            Can be ``'auto'`` (default), which means a head-digitization-based
-            origin fit.
+    Parameters
+    ----------
+    reset_bads : bool
+        If True, remove the bads from info.
+    mode : str
+        Either ``'accurate'`` or ``'fast'``, determines the quality of the
+        Legendre polynomial expansion used for interpolation of channels
+        using the minimum-norm method.
+    origin : array-like, shape (3,) | str
+        Origin of the sphere in the head coordinate frame and in meters.
+        Can be ``'auto'`` (default), which means a head-digitization-based
+        origin fit.
 
-            .. versionadded:: 0.17
-        method : dict | str | None
-            Method to use for each channel type.
+        .. versionadded:: 0.17
+    method : dict | str | None
+        Method to use for each channel type.
 
-            - ``"meg"`` channels support ``"MNE"`` (default) and ``"nan"``
-            - ``"eeg"`` channels support ``"spline"`` (default), ``"MNE"`` and ``"nan"``
-            - ``"fnirs"`` channels support ``"nearest"`` (default) and ``"nan"``
+        - ``"meg"`` channels support ``"MNE"`` (default) and ``"nan"``
+        - ``"eeg"`` channels support ``"spline"`` (default), ``"MNE"`` and ``"nan"``
+        - ``"fnirs"`` channels support ``"nearest"`` (default) and ``"nan"``
 
-            None is an alias for::
+        None is an alias for::
 
-                method=dict(meg="MNE", eeg="spline", fnirs="nearest")
+            method=dict(meg="MNE", eeg="spline", fnirs="nearest")
 
-            If a :class:`str` is provided, the method will be applied to all channel
-            types supported and available in the instance. The method ``"nan"`` will
-            replace the channel data with ``np.nan``.
+        If a :class:`str` is provided, the method will be applied to all channel
+        types supported and available in the instance. The method ``"nan"`` will
+        replace the channel data with ``np.nan``.
 
-            .. warning::
-                Be careful when using ``method="nan"``; the default value
-                ``reset_bads=True`` may not be what you want.
+        .. warning::
+            Be careful when using ``method="nan"``; the default value
+            ``reset_bads=True`` may not be what you want.
 
-            .. versionadded:: 0.21
-        exclude : list | tuple
-            The channels to exclude from interpolation. If excluded a bad
-            channel will stay in bads.
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
+        .. versionadded:: 0.21
+    exclude : list | tuple
+        The channels to exclude from interpolation. If excluded a bad
+        channel will stay in bads.
 
-        Returns
-        -------
-        inst : instance of Raw, Epochs, or Evoked
-            The modified instance.
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
 
-        Notes
-        -----
-        The ``"MNE"`` method uses minimum-norm projection to a sphere and back.
+    Returns
+    -------
+    inst : instance of Raw, Epochs, or Evoked
+        The modified instance.
 
-        .. versionadded:: 0.9.0
-        """
+    Notes
+    -----
+    The ``"MNE"`` method uses minimum-norm projection to a sphere and back.
 
-    def interpolate_bads(self, reset_bads: bool=..., mode: str=..., origin: str=..., method: Incomplete | None=..., exclude=..., verbose: Incomplete | None=...):
+    .. versionadded:: 0.9.0
+    """
+
+    def interpolate_bads(
+        self,
+        reset_bads: bool = ...,
+        mode: str = ...,
+        origin: str = ...,
+        method=...,
+        exclude=...,
+        verbose=...,
+    ):
         """Interpolate bad MEG and EEG channels.
 
         Operates in place.
@@ -717,7 +778,7 @@ class InterpolationMixin:
         exclude : list | tuple
             The channels to exclude from interpolation. If excluded a bad
             channel will stay in bads.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -736,28 +797,30 @@ class InterpolationMixin:
         .. versionadded:: 0.9.0
         """
 
-def rename_channels(info, mapping, allow_duplicates: bool=..., *, verbose: Incomplete | None=...) -> None:
+def rename_channels(
+    info, mapping, allow_duplicates: bool = ..., *, verbose=...
+) -> None:
     """Rename channels.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Note: modified in place.
-    
+
     mapping : dict | callable
         A dictionary mapping the old channel to a new channel name
         e.g. ``{'EEG061' : 'EEG161'}``. Can also be a callable function
         that takes and returns a string.
-    
+
         .. versionchanged:: 0.10.0
            Support for a callable function.
     allow_duplicates : bool
         If True (default False), allow duplicates, which will automatically
         be renamed with ``-N`` at the end.
-    
+
         .. versionadded:: 0.22.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -772,10 +835,9 @@ class _BuiltinChannelAdjacency:
     fname: str
     source_url: Union[str, None]
 
-    def __init__(self, name, description, fname, source_url) -> None:
-        ...
+    def __init__(self, name, description, fname, source_url) -> None: ...
 
-def get_builtin_ch_adjacencies(*, descriptions: bool=...):
+def get_builtin_ch_adjacencies(*, descriptions: bool = ...):
     """Get a list of all FieldTrip neighbor definitions shipping with MNE.
 
     The names of the these neighbor definitions can be passed to
@@ -803,7 +865,7 @@ def get_builtin_ch_adjacencies(*, descriptions: bool=...):
     .. versionadded:: 1.1
     """
 
-def read_ch_adjacency(fname, picks: Incomplete | None=...):
+def read_ch_adjacency(fname, picks=...):
     """Read a channel adjacency ("neighbors") file that ships with MNE.
 
     More information on these neighbor definitions can be found on the related
@@ -821,10 +883,10 @@ def read_ch_adjacency(fname, picks: Incomplete | None=...):
             built-in channel adjacencies via
             :func:`mne.channels.get_builtin_ch_adjacencies`.
     picks : list of int | list of str | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *name* strings (e.g., ``['MEG0111', 
-        'MEG2623']`` will pick the given channels. None (default) will pick all 
-        channels. Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *name* strings (e.g., ``['MEG0111',
+        'MEG2623']`` will pick the given channels. None (default) will pick all
+        channels. Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
 
     Returns
@@ -861,7 +923,7 @@ def find_ch_adjacency(info, ch_type):
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     ch_type : str | None
@@ -905,12 +967,12 @@ def find_ch_adjacency(info, ch_type):
     to pass to the eventual function.
     """
 
-def fix_mag_coil_types(info, use_cal: bool=...) -> None:
+def fix_mag_coil_types(info, use_cal: bool = ...) -> None:
     """Fix magnetometer coil types.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Corrections are done in-place.
     use_cal : bool
@@ -938,7 +1000,9 @@ def fix_mag_coil_types(info, use_cal: bool=...) -> None:
               Therefore the use of ``fix_mag_coil_types`` is not mandatory.
     """
 
-def make_1020_channel_selections(info, midline: str=..., *, return_ch_names: bool=...):
+def make_1020_channel_selections(
+    info, midline: str = ..., *, return_ch_names: bool = ...
+):
     """Map hemisphere names to corresponding EEG channel names or indices.
 
     This function uses a simple heuristic to separate channel names into three
@@ -954,7 +1018,7 @@ def make_1020_channel_selections(info, midline: str=..., *, return_ch_names: boo
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. If channel locations are present, the channel lists will
         be sorted from posterior to anterior; otherwise, the order specified in
@@ -975,7 +1039,14 @@ def make_1020_channel_selections(info, midline: str=..., *, return_ch_names: boo
         (if ``return_ch_names=True``).
     """
 
-def combine_channels(inst, groups, method: str=..., keep_stim: bool=..., drop_bad: bool=..., verbose: Incomplete | None=...):
+def combine_channels(
+    inst,
+    groups,
+    method: str = ...,
+    keep_stim: bool = ...,
+    drop_bad: bool = ...,
+    verbose=...,
+):
     """Combine channels based on specified channel grouping.
 
     Parameters
@@ -1013,7 +1084,7 @@ def combine_channels(inst, groups, method: str=..., keep_stim: bool=..., drop_ba
     drop_bad : bool
         If ``True``, drop channels marked as bad before combining. Defaults to
         ``False``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -1028,7 +1099,7 @@ def combine_channels(inst, groups, method: str=..., keep_stim: bool=..., drop_ba
         is ``True``, also containing stimulus channels).
     """
 
-def read_vectorview_selection(name, fname: Incomplete | None=..., info: Incomplete | None=..., verbose: Incomplete | None=...):
+def read_vectorview_selection(name, fname=..., info=..., verbose=...):
     """Read Neuromag Vector View channel selection from a file.
 
     Parameters
@@ -1044,12 +1115,12 @@ def read_vectorview_selection(name, fname: Incomplete | None=..., info: Incomple
     fname : path-like
         Filename of the selection file (if ``None``, built-in selections are
         used).
-    
+
     info : mne.Info | None
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Used to determine which channel naming convention to use, e.g.
         ``'MEG 0111'`` (with space) for old Neuromag systems and ``'MEG0111'``
         (without space) for new ones.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

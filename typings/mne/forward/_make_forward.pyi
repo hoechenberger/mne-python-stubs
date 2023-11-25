@@ -1,26 +1,51 @@
-from .._fiff.compensator import get_current_comp as get_current_comp, make_compensator as make_compensator
+from .._fiff.compensator import (
+    get_current_comp as get_current_comp,
+    make_compensator as make_compensator,
+)
 from .._fiff.constants import FIFF as FIFF, FWD as FWD
 from .._fiff.meas_info import Info as Info, read_info as read_info
 from .._fiff.pick import pick_info as pick_info, pick_types as pick_types
-from ..bem import ConductorModel as ConductorModel, read_bem_solution as read_bem_solution
+from ..bem import (
+    ConductorModel as ConductorModel,
+    read_bem_solution as read_bem_solution,
+)
 from ..source_estimate import VolSourceEstimate as VolSourceEstimate
-from ..transforms import Transform as Transform, apply_trans as apply_trans, invert_transform as invert_transform, transform_surface_to as transform_surface_to
-from ..utils import logger as logger, verbose as verbose, warn as warn
-from .forward import Forward as Forward, convert_forward_solution as convert_forward_solution
-from _typeshed import Incomplete
+from ..transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    invert_transform as invert_transform,
+    transform_surface_to as transform_surface_to,
+)
+from ..utils import logger as logger, warn as warn
+from .forward import (
+    Forward as Forward,
+    convert_forward_solution as convert_forward_solution,
+)
 from collections.abc import Generator
 
-def make_forward_solution(info, trans, src, bem, meg: bool=..., eeg: bool=..., *, mindist: float=..., ignore_ref: bool=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def make_forward_solution(
+    info,
+    trans,
+    src,
+    bem,
+    meg: bool = ...,
+    eeg: bool = ...,
+    *,
+    mindist: float = ...,
+    ignore_ref: bool = ...,
+    n_jobs=...,
+    verbose=...,
+):
     """Calculate a forward solution for a subject.
 
     Parameters
     ----------
-    
+
     info : mne.Info | path-like
         The :class:`mne.Info` object with information about the sensors and methods of measurement. If ``path-like``, it should be a :class:`str` or
         :class:`pathlib.Path` to a file with measurement information
         (e.g. :class:`mne.io.Raw`).
-    
+
     trans : path-like | dict | instance of Transform | ``"fsaverage"`` | None
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
         during coregistration. Can also be ``'fsaverage'`` to use the built-in
@@ -31,11 +56,11 @@ def make_forward_solution(info, trans, src, bem, meg: bool=..., eeg: bool=..., *
             Support for ``'fsaverage'`` argument.
     src : path-like | instance of SourceSpaces
         Either a path to a source space file or a loaded or generated
-        :class:`~mne.SourceSpaces`.
+        :class:mne.SourceSpaces`.
     bem : path-like | ConductorModel
         Filename of the BEM (e.g., ``"sample-5120-5120-5120-bem-sol.fif"``) to
-        use, or a loaded :class:`~mne.bem.ConductorModel`. See
-        :func:`~mne.make_bem_model` and :func:`~mne.make_bem_solution` to create a
+        use, or a loaded :class:mne.bem.ConductorModel`. See
+        :func:mne.make_bem_model` and :func:mne.make_bem_solution` to create a
         :class:`mne.bem.ConductorModel`.
     meg : bool
         If True (default), include MEG computations.
@@ -54,7 +79,7 @@ def make_forward_solution(info, trans, src, bem, meg: bool=..., eeg: bool=..., *
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -87,7 +112,7 @@ def make_forward_solution(info, trans, src, bem, meg: bool=..., eeg: bool=..., *
        Added support for OpenMEEG-based forward solution calculations.
     """
 
-def make_forward_dipole(dipole, bem, info, trans: Incomplete | None=..., n_jobs: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def make_forward_dipole(dipole, bem, info, trans=..., n_jobs=..., *, verbose=...):
     """Convert dipole object to source estimate and calculate forward operator.
 
     The instance of Dipole is converted to a discrete source space,
@@ -103,13 +128,13 @@ def make_forward_dipole(dipole, bem, info, trans: Incomplete | None=..., n_jobs:
 
     Parameters
     ----------
-    
+
     dipole : instance of Dipole | list of Dipole
         Dipole object containing position, orientation and amplitude of
         one or more dipoles. Multiple simultaneous dipoles may be defined by
         assigning them identical times. Alternatively, multiple simultaneous
         dipoles may also be specified as a list of Dipole objects.
-    
+
         .. versionchanged:: 1.1
             Added support for a list of :class:`mne.Dipole` instances.
     bem : str | dict
@@ -127,7 +152,7 @@ def make_forward_dipole(dipole, bem, info, trans: Incomplete | None=..., n_jobs:
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

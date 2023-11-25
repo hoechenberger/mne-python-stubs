@@ -4,19 +4,34 @@ from .._fiff.proj import make_projector as make_projector
 from ..cov import make_ad_hoc_cov as make_ad_hoc_cov
 from ..epochs import BaseEpochs as BaseEpochs, EpochsArray as EpochsArray
 from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
-from ..surface import get_head_surf as get_head_surf, get_meg_helmet_surf as get_meg_helmet_surf
+from ..surface import (
+    get_head_surf as get_head_surf,
+    get_meg_helmet_surf as get_meg_helmet_surf,
+)
 from ..transforms import transform_surface_to as transform_surface_to
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def make_field_map(evoked, trans: str=..., subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., ch_type: Incomplete | None=..., mode: str=..., meg_surf: str=..., origin=..., n_jobs: Incomplete | None=..., *, head_source=..., verbose: Incomplete | None=...):
+def make_field_map(
+    evoked,
+    trans: str = ...,
+    subject=...,
+    subjects_dir=...,
+    ch_type=...,
+    mode: str = ...,
+    meg_surf: str = ...,
+    origin=...,
+    n_jobs=...,
+    *,
+    head_source=...,
+    verbose=...,
+):
     """Compute surface maps used for field display in 3D.
 
     Parameters
     ----------
     evoked : Evoked | Epochs | Raw
         The measurement file. Need to have info attribute.
-    
+
     trans : path-like | dict | instance of Transform | ``"fsaverage"`` | None
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
         during coregistration. Can also be ``'fsaverage'`` to use the built-in
@@ -55,13 +70,13 @@ def make_field_map(evoked, trans: str=..., subject: Incomplete | None=..., subje
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     head_source : str | list of str
         Head source(s) to use. See the ``source`` option of
         :func:`mne.get_head_surf` for more information.
 
         .. versionadded:: 1.1
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

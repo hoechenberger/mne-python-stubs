@@ -1,8 +1,7 @@
-from _typeshed import Incomplete
 from mne.report import Report as Report
-from mne.utils import logger as logger, verbose as verbose
+from mne.utils import logger as logger
 
-def log_elapsed(t, verbose: Incomplete | None=...) -> None:
+def log_elapsed(t, verbose=...) -> None:
     """Log elapsed time."""
 
 def run() -> None:

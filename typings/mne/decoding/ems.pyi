@@ -1,22 +1,26 @@
 from .._fiff.pick import pick_info as pick_info, pick_types as pick_types
 from ..parallel import parallel_func as parallel_func
-from ..utils import logger as logger, verbose as verbose
-from .mixin import EstimatorMixin as EstimatorMixin, TransformerMixin as TransformerMixin
+from ..utils import logger as logger
+from .mixin import (
+    EstimatorMixin as EstimatorMixin,
+    TransformerMixin as TransformerMixin,
+)
 from _typeshed import Incomplete
 
 class EMS(TransformerMixin, EstimatorMixin):
     """Transform the data by the spatial filters.
 
-        Parameters
-        ----------
-        X : array, shape (n_epochs, n_channels, n_times)
-            The input data.
+    Parameters
+    ----------
+    X : array, shape (n_epochs, n_channels, n_times)
+        The input data.
 
-        Returns
-        -------
-        X : array, shape (n_epochs, n_times)
-            The input data transformed by the spatial filters.
-        """
+    Returns
+    -------
+    X : array, shape (n_epochs, n_times)
+        The input data transformed by the spatial filters.
+    """
+
     classes_: Incomplete
     filters_: Incomplete
 
@@ -38,7 +42,6 @@ class EMS(TransformerMixin, EstimatorMixin):
         self : instance of EMS
             Returns self.
         """
-
     def transform(self, X):
         """Transform the data by the spatial filters.
 
@@ -53,7 +56,7 @@ class EMS(TransformerMixin, EstimatorMixin):
             The input data transformed by the spatial filters.
         """
 
-def compute_ems(epochs, conditions: Incomplete | None=..., picks: Incomplete | None=..., n_jobs: Incomplete | None=..., cv: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_ems(epochs, conditions=..., picks=..., n_jobs=..., cv=..., verbose=...):
     """Compute event-matched spatial filter on epochs.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
@@ -83,13 +86,13 @@ def compute_ems(epochs, conditions: Incomplete | None=..., picks: Incomplete | N
         well as the number of conditions supported by the objective_function.
         If None keys in epochs.event_id are used.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
@@ -100,7 +103,7 @@ def compute_ems(epochs, conditions: Incomplete | None=..., picks: Incomplete | N
         value for ``n_jobs``.
     cv : cross-validation object | str | None, default LeaveOneOut
         The cross-validation scheme.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

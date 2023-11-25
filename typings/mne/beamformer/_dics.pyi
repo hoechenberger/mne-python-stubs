@@ -3,11 +3,25 @@ from ..channels import equalize_channels as equalize_channels
 from ..minimum_norm.inverse import combine_xyz as combine_xyz
 from ..rank import compute_rank as compute_rank
 from ..time_frequency import EpochsTFR as EpochsTFR
-from ..utils import logger as logger, verbose as verbose, warn as warn
+from ..utils import logger as logger, warn as warn
 from ._compute_beamformer import Beamformer as Beamformer
-from _typeshed import Incomplete
 
-def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=..., label: Incomplete | None=..., pick_ori: Incomplete | None=..., rank: Incomplete | None=..., weight_norm: Incomplete | None=..., reduce_rank: bool=..., depth: float=..., real_filter: bool=..., inversion: str=..., verbose: Incomplete | None=...):
+def make_dics(
+    info,
+    forward,
+    csd,
+    reg: float = ...,
+    noise_csd=...,
+    label=...,
+    pick_ori=...,
+    rank=...,
+    weight_norm=...,
+    reduce_rank: bool = ...,
+    depth: float = ...,
+    real_filter: bool = ...,
+    inversion: str = ...,
+    verbose=...,
+):
     """Compute a Dynamic Imaging of Coherent Sources (DICS) spatial filter.
 
     This is a beamformer filter that can be used to estimate the source power
@@ -21,7 +35,7 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     forward : instance of Forward
@@ -43,12 +57,12 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
         .. versionadded:: 0.20
     label : Label | None
         Restricts the solution to a given label.
-    
+
     pick_ori : None | str
         For forward solutions with fixed orientation, None (default) must be
         used and a scalar beamformer is computed. For free-orientation forward
         solutions, a vector beamformer is computed and:
-    
+
         - ``None``
             Orientations are pooled after computing a vector beamformer (Default).
         - ``'normal'``
@@ -56,14 +70,14 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
             cortical surface.
         - ``'max-power'``
             Filters are computed for the orientation that maximizes power.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -77,7 +91,7 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -85,28 +99,28 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.17
-    
+
     weight_norm : str | None
         Can be:
-    
+
         - ``None``
             The unit-gain LCMV beamformer :footcite:`SekiharaNagarajan2008` will be
             computed.
@@ -125,7 +139,7 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
             Compute a rotation-invariant normalization using the matrix square
             root. This differs from ``'unit-noise-gain'`` only when
             ``pick_ori='vector'``, creating a solution that:
-    
+
             1. Is rotation invariant (``'unit-noise-gain'`` is not);
             2. Satisfies the first requirement from
                :footcite:`SekiharaNagarajan2008` that ``w @ w.conj().T == I``,
@@ -135,17 +149,17 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
                solution.
 
         Defaults to ``None``, in which case no normalization is performed.
-    
+
     reduce_rank : bool
         If True, the rank of the denominator of the beamformer formula (i.e.,
         during pseudo-inversion) will be reduced by one for each spatial location.
         Setting ``reduce_rank=True`` is typically necessary if you use a single
         sphere model with MEG data.
-    
+
         .. versionchanged:: 0.20
             Support for reducing rank in all modes (previously only supported
             ``pick='max_power'`` with weight normalization).
-    
+
     depth : None | float | dict
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
@@ -153,7 +167,7 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
         It can also be a :class:`dict` containing keyword arguments to pass to
         :func:`mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
-    
+
         .. versionchanged:: 0.20
            Depth bias ignored for ``method='eLORETA'``.
     real_filter : bool
@@ -163,7 +177,7 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
         .. versionchanged:: 0.23
             Version 0.23 an earlier used ``real_filter=False`` as the default,
             as of version 0.24 ``True`` is the default.
-    
+
     inversion : 'single' | 'matrix'
         This determines how the beamformer deals with source spaces in "free"
         orientation. Such source spaces define three orthogonal dipoles at each
@@ -178,7 +192,7 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
 
         .. versionchanged:: 0.21
            Default changed to ``'matrix'``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -266,7 +280,7 @@ def make_dics(info, forward, csd, reg: float=..., noise_csd: Incomplete | None=.
     .. footbibliography::
     """
 
-def apply_dics(evoked, filters, verbose: Incomplete | None=...):
+def apply_dics(evoked, filters, verbose=...):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
@@ -288,7 +302,7 @@ def apply_dics(evoked, filters, verbose: Incomplete | None=...):
     filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
         Filter weights returned from :func:`make_dics`.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -309,7 +323,7 @@ def apply_dics(evoked, filters, verbose: Incomplete | None=...):
     apply_dics_csd
     """
 
-def apply_dics_epochs(epochs, filters, return_generator: bool=..., verbose: Incomplete | None=...):
+def apply_dics_epochs(epochs, filters, return_generator: bool = ..., verbose=...):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
@@ -335,7 +349,7 @@ def apply_dics_epochs(epochs, filters, return_generator: bool=..., verbose: Inco
     return_generator : bool
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -354,7 +368,9 @@ def apply_dics_epochs(epochs, filters, return_generator: bool=..., verbose: Inco
     apply_dics_csd
     """
 
-def apply_dics_tfr_epochs(epochs_tfr, filters, return_generator: bool=..., verbose: Incomplete | None=...):
+def apply_dics_tfr_epochs(
+    epochs_tfr, filters, return_generator: bool = ..., verbose=...
+):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
@@ -370,7 +386,7 @@ def apply_dics_tfr_epochs(epochs_tfr, filters, return_generator: bool=..., verbo
     return_generator : bool
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -390,7 +406,7 @@ def apply_dics_tfr_epochs(epochs_tfr, filters, return_generator: bool=..., verbo
     apply_dics_csd
     """
 
-def apply_dics_csd(csd, filters, verbose: Incomplete | None=...):
+def apply_dics_csd(csd, filters, verbose=...):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply a previously computed DICS beamformer to a cross-spectral density
@@ -412,7 +428,7 @@ def apply_dics_csd(csd, filters, verbose: Incomplete | None=...):
     filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
         Filter weights returned from `make_dics`.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

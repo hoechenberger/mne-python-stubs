@@ -1,8 +1,7 @@
-from ..utils import fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 from .constants import FIFF as FIFF
-from _typeshed import Incomplete
 
-def get_channel_type_constants(include_defaults: bool=...):
+def get_channel_type_constants(include_defaults: bool = ...):
     """Return all known channel types, and associated FIFF constants.
 
     Parameters
@@ -33,7 +32,7 @@ def channel_type(info, idx):
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     idx : int
@@ -50,7 +49,7 @@ def channel_type(info, idx):
               'temperature', 'gsr', 'eyetrack'}
     """
 
-def pick_channels(ch_names, include, exclude=..., ordered: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def pick_channels(ch_names, include, exclude=..., ordered=..., *, verbose=...):
     """Pick channels by names.
 
     Returns the indices of ``ch_names`` in ``include`` but not in ``exclude``.
@@ -68,15 +67,15 @@ def pick_channels(ch_names, include, exclude=..., ordered: Incomplete | None=...
     exclude : list of str
         List of channels to exclude (if empty do not exclude any channel).
         Defaults to [].
-    
+
     ordered : bool
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
-    
+
         .. versionadded:: 0.20.0
         .. versionchanged:: 1.5
             The default changed from False in 1.4 to True in 1.5.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -124,15 +123,45 @@ def pick_channels_regexp(ch_names, regexp):
     [0, 1, 2]
     """
 
-def pick_types(info, meg: bool=..., eeg: bool=..., stim: bool=..., eog: bool=..., ecg: bool=..., emg: bool=..., ref_meg: str=..., *, misc: bool=..., resp: bool=..., chpi: bool=..., exci: bool=..., ias: bool=..., syst: bool=..., seeg: bool=..., dipole: bool=..., gof: bool=..., bio: bool=..., ecog: bool=..., fnirs: bool=..., csd: bool=..., dbs: bool=..., temperature: bool=..., gsr: bool=..., eyetrack: bool=..., include=..., exclude: str=..., selection: Incomplete | None=...):
+def pick_types(
+    info,
+    meg: bool = ...,
+    eeg: bool = ...,
+    stim: bool = ...,
+    eog: bool = ...,
+    ecg: bool = ...,
+    emg: bool = ...,
+    ref_meg: str = ...,
+    *,
+    misc: bool = ...,
+    resp: bool = ...,
+    chpi: bool = ...,
+    exci: bool = ...,
+    ias: bool = ...,
+    syst: bool = ...,
+    seeg: bool = ...,
+    dipole: bool = ...,
+    gof: bool = ...,
+    bio: bool = ...,
+    ecog: bool = ...,
+    fnirs: bool = ...,
+    csd: bool = ...,
+    dbs: bool = ...,
+    temperature: bool = ...,
+    gsr: bool = ...,
+    eyetrack: bool = ...,
+    include=...,
+    exclude: str = ...,
+    selection=...,
+):
     """Pick channels by type and names.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    
+
     meg : bool | str
         If True include MEG channels. If string it can be 'mag', 'grad',
         'planar1' or 'planar2' to select only magnetometers, all
@@ -207,12 +236,12 @@ def pick_types(info, meg: bool=..., eeg: bool=..., stim: bool=..., eog: bool=...
         Indices of good channels.
     """
 
-def pick_info(info, sel=..., copy: bool=..., verbose: Incomplete | None=...):
+def pick_info(info, sel=..., copy: bool = ..., verbose=...):
     """Restrict an info structure to a selection of channels.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     sel : list of int | None
@@ -220,7 +249,7 @@ def pick_info(info, sel=..., copy: bool=..., verbose: Incomplete | None=...):
         are included.
     copy : bool
         If copy is False, info is modified inplace.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -233,7 +262,9 @@ def pick_info(info, sel=..., copy: bool=..., verbose: Incomplete | None=...):
         Info structure restricted to a selection of channels.
     """
 
-def pick_channels_forward(orig, include=..., exclude=..., ordered: Incomplete | None=..., copy: bool=..., *, verbose: Incomplete | None=...):
+def pick_channels_forward(
+    orig, include=..., exclude=..., ordered=..., copy: bool = ..., *, verbose=...
+):
     """Pick channels from forward operator.
 
     Parameters
@@ -246,11 +277,11 @@ def pick_channels_forward(orig, include=..., exclude=..., ordered: Incomplete | 
     exclude : list of str | 'bads'
         Channels to exclude (if empty, do not exclude any). Defaults to [].
         If 'bads', then exclude bad channels in orig.
-    
+
     ordered : bool
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
-    
+
         .. versionadded:: 0.20.0
         .. versionchanged:: 1.5
             The default changed from False in 1.4 to True in 1.5.
@@ -258,7 +289,7 @@ def pick_channels_forward(orig, include=..., exclude=..., ordered: Incomplete | 
         If True (default), make a copy.
 
         .. versionadded:: 0.19
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -272,7 +303,17 @@ def pick_channels_forward(orig, include=..., exclude=..., ordered: Incomplete | 
         exclude are empty it returns orig without copy.
     """
 
-def pick_types_forward(orig, meg: bool=..., eeg: bool=..., ref_meg: bool=..., seeg: bool=..., ecog: bool=..., dbs: bool=..., include=..., exclude=...):
+def pick_types_forward(
+    orig,
+    meg: bool = ...,
+    eeg: bool = ...,
+    ref_meg: bool = ...,
+    seeg: bool = ...,
+    ecog: bool = ...,
+    dbs: bool = ...,
+    include=...,
+    exclude=...,
+):
     """Pick by channel type and names from a forward operator.
 
     Parameters
@@ -305,22 +346,22 @@ def pick_types_forward(orig, meg: bool=..., eeg: bool=..., ref_meg: bool=..., se
         Forward solution restricted to selected channel types.
     """
 
-def channel_indices_by_type(info, picks: Incomplete | None=...):
+def channel_indices_by_type(info, picks=...):
     """Get indices of channels by type.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all channels. Note that channels in 
-        ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all channels. Note that channels in
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
     Returns
@@ -330,7 +371,9 @@ def channel_indices_by_type(info, picks: Incomplete | None=...):
         channel indices.
     """
 
-def pick_channels_cov(orig, include=..., exclude: str=..., ordered: Incomplete | None=..., copy: bool=..., *, verbose: Incomplete | None=...):
+def pick_channels_cov(
+    orig, include=..., exclude: str = ..., ordered=..., copy: bool = ..., *, verbose=...
+):
     """Pick channels from covariance matrix.
 
     Parameters
@@ -341,11 +384,11 @@ def pick_channels_cov(orig, include=..., exclude: str=..., ordered: Incomplete |
         List of channels to include (if empty, include all available).
     exclude : list of str, (optional) | 'bads'
         Channels to exclude (if empty, do not exclude any). Defaults to 'bads'.
-    
+
     ordered : bool
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
-    
+
         .. versionadded:: 0.20.0
         .. versionchanged:: 1.5
             The default changed from False in 1.4 to True in 1.5.
@@ -354,7 +397,7 @@ def pick_channels_cov(orig, include=..., exclude: str=..., ordered: Incomplete |
         modified channels. If False, channels are modified in-place.
 
         .. versionadded:: 0.20.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

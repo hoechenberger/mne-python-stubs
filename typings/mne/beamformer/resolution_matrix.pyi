@@ -1,4 +1,8 @@
-from .._fiff.pick import pick_channels as pick_channels, pick_channels_forward as pick_channels_forward, pick_info as pick_info
+from .._fiff.pick import (
+    pick_channels as pick_channels,
+    pick_channels_forward as pick_channels_forward,
+    pick_info as pick_info,
+)
 from ..evoked import EvokedArray as EvokedArray
 from ..utils import fill_doc as fill_doc, logger as logger
 from ._lcmv import apply_lcmv as apply_lcmv
@@ -13,7 +17,7 @@ def make_lcmv_resolution_matrix(filters, forward, info):
          (see mne.beamformer.make_lcmv).
     forward : instance of Forward
         Forward Solution with leadfield matrix.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Used to compute LCMV filters.
 

@@ -1,9 +1,8 @@
 from ...epochs import EpochsArray as EpochsArray
 from ...evoked import EvokedArray as EvokedArray
 from ..array.array import RawArray as RawArray
-from _typeshed import Incomplete
 
-def read_raw_fieldtrip(fname, info, data_name: str=...):
+def read_raw_fieldtrip(fname, info, data_name: str = ...):
     """Load continuous (raw) data from a FieldTrip preprocessing structure.
 
     This function expects to find single trial raw data (FT_DATATYPE_RAW) in
@@ -39,7 +38,9 @@ def read_raw_fieldtrip(fname, info, data_name: str=...):
     mne.io.Raw : Documentation of attributes and methods of RawArray.
     """
 
-def read_epochs_fieldtrip(fname, info, data_name: str=..., trialinfo_column: int=...):
+def read_epochs_fieldtrip(
+    fname, info, data_name: str = ..., trialinfo_column: int = ...
+):
     """Load epoched data from a FieldTrip preprocessing structure.
 
     This function expects to find epoched data in the structure data_name is
@@ -75,7 +76,7 @@ def read_epochs_fieldtrip(fname, info, data_name: str=..., trialinfo_column: int
         An EpochsArray containing the loaded data.
     """
 
-def read_evoked_fieldtrip(fname, info, comment: Incomplete | None=..., data_name: str=...):
+def read_evoked_fieldtrip(fname, info, comment=..., data_name: str = ...):
     """Load evoked data from a FieldTrip timelocked structure.
 
     This function expects to find timelocked data in the structure data_name is

@@ -1,7 +1,22 @@
-from .utils import ProgressBar as ProgressBar, get_config as get_config, logger as logger, use_log_level as use_log_level, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from .utils import (
+    ProgressBar as ProgressBar,
+    get_config as get_config,
+    logger as logger,
+    use_log_level as use_log_level,
+    warn as warn,
+)
 
-def parallel_func(func, n_jobs, max_nbytes: str=..., pre_dispatch: str=..., total: Incomplete | None=..., prefer: Incomplete | None=..., *, max_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def parallel_func(
+    func,
+    n_jobs,
+    max_nbytes: str = ...,
+    pre_dispatch: str = ...,
+    total=...,
+    prefer=...,
+    *,
+    max_jobs=...,
+    verbose=...,
+):
     """Return parallel instance with delayed function.
 
     Util function to use joblib only if available
@@ -40,7 +55,7 @@ def parallel_func(func, n_jobs, max_nbytes: str=..., pre_dispatch: str=..., tota
         of a the maximum number of calls into :class:`joblib.Parallel` that
         you will possibly want or need, and the returned ``n_jobs`` should not
         exceed this value regardless of how many jobs the user requests.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

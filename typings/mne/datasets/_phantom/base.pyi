@@ -1,20 +1,21 @@
-from ...utils import get_subjects_dir as get_subjects_dir, verbose as verbose
+from ...utils import get_subjects_dir as get_subjects_dir
 from _typeshed import Incomplete
+
 PHANTOM_MANIFEST_PATH: Incomplete
 
-def fetch_phantom(kind, subjects_dir: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def fetch_phantom(kind, subjects_dir=..., *, verbose=...):
     """Fetch and update a phantom subject.
 
     Parameters
     ----------
     kind : str
         The kind of phantom to fetch. Can only be ``'otaniemi'`` (default).
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

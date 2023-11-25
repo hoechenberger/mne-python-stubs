@@ -1,7 +1,6 @@
-from ...utils import get_subjects_dir as get_subjects_dir, verbose as verbose
-from _typeshed import Incomplete
+from ...utils import get_subjects_dir as get_subjects_dir
 
-def fetch_infant_template(age, subjects_dir: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def fetch_infant_template(age, subjects_dir=..., *, verbose=...):
     """Fetch and update an infant MRI template.
 
     Parameters
@@ -11,7 +10,7 @@ def fetch_infant_template(age, subjects_dir: Incomplete | None=..., *, verbose: 
         '6mo', '7.5mo', '9mo', '10.5mo', '12mo', '15mo', '18mo', '2yr'}``.
     subjects_dir : str | None
         The path to download the template data to.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

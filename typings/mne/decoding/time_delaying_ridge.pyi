@@ -7,16 +7,17 @@ from _typeshed import Incomplete
 class TimeDelayingRidge(BaseEstimator):
     """Predict the output.
 
-        Parameters
-        ----------
-        X : array, shape (n_samples[, n_epochs], n_features)
-            The data.
+    Parameters
+    ----------
+    X : array, shape (n_samples[, n_epochs], n_features)
+        The data.
 
-        Returns
-        -------
-        X : ndarray
-            The predicted response.
-        """
+    Returns
+    -------
+    X : ndarray
+        The predicted response.
+    """
+
     tmin: Incomplete
     tmax: Incomplete
     sfreq: Incomplete
@@ -26,8 +27,17 @@ class TimeDelayingRidge(BaseEstimator):
     edge_correction: Incomplete
     n_jobs: Incomplete
 
-    def __init__(self, tmin, tmax, sfreq, alpha: float=..., reg_type: str=..., fit_intercept: bool=..., n_jobs: Incomplete | None=..., edge_correction: bool=...) -> None:
-        ...
+    def __init__(
+        self,
+        tmin,
+        tmax,
+        sfreq,
+        alpha: float = ...,
+        reg_type: str = ...,
+        fit_intercept: bool = ...,
+        n_jobs=...,
+        edge_correction: bool = ...,
+    ) -> None: ...
     coef_: Incomplete
     intercept_: Incomplete
 
@@ -46,7 +56,6 @@ class TimeDelayingRidge(BaseEstimator):
         self : instance of TimeDelayingRidge
             Returns the modified instance.
         """
-
     def predict(self, X):
         """Predict the output.
 

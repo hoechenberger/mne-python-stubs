@@ -7,11 +7,31 @@ from ..evoked import EvokedArray as EvokedArray
 from ..label import BiHemiLabel as BiHemiLabel, Label as Label
 from ..parallel import parallel_func as parallel_func
 from ..time_frequency.tfr import cwt as cwt, morlet as morlet
-from ..utils import ProgressBar as ProgressBar, logger as logger, verbose as verbose
+from ..utils import ProgressBar as ProgressBar, logger as logger
 from .inverse import INVERSE_METHODS as INVERSE_METHODS, combine_xyz as combine_xyz
-from _typeshed import Incomplete
 
-def source_band_induced_power(epochs, inverse_operator, bands, label: Incomplete | None=..., lambda2=..., method: str=..., nave: int=..., n_cycles: int=..., df: int=..., use_fft: bool=..., decim: int=..., baseline: Incomplete | None=..., baseline_mode: str=..., pca: bool=..., n_jobs: Incomplete | None=..., prepared: bool=..., method_params: Incomplete | None=..., use_cps: bool=..., *, verbose: Incomplete | None=...):
+def source_band_induced_power(
+    epochs,
+    inverse_operator,
+    bands,
+    label=...,
+    lambda2=...,
+    method: str = ...,
+    nave: int = ...,
+    n_cycles: int = ...,
+    df: int = ...,
+    use_fft: bool = ...,
+    decim: int = ...,
+    baseline=...,
+    baseline_mode: str = ...,
+    pca: bool = ...,
+    n_jobs=...,
+    prepared: bool = ...,
+    method_params=...,
+    use_cps: bool = ...,
+    *,
+    verbose=...,
+):
     """Compute source space induced power in given frequency bands.
 
     Parameters
@@ -77,16 +97,16 @@ def source_band_induced_power(epochs, inverse_operator, bands, label: Incomplete
         Additional options for eLORETA. See Notes of :func:`apply_inverse`.
 
         .. versionadded:: 0.16
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -102,7 +122,30 @@ def source_band_induced_power(epochs, inverse_operator, bands, label: Incomplete
         (n_labels, n_frequencies, n_samples).
     """
 
-def source_induced_power(epochs, inverse_operator, freqs, label: Incomplete | None=..., lambda2=..., method: str=..., nave: int=..., n_cycles: int=..., decim: int=..., use_fft: bool=..., pick_ori: Incomplete | None=..., baseline: Incomplete | None=..., baseline_mode: str=..., pca: bool=..., n_jobs: Incomplete | None=..., *, return_plv: bool=..., zero_mean: bool=..., prepared: bool=..., method_params: Incomplete | None=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def source_induced_power(
+    epochs,
+    inverse_operator,
+    freqs,
+    label=...,
+    lambda2=...,
+    method: str = ...,
+    nave: int = ...,
+    n_cycles: int = ...,
+    decim: int = ...,
+    use_fft: bool = ...,
+    pick_ori=...,
+    baseline=...,
+    baseline_mode: str = ...,
+    pca: bool = ...,
+    n_jobs=...,
+    *,
+    return_plv: bool = ...,
+    zero_mean: bool = ...,
+    prepared: bool = ...,
+    method_params=...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Compute induced power and phase lock.
 
     Computation can optionally be restricted in a label.
@@ -179,16 +222,16 @@ def source_induced_power(epochs, inverse_operator, freqs, label: Incomplete | No
         If True, do not call :func:`prepare_inverse_operator`.
     method_params : dict | None
         Additional options for eLORETA. See Notes of :func:`apply_inverse`.
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -206,7 +249,33 @@ def source_induced_power(epochs, inverse_operator, freqs, label: Incomplete | No
         n_samples). Only returned if ``return_plv=True``.
     """
 
-def compute_source_psd(raw, inverse_operator, lambda2=..., method: str=..., tmin: float=..., tmax: Incomplete | None=..., fmin: float=..., fmax: float=..., n_fft: int=..., overlap: float=..., pick_ori: Incomplete | None=..., label: Incomplete | None=..., nave: int=..., pca: bool=..., prepared: bool=..., method_params: Incomplete | None=..., inv_split: Incomplete | None=..., bandwidth: str=..., adaptive: bool=..., low_bias: bool=..., n_jobs: Incomplete | None=..., return_sensor: bool=..., dB: bool=..., *, verbose: Incomplete | None=...):
+def compute_source_psd(
+    raw,
+    inverse_operator,
+    lambda2=...,
+    method: str = ...,
+    tmin: float = ...,
+    tmax=...,
+    fmin: float = ...,
+    fmax: float = ...,
+    n_fft: int = ...,
+    overlap: float = ...,
+    pick_ori=...,
+    label=...,
+    nave: int = ...,
+    pca: bool = ...,
+    prepared: bool = ...,
+    method_params=...,
+    inv_split=...,
+    bandwidth: str = ...,
+    adaptive: bool = ...,
+    low_bias: bool = ...,
+    n_jobs=...,
+    return_sensor: bool = ...,
+    dB: bool = ...,
+    *,
+    verbose=...,
+):
     """Compute source power spectral density (PSD).
 
     Parameters
@@ -291,7 +360,7 @@ def compute_source_psd(raw, inverse_operator, lambda2=..., method: str=..., tmin
         If True (default False), return output it decibels.
 
         .. versionadded:: 0.17
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -323,7 +392,29 @@ def compute_source_psd(raw, inverse_operator, lambda2=..., method: str=..., tmin
     Otherwise the two should produce identical results.
     """
 
-def compute_source_psd_epochs(epochs, inverse_operator, lambda2=..., method: str=..., fmin: float=..., fmax: float=..., pick_ori: Incomplete | None=..., label: Incomplete | None=..., nave: int=..., pca: bool=..., inv_split: Incomplete | None=..., bandwidth: float=..., adaptive: bool=..., low_bias: bool=..., return_generator: bool=..., n_jobs: Incomplete | None=..., prepared: bool=..., method_params: Incomplete | None=..., return_sensor: bool=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def compute_source_psd_epochs(
+    epochs,
+    inverse_operator,
+    lambda2=...,
+    method: str = ...,
+    fmin: float = ...,
+    fmax: float = ...,
+    pick_ori=...,
+    label=...,
+    nave: int = ...,
+    pca: bool = ...,
+    inv_split=...,
+    bandwidth: float = ...,
+    adaptive: bool = ...,
+    low_bias: bool = ...,
+    return_generator: bool = ...,
+    n_jobs=...,
+    prepared: bool = ...,
+    method_params=...,
+    return_sensor: bool = ...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Compute source power spectral density (PSD) from Epochs.
 
     This uses the multi-taper method to compute the PSD for each epoch.
@@ -386,16 +477,16 @@ def compute_source_psd_epochs(epochs, inverse_operator, lambda2=..., method: str
         If True, also return the sensor PSD for each epoch as an EvokedArray.
 
         .. versionadded:: 0.17
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

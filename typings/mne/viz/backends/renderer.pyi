@@ -1,13 +1,14 @@
-from ...utils import fill_doc as fill_doc, get_config as get_config, logger as logger, verbose as verbose
+from ...utils import fill_doc as fill_doc, get_config as get_config, logger as logger
 from ..utils import safe_event as safe_event
 from ._utils import VALID_3D_BACKENDS as VALID_3D_BACKENDS
 from _typeshed import Incomplete
 from collections.abc import Generator
+
 MNE_3D_BACKEND: Incomplete
 MNE_3D_BACKEND_TESTING: bool
 backend: Incomplete
 
-def set_3d_backend(backend_name, verbose: Incomplete | None=...):
+def set_3d_backend(backend_name, verbose=...):
     """Set the 3D backend for MNE.
 
     The backend will be set as specified and operations will use
@@ -21,7 +22,7 @@ def set_3d_backend(backend_name, verbose: Incomplete | None=...):
 
         .. versionchanged:: 0.24
            The ``'pyvista'`` backend was renamed ``'pyvistaqt'``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -110,40 +111,49 @@ def use_3d_backend(backend_name) -> Generator[None, None, None]:
         The 3d backend to use in the context.
     """
 
-def set_3d_view(figure, azimuth: Incomplete | None=..., elevation: Incomplete | None=..., focalpoint: Incomplete | None=..., distance: Incomplete | None=..., roll: Incomplete | None=..., *, reset_camera: Incomplete | None=...) -> None:
+def set_3d_view(
+    figure,
+    azimuth=...,
+    elevation=...,
+    focalpoint=...,
+    distance=...,
+    roll=...,
+    *,
+    reset_camera=...,
+) -> None:
     """Configure the view of the given scene.
 
     Parameters
     ----------
     figure : object
         The scene which is modified.
-    
+
     azimuth : float
         The azimuthal angle of the camera rendering the view in degrees.
-    
+
     elevation : float
         The The zenith angle of the camera rendering the view in degrees.
-    
+
     focalpoint : tuple, shape (3,) | str | None
         The focal point of the camera rendering the view: (x, y, z) in
         plot units (either m or mm). When ``"auto"``, it is set to the center of
         mass of the visible bounds.
-    
+
     distance : float | "auto" | None
         The distance from the camera rendering the view to the focalpoint
         in plot units (either m or mm). If "auto", the bounds of visible objects will be
         used to set a reasonable distance.
-    
+
         .. versionchanged:: 1.6
            ``None`` will no longer change the distance, use ``"auto"`` instead.
-    
+
     roll : float | None
         The roll of the camera rendering the view in degrees.
     reset_camera : bool
        Deprecated, use ``distance="auto"`` instead.
     """
 
-def set_3d_title(figure, title, size: int=...) -> None:
+def set_3d_title(figure, title, size: int = ...) -> None:
     """Configure the title of the given scene.
 
     Parameters
@@ -156,7 +166,15 @@ def set_3d_title(figure, title, size: int=...) -> None:
         The size of the title.
     """
 
-def create_3d_figure(size, bgcolor=..., smooth_shading: Incomplete | None=..., handle: Incomplete | None=..., *, scene: bool=..., show: bool=...):
+def create_3d_figure(
+    size,
+    bgcolor=...,
+    smooth_shading=...,
+    handle=...,
+    *,
+    scene: bool = ...,
+    show: bool = ...,
+):
     """Return an empty figure based on the current 3d backend.
 
     .. warning:: Proceed with caution when the renderer object is

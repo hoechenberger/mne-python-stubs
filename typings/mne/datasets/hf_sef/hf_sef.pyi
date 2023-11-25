@@ -1,8 +1,13 @@
-from ...utils import verbose as verbose
 from ..config import MNE_DATASETS as MNE_DATASETS
-from _typeshed import Incomplete
 
-def data_path(dataset: str=..., path: Incomplete | None=..., force_update: bool=..., update_path: bool=..., *, verbose: Incomplete | None=...):
+def data_path(
+    dataset: str = ...,
+    path=...,
+    force_update: bool = ...,
+    update_path: bool = ...,
+    *,
+    verbose=...,
+):
     """Get path to local copy of the high frequency SEF dataset.
 
     Gets a local copy of the high frequency SEF MEG dataset
@@ -25,7 +30,7 @@ def data_path(dataset: str=..., path: Incomplete | None=..., force_update: bool=
     update_path : bool | None
         If True, set the MNE_DATASETS_HF_SEF_PATH in mne-python
         config to the given path. If None, the user is prompted.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -1,11 +1,25 @@
-from ..annotations import Annotations as Annotations, annotations_from_events as annotations_from_events
+from ..annotations import (
+    Annotations as Annotations,
+    annotations_from_events as annotations_from_events,
+)
 from ..filter import filter_data as filter_data
 from ..io.base import BaseRaw as BaseRaw
-from ..transforms import Transform as Transform, apply_trans as apply_trans, quat_to_rot as quat_to_rot
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    quat_to_rot as quat_to_rot,
+)
+from ..utils import logger as logger
 
-def annotate_muscle_zscore(raw, threshold: int=..., ch_type: Incomplete | None=..., min_length_good: float=..., filter_freq=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def annotate_muscle_zscore(
+    raw,
+    threshold: int = ...,
+    ch_type=...,
+    min_length_good: float = ...,
+    filter_freq=...,
+    n_jobs=...,
+    verbose=...,
+):
     """Create annotations for segments that likely contain muscle artifacts.
 
     Detects data segments containing activity in the frequency range given by
@@ -43,7 +57,7 @@ def annotate_muscle_zscore(raw, threshold: int=..., ch_type: Incomplete | None=.
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -62,7 +76,14 @@ def annotate_muscle_zscore(raw, threshold: int=..., ch_type: Incomplete | None=.
     .. footbibliography::
     """
 
-def annotate_movement(raw, pos, rotation_velocity_limit: Incomplete | None=..., translation_velocity_limit: Incomplete | None=..., mean_distance_limit: Incomplete | None=..., use_dev_head_trans: str=...):
+def annotate_movement(
+    raw,
+    pos,
+    rotation_velocity_limit=...,
+    translation_velocity_limit=...,
+    mean_distance_limit=...,
+    use_dev_head_trans: str = ...,
+):
     """Detect segments with movement.
 
     Detects segments periods further from rotation_velocity_limit,
@@ -120,8 +141,17 @@ def compute_average_dev_head_t(raw, pos):
         New ``dev_head_t`` transformation using the averaged good head positions.
     """
 
-def annotate_break(raw, events: Incomplete | None=..., min_break_duration: float=..., t_start_after_previous: float=..., t_stop_before_next: float=..., ignore=..., *, verbose: Incomplete | None=...):
-    """Create `~mne.Annotations` for breaks in an ongoing recording.
+def annotate_break(
+    raw,
+    events=...,
+    min_break_duration: float = ...,
+    t_start_after_previous: float = ...,
+    t_stop_before_next: float = ...,
+    ignore=...,
+    *,
+    verbose=...,
+):
+    """Create mne.Annotations` for breaks in an ongoing recording.
 
     This function first searches for segments in the data that are not
     annotated or do not contain any events and are at least
@@ -172,7 +202,7 @@ def annotate_break(raw, events: Incomplete | None=..., min_break_duration: float
         indicating "edges" (produced by data concatenation) will be
         ignored. Pass an empty list or tuple to take all existing annotations
         into account. If ``events`` is passed, this parameter has no effect.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -184,7 +214,7 @@ def annotate_break(raw, events: Incomplete | None=..., min_break_duration: float
     break_annotations : instance of Annotations
         The break annotations, each with the description ``'BAD_break'``. If
         no breaks could be found given the provided function parameters, an
-        empty `~mne.Annotations` object will be returned.
+        empty mne.Annotations` object will be returned.
 
     Notes
     -----

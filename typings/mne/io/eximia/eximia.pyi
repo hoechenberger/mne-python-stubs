@@ -1,23 +1,22 @@
 from ..._fiff.meas_info import create_info as create_info
-from ...utils import fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
 
-def read_raw_eximia(fname, preload: bool=..., verbose: Incomplete | None=...):
+def read_raw_eximia(fname, preload: bool = ..., verbose=...):
     """Reader for an eXimia EEG file.
 
     Parameters
     ----------
     fname : path-like
         Path to the eXimia ``.nxe`` data file.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -42,14 +41,14 @@ class RawEximia(BaseRaw):
     ----------
     fname : path-like
         Path to the eXimia data file (.nxe).
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -61,5 +60,4 @@ class RawEximia(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, fname, preload: bool=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(self, fname, preload: bool = ..., verbose=...) -> None: ...

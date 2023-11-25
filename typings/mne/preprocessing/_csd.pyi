@@ -1,13 +1,24 @@
 from .._fiff.constants import FIFF as FIFF
 from .._fiff.pick import pick_types as pick_types
 from ..bem import fit_sphere_to_headshape as fit_sphere_to_headshape
-from ..epochs import BaseEpochs as BaseEpochs, make_fixed_length_epochs as make_fixed_length_epochs
+from ..epochs import (
+    BaseEpochs as BaseEpochs,
+    make_fixed_length_epochs as make_fixed_length_epochs,
+)
 from ..evoked import Evoked as Evoked
 from ..io import BaseRaw as BaseRaw
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def compute_current_source_density(inst, sphere: str=..., lambda2: float=..., stiffness: int=..., n_legendre_terms: int=..., copy: bool=..., *, verbose: Incomplete | None=...):
+def compute_current_source_density(
+    inst,
+    sphere: str = ...,
+    lambda2: float = ...,
+    stiffness: int = ...,
+    n_legendre_terms: int = ...,
+    copy: bool = ...,
+    *,
+    verbose=...,
+):
     """Get the current source density (CSD) transformation.
 
     Transformation based on spherical spline surface Laplacian
@@ -32,7 +43,7 @@ def compute_current_source_density(inst, sphere: str=..., lambda2: float=..., st
         Number of Legendre terms to evaluate.
     copy : bool
         Whether to overwrite instance data or create a copy.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -53,7 +64,16 @@ def compute_current_source_density(inst, sphere: str=..., lambda2: float=..., st
     .. footbibliography::
     """
 
-def compute_bridged_electrodes(inst, lm_cutoff: int=..., epoch_threshold: float=..., l_freq: float=..., h_freq: int=..., epoch_duration: int=..., bw_method: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_bridged_electrodes(
+    inst,
+    lm_cutoff: int = ...,
+    epoch_threshold: float = ...,
+    l_freq: float = ...,
+    h_freq: int = ...,
+    epoch_duration: int = ...,
+    bw_method=...,
+    verbose=...,
+):
     """Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
 
     First, an electrical distance matrix is computed by taking the pairwise
@@ -91,7 +111,7 @@ def compute_bridged_electrodes(inst, lm_cutoff: int=..., epoch_threshold: float=
         :class:`mne.io.BaseRaw`. The default is 2 seconds.
     bw_method : None
         ``bw_method`` to pass to :class:`scipy.stats.gaussian_kde`.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -1,4 +1,4 @@
-from ..utils import fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 from _typeshed import Incomplete
 from collections.abc import Generator
 from dataclasses import dataclass
@@ -7,6 +7,7 @@ from typing import List, Optional, Union
 
 class UIEvent:
     """The name of the event, which is the class name in snake case."""
+
     source: Incomplete
 
     @property
@@ -18,7 +19,7 @@ class FigureClosing(UIEvent):
 
     Attributes
     ----------
-    
+
     name : str
         The name of the event (same as its class name but in snake_case).
     source : matplotlib.figure.Figure | Figure3D
@@ -40,10 +41,10 @@ class TimeChange(UIEvent):
     time : float
         The new time in seconds.
     """
+
     time: float
 
-    def __init__(self, time) -> None:
-        ...
+    def __init__(self, time) -> None: ...
 
 @dataclass
 class PlaybackSpeed(UIEvent):
@@ -60,10 +61,10 @@ class PlaybackSpeed(UIEvent):
     speed : float
         The new speed in seconds per frame.
     """
+
     speed: float
 
-    def __init__(self, speed) -> None:
-        ...
+    def __init__(self, speed) -> None: ...
 
 @dataclass
 class ColormapRange(UIEvent):
@@ -98,6 +99,7 @@ class ColormapRange(UIEvent):
         The colormap to use. Either string or matplotlib.colors.Colormap
         instance.
     """
+
     kind: str
     ch_type: Optional[str] = ...
     fmin: Optional[float] = ...
@@ -106,8 +108,7 @@ class ColormapRange(UIEvent):
     alpha: Optional[bool] = ...
     cmap: Optional[Union[Colormap, str]] = ...
 
-    def __init__(self, kind, ch_type, fmin, fmid, fmax, alpha, cmap) -> None:
-        ...
+    def __init__(self, kind, ch_type, fmin, fmid, fmax, alpha, cmap) -> None: ...
 
 @dataclass
 class VertexSelect(UIEvent):
@@ -130,11 +131,11 @@ class VertexSelect(UIEvent):
     vertex_id : int
         The vertex number (in the high resolution mesh) that was selected.
     """
+
     hemi: str
     vertex_id: int
 
-    def __init__(self, hemi, vertex_id) -> None:
-        ...
+    def __init__(self, hemi, vertex_id) -> None: ...
 
 @dataclass
 class Contours(UIEvent):
@@ -159,13 +160,13 @@ class Contours(UIEvent):
     contours : list of float
         The new values at which contour lines need to be drawn.
     """
+
     kind: str
     contours: List[str]
 
-    def __init__(self, kind, contours) -> None:
-        ...
+    def __init__(self, kind, contours) -> None: ...
 
-def publish(fig, event, *, verbose: Incomplete | None=...) -> None:
+def publish(fig, event, *, verbose=...) -> None:
     """Publish an event to all subscribers of the figure's channel.
 
     The figure's event channel and all linked event channels are searched for
@@ -178,7 +179,7 @@ def publish(fig, event, *, verbose: Incomplete | None=...) -> None:
         The figure that publishes the event.
     event : UIEvent
         Event to publish.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -186,7 +187,7 @@ def publish(fig, event, *, verbose: Incomplete | None=...) -> None:
         argument.
     """
 
-def subscribe(fig, event_name, callback, *, verbose: Incomplete | None=...) -> None:
+def subscribe(fig, event_name, callback, *, verbose=...) -> None:
     """Subscribe to an event on a figure's event channel.
 
     Parameters
@@ -197,7 +198,7 @@ def subscribe(fig, event_name, callback, *, verbose: Incomplete | None=...) -> N
         The name of the event to listen for.
     callback : callable
         The function that should be called whenever the event is published.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -205,7 +206,7 @@ def subscribe(fig, event_name, callback, *, verbose: Incomplete | None=...) -> N
         argument.
     """
 
-def unsubscribe(fig, event_names, callback: Incomplete | None=..., *, verbose: Incomplete | None=...) -> None:
+def unsubscribe(fig, event_names, callback=..., *, verbose=...) -> None:
     """Unsubscribe from an event on a figure's event channel.
 
     Parameters
@@ -220,7 +221,7 @@ def unsubscribe(fig, event_names, callback: Incomplete | None=..., *, verbose: I
         The callback function that should be unsubscribed, leaving all other
         callback functions that may be subscribed untouched. By default
         (``None``) all callback functions are unsubscribed from the event.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -228,7 +229,7 @@ def unsubscribe(fig, event_names, callback: Incomplete | None=..., *, verbose: I
         argument.
     """
 
-def link(*figs, include_events: Incomplete | None=..., exclude_events: Incomplete | None=..., verbose: Incomplete | None=...) -> None:
+def link(*figs, include_events=..., exclude_events=..., verbose=...) -> None:
     """Link the event channels of two figures together.
 
     When event channels are linked, any events that are published on one
@@ -247,7 +248,7 @@ def link(*figs, include_events: Incomplete | None=..., exclude_events: Incomplet
     exclude_events : list of str | None
         Select which events not to publish across figures. By default (``None``),
         no events are excluded.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -255,7 +256,7 @@ def link(*figs, include_events: Incomplete | None=..., exclude_events: Incomplet
         argument.
     """
 
-def unlink(fig, *, verbose: Incomplete | None=...) -> None:
+def unlink(fig, *, verbose=...) -> None:
     """Remove all links involving the event channel of the given figure.
 
     Parameters
@@ -263,7 +264,7 @@ def unlink(fig, *, verbose: Incomplete | None=...) -> None:
     fig : matplotlib.figure.Figure | Figure3D
         The figure whose event channel should be unlinked from all other event
         channels.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

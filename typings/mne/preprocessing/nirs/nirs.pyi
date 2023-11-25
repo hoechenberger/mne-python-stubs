@@ -1,23 +1,22 @@
 from ..._fiff.pick import pick_types as pick_types
 from ...utils import fill_doc as fill_doc
-from _typeshed import Incomplete
 
-def source_detector_distances(info, picks: Incomplete | None=...):
+def source_detector_distances(info, picks=...):
     """Determine the distance between NIRS source and detectors.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
     Returns
@@ -27,7 +26,7 @@ def source_detector_distances(info, picks: Incomplete | None=...):
         Of shape equal to number of channels, or shape of picks if supplied.
     """
 
-def short_channels(info, threshold: float=...):
+def short_channels(info, threshold: float = ...):
     """Determine which NIRS channels are short.
 
     Channels with a source to detector distance of less than
@@ -35,7 +34,7 @@ def short_channels(info, threshold: float=...):
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     threshold : float

@@ -2,24 +2,44 @@ from ._fiff.constants import FIFF as FIFF, FWD as FWD
 from ._fiff.open import fiff_open as fiff_open
 from ._fiff.tag import find_tag as find_tag
 from ._fiff.tree import dir_tree_find as dir_tree_find
-from ._fiff.write import end_block as end_block, start_and_end_file as start_and_end_file, start_block as start_block, write_float as write_float, write_float_matrix as write_float_matrix, write_int as write_int, write_int_matrix as write_int_matrix, write_string as write_string
-from .surface import complete_surface_info as complete_surface_info, decimate_surface as decimate_surface, read_surface as read_surface, read_tri as read_tri, transform_surface_to as transform_surface_to, write_surface as write_surface
+from ._fiff.write import (
+    end_block as end_block,
+    start_and_end_file as start_and_end_file,
+    start_block as start_block,
+    write_float as write_float,
+    write_float_matrix as write_float_matrix,
+    write_int as write_int,
+    write_int_matrix as write_int_matrix,
+    write_string as write_string,
+)
+from .surface import (
+    complete_surface_info as complete_surface_info,
+    decimate_surface as decimate_surface,
+    read_surface as read_surface,
+    read_tri as read_tri,
+    transform_surface_to as transform_surface_to,
+    write_surface as write_surface,
+)
 from .transforms import Transform as Transform, apply_trans as apply_trans
-from .utils import get_subjects_dir as get_subjects_dir, logger as logger, path_like as path_like, run_subprocess as run_subprocess, verbose as verbose, warn as warn
+from .utils import (
+    get_subjects_dir as get_subjects_dir,
+    logger as logger,
+    path_like as path_like,
+    run_subprocess as run_subprocess,
+    warn as warn,
+)
 from .viz.misc import plot_bem as plot_bem
-from _typeshed import Incomplete
 
 class ConductorModel(dict):
     """Sphere radius if an EEG sphere model."""
 
     def copy(self):
         """Return copy of ConductorModel instance."""
-
     @property
     def radius(self):
         """Sphere radius if an EEG sphere model."""
 
-def make_bem_solution(surfs, *, solver: str=..., verbose: Incomplete | None=...):
+def make_bem_solution(surfs, *, solver: str = ..., verbose=...):
     """Create a BEM solution using the linear collocation approach.
 
     Parameters
@@ -31,7 +51,7 @@ def make_bem_solution(surfs, *, solver: str=..., verbose: Incomplete | None=...)
         the :doc:`OpenMEEG <openmeeg:index>` package.
 
         .. versionadded:: 1.2
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -56,11 +76,13 @@ def make_bem_solution(surfs, *, solver: str=..., verbose: Incomplete | None=...)
     .. versionadded:: 0.10.0
     """
 
-def make_bem_model(subject, ico: int=..., conductivity=..., subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def make_bem_model(
+    subject, ico: int = ..., conductivity=..., subjects_dir=..., verbose=...
+):
     """Create a BEM model for a subject.
 
-    Use :func:`~mne.make_bem_solution` to turn the returned surfaces into a
-    :class:`~mne.bem.ConductorModel` suitable for forward calculation.
+    Use :func:mne.make_bem_solution` to turn the returned surfaces into a
+    :class:mne.bem.ConductorModel` suitable for forward calculation.
 
     .. note:: To get a single layer bem corresponding to the --homog flag in
               the command line tool set the ``conductivity`` parameter
@@ -68,7 +90,7 @@ def make_bem_model(subject, ico: int=..., conductivity=..., subjects_dir: Incomp
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     ico : int | None
@@ -79,12 +101,12 @@ def make_bem_model(subject, ico: int=..., conductivity=..., subjects_dir: Incomp
         for a one-layer model, or three elements for a three-layer model.
         Defaults to ``[0.3, 0.006, 0.3]``. The MNE-C default for a
         single-layer model is ``[0.3]``.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -94,8 +116,8 @@ def make_bem_model(subject, ico: int=..., conductivity=..., subjects_dir: Incomp
     Returns
     -------
     surfaces : list of dict
-        The BEM surfaces. Use :func:`~mne.make_bem_solution` to turn these into a
-        :class:`~mne.bem.ConductorModel` suitable for forward calculation.
+        The BEM surfaces. Use :func:mne.make_bem_solution` to turn these into a
+        :class:mne.bem.ConductorModel` suitable for forward calculation.
 
     See Also
     --------
@@ -109,7 +131,14 @@ def make_bem_model(subject, ico: int=..., conductivity=..., subjects_dir: Incomp
     .. versionadded:: 0.10.0
     """
 
-def make_sphere_model(r0=..., head_radius: float=..., info: Incomplete | None=..., relative_radii=..., sigmas=..., verbose: Incomplete | None=...):
+def make_sphere_model(
+    r0=...,
+    head_radius: float = ...,
+    info=...,
+    relative_radii=...,
+    sigmas=...,
+    verbose=...,
+):
     """Create a spherical model for forward solution calculation.
 
     Parameters
@@ -120,16 +149,16 @@ def make_sphere_model(r0=..., head_radius: float=..., info: Incomplete | None=..
     head_radius : float | str | None
         If float, compute spherical shells for EEG using the given radius.
         If ``'auto'``, estimate an appropriate radius from the dig points in the
-        :class:`~mne.Info` provided by the argument ``info``.
+        :class:mne.Info` provided by the argument ``info``.
         If None, exclude shells (single layer sphere model).
-    
+
     info : mne.Info | None
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Only needed if ``r0`` or ``head_radius`` are ``'auto'``.
     relative_radii : array-like
         Relative radii for the spherical shells.
     sigmas : array-like
         Sigma values for the spherical shells.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -160,15 +189,15 @@ def make_sphere_model(r0=..., head_radius: float=..., info: Incomplete | None=..
     .. versionadded:: 0.9.0
     """
 
-def fit_sphere_to_headshape(info, dig_kinds: str=..., units: str=..., verbose: Incomplete | None=...):
+def fit_sphere_to_headshape(info, dig_kinds: str = ..., units: str = ..., verbose=...):
     """Fit a sphere to the headshape points to determine head center.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    
+
     dig_kinds : list of str | str
         Kind of digitization points to use in the fitting. These can be any
         combination of ('cardinal', 'hpi', 'eeg', 'extra'). Can also
@@ -179,7 +208,7 @@ def fit_sphere_to_headshape(info, dig_kinds: str=..., units: str=..., verbose: I
         Can be ``"m"`` (default) or ``"mm"``.
 
         .. versionadded:: 0.12
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -201,29 +230,31 @@ def fit_sphere_to_headshape(info, dig_kinds: str=..., units: str=..., verbose: I
     (``z < 0 and y > 0``) to improve the fit.
     """
 
-def get_fitting_dig(info, dig_kinds: str=..., exclude_frontal: bool=..., verbose: Incomplete | None=...):
+def get_fitting_dig(
+    info, dig_kinds: str = ..., exclude_frontal: bool = ..., verbose=...
+):
     """Get digitization points suitable for sphere fitting.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    
+
     dig_kinds : list of str | str
         Kind of digitization points to use in the fitting. These can be any
         combination of ('cardinal', 'hpi', 'eeg', 'extra'). Can also
         be 'auto' (default), which will use only the 'extra' points if
         enough (more than 4) are available, and if not, uses 'extra' and
         'eeg' points.
-    
+
     exclude_frontal : bool
         If True, exclude points that have both negative Z values
         (below the nasion) and positive Y values (in front of the LPA/RPA).
         Default is True.
 
         .. versionadded:: 0.19
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -243,7 +274,20 @@ def get_fitting_dig(info, dig_kinds: str=..., exclude_frontal: bool=..., verbose
     .. versionadded:: 0.14
     """
 
-def make_watershed_bem(subject, subjects_dir: Incomplete | None=..., overwrite: bool=..., volume: str=..., atlas: bool=..., gcaatlas: bool=..., preflood: Incomplete | None=..., show: bool=..., copy: bool=..., T1: Incomplete | None=..., brainmask: str=..., verbose: Incomplete | None=...) -> None:
+def make_watershed_bem(
+    subject,
+    subjects_dir=...,
+    overwrite: bool = ...,
+    volume: str = ...,
+    atlas: bool = ...,
+    gcaatlas: bool = ...,
+    preflood=...,
+    show: bool = ...,
+    copy: bool = ...,
+    T1=...,
+    brainmask: str = ...,
+    verbose=...,
+) -> None:
     """Create BEM surfaces using the FreeSurfer watershed algorithm.
 
     See :ref:`bem_watershed_algorithm` for additional information.
@@ -252,12 +296,12 @@ def make_watershed_bem(subject, subjects_dir: Incomplete | None=..., overwrite: 
     ----------
     subject : str
         Subject name.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
@@ -292,7 +336,7 @@ def make_watershed_bem(subject, subjects_dir: Incomplete | None=..., overwrite: 
         the brainmask obtained via ``recon-all -autorecon1``.
 
         .. versionadded:: 0.19
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -312,7 +356,9 @@ def make_watershed_bem(subject, subjects_dir: Incomplete | None=..., overwrite: 
     .. versionadded:: 0.10
     """
 
-def read_bem_surfaces(fname, patch_stats: bool=..., s_id: Incomplete | None=..., on_defects: str=..., verbose: Incomplete | None=...):
+def read_bem_surfaces(
+    fname, patch_stats: bool = ..., s_id=..., on_defects: str = ..., verbose=...
+):
     """Read the BEM surfaces from a FIF file.
 
     Parameters
@@ -325,7 +371,7 @@ def read_bem_surfaces(fname, patch_stats: bool=..., s_id: Incomplete | None=...,
         If int, only read and return the surface with the given ``s_id``.
         An error will be raised if it doesn't exist. If None, all
         surfaces are read and returned.
-    
+
     on_defects : 'raise' | 'warn' | 'ignore'
         What to do if the surface is found to have topological defects.
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
@@ -336,7 +382,7 @@ def read_bem_surfaces(fname, patch_stats: bool=..., s_id: Incomplete | None=...,
         fail irrespective of this parameter.
 
         .. versionadded:: 0.23
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -354,14 +400,14 @@ def read_bem_surfaces(fname, patch_stats: bool=..., s_id: Incomplete | None=...,
     write_bem_surfaces, write_bem_solution, make_bem_model
     """
 
-def read_bem_solution(fname, *, verbose: Incomplete | None=...):
+def read_bem_solution(fname, *, verbose=...):
     """Read the BEM solution from a file.
 
     Parameters
     ----------
     fname : path-like
         The file containing the BEM solution.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -381,7 +427,7 @@ def read_bem_solution(fname, *, verbose: Incomplete | None=...):
     write_bem_solution
     """
 
-def write_bem_surfaces(fname, surfs, overwrite: bool=..., *, verbose: Incomplete | None=...) -> None:
+def write_bem_surfaces(fname, surfs, overwrite: bool = ..., *, verbose=...) -> None:
     """Write BEM surfaces to a FIF file.
 
     Parameters
@@ -390,11 +436,11 @@ def write_bem_surfaces(fname, surfs, overwrite: bool=..., *, verbose: Incomplete
         Filename to write. Can end with ``.h5`` to write using HDF5.
     surfs : dict | list of dict
         The surfaces, or a single surface.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -402,7 +448,9 @@ def write_bem_surfaces(fname, surfs, overwrite: bool=..., *, verbose: Incomplete
         argument.
     """
 
-def write_head_bem(fname, rr, tris, on_defects: str=..., overwrite: bool=..., *, verbose: Incomplete | None=...) -> None:
+def write_head_bem(
+    fname, rr, tris, on_defects: str = ..., overwrite: bool = ..., *, verbose=...
+) -> None:
     """Write a head surface to a FIF file.
 
     Parameters
@@ -414,7 +462,7 @@ def write_head_bem(fname, rr, tris, on_defects: str=..., overwrite: bool=..., *,
     tris : ndarray of int, shape (n_tris, 3)
         Triangulation (each line contains indices for three points which
         together form a face).
-    
+
     on_defects : 'raise' | 'warn' | 'ignore'
         What to do if the surface is found to have topological defects.
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
@@ -423,11 +471,11 @@ def write_head_bem(fname, rr, tris, on_defects: str=..., overwrite: bool=..., *,
         topologically correct, topological defects may still make other
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -435,7 +483,7 @@ def write_head_bem(fname, rr, tris, on_defects: str=..., overwrite: bool=..., *,
         argument.
     """
 
-def write_bem_solution(fname, bem, overwrite: bool=..., *, verbose: Incomplete | None=...) -> None:
+def write_bem_solution(fname, bem, overwrite: bool = ..., *, verbose=...) -> None:
     """Write a BEM model with solution.
 
     Parameters
@@ -444,11 +492,11 @@ def write_bem_solution(fname, bem, overwrite: bool=..., *, verbose: Incomplete |
         The filename to use. Can end with ``.h5`` to write using HDF5.
     bem : instance of ConductorModel
         The BEM model with solution to save.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -460,7 +508,14 @@ def write_bem_solution(fname, bem, overwrite: bool=..., *, verbose: Incomplete |
     read_bem_solution
     """
 
-def convert_flash_mris(subject, flash30: bool=..., unwarp: bool=..., subjects_dir: Incomplete | None=..., flash5: bool=..., verbose: Incomplete | None=...):
+def convert_flash_mris(
+    subject,
+    flash30: bool = ...,
+    unwarp: bool = ...,
+    subjects_dir=...,
+    flash5: bool = ...,
+    verbose=...,
+):
     """Synthesize the flash 5 files for use with make_flash_bem.
 
     This function aims to produce a synthesized flash 5 MRI from
@@ -473,7 +528,7 @@ def convert_flash_mris(subject, flash30: bool=..., unwarp: bool=..., subjects_di
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     flash30 : bool | list of SpatialImage or path-like | SpatialImage | path-like
@@ -487,7 +542,7 @@ def convert_flash_mris(subject, flash30: bool=..., unwarp: bool=..., subjects_di
         Run grad_unwarp with -unwarp option on each of the converted
         data sets. It requires FreeSurfer's MATLAB toolbox to be properly
         installed.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -498,7 +553,7 @@ def convert_flash_mris(subject, flash30: bool=..., unwarp: bool=..., subjects_di
         the list of flash 5 echos images will be written to the mri/flash
         folder with convention mef05_<echo>.mgz. If a SpatialImage object
         each frame of the image will be interpreted as an echo.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -517,21 +572,31 @@ def convert_flash_mris(subject, flash30: bool=..., unwarp: bool=..., subjects_di
     should be, as usual, in the subject's mri directory.
     """
 
-def make_flash_bem(subject, overwrite: bool=..., show: bool=..., subjects_dir: Incomplete | None=..., copy: bool=..., *, flash5_img: Incomplete | None=..., register: bool=..., verbose: Incomplete | None=...) -> None:
+def make_flash_bem(
+    subject,
+    overwrite: bool = ...,
+    show: bool = ...,
+    subjects_dir=...,
+    copy: bool = ...,
+    *,
+    flash5_img=...,
+    register: bool = ...,
+    verbose=...,
+) -> None:
     """Create 3-Layer BEM model from prepared flash MRI images.
 
     See :ref:`bem_flash_algorithm` for additional information.
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
     overwrite : bool
         Write over existing .surf files in bem folder.
     show : bool
         Show surfaces to visually inspect all three BEM surfaces (recommended).
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -555,7 +620,7 @@ def make_flash_bem(subject, overwrite: bool=..., show: bool=..., subjects_dir: I
         that the images are already coregistered.
 
         .. versionadded:: 1.1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -575,7 +640,17 @@ def make_flash_bem(subject, overwrite: bool=..., show: bool=..., subjects_dir: I
     images acquired with spin angles of 5 and 30 degrees.
     """
 
-def make_scalp_surfaces(subject, subjects_dir: Incomplete | None=..., force: bool=..., overwrite: bool=..., no_decimate: bool=..., *, threshold: int=..., mri: str=..., verbose: Incomplete | None=...):
+def make_scalp_surfaces(
+    subject,
+    subjects_dir=...,
+    force: bool = ...,
+    overwrite: bool = ...,
+    no_decimate: bool = ...,
+    *,
+    threshold: int = ...,
+    mri: str = ...,
+    verbose=...,
+):
     """Create surfaces of the scalp and neck.
 
     The scalp surfaces are required for using the MNE coregistration GUI, and
@@ -584,10 +659,10 @@ def make_scalp_surfaces(subject, subjects_dir: Incomplete | None=..., force: boo
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -596,7 +671,7 @@ def make_scalp_surfaces(subject, subjects_dir: Incomplete | None=..., force: boo
         Force creation of the surface even if it has some topological defects.
         Defaults to ``True``. See :ref:`tut-fix-meshes` for ideas on how to
         fix problematic meshes.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
@@ -613,7 +688,7 @@ def make_scalp_surfaces(subject, subjects_dir: Incomplete | None=..., force: boo
         The MRI to use. Should exist in ``$SUBJECTS_DIR/$SUBJECT/mri``.
 
         .. versionadded:: 1.1
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -621,7 +696,7 @@ def make_scalp_surfaces(subject, subjects_dir: Incomplete | None=..., force: boo
         argument.
     """
 
-def distance_to_bem(pos, bem, trans: Incomplete | None=..., verbose: Incomplete | None=...):
+def distance_to_bem(pos, bem, trans=..., verbose=...):
     """Calculate the distance of positions to inner skull surface.
 
     Parameters
@@ -630,7 +705,7 @@ def distance_to_bem(pos, bem, trans: Incomplete | None=..., verbose: Incomplete 
         Position(s) in m, in head coordinates.
     bem : instance of ConductorModel
         Conductor model.
-    
+
     trans : path-like | dict | instance of Transform | ``"fsaverage"`` | None
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
         during coregistration. Can also be ``'fsaverage'`` to use the built-in
@@ -639,7 +714,7 @@ def distance_to_bem(pos, bem, trans: Incomplete | None=..., verbose: Incomplete 
 
         .. versionchanged:: 0.19
             Support for 'fsaverage' argument.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

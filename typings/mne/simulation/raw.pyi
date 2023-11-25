@@ -1,18 +1,55 @@
 from .._fiff.constants import FIFF as FIFF
 from .._fiff.meas_info import Info as Info
-from .._fiff.pick import pick_channels as pick_channels, pick_channels_forward as pick_channels_forward, pick_info as pick_info, pick_types as pick_types
-from ..bem import fit_sphere_to_headshape as fit_sphere_to_headshape, make_sphere_model as make_sphere_model, read_bem_solution as read_bem_solution
-from ..chpi import get_chpi_info as get_chpi_info, head_pos_to_trans_rot_t as head_pos_to_trans_rot_t, read_head_pos as read_head_pos
-from ..cov import Covariance as Covariance, make_ad_hoc_cov as make_ad_hoc_cov, read_cov as read_cov
-from ..forward import convert_forward_solution as convert_forward_solution, restrict_forward_to_stc as restrict_forward_to_stc
+from .._fiff.pick import (
+    pick_channels as pick_channels,
+    pick_channels_forward as pick_channels_forward,
+    pick_info as pick_info,
+    pick_types as pick_types,
+)
+from ..bem import (
+    fit_sphere_to_headshape as fit_sphere_to_headshape,
+    make_sphere_model as make_sphere_model,
+    read_bem_solution as read_bem_solution,
+)
+from ..chpi import (
+    get_chpi_info as get_chpi_info,
+    head_pos_to_trans_rot_t as head_pos_to_trans_rot_t,
+    read_head_pos as read_head_pos,
+)
+from ..cov import (
+    Covariance as Covariance,
+    make_ad_hoc_cov as make_ad_hoc_cov,
+    read_cov as read_cov,
+)
+from ..forward import (
+    convert_forward_solution as convert_forward_solution,
+    restrict_forward_to_stc as restrict_forward_to_stc,
+)
 from ..io import BaseRaw as BaseRaw, RawArray as RawArray
-from ..source_space._source_space import setup_volume_source_space as setup_volume_source_space
+from ..source_space._source_space import (
+    setup_volume_source_space as setup_volume_source_space,
+)
 from ..transforms import transform_surface_to as transform_surface_to
-from ..utils import check_random_state as check_random_state, logger as logger, verbose as verbose
+from ..utils import check_random_state as check_random_state, logger as logger
 from .source import SourceSimulator as SourceSimulator
 from _typeshed import Incomplete
 
-def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=..., src: Incomplete | None=..., bem: Incomplete | None=..., head_pos: Incomplete | None=..., mindist: float=..., interp: str=..., n_jobs: Incomplete | None=..., use_cps: bool=..., forward: Incomplete | None=..., first_samp: int=..., max_iter: int=..., verbose: Incomplete | None=...):
+def simulate_raw(
+    info,
+    stc=...,
+    trans=...,
+    src=...,
+    bem=...,
+    head_pos=...,
+    mindist: float = ...,
+    interp: str = ...,
+    n_jobs=...,
+    use_cps: bool = ...,
+    forward=...,
+    first_samp: int = ...,
+    max_iter: int = ...,
+    verbose=...,
+):
     """Simulate raw data.
 
     Head movements can optionally be simulated using the ``head_pos``
@@ -20,7 +57,7 @@ def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=...,
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Used for simulation.
 
@@ -35,8 +72,8 @@ def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=...,
         See Notes for details.
 
         .. versionchanged:: 0.18
-           Support for tuple, iterable of tuple or `~mne.SourceEstimate`,
-           or `~mne.simulation.SourceSimulator`.
+           Support for tuple, iterable of tuple or mne.SourceEstimate`,
+           or mne.simulation.SourceSimulator`.
     trans : dict | str | None
         Either a transformation filename (usually made using mne_analyze)
         or an info dict (usually opened using read_trans()).
@@ -52,7 +89,7 @@ def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=...,
         BEM solution  corresponding to the stc. If string, should be a BEM
         solution filename (e.g., "sample-5120-5120-5120-bem-sol.fif").
         Can be None if ``forward`` is provided.
-    
+
     head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
@@ -66,7 +103,7 @@ def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=...,
     mindist : float
         Minimum distance between sources and the inner skull boundary
         to use during forward calculation.
-    
+
     interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
@@ -78,7 +115,7 @@ def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=...,
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
@@ -97,7 +134,7 @@ def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=...,
         This is a sanity parameter to prevent accidental blowups.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -154,14 +191,16 @@ def simulate_raw(info, stc: Incomplete | None=..., trans: Incomplete | None=...,
     .. footbibliography::
     """
 
-def add_eog(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incomplete | None=..., random_state: Incomplete | None=..., verbose: Incomplete | None=...):
+def add_eog(
+    raw, head_pos=..., interp: str = ..., n_jobs=..., random_state=..., verbose=...
+):
     """Add blink noise to raw data.
 
     Parameters
     ----------
     raw : instance of Raw
         The raw instance to modify.
-    
+
     head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
@@ -171,7 +210,7 @@ def add_eog(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incom
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
         :func:`mne.chpi.read_head_pos`.
-    
+
     interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
@@ -183,17 +222,17 @@ def add_eog(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incom
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
         The random generator state used for blink, ECG, and sensor noise
         randomization.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -235,14 +274,16 @@ def add_eog(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incom
     .. footbibliography::
     """
 
-def add_ecg(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incomplete | None=..., random_state: Incomplete | None=..., verbose: Incomplete | None=...):
+def add_ecg(
+    raw, head_pos=..., interp: str = ..., n_jobs=..., random_state=..., verbose=...
+):
     """Add ECG noise to raw data.
 
     Parameters
     ----------
     raw : instance of Raw
         The raw instance to modify.
-    
+
     head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
@@ -252,7 +293,7 @@ def add_ecg(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incom
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
         :func:`mne.chpi.read_head_pos`.
-    
+
     interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
@@ -264,17 +305,17 @@ def add_ecg(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incom
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
         The random generator state used for blink, ECG, and sensor noise
         randomization.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -314,14 +355,14 @@ def add_ecg(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incom
     .. versionadded:: 0.18
     """
 
-def add_chpi(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def add_chpi(raw, head_pos=..., interp: str = ..., n_jobs=..., verbose=...):
     """Add cHPI activations to raw data.
 
     Parameters
     ----------
     raw : instance of Raw
         The raw instance to be modified.
-    
+
     head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
@@ -331,7 +372,7 @@ def add_chpi(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Inco
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
         :func:`mne.chpi.read_head_pos`.
-    
+
     interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
@@ -343,7 +384,7 @@ def add_chpi(raw, head_pos: Incomplete | None=..., interp: str=..., n_jobs: Inco
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -368,11 +409,8 @@ class _HPIForwards:
     megcoils: Incomplete
     idx: int
 
-    def __init__(self, offsets, dev_head_ts, megcoils, hpi_rrs, hpi_nns) -> None:
-        ...
-
-    def __call__(self, offset):
-        ...
+    def __init__(self, offsets, dev_head_ts, megcoils, hpi_rrs, hpi_nns) -> None: ...
+    def __call__(self, offset): ...
 
 class _SimForwards:
     idx: int
@@ -380,9 +418,20 @@ class _SimForwards:
     use_cps: Incomplete
     iter: Incomplete
 
-    def __init__(self, dev_head_ts, offsets, info, trans, src, bem, mindist, n_jobs, meeg_picks, forward: Incomplete | None=..., use_cps: bool=...) -> None:
-        ...
+    def __init__(
+        self,
+        dev_head_ts,
+        offsets,
+        info,
+        trans,
+        src,
+        bem,
+        mindist,
+        n_jobs,
+        meeg_picks,
+        forward=...,
+        use_cps: bool = ...,
+    ) -> None: ...
     src: Incomplete
 
-    def __call__(self, offset):
-        ...
+    def __call__(self, offset): ...

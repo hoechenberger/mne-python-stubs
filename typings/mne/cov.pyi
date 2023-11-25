@@ -1,88 +1,114 @@
 from . import viz as viz
 from ._fiff.constants import FIFF as FIFF
 from ._fiff.meas_info import create_info as create_info
-from ._fiff.pick import pick_channels as pick_channels, pick_channels_cov as pick_channels_cov, pick_info as pick_info, pick_types as pick_types
+from ._fiff.pick import (
+    pick_channels as pick_channels,
+    pick_channels_cov as pick_channels_cov,
+    pick_info as pick_info,
+    pick_types as pick_types,
+)
 from ._fiff.tag import find_tag as find_tag
 from ._fiff.tree import dir_tree_find as dir_tree_find
 from .defaults import DEFAULTS as DEFAULTS
 from .epochs import Epochs as Epochs
 from .event import make_fixed_length_events as make_fixed_length_events
 from .evoked import EvokedArray as EvokedArray
-from .fixes import BaseEstimator as BaseEstimator, EmpiricalCovariance as EmpiricalCovariance, empirical_covariance as empirical_covariance, log_likelihood as log_likelihood
+from .fixes import (
+    BaseEstimator as BaseEstimator,
+    EmpiricalCovariance as EmpiricalCovariance,
+    empirical_covariance as empirical_covariance,
+    log_likelihood as log_likelihood,
+)
 from .rank import compute_rank as compute_rank
-from .utils import check_fname as check_fname, check_version as check_version, copy_function_doc_to_method_doc as copy_function_doc_to_method_doc, eigh as eigh, fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from .utils import (
+    check_fname as check_fname,
+    check_version as check_version,
+    copy_function_doc_to_method_doc as copy_function_doc_to_method_doc,
+    eigh as eigh,
+    fill_doc as fill_doc,
+    logger as logger,
+    warn as warn,
+)
 from _typeshed import Incomplete
 
 class Covariance(dict):
     """Pick channels from this covariance matrix.
 
-        Parameters
-        ----------
-        ch_names : list of str
-            List of channels to keep. All other channels are dropped.
-        
-        ordered : bool
-            If True (default False), ensure that the order of the channels in
-            the modified instance matches the order of ``ch_names``.
-        
-            .. versionadded:: 0.20.0
-            .. versionchanged:: 1.5
-                The default changed from False in 1.4 to True in 1.5.
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
+    Parameters
+    ----------
+    ch_names : list of str
+        List of channels to keep. All other channels are dropped.
 
-        Returns
-        -------
-        cov : instance of Covariance.
-            The modified covariance matrix.
-
-        Notes
-        -----
-        Operates in-place.
+    ordered : bool
+        If True (default False), ensure that the order of the channels in
+        the modified instance matches the order of ``ch_names``.
 
         .. versionadded:: 0.20.0
-        """
+        .. versionchanged:: 1.5
+            The default changed from False in 1.4 to True in 1.5.
 
-    def __init__(self, data, names, bads, projs, nfree, eig: Incomplete | None=..., eigvec: Incomplete | None=..., method: Incomplete | None=..., loglik: Incomplete | None=..., *, verbose: Incomplete | None=...) -> None:
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Returns
+    -------
+    cov : instance of Covariance.
+        The modified covariance matrix.
+
+    Notes
+    -----
+    Operates in-place.
+
+    .. versionadded:: 0.20.0
+    """
+
+    def __init__(
+        self,
+        data,
+        names,
+        bads,
+        projs,
+        nfree,
+        eig=...,
+        eigvec=...,
+        method=...,
+        loglik=...,
+        *,
+        verbose=...,
+    ) -> None:
         """Init of covariance."""
-
     @property
     def data(self):
         """Numpy array of Noise covariance matrix."""
-
     @property
     def ch_names(self):
         """Channel names."""
-
     @property
     def nfree(self):
         """Number of degrees of freedom."""
-
-    def save(self, fname, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
         """Save covariance matrix in a FIF file.
 
         Parameters
         ----------
         fname : path-like
             Output filename.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
             .. versionadded:: 1.0
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-
     def copy(self):
         """Copy the Covariance object.
 
@@ -91,7 +117,6 @@ class Covariance(dict):
         cov : instance of Covariance
             The copied object.
         """
-
     def as_diag(self):
         """Set covariance to be processed as being diagonal.
 
@@ -107,65 +132,99 @@ class Covariance(dict):
 
         This function operates in place.
         """
-
     def __add__(self, cov):
         """Add Covariance taking into account number of degrees of freedom."""
-
     def __iadd__(self, cov):
         """Add Covariance taking into account number of degrees of freedom."""
-
-    def plot(self, info, exclude=..., colorbar: bool=..., proj: bool=..., show_svd: bool=..., show: bool=..., verbose: Incomplete | None=...):
+    def plot(
+        self,
+        info,
+        exclude=...,
+        colorbar: bool = ...,
+        proj: bool = ...,
+        show_svd: bool = ...,
+        show: bool = ...,
+        verbose=...,
+    ):
         """Plot Covariance data.
 
-    Parameters
-    ----------
-    info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
-    exclude : list of str | str
-        List of channels to exclude. If empty do not exclude any channel.
-        If 'bads', exclude info['bads'].
-    colorbar : bool
-        Show colorbar or not.
-    proj : bool
-        Apply projections or not.
-    show_svd : bool
-        Plot also singular values of the noise covariance for each sensor
-        type. We show square roots ie. standard deviations.
-    show : bool
-        Show figure if True.
-    
-    verbose : bool | str | int | None
-        Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
-        argument.
+        Parameters
+        ----------
+        info : mne.Info
+            The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        exclude : list of str | str
+            List of channels to exclude. If empty do not exclude any channel.
+            If 'bads', exclude info['bads'].
+        colorbar : bool
+            Show colorbar or not.
+        proj : bool
+            Apply projections or not.
+        show_svd : bool
+            Plot also singular values of the noise covariance for each sensor
+            type. We show square roots ie. standard deviations.
+        show : bool
+            Show figure if True.
 
-    Returns
-    -------
-    fig_cov : instance of matplotlib.figure.Figure
-        The covariance plot.
-    fig_svd : instance of matplotlib.figure.Figure | None
-        The SVD spectra plot of the covariance.
+        verbose : bool | str | int | None
+            Control verbosity of the logging output. If ``None``, use the default
+            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            :func:`mne.verbose` for details. Should only be passed as a keyword
+            argument.
 
-    See Also
-    --------
-    mne.compute_rank
+        Returns
+        -------
+        fig_cov : instance of matplotlib.figure.Figure
+            The covariance plot.
+        fig_svd : instance of matplotlib.figure.Figure | None
+            The SVD spectra plot of the covariance.
 
-    Notes
-    -----
-    For each channel type, the rank is estimated using
-    :func:`mne.compute_rank`.
+        See Also
+        --------
+        mne.compute_rank
 
-    .. versionchanged:: 0.19
-       Approximate ranks for each channel type are shown with red dashed lines.
-    """
+        Notes
+        -----
+        For each channel type, the rank is estimated using
+        :func:`mne.compute_rank`.
 
-    def plot_topomap(self, info, ch_type: Incomplete | None=..., *, scalings: Incomplete | None=..., proj: bool=..., noise_cov: Incomplete | None=..., sensors: bool=..., show_names: bool=..., mask: Incomplete | None=..., mask_params: Incomplete | None=..., contours: int=..., outlines: str=..., sphere: Incomplete | None=..., image_interp=..., extrapolate=..., border=..., res: int=..., size: int=..., cmap: Incomplete | None=..., vlim=..., cnorm: Incomplete | None=..., colorbar: bool=..., cbar_fmt: str=..., units: Incomplete | None=..., axes: Incomplete | None=..., show: bool=..., verbose: Incomplete | None=...):
+        .. versionchanged:: 0.19
+           Approximate ranks for each channel type are shown with red dashed lines.
+        """
+    def plot_topomap(
+        self,
+        info,
+        ch_type=...,
+        *,
+        scalings=...,
+        proj: bool = ...,
+        noise_cov=...,
+        sensors: bool = ...,
+        show_names: bool = ...,
+        mask=...,
+        mask_params=...,
+        contours: int = ...,
+        outlines: str = ...,
+        sphere=...,
+        image_interp=...,
+        extrapolate=...,
+        border=...,
+        res: int = ...,
+        size: int = ...,
+        cmap=...,
+        vlim=...,
+        cnorm=...,
+        colorbar: bool = ...,
+        cbar_fmt: str = ...,
+        units=...,
+        axes=...,
+        show: bool = ...,
+        verbose=...,
+    ):
         """Plot a topomap of the covariance diagonal.
 
         Parameters
         ----------
-        
+
         info : mne.Info
             The :class:`mne.Info` object with information about the sensors and methods of measurement.
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
@@ -174,50 +233,50 @@ class Covariance(dict):
             ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
 
             .. versionadded:: 0.21
-        
+
         scalings : dict | float | None
             The scalings of the channel types to be applied for plotting.
             If None, defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
-        
+
         proj : bool | 'interactive' | 'reconstruct'
             If true SSP projections are applied before display. If 'interactive',
             a check box for reversible selection of SSP projection vectors will
             be shown. If 'reconstruct', projection vectors will be applied and then
             M/EEG data will be reconstructed via field mapping to reduce the signal
             bias caused by projection.
-        
+
             .. versionchanged:: 0.21
                Support for 'reconstruct' was added.
         noise_cov : instance of Covariance | None
             If not None, whiten the instance with ``noise_cov`` before
             plotting.
-        
+
         sensors : bool | str
             Whether to add markers for sensor locations. If :class:`str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:`~matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
-        
+
         show_names : bool | callable
             If ``True``, show channel names next to each sensor marker. If callable,
             channel names will be formatted using the callable; e.g., to
             delete the prefix 'MEG ' from all channel names, pass the function
             ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
             non-masked sensor names will be shown.
-        
+
         mask : ndarray of bool, shape (n_channels,) | None
             Array indicating channel(s) to highlight with a distinct
             plotting style. Array elements set to ``True`` will be plotted
             with the parameters given in ``mask_params``. Defaults to ``None``,
             equivalent to an array of all ``False`` elements.
-        
+
         mask_params : dict | None
             Additional plotting parameters for plotting significant sensors.
             Default (None) equals::
-        
+
                 dict(marker='o', markerfacecolor='w', markeredgecolor='k',
                         linewidth=0, markersize=4)
-        
+
         contours : int | array-like
             The number of contour lines to draw. If ``0``, no contours will be drawn.
             If a positive integer, that number of contour levels are chosen using the
@@ -226,7 +285,7 @@ class Covariance(dict):
             The values should be in µV for EEG, fT for magnetometers and fT/m for
             gradiometers. If ``colorbar=True``, the colorbar will have ticks
             corresponding to the contour levels. Default is ``6``.
-        
+
         outlines : 'head' | dict | None
             The outlines to be drawn. If 'head', the default head scheme will be
             drawn. If dict, each key refers to a tuple of x and y positions, the values
@@ -239,26 +298,26 @@ class Covariance(dict):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+            of a spherical :class:mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
             it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
-        
+
             .. versionadded:: 0.20
             .. versionchanged:: 1.1 Added ``'eeglab'`` option.
-        
+
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
             to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
             ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
             ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
-        
+
         extrapolate : str
             Options:
-        
+
             - ``'box'``
                 Extrapolate to four points placed to form a square encompassing all
                 data points, where each side of the square is three times the range
@@ -278,19 +337,19 @@ class Covariance(dict):
                - The default was changed to ``'local'`` for MEG sensors.
                - ``'local'`` was changed to use a convex hull mask
                - ``'head'`` was changed to extrapolate out to the clipping circle.
-        
+
         border : float | 'mean'
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
             .. versionadded:: 0.20
-        
+
         res : int
             The resolution of the topomap image (number of pixels along each side).
-        
+
         size : float
             Side length of each subplot in inches.
-        
+
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
             Colormap to use. If :class:`tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
@@ -301,11 +360,11 @@ class Covariance(dict):
             the colormap. If ``None``, ``'Reds'`` is used for data that is either
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
-        
+
             .. warning::  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
-        
+
         vlim : tuple of length 2
             Colormap limits to use. If a :class:`tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
@@ -313,7 +372,7 @@ class Covariance(dict):
             min/max of the data. Defaults to ``(None, None)``.
 
             .. versionadded:: 1.2
-        
+
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
@@ -322,23 +381,23 @@ class Covariance(dict):
             :ref:`the ERDs example<cnorm-example>` for an example of its use.
 
             .. versionadded:: 1.2
-        
+
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
         cbar_fmt : str
             Formatting string for colorbar tick labels. See :ref:`formatspec` for
             details.
-        
+
         units : dict | str | None
             The units to use for the colorbar label. Ignored if ``colorbar=False``.
             If ``None`` and ``scalings=None`` the unit is automatically determined, otherwise the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:`~matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:`~matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must be length 1.Default is ``None``.
+            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
+            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must be length 1.Default is ``None``.
         show : bool
             Show the figure if ``True``.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -354,23 +413,22 @@ class Covariance(dict):
         -----
         .. versionadded:: 0.21
         """
-
-    def pick_channels(self, ch_names, ordered: Incomplete | None=..., *, verbose: Incomplete | None=...):
+    def pick_channels(self, ch_names, ordered=..., *, verbose=...):
         """Pick channels from this covariance matrix.
 
         Parameters
         ----------
         ch_names : list of str
             List of channels to keep. All other channels are dropped.
-        
+
         ordered : bool
             If True (default False), ensure that the order of the channels in
             the modified instance matches the order of ``ch_names``.
-        
+
             .. versionadded:: 0.20.0
             .. versionchanged:: 1.5
                 The default changed from False in 1.4 to True in 1.5.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -389,7 +447,7 @@ class Covariance(dict):
         .. versionadded:: 0.20.0
         """
 
-def read_cov(fname, verbose: Incomplete | None=...):
+def read_cov(fname, verbose=...):
     """Read a noise covariance from a FIF file.
 
     Parameters
@@ -397,7 +455,7 @@ def read_cov(fname, verbose: Incomplete | None=...):
     fname : path-like
         The path-like of file containing the covariance matrix. It should end
         with ``-cov.fif`` or ``-cov.fif.gz``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -414,19 +472,19 @@ def read_cov(fname, verbose: Incomplete | None=...):
     write_cov, compute_covariance, compute_raw_covariance
     """
 
-def make_ad_hoc_cov(info, std: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def make_ad_hoc_cov(info, std=..., *, verbose=...):
     """Create an ad hoc noise covariance.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     std : dict of float | None
         Standard_deviation of the diagonal elements. If dict, keys should be
         ``'grad'`` for gradiometers, ``'mag'`` for magnetometers and ``'eeg'``
         for EEG channels. If None, default values will be used (see Notes).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -446,7 +504,24 @@ def make_ad_hoc_cov(info, std: Incomplete | None=..., *, verbose: Incomplete | N
     .. versionadded:: 0.9.0
     """
 
-def compute_raw_covariance(raw, tmin: int=..., tmax: Incomplete | None=..., tstep: float=..., reject: Incomplete | None=..., flat: Incomplete | None=..., picks: Incomplete | None=..., method: str=..., method_params: Incomplete | None=..., cv: int=..., scalings: Incomplete | None=..., n_jobs: Incomplete | None=..., return_estimators: bool=..., reject_by_annotation: bool=..., rank: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_raw_covariance(
+    raw,
+    tmin: int = ...,
+    tmax=...,
+    tstep: float = ...,
+    reject=...,
+    flat=...,
+    picks=...,
+    method: str = ...,
+    method_params=...,
+    cv: int = ...,
+    scalings=...,
+    n_jobs=...,
+    return_estimators: bool = ...,
+    reject_by_annotation: bool = ...,
+    rank=...,
+    verbose=...,
+):
     """Estimate noise covariance matrix from a continuous segment of raw data.
 
     It is typically useful to estimate a noise covariance from empty room
@@ -486,13 +561,13 @@ def compute_raw_covariance(raw, tmin: int=..., tmax: Incomplete | None=..., tste
         are floats that set the minimum acceptable peak-to-peak amplitude.
         If flat is None then no rejection is done.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     method : str | list | None (default 'empirical')
         The method used for covariance estimation.
@@ -530,21 +605,21 @@ def compute_raw_covariance(raw, tmin: int=..., tmax: Incomplete | None=..., tste
         method equals 'auto' or is a list of str. Defaults to False.
 
         .. versionadded:: 0.12
-    
+
     reject_by_annotation : bool
         Whether to reject based on annotations. If ``True`` (default), epochs
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
         .. versionadded:: 0.14
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -558,7 +633,7 @@ def compute_raw_covariance(raw, tmin: int=..., tmax: Incomplete | None=..., tste
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -566,28 +641,28 @@ def compute_raw_covariance(raw, tmin: int=..., tmax: Incomplete | None=..., tste
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.17
 
         .. versionadded:: 0.18
            Support for 'info' mode.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -622,7 +697,22 @@ def compute_raw_covariance(raw, tmin: int=..., tmax: Incomplete | None=..., tste
     (instead of across epochs) for each channel.
     """
 
-def compute_covariance(epochs, keep_sample_mean: bool=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., projs: Incomplete | None=..., method: str=..., method_params: Incomplete | None=..., cv: int=..., scalings: Incomplete | None=..., n_jobs: Incomplete | None=..., return_estimators: bool=..., on_mismatch: str=..., rank: Incomplete | None=..., verbose: Incomplete | None=...):
+def compute_covariance(
+    epochs,
+    keep_sample_mean: bool = ...,
+    tmin=...,
+    tmax=...,
+    projs=...,
+    method: str = ...,
+    method_params=...,
+    cv: int = ...,
+    scalings=...,
+    n_jobs=...,
+    return_estimators: bool = ...,
+    on_mismatch: str = ...,
+    rank=...,
+    verbose=...,
+):
     """Estimate noise covariance matrix from epochs.
 
     The noise covariance is typically estimated on pre-stimulus periods
@@ -715,14 +805,14 @@ def compute_covariance(epochs, keep_sample_mean: bool=..., tmin: Incomplete | No
         unstable results in covariance calculation, e.g. when data
         have been processed with Maxwell filtering but not transformed
         to the same head position.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -736,7 +826,7 @@ def compute_covariance(epochs, keep_sample_mean: bool=..., tmin: Incomplete | No
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -744,28 +834,28 @@ def compute_covariance(epochs, keep_sample_mean: bool=..., tmin: Incomplete | No
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.17
 
         .. versionadded:: 0.18
            Support for 'info' mode.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -845,6 +935,7 @@ def compute_covariance(epochs, keep_sample_mean: bool=..., tmin: Incomplete | No
 
 class _RegCovariance(BaseEstimator):
     """Delegate call to modified EmpiricalCovariance instance."""
+
     info: Incomplete
     grad: Incomplete
     mag: Incomplete
@@ -862,41 +953,56 @@ class _RegCovariance(BaseEstimator):
     store_precision: Incomplete
     assume_centered: Incomplete
 
-    def __init__(self, info, grad: float=..., mag: float=..., eeg: float=..., seeg: float=..., ecog: float=..., hbo: float=..., hbr: float=..., fnirs_cw_amplitude: float=..., fnirs_fd_ac_amplitude: float=..., fnirs_fd_phase: float=..., fnirs_od: float=..., csd: float=..., dbs: float=..., store_precision: bool=..., assume_centered: bool=...) -> None:
-        ...
+    def __init__(
+        self,
+        info,
+        grad: float = ...,
+        mag: float = ...,
+        eeg: float = ...,
+        seeg: float = ...,
+        ecog: float = ...,
+        hbo: float = ...,
+        hbr: float = ...,
+        fnirs_cw_amplitude: float = ...,
+        fnirs_fd_ac_amplitude: float = ...,
+        fnirs_fd_phase: float = ...,
+        fnirs_od: float = ...,
+        csd: float = ...,
+        dbs: float = ...,
+        store_precision: bool = ...,
+        assume_centered: bool = ...,
+    ) -> None: ...
     estimator_: Incomplete
     covariance_: Incomplete
 
     def fit(self, X):
         """Fit covariance model with classical diagonal regularization."""
-
-    def score(self, X_test, y: Incomplete | None=...):
+    def score(self, X_test, y=...):
         """Delegate call to modified EmpiricalCovariance instance."""
-
     def get_precision(self):
         """Delegate call to modified EmpiricalCovariance instance."""
 
 class _ShrunkCovariance(BaseEstimator):
     """Delegate to modified EmpiricalCovariance instance."""
+
     store_precision: Incomplete
     assume_centered: Incomplete
     shrinkage: Incomplete
 
-    def __init__(self, store_precision, assume_centered, shrinkage: float=...) -> None:
-        ...
+    def __init__(
+        self, store_precision, assume_centered, shrinkage: float = ...
+    ) -> None: ...
     estimator_: Incomplete
     zero_cross_cov_: Incomplete
 
     def fit(self, X):
         """Fit covariance model with oracle shrinkage regularization."""
-
-    def score(self, X_test, y: Incomplete | None=...):
+    def score(self, X_test, y=...):
         """Delegate to modified EmpiricalCovariance instance."""
-
     def get_precision(self):
         """Delegate to modified EmpiricalCovariance instance."""
 
-def write_cov(fname, cov, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+def write_cov(fname, cov, *, overwrite: bool = ..., verbose=...) -> None:
     """Write a noise covariance matrix.
 
     Parameters
@@ -906,13 +1012,13 @@ def write_cov(fname, cov, *, overwrite: bool=..., verbose: Incomplete | None=...
         ``-cov.fif.gz``.
     cov : Covariance
         The noise covariance matrix.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -924,27 +1030,35 @@ def write_cov(fname, cov, *, overwrite: bool=..., verbose: Incomplete | None=...
     read_cov
     """
 
-def prepare_noise_cov(noise_cov, info, ch_names: Incomplete | None=..., rank: Incomplete | None=..., scalings: Incomplete | None=..., on_rank_mismatch: str=..., verbose: Incomplete | None=...):
+def prepare_noise_cov(
+    noise_cov,
+    info,
+    ch_names=...,
+    rank=...,
+    scalings=...,
+    on_rank_mismatch: str = ...,
+    verbose=...,
+):
     """Prepare noise covariance matrix.
 
     Parameters
     ----------
     noise_cov : instance of Covariance
         The noise covariance to process.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. (Used to get channel types and bad channels).
     ch_names : list | None
         The channel names to be considered. Can be None to use
         ``info['ch_names']``.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -958,7 +1072,7 @@ def prepare_noise_cov(noise_cov, info, ch_names: Incomplete | None=..., rank: In
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -966,21 +1080,21 @@ def prepare_noise_cov(noise_cov, info, ch_names: Incomplete | None=..., rank: In
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.18
@@ -990,15 +1104,15 @@ def prepare_noise_cov(noise_cov, info, ch_names: Incomplete | None=..., rank: In
         If dict, it will override the following dict (default if None)::
 
             dict(mag=1e12, grad=1e11, eeg=1e5)
-    
+
     on_rank_mismatch : str
         If an explicit MEG value is passed, what to do when it does not match
         an empirically computed rank (only used for covariances).
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
-    
+
         .. versionadded:: 0.23
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -1012,7 +1126,28 @@ def prepare_noise_cov(noise_cov, info, ch_names: Incomplete | None=..., rank: In
         and parameters updated.
     """
 
-def regularize(cov, info, mag: float=..., grad: float=..., eeg: float=..., exclude: str=..., proj: bool=..., seeg: float=..., ecog: float=..., hbo: float=..., hbr: float=..., fnirs_cw_amplitude: float=..., fnirs_fd_ac_amplitude: float=..., fnirs_fd_phase: float=..., fnirs_od: float=..., csd: float=..., dbs: float=..., rank: Incomplete | None=..., scalings: Incomplete | None=..., verbose: Incomplete | None=...):
+def regularize(
+    cov,
+    info,
+    mag: float = ...,
+    grad: float = ...,
+    eeg: float = ...,
+    exclude: str = ...,
+    proj: bool = ...,
+    seeg: float = ...,
+    ecog: float = ...,
+    hbo: float = ...,
+    hbr: float = ...,
+    fnirs_cw_amplitude: float = ...,
+    fnirs_fd_ac_amplitude: float = ...,
+    fnirs_fd_phase: float = ...,
+    fnirs_od: float = ...,
+    csd: float = ...,
+    dbs: float = ...,
+    rank=...,
+    scalings=...,
+    verbose=...,
+):
     """Regularize noise covariance matrix.
 
     This method works by adding a constant to the diagonal for each
@@ -1029,7 +1164,7 @@ def regularize(cov, info, mag: float=..., grad: float=..., eeg: float=..., exclu
     ----------
     cov : Covariance
         The noise covariance matrix.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. (Used to get channel types and bad channels).
     mag : float (default 0.1)
@@ -1064,14 +1199,14 @@ def regularize(cov, info, mag: float=..., grad: float=..., eeg: float=..., exclu
         Regularization factor for EEG-CSD signals.
     dbs : float (default 0.1)
         Regularization factor for DBS signals.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -1085,7 +1220,7 @@ def regularize(cov, info, mag: float=..., grad: float=..., eeg: float=..., exclu
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -1093,21 +1228,21 @@ def regularize(cov, info, mag: float=..., grad: float=..., eeg: float=..., exclu
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.17
@@ -1119,7 +1254,7 @@ def regularize(cov, info, mag: float=..., grad: float=..., eeg: float=..., exclu
         See :func:`mne.compute_covariance`.
 
         .. versionadded:: 0.17
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -1136,34 +1271,45 @@ def regularize(cov, info, mag: float=..., grad: float=..., eeg: float=..., exclu
     mne.compute_covariance
     """
 
-def compute_whitener(noise_cov, info: Incomplete | None=..., picks: Incomplete | None=..., rank: Incomplete | None=..., scalings: Incomplete | None=..., return_rank: bool=..., pca: bool=..., return_colorer: bool=..., on_rank_mismatch: str=..., verbose: Incomplete | None=...):
+def compute_whitener(
+    noise_cov,
+    info=...,
+    picks=...,
+    rank=...,
+    scalings=...,
+    return_rank: bool = ...,
+    pca: bool = ...,
+    return_colorer: bool = ...,
+    on_rank_mismatch: str = ...,
+    verbose=...,
+):
     """Compute whitening matrix.
 
     Parameters
     ----------
     noise_cov : Covariance
         The noise covariance.
-    
+
     info : mne.Info | None
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Can be None if ``noise_cov`` has already been
         prepared with :func:`prepare_noise_cov`.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -1177,7 +1323,7 @@ def compute_whitener(noise_cov, info: Incomplete | None=..., picks: Incomplete |
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -1185,21 +1331,21 @@ def compute_whitener(noise_cov, info: Incomplete | None=..., picks: Incomplete |
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.18
@@ -1227,15 +1373,15 @@ def compute_whitener(noise_cov, info: Incomplete | None=..., picks: Incomplete |
         .. versionadded:: 0.18
     return_colorer : bool
         If True, return the colorer as well.
-    
+
     on_rank_mismatch : str
         If an explicit MEG value is passed, what to do when it does not match
         an empirically computed rank (only used for covariances).
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
-    
+
         .. versionadded:: 0.23
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -1254,7 +1400,9 @@ def compute_whitener(noise_cov, info: Incomplete | None=..., picks: Incomplete |
         The coloring matrix.
     """
 
-def whiten_evoked(evoked, noise_cov, picks: Incomplete | None=..., diag: Incomplete | None=..., rank: Incomplete | None=..., scalings: Incomplete | None=..., verbose: Incomplete | None=...):
+def whiten_evoked(
+    evoked, noise_cov, picks=..., diag=..., rank=..., scalings=..., verbose=...
+):
     """Whiten evoked data using given noise covariance.
 
     Parameters
@@ -1264,24 +1412,24 @@ def whiten_evoked(evoked, noise_cov, picks: Incomplete | None=..., diag: Incompl
     noise_cov : instance of Covariance
         The noise covariance.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     diag : bool (default False)
         If True, whiten using only the diagonal of the covariance.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -1295,7 +1443,7 @@ def whiten_evoked(evoked, noise_cov, picks: Incomplete | None=..., diag: Incompl
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -1303,21 +1451,21 @@ def whiten_evoked(evoked, noise_cov, picks: Incomplete | None=..., diag: Incompl
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
 
         .. versionadded:: 0.18
@@ -1329,7 +1477,7 @@ def whiten_evoked(evoked, noise_cov, picks: Incomplete | None=..., diag: Incompl
         following default dict (default if None):
 
             dict(mag=1e12, grad=1e11, eeg=1e5)
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

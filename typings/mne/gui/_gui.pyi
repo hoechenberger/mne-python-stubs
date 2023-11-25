@@ -1,7 +1,31 @@
-from ..utils import get_config as get_config, verbose as verbose, warn as warn
-from _typeshed import Incomplete
+from ..utils import get_config as get_config, warn as warn
 
-def coregistration(*, tabbed: Incomplete | None=..., split: Incomplete | None=..., width: Incomplete | None=..., inst: Incomplete | None=..., subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., guess_mri_subject: Incomplete | None=..., height: Incomplete | None=..., head_opacity: Incomplete | None=..., head_high_res: Incomplete | None=..., trans: Incomplete | None=..., scrollable: Incomplete | None=..., orient_to_surface: Incomplete | None=..., scale_by_distance: Incomplete | None=..., mark_inside: Incomplete | None=..., interaction: Incomplete | None=..., scale: Incomplete | None=..., advanced_rendering: Incomplete | None=..., head_inside: Incomplete | None=..., fullscreen: Incomplete | None=..., show: bool=..., block: bool=..., verbose: Incomplete | None=...):
+def coregistration(
+    *,
+    tabbed=...,
+    split=...,
+    width=...,
+    inst=...,
+    subject=...,
+    subjects_dir=...,
+    guess_mri_subject=...,
+    height=...,
+    head_opacity=...,
+    head_high_res=...,
+    trans=...,
+    scrollable=...,
+    orient_to_surface=...,
+    scale_by_distance=...,
+    mark_inside=...,
+    interaction=...,
+    scale=...,
+    advanced_rendering=...,
+    head_inside=...,
+    fullscreen=...,
+    show: bool = ...,
+    block: bool = ...,
+    verbose=...,
+):
     """Coregister an MRI with a subject's head shape.
 
     The GUI can be launched through the command line interface:
@@ -29,7 +53,7 @@ def coregistration(*, tabbed: Incomplete | None=..., split: Incomplete | None=..
         Raw, Epochs, and Evoked files.
     subject : None | str
         Name of the mri subject.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -68,7 +92,7 @@ def coregistration(*, tabbed: Incomplete | None=..., split: Incomplete | None=..
         different color.
 
         .. versionadded:: 0.16
-    
+
     interaction : 'trackball' | 'terrain' | None
         How interactions with the scene via an input device (e.g., mouse or
         trackpad) modify the camera position. If ``'terrain'``, one axis is
@@ -99,7 +123,7 @@ def coregistration(*, tabbed: Incomplete | None=..., split: Incomplete | None=..
         points behind the head.
 
         .. versionadded:: 0.23
-    
+
     fullscreen : bool
         Whether to start in fullscreen (``True``) or windowed mode
         (``False``).
@@ -111,7 +135,7 @@ def coregistration(*, tabbed: Incomplete | None=..., split: Incomplete | None=..
         Show the GUI if True.
     block : bool
         Whether to halt program execution until the figure is closed.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -137,5 +161,4 @@ def coregistration(*, tabbed: Incomplete | None=..., split: Incomplete | None=..
 class _GUIScraper:
     """Scrape GUI outputs."""
 
-    def __call__(self, block, block_vars, gallery_conf):
-        ...
+    def __call__(self, block, block_vars, gallery_conf): ...

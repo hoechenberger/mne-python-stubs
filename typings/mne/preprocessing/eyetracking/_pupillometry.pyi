@@ -2,7 +2,9 @@ from ..._fiff.constants import FIFF as FIFF
 from ...io import BaseRaw as BaseRaw
 from ...utils import logger as logger, warn as warn
 
-def interpolate_blinks(raw, buffer: float=..., match: str=..., interpolate_gaze: bool=...):
+def interpolate_blinks(
+    raw, buffer: float = ..., match: str = ..., interpolate_gaze: bool = ...
+):
     """Interpolate eyetracking signals during blinks.
 
     This function uses the timing of blink annotations to estimate missing

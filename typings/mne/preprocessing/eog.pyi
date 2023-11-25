@@ -1,11 +1,21 @@
 from .._fiff.pick import pick_channels as pick_channels, pick_types as pick_types
 from ..epochs import Epochs as Epochs
 from ..filter import filter_data as filter_data
-from ..utils import logger as logger, verbose as verbose
+from ..utils import logger as logger
 from ._peak_finder import peak_finder as peak_finder
-from _typeshed import Incomplete
 
-def find_eog_events(raw, event_id: int=..., l_freq: int=..., h_freq: int=..., filter_length: str=..., ch_name: Incomplete | None=..., tstart: int=..., reject_by_annotation: bool=..., thresh: Incomplete | None=..., verbose: Incomplete | None=...):
+def find_eog_events(
+    raw,
+    event_id: int = ...,
+    l_freq: int = ...,
+    h_freq: int = ...,
+    filter_length: str = ...,
+    ch_name=...,
+    tstart: int = ...,
+    reject_by_annotation: bool = ...,
+    thresh=...,
+    verbose=...,
+):
     """Locate EOG artifacts.
 
     .. note:: To control true-positive and true-negative detection rates, you
@@ -23,15 +33,15 @@ def find_eog_events(raw, event_id: int=..., l_freq: int=..., h_freq: int=..., fi
         High cut-off frequency to apply to the EOG channel in Hz.
     filter_length : str | int | None
         Number of taps to use for filtering.
-    
+
     ch_name : str | list of str | None
         The name of the channel(s) to use for EOG peak detection. If a string,
         can be an arbitrary channel. This doesn't have to be a channel of
         ``eog`` type; it could, for example, also be an ordinary EEG channel
         that was placed close to the eyes, like ``Fp1`` or ``Fp2``.
-    
+
         Multiple channel names can be passed as a list of strings.
-    
+
         If ``None`` (default), use the channel(s) in ``raw`` with type ``eog``.
     tstart : float
         Start detection after tstart seconds.
@@ -43,7 +53,7 @@ def find_eog_events(raw, event_id: int=..., l_freq: int=..., h_freq: int=..., fi
         mean that fewer peaks (i.e., fewer EOG events) will be detected.
         If ``None``, use the default of ``(max(eog) - min(eog)) / 4``,
         with ``eog`` being the filtered EOG signal.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -61,42 +71,59 @@ def find_eog_events(raw, event_id: int=..., l_freq: int=..., h_freq: int=..., fi
     compute_proj_eog
     """
 
-def create_eog_epochs(raw, ch_name: Incomplete | None=..., event_id: int=..., picks: Incomplete | None=..., tmin: float=..., tmax: float=..., l_freq: int=..., h_freq: int=..., reject: Incomplete | None=..., flat: Incomplete | None=..., baseline: Incomplete | None=..., preload: bool=..., reject_by_annotation: bool=..., thresh: Incomplete | None=..., decim: int=..., verbose: Incomplete | None=...):
+def create_eog_epochs(
+    raw,
+    ch_name=...,
+    event_id: int = ...,
+    picks=...,
+    tmin: float = ...,
+    tmax: float = ...,
+    l_freq: int = ...,
+    h_freq: int = ...,
+    reject=...,
+    flat=...,
+    baseline=...,
+    preload: bool = ...,
+    reject_by_annotation: bool = ...,
+    thresh=...,
+    decim: int = ...,
+    verbose=...,
+):
     """Conveniently generate epochs around EOG artifact events.
 
     This function will:
-    
+
     #. Filter the EOG data channel.
-    
+
     #. Find the peaks of eyeblinks in the EOG data using
        :func:`mne.preprocessing.find_eog_events`.
-    
-    #. Create `~mne.Epochs` around the eyeblinks.
+
+    #. Create mne.Epochs` around the eyeblinks.
 
     Parameters
     ----------
     raw : instance of Raw
         The raw data.
-    
+
     ch_name : str | list of str | None
         The name of the channel(s) to use for EOG peak detection. If a string,
         can be an arbitrary channel. This doesn't have to be a channel of
         ``eog`` type; it could, for example, also be an ordinary EEG channel
         that was placed close to the eyes, like ``Fp1`` or ``Fp2``.
-    
+
         Multiple channel names can be passed as a list of strings.
-    
+
         If ``None`` (default), use the channel(s) in ``raw`` with type ``eog``.
     event_id : int
         The index to assign to found events.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all channels. Note that channels in 
-        ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all channels. Note that channels in
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     tmin : float
         Start time before event.
@@ -132,7 +159,7 @@ def create_eog_epochs(raw, ch_name: Incomplete | None=..., event_id: int=..., pi
         interval is used. If None, no correction is applied.
     preload : bool
         Preload epochs or not.
-    
+
     reject_by_annotation : bool
         Whether to reject based on annotations. If ``True`` (default), epochs
         overlapping with segments whose description begins with ``'bad'`` are
@@ -141,10 +168,10 @@ def create_eog_epochs(raw, ch_name: Incomplete | None=..., event_id: int=..., pi
         .. versionadded:: 0.14.0
     thresh : float
         Threshold to trigger EOG event.
-    
+
     decim : int
         Factor by which to subsample the data.
-    
+
         .. warning:: Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
@@ -152,7 +179,7 @@ def create_eog_epochs(raw, ch_name: Incomplete | None=..., event_id: int=..., pi
                      may occur.
 
         .. versionadded:: 0.21.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -1,14 +1,23 @@
 from .._fiff.pick import pick_info as pick_info
 from ..parallel import parallel_func as parallel_func
-from ..utils import fill_doc as fill_doc, logger as logger, verbose as verbose
+from ..utils import fill_doc as fill_doc, logger as logger
 from .tfr import AverageTFR as AverageTFR
-from _typeshed import Incomplete
 
-def tfr_array_stockwell(data, sfreq, fmin: Incomplete | None=..., fmax: Incomplete | None=..., n_fft: Incomplete | None=..., width: float=..., decim: int=..., return_itc: bool=..., n_jobs: Incomplete | None=...):
+def tfr_array_stockwell(
+    data,
+    sfreq,
+    fmin=...,
+    fmax=...,
+    n_fft=...,
+    width: float = ...,
+    decim: int = ...,
+    return_itc: bool = ...,
+    n_jobs=...,
+):
     """Compute power and intertrial coherence using Stockwell (S) transform.
 
-    Same computation as `~mne.time_frequency.tfr_stockwell`, but operates on
-    :class:`NumPy arrays <numpy.ndarray>` instead of `~mne.Epochs` objects.
+    Same computation as mne.time_frequency.tfr_stockwell`, but operates on
+    :class:`NumPy arrays <numpy.ndarray>` instead of mne.Epochs` objects.
 
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
@@ -66,11 +75,21 @@ def tfr_array_stockwell(data, sfreq, fmin: Incomplete | None=..., fmax: Incomple
     .. footbibliography::
     """
 
-def tfr_stockwell(inst, fmin: Incomplete | None=..., fmax: Incomplete | None=..., n_fft: Incomplete | None=..., width: float=..., decim: int=..., return_itc: bool=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def tfr_stockwell(
+    inst,
+    fmin=...,
+    fmax=...,
+    n_fft=...,
+    width: float = ...,
+    decim: int = ...,
+    return_itc: bool = ...,
+    n_jobs=...,
+    verbose=...,
+):
     """Compute Time-Frequency Representation (TFR) using Stockwell Transform.
 
-    Same computation as `~mne.time_frequency.tfr_array_stockwell`, but operates
-    on `~mne.Epochs` objects instead of :class:`NumPy arrays <numpy.ndarray>`.
+    Same computation as mne.time_frequency.tfr_array_stockwell`, but operates
+    on mne.Epochs` objects instead of :class:`NumPy arrays <numpy.ndarray>`.
 
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
@@ -97,7 +116,7 @@ def tfr_stockwell(inst, fmin: Incomplete | None=..., fmax: Incomplete | None=...
         Return intertrial coherence (ITC) as well as averaged power.
     n_jobs : int
         The number of jobs to run in parallel (over channels).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

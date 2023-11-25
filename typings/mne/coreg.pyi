@@ -1,14 +1,52 @@
 from ._fiff.constants import FIFF as FIFF
-from ._fiff.meas_info import Info as Info, read_fiducials as read_fiducials, read_info as read_info, write_fiducials as write_fiducials
-from ._freesurfer import estimate_head_mri_t as estimate_head_mri_t, get_mni_fiducials as get_mni_fiducials
-from .bem import read_bem_surfaces as read_bem_surfaces, write_bem_surfaces as write_bem_surfaces
+from ._fiff.meas_info import (
+    Info as Info,
+    read_fiducials as read_fiducials,
+    read_info as read_info,
+    write_fiducials as write_fiducials,
+)
+from ._freesurfer import (
+    estimate_head_mri_t as estimate_head_mri_t,
+    get_mni_fiducials as get_mni_fiducials,
+)
+from .bem import (
+    read_bem_surfaces as read_bem_surfaces,
+    write_bem_surfaces as write_bem_surfaces,
+)
 from .channels import make_dig_montage as make_dig_montage
 from .label import Label as Label, read_label as read_label
-from .source_space import add_source_space_distances as add_source_space_distances, read_source_spaces as read_source_spaces, write_source_spaces as write_source_spaces
-from .surface import complete_surface_info as complete_surface_info, decimate_surface as decimate_surface, read_surface as read_surface, write_surface as write_surface
-from .transforms import Transform as Transform, apply_trans as apply_trans, combine_transforms as combine_transforms, invert_transform as invert_transform, rot_to_quat as rot_to_quat, rotation as rotation, rotation3d as rotation3d, scaling as scaling, translation as translation
-from .utils import fill_doc as fill_doc, get_config as get_config, get_subjects_dir as get_subjects_dir, logger as logger, pformat as pformat, verbose as verbose, warn as warn
+from .source_space import (
+    add_source_space_distances as add_source_space_distances,
+    read_source_spaces as read_source_spaces,
+    write_source_spaces as write_source_spaces,
+)
+from .surface import (
+    complete_surface_info as complete_surface_info,
+    decimate_surface as decimate_surface,
+    read_surface as read_surface,
+    write_surface as write_surface,
+)
+from .transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    combine_transforms as combine_transforms,
+    invert_transform as invert_transform,
+    rot_to_quat as rot_to_quat,
+    rotation as rotation,
+    rotation3d as rotation3d,
+    scaling as scaling,
+    translation as translation,
+)
+from .utils import (
+    fill_doc as fill_doc,
+    get_config as get_config,
+    get_subjects_dir as get_subjects_dir,
+    logger as logger,
+    pformat as pformat,
+    warn as warn,
+)
 from _typeshed import Incomplete
+
 trans_fname: Incomplete
 subject_dirname: Incomplete
 bem_dirname: Incomplete
@@ -22,12 +60,12 @@ fid_fname: Incomplete
 fid_fname_general: Incomplete
 src_fname: Incomplete
 
-def coregister_fiducials(info, fiducials, tol: float=...):
+def coregister_fiducials(info, fiducials, tol: float = ...):
     """Create a head-MRI transform by aligning 3 fiducial points.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     fiducials : path-like | list of dict
@@ -43,7 +81,9 @@ def coregister_fiducials(info, fiducials, tol: float=...):
               head coordinate space.
     """
 
-def create_default_subject(fs_home: Incomplete | None=..., update: bool=..., subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...) -> None:
+def create_default_subject(
+    fs_home=..., update: bool = ..., subjects_dir=..., verbose=...
+) -> None:
     """Create an average brain subject for subjects without structural MRI.
 
     Create a copy of fsaverage from the Freesurfer directory in subjects_dir
@@ -61,7 +101,7 @@ def create_default_subject(fs_home: Incomplete | None=..., update: bool=..., sub
     subjects_dir : None | path-like
         Override the ``SUBJECTS_DIR`` environment variable
         (``os.environ['SUBJECTS_DIR']``) as destination for the new subject.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -78,7 +118,17 @@ def create_default_subject(fs_home: Incomplete | None=..., update: bool=..., sub
     auxiliary files provided by MNE.
     """
 
-def fit_matched_points(src_pts, tgt_pts, rotate: bool=..., translate: bool=..., scale: bool=..., tol: Incomplete | None=..., x0: Incomplete | None=..., out: str=..., weights: Incomplete | None=...):
+def fit_matched_points(
+    src_pts,
+    tgt_pts,
+    rotate: bool = ...,
+    translate: bool = ...,
+    scale: bool = ...,
+    tol=...,
+    x0=...,
+    out: str = ...,
+    weights=...,
+):
     """Find a transform between matched sets of points.
 
     This minimizes the squared distance between two matching sets of points.
@@ -121,7 +171,7 @@ def fit_matched_points(src_pts, tgt_pts, rotate: bool=..., translate: bool=..., 
         parameters in that order (as applicable).
     """
 
-def read_mri_cfg(subject, subjects_dir: Incomplete | None=...):
+def read_mri_cfg(subject, subjects_dir=...):
     """Read information from the cfg file of a scaled MRI brain.
 
     Parameters
@@ -137,7 +187,16 @@ def read_mri_cfg(subject, subjects_dir: Incomplete | None=...):
         Dictionary with entries from the MRI's cfg file.
     """
 
-def scale_bem(subject_to, bem_name, subject_from: Incomplete | None=..., scale: Incomplete | None=..., subjects_dir: Incomplete | None=..., *, on_defects: str=..., verbose: Incomplete | None=...) -> None:
+def scale_bem(
+    subject_to,
+    bem_name,
+    subject_from=...,
+    scale=...,
+    subjects_dir=...,
+    *,
+    on_defects: str = ...,
+    verbose=...,
+) -> None:
     """Scale a bem file.
 
     Parameters
@@ -156,7 +215,7 @@ def scale_bem(subject_to, bem_name, subject_from: Incomplete | None=..., scale: 
         otherwise it is read from subject_to's config file.
     subjects_dir : None | str
         Override the SUBJECTS_DIR environment variable.
-    
+
     on_defects : 'raise' | 'warn' | 'ignore'
         What to do if the surface is found to have topological defects.
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
@@ -167,7 +226,7 @@ def scale_bem(subject_to, bem_name, subject_from: Incomplete | None=..., scale: 
         fail irrespective of this parameter.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -175,7 +234,14 @@ def scale_bem(subject_to, bem_name, subject_from: Incomplete | None=..., scale: 
         argument.
     """
 
-def scale_labels(subject_to, pattern: Incomplete | None=..., overwrite: bool=..., subject_from: Incomplete | None=..., scale: Incomplete | None=..., subjects_dir: Incomplete | None=...) -> None:
+def scale_labels(
+    subject_to,
+    pattern=...,
+    overwrite: bool = ...,
+    subject_from=...,
+    scale=...,
+    subjects_dir=...,
+) -> None:
     """Scale labels to match a brain that was previously created by scaling.
 
     Parameters
@@ -200,7 +266,19 @@ def scale_labels(subject_to, pattern: Incomplete | None=..., overwrite: bool=...
         Override the ``SUBJECTS_DIR`` environment variable.
     """
 
-def scale_mri(subject_from, subject_to, scale, overwrite: bool=..., subjects_dir: Incomplete | None=..., skip_fiducials: bool=..., labels: bool=..., annot: bool=..., *, on_defects: str=..., verbose: Incomplete | None=...) -> None:
+def scale_mri(
+    subject_from,
+    subject_to,
+    scale,
+    overwrite: bool = ...,
+    subjects_dir=...,
+    skip_fiducials: bool = ...,
+    labels: bool = ...,
+    annot: bool = ...,
+    *,
+    on_defects: str = ...,
+    verbose=...,
+) -> None:
     """Create a scaled copy of an MRI subject.
 
     Parameters
@@ -222,7 +300,7 @@ def scale_mri(subject_from, subject_to, scale, overwrite: bool=..., subjects_dir
         Also scale all labels (default True).
     annot : bool
         Copy ``*.annot`` files to the new location (default False).
-    
+
     on_defects : 'raise' | 'warn' | 'ignore'
         What to do if the surface is found to have topological defects.
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
@@ -233,7 +311,7 @@ def scale_mri(subject_from, subject_to, scale, overwrite: bool=..., subjects_dir
         fail irrespective of this parameter.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -253,7 +331,15 @@ def scale_mri(subject_from, subject_to, scale, overwrite: bool=..., subjects_dir
     filename patterns in the subject directory.
     """
 
-def scale_source_space(subject_to, src_name, subject_from: Incomplete | None=..., scale: Incomplete | None=..., subjects_dir: Incomplete | None=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...) -> None:
+def scale_source_space(
+    subject_to,
+    src_name,
+    subject_from=...,
+    scale=...,
+    subjects_dir=...,
+    n_jobs=...,
+    verbose=...,
+) -> None:
     """Scale a source space for an mri created with scale_mri().
 
     Parameters
@@ -278,7 +364,7 @@ def scale_source_space(subject_to, src_name, subject_from: Incomplete | None=...
         Number of jobs to run in parallel if recomputing distances (only
         applies if scale is an array of length 3, and will not use more cores
         than there are source spaces).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -296,15 +382,21 @@ def scale_source_space(subject_to, src_name, subject_from: Incomplete | None=...
 class Coregistration:
     """Reset all the parameters affecting the coregistration.
 
-        Returns
-        -------
-        self : Coregistration
-            The modified Coregistration object.
-        """
+    Returns
+    -------
+    self : Coregistration
+        The modified Coregistration object.
+    """
 
-    def __init__(self, info, subject, subjects_dir: Incomplete | None=..., fiducials: str=..., *, on_defects: str=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        info,
+        subject,
+        subjects_dir=...,
+        fiducials: str = ...,
+        *,
+        on_defects: str = ...,
+    ) -> None: ...
     def set_scale_mode(self, scale_mode):
         """Select how to fit the scale parameters.
 
@@ -323,7 +415,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     def set_grow_hair(self, value):
         """Compensate for hair on the digitizer head shape.
 
@@ -337,7 +428,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     def set_rotation(self, rot):
         """Set the rotation parameter.
 
@@ -351,7 +441,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     def set_translation(self, tra):
         """Set the translation parameter.
 
@@ -365,7 +454,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     def set_scale(self, sca):
         """Set the scale parameter.
 
@@ -379,7 +467,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     @property
     def scale(self):
         """Get the current scale factor.
@@ -389,8 +476,13 @@ class Coregistration:
         scale : ndarray, shape (3,)
             The scale factors.
         """
-
-    def fit_fiducials(self, lpa_weight: float=..., nasion_weight: float=..., rpa_weight: float=..., verbose: Incomplete | None=...):
+    def fit_fiducials(
+        self,
+        lpa_weight: float = ...,
+        nasion_weight: float = ...,
+        rpa_weight: float = ...,
+        verbose=...,
+    ):
         """Find rotation and translation to fit all 3 fiducials.
 
         Parameters
@@ -401,7 +493,7 @@ class Coregistration:
             Relative weight for nasion. The default value is 10.
         rpa_weight : float
             Relative weight for RPA. The default value is 1.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -413,7 +505,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     def set_fid_match(self, match):
         """Set the strategy for fitting anatomical landmark (fiducial) points.
 
@@ -429,8 +520,18 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
-    def fit_icp(self, n_iterations: int=..., lpa_weight: float=..., nasion_weight: float=..., rpa_weight: float=..., hsp_weight: float=..., eeg_weight: float=..., hpi_weight: float=..., callback: Incomplete | None=..., verbose: Incomplete | None=...):
+    def fit_icp(
+        self,
+        n_iterations: int = ...,
+        lpa_weight: float = ...,
+        nasion_weight: float = ...,
+        rpa_weight: float = ...,
+        hsp_weight: float = ...,
+        eeg_weight: float = ...,
+        hpi_weight: float = ...,
+        callback=...,
+        verbose=...,
+    ):
         """Find MRI scaling, translation, and rotation to match HSP.
 
         Parameters
@@ -453,7 +554,7 @@ class Coregistration:
             A function to call on each iteration. Useful for status message
             updates. It will be passed the keyword arguments ``iteration``
             and ``n_iterations``.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -465,7 +566,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     def omit_head_shape_points(self, distance):
         """Exclude head shape points that are far away from the MRI head.
 
@@ -480,7 +580,6 @@ class Coregistration:
         self : Coregistration
             The modified Coregistration object.
         """
-
     def compute_dig_mri_distances(self):
         """Compute distance between head shape points and MRI skin surface.
 
@@ -493,11 +592,9 @@ class Coregistration:
         --------
         mne.dig_mri_distances
         """
-
     @property
     def trans(self):
-        """The head->mri :class:`~mne.transforms.Transform`."""
-
+        """The head->mri :class:mne.transforms.Transform`."""
     def reset(self):
         """Reset all the parameters affecting the coregistration.
 

@@ -2,11 +2,23 @@ from ._fiff.constants import FIFF as FIFF
 from ._fiff.pick import pick_types as pick_types
 from .fixes import bincount as bincount, jit as jit, prange as prange
 from .parallel import parallel_func as parallel_func
-from .transforms import Transform as Transform, apply_trans as apply_trans, transform_surface_to as transform_surface_to
-from .utils import fill_doc as fill_doc, get_subjects_dir as get_subjects_dir, logger as logger, run_subprocess as run_subprocess, verbose as verbose, warn as warn
+from .transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    transform_surface_to as transform_surface_to,
+)
+from .utils import (
+    fill_doc as fill_doc,
+    get_subjects_dir as get_subjects_dir,
+    logger as logger,
+    run_subprocess as run_subprocess,
+    warn as warn,
+)
 from _typeshed import Incomplete
 
-def get_head_surf(subject, source=..., subjects_dir: Incomplete | None=..., on_defects: str=..., verbose: Incomplete | None=...):
+def get_head_surf(
+    subject, source=..., subjects_dir=..., on_defects: str = ..., verbose=...
+):
     """Load the subject head surface.
 
     Parameters
@@ -23,7 +35,7 @@ def get_head_surf(subject, source=..., subjects_dir: Incomplete | None=..., on_d
     subjects_dir : path-like | None
         Path to the ``SUBJECTS_DIR``. If None, the path is obtained by using
         the environment variable ``SUBJECTS_DIR``.
-    
+
     on_defects : 'raise' | 'warn' | 'ignore'
         What to do if the surface is found to have topological defects.
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
@@ -34,7 +46,7 @@ def get_head_surf(subject, source=..., subjects_dir: Incomplete | None=..., on_d
         fail irrespective of this parameter.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -47,19 +59,19 @@ def get_head_surf(subject, source=..., subjects_dir: Incomplete | None=..., on_d
         The head surface.
     """
 
-def get_meg_helmet_surf(info, trans: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def get_meg_helmet_surf(info, trans=..., *, verbose=...):
     """Load the MEG helmet associated with the MEG sensors.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     trans : dict
         The head<->MRI transformation, usually obtained using
         read_trans(). Can be None, in which case the surface will
         be in head coordinates instead of MRI coordinates.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -101,7 +113,14 @@ def fast_cross_3d(x, y):
     x and y must broadcast against each other.
     """
 
-def complete_surface_info(surf, do_neighbor_vert: bool=..., copy: bool=..., do_neighbor_tri: bool=..., *, verbose: Incomplete | None=...):
+def complete_surface_info(
+    surf,
+    do_neighbor_vert: bool = ...,
+    copy: bool = ...,
+    do_neighbor_tri: bool = ...,
+    *,
+    verbose=...,
+):
     """Complete surface information.
 
     Parameters
@@ -114,7 +133,7 @@ def complete_surface_info(surf, do_neighbor_vert: bool=..., copy: bool=..., do_n
         If True (default), make a copy. If False, operate in-place.
     do_neighbor_tri : bool
         If True (default), compute triangle neighbors.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -130,32 +149,27 @@ def complete_surface_info(surf, do_neighbor_vert: bool=..., copy: bool=..., do_n
 class _CDist:
     """Wrapper for cdist that uses a Tree-like pattern."""
 
-    def __init__(self, xhs) -> None:
-        ...
-
-    def query(self, rr):
-        ...
+    def __init__(self, xhs) -> None: ...
+    def query(self, rr): ...
 
 class _DistanceQuery:
     """Wrapper for fast distance queries."""
+
     query: Incomplete
     data: Incomplete
 
-    def __init__(self, xhs, method: str=..., allow_kdtree: bool=...) -> None:
-        ...
+    def __init__(self, xhs, method: str = ..., allow_kdtree: bool = ...) -> None: ...
 
 class _CheckInside:
     """Efficiently check if points are inside a surface."""
+
     mode: Incomplete
     surf: Incomplete
 
-    def __init__(self, surf, *, mode: str=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(self, surf, *, mode: str = ..., verbose=...) -> None: ...
+    def __call__(self, rr, n_jobs=..., verbose=...): ...
 
-    def __call__(self, rr, n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
-        ...
-
-def read_curvature(filepath, binary: bool=...):
+def read_curvature(filepath, binary: bool = ...):
     """Load in curvature values from the ?h.curv file.
 
     Parameters
@@ -171,7 +185,13 @@ def read_curvature(filepath, binary: bool=...):
         The curvature values loaded from the user given file.
     """
 
-def read_surface(fname, read_metadata: bool=..., return_dict: bool=..., file_format: str=..., verbose: Incomplete | None=...):
+def read_surface(
+    fname,
+    read_metadata: bool = ...,
+    return_dict: bool = ...,
+    file_format: str = ...,
+    verbose=...,
+):
     """Load a Freesurfer surface mesh in triangular format.
 
     Parameters
@@ -205,7 +225,7 @@ def read_surface(fname, read_metadata: bool=..., return_dict: bool=..., file_for
         file name. Defaults to 'auto'.
 
         .. versionadded:: 0.21.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -230,7 +250,17 @@ def read_surface(fname, read_metadata: bool=..., return_dict: bool=..., file_for
     read_tri
     """
 
-def write_surface(fname, coords, faces, create_stamp: str=..., volume_info: Incomplete | None=..., file_format: str=..., overwrite: bool=..., *, verbose: Incomplete | None=...) -> None:
+def write_surface(
+    fname,
+    coords,
+    faces,
+    create_stamp: str = ...,
+    volume_info=...,
+    file_format: str = ...,
+    overwrite: bool = ...,
+    *,
+    verbose=...,
+) -> None:
     """Write a triangular Freesurfer surface mesh.
 
     Accepts the same data format as is returned by read_surface().
@@ -269,11 +299,11 @@ def write_surface(fname, coords, faces, create_stamp: str=..., volume_info: Inco
         file name. Defaults to 'auto'.
 
         .. versionadded:: 0.21.0
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -286,7 +316,7 @@ def write_surface(fname, coords, faces, create_stamp: str=..., volume_info: Inco
     read_tri
     """
 
-def decimate_surface(points, triangles, n_triangles, method: str=..., *, verbose: Incomplete | None=...):
+def decimate_surface(points, triangles, n_triangles, method: str = ..., *, verbose=...):
     """Decimate surface data.
 
     Parameters
@@ -303,7 +333,7 @@ def decimate_surface(points, triangles, n_triangles, method: str=..., *, verbose
         octahedral mesh.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -371,7 +401,7 @@ def mesh_dist(tris, vert):
         Sparse matrix with distances between adjacent vertices.
     """
 
-def read_tri(fname_in, swap: bool=..., verbose: Incomplete | None=...):
+def read_tri(fname_in, swap: bool = ..., verbose=...):
     """Read triangle definitions from an ascii file.
 
     Parameters
@@ -381,7 +411,7 @@ def read_tri(fname_in, swap: bool=..., verbose: Incomplete | None=...):
     swap : bool
         Assume the ASCII file vertex ordering is clockwise instead of
         counterclockwise.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -406,7 +436,16 @@ def read_tri(fname_in, swap: bool=..., verbose: Incomplete | None=...):
     .. versionadded:: 0.13.0
     """
 
-def dig_mri_distances(info, trans, subject, subjects_dir: Incomplete | None=..., dig_kinds: str=..., exclude_frontal: bool=..., on_defects: str=..., verbose: Incomplete | None=...):
+def dig_mri_distances(
+    info,
+    trans,
+    subject,
+    subjects_dir=...,
+    dig_kinds: str = ...,
+    exclude_frontal: bool = ...,
+    on_defects: str = ...,
+    verbose=...,
+):
     """Compute distances between head shape points and the scalp surface.
 
     This function is useful to check that coregistration is correct.
@@ -415,7 +454,7 @@ def dig_mri_distances(info, trans, subject, subjects_dir: Incomplete | None=...,
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Must contain the head shape points in ``info['dig']``.
     trans : str | instance of Transform
@@ -426,19 +465,19 @@ def dig_mri_distances(info, trans, subject, subjects_dir: Incomplete | None=...,
     subjects_dir : str | None
         Directory containing subjects data. If None use
         the Freesurfer SUBJECTS_DIR environment variable.
-    
+
     dig_kinds : list of str | str
         Kind of digitization points to use in the fitting. These can be any
         combination of ('cardinal', 'hpi', 'eeg', 'extra'). Can also
         be 'auto' (default), which will use only the 'extra' points if
         enough (more than 4) are available, and if not, uses 'extra' and
         'eeg' points.
-    
+
     exclude_frontal : bool
         If True, exclude points that have both negative Z values
         (below the nasion) and positive Y values (in front of the LPA/RPA).
         Default is False.
-    
+
     on_defects : 'raise' | 'warn' | 'ignore'
         What to do if the surface is found to have topological defects.
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
@@ -449,7 +488,7 @@ def dig_mri_distances(info, trans, subject, subjects_dir: Incomplete | None=...,
         fail irrespective of this parameter.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -470,7 +509,9 @@ def dig_mri_distances(info, trans, subject, subjects_dir: Incomplete | None=...,
     .. versionadded:: 0.19
     """
 
-def get_montage_volume_labels(montage, subject, subjects_dir: Incomplete | None=..., aseg: str=..., dist: int=...):
+def get_montage_volume_labels(
+    montage, subject, subjects_dir=..., aseg: str = ..., dist: int = ...
+):
     """Get regions of interest near channels from a Freesurfer parcellation.
 
     .. note:: This is applicable for channels inside the brain
@@ -478,25 +519,25 @@ def get_montage_volume_labels(montage, subject, subjects_dir: Incomplete | None=
 
     Parameters
     ----------
-    
+
     montage : None | str | DigMontage
         A montage containing channel positions. If a string or
-        :class:`~mne.channels.DigMontage` is
+        :class:mne.channels.DigMontage` is
         specified, the existing channel information will be updated with the
         channel positions from the montage. Valid strings are the names of the
         built-in montages that ship with MNE-Python; you can list those via
         :func:`mne.channels.get_builtin_montages`.
         If ``None`` (default), the channel positions will be removed from the
-        :class:`~mne.Info`.
-    
+        :class:mne.Info`.
+
     subject : str
         The FreeSurfer subject name.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     aseg : str
         The anatomical segmentation file. Default ``aparc+aseg``. This may
         be any anatomical segmentation file in the mri subdirectory of the

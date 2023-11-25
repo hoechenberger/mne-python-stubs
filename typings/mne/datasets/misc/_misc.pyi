@@ -1,8 +1,13 @@
-from ...utils import verbose as verbose
 from ..utils import has_dataset as has_dataset
-from _typeshed import Incomplete
 
-def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: bool=..., download: bool=..., *, verbose: Incomplete | None=...):
+def data_path(
+    path=...,
+    force_update: bool = ...,
+    update_path: bool = ...,
+    download: bool = ...,
+    *,
+    verbose=...,
+):
     """Get path to local copy of misc dataset.
 
     Parameters
@@ -25,7 +30,7 @@ def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: 
         it will not be downloaded and the path will be returned as
         '' (empty string). This is mostly used for debugging purposes
         and can be safely ignored by most users.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -35,5 +40,4 @@ def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: 
     Returns
     -------
     path : instance of Path
-        Path to misc dataset directory.
-"""
+        Path to misc dataset directory."""

@@ -1,22 +1,19 @@
-from ._logging import logger as logger, verbose as verbose, warn as warn
+from ._logging import logger as logger, warn as warn
 from _typeshed import Incomplete
 from collections.abc import Generator
 
 class _DefaultEventParser:
     """Parse none standard events."""
+
     event_ids: Incomplete
 
-    def __init__(self) -> None:
-        ...
-
-    def __call__(self, description, offset: int=...):
-        ...
+    def __init__(self) -> None: ...
+    def __call__(self, description, offset: int = ...): ...
 
 class _FormatDict(dict):
     """Help pformat() work properly."""
 
-    def __missing__(self, key):
-        ...
+    def __missing__(self, key): ...
 
 def pformat(temp, **fmt):
     """Format a template string partially.
@@ -27,7 +24,7 @@ def pformat(temp, **fmt):
     'x_{b}'
     """
 
-def run_subprocess(command, return_code: bool=..., verbose: Incomplete | None=..., *args, **kwargs):
+def run_subprocess(command, return_code: bool = ..., verbose=..., *args, **kwargs):
     """Run command using subprocess.Popen.
 
     Run command and wait for command to complete. If the return code was zero
@@ -44,7 +41,7 @@ def run_subprocess(command, return_code: bool=..., verbose: Incomplete | None=..
         non-zero.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -63,7 +60,9 @@ def run_subprocess(command, return_code: bool=..., verbose: Incomplete | None=..
         The return code, only returned if ``return_code == True``.
     """
 
-def running_subprocess(command, after: str=..., verbose: Incomplete | None=..., *args, **kwargs) -> Generator[Incomplete, None, None]:
+def running_subprocess(
+    command, after: str = ..., verbose=..., *args, **kwargs
+) -> Generator[Incomplete, None, None]:
     """Context manager to do something with a command running via Popen.
 
     Parameters
@@ -73,10 +72,10 @@ def running_subprocess(command, after: str=..., verbose: Incomplete | None=..., 
     after : str
         Can be:
 
-        - "wait" to use :meth:`~python:subprocess.Popen.wait`
-        - "communicate" to use :meth:`~python.subprocess.Popen.communicate`
-        - "terminate" to use :meth:`~python:subprocess.Popen.terminate`
-        - "kill" to use :meth:`~python:subprocess.Popen.kill`
+        - "wait" to use :meth:python:subprocess.Popen.wait`
+        - "communicate" to use :meth:python.subprocess.Popen.communicate`
+        - "terminate" to use :meth:python:subprocess.Popen.terminate`
+        - "kill" to use :meth:python:subprocess.Popen.kill`
 
     %(verbose)s
     *args, **kwargs : arguments

@@ -1,4 +1,7 @@
-from mne.utils import get_subjects_dir as get_subjects_dir, run_subprocess as run_subprocess
+from mne.utils import (
+    get_subjects_dir as get_subjects_dir,
+    run_subprocess as run_subprocess,
+)
 
 def freeview_bem_surfaces(subject, subjects_dir, method) -> None:
     """View 3-Layers BEM model with Freeview.

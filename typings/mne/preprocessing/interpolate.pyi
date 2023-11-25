@@ -3,7 +3,7 @@ from ..epochs import BaseEpochs as BaseEpochs, EpochsArray as EpochsArray
 from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
 from ..io import BaseRaw as BaseRaw, RawArray as RawArray
 
-def equalize_bads(insts, interp_thresh: float=..., copy: bool=...):
+def equalize_bads(insts, interp_thresh: float = ..., copy: bool = ...):
     """Interpolate or mark bads consistently for a list of instances.
 
     Once called on a list of instances, the instances can be concatenated
@@ -31,7 +31,7 @@ def equalize_bads(insts, interp_thresh: float=..., copy: bool=...):
         them, possibly with some formerly bad channels interpolated.
     """
 
-def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int=...):
+def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = ...):
     """Interpolate bridged electrode pairs.
 
     Because bridged electrodes contain brain signal, it's just that the

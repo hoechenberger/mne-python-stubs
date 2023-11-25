@@ -1,9 +1,22 @@
-from .._fiff.pick import pick_channels_forward as pick_channels_forward, pick_info as pick_info
-from ..forward import convert_forward_solution as convert_forward_solution, is_fixed_orient as is_fixed_orient
-from ..utils import fill_doc as fill_doc, logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from .._fiff.pick import (
+    pick_channels_forward as pick_channels_forward,
+    pick_info as pick_info,
+)
+from ..forward import (
+    convert_forward_solution as convert_forward_solution,
+    is_fixed_orient as is_fixed_orient,
+)
+from ..utils import fill_doc as fill_doc, logger as logger
 
-def rap_music(evoked, forward, noise_cov, n_dipoles: int=..., return_residual: bool=..., *, verbose: Incomplete | None=...):
+def rap_music(
+    evoked,
+    forward,
+    noise_cov,
+    n_dipoles: int = ...,
+    return_residual: bool = ...,
+    *,
+    verbose=...,
+):
     """RAP-MUSIC source localization method.
 
     Compute Recursively Applied and Projected MUltiple SIgnal Classification
@@ -24,7 +37,7 @@ def rap_music(evoked, forward, noise_cov, n_dipoles: int=..., return_residual: b
         The number of dipoles to look for. The default value is 5.
     return_residual : bool
         If True, the residual is returned as an Evoked instance.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -53,7 +66,15 @@ def rap_music(evoked, forward, noise_cov, n_dipoles: int=..., return_residual: b
     .. footbibliography::
     """
 
-def trap_music(evoked, forward, noise_cov, n_dipoles: int=..., return_residual: bool=..., *, verbose: Incomplete | None=...):
+def trap_music(
+    evoked,
+    forward,
+    noise_cov,
+    n_dipoles: int = ...,
+    return_residual: bool = ...,
+    *,
+    verbose=...,
+):
     """TRAP-MUSIC source localization method.
 
     Compute Truncated Recursively Applied and Projected MUltiple SIgnal Classification
@@ -74,7 +95,7 @@ def trap_music(evoked, forward, noise_cov, n_dipoles: int=..., return_residual: 
         The number of dipoles to look for. The default value is 5.
     return_residual : bool
         If True, the residual is returned as an Evoked instance.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

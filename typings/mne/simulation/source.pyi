@@ -1,10 +1,25 @@
 from ..fixes import rng_uniform as rng_uniform
 from ..label import Label as Label
-from ..source_estimate import SourceEstimate as SourceEstimate, VolSourceEstimate as VolSourceEstimate
-from ..utils import check_random_state as check_random_state, fill_doc as fill_doc, warn as warn
+from ..source_estimate import (
+    SourceEstimate as SourceEstimate,
+    VolSourceEstimate as VolSourceEstimate,
+)
+from ..utils import (
+    check_random_state as check_random_state,
+    fill_doc as fill_doc,
+    warn as warn,
+)
 from _typeshed import Incomplete
 
-def select_source_in_label(src, label, random_state: Incomplete | None=..., location: str=..., subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., surf: str=...):
+def select_source_in_label(
+    src,
+    label,
+    random_state=...,
+    location: str = ...,
+    subject=...,
+    subjects_dir=...,
+    surf: str = ...,
+):
     """Select source positions using a label.
 
     Parameters
@@ -13,11 +28,11 @@ def select_source_in_label(src, label, random_state: Incomplete | None=..., loca
         The source space.
     label : Label
         The label.
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -33,7 +48,7 @@ def select_source_in_label(src, label, random_state: Incomplete | None=..., loca
         Only used with ``location='center'``.
 
         .. versionadded:: 0.13
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -56,7 +71,18 @@ def select_source_in_label(src, label, random_state: Incomplete | None=..., loca
         Selected source coefficients on the right hemisphere.
     """
 
-def simulate_sparse_stc(src, n_dipoles, times, data_fun=..., labels: Incomplete | None=..., random_state: Incomplete | None=..., location: str=..., subject: Incomplete | None=..., subjects_dir: Incomplete | None=..., surf: str=...):
+def simulate_sparse_stc(
+    src,
+    n_dipoles,
+    times,
+    data_fun=...,
+    labels=...,
+    random_state=...,
+    location: str = ...,
+    subject=...,
+    subjects_dir=...,
+    surf: str = ...,
+):
     """Generate sparse (n_dipoles) sources time courses from data_fun.
 
     This function randomly selects ``n_dipoles`` vertices in the whole
@@ -79,11 +105,11 @@ def simulate_sparse_stc(src, n_dipoles, times, data_fun=..., labels: Incomplete 
         the same length containing the time courses.
     labels : None | list of Label
         The labels. The default is None, otherwise its size must be n_dipoles.
-    
+
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:`~numpy.random.RandomState` for details), meaning it will most
+        (see  :class:numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -98,7 +124,7 @@ def simulate_sparse_stc(src, n_dipoles, times, data_fun=..., labels: Incomplete 
         Only used with ``location='center'``.
 
         .. versionadded:: 0.13
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -129,7 +155,9 @@ def simulate_sparse_stc(src, n_dipoles, times, data_fun=..., labels: Incomplete 
     .. versionadded:: 0.10.0
     """
 
-def simulate_stc(src, labels, stc_data, tmin, tstep, value_fun: Incomplete | None=..., allow_overlap: bool=...):
+def simulate_stc(
+    src, labels, stc_data, tmin, tstep, value_fun=..., allow_overlap: bool = ...
+):
     """Simulate sources time courses from waveforms and labels.
 
     This function generates a source estimate with extended sources by
@@ -170,23 +198,20 @@ def simulate_stc(src, labels, stc_data, tmin, tstep, value_fun: Incomplete | Non
 
 class SourceSimulator:
     """Iterate over 1 second STCs."""
+
     first_samp: Incomplete
 
-    def __init__(self, src, tstep: float=..., duration: Incomplete | None=..., first_samp: int=...) -> None:
-        ...
-
+    def __init__(
+        self, src, tstep: float = ..., duration=..., first_samp: int = ...
+    ) -> None: ...
     @property
     def duration(self):
         """Duration of the simulation in same units as tstep."""
-
     @property
     def n_times(self):
         """Number of time samples in the simulation."""
-
     @property
-    def last_samp(self):
-        ...
-
+    def last_samp(self): ...
     def add_data(self, label, waveform, events) -> None:
         """Add data to the simulation.
 
@@ -206,8 +231,7 @@ class SourceSimulator:
             Events associated to the waveform(s) to specify when the activity
             should occur.
         """
-
-    def get_stim_channel(self, start_sample: int=..., stop_sample: Incomplete | None=...):
+    def get_stim_channel(self, start_sample: int = ..., stop_sample=...):
         """Get the stim channel from the provided data.
 
         Returns the stim channel data according to the simulation parameters
@@ -228,8 +252,7 @@ class SourceSimulator:
         stim_data : ndarray of int, shape (n_samples,)
             The stimulation channel data.
         """
-
-    def get_stc(self, start_sample: Incomplete | None=..., stop_sample: Incomplete | None=...):
+    def get_stc(self, start_sample=..., stop_sample=...):
         """Simulate a SourceEstimate from the provided data.
 
         Returns a SourceEstimate object constructed according to the simulation
@@ -251,6 +274,5 @@ class SourceSimulator:
         stc : SourceEstimate object
             The generated source time courses.
         """
-
     def __iter__(self):
         """Iterate over 1 second STCs."""

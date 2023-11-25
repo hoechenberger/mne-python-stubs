@@ -1,11 +1,13 @@
 from ..._fiff.meas_info import create_info as create_info
 from ...channels import make_standard_montage as make_standard_montage
 from ...epochs import EpochsArray as EpochsArray
-from ...utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ...utils import logger as logger
+
 root_url: str
 
-def data_path(subject, path: Incomplete | None=..., force_update: bool=..., update_path: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def data_path(
+    subject, path=..., force_update: bool = ..., update_path=..., *, verbose=...
+):
     """Get path to local copy of LIMO dataset URL.
 
     This is a low-level function useful for getting a local copy of the
@@ -29,7 +31,7 @@ def data_path(subject, path: Incomplete | None=..., force_update: bool=..., upda
     update_path : bool | None
         If True, set the MNE_DATASETS_LIMO_PATH in mne-python
         config to the given path. If None, the user is prompted.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -57,7 +59,9 @@ def data_path(subject, path: Incomplete | None=..., force_update: bool=..., upda
     .. footbibliography::
     """
 
-def load_data(subject, path: Incomplete | None=..., force_update: bool=..., update_path: Incomplete | None=..., verbose: Incomplete | None=...):
+def load_data(
+    subject, path=..., force_update: bool = ..., update_path=..., verbose=...
+):
     """Fetch subjects epochs data for the LIMO data set.
 
     Parameters
@@ -74,7 +78,7 @@ def load_data(subject, path: Incomplete | None=..., force_update: bool=..., upda
     update_path : bool | None
         If True, set the MNE_DATASETS_LIMO_PATH in mne-python
         config to the given path. If None, the user is prompted.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

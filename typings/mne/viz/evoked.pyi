@@ -1,10 +1,38 @@
-from .._fiff.pick import channel_indices_by_type as channel_indices_by_type, channel_type as channel_type, pick_info as pick_info
-from ..utils import fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from .._fiff.pick import (
+    channel_indices_by_type as channel_indices_by_type,
+    channel_type as channel_type,
+    pick_info as pick_info,
+)
+from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 from .topomap import plot_topomap as plot_topomap
 from .utils import DraggableColorbar as DraggableColorbar, plt_show as plt_show
-from _typeshed import Incomplete
 
-def plot_evoked(evoked, picks: Incomplete | None=..., exclude: str=..., unit: bool=..., show: bool=..., ylim: Incomplete | None=..., xlim: str=..., proj: bool=..., hline: Incomplete | None=..., units: Incomplete | None=..., scalings: Incomplete | None=..., titles: Incomplete | None=..., axes: Incomplete | None=..., gfp: bool=..., window_title: Incomplete | None=..., spatial_colors: bool=..., zorder: str=..., selectable: bool=..., noise_cov: Incomplete | None=..., time_unit: str=..., sphere: Incomplete | None=..., *, highlight: Incomplete | None=..., verbose: Incomplete | None=...):
+def plot_evoked(
+    evoked,
+    picks=...,
+    exclude: str = ...,
+    unit: bool = ...,
+    show: bool = ...,
+    ylim=...,
+    xlim: str = ...,
+    proj: bool = ...,
+    hline=...,
+    units=...,
+    scalings=...,
+    titles=...,
+    axes=...,
+    gfp: bool = ...,
+    window_title=...,
+    spatial_colors: bool = ...,
+    zorder: str = ...,
+    selectable: bool = ...,
+    noise_cov=...,
+    time_unit: str = ...,
+    sphere=...,
+    *,
+    highlight=...,
+    verbose=...,
+):
     """Plot evoked data using butterfly plots.
 
     Left click to a line shows the channel name. Selecting an area by clicking
@@ -17,13 +45,13 @@ def plot_evoked(evoked, picks: Incomplete | None=..., exclude: str=..., unit: bo
     evoked : instance of Evoked
         The evoked data.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all channels. Note that channels in 
-        ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all channels. Note that channels in
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     exclude : list of str | 'bads'
         Channels names to exclude from being shown. If 'bads', the
@@ -39,14 +67,14 @@ def plot_evoked(evoked, picks: Incomplete | None=..., exclude: str=..., unit: bo
         for each channel equals the pyplot default.
     xlim : 'tight' | tuple | None
         X limits for plots.
-    
+
     proj : bool | 'interactive' | 'reconstruct'
         If true SSP projections are applied before display. If 'interactive',
         a check box for reversible selection of SSP projection vectors will
         be shown. If 'reconstruct', projection vectors will be applied and then
         M/EEG data will be reconstructed via field mapping to reduce the signal
         bias caused by projection.
-    
+
         .. versionchanged:: 0.21
            Support for 'reconstruct' was added.
     hline : list of float | None
@@ -133,14 +161,14 @@ def plot_evoked(evoked, picks: Incomplete | None=..., exclude: str=..., unit: bo
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+        of a spherical :class:mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
         it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
-    
+
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
     highlight : array-like of float, shape(2,) | array-like of float, shape (n, 2) | None
@@ -155,7 +183,7 @@ def plot_evoked(evoked, picks: Incomplete | None=..., exclude: str=..., unit: bo
         is applied.
 
         .. versionadded:: 1.1
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -172,7 +200,26 @@ def plot_evoked(evoked, picks: Incomplete | None=..., exclude: str=..., unit: bo
     mne.viz.plot_evoked_white
     """
 
-def plot_evoked_topo(evoked, layout: Incomplete | None=..., layout_scale: float=..., color: Incomplete | None=..., border: str=..., ylim: Incomplete | None=..., scalings: Incomplete | None=..., title: Incomplete | None=..., proj: bool=..., vline=..., fig_background: Incomplete | None=..., merge_grads: bool=..., legend: bool=..., axes: Incomplete | None=..., background_color: str=..., noise_cov: Incomplete | None=..., exclude: str=..., show: bool=...):
+def plot_evoked_topo(
+    evoked,
+    layout=...,
+    layout_scale: float = ...,
+    color=...,
+    border: str = ...,
+    ylim=...,
+    scalings=...,
+    title=...,
+    proj: bool = ...,
+    vline=...,
+    fig_background=...,
+    merge_grads: bool = ...,
+    legend: bool = ...,
+    axes=...,
+    background_color: str = ...,
+    noise_cov=...,
+    exclude: str = ...,
+    show: bool = ...,
+):
     """Plot 2D topography of evoked responses.
 
     Clicking on the plot of an individual sensor opens a new figure showing
@@ -250,7 +297,30 @@ def plot_evoked_topo(evoked, layout: Incomplete | None=..., layout_scale: float=
         Images of evoked responses at sensor locations.
     """
 
-def plot_evoked_image(evoked, picks: Incomplete | None=..., exclude: str=..., unit: bool=..., show: bool=..., clim: Incomplete | None=..., xlim: str=..., proj: bool=..., units: Incomplete | None=..., scalings: Incomplete | None=..., titles: Incomplete | None=..., axes: Incomplete | None=..., cmap: str=..., colorbar: bool=..., mask: Incomplete | None=..., mask_style: Incomplete | None=..., mask_cmap: str=..., mask_alpha: float=..., time_unit: str=..., show_names: str=..., group_by: Incomplete | None=..., sphere: Incomplete | None=...):
+def plot_evoked_image(
+    evoked,
+    picks=...,
+    exclude: str = ...,
+    unit: bool = ...,
+    show: bool = ...,
+    clim=...,
+    xlim: str = ...,
+    proj: bool = ...,
+    units=...,
+    scalings=...,
+    titles=...,
+    axes=...,
+    cmap: str = ...,
+    colorbar: bool = ...,
+    mask=...,
+    mask_style=...,
+    mask_cmap: str = ...,
+    mask_alpha: float = ...,
+    time_unit: str = ...,
+    show_names: str = ...,
+    group_by=...,
+    sphere=...,
+):
     """Plot evoked data as images.
 
     Parameters
@@ -258,13 +328,13 @@ def plot_evoked_image(evoked, picks: Incomplete | None=..., exclude: str=..., un
     evoked : instance of Evoked
         The evoked data.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all channels. Note that channels in 
-        ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all channels. Note that channels in
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
         This parameter can also be used to set the order the channels
         are shown in, as the channel image is sorted by the order of picks.
@@ -370,14 +440,14 @@ def plot_evoked_image(evoked, picks: Incomplete | None=..., exclude: str=..., un
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+        of a spherical :class:mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
         it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
-    
+
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
 
@@ -387,7 +457,16 @@ def plot_evoked_image(evoked, picks: Incomplete | None=..., exclude: str=..., un
         Figure containing the images.
     """
 
-def plot_evoked_white(evoked, noise_cov, show: bool=..., rank: Incomplete | None=..., time_unit: str=..., sphere: Incomplete | None=..., axes: Incomplete | None=..., verbose: Incomplete | None=...):
+def plot_evoked_white(
+    evoked,
+    noise_cov,
+    show: bool = ...,
+    rank=...,
+    time_unit: str = ...,
+    sphere=...,
+    axes=...,
+    verbose=...,
+):
     """Plot whitened evoked response.
 
     Plots the whitened evoked response and the whitened GFP as described in
@@ -404,14 +483,14 @@ def plot_evoked_white(evoked, noise_cov, show: bool=..., rank: Incomplete | None
         The noise covariance. Can be a string to load a covariance from disk.
     show : bool
         Show figure if True.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -425,7 +504,7 @@ def plot_evoked_white(evoked, noise_cov, show: bool=..., rank: Incomplete | None
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -433,21 +512,21 @@ def plot_evoked_white(evoked, noise_cov, show: bool=..., rank: Incomplete | None
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
     time_unit : str
         The units for the time axis, can be "ms" or "s" (default).
@@ -457,21 +536,21 @@ def plot_evoked_white(evoked, noise_cov, show: bool=..., rank: Incomplete | None
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+        of a spherical :class:mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
         it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
-    
+
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
     axes : list | None
         List of axes to plot into.
 
         .. versionadded:: 0.21.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -511,7 +590,7 @@ def plot_evoked_white(evoked, noise_cov, show: bool=..., rank: Incomplete | None
            signals, vol. 108, 328-342, NeuroImage.
     """
 
-def plot_snr_estimate(evoked, inv, show: bool=..., axes: Incomplete | None=..., verbose: Incomplete | None=...):
+def plot_snr_estimate(evoked, inv, show: bool = ..., axes=..., verbose=...):
     """Plot a data SNR estimate.
 
     Parameters
@@ -526,7 +605,7 @@ def plot_snr_estimate(evoked, inv, show: bool=..., axes: Incomplete | None=..., 
         The axes to plot into.
 
         .. versionadded:: 0.21.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -547,7 +626,16 @@ def plot_snr_estimate(evoked, inv, show: bool=..., axes: Incomplete | None=..., 
     .. versionadded:: 0.9.0
     """
 
-def plot_evoked_joint(evoked, times: str=..., title: str=..., picks: Incomplete | None=..., exclude: Incomplete | None=..., show: bool=..., ts_args: Incomplete | None=..., topomap_args: Incomplete | None=...):
+def plot_evoked_joint(
+    evoked,
+    times: str = ...,
+    title: str = ...,
+    picks=...,
+    exclude=...,
+    show: bool = ...,
+    ts_args=...,
+    topomap_args=...,
+):
     """Plot evoked data as butterfly plot and add topomaps for time points.
 
     .. note:: Axes to plot in can be passed by the user through ``ts_args`` or
@@ -570,13 +658,13 @@ def plot_evoked_joint(evoked, times: str=..., title: str=..., picks: Incomplete 
         axes are passed make sure to set ``title=None``, otherwise some of your
         axes may be removed during placement of the title axis.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all channels. Note that channels in 
-        ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all channels. Note that channels in
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     exclude : None | list of str | 'bads'
         Channels names to exclude from being shown. If ``'bads'``, the
@@ -610,7 +698,29 @@ def plot_evoked_joint(evoked, times: str=..., title: str=..., picks: Incomplete 
     .. versionadded:: 0.12.0
     """
 
-def plot_compare_evokeds(evokeds, picks: Incomplete | None=..., colors: Incomplete | None=..., linestyles: Incomplete | None=..., styles: Incomplete | None=..., cmap: Incomplete | None=..., vlines: str=..., ci: bool=..., truncate_yaxis: str=..., truncate_xaxis: bool=..., ylim: Incomplete | None=..., invert_y: bool=..., show_sensors: Incomplete | None=..., legend: bool=..., split_legend: Incomplete | None=..., axes: Incomplete | None=..., title: Incomplete | None=..., show: bool=..., combine: Incomplete | None=..., sphere: Incomplete | None=..., time_unit: str=...):
+def plot_compare_evokeds(
+    evokeds,
+    picks=...,
+    colors=...,
+    linestyles=...,
+    styles=...,
+    cmap=...,
+    vlines: str = ...,
+    ci: bool = ...,
+    truncate_yaxis: str = ...,
+    truncate_xaxis: bool = ...,
+    ylim=...,
+    invert_y: bool = ...,
+    show_sensors=...,
+    legend: bool = ...,
+    split_legend=...,
+    axes=...,
+    title=...,
+    show: bool = ...,
+    combine=...,
+    sphere=...,
+    time_unit: str = ...,
+):
     """Plot evoked time courses for one or more conditions and/or channels.
 
     Parameters
@@ -629,13 +739,13 @@ def plot_compare_evokeds(evokeds, picks: Incomplete | None=..., colors: Incomple
         points etc.
         If dict, keys must be of type str.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
         * If picks is None or a (collection of) data channel types, the
@@ -685,10 +795,10 @@ def plot_compare_evokeds(evokeds, picks: Incomplete | None=..., colors: Incomple
         ``matplotlib.colormaps``; if ``cmap`` is a tuple, its first
         element will be used as a string to label the colorbar, and its
         second element will be passed to ``matplotlib.colormaps`` (unless
-        it is already an instance of :class:`~matplotlib.colors.Colormap`).
+        it is already an instance of :class:matplotlib.colors.Colormap`).
 
         .. versionchanged:: 0.19
-            Support for passing :class:`~matplotlib.colors.Colormap` instances.
+            Support for passing :class:matplotlib.colors.Colormap` instances.
 
     vlines : "auto" | list of float
         A list in seconds at which to plot dashed vertical lines.
@@ -740,13 +850,13 @@ def plot_compare_evokeds(evokeds, picks: Incomplete | None=..., colors: Incomple
         a separate linestyle legend will still be shown if ``cmap`` is
         specified. Defaults to ``None``.
     axes : None | Axes instance | list of Axes | 'topo'
-        :class:`~matplotlib.axes.Axes` object to plot into. If plotting
+        :class:matplotlib.axes.Axes` object to plot into. If plotting
         multiple channel types (or multiple channels when ``combine=None``),
         ``axes`` should be a list of appropriate length containing
-        :class:`~matplotlib.axes.Axes` objects. If ``'topo'``, a new
-        :class:`~matplotlib.figure.Figure` is created with one axis for each
+        :class:matplotlib.axes.Axes` objects. If ``'topo'``, a new
+        :class:matplotlib.figure.Figure` is created with one axis for each
         channel, in a topographical layout. If ``None``, a new
-        :class:`~matplotlib.figure.Figure` is created for each channel type.
+        :class:matplotlib.figure.Figure` is created for each channel type.
         Defaults to ``None``.
     title : str | None
         Title printed above the plot. If ``None``, a title will be
@@ -754,7 +864,7 @@ def plot_compare_evokeds(evokeds, picks: Incomplete | None=..., colors: Incomple
         value of the ``combine`` parameter. Defaults to ``None``.
     show : bool
         Whether to show the figure. Defaults to ``True``.
-    
+
     combine : None | str | callable
         How to combine information across channels. If a :class:`str`, must be
         one of 'mean', 'median', 'std' (standard deviation) or 'gfp' (global
@@ -774,14 +884,14 @@ def plot_compare_evokeds(evokeds, picks: Incomplete | None=..., colors: Incomple
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+        of a spherical :class:mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
         it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
-    
+
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
     time_unit : str

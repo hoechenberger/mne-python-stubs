@@ -1,6 +1,9 @@
 from .._fiff.pick import pick_info as pick_info
 from ..cov import Covariance as Covariance
-from ..decoding import BaseEstimator as BaseEstimator, TransformerMixin as TransformerMixin
+from ..decoding import (
+    BaseEstimator as BaseEstimator,
+    TransformerMixin as TransformerMixin,
+)
 from ..epochs import BaseEpochs as BaseEpochs
 from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
 from ..io import BaseRaw as BaseRaw
@@ -10,31 +13,34 @@ from _typeshed import Incomplete
 class _XdawnTransformer(BaseEstimator, TransformerMixin):
     """Remove selected components from the signal.
 
-        Given the unmixing matrix, transform data, zero out components,
-        and inverse transform the data. This procedure will reconstruct
-        the signals from which the dynamics described by the excluded
-        components is subtracted.
+    Given the unmixing matrix, transform data, zero out components,
+    and inverse transform the data. This procedure will reconstruct
+    the signals from which the dynamics described by the excluded
+    components is subtracted.
 
-        Parameters
-        ----------
-        X : array, shape (n_epochs, n_components * n_classes, n_times)
-            The transformed data.
+    Parameters
+    ----------
+    X : array, shape (n_epochs, n_components * n_classes, n_times)
+        The transformed data.
 
-        Returns
-        -------
-        X : array, shape (n_epochs, n_channels * n_classes, n_times)
-            The inverse transform data.
-        """
+    Returns
+    -------
+    X : array, shape (n_epochs, n_channels * n_classes, n_times)
+        The inverse transform data.
+    """
+
     n_components: Incomplete
     signal_cov: Incomplete
     reg: Incomplete
     method_params: Incomplete
 
-    def __init__(self, n_components: int=..., reg: Incomplete | None=..., signal_cov: Incomplete | None=..., method_params: Incomplete | None=...) -> None:
+    def __init__(
+        self, n_components: int = ..., reg=..., signal_cov=..., method_params=...
+    ) -> None:
         """Init."""
     classes_: Incomplete
 
-    def fit(self, X, y: Incomplete | None=...):
+    def fit(self, X, y=...):
         """Fit Xdawn spatial filters.
 
         Parameters
@@ -49,7 +55,6 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
         self : Xdawn instance
             The Xdawn instance.
         """
-
     def transform(self, X):
         """Transform data with spatial filters.
 
@@ -63,7 +68,6 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
         X : array, shape (n_epochs, n_components * n_classes, n_samples)
             The transformed data.
         """
-
     def inverse_transform(self, X):
         """Remove selected components from the signal.
 
@@ -85,14 +89,21 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
 
 class Xdawn(_XdawnTransformer):
     """Not implemented, see Xdawn.apply() instead."""
+
     correct_overlap: Incomplete
 
-    def __init__(self, n_components: int=..., signal_cov: Incomplete | None=..., correct_overlap: str=..., reg: Incomplete | None=...) -> None:
+    def __init__(
+        self,
+        n_components: int = ...,
+        signal_cov=...,
+        correct_overlap: str = ...,
+        reg=...,
+    ) -> None:
         """Init."""
     event_id_: Incomplete
     correct_overlap_: Incomplete
 
-    def fit(self, epochs, y: Incomplete | None=...):
+    def fit(self, epochs, y=...):
         """Fit Xdawn from epochs.
 
         Parameters
@@ -107,7 +118,6 @@ class Xdawn(_XdawnTransformer):
         self : instance of Xdawn
             The Xdawn instance.
         """
-
     def transform(self, inst):
         """Apply Xdawn dim reduction.
 
@@ -121,8 +131,7 @@ class Xdawn(_XdawnTransformer):
         X : ndarray, shape ([n_epochs, ]n_components * n_event_types, n_times)
             Spatially filtered signals.
         """
-
-    def apply(self, inst, event_id: Incomplete | None=..., include: Incomplete | None=..., exclude: Incomplete | None=...):
+    def apply(self, inst, event_id=..., include=..., exclude=...):
         """Remove selected components from the signal.
 
         Given the unmixing matrix, transform data,
@@ -152,6 +161,5 @@ class Xdawn(_XdawnTransformer):
             A dict of instance (from the same type as inst input) for each
             event type in event_id.
         """
-
     def inverse_transform(self) -> None:
         """Not implemented, see Xdawn.apply() instead."""

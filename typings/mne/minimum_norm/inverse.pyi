@@ -1,38 +1,68 @@
 from .._fiff.constants import FIFF as FIFF
 from .._fiff.matrix import write_named_matrix as write_named_matrix
 from .._fiff.open import fiff_open as fiff_open
-from .._fiff.pick import channel_type as channel_type, pick_channels as pick_channels, pick_info as pick_info, pick_types as pick_types
+from .._fiff.pick import (
+    channel_type as channel_type,
+    pick_channels as pick_channels,
+    pick_info as pick_info,
+    pick_types as pick_types,
+)
 from .._fiff.proj import make_projector as make_projector
 from .._fiff.tag import find_tag as find_tag
 from .._fiff.tree import dir_tree_find as dir_tree_find
-from .._fiff.write import end_block as end_block, start_and_end_file as start_and_end_file, start_block as start_block, write_coord_trans as write_coord_trans, write_float as write_float, write_float_matrix as write_float_matrix, write_int as write_int, write_string as write_string
-from ..cov import Covariance as Covariance, compute_whitener as compute_whitener, prepare_noise_cov as prepare_noise_cov
+from .._fiff.write import (
+    end_block as end_block,
+    start_and_end_file as start_and_end_file,
+    start_block as start_block,
+    write_coord_trans as write_coord_trans,
+    write_float as write_float,
+    write_float_matrix as write_float_matrix,
+    write_int as write_int,
+    write_string as write_string,
+)
+from ..cov import (
+    Covariance as Covariance,
+    compute_whitener as compute_whitener,
+    prepare_noise_cov as prepare_noise_cov,
+)
 from ..epochs import BaseEpochs as BaseEpochs, EpochsArray as EpochsArray
 from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
-from ..forward import compute_depth_prior as compute_depth_prior, compute_orient_prior as compute_orient_prior, convert_forward_solution as convert_forward_solution, is_fixed_orient as is_fixed_orient
+from ..forward import (
+    compute_depth_prior as compute_depth_prior,
+    compute_orient_prior as compute_orient_prior,
+    convert_forward_solution as convert_forward_solution,
+    is_fixed_orient as is_fixed_orient,
+)
 from ..forward.forward import write_forward_meas_info as write_forward_meas_info
 from ..io import BaseRaw as BaseRaw
-from ..source_space._source_space import find_source_space_hemi as find_source_space_hemi, label_src_vertno_sel as label_src_vertno_sel
+from ..source_space._source_space import (
+    find_source_space_hemi as find_source_space_hemi,
+    label_src_vertno_sel as label_src_vertno_sel,
+)
 from ..transforms import transform_surface_to as transform_surface_to
-from ..utils import check_fname as check_fname, logger as logger, repr_html as repr_html, verbose as verbose, warn as warn
+from ..utils import (
+    check_fname as check_fname,
+    logger as logger,
+    repr_html as repr_html,
+    warn as warn,
+)
 from _typeshed import Incomplete
+
 INVERSE_METHODS: Incomplete
 
 class InverseOperator(dict):
-    """:class:`~mne.Info` attached to the inverse operator."""
+    """:class:mne.Info` attached to the inverse operator."""
 
     def copy(self):
         """Return a copy of the InverseOperator."""
-
     @property
     def ch_names(self):
         """Name of channels attached to the inverse operator."""
-
     @property
     def info(self):
-        """:class:`~mne.Info` attached to the inverse operator."""
+        """:class:mne.Info` attached to the inverse operator."""
 
-def read_inverse_operator(fname, *, verbose: Incomplete | None=...):
+def read_inverse_operator(fname, *, verbose=...):
     """Read the inverse operator decomposition from a FIF file.
 
     Parameters
@@ -40,7 +70,7 @@ def read_inverse_operator(fname, *, verbose: Incomplete | None=...):
     fname : path-like
         The name of the FIF file, which ends with ``-inv.fif`` or
         ``-inv.fif.gz``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -57,7 +87,7 @@ def read_inverse_operator(fname, *, verbose: Incomplete | None=...):
     write_inverse_operator, make_inverse_operator
     """
 
-def write_inverse_operator(fname, inv, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+def write_inverse_operator(fname, inv, *, overwrite: bool = ..., verbose=...) -> None:
     """Write an inverse operator to a FIF file.
 
     Parameters
@@ -67,13 +97,13 @@ def write_inverse_operator(fname, inv, *, overwrite: bool=..., verbose: Incomple
         ``-inv.fif.gz``.
     inv : dict
         The inverse operator.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
 
         .. versionadded:: 1.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -85,7 +115,7 @@ def write_inverse_operator(fname, inv, *, overwrite: bool=..., verbose: Incomple
     read_inverse_operator
     """
 
-def combine_xyz(vec, square: bool=...):
+def combine_xyz(vec, square: bool = ...):
     """Compute the three Cartesian components of a vector or matrix together.
 
     Parameters
@@ -100,7 +130,15 @@ def combine_xyz(vec, square: bool=...):
         Output vector [sqrt(x1^2+y1^2+z1^2), ..., sqrt(x_n^2+y_n^2+z_n^2)]
     """
 
-def prepare_inverse_operator(orig, nave, lambda2, method: str=..., method_params: Incomplete | None=..., copy: bool=..., verbose: Incomplete | None=...):
+def prepare_inverse_operator(
+    orig,
+    nave,
+    lambda2,
+    method: str = ...,
+    method_params=...,
+    copy: bool = ...,
+    verbose=...,
+):
     """Prepare an inverse operator for actually computing the inverse.
 
     Parameters
@@ -123,7 +161,7 @@ def prepare_inverse_operator(orig, nave, lambda2, method: str=..., method_params
         is not modified and can be large in memory.
 
         .. versionadded:: 0.21
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -136,7 +174,19 @@ def prepare_inverse_operator(orig, nave, lambda2, method: str=..., method_params
         Prepared inverse operator.
     """
 
-def apply_inverse(evoked, inverse_operator, lambda2=..., method: str=..., pick_ori: Incomplete | None=..., prepared: bool=..., label: Incomplete | None=..., method_params: Incomplete | None=..., return_residual: bool=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def apply_inverse(
+    evoked,
+    inverse_operator,
+    lambda2=...,
+    method: str = ...,
+    pick_ori=...,
+    prepared: bool = ...,
+    label=...,
+    method_params=...,
+    return_residual: bool = ...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Apply inverse operator to evoked data.
 
     Parameters
@@ -152,11 +202,11 @@ def apply_inverse(evoked, inverse_operator, lambda2=..., method: str=..., pick_o
         dSPM (default) :footcite:`DaleEtAl2000`,
         sLORETA :footcite:`Pascual-Marqui2002`, or
         eLORETA :footcite:`Pascual-Marqui2011`.
-    
+
     pick_ori : None | "normal" | "vector"
-    
+
         Options:
-    
+
         - ``None``
             Pooling is performed by taking the norm of loose/free
             orientations. In case of a fixed source space no norm is computed
@@ -164,7 +214,7 @@ def apply_inverse(evoked, inverse_operator, lambda2=..., method: str=..., pick_o
         - ``"normal"``
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
-    
+
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a :class:`mne.VectorSourceEstimate`
@@ -183,16 +233,16 @@ def apply_inverse(evoked, inverse_operator, lambda2=..., method: str=..., pick_o
         Cannot be used with ``method=='eLORETA'``.
 
         .. versionadded:: 0.17
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -257,7 +307,23 @@ def apply_inverse(evoked, inverse_operator, lambda2=..., method: str=..., pick_o
     .. footbibliography::
     """
 
-def apply_inverse_raw(raw, inverse_operator, lambda2, method: str=..., label: Incomplete | None=..., start: Incomplete | None=..., stop: Incomplete | None=..., nave: int=..., time_func: Incomplete | None=..., pick_ori: Incomplete | None=..., buffer_size: Incomplete | None=..., prepared: bool=..., method_params: Incomplete | None=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def apply_inverse_raw(
+    raw,
+    inverse_operator,
+    lambda2,
+    method: str = ...,
+    label=...,
+    start=...,
+    stop=...,
+    nave: int = ...,
+    time_func=...,
+    pick_ori=...,
+    buffer_size=...,
+    prepared: bool = ...,
+    method_params=...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Apply inverse operator to Raw data.
 
     Parameters
@@ -282,11 +348,11 @@ def apply_inverse_raw(raw, inverse_operator, lambda2, method: str=..., label: In
         Set to 1 on raw data.
     time_func : callable
         Linear function applied to sensor space time series.
-    
+
     pick_ori : None | "normal" | "vector"
-    
+
         Options:
-    
+
         - ``None``
             Pooling is performed by taking the norm of loose/free
             orientations. In case of a fixed source space no norm is computed
@@ -294,7 +360,7 @@ def apply_inverse_raw(raw, inverse_operator, lambda2, method: str=..., label: In
         - ``"normal"``
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
-    
+
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a :class:`mne.VectorSourceEstimate`
@@ -313,16 +379,16 @@ def apply_inverse_raw(raw, inverse_operator, lambda2, method: str=..., label: In
         Additional options for eLORETA. See Notes of :func:`apply_inverse`.
 
         .. versionadded:: 0.16
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -342,7 +408,20 @@ def apply_inverse_raw(raw, inverse_operator, lambda2, method: str=..., label: In
     apply_inverse_cov : Apply inverse operator to covariance object.
     """
 
-def apply_inverse_epochs(epochs, inverse_operator, lambda2, method: str=..., label: Incomplete | None=..., nave: int=..., pick_ori: Incomplete | None=..., return_generator: bool=..., prepared: bool=..., method_params: Incomplete | None=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def apply_inverse_epochs(
+    epochs,
+    inverse_operator,
+    lambda2,
+    method: str = ...,
+    label=...,
+    nave: int = ...,
+    pick_ori=...,
+    return_generator: bool = ...,
+    prepared: bool = ...,
+    method_params=...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Apply inverse operator to Epochs.
 
     Parameters
@@ -361,11 +440,11 @@ def apply_inverse_epochs(epochs, inverse_operator, lambda2, method: str=..., lab
     nave : int
         Number of averages used to regularize the solution.
         Set to 1 on single Epoch by default.
-    
+
     pick_ori : None | "normal" | "vector"
-    
+
         Options:
-    
+
         - ``None``
             Pooling is performed by taking the norm of loose/free
             orientations. In case of a fixed source space no norm is computed
@@ -373,7 +452,7 @@ def apply_inverse_epochs(epochs, inverse_operator, lambda2, method: str=..., lab
         - ``"normal"``
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
-    
+
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a :class:`mne.VectorSourceEstimate`
@@ -387,16 +466,16 @@ def apply_inverse_epochs(epochs, inverse_operator, lambda2, method: str=..., lab
         Additional options for eLORETA. See Notes of :func:`apply_inverse`.
 
         .. versionadded:: 0.16
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
         .. versionadded:: 0.20
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -416,7 +495,20 @@ def apply_inverse_epochs(epochs, inverse_operator, lambda2, method: str=..., lab
     apply_inverse_cov : Apply inverse operator to a covariance object.
     """
 
-def apply_inverse_tfr_epochs(epochs_tfr, inverse_operator, lambda2, method: str=..., label: Incomplete | None=..., nave: int=..., pick_ori: Incomplete | None=..., return_generator: bool=..., prepared: bool=..., method_params: Incomplete | None=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def apply_inverse_tfr_epochs(
+    epochs_tfr,
+    inverse_operator,
+    lambda2,
+    method: str = ...,
+    label=...,
+    nave: int = ...,
+    pick_ori=...,
+    return_generator: bool = ...,
+    prepared: bool = ...,
+    method_params=...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Apply inverse operator to EpochsTFR.
 
     Parameters
@@ -436,11 +528,11 @@ def apply_inverse_tfr_epochs(epochs_tfr, inverse_operator, lambda2, method: str=
     nave : int
         Number of averages used to regularize the solution.
         Set to 1 on single Epoch by default.
-    
+
     pick_ori : None | "normal" | "vector"
-    
+
         Options:
-    
+
         - ``None``
             Pooling is performed by taking the norm of loose/free
             orientations. In case of a fixed source space no norm is computed
@@ -448,7 +540,7 @@ def apply_inverse_tfr_epochs(epochs_tfr, inverse_operator, lambda2, method: str=
         - ``"normal"``
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
-    
+
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a :class:`mne.VectorSourceEstimate`
@@ -460,14 +552,14 @@ def apply_inverse_tfr_epochs(epochs_tfr, inverse_operator, lambda2, method: str=
         If True, do not call :func:`prepare_inverse_operator`.
     method_params : dict | None
         Additional options for eLORETA. See Notes of :func:`apply_inverse`.
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -488,7 +580,20 @@ def apply_inverse_tfr_epochs(epochs_tfr, inverse_operator, lambda2, method: str=
     apply_inverse_cov : Apply inverse operator to a covariance object.
     """
 
-def apply_inverse_cov(cov, info, inverse_operator, nave: int=..., lambda2=..., method: str=..., pick_ori: Incomplete | None=..., prepared: bool=..., label: Incomplete | None=..., method_params: Incomplete | None=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def apply_inverse_cov(
+    cov,
+    info,
+    inverse_operator,
+    nave: int = ...,
+    lambda2=...,
+    method: str = ...,
+    pick_ori=...,
+    prepared: bool = ...,
+    label=...,
+    method_params=...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Apply inverse operator to covariance data.
 
     Parameters
@@ -496,7 +601,7 @@ def apply_inverse_cov(cov, info, inverse_operator, nave: int=..., lambda2=..., m
     cov : instance of Covariance
         Covariance data, computed on the time segment for which to compute
         source power.
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement. Used specify the channels to include.
     inverse_operator : instance of InverseOperator
@@ -507,11 +612,11 @@ def apply_inverse_cov(cov, info, inverse_operator, nave: int=..., lambda2=..., m
         The regularization parameter.
     method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    
+
     pick_ori : None | "normal"
-    
+
         Options:
-    
+
         - ``None``
             Pooling is performed by taking the norm of loose/free
             orientations. In case of a fixed source space no norm is computed
@@ -526,11 +631,11 @@ def apply_inverse_cov(cov, info, inverse_operator, nave: int=..., lambda2=..., m
         source estimates will be computed for the entire source space.
     method_params : dict | None
         Additional options for eLORETA. See Notes for details.
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -562,27 +667,37 @@ def apply_inverse_cov(cov, info, inverse_operator, nave: int=..., lambda2=..., m
     .. footbibliography::
     """
 
-def make_inverse_operator(info, forward, noise_cov, loose: str=..., depth: float=..., fixed: str=..., rank: Incomplete | None=..., use_cps: bool=..., verbose: Incomplete | None=...):
+def make_inverse_operator(
+    info,
+    forward,
+    noise_cov,
+    loose: str = ...,
+    depth: float = ...,
+    fixed: str = ...,
+    rank=...,
+    use_cps: bool = ...,
+    verbose=...,
+):
     """Assemble inverse operator.
 
     Parameters
     ----------
-    
+
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
         Specifies the channels to include. Bad channels (in ``info['bads']``)
         are not used.
     forward : instance of Forward
-        Forward operator. See :func:`~mne.make_forward_solution` to create the operator.
+        Forward operator. See :func:mne.make_forward_solution` to create the operator.
     noise_cov : instance of Covariance
-        The noise covariance matrix. See :func:`~mne.compute_raw_covariance` and
-        :func:`~mne.compute_covariance` to compute the noise covariance matrix on
-        :class:`~mne.io.Raw` and :class:`~mne.Epochs` respectively.
-    
+        The noise covariance matrix. See :func:mne.compute_raw_covariance` and
+        :func:mne.compute_covariance` to compute the noise covariance matrix on
+        :class:mne.io.Raw` and :class:mne.Epochs` respectively.
+
     loose : float | 'auto' | dict
         Value that weights the source variances of the dipole components
         that are parallel (tangential) to the cortical surface. Can be:
-    
+
         - float between 0 and 1 (inclusive)
             If 0, then the solution is computed with fixed orientation.
             If 1, it corresponds to free orientations.
@@ -592,7 +707,7 @@ def make_inverse_operator(info, forward, noise_cov, loose: str=..., depth: float
         - dict
             Mapping from the key for a given source space type (surface, volume,
             discrete) to the loose value. Useful mostly for mixed source spaces.
-    
+
     depth : None | float | dict
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
@@ -600,21 +715,21 @@ def make_inverse_operator(info, forward, noise_cov, loose: str=..., depth: float
         It can also be a :class:`dict` containing keyword arguments to pass to
         :func:`mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
-    
+
         .. versionchanged:: 0.20
            Depth bias ignored for ``method='eLORETA'``.
     fixed : bool | 'auto'
         Use fixed source orientations normal to the cortical mantle. If True,
         the loose parameter must be ``"auto"`` or ``0``. If ``'auto'``, the loose value
         is used.
-    
+
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
         otherwise amplification of noise components can occur in whitening (e.g.,
         often during source localization).
-    
+
         :data:`python:None`
             The rank will be estimated from the data after proper scaling of
             different channel types.
@@ -628,7 +743,7 @@ def make_inverse_operator(info, forward, noise_cov, loose: str=..., depth: float
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `~mne.Covariance` is passed, this can
+            number of good channels. If a mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         :class:`dict`
@@ -636,27 +751,27 @@ def make_inverse_operator(info, forward, noise_cov, loose: str=..., depth: float
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
-    
+
             This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
             ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
-    
+
             The ranks for all channel types present in the data, but
             **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
-    
+
         The default is ``None``.
-    
+
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -725,7 +840,7 @@ def compute_rank_inverse(inv):
         The rank of the inverse operator.
     """
 
-def estimate_snr(evoked, inv, verbose: Incomplete | None=...):
+def estimate_snr(evoked, inv, verbose=...):
     """Estimate the SNR as a function of time for evoked data.
 
     Parameters
@@ -734,7 +849,7 @@ def estimate_snr(evoked, inv, verbose: Incomplete | None=...):
         Evoked instance.
     inv : instance of InverseOperator
         The inverse operator.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

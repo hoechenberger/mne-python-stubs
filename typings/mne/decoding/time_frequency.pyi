@@ -1,4 +1,4 @@
-from ..utils import fill_doc as fill_doc, verbose as verbose
+from ..utils import fill_doc as fill_doc
 from .base import BaseEstimator as BaseEstimator
 from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
@@ -6,18 +6,19 @@ from _typeshed import Incomplete
 class TimeFrequency(TransformerMixin, BaseEstimator):
     """Time-frequency transform of times series along the last axis.
 
-        Parameters
-        ----------
-        X : array, shape (n_samples, n_channels, n_times)
-            The training data samples. The channel dimension can be zero- or
-            1-dimensional.
+    Parameters
+    ----------
+    X : array, shape (n_samples, n_channels, n_times)
+        The training data samples. The channel dimension can be zero- or
+        1-dimensional.
 
-        Returns
-        -------
-        Xt : array, shape (n_samples, n_channels, n_freqs, n_times)
-            The time-frequency transform of the data, where n_channels can be
-            zero- or 1-dimensional.
-        """
+    Returns
+    -------
+    Xt : array, shape (n_samples, n_channels, n_freqs, n_times)
+        The time-frequency transform of the data, where n_channels can be
+        zero- or 1-dimensional.
+    """
+
     freqs: Incomplete
     sfreq: Incomplete
     method: Incomplete
@@ -29,10 +30,21 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
     n_jobs: Incomplete
     verbose: Incomplete
 
-    def __init__(self, freqs, sfreq: float=..., method: str=..., n_cycles: float=..., time_bandwidth: Incomplete | None=..., use_fft: bool=..., decim: int=..., output: str=..., n_jobs: int=..., verbose: Incomplete | None=...) -> None:
+    def __init__(
+        self,
+        freqs,
+        sfreq: float = ...,
+        method: str = ...,
+        n_cycles: float = ...,
+        time_bandwidth=...,
+        use_fft: bool = ...,
+        decim: int = ...,
+        output: str = ...,
+        n_jobs: int = ...,
+        verbose=...,
+    ) -> None:
         """Init TimeFrequency transformer."""
-
-    def fit_transform(self, X, y: Incomplete | None=...):
+    def fit_transform(self, X, y=...):
         """Time-frequency transform of times series along the last axis.
 
         Parameters
@@ -49,8 +61,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
             The time-frequency transform of the data, where n_channels can be
             zero- or 1-dimensional.
         """
-
-    def fit(self, X, y: Incomplete | None=...):
+    def fit(self, X, y=...):
         """Do nothing (for scikit-learn compatibility purposes).
 
         Parameters
@@ -65,7 +76,6 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         self : object
             Return self.
         """
-
     def transform(self, X):
         """Time-frequency transform of times series along the last axis.
 

@@ -1,15 +1,20 @@
-from ..time_frequency._stft import istft as istft, stft as stft, stft_norm1 as stft_norm1, stft_norm2 as stft_norm2
-from ..utils import logger as logger, sum_squared as sum_squared, verbose as verbose, warn as warn
+from ..time_frequency._stft import (
+    istft as istft,
+    stft as stft,
+    stft_norm1 as stft_norm1,
+    stft_norm2 as stft_norm2,
+)
+from ..utils import logger as logger, sum_squared as sum_squared, warn as warn
 from .mxne_debiasing import compute_bias as compute_bias
 from _typeshed import Incomplete
 
 def groups_norm2(A, n_orient):
     """Compute squared L2 norms of groups inplace."""
 
-def norm_l2inf(A, n_orient, copy: bool=...):
+def norm_l2inf(A, n_orient, copy: bool = ...):
     """L2-inf norm."""
 
-def norm_l21(A, n_orient, copy: bool=...):
+def norm_l21(A, n_orient, copy: bool = ...):
     """L21 norm."""
 
 def dgap_l21(M, G, X, active_set, alpha, n_orient):
@@ -48,7 +53,22 @@ def dgap_l21(M, G, X, active_set, alpha, n_orient):
     .. footbibilography::
     """
 
-def mixed_norm_solver(M, G, alpha, maxit: int=..., tol: float=..., verbose: Incomplete | None=..., active_set_size: int=..., debias: bool=..., n_orient: int=..., solver: str=..., return_gap: bool=..., dgap_freq: int=..., active_set_init: Incomplete | None=..., X_init: Incomplete | None=...):
+def mixed_norm_solver(
+    M,
+    G,
+    alpha,
+    maxit: int = ...,
+    tol: float = ...,
+    verbose=...,
+    active_set_size: int = ...,
+    debias: bool = ...,
+    n_orient: int = ...,
+    solver: str = ...,
+    return_gap: bool = ...,
+    dgap_freq: int = ...,
+    active_set_init=...,
+    X_init=...,
+):
     """Solve L1/L2 mixed-norm inverse problem with active set strategy.
 
     See references :footcite:`GramfortEtAl2012,StrohmeierEtAl2016,
@@ -67,7 +87,7 @@ def mixed_norm_solver(M, G, alpha, maxit: int=..., tol: float=..., verbose: Inco
         The number of iterations.
     tol : float
         Tolerance on dual gap for convergence checking.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -111,7 +131,21 @@ def mixed_norm_solver(M, G, alpha, maxit: int=..., tol: float=..., verbose: Inco
     .. footbibliography::
     """
 
-def iterative_mixed_norm_solver(M, G, alpha, n_mxne_iter, maxit: int=..., tol: float=..., verbose: Incomplete | None=..., active_set_size: int=..., debias: bool=..., n_orient: int=..., dgap_freq: int=..., solver: str=..., weight_init: Incomplete | None=...):
+def iterative_mixed_norm_solver(
+    M,
+    G,
+    alpha,
+    n_mxne_iter,
+    maxit: int = ...,
+    tol: float = ...,
+    verbose=...,
+    active_set_size: int = ...,
+    debias: bool = ...,
+    n_orient: int = ...,
+    dgap_freq: int = ...,
+    solver: str = ...,
+    weight_init=...,
+):
     """Solve L0.5/L2 mixed-norm inverse problem with active set strategy.
 
     See reference :footcite:`StrohmeierEtAl2016`.
@@ -132,7 +166,7 @@ def iterative_mixed_norm_solver(M, G, alpha, n_mxne_iter, maxit: int=..., tol: f
         The number of iterations.
     tol : float
         Tolerance on dual gap for convergence checking.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -166,7 +200,7 @@ def iterative_mixed_norm_solver(M, G, alpha, n_mxne_iter, maxit: int=..., tol: f
     .. footbibliography::
     """
 
-def tf_lipschitz_constant(M, G, phi, phiT, tol: float=..., verbose: Incomplete | None=...):
+def tf_lipschitz_constant(M, G, phi, phiT, tol: float = ..., verbose=...):
     """Compute lipschitz constant for FISTA.
 
     It uses a power iteration method.
@@ -180,6 +214,7 @@ def safe_max_abs_diff(A, ia, B, ib):
 
 class _Phi:
     """Squared L2 norm if ord == 2 and L1 norm if order == 1."""
+
     wsize: Incomplete
     tstep: Incomplete
     n_coefs: Incomplete
@@ -189,17 +224,14 @@ class _Phi:
     n_times: Incomplete
     ops: Incomplete
 
-    def __init__(self, wsize, tstep, n_coefs, n_times) -> None:
-        ...
-
-    def __call__(self, x):
-        ...
-
-    def norm(self, z, ord: int=...):
+    def __init__(self, wsize, tstep, n_coefs, n_times) -> None: ...
+    def __call__(self, x): ...
+    def norm(self, z, ord: int = ...):
         """Squared L2 norm if ord == 2 and L1 norm if order == 1."""
 
 class _PhiT:
     """Have phi.T istft as callable w/o using a lambda that does not pickle."""
+
     tstep: Incomplete
     n_freqs: Incomplete
     n_steps: Incomplete
@@ -209,19 +241,16 @@ class _PhiT:
     op_re: Incomplete
     op_im: Incomplete
 
-    def __init__(self, tstep, n_freqs, n_steps, n_times) -> None:
-        ...
+    def __init__(self, tstep, n_freqs, n_steps, n_times) -> None: ...
+    def __call__(self, z): ...
 
-    def __call__(self, z):
-        ...
-
-def norm_l21_tf(Z, phi, n_orient, w_space: Incomplete | None=...):
+def norm_l21_tf(Z, phi, n_orient, w_space=...):
     """L21 norm for TF."""
 
 def norm_l1_tf(Z, phi, n_orient, w_time):
     """L1 norm for TF."""
 
-def norm_epsilon(Y, l1_ratio, phi, w_space: float=..., w_time: Incomplete | None=...):
+def norm_epsilon(Y, l1_ratio, phi, w_space: float = ..., w_time=...):
     """Weighted epsilon norm.
 
     The weighted epsilon norm is the dual norm of::
@@ -262,7 +291,7 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float=..., w_time: Incomplete | None
     .. footbibliography::
     """
 
-def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space: Incomplete | None=..., w_time: Incomplete | None=...):
+def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=..., w_time=...):
     """Weighted epsilon-inf norm of phi(np.dot(G.T, R)).
 
     Parameters
@@ -292,7 +321,20 @@ def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space: Incomplete | None=.
         (consecutive rows of phi(np.dot(G.T, R))).
     """
 
-def dgap_l21l1(M, G, Z, active_set, alpha_space, alpha_time, phi, phiT, n_orient, highest_d_obj, w_space: Incomplete | None=..., w_time: Incomplete | None=...):
+def dgap_l21l1(
+    M,
+    G,
+    Z,
+    active_set,
+    alpha_space,
+    alpha_time,
+    phi,
+    phiT,
+    n_orient,
+    highest_d_obj,
+    w_space=...,
+    w_time=...,
+):
     """Duality gap for the time-frequency mixed norm inverse problem.
 
     See :footcite:`GramfortEtAl2012,NdiayeEtAl2016`
@@ -341,7 +383,22 @@ def dgap_l21l1(M, G, Z, active_set, alpha_space, alpha_time, phi, phiT, n_orient
     .. footbibliography::
     """
 
-def tf_mixed_norm_solver(M, G, alpha_space, alpha_time, wsize: int=..., tstep: int=..., n_orient: int=..., maxit: int=..., tol: float=..., active_set_size: Incomplete | None=..., debias: bool=..., return_gap: bool=..., dgap_freq: int=..., verbose: Incomplete | None=...):
+def tf_mixed_norm_solver(
+    M,
+    G,
+    alpha_space,
+    alpha_time,
+    wsize: int = ...,
+    tstep: int = ...,
+    n_orient: int = ...,
+    maxit: int = ...,
+    tol: float = ...,
+    active_set_size=...,
+    debias: bool = ...,
+    return_gap: bool = ...,
+    dgap_freq: int = ...,
+    verbose=...,
+):
     """Solve TF L21+L1 inverse solver with BCD and active set approach.
 
     See :footcite:`GramfortEtAl2013b,GramfortEtAl2011,BekhtiEtAl2016`.
@@ -381,7 +438,7 @@ def tf_mixed_norm_solver(M, G, alpha_space, alpha_time, wsize: int=..., tstep: i
         Return final duality gap.
     dgap_freq : int or np.inf
         The duality gap is evaluated every dgap_freq iterations.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -405,7 +462,21 @@ def tf_mixed_norm_solver(M, G, alpha_space, alpha_time, wsize: int=..., tstep: i
     .. footbibliography::
     """
 
-def iterative_tf_mixed_norm_solver(M, G, alpha_space, alpha_time, n_tfmxne_iter, wsize: int=..., tstep: int=..., maxit: int=..., tol: float=..., debias: bool=..., n_orient: int=..., dgap_freq: int=..., verbose: Incomplete | None=...):
+def iterative_tf_mixed_norm_solver(
+    M,
+    G,
+    alpha_space,
+    alpha_time,
+    n_tfmxne_iter,
+    wsize: int = ...,
+    tstep: int = ...,
+    maxit: int = ...,
+    tol: float = ...,
+    debias: bool = ...,
+    n_orient: int = ...,
+    dgap_freq: int = ...,
+    verbose=...,
+):
     """Solve TF L0.5/L1 + L0.5 inverse problem with BCD + active set approach.
 
     Parameters
@@ -446,7 +517,7 @@ def iterative_tf_mixed_norm_solver(M, G, alpha_space, alpha_time, n_tfmxne_iter,
         The number of orientation (1 : fixed or 3 : free or loose).
     dgap_freq : int or np.inf
         The duality gap is evaluated every dgap_freq iterations.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

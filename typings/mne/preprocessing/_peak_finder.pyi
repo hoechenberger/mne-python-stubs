@@ -1,7 +1,6 @@
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def peak_finder(x0, thresh: Incomplete | None=..., extrema: int=..., verbose: Incomplete | None=...):
+def peak_finder(x0, thresh=..., extrema: int = ..., verbose=...):
     """Noise-tolerant fast peak-finding algorithm.
 
     Parameters
@@ -16,7 +15,7 @@ def peak_finder(x0, thresh: Incomplete | None=..., extrema: int=..., verbose: In
     extrema : {-1, 1}
         1 if maxima are desired, -1 if minima are desired
         (default = maxima, 1).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

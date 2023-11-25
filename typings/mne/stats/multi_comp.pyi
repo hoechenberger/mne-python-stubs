@@ -1,4 +1,4 @@
-def fdr_correction(pvals, alpha: float=..., method: str=...):
+def fdr_correction(pvals, alpha: float = ..., method: str = ...):
     """P-value correction with False Discovery Rate (FDR).
 
     Correction for multiple comparison using FDR :footcite:`GenoveseEtAl2002`.
@@ -28,7 +28,7 @@ def fdr_correction(pvals, alpha: float=..., method: str=...):
     .. footbibliography::
     """
 
-def bonferroni_correction(pval, alpha: float=...):
+def bonferroni_correction(pval, alpha: float = ...):
     """P-value correction with Bonferroni method.
 
     Parameters

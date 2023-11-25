@@ -1,5 +1,5 @@
 from ..defaults import HEAD_SIZE_DEFAULT as HEAD_SIZE_DEFAULT
-from ._logging import logger as logger, verbose as verbose, warn as warn
+from ._logging import logger as logger, warn as warn
 from _typeshed import Incomplete
 
 def check_fname(fname, filetype, endings, endings_err=...) -> None:
@@ -17,7 +17,9 @@ def check_fname(fname, filetype, endings, endings_err=...) -> None:
         Obligatory possible endings for the filename.
     """
 
-def check_version(library, min_version: str=..., *, strip: bool=..., return_version: bool=...):
+def check_version(
+    library, min_version: str = ..., *, strip: bool = ..., return_version: bool = ...
+):
     """Check minimum library version required.
 
     Parameters
@@ -61,15 +63,12 @@ def check_random_state(seed):
     """
 
 class _IntLike:
-
     @classmethod
-    def __instancecheck__(cls, other):
-        ...
+    def __instancecheck__(cls, other): ...
+
 int_like: Incomplete
 path_like: Incomplete
 
 class _Callable:
-
     @classmethod
-    def __instancecheck__(cls, other):
-        ...
+    def __instancecheck__(cls, other): ...

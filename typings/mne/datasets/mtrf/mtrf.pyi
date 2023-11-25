@@ -1,8 +1,14 @@
-from ...utils import verbose as verbose
-from _typeshed import Incomplete
+
 data_name: str
 
-def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: bool=..., download: bool=..., *, verbose: Incomplete | None=...):
+def data_path(
+    path=...,
+    force_update: bool = ...,
+    update_path: bool = ...,
+    download: bool = ...,
+    *,
+    verbose=...,
+):
     """Get path to local copy of mtrf dataset.
 
     Parameters
@@ -25,7 +31,7 @@ def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: 
         it will not be downloaded and the path will be returned as
         '' (empty string). This is mostly used for debugging purposes
         and can be safely ignored by most users.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -35,8 +41,7 @@ def data_path(path: Incomplete | None=..., force_update: bool=..., update_path: 
     Returns
     -------
     path : instance of Path
-        Path to mtrf dataset directory.
-"""
+        Path to mtrf dataset directory."""
 
 def get_version():
     """Get version of the local mtrf dataset.
@@ -45,5 +50,4 @@ def get_version():
     -------
     version : str | None
         Version of the mtrf local dataset, or None if the dataset
-        does not exist locally.
-"""
+        does not exist locally."""

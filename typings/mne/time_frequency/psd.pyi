@@ -1,8 +1,22 @@
 from ..parallel import parallel_func as parallel_func
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def psd_array_welch(x, sfreq, fmin: int=..., fmax=..., n_fft: int=..., n_overlap: int=..., n_per_seg: Incomplete | None=..., n_jobs: Incomplete | None=..., average: str=..., window: str=..., remove_dc: bool=..., *, output: str=..., verbose: Incomplete | None=...):
+def psd_array_welch(
+    x,
+    sfreq,
+    fmin: int = ...,
+    fmax=...,
+    n_fft: int = ...,
+    n_overlap: int = ...,
+    n_per_seg=...,
+    n_jobs=...,
+    average: str = ...,
+    window: str = ...,
+    remove_dc: bool = ...,
+    *,
+    output: str = ...,
+    verbose=...,
+):
     """Compute power spectral density (PSD) using Welch's method.
 
     Welch's method is described in :footcite:t:`Welch1967`.
@@ -44,7 +58,7 @@ def psd_array_welch(x, sfreq, fmin: int=..., fmax=..., n_fft: int=..., n_overlap
         Windowing function to use. See :func:`scipy.signal.get_window`.
 
         .. versionadded:: 0.22.0
-    
+
     remove_dc : bool
         If ``True``, the mean is subtracted from each segment before computing
         its spectrum.
@@ -58,7 +72,7 @@ def psd_array_welch(x, sfreq, fmin: int=..., fmax=..., n_fft: int=..., n_overlap
           window.
 
         .. versionadded:: 1.4.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

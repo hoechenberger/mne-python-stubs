@@ -1,9 +1,14 @@
-from ...utils import fill_doc as fill_doc, logger as logger, verbose as verbose
+from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
 from .constants import CTF as CTF
-from _typeshed import Incomplete
 
-def read_raw_ctf(directory, system_clock: str=..., preload: bool=..., clean_names: bool=..., verbose: Incomplete | None=...):
+def read_raw_ctf(
+    directory,
+    system_clock: str = ...,
+    preload: bool = ...,
+    clean_names: bool = ...,
+    verbose=...,
+):
     """Raw object from CTF directory.
 
     Parameters
@@ -15,7 +20,7 @@ def read_raw_ctf(directory, system_clock: str=..., preload: bool=..., clean_name
         the data file when the system clock drops to zero, and use "ignore"
         to ignore the system clock (e.g., if head positions are measured
         multiple times during a recording).
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -25,7 +30,7 @@ def read_raw_ctf(directory, system_clock: str=..., preload: bool=..., clean_name
     clean_names : bool, optional
         If True main channel names and compensation channel names will
         be cleaned from CTF suffixes. The default is False.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -64,7 +69,7 @@ class RawCTF(BaseRaw):
         the data file when the system clock drops to zero, and use ``"ignore"``
         to ignore the system clock (e.g., if head positions are measured
         multiple times during a recording).
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -74,7 +79,7 @@ class RawCTF(BaseRaw):
     clean_names : bool, optional
         If True main channel names and compensation channel names will
         be cleaned from CTF suffixes. The default is False.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -86,5 +91,11 @@ class RawCTF(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, directory, system_clock: str=..., preload: bool=..., verbose: Incomplete | None=..., clean_names: bool=...) -> None:
-        ...
+    def __init__(
+        self,
+        directory,
+        system_clock: str = ...,
+        preload: bool = ...,
+        verbose=...,
+        clean_names: bool = ...,
+    ) -> None: ...

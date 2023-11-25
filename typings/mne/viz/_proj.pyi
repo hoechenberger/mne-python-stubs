@@ -1,9 +1,10 @@
 from ..defaults import DEFAULTS as DEFAULTS
-from ..utils import verbose as verbose, warn as warn
+from ..utils import warn as warn
 from .utils import plt_show as plt_show
-from _typeshed import Incomplete
 
-def plot_projs_joint(projs, evoked, picks_trace: Incomplete | None=..., *, topomap_kwargs: Incomplete | None=..., show: bool=..., verbose: Incomplete | None=...):
+def plot_projs_joint(
+    projs, evoked, picks_trace=..., *, topomap_kwargs=..., show: bool = ..., verbose=...
+):
     """Plot projectors and evoked jointly.
 
     Parameters
@@ -26,7 +27,7 @@ def plot_projs_joint(projs, evoked, picks_trace: Incomplete | None=..., *, topom
         Keyword arguments to pass to :func:`mne.viz.plot_projs_topomap`.
     show : bool
         Show the figure if ``True``.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

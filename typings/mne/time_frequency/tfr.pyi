@@ -4,13 +4,30 @@ from ..baseline import rescale as rescale
 from ..channels.channels import UpdateChannelsMixin as UpdateChannelsMixin
 from ..filter import next_fast_len as next_fast_len
 from ..parallel import parallel_func as parallel_func
-from ..utils import ExtendedTimeMixin as ExtendedTimeMixin, GetEpochsMixin as GetEpochsMixin, SizeMixin as SizeMixin, check_fname as check_fname, copy_function_doc_to_method_doc as copy_function_doc_to_method_doc, fill_doc as fill_doc, logger as logger, sizeof_fmt as sizeof_fmt, verbose as verbose, warn as warn
-from ..viz.topomap import plot_tfr_topomap as plot_tfr_topomap, plot_topomap as plot_topomap
-from ..viz.utils import add_background_image as add_background_image, figure_nobar as figure_nobar, plt_show as plt_show
+from ..utils import (
+    ExtendedTimeMixin as ExtendedTimeMixin,
+    GetEpochsMixin as GetEpochsMixin,
+    SizeMixin as SizeMixin,
+    check_fname as check_fname,
+    copy_function_doc_to_method_doc as copy_function_doc_to_method_doc,
+    fill_doc as fill_doc,
+    logger as logger,
+    sizeof_fmt as sizeof_fmt,
+    warn as warn,
+)
+from ..viz.topomap import (
+    plot_tfr_topomap as plot_tfr_topomap,
+    plot_topomap as plot_topomap,
+)
+from ..viz.utils import (
+    add_background_image as add_background_image,
+    figure_nobar as figure_nobar,
+    plt_show as plt_show,
+)
 from .multitaper import dpss_windows as dpss_windows
 from _typeshed import Incomplete
 
-def morlet(sfreq, freqs, n_cycles: float=..., sigma: Incomplete | None=..., zero_mean: bool=...):
+def morlet(sfreq, freqs, n_cycles: float = ..., sigma=..., zero_mean: bool = ...):
     """Compute Morlet wavelets for the given frequency range.
 
     Parameters
@@ -45,9 +62,9 @@ def morlet(sfreq, freqs, n_cycles: float=..., sigma: Incomplete | None=..., zero
 
     Notes
     -----
-    
+
     The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
-    
+
     Convolution of a signal with a Morlet wavelet will impose temporal smoothing
     that is determined by the duration of the wavelet. In MNE-Python, the duration
     of the wavelet is determined by the ``sigma`` parameter, which gives the
@@ -62,16 +79,16 @@ def morlet(sfreq, freqs, n_cycles: float=..., sigma: Incomplete | None=..., zero
     :math:`\\frac{\\mathtt{n\\_cycles}}{2 \\pi f}` where :math:`f` is the frequency of
     the wavelet oscillation (given by ``freqs``). Thus when ``sigma=None`` the FWHM
     will be given by
-    
+
     .. math::
-    
+
         \\mathrm{FWHM} = \\frac{\\mathtt{n\\_cycles} \\times \\sqrt{2 \\ln{2}}}{\\pi \\times f}
-    
+
     (cf. eq. 4 in :footcite:`Cohen2019`). To create wavelets with a chosen FWHM,
     one can compute::
-    
+
         n_cycles = desired_fwhm * np.pi * np.array(freqs) / np.sqrt(2 * np.log(2))
-    
+
     to get an array of values for ``n_cycles`` that yield the desired FWHM at each
     frequency in ``freqs``.  If you want different FWHM values at each frequency,
     do the same computation with ``desired_fwhm`` as an array of the same shape as
@@ -151,7 +168,7 @@ def fwhm(freq, n_cycles):
     .. footbibliography::
     """
 
-def cwt(X, Ws, use_fft: bool=..., mode: str=..., decim: int=...):
+def cwt(X, Ws, use_fft: bool = ..., mode: str = ..., decim: int = ...):
     """Compute time-frequency decomposition with continuous wavelet transform.
 
     Parameters
@@ -165,14 +182,14 @@ def cwt(X, Ws, use_fft: bool=..., mode: str=..., decim: int=...):
     mode : 'same' | 'valid' | 'full'
         Convention for convolution. 'full' is currently not implemented with
         ``use_fft=False``. Defaults to ``'same'``.
-    
+
     decim : int | slice, default 1
         To reduce memory usage, decimation factor after time-frequency
         decomposition.
-    
+
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
-    
+
         .. note::
             Decimation is done after convolutions and may create aliasing
             artifacts.
@@ -188,21 +205,34 @@ def cwt(X, Ws, use_fft: bool=..., mode: str=..., decim: int=...):
                                     with Morlet wavelets.
     """
 
-def tfr_morlet(inst, freqs, n_cycles, use_fft: bool=..., return_itc: bool=..., decim: int=..., n_jobs: Incomplete | None=..., picks: Incomplete | None=..., zero_mean: bool=..., average: bool=..., output: str=..., verbose: Incomplete | None=...):
+def tfr_morlet(
+    inst,
+    freqs,
+    n_cycles,
+    use_fft: bool = ...,
+    return_itc: bool = ...,
+    decim: int = ...,
+    n_jobs=...,
+    picks=...,
+    zero_mean: bool = ...,
+    average: bool = ...,
+    output: str = ...,
+    verbose=...,
+):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
-    Same computation as `~mne.time_frequency.tfr_array_morlet`, but
-    operates on `~mne.Epochs` or `~mne.Evoked` objects instead of
+    Same computation as mne.time_frequency.tfr_array_morlet`, but
+    operates on mne.Epochs` or mne.Evoked` objects instead of
     :class:`NumPy arrays <numpy.ndarray>`.
 
     Parameters
     ----------
     inst : Epochs | Evoked
         The epochs or evoked object.
-    
+
     freqs : array of float, shape (n_freqs,)
         The frequencies of interest in Hz.
-    
+
     n_cycles : int | array of int, shape (n_freqs,)
         Number of cycles in the wavelet, either a fixed number or one per
         frequency. The number of cycles ``n_cycles`` and the frequencies of
@@ -214,14 +244,14 @@ def tfr_morlet(inst, freqs, n_cycles, use_fft: bool=..., return_itc: bool=..., d
     return_itc : bool, default True
         Return inter-trial coherence (ITC) as well as averaged power.
         Must be ``False`` for evoked data.
-    
+
     decim : int | slice, default 1
         To reduce memory usage, decimation factor after time-frequency
         decomposition.
-    
+
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
-    
+
         .. note::
             Decimation is done after convolutions and may create aliasing
             artifacts.
@@ -239,24 +269,24 @@ def tfr_morlet(inst, freqs, n_cycles, use_fft: bool=..., return_itc: bool=..., d
         Make sure the wavelet has a mean of zero.
 
         .. versionadded:: 0.13.0
-    
+
     average : bool, default True
         If ``False`` return an `EpochsTFR` containing separate TFRs for each
         epoch. If ``True`` return an `AverageTFR` containing the average of all
         TFRs across epochs.
-    
+
         .. note::
             Using ``average=True`` is functionally equivalent to using
             ``average=False`` followed by ``EpochsTFR.average()``, but is
             more memory efficient.
-    
+
         .. versionadded:: 0.13.0
     output : str
         Can be ``"power"`` (default) or ``"complex"``. If ``"complex"``, then
         ``average`` must be ``False``.
 
         .. versionadded:: 0.15.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -281,41 +311,41 @@ def tfr_morlet(inst, freqs, n_cycles, use_fft: bool=..., return_itc: bool=..., d
 
     Notes
     -----
-    
+
     The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
-    
+
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows
     allow more precise frequency estimates; shorter temporal windows "smear"
     frequency estimates while providing more precise timing information.
-    
+
     Time-frequency representations are computed using a sliding temporal window.
     Either the temporal window has a fixed length independent of frequency, or the
     temporal window decreases in length with increased frequency.
-    
+
     .. image:: https://www.fieldtriptoolbox.org/assets/img/tutorial/timefrequencyanalysis/figure1.png
-    
+
     *Figure: Time and frequency smoothing. (a) For a fixed length temporal window
     the time and frequency smoothing remains fixed. (b) For temporal windows that
     decrease with frequency, the temporal smoothing decreases and the frequency
     smoothing increases with frequency.*
     Source: `FieldTrip tutorial: Time-frequency analysis using Hanning window,
     multitapers and wavelets <https://www.fieldtriptoolbox.org/tutorial/timefrequencyanalysis>`_.
-    
+
     In MNE-Python, the length of the Morlet wavelet is affected by the arguments
     ``freqs`` and ``n_cycles``, which define the frequencies of interest
     and the number of cycles, respectively. For the time-frequency representation,
     the length of the wavelet is defined such that both tails of
     the wavelet extend five standard deviations from the midpoint of its Gaussian
     envelope and that there is a sample at time zero.
-    
+
     The length of the wavelet is thus :math:`10\\times\\mathtt{sfreq}\\cdot\\sigma-1`,
     which is equal to :math:`\\frac{5}{\\pi} \\cdot \\frac{\\mathtt{n\\_cycles} \\cdot
     \\mathtt{sfreq}}{\\mathtt{freqs}} - 1`, where
     :math:`\\sigma = \\frac{\\mathtt{n\\_cycles}}{2\\pi f}` corresponds to the standard
     deviation of the wavelet's Gaussian envelope. Note that the length of the
     wavelet must not exceed the length of your signal.
-    
+
     For more information on the Morlet wavelet, see :func:`mne.time_frequency.morlet`.
 
     See :func:`mne.time_frequency.morlet` for more information about the
@@ -326,11 +356,22 @@ def tfr_morlet(inst, freqs, n_cycles, use_fft: bool=..., return_itc: bool=..., d
     .. footbibliography::
     """
 
-def tfr_array_morlet(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mean: bool=..., use_fft: bool=..., decim: int=..., output: str=..., n_jobs: Incomplete | None=..., verbose: Incomplete | None=...):
+def tfr_array_morlet(
+    epoch_data,
+    sfreq,
+    freqs,
+    n_cycles: float = ...,
+    zero_mean: bool = ...,
+    use_fft: bool = ...,
+    decim: int = ...,
+    output: str = ...,
+    n_jobs=...,
+    verbose=...,
+):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
-    Same computation as `~mne.time_frequency.tfr_morlet`, but operates on
-    :class:`NumPy arrays <numpy.ndarray>` instead of `~mne.Epochs` objects.
+    Same computation as mne.time_frequency.tfr_morlet`, but operates on
+    :class:`NumPy arrays <numpy.ndarray>` instead of mne.Epochs` objects.
 
     Parameters
     ----------
@@ -338,10 +379,10 @@ def tfr_array_morlet(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mean: b
         The epochs.
     sfreq : float | int
         Sampling frequency of the data.
-    
+
     freqs : array of float, shape (n_freqs,)
         The frequencies of interest in Hz.
-    
+
     n_cycles : int | array of int, shape (n_freqs,)
         Number of cycles in the wavelet, either a fixed number or one per
         frequency. The number of cycles ``n_cycles`` and the frequencies of
@@ -352,14 +393,14 @@ def tfr_array_morlet(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mean: b
         If True, make sure the wavelets have a mean of zero. default False.
     use_fft : bool
         Use the FFT for convolutions or not. default True.
-    
+
     decim : int | slice, default 1
         To reduce memory usage, decimation factor after time-frequency
         decomposition.
-    
+
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
-    
+
         .. note::
             Decimation is done after convolutions and may create aliasing
             artifacts.
@@ -381,7 +422,7 @@ def tfr_array_morlet(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mean: b
         value for ``n_jobs``.
         The number of epochs to process at the same time. The parallelization
         is implemented across channels. Default 1.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -411,41 +452,41 @@ def tfr_array_morlet(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mean: b
 
     Notes
     -----
-    
+
     The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
-    
+
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows
     allow more precise frequency estimates; shorter temporal windows "smear"
     frequency estimates while providing more precise timing information.
-    
+
     Time-frequency representations are computed using a sliding temporal window.
     Either the temporal window has a fixed length independent of frequency, or the
     temporal window decreases in length with increased frequency.
-    
+
     .. image:: https://www.fieldtriptoolbox.org/assets/img/tutorial/timefrequencyanalysis/figure1.png
-    
+
     *Figure: Time and frequency smoothing. (a) For a fixed length temporal window
     the time and frequency smoothing remains fixed. (b) For temporal windows that
     decrease with frequency, the temporal smoothing decreases and the frequency
     smoothing increases with frequency.*
     Source: `FieldTrip tutorial: Time-frequency analysis using Hanning window,
     multitapers and wavelets <https://www.fieldtriptoolbox.org/tutorial/timefrequencyanalysis>`_.
-    
+
     In MNE-Python, the length of the Morlet wavelet is affected by the arguments
     ``freqs`` and ``n_cycles``, which define the frequencies of interest
     and the number of cycles, respectively. For the time-frequency representation,
     the length of the wavelet is defined such that both tails of
     the wavelet extend five standard deviations from the midpoint of its Gaussian
     envelope and that there is a sample at time zero.
-    
+
     The length of the wavelet is thus :math:`10\\times\\mathtt{sfreq}\\cdot\\sigma-1`,
     which is equal to :math:`\\frac{5}{\\pi} \\cdot \\frac{\\mathtt{n\\_cycles} \\cdot
     \\mathtt{sfreq}}{\\mathtt{freqs}} - 1`, where
     :math:`\\sigma = \\frac{\\mathtt{n\\_cycles}}{2\\pi f}` corresponds to the standard
     deviation of the wavelet's Gaussian envelope. Note that the length of the
     wavelet must not exceed the length of your signal.
-    
+
     For more information on the Morlet wavelet, see :func:`mne.time_frequency.morlet`.
 
     .. versionadded:: 0.14.0
@@ -455,28 +496,41 @@ def tfr_array_morlet(epoch_data, sfreq, freqs, n_cycles: float=..., zero_mean: b
     .. footbibliography::
     """
 
-def tfr_multitaper(inst, freqs, n_cycles, time_bandwidth: float=..., use_fft: bool=..., return_itc: bool=..., decim: int=..., n_jobs: Incomplete | None=..., picks: Incomplete | None=..., average: bool=..., *, verbose: Incomplete | None=...):
+def tfr_multitaper(
+    inst,
+    freqs,
+    n_cycles,
+    time_bandwidth: float = ...,
+    use_fft: bool = ...,
+    return_itc: bool = ...,
+    decim: int = ...,
+    n_jobs=...,
+    picks=...,
+    average: bool = ...,
+    *,
+    verbose=...,
+):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
-    Same computation as `~mne.time_frequency.tfr_array_multitaper`, but
-    operates on `~mne.Epochs` or `~mne.Evoked` objects instead of
+    Same computation as mne.time_frequency.tfr_array_multitaper`, but
+    operates on mne.Epochs` or mne.Evoked` objects instead of
     :class:`NumPy arrays <numpy.ndarray>`.
 
     Parameters
     ----------
     inst : Epochs | Evoked
         The epochs or evoked object.
-    
+
     freqs : array of float, shape (n_freqs,)
         The frequencies of interest in Hz.
-    
+
     n_cycles : int | array of int, shape (n_freqs,)
         Number of cycles in the wavelet, either a fixed number or one per
         frequency. The number of cycles ``n_cycles`` and the frequencies of
         interest ``freqs`` define the temporal window length. See notes for
         additional information about the relationship between those arguments
         and about time and frequency smoothing.
-    
+
     time_bandwidth : float ``≥ 2.0``
         Product between the temporal window length (in seconds) and the *full*
         frequency bandwidth (in Hz). This product can be seen as the surface of the
@@ -488,14 +542,14 @@ def tfr_multitaper(inst, freqs, n_cycles, time_bandwidth: float=..., use_fft: bo
     return_itc : bool, default True
         Return inter-trial coherence (ITC) as well as averaged (or
         single-trial) power.
-    
+
     decim : int | slice, default 1
         To reduce memory usage, decimation factor after time-frequency
         decomposition.
-    
+
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
-    
+
         .. note::
             Decimation is done after convolutions and may create aliasing
             artifacts.
@@ -507,27 +561,27 @@ def tfr_multitaper(inst, freqs, n_cycles, time_bandwidth: float=..., use_fft: bo
         a :class:`joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    
+
     average : bool, default True
         If ``False`` return an `EpochsTFR` containing separate TFRs for each
         epoch. If ``True`` return an `AverageTFR` containing the average of all
         TFRs across epochs.
-    
+
         .. note::
             Using ``average=True`` is functionally equivalent to using
             ``average=False`` followed by ``EpochsTFR.average()``, but is
             more memory efficient.
-    
+
         .. versionadded:: 0.13.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -552,37 +606,37 @@ def tfr_multitaper(inst, freqs, n_cycles, time_bandwidth: float=..., use_fft: bo
 
     Notes
     -----
-    
+
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows
     allow more precise frequency estimates; shorter temporal windows "smear"
     frequency estimates while providing more precise timing information.
-    
+
     Time-frequency representations are computed using a sliding temporal window.
     Either the temporal window has a fixed length independent of frequency, or the
     temporal window decreases in length with increased frequency.
-    
+
     .. image:: https://www.fieldtriptoolbox.org/assets/img/tutorial/timefrequencyanalysis/figure1.png
-    
+
     *Figure: Time and frequency smoothing. (a) For a fixed length temporal window
     the time and frequency smoothing remains fixed. (b) For temporal windows that
     decrease with frequency, the temporal smoothing decreases and the frequency
     smoothing increases with frequency.*
     Source: `FieldTrip tutorial: Time-frequency analysis using Hanning window,
     multitapers and wavelets <https://www.fieldtriptoolbox.org/tutorial/timefrequencyanalysis>`_.
-    
+
     In MNE-Python, the multitaper temporal window length is defined by the arguments
     ``freqs`` and ``n_cycles``, respectively defining the frequencies of interest
     and the number of cycles: :math:`T = \\frac{\\mathtt{n\\_cycles}}{\\mathtt{freqs}}`
-    
+
     A fixed number of cycles for all frequencies will yield a temporal window which
     decreases with frequency. For example, ``freqs=np.arange(1, 6, 2)`` and
     ``n_cycles=2`` yields ``T=array([2., 0.7, 0.4])``.
-    
+
     To use a temporal window with fixed length, the number of cycles has to be
     defined based on the frequency. For example, ``freqs=np.arange(1, 6, 2)`` and
     ``n_cycles=freqs / 2`` yields ``T=array([0.5, 0.5, 0.5])``.
-    
+
     In MNE-Python's multitaper functions, the frequency bandwidth is
     additionally affected by the parameter ``time_bandwidth``.
     The ``n_cycles`` parameter determines the temporal window length based on the
@@ -593,7 +647,7 @@ def tfr_multitaper(inst, freqs, n_cycles, time_bandwidth: float=..., use_fft: bo
     determined by :math:`\\frac{\\mathrm{time~bandwidth}}{\\mathrm{time~window}}`, and
     thus passing a larger ``time_bandwidth`` value will increase the frequency
     bandwidth (thereby decreasing the frequency *resolution*).
-    
+
     The increased frequency bandwidth is reached by averaging spectral estimates
     obtained from multiple tapers. Thus, ``time_bandwidth`` also determines the
     number of tapers used. MNE-Python uses only "good" tapers (tapers with minimal
@@ -604,16 +658,16 @@ def tfr_multitaper(inst, freqs, n_cycles, time_bandwidth: float=..., use_fft: bo
     ``time_bandwidth`` low) means fewer tapers will be used, which undermines what
     is unique about multitaper methods — namely their ability to improve accuracy /
     reduce noise in the power estimates by using several (orthogonal) tapers.
-    
+
     .. warning::
-    
-        In `~mne.time_frequency.tfr_array_multitaper` and
-        `~mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
+
+        In mne.time_frequency.tfr_array_multitaper` and
+        mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
         product of the temporal window length with the *full* frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
-    
-        This is not the case for `~mne.time_frequency.psd_array_multitaper` where
+
+        This is not the case for mne.time_frequency.psd_array_multitaper` where
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 
@@ -622,25 +676,20 @@ def tfr_multitaper(inst, freqs, n_cycles, time_bandwidth: float=..., use_fft: bo
 
 class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin):
     """Base TFR class."""
+
     baseline: Incomplete
 
-    def __init__(self) -> None:
-        ...
-
+    def __init__(self) -> None: ...
     @property
-    def data(self):
-        ...
-
+    def data(self): ...
     @data.setter
-    def data(self, data) -> None:
-        ...
-
+    def data(self, data) -> None: ...
     @property
     def ch_names(self):
         """Channel names."""
     freqs: Incomplete
 
-    def crop(self, tmin: Incomplete | None=..., tmax: Incomplete | None=..., fmin: Incomplete | None=..., fmax: Incomplete | None=..., include_tmax: bool=...):
+    def crop(self, tmin=..., tmax=..., fmin=..., fmax=..., include_tmax: bool = ...):
         """Crop data to a given time interval in place.
 
         Parameters
@@ -664,7 +713,6 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         inst : instance of AverageTFR
             The modified instance.
         """
-
     def copy(self):
         """Return a copy of the instance.
 
@@ -673,8 +721,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         copy : instance of EpochsTFR | instance of AverageTFR
             A copy of the instance.
         """
-
-    def apply_baseline(self, baseline, mode: str=..., verbose: Incomplete | None=...):
+    def apply_baseline(self, baseline, mode: str = ..., verbose=...):
         """Baseline correct the data.
 
         Parameters
@@ -708,8 +755,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         inst : instance of AverageTFR
             The modified instance.
         """
-
-    def save(self, fname, overwrite: bool=..., *, verbose: Incomplete | None=...) -> None:
+    def save(self, fname, overwrite: bool = ..., *, verbose=...) -> None:
         """Save TFR object to hdf5 file.
 
         Parameters
@@ -723,8 +769,15 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         --------
         read_tfrs, write_tfrs
         """
-
-    def to_data_frame(self, picks: Incomplete | None=..., index: Incomplete | None=..., long_format: bool=..., time_format: Incomplete | None=..., *, verbose: Incomplete | None=...):
+    def to_data_frame(
+        self,
+        picks=...,
+        index=...,
+        long_format: bool = ...,
+        time_format=...,
+        *,
+        verbose=...,
+    ):
         """Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
@@ -755,6 +808,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
 
 class AverageTFR(_BaseTFR):
     """Multiply source instances."""
+
     info: Incomplete
     data: Incomplete
     freqs: Incomplete
@@ -763,22 +817,49 @@ class AverageTFR(_BaseTFR):
     method: Incomplete
     preload: bool
 
-    def __init__(self, info, data, times, freqs, nave, comment: Incomplete | None=..., method: Incomplete | None=..., verbose: Incomplete | None=...) -> None:
-        ...
-
-    def plot(self, picks: Incomplete | None=..., baseline: Incomplete | None=..., mode: str=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., fmin: Incomplete | None=..., fmax: Incomplete | None=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., cmap: str=..., dB: bool=..., colorbar: bool=..., show: bool=..., title: Incomplete | None=..., axes: Incomplete | None=..., layout: Incomplete | None=..., yscale: str=..., mask: Incomplete | None=..., mask_style: Incomplete | None=..., mask_cmap: str=..., mask_alpha: float=..., combine: Incomplete | None=..., exclude=..., cnorm: Incomplete | None=..., verbose: Incomplete | None=...):
+    def __init__(
+        self, info, data, times, freqs, nave, comment=..., method=..., verbose=...
+    ) -> None: ...
+    def plot(
+        self,
+        picks=...,
+        baseline=...,
+        mode: str = ...,
+        tmin=...,
+        tmax=...,
+        fmin=...,
+        fmax=...,
+        vmin=...,
+        vmax=...,
+        cmap: str = ...,
+        dB: bool = ...,
+        colorbar: bool = ...,
+        show: bool = ...,
+        title=...,
+        axes=...,
+        layout=...,
+        yscale: str = ...,
+        mask=...,
+        mask_style=...,
+        mask_cmap: str = ...,
+        mask_alpha: float = ...,
+        combine=...,
+        exclude=...,
+        cnorm=...,
+        verbose=...,
+    ):
         """Plot TFRs as a two-dimensional image(s).
 
         Parameters
         ----------
         picks : str | array-like | slice | None
-            Channels to include. Slices and lists of integers will be interpreted as 
-            channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-            string values "all" to pick all channels, or "data" to pick :term:`data 
-            channels`. None (default) will pick good data channels. Note that channels 
-            in ``info['bads']`` *will be included* if their names or indices are 
+            Channels to include. Slices and lists of integers will be interpreted as
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+            string values "all" to pick all channels, or "data" to pick :term:`data
+            channels`. None (default) will pick good data channels. Note that channels
+            in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
         baseline : None (default) or tuple, shape (2,)
             The time interval to apply baseline correction.
@@ -904,7 +985,7 @@ class AverageTFR(_BaseTFR):
         exclude : list of str | 'bads'
             Channels names to exclude from being shown. If 'bads', the
             bad channels are excluded. Defaults to an empty list.
-        
+
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
@@ -913,7 +994,7 @@ class AverageTFR(_BaseTFR):
             :ref:`the ERDs example<cnorm-example>` for an example of its use.
 
             .. versionadded:: 0.24
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -925,8 +1006,30 @@ class AverageTFR(_BaseTFR):
         figs : list of instances of matplotlib.figure.Figure
             A list of figures containing the time-frequency power.
         """
-
-    def plot_joint(self, timefreqs: Incomplete | None=..., picks: Incomplete | None=..., baseline: Incomplete | None=..., mode: str=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., fmin: Incomplete | None=..., fmax: Incomplete | None=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., cmap: str=..., dB: bool=..., colorbar: bool=..., show: bool=..., title: Incomplete | None=..., yscale: str=..., combine: str=..., exclude=..., topomap_args: Incomplete | None=..., image_args: Incomplete | None=..., verbose: Incomplete | None=...):
+    def plot_joint(
+        self,
+        timefreqs=...,
+        picks=...,
+        baseline=...,
+        mode: str = ...,
+        tmin=...,
+        tmax=...,
+        fmin=...,
+        fmax=...,
+        vmin=...,
+        vmax=...,
+        cmap: str = ...,
+        dB: bool = ...,
+        colorbar: bool = ...,
+        show: bool = ...,
+        title=...,
+        yscale: str = ...,
+        combine: str = ...,
+        exclude=...,
+        topomap_args=...,
+        image_args=...,
+        verbose=...,
+    ):
         """Plot TFRs as a two-dimensional image with topomaps.
 
         Parameters
@@ -935,13 +1038,13 @@ class AverageTFR(_BaseTFR):
             The time-frequency point(s) for which topomaps will be plotted.
             See Notes.
         picks : str | array-like | slice | None
-            Channels to include. Slices and lists of integers will be interpreted as 
-            channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-            string values "all" to pick all channels, or "data" to pick :term:`data 
-            channels`. None (default) will pick good data channels. Note that channels 
-            in ``info['bads']`` *will be included* if their names or indices are 
+            Channels to include. Slices and lists of integers will be interpreted as
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+            string values "all" to pick all channels, or "data" to pick :term:`data
+            channels`. None (default) will pick good data channels. Note that channels
+            in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
         baseline : None (default) or tuple of length 2
             The time interval to apply baseline correction.
@@ -1016,7 +1119,7 @@ class AverageTFR(_BaseTFR):
             to style the image. ``axes`` and ``show`` are ignored. Beyond that,
             if ``None``, no customizable arguments will be passed.
             Defaults to ``None``.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -1051,20 +1154,43 @@ class AverageTFR(_BaseTFR):
 
         .. versionadded:: 0.16.0
         """
-
-    def plot_topo(self, picks: Incomplete | None=..., baseline: Incomplete | None=..., mode: str=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., fmin: Incomplete | None=..., fmax: Incomplete | None=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., layout: Incomplete | None=..., cmap: str=..., title: Incomplete | None=..., dB: bool=..., colorbar: bool=..., layout_scale: float=..., show: bool=..., border: str=..., fig_facecolor: str=..., fig_background: Incomplete | None=..., font_color: str=..., yscale: str=..., verbose: Incomplete | None=...):
+    def plot_topo(
+        self,
+        picks=...,
+        baseline=...,
+        mode: str = ...,
+        tmin=...,
+        tmax=...,
+        fmin=...,
+        fmax=...,
+        vmin=...,
+        vmax=...,
+        layout=...,
+        cmap: str = ...,
+        title=...,
+        dB: bool = ...,
+        colorbar: bool = ...,
+        layout_scale: float = ...,
+        show: bool = ...,
+        border: str = ...,
+        fig_facecolor: str = ...,
+        fig_background=...,
+        font_color: str = ...,
+        yscale: str = ...,
+        verbose=...,
+    ):
         """Plot TFRs in a topography with images.
 
         Parameters
         ----------
         picks : str | array-like | slice | None
-            Channels to include. Slices and lists of integers will be interpreted as 
-            channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-            string values "all" to pick all channels, or "data" to pick :term:`data 
-            channels`. None (default) will pick good data channels. Note that channels 
-            in ``info['bads']`` *will be included* if their names or indices are 
+            Channels to include. Slices and lists of integers will be interpreted as
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+            string values "all" to pick all channels, or "data" to pick :term:`data
+            channels`. None (default) will pick good data channels. Note that channels
+            in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
         baseline : None (default) or tuple of length 2
             The time interval to apply baseline correction.
@@ -1136,7 +1262,7 @@ class AverageTFR(_BaseTFR):
             The scale of y (frequency) axis. 'linear' gives linear y axis,
             'log' leads to log-spaced y axis and 'auto' detects if frequencies
             are log-spaced and only then sets the y axis to 'log'.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -1148,255 +1274,273 @@ class AverageTFR(_BaseTFR):
         fig : matplotlib.figure.Figure
             The figure containing the topography.
         """
-
-    def plot_topomap(self, tmin: Incomplete | None=..., tmax: Incomplete | None=..., fmin: float=..., fmax=..., *, ch_type: Incomplete | None=..., baseline: Incomplete | None=..., mode: str=..., sensors: bool=..., show_names: bool=..., mask: Incomplete | None=..., mask_params: Incomplete | None=..., contours: int=..., outlines: str=..., sphere: Incomplete | None=..., image_interp=..., extrapolate=..., border=..., res: int=..., size: int=..., cmap: Incomplete | None=..., vlim=..., cnorm: Incomplete | None=..., colorbar: bool=..., cbar_fmt: str=..., units: Incomplete | None=..., axes: Incomplete | None=..., show: bool=...):
+    def plot_topomap(
+        self,
+        tmin=...,
+        tmax=...,
+        fmin: float = ...,
+        fmax=...,
+        *,
+        ch_type=...,
+        baseline=...,
+        mode: str = ...,
+        sensors: bool = ...,
+        show_names: bool = ...,
+        mask=...,
+        mask_params=...,
+        contours: int = ...,
+        outlines: str = ...,
+        sphere=...,
+        image_interp=...,
+        extrapolate=...,
+        border=...,
+        res: int = ...,
+        size: int = ...,
+        cmap=...,
+        vlim=...,
+        cnorm=...,
+        colorbar: bool = ...,
+        cbar_fmt: str = ...,
+        units=...,
+        axes=...,
+        show: bool = ...,
+    ):
         """Plot topographic maps of specific time-frequency intervals of TFR data.
 
-    Parameters
-    ----------
-    tmin, tmax : float | None
-        First and last times to include, in seconds. ``None`` uses the first or
-        last time present in the data. Default is ``tmin=None, tmax=None`` (all
-        times).
-    fmin, fmax : float
-        The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
-    ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
-        The channel type to plot. For ``'grad'``, the gradiometers are
-        collected in pairs and the mean for each pair is plotted. If
-        ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
-    baseline : tuple or list of length 2
-        The time interval to apply rescaling / baseline correction. If None do
-        not apply it. If baseline is (a, b) the interval is between "a (s)" and
-        "b (s)". If a is None the beginning of the data is used and if b is
-        None then b is set to the end of the interval. If baseline is equal to
-        (None, None) the whole time interval is used.
-    mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio' | None
-        Perform baseline correction by
+        Parameters
+        ----------
+        tmin, tmax : float | None
+            First and last times to include, in seconds. ``None`` uses the first or
+            last time present in the data. Default is ``tmin=None, tmax=None`` (all
+            times).
+        fmin, fmax : float
+            The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
+        ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
+            The channel type to plot. For ``'grad'``, the gradiometers are
+            collected in pairs and the mean for each pair is plotted. If
+            ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
+        baseline : tuple or list of length 2
+            The time interval to apply rescaling / baseline correction. If None do
+            not apply it. If baseline is (a, b) the interval is between "a (s)" and
+            "b (s)". If a is None the beginning of the data is used and if b is
+            None then b is set to the end of the interval. If baseline is equal to
+            (None, None) the whole time interval is used.
+        mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio' | None
+            Perform baseline correction by
 
-          - subtracting the mean baseline power ('mean')
-          - dividing by the mean baseline power ('ratio')
-          - dividing by the mean baseline power and taking the log ('logratio')
-          - subtracting the mean baseline power followed by dividing by the
-            mean baseline power ('percent')
-          - subtracting the mean baseline power and dividing by the standard
-            deviation of the baseline power ('zscore')
-          - dividing by the mean baseline power, taking the log, and dividing
-            by the standard deviation of the baseline power ('zlogratio')
+              - subtracting the mean baseline power ('mean')
+              - dividing by the mean baseline power ('ratio')
+              - dividing by the mean baseline power and taking the log ('logratio')
+              - subtracting the mean baseline power followed by dividing by the
+                mean baseline power ('percent')
+              - subtracting the mean baseline power and dividing by the standard
+                deviation of the baseline power ('zscore')
+              - dividing by the mean baseline power, taking the log, and dividing
+                by the standard deviation of the baseline power ('zlogratio')
 
-        If None no baseline correction is applied.
-    
-    sensors : bool | str
-        Whether to add markers for sensor locations. If :class:`str`, should be a
-        valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of :meth:`~matplotlib.axes.Axes.plot`). If ``True`` (the
-        default), black circles will be used.
-    
-    show_names : bool | callable
-        If ``True``, show channel names next to each sensor marker. If callable,
-        channel names will be formatted using the callable; e.g., to
-        delete the prefix 'MEG ' from all channel names, pass the function
-        ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
-        non-masked sensor names will be shown.
-    
-    mask : ndarray of bool, shape (n_channels, n_times) | None
-        Array indicating channel-time combinations to highlight with a distinct
-        plotting style (useful for, e.g. marking which channels at which times a statistical test of the data reaches significance). Array elements set to ``True`` will be plotted
-        with the parameters given in ``mask_params``. Defaults to ``None``,
-        equivalent to an array of all ``False`` elements.
-    
-    mask_params : dict | None
-        Additional plotting parameters for plotting significant sensors.
-        Default (None) equals::
-    
-            dict(marker='o', markerfacecolor='w', markeredgecolor='k',
-                    linewidth=0, markersize=4)
-    
-    contours : int | array-like
-        The number of contour lines to draw. If ``0``, no contours will be drawn.
-        If a positive integer, that number of contour levels are chosen using the
-        matplotlib tick locator (may sometimes be inaccurate, use array for
-        accuracy). If array-like, the array values are used as the contour levels.
-        The values should be in µV for EEG, fT for magnetometers and fT/m for
-        gradiometers. If ``colorbar=True``, the colorbar will have ticks
-        corresponding to the contour levels. Default is ``6``.
-    
-    outlines : 'head' | dict | None
-        The outlines to be drawn. If 'head', the default head scheme will be
-        drawn. If dict, each key refers to a tuple of x and y positions, the values
-        in 'mask_pos' will serve as image mask.
-        Alternatively, a matplotlib patch object can be passed for advanced
-        masking options, either directly or as a function that returns patches
-        (required for multi-axis plots). If None, nothing will be drawn.
-        Defaults to 'head'.
-    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
-        The sphere parameters to use for the head outline. Can be array-like of
-        shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
-        to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
-        radius from that object. If ``'auto'`` the sphere is fit to digitization
-        points. If ``'eeglab'`` the head circle is defined by EEG electrodes
-        ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
-        it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
-        default) is equivalent to ``'auto'`` when enough extra digitization points
-        are available, and (0, 0, 0, 0.095) otherwise.
-    
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
-    
-    image_interp : str
-        The image interpolation to be used. Options are ``'cubic'`` (default)
-        to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-        ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-        ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
-    
-    extrapolate : str
-        Options:
-    
-        - ``'box'``
-            Extrapolate to four points placed to form a square encompassing all
-            data points, where each side of the square is three times the range
-            of the data in the respective dimension.
-        - ``'local'`` (default for MEG sensors)
-            Extrapolate only to nearby points (approximately to points closer than
-            median inter-electrode distance). This will also set the
-            mask to be polygonal based on the convex hull of the sensors.
-        - ``'head'`` (default for non-MEG sensors)
-            Extrapolate out to the edges of the clipping circle. This will be on
-            the head circle when the sensors are contained within the head circle,
-            but it can extend beyond the head when sensors are plotted outside
-            the head circle.
+            If None no baseline correction is applied.
 
-        .. versionchanged:: 0.21
+        sensors : bool | str
+            Whether to add markers for sensor locations. If :class:`str`, should be a
+            valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
+            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            default), black circles will be used.
 
-           - The default was changed to ``'local'`` for MEG sensors.
-           - ``'local'`` was changed to use a convex hull mask
-           - ``'head'`` was changed to extrapolate out to the clipping circle.
-    
-    border : float | 'mean'
-        Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
-        then each extrapolated point has the average value of its neighbours.
+        show_names : bool | callable
+            If ``True``, show channel names next to each sensor marker. If callable,
+            channel names will be formatted using the callable; e.g., to
+            delete the prefix 'MEG ' from all channel names, pass the function
+            ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
+            non-masked sensor names will be shown.
 
-        .. versionadded:: 0.20
-    
-    res : int
-        The resolution of the topomap image (number of pixels along each side).
-    
-    size : float
-        Side length of each subplot in inches.
-    
-    cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-        Colormap to use. If :class:`tuple`, the first value indicates the colormap
-        to use and the second value is a boolean defining interactivity. In
-        interactive mode the colors are adjustable by clicking and dragging the
-        colorbar with left and right mouse button. Left mouse button moves the
-        scale up and down and right mouse button adjusts the range. Hitting
-        space bar resets the range. Up and down arrows can be used to change
-        the colormap. If ``None``, ``'Reds'`` is used for data that is either
-        all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
-        ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
-    
-        .. warning::  Interactive mode works smoothly only for a small amount
-            of topomaps. Interactive mode is disabled by default for more than
-            2 topomaps.
-    
-    vlim : tuple of length 2
-        Colormap limits to use. If a :class:`tuple` of floats, specifies the
-        lower and upper bounds of the colormap (in that order); providing
-        ``None`` for either entry will set the corresponding boundary at the
-        min/max of the data. Defaults to ``(None, None)``.
+        mask : ndarray of bool, shape (n_channels, n_times) | None
+            Array indicating channel-time combinations to highlight with a distinct
+            plotting style (useful for, e.g. marking which channels at which times a statistical test of the data reaches significance). Array elements set to ``True`` will be plotted
+            with the parameters given in ``mask_params``. Defaults to ``None``,
+            equivalent to an array of all ``False`` elements.
 
-        .. versionadded:: 1.2
-    
-    cnorm : matplotlib.colors.Normalize | None
-        How to normalize the colormap. If ``None``, standard linear normalization
-        is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
-        for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        mask_params : dict | None
+            Additional plotting parameters for plotting significant sensors.
+            Default (None) equals::
 
-        .. versionadded:: 1.2
-    
-    colorbar : bool
-        Plot a colorbar in the rightmost column of the figure.
-    cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
-        details.
-    
-    units : str | None
-        The units to use for the colorbar label. Ignored if ``colorbar=False``.
-        If ``None`` the label will be "AU" indicating arbitrary units.
-        Default is ``None``.
-    axes : instance of Axes | None
-        The axes to plot to. If ``None``, a new :class:`~matplotlib.figure.Figure`
-        will be created. Default is ``None``.
-    show : bool
-        Show the figure if ``True``.
+                dict(marker='o', markerfacecolor='w', markeredgecolor='k',
+                        linewidth=0, markersize=4)
 
-    Returns
-    -------
-    fig : matplotlib.figure.Figure
-        The figure containing the topography.
-    """
+        contours : int | array-like
+            The number of contour lines to draw. If ``0``, no contours will be drawn.
+            If a positive integer, that number of contour levels are chosen using the
+            matplotlib tick locator (may sometimes be inaccurate, use array for
+            accuracy). If array-like, the array values are used as the contour levels.
+            The values should be in µV for EEG, fT for magnetometers and fT/m for
+            gradiometers. If ``colorbar=True``, the colorbar will have ticks
+            corresponding to the contour levels. Default is ``6``.
 
+        outlines : 'head' | dict | None
+            The outlines to be drawn. If 'head', the default head scheme will be
+            drawn. If dict, each key refers to a tuple of x and y positions, the values
+            in 'mask_pos' will serve as image mask.
+            Alternatively, a matplotlib patch object can be passed for advanced
+            masking options, either directly or as a function that returns patches
+            (required for multi-axis plots). If None, nothing will be drawn.
+            Defaults to 'head'.
+        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
+            The sphere parameters to use for the head outline. Can be array-like of
+            shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
+            to give just the radius (origin assumed 0, 0, 0). Can also be an instance
+            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            radius from that object. If ``'auto'`` the sphere is fit to digitization
+            points. If ``'eeglab'`` the head circle is defined by EEG electrodes
+            ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
+            it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
+            default) is equivalent to ``'auto'`` when enough extra digitization points
+            are available, and (0, 0, 0, 0.095) otherwise.
+
+            .. versionadded:: 0.20
+            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+
+        image_interp : str
+            The image interpolation to be used. Options are ``'cubic'`` (default)
+            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
+            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+
+        extrapolate : str
+            Options:
+
+            - ``'box'``
+                Extrapolate to four points placed to form a square encompassing all
+                data points, where each side of the square is three times the range
+                of the data in the respective dimension.
+            - ``'local'`` (default for MEG sensors)
+                Extrapolate only to nearby points (approximately to points closer than
+                median inter-electrode distance). This will also set the
+                mask to be polygonal based on the convex hull of the sensors.
+            - ``'head'`` (default for non-MEG sensors)
+                Extrapolate out to the edges of the clipping circle. This will be on
+                the head circle when the sensors are contained within the head circle,
+                but it can extend beyond the head when sensors are plotted outside
+                the head circle.
+
+            .. versionchanged:: 0.21
+
+               - The default was changed to ``'local'`` for MEG sensors.
+               - ``'local'`` was changed to use a convex hull mask
+               - ``'head'`` was changed to extrapolate out to the clipping circle.
+
+        border : float | 'mean'
+            Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
+            then each extrapolated point has the average value of its neighbours.
+
+            .. versionadded:: 0.20
+
+        res : int
+            The resolution of the topomap image (number of pixels along each side).
+
+        size : float
+            Side length of each subplot in inches.
+
+        cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
+            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            to use and the second value is a boolean defining interactivity. In
+            interactive mode the colors are adjustable by clicking and dragging the
+            colorbar with left and right mouse button. Left mouse button moves the
+            scale up and down and right mouse button adjusts the range. Hitting
+            space bar resets the range. Up and down arrows can be used to change
+            the colormap. If ``None``, ``'Reds'`` is used for data that is either
+            all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
+            ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
+
+            .. warning::  Interactive mode works smoothly only for a small amount
+                of topomaps. Interactive mode is disabled by default for more than
+                2 topomaps.
+
+        vlim : tuple of length 2
+            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            lower and upper bounds of the colormap (in that order); providing
+            ``None`` for either entry will set the corresponding boundary at the
+            min/max of the data. Defaults to ``(None, None)``.
+
+            .. versionadded:: 1.2
+
+        cnorm : matplotlib.colors.Normalize | None
+            How to normalize the colormap. If ``None``, standard linear normalization
+            is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
+            See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+            for more details on colormap normalization, and
+            :ref:`the ERDs example<cnorm-example>` for an example of its use.
+
+            .. versionadded:: 1.2
+
+        colorbar : bool
+            Plot a colorbar in the rightmost column of the figure.
+        cbar_fmt : str
+            Formatting string for colorbar tick labels. See :ref:`formatspec` for
+            details.
+
+        units : str | None
+            The units to use for the colorbar label. Ignored if ``colorbar=False``.
+            If ``None`` the label will be "AU" indicating arbitrary units.
+            Default is ``None``.
+        axes : instance of Axes | None
+            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
+            will be created. Default is ``None``.
+        show : bool
+            Show the figure if ``True``.
+
+        Returns
+        -------
+        fig : matplotlib.figure.Figure
+            The figure containing the topography.
+        """
     def __add__(self, tfr):
         """Add instances."""
-
-    def __iadd__(self, tfr):
-        ...
-
+    def __iadd__(self, tfr): ...
     def __sub__(self, tfr):
         """Subtract instances."""
-
-    def __isub__(self, tfr):
-        ...
-
+    def __isub__(self, tfr): ...
     def __truediv__(self, a):
         """Divide instances."""
-
-    def __itruediv__(self, a):
-        ...
-
+    def __itruediv__(self, a): ...
     def __mul__(self, a):
         """Multiply source instances."""
-
-    def __imul__(self, a):
-        ...
+    def __imul__(self, a): ...
 
 class EpochsTFR(_BaseTFR, GetEpochsMixin):
     """Average the data across epochs.
 
-        Parameters
-        ----------
-        method : str | callable
-            How to combine the data. If "mean"/"median", the mean/median
-            are returned. Otherwise, must be a callable which, when passed
-            an array of shape (n_epochs, n_channels, n_freqs, n_time)
-            returns an array of shape (n_channels, n_freqs, n_time).
-            Note that due to file type limitations, the kind for all
-            these will be "average".
-        dim : 'epochs' | 'freqs' | 'times'
-            The dimension along which to combine the data.
-        copy : bool
-            Whether to return a copy of the modified instance,
-            or modify in place. Ignored when ``dim='epochs'``
-            because a new instance must be returned.
+    Parameters
+    ----------
+    method : str | callable
+        How to combine the data. If "mean"/"median", the mean/median
+        are returned. Otherwise, must be a callable which, when passed
+        an array of shape (n_epochs, n_channels, n_freqs, n_time)
+        returns an array of shape (n_channels, n_freqs, n_time).
+        Note that due to file type limitations, the kind for all
+        these will be "average".
+    dim : 'epochs' | 'freqs' | 'times'
+        The dimension along which to combine the data.
+    copy : bool
+        Whether to return a copy of the modified instance,
+        or modify in place. Ignored when ``dim='epochs'``
+        because a new instance must be returned.
 
-        Returns
-        -------
-        ave : instance of AverageTFR | EpochsTFR
-            The averaged data.
+    Returns
+    -------
+    ave : instance of AverageTFR | EpochsTFR
+        The averaged data.
 
-        Notes
-        -----
-        Passing in ``np.median`` is considered unsafe when there is complex
-        data because NumPy doesn't compute the marginal median. Numpy currently
-        sorts the complex values by real part and return whatever value is
-        computed. Use with caution. We use the marginal median in the
-        complex case (i.e. the median of each component separately) if
-        one passes in ``median``. See a discussion in scipy:
+    Notes
+    -----
+    Passing in ``np.median`` is considered unsafe when there is complex
+    data because NumPy doesn't compute the marginal median. Numpy currently
+    sorts the complex values by real part and return whatever value is
+    computed. Use with caution. We use the marginal median in the
+    complex case (i.e. the median of each component separately) if
+    one passes in ``median``. See a discussion in scipy:
 
-        https://github.com/scipy/scipy/pull/12676#issuecomment-783370228
-        """
+    https://github.com/scipy/scipy/pull/12676#issuecomment-783370228
+    """
+
     info: Incomplete
     data: Incomplete
     freqs: Incomplete
@@ -1409,13 +1553,24 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
     preload: bool
     metadata: Incomplete
 
-    def __init__(self, info, data, times, freqs, comment: Incomplete | None=..., method: Incomplete | None=..., events: Incomplete | None=..., event_id: Incomplete | None=..., selection: Incomplete | None=..., drop_log: Incomplete | None=..., metadata: Incomplete | None=..., verbose: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        info,
+        data,
+        times,
+        freqs,
+        comment=...,
+        method=...,
+        events=...,
+        event_id=...,
+        selection=...,
+        drop_log=...,
+        metadata=...,
+        verbose=...,
+    ) -> None: ...
     def __abs__(self):
         """Take the absolute value."""
-
-    def average(self, method: str=..., dim: str=..., copy: bool=...):
+    def average(self, method: str = ..., dim: str = ..., copy: bool = ...):
         """Average the data across epochs.
 
         Parameters
@@ -1451,7 +1606,7 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
         https://github.com/scipy/scipy/pull/12676#issuecomment-783370228
         """
 
-def combine_tfr(all_tfr, weights: str=...):
+def combine_tfr(all_tfr, weights: str = ...):
     """Merge AverageTFR data by weighted addition.
 
     Create a new AverageTFR instance, using a combination of the supplied
@@ -1478,7 +1633,7 @@ def combine_tfr(all_tfr, weights: str=...):
     .. versionadded:: 0.11.0
     """
 
-def write_tfrs(fname, tfr, overwrite: bool=..., *, verbose: Incomplete | None=...) -> None:
+def write_tfrs(fname, tfr, overwrite: bool = ..., *, verbose=...) -> None:
     """Write a TFR dataset to hdf5.
 
     Parameters
@@ -1489,11 +1644,11 @@ def write_tfrs(fname, tfr, overwrite: bool=..., *, verbose: Incomplete | None=..
         The TFR dataset, or list of TFR datasets, to save in one file.
         Note. If .comment is not None, a name will be generated on the fly,
         based on the order in which the TFR objects are passed.
-    
+
     overwrite : bool
         If True (default False), overwrite the destination file if it
         exists.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -1509,7 +1664,7 @@ def write_tfrs(fname, tfr, overwrite: bool=..., *, verbose: Incomplete | None=..
     .. versionadded:: 0.9.0
     """
 
-def read_tfrs(fname, condition: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def read_tfrs(fname, condition=..., *, verbose=...):
     """Read TFR datasets from hdf5 file.
 
     Parameters
@@ -1519,7 +1674,7 @@ def read_tfrs(fname, condition: Incomplete | None=..., *, verbose: Incomplete | 
     condition : int or str | list of int or str | None
         The condition to load. If None, all conditions will be returned.
         Defaults to None.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

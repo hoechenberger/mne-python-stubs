@@ -2,45 +2,57 @@ from ._fiff.constants import FIFF as FIFF
 from ._fiff.open import fiff_open as fiff_open
 from ._fiff.tag import read_tag as read_tag
 from ._fiff.tree import dir_tree_find as dir_tree_find
-from ._fiff.write import end_block as end_block, start_and_end_file as start_and_end_file, start_block as start_block, write_double as write_double, write_float as write_float, write_name_list_sanitized as write_name_list_sanitized, write_string as write_string
-from .utils import check_fname as check_fname, fill_doc as fill_doc, int_like as int_like, logger as logger, verbose as verbose, warn as warn
+from ._fiff.write import (
+    end_block as end_block,
+    start_and_end_file as start_and_end_file,
+    start_block as start_block,
+    write_double as write_double,
+    write_float as write_float,
+    write_name_list_sanitized as write_name_list_sanitized,
+    write_string as write_string,
+)
+from .utils import (
+    check_fname as check_fname,
+    fill_doc as fill_doc,
+    int_like as int_like,
+    logger as logger,
+    warn as warn,
+)
 from _typeshed import Incomplete
 
 class Annotations:
     """Rename annotation description(s). Operates inplace.
 
-        Parameters
-        ----------
-        mapping : dict
-            A dictionary mapping the old description to a new description,
-            e.g. {'1.0' : 'Control', '2.0' : 'Stimulus'}.
-        
-        verbose : bool | str | int | None
-            Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
-            argument.
+    Parameters
+    ----------
+    mapping : dict
+        A dictionary mapping the old description to a new description,
+        e.g. {'1.0' : 'Control', '2.0' : 'Stimulus'}.
 
-        Returns
-        -------
-        self : mne.Annotations
-            The modified Annotations object.
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
 
-        Notes
-        -----
-        .. versionadded:: 0.24.0
-        """
+    Returns
+    -------
+    self : mne.Annotations
+        The modified Annotations object.
 
-    def __init__(self, onset, duration, description, orig_time: Incomplete | None=..., ch_names: Incomplete | None=...) -> None:
-        ...
+    Notes
+    -----
+    .. versionadded:: 0.24.0
+    """
 
+    def __init__(
+        self, onset, duration, description, orig_time=..., ch_names=...
+    ) -> None: ...
     @property
     def orig_time(self):
         """The time base of the Annotations."""
-
     def __eq__(self, other):
         """Compare to another Annotations instance."""
-
     def __len__(self) -> int:
         """Return the number of annotations.
 
@@ -49,27 +61,23 @@ class Annotations:
         n_annot : int
             The number of annotations.
         """
-
     def __add__(self, other):
         """Add (concatencate) two Annotation objects."""
-
     def __iadd__(self, other):
         """Add (concatencate) two Annotation objects in-place.
 
         Both annotations must have the same orig_time
         """
-
     def __iter__(self):
         """Iterate over the annotations."""
-
-    def __getitem__(self, key, *, with_ch_names: Incomplete | None=...):
+    def __getitem__(self, key, *, with_ch_names=...):
         """Propagate indexing and slicing to the underlying numpy structure."""
     onset: Incomplete
     duration: Incomplete
     description: Incomplete
     ch_names: Incomplete
 
-    def append(self, onset, duration, description, ch_names: Incomplete | None=...):
+    def append(self, onset, duration, description, ch_names=...):
         """Add an annotated segment. Operates inplace.
 
         Parameters
@@ -82,7 +90,7 @@ class Annotations:
         description : str | array-like
             Description for the annotation. To reject epochs, use description
             starting with keyword 'bad'.
-        
+
         ch_names : list | None
             List of lists of channel names associated with the annotations.
             Empty entries are assumed to be associated with no specific channel,
@@ -90,7 +98,7 @@ class Annotations:
             the same as passing all empty lists. For example, this creates three
             annotations, associating the first with the time interval itself, the
             second with two channels, and the third with a single channel::
-        
+
                 Annotations(onset=[0, 3, 10], duration=[1, 0.25, 0.5],
                             description=['Start', 'BAD_flux', 'BAD_noise'],
                             ch_names=[[], ['MEG0111', 'MEG2563'], ['MEG1443']])
@@ -108,7 +116,6 @@ class Annotations:
         to not only ``list.append``, but also
         `list.extend <https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types>`__.
         """
-
     def copy(self):
         """Return a copy of the Annotations.
 
@@ -117,7 +124,6 @@ class Annotations:
         inst : instance of Annotations
             A copy of the object.
         """
-
     def delete(self, idx) -> None:
         """Remove an annotation. Operates inplace.
 
@@ -127,7 +133,6 @@ class Annotations:
             Index of the annotation to remove. Can be array-like to
             remove multiple indices.
         """
-
     def to_data_frame(self):
         """Export annotations in tabular structure as a pandas DataFrame.
 
@@ -138,7 +143,6 @@ class Annotations:
             description columns. A column named ch_names is added if any
             annotations are channel-specific.
         """
-
     def count(self):
         """Count annotations.
 
@@ -148,8 +152,7 @@ class Annotations:
             A dictionary containing unique annotation descriptions as keys with their
             counts as values.
         """
-
-    def save(self, fname, *, overwrite: bool=..., verbose: Incomplete | None=...) -> None:
+    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
         """Save annotations to FIF, CSV or TXT.
 
         Typically annotations get saved in the FIF file for raw data
@@ -161,13 +164,13 @@ class Annotations:
         ----------
         fname : path-like
             The filename to use.
-        
+
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
             .. versionadded:: 0.23
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -182,8 +185,14 @@ class Annotations:
         whereas :file:`.txt` files store onset as seconds since start of the
         recording (e.g., ``45.95597082905339``).
         """
-
-    def crop(self, tmin: Incomplete | None=..., tmax: Incomplete | None=..., emit_warning: bool=..., use_orig_time: bool=..., verbose: Incomplete | None=...):
+    def crop(
+        self,
+        tmin=...,
+        tmax=...,
+        emit_warning: bool = ...,
+        use_orig_time: bool = ...,
+        verbose=...,
+    ):
         """Remove all annotation that are outside of [tmin, tmax].
 
         The method operates inplace.
@@ -200,7 +209,7 @@ class Annotations:
         use_orig_time : bool
             Whether to use orig_time as an offset.
             Defaults to True.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -212,8 +221,7 @@ class Annotations:
         self : instance of Annotations
             The cropped Annotations object.
         """
-
-    def set_durations(self, mapping, verbose: Incomplete | None=...):
+    def set_durations(self, mapping, verbose=...):
         """Set annotation duration(s). Operates inplace.
 
         Parameters
@@ -223,7 +231,7 @@ class Annotations:
             seconds e.g. ``{'ShortStimulus' : 3, 'LongStimulus' : 12}``.
             Alternatively, if a number is provided, then all annotations
             durations are set to the single provided value.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -239,8 +247,7 @@ class Annotations:
         -----
         .. versionadded:: 0.24.0
         """
-
-    def rename(self, mapping, verbose: Incomplete | None=...):
+    def rename(self, mapping, verbose=...):
         """Rename annotation description(s). Operates inplace.
 
         Parameters
@@ -248,7 +255,7 @@ class Annotations:
         mapping : dict
             A dictionary mapping the old description to a new description,
             e.g. {'1.0' : 'Control', '2.0' : 'Stimulus'}.
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -268,36 +275,34 @@ class Annotations:
 class EpochAnnotationsMixin:
     """Add raw annotations into the Epochs metadata data frame.
 
-        Adds three columns to the ``metadata`` consisting of a list
-        in each row:
-        - ``annot_onset``: the onset of each Annotation within
-        the Epoch relative to the start time of the Epoch (in seconds).
-        - ``annot_duration``: the duration of each Annotation
-        within the Epoch in seconds.
-        - ``annot_description``: the free-form text description of each
-        Annotation.
+    Adds three columns to the ``metadata`` consisting of a list
+    in each row:
+    - ``annot_onset``: the onset of each Annotation within
+    the Epoch relative to the start time of the Epoch (in seconds).
+    - ``annot_duration``: the duration of each Annotation
+    within the Epoch in seconds.
+    - ``annot_description``: the free-form text description of each
+    Annotation.
 
-        Parameters
-        ----------
-        overwrite : bool
-            Whether to overwrite existing columns in metadata or not.
-            Default is False.
+    Parameters
+    ----------
+    overwrite : bool
+        Whether to overwrite existing columns in metadata or not.
+        Default is False.
 
-        Returns
-        -------
-        self : instance of Epochs
-            The modified instance (instance is also modified inplace).
+    Returns
+    -------
+    self : instance of Epochs
+        The modified instance (instance is also modified inplace).
 
-        Notes
-        -----
-        .. versionadded:: 1.0
-        """
+    Notes
+    -----
+    .. versionadded:: 1.0
+    """
 
     @property
-    def annotations(self):
-        ...
-
-    def set_annotations(self, annotations, on_missing: str=..., *, verbose: Incomplete | None=...):
+    def annotations(self): ...
+    def set_annotations(self, annotations, on_missing: str = ..., *, verbose=...):
         """Setter for Epoch annotations from Raw.
 
         This method does not handle offsetting the times based
@@ -308,13 +313,13 @@ class EpochAnnotationsMixin:
         ----------
         annotations : instance of mne.Annotations | None
             Annotations to set.
-        
+
         on_missing : 'raise' | 'warn' | 'ignore'
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
-        
+
             .. versionadded:: 0.23.0
-        
+
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -335,7 +340,7 @@ class EpochAnnotationsMixin:
         annotations can be added correctly only if no decimation or
         resampling was performed. We thus suggest to regenerate your
         :class:`mne.Epochs` from raw and re-save to disk with 1.0+ if you
-        want to safely work with :class:`~mne.Annotations` in epochs.
+        want to safely work with :class:mne.Annotations` in epochs.
 
         Since this method does not handle offsetting the times based
         on first_samp or measurement dates, the recommended way to add
@@ -347,7 +352,6 @@ class EpochAnnotationsMixin:
 
         .. versionadded:: 1.0
         """
-
     def get_annotations_per_epoch(self):
         """Get a list of annotations that occur during each epoch.
 
@@ -357,13 +361,13 @@ class EpochAnnotationsMixin:
             A list of lists (with length equal to number of epochs) where each
             inner list contains any annotations that overlap the corresponding
             epoch. Annotations are stored as a :class:`tuple` of onset,
-            duration, description (not as a :class:`~mne.Annotations` object),
+            duration, description (not as a :class:mne.Annotations` object),
             where the onset is now relative to time=0 of the epoch, rather than
             time=0 of the original continuous (raw) data.
         """
     metadata: Incomplete
 
-    def add_annotations_to_metadata(self, overwrite: bool=...):
+    def add_annotations_to_metadata(self, overwrite: bool = ...):
         """Add raw annotations into the Epochs metadata data frame.
 
         Adds three columns to the ``metadata`` consisting of a list
@@ -391,7 +395,7 @@ class EpochAnnotationsMixin:
         .. versionadded:: 1.0
         """
 
-def read_annotations(fname, sfreq: str=..., uint16_codec: Incomplete | None=..., encoding: str=...):
+def read_annotations(fname, sfreq: str = ..., uint16_codec=..., encoding: str = ...):
     """Read annotations from a file.
 
     This function reads a ``.fif``, ``.fif.gz``, ``.vmrk``, ``.amrk``,
@@ -419,7 +423,7 @@ def read_annotations(fname, sfreq: str=..., uint16_codec: Incomplete | None=...,
         too small". ``uint16_codec`` allows to specify what codec (for example:
         ``'latin1'`` or ``'utf-8'``) should be used when reading character
         arrays and can therefore help you solve this problem.
-    
+
     encoding : str
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
@@ -437,7 +441,14 @@ def read_annotations(fname, sfreq: str=..., uint16_codec: Incomplete | None=...,
     ``.txt`` extension.
     """
 
-def events_from_annotations(raw, event_id: str=..., regexp: str=..., use_rounding: bool=..., chunk_duration: Incomplete | None=..., verbose: Incomplete | None=...):
+def events_from_annotations(
+    raw,
+    event_id: str = ...,
+    regexp: str = ...,
+    use_rounding: bool = ...,
+    chunk_duration=...,
+    verbose=...,
+):
     """Get :term:`events` and ``event_id`` from an Annotations object.
 
     Parameters
@@ -479,7 +490,7 @@ def events_from_annotations(raw, event_id: str=..., regexp: str=..., use_roundin
         they fit within the annotation duration spaced according to
         ``chunk_duration``. As a consequence annotations with duration shorter
         than ``chunk_duration`` will not contribute events.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -488,13 +499,13 @@ def events_from_annotations(raw, event_id: str=..., regexp: str=..., use_roundin
 
     Returns
     -------
-    
+
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
     event_id : dict
-        The event_id variable that can be passed to :class:`~mne.Epochs`.
+        The event_id variable that can be passed to :class:mne.Epochs`.
 
     See Also
     --------
@@ -509,7 +520,9 @@ def events_from_annotations(raw, event_id: str=..., regexp: str=..., use_roundin
     integer event code ``1``, ``'2'`` to ``2``, etc.
     """
 
-def annotations_from_events(events, sfreq, event_desc: Incomplete | None=..., first_samp: int=..., orig_time: Incomplete | None=..., verbose: Incomplete | None=...):
+def annotations_from_events(
+    events, sfreq, event_desc=..., first_samp: int = ..., orig_time=..., verbose=...
+):
     """Convert an event array to an Annotations object.
 
     Parameters
@@ -536,7 +549,7 @@ def annotations_from_events(events, sfreq, event_desc: Incomplete | None=..., fi
         Determines the starting time of annotation acquisition. If None
         (default), starting time is determined from beginning of raw data
         acquisition. For details, see :meth:`mne.Annotations` docstring.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

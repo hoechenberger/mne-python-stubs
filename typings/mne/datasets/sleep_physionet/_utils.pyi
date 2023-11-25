@@ -1,5 +1,5 @@
-from ...utils import verbose as verbose
 from _typeshed import Incomplete
+
 AGE_SLEEP_RECORDS: Incomplete
 TEMAZEPAM_SLEEP_RECORDS: Incomplete
 TEMAZEPAM_RECORDS_URL: str

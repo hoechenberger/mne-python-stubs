@@ -1,16 +1,17 @@
 from ..._fiff.meas_info import create_info as create_info
-from ...utils import fill_doc as fill_doc, logger as logger, verbose as verbose
+from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
-from _typeshed import Incomplete
 
-def read_raw_neuralynx(fname, *, preload: bool=..., exclude_fname_patterns: Incomplete | None=..., verbose: Incomplete | None=...):
+def read_raw_neuralynx(
+    fname, *, preload: bool = ..., exclude_fname_patterns=..., verbose=...
+):
     """Reader for Neuralynx files.
 
     Parameters
     ----------
     fname : path-like
         Path to a folder with Neuralynx .ncs files.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -21,7 +22,7 @@ def read_raw_neuralynx(fname, *, preload: bool=..., exclude_fname_patterns: Inco
         List of glob-like string patterns to exclude from channel list.
         Useful when not all channels have the same number of samples
         so you can read separate instances.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -42,5 +43,10 @@ def read_raw_neuralynx(fname, *, preload: bool=..., exclude_fname_patterns: Inco
 class RawNeuralynx(BaseRaw):
     """RawNeuralynx class."""
 
-    def __init__(self, fname, preload: bool=..., verbose: Incomplete | None=..., exclude_fname_patterns: list=...) -> None:
-        ...
+    def __init__(
+        self,
+        fname,
+        preload: bool = ...,
+        verbose=...,
+        exclude_fname_patterns: list = ...,
+    ) -> None: ...

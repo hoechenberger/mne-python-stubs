@@ -1,7 +1,6 @@
-from ..utils import logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from ..utils import logger as logger
 
-def oversampled_temporal_projection(raw, duration: float=..., picks: Incomplete | None=..., verbose: Incomplete | None=...):
+def oversampled_temporal_projection(raw, duration: float = ..., picks=..., verbose=...):
     """Denoise MEG channels using leave-one-out temporal projection.
 
     Parameters
@@ -12,15 +11,15 @@ def oversampled_temporal_projection(raw, duration: float=..., picks: Incomplete 
         The window duration (in seconds; default 10.) to use. Can also
         be "min" to use as short a window as possible.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick all data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick all data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

@@ -1,7 +1,7 @@
 from .._fiff.pick import pick_info as pick_info, pick_types as pick_types
 from ..filter import filter_data as filter_data
 from ..time_frequency import psd_array_multitaper as psd_array_multitaper
-from ..utils import fill_doc as fill_doc, verbose as verbose
+from ..utils import fill_doc as fill_doc
 from .base import BaseEstimator as BaseEstimator
 from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
@@ -9,50 +9,43 @@ from _typeshed import Incomplete
 class _ConstantScaler:
     """Scale channel types using constant values."""
 
-    def __init__(self, info, scalings, do_scaling: bool=...) -> None:
-        ...
+    def __init__(self, info, scalings, do_scaling: bool = ...) -> None: ...
     std_: Incomplete
     mean_: Incomplete
 
-    def fit(self, X, y: Incomplete | None=...):
-        ...
-
-    def transform(self, X):
-        ...
-
-    def inverse_transform(self, X, y: Incomplete | None=...):
-        ...
-
-    def fit_transform(self, X, y: Incomplete | None=...):
-        ...
+    def fit(self, X, y=...): ...
+    def transform(self, X): ...
+    def inverse_transform(self, X, y=...): ...
+    def fit_transform(self, X, y=...): ...
 
 class Scaler(TransformerMixin, BaseEstimator):
     """Invert standardization of data across channels.
 
-        Parameters
-        ----------
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
-            The data.
+    Parameters
+    ----------
+    epochs_data : array, shape (n_epochs, n_channels, n_times)
+        The data.
 
-        Returns
-        -------
-        X : array, shape (n_epochs, n_channels, n_times)
-            The data concatenated over channels.
+    Returns
+    -------
+    X : array, shape (n_epochs, n_channels, n_times)
+        The data concatenated over channels.
 
-        Notes
-        -----
-        This function makes a copy of the data before the operations and the
-        memory usage may be large with big data.
-        """
+    Notes
+    -----
+    This function makes a copy of the data before the operations and the
+    memory usage may be large with big data.
+    """
+
     info: Incomplete
     with_mean: Incomplete
     with_std: Incomplete
     scalings: Incomplete
 
-    def __init__(self, info: Incomplete | None=..., scalings: Incomplete | None=..., with_mean: bool=..., with_std: bool=...) -> None:
-        ...
-
-    def fit(self, epochs_data, y: Incomplete | None=...):
+    def __init__(
+        self, info=..., scalings=..., with_mean: bool = ..., with_std: bool = ...
+    ) -> None: ...
+    def fit(self, epochs_data, y=...):
         """Standardize data across channels.
 
         Parameters
@@ -67,7 +60,6 @@ class Scaler(TransformerMixin, BaseEstimator):
         self : instance of Scaler
             The modified instance.
         """
-
     def transform(self, epochs_data):
         """Standardize data across channels.
 
@@ -86,8 +78,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         This function makes a copy of the data before the operations and the
         memory usage may be large with big data.
         """
-
-    def fit_transform(self, epochs_data, y: Incomplete | None=...):
+    def fit_transform(self, epochs_data, y=...):
         """Fit to data, then transform it.
 
         Fits transformer to epochs_data and y and returns a transformed version
@@ -111,7 +102,6 @@ class Scaler(TransformerMixin, BaseEstimator):
         This function makes a copy of the data before the operations and the
         memory usage may be large with big data.
         """
-
     def inverse_transform(self, epochs_data):
         """Invert standardization of data across channels.
 
@@ -134,20 +124,21 @@ class Scaler(TransformerMixin, BaseEstimator):
 class Vectorizer(TransformerMixin):
     """Transform 2D data back to its original feature shape.
 
-        Parameters
-        ----------
-        X : array-like, shape (n_samples,  n_features)
-            Data to be transformed back to original shape.
+    Parameters
+    ----------
+    X : array-like, shape (n_samples,  n_features)
+        Data to be transformed back to original shape.
 
-        Returns
-        -------
-        X : array
-            The data transformed into shape as used in fit. The first
-            dimension is of length n_samples.
-        """
+    Returns
+    -------
+    X : array
+        The data transformed into shape as used in fit. The first
+        dimension is of length n_samples.
+    """
+
     features_shape_: Incomplete
 
-    def fit(self, X, y: Incomplete | None=...):
+    def fit(self, X, y=...):
         """Store the shape of the features of X.
 
         Parameters
@@ -165,7 +156,6 @@ class Vectorizer(TransformerMixin):
         self : instance of Vectorizer
             Return the modified instance.
         """
-
     def transform(self, X):
         """Convert given array into two dimensions.
 
@@ -182,8 +172,7 @@ class Vectorizer(TransformerMixin):
         X : array, shape (n_samples, n_features)
             The transformed data.
         """
-
-    def fit_transform(self, X, y: Incomplete | None=...):
+    def fit_transform(self, X, y=...):
         """Fit the data, then transform in one step.
 
         Parameters
@@ -201,7 +190,6 @@ class Vectorizer(TransformerMixin):
         X : array, shape (n_samples, -1)
             The transformed data.
         """
-
     def inverse_transform(self, X):
         """Transform 2D data back to its original feature shape.
 
@@ -220,16 +208,17 @@ class Vectorizer(TransformerMixin):
 class PSDEstimator(TransformerMixin):
     """Compute power spectral density (PSD) using a multi-taper method.
 
-        Parameters
-        ----------
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
-            The data.
+    Parameters
+    ----------
+    epochs_data : array, shape (n_epochs, n_channels, n_times)
+        The data.
 
-        Returns
-        -------
-        psd : array, shape (n_signals, n_freqs) or (n_freqs,)
-            The computed PSD.
-        """
+    Returns
+    -------
+    psd : array, shape (n_signals, n_freqs) or (n_freqs,)
+        The computed PSD.
+    """
+
     sfreq: Incomplete
     fmin: Incomplete
     fmax: Incomplete
@@ -239,9 +228,19 @@ class PSDEstimator(TransformerMixin):
     n_jobs: Incomplete
     normalization: Incomplete
 
-    def __init__(self, sfreq=..., fmin: int=..., fmax=..., bandwidth: Incomplete | None=..., adaptive: bool=..., low_bias: bool=..., n_jobs: Incomplete | None=..., normalization: str=..., *, verbose: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        sfreq=...,
+        fmin: int = ...,
+        fmax=...,
+        bandwidth=...,
+        adaptive: bool = ...,
+        low_bias: bool = ...,
+        n_jobs=...,
+        normalization: str = ...,
+        *,
+        verbose=...,
+    ) -> None: ...
     def fit(self, epochs_data, y):
         """Compute power spectral density (PSD) using a multi-taper method.
 
@@ -257,7 +256,6 @@ class PSDEstimator(TransformerMixin):
         self : instance of PSDEstimator
             The modified instance.
         """
-
     def transform(self, epochs_data):
         """Compute power spectral density (PSD) using a multi-taper method.
 
@@ -275,16 +273,17 @@ class PSDEstimator(TransformerMixin):
 class FilterEstimator(TransformerMixin):
     """Filter data.
 
-        Parameters
-        ----------
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
-            The data.
+    Parameters
+    ----------
+    epochs_data : array, shape (n_epochs, n_channels, n_times)
+        The data.
 
-        Returns
-        -------
-        X : array, shape (n_epochs, n_channels, n_times)
-            The data after filtering.
-        """
+    Returns
+    -------
+    X : array, shape (n_epochs, n_channels, n_times)
+        The data after filtering.
+    """
+
     info: Incomplete
     l_freq: Incomplete
     h_freq: Incomplete
@@ -297,9 +296,22 @@ class FilterEstimator(TransformerMixin):
     iir_params: Incomplete
     fir_design: Incomplete
 
-    def __init__(self, info, l_freq, h_freq, picks: Incomplete | None=..., filter_length: str=..., l_trans_bandwidth: str=..., h_trans_bandwidth: str=..., n_jobs: Incomplete | None=..., method: str=..., iir_params: Incomplete | None=..., fir_design: str=..., *, verbose: Incomplete | None=...) -> None:
-        ...
-
+    def __init__(
+        self,
+        info,
+        l_freq,
+        h_freq,
+        picks=...,
+        filter_length: str = ...,
+        l_trans_bandwidth: str = ...,
+        h_trans_bandwidth: str = ...,
+        n_jobs=...,
+        method: str = ...,
+        iir_params=...,
+        fir_design: str = ...,
+        *,
+        verbose=...,
+    ) -> None: ...
     def fit(self, epochs_data, y):
         """Filter data.
 
@@ -315,7 +327,6 @@ class FilterEstimator(TransformerMixin):
         self : instance of FilterEstimator
             The modified instance.
         """
-
     def transform(self, epochs_data):
         """Filter data.
 
@@ -333,23 +344,22 @@ class FilterEstimator(TransformerMixin):
 class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
     """Inverse transform the data to its original space.
 
-        Parameters
-        ----------
-        X : array, shape (n_epochs, n_components, n_times)
-            The data to be inverted.
+    Parameters
+    ----------
+    X : array, shape (n_epochs, n_components, n_times)
+        The data to be inverted.
 
-        Returns
-        -------
-        X : array, shape (n_epochs, n_channels, n_times)
-            The transformed data.
-        """
+    Returns
+    -------
+    X : array, shape (n_epochs, n_channels, n_times)
+        The transformed data.
+    """
+
     estimator: Incomplete
     average: Incomplete
 
-    def __init__(self, estimator, average: bool=...) -> None:
-        ...
-
-    def fit(self, X, y: Incomplete | None=...):
+    def __init__(self, estimator, average: bool = ...) -> None: ...
+    def fit(self, X, y=...):
         """Fit the spatial filters.
 
         Parameters
@@ -364,8 +374,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         self : instance of UnsupervisedSpatialFilter
             Return the modified instance.
         """
-
-    def fit_transform(self, X, y: Incomplete | None=...):
+    def fit_transform(self, X, y=...):
         """Transform the data to its filtered components after fitting.
 
         Parameters
@@ -380,7 +389,6 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         X : array, shape (n_epochs, n_channels, n_times)
             The transformed data.
         """
-
     def transform(self, X):
         """Transform the data to its spatial filters.
 
@@ -394,7 +402,6 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         X : array, shape (n_epochs, n_channels, n_times)
             The transformed data.
         """
-
     def inverse_transform(self, X):
         """Inverse transform the data to its original space.
 
@@ -412,17 +419,18 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
 class TemporalFilter(TransformerMixin):
     """Filter data along the last dimension.
 
-        Parameters
-        ----------
-        X : array, shape (n_epochs, n_channels, n_times) or shape (n_channels, n_times)
-            The data to be filtered over the last dimension. The channels
-            dimension can be zero when passing a 2D array.
+    Parameters
+    ----------
+    X : array, shape (n_epochs, n_channels, n_times) or shape (n_channels, n_times)
+        The data to be filtered over the last dimension. The channels
+        dimension can be zero when passing a 2D array.
 
-        Returns
-        -------
-        X : array
-            The data after filtering.
-        """
+    Returns
+    -------
+    X : array
+        The data after filtering.
+    """
+
     l_freq: Incomplete
     h_freq: Incomplete
     sfreq: Incomplete
@@ -435,10 +443,23 @@ class TemporalFilter(TransformerMixin):
     fir_window: Incomplete
     fir_design: Incomplete
 
-    def __init__(self, l_freq: Incomplete | None=..., h_freq: Incomplete | None=..., sfreq: float=..., filter_length: str=..., l_trans_bandwidth: str=..., h_trans_bandwidth: str=..., n_jobs: Incomplete | None=..., method: str=..., iir_params: Incomplete | None=..., fir_window: str=..., fir_design: str=..., *, verbose: Incomplete | None=...) -> None:
-        ...
-
-    def fit(self, X, y: Incomplete | None=...):
+    def __init__(
+        self,
+        l_freq=...,
+        h_freq=...,
+        sfreq: float = ...,
+        filter_length: str = ...,
+        l_trans_bandwidth: str = ...,
+        h_trans_bandwidth: str = ...,
+        n_jobs=...,
+        method: str = ...,
+        iir_params=...,
+        fir_window: str = ...,
+        fir_design: str = ...,
+        *,
+        verbose=...,
+    ) -> None: ...
+    def fit(self, X, y=...):
         """Do nothing (for scikit-learn compatibility purposes).
 
         Parameters
@@ -454,7 +475,6 @@ class TemporalFilter(TransformerMixin):
         self : instance of TemporalFilter
             The modified instance.
         """
-
     def transform(self, X):
         """Filter data along the last dimension.
 

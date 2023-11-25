@@ -1,11 +1,16 @@
 from ._fiff.constants import FIFF as FIFF
 from ._fiff.meas_info import read_fiducials as read_fiducials
 from .surface import read_surface as read_surface
-from .transforms import Transform as Transform, apply_trans as apply_trans, combine_transforms as combine_transforms, invert_transform as invert_transform, read_ras_mni_t as read_ras_mni_t
-from .utils import get_subjects_dir as get_subjects_dir, logger as logger, verbose as verbose
-from _typeshed import Incomplete
+from .transforms import (
+    Transform as Transform,
+    apply_trans as apply_trans,
+    combine_transforms as combine_transforms,
+    invert_transform as invert_transform,
+    read_ras_mni_t as read_ras_mni_t,
+)
+from .utils import get_subjects_dir as get_subjects_dir, logger as logger
 
-def get_volume_labels_from_aseg(mgz_fname, return_colors: bool=..., atlas_ids: Incomplete | None=...):
+def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = ..., atlas_ids=...):
     """Return a list of names and colors of segmented volumes.
 
     Parameters
@@ -41,19 +46,28 @@ def get_volume_labels_from_aseg(mgz_fname, return_colors: bool=..., atlas_ids: I
     .. versionadded:: 0.9.0
     """
 
-def head_to_mri(pos, subject, mri_head_t, subjects_dir: Incomplete | None=..., *, kind: str=..., unscale: bool=..., verbose: Incomplete | None=...):
+def head_to_mri(
+    pos,
+    subject,
+    mri_head_t,
+    subjects_dir=...,
+    *,
+    kind: str = ...,
+    unscale: bool = ...,
+    verbose=...,
+):
     """Convert pos from head coordinate system to MRI ones.
 
     Parameters
     ----------
     pos : array, shape (n_pos, 3)
         The coordinates (in m) in head coordinate system.
-    
+
     subject : str
         The FreeSurfer subject name.
     mri_head_t : instance of Transform
         MRI<->Head coordinate transformation.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
@@ -70,7 +84,7 @@ def head_to_mri(pos, subject, mri_head_t, subjects_dir: Incomplete | None=..., *
         the original/surrogate subject's MRI space.
 
         .. versionadded:: 1.2
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -87,7 +101,7 @@ def head_to_mri(pos, subject, mri_head_t, subjects_dir: Incomplete | None=..., *
     This function requires nibabel.
     """
 
-def vertex_to_mni(vertices, hemis, subject, subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def vertex_to_mni(vertices, hemis, subject, subjects_dir=..., verbose=...):
     """Convert the array of vertices for a hemisphere to MNI coordinates.
 
     Parameters
@@ -96,12 +110,12 @@ def vertex_to_mni(vertices, hemis, subject, subjects_dir: Incomplete | None=...,
         Vertex number(s) to convert.
     hemis : int, or list of int
         Hemisphere(s) the vertices belong to.
-    
+
     subject : str
         The FreeSurfer subject name.
     subjects_dir : str, or None
         Path to ``SUBJECTS_DIR`` if it is not set in the environment.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -114,24 +128,24 @@ def vertex_to_mni(vertices, hemis, subject, subjects_dir: Incomplete | None=...,
         The MNI coordinates (in mm) of the vertices.
     """
 
-def head_to_mni(pos, subject, mri_head_t, subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def head_to_mni(pos, subject, mri_head_t, subjects_dir=..., verbose=...):
     """Convert pos from head coordinate system to MNI ones.
 
     Parameters
     ----------
     pos : array, shape (n_pos, 3)
         The coordinates (in m) in head coordinate system.
-    
+
     subject : str
         The FreeSurfer subject name.
     mri_head_t : instance of Transform
         MRI<->Head coordinate transformation.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -148,20 +162,20 @@ def head_to_mni(pos, subject, mri_head_t, subjects_dir: Incomplete | None=..., v
     This function requires either nibabel.
     """
 
-def get_mni_fiducials(subject, subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def get_mni_fiducials(subject, subjects_dir=..., verbose=...):
     """Estimate fiducials for a subject.
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -189,7 +203,7 @@ def get_mni_fiducials(subject, subjects_dir: Incomplete | None=..., verbose: Inc
     :ref:`tut-source-alignment`.
     """
 
-def estimate_head_mri_t(subject, subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def estimate_head_mri_t(subject, subjects_dir=..., verbose=...):
     """Estimate the head->mri transform from fsaverage fiducials.
 
     A subject's fiducials can be estimated given a Freesurfer ``recon-all``
@@ -198,15 +212,15 @@ def estimate_head_mri_t(subject, subjects_dir: Incomplete | None=..., verbose: I
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -215,21 +229,21 @@ def estimate_head_mri_t(subject, subjects_dir: Incomplete | None=..., verbose: I
 
     Returns
     -------
-    
+
     trans : str | dict | instance of Transform
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
         during coregistration. Can also be ``'fsaverage'`` to use the built-in
         fsaverage transformation.
     """
 
-def read_lta(fname, verbose: Incomplete | None=...):
+def read_lta(fname, verbose=...):
     """Read a Freesurfer linear transform array file.
 
     Parameters
     ----------
     fname : path-like
         The transform filename.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -242,20 +256,20 @@ def read_lta(fname, verbose: Incomplete | None=...):
         The affine transformation described by the lta file.
     """
 
-def read_talxfm(subject, subjects_dir: Incomplete | None=..., verbose: Incomplete | None=...):
+def read_talxfm(subject, subjects_dir=..., verbose=...):
     """Compute MRI-to-MNI transform from FreeSurfer talairach.xfm file.
 
     Parameters
     ----------
-    
+
     subject : str
         The FreeSurfer subject name.
-    
+
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -268,7 +282,7 @@ def read_talxfm(subject, subjects_dir: Incomplete | None=..., verbose: Incomplet
         The affine transformation from MRI to MNI space for the subject.
     """
 
-def read_freesurfer_lut(fname: Incomplete | None=...):
+def read_freesurfer_lut(fname=...):
     """Read a Freesurfer-formatted LUT.
 
     Parameters

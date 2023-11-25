@@ -1,8 +1,9 @@
-from ...utils import get_subjects_dir as get_subjects_dir, set_config as set_config, verbose as verbose
+from ...utils import get_subjects_dir as get_subjects_dir, set_config as set_config
 from _typeshed import Incomplete
+
 FSAVERAGE_MANIFEST_PATH: Incomplete
 
-def fetch_fsaverage(subjects_dir: Incomplete | None=..., *, verbose: Incomplete | None=...):
+def fetch_fsaverage(subjects_dir=..., *, verbose=...):
     """Fetch and update fsaverage.
 
     Parameters
@@ -11,8 +12,8 @@ def fetch_fsaverage(subjects_dir: Incomplete | None=..., *, verbose: Incomplete 
         The path to use as the subjects directory in the MNE-Python
         config file. None will use the existing config variable (i.e.,
         will not change anything), and if it does not exist, will use
-        ``~/mne_data/MNE-fsaverage-data``.
-    
+        `/mne_data/MNE-fsaverage-data``.
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

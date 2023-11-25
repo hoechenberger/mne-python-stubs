@@ -1,9 +1,10 @@
 from ..._fiff.constants import FIFF as FIFF
 from ...annotations import Annotations as Annotations
 from ...filter import resample as resample
-from ...utils import fill_doc as fill_doc, logger as logger, verbose as verbose, warn as warn
+from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 from _typeshed import Incomplete
+
 CH_TYPE_MAPPING: Incomplete
 
 class RawEDF(BaseRaw):
@@ -45,24 +46,24 @@ class RawEDF(BaseRaw):
         expression. 'exclude' must be empty if include is assigned.
 
         .. versionadded:: 1.1
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     units : dict | str
         The units of the channels as stored in the file. This argument
         is useful only if the units are missing from the original file.
         If a dict, it must map a channel name to its unit, and if str
         it is assumed that all channels have the same units.
-    
+
     encoding : str
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -77,7 +78,7 @@ class RawEDF(BaseRaw):
 
     Notes
     -----
-    
+
     :class:`mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
     are upsampled to the highest loaded sampling frequency. In this case, using
@@ -120,8 +121,21 @@ class RawEDF(BaseRaw):
     encoded in such analog stim channels.
     """
 
-    def __init__(self, input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., stim_channel: str=..., exclude=..., infer_types: bool=..., preload: bool=..., include: Incomplete | None=..., units: Incomplete | None=..., encoding: str=..., *, verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        eog=...,
+        misc=...,
+        stim_channel: str = ...,
+        exclude=...,
+        infer_types: bool = ...,
+        preload: bool = ...,
+        include=...,
+        units=...,
+        encoding: str = ...,
+        *,
+        verbose=...,
+    ) -> None: ...
 
 class RawGDF(BaseRaw):
     """Raw object from GDF file.
@@ -153,14 +167,14 @@ class RawGDF(BaseRaw):
         expression. 'exclude' must be empty if include is assigned.
 
         .. versionadded:: 1.1
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -179,8 +193,18 @@ class RawGDF(BaseRaw):
     encoded in such analog stim channels.
     """
 
-    def __init__(self, input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., stim_channel: str=..., exclude=..., preload: bool=..., include: Incomplete | None=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        eog=...,
+        misc=...,
+        stim_channel: str = ...,
+        exclude=...,
+        preload: bool = ...,
+        include=...,
+        verbose=...,
+    ) -> None: ...
+
 INT8: str
 UINT8: str
 INT16: str
@@ -194,7 +218,20 @@ FLOAT64: str
 GDFTYPE_NP: Incomplete
 GDFTYPE_BYTE: Incomplete
 
-def read_raw_edf(input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., stim_channel: str=..., exclude=..., infer_types: bool=..., include: Incomplete | None=..., preload: bool=..., units: Incomplete | None=..., encoding: str=..., *, verbose: Incomplete | None=...):
+def read_raw_edf(
+    input_fname,
+    eog=...,
+    misc=...,
+    stim_channel: str = ...,
+    exclude=...,
+    infer_types: bool = ...,
+    include=...,
+    preload: bool = ...,
+    units=...,
+    encoding: str = ...,
+    *,
+    verbose=...,
+):
     """Reader function for EDF and EDF+ files.
 
     Parameters
@@ -233,24 +270,24 @@ def read_raw_edf(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
         expression. 'exclude' must be empty if include is assigned.
 
         .. versionadded:: 1.1
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     units : dict | str
         The units of the channels as stored in the file. This argument
         is useful only if the units are missing from the original file.
         If a dict, it must map a channel name to its unit, and if str
         it is assumed that all channels have the same units.
-    
+
     encoding : str
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -272,7 +309,7 @@ def read_raw_edf(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
 
     Notes
     -----
-    
+
     :class:`mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
     are upsampled to the highest loaded sampling frequency. In this case, using
@@ -320,7 +357,20 @@ def read_raw_edf(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
     However, this reader currently sets subseconds to 0 by default.
     """
 
-def read_raw_bdf(input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., stim_channel: str=..., exclude=..., infer_types: bool=..., include: Incomplete | None=..., preload: bool=..., units: Incomplete | None=..., encoding: str=..., *, verbose: Incomplete | None=...):
+def read_raw_bdf(
+    input_fname,
+    eog=...,
+    misc=...,
+    stim_channel: str = ...,
+    exclude=...,
+    infer_types: bool = ...,
+    include=...,
+    preload: bool = ...,
+    units=...,
+    encoding: str = ...,
+    *,
+    verbose=...,
+):
     """Reader function for BDF files.
 
     Parameters
@@ -359,24 +409,24 @@ def read_raw_bdf(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
         expression. 'exclude' must be empty if include is assigned.
 
         .. versionadded:: 1.1
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     units : dict | str
         The units of the channels as stored in the file. This argument
         is useful only if the units are missing from the original file.
         If a dict, it must map a channel name to its unit, and if str
         it is assumed that all channels have the same units.
-    
+
     encoding : str
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -438,7 +488,16 @@ def read_raw_bdf(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
     encoded in such analog stim channels.
     """
 
-def read_raw_gdf(input_fname, eog: Incomplete | None=..., misc: Incomplete | None=..., stim_channel: str=..., exclude=..., include: Incomplete | None=..., preload: bool=..., verbose: Incomplete | None=...):
+def read_raw_gdf(
+    input_fname,
+    eog=...,
+    misc=...,
+    stim_channel: str = ...,
+    exclude=...,
+    include=...,
+    preload: bool = ...,
+    verbose=...,
+):
     """Reader function for GDF files.
 
     Parameters
@@ -465,14 +524,14 @@ def read_raw_gdf(input_fname, eog: Incomplete | None=..., misc: Incomplete | Non
     include : list of str | str
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and

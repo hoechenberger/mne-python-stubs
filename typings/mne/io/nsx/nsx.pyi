@@ -3,12 +3,21 @@ from ...annotations import Annotations as Annotations
 from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 from _typeshed import Incomplete
+
 CH_TYPE_MAPPING: Incomplete
 DATA_BYTE_SIZE: int
 ORIG_FORMAT: str
 nsx_header_dict: Incomplete
 
-def read_raw_nsx(input_fname, stim_channel: bool=..., eog: Incomplete | None=..., misc: Incomplete | None=..., preload: bool=..., *, verbose: Incomplete | None=...):
+def read_raw_nsx(
+    input_fname,
+    stim_channel: bool = ...,
+    eog=...,
+    misc=...,
+    preload: bool = ...,
+    *,
+    verbose=...,
+):
     """Reader function for NSx (Blackrock Microsystems) files.
 
     Parameters
@@ -28,14 +37,14 @@ def read_raw_nsx(input_fname, stim_channel: bool=..., eog: Incomplete | None=...
         Names of channels or list of indices that should be designated MISC
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -78,14 +87,14 @@ class RawNSX(BaseRaw):
         Names of channels or list of indices that should be designated MISC
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    
+
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -102,5 +111,12 @@ class RawNSX(BaseRaw):
     encoded in such analog stim channels.
     """
 
-    def __init__(self, input_fname, stim_channel: str=..., eog: Incomplete | None=..., misc: Incomplete | None=..., preload: bool=..., verbose: Incomplete | None=...) -> None:
-        ...
+    def __init__(
+        self,
+        input_fname,
+        stim_channel: str = ...,
+        eog=...,
+        misc=...,
+        preload: bool = ...,
+        verbose=...,
+    ) -> None: ...

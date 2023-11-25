@@ -1,6 +1,6 @@
 from ..._fiff.utils import read_str as read_str
 
-def read_char(fid, count: int=...):
+def read_char(fid, count: int = ...):
     """Read character from bti file."""
 
 def read_bool(fid):

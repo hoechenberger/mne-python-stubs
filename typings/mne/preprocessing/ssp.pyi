@@ -1,28 +1,60 @@
 from .._fiff.pick import pick_types as pick_types
 from .._fiff.reference import make_eeg_average_ref_proj as make_eeg_average_ref_proj
 from ..epochs import Epochs as Epochs
-from ..proj import compute_proj_epochs as compute_proj_epochs, compute_proj_evoked as compute_proj_evoked
-from ..utils import logger as logger, verbose as verbose, warn as warn
+from ..proj import (
+    compute_proj_epochs as compute_proj_epochs,
+    compute_proj_evoked as compute_proj_evoked,
+)
+from ..utils import logger as logger, warn as warn
 from .ecg import find_ecg_events as find_ecg_events
 from .eog import find_eog_events as find_eog_events
-from _typeshed import Incomplete
 
-def compute_proj_ecg(raw, raw_event: Incomplete | None=..., tmin: float=..., tmax: float=..., n_grad: int=..., n_mag: int=..., n_eeg: int=..., l_freq: float=..., h_freq: float=..., average: bool=..., filter_length: str=..., n_jobs: Incomplete | None=..., ch_name: Incomplete | None=..., reject=..., flat: Incomplete | None=..., bads=..., avg_ref: bool=..., no_proj: bool=..., event_id: int=..., ecg_l_freq: int=..., ecg_h_freq: int=..., tstart: float=..., qrs_threshold: str=..., filter_method: str=..., iir_params: Incomplete | None=..., copy: bool=..., return_drop_log: bool=..., meg: str=..., verbose: Incomplete | None=...):
+def compute_proj_ecg(
+    raw,
+    raw_event=...,
+    tmin: float = ...,
+    tmax: float = ...,
+    n_grad: int = ...,
+    n_mag: int = ...,
+    n_eeg: int = ...,
+    l_freq: float = ...,
+    h_freq: float = ...,
+    average: bool = ...,
+    filter_length: str = ...,
+    n_jobs=...,
+    ch_name=...,
+    reject=...,
+    flat=...,
+    bads=...,
+    avg_ref: bool = ...,
+    no_proj: bool = ...,
+    event_id: int = ...,
+    ecg_l_freq: int = ...,
+    ecg_h_freq: int = ...,
+    tstart: float = ...,
+    qrs_threshold: str = ...,
+    filter_method: str = ...,
+    iir_params=...,
+    copy: bool = ...,
+    return_drop_log: bool = ...,
+    meg: str = ...,
+    verbose=...,
+):
     """Compute SSP (signal-space projection) vectors for ECG artifacts.
 
     This function will:
-    
+
     #. Filter the ECG data channel.
-    
+
     #. Find ECG R wave peaks using :func:`mne.preprocessing.find_ecg_events`.
-    
+
     #. Filter the raw data.
-    
-    #. Create `~mne.Epochs` around the R wave peaks, capturing the heartbeats.
-    
-    #. Optionally average the `~mne.Epochs` to produce an `~mne.Evoked` if
+
+    #. Create mne.Epochs` around the R wave peaks, capturing the heartbeats.
+
+    #. Optionally average the mne.Epochs` to produce an mne.Evoked` if
        ``average=True`` was passed (default).
-    
+
     #. Calculate SSP projection vectors on that data to capture the artifacts.
 
     .. note:: Raw data will be loaded if it hasn't been preloaded already.
@@ -101,7 +133,7 @@ def compute_proj_ecg(raw, raw_event: Incomplete | None=..., tmin: float=..., tma
         projectors computed for MEG will be ``n_mag``.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -110,7 +142,7 @@ def compute_proj_ecg(raw, raw_event: Incomplete | None=..., tmin: float=..., tma
 
     Returns
     -------
-    
+
     projs : list of Projection
         List of computed projection vectors.
     ecg_events : ndarray
@@ -131,23 +163,52 @@ def compute_proj_ecg(raw, raw_event: Incomplete | None=..., tmin: float=..., tma
     create the projectors.
     """
 
-def compute_proj_eog(raw, raw_event: Incomplete | None=..., tmin: float=..., tmax: float=..., n_grad: int=..., n_mag: int=..., n_eeg: int=..., l_freq: float=..., h_freq: float=..., average: bool=..., filter_length: str=..., n_jobs: Incomplete | None=..., reject=..., flat: Incomplete | None=..., bads=..., avg_ref: bool=..., no_proj: bool=..., event_id: int=..., eog_l_freq: int=..., eog_h_freq: int=..., tstart: float=..., filter_method: str=..., iir_params: Incomplete | None=..., ch_name: Incomplete | None=..., copy: bool=..., return_drop_log: bool=..., meg: str=..., verbose: Incomplete | None=...):
+def compute_proj_eog(
+    raw,
+    raw_event=...,
+    tmin: float = ...,
+    tmax: float = ...,
+    n_grad: int = ...,
+    n_mag: int = ...,
+    n_eeg: int = ...,
+    l_freq: float = ...,
+    h_freq: float = ...,
+    average: bool = ...,
+    filter_length: str = ...,
+    n_jobs=...,
+    reject=...,
+    flat=...,
+    bads=...,
+    avg_ref: bool = ...,
+    no_proj: bool = ...,
+    event_id: int = ...,
+    eog_l_freq: int = ...,
+    eog_h_freq: int = ...,
+    tstart: float = ...,
+    filter_method: str = ...,
+    iir_params=...,
+    ch_name=...,
+    copy: bool = ...,
+    return_drop_log: bool = ...,
+    meg: str = ...,
+    verbose=...,
+):
     """Compute SSP (signal-space projection) vectors for EOG artifacts.
 
     This function will:
-    
+
     #. Filter the EOG data channel.
-    
+
     #. Find the peaks of eyeblinks in the EOG data using
        :func:`mne.preprocessing.find_eog_events`.
-    
+
     #. Filter the raw data.
-    
-    #. Create `~mne.Epochs` around the eyeblinks.
-    
-    #. Optionally average the `~mne.Epochs` to produce an `~mne.Evoked` if
+
+    #. Create mne.Epochs` around the eyeblinks.
+
+    #. Optionally average the mne.Epochs` to produce an mne.Evoked` if
        ``average=True`` was passed (default).
-    
+
     #. Calculate SSP projection vectors on that data to capture the artifacts.
 
     .. note:: Raw data must be preloaded.
@@ -222,7 +283,7 @@ def compute_proj_eog(raw, raw_event: Incomplete | None=..., tmin: float=..., tma
         projectors computed for MEG will be ``n_mag``.
 
         .. versionadded:: 0.18
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -231,7 +292,7 @@ def compute_proj_eog(raw, raw_event: Incomplete | None=..., tmin: float=..., tma
 
     Returns
     -------
-    
+
     projs : list of Projection
         List of computed projection vectors.
     eog_events: ndarray

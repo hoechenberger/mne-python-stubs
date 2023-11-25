@@ -1,9 +1,34 @@
 from .._fiff.meas_info import create_info as create_info
-from ..utils import fill_doc as fill_doc, legacy as legacy, logger as logger, verbose as verbose, warn as warn
+from ..utils import (
+    fill_doc as fill_doc,
+    legacy as legacy,
+    logger as logger,
+    warn as warn,
+)
 from .utils import DraggableColorbar as DraggableColorbar, plt_show as plt_show
-from _typeshed import Incomplete
 
-def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vmin: Incomplete | None=..., vmax: Incomplete | None=..., colorbar: bool=..., order: Incomplete | None=..., show: bool=..., units: Incomplete | None=..., scalings: Incomplete | None=..., cmap: Incomplete | None=..., fig: Incomplete | None=..., axes: Incomplete | None=..., overlay_times: Incomplete | None=..., combine: Incomplete | None=..., group_by: Incomplete | None=..., evoked: bool=..., ts_args: Incomplete | None=..., title: Incomplete | None=..., clear: bool=...):
+def plot_epochs_image(
+    epochs,
+    picks=...,
+    sigma: float = ...,
+    vmin=...,
+    vmax=...,
+    colorbar: bool = ...,
+    order=...,
+    show: bool = ...,
+    units=...,
+    scalings=...,
+    cmap=...,
+    fig=...,
+    axes=...,
+    overlay_times=...,
+    combine=...,
+    group_by=...,
+    evoked: bool = ...,
+    ts_args=...,
+    title=...,
+    clear: bool = ...,
+):
     """Plot Event Related Potential / Fields image.
 
     Parameters
@@ -11,13 +36,13 @@ def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vm
     epochs : instance of Epochs
         The epochs.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
         ``picks`` interacts with ``group_by`` and ``combine`` to determine the
         number of figures generated; see Notes.
@@ -67,13 +92,13 @@ def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vm
         If None, "RdBu_r" is used, unless the data is all positive, in which
         case "Reds" is used.
     fig : Figure | None
-        :class:`~matplotlib.figure.Figure` instance to draw the image to.
+        :class:matplotlib.figure.Figure` instance to draw the image to.
         Figure must contain the correct number of axes for drawing the epochs
         image, the evoked response, and a colorbar (depending on values of
         ``evoked`` and ``colorbar``). If ``None`` a new figure is created.
         Defaults to ``None``.
     axes : list of Axes | dict of list of Axes | None
-        List of :class:`~matplotlib.axes.Axes` objects in which to draw the
+        List of :class:matplotlib.axes.Axes` objects in which to draw the
         image, evoked response, and colorbar (in that order). Length of list
         must be 1, 2, or 3 (depending on values of ``colorbar`` and ``evoked``
         parameters). If a :class:`dict`, each entry must be a list of Axes
@@ -85,9 +110,9 @@ def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vm
         Times (in seconds) at which to draw a line on the corresponding row of
         the image (e.g., a reaction time associated with each epoch). Note that
         ``overlay_times`` should be ordered to correspond with the
-        :class:`~mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
+        :class:mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
         ``epochs[0]``, etc).
-    
+
     combine : None | str | callable
         How to combine information across channels. If a :class:`str`, must be
         one of 'mean', 'median', 'std' (standard deviation) or 'gfp' (global
@@ -107,7 +132,7 @@ def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vm
     group_by : None | dict
         Specifies which channels are aggregated into a single figure, with
         aggregation method determined by the ``combine`` parameter. If not
-        ``None``, one :class:`~matplotlib.figure.Figure` is made per dict
+        ``None``, one :class:matplotlib.figure.Figure` is made per dict
         entry; the dict key will be used as the figure title and the dict
         values must be lists of picks (either channel names or integer indices
         of ``epochs.ch_names``). For example::
@@ -120,9 +145,9 @@ def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vm
     evoked : bool
         Draw the ER[P/F] below the image or not.
     ts_args : None | dict
-        Arguments passed to a call to `~mne.viz.plot_compare_evokeds` to style
+        Arguments passed to a call to mne.viz.plot_compare_evokeds` to style
         the evoked plot below the image. Defaults to an empty dictionary,
-        meaning `~mne.viz.plot_compare_evokeds` will be called with default
+        meaning mne.viz.plot_compare_evokeds` will be called with default
         parameters.
     title : None | str
         If :class:`str`, will be plotted as figure title. Otherwise, the
@@ -143,7 +168,7 @@ def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vm
     You can control how channels are aggregated into one figure or plotted in
     separate figures through a combination of the ``picks``, ``group_by``, and
     ``combine`` parameters. If ``group_by`` is a :class:`dict`, the result is
-    one :class:`~matplotlib.figure.Figure` per dictionary key (for any valid
+    one :class:matplotlib.figure.Figure` per dictionary key (for any valid
     values of ``picks`` and ``combine``). If ``group_by`` is ``None``, the
     number and content of the figures generated depends on the values of
     ``picks`` and ``combine``, as summarized in this table:
@@ -169,7 +194,16 @@ def plot_epochs_image(epochs, picks: Incomplete | None=..., sigma: float=..., vm
     +----------+----------------------------+------------+-------------------+
     """
 
-def plot_drop_log(drop_log, threshold: int=..., n_max_plot: int=..., subject: Incomplete | None=..., color: str=..., width: float=..., ignore=..., show: bool=...):
+def plot_drop_log(
+    drop_log,
+    threshold: int = ...,
+    n_max_plot: int = ...,
+    subject=...,
+    color: str = ...,
+    width: float = ...,
+    ignore=...,
+    show: bool = ...,
+):
     """Show the channel stats based on a drop_log from Epochs.
 
     Parameters
@@ -205,7 +239,33 @@ def plot_drop_log(drop_log, threshold: int=..., n_max_plot: int=..., subject: In
         The figure.
     """
 
-def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | None=..., n_epochs: int=..., n_channels: int=..., title: Incomplete | None=..., events: bool=..., event_color: Incomplete | None=..., order: Incomplete | None=..., show: bool=..., block: bool=..., decim: str=..., noise_cov: Incomplete | None=..., butterfly: bool=..., show_scrollbars: bool=..., show_scalebars: bool=..., epoch_colors: Incomplete | None=..., event_id: Incomplete | None=..., group_by: str=..., precompute: Incomplete | None=..., use_opengl: Incomplete | None=..., *, theme: Incomplete | None=..., overview_mode: Incomplete | None=..., splash: bool=...):
+def plot_epochs(
+    epochs,
+    picks=...,
+    scalings=...,
+    n_epochs: int = ...,
+    n_channels: int = ...,
+    title=...,
+    events: bool = ...,
+    event_color=...,
+    order=...,
+    show: bool = ...,
+    block: bool = ...,
+    decim: str = ...,
+    noise_cov=...,
+    butterfly: bool = ...,
+    show_scrollbars: bool = ...,
+    show_scalebars: bool = ...,
+    epoch_colors=...,
+    event_id=...,
+    group_by: str = ...,
+    precompute=...,
+    use_opengl=...,
+    *,
+    theme=...,
+    overview_mode=...,
+    splash: bool = ...,
+):
     """Visualize epochs.
 
     Bad epochs can be marked with a left click on top of the epoch. Bad
@@ -218,15 +278,15 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
     epochs : instance of Epochs
         The epochs object.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels. Note that channels 
-        in ``info['bads']`` *will be included* if their names or indices are 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    
+
     scalings : 'auto' | dict | None
         Scaling factors for the traces. If a dictionary where any
         value is ``'auto'``, the scaling factor is set to match the 99.5th
@@ -234,11 +294,11 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         channel types) are set to ``'auto'``. If any values are ``'auto'`` and the
         data is not preloaded, a subset up to 100 MB will be loaded. If ``None``,
         defaults to::
-    
+
             dict(mag=1e-12, grad=4e-11, eeg=20e-6, eog=150e-6, ecg=5e-4,
                  emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                  resp=1, chpi=1e-4, whitened=1e2)
-    
+
         .. note::
             A particular scaling value ``s`` corresponds to half of the visualized
             signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
@@ -253,7 +313,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         The title of the window. If None, the event names (from
         ``epochs.event_id``) will be displayed. Defaults to None.
     events : bool | array, shape (n_events, 3)
-        Events to show with vertical bars. You can use `~mne.viz.plot_events`
+        Events to show with vertical bars. You can use mne.viz.plot_events`
         as a legend for the colors. By default, the coloring scheme is the
         same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
         plot events).
@@ -266,7 +326,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         .. versionchanged:: 1.6
             Passing ``events=None`` was disallowed.
             The new equivalent is ``events=False``.
-    
+
     event_color : color object | dict | None
         Color(s) to use for :term:`events`. To show all :term:`events` in the same
         color, pass any matplotlib-compatible color. To color events differently,
@@ -310,14 +370,14 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         Whether to directly call the butterfly view.
 
         .. versionadded:: 0.18.0
-    
+
     show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
-    
+
         .. versionadded:: 0.19.0
-    
+
     show_scalebars : bool
         Whether to show scale bars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`s` while the plot window is focused.
@@ -334,7 +394,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         ``events=False``.
 
         .. versionadded:: 0.20
-    
+
     group_by : str
         How to group channels. ``'type'`` groups by channel type,
         ``'original'`` plots in the order of ch_names, ``'selection'`` uses
@@ -345,7 +405,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         and ``'original'`` group the channels by type, whereas ``'selection'``
         and ``'position'`` use regional grouping. ``'type'`` and ``'original'``
         modes are ignored when ``order`` is not ``None``. Defaults to ``'type'``.
-    
+
     precompute : bool | str
         Whether to load all data (not just the visible portion) into RAM and
         apply preprocessing (e.g., projectors) to the full data array in a separate
@@ -354,11 +414,11 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         ``'auto'``. ``'auto'`` compares available RAM space to the expected size of
         the precomputed data, and precomputes only if enough RAM is available.
         This is only used with the Qt backend.
-    
+
         .. versionadded:: 0.24
         .. versionchanged:: 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
-    
+
     use_opengl : bool | None
         Whether to use OpenGL when rendering the plot (requires ``pyopengl``).
         May increase performance, but effect is dependent on system CPU and
@@ -366,9 +426,9 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         None, which will use False unless the user configuration variable
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
         see :func:`mne.set_config`.
-    
+
         .. versionadded:: 0.24
-    
+
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
         custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
@@ -379,7 +439,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         Only supported by the ``'qt'`` backend.
 
         .. versionadded:: 1.0
-    
+
     overview_mode : str | None
         Can be "channels", "empty", or "hidden" to set the overview bar mode
         for the ``'qt'`` backend. If None (default), the config option
@@ -387,7 +447,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
         if it's not found.
 
         .. versionadded:: 1.1
-    
+
     splash : bool
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
@@ -396,7 +456,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
 
     Returns
     -------
-    
+
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
@@ -423,7 +483,7 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
     can set the default for your computer via
     :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
-    
+
     .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
     .. note:: To report issues with the PyQtGraph backend, please use the
@@ -433,11 +493,38 @@ def plot_epochs(epochs, picks: Incomplete | None=..., scalings: Incomplete | Non
     .. versionadded:: 0.10.0
     """
 
-def plot_epochs_psd(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=..., tmax: Incomplete | None=..., proj: bool=..., bandwidth: Incomplete | None=..., adaptive: bool=..., low_bias: bool=..., normalization: str=..., picks: Incomplete | None=..., ax: Incomplete | None=..., color: str=..., xscale: str=..., area_mode: str=..., area_alpha: float=..., dB: bool=..., estimate: str=..., show: bool=..., n_jobs: Incomplete | None=..., average: bool=..., line_alpha: Incomplete | None=..., spatial_colors: bool=..., sphere: Incomplete | None=..., exclude: str=..., verbose: Incomplete | None=...):
+def plot_epochs_psd(
+    epochs,
+    fmin: int = ...,
+    fmax=...,
+    tmin=...,
+    tmax=...,
+    proj: bool = ...,
+    bandwidth=...,
+    adaptive: bool = ...,
+    low_bias: bool = ...,
+    normalization: str = ...,
+    picks=...,
+    ax=...,
+    color: str = ...,
+    xscale: str = ...,
+    area_mode: str = ...,
+    area_alpha: float = ...,
+    dB: bool = ...,
+    estimate: str = ...,
+    show: bool = ...,
+    n_jobs=...,
+    average: bool = ...,
+    line_alpha=...,
+    spatial_colors: bool = ...,
+    sphere=...,
+    exclude: str = ...,
+    verbose=...,
+):
     """.. warning:: LEGACY: New code should use Epochs.compute_psd().plot().
 
     Plot power or amplitude spectra.
-    
+
     Separate plots are drawn for each channel type. When the data have been
     processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
     indicate the boundaries of the filter. The line noise frequency is also
@@ -472,17 +559,17 @@ def plot_epochs_psd(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=...
         sampling rate as well as the length of the signal (as in
         :ref:`Nitime <nitime:users-guide>`). Default is ``'length'``.
     picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as 
-        channel indices. In lists, channel *type* strings (e.g., ``['meg', 
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g., 
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the 
-        string values "all" to pick all channels, or "data" to pick :term:`data 
-        channels`. None (default) will pick good data channels (excluding reference 
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if 
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels (excluding reference
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     ax : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new :class:`~matplotlib.figure.Figure`
-        will be created with the correct number of axes. If :class:`~matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+        The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
+        will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
     color : str | tuple
         A matplotlib-compatible color to use. Has no effect when
         spatial_colors=True.
@@ -531,14 +618,14 @@ def plot_epochs_psd(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=...
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:`~mne.bem.ConductorModel` to use the origin and
+        of a spherical :class:mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
         it will be approximated from the coordinates of ``'Oz'``). ``None`` (the
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
-    
+
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
     exclude : list of str | 'bads'
@@ -547,7 +634,7 @@ def plot_epochs_psd(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=...
         channels marked "bad", if any).
 
         .. versionadded:: 0.24.0
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -563,5 +650,5 @@ def plot_epochs_psd(epochs, fmin: int=..., fmax=..., tmin: Incomplete | None=...
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-    of :class:`~mne.io.Raw`, :class:`~mne.Epochs`, or :class:`~mne.Evoked`).
+    of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
     """
