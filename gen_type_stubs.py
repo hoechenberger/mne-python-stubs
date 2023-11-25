@@ -7,14 +7,15 @@ from pathlib import Path
 
 from mypy import stubgen
 
+# Module exclusion patterns
+# Note that __init__.py files are handled specially below, do not
+# include them here.
 MODULE_PY_EXCLUDE_PATTERNS = [
-    "**/__init__.py",  # handled through .pyi files (lazy loading fun)
     "mne/report/js_and_css/bootstrap-icons/gen_css_for_mne.py",  # cannot be imported
     "**/tests/**",  # don't include any tests
 ]
 
 mne_base_path = Path("../mne-python")
-init_pyi_paths = list((mne_base_path / "mne").rglob("__init__.pyi"))
 stubs_out_dir = Path("./typings")
 
 if stubs_out_dir.exists():
@@ -23,15 +24,27 @@ if stubs_out_dir.exists():
 
 # Generate list of module paths we want to process
 # We first glob all modules, then drop all that were selected for exclusion
-module_py_paths_all = list((mne_base_path / "mne").rglob("*.py"))
+
+module_py_paths = list((mne_base_path / "mne").rglob("*.py"))
 module_py_paths_excludes = []
-for module_py_path in module_py_paths_all:
+for module_py_path in module_py_paths:
     for exclude_pattern in MODULE_PY_EXCLUDE_PATTERNS:
         if module_py_path.match(exclude_pattern):
             module_py_paths_excludes.append(module_py_path)
 
-module_py_paths = sorted(set(module_py_paths_all) - set(module_py_paths_excludes))
-del module_py_paths_all, module_py_paths_excludes
+del module_py_path
+
+# Additionally to the exclusion patterns specified above, we also
+# exclude all __init__.py files for which a .pyi type stub already exists
+# for lazy loading. But we keep the remaining __init__.py files
+init_pyi_paths = list((mne_base_path / "mne").rglob("__init__.pyi"))
+for init_pyi_path in init_pyi_paths:
+    if init_pyi_path.with_suffix(".py") in module_py_paths:
+        module_py_paths_excludes.append(init_pyi_path.with_suffix(".py"))
+
+module_py_paths = sorted(set(module_py_paths) - set(module_py_paths_excludes))
+
+del module_py_paths_excludes
 
 # %%
 # Create stubs

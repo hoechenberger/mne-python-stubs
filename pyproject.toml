@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "types-mne"
-version = "1.6.0-20231124"
+version = "1.6.0-20231125"
 description = "Type stubs with docstrings for MNE-Python."
 authors = [
     { name = "Richard Höchenberger", email = "richard.hoechenberger@gmail.com" },
