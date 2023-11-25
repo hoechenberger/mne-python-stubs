@@ -12,6 +12,7 @@ authors = [
 license = "BSD-3-Clause"
 readme = "README.md"
 classifiers = ["Typing :: Stubs Only"]
+requires-python = ">=3.11"
 dependencies = ["mne>=1.6.0,<=1.7.0"]
 
 [project.optional-dependencies]
