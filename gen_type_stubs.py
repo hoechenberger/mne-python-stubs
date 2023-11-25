@@ -177,6 +177,6 @@ print("💾 Writing py.typed file")
 (stubs_out_dir / "mne" / "py.typed").write_text("partial\n", encoding="utf-8")
 
 print("🏁 Running ruff on stub files")
-subprocess.run(["ruff", f"{stubs_out_dir}/mne", "--fix"])
+subprocess.run(["ruff", "--ignore=F811", "--fix", f"{stubs_out_dir}/mne"])
 
 print("\n💚 Done! Happy typing!")
