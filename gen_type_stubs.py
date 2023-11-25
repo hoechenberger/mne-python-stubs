@@ -11,6 +11,7 @@ from mypy import stubgen
 # Module exclusion patterns
 # Note that __init__.py files are handled specially below, do not
 # include them here.
+# Note that individual objects can be excluded via OBJS_EXCLUDES below
 MODULE_PY_EXCLUDE_PATTERNS = [
     "mne/viz/backends/_pyvista.py",  # causing errors when running stubdefaulter
     "mne/report/js_and_css/bootstrap-icons/gen_css_for_mne.py",  # cannot be imported
@@ -79,7 +80,7 @@ for init_pyi_path in init_pyi_paths:
 
 stub_paths = list(stubs_out_dir.rglob("*.pyi"))
 
-objs_excludes = [
+OBJS_EXCLUDES = [
     # NamedTuples – somehow I cannot detect them via isinstance(obj, tuple)??
     "CurryParameters",
     "CNTEventType1",
@@ -109,7 +110,7 @@ for stub_path in stub_paths:
 
         expanded_docstring = getattr(module_imported, obj.name).__doc__
 
-        if obj.name in objs_excludes:
+        if obj.name in OBJS_EXCLUDES:
             print(f"⏭️  {module_name}.{obj.name} is explicitly excluded, skipping")
             continue
         if dataclasses.is_dataclass(getattr(module_imported, obj.name)):
@@ -138,10 +139,10 @@ for stub_path in stub_paths:
                         f"📝 Expanding docstring for "
                         f"{module_name}.{obj.name}.{method.name}"
                     )
-                    # FIXME We do have a docstring, but sometimes the AST doesn't
-                    # contain the "pass" of otherwise methods! So we add an
-                    # ellipsis here manually
                     method.body[0].value.value = expanded_docstring
+
+                    # FIXME We do have a docstring, but sometimes the AST doesn't
+                    # contain the method body?! So we add an ellipsis here manually
                     if len(method.body) == 1:
                         print(
                             f"⛑️ Fixing method body for "
