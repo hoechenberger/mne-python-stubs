@@ -1,5 +1,4 @@
-
-def create_lut(cmap, n_colors: int = ..., center=...):
+def create_lut(cmap, n_colors: int = 256, center=None):
     """Return a colormap suitable for setting as a LUT."""
 
 def scale_sequential_lut(lut_table, fmin, fmid, fmax):
@@ -9,7 +8,7 @@ def get_fill_colors(cols, n_fill):
     """Get the fill colors for the middle of divergent colormaps."""
 
 def calculate_lut(
-    lut_table, alpha, fmin, fmid, fmax, center=..., transparent: bool = ...
+    lut_table, alpha, fmin, fmid, fmax, center=None, transparent: bool = True
 ):
     """Transparent color map calculation.
 

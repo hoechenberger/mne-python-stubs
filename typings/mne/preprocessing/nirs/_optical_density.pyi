@@ -2,7 +2,7 @@ from ..._fiff.constants import FIFF as FIFF
 from ...io import BaseRaw as BaseRaw
 from ...utils import warn as warn
 
-def optical_density(raw, *, verbose=...):
+def optical_density(raw, *, verbose=None):
     """Convert NIRS raw data to optical density.
 
     Parameters

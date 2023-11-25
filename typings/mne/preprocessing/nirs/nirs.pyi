@@ -1,7 +1,7 @@
 from ..._fiff.pick import pick_types as pick_types
 from ...utils import fill_doc as fill_doc
 
-def source_detector_distances(info, picks=...):
+def source_detector_distances(info, picks=None):
     """Determine the distance between NIRS source and detectors.
 
     Parameters
@@ -26,7 +26,7 @@ def source_detector_distances(info, picks=...):
         Of shape equal to number of channels, or shape of picks if supplied.
     """
 
-def short_channels(info, threshold: float = ...):
+def short_channels(info, threshold: float = 0.01):
     """Determine which NIRS channels are short.
 
     Channels with a source to detector distance of less than

@@ -16,21 +16,16 @@ class BrowserParams:
     def __init__(self, **kwargs) -> None: ...
 
 class BrowserBase(ABC, metaclass=abc.ABCMeta):
-    """Pass a fake keypress to the figure.
+    """A base class containing for the 2D browser.
 
-    Parameters
-    ----------
-    key : str
-        The key to fake (e.g., ``'a'``).
-    fig : instance of Figure
-        The figure to pass the keypress to.
+    This class contains all backend-independent attributes and methods.
     """
 
     backend_name: Incomplete
     mne: Incomplete
 
     def __init__(self, **kwargs) -> None: ...
-    def fake_keypress(self, key, fig=...):
+    def fake_keypress(self, key, fig=None):
         """Pass a fake keypress to the figure.
 
         Parameters
@@ -40,8 +35,9 @@ class BrowserBase(ABC, metaclass=abc.ABCMeta):
         fig : instance of Figure
             The figure to pass the keypress to.
         """
+        ...
 
-def set_browser_backend(backend_name, verbose=...):
+def set_browser_backend(backend_name, verbose=None):
     """Set the 2D browser backend for MNE.
 
     The backend will be set as specified and operations will use

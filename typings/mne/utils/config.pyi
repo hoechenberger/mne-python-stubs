@@ -26,7 +26,7 @@ def set_memmap_min_size(memmap_min_size) -> None:
         Use None to disable memmaping of large arrays.
     """
 
-def get_config_path(home_dir=...):
+def get_config_path(home_dir=None):
     """Get path to standard mne-python config file.
 
     Parameters
@@ -44,7 +44,11 @@ def get_config_path(home_dir=...):
     """
 
 def get_config(
-    key=..., default=..., raise_error: bool = ..., home_dir=..., use_env: bool = ...
+    key=None,
+    default=None,
+    raise_error: bool = False,
+    home_dir=None,
+    use_env: bool = True,
 ):
     """Read MNE-Python preferences from environment or config file.
 
@@ -80,7 +84,7 @@ def get_config(
     set_config
     """
 
-def set_config(key, value, home_dir=..., set_env: bool = ...) -> None:
+def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
     """Set a MNE-Python preference key in the config file and environment.
 
     Parameters
@@ -102,7 +106,7 @@ def set_config(key, value, home_dir=..., set_env: bool = ...) -> None:
     get_config
     """
 
-def get_subjects_dir(subjects_dir=..., raise_error: bool = ...):
+def get_subjects_dir(subjects_dir=None, raise_error: bool = False):
     """Safely use subjects_dir input to return SUBJECTS_DIR.
 
     Parameters
@@ -121,12 +125,12 @@ def get_subjects_dir(subjects_dir=..., raise_error: bool = ...):
     """
 
 def sys_info(
-    fid=...,
-    show_paths: bool = ...,
+    fid=None,
+    show_paths: bool = False,
     *,
-    dependencies: str = ...,
-    unicode: bool = ...,
-    check_version: bool = ...,
+    dependencies: str = "user",
+    unicode: bool = True,
+    check_version: bool = True,
 ) -> None:
     """Print system information.
 

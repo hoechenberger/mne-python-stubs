@@ -5,13 +5,13 @@ from ..utils import logger as logger
 
 def annotate_amplitude(
     raw,
-    peak=...,
-    flat=...,
-    bad_percent: int = ...,
-    min_duration: float = ...,
-    picks=...,
+    peak=None,
+    flat=None,
+    bad_percent: int = 5,
+    min_duration: float = 0.005,
+    picks=None,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Annotate raw data based on peak-to-peak amplitude.
 

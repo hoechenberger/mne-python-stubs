@@ -3,7 +3,7 @@ from _typeshed import Incomplete
 
 FSAVERAGE_MANIFEST_PATH: Incomplete
 
-def fetch_fsaverage(subjects_dir=..., *, verbose=...):
+def fetch_fsaverage(subjects_dir=None, *, verbose=None):
     """Fetch and update fsaverage.
 
     Parameters

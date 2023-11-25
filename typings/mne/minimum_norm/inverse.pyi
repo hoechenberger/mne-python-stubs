@@ -51,18 +51,21 @@ from _typeshed import Incomplete
 INVERSE_METHODS: Incomplete
 
 class InverseOperator(dict):
-    """:class:mne.Info` attached to the inverse operator."""
+    """InverseOperator class to represent info from inverse operator."""
 
     def copy(self):
         """Return a copy of the InverseOperator."""
+        ...
     @property
     def ch_names(self):
         """Name of channels attached to the inverse operator."""
+        ...
     @property
     def info(self):
         """:class:mne.Info` attached to the inverse operator."""
+        ...
 
-def read_inverse_operator(fname, *, verbose=...):
+def read_inverse_operator(fname, *, verbose=None):
     """Read the inverse operator decomposition from a FIF file.
 
     Parameters
@@ -87,7 +90,9 @@ def read_inverse_operator(fname, *, verbose=...):
     write_inverse_operator, make_inverse_operator
     """
 
-def write_inverse_operator(fname, inv, *, overwrite: bool = ..., verbose=...) -> None:
+def write_inverse_operator(
+    fname, inv, *, overwrite: bool = False, verbose=None
+) -> None:
     """Write an inverse operator to a FIF file.
 
     Parameters
@@ -115,7 +120,7 @@ def write_inverse_operator(fname, inv, *, overwrite: bool = ..., verbose=...) ->
     read_inverse_operator
     """
 
-def combine_xyz(vec, square: bool = ...):
+def combine_xyz(vec, square: bool = False):
     """Compute the three Cartesian components of a vector or matrix together.
 
     Parameters
@@ -134,10 +139,10 @@ def prepare_inverse_operator(
     orig,
     nave,
     lambda2,
-    method: str = ...,
-    method_params=...,
-    copy: bool = ...,
-    verbose=...,
+    method: str = "dSPM",
+    method_params=None,
+    copy: bool = True,
+    verbose=None,
 ):
     """Prepare an inverse operator for actually computing the inverse.
 
@@ -177,15 +182,15 @@ def prepare_inverse_operator(
 def apply_inverse(
     evoked,
     inverse_operator,
-    lambda2=...,
-    method: str = ...,
-    pick_ori=...,
-    prepared: bool = ...,
-    label=...,
-    method_params=...,
-    return_residual: bool = ...,
-    use_cps: bool = ...,
-    verbose=...,
+    lambda2=0.1111111111111111,
+    method: str = "dSPM",
+    pick_ori=None,
+    prepared: bool = False,
+    label=None,
+    method_params=None,
+    return_residual: bool = False,
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Apply inverse operator to evoked data.
 
@@ -311,18 +316,18 @@ def apply_inverse_raw(
     raw,
     inverse_operator,
     lambda2,
-    method: str = ...,
-    label=...,
-    start=...,
-    stop=...,
-    nave: int = ...,
-    time_func=...,
-    pick_ori=...,
-    buffer_size=...,
-    prepared: bool = ...,
-    method_params=...,
-    use_cps: bool = ...,
-    verbose=...,
+    method: str = "dSPM",
+    label=None,
+    start=None,
+    stop=None,
+    nave: int = 1,
+    time_func=None,
+    pick_ori=None,
+    buffer_size=None,
+    prepared: bool = False,
+    method_params=None,
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Apply inverse operator to Raw data.
 
@@ -412,15 +417,15 @@ def apply_inverse_epochs(
     epochs,
     inverse_operator,
     lambda2,
-    method: str = ...,
-    label=...,
-    nave: int = ...,
-    pick_ori=...,
-    return_generator: bool = ...,
-    prepared: bool = ...,
-    method_params=...,
-    use_cps: bool = ...,
-    verbose=...,
+    method: str = "dSPM",
+    label=None,
+    nave: int = 1,
+    pick_ori=None,
+    return_generator: bool = False,
+    prepared: bool = False,
+    method_params=None,
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Apply inverse operator to Epochs.
 
@@ -499,15 +504,15 @@ def apply_inverse_tfr_epochs(
     epochs_tfr,
     inverse_operator,
     lambda2,
-    method: str = ...,
-    label=...,
-    nave: int = ...,
-    pick_ori=...,
-    return_generator: bool = ...,
-    prepared: bool = ...,
-    method_params=...,
-    use_cps: bool = ...,
-    verbose=...,
+    method: str = "dSPM",
+    label=None,
+    nave: int = 1,
+    pick_ori=None,
+    return_generator: bool = False,
+    prepared: bool = False,
+    method_params=None,
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Apply inverse operator to EpochsTFR.
 
@@ -584,15 +589,15 @@ def apply_inverse_cov(
     cov,
     info,
     inverse_operator,
-    nave: int = ...,
-    lambda2=...,
-    method: str = ...,
-    pick_ori=...,
-    prepared: bool = ...,
-    label=...,
-    method_params=...,
-    use_cps: bool = ...,
-    verbose=...,
+    nave: int = 1,
+    lambda2=0.1111111111111111,
+    method: str = "dSPM",
+    pick_ori=None,
+    prepared: bool = False,
+    label=None,
+    method_params=None,
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Apply inverse operator to covariance data.
 
@@ -671,12 +676,12 @@ def make_inverse_operator(
     info,
     forward,
     noise_cov,
-    loose: str = ...,
-    depth: float = ...,
-    fixed: str = ...,
-    rank=...,
-    use_cps: bool = ...,
-    verbose=...,
+    loose: str = "auto",
+    depth: float = 0.8,
+    fixed: str = "auto",
+    rank=None,
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Assemble inverse operator.
 
@@ -840,7 +845,7 @@ def compute_rank_inverse(inv):
         The rank of the inverse operator.
     """
 
-def estimate_snr(evoked, inv, verbose=...):
+def estimate_snr(evoked, inv, verbose=None):
     """Estimate the SNR as a function of time for evoked data.
 
     Parameters

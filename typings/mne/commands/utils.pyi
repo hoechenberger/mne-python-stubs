@@ -1,4 +1,3 @@
-
 def load_module(name, path):
     """Load module from .py/.pyc file.
 
@@ -16,7 +15,7 @@ def load_module(name, path):
 
     """
 
-def get_optparser(cmdpath, usage=..., prog_prefix: str = ..., version=...):
+def get_optparser(cmdpath, usage=None, prog_prefix: str = "mne", version=None):
     """Create OptionParser with cmd specific settings (e.g., prog value)."""
 
 def main() -> None:

@@ -3,7 +3,7 @@ from ...annotations import Annotations as Annotations
 from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
 
-def read_raw_boxy(fname, preload: bool = ..., verbose=...):
+def read_raw_boxy(fname, preload: bool = False, verbose=None):
     """Reader for an optical imaging recording.
 
     This function has been tested using the ISS Imagent I and II systems
@@ -64,4 +64,4 @@ class RawBOXY(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, fname, preload: bool = ..., verbose=...) -> None: ...
+    def __init__(self, fname, preload: bool = False, verbose=None) -> None: ...

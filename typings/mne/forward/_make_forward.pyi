@@ -28,13 +28,13 @@ def make_forward_solution(
     trans,
     src,
     bem,
-    meg: bool = ...,
-    eeg: bool = ...,
+    meg: bool = True,
+    eeg: bool = True,
     *,
-    mindist: float = ...,
-    ignore_ref: bool = ...,
-    n_jobs=...,
-    verbose=...,
+    mindist: float = 0.0,
+    ignore_ref: bool = False,
+    n_jobs=None,
+    verbose=None,
 ):
     """Calculate a forward solution for a subject.
 
@@ -112,7 +112,7 @@ def make_forward_solution(
        Added support for OpenMEEG-based forward solution calculations.
     """
 
-def make_forward_dipole(dipole, bem, info, trans=..., n_jobs=..., *, verbose=...):
+def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=None):
     """Convert dipole object to source estimate and calculate forward operator.
 
     The instance of Dipole is converted to a discrete source space,

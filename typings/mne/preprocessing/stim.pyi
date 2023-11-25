@@ -6,13 +6,13 @@ from ..utils import fill_doc as fill_doc
 
 def fix_stim_artifact(
     inst,
-    events=...,
-    event_id=...,
-    tmin: float = ...,
-    tmax: float = ...,
-    mode: str = ...,
-    stim_channel=...,
-    picks=...,
+    events=None,
+    event_id=None,
+    tmin: float = 0.0,
+    tmax: float = 0.01,
+    mode: str = "linear",
+    stim_channel=None,
+    picks=None,
 ):
     """Eliminate stimulation's artifacts from instance.
 

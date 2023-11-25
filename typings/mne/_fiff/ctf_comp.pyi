@@ -9,7 +9,7 @@ from .write import (
     write_int as write_int,
 )
 
-def read_ctf_comp(fid, node, chs, verbose=...):
+def read_ctf_comp(fid, node, chs, verbose=None):
     """Read the CTF software compensation data from the given node.
 
     Parameters

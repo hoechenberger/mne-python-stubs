@@ -2,7 +2,7 @@ from ..parallel import parallel_func as parallel_func
 from ..utils import check_random_state as check_random_state, logger as logger
 
 def permutation_t_test(
-    X, n_permutations: int = ..., tail: int = ..., n_jobs=..., seed=..., verbose=...
+    X, n_permutations: int = 10000, tail: int = 0, n_jobs=None, seed=None, verbose=None
 ):
     """One sample/paired sample permutation test based on a t-statistic.
 
@@ -74,7 +74,11 @@ def permutation_t_test(
     """
 
 def bootstrap_confidence_interval(
-    arr, ci: float = ..., n_bootstraps: int = ..., stat_fun: str = ..., random_state=...
+    arr,
+    ci: float = 0.95,
+    n_bootstraps: int = 2000,
+    stat_fun: str = "mean",
+    random_state=None,
 ):
     """Get confidence intervals from non-parametric bootstrap.
 

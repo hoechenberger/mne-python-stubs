@@ -1,6 +1,8 @@
 from ..utils import logger as logger
 
-def oversampled_temporal_projection(raw, duration: float = ..., picks=..., verbose=...):
+def oversampled_temporal_projection(
+    raw, duration: float = 10.0, picks=None, verbose=None
+):
     """Denoise MEG channels using leave-one-out temporal projection.
 
     Parameters

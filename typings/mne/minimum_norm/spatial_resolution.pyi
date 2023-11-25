@@ -4,10 +4,10 @@ from ..utils import logger as logger
 def resolution_metrics(
     resmat,
     src,
-    function: str = ...,
-    metric: str = ...,
-    threshold: float = ...,
-    verbose=...,
+    function: str = "psf",
+    metric: str = "peak_err",
+    threshold: float = 0.5,
+    verbose=None,
 ):
     """Compute spatial resolution metrics for linear solvers.
 

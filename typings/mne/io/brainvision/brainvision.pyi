@@ -62,20 +62,20 @@ class RawBrainVision(BaseRaw):
     def __init__(
         self,
         vhdr_fname,
-        eog=...,
-        misc: str = ...,
-        scale: float = ...,
-        preload: bool = ...,
-        verbose=...,
+        eog=("HEOGL", "HEOGR", "VEOGb"),
+        misc: str = "auto",
+        scale: float = 1.0,
+        preload: bool = False,
+        verbose=None,
     ) -> None: ...
 
 def read_raw_brainvision(
     vhdr_fname,
-    eog=...,
-    misc: str = ...,
-    scale: float = ...,
-    preload: bool = ...,
-    verbose=...,
+    eog=("HEOGL", "HEOGR", "VEOGb"),
+    misc: str = "auto",
+    scale: float = 1.0,
+    preload: bool = False,
+    verbose=None,
 ):
     """Reader for Brain Vision EEG file.
 
@@ -121,7 +121,8 @@ def read_raw_brainvision(
     """
 
 class _BVEventParser(_DefaultEventParser):
-    """Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
+    """Parse standard brainvision events, accounting for non-standard ones."""
 
     def __call__(self, description):
         """Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
+        ...

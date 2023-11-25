@@ -6,13 +6,13 @@ from .tfr import AverageTFR as AverageTFR
 def tfr_array_stockwell(
     data,
     sfreq,
-    fmin=...,
-    fmax=...,
-    n_fft=...,
-    width: float = ...,
-    decim: int = ...,
-    return_itc: bool = ...,
-    n_jobs=...,
+    fmin=None,
+    fmax=None,
+    n_fft=None,
+    width: float = 1.0,
+    decim: int = 1,
+    return_itc: bool = False,
+    n_jobs=None,
 ):
     """Compute power and intertrial coherence using Stockwell (S) transform.
 
@@ -77,14 +77,14 @@ def tfr_array_stockwell(
 
 def tfr_stockwell(
     inst,
-    fmin=...,
-    fmax=...,
-    n_fft=...,
-    width: float = ...,
-    decim: int = ...,
-    return_itc: bool = ...,
-    n_jobs=...,
-    verbose=...,
+    fmin=None,
+    fmax=None,
+    n_fft=None,
+    width: float = 1.0,
+    decim: int = 1,
+    return_itc: bool = False,
+    n_jobs=None,
+    verbose=None,
 ):
     """Compute Time-Frequency Representation (TFR) using Stockwell Transform.
 

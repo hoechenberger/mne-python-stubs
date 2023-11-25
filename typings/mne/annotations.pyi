@@ -21,38 +21,186 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Annotations:
-    """Rename annotation description(s). Operates inplace.
+    """Annotation object for annotating segments of raw data.
+
+    .. note::
+       To convert events to mne.Annotations`, use
+       mne.annotations_from_events`. To convert existing mne.Annotations`
+       to events, use  mne.events_from_annotations`.
 
     Parameters
     ----------
-    mapping : dict
-        A dictionary mapping the old description to a new description,
-        e.g. {'1.0' : 'Control', '2.0' : 'Stimulus'}.
+    onset : array of float, shape (n_annotations,)
+        The starting time of annotations in seconds after ``orig_time``.
+    duration : array of float, shape (n_annotations,) | float
+        Durations of the annotations in seconds. If a float, all the
+        annotations are given the same duration.
+    description : array of str, shape (n_annotations,) | str
+        Array of strings containing description for each annotation. If a
+        string, all the annotations are given the same description. To reject
+        epochs, use description starting with keyword 'bad'. See example above.
+    orig_time : float | str | datetime | tuple of int | None
+        A POSIX Timestamp, datetime or a tuple containing the timestamp as the
+        first element and microseconds as the second element. Determines the
+        starting time of annotation acquisition. If None (default),
+        starting time is determined from beginning of raw data acquisition.
+        In general, ``raw.info['meas_date']`` (or None) can be used for syncing
+        the annotations with raw data if their acquisition is started at the
+        same time. If it is a string, it should conform to the ISO8601 format.
+        More precisely to this '%Y-%m-%d %H:%M:%S.%f' particular case of
+        the ISO8601 format where the delimiter between date and time is ' '.
 
-    verbose : bool | str | int | None
-        Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
-        argument.
+    ch_names : list | None
+        List of lists of channel names associated with the annotations.
+        Empty entries are assumed to be associated with no specific channel,
+        i.e., with all channels or with the time slice itself. None (default) is
+        the same as passing all empty lists. For example, this creates three
+        annotations, associating the first with the time interval itself, the
+        second with two channels, and the third with a single channel::
 
-    Returns
-    -------
-    self : mne.Annotations
-        The modified Annotations object.
+            Annotations(onset=[0, 3, 10], duration=[1, 0.25, 0.5],
+                        description=['Start', 'BAD_flux', 'BAD_noise'],
+                        ch_names=[[], ['MEG0111', 'MEG2563'], ['MEG1443']])
+
+        .. versionadded:: 0.23
+
+    See Also
+    --------
+    mne.annotations_from_events
+    mne.events_from_annotations
 
     Notes
     -----
-    .. versionadded:: 0.24.0
+    Annotations are added to instance of :class:`mne.io.Raw` as the attribute
+    :attr:`raw.annotations <mne.io.Raw.annotations>`.
+
+    To reject bad epochs using annotations, use
+    annotation description starting with 'bad' keyword. The epochs with
+    overlapping bad segments are then rejected automatically by default.
+
+    To remove epochs with blinks you can do:
+
+    >>> eog_events = mne.preprocessing.find_eog_events(raw)  # doctest: +SKIP
+    >>> n_blinks = len(eog_events)  # doctest: +SKIP
+    >>> onset = eog_events[:, 0] / raw.info['sfreq'] - 0.25  # doctest: +SKIP
+    >>> duration = np.repeat(0.5, n_blinks)  # doctest: +SKIP
+    >>> description = ['bad blink'] * n_blinks  # doctest: +SKIP
+    >>> annotations = mne.Annotations(onset, duration, description)  # doctest: +SKIP
+    >>> raw.set_annotations(annotations)  # doctest: +SKIP
+    >>> epochs = mne.Epochs(raw, events, event_id, tmin, tmax)  # doctest: +SKIP
+
+    **ch_names**
+
+    Specifying channel names allows the creation of channel-specific
+    annotations. Once the annotations are assigned to a raw instance with
+    :meth:`mne.io.Raw.set_annotations`, if channels are renamed by the raw
+    instance, the annotation channels also get renamed. If channels are dropped
+    from the raw instance, any channel-specific annotation that has no channels
+    left in the raw instance will also be removed.
+
+    **orig_time**
+
+    If ``orig_time`` is None, the annotations are synced to the start of the
+    data (0 seconds). Otherwise the annotations are synced to sample 0 and
+    ``raw.first_samp`` is taken into account the same way as with events.
+
+    When setting annotations, the following alignments
+    between ``raw.info['meas_date']`` and ``annotation.orig_time`` take place:
+
+    ::
+
+        ----------- meas_date=XX, orig_time=YY -----------------------------
+
+             |              +------------------+
+             |______________|     RAW          |
+             |              |                  |
+             |              +------------------+
+         meas_date      first_samp
+             .
+             .         |         +------+
+             .         |_________| ANOT |
+             .         |         |      |
+             .         |         +------+
+             .     orig_time   onset[0]
+             .
+             |                   +------+
+             |___________________|      |
+             |                   |      |
+             |                   +------+
+         orig_time            onset[0]'
+
+        ----------- meas_date=XX, orig_time=None ---------------------------
+
+             |              +------------------+
+             |______________|     RAW          |
+             |              |                  |
+             |              +------------------+
+             .              N         +------+
+             .              o_________| ANOT |
+             .              n         |      |
+             .              e         +------+
+             .
+             |                        +------+
+             |________________________|      |
+             |                        |      |
+             |                        +------+
+         orig_time                 onset[0]'
+
+        ----------- meas_date=None, orig_time=YY ---------------------------
+
+             N              +------------------+
+             o______________|     RAW          |
+             n              |                  |
+             e              +------------------+
+                       |         +------+
+                       |_________| ANOT |
+                       |         |      |
+                       |         +------+
+
+                    [[[ CRASH ]]]
+
+        ----------- meas_date=None, orig_time=None -------------------------
+
+             N              +------------------+
+             o______________|     RAW          |
+             n              |                  |
+             e              +------------------+
+             .              N         +------+
+             .              o_________| ANOT |
+             .              n         |      |
+             .              e         +------+
+             .
+             N                        +------+
+             o________________________|      |
+             n                        |      |
+             e                        +------+
+         orig_time                 onset[0]'
+
+    .. warning::
+       This means that when ``raw.info['meas_date'] is None``, doing
+       ``raw.set_annotations(raw.annotations)`` will not alter ``raw`` if and
+       only if ``raw.first_samp == 0``. When it's non-zero,
+       ``raw.set_annotations`` will assume that the "new" annotations refer to
+       the original data (with ``first_samp==0``), and will be re-referenced to
+       the new time offset!
+
+    **Specific annotation**
+
+    ``BAD_ACQ_SKIP`` annotation leads to specific reading/writing file
+    behaviours. See :meth:`mne.io.read_raw_fif` and
+    :meth:`Raw.save() <mne.io.Raw.save>` notes for details.
     """
 
     def __init__(
-        self, onset, duration, description, orig_time=..., ch_names=...
+        self, onset, duration, description, orig_time=None, ch_names=None
     ) -> None: ...
     @property
     def orig_time(self):
         """The time base of the Annotations."""
+        ...
     def __eq__(self, other):
         """Compare to another Annotations instance."""
+        ...
     def __len__(self) -> int:
         """Return the number of annotations.
 
@@ -61,23 +209,28 @@ class Annotations:
         n_annot : int
             The number of annotations.
         """
+        ...
     def __add__(self, other):
         """Add (concatencate) two Annotation objects."""
+        ...
     def __iadd__(self, other):
         """Add (concatencate) two Annotation objects in-place.
 
         Both annotations must have the same orig_time
         """
+        ...
     def __iter__(self):
         """Iterate over the annotations."""
-    def __getitem__(self, key, *, with_ch_names=...):
+        ...
+    def __getitem__(self, key, *, with_ch_names=None):
         """Propagate indexing and slicing to the underlying numpy structure."""
+        ...
     onset: Incomplete
     duration: Incomplete
     description: Incomplete
     ch_names: Incomplete
 
-    def append(self, onset, duration, description, ch_names=...):
+    def append(self, onset, duration, description, ch_names=None):
         """Add an annotated segment. Operates inplace.
 
         Parameters
@@ -116,6 +269,7 @@ class Annotations:
         to not only ``list.append``, but also
         `list.extend <https://docs.python.org/3/library/stdtypes.html#mutable-sequence-types>`__.
         """
+        ...
     def copy(self):
         """Return a copy of the Annotations.
 
@@ -124,6 +278,7 @@ class Annotations:
         inst : instance of Annotations
             A copy of the object.
         """
+        ...
     def delete(self, idx) -> None:
         """Remove an annotation. Operates inplace.
 
@@ -133,6 +288,7 @@ class Annotations:
             Index of the annotation to remove. Can be array-like to
             remove multiple indices.
         """
+        ...
     def to_data_frame(self):
         """Export annotations in tabular structure as a pandas DataFrame.
 
@@ -143,6 +299,7 @@ class Annotations:
             description columns. A column named ch_names is added if any
             annotations are channel-specific.
         """
+        ...
     def count(self):
         """Count annotations.
 
@@ -152,7 +309,8 @@ class Annotations:
             A dictionary containing unique annotation descriptions as keys with their
             counts as values.
         """
-    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
+        ...
+    def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """Save annotations to FIF, CSV or TXT.
 
         Typically annotations get saved in the FIF file for raw data
@@ -185,13 +343,14 @@ class Annotations:
         whereas :file:`.txt` files store onset as seconds since start of the
         recording (e.g., ``45.95597082905339``).
         """
+        ...
     def crop(
         self,
-        tmin=...,
-        tmax=...,
-        emit_warning: bool = ...,
-        use_orig_time: bool = ...,
-        verbose=...,
+        tmin=None,
+        tmax=None,
+        emit_warning: bool = False,
+        use_orig_time: bool = True,
+        verbose=None,
     ):
         """Remove all annotation that are outside of [tmin, tmax].
 
@@ -221,7 +380,8 @@ class Annotations:
         self : instance of Annotations
             The cropped Annotations object.
         """
-    def set_durations(self, mapping, verbose=...):
+        ...
+    def set_durations(self, mapping, verbose=None):
         """Set annotation duration(s). Operates inplace.
 
         Parameters
@@ -247,7 +407,8 @@ class Annotations:
         -----
         .. versionadded:: 0.24.0
         """
-    def rename(self, mapping, verbose=...):
+        ...
+    def rename(self, mapping, verbose=None):
         """Rename annotation description(s). Operates inplace.
 
         Parameters
@@ -271,38 +432,14 @@ class Annotations:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
 
 class EpochAnnotationsMixin:
-    """Add raw annotations into the Epochs metadata data frame.
-
-    Adds three columns to the ``metadata`` consisting of a list
-    in each row:
-    - ``annot_onset``: the onset of each Annotation within
-    the Epoch relative to the start time of the Epoch (in seconds).
-    - ``annot_duration``: the duration of each Annotation
-    within the Epoch in seconds.
-    - ``annot_description``: the free-form text description of each
-    Annotation.
-
-    Parameters
-    ----------
-    overwrite : bool
-        Whether to overwrite existing columns in metadata or not.
-        Default is False.
-
-    Returns
-    -------
-    self : instance of Epochs
-        The modified instance (instance is also modified inplace).
-
-    Notes
-    -----
-    .. versionadded:: 1.0
-    """
+    """Mixin class for Annotations in Epochs."""
 
     @property
     def annotations(self): ...
-    def set_annotations(self, annotations, on_missing: str = ..., *, verbose=...):
+    def set_annotations(self, annotations, on_missing: str = "raise", *, verbose=None):
         """Setter for Epoch annotations from Raw.
 
         This method does not handle offsetting the times based
@@ -352,6 +489,7 @@ class EpochAnnotationsMixin:
 
         .. versionadded:: 1.0
         """
+        ...
     def get_annotations_per_epoch(self):
         """Get a list of annotations that occur during each epoch.
 
@@ -365,9 +503,10 @@ class EpochAnnotationsMixin:
             where the onset is now relative to time=0 of the epoch, rather than
             time=0 of the original continuous (raw) data.
         """
+        ...
     metadata: Incomplete
 
-    def add_annotations_to_metadata(self, overwrite: bool = ...):
+    def add_annotations_to_metadata(self, overwrite: bool = False):
         """Add raw annotations into the Epochs metadata data frame.
 
         Adds three columns to the ``metadata`` consisting of a list
@@ -394,8 +533,11 @@ class EpochAnnotationsMixin:
         -----
         .. versionadded:: 1.0
         """
+        ...
 
-def read_annotations(fname, sfreq: str = ..., uint16_codec=..., encoding: str = ...):
+def read_annotations(
+    fname, sfreq: str = "auto", uint16_codec=None, encoding: str = "utf8"
+):
     """Read annotations from a file.
 
     This function reads a ``.fif``, ``.fif.gz``, ``.vmrk``, ``.amrk``,
@@ -443,11 +585,11 @@ def read_annotations(fname, sfreq: str = ..., uint16_codec=..., encoding: str = 
 
 def events_from_annotations(
     raw,
-    event_id: str = ...,
-    regexp: str = ...,
-    use_rounding: bool = ...,
-    chunk_duration=...,
-    verbose=...,
+    event_id: str = "auto",
+    regexp: str = "^(?![Bb][Aa][Dd]|[Ee][Dd][Gg][Ee]).*$",
+    use_rounding: bool = True,
+    chunk_duration=None,
+    verbose=None,
 ):
     """Get :term:`events` and ``event_id`` from an Annotations object.
 
@@ -521,7 +663,7 @@ def events_from_annotations(
     """
 
 def annotations_from_events(
-    events, sfreq, event_desc=..., first_samp: int = ..., orig_time=..., verbose=...
+    events, sfreq, event_desc=None, first_samp: int = 0, orig_time=None, verbose=None
 ):
     """Convert an event array to an Annotations object.
 

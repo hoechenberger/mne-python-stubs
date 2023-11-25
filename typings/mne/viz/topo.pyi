@@ -8,14 +8,14 @@ from .utils import (
 
 def iter_topography(
     info,
-    layout=...,
-    on_pick=...,
-    fig=...,
-    fig_facecolor: str = ...,
-    axis_facecolor: str = ...,
-    axis_spinecolor: str = ...,
-    layout_scale=...,
-    legend: bool = ...,
+    layout=None,
+    on_pick=None,
+    fig=None,
+    fig_facecolor: str = "k",
+    axis_facecolor: str = "k",
+    axis_spinecolor: str = "k",
+    layout_scale=None,
+    legend: bool = False,
 ):
     """Create iterator over channel positions.
 
@@ -67,21 +67,21 @@ def iter_topography(
 
 def plot_topo_image_epochs(
     epochs,
-    layout=...,
-    sigma: float = ...,
-    vmin=...,
-    vmax=...,
-    colorbar=...,
-    order=...,
-    cmap: str = ...,
-    layout_scale: float = ...,
-    title=...,
-    scalings=...,
-    border: str = ...,
-    fig_facecolor: str = ...,
-    fig_background=...,
-    font_color: str = ...,
-    show: bool = ...,
+    layout=None,
+    sigma: float = 0.0,
+    vmin=None,
+    vmax=None,
+    colorbar=None,
+    order=None,
+    cmap: str = "RdBu_r",
+    layout_scale: float = 0.95,
+    title=None,
+    scalings=None,
+    border: str = "none",
+    fig_facecolor: str = "k",
+    fig_background=None,
+    font_color: str = "w",
+    show: bool = True,
 ):
     """Plot Event Related Potential / Fields image on topographies.
 

@@ -4,31 +4,48 @@ from ..utils import warn as warn
 from _typeshed import Incomplete
 
 class LinearModel(BaseEstimator):
-    """Estimate the coefficients of the linear model.
+    """Compute and store patterns from linear models.
 
-    Save the coefficients in the attribute ``filters_`` and
-    computes the attribute ``patterns_``.
+    The linear model coefficients (filters) are used to extract discriminant
+    neural sources from the measured data. This class computes the
+    corresponding patterns of these linear filters to make them more
+    interpretable :footcite:`HaufeEtAl2014`.
 
     Parameters
     ----------
-    X : array, shape (n_samples, n_features)
-        The training input samples to estimate the linear coefficients.
-    y : array, shape (n_samples, [n_targets])
-        The target values.
-    **fit_params : dict of string -> object
-        Parameters to pass to the fit method of the estimator.
+    model : object | None
+        A linear model from scikit-learn with a fit method
+        that updates a ``coef_`` attribute.
+        If None the model will be LogisticRegression.
 
-    Returns
-    -------
-    self : instance of LinearModel
-        Returns the modified instance.
+    Attributes
+    ----------
+    filters_ : ndarray, shape ([n_targets], n_features)
+        If fit, the filters used to decompose the data.
+    patterns_ : ndarray, shape ([n_targets], n_features)
+        If fit, the patterns used to restore M/EEG signals.
+
+    See Also
+    --------
+    CSP
+    mne.preprocessing.ICA
+    mne.preprocessing.Xdawn
+
+    Notes
+    -----
+    .. versionadded:: 0.10
+
+    References
+    ----------
+    .. footbibliography::
     """
 
     model: Incomplete
 
-    def __init__(self, model=...) -> None: ...
+    def __init__(self, model=None) -> None: ...
     def __getattr__(self, attr):
         """Wrap to model for some attributes."""
+        ...
     patterns_: Incomplete
 
     def fit(self, X, y, **fit_params):
@@ -51,10 +68,11 @@ class LinearModel(BaseEstimator):
         self : instance of LinearModel
             Returns the modified instance.
         """
+        ...
     @property
     def filters_(self): ...
 
-def get_coef(estimator, attr: str = ..., inverse_transform: bool = ...):
+def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False):
     """Retrieve the coefficients of an estimator ending with a Linear Model.
 
     This is typically useful to retrieve "spatial filters" or "spatial
@@ -84,14 +102,14 @@ def get_coef(estimator, attr: str = ..., inverse_transform: bool = ...):
 def cross_val_multiscore(
     estimator,
     X,
-    y=...,
-    groups=...,
-    scoring=...,
-    cv=...,
-    n_jobs=...,
-    verbose=...,
-    fit_params=...,
-    pre_dispatch: str = ...,
+    y=None,
+    groups=None,
+    scoring=None,
+    cv=None,
+    n_jobs=None,
+    verbose=None,
+    fit_params=None,
+    pre_dispatch: str = "2*n_jobs",
 ):
     """Evaluate a score by cross-validation.
 

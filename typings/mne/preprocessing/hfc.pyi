@@ -1,15 +1,14 @@
 from .._fiff.pick import pick_info as pick_info
 from .._fiff.proj import Projection as Projection
 
-
 def compute_proj_hfc(
     info,
-    order: int = ...,
-    picks: str = ...,
-    exclude: str = ...,
+    order: int = 1,
+    picks: str = "meg",
+    exclude: str = "bads",
     *,
-    accuracy: str = ...,
-    verbose=...,
+    accuracy: str = "accurate",
+    verbose=None,
 ):
     """Generate projectors to perform homogeneous/harmonic correction to data.
 

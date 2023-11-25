@@ -5,7 +5,12 @@ data_path: Incomplete
 BASE_URL: str
 
 def fetch_data(
-    subjects, path=..., force_update: bool = ..., base_url=..., *, verbose=...
+    subjects,
+    path=None,
+    force_update: bool = False,
+    base_url="https://physionet.org/physiobank/database/sleep-edfx/sleep-telemetry/",
+    *,
+    verbose=None,
 ):
     """Get paths to local copies of PhysioNet Polysomnography dataset files.
 

@@ -16,20 +16,20 @@ from _typeshed import Incomplete
 
 def compute_source_morph(
     src,
-    subject_from=...,
-    subject_to: str = ...,
-    subjects_dir=...,
-    zooms: str = ...,
-    niter_affine=...,
-    niter_sdr=...,
-    spacing: int = ...,
-    smooth=...,
-    warn: bool = ...,
-    xhemi: bool = ...,
-    sparse: bool = ...,
-    src_to=...,
-    precompute: bool = ...,
-    verbose=...,
+    subject_from=None,
+    subject_to: str = "fsaverage",
+    subjects_dir=None,
+    zooms: str = "auto",
+    niter_affine=(100, 100, 10),
+    niter_sdr=(5, 5, 3),
+    spacing: int = 5,
+    smooth=None,
+    warn: bool = True,
+    xhemi: bool = False,
+    sparse: bool = False,
+    src_to=None,
+    precompute: bool = False,
+    verbose=None,
 ):
     """Create a SourceMorph from one subject to another.
 
@@ -167,23 +167,79 @@ def compute_source_morph(
     """
 
 class SourceMorph:
-    """Save the morph for source estimates to a file.
+    """Morph source space data from one subject to another.
+
+    .. note::
+        This class should not be instantiated directly via
+        ``mne.SourceMorph(...)``. Instead, use one of the functions
+        listed in the See Also section below.
 
     Parameters
     ----------
-    fname : path-like
-        The path to the file. ``'-morph.h5'`` will be added if fname does
-        not end with ``'.h5'``.
-
-    overwrite : bool
-        If True (default False), overwrite the destination file if it
-        exists.
+    subject_from : str | None
+        Name of the subject from which to morph as named in the SUBJECTS_DIR.
+    subject_to : str | array | list of array
+        Name of the subject on which to morph as named in the SUBJECTS_DIR.
+        The default is 'fsaverage'. If morphing a volume source space,
+        subject_to can be the path to a MRI volume. Can also be a list of
+        two arrays if morphing to hemisphere surfaces.
+    kind : str | None
+        Kind of source estimate. E.g. ``'volume'`` or ``'surface'``.
+    zooms : float | tuple
+        See :func:`mne.compute_source_morph`.
+    niter_affine : tuple of int
+        Number of levels (``len(niter_affine)``) and number of
+        iterations per level - for each successive stage of iterative
+        refinement - to perform the affine transform.
+    niter_sdr : tuple of int
+        Number of levels (``len(niter_sdr)``) and number of
+        iterations per level - for each successive stage of iterative
+        refinement - to perform the Symmetric Diffeomorphic Registration (sdr)
+        transform :footcite:`AvantsEtAl2008`.
+    spacing : int | list | None
+        See :func:`mne.compute_source_morph`.
+    smooth : int | str | None
+        See :func:`mne.compute_source_morph`.
+    xhemi : bool
+        Morph across hemisphere.
+    morph_mat : scipy.sparse.csr_matrix
+        The sparse surface morphing matrix for spherical surface
+        based morphing :footcite:`GreveEtAl2013`.
+    vertices_to : list of ndarray
+        The destination surface vertices.
+    shape : tuple
+        The volume MRI shape.
+    affine : ndarray
+        The volume MRI affine.
+    pre_affine : instance of dipy.align.AffineMap
+        The transformation that is applied before the before ``sdr_morph``.
+    sdr_morph : instance of dipy.align.DiffeomorphicMap
+        The class that applies the the symmetric diffeomorphic registration
+        (SDR) morph.
+    src_data : dict
+        Additional source data necessary to perform morphing.
+    vol_morph_mat : scipy.sparse.csr_matrix | None
+        The volumetric morph matrix, if :meth:`compute_vol_morph_mat`
+        was used.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
+
+    See Also
+    --------
+    compute_source_morph
+    read_source_morph
+
+    Notes
+    -----
+    .. versionadded:: 0.17
+
+    References
+    ----------
+    .. footbibliography::
     """
 
     subject_from: Incomplete
@@ -224,15 +280,15 @@ class SourceMorph:
         src_data,
         vol_morph_mat,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
     def apply(
         self,
         stc_from,
-        output: str = ...,
-        mri_resolution: bool = ...,
-        mri_space=...,
-        verbose=...,
+        output: str = "stc",
+        mri_resolution: bool = False,
+        mri_space=None,
+        verbose=None,
     ):
         """Morph source space data.
 
@@ -264,7 +320,8 @@ class SourceMorph:
         stc_to : VolSourceEstimate | SourceEstimate | VectorSourceEstimate | Nifti1Image | Nifti2Image
             The morphed source estimates.
         """
-    def compute_vol_morph_mat(self, *, verbose=...):
+        ...
+    def compute_vol_morph_mat(self, *, verbose=None):
         """Compute the sparse matrix representation of the volumetric morph.
 
         Parameters
@@ -298,7 +355,8 @@ class SourceMorph:
 
         .. versionadded:: 0.22
         """
-    def save(self, fname, overwrite: bool = ..., verbose=...) -> None:
+        ...
+    def save(self, fname, overwrite: bool = False, verbose=None) -> None:
         """Save the morph for source estimates to a file.
 
         Parameters
@@ -317,6 +375,7 @@ class SourceMorph:
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
+        ...
 
 def read_source_morph(fname):
     """Load the morph for source estimates from a file.
@@ -332,7 +391,7 @@ def read_source_morph(fname):
         The loaded morph.
     """
 
-def grade_to_vertices(subject, grade, subjects_dir=..., n_jobs=..., verbose=...):
+def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=None):
     """Convert a grade to source space vertices for a given subject.
 
     Parameters

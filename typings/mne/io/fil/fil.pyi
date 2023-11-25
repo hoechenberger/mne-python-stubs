@@ -8,7 +8,9 @@ from ...transforms import (
 from ...utils import fill_doc as fill_doc, warn as warn
 from ..base import BaseRaw as BaseRaw
 
-def read_raw_fil(binfile, precision: str = ..., preload: bool = ..., *, verbose=...):
+def read_raw_fil(
+    binfile, precision: str = "single", preload: bool = False, *, verbose=None
+):
     """Raw object from FIL-OPMEG formatted data.
 
     Parameters
@@ -72,4 +74,6 @@ class RawFIL(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods of RawFIL.
     """
 
-    def __init__(self, binfile, precision: str = ..., preload: bool = ...) -> None: ...
+    def __init__(
+        self, binfile, precision: str = "single", preload: bool = False
+    ) -> None: ...

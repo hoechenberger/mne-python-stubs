@@ -12,7 +12,11 @@ from .inverse import apply_inverse as apply_inverse
 from mne.minimum_norm.inverse import InverseOperator as InverseOperator
 
 def make_inverse_resolution_matrix(
-    forward, inverse_operator, method: str = ..., lambda2=..., verbose=...
+    forward,
+    inverse_operator,
+    method: str = "dSPM",
+    lambda2=0.1111111111111111,
+    verbose=None,
 ):
     """Compute resolution matrix for linear inverse operator.
 
@@ -48,13 +52,13 @@ def get_point_spread(
     resmat,
     src,
     idx,
-    mode=...,
+    mode=None,
     *,
-    n_comp: int = ...,
-    norm: bool = ...,
-    return_pca_vars: bool = ...,
-    vector: bool = ...,
-    verbose=...,
+    n_comp: int = 1,
+    norm: bool = False,
+    return_pca_vars: bool = False,
+    vector: bool = False,
+    verbose=None,
 ):
     """Get point-spread (PSFs) functions for vertices.
 
@@ -151,13 +155,13 @@ def get_cross_talk(
     resmat,
     src,
     idx,
-    mode=...,
+    mode=None,
     *,
-    n_comp: int = ...,
-    norm: bool = ...,
-    return_pca_vars: bool = ...,
-    vector: bool = ...,
-    verbose=...,
+    n_comp: int = 1,
+    norm: bool = False,
+    return_pca_vars: bool = False,
+    vector: bool = False,
+    verbose=None,
 ):
     """Get cross-talk (CTFs) function for vertices.
 

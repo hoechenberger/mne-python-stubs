@@ -17,7 +17,11 @@ from .utils import (
 from _typeshed import Incomplete
 
 def get_head_surf(
-    subject, source=..., subjects_dir=..., on_defects: str = ..., verbose=...
+    subject,
+    source=("bem", "head"),
+    subjects_dir=None,
+    on_defects: str = "raise",
+    verbose=None,
 ):
     """Load the subject head surface.
 
@@ -59,7 +63,7 @@ def get_head_surf(
         The head surface.
     """
 
-def get_meg_helmet_surf(info, trans=..., *, verbose=...):
+def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     """Load the MEG helmet associated with the MEG sensors.
 
     Parameters
@@ -115,11 +119,11 @@ def fast_cross_3d(x, y):
 
 def complete_surface_info(
     surf,
-    do_neighbor_vert: bool = ...,
-    copy: bool = ...,
-    do_neighbor_tri: bool = ...,
+    do_neighbor_vert: bool = False,
+    copy: bool = True,
+    do_neighbor_tri: bool = True,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Complete surface information.
 
@@ -158,7 +162,9 @@ class _DistanceQuery:
     query: Incomplete
     data: Incomplete
 
-    def __init__(self, xhs, method: str = ..., allow_kdtree: bool = ...) -> None: ...
+    def __init__(
+        self, xhs, method: str = "BallTree", allow_kdtree: bool = False
+    ) -> None: ...
 
 class _CheckInside:
     """Efficiently check if points are inside a surface."""
@@ -166,10 +172,10 @@ class _CheckInside:
     mode: Incomplete
     surf: Incomplete
 
-    def __init__(self, surf, *, mode: str = ..., verbose=...) -> None: ...
-    def __call__(self, rr, n_jobs=..., verbose=...): ...
+    def __init__(self, surf, *, mode: str = "old", verbose=None) -> None: ...
+    def __call__(self, rr, n_jobs=None, verbose=None): ...
 
-def read_curvature(filepath, binary: bool = ...):
+def read_curvature(filepath, binary: bool = True):
     """Load in curvature values from the ?h.curv file.
 
     Parameters
@@ -187,10 +193,10 @@ def read_curvature(filepath, binary: bool = ...):
 
 def read_surface(
     fname,
-    read_metadata: bool = ...,
-    return_dict: bool = ...,
-    file_format: str = ...,
-    verbose=...,
+    read_metadata: bool = False,
+    return_dict: bool = False,
+    file_format: str = "auto",
+    verbose=None,
 ):
     """Load a Freesurfer surface mesh in triangular format.
 
@@ -254,12 +260,12 @@ def write_surface(
     fname,
     coords,
     faces,
-    create_stamp: str = ...,
-    volume_info=...,
-    file_format: str = ...,
-    overwrite: bool = ...,
+    create_stamp: str = "",
+    volume_info=None,
+    file_format: str = "auto",
+    overwrite: bool = False,
     *,
-    verbose=...,
+    verbose=None,
 ) -> None:
     """Write a triangular Freesurfer surface mesh.
 
@@ -316,7 +322,9 @@ def write_surface(
     read_tri
     """
 
-def decimate_surface(points, triangles, n_triangles, method: str = ..., *, verbose=...):
+def decimate_surface(
+    points, triangles, n_triangles, method: str = "quadric", *, verbose=None
+):
     """Decimate surface data.
 
     Parameters
@@ -401,7 +409,7 @@ def mesh_dist(tris, vert):
         Sparse matrix with distances between adjacent vertices.
     """
 
-def read_tri(fname_in, swap: bool = ..., verbose=...):
+def read_tri(fname_in, swap: bool = False, verbose=None):
     """Read triangle definitions from an ascii file.
 
     Parameters
@@ -440,11 +448,11 @@ def dig_mri_distances(
     info,
     trans,
     subject,
-    subjects_dir=...,
-    dig_kinds: str = ...,
-    exclude_frontal: bool = ...,
-    on_defects: str = ...,
-    verbose=...,
+    subjects_dir=None,
+    dig_kinds: str = "auto",
+    exclude_frontal: bool = False,
+    on_defects: str = "raise",
+    verbose=None,
 ):
     """Compute distances between head shape points and the scalp surface.
 
@@ -510,7 +518,7 @@ def dig_mri_distances(
     """
 
 def get_montage_volume_labels(
-    montage, subject, subjects_dir=..., aseg: str = ..., dist: int = ...
+    montage, subject, subjects_dir=None, aseg: str = "aparc+aseg", dist: int = 2
 ):
     """Get regions of interest near channels from a Freesurfer parcellation.
 

@@ -3,7 +3,7 @@ from ...annotations import Annotations as Annotations
 from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
-def read_raw_nihon(fname, preload: bool = ..., verbose=...):
+def read_raw_nihon(fname, preload: bool = False, verbose=None):
     """Reader for an Nihon Kohden EEG file.
 
     Parameters
@@ -51,4 +51,4 @@ class RawNihon(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, fname, preload: bool = ..., verbose=...) -> None: ...
+    def __init__(self, fname, preload: bool = False, verbose=None) -> None: ...

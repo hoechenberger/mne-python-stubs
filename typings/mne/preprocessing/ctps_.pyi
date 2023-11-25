@@ -1,4 +1,4 @@
-def ctps(data, is_raw: bool = ...):
+def ctps(data, is_raw: bool = True):
     """Compute cross-trial-phase-statistics [1].
 
     Note. It is assumed that the sources are already

@@ -23,7 +23,7 @@ def dir_tree_find(tree, kind):
         List of matching nodes.
     """
 
-def make_dir_tree(fid, directory, start: int = ..., indent: int = ..., verbose=...):
+def make_dir_tree(fid, directory, start: int = 0, indent: int = 0, verbose=None):
     """Create the directory tree structure."""
 
 def copy_tree(fidin, in_id, nodes, fidout) -> None:

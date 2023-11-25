@@ -40,72 +40,7 @@ from _typeshed import Incomplete
 b = bytes
 
 class MontageMixin:
-    """Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
-
-    Parameters
-    ----------
-
-    montage : None | str | DigMontage
-        A montage containing channel positions. If a string or
-        :class:mne.channels.DigMontage` is
-        specified, the existing channel information will be updated with the
-        channel positions from the montage. Valid strings are the names of the
-        built-in montages that ship with MNE-Python; you can list those via
-        :func:`mne.channels.get_builtin_montages`.
-        If ``None`` (default), the channel positions will be removed from the
-        :class:mne.Info`.
-
-    match_case : bool
-        If True (default), channel name matching will be case sensitive.
-
-        .. versionadded:: 0.20
-
-    match_alias : bool | dict
-        Whether to use a lookup table to match unrecognized channel location names
-        to their known aliases. If True, uses the mapping in
-        ``mne.io.constants.CHANNEL_LOC_ALIASES``. If a :class:`dict` is passed, it
-        will be used instead, and should map from non-standard channel names to
-        names in the specified ``montage``. Default is ``False``.
-
-        .. versionadded:: 0.23
-
-    on_missing : 'raise' | 'warn' | 'ignore'
-        Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
-        warning, or ``'ignore'`` to ignore when channels have missing coordinates.
-
-        .. versionadded:: 0.20.1
-
-    verbose : bool | str | int | None
-        Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
-        argument.
-
-    Returns
-    -------
-    inst : instance of Raw | Epochs | Evoked
-        The instance, modified in-place.
-
-    See Also
-    --------
-    mne.channels.make_standard_montage
-    mne.channels.make_dig_montage
-    mne.channels.read_custom_montage
-
-    Notes
-    -----
-    .. warning::
-        Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
-        a montage. Other channel types (e.g., MEG channels) should have
-        their positions defined properly using their data reading
-        functions.
-    .. warning::
-        Applying a montage will only set locations of channels that exist
-        at the time it is applied. This means when
-        :ref:`re-referencing <tut-set-eeg-ref>`
-        make sure to apply the montage only after calling
-        :func:`mne.add_reference_channels`
-    """
+    """Mixin for Montage getting and setting."""
 
     def get_montage(self):
         """Get a DigMontage from instance.
@@ -123,13 +58,14 @@ class MontageMixin:
             If ``None`` (default), the channel positions will be removed from the
             :class:mne.Info`.
         """
+        ...
     def set_montage(
         self,
         montage,
-        match_case: bool = ...,
-        match_alias: bool = ...,
-        on_missing: str = ...,
-        verbose=...,
+        match_case: bool = True,
+        match_alias: bool = False,
+        on_missing: str = "raise",
+        verbose=None,
     ):
         """Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
 
@@ -197,41 +133,14 @@ class MontageMixin:
             make sure to apply the montage only after calling
             :func:`mne.add_reference_channels`
         """
+        ...
 
 channel_type_constants: Incomplete
 
 class SetChannelsMixin(MontageMixin):
-    """Set the measurement start date.
+    """Mixin class for Raw, Evoked, Epochs."""
 
-    Parameters
-    ----------
-    meas_date : datetime | float | tuple | None
-        The new measurement date.
-        If datetime object, it must be timezone-aware and in UTC.
-        A tuple of (seconds, microseconds) or float (alias for
-        ``(meas_date, 0)``) can also be passed and a datetime
-        object will be automatically created. If None, will remove
-        the time reference.
-
-    Returns
-    -------
-    inst : instance of Raw | Epochs | Evoked
-        The modified raw instance. Operates in place.
-
-    See Also
-    --------
-    mne.io.Raw.anonymize
-
-    Notes
-    -----
-    If you want to remove all time references in the file, call
-    :func:`mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
-    after calling ``inst.set_meas_date(None)``.
-
-    .. versionadded:: 0.20
-    """
-
-    def set_channel_types(self, mapping, *, on_unit_change: str = ..., verbose=...):
+    def set_channel_types(self, mapping, *, on_unit_change: str = "warn", verbose=None):
         """Specify the sensor types of channels.
 
         Parameters
@@ -270,7 +179,8 @@ class SetChannelsMixin(MontageMixin):
 
         .. versionadded:: 0.9.0
         """
-    def rename_channels(self, mapping, allow_duplicates: bool = ..., *, verbose=...):
+        ...
+    def rename_channels(self, mapping, allow_duplicates: bool = False, *, verbose=None):
         """Rename channels.
 
         Parameters
@@ -307,20 +217,21 @@ class SetChannelsMixin(MontageMixin):
         -----
         .. versionadded:: 0.9.0
         """
+        ...
     def plot_sensors(
         self,
-        kind: str = ...,
-        ch_type=...,
-        title=...,
-        show_names: bool = ...,
-        ch_groups=...,
-        to_sphere: bool = ...,
-        axes=...,
-        block: bool = ...,
-        show: bool = ...,
-        sphere=...,
+        kind: str = "topomap",
+        ch_type=None,
+        title=None,
+        show_names: bool = False,
+        ch_groups=None,
+        to_sphere: bool = True,
+        axes=None,
+        block: bool = False,
+        show: bool = True,
+        sphere=None,
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Plot sensor positions.
 
@@ -409,7 +320,8 @@ class SetChannelsMixin(MontageMixin):
 
         .. versionadded:: 0.12.0
         """
-    def anonymize(self, daysback=..., keep_his: bool = ..., verbose=...):
+        ...
+    def anonymize(self, daysback=None, keep_his: bool = False, verbose=None):
         """Anonymize measurement information in place.
 
         Parameters
@@ -468,6 +380,7 @@ class SetChannelsMixin(MontageMixin):
 
         .. versionadded:: 0.13.0
         """
+        ...
     def set_meas_date(self, meas_date):
         """Set the measurement start date.
 
@@ -498,31 +411,10 @@ class SetChannelsMixin(MontageMixin):
 
         .. versionadded:: 0.20
         """
+        ...
 
 class ContainsMixin:
-    """Get a list of channel type for each channel.
-
-    Parameters
-    ----------
-    picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
-        channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` *will be included* if their names or indices are
-        explicitly provided.
-    unique : bool
-        Whether to return only unique channel types. Default is ``False``.
-    only_data_chs : bool
-        Whether to ignore non-data channels. Default is ``False``.
-
-    Returns
-    -------
-    channel_types : list
-        The channel types.
-    """
+    """Mixin class for Raw, Evoked, Epochs and Info."""
 
     def __contains__(self, ch_type) -> bool:
         """Check channel type membership.
@@ -548,11 +440,13 @@ class ContainsMixin:
             False
 
         """
+        ...
     @property
     def compensation_grade(self):
         """The current gradient compensation grade."""
+        ...
     def get_channel_types(
-        self, picks=..., unique: bool = ..., only_data_chs: bool = ...
+        self, picks=None, unique: bool = False, only_data_chs: bool = False
     ):
         """Get a list of channel type for each channel.
 
@@ -577,6 +471,7 @@ class ContainsMixin:
         channel_types : list
             The channel types.
         """
+        ...
 
 class MNEBadsList(list):
     """Subclass of bads that checks inplace operations."""
@@ -587,19 +482,421 @@ class MNEBadsList(list):
     def __iadd__(self, x): ...
 
 class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
-    """Write measurement info in fif file.
+    """Measurement information.
+
+    This data structure behaves like a dictionary. It contains all metadata
+    that is available for a recording. However, its keys are restricted to
+    those provided by the
+    `FIF format specification <https://github.com/mne-tools/fiff-constants>`__,
+    so new entries should not be manually added.
+
+    .. note::
+        This class should not be instantiated directly via
+        ``mne.Info(...)``. Instead, use :func:`mne.create_info` to create
+        measurement information from scratch.
+
+    .. warning::
+        The only entries that should be manually changed by the user are:
+        ``info['bads']``, ``info['description']``, ``info['device_info']``
+        ``info['dev_head_t']``, ``info['experimenter']``,
+        ``info['helium_info']``, ``info['line_freq']``, ``info['temp']``,
+        and ``info['subject_info']``.
+
+        All other entries should be considered read-only, though they can be
+        modified by various MNE-Python functions or methods (which have
+        safeguards to ensure all fields remain in sync).
 
     Parameters
     ----------
-    fname : path-like
-        The name of the file. Should end by ``'-info.fif'``.
+    *args : list
+        Arguments.
+    **kwargs : dict
+        Keyword arguments.
+
+    Attributes
+    ----------
+    acq_pars : str | None
+        MEG system acquisition parameters.
+        See :class:`mne.AcqParserFIF` for details.
+    acq_stim : str | None
+        MEG system stimulus parameters.
+    bads : list of str
+        List of bad (noisy/broken) channels, by name. These channels will by
+        default be ignored by many processing steps.
+    ch_names : list of str
+        The names of the channels.
+    chs : list of dict
+        A list of channel information dictionaries, one per channel.
+        See Notes for more information.
+    command_line : str
+        Contains the command and arguments used to create the source space
+        (used for source estimation).
+    comps : list of dict
+        CTF software gradient compensation data.
+        See Notes for more information.
+    ctf_head_t : Transform | None
+        The transformation from 4D/CTF head coordinates to Neuromag head
+        coordinates. This is only present in 4D/CTF data.
+    custom_ref_applied : int
+        Whether a custom (=other than average) reference has been applied to
+        the EEG data. This flag is checked by some algorithms that require an
+        average reference to be set.
+    description : str | None
+        String description of the recording.
+    dev_ctf_t : Transform | None
+        The transformation from device coordinates to 4D/CTF head coordinates.
+        This is only present in 4D/CTF data.
+    dev_head_t : Transform | None
+        The device to head transformation.
+    device_info : dict | None
+        Information about the acquisition device. See Notes for details.
+
+        .. versionadded:: 0.19
+    dig : list of dict | None
+        The Polhemus digitization data in head coordinates.
+        See Notes for more information.
+    events : list of dict
+        Event list, sometimes extracted from the stim channels by Neuromag
+        systems. In general this should not be used and
+        :func:`mne.find_events` should be used for event processing.
+        See Notes for more information.
+    experimenter : str | None
+        Name of the person that ran the experiment.
+    file_id : dict | None
+        The FIF globally unique ID. See Notes for more information.
+    gantry_angle : float | None
+        Tilt angle of the gantry in degrees.
+    helium_info : dict | None
+        Information about the device helium. See Notes for details.
+
+        .. versionadded:: 0.19
+    highpass : float
+        Highpass corner frequency in Hertz. Zero indicates a DC recording.
+    hpi_meas : list of dict
+        HPI measurements that were taken at the start of the recording
+        (e.g. coil frequencies).
+        See Notes for details.
+    hpi_results : list of dict
+        Head position indicator (HPI) digitization points and fit information
+        (e.g., the resulting transform).
+        See Notes for details.
+    hpi_subsystem : dict | None
+        Information about the HPI subsystem that was used (e.g., event
+        channel used for cHPI measurements).
+        See Notes for details.
+    kit_system_id : int
+        Identifies the KIT system.
+    line_freq : float | None
+        Frequency of the power line in Hertz.
+    lowpass : float
+        Lowpass corner frequency in Hertz.
+        It is automatically set to half the sampling rate if there is
+        otherwise no low-pass applied to the data.
+    maxshield : bool
+        True if active shielding (IAS) was active during recording.
+    meas_date : datetime
+        The time (UTC) of the recording.
+
+        .. versionchanged:: 0.20
+           This is stored as a :class:python:datetime.datetime` object
+           instead of a tuple of seconds/microseconds.
+    meas_file : str | None
+        Raw measurement file (used for source estimation).
+    meas_id : dict | None
+        The ID assigned to this measurement by the acquisition system or
+        during file conversion. Follows the same format as ``file_id``.
+    mri_file : str | None
+        File containing the MRI to head transformation (used for source
+        estimation).
+    mri_head_t : dict | None
+        Transformation from MRI to head coordinates (used for source
+        estimation).
+    mri_id : dict | None
+        MRI unique ID (used for source estimation).
+    nchan : int
+        Number of channels.
+    proc_history : list of dict
+        The MaxFilter processing history.
+        See Notes for details.
+    proj_id : int | None
+        ID number of the project the experiment belongs to.
+    proj_name : str | None
+        Name of the project the experiment belongs to.
+    projs : list of Projection
+        List of SSP operators that operate on the data.
+        See :class:`mne.Projection` for details.
+    sfreq : float
+        Sampling frequency in Hertz.
+    subject_info : dict | None
+        Information about the subject.
+        See Notes for details.
+    temp : object | None
+        Can be used to store temporary objects in an Info instance. It will not
+        survive an I/O roundtrip.
+
+        .. versionadded:: 0.24
+    utc_offset : str
+        "UTC offset of related meas_date (sHH:MM).
+
+        .. versionadded:: 0.19
+    working_dir : str
+        Working directory used when the source space was created (used for
+        source estimation).
+    xplotter_layout : str
+        Layout of the Xplotter (Neuromag system only).
+
+    See Also
+    --------
+    mne.create_info
+
+    Notes
+    -----
+    The following parameters have a nested structure.
+
+    * ``chs`` list of dict:
+
+        cal : float
+            The calibration factor to bring the channels to physical
+            units. Used in product with ``range`` to scale the data read
+            from disk.
+        ch_name : str
+            The channel name.
+        coil_type : int
+            Coil type, e.g. ``FIFFV_COIL_MEG``.
+        coord_frame : int
+            The coordinate frame used, e.g. ``FIFFV_COORD_HEAD``.
+        kind : int
+            The kind of channel, e.g. ``FIFFV_EEG_CH``.
+        loc : array, shape (12,)
+            Channel location information. The first three elements ``[:3]`` always store
+            the nominal channel position. The remaining 9 elements store different
+            information based on the channel type:
+
+            MEG
+                Remaining 9 elements ``[3:]``, contain the EX, EY, and EZ normal
+                triplets (columns) of the coil rotation/orientation matrix.
+            EEG
+                Elements ``[3:6]`` contain the reference channel position.
+            Eyetrack
+                Element ``[3]`` contains information about which eye was tracked
+                (-1 for left, 1 for right), and element ``[4]`` contains information
+                about the the axis of coordinate data (-1 for x-coordinate data, 1 for
+                y-coordinate data).
+            Dipole
+                Elements ``[3:6]`` contain dipole orientation information.
+        logno : int
+            Logical channel number, conventions in the usage of this
+            number vary.
+        range : float
+            The hardware-oriented part of the calibration factor.
+            This should be only applied to the continuous raw data.
+            Used in product with ``cal`` to scale data read from disk.
+        scanno : int
+            Scanning order number, starting from 1.
+        unit : int
+            The unit to use, e.g. ``FIFF_UNIT_T_M``.
+        unit_mul : int
+            Unit multipliers, most commonly ``FIFF_UNITM_NONE``.
+
+    * ``comps`` list of dict:
+
+        ctfkind : int
+            CTF compensation grade.
+        colcals : ndarray
+            Column calibrations.
+        mat : dict
+            A named matrix dictionary (with entries "data", "col_names", etc.)
+            containing the compensation matrix.
+        rowcals : ndarray
+            Row calibrations.
+        save_calibrated : bool
+            Were the compensation data saved in calibrated form.
+
+    * ``device_info`` dict:
+
+        type : str
+            Device type.
+        model : str
+            Device model.
+        serial : str
+            Device serial.
+        site : str
+            Device site.
+
+    * ``dig`` list of dict:
+
+        kind : int
+            The kind of channel,
+            e.g. ``FIFFV_POINT_EEG``, ``FIFFV_POINT_CARDINAL``.
+        r : array, shape (3,)
+            3D position in m. and coord_frame.
+        ident : int
+            Number specifying the identity of the point.
+            e.g. ``FIFFV_POINT_NASION`` if kind is ``FIFFV_POINT_CARDINAL``, or
+            42 if kind is ``FIFFV_POINT_EEG``.
+        coord_frame : int
+            The coordinate frame used, e.g. ``FIFFV_COORD_HEAD``.
+
+    * ``events`` list of dict:
+
+        channels : list of int
+            Channel indices for the events.
+        list : ndarray, shape (n_events * 3,)
+            Events in triplets as number of samples, before, after.
+
+    * ``file_id`` dict:
+
+        version : int
+            FIF format version, i.e. ``FIFFC_VERSION``.
+        machid : ndarray, shape (2,)
+            Unique machine ID, usually derived from the MAC address.
+        secs : int
+            Time in seconds.
+        usecs : int
+            Time in microseconds.
+
+    * ``helium_info`` dict:
+
+        he_level_raw : float
+            Helium level (%) before position correction.
+        helium_level : float
+            Helium level (%) after position correction.
+        orig_file_guid : str
+            Original file GUID.
+        meas_date : tuple of int
+            The helium level meas date.
+
+    * ``hpi_meas`` list of dict:
+
+        creator : str
+            Program that did the measurement.
+        sfreq : float
+            Sample rate.
+        nchan : int
+            Number of channels used.
+        nave : int
+            Number of averages used.
+        ncoil : int
+            Number of coils used.
+        first_samp : int
+            First sample used.
+        last_samp : int
+            Last sample used.
+        hpi_coils : list of dict
+            Coils, containing:
+
+                number: int
+                    Coil number
+                epoch : ndarray
+                    Buffer containing one epoch and channel.
+                slopes : ndarray, shape (n_channels,)
+                    HPI data.
+                corr_coeff : ndarray, shape (n_channels,)
+                    HPI curve fit correlations.
+                coil_freq : float
+                    HPI coil excitation frequency
+
+    * ``hpi_results`` list of dict:
+
+        dig_points : list
+            Digitization points (see ``dig`` definition) for the HPI coils.
+        order : ndarray, shape (ncoil,)
+            The determined digitization order.
+        used : ndarray, shape (nused,)
+            The indices of the used coils.
+        moments : ndarray, shape (ncoil, 3)
+            The coil moments.
+        goodness : ndarray, shape (ncoil,)
+            The goodness of fits.
+        good_limit : float
+            The goodness of fit limit.
+        dist_limit : float
+            The distance limit.
+        accept : int
+            Whether or not the fit was accepted.
+        coord_trans : instance of Transform
+            The resulting MEG<->head transformation.
+
+    * ``hpi_subsystem`` dict:
+
+        ncoil : int
+            The number of coils.
+        event_channel : str
+            The event channel used to encode cHPI status (e.g., STI201).
+        hpi_coils : list of ndarray
+            List of length ``ncoil``, each 4-element ndarray contains the
+            event bits used on the event channel to indicate cHPI status
+            (using the first element of these arrays is typically
+            sufficient).
+
+    * ``mri_id`` dict:
+
+        version : int
+            FIF format version, i.e. ``FIFFC_VERSION``.
+        machid : ndarray, shape (2,)
+            Unique machine ID, usually derived from the MAC address.
+        secs : int
+            Time in seconds.
+        usecs : int
+            Time in microseconds.
+
+    * ``proc_history`` list of dict:
+
+        block_id : dict
+            See ``id`` above.
+        date : ndarray, shape (2,)
+            2-element tuple of seconds and microseconds.
+        experimenter : str
+            Name of the person who ran the program.
+        creator : str
+            Program that did the processing.
+        max_info : dict
+            Maxwel filtering info, can contain:
+
+                sss_info : dict
+                    SSS processing information.
+                max_st
+                    tSSS processing information.
+                sss_ctc : dict
+                    Cross-talk processing information.
+                sss_cal : dict
+                    Fine-calibration information.
+        smartshield : dict
+            MaxShield information. This dictionary is (always?) empty,
+            but its presence implies that MaxShield was used during
+            acquisition.
+
+    * ``subject_info`` dict:
+
+        id : int
+            Integer subject identifier.
+        his_id : str
+            String subject identifier.
+        last_name : str
+            Last name.
+        first_name : str
+            First name.
+        middle_name : str
+            Middle name.
+        birthday : tuple of int
+            Birthday in (year, month, day) format.
+        sex : int
+            Subject sex (0=unknown, 1=male, 2=female).
+        hand : int
+            Handedness (1=right, 2=left, 3=ambidextrous).
+        weight : float
+            Weight in kilograms.
+        height : float
+            Height in meters.
     """
 
     def __init__(self, *args, **kwargs) -> None: ...
     def __setitem__(self, key, val) -> None:
         """Attribute setter."""
-    def update(self, other=..., **kwargs) -> None:
+        ...
+    def update(self, other=None, **kwargs) -> None:
         """Update method using __setitem__()."""
+        ...
     def copy(self):
         """Copy the instance.
 
@@ -608,6 +905,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         info : instance of Info
             The copied info.
         """
+        ...
     def normalize_proj(self) -> None:
         """(Re-)Normalize projection vectors after subselection.
 
@@ -622,8 +920,10 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         function if you're confident that the projection vectors still
         adequately capture the original signal of interest.
         """
+        ...
     def __deepcopy__(self, memodict):
         """Make a deepcopy."""
+        ...
     @property
     def ch_names(self): ...
     def save(self, fname) -> None:
@@ -634,8 +934,9 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         fname : path-like
             The name of the file. Should end by ``'-info.fif'``.
         """
+        ...
 
-def read_fiducials(fname, verbose=...):
+def read_fiducials(fname, verbose=None):
     """Read fiducials from a fiff file.
 
     Parameters
@@ -659,7 +960,7 @@ def read_fiducials(fname, verbose=...):
     """
 
 def write_fiducials(
-    fname, pts, coord_frame: str = ..., *, overwrite: bool = ..., verbose=...
+    fname, pts, coord_frame: str = "unknown", *, overwrite: bool = False, verbose=None
 ) -> None:
     """Write fiducials to a fiff file.
 
@@ -691,7 +992,7 @@ def write_fiducials(
         argument.
     """
 
-def read_info(fname, verbose=...):
+def read_info(fname, verbose=None):
     """Read measurement info from a file.
 
     Parameters
@@ -728,7 +1029,7 @@ def read_bad_channels(fid, node):
         A list of bad channel's names.
     """
 
-def read_meas_info(fid, tree, clean_bads: bool = ..., verbose=...):
+def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
     """Read the measurement info.
 
     Parameters
@@ -757,7 +1058,7 @@ def read_meas_info(fid, tree, clean_bads: bool = ..., verbose=...):
         Node in tree that contains the info.
     """
 
-def write_meas_info(fid, info, data_type=..., reset_range: bool = ...) -> None:
+def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None:
     """Write measurement info into a file id (from a fif file).
 
     Parameters
@@ -779,7 +1080,7 @@ def write_meas_info(fid, info, data_type=..., reset_range: bool = ...) -> None:
     Tags are written in a particular order for compatibility with maxfilter.
     """
 
-def write_info(fname, info, data_type=..., reset_range: bool = ...) -> None:
+def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
     """Write measurement info in fif file.
 
     Parameters
@@ -797,7 +1098,7 @@ def write_info(fname, info, data_type=..., reset_range: bool = ...) -> None:
         If True, info['chs'][k]['range'] will be set to unity.
     """
 
-def create_info(ch_names, sfreq, ch_types: str = ..., verbose=...):
+def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
     """Create a basic Info instance suitable for use with create_raw.
 
     Parameters
@@ -849,7 +1150,7 @@ def create_info(ch_names, sfreq, ch_types: str = ..., verbose=...):
 
 RAW_INFO_FIELDS: Incomplete
 
-def anonymize_info(info, daysback=..., keep_his: bool = ..., verbose=...):
+def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
     """Anonymize measurement information in place.
 
     .. warning:: If ``info`` is part of an object like

@@ -1,7 +1,13 @@
 from .utils import logger as logger
 
 def rescale(
-    data, times, baseline, mode: str = ..., copy: bool = ..., picks=..., verbose=...
+    data,
+    times,
+    baseline,
+    mode: str = "mean",
+    copy: bool = True,
+    picks=None,
+    verbose=None,
 ):
     """Rescale (baseline correct) data.
 

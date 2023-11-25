@@ -12,7 +12,7 @@ from .proj import (
     setup_proj as setup_proj,
 )
 
-def add_reference_channels(inst, ref_channels, copy: bool = ...):
+def add_reference_channels(inst, ref_channels, copy: bool = True):
     """Add reference channels to data that consists of all zeros.
 
     Adds reference channels to data that were not included during recording.
@@ -48,14 +48,14 @@ def add_reference_channels(inst, ref_channels, copy: bool = ...):
 
 def set_eeg_reference(
     inst,
-    ref_channels: str = ...,
-    copy: bool = ...,
-    projection: bool = ...,
-    ch_type: str = ...,
-    forward=...,
+    ref_channels: str = "average",
+    copy: bool = True,
+    projection: bool = False,
+    ch_type: str = "auto",
+    forward=None,
     *,
-    joint: bool = ...,
-    verbose=...,
+    joint: bool = False,
+    verbose=None,
 ):
     """Specify which reference to use for EEG data.
 
@@ -187,12 +187,12 @@ def set_bipolar_reference(
     inst,
     anode,
     cathode,
-    ch_name=...,
-    ch_info=...,
-    drop_refs: bool = ...,
-    copy: bool = ...,
-    on_bad: str = ...,
-    verbose=...,
+    ch_name=None,
+    ch_info=None,
+    drop_refs: bool = True,
+    copy: bool = True,
+    on_bad: str = "warn",
+    verbose=None,
 ):
     """Re-reference selected channels using a bipolar referencing scheme.
 

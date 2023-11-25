@@ -4,13 +4,13 @@ from ..utils import check_fname as check_fname, logger as logger
 
 def compute_fine_calibration(
     raw,
-    n_imbalance: int = ...,
-    t_window: float = ...,
-    ext_order: int = ...,
-    origin=...,
-    cross_talk=...,
-    calibration=...,
-    verbose=...,
+    n_imbalance: int = 3,
+    t_window: float = 10.0,
+    ext_order: int = 2,
+    origin=(0.0, 0.0, 0.0),
+    cross_talk=None,
+    calibration=None,
+    verbose=None,
 ):
     """Compute fine calibration from empty-room data.
 

@@ -44,7 +44,7 @@ class ArgvSetter:
     stderr: Incomplete
 
     def __init__(
-        self, args=..., disable_stdout: bool = ..., disable_stderr: bool = ...
+        self, args=(), disable_stdout: bool = True, disable_stderr: bool = True
     ) -> None: ...
     orig_argv: Incomplete
     orig_stdout: Incomplete
@@ -58,7 +58,7 @@ class SilenceStdout:
 
     close: Incomplete
 
-    def __init__(self, close: bool = ...) -> None: ...
+    def __init__(self, close: bool = True) -> None: ...
     stdout: Incomplete
 
     def __enter__(self): ...
@@ -73,14 +73,19 @@ def has_freesurfer():
 def buggy_mkl_svd(function):
     """Decorate tests that make calls to SVD and intermittently fail."""
 
-def assert_and_remove_boundary_annot(annotations, n: int = ...) -> None:
+def assert_and_remove_boundary_annot(annotations, n: int = 1) -> None:
     """Assert that there are boundary annotations and remove them."""
 
 def assert_object_equal(a, b) -> None:
     """Assert two objects are equal."""
 
 def assert_meg_snr(
-    actual, desired, min_tol, med_tol: float = ..., chpi_med_tol: float = ..., msg=...
+    actual,
+    desired,
+    min_tol,
+    med_tol: float = 500.0,
+    chpi_med_tol: float = 500.0,
+    msg=None,
 ) -> None:
     """Assert channel SNR of a certain level.
 
@@ -94,5 +99,5 @@ def assert_snr(actual, desired, tol) -> None:
 def assert_stcs_equal(stc1, stc2) -> None:
     """Check that two STC are equal."""
 
-def assert_dig_allclose(info_py, info_bin, limit=...) -> None:
+def assert_dig_allclose(info_py, info_bin, limit=None) -> None:
     """Assert dig allclose."""

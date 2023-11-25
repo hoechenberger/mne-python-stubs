@@ -21,12 +21,12 @@ from .utils import plt_show as plt_show
 def plot_cov(
     cov,
     info,
-    exclude=...,
-    colorbar: bool = ...,
-    proj: bool = ...,
-    show_svd: bool = ...,
-    show: bool = ...,
-    verbose=...,
+    exclude=(),
+    colorbar: bool = True,
+    proj: bool = False,
+    show_svd: bool = True,
+    show: bool = True,
+    verbose=None,
 ):
     """Plot Covariance data.
 
@@ -79,11 +79,11 @@ def plot_cov(
 def plot_source_spectrogram(
     stcs,
     freq_bins,
-    tmin=...,
-    tmax=...,
-    source_index=...,
-    colorbar: bool = ...,
-    show: bool = ...,
+    tmin=None,
+    tmax=None,
+    source_index=None,
+    colorbar: bool = False,
+    show: bool = True,
 ):
     """Plot source power in time-freqency grid.
 
@@ -114,15 +114,15 @@ def plot_source_spectrogram(
 
 def plot_bem(
     subject,
-    subjects_dir=...,
-    orientation: str = ...,
-    slices=...,
-    brain_surfaces=...,
-    src=...,
-    show: bool = ...,
-    show_indices: bool = ...,
-    mri: str = ...,
-    show_orientation: bool = ...,
+    subjects_dir=None,
+    orientation: str = "coronal",
+    slices=None,
+    brain_surfaces=None,
+    src=None,
+    show: bool = True,
+    show_indices: bool = True,
+    mri: str = "T1.mgz",
+    show_orientation: bool = True,
 ):
     """Plot BEM contours on anatomical MRI slices.
 
@@ -201,15 +201,15 @@ def plot_bem(
 
 def plot_events(
     events,
-    sfreq=...,
-    first_samp: int = ...,
-    color=...,
-    event_id=...,
-    axes=...,
-    equal_spacing: bool = ...,
-    show: bool = ...,
-    on_missing: str = ...,
-    verbose=...,
+    sfreq=None,
+    first_samp: int = 0,
+    color=None,
+    event_id=None,
+    axes=None,
+    equal_spacing: bool = True,
+    show: bool = True,
+    on_missing: str = "raise",
+    verbose=None,
 ):
     """Plot :term:`events` to get a visual display of the paradigm.
 
@@ -269,7 +269,7 @@ def plot_events(
     .. versionadded:: 0.9.0
     """
 
-def plot_dipole_amplitudes(dipoles, colors=..., show: bool = ...):
+def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
     """Plot the amplitude traces of a set of dipoles.
 
     Parameters
@@ -291,7 +291,7 @@ def plot_dipole_amplitudes(dipoles, colors=..., show: bool = ...):
     .. versionadded:: 0.9.0
     """
 
-def adjust_axes(axes, remove_spines=..., grid: bool = ...) -> None:
+def adjust_axes(axes, remove_spines=("top", "right"), grid: bool = True) -> None:
     """Adjust some properties of axes.
 
     Parameters
@@ -307,19 +307,19 @@ def adjust_axes(axes, remove_spines=..., grid: bool = ...) -> None:
 def plot_filter(
     h,
     sfreq,
-    freq=...,
-    gain=...,
-    title=...,
-    color: str = ...,
-    flim=...,
-    fscale: str = ...,
-    alim=...,
-    show: bool = ...,
-    compensate: bool = ...,
-    plot=...,
-    axes=...,
+    freq=None,
+    gain=None,
+    title=None,
+    color: str = "#1f77b4",
+    flim=None,
+    fscale: str = "log",
+    alim=(-80, 10),
+    show: bool = True,
+    compensate: bool = False,
+    plot=("time", "magnitude", "delay"),
+    axes=None,
     *,
-    dlim=...,
+    dlim=None,
 ):
     """Plot properties of a filter.
 
@@ -397,15 +397,15 @@ def plot_filter(
 def plot_ideal_filter(
     freq,
     gain,
-    axes=...,
-    title: str = ...,
-    flim=...,
-    fscale: str = ...,
-    alim=...,
-    color: str = ...,
-    alpha: float = ...,
-    linestyle: str = ...,
-    show: bool = ...,
+    axes=None,
+    title: str = "",
+    flim=None,
+    fscale: str = "log",
+    alim=(-80, 10),
+    color: str = "r",
+    alpha: float = 0.5,
+    linestyle: str = "--",
+    show: bool = True,
 ):
     """Plot an ideal filter response.
 
@@ -461,12 +461,12 @@ def plot_ideal_filter(
 
 def plot_csd(
     csd,
-    info=...,
-    mode: str = ...,
-    colorbar: bool = ...,
-    cmap=...,
-    n_cols=...,
-    show: bool = ...,
+    info=None,
+    mode: str = "csd",
+    colorbar: bool = True,
+    cmap=None,
+    n_cols=None,
+    show: bool = True,
 ):
     """Plot CSD matrices.
 
@@ -504,7 +504,7 @@ def plot_csd(
         The figures created by this function.
     """
 
-def plot_chpi_snr(snr_dict, axes=...):
+def plot_chpi_snr(snr_dict, axes=None):
     """Plot time-varying SNR estimates of the HPI coils.
 
     Parameters

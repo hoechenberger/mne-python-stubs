@@ -4,14 +4,14 @@ from .utils import plot_sensors as plot_sensors
 
 def plot_montage(
     montage,
-    scale_factor: int = ...,
-    show_names: bool = ...,
-    kind: str = ...,
-    show: bool = ...,
-    sphere=...,
+    scale_factor: int = 20,
+    show_names: bool = True,
+    kind: str = "topomap",
+    show: bool = True,
+    sphere=None,
     *,
-    axes=...,
-    verbose=...,
+    axes=None,
+    verbose=None,
 ):
     """Plot a montage.
 

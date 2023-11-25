@@ -32,20 +32,33 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Covariance(dict):
-    """Pick channels from this covariance matrix.
+    """Noise covariance matrix.
+
+    .. note::
+        This class should not be instantiated directly via
+        ``mne.Covariance(...)``. Instead, use one of the functions
+        listed in the See Also section below.
 
     Parameters
     ----------
-    ch_names : list of str
-        List of channels to keep. All other channels are dropped.
-
-    ordered : bool
-        If True (default False), ensure that the order of the channels in
-        the modified instance matches the order of ``ch_names``.
-
-        .. versionadded:: 0.20.0
-        .. versionchanged:: 1.5
-            The default changed from False in 1.4 to True in 1.5.
+    data : array-like
+        The data.
+    names : list of str
+        Channel names.
+    bads : list of str
+        Bad channels.
+    projs : list
+        Projection vectors.
+    nfree : int
+        Degrees of freedom.
+    eig : array-like | None
+        Eigenvalues.
+    eigvec : array-like | None
+        Eigenvectors.
+    method : str | None
+        The method used to compute the covariance.
+    loglik : float
+        The log likelihood.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
@@ -53,16 +66,23 @@ class Covariance(dict):
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
-    -------
-    cov : instance of Covariance.
-        The modified covariance matrix.
+    Attributes
+    ----------
+    data : array of shape (n_channels, n_channels)
+        The covariance.
+    ch_names : list of str
+        List of channels' names.
+    nfree : int
+        Number of degrees of freedom i.e. number of time points used.
+    dim : int
+        The number of channels ``n_channels``.
 
-    Notes
-    -----
-    Operates in-place.
-
-    .. versionadded:: 0.20.0
+    See Also
+    --------
+    compute_covariance
+    compute_raw_covariance
+    make_ad_hoc_cov
+    read_cov
     """
 
     def __init__(
@@ -72,24 +92,28 @@ class Covariance(dict):
         bads,
         projs,
         nfree,
-        eig=...,
-        eigvec=...,
-        method=...,
-        loglik=...,
+        eig=None,
+        eigvec=None,
+        method=None,
+        loglik=None,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None:
         """Init of covariance."""
+        ...
     @property
     def data(self):
         """Numpy array of Noise covariance matrix."""
+        ...
     @property
     def ch_names(self):
         """Channel names."""
+        ...
     @property
     def nfree(self):
         """Number of degrees of freedom."""
-    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
+        ...
+    def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """Save covariance matrix in a FIF file.
 
         Parameters
@@ -109,6 +133,7 @@ class Covariance(dict):
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
+        ...
     def copy(self):
         """Copy the Covariance object.
 
@@ -117,6 +142,7 @@ class Covariance(dict):
         cov : instance of Covariance
             The copied object.
         """
+        ...
     def as_diag(self):
         """Set covariance to be processed as being diagonal.
 
@@ -132,19 +158,22 @@ class Covariance(dict):
 
         This function operates in place.
         """
+        ...
     def __add__(self, cov):
         """Add Covariance taking into account number of degrees of freedom."""
+        ...
     def __iadd__(self, cov):
         """Add Covariance taking into account number of degrees of freedom."""
+        ...
     def plot(
         self,
         info,
-        exclude=...,
-        colorbar: bool = ...,
-        proj: bool = ...,
-        show_svd: bool = ...,
-        show: bool = ...,
-        verbose=...,
+        exclude=[],
+        colorbar: bool = True,
+        proj: bool = False,
+        show_svd: bool = True,
+        show: bool = True,
+        verbose=None,
     ):
         """Plot Covariance data.
 
@@ -190,35 +219,36 @@ class Covariance(dict):
         .. versionchanged:: 0.19
            Approximate ranks for each channel type are shown with red dashed lines.
         """
+        ...
     def plot_topomap(
         self,
         info,
-        ch_type=...,
+        ch_type=None,
         *,
-        scalings=...,
-        proj: bool = ...,
-        noise_cov=...,
-        sensors: bool = ...,
-        show_names: bool = ...,
-        mask=...,
-        mask_params=...,
-        contours: int = ...,
-        outlines: str = ...,
-        sphere=...,
-        image_interp=...,
-        extrapolate=...,
-        border=...,
-        res: int = ...,
-        size: int = ...,
-        cmap=...,
-        vlim=...,
-        cnorm=...,
-        colorbar: bool = ...,
-        cbar_fmt: str = ...,
-        units=...,
-        axes=...,
-        show: bool = ...,
-        verbose=...,
+        scalings=None,
+        proj: bool = False,
+        noise_cov=None,
+        sensors: bool = True,
+        show_names: bool = False,
+        mask=None,
+        mask_params=None,
+        contours: int = 6,
+        outlines: str = "head",
+        sphere=None,
+        image_interp="cubic",
+        extrapolate="auto",
+        border="mean",
+        res: int = 64,
+        size: int = 1,
+        cmap=None,
+        vlim=(None, None),
+        cnorm=None,
+        colorbar: bool = True,
+        cbar_fmt: str = "%3.1f",
+        units=None,
+        axes=None,
+        show: bool = True,
+        verbose=None,
     ):
         """Plot a topomap of the covariance diagonal.
 
@@ -413,7 +443,8 @@ class Covariance(dict):
         -----
         .. versionadded:: 0.21
         """
-    def pick_channels(self, ch_names, ordered=..., *, verbose=...):
+        ...
+    def pick_channels(self, ch_names, ordered=None, *, verbose=None):
         """Pick channels from this covariance matrix.
 
         Parameters
@@ -446,8 +477,9 @@ class Covariance(dict):
 
         .. versionadded:: 0.20.0
         """
+        ...
 
-def read_cov(fname, verbose=...):
+def read_cov(fname, verbose=None):
     """Read a noise covariance from a FIF file.
 
     Parameters
@@ -472,7 +504,7 @@ def read_cov(fname, verbose=...):
     write_cov, compute_covariance, compute_raw_covariance
     """
 
-def make_ad_hoc_cov(info, std=..., *, verbose=...):
+def make_ad_hoc_cov(info, std=None, *, verbose=None):
     """Create an ad hoc noise covariance.
 
     Parameters
@@ -506,21 +538,21 @@ def make_ad_hoc_cov(info, std=..., *, verbose=...):
 
 def compute_raw_covariance(
     raw,
-    tmin: int = ...,
-    tmax=...,
-    tstep: float = ...,
-    reject=...,
-    flat=...,
-    picks=...,
-    method: str = ...,
-    method_params=...,
-    cv: int = ...,
-    scalings=...,
-    n_jobs=...,
-    return_estimators: bool = ...,
-    reject_by_annotation: bool = ...,
-    rank=...,
-    verbose=...,
+    tmin: int = 0,
+    tmax=None,
+    tstep: float = 0.2,
+    reject=None,
+    flat=None,
+    picks=None,
+    method: str = "empirical",
+    method_params=None,
+    cv: int = 3,
+    scalings=None,
+    n_jobs=None,
+    return_estimators: bool = False,
+    reject_by_annotation: bool = True,
+    rank=None,
+    verbose=None,
 ):
     """Estimate noise covariance matrix from a continuous segment of raw data.
 
@@ -699,19 +731,19 @@ def compute_raw_covariance(
 
 def compute_covariance(
     epochs,
-    keep_sample_mean: bool = ...,
-    tmin=...,
-    tmax=...,
-    projs=...,
-    method: str = ...,
-    method_params=...,
-    cv: int = ...,
-    scalings=...,
-    n_jobs=...,
-    return_estimators: bool = ...,
-    on_mismatch: str = ...,
-    rank=...,
-    verbose=...,
+    keep_sample_mean: bool = True,
+    tmin=None,
+    tmax=None,
+    projs=None,
+    method: str = "empirical",
+    method_params=None,
+    cv: int = 3,
+    scalings=None,
+    n_jobs=None,
+    return_estimators: bool = False,
+    on_mismatch: str = "raise",
+    rank=None,
+    verbose=None,
 ):
     """Estimate noise covariance matrix from epochs.
 
@@ -934,7 +966,7 @@ def compute_covariance(
     """
 
 class _RegCovariance(BaseEstimator):
-    """Delegate call to modified EmpiricalCovariance instance."""
+    """Aux class."""
 
     info: Incomplete
     grad: Incomplete
@@ -956,53 +988,59 @@ class _RegCovariance(BaseEstimator):
     def __init__(
         self,
         info,
-        grad: float = ...,
-        mag: float = ...,
-        eeg: float = ...,
-        seeg: float = ...,
-        ecog: float = ...,
-        hbo: float = ...,
-        hbr: float = ...,
-        fnirs_cw_amplitude: float = ...,
-        fnirs_fd_ac_amplitude: float = ...,
-        fnirs_fd_phase: float = ...,
-        fnirs_od: float = ...,
-        csd: float = ...,
-        dbs: float = ...,
-        store_precision: bool = ...,
-        assume_centered: bool = ...,
+        grad: float = 0.1,
+        mag: float = 0.1,
+        eeg: float = 0.1,
+        seeg: float = 0.1,
+        ecog: float = 0.1,
+        hbo: float = 0.1,
+        hbr: float = 0.1,
+        fnirs_cw_amplitude: float = 0.1,
+        fnirs_fd_ac_amplitude: float = 0.1,
+        fnirs_fd_phase: float = 0.1,
+        fnirs_od: float = 0.1,
+        csd: float = 0.1,
+        dbs: float = 0.1,
+        store_precision: bool = False,
+        assume_centered: bool = False,
     ) -> None: ...
     estimator_: Incomplete
     covariance_: Incomplete
 
     def fit(self, X):
         """Fit covariance model with classical diagonal regularization."""
-    def score(self, X_test, y=...):
+        ...
+    def score(self, X_test, y=None):
         """Delegate call to modified EmpiricalCovariance instance."""
+        ...
     def get_precision(self):
         """Delegate call to modified EmpiricalCovariance instance."""
+        ...
 
 class _ShrunkCovariance(BaseEstimator):
-    """Delegate to modified EmpiricalCovariance instance."""
+    """Aux class."""
 
     store_precision: Incomplete
     assume_centered: Incomplete
     shrinkage: Incomplete
 
     def __init__(
-        self, store_precision, assume_centered, shrinkage: float = ...
+        self, store_precision, assume_centered, shrinkage: float = 0.1
     ) -> None: ...
     estimator_: Incomplete
     zero_cross_cov_: Incomplete
 
     def fit(self, X):
         """Fit covariance model with oracle shrinkage regularization."""
-    def score(self, X_test, y=...):
+        ...
+    def score(self, X_test, y=None):
         """Delegate to modified EmpiricalCovariance instance."""
+        ...
     def get_precision(self):
         """Delegate to modified EmpiricalCovariance instance."""
+        ...
 
-def write_cov(fname, cov, *, overwrite: bool = ..., verbose=...) -> None:
+def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
     """Write a noise covariance matrix.
 
     Parameters
@@ -1033,11 +1071,11 @@ def write_cov(fname, cov, *, overwrite: bool = ..., verbose=...) -> None:
 def prepare_noise_cov(
     noise_cov,
     info,
-    ch_names=...,
-    rank=...,
-    scalings=...,
-    on_rank_mismatch: str = ...,
-    verbose=...,
+    ch_names=None,
+    rank=None,
+    scalings=None,
+    on_rank_mismatch: str = "ignore",
+    verbose=None,
 ):
     """Prepare noise covariance matrix.
 
@@ -1129,24 +1167,24 @@ def prepare_noise_cov(
 def regularize(
     cov,
     info,
-    mag: float = ...,
-    grad: float = ...,
-    eeg: float = ...,
-    exclude: str = ...,
-    proj: bool = ...,
-    seeg: float = ...,
-    ecog: float = ...,
-    hbo: float = ...,
-    hbr: float = ...,
-    fnirs_cw_amplitude: float = ...,
-    fnirs_fd_ac_amplitude: float = ...,
-    fnirs_fd_phase: float = ...,
-    fnirs_od: float = ...,
-    csd: float = ...,
-    dbs: float = ...,
-    rank=...,
-    scalings=...,
-    verbose=...,
+    mag: float = 0.1,
+    grad: float = 0.1,
+    eeg: float = 0.1,
+    exclude: str = "bads",
+    proj: bool = True,
+    seeg: float = 0.1,
+    ecog: float = 0.1,
+    hbo: float = 0.1,
+    hbr: float = 0.1,
+    fnirs_cw_amplitude: float = 0.1,
+    fnirs_fd_ac_amplitude: float = 0.1,
+    fnirs_fd_phase: float = 0.1,
+    fnirs_od: float = 0.1,
+    csd: float = 0.1,
+    dbs: float = 0.1,
+    rank=None,
+    scalings=None,
+    verbose=None,
 ):
     """Regularize noise covariance matrix.
 
@@ -1273,15 +1311,15 @@ def regularize(
 
 def compute_whitener(
     noise_cov,
-    info=...,
-    picks=...,
-    rank=...,
-    scalings=...,
-    return_rank: bool = ...,
-    pca: bool = ...,
-    return_colorer: bool = ...,
-    on_rank_mismatch: str = ...,
-    verbose=...,
+    info=None,
+    picks=None,
+    rank=None,
+    scalings=None,
+    return_rank: bool = False,
+    pca: bool = False,
+    return_colorer: bool = False,
+    on_rank_mismatch: str = "warn",
+    verbose=None,
 ):
     """Compute whitening matrix.
 
@@ -1401,7 +1439,7 @@ def compute_whitener(
     """
 
 def whiten_evoked(
-    evoked, noise_cov, picks=..., diag=..., rank=..., scalings=..., verbose=...
+    evoked, noise_cov, picks=None, diag=None, rank=None, scalings=None, verbose=None
 ):
     """Whiten evoked data using given noise covariance.
 

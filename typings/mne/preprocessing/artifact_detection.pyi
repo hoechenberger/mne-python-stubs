@@ -13,12 +13,12 @@ from ..utils import logger as logger
 
 def annotate_muscle_zscore(
     raw,
-    threshold: int = ...,
-    ch_type=...,
-    min_length_good: float = ...,
-    filter_freq=...,
-    n_jobs=...,
-    verbose=...,
+    threshold: int = 4,
+    ch_type=None,
+    min_length_good: float = 0.1,
+    filter_freq=(110, 140),
+    n_jobs=None,
+    verbose=None,
 ):
     """Create annotations for segments that likely contain muscle artifacts.
 
@@ -79,10 +79,10 @@ def annotate_muscle_zscore(
 def annotate_movement(
     raw,
     pos,
-    rotation_velocity_limit=...,
-    translation_velocity_limit=...,
-    mean_distance_limit=...,
-    use_dev_head_trans: str = ...,
+    rotation_velocity_limit=None,
+    translation_velocity_limit=None,
+    mean_distance_limit=None,
+    use_dev_head_trans: str = "average",
 ):
     """Detect segments with movement.
 
@@ -143,13 +143,13 @@ def compute_average_dev_head_t(raw, pos):
 
 def annotate_break(
     raw,
-    events=...,
-    min_break_duration: float = ...,
-    t_start_after_previous: float = ...,
-    t_stop_before_next: float = ...,
-    ignore=...,
+    events=None,
+    min_break_duration: float = 15.0,
+    t_start_after_previous: float = 5.0,
+    t_stop_before_next: float = 5.0,
+    ignore=("bad", "edge"),
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Create mne.Annotations` for breaks in an ongoing recording.
 

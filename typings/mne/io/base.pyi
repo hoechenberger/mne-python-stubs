@@ -77,23 +77,70 @@ class BaseRaw(
     FilterMixin,
     SpectrumMixin,
 ):
-    """Describe channels (name, type, descriptive statistics).
+    """Base class for Raw data.
 
     Parameters
     ----------
-    data_frame : bool
-        If True, return results in a pandas.DataFrame. If False, only print
-        results. Columns 'ch', 'type', and 'unit' indicate channel index,
-        channel type, and unit of the remaining five columns. These columns
-        are 'min' (minimum), 'Q1' (first quartile or 25% percentile),
-        'median', 'Q3' (third quartile or 75% percentile), and 'max'
-        (maximum).
 
-    Returns
-    -------
-    result : None | pandas.DataFrame
-        If data_frame=False, returns None. If data_frame=True, returns
-        results in a pandas.DataFrame (requires pandas).
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    preload : bool | str | ndarray
+        Preload data into memory for data manipulation and faster indexing.
+        If True, the data will be preloaded into memory (fast, requires
+        large amount of memory). If preload is a string, preload is the
+        file name of a memory-mapped file which is used to store the data
+        on the hard drive (slower, requires less memory). If preload is an
+        ndarray, the data are taken from that array. If False, data are not
+        read until save.
+    first_samps : iterable
+        Iterable of the first sample number from each raw file. For unsplit raw
+        files this should be a length-one list or tuple.
+    last_samps : iterable | None
+        Iterable of the last sample number from each raw file. For unsplit raw
+        files this should be a length-one list or tuple. If None, then preload
+        must be an ndarray.
+    filenames : tuple
+        Tuple of length one (for unsplit raw files) or length > 1 (for split
+        raw files).
+    raw_extras : list of dict
+        The data necessary for on-demand reads for the given reader format.
+        Should be the same length as ``filenames``. Will have the entry
+        ``raw_extras['orig_nchan']`` added to it for convenience.
+    orig_format : str
+        The data format of the original raw file (e.g., ``'double'``).
+    dtype : dtype | None
+        The dtype of the raw data. If preload is an ndarray, its dtype must
+        match what is passed here.
+    buffer_size_sec : float
+        The buffer size in seconds that should be written by default using
+        :meth:`mne.io.Raw.save`.
+    orig_units : dict | None
+        Dictionary mapping channel names to their units as specified in
+        the header file. Example: {'FC1': 'nV'}.
+
+        .. versionadded:: 0.17
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    See Also
+    --------
+    mne.io.Raw : Documentation of attributes and methods.
+
+    Notes
+    -----
+    This class is public to allow for stable type-checking in user
+    code (i.e., ``isinstance(my_raw_object, BaseRaw)``) but should not be used
+    as a constructor for `Raw` objects (use instead one of the subclass
+    constructors, or one of the ``mne.io.read_raw_*`` functions).
+
+    Subclasses must provide the following methods:
+
+        * _read_segment_file(self, data, idx, fi, start, stop, cals, mult)
+          (only needed for types that support on-demand disk reads)
     """
 
     preload: bool
@@ -104,19 +151,19 @@ class BaseRaw(
     def __init__(
         self,
         info,
-        preload: bool = ...,
-        first_samps=...,
-        last_samps=...,
-        filenames=...,
-        raw_extras=...,
-        orig_format: str = ...,
+        preload: bool = False,
+        first_samps=(0,),
+        last_samps=None,
+        filenames=(None,),
+        raw_extras=(None,),
+        orig_format: str = "double",
         dtype=...,
-        buffer_size_sec: float = ...,
-        orig_units=...,
+        buffer_size_sec: float = 1.0,
+        orig_units=None,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
-    def apply_gradient_compensation(self, grade, verbose=...):
+    def apply_gradient_compensation(self, grade, verbose=None):
         """Apply CTF gradient compensation.
 
         .. warning:: The compensation matrices are stored with single
@@ -143,7 +190,8 @@ class BaseRaw(
         raw : instance of Raw
             The modified Raw instance. Works in-place.
         """
-    def load_data(self, verbose=...):
+        ...
+    def load_data(self, verbose=None):
         """Load raw data.
 
         Parameters
@@ -167,19 +215,23 @@ class BaseRaw(
 
         .. versionadded:: 0.10.0
         """
+        ...
     @property
     def first_samp(self):
         """The first data sample.
 
         See :term:`first_samp`.
         """
+        ...
     @property
     def first_time(self):
         """The first time point (including first_samp but not meas_date)."""
+        ...
     @property
     def last_samp(self):
         """The last data sample."""
-    def time_as_index(self, times, use_rounding: bool = ..., origin=...):
+        ...
+    def time_as_index(self, times, use_rounding: bool = False, origin=None):
         """Convert time to indices.
 
         Parameters
@@ -201,19 +253,22 @@ class BaseRaw(
             Indices relative to :term:`first_samp` corresponding to the times
             supplied.
         """
+        ...
     @property
     def annotations(self):
         """:class:mne.Annotations` for marking segments of data."""
+        ...
     @property
     def filenames(self):
         """The filenames used."""
+        ...
     def set_annotations(
         self,
         annotations,
-        emit_warning: bool = ...,
-        on_missing: str = ...,
+        emit_warning: bool = True,
+        on_missing: str = "raise",
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Setter for annotations.
 
@@ -246,9 +301,11 @@ class BaseRaw(
         self : instance of Raw
             The raw object with annotations.
         """
+        ...
     def __del__(self) -> None: ...
     def __enter__(self):
         """Entering with block."""
+        ...
     def __exit__(
         self,
         exception_type: type[BaseException] | None,
@@ -256,6 +313,7 @@ class BaseRaw(
         trace: types.TracebackType | None,
     ):
         """Exit with block."""
+        ...
     def __getitem__(self, item):
         """Get raw data and times.
 
@@ -292,20 +350,22 @@ class BaseRaw(
             >>> data, times = raw[picks, t_idx[0]:t_idx[1]]  # doctest: +SKIP
 
         """
+        ...
     def __setitem__(self, item, value) -> None:
         """Set raw data content."""
+        ...
     def get_data(
         self,
-        picks=...,
-        start: int = ...,
-        stop=...,
-        reject_by_annotation=...,
-        return_times: bool = ...,
-        units=...,
+        picks=None,
+        start: int = 0,
+        stop=None,
+        reject_by_annotation=None,
+        return_times: bool = False,
+        units=None,
         *,
-        tmin=...,
-        tmax=...,
-        verbose=...,
+        tmin=None,
+        tmax=None,
+        verbose=None,
     ):
         """Get data in the given range.
 
@@ -377,14 +437,15 @@ class BaseRaw(
         -----
         .. versionadded:: 0.14.0
         """
+        ...
     def apply_function(
         self,
         fun,
-        picks=...,
-        dtype=...,
-        n_jobs=...,
-        channel_wise: bool = ...,
-        verbose=...,
+        picks=None,
+        dtype=None,
+        n_jobs=None,
+        channel_wise: bool = True,
+        verbose=None,
         **kwargs,
     ):
         """Apply a function to a subset of channels.
@@ -452,23 +513,24 @@ class BaseRaw(
         self : instance of Raw
             The raw object with transformed data.
         """
+        ...
     def filter(
         self,
         l_freq,
         h_freq,
-        picks=...,
-        filter_length: str = ...,
-        l_trans_bandwidth: str = ...,
-        h_trans_bandwidth: str = ...,
-        n_jobs=...,
-        method: str = ...,
-        iir_params=...,
-        phase: str = ...,
-        fir_window: str = ...,
-        fir_design: str = ...,
-        skip_by_annotation=...,
-        pad: str = ...,
-        verbose=...,
+        picks=None,
+        filter_length: str = "auto",
+        l_trans_bandwidth: str = "auto",
+        h_trans_bandwidth: str = "auto",
+        n_jobs=None,
+        method: str = "fir",
+        iir_params=None,
+        phase: str = "zero",
+        fir_window: str = "hamming",
+        fir_design: str = "firwin",
+        skip_by_annotation=("edge", "bad_acq_skip"),
+        pad: str = "reflect_limited",
+        verbose=None,
     ):
         """Filter a subset of channels.
 
@@ -641,24 +703,25 @@ class BaseRaw(
 
         .. versionadded:: 0.15
         """
+        ...
     def notch_filter(
         self,
         freqs,
-        picks=...,
-        filter_length: str = ...,
-        notch_widths=...,
-        trans_bandwidth: float = ...,
-        n_jobs=...,
-        method: str = ...,
-        iir_params=...,
-        mt_bandwidth=...,
-        p_value: float = ...,
-        phase: str = ...,
-        fir_window: str = ...,
-        fir_design: str = ...,
-        pad: str = ...,
-        skip_by_annotation=...,
-        verbose=...,
+        picks=None,
+        filter_length: str = "auto",
+        notch_widths=None,
+        trans_bandwidth: float = 1.0,
+        n_jobs=None,
+        method: str = "fir",
+        iir_params=None,
+        mt_bandwidth=None,
+        p_value: float = 0.05,
+        phase: str = "zero",
+        fir_window: str = "hamming",
+        fir_design: str = "firwin",
+        pad: str = "reflect_limited",
+        skip_by_annotation=("edge", "bad_acq_skip"),
+        verbose=None,
     ):
         """Notch filter a subset of channels.
 
@@ -813,16 +876,17 @@ class BaseRaw(
 
         For details, see :func:`mne.filter.notch_filter`.
         """
+        ...
     def resample(
         self,
         sfreq,
-        npad: str = ...,
-        window: str = ...,
-        stim_picks=...,
-        n_jobs=...,
-        events=...,
-        pad: str = ...,
-        verbose=...,
+        npad: str = "auto",
+        window: str = "boxcar",
+        stim_picks=None,
+        n_jobs=None,
+        events=None,
+        pad: str = "reflect_limited",
+        verbose=None,
     ):
         """Resample all channels.
 
@@ -911,8 +975,9 @@ class BaseRaw(
         ``self.load_data()``, but this increases memory requirements. The
         resulting raw object will have the data loaded into memory.
         """
+        ...
     def crop(
-        self, tmin: float = ..., tmax=..., include_tmax: bool = ..., *, verbose=...
+        self, tmin: float = 0.0, tmax=None, include_tmax: bool = True, *, verbose=None
     ):
         """Crop raw data file.
 
@@ -951,7 +1016,8 @@ class BaseRaw(
         raw : instance of Raw
             The cropped raw object, modified in-place.
         """
-    def crop_by_annotations(self, annotations=..., *, verbose=...):
+        ...
+    def crop_by_annotations(self, annotations=None, *, verbose=None):
         """Get crops of raw data file for selected annotations.
 
         Parameters
@@ -971,20 +1037,21 @@ class BaseRaw(
         raws : list
             The cropped raw objects.
         """
+        ...
     def save(
         self,
         fname,
-        picks=...,
-        tmin: int = ...,
-        tmax=...,
-        buffer_size_sec=...,
-        drop_small_buffer: bool = ...,
-        proj: bool = ...,
-        fmt: str = ...,
-        overwrite: bool = ...,
-        split_size: str = ...,
-        split_naming: str = ...,
-        verbose=...,
+        picks=None,
+        tmin: int = 0,
+        tmax=None,
+        buffer_size_sec=None,
+        drop_small_buffer: bool = False,
+        proj: bool = False,
+        fmt: str = "single",
+        overwrite: bool = False,
+        split_size: str = "2GB",
+        split_naming: str = "neuromag",
+        verbose=None,
     ) -> None:
         """Save raw data to file.
 
@@ -1076,15 +1143,16 @@ class BaseRaw(
         Samples annotated ``BAD_ACQ_SKIP`` are not stored in order to optimize
         memory. Whatever values, they will be loaded as 0s when reading file.
         """
+        ...
     def export(
         self,
         fname,
-        fmt: str = ...,
-        physical_range: str = ...,
-        add_ch_type: bool = ...,
+        fmt: str = "auto",
+        physical_range: str = "auto",
+        add_ch_type: bool = False,
         *,
-        overwrite: bool = ...,
-        verbose=...,
+        overwrite: bool = False,
+        verbose=None,
     ) -> None:
         """Export Raw to external formats.
 
@@ -1163,44 +1231,45 @@ class BaseRaw(
         to store the montage separately and call :attr:`raw.set_montage()
         <mne.io.Raw.set_montage>`.
         """
+        ...
     def plot(
         self,
-        events=...,
-        duration: float = ...,
-        start: float = ...,
-        n_channels: int = ...,
-        bgcolor: str = ...,
-        color=...,
-        bad_color: str = ...,
-        event_color: str = ...,
-        scalings=...,
-        remove_dc: bool = ...,
-        order=...,
-        show_options: bool = ...,
-        title=...,
-        show: bool = ...,
-        block: bool = ...,
-        highpass=...,
-        lowpass=...,
-        filtorder: int = ...,
-        clipping=...,
-        show_first_samp: bool = ...,
-        proj: bool = ...,
-        group_by: str = ...,
-        butterfly: bool = ...,
-        decim: str = ...,
-        noise_cov=...,
-        event_id=...,
-        show_scrollbars: bool = ...,
-        show_scalebars: bool = ...,
-        time_format: str = ...,
-        precompute=...,
-        use_opengl=...,
+        events=None,
+        duration: float = 10.0,
+        start: float = 0.0,
+        n_channels: int = 20,
+        bgcolor: str = "w",
+        color=None,
+        bad_color: str = "lightgray",
+        event_color: str = "cyan",
+        scalings=None,
+        remove_dc: bool = True,
+        order=None,
+        show_options: bool = False,
+        title=None,
+        show: bool = True,
+        block: bool = False,
+        highpass=None,
+        lowpass=None,
+        filtorder: int = 4,
+        clipping=1.5,
+        show_first_samp: bool = False,
+        proj: bool = True,
+        group_by: str = "type",
+        butterfly: bool = False,
+        decim: str = "auto",
+        noise_cov=None,
+        event_id=None,
+        show_scrollbars: bool = True,
+        show_scalebars: bool = True,
+        time_format: str = "float",
+        precompute=None,
+        use_opengl=None,
         *,
-        theme=...,
-        overview_mode=...,
-        splash: bool = ...,
-        verbose=...,
+        theme=None,
+        overview_mode=None,
+        splash: bool = True,
+        verbose=None,
     ):
         """Plot raw data.
 
@@ -1477,15 +1546,19 @@ class BaseRaw(
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
         """
+        ...
     @property
     def ch_names(self):
         """Channel names."""
+        ...
     @property
     def times(self):
         """Time points."""
+        ...
     @property
     def n_times(self):
         """Number of time points."""
+        ...
     def __len__(self) -> int:
         """Return the number of time points.
 
@@ -1501,7 +1574,10 @@ class BaseRaw(
             >>> len(raw)  # doctest: +SKIP
             1000
         """
-    def load_bad_channels(self, bad_file=..., force: bool = ..., verbose=...) -> None:
+        ...
+    def load_bad_channels(
+        self, bad_file=None, force: bool = False, verbose=None
+    ) -> None:
         """Mark channels as bad from a text file.
 
         This function operates mostly in the style of the C function
@@ -1525,7 +1601,8 @@ class BaseRaw(
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-    def append(self, raws, preload=...) -> None:
+        ...
+    def append(self, raws, preload=None) -> None:
         """Concatenate raw instances as if they were continuous.
 
         .. note:: Boundaries of the raw files are annotated bad. If you wish to
@@ -1548,12 +1625,14 @@ class BaseRaw(
             None, preload=True or False is inferred using the preload status
             of the instances passed in.
         """
+        ...
     def close(self) -> None:
         """Clean up the object.
 
         Does nothing for objects that close their file descriptors.
         Things like Raw will override this method.
         """
+        ...
     def copy(self):
         """Return copy of Raw instance.
 
@@ -1562,7 +1641,8 @@ class BaseRaw(
         inst : instance of Raw
             A copy of the instance.
         """
-    def add_events(self, events, stim_channel=..., replace: bool = ...) -> None:
+        ...
+    def add_events(self, events, stim_channel=None, replace: bool = False) -> None:
         """Add events to stim channel.
 
         Parameters
@@ -1585,21 +1665,22 @@ class BaseRaw(
         -----
         Data must be preloaded in order to add events.
         """
+        ...
     def compute_psd(
         self,
-        method: str = ...,
-        fmin: int = ...,
+        method: str = "welch",
+        fmin: int = 0,
         fmax=...,
-        tmin=...,
-        tmax=...,
-        picks=...,
-        exclude=...,
-        proj: bool = ...,
-        remove_dc: bool = ...,
-        reject_by_annotation: bool = ...,
+        tmin=None,
+        tmax=None,
+        picks=None,
+        exclude=(),
+        proj: bool = False,
+        remove_dc: bool = True,
+        reject_by_annotation: bool = True,
         *,
-        n_jobs: int = ...,
-        verbose=...,
+        n_jobs: int = 1,
+        verbose=None,
         **method_kw,
     ):
         """Perform spectral analysis on sensor data.
@@ -1676,18 +1757,19 @@ class BaseRaw(
         ----------
         .. footbibliography::
         """
+        ...
     def to_data_frame(
         self,
-        picks=...,
-        index=...,
-        scalings=...,
-        copy: bool = ...,
-        start=...,
-        stop=...,
-        long_format: bool = ...,
-        time_format=...,
+        picks=None,
+        index=None,
+        scalings=None,
+        copy: bool = True,
+        start=None,
+        stop=None,
+        long_format: bool = False,
+        time_format=None,
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Export data in tabular structure as a pandas DataFrame.
 
@@ -1757,7 +1839,8 @@ class BaseRaw(
             A dataframe suitable for usage with other statistical/plotting/analysis
             packages.
         """
-    def describe(self, data_frame: bool = ...):
+        ...
+    def describe(self, data_frame: bool = False):
         """Describe channels (name, type, descriptive statistics).
 
         Parameters
@@ -1776,6 +1859,7 @@ class BaseRaw(
             If data_frame=False, returns None. If data_frame=True, returns
             results in a pandas.DataFrame (requires pandas).
         """
+        ...
 
 class _ReadSegmentFileProtector:
     """Ensure only _filenames, _raw_extras, and _read_segment_file are used."""
@@ -1835,7 +1919,7 @@ class _RawFidWriter:
     def write(self, fid, part_idx, prev_fname, next_fname): ...
 
 def concatenate_raws(
-    raws, preload=..., events_list=..., *, on_mismatch: str = ..., verbose=...
+    raws, preload=None, events_list=None, *, on_mismatch: str = "raise", verbose=None
 ):
     """Concatenate mne.io.Raw` instances as if they were continuous.
 
@@ -1882,7 +1966,7 @@ def concatenate_raws(
         The events. Only returned if ``event_list`` is not None.
     """
 
-def match_channel_orders(raws, copy: bool = ...):
+def match_channel_orders(raws, copy: bool = True):
     """Ensure consistent channel order across raws.
 
     Parameters

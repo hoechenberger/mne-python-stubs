@@ -1,7 +1,9 @@
 from ..parallel import parallel_func as parallel_func
 from ..utils import logger as logger, warn as warn
 
-def dpss_windows(N, half_nbw, Kmax, *, sym: bool = ..., norm=..., low_bias: bool = ...):
+def dpss_windows(
+    N, half_nbw, Kmax, *, sym: bool = True, norm=None, low_bias: bool = True
+):
     """Compute Discrete Prolate Spheroidal Sequences.
 
     Will give of orders [0,Kmax-1] for a given frequency-spacing multiple
@@ -54,18 +56,18 @@ def dpss_windows(N, half_nbw, Kmax, *, sym: bool = ..., norm=..., low_bias: bool
 def psd_array_multitaper(
     x,
     sfreq,
-    fmin: float = ...,
+    fmin: float = 0.0,
     fmax=...,
-    bandwidth=...,
-    adaptive: bool = ...,
-    low_bias: bool = ...,
-    normalization: str = ...,
-    remove_dc: bool = ...,
-    output: str = ...,
-    n_jobs=...,
+    bandwidth=None,
+    adaptive: bool = False,
+    low_bias: bool = True,
+    normalization: str = "length",
+    remove_dc: bool = True,
+    output: str = "power",
+    n_jobs=None,
     *,
-    max_iter: int = ...,
-    verbose=...,
+    max_iter: int = 150,
+    verbose=None,
 ):
     """Compute power spectral density (PSD) using a multi-taper method.
 
@@ -156,15 +158,15 @@ def tfr_array_multitaper(
     epoch_data,
     sfreq,
     freqs,
-    n_cycles: float = ...,
-    zero_mean: bool = ...,
-    time_bandwidth: float = ...,
-    use_fft: bool = ...,
-    decim: int = ...,
-    output: str = ...,
-    n_jobs=...,
+    n_cycles: float = 7.0,
+    zero_mean: bool = True,
+    time_bandwidth: float = 4.0,
+    use_fft: bool = True,
+    decim: int = 1,
+    output: str = "complex",
+    n_jobs=None,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 

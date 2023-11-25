@@ -1,7 +1,7 @@
 from ..io import BaseRaw as BaseRaw
 from ..utils import logger as logger, warn as warn
 
-def realign_raw(raw, other, t_raw, t_other, verbose=...) -> None:
+def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
     """Realign two simultaneous recordings.
 
     Due to clock drift, recordings at a given same sample rate made by two

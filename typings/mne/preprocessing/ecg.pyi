@@ -14,14 +14,14 @@ from ..utils import (
 def qrs_detector(
     sfreq,
     ecg,
-    thresh_value: float = ...,
-    levels: float = ...,
-    n_thresh: int = ...,
-    l_freq: int = ...,
-    h_freq: int = ...,
-    tstart: int = ...,
-    filter_length: str = ...,
-    verbose=...,
+    thresh_value: float = 0.6,
+    levels: float = 2.5,
+    n_thresh: int = 3,
+    l_freq: int = 5,
+    h_freq: int = 35,
+    tstart: int = 0,
+    filter_length: str = "10s",
+    verbose=None,
 ):
     """Detect QRS component in ECG channels.
 
@@ -66,16 +66,16 @@ def qrs_detector(
 
 def find_ecg_events(
     raw,
-    event_id: int = ...,
-    ch_name=...,
-    tstart: float = ...,
-    l_freq: int = ...,
-    h_freq: int = ...,
-    qrs_threshold: str = ...,
-    filter_length: str = ...,
-    return_ecg: bool = ...,
-    reject_by_annotation: bool = ...,
-    verbose=...,
+    event_id: int = 999,
+    ch_name=None,
+    tstart: float = 0.0,
+    l_freq: int = 5,
+    h_freq: int = 35,
+    qrs_threshold: str = "auto",
+    filter_length: str = "10s",
+    return_ecg: bool = False,
+    reject_by_annotation: bool = True,
+    verbose=None,
 ):
     """Find ECG events by localizing the R wave peaks.
 
@@ -148,21 +148,21 @@ def find_ecg_events(
 
 def create_ecg_epochs(
     raw,
-    ch_name=...,
-    event_id: int = ...,
-    picks=...,
-    tmin: float = ...,
-    tmax: float = ...,
-    l_freq: int = ...,
-    h_freq: int = ...,
-    reject=...,
-    flat=...,
-    baseline=...,
-    preload: bool = ...,
-    keep_ecg: bool = ...,
-    reject_by_annotation: bool = ...,
-    decim: int = ...,
-    verbose=...,
+    ch_name=None,
+    event_id: int = 999,
+    picks=None,
+    tmin: float = -0.5,
+    tmax: float = 0.5,
+    l_freq: int = 8,
+    h_freq: int = 16,
+    reject=None,
+    flat=None,
+    baseline=None,
+    preload: bool = True,
+    keep_ecg: bool = False,
+    reject_by_annotation: bool = True,
+    decim: int = 1,
+    verbose=None,
 ):
     """Conveniently generate epochs around ECG artifact events.
 

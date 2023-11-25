@@ -1,7 +1,7 @@
 from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 from .constants import FIFF as FIFF
 
-def get_channel_type_constants(include_defaults: bool = ...):
+def get_channel_type_constants(include_defaults: bool = False):
     """Return all known channel types, and associated FIFF constants.
 
     Parameters
@@ -49,7 +49,7 @@ def channel_type(info, idx):
               'temperature', 'gsr', 'eyetrack'}
     """
 
-def pick_channels(ch_names, include, exclude=..., ordered=..., *, verbose=...):
+def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     """Pick channels by names.
 
     Returns the indices of ``ch_names`` in ``include`` but not in ``exclude``.
@@ -125,34 +125,34 @@ def pick_channels_regexp(ch_names, regexp):
 
 def pick_types(
     info,
-    meg: bool = ...,
-    eeg: bool = ...,
-    stim: bool = ...,
-    eog: bool = ...,
-    ecg: bool = ...,
-    emg: bool = ...,
-    ref_meg: str = ...,
+    meg: bool = False,
+    eeg: bool = False,
+    stim: bool = False,
+    eog: bool = False,
+    ecg: bool = False,
+    emg: bool = False,
+    ref_meg: str = "auto",
     *,
-    misc: bool = ...,
-    resp: bool = ...,
-    chpi: bool = ...,
-    exci: bool = ...,
-    ias: bool = ...,
-    syst: bool = ...,
-    seeg: bool = ...,
-    dipole: bool = ...,
-    gof: bool = ...,
-    bio: bool = ...,
-    ecog: bool = ...,
-    fnirs: bool = ...,
-    csd: bool = ...,
-    dbs: bool = ...,
-    temperature: bool = ...,
-    gsr: bool = ...,
-    eyetrack: bool = ...,
-    include=...,
-    exclude: str = ...,
-    selection=...,
+    misc: bool = False,
+    resp: bool = False,
+    chpi: bool = False,
+    exci: bool = False,
+    ias: bool = False,
+    syst: bool = False,
+    seeg: bool = False,
+    dipole: bool = False,
+    gof: bool = False,
+    bio: bool = False,
+    ecog: bool = False,
+    fnirs: bool = False,
+    csd: bool = False,
+    dbs: bool = False,
+    temperature: bool = False,
+    gsr: bool = False,
+    eyetrack: bool = False,
+    include=(),
+    exclude: str = "bads",
+    selection=None,
 ):
     """Pick channels by type and names.
 
@@ -236,7 +236,7 @@ def pick_types(
         Indices of good channels.
     """
 
-def pick_info(info, sel=..., copy: bool = ..., verbose=...):
+def pick_info(info, sel=(), copy: bool = True, verbose=None):
     """Restrict an info structure to a selection of channels.
 
     Parameters
@@ -263,7 +263,7 @@ def pick_info(info, sel=..., copy: bool = ..., verbose=...):
     """
 
 def pick_channels_forward(
-    orig, include=..., exclude=..., ordered=..., copy: bool = ..., *, verbose=...
+    orig, include=[], exclude=[], ordered=None, copy: bool = True, *, verbose=None
 ):
     """Pick channels from forward operator.
 
@@ -305,14 +305,14 @@ def pick_channels_forward(
 
 def pick_types_forward(
     orig,
-    meg: bool = ...,
-    eeg: bool = ...,
-    ref_meg: bool = ...,
-    seeg: bool = ...,
-    ecog: bool = ...,
-    dbs: bool = ...,
-    include=...,
-    exclude=...,
+    meg: bool = False,
+    eeg: bool = False,
+    ref_meg: bool = True,
+    seeg: bool = False,
+    ecog: bool = False,
+    dbs: bool = False,
+    include=[],
+    exclude=[],
 ):
     """Pick by channel type and names from a forward operator.
 
@@ -346,7 +346,7 @@ def pick_types_forward(
         Forward solution restricted to selected channel types.
     """
 
-def channel_indices_by_type(info, picks=...):
+def channel_indices_by_type(info, picks=None):
     """Get indices of channels by type.
 
     Parameters
@@ -372,7 +372,13 @@ def channel_indices_by_type(info, picks=...):
     """
 
 def pick_channels_cov(
-    orig, include=..., exclude: str = ..., ordered=..., copy: bool = ..., *, verbose=...
+    orig,
+    include=[],
+    exclude: str = "bads",
+    ordered=None,
+    copy: bool = True,
+    *,
+    verbose=None,
 ):
     """Pick channels from covariance matrix.
 

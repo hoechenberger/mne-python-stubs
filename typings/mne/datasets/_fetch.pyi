@@ -7,16 +7,16 @@ from .config import (
 
 def fetch_dataset(
     dataset_params,
-    processor=...,
-    path=...,
-    force_update: bool = ...,
-    update_path: bool = ...,
-    download: bool = ...,
-    check_version: bool = ...,
-    return_version: bool = ...,
-    accept: bool = ...,
-    auth=...,
-    token=...,
+    processor=None,
+    path=None,
+    force_update: bool = False,
+    update_path: bool = True,
+    download: bool = True,
+    check_version: bool = False,
+    return_version: bool = False,
+    accept: bool = False,
+    auth=None,
+    token=None,
 ):
     """Fetch an MNE-compatible dataset using pooch.
 

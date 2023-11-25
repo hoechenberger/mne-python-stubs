@@ -93,7 +93,149 @@ mne_logo_path: Incomplete
 mne_logo: Incomplete
 
 class Report:
-    """Save the report when leaving the context block."""
+    """Object for rendering HTML.
+
+    Parameters
+    ----------
+    info_fname : None | str
+        Name of the file containing the info dictionary.
+
+    subjects_dir : path-like | None
+        The path to the directory containing the FreeSurfer subjects
+        reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
+        variable.
+    subject : str | None
+        Subject name.
+    title : str
+        Title of the report.
+    cov_fname : None | str
+        Name of the file containing the noise covariance.
+
+    baseline : None | tuple of length 2
+        The time interval to consider as "baseline" when applying baseline
+        correction. If ``None``, do not apply baseline correction.
+        If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
+        (in seconds), including the endpoints.
+        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
+        is ``None``, it is set to the **end** of the interval.
+        If ``(None, None)``, the entire time interval is used.
+
+        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+                    timepoints ``t`` such that ``a <= t <= b``.
+
+        Correction is applied in the following way **to each channel:**
+
+        1. Calculate the mean signal of the baseline period.
+        2. Subtract this mean from the **entire** time period.
+
+        For mne.Epochs`, this algorithm is run **on each epoch individually.**
+        Defaults to ``None``, i.e. no baseline correction.
+    image_format : 'png' | 'svg' | 'webp' | 'auto'
+        Default image format to use (default is ``'auto'``, which will use
+        ``'webp'`` if available and ``'png'`` otherwise).
+        ``'svg'`` uses vector graphics, so fidelity is higher but can increase
+        file size and browser image rendering time as well.
+        ``'webp'`` format requires matplotlib >= 3.6.
+
+        .. versionadded:: 0.15
+        .. versionchanged:: 1.3
+           Added support for ``'webp'`` format, removed support for GIF, and
+           set the default to ``'auto'``.
+    raw_psd : bool | dict
+        If True, include PSD plots for raw files. Can be False (default) to
+        omit, True to plot, or a dict to pass as ``kwargs`` to
+        :meth:`mne.time_frequency.Spectrum.plot`.
+
+        .. versionadded:: 0.17
+        .. versionchanged:: 1.4
+           kwargs are sent to ``spectrum.plot`` instead of ``raw.plot_psd``.
+    projs : bool
+        Whether to include topographic plots of SSP projectors, if present in
+        the data. Defaults to ``False``.
+
+        .. versionadded:: 0.21
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Attributes
+    ----------
+    info_fname : None | str
+        Name of the file containing the info dictionary.
+
+    subjects_dir : path-like | None
+        The path to the directory containing the FreeSurfer subjects
+        reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
+        variable.
+    subject : str | None
+        Subject name.
+    title : str
+        Title of the report.
+    cov_fname : None | str
+        Name of the file containing the noise covariance.
+
+    baseline : None | tuple of length 2
+        The time interval to consider as "baseline" when applying baseline
+        correction. If ``None``, do not apply baseline correction.
+        If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
+        (in seconds), including the endpoints.
+        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
+        is ``None``, it is set to the **end** of the interval.
+        If ``(None, None)``, the entire time interval is used.
+
+        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+                    timepoints ``t`` such that ``a <= t <= b``.
+
+        Correction is applied in the following way **to each channel:**
+
+        1. Calculate the mean signal of the baseline period.
+        2. Subtract this mean from the **entire** time period.
+
+        For mne.Epochs`, this algorithm is run **on each epoch individually.**
+        Defaults to ``None``, i.e. no baseline correction.
+    image_format : str
+        Default image format to use.
+
+        .. versionadded:: 0.15
+    raw_psd : bool | dict
+        If True, include PSD plots for raw files. Can be False (default) to
+        omit, True to plot, or a dict to pass as ``kwargs`` to
+        :meth:`mne.time_frequency.Spectrum.plot`.
+
+        .. versionadded:: 0.17
+        .. versionchanged:: 1.4
+           kwargs are sent to ``spectrum.plot`` instead of ``raw.plot_psd``.
+    projs : bool
+        Whether to include topographic plots of SSP projectors, if present in
+        the data. Defaults to ``False``.
+
+        .. versionadded:: 0.21
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+    html : list of str
+        Contains items of html-page.
+    include : list of str
+        Dictionary containing elements included in head.
+    fnames : list of str
+        List of file names rendered.
+    sections : list of str
+        List of sections.
+    lang : str
+        language setting for the HTML file.
+
+    Notes
+    -----
+    See :ref:`tut-report` for an introduction to using ``mne.Report``.
+
+    .. versionadded:: 0.8.0
+    """
 
     info_fname: Incomplete
     cov_fname: Incomplete
@@ -111,17 +253,17 @@ class Report:
 
     def __init__(
         self,
-        info_fname=...,
-        subjects_dir=...,
-        subject=...,
-        title=...,
-        cov_fname=...,
-        baseline=...,
-        image_format: str = ...,
-        raw_psd: bool = ...,
-        projs: bool = ...,
+        info_fname=None,
+        subjects_dir=None,
+        subject=None,
+        title=None,
+        cov_fname=None,
+        baseline=None,
+        image_format: str = "auto",
+        raw_psd: bool = False,
+        projs: bool = False,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
     def __len__(self) -> int:
         """Return the number of files processed by the report.
@@ -131,12 +273,15 @@ class Report:
         n_files : int
             The number of files processed.
         """
+        ...
     @property
     def html(self):
         """A list of HTML representations for all content elements."""
+        ...
     @property
     def tags(self):
         """All tags currently used in the report."""
+        ...
     def add_custom_css(self, css) -> None:
         """Add custom CSS to the report.
 
@@ -150,6 +295,7 @@ class Report:
         -----
         .. versionadded:: 0.23
         """
+        ...
     def add_custom_js(self, js) -> None:
         """Add custom JavaScript to the report.
 
@@ -163,17 +309,18 @@ class Report:
         -----
         .. versionadded:: 0.23
         """
+        ...
     def add_epochs(
         self,
         epochs,
         title,
         *,
-        psd: bool = ...,
-        projs=...,
-        topomap_kwargs=...,
-        drop_log_ignore=...,
-        tags=...,
-        replace: bool = ...,
+        psd: bool = True,
+        projs=None,
+        topomap_kwargs=None,
+        drop_log_ignore=("IGNORED",),
+        tags=("epochs",),
+        replace: bool = False,
     ) -> None:
         """Add mne.Epochs` to the report.
 
@@ -222,18 +369,19 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_evokeds(
         self,
         evokeds,
         *,
-        titles=...,
-        noise_cov=...,
-        projs=...,
-        n_time_points=...,
-        tags=...,
-        replace: bool = ...,
-        topomap_kwargs=...,
-        n_jobs=...,
+        titles=None,
+        noise_cov=None,
+        projs=None,
+        n_time_points=None,
+        tags=("evoked",),
+        replace: bool = False,
+        topomap_kwargs=None,
+        n_jobs=None,
     ) -> None:
         """Add mne.Evoked` objects to the report.
 
@@ -283,18 +431,19 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_raw(
         self,
         raw,
         title,
         *,
-        psd=...,
-        projs=...,
-        butterfly: bool = ...,
-        scalings=...,
-        tags=...,
-        replace: bool = ...,
-        topomap_kwargs=...,
+        psd=None,
+        projs=None,
+        butterfly: bool = True,
+        scalings=None,
+        tags=("raw",),
+        replace: bool = False,
+        topomap_kwargs=None,
     ) -> None:
         """Add mne.io.Raw` objects to the report.
 
@@ -355,17 +504,18 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_stc(
         self,
         stc,
         title,
         *,
-        subject=...,
-        subjects_dir=...,
-        n_time_points=...,
-        tags=...,
-        replace: bool = ...,
-        stc_plot_kwargs=...,
+        subject=None,
+        subjects_dir=None,
+        n_time_points=None,
+        tags=("source-estimate",),
+        replace: bool = False,
+        stc_plot_kwargs=None,
     ) -> None:
         """Add a mne.SourceEstimate` (STC) to the report.
 
@@ -405,15 +555,16 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_forward(
         self,
         forward,
         title,
         *,
-        subject=...,
-        subjects_dir=...,
-        tags=...,
-        replace: bool = ...,
+        subject=None,
+        subjects_dir=None,
+        tags=("forward-solution",),
+        replace: bool = False,
     ) -> None:
         """Add a forward solution.
 
@@ -444,16 +595,17 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_inverse_operator(
         self,
         inverse_operator,
         title,
         *,
-        subject=...,
-        subjects_dir=...,
-        trans=...,
-        tags=...,
-        replace: bool = ...,
+        subject=None,
+        subjects_dir=None,
+        trans=None,
+        tags=("inverse-operator",),
+        replace: bool = False,
     ) -> None:
         """Add an inverse operator.
 
@@ -487,17 +639,18 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_trans(
         self,
         trans,
         *,
         info,
         title,
-        subject=...,
-        subjects_dir=...,
-        alpha=...,
-        tags=...,
-        replace: bool = ...,
+        subject=None,
+        subjects_dir=None,
+        alpha=None,
+        tags=("coregistration",),
+        replace: bool = False,
     ) -> None:
         """Add a coregistration visualization to the report.
 
@@ -534,8 +687,9 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_covariance(
-        self, cov, *, info, title, tags=..., replace: bool = ...
+        self, cov, *, info, title, tags=("covariance",), replace: bool = False
     ) -> None:
         """Add covariance to the report.
 
@@ -561,16 +715,17 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_events(
         self,
         events,
         title,
         *,
-        event_id=...,
+        event_id=None,
         sfreq,
-        first_samp: int = ...,
-        tags=...,
-        replace: bool = ...,
+        first_samp: int = 0,
+        tags=("events",),
+        replace: bool = False,
     ) -> None:
         """Add events to the report.
 
@@ -601,15 +756,16 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_projs(
         self,
         *,
         info,
-        projs=...,
+        projs=None,
         title,
-        topomap_kwargs=...,
-        tags=...,
-        replace: bool = ...,
+        topomap_kwargs=None,
+        tags=("ssp",),
+        replace: bool = False,
     ) -> None:
         """Render (SSP) projection vectors.
 
@@ -641,20 +797,21 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_ica(
         self,
         ica,
         title,
         *,
         inst,
-        picks=...,
-        ecg_evoked=...,
-        eog_evoked=...,
-        ecg_scores=...,
-        eog_scores=...,
-        n_jobs=...,
-        tags=...,
-        replace: bool = ...,
+        picks=None,
+        ecg_evoked=None,
+        eog_evoked=None,
+        ecg_scores=None,
+        eog_scores=None,
+        n_jobs=None,
+        tags=("ica",),
+        replace: bool = False,
     ) -> None:
         """Add (a fitted) mne.preprocessing.ICA` to the report.
 
@@ -706,7 +863,8 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
-    def remove(self, *, title=..., tags=..., remove_all: bool = ...):
+        ...
+    def remove(self, *, title=None, tags=None, remove_all: bool = False):
         """Remove elements from the report.
 
         The element to remove is searched for by its title. Optionally, tags
@@ -742,8 +900,15 @@ class Report:
             .. versionchanged:: 0.24.0
                Returns tuple if ``remove_all`` is ``True``.
         """
+        ...
     def add_code(
-        self, code, title, *, language: str = ..., tags=..., replace: bool = ...
+        self,
+        code,
+        title,
+        *,
+        language: str = "python",
+        tags=("code",),
+        replace: bool = False,
     ) -> None:
         """Add a code snippet (e.g., an analysis script) to the report.
 
@@ -774,7 +939,10 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
-    def add_sys_info(self, title, *, tags=..., replace: bool = ...) -> None:
+        ...
+    def add_sys_info(
+        self, title, *, tags=("mne-sysinfo",), replace: bool = False
+    ) -> None:
         """Add a MNE-Python system information to the report.
 
         This is a convenience method that captures the output of
@@ -798,16 +966,17 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_figure(
         self,
         fig,
         title,
         *,
-        caption=...,
-        image_format=...,
-        tags=...,
-        section=...,
-        replace: bool = ...,
+        caption=None,
+        image_format=None,
+        tags=("custom-figure",),
+        section=None,
+        replace: bool = False,
     ) -> None:
         """Add figures to the report.
 
@@ -853,8 +1022,16 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_image(
-        self, image, title, *, caption=..., tags=..., section=..., replace: bool = ...
+        self,
+        image,
+        title,
+        *,
+        caption=None,
+        tags=("custom-image",),
+        section=None,
+        replace: bool = False,
     ) -> None:
         """Add an image (e.g., PNG or JPEG pictures) to the report.
 
@@ -890,8 +1067,9 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_html(
-        self, html, title, *, tags=..., section=..., replace: bool = ...
+        self, html, title, *, tags=("custom-html",), section=None, replace: bool = False
     ) -> None:
         """Add HTML content to the report.
 
@@ -927,17 +1105,18 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def add_bem(
         self,
         subject,
         title,
         *,
-        subjects_dir=...,
-        decim: int = ...,
-        width: int = ...,
-        n_jobs=...,
-        tags=...,
-        replace: bool = ...,
+        subjects_dir=None,
+        decim: int = 2,
+        width: int = 512,
+        n_jobs=None,
+        tags=("bem",),
+        replace: bool = False,
     ) -> None:
         """Render a visualization of the boundary element model (BEM) surfaces.
 
@@ -981,23 +1160,24 @@ class Report:
         -----
         .. versionadded:: 0.24.0
         """
+        ...
     def parse_folder(
         self,
         data_path,
-        pattern=...,
-        n_jobs=...,
-        mri_decim: int = ...,
-        sort_content: bool = ...,
+        pattern=None,
+        n_jobs=None,
+        mri_decim: int = 2,
+        sort_content: bool = True,
         *,
-        on_error: str = ...,
-        image_format=...,
-        render_bem: bool = ...,
-        n_time_points_evokeds=...,
-        n_time_points_stcs=...,
-        raw_butterfly: bool = ...,
-        stc_plot_kwargs=...,
-        topomap_kwargs=...,
-        verbose=...,
+        on_error: str = "warn",
+        image_format=None,
+        render_bem: bool = True,
+        n_time_points_evokeds=None,
+        n_time_points_stcs=None,
+        raw_butterfly: bool = True,
+        stc_plot_kwargs=None,
+        topomap_kwargs=None,
+        verbose=None,
     ) -> None:
         """Render all the files in the folder.
 
@@ -1077,14 +1257,15 @@ class Report:
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
+        ...
     def save(
         self,
-        fname=...,
-        open_browser: bool = ...,
-        overwrite: bool = ...,
-        sort_content: bool = ...,
+        fname=None,
+        open_browser: bool = True,
+        overwrite: bool = False,
+        sort_content: bool = False,
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Save the report and optionally open it in browser.
 
@@ -1126,8 +1307,10 @@ class Report:
         fname : str
             The file name to which the report was saved.
         """
+        ...
     def __enter__(self):
         """Do nothing when entering the context block."""
+        ...
     def __exit__(
         self,
         type: type[BaseException] | None,
@@ -1135,6 +1318,7 @@ class Report:
         traceback: types.TracebackType | None,
     ) -> None:
         """Save the report when leaving the context block."""
+        ...
 
 class _ReportScraper:
     """Scrape Report outputs.

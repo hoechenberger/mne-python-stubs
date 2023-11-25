@@ -4,7 +4,7 @@ from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
 from ..source_estimate import SourceEstimate as SourceEstimate
 from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 
-def linear_regression(inst, design_matrix, names=...):
+def linear_regression(inst, design_matrix, names=None):
     """Fit Ordinary Least Squares (OLS) regression.
 
     Parameters
@@ -47,16 +47,16 @@ def linear_regression(inst, design_matrix, names=...):
 def linear_regression_raw(
     raw,
     events,
-    event_id=...,
-    tmin: float = ...,
-    tmax: int = ...,
-    covariates=...,
-    reject=...,
-    flat=...,
-    tstep: float = ...,
-    decim: int = ...,
-    picks=...,
-    solver: str = ...,
+    event_id=None,
+    tmin: float = -0.1,
+    tmax: int = 1,
+    covariates=None,
+    reject=None,
+    flat=None,
+    tstep: float = 1.0,
+    decim: int = 1,
+    picks=None,
+    solver: str = "cholesky",
 ):
     """Estimate regression-based evoked potentials/fields by linear modeling.
 

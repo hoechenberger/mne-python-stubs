@@ -3,7 +3,7 @@ from _typeshed import Incomplete
 
 PHANTOM_MANIFEST_PATH: Incomplete
 
-def fetch_phantom(kind, subjects_dir=..., *, verbose=...):
+def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
     """Fetch and update a phantom subject.
 
     Parameters

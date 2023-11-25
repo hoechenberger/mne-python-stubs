@@ -10,17 +10,17 @@ def make_dics(
     info,
     forward,
     csd,
-    reg: float = ...,
-    noise_csd=...,
-    label=...,
-    pick_ori=...,
-    rank=...,
-    weight_norm=...,
-    reduce_rank: bool = ...,
-    depth: float = ...,
-    real_filter: bool = ...,
-    inversion: str = ...,
-    verbose=...,
+    reg: float = 0.05,
+    noise_csd=None,
+    label=None,
+    pick_ori=None,
+    rank=None,
+    weight_norm=None,
+    reduce_rank: bool = False,
+    depth: float = 1.0,
+    real_filter: bool = True,
+    inversion: str = "matrix",
+    verbose=None,
 ):
     """Compute a Dynamic Imaging of Coherent Sources (DICS) spatial filter.
 
@@ -280,7 +280,7 @@ def make_dics(
     .. footbibliography::
     """
 
-def apply_dics(evoked, filters, verbose=...):
+def apply_dics(evoked, filters, verbose=None):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
@@ -323,7 +323,7 @@ def apply_dics(evoked, filters, verbose=...):
     apply_dics_csd
     """
 
-def apply_dics_epochs(epochs, filters, return_generator: bool = ..., verbose=...):
+def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=None):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
@@ -369,7 +369,7 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = ..., verbose=...
     """
 
 def apply_dics_tfr_epochs(
-    epochs_tfr, filters, return_generator: bool = ..., verbose=...
+    epochs_tfr, filters, return_generator: bool = False, verbose=None
 ):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
@@ -406,7 +406,7 @@ def apply_dics_tfr_epochs(
     apply_dics_csd
     """
 
-def apply_dics_csd(csd, filters, verbose=...):
+def apply_dics_csd(csd, filters, verbose=None):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply a previously computed DICS beamformer to a cross-spectral density

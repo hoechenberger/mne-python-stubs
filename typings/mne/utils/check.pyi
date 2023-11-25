@@ -2,7 +2,7 @@ from ..defaults import HEAD_SIZE_DEFAULT as HEAD_SIZE_DEFAULT
 from ._logging import logger as logger, warn as warn
 from _typeshed import Incomplete
 
-def check_fname(fname, filetype, endings, endings_err=...) -> None:
+def check_fname(fname, filetype, endings, endings_err=()) -> None:
     """Enforce MNE filename conventions.
 
     Parameters
@@ -18,7 +18,11 @@ def check_fname(fname, filetype, endings, endings_err=...) -> None:
     """
 
 def check_version(
-    library, min_version: str = ..., *, strip: bool = ..., return_version: bool = ...
+    library,
+    min_version: str = "0.0",
+    *,
+    strip: bool = True,
+    return_version: bool = False,
 ):
     """Check minimum library version required.
 

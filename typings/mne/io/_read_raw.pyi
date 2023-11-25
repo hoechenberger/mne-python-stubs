@@ -3,7 +3,7 @@ from ..utils import fill_doc as fill_doc
 def split_name_ext(fname):
     """Return name and supported file extension."""
 
-def read_raw(fname, *, preload: bool = ..., verbose=..., **kwargs):
+def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
     """Read raw file.
 
     This function is a convenient wrapper for readers defined in `mne.io`. The

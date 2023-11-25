@@ -3,7 +3,13 @@ from ..utils import warn as warn
 from .utils import plt_show as plt_show
 
 def plot_projs_joint(
-    projs, evoked, picks_trace=..., *, topomap_kwargs=..., show: bool = ..., verbose=...
+    projs,
+    evoked,
+    picks_trace=None,
+    *,
+    topomap_kwargs=None,
+    show: bool = True,
+    verbose=None,
 ):
     """Plot projectors and evoked jointly.
 

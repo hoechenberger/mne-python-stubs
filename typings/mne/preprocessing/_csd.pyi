@@ -11,13 +11,13 @@ from ..utils import logger as logger
 
 def compute_current_source_density(
     inst,
-    sphere: str = ...,
-    lambda2: float = ...,
-    stiffness: int = ...,
-    n_legendre_terms: int = ...,
-    copy: bool = ...,
+    sphere: str = "auto",
+    lambda2: float = 1e-05,
+    stiffness: int = 4,
+    n_legendre_terms: int = 50,
+    copy: bool = True,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Get the current source density (CSD) transformation.
 
@@ -66,13 +66,13 @@ def compute_current_source_density(
 
 def compute_bridged_electrodes(
     inst,
-    lm_cutoff: int = ...,
-    epoch_threshold: float = ...,
-    l_freq: float = ...,
-    h_freq: int = ...,
-    epoch_duration: int = ...,
-    bw_method=...,
-    verbose=...,
+    lm_cutoff: int = 16,
+    epoch_threshold: float = 0.5,
+    l_freq: float = 0.5,
+    h_freq: int = 30,
+    epoch_duration: int = 2,
+    bw_method=None,
+    verbose=None,
 ):
     """Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
 

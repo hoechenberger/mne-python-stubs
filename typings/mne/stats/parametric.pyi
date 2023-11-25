@@ -1,4 +1,4 @@
-def ttest_1samp_no_p(X, sigma: int = ..., method: str = ...):
+def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
     """Perform one-sample t-test.
 
     This is a modified version of :func:`scipy.stats.ttest_1samp` that avoids
@@ -32,7 +32,7 @@ def ttest_1samp_no_p(X, sigma: int = ..., method: str = ...):
     .. footbibliography::
     """
 
-def ttest_ind_no_p(a, b, equal_var: bool = ..., sigma: float = ...):
+def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     """Independent samples t-test without p calculation.
 
     This is a modified version of :func:`scipy.stats.ttest_ind`. It operates
@@ -102,7 +102,7 @@ def f_oneway(*args):
     """
 
 def f_threshold_mway_rm(
-    n_subjects, factor_levels, effects: str = ..., pvalue: float = ...
+    n_subjects, factor_levels, effects: str = "A*B", pvalue: float = 0.05
 ):
     """Compute F-value thresholds for a two-way ANOVA.
 
@@ -144,9 +144,9 @@ def f_threshold_mway_rm(
 def f_mway_rm(
     data,
     factor_levels,
-    effects: str = ...,
-    correction: bool = ...,
-    return_pvals: bool = ...,
+    effects: str = "all",
+    correction: bool = False,
+    return_pvals: bool = True,
 ):
     """Compute M-way repeated measures ANOVA for fully balanced designs.
 

@@ -6,26 +6,25 @@ from ..viz.topomap import plot_layout as plot_layout
 from _typeshed import Incomplete
 
 class Layout:
-    """Plot the sensor positions.
+    """Sensor layouts.
+
+    Layouts are typically loaded from a file using
+    :func:mne.channels.read_layout`. Only use this class directly if you're
+    constructing a new layout.
 
     Parameters
     ----------
-    picks : list | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as channel indices.
-        None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
-    show_axes : bool
-        Show layout axes if True. Defaults to False.
-    show : bool
-        Show figure if True. Defaults to True.
-
-    Returns
-    -------
-    fig : instance of matplotlib.figure.Figure
-        Figure containing the sensor topography.
-
-    Notes
-    -----
-    .. versionadded:: 0.12.0
+    box : tuple of length 4
+        The box dimension (x_min, x_max, y_min, y_max).
+    pos : array, shape=(n_channels, 4)
+        The unit-normalized positions of the channels in 2d
+        (x, y, width, height).
+    names : list
+        The channel names.
+    ids : list
+        The channel ids.
+    kind : str
+        The type of Layout (e.g. 'Vectorview-all').
     """
 
     box: Incomplete
@@ -35,7 +34,7 @@ class Layout:
     kind: Incomplete
 
     def __init__(self, box, pos, names, ids, kind) -> None: ...
-    def save(self, fname, overwrite: bool = ...) -> None:
+    def save(self, fname, overwrite: bool = False) -> None:
         """Save Layout to disk.
 
         Parameters
@@ -49,7 +48,8 @@ class Layout:
         --------
         read_layout
         """
-    def plot(self, picks=..., show_axes: bool = ..., show: bool = ...):
+        ...
+    def plot(self, picks=None, show_axes: bool = False, show: bool = True):
         """Plot the sensor positions.
 
         Parameters
@@ -71,8 +71,9 @@ class Layout:
         -----
         .. versionadded:: 0.12.0
         """
+        ...
 
-def read_layout(fname=..., *, scale: bool = ...):
+def read_layout(fname=None, *, scale: bool = True):
     """Read layout from a file.
 
     Parameters
@@ -148,11 +149,11 @@ def read_layout(fname=..., *, scale: bool = ...):
 
 def make_eeg_layout(
     info,
-    radius: float = ...,
-    width=...,
-    height=...,
-    exclude: str = ...,
-    csd: bool = ...,
+    radius: float = 0.5,
+    width=None,
+    height=None,
+    exclude: str = "bads",
+    csd: bool = False,
 ):
     """Create .lout file from EEG electrode digitization.
 
@@ -185,7 +186,7 @@ def make_eeg_layout(
     make_grid_layout, generate_2d_layout
     """
 
-def make_grid_layout(info, picks=..., n_col=...):
+def make_grid_layout(info, picks=None, n_col=None):
     """Generate .lout file for custom data, i.e., ICA sources.
 
     Parameters
@@ -213,7 +214,7 @@ def make_grid_layout(info, picks=..., n_col=...):
     make_eeg_layout, generate_2d_layout
     """
 
-def find_layout(info, ch_type=..., exclude: str = ...):
+def find_layout(info, ch_type=None, exclude: str = "bads"):
     """Choose a layout based on the channels in the info 'chs' field.
 
     Parameters
@@ -238,14 +239,14 @@ def find_layout(info, ch_type=..., exclude: str = ...):
 
 def generate_2d_layout(
     xy,
-    w: float = ...,
-    h: float = ...,
-    pad: float = ...,
-    ch_names=...,
-    ch_indices=...,
-    name: str = ...,
-    bg_image=...,
-    normalize: bool = ...,
+    w: float = 0.07,
+    h: float = 0.05,
+    pad: float = 0.02,
+    ch_names=None,
+    ch_indices=None,
+    name: str = "ecog",
+    bg_image=None,
+    normalize: bool = True,
 ):
     """Generate a custom 2D layout from xy points.
 

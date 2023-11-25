@@ -23,25 +23,26 @@ class _FixedOffset(datetime.tzinfo):
     def dst(self, dt): ...
 
 class RawMff(BaseRaw):
-    """Init the RawMff class."""
+    """RawMff class."""
 
     event_id: Incomplete
 
     def __init__(
         self,
         input_fname,
-        eog=...,
-        misc=...,
-        include=...,
-        exclude=...,
-        preload: bool = ...,
-        channel_naming: str = ...,
-        verbose=...,
+        eog=None,
+        misc=None,
+        include=None,
+        exclude=None,
+        preload: bool = False,
+        channel_naming: str = "E%d",
+        verbose=None,
     ) -> None:
         """Init the RawMff class."""
+        ...
 
 def read_evokeds_mff(
-    fname, condition=..., channel_naming: str = ..., baseline=..., verbose=...
+    fname, condition=None, channel_naming: str = "E%d", baseline=None, verbose=None
 ):
     """Read averaged MFF file as EvokedArray or list of EvokedArray.
 

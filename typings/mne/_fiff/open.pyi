@@ -18,10 +18,10 @@ class _NoCloseRead:
         traceback: types.TracebackType | None,
     ) -> None: ...
     def close(self) -> None: ...
-    def seek(self, offset, whence=...): ...
-    def read(self, size: int = ...): ...
+    def seek(self, offset, whence=0): ...
+    def read(self, size: int = -1): ...
 
-def fiff_open(fname, preload: bool = ..., verbose=...):
+def fiff_open(fname, preload: bool = False, verbose=None):
     """Open a FIF file.
 
     Parameters
@@ -52,14 +52,14 @@ def fiff_open(fname, preload: bool = ..., verbose=...):
 
 def show_fiff(
     fname,
-    indent: str = ...,
+    indent: str = "    ",
     read_limit=...,
-    max_str: int = ...,
+    max_str: int = 30,
     output=...,
-    tag=...,
+    tag=None,
     *,
-    show_bytes: bool = ...,
-    verbose=...,
+    show_bytes: bool = False,
+    verbose=None,
 ):
     """Show FIFF information.
 

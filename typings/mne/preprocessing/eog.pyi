@@ -6,15 +6,15 @@ from ._peak_finder import peak_finder as peak_finder
 
 def find_eog_events(
     raw,
-    event_id: int = ...,
-    l_freq: int = ...,
-    h_freq: int = ...,
-    filter_length: str = ...,
-    ch_name=...,
-    tstart: int = ...,
-    reject_by_annotation: bool = ...,
-    thresh=...,
-    verbose=...,
+    event_id: int = 998,
+    l_freq: int = 1,
+    h_freq: int = 10,
+    filter_length: str = "10s",
+    ch_name=None,
+    tstart: int = 0,
+    reject_by_annotation: bool = False,
+    thresh=None,
+    verbose=None,
 ):
     """Locate EOG artifacts.
 
@@ -73,21 +73,21 @@ def find_eog_events(
 
 def create_eog_epochs(
     raw,
-    ch_name=...,
-    event_id: int = ...,
-    picks=...,
-    tmin: float = ...,
-    tmax: float = ...,
-    l_freq: int = ...,
-    h_freq: int = ...,
-    reject=...,
-    flat=...,
-    baseline=...,
-    preload: bool = ...,
-    reject_by_annotation: bool = ...,
-    thresh=...,
-    decim: int = ...,
-    verbose=...,
+    ch_name=None,
+    event_id: int = 998,
+    picks=None,
+    tmin: float = -0.5,
+    tmax: float = 0.5,
+    l_freq: int = 1,
+    h_freq: int = 10,
+    reject=None,
+    flat=None,
+    baseline=None,
+    preload: bool = True,
+    reject_by_annotation: bool = True,
+    thresh=None,
+    decim: int = 1,
+    verbose=None,
 ):
     """Conveniently generate epochs around EOG artifact events.
 

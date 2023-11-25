@@ -3,7 +3,7 @@ from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_neuralynx(
-    fname, *, preload: bool = ..., exclude_fname_patterns=..., verbose=...
+    fname, *, preload: bool = False, exclude_fname_patterns=None, verbose=None
 ):
     """Reader for Neuralynx files.
 
@@ -46,7 +46,7 @@ class RawNeuralynx(BaseRaw):
     def __init__(
         self,
         fname,
-        preload: bool = ...,
-        verbose=...,
-        exclude_fname_patterns: list = ...,
+        preload: bool = False,
+        verbose=None,
+        exclude_fname_patterns: list = None,
     ) -> None: ...

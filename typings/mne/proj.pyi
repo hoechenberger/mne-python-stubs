@@ -19,7 +19,7 @@ from .forward import (
 from .parallel import parallel_func as parallel_func
 from .utils import check_fname as check_fname, logger as logger
 
-def read_proj(fname, verbose=...):
+def read_proj(fname, verbose=None):
     """Read projections from a FIF file.
 
     Parameters
@@ -44,7 +44,7 @@ def read_proj(fname, verbose=...):
     write_proj
     """
 
-def write_proj(fname, projs, *, overwrite: bool = ..., verbose=...) -> None:
+def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
     """Write projections to a FIF file.
 
     Parameters
@@ -76,13 +76,13 @@ def write_proj(fname, projs, *, overwrite: bool = ..., verbose=...) -> None:
 
 def compute_proj_epochs(
     epochs,
-    n_grad: int = ...,
-    n_mag: int = ...,
-    n_eeg: int = ...,
-    n_jobs=...,
-    desc_prefix=...,
-    meg: str = ...,
-    verbose=...,
+    n_grad: int = 2,
+    n_mag: int = 2,
+    n_eeg: int = 2,
+    n_jobs=None,
+    desc_prefix=None,
+    meg: str = "separate",
+    verbose=None,
 ):
     """Compute SSP (signal-space projection) vectors on epoched data.
 
@@ -146,12 +146,12 @@ def compute_proj_epochs(
 
 def compute_proj_evoked(
     evoked,
-    n_grad: int = ...,
-    n_mag: int = ...,
-    n_eeg: int = ...,
-    desc_prefix=...,
-    meg: str = ...,
-    verbose=...,
+    n_grad: int = 2,
+    n_mag: int = 2,
+    n_eeg: int = 2,
+    desc_prefix=None,
+    meg: str = "separate",
+    verbose=None,
 ):
     """Compute SSP (signal-space projection) vectors on evoked data.
 
@@ -209,17 +209,17 @@ def compute_proj_evoked(
 
 def compute_proj_raw(
     raw,
-    start: int = ...,
-    stop=...,
-    duration: int = ...,
-    n_grad: int = ...,
-    n_mag: int = ...,
-    n_eeg: int = ...,
-    reject=...,
-    flat=...,
-    n_jobs=...,
-    meg: str = ...,
-    verbose=...,
+    start: int = 0,
+    stop=None,
+    duration: int = 1,
+    n_grad: int = 2,
+    n_mag: int = 2,
+    n_eeg: int = 0,
+    reject=None,
+    flat=None,
+    n_jobs=None,
+    meg: str = "separate",
+    verbose=None,
 ):
     """Compute SSP (signal-space projection) vectors on continuous data.
 
@@ -291,7 +291,13 @@ def compute_proj_raw(
     """
 
 def sensitivity_map(
-    fwd, projs=..., ch_type: str = ..., mode: str = ..., exclude=..., *, verbose=...
+    fwd,
+    projs=None,
+    ch_type: str = "grad",
+    mode: str = "fixed",
+    exclude=(),
+    *,
+    verbose=None,
 ):
     """Compute sensitivity map.
 

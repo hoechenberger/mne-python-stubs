@@ -28,7 +28,7 @@ from _typeshed import Incomplete
 def safe_event(fun, *args, **kwargs):
     """Protect against Qt exiting on event-handling errors."""
 
-def plt_show(show: bool = ..., fig=..., **kwargs) -> None:
+def plt_show(show: bool = True, fig=None, **kwargs) -> None:
     """Show a figure while suppressing warnings.
 
     Parameters
@@ -41,7 +41,7 @@ def plt_show(show: bool = ..., fig=..., **kwargs) -> None:
         Extra arguments for :func:`matplotlib.pyplot.show`.
     """
 
-def mne_analyze_colormap(limits=..., format: str = ...):
+def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
     """Return a colormap similar to that used by mne_analyze.
 
     Parameters
@@ -69,12 +69,12 @@ def mne_analyze_colormap(limits=..., format: str = ...):
 def compare_fiff(
     fname_1,
     fname_2,
-    fname_out=...,
-    show: bool = ...,
-    indent: str = ...,
+    fname_out=None,
+    show: bool = True,
+    indent: str = "    ",
     read_limit=...,
-    max_str: int = ...,
-    verbose=...,
+    max_str: int = 30,
+    verbose=None,
 ):
     """Compare the contents of two fiff files using diff and show_fiff.
 
@@ -128,19 +128,26 @@ def figure_nobar(*args, **kwargs):
     """
 
 class ClickableImage:
-    """Turn coordinates into an MNE Layout object.
+    """Display an image so you can click on it and store x/y positions.
 
-    Normalizes by the image you used to generate clicks
+    Takes as input an image array (can be any array that works with imshow,
+    but will work best with images.  Displays the image and lets you
+    click on it.  Stores the xy coordinates of each click, so now you can
+    superimpose something on top of it.
+
+    Upon clicking, the x/y coordinate of the cursor will be stored in
+    self.coords, which is a list of (x, y) tuples.
 
     Parameters
     ----------
+    imdata : ndarray
+        The image that you wish to click on for 2-d points.
     **kwargs : dict
-        Arguments are passed to generate_2d_layout.
+        Keyword arguments. Passed to ax.imshow.
 
-    Returns
-    -------
-    layout : instance of Layout
-        The layout.
+    Notes
+    -----
+    .. versionadded:: 0.9.0
     """
 
     coords: Incomplete
@@ -153,6 +160,7 @@ class ClickableImage:
 
     def __init__(self, imdata, **kwargs) -> None:
         """Display the image for clicking."""
+        ...
     def onclick(self, event) -> None:
         """Handle Mouse clicks.
 
@@ -161,6 +169,7 @@ class ClickableImage:
         event : matplotlib.backend_bases.Event
             The matplotlib object that we use to get x/y position.
         """
+        ...
     def plot_clicks(self, **kwargs) -> None:
         """Plot the x/y positions stored in self.coords.
 
@@ -169,6 +178,7 @@ class ClickableImage:
         **kwargs : dict
             Arguments are passed to imshow in displaying the bg image.
         """
+        ...
     def to_layout(self, **kwargs):
         """Turn coordinates into an MNE Layout object.
 
@@ -184,8 +194,9 @@ class ClickableImage:
         layout : instance of Layout
             The layout.
         """
+        ...
 
-def add_background_image(fig, im, set_ratios=...):
+def add_background_image(fig, im, set_ratios=None):
     """Add a background image to a plot.
 
     Adds the image specified in ``im`` to the
@@ -219,21 +230,21 @@ def add_background_image(fig, im, set_ratios=...):
 
 def plot_sensors(
     info,
-    kind: str = ...,
-    ch_type=...,
-    title=...,
-    show_names: bool = ...,
-    ch_groups=...,
-    to_sphere: bool = ...,
-    axes=...,
-    block: bool = ...,
-    show: bool = ...,
-    sphere=...,
-    pointsize=...,
-    linewidth: int = ...,
+    kind: str = "topomap",
+    ch_type=None,
+    title=None,
+    show_names: bool = False,
+    ch_groups=None,
+    to_sphere: bool = True,
+    axes=None,
+    block: bool = False,
+    show: bool = True,
+    sphere=None,
+    pointsize=None,
+    linewidth: int = 2,
     *,
-    cmap=...,
-    verbose=...,
+    cmap=None,
+    verbose=None,
 ):
     """Plot sensors positions.
 
@@ -340,7 +351,10 @@ def plot_sensors(
     """
 
 class DraggableColorbar:
-    """Handle scroll."""
+    """Enable interactive colorbar.
+
+    See http://www.ster.kuleuven.be/~pieterd/python/html/plotting/interactive_colorbar.html
+    """
 
     cbar: Incomplete
     mappable: Incomplete
@@ -361,19 +375,49 @@ class DraggableColorbar:
 
     def connect(self) -> None:
         """Connect to all the events we need."""
+        ...
     def on_press(self, event) -> None:
         """Handle button press."""
+        ...
     def key_press(self, event) -> None:
         """Handle key press."""
+        ...
     def on_motion(self, event) -> None:
         """Handle mouse movements."""
+        ...
     def on_release(self, event) -> None:
         """Handle release."""
+        ...
     def on_scroll(self, event) -> None:
         """Handle scroll."""
+        ...
 
 class SelectFromCollection:
-    """Disconnect the lasso selector."""
+    """Select channels from a matplotlib collection using ``LassoSelector``.
+
+    Selected channels are saved in the ``selection`` attribute. This tool
+    highlights selected points by fading other points out (i.e., reducing their
+    alpha values).
+
+    Parameters
+    ----------
+    ax : instance of Axes
+        Axes to interact with.
+    collection : instance of matplotlib collection
+        Collection you want to select from.
+    alpha_other : 0 <= float <= 1
+        To highlight a selection, this tool sets all selected points to an
+        alpha value of 1 and non-selected points to ``alpha_other``.
+        Defaults to 0.3.
+    linewidth_other : float
+        Linewidth to use for non-selected sensors. Default is 1.
+
+    Notes
+    -----
+    This tool selects collection objects based on their *origins*
+    (i.e., ``offsets``). Calls all callbacks in self.callbacks when selection
+    is ready.
+    """
 
     canvas: Incomplete
     collection: Incomplete
@@ -396,26 +440,40 @@ class SelectFromCollection:
         ax,
         collection,
         ch_names,
-        alpha_other: float = ...,
-        linewidth_other: float = ...,
-        alpha_selected: int = ...,
-        linewidth_selected: int = ...,
+        alpha_other: float = 0.5,
+        linewidth_other: float = 0.5,
+        alpha_selected: int = 1,
+        linewidth_selected: int = 1,
     ) -> None: ...
     def on_select(self, verts) -> None:
         """Select a subset from the collection."""
+        ...
     def select_one(self, ind) -> None:
         """Select or deselect one sensor."""
+        ...
     def notify(self) -> None:
         """Notify listeners that a selection has been made."""
+        ...
     def select_many(self, inds) -> None:
         """Select many sensors using indices (for predefined selections)."""
+        ...
     def style_sensors(self, inds) -> None:
         """Style selected sensors as "active"."""
+        ...
     def disconnect(self) -> None:
         """Disconnect the lasso selector."""
+        ...
 
 class DraggableLine:
-    """Remove the line."""
+    """Custom matplotlib line for moving around by drag and drop.
+
+    Parameters
+    ----------
+    line : instance of matplotlib Line2D
+        Line to add interactivity to.
+    callback : function
+        Callback to call when line is released.
+    """
 
     line: Incomplete
     press: Incomplete
@@ -429,14 +487,19 @@ class DraggableLine:
     def __init__(self, line, modify_callback, drag_callback) -> None: ...
     def set_x(self, x) -> None:
         """Repoisition the line."""
+        ...
     def on_press(self, event) -> None:
         """Store button press if on top of the line."""
+        ...
     def on_motion(self, event) -> None:
         """Move the line on drag."""
+        ...
     def on_release(self, event) -> None:
         """Handle release."""
+        ...
     def remove(self) -> None:
         """Remove the line."""
+        ...
 
 def centers_to_edges(*arrays):
     """Convert center points to edges.
@@ -462,10 +525,10 @@ def centers_to_edges(*arrays):
 
 def concatenate_images(
     images,
-    axis: int = ...,
-    bgcolor: str = ...,
-    centered: bool = ...,
-    n_channels: int = ...,
+    axis: int = 0,
+    bgcolor: str = "black",
+    centered: bool = True,
+    n_channels: int = 3,
 ):
     """Concatenate a list of images.
 

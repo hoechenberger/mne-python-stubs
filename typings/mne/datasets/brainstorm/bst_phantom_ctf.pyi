@@ -1,12 +1,11 @@
-
 def data_path(
-    path=...,
-    force_update: bool = ...,
-    update_path: bool = ...,
-    download: bool = ...,
-    accept: bool = ...,
+    path=None,
+    force_update: bool = False,
+    update_path: bool = True,
+    download: bool = True,
+    accept: bool = False,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Get path to local copy of brainstorm (bst_phantom_ctf) dataset.
 

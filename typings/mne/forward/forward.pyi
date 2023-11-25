@@ -43,31 +43,85 @@ from ..utils import (
 )
 
 class Forward(dict):
-    """Pick channels from this forward operator.
+    """Forward class to represent info from forward solution.
 
-    Parameters
+    Like :class:`mne.Info`, this data structure behaves like a dictionary.
+    It contains all metadata necessary for a forward solution.
+
+    .. warning::
+        This class should not be modified or created by users.
+        Forward objects should be obtained using
+        :func:`mne.make_forward_solution` or :func:`mne.read_forward_solution`.
+
+    Attributes
     ----------
     ch_names : list of str
-        List of channels to include.
-    ordered : bool
-        If true (default False), treat ``include`` as an ordered list
-        rather than a set.
+        A convenience wrapper accessible as ``fwd.ch_names`` which wraps
+        ``fwd['info']['ch_names']``.
 
-    Returns
-    -------
-    fwd : instance of Forward.
-        The modified forward model.
+    See Also
+    --------
+    mne.make_forward_solution
+    mne.read_forward_solution
 
     Notes
     -----
-    Operates in-place.
+    Forward data is accessible via string keys using standard
+    :class:`python:dict` access (e.g., ``fwd['nsource'] == 4096``):
 
-    .. versionadded:: 0.20.0
+        source_ori : int
+            The source orientation, either ``FIFF.FIFFV_MNE_FIXED_ORI`` or
+            ``FIFF.FIFFV_MNE_FREE_ORI``.
+        coord_frame : int
+            The coordinate frame of the forward solution, usually
+            ``FIFF.FIFFV_COORD_HEAD``.
+        nsource : int
+            The number of source locations.
+        nchan : int
+            The number of channels.
+        sol : dict
+            The forward solution, with entries:
+
+            ``'data'`` : ndarray, shape (n_channels, nsource * n_ori)
+                The forward solution data. The shape will be
+                ``(n_channels, nsource)`` for a fixed-orientation forward and
+                ``(n_channels, nsource * 3)`` for a free-orientation forward.
+            ``'row_names'`` : list of str
+                The channel names.
+        mri_head_t : instance of Transform
+            The mri ↔ head transformation that was used.
+        info : instance of :class:mne.Info`
+            The measurement information (with contents reduced compared to that
+            of the original data).
+        src : instance of :class:mne.SourceSpaces`
+            The source space used during forward computation. This can differ
+            from the original source space as:
+
+            1. Source points are removed due to proximity to (or existing
+               outside)
+               the inner skull surface.
+            2. The source space will be converted to the ``coord_frame`` of the
+               forward solution, which typically means it gets converted from
+               MRI to head coordinates.
+        source_rr : ndarray, shape (n_sources, 3)
+            The source locations.
+        source_nn : ndarray, shape (n_sources, 3)
+            The source normals. Will be all +Z (``(0, 0, 1.)``) for volume
+            source spaces. For surface source spaces, these are normal to the
+            cortical surface.
+        surf_ori : int
+            Whether ``sol`` is surface-oriented with the surface normal in the
+            Z component (``FIFF.FIFFV_MNE_FIXED_ORI``) or +Z in the given
+            ``coord_frame`` in the Z component (``FIFF.FIFFV_MNE_FREE_ORI``).
+
+    Forward objects also have some attributes that are accessible via ``.``
+    access, like ``fwd.ch_names``.
     """
 
     def copy(self):
         """Copy the Forward instance."""
-    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
+        ...
+    def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """Save the forward solution.
 
         Parameters
@@ -88,9 +142,10 @@ class Forward(dict):
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
+        ...
     @property
     def ch_names(self): ...
-    def pick_channels(self, ch_names, ordered: bool = ...):
+    def pick_channels(self, ch_names, ordered: bool = False):
         """Pick channels from this forward operator.
 
         Parameters
@@ -112,8 +167,9 @@ class Forward(dict):
 
         .. versionadded:: 0.20.0
         """
+        ...
 
-def read_forward_solution(fname, include=..., exclude=..., *, ordered=..., verbose=...):
+def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbose=None):
     """Read a forward solution a.k.a. lead field.
 
     Parameters
@@ -168,12 +224,12 @@ def read_forward_solution(fname, include=..., exclude=..., *, ordered=..., verbo
 
 def convert_forward_solution(
     fwd,
-    surf_ori: bool = ...,
-    force_fixed: bool = ...,
-    copy: bool = ...,
-    use_cps: bool = ...,
+    surf_ori: bool = False,
+    force_fixed: bool = False,
+    copy: bool = True,
+    use_cps: bool = True,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Convert forward solution between different source orientations.
 
@@ -205,7 +261,7 @@ def convert_forward_solution(
         The modified forward solution.
     """
 
-def write_forward_solution(fname, fwd, overwrite: bool = ..., verbose=...) -> None:
+def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) -> None:
     """Write forward solution to a file.
 
     Parameters
@@ -248,7 +304,7 @@ def write_forward_solution(fname, fwd, overwrite: bool = ..., verbose=...) -> No
     forward solution with :func:`read_forward_solution`.
     """
 
-def is_fixed_orient(forward, orig: bool = ...):
+def is_fixed_orient(forward, orig: bool = False):
     """Check if the forward operator is fixed orientation.
 
     Parameters
@@ -277,7 +333,7 @@ def write_forward_meas_info(fid, info) -> None:
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     """
 
-def compute_orient_prior(forward, loose: str = ..., verbose=...):
+def compute_orient_prior(forward, loose: str = "auto", verbose=None):
     """Compute orientation prior.
 
     Parameters
@@ -318,13 +374,13 @@ def compute_orient_prior(forward, loose: str = ..., verbose=...):
 def compute_depth_prior(
     forward,
     info,
-    exp: float = ...,
-    limit: float = ...,
-    limit_depth_chs: bool = ...,
-    combine_xyz: str = ...,
-    noise_cov=...,
-    rank=...,
-    verbose=...,
+    exp: float = 0.8,
+    limit: float = 10.0,
+    limit_depth_chs: bool = False,
+    combine_xyz: str = "spectral",
+    noise_cov=None,
+    rank=None,
+    verbose=None,
 ):
     """Compute depth prior for depth weighting.
 
@@ -461,11 +517,11 @@ def apply_forward(
     fwd,
     stc,
     info,
-    start=...,
-    stop=...,
-    use_cps: bool = ...,
-    on_missing: str = ...,
-    verbose=...,
+    start=None,
+    stop=None,
+    use_cps: bool = True,
+    on_missing: str = "raise",
+    verbose=None,
 ):
     """Project source space currents to sensor space using a forward operator.
 
@@ -525,11 +581,11 @@ def apply_forward_raw(
     fwd,
     stc,
     info,
-    start=...,
-    stop=...,
-    on_missing: str = ...,
-    use_cps: bool = ...,
-    verbose=...,
+    start=None,
+    stop=None,
+    on_missing: str = "raise",
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Project source space currents to sensor space using a forward operator.
 
@@ -585,7 +641,7 @@ def apply_forward_raw(
     apply_forward: Compute sensor space data and return an Evoked object.
     """
 
-def restrict_forward_to_stc(fwd, stc, on_missing: str = ...):
+def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
     """Restrict forward operator to active sources in a source estimate.
 
     Parameters
@@ -632,7 +688,7 @@ def restrict_forward_to_label(fwd, labels):
     restrict_forward_to_stc
     """
 
-def average_forward_solutions(fwds, weights=..., verbose=...):
+def average_forward_solutions(fwds, weights=None, verbose=None):
     """Average forward solutions.
 
     Parameters

@@ -2,11 +2,11 @@ from ...io import BaseRaw as BaseRaw
 
 def scalp_coupling_index(
     raw,
-    l_freq: float = ...,
-    h_freq: float = ...,
-    l_trans_bandwidth: float = ...,
-    h_trans_bandwidth: float = ...,
-    verbose: bool = ...,
+    l_freq: float = 0.7,
+    h_freq: float = 1.5,
+    l_trans_bandwidth: float = 0.3,
+    h_trans_bandwidth: float = 0.3,
+    verbose: bool = False,
 ):
     """Calculate scalp coupling index.
 

@@ -6,7 +6,7 @@ from ...utils import logger as logger
 root_url: str
 
 def data_path(
-    subject, path=..., force_update: bool = ..., update_path=..., *, verbose=...
+    subject, path=None, force_update: bool = False, update_path=None, *, verbose=None
 ):
     """Get path to local copy of LIMO dataset URL.
 
@@ -60,7 +60,7 @@ def data_path(
     """
 
 def load_data(
-    subject, path=..., force_update: bool = ..., update_path=..., verbose=...
+    subject, path=None, force_update: bool = False, update_path=None, verbose=None
 ):
     """Fetch subjects epochs data for the LIMO data set.
 

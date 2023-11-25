@@ -1,4 +1,4 @@
-def eigh(a, overwrite_a: bool = ..., check_finite: bool = ...):
+def eigh(a, overwrite_a: bool = False, check_finite: bool = True):
     """Efficient wrapper for eigh.
 
     Parameters
@@ -20,7 +20,7 @@ def eigh(a, overwrite_a: bool = ..., check_finite: bool = ...):
         is the column ``v[:, i]``.
     """
 
-def sqrtm_sym(A, rcond: float = ..., inv: bool = ...):
+def sqrtm_sym(A, rcond: float = 1e-07, inv: bool = False):
     """Compute the sqrt of a positive, semi-definite matrix (or its inverse).
 
     Parameters

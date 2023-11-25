@@ -36,19 +36,19 @@ from _typeshed import Incomplete
 
 def simulate_raw(
     info,
-    stc=...,
-    trans=...,
-    src=...,
-    bem=...,
-    head_pos=...,
-    mindist: float = ...,
-    interp: str = ...,
-    n_jobs=...,
-    use_cps: bool = ...,
-    forward=...,
-    first_samp: int = ...,
-    max_iter: int = ...,
-    verbose=...,
+    stc=None,
+    trans=None,
+    src=None,
+    bem=None,
+    head_pos=None,
+    mindist: float = 1.0,
+    interp: str = "cos2",
+    n_jobs=None,
+    use_cps: bool = True,
+    forward=None,
+    first_samp: int = 0,
+    max_iter: int = 10000,
+    verbose=None,
 ):
     """Simulate raw data.
 
@@ -192,7 +192,12 @@ def simulate_raw(
     """
 
 def add_eog(
-    raw, head_pos=..., interp: str = ..., n_jobs=..., random_state=..., verbose=...
+    raw,
+    head_pos=None,
+    interp: str = "cos2",
+    n_jobs=None,
+    random_state=None,
+    verbose=None,
 ):
     """Add blink noise to raw data.
 
@@ -275,7 +280,12 @@ def add_eog(
     """
 
 def add_ecg(
-    raw, head_pos=..., interp: str = ..., n_jobs=..., random_state=..., verbose=...
+    raw,
+    head_pos=None,
+    interp: str = "cos2",
+    n_jobs=None,
+    random_state=None,
+    verbose=None,
 ):
     """Add ECG noise to raw data.
 
@@ -355,7 +365,7 @@ def add_ecg(
     .. versionadded:: 0.18
     """
 
-def add_chpi(raw, head_pos=..., interp: str = ..., n_jobs=..., verbose=...):
+def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None):
     """Add cHPI activations to raw data.
 
     Parameters
@@ -429,8 +439,8 @@ class _SimForwards:
         mindist,
         n_jobs,
         meeg_picks,
-        forward=...,
-        use_cps: bool = ...,
+        forward=None,
+        use_cps: bool = True,
     ) -> None: ...
     src: Incomplete
 

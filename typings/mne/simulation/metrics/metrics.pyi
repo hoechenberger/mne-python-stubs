@@ -1,6 +1,6 @@
 from ...utils import fill_doc as fill_doc
 
-def source_estimate_quantification(stc1, stc2, metric: str = ...):
+def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
     """Calculate STC similarities across all sources and times.
 
     Parameters
@@ -27,7 +27,7 @@ def source_estimate_quantification(stc1, stc2, metric: str = ...):
     .. versionadded:: 0.10.0
     """
 
-def cosine_score(stc_true, stc_est, per_sample: bool = ...):
+def cosine_score(stc_true, stc_est, per_sample: bool = True):
     """Compute cosine similarity between 2 source estimates.
 
     Parameters
@@ -57,7 +57,7 @@ def cosine_score(stc_true, stc_est, per_sample: bool = ...):
     """
 
 def region_localization_error(
-    stc_true, stc_est, src, threshold: str = ..., per_sample: bool = ...
+    stc_true, stc_est, src, threshold: str = "90%", per_sample: bool = True
 ):
     """Compute region localization error (RLE) between 2 source estimates.
 
@@ -114,7 +114,7 @@ def region_localization_error(
     .. footbibliography::
     """
 
-def roc_auc_score(stc_true, stc_est, per_sample: bool = ...):
+def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     """Compute ROC AUC between 2 source estimates.
 
     ROC stands for receiver operating curve and AUC is Area under the curve.
@@ -150,7 +150,7 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = ...):
     .. versionadded:: 1.2
     """
 
-def f1_score(stc_true, stc_est, threshold: str = ..., per_sample: bool = ...):
+def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
     """Compute the F1 score, also known as balanced F-score or F-measure.
 
     The F1 score can be interpreted as a weighted average of the precision
@@ -193,7 +193,7 @@ def f1_score(stc_true, stc_est, threshold: str = ..., per_sample: bool = ...):
     .. versionadded:: 1.2
     """
 
-def precision_score(stc_true, stc_est, threshold: str = ..., per_sample: bool = ...):
+def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
     """Compute the precision.
 
     The precision is the ratio ``tp / (tp + fp)`` where ``tp`` is the number of
@@ -235,7 +235,7 @@ def precision_score(stc_true, stc_est, threshold: str = ..., per_sample: bool = 
     .. versionadded:: 1.2
     """
 
-def recall_score(stc_true, stc_est, threshold: str = ..., per_sample: bool = ...):
+def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
     """Compute the recall.
 
     The recall is the ratio ``tp / (tp + fn)`` where ``tp`` is the number of
@@ -277,7 +277,7 @@ def recall_score(stc_true, stc_est, threshold: str = ..., per_sample: bool = ...
     """
 
 def peak_position_error(
-    stc_true, stc_est, src, threshold: str = ..., per_sample: bool = ...
+    stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
 ):
     """Compute the peak position error.
 
@@ -336,7 +336,7 @@ def peak_position_error(
     """
 
 def spatial_deviation_error(
-    stc_true, stc_est, src, threshold: str = ..., per_sample: bool = ...
+    stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
 ):
     """Compute the spatial deviation.
 

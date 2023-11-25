@@ -8,16 +8,16 @@ def make_lcmv(
     info,
     forward,
     data_cov,
-    reg: float = ...,
-    noise_cov=...,
-    label=...,
-    pick_ori=...,
-    rank: str = ...,
-    weight_norm: str = ...,
-    reduce_rank: bool = ...,
-    depth=...,
-    inversion: str = ...,
-    verbose=...,
+    reg: float = 0.05,
+    noise_cov=None,
+    label=None,
+    pick_ori=None,
+    rank: str = "info",
+    weight_norm: str = "unit-noise-gain-invariant",
+    reduce_rank: bool = False,
+    depth=None,
+    inversion: str = "matrix",
+    verbose=None,
 ):
     """Compute LCMV spatial filter.
 
@@ -258,7 +258,7 @@ def make_lcmv(
     .. footbibliography::
     """
 
-def apply_lcmv(evoked, filters, *, verbose=...):
+def apply_lcmv(evoked, filters, *, verbose=None):
     """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
@@ -292,7 +292,7 @@ def apply_lcmv(evoked, filters, *, verbose=...):
     .. versionadded:: 0.18
     """
 
-def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = ..., verbose=...):
+def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbose=None):
     """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
@@ -325,7 +325,7 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = ..., verbose=
     make_lcmv, apply_lcmv_raw, apply_lcmv, apply_lcmv_cov
     """
 
-def apply_lcmv_raw(raw, filters, start=..., stop=..., *, verbose=...):
+def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
@@ -359,7 +359,7 @@ def apply_lcmv_raw(raw, filters, start=..., stop=..., *, verbose=...):
     make_lcmv, apply_lcmv_epochs, apply_lcmv, apply_lcmv_cov
     """
 
-def apply_lcmv_cov(data_cov, filters, verbose=...):
+def apply_lcmv_cov(data_cov, filters, verbose=None):
     """Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights

@@ -7,7 +7,7 @@ def get_current_comp(info):
 def set_current_comp(info, comp) -> None:
     """Set the current compensation in effect in the data."""
 
-def make_compensator(info, from_, to, exclude_comp_chs: bool = ...):
+def make_compensator(info, from_, to, exclude_comp_chs: bool = False):
     """Return compensation matrix eg. for CTF system.
 
     Create a compensation matrix to bring the data from one compensation

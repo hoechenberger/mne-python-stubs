@@ -3,7 +3,7 @@ from ..._fiff.meas_info import create_info as create_info
 from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
-def read_raw_hitachi(fname, preload: bool = ..., verbose=...):
+def read_raw_hitachi(fname, preload: bool = False, verbose=None):
     """Reader for a Hitachi fNIRS recording.
 
     Parameters
@@ -177,4 +177,4 @@ class RawHitachi(BaseRaw):
     .. versionadded:: 0.24
     """
 
-    def __init__(self, fname, preload: bool = ..., *, verbose=...) -> None: ...
+    def __init__(self, fname, preload: bool = False, *, verbose=None) -> None: ...

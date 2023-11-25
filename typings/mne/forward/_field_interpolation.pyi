@@ -13,17 +13,17 @@ from ..utils import logger as logger
 
 def make_field_map(
     evoked,
-    trans: str = ...,
-    subject=...,
-    subjects_dir=...,
-    ch_type=...,
-    mode: str = ...,
-    meg_surf: str = ...,
-    origin=...,
-    n_jobs=...,
+    trans: str = "auto",
+    subject=None,
+    subjects_dir=None,
+    ch_type=None,
+    mode: str = "fast",
+    meg_surf: str = "helmet",
+    origin=(0.0, 0.0, 0.04),
+    n_jobs=None,
     *,
-    head_source=...,
-    verbose=...,
+    head_source=("bem", "head"),
+    verbose=None,
 ):
     """Compute surface maps used for field display in 3D.
 

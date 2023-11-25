@@ -12,10 +12,10 @@ def rap_music(
     evoked,
     forward,
     noise_cov,
-    n_dipoles: int = ...,
-    return_residual: bool = ...,
+    n_dipoles: int = 5,
+    return_residual: bool = False,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """RAP-MUSIC source localization method.
 
@@ -70,10 +70,10 @@ def trap_music(
     evoked,
     forward,
     noise_cov,
-    n_dipoles: int = ...,
-    return_residual: bool = ...,
+    n_dipoles: int = 5,
+    return_residual: bool = False,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """TRAP-MUSIC source localization method.
 

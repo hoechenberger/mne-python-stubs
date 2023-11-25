@@ -15,11 +15,67 @@ from ...utils import (
 from ..base import BaseRaw as BaseRaw
 
 class Raw(BaseRaw):
-    """The AcqParserFIF for the measurement info.
+    """Raw data in FIF format.
 
-    See Also
-    --------
-    mne.AcqParserFIF
+    Parameters
+    ----------
+    fname : path-like | file-like
+        The raw filename to load. For files that have automatically been split,
+        the split part will be automatically loaded. Filenames not ending with
+        ``raw.fif``, ``raw_sss.fif``, ``raw_tsss.fif``, ``_meg.fif``,
+        ``_eeg.fif``,  or ``_ieeg.fif`` (with or without an optional additional
+        ``.gz`` extension) will generate a warning. If a file-like object is
+        provided, preloading must be used.
+
+        .. versionchanged:: 0.18
+           Support for file-like objects.
+    allow_maxshield : bool | str (default False)
+        If True, allow loading of data that has been recorded with internal
+        active compensation (MaxShield). Data recorded with MaxShield should
+        generally not be loaded directly, but should first be processed using
+        SSS/tSSS to remove the compensation signals that may also affect brain
+        activity. Can also be "yes" to load without eliciting a warning.
+
+    preload : bool or str (default False)
+        Preload data into memory for data manipulation and faster indexing.
+        If True, the data will be preloaded into memory (fast, requires
+        large amount of memory). If preload is a string, preload is the
+        file name of a memory-mapped file which is used to store the data
+        on the hard drive (slower, requires less memory).
+
+    on_split_missing : str
+        Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
+        warning, or ``'ignore'`` to ignore when split file is missing.
+
+        .. versionadded:: 0.22
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Attributes
+    ----------
+
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    ch_names : list of string
+        List of channels' names.
+    n_times : int
+        Total number of time points in the raw file.
+    times :  ndarray
+        Time vector in seconds. Starts from 0, independently of `first_samp`
+        value. Time interval between consecutive time samples is equal to the
+        inverse of the sampling frequency.
+    preload : bool
+        Indicates whether raw data are in memory.
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
     """
 
     preload: bool
@@ -27,10 +83,10 @@ class Raw(BaseRaw):
     def __init__(
         self,
         fname,
-        allow_maxshield: bool = ...,
-        preload: bool = ...,
-        on_split_missing: str = ...,
-        verbose=...,
+        allow_maxshield: bool = False,
+        preload: bool = False,
+        on_split_missing: str = "raise",
+        verbose=None,
     ) -> None: ...
     def fix_mag_coil_types(self):
         """Fix Elekta magnetometer coil types.
@@ -60,6 +116,7 @@ class Raw(BaseRaw):
                   current estimates computed by the MNE software is very small.
                   Therefore the use of mne_fix_mag_coil_types is not mandatory.
         """
+        ...
     @property
     def acqparser(self):
         """The AcqParserFIF for the measurement info.
@@ -68,13 +125,14 @@ class Raw(BaseRaw):
         --------
         mne.AcqParserFIF
         """
+        ...
 
 def read_raw_fif(
     fname,
-    allow_maxshield: bool = ...,
-    preload: bool = ...,
-    on_split_missing: str = ...,
-    verbose=...,
+    allow_maxshield: bool = False,
+    preload: bool = False,
+    on_split_missing: str = "raise",
+    verbose=None,
 ):
     """Reader function for Raw FIF data.
 

@@ -27,7 +27,7 @@ class _BuiltinStandardMontage:
 
     def __init__(self, name, description) -> None: ...
 
-def get_builtin_montages(*, descriptions: bool = ...):
+def get_builtin_montages(*, descriptions: bool = False):
     """Get a list of all standard montages shipping with MNE-Python.
 
     The names of the montages can be passed to :func:`make_standard_montage`.
@@ -53,7 +53,13 @@ def get_builtin_montages(*, descriptions: bool = ...):
     """
 
 def make_dig_montage(
-    ch_pos=..., nasion=..., lpa=..., rpa=..., hsp=..., hpi=..., coord_frame: str = ...
+    ch_pos=None,
+    nasion=None,
+    lpa=None,
+    rpa=None,
+    hsp=None,
+    hpi=None,
+    coord_frame: str = "unknown",
 ):
     """Make montage from arrays.
 
@@ -106,46 +112,49 @@ def make_dig_montage(
     """
 
 class DigMontage:
-    """Remove the fiducial points from a montage.
+    """Montage for digitized electrode and headshape position data.
+
+    .. warning:: Montages are typically created using one of the helper
+                 functions in the ``See Also`` section below instead of
+                 instantiating this class directly.
 
     Parameters
     ----------
+    dig : list of dict
+        The object containing all the dig points.
+    ch_names : list of str
+        The names of the EEG channels.
 
-    verbose : bool | str | int | None
-        Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
-        argument.
-
-    Returns
-    -------
-    inst : instance of DigMontage
-        The instance, modified in-place.
+    See Also
+    --------
+    read_dig_captrak
+    read_dig_dat
+    read_dig_egi
+    read_dig_fif
+    read_dig_hpts
+    read_dig_localite
+    read_dig_polhemus_isotrak
+    make_dig_montage
 
     Notes
     -----
-    MNE will transform a montage to the internal "head" coordinate
-    frame if the fiducials are present. Under most circumstances, this
-    is ideal as it standardizes the coordinate frame for things like
-    plotting. However, in some circumstances, such as saving a ``raw``
-    with intracranial data to BIDS format, the coordinate frame
-    should not be changed by removing fiducials.
+    .. versionadded:: 0.9.0
     """
 
     dig: Incomplete
     ch_names: Incomplete
 
-    def __init__(self, *, dig=..., ch_names=...) -> None: ...
+    def __init__(self, *, dig=None, ch_names=None) -> None: ...
     def plot(
         self,
-        scale_factor: int = ...,
-        show_names: bool = ...,
-        kind: str = ...,
-        show: bool = ...,
-        sphere=...,
+        scale_factor: int = 20,
+        show_names: bool = True,
+        kind: str = "topomap",
+        show: bool = True,
+        sphere=None,
         *,
-        axes=...,
-        verbose=...,
+        axes=None,
+        verbose=None,
     ):
         """Plot a montage.
 
@@ -192,7 +201,8 @@ class DigMontage:
         fig : instance of matplotlib.figure.Figure
             The figure object.
         """
-    def rename_channels(self, mapping, allow_duplicates: bool = ...) -> None:
+        ...
+    def rename_channels(self, mapping, allow_duplicates: bool = False) -> None:
         """Rename the channels.
 
         Parameters
@@ -216,7 +226,8 @@ class DigMontage:
         inst : instance of DigMontage
             The instance. Operates in-place.
         """
-    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
+        ...
+    def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """Save digitization points to FIF.
 
         Parameters
@@ -234,6 +245,7 @@ class DigMontage:
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
+        ...
     def __iadd__(self, other):
         """Add two DigMontages in place.
 
@@ -243,6 +255,7 @@ class DigMontage:
         and if fiducials are present they should share the same coordinate
         system and location values.
         """
+        ...
     def copy(self):
         """Copy the DigMontage object.
 
@@ -251,8 +264,10 @@ class DigMontage:
         dig : instance of DigMontage
             The copied DigMontage instance.
         """
+        ...
     def __add__(self, other):
         """Add two DigMontages."""
+        ...
     def __eq__(self, other):
         """Compare different DigMontage objects for equality.
 
@@ -260,6 +275,7 @@ class DigMontage:
         -------
         Boolean output from comparison of .dig
         """
+        ...
     def get_positions(self):
         """Get all channel and fiducial positions.
 
@@ -284,7 +300,8 @@ class DigMontage:
                     'hpi': None
                 }
         """
-    def apply_trans(self, trans, verbose=...) -> None:
+        ...
+    def apply_trans(self, trans, verbose=None) -> None:
         """Apply a transformation matrix to the montage.
 
         Parameters
@@ -298,7 +315,8 @@ class DigMontage:
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-    def add_estimated_fiducials(self, subject, subjects_dir=..., verbose=...):
+        ...
+    def add_estimated_fiducials(self, subject, subjects_dir=None, verbose=None):
         """Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
 
         This takes a montage with the ``mri`` coordinate frame,
@@ -342,7 +360,8 @@ class DigMontage:
         and then use ``mne.channels.compute_native_head_t(montage)``
         to get the head <-> MRI transform.
         """
-    def add_mni_fiducials(self, subjects_dir=..., verbose=...):
+        ...
+    def add_mni_fiducials(self, subjects_dir=None, verbose=None):
         """Add fiducials to a montage in MNI space.
 
         Parameters
@@ -374,7 +393,8 @@ class DigMontage:
         those coordinate to be transformed to "head" space (origin
         between LPA and RPA).
         """
-    def remove_fiducials(self, verbose=...):
+        ...
+    def remove_fiducials(self, verbose=None):
         """Remove the fiducial points from a montage.
 
         Parameters
@@ -400,6 +420,7 @@ class DigMontage:
         with intracranial data to BIDS format, the coordinate frame
         should not be changed by removing fiducials.
         """
+        ...
 
 VALID_SCALES: Incomplete
 
@@ -498,7 +519,7 @@ def read_dig_fif(fname):
     make_dig_montage
     """
 
-def read_dig_hpts(fname, unit: str = ...):
+def read_dig_hpts(fname, unit: str = "mm"):
     """Read historical ``.hpts`` MNE-C files.
 
     Parameters
@@ -618,7 +639,7 @@ def read_dig_captrak(fname):
     make_dig_montage
     """
 
-def read_dig_localite(fname, nasion=..., lpa=..., rpa=...):
+def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
     """Read Localite .csv file.
 
     Parameters
@@ -649,7 +670,7 @@ def read_dig_localite(fname, nasion=..., lpa=..., rpa=...):
     make_dig_montage
     """
 
-def read_dig_polhemus_isotrak(fname, ch_names=..., unit: str = ...):
+def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
     """Read Polhemus digitizer data from a file.
 
     Parameters
@@ -684,7 +705,7 @@ def read_dig_polhemus_isotrak(fname, ch_names=..., unit: str = ...):
     """
 
 def read_polhemus_fastscan(
-    fname, unit: str = ..., on_header_missing: str = ..., *, verbose=...
+    fname, unit: str = "mm", on_header_missing: str = "raise", *, verbose=None
 ):
     """Read Polhemus FastSCAN digitizer data from a ``.txt`` file.
 
@@ -719,7 +740,7 @@ def read_polhemus_fastscan(
     make_dig_montage
     """
 
-def read_custom_montage(fname, head_size=..., coord_frame=...):
+def read_custom_montage(fname, head_size=0.095, coord_frame=None):
     """Read a montage from a file.
 
     Parameters
@@ -779,7 +800,7 @@ def compute_dev_head_t(montage):
         A Device-to-Head transformation matrix.
     """
 
-def compute_native_head_t(montage, *, on_missing: str = ..., verbose=...):
+def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
     """Compute the native-to-head transformation for a montage.
 
     This uses the fiducials in the native space to transform to compute the
@@ -808,7 +829,7 @@ def compute_native_head_t(montage, *, on_missing: str = ..., verbose=...):
         A native-to-head transformation matrix.
     """
 
-def make_standard_montage(kind, head_size: str = ...):
+def make_standard_montage(kind, head_size: str = "auto"):
     """Read a generic (built-in) standard montage that ships with MNE-Python.
 
     Parameters

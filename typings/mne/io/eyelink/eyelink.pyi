@@ -4,11 +4,11 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_eyelink(
     fname,
     *,
-    create_annotations: bool = ...,
-    apply_offsets: bool = ...,
-    find_overlaps: bool = ...,
-    overlap_threshold: float = ...,
-    verbose=...,
+    create_annotations: bool = True,
+    apply_offsets: bool = False,
+    find_overlaps: bool = False,
+    overlap_threshold: float = 0.05,
+    verbose=None,
 ):
     """Reader for an Eyelink ``.asc`` file.
 
@@ -122,9 +122,9 @@ class RawEyelink(BaseRaw):
         self,
         fname,
         *,
-        create_annotations: bool = ...,
-        apply_offsets: bool = ...,
-        find_overlaps: bool = ...,
-        overlap_threshold: float = ...,
-        verbose=...,
+        create_annotations: bool = True,
+        apply_offsets: bool = False,
+        find_overlaps: bool = False,
+        overlap_threshold: float = 0.05,
+        verbose=None,
     ) -> None: ...

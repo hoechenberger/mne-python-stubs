@@ -8,7 +8,7 @@ MNE_3D_BACKEND: Incomplete
 MNE_3D_BACKEND_TESTING: bool
 backend: Incomplete
 
-def set_3d_backend(backend_name, verbose=...):
+def set_3d_backend(backend_name, verbose=None):
     """Set the 3D backend for MNE.
 
     The backend will be set as specified and operations will use
@@ -113,13 +113,13 @@ def use_3d_backend(backend_name) -> Generator[None, None, None]:
 
 def set_3d_view(
     figure,
-    azimuth=...,
-    elevation=...,
-    focalpoint=...,
-    distance=...,
-    roll=...,
+    azimuth=None,
+    elevation=None,
+    focalpoint=None,
+    distance=None,
+    roll=None,
     *,
-    reset_camera=...,
+    reset_camera=None,
 ) -> None:
     """Configure the view of the given scene.
 
@@ -153,7 +153,7 @@ def set_3d_view(
        Deprecated, use ``distance="auto"`` instead.
     """
 
-def set_3d_title(figure, title, size: int = ...) -> None:
+def set_3d_title(figure, title, size: int = 40) -> None:
     """Configure the title of the given scene.
 
     Parameters
@@ -168,12 +168,12 @@ def set_3d_title(figure, title, size: int = ...) -> None:
 
 def create_3d_figure(
     size,
-    bgcolor=...,
-    smooth_shading=...,
-    handle=...,
+    bgcolor=(0, 0, 0),
+    smooth_shading=None,
+    handle=None,
     *,
-    scene: bool = ...,
-    show: bool = ...,
+    scene: bool = True,
+    show: bool = False,
 ):
     """Return an empty figure based on the current 3d backend.
 

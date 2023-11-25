@@ -1,8 +1,13 @@
 from ..evoked import Evoked as Evoked
 
-
 def cortical_signal_suppression(
-    evoked, picks=..., mag_picks=..., grad_picks=..., n_proj: int = ..., *, verbose=...
+    evoked,
+    picks=None,
+    mag_picks=None,
+    grad_picks=None,
+    n_proj: int = 6,
+    *,
+    verbose=None,
 ):
     """Apply cortical signal suppression (CSS) to evoked data.
 

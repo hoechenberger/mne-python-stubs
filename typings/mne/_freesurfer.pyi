@@ -10,7 +10,7 @@ from .transforms import (
 )
 from .utils import get_subjects_dir as get_subjects_dir, logger as logger
 
-def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = ..., atlas_ids=...):
+def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_ids=None):
     """Return a list of names and colors of segmented volumes.
 
     Parameters
@@ -50,11 +50,11 @@ def head_to_mri(
     pos,
     subject,
     mri_head_t,
-    subjects_dir=...,
+    subjects_dir=None,
     *,
-    kind: str = ...,
-    unscale: bool = ...,
-    verbose=...,
+    kind: str = "mri",
+    unscale: bool = False,
+    verbose=None,
 ):
     """Convert pos from head coordinate system to MRI ones.
 
@@ -101,7 +101,7 @@ def head_to_mri(
     This function requires nibabel.
     """
 
-def vertex_to_mni(vertices, hemis, subject, subjects_dir=..., verbose=...):
+def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
     """Convert the array of vertices for a hemisphere to MNI coordinates.
 
     Parameters
@@ -128,7 +128,7 @@ def vertex_to_mni(vertices, hemis, subject, subjects_dir=..., verbose=...):
         The MNI coordinates (in mm) of the vertices.
     """
 
-def head_to_mni(pos, subject, mri_head_t, subjects_dir=..., verbose=...):
+def head_to_mni(pos, subject, mri_head_t, subjects_dir=None, verbose=None):
     """Convert pos from head coordinate system to MNI ones.
 
     Parameters
@@ -162,7 +162,7 @@ def head_to_mni(pos, subject, mri_head_t, subjects_dir=..., verbose=...):
     This function requires either nibabel.
     """
 
-def get_mni_fiducials(subject, subjects_dir=..., verbose=...):
+def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
     """Estimate fiducials for a subject.
 
     Parameters
@@ -203,7 +203,7 @@ def get_mni_fiducials(subject, subjects_dir=..., verbose=...):
     :ref:`tut-source-alignment`.
     """
 
-def estimate_head_mri_t(subject, subjects_dir=..., verbose=...):
+def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
     """Estimate the head->mri transform from fsaverage fiducials.
 
     A subject's fiducials can be estimated given a Freesurfer ``recon-all``
@@ -236,7 +236,7 @@ def estimate_head_mri_t(subject, subjects_dir=..., verbose=...):
         fsaverage transformation.
     """
 
-def read_lta(fname, verbose=...):
+def read_lta(fname, verbose=None):
     """Read a Freesurfer linear transform array file.
 
     Parameters
@@ -256,7 +256,7 @@ def read_lta(fname, verbose=...):
         The affine transformation described by the lta file.
     """
 
-def read_talxfm(subject, subjects_dir=..., verbose=...):
+def read_talxfm(subject, subjects_dir=None, verbose=None):
     """Compute MRI-to-MNI transform from FreeSurfer talairach.xfm file.
 
     Parameters
@@ -282,7 +282,7 @@ def read_talxfm(subject, subjects_dir=..., verbose=...):
         The affine transformation from MRI to MNI space for the subject.
     """
 
-def read_freesurfer_lut(fname=...):
+def read_freesurfer_lut(fname=None):
     """Read a Freesurfer-formatted LUT.
 
     Parameters

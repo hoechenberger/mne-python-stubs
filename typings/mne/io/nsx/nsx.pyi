@@ -11,12 +11,12 @@ nsx_header_dict: Incomplete
 
 def read_raw_nsx(
     input_fname,
-    stim_channel: bool = ...,
-    eog=...,
-    misc=...,
-    preload: bool = ...,
+    stim_channel: bool = True,
+    eog=None,
+    misc=None,
+    preload: bool = False,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Reader function for NSx (Blackrock Microsystems) files.
 
@@ -114,9 +114,9 @@ class RawNSX(BaseRaw):
     def __init__(
         self,
         input_fname,
-        stim_channel: str = ...,
-        eog=...,
-        misc=...,
-        preload: bool = ...,
-        verbose=...,
+        stim_channel: str = "auto",
+        eog=None,
+        misc=None,
+        preload: bool = False,
+        verbose=None,
     ) -> None: ...

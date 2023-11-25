@@ -45,7 +45,7 @@ def next_fast_len(target):
     Copied from SciPy with minor modifications.
     """
 
-def estimate_ringing_samples(system, max_try: int = ...):
+def estimate_ringing_samples(system, max_try: int = 100000):
     """Estimate filter ringing.
 
     Parameters
@@ -64,14 +64,14 @@ def estimate_ringing_samples(system, max_try: int = ...):
 
 def construct_iir_filter(
     iir_params,
-    f_pass=...,
-    f_stop=...,
-    sfreq=...,
-    btype=...,
-    return_copy: bool = ...,
+    f_pass=None,
+    f_stop=None,
+    sfreq=None,
+    btype=None,
+    return_copy: bool = True,
     *,
-    phase: str = ...,
-    verbose=...,
+    phase: str = "zero",
+    verbose=None,
 ):
     """Use IIR parameters to get filtering coefficients.
 
@@ -217,20 +217,20 @@ def filter_data(
     sfreq,
     l_freq,
     h_freq,
-    picks=...,
-    filter_length: str = ...,
-    l_trans_bandwidth: str = ...,
-    h_trans_bandwidth: str = ...,
-    n_jobs=...,
-    method: str = ...,
-    iir_params=...,
-    copy: bool = ...,
-    phase: str = ...,
-    fir_window: str = ...,
-    fir_design: str = ...,
-    pad: str = ...,
+    picks=None,
+    filter_length: str = "auto",
+    l_trans_bandwidth: str = "auto",
+    h_trans_bandwidth: str = "auto",
+    n_jobs=None,
+    method: str = "fir",
+    iir_params=None,
+    copy: bool = True,
+    phase: str = "zero",
+    fir_window: str = "hamming",
+    fir_design: str = "firwin",
+    pad: str = "reflect_limited",
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Filter a subset of channels.
 
@@ -392,15 +392,15 @@ def create_filter(
     sfreq,
     l_freq,
     h_freq,
-    filter_length: str = ...,
-    l_trans_bandwidth: str = ...,
-    h_trans_bandwidth: str = ...,
-    method: str = ...,
-    iir_params=...,
-    phase: str = ...,
-    fir_window: str = ...,
-    fir_design: str = ...,
-    verbose=...,
+    filter_length: str = "auto",
+    l_trans_bandwidth: str = "auto",
+    h_trans_bandwidth: str = "auto",
+    method: str = "fir",
+    iir_params=None,
+    phase: str = "zero",
+    fir_window: str = "hamming",
+    fir_design: str = "firwin",
+    verbose=None,
 ):
     """Create a FIR or IIR filter.
 
@@ -420,18 +420,18 @@ def create_filter(
         relative to the filter order will be performed.
     sfreq : float
         The sample frequency in Hz.
-    
+
     l_freq : float | None
         For FIR filters, the lower pass-band edge; for IIR filters, the lower
         cutoff frequency. If None the data are only low-passed.
-    
+
     h_freq : float | None
         For FIR filters, the upper pass-band edge; for IIR filters, the upper
         cutoff frequency. If None the data are only high-passed.
-    
+
     filter_length : str | int
         Length of the FIR filter to use (if applicable):
-    
+
         * **'auto' (default)**: The filter length is chosen based
           on the size of the transition regions (6.6 times the reciprocal
           of the shortest transition band for fir_window='hamming'
@@ -443,34 +443,34 @@ def create_filter(
           ``phase="zero-double"``.
         * **int**: Specified length in samples. For fir_design="firwin",
           this should not be used.
-    
+
     l_trans_bandwidth : float | str
         Width of the transition band at the low cut-off frequency in Hz
         (high pass or cutoff 1 in bandpass). Can be "auto"
         (default) to use a multiple of ``l_freq``::
-    
+
             min(max(l_freq * 0.25, 2), l_freq)
-    
+
         Only used for ``method='fir'``.
-    
+
     h_trans_bandwidth : float | str
         Width of the transition band at the high cut-off frequency in Hz
         (low pass or cutoff 2 in bandpass). Can be "auto"
         (default in 0.14) to use a multiple of ``h_freq``::
-    
+
             min(max(h_freq * 0.25, 2.), info['sfreq'] / 2. - h_freq)
-    
+
         Only used for ``method='fir'``.
-    
+
     method : str
         ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
         forward-backward filtering (via :func:scipy.signal.filtfilt`).
-    
+
     iir_params : dict | None
         Dictionary of parameters to use for IIR filtering.
         If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
         For more information, see :func:`mne.filter.construct_iir_filter`.
-    
+
     phase : str
         Phase of the filter.
         When ``method='fir'``, symmetric linear-phase FIR filters are constructed,
@@ -486,23 +486,23 @@ def create_filter(
         :func:scipy.signal.filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         :func:scipy.signal.lfilter`.
-    
+
         .. versionadded:: 0.13
-    
+
     fir_window : str
         The window to use in FIR design, can be "hamming" (default),
         "hann" (default in 0.13), or "blackman".
-    
+
         .. versionadded:: 0.15
-    
+
     fir_design : str
         Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
         or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
-    
+
         .. versionadded:: 0.15
-    
+
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
@@ -600,22 +600,22 @@ def notch_filter(
     x,
     Fs,
     freqs,
-    filter_length: str = ...,
-    notch_widths=...,
-    trans_bandwidth: int = ...,
-    method: str = ...,
-    iir_params=...,
-    mt_bandwidth=...,
-    p_value: float = ...,
-    picks=...,
-    n_jobs=...,
-    copy: bool = ...,
-    phase: str = ...,
-    fir_window: str = ...,
-    fir_design: str = ...,
-    pad: str = ...,
+    filter_length: str = "auto",
+    notch_widths=None,
+    trans_bandwidth: int = 1,
+    method: str = "fir",
+    iir_params=None,
+    mt_bandwidth=None,
+    p_value: float = 0.05,
+    picks=None,
+    n_jobs=None,
+    copy: bool = True,
+    phase: str = "zero",
+    fir_window: str = "hamming",
+    fir_design: str = "firwin",
+    pad: str = "reflect_limited",
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Notch filter for the signal x.
 
@@ -779,15 +779,15 @@ def notch_filter(
 
 def resample(
     x,
-    up: float = ...,
-    down: float = ...,
-    npad: int = ...,
-    axis: int = ...,
-    window: str = ...,
-    n_jobs=...,
-    pad: str = ...,
+    up: float = 1.0,
+    down: float = 1.0,
+    npad: int = 100,
+    axis: int = -1,
+    window: str = "boxcar",
+    n_jobs=None,
+    pad: str = "reflect_limited",
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Resample an array.
 
@@ -851,7 +851,7 @@ def resample(
     up=up/down and down=1.
     """
 
-def detrend(x, order: int = ..., axis: int = ...):
+def detrend(x, order: int = 1, axis: int = -1):
     """Detrend the array x.
 
     Parameters
@@ -881,90 +881,9 @@ def detrend(x, order: int = ..., axis: int = ...):
     """
 
 class FilterMixin:
-    """Compute analytic signal or envelope for a subset of channels.
+    """Object for Epoch/Evoked filtering."""
 
-    Parameters
-    ----------
-    picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
-        channels`. None (default) will pick all data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if
-        their names or indices are explicitly provided.
-    envelope : bool
-        Compute the envelope signal of each channel. Default False.
-        See Notes.
-    n_jobs : int | None
-        The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
-        ``None`` (default) is a marker for 'unset' that will be interpreted
-        as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
-        value for ``n_jobs``.
-    n_fft : int | None | str
-        Points to use in the FFT for Hilbert transformation. The signal
-        will be padded with zeros before computing Hilbert, then cut back
-        to original length. If None, n == self.n_times. If 'auto',
-        the next highest fast FFT length will be use.
-
-    verbose : bool | str | int | None
-        Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
-        argument.
-
-    Returns
-    -------
-    self : instance of Raw, Epochs, or Evoked
-        The raw object with transformed data.
-
-    Notes
-    -----
-    **Parameters**
-
-    If ``envelope=False``, the analytic signal for the channels defined in
-    ``picks`` is computed and the data of the Raw object is converted to
-    a complex representation (the analytic signal is complex valued).
-
-    If ``envelope=True``, the absolute value of the analytic signal for the
-    channels defined in ``picks`` is computed, resulting in the envelope
-    signal.
-
-    .. warning: Do not use ``envelope=True`` if you intend to compute
-                an inverse solution from the raw data. If you want to
-                compute the envelope in source space, use
-                ``envelope=False`` and compute the envelope after the
-                inverse solution has been obtained.
-
-    If envelope=False, more memory is required since the original raw data
-    as well as the analytic signal have temporarily to be stored in memory.
-    If n_jobs > 1, more memory is required as ``len(picks) * n_times``
-    additional time points need to be temporarily stored in memory.
-
-    Also note that the ``n_fft`` parameter will allow you to pad the signal
-    with zeros before performing the Hilbert transform. This padding
-    is cut off, but it may result in a slightly different result
-    (particularly around the edges). Use at your own risk.
-
-    **Analytic signal**
-
-    The analytic signal "x_a(t)" of "x(t)" is::
-
-        x_a = F^{-1}(F(x) 2U) = x + i y
-
-    where "F" is the Fourier transform, "U" the unit step function,
-    and "y" the Hilbert transform of "x". One usage of the analytic
-    signal is the computation of the envelope signal, which is given by
-    "e(t) = abs(x_a(t))". Due to the linearity of Hilbert transform and the
-    MNE inverse solution, the enevlope in source space can be obtained
-    by computing the analytic signal in sensor space, applying the MNE
-    inverse, and computing the envelope in source space.
-    """
-
-    def savgol_filter(self, h_freq, verbose=...):
+    def savgol_filter(self, h_freq, verbose=None):
         """Filter the data using Savitzky-Golay polynomial method.
 
         Parameters
@@ -1013,24 +932,25 @@ class FilterMixin:
         >>> evoked.savgol_filter(10.)  # low-pass at around 10 Hz # doctest:+SKIP
         >>> evoked.plot()  # doctest:+SKIP
         """
+        ...
     def filter(
         self,
         l_freq,
         h_freq,
-        picks=...,
-        filter_length: str = ...,
-        l_trans_bandwidth: str = ...,
-        h_trans_bandwidth: str = ...,
-        n_jobs=...,
-        method: str = ...,
-        iir_params=...,
-        phase: str = ...,
-        fir_window: str = ...,
-        fir_design: str = ...,
-        skip_by_annotation=...,
-        pad: str = ...,
+        picks=None,
+        filter_length: str = "auto",
+        l_trans_bandwidth: str = "auto",
+        h_trans_bandwidth: str = "auto",
+        n_jobs=None,
+        method: str = "fir",
+        iir_params=None,
+        phase: str = "zero",
+        fir_window: str = "hamming",
+        fir_design: str = "firwin",
+        skip_by_annotation=("edge", "bad_acq_skip"),
+        pad: str = "edge",
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Filter a subset of channels.
 
@@ -1203,15 +1123,16 @@ class FilterMixin:
 
         .. versionadded:: 0.15
         """
+        ...
     def resample(
         self,
         sfreq,
-        npad: str = ...,
-        window: str = ...,
-        n_jobs=...,
-        pad: str = ...,
+        npad: str = "auto",
+        window: str = "boxcar",
+        n_jobs=None,
+        pad: str = "edge",
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Resample data.
 
@@ -1268,14 +1189,15 @@ class FilterMixin:
         For some data, it may be more accurate to use npad=0 to reduce
         artifacts. This is dataset dependent -- check your data!
         """
+        ...
     def apply_hilbert(
         self,
-        picks=...,
-        envelope: bool = ...,
-        n_jobs=...,
-        n_fft: str = ...,
+        picks=None,
+        envelope: bool = False,
+        n_jobs=None,
+        n_fft: str = "auto",
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Compute analytic signal or envelope for a subset of channels.
 
@@ -1359,14 +1281,15 @@ class FilterMixin:
         by computing the analytic signal in sensor space, applying the MNE
         inverse, and computing the envelope in source space.
         """
+        ...
 
 def design_mne_c_filter(
     sfreq,
-    l_freq=...,
-    h_freq: float = ...,
-    l_trans_bandwidth=...,
-    h_trans_bandwidth: float = ...,
-    verbose=...,
+    l_freq=None,
+    h_freq: float = 40.0,
+    l_trans_bandwidth=None,
+    h_trans_bandwidth: float = 5.0,
+    verbose=None,
 ):
     """Create a FIR filter like that used by MNE-C.
 

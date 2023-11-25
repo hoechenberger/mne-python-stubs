@@ -6,13 +6,23 @@ from matplotlib.colors import Colormap
 from typing import List, Optional, Union
 
 class UIEvent:
-    """The name of the event, which is the class name in snake case."""
+    """Abstract base class for all events.
+
+    Attributes
+    ----------
+
+    name : str
+        The name of the event (same as its class name but in snake_case).
+    source : matplotlib.figure.Figure | Figure3D
+        The figure that published the event.
+    """
 
     source: Incomplete
 
     @property
     def name(self):
         """The name of the event, which is the class name in snake case."""
+        ...
 
 class FigureClosing(UIEvent):
     """Indicates that the user has requested to close a figure.
@@ -166,7 +176,7 @@ class Contours(UIEvent):
 
     def __init__(self, kind, contours) -> None: ...
 
-def publish(fig, event, *, verbose=...) -> None:
+def publish(fig, event, *, verbose=None) -> None:
     """Publish an event to all subscribers of the figure's channel.
 
     The figure's event channel and all linked event channels are searched for
@@ -187,7 +197,7 @@ def publish(fig, event, *, verbose=...) -> None:
         argument.
     """
 
-def subscribe(fig, event_name, callback, *, verbose=...) -> None:
+def subscribe(fig, event_name, callback, *, verbose=None) -> None:
     """Subscribe to an event on a figure's event channel.
 
     Parameters
@@ -206,7 +216,7 @@ def subscribe(fig, event_name, callback, *, verbose=...) -> None:
         argument.
     """
 
-def unsubscribe(fig, event_names, callback=..., *, verbose=...) -> None:
+def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
     """Unsubscribe from an event on a figure's event channel.
 
     Parameters
@@ -229,7 +239,7 @@ def unsubscribe(fig, event_names, callback=..., *, verbose=...) -> None:
         argument.
     """
 
-def link(*figs, include_events=..., exclude_events=..., verbose=...) -> None:
+def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
     """Link the event channels of two figures together.
 
     When event channels are linked, any events that are published on one
@@ -256,7 +266,7 @@ def link(*figs, include_events=..., exclude_events=..., verbose=...) -> None:
         argument.
     """
 
-def unlink(fig, *, verbose=...) -> None:
+def unlink(fig, *, verbose=None) -> None:
     """Remove all links involving the event channel of the given figure.
 
     Parameters

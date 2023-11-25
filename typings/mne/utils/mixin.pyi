@@ -5,13 +5,7 @@ from _typeshed import Incomplete
 logger: Incomplete
 
 class SizeMixin:
-    """Hash the object.
-
-    Returns
-    -------
-    hash : int
-        The hash
-    """
+    """Estimate MNE object sizes."""
 
     def __eq__(self, other):
         """Compare self to other.
@@ -26,6 +20,7 @@ class SizeMixin:
         eq : bool
             True if the two objects are equal.
         """
+        ...
     def __hash__(self):
         """Hash the object.
 
@@ -34,9 +29,10 @@ class SizeMixin:
         hash : int
             The hash
         """
+        ...
 
 class GetEpochsMixin:
-    """Get the metadata."""
+    """Class to add epoch selection and metadata to certain classes."""
 
     def __getitem__(self, item):
         """Return an Epochs object with a copied subset of epochs.
@@ -104,6 +100,7 @@ class GetEpochsMixin:
 
            .. versionadded:: 0.16
         """
+        ...
     def __len__(self) -> int:
         """Return the number of epochs.
 
@@ -126,6 +123,7 @@ class GetEpochsMixin:
             >>> len(epochs.events)  # doctest: +SKIP
             43
         """
+        ...
     def __iter__(self):
         """Facilitate iteration over epochs.
 
@@ -141,7 +139,8 @@ class GetEpochsMixin:
         Where ``epoch`` is given by successive outputs of
         :meth:`mne.Epochs.next`.
         """
-    def __next__(self, return_event_id: bool = ...):
+        ...
+    def __next__(self, return_event_id: bool = False):
         """Iterate over epoch data.
 
         Parameters
@@ -156,19 +155,22 @@ class GetEpochsMixin:
         event_id : int
             The event id. Only returned if ``return_event_id`` is ``True``.
         """
+        ...
     next = __next__
 
     @property
     def metadata(self):
         """Get the metadata."""
+        ...
     @metadata.setter
     def metadata(self, metadata, verbose=...) -> None:
         """Get the metadata."""
+        ...
 
 class TimeMixin:
-    """Time vector in seconds."""
+    """Class for time operations on any MNE object that has a time axis."""
 
-    def time_as_index(self, times, use_rounding: bool = ...):
+    def time_as_index(self, times, use_rounding: bool = False):
         """Convert time to indices.
 
         Parameters
@@ -184,43 +186,24 @@ class TimeMixin:
         index : ndarray
             Indices corresponding to the times supplied.
         """
+        ...
     @property
     def times(self):
         """Time vector in seconds."""
+        ...
 
 class ExtendedTimeMixin(TimeMixin):
-    """Shift time scale in epoched or evoked data.
-
-    Parameters
-    ----------
-    tshift : float
-        The (absolute or relative) time shift in seconds. If ``relative``
-        is True, positive tshift increases the time value associated with
-        each sample, while negative tshift decreases it.
-    relative : bool
-        If True, increase or decrease time values by ``tshift`` seconds.
-        Otherwise, shift the time values such that the time of the first
-        sample equals ``tshift``.
-
-    Returns
-    -------
-    epochs : MNE-object
-        The modified instance.
-
-    Notes
-    -----
-    This method allows you to shift the *time* values associated with each
-    data sample by an arbitrary amount. It does *not* resample the signal
-    or change the *data* values in any way.
-    """
+    """Class for time operations on epochs/evoked-like MNE objects."""
 
     @property
     def tmin(self):
         """First time point."""
+        ...
     @property
     def tmax(self):
         """Last time point."""
-    def crop(self, tmin=..., tmax=..., include_tmax: bool = ..., verbose=...):
+        ...
+    def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
         """Crop data to a given time interval.
 
         Parameters
@@ -255,7 +238,8 @@ class ExtendedTimeMixin(TimeMixin):
         ``tmin <= t <= tmax``. Pass ``include_tmax=False`` to specify the half-open
         interval ``tmin <= t < tmax`` instead.
         """
-    def decimate(self, decim, offset: int = ..., *, verbose=...):
+        ...
+    def decimate(self, decim, offset: int = 0, *, verbose=None):
         """Decimate the time-series data.
 
         Parameters
@@ -322,7 +306,8 @@ class ExtendedTimeMixin(TimeMixin):
         ----------
         .. footbibliography::
         """
-    def shift_time(self, tshift, relative: bool = ...):
+        ...
+    def shift_time(self, tshift, relative: bool = True):
         """Shift time scale in epoched or evoked data.
 
         Parameters
@@ -347,3 +332,4 @@ class ExtendedTimeMixin(TimeMixin):
         data sample by an arbitrary amount. It does *not* resample the signal
         or change the *data* values in any way.
         """
+        ...

@@ -27,7 +27,7 @@ from ..viz.utils import (
 from .multitaper import dpss_windows as dpss_windows
 from _typeshed import Incomplete
 
-def morlet(sfreq, freqs, n_cycles: float = ..., sigma=..., zero_mean: bool = ...):
+def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = False):
     """Compute Morlet wavelets for the given frequency range.
 
     Parameters
@@ -168,7 +168,7 @@ def fwhm(freq, n_cycles):
     .. footbibliography::
     """
 
-def cwt(X, Ws, use_fft: bool = ..., mode: str = ..., decim: int = ...):
+def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
     """Compute time-frequency decomposition with continuous wavelet transform.
 
     Parameters
@@ -209,15 +209,15 @@ def tfr_morlet(
     inst,
     freqs,
     n_cycles,
-    use_fft: bool = ...,
-    return_itc: bool = ...,
-    decim: int = ...,
-    n_jobs=...,
-    picks=...,
-    zero_mean: bool = ...,
-    average: bool = ...,
-    output: str = ...,
-    verbose=...,
+    use_fft: bool = False,
+    return_itc: bool = True,
+    decim: int = 1,
+    n_jobs=None,
+    picks=None,
+    zero_mean: bool = True,
+    average: bool = True,
+    output: str = "power",
+    verbose=None,
 ):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
@@ -360,13 +360,13 @@ def tfr_array_morlet(
     epoch_data,
     sfreq,
     freqs,
-    n_cycles: float = ...,
-    zero_mean: bool = ...,
-    use_fft: bool = ...,
-    decim: int = ...,
-    output: str = ...,
-    n_jobs=...,
-    verbose=...,
+    n_cycles: float = 7.0,
+    zero_mean: bool = False,
+    use_fft: bool = True,
+    decim: int = 1,
+    output: str = "complex",
+    n_jobs=None,
+    verbose=None,
 ):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
@@ -500,15 +500,15 @@ def tfr_multitaper(
     inst,
     freqs,
     n_cycles,
-    time_bandwidth: float = ...,
-    use_fft: bool = ...,
-    return_itc: bool = ...,
-    decim: int = ...,
-    n_jobs=...,
-    picks=...,
-    average: bool = ...,
+    time_bandwidth: float = 4.0,
+    use_fft: bool = True,
+    return_itc: bool = True,
+    decim: int = 1,
+    n_jobs=None,
+    picks=None,
+    average: bool = True,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
@@ -689,7 +689,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         """Channel names."""
     freqs: Incomplete
 
-    def crop(self, tmin=..., tmax=..., fmin=..., fmax=..., include_tmax: bool = ...):
+    def crop(
+        self, tmin=None, tmax=None, fmin=None, fmax=None, include_tmax: bool = True
+    ):
         """Crop data to a given time interval in place.
 
         Parameters
@@ -721,7 +723,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         copy : instance of EpochsTFR | instance of AverageTFR
             A copy of the instance.
         """
-    def apply_baseline(self, baseline, mode: str = ..., verbose=...):
+    def apply_baseline(self, baseline, mode: str = "mean", verbose=None):
         """Baseline correct the data.
 
         Parameters
@@ -755,7 +757,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         inst : instance of AverageTFR
             The modified instance.
         """
-    def save(self, fname, overwrite: bool = ..., *, verbose=...) -> None:
+    def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
         """Save TFR object to hdf5 file.
 
         Parameters
@@ -771,12 +773,12 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         """
     def to_data_frame(
         self,
-        picks=...,
-        index=...,
-        long_format: bool = ...,
-        time_format=...,
+        picks=None,
+        index=None,
+        long_format: bool = False,
+        time_format=None,
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Export data in tabular structure as a pandas DataFrame.
 
@@ -807,7 +809,55 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         """
 
 class AverageTFR(_BaseTFR):
-    """Multiply source instances."""
+    """Container for Time-Frequency data.
+
+    Can for example store induced power at sensor level or inter-trial
+    coherence.
+
+    Parameters
+    ----------
+
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    data : ndarray, shape (n_channels, n_freqs, n_times)
+        The data.
+    times : ndarray, shape (n_times,)
+        The time values in seconds.
+    freqs : ndarray, shape (n_freqs,)
+        The frequencies in Hz.
+    nave : int
+        The number of averaged TFRs.
+    comment : str | None, default None
+        Comment on the data, e.g., the experimental condition.
+    method : str | None, default None
+        Comment on the method used to compute the data, e.g., morlet wavelet.
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Attributes
+    ----------
+
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    ch_names : list
+        The names of the channels.
+    nave : int
+        Number of averaged epochs.
+    data : ndarray, shape (n_channels, n_freqs, n_times)
+        The data array.
+    times : ndarray, shape (n_times,)
+        The time values in seconds.
+    freqs : ndarray, shape (n_freqs,)
+        The frequencies in Hz.
+    comment : str
+        Comment on dataset. Can be the condition.
+    method : str | None, default None
+        Comment on the method used to compute the data, e.g., morlet wavelet.
+    """
 
     info: Incomplete
     data: Incomplete
@@ -818,35 +868,35 @@ class AverageTFR(_BaseTFR):
     preload: bool
 
     def __init__(
-        self, info, data, times, freqs, nave, comment=..., method=..., verbose=...
+        self, info, data, times, freqs, nave, comment=None, method=None, verbose=None
     ) -> None: ...
     def plot(
         self,
-        picks=...,
-        baseline=...,
-        mode: str = ...,
-        tmin=...,
-        tmax=...,
-        fmin=...,
-        fmax=...,
-        vmin=...,
-        vmax=...,
-        cmap: str = ...,
-        dB: bool = ...,
-        colorbar: bool = ...,
-        show: bool = ...,
-        title=...,
-        axes=...,
-        layout=...,
-        yscale: str = ...,
-        mask=...,
-        mask_style=...,
-        mask_cmap: str = ...,
-        mask_alpha: float = ...,
-        combine=...,
-        exclude=...,
-        cnorm=...,
-        verbose=...,
+        picks=None,
+        baseline=None,
+        mode: str = "mean",
+        tmin=None,
+        tmax=None,
+        fmin=None,
+        fmax=None,
+        vmin=None,
+        vmax=None,
+        cmap: str = "RdBu_r",
+        dB: bool = False,
+        colorbar: bool = True,
+        show: bool = True,
+        title=None,
+        axes=None,
+        layout=None,
+        yscale: str = "auto",
+        mask=None,
+        mask_style=None,
+        mask_cmap: str = "Greys",
+        mask_alpha: float = 0.1,
+        combine=None,
+        exclude=[],
+        cnorm=None,
+        verbose=None,
     ):
         """Plot TFRs as a two-dimensional image(s).
 
@@ -1006,29 +1056,30 @@ class AverageTFR(_BaseTFR):
         figs : list of instances of matplotlib.figure.Figure
             A list of figures containing the time-frequency power.
         """
+        ...
     def plot_joint(
         self,
-        timefreqs=...,
-        picks=...,
-        baseline=...,
-        mode: str = ...,
-        tmin=...,
-        tmax=...,
-        fmin=...,
-        fmax=...,
-        vmin=...,
-        vmax=...,
-        cmap: str = ...,
-        dB: bool = ...,
-        colorbar: bool = ...,
-        show: bool = ...,
-        title=...,
-        yscale: str = ...,
-        combine: str = ...,
-        exclude=...,
-        topomap_args=...,
-        image_args=...,
-        verbose=...,
+        timefreqs=None,
+        picks=None,
+        baseline=None,
+        mode: str = "mean",
+        tmin=None,
+        tmax=None,
+        fmin=None,
+        fmax=None,
+        vmin=None,
+        vmax=None,
+        cmap: str = "RdBu_r",
+        dB: bool = False,
+        colorbar: bool = True,
+        show: bool = True,
+        title=None,
+        yscale: str = "auto",
+        combine: str = "mean",
+        exclude=[],
+        topomap_args=None,
+        image_args=None,
+        verbose=None,
     ):
         """Plot TFRs as a two-dimensional image with topomaps.
 
@@ -1154,30 +1205,31 @@ class AverageTFR(_BaseTFR):
 
         .. versionadded:: 0.16.0
         """
+        ...
     def plot_topo(
         self,
-        picks=...,
-        baseline=...,
-        mode: str = ...,
-        tmin=...,
-        tmax=...,
-        fmin=...,
-        fmax=...,
-        vmin=...,
-        vmax=...,
-        layout=...,
-        cmap: str = ...,
-        title=...,
-        dB: bool = ...,
-        colorbar: bool = ...,
-        layout_scale: float = ...,
-        show: bool = ...,
-        border: str = ...,
-        fig_facecolor: str = ...,
-        fig_background=...,
-        font_color: str = ...,
-        yscale: str = ...,
-        verbose=...,
+        picks=None,
+        baseline=None,
+        mode: str = "mean",
+        tmin=None,
+        tmax=None,
+        fmin=None,
+        fmax=None,
+        vmin=None,
+        vmax=None,
+        layout=None,
+        cmap: str = "RdBu_r",
+        title=None,
+        dB: bool = False,
+        colorbar: bool = True,
+        layout_scale: float = 0.945,
+        show: bool = True,
+        border: str = "none",
+        fig_facecolor: str = "k",
+        fig_background=None,
+        font_color: str = "w",
+        yscale: str = "auto",
+        verbose=None,
     ):
         """Plot TFRs in a topography with images.
 
@@ -1274,36 +1326,37 @@ class AverageTFR(_BaseTFR):
         fig : matplotlib.figure.Figure
             The figure containing the topography.
         """
+        ...
     def plot_topomap(
         self,
-        tmin=...,
-        tmax=...,
-        fmin: float = ...,
+        tmin=None,
+        tmax=None,
+        fmin: float = 0.0,
         fmax=...,
         *,
-        ch_type=...,
-        baseline=...,
-        mode: str = ...,
-        sensors: bool = ...,
-        show_names: bool = ...,
-        mask=...,
-        mask_params=...,
-        contours: int = ...,
-        outlines: str = ...,
-        sphere=...,
-        image_interp=...,
-        extrapolate=...,
-        border=...,
-        res: int = ...,
-        size: int = ...,
-        cmap=...,
-        vlim=...,
-        cnorm=...,
-        colorbar: bool = ...,
-        cbar_fmt: str = ...,
-        units=...,
-        axes=...,
-        show: bool = ...,
+        ch_type=None,
+        baseline=None,
+        mode: str = "mean",
+        sensors: bool = True,
+        show_names: bool = False,
+        mask=None,
+        mask_params=None,
+        contours: int = 6,
+        outlines: str = "head",
+        sphere=None,
+        image_interp="cubic",
+        extrapolate="auto",
+        border="mean",
+        res: int = 64,
+        size: int = 2,
+        cmap=None,
+        vlim=(None, None),
+        cnorm=None,
+        colorbar: bool = True,
+        cbar_fmt: str = "%1.1e",
+        units=None,
+        axes=None,
+        show: bool = True,
     ):
         """Plot topographic maps of specific time-frequency intervals of TFR data.
 
@@ -1492,53 +1545,119 @@ class AverageTFR(_BaseTFR):
         fig : matplotlib.figure.Figure
             The figure containing the topography.
         """
+        ...
     def __add__(self, tfr):
         """Add instances."""
+        ...
     def __iadd__(self, tfr): ...
     def __sub__(self, tfr):
         """Subtract instances."""
+        ...
     def __isub__(self, tfr): ...
     def __truediv__(self, a):
         """Divide instances."""
+        ...
     def __itruediv__(self, a): ...
     def __mul__(self, a):
         """Multiply source instances."""
+        ...
     def __imul__(self, a): ...
 
 class EpochsTFR(_BaseTFR, GetEpochsMixin):
-    """Average the data across epochs.
+    """Container for Time-Frequency data on epochs.
+
+    Can for example store induced power at sensor level.
 
     Parameters
     ----------
-    method : str | callable
-        How to combine the data. If "mean"/"median", the mean/median
-        are returned. Otherwise, must be a callable which, when passed
-        an array of shape (n_epochs, n_channels, n_freqs, n_time)
-        returns an array of shape (n_channels, n_freqs, n_time).
-        Note that due to file type limitations, the kind for all
-        these will be "average".
-    dim : 'epochs' | 'freqs' | 'times'
-        The dimension along which to combine the data.
-    copy : bool
-        Whether to return a copy of the modified instance,
-        or modify in place. Ignored when ``dim='epochs'``
-        because a new instance must be returned.
 
-    Returns
-    -------
-    ave : instance of AverageTFR | EpochsTFR
-        The averaged data.
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    data : ndarray, shape (n_epochs, n_channels, n_freqs, n_times)
+        The data.
+    times : ndarray, shape (n_times,)
+        The time values in seconds.
+    freqs : ndarray, shape (n_freqs,)
+        The frequencies in Hz.
+    comment : str | None, default None
+        Comment on the data, e.g., the experimental condition.
+    method : str | None, default None
+        Comment on the method used to compute the data, e.g., morlet wavelet.
+    events : ndarray, shape (n_events, 3) | None
+        The events as stored in the Epochs class. If None (default), all event
+        values are set to 1 and event time-samples are set to range(n_epochs).
+    event_id : dict | None
+        Example: dict(auditory=1, visual=3). They keys can be used to access
+        associated events. If None, all events will be used and a dict is
+        created with string integer names corresponding to the event id
+        integers.
+    selection : iterable | None
+        Iterable of indices of selected epochs. If ``None``, will be
+        automatically generated, corresponding to all non-zero events.
+
+        .. versionadded:: 0.23
+    drop_log : tuple | None
+        Tuple of tuple of strings indicating which epochs have been marked to
+        be ignored.
+
+        .. versionadded:: 0.23
+    metadata : instance of pandas.DataFrame | None
+        A :class:`pandas.DataFrame` containing pertinent information for each
+        trial. See :class:`mne.Epochs` for further details.
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Attributes
+    ----------
+
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    ch_names : list
+        The names of the channels.
+    data : ndarray, shape (n_epochs, n_channels, n_freqs, n_times)
+        The data array.
+    times : ndarray, shape (n_times,)
+        The time values in seconds.
+    freqs : ndarray, shape (n_freqs,)
+        The frequencies in Hz.
+    comment : string
+        Comment on dataset. Can be the condition.
+    method : str | None, default None
+        Comment on the method used to compute the data, e.g., morlet wavelet.
+    events : ndarray, shape (n_events, 3) | None
+        Array containing sample information as event_id
+    event_id : dict | None
+        Names of conditions correspond to event_ids
+    selection : array
+        List of indices of selected events (not dropped or ignored etc.). For
+        example, if the original event array had 4 events and the second event
+        has been dropped, this attribute would be np.array([0, 2, 3]).
+    drop_log : tuple of tuple
+        A tuple of the same length as the event array used to initialize the
+        ``EpochsTFR`` object. If the i-th original event is still part of the
+        selection, drop_log[i] will be an empty tuple; otherwise it will be
+        a tuple of the reasons the event is not longer in the selection, e.g.:
+
+        - ``'IGNORED'``
+            If it isn't part of the current subset defined by the user
+        - ``'NO_DATA'`` or ``'TOO_SHORT'``
+            If epoch didn't contain enough data names of channels that
+            exceeded the amplitude threshold
+        - ``'EQUALIZED_COUNTS'``
+            See :meth:mne.Epochs.equalize_event_counts`
+        - ``'USER'``
+            For user-defined reasons (see :meth:mne.Epochs.drop`).
+
+    metadata : pandas.DataFrame, shape (n_events, n_cols) | None
+        DataFrame containing pertinent information for each trial
 
     Notes
     -----
-    Passing in ``np.median`` is considered unsafe when there is complex
-    data because NumPy doesn't compute the marginal median. Numpy currently
-    sorts the complex values by real part and return whatever value is
-    computed. Use with caution. We use the marginal median in the
-    complex case (i.e. the median of each component separately) if
-    one passes in ``median``. See a discussion in scipy:
-
-    https://github.com/scipy/scipy/pull/12676#issuecomment-783370228
+    .. versionadded:: 0.13.0
     """
 
     info: Incomplete
@@ -1559,18 +1678,19 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
         data,
         times,
         freqs,
-        comment=...,
-        method=...,
-        events=...,
-        event_id=...,
-        selection=...,
-        drop_log=...,
-        metadata=...,
-        verbose=...,
+        comment=None,
+        method=None,
+        events=None,
+        event_id=None,
+        selection=None,
+        drop_log=None,
+        metadata=None,
+        verbose=None,
     ) -> None: ...
     def __abs__(self):
         """Take the absolute value."""
-    def average(self, method: str = ..., dim: str = ..., copy: bool = ...):
+        ...
+    def average(self, method: str = "mean", dim: str = "epochs", copy: bool = False):
         """Average the data across epochs.
 
         Parameters
@@ -1605,8 +1725,9 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
 
         https://github.com/scipy/scipy/pull/12676#issuecomment-783370228
         """
+        ...
 
-def combine_tfr(all_tfr, weights: str = ...):
+def combine_tfr(all_tfr, weights: str = "nave"):
     """Merge AverageTFR data by weighted addition.
 
     Create a new AverageTFR instance, using a combination of the supplied
@@ -1633,7 +1754,7 @@ def combine_tfr(all_tfr, weights: str = ...):
     .. versionadded:: 0.11.0
     """
 
-def write_tfrs(fname, tfr, overwrite: bool = ..., *, verbose=...) -> None:
+def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
     """Write a TFR dataset to hdf5.
 
     Parameters
@@ -1664,7 +1785,7 @@ def write_tfrs(fname, tfr, overwrite: bool = ..., *, verbose=...) -> None:
     .. versionadded:: 0.9.0
     """
 
-def read_tfrs(fname, condition=..., *, verbose=...):
+def read_tfrs(fname, condition=None, *, verbose=None):
     """Read TFR datasets from hdf5 file.
 
     Parameters

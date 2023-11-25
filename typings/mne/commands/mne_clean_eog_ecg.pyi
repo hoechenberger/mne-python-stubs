@@ -1,15 +1,14 @@
-
 def clean_ecg_eog(
     in_fif_fname,
-    out_fif_fname=...,
-    eog: bool = ...,
-    ecg: bool = ...,
-    ecg_proj_fname=...,
-    eog_proj_fname=...,
-    ecg_event_fname=...,
-    eog_event_fname=...,
-    in_path: str = ...,
-    quiet: bool = ...,
+    out_fif_fname=None,
+    eog: bool = True,
+    ecg: bool = True,
+    ecg_proj_fname=None,
+    eog_proj_fname=None,
+    ecg_event_fname=None,
+    eog_event_fname=None,
+    in_path: str = ".",
+    quiet: bool = False,
 ) -> None:
     """Clean ECG from raw fif file.
 

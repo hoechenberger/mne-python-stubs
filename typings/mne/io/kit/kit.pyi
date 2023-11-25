@@ -21,17 +21,83 @@ class UnsupportedKITFormat(ValueError):
     def __init__(self, sqd_version, *args, **kwargs) -> None: ...
 
 class RawKIT(BaseRaw):
-    """Read events from data.
+    """Raw object from KIT SQD file.
 
-    Parameter
-    ---------
-    buffer_size : int
-        The size of chunk to by which the data are scanned.
+    Parameters
+    ----------
+    input_fname : path-like
+        Path to the SQD file.
 
-    Returns
-    -------
-    events : array, [samples]
-       The event vector (1 x samples).
+    mrk : path-like | array of shape (5, 3) | list | None
+        Marker points representing the location of the marker coils with
+        respect to the MEG sensors, or path to a marker file.
+        If list, all of the markers will be averaged together.
+
+    elp : path-like | array of shape (8, 3) | None
+        Digitizer points representing the location of the fiducials and the
+        marker coils with respect to the digitized head shape, or path to a
+        file containing these points.
+
+    hsp : path-like | array of shape (n_points, 3) | None
+        Digitizer head shape points, or path to head shape file. If more than
+        10,000 points are in the head shape, they are automatically decimated.
+
+    stim : list of int | ``'<'`` | ``'>'`` | None
+        Channel-value correspondence when converting KIT trigger channels to a
+        Neuromag-style stim channel. For ``'<'``\\, the largest values are
+        assigned to the first channel (default). For ``'>'``\\, the largest
+        values are assigned to the last channel. Can also be specified as a
+        list of trigger channel indexes. If None, no synthesized channel is
+        generated.
+
+    slope : ``'+'`` | ``'-'``
+        How to interpret values on KIT trigger channels when synthesizing a
+        Neuromag-style stim channel. With ``'+'``\\, a positive slope (low-to-high)
+        is interpreted as an event. With ``'-'``\\, a negative slope (high-to-low)
+        is interpreted as an event.
+
+    stimthresh : float | None
+        The threshold level for accepting voltage changes in KIT trigger
+        channels as a trigger event. If None, stim must also be set to None.
+
+    preload : bool or str (default False)
+        Preload data into memory for data manipulation and faster indexing.
+        If True, the data will be preloaded into memory (fast, requires
+        large amount of memory). If preload is a string, preload is the
+        file name of a memory-mapped file which is used to store the data
+        on the hard drive (slower, requires less memory).
+
+    stim_code : ``'binary'`` | ``'channel'``
+        How to decode trigger values from stim channels. ``'binary'`` read stim
+        channel events as binary code, 'channel' encodes channel number.
+    allow_unknown_format : bool
+        Force reading old data that is not officially supported. Alternatively,
+        read and re-save the data with the KIT MEG Laboratory application.
+
+    standardize_names : bool
+        If True, standardize MEG and EEG channel names to be
+        ``'MEG ###'`` and ``'EEG ###'``. If False (default), native
+        channel names in the file will be used when possible.
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Notes
+    -----
+    ``elp`` and ``hsp`` are usually the exported text files (*.txt) from the
+    Polhemus FastScan system. ``hsp`` refers to the headshape surface points.
+    ``elp`` refers to the points in head-space that corresponds to the HPI
+    points.
+
+    If ``mrk``\\, ``hsp`` or ``elp`` are :term:`array_like` inputs, then the
+    numbers in xyz coordinates should be in units of meters.
+
+    See Also
+    --------
+    mne.io.Raw : Documentation of attributes and methods.
     """
 
     preload: bool
@@ -40,19 +106,19 @@ class RawKIT(BaseRaw):
     def __init__(
         self,
         input_fname,
-        mrk=...,
-        elp=...,
-        hsp=...,
-        stim: str = ...,
-        slope: str = ...,
-        stimthresh: int = ...,
-        preload: bool = ...,
-        stim_code: str = ...,
-        allow_unknown_format: bool = ...,
-        standardize_names=...,
-        verbose=...,
+        mrk=None,
+        elp=None,
+        hsp=None,
+        stim: str = ">",
+        slope: str = "-",
+        stimthresh: int = 1,
+        preload: bool = False,
+        stim_code: str = "binary",
+        allow_unknown_format: bool = False,
+        standardize_names=None,
+        verbose=None,
     ) -> None: ...
-    def read_stim_ch(self, buffer_size: float = ...):
+    def read_stim_ch(self, buffer_size: float = 100000.0):
         """Read events from data.
 
         Parameter
@@ -65,6 +131,7 @@ class RawKIT(BaseRaw):
         events : array, [samples]
            The event vector (1 x samples).
         """
+        ...
 
 class EpochsKIT(BaseEpochs):
     """Epochs Array object from KIT SQD file.
@@ -203,22 +270,22 @@ class EpochsKIT(BaseEpochs):
         self,
         input_fname,
         events,
-        event_id=...,
-        tmin: int = ...,
-        baseline=...,
-        reject=...,
-        flat=...,
-        reject_tmin=...,
-        reject_tmax=...,
-        mrk=...,
-        elp=...,
-        hsp=...,
-        allow_unknown_format: bool = ...,
-        standardize_names=...,
-        verbose=...,
+        event_id=None,
+        tmin: int = 0,
+        baseline=None,
+        reject=None,
+        flat=None,
+        reject_tmin=None,
+        reject_tmax=None,
+        mrk=None,
+        elp=None,
+        hsp=None,
+        allow_unknown_format: bool = False,
+        standardize_names=None,
+        verbose=None,
     ) -> None: ...
 
-def get_kit_info(rawfile, allow_unknown_format, standardize_names=..., verbose=...):
+def get_kit_info(rawfile, allow_unknown_format, standardize_names=None, verbose=None):
     """Extract all the information from the sqd/con file.
 
     Parameters
@@ -251,17 +318,17 @@ def get_kit_info(rawfile, allow_unknown_format, standardize_names=..., verbose=.
 
 def read_raw_kit(
     input_fname,
-    mrk=...,
-    elp=...,
-    hsp=...,
-    stim: str = ...,
-    slope: str = ...,
-    stimthresh: int = ...,
-    preload: bool = ...,
-    stim_code: str = ...,
-    allow_unknown_format: bool = ...,
-    standardize_names: bool = ...,
-    verbose=...,
+    mrk=None,
+    elp=None,
+    hsp=None,
+    stim: str = ">",
+    slope: str = "-",
+    stimthresh: int = 1,
+    preload: bool = False,
+    stim_code: str = "binary",
+    allow_unknown_format: bool = False,
+    standardize_names: bool = False,
+    verbose=None,
 ):
     """Reader function for Ricoh/KIT conversion to FIF.
 
@@ -351,13 +418,13 @@ def read_raw_kit(
 def read_epochs_kit(
     input_fname,
     events,
-    event_id=...,
-    mrk=...,
-    elp=...,
-    hsp=...,
-    allow_unknown_format: bool = ...,
-    standardize_names: bool = ...,
-    verbose=...,
+    event_id=None,
+    mrk=None,
+    elp=None,
+    hsp=None,
+    allow_unknown_format: bool = False,
+    standardize_names: bool = False,
+    verbose=None,
 ):
     """Reader function for Ricoh/KIT epochs files.
 

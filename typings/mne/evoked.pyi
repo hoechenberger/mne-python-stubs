@@ -69,53 +69,27 @@ class Evoked(
     SizeMixin,
     SpectrumMixin,
 ):
-    """Export data in tabular structure as a pandas DataFrame.
-
-    Channels are converted to columns in the DataFrame. By default,
-    an additional column "time" is added, unless ``index='time'``
-    (in which case time values form the DataFrame's index).
+    """Evoked data.
 
     Parameters
     ----------
-    picks : str | array-like | slice | None
-        Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
-        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
-        channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` *will be included* if their names or indices are
-        explicitly provided.
-
-    index : 'time' | None
-        Kind of index to use for the DataFrame. If ``None``, a sequential
-        integer index (:class:`pandas.RangeIndex`) will be used. If ``'time'``, a
-        ``pandas.Index`` or :class:`pandas.TimedeltaIndex` will be used
-        (depending on the value of ``time_format``).
-        Defaults to ``None``.
-
-    scalings : dict | None
-        Scaling factor applied to the channels picked. If ``None``, defaults to
-        ``dict(eeg=1e6, mag=1e15, grad=1e13)`` — i.e., converts EEG to µV,
-        magnetometers to fT, and gradiometers to fT/cm.
-
-    copy : bool
-        If ``True``, data will be copied. Otherwise data may be modified in place.
-        Defaults to ``True``.
-
-    long_format : bool
-        If True, the DataFrame is returned in long format where each row is one
-        observation of the signal at a unique combination of time point and channel.
-        For convenience, a ``ch_type`` column is added to facilitate subsetting the resulting DataFrame. Defaults to ``False``.
-
-    time_format : str | None
-        Desired time format. If ``None``, no conversion is applied, and time values
-        remain as float values in seconds. If ``'ms'``, time values will be rounded
-        to the nearest millisecond and converted to integers. If ``'timedelta'``,
-        time values will be converted to :class:`pandas.Timedelta` values.
-        Default is ``None``.
-
-        .. versionadded:: 0.20
+    fname : path-like
+        Name of evoked/average FIF file to load.
+        If None no data is loaded.
+    condition : int, or str
+        Dataset ID number (int) or comment/name (str). Optional if there is
+        only one data set in file.
+    proj : bool, optional
+        Apply SSP projection vectors.
+    kind : str
+        Either ``'average'`` or ``'standard_error'``. The type of data to read.
+        Only used if 'condition' is a str.
+    allow_maxshield : bool | str (default False)
+        If True, allow loading of data that has been recorded with internal
+        active compensation (MaxShield). Data recorded with MaxShield should
+        generally not be loaded directly, but should first be processed using
+        SSS/tSSS to remove the compensation signals that may also affect brain
+        activity. Can also be ``"yes"`` to load without eliciting a warning.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
@@ -123,12 +97,40 @@ class Evoked(
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
-    -------
+    Attributes
+    ----------
 
-    df : instance of pandas.DataFrame
-        A dataframe suitable for usage with other statistical/plotting/analysis
-        packages.
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    ch_names : list of str
+        List of channels' names.
+    nave : int
+        Number of averaged epochs.
+    kind : str
+        Type of data, either average or standard_error.
+    comment : str
+        Comment on dataset. Can be the condition.
+    data : array of shape (n_channels, n_times)
+        Evoked response.
+    first : int
+        First time sample.
+    last : int
+        Last time sample.
+    tmin : float
+        The first time point in seconds.
+    tmax : float
+        The last time point in seconds.
+    times :  array
+        Time vector in seconds. Goes from ``tmin`` to ``tmax``. Time interval
+        between consecutive time samples is equal to the inverse of the
+        sampling frequency.
+    baseline : None | tuple of length 2
+         This attribute reflects whether the data has been baseline-corrected
+         (it will be a ``tuple`` then) or not (it will be ``None``).
+
+    Notes
+    -----
+    Evoked objects can only contain the average of a single set of conditions.
     """
 
     preload: bool
@@ -137,26 +139,30 @@ class Evoked(
     def __init__(
         self,
         fname,
-        condition=...,
-        proj: bool = ...,
-        kind: str = ...,
-        allow_maxshield: bool = ...,
+        condition=None,
+        proj: bool = True,
+        kind: str = "average",
+        allow_maxshield: bool = False,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
     @property
     def kind(self):
         """The data kind."""
+        ...
     @kind.setter
     def kind(self, kind) -> None:
         """The data kind."""
+        ...
     @property
     def data(self):
         """The data matrix."""
+        ...
     @data.setter
     def data(self, data) -> None:
         """The data matrix."""
-    def get_data(self, picks=..., units=..., tmin=..., tmax=...):
+        ...
+    def get_data(self, picks=None, units=None, tmin=None, tmax=None):
         """Get evoked data as 2D array.
 
         Parameters
@@ -201,8 +207,9 @@ class Evoked(
         -----
         .. versionadded:: 0.24
         """
+        ...
     def apply_function(
-        self, fun, picks=..., dtype=..., n_jobs=..., verbose=..., **kwargs
+        self, fun, picks=None, dtype=None, n_jobs=None, verbose=None, **kwargs
     ):
         """Apply a function to a subset of channels.
 
@@ -263,9 +270,10 @@ class Evoked(
         self : instance of Evoked
             The evoked object with transformed data.
         """
+        ...
     baseline: Incomplete
 
-    def apply_baseline(self, baseline=..., *, verbose=...):
+    def apply_baseline(self, baseline=(None, 0), *, verbose=None):
         """Baseline correct evoked data.
 
         Parameters
@@ -309,7 +317,8 @@ class Evoked(
 
         .. versionadded:: 0.13.0
         """
-    def save(self, fname, *, overwrite: bool = ..., verbose=...) -> None:
+        ...
+    def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """Save evoked data to a file.
 
         Parameters
@@ -337,8 +346,9 @@ class Evoked(
             Information on baseline correction will be stored with the data,
             and will be restored when reading again via `mne.read_evokeds`.
         """
+        ...
     def export(
-        self, fname, fmt: str = ..., *, overwrite: bool = ..., verbose=...
+        self, fname, fmt: str = "auto", *, overwrite: bool = False, verbose=None
     ) -> None:
         """Export Evoked to external formats.
 
@@ -381,34 +391,36 @@ class Evoked(
         Consider applying projector(s) before exporting with
         :meth:`mne.Evoked.apply_proj`.
         """
+        ...
     @property
     def ch_names(self):
         """Channel names."""
+        ...
     def plot(
         self,
-        picks=...,
-        exclude: str = ...,
-        unit: bool = ...,
-        show: bool = ...,
-        ylim=...,
-        xlim: str = ...,
-        proj: bool = ...,
-        hline=...,
-        units=...,
-        scalings=...,
-        titles=...,
-        axes=...,
-        gfp: bool = ...,
-        window_title=...,
-        spatial_colors: str = ...,
-        zorder: str = ...,
-        selectable: bool = ...,
-        noise_cov=...,
-        time_unit: str = ...,
-        sphere=...,
+        picks=None,
+        exclude: str = "bads",
+        unit: bool = True,
+        show: bool = True,
+        ylim=None,
+        xlim: str = "tight",
+        proj: bool = False,
+        hline=None,
+        units=None,
+        scalings=None,
+        titles=None,
+        axes=None,
+        gfp: bool = False,
+        window_title=None,
+        spatial_colors: str = "auto",
+        zorder: str = "unsorted",
+        selectable: bool = True,
+        noise_cov=None,
+        time_unit: str = "s",
+        sphere=None,
         *,
-        highlight=...,
-        verbose=...,
+        highlight=None,
+        verbose=None,
     ):
         """Plot evoked data using butterfly plots.
 
@@ -574,29 +586,30 @@ class Evoked(
         --------
         mne.viz.plot_evoked_white
         """
+        ...
     def plot_image(
         self,
-        picks=...,
-        exclude: str = ...,
-        unit: bool = ...,
-        show: bool = ...,
-        clim=...,
-        xlim: str = ...,
-        proj: bool = ...,
-        units=...,
-        scalings=...,
-        titles=...,
-        axes=...,
-        cmap: str = ...,
-        colorbar: bool = ...,
-        mask=...,
-        mask_style=...,
-        mask_cmap: str = ...,
-        mask_alpha: float = ...,
-        time_unit: str = ...,
-        show_names=...,
-        group_by=...,
-        sphere=...,
+        picks=None,
+        exclude: str = "bads",
+        unit: bool = True,
+        show: bool = True,
+        clim=None,
+        xlim: str = "tight",
+        proj: bool = False,
+        units=None,
+        scalings=None,
+        titles=None,
+        axes=None,
+        cmap: str = "RdBu_r",
+        colorbar: bool = True,
+        mask=None,
+        mask_style=None,
+        mask_cmap: str = "Greys",
+        mask_alpha: float = 0.25,
+        time_unit: str = "s",
+        show_names=None,
+        group_by=None,
+        sphere=None,
     ):
         """Plot evoked data as images.
 
@@ -731,25 +744,26 @@ class Evoked(
         fig : instance of matplotlib.figure.Figure
             Figure containing the images.
         """
+        ...
     def plot_topo(
         self,
-        layout=...,
-        layout_scale: float = ...,
-        color=...,
-        border: str = ...,
-        ylim=...,
-        scalings=...,
-        title=...,
-        proj: bool = ...,
-        vline=...,
-        fig_background=...,
-        merge_grads: bool = ...,
-        legend: bool = ...,
-        axes=...,
-        background_color: str = ...,
-        noise_cov=...,
-        exclude: str = ...,
-        show: bool = ...,
+        layout=None,
+        layout_scale: float = 0.945,
+        color=None,
+        border: str = "none",
+        ylim=None,
+        scalings=None,
+        title=None,
+        proj: bool = False,
+        vline=[0.0],
+        fig_background=None,
+        merge_grads: bool = False,
+        legend: bool = True,
+        axes=None,
+        background_color: str = "w",
+        noise_cov=None,
+        exclude: str = "bads",
+        show: bool = True,
     ):
         """Plot 2D topography of evoked responses.
 
@@ -829,38 +843,39 @@ class Evoked(
             -----
             .. versionadded:: 0.10.0
         """
+        ...
     def plot_topomap(
         self,
-        times: str = ...,
+        times: str = "auto",
         *,
-        average=...,
-        ch_type=...,
-        scalings=...,
-        proj: bool = ...,
-        sensors: bool = ...,
-        show_names: bool = ...,
-        mask=...,
-        mask_params=...,
-        contours: int = ...,
-        outlines: str = ...,
-        sphere=...,
-        image_interp=...,
-        extrapolate=...,
-        border=...,
-        res: int = ...,
-        size: int = ...,
-        cmap=...,
-        vlim=...,
-        cnorm=...,
-        colorbar: bool = ...,
-        cbar_fmt: str = ...,
-        units=...,
-        axes=...,
-        time_unit: str = ...,
-        time_format=...,
-        nrows: int = ...,
-        ncols: str = ...,
-        show: bool = ...,
+        average=None,
+        ch_type=None,
+        scalings=None,
+        proj: bool = False,
+        sensors: bool = True,
+        show_names: bool = False,
+        mask=None,
+        mask_params=None,
+        contours: int = 6,
+        outlines: str = "head",
+        sphere=None,
+        image_interp="cubic",
+        extrapolate="auto",
+        border="mean",
+        res: int = 64,
+        size: int = 1,
+        cmap=None,
+        vlim=(None, None),
+        cnorm=None,
+        colorbar: bool = True,
+        cbar_fmt: str = "%3.1f",
+        units=None,
+        axes=None,
+        time_unit: str = "s",
+        time_format=None,
+        nrows: int = 1,
+        ncols: str = "auto",
+        show: bool = True,
     ):
         """Plot topographic maps of specific time points of evoked data.
 
@@ -1089,22 +1104,23 @@ class Evoked(
 
         * :class:mne.viz.ui_events.TimeChange` whenever a new time is selected.
         """
+        ...
     def plot_field(
         self,
         surf_maps,
-        time=...,
-        time_label: str = ...,
-        n_jobs=...,
-        fig=...,
-        vmax=...,
-        n_contours: int = ...,
+        time=None,
+        time_label: str = "t = %0.0f ms",
+        n_jobs=None,
+        fig=None,
+        vmax=None,
+        n_contours: int = 21,
         *,
-        show_density: bool = ...,
-        alpha=...,
-        interpolation: str = ...,
-        interaction: str = ...,
-        time_viewer: str = ...,
-        verbose=...,
+        show_density: bool = True,
+        alpha=None,
+        interpolation: str = "nearest",
+        interaction: str = "terrain",
+        time_viewer: str = "auto",
+        verbose=None,
     ):
         """Plot MEG/EEG fields on head surface and helmet in 3D.
 
@@ -1193,15 +1209,16 @@ class Evoked(
             viewer active, an object is returned that can be used to control
             different aspects of the figure.
         """
+        ...
     def plot_white(
         self,
         noise_cov,
-        show: bool = ...,
-        rank=...,
-        time_unit: str = ...,
-        sphere=...,
-        axes=...,
-        verbose=...,
+        show: bool = True,
+        rank=None,
+        time_unit: str = "s",
+        sphere=None,
+        axes=None,
+        verbose=None,
     ):
         """Plot whitened evoked response.
 
@@ -1323,15 +1340,16 @@ class Evoked(
                covariance estimation and spatial whitening of MEG and EEG
                signals, vol. 108, 328-342, NeuroImage.
         """
+        ...
     def plot_joint(
         self,
-        times: str = ...,
-        title: str = ...,
-        picks=...,
-        exclude: str = ...,
-        show: bool = ...,
-        ts_args=...,
-        topomap_args=...,
+        times: str = "peaks",
+        title: str = "",
+        picks=None,
+        exclude: str = "bads",
+        show: bool = True,
+        ts_args=None,
+        topomap_args=None,
     ):
         """Plot evoked data as butterfly plot and add topomaps for time points.
 
@@ -1392,22 +1410,23 @@ class Evoked(
         -----
         .. versionadded:: 0.12.0
         """
+        ...
     def animate_topomap(
         self,
-        ch_type=...,
-        times=...,
-        frame_rate=...,
-        butterfly: bool = ...,
-        blit: bool = ...,
-        show: bool = ...,
-        time_unit: str = ...,
-        sphere=...,
+        ch_type=None,
+        times=None,
+        frame_rate=None,
+        butterfly: bool = False,
+        blit: bool = True,
+        show: bool = True,
+        time_unit: str = "s",
+        sphere=None,
         *,
-        image_interp=...,
-        extrapolate=...,
-        vmin=...,
-        vmax=...,
-        verbose=...,
+        image_interp="cubic",
+        extrapolate="auto",
+        vmin=None,
+        vmax=None,
+        verbose=None,
     ):
         """Make animation of evoked data as topomap timeseries.
 
@@ -1512,7 +1531,8 @@ class Evoked(
         -----
         .. versionadded:: 0.12.0
         """
-    def as_type(self, ch_type: str = ..., mode: str = ...):
+        ...
+    def as_type(self, ch_type: str = "grad", mode: str = "fast"):
         """Compute virtual evoked using interpolated fields.
 
         .. Warning:: Using virtual evoked to compute inverse can yield
@@ -1541,7 +1561,8 @@ class Evoked(
 
         .. versionadded:: 0.9.0
         """
-    def detrend(self, order: int = ..., picks=...):
+        ...
+    def detrend(self, order: int = 1, picks=None):
         """Detrend data.
 
         This function operates in-place.
@@ -1566,6 +1587,7 @@ class Evoked(
         evoked : instance of Evoked
             The detrended evoked object.
         """
+        ...
     def copy(self):
         """Copy the instance of evoked.
 
@@ -1574,6 +1596,7 @@ class Evoked(
         evoked : instance of Evoked
             A copy of the object.
         """
+        ...
     def __neg__(self):
         """Negate channel responses.
 
@@ -1583,15 +1606,16 @@ class Evoked(
             The Evoked instance with channel data negated and '-'
             prepended to the comment.
         """
+        ...
     def get_peak(
         self,
-        ch_type=...,
-        tmin=...,
-        tmax=...,
-        mode: str = ...,
-        time_as_index: bool = ...,
-        merge_grads: bool = ...,
-        return_amplitude: bool = ...,
+        ch_type=None,
+        tmin=None,
+        tmax=None,
+        mode: str = "abs",
+        time_as_index: bool = False,
+        merge_grads: bool = False,
+        return_amplitude: bool = False,
     ):
         """Get location and latency of peak amplitude.
 
@@ -1633,20 +1657,21 @@ class Evoked(
 
             .. versionadded:: 0.16
         """
+        ...
     def compute_psd(
         self,
-        method: str = ...,
-        fmin: int = ...,
+        method: str = "multitaper",
+        fmin: int = 0,
         fmax=...,
-        tmin=...,
-        tmax=...,
-        picks=...,
-        proj: bool = ...,
-        remove_dc: bool = ...,
-        exclude=...,
+        tmin=None,
+        tmax=None,
+        picks=None,
+        proj: bool = False,
+        remove_dc: bool = True,
+        exclude=(),
         *,
-        n_jobs: int = ...,
-        verbose=...,
+        n_jobs: int = 1,
+        verbose=None,
         **method_kw,
     ):
         """Perform spectral analysis on sensor data.
@@ -1719,31 +1744,32 @@ class Evoked(
         ----------
         .. footbibliography::
         """
+        ...
     def plot_psd(
         self,
-        fmin: int = ...,
+        fmin: int = 0,
         fmax=...,
-        tmin=...,
-        tmax=...,
-        picks=...,
-        proj: bool = ...,
+        tmin=None,
+        tmax=None,
+        picks=None,
+        proj: bool = False,
         *,
-        method: str = ...,
-        average: bool = ...,
-        dB: bool = ...,
-        estimate: str = ...,
-        xscale: str = ...,
-        area_mode: str = ...,
-        area_alpha: float = ...,
-        color: str = ...,
-        line_alpha=...,
-        spatial_colors: bool = ...,
-        sphere=...,
-        exclude: str = ...,
-        ax=...,
-        show: bool = ...,
-        n_jobs: int = ...,
-        verbose=...,
+        method: str = "auto",
+        average: bool = False,
+        dB: bool = True,
+        estimate: str = "auto",
+        xscale: str = "linear",
+        area_mode: str = "std",
+        area_alpha: float = 0.33,
+        color: str = "black",
+        line_alpha=None,
+        spatial_colors: bool = True,
+        sphere=None,
+        exclude: str = "bads",
+        ax=None,
+        show: bool = True,
+        n_jobs: int = 1,
+        verbose=None,
         **method_kw,
     ):
         """Plot power or amplitude spectra.
@@ -1874,16 +1900,17 @@ class Evoked(
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
         of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
         """
+        ...
     def to_data_frame(
         self,
-        picks=...,
-        index=...,
-        scalings=...,
-        copy: bool = ...,
-        long_format: bool = ...,
-        time_format=...,
+        picks=None,
+        index=None,
+        scalings=None,
+        copy: bool = True,
+        long_format: bool = False,
+        time_format=None,
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Export data in tabular structure as a pandas DataFrame.
 
@@ -1946,6 +1973,7 @@ class Evoked(
             A dataframe suitable for usage with other statistical/plotting/analysis
             packages.
         """
+        ...
 
 class EvokedArray(Evoked):
     """Evoked object from numpy array.
@@ -2026,13 +2054,13 @@ class EvokedArray(Evoked):
         self,
         data,
         info,
-        tmin: float = ...,
-        comment: str = ...,
-        nave: int = ...,
-        kind: str = ...,
-        baseline=...,
+        tmin: float = 0.0,
+        comment: str = "",
+        nave: int = 1,
+        kind: str = "average",
+        baseline=None,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
 
 def combine_evoked(all_evoked, weights):
@@ -2071,12 +2099,12 @@ def combine_evoked(all_evoked, weights):
 
 def read_evokeds(
     fname,
-    condition=...,
-    baseline=...,
-    kind: str = ...,
-    proj: bool = ...,
-    allow_maxshield: bool = ...,
-    verbose=...,
+    condition=None,
+    baseline=None,
+    kind: str = "average",
+    proj: bool = True,
+    allow_maxshield: bool = False,
+    verbose=None,
 ):
     """Read evoked dataset(s).
 
@@ -2156,7 +2184,7 @@ def read_evokeds(
     """
 
 def write_evokeds(
-    fname, evoked, *, on_mismatch: str = ..., overwrite: bool = ..., verbose=...
+    fname, evoked, *, on_mismatch: str = "raise", overwrite: bool = False, verbose=None
 ) -> None:
     """Write an evoked dataset to a file.
 

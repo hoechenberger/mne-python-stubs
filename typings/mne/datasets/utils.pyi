@@ -30,7 +30,7 @@ def has_dataset(name):
         True if the dataset is present.
     """
 
-def fetch_aparc_sub_parcellation(subjects_dir=..., verbose=...) -> None:
+def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
     """Fetch the modified subdivided aparc parcellation.
 
     This will download and install the subdivided aparc parcellation
@@ -55,7 +55,7 @@ def fetch_aparc_sub_parcellation(subjects_dir=..., verbose=...) -> None:
     """
 
 def fetch_hcp_mmp_parcellation(
-    subjects_dir=..., combine: bool = ..., *, accept: bool = ..., verbose=...
+    subjects_dir=None, combine: bool = True, *, accept: bool = False, verbose=None
 ) -> None:
     """Fetch the HCP-MMP parcellation.
 

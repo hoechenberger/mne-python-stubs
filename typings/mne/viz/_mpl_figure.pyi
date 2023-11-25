@@ -37,11 +37,13 @@ class MNEBrowseFigure(BrowserBase, MNEFigure):
 
     backend_name: str
 
-    def __init__(self, inst, figsize, ica=..., xlabel: str = ..., **kwargs) -> None: ...
+    def __init__(
+        self, inst, figsize, ica=None, xlabel: str = "Time (s)", **kwargs
+    ) -> None: ...
 
 class MNELineFigure(MNEFigure):
     """Interactive figure for non-scrolling line plots."""
 
     def __init__(
-        self, inst, n_axes, figsize, *, layout: str = ..., **kwargs
+        self, inst, n_axes, figsize, *, layout: str = "constrained", **kwargs
     ) -> None: ...

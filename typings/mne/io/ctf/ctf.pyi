@@ -4,10 +4,10 @@ from .constants import CTF as CTF
 
 def read_raw_ctf(
     directory,
-    system_clock: str = ...,
-    preload: bool = ...,
-    clean_names: bool = ...,
-    verbose=...,
+    system_clock: str = "truncate",
+    preload: bool = False,
+    clean_names: bool = False,
+    verbose=None,
 ):
     """Raw object from CTF directory.
 
@@ -94,8 +94,8 @@ class RawCTF(BaseRaw):
     def __init__(
         self,
         directory,
-        system_clock: str = ...,
-        preload: bool = ...,
-        verbose=...,
-        clean_names: bool = ...,
+        system_clock: str = "truncate",
+        preload: bool = False,
+        verbose=None,
+        clean_names: bool = False,
     ) -> None: ...

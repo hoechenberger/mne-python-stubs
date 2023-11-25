@@ -10,10 +10,10 @@ from ..base import BaseRaw as BaseRaw
 
 def read_raw_artemis123(
     input_fname,
-    preload: bool = ...,
-    verbose=...,
-    pos_fname=...,
-    add_head_trans: bool = ...,
+    preload: bool = False,
+    verbose=None,
+    pos_fname=None,
+    add_head_trans: bool = True,
 ):
     """Read Artemis123 data as raw object.
 
@@ -72,8 +72,8 @@ class RawArtemis123(BaseRaw):
     def __init__(
         self,
         input_fname,
-        preload: bool = ...,
-        verbose=...,
-        pos_fname=...,
-        add_head_trans: bool = ...,
+        preload: bool = False,
+        verbose=None,
+        pos_fname=None,
+        add_head_trans: bool = True,
     ) -> None: ...

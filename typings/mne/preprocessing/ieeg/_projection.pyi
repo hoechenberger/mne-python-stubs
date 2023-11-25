@@ -10,11 +10,11 @@ def project_sensors_onto_brain(
     info,
     trans,
     subject,
-    subjects_dir=...,
-    picks=...,
-    n_neighbors: int = ...,
-    copy: bool = ...,
-    verbose=...,
+    subjects_dir=None,
+    picks=None,
+    n_neighbors: int = 10,
+    copy: bool = True,
+    verbose=None,
 ):
     """Project sensors onto the brain surface.
 

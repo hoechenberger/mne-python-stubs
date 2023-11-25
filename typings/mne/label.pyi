@@ -27,22 +27,37 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Label:
-    """Compute the surface area of a label.
+    """A FreeSurfer/MNE label with vertices restricted to one hemisphere.
+
+    Labels can be combined with the ``+`` operator:
+
+        * Duplicate vertices are removed.
+        * If duplicate vertices have conflicting position values, an error
+          is raised.
+        * Values of duplicate vertices are summed.
 
     Parameters
     ----------
+    vertices : array, shape (N,)
+        Vertex indices (0 based).
+    pos : array, shape (N, 3) | None
+        Locations in meters. If None, then zeros are used.
+    values : array, shape (N,) | None
+        Values at the vertices. If None, then ones are used.
+    hemi : 'lh' | 'rh'
+        Hemisphere to which the label applies.
+    comment : str
+        Kept as information but not used by the object itself.
+    name : str
+        Kept as information but not used by the object itself.
+    filename : str
+        Kept as information but not used by the object itself.
 
     subject : str | None
         Subject which this label belongs to. Should only be specified if it is not
         specified in the label.
-
-    subjects_dir : path-like | None
-        The path to the directory containing the FreeSurfer subjects
-        reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
-        variable.
-    surface : str
-        The surface along which to do the computations, defaults to ``'white'``
-        (the gray-white matter boundary).
+    color : None | matplotlib color
+        Default label color and alpha (e.g., ``(1., 0., 0., 1.)`` for red).
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
@@ -50,14 +65,27 @@ class Label:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
-    -------
-    area : float
-        The area (in m²) of the label.
-
-    Notes
-    -----
-    ..versionadded:: 0.24
+    Attributes
+    ----------
+    color : None | tuple
+        Default label color, represented as RGBA tuple with values between 0
+        and 1.
+    comment : str
+        Comment from the first line of the label file.
+    hemi : 'lh' | 'rh'
+        Hemisphere.
+    name : None | str
+        A name for the label. It is OK to change that attribute manually.
+    pos : array, shape (N, 3)
+        Locations in meters.
+    subject : str | None
+        The label subject.
+        It is best practice to set this to the proper
+        value on initialization, but it can also be set manually.
+    values : array, shape (N,)
+        Values at the vertices.
+    vertices : array, shape (N,)
+        Vertex indices (0 based)
     """
 
     vertices: Incomplete
@@ -72,17 +100,17 @@ class Label:
 
     def __init__(
         self,
-        vertices=...,
-        pos=...,
-        values=...,
-        hemi=...,
-        comment: str = ...,
-        name=...,
-        filename=...,
-        subject=...,
-        color=...,
+        vertices=(),
+        pos=None,
+        values=None,
+        hemi=None,
+        comment: str = "",
+        name=None,
+        filename=None,
+        subject=None,
+        color=None,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
     def __len__(self) -> int:
         """Return the number of vertices.
@@ -92,10 +120,13 @@ class Label:
         n_vertices : int
             The number of vertices.
         """
+        ...
     def __add__(self, other):
         """Add Labels."""
+        ...
     def __sub__(self, other):
         """Subtract Labels."""
+        ...
     def save(self, filename) -> None:
         """Write to disk as FreeSurfer \\*.label file.
 
@@ -109,6 +140,7 @@ class Label:
         Note that due to file specification limitations, the Label's subject
         and color attributes are not saved to disk.
         """
+        ...
     def copy(self):
         """Copy the label instance.
 
@@ -117,7 +149,8 @@ class Label:
         label : instance of Label
             The copied label.
         """
-    def fill(self, src, name=...):
+        ...
+    def fill(self, src, name=None):
         """Fill the surface between sources for a source space label.
 
         Parameters
@@ -143,7 +176,8 @@ class Label:
         Label.restrict
         Label.smooth
         """
-    def restrict(self, src, name=...):
+        ...
+    def restrict(self, src, name=None):
         """Restrict a label to a source space.
 
         Parameters
@@ -166,14 +200,15 @@ class Label:
         -----
         .. versionadded:: 0.20
         """
+        ...
     def smooth(
         self,
-        subject=...,
-        smooth: int = ...,
-        grade=...,
-        subjects_dir=...,
-        n_jobs=...,
-        verbose=...,
+        subject=None,
+        smooth: int = 2,
+        grade=None,
+        subjects_dir=None,
+        n_jobs=None,
+        verbose=None,
     ):
         """Smooth the label.
 
@@ -232,15 +267,16 @@ class Label:
         on the new surface are required, consider using mne.read_surface
         with ``label.vertices``.
         """
+        ...
     def morph(
         self,
-        subject_from=...,
-        subject_to=...,
-        smooth: int = ...,
-        grade=...,
-        subjects_dir=...,
-        n_jobs=...,
-        verbose=...,
+        subject_from=None,
+        subject_to=None,
+        smooth: int = 5,
+        grade=None,
+        subjects_dir=None,
+        n_jobs=None,
+        verbose=None,
     ):
         """Morph the label.
 
@@ -302,8 +338,9 @@ class Label:
         on the new surface are required, consider using `mne.read_surface`
         with ``label.vertices``.
         """
+        ...
     def split(
-        self, parts: int = ..., subject=..., subjects_dir=..., freesurfer: bool = ...
+        self, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
     ):
         """Split the Label into two or more parts.
 
@@ -347,7 +384,8 @@ class Label:
         spherical surface, projects all label vertex coordinates onto this
         axis, and divides them at regular spatial intervals.
         """
-    def get_vertices_used(self, vertices=...):
+        ...
+    def get_vertices_used(self, vertices=None):
         """Get the source space's vertices inside the label.
 
         Parameters
@@ -361,7 +399,8 @@ class Label:
         label_verts : ndarray of in, shape (n_label_vertices,)
             The vertices of the label corresponding used by the data.
         """
-    def get_tris(self, tris, vertices=...):
+        ...
+    def get_tris(self, tris, vertices=None):
         """Get the source space's triangles inside the label.
 
         Parameters
@@ -378,12 +417,13 @@ class Label:
         label_tris : ndarray of int, shape (n_tris, 3)
             The subset of tris used by the label.
         """
+        ...
     def center_of_mass(
         self,
-        subject=...,
-        restrict_vertices: bool = ...,
-        subjects_dir=...,
-        surf: str = ...,
+        subject=None,
+        restrict_vertices: bool = False,
+        subjects_dir=None,
+        surf: str = "sphere",
     ):
         """Compute the center of mass of the label.
 
@@ -433,8 +473,9 @@ class Label:
         ----------
         .. footbibliography::
         """
+        ...
     def distances_to_outside(
-        self, subject=..., subjects_dir=..., surface: str = ..., *, verbose=...
+        self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
         """Compute the distance from each vertex to outside the label.
 
@@ -474,8 +515,9 @@ class Label:
 
         .. versionadded:: 0.24
         """
+        ...
     def compute_area(
-        self, subject=..., subjects_dir=..., surface: str = ..., *, verbose=...
+        self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
         """Compute the surface area of a label.
 
@@ -509,9 +551,35 @@ class Label:
         -----
         ..versionadded:: 0.24
         """
+        ...
 
 class BiHemiLabel:
-    """Subtract labels."""
+    """A freesurfer/MNE label with vertices in both hemispheres.
+
+    Parameters
+    ----------
+    lh : Label
+        Label for the left hemisphere.
+    rh : Label
+        Label for the right hemisphere.
+    name : None | str
+        Name for the label.
+    color : None | color
+        Label color and alpha (e.g., ``(1., 0., 0., 1.)`` for red).
+        Note that due to file specification limitations, the color isn't saved
+        to or loaded from files written to disk.
+
+    Attributes
+    ----------
+    lh : Label
+        Label for the left hemisphere.
+    rh : Label
+        Label for the right hemisphere.
+    name : None | str
+        A name for the label. It is OK to change that attribute manually.
+    subject : str | None
+        The name of the subject.
+    """
 
     lh: Incomplete
     rh: Incomplete
@@ -520,7 +588,7 @@ class BiHemiLabel:
     color: Incomplete
     hemi: str
 
-    def __init__(self, lh, rh, name=..., color=...) -> None: ...
+    def __init__(self, lh, rh, name=None, color=None) -> None: ...
     def __len__(self) -> int:
         """Return the number of vertices.
 
@@ -529,12 +597,15 @@ class BiHemiLabel:
         n_vertices : int
             The number of vertices.
         """
+        ...
     def __add__(self, other):
         """Add labels."""
+        ...
     def __sub__(self, other):
         """Subtract labels."""
+        ...
 
-def read_label(filename, subject=..., color=..., *, verbose=...):
+def read_label(filename, subject=None, color=None, *, verbose=None):
     """Read FreeSurfer Label file.
 
     Parameters
@@ -576,7 +647,7 @@ def read_label(filename, subject=..., color=..., *, verbose=...):
     write_labels_to_annot
     """
 
-def write_label(filename, label, verbose=...) -> None:
+def write_label(filename, label, verbose=None) -> None:
     """Write a FreeSurfer label.
 
     Parameters
@@ -603,7 +674,7 @@ def write_label(filename, label, verbose=...) -> None:
     """
 
 def split_label(
-    label, parts: int = ..., subject=..., subjects_dir=..., freesurfer: bool = ...
+    label, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
 ):
     """Split a Label into two or more parts.
 
@@ -662,11 +733,11 @@ def label_sign_flip(label, src):
 
 def stc_to_label(
     stc,
-    src=...,
-    smooth: bool = ...,
-    connected: bool = ...,
-    subjects_dir=...,
-    verbose=...,
+    src=None,
+    smooth: bool = True,
+    connected: bool = False,
+    subjects_dir=None,
+    verbose=None,
 ):
     """Compute a label from the non-zero sources in an stc object.
 
@@ -714,12 +785,12 @@ def grow_labels(
     seeds,
     extents,
     hemis,
-    subjects_dir=...,
-    n_jobs=...,
-    overlap: bool = ...,
-    names=...,
-    surface: str = ...,
-    colors=...,
+    subjects_dir=None,
+    n_jobs=None,
+    overlap: bool = True,
+    names=None,
+    surface: str = "white",
+    colors=None,
 ):
     """Generate circular labels in source space with region growing.
 
@@ -786,7 +857,12 @@ def grow_labels(
     """
 
 def random_parcellation(
-    subject, n_parcel, hemi, subjects_dir=..., surface: str = ..., random_state=...
+    subject,
+    n_parcel,
+    hemi,
+    subjects_dir=None,
+    surface: str = "white",
+    random_state=None,
 ):
     """Generate random cortex parcellation by growing labels.
 
@@ -830,14 +906,14 @@ def random_parcellation(
 
 def read_labels_from_annot(
     subject,
-    parc: str = ...,
-    hemi: str = ...,
-    surf_name: str = ...,
-    annot_fname=...,
-    regexp=...,
-    subjects_dir=...,
-    sort: bool = ...,
-    verbose=...,
+    parc: str = "aparc",
+    hemi: str = "both",
+    surf_name: str = "white",
+    annot_fname=None,
+    regexp=None,
+    subjects_dir=None,
+    sort: bool = True,
+    verbose=None,
 ):
     """Read labels from a FreeSurfer annotation file.
 
@@ -892,10 +968,10 @@ def read_labels_from_annot(
 def morph_labels(
     labels,
     subject_to,
-    subject_from=...,
-    subjects_dir=...,
-    surf_name: str = ...,
-    verbose=...,
+    subject_from=None,
+    subjects_dir=None,
+    surf_name: str = "white",
+    verbose=None,
 ):
     """Morph a set of labels.
 
@@ -946,7 +1022,7 @@ def morph_labels(
     """
 
 def labels_to_stc(
-    labels, values, tmin: int = ..., tstep: int = ..., subject=..., src=..., verbose=...
+    labels, values, tmin: int = 0, tstep: int = 1, subject=None, src=None, verbose=None
 ):
     """Convert a set of labels and values to a STC.
 
@@ -1012,16 +1088,16 @@ def labels_to_stc(
 
 def write_labels_to_annot(
     labels,
-    subject=...,
-    parc=...,
-    overwrite: bool = ...,
-    subjects_dir=...,
-    annot_fname=...,
-    colormap: str = ...,
-    hemi: str = ...,
-    sort: bool = ...,
-    table_name=...,
-    verbose=...,
+    subject=None,
+    parc=None,
+    overwrite: bool = False,
+    subjects_dir=None,
+    annot_fname=None,
+    colormap: str = "hsv",
+    hemi: str = "both",
+    sort: bool = True,
+    table_name="MNE-Python Colortable",
+    verbose=None,
 ):
     """Create a FreeSurfer annotation from a list of labels.
 
@@ -1078,13 +1154,13 @@ def write_labels_to_annot(
 def select_sources(
     subject,
     label,
-    location: str = ...,
-    extent: float = ...,
-    grow_outside: bool = ...,
-    subjects_dir=...,
-    name=...,
-    random_state=...,
-    surf: str = ...,
+    location: str = "center",
+    extent: float = 0.0,
+    grow_outside: bool = True,
+    subjects_dir=None,
+    name=None,
+    random_state=None,
+    surf: str = "white",
 ):
     """Select sources from a label.
 

@@ -31,15 +31,21 @@ from .utils import (
 from .viz.misc import plot_bem as plot_bem
 
 class ConductorModel(dict):
-    """Sphere radius if an EEG sphere model."""
+    """BEM or sphere model.
+
+    See :func:mne.make_bem_model` and :func:mne.make_bem_solution` to create a
+    :class:`mne.bem.ConductorModel`.
+    """
 
     def copy(self):
         """Return copy of ConductorModel instance."""
+        ...
     @property
     def radius(self):
         """Sphere radius if an EEG sphere model."""
+        ...
 
-def make_bem_solution(surfs, *, solver: str = ..., verbose=...):
+def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
     """Create a BEM solution using the linear collocation approach.
 
     Parameters
@@ -77,7 +83,11 @@ def make_bem_solution(surfs, *, solver: str = ..., verbose=...):
     """
 
 def make_bem_model(
-    subject, ico: int = ..., conductivity=..., subjects_dir=..., verbose=...
+    subject,
+    ico: int = 4,
+    conductivity=(0.3, 0.006, 0.3),
+    subjects_dir=None,
+    verbose=None,
 ):
     """Create a BEM model for a subject.
 
@@ -132,12 +142,12 @@ def make_bem_model(
     """
 
 def make_sphere_model(
-    r0=...,
-    head_radius: float = ...,
-    info=...,
-    relative_radii=...,
-    sigmas=...,
-    verbose=...,
+    r0=(0.0, 0.0, 0.04),
+    head_radius: float = 0.09,
+    info=None,
+    relative_radii=(0.9, 0.92, 0.97, 1.0),
+    sigmas=(0.33, 1.0, 0.004, 0.33),
+    verbose=None,
 ):
     """Create a spherical model for forward solution calculation.
 
@@ -189,7 +199,9 @@ def make_sphere_model(
     .. versionadded:: 0.9.0
     """
 
-def fit_sphere_to_headshape(info, dig_kinds: str = ..., units: str = ..., verbose=...):
+def fit_sphere_to_headshape(
+    info, dig_kinds: str = "auto", units: str = "m", verbose=None
+):
     """Fit a sphere to the headshape points to determine head center.
 
     Parameters
@@ -231,7 +243,7 @@ def fit_sphere_to_headshape(info, dig_kinds: str = ..., units: str = ..., verbos
     """
 
 def get_fitting_dig(
-    info, dig_kinds: str = ..., exclude_frontal: bool = ..., verbose=...
+    info, dig_kinds: str = "auto", exclude_frontal: bool = True, verbose=None
 ):
     """Get digitization points suitable for sphere fitting.
 
@@ -276,17 +288,17 @@ def get_fitting_dig(
 
 def make_watershed_bem(
     subject,
-    subjects_dir=...,
-    overwrite: bool = ...,
-    volume: str = ...,
-    atlas: bool = ...,
-    gcaatlas: bool = ...,
-    preflood=...,
-    show: bool = ...,
-    copy: bool = ...,
-    T1=...,
-    brainmask: str = ...,
-    verbose=...,
+    subjects_dir=None,
+    overwrite: bool = False,
+    volume: str = "T1",
+    atlas: bool = False,
+    gcaatlas: bool = False,
+    preflood=None,
+    show: bool = False,
+    copy: bool = True,
+    T1=None,
+    brainmask: str = "ws.mgz",
+    verbose=None,
 ) -> None:
     """Create BEM surfaces using the FreeSurfer watershed algorithm.
 
@@ -357,7 +369,7 @@ def make_watershed_bem(
     """
 
 def read_bem_surfaces(
-    fname, patch_stats: bool = ..., s_id=..., on_defects: str = ..., verbose=...
+    fname, patch_stats: bool = False, s_id=None, on_defects: str = "raise", verbose=None
 ):
     """Read the BEM surfaces from a FIF file.
 
@@ -400,7 +412,7 @@ def read_bem_surfaces(
     write_bem_surfaces, write_bem_solution, make_bem_model
     """
 
-def read_bem_solution(fname, *, verbose=...):
+def read_bem_solution(fname, *, verbose=None):
     """Read the BEM solution from a file.
 
     Parameters
@@ -427,7 +439,7 @@ def read_bem_solution(fname, *, verbose=...):
     write_bem_solution
     """
 
-def write_bem_surfaces(fname, surfs, overwrite: bool = ..., *, verbose=...) -> None:
+def write_bem_surfaces(fname, surfs, overwrite: bool = False, *, verbose=None) -> None:
     """Write BEM surfaces to a FIF file.
 
     Parameters
@@ -449,7 +461,7 @@ def write_bem_surfaces(fname, surfs, overwrite: bool = ..., *, verbose=...) -> N
     """
 
 def write_head_bem(
-    fname, rr, tris, on_defects: str = ..., overwrite: bool = ..., *, verbose=...
+    fname, rr, tris, on_defects: str = "raise", overwrite: bool = False, *, verbose=None
 ) -> None:
     """Write a head surface to a FIF file.
 
@@ -483,7 +495,7 @@ def write_head_bem(
         argument.
     """
 
-def write_bem_solution(fname, bem, overwrite: bool = ..., *, verbose=...) -> None:
+def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> None:
     """Write a BEM model with solution.
 
     Parameters
@@ -510,11 +522,11 @@ def write_bem_solution(fname, bem, overwrite: bool = ..., *, verbose=...) -> Non
 
 def convert_flash_mris(
     subject,
-    flash30: bool = ...,
-    unwarp: bool = ...,
-    subjects_dir=...,
-    flash5: bool = ...,
-    verbose=...,
+    flash30: bool = True,
+    unwarp: bool = False,
+    subjects_dir=None,
+    flash5: bool = True,
+    verbose=None,
 ):
     """Synthesize the flash 5 files for use with make_flash_bem.
 
@@ -574,14 +586,14 @@ def convert_flash_mris(
 
 def make_flash_bem(
     subject,
-    overwrite: bool = ...,
-    show: bool = ...,
-    subjects_dir=...,
-    copy: bool = ...,
+    overwrite: bool = False,
+    show: bool = True,
+    subjects_dir=None,
+    copy: bool = True,
     *,
-    flash5_img=...,
-    register: bool = ...,
-    verbose=...,
+    flash5_img=None,
+    register: bool = True,
+    verbose=None,
 ) -> None:
     """Create 3-Layer BEM model from prepared flash MRI images.
 
@@ -642,14 +654,14 @@ def make_flash_bem(
 
 def make_scalp_surfaces(
     subject,
-    subjects_dir=...,
-    force: bool = ...,
-    overwrite: bool = ...,
-    no_decimate: bool = ...,
+    subjects_dir=None,
+    force: bool = True,
+    overwrite: bool = False,
+    no_decimate: bool = False,
     *,
-    threshold: int = ...,
-    mri: str = ...,
-    verbose=...,
+    threshold: int = 20,
+    mri: str = "T1.mgz",
+    verbose=None,
 ):
     """Create surfaces of the scalp and neck.
 
@@ -696,7 +708,7 @@ def make_scalp_surfaces(
         argument.
     """
 
-def distance_to_bem(pos, bem, trans=..., verbose=...):
+def distance_to_bem(pos, bem, trans=None, verbose=None):
     """Calculate the distance of positions to inner skull surface.
 
     Parameters

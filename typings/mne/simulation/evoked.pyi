@@ -10,12 +10,12 @@ def simulate_evoked(
     fwd,
     stc,
     info,
-    cov=...,
-    nave: int = ...,
-    iir_filter=...,
-    random_state=...,
-    use_cps: bool = ...,
-    verbose=...,
+    cov=None,
+    nave: int = 30,
+    iir_filter=None,
+    random_state=None,
+    use_cps: bool = True,
+    verbose=None,
 ):
     """Generate noisy evoked data.
 
@@ -86,7 +86,7 @@ def simulate_evoked(
     .. versionadded:: 0.10.0
     """
 
-def add_noise(inst, cov, iir_filter=..., random_state=..., verbose=...):
+def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
     """Create noise as a multivariate Gaussian.
 
     The spatial covariance of the noise is given from the cov matrix.

@@ -1,12 +1,12 @@
 from ..utils import has_dataset as has_dataset
 
 def data_path(
-    path=...,
-    force_update: bool = ...,
-    update_path: bool = ...,
-    download: bool = ...,
+    path=None,
+    force_update: bool = False,
+    update_path: bool = True,
+    download: bool = True,
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Get path to local copy of misc dataset.
 

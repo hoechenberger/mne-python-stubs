@@ -1,8 +1,7 @@
 from .._fiff.pick import pick_info as pick_info
 
-
 def fit_iir_model_raw(
-    raw, order: int = ..., picks=..., tmin=..., tmax=..., verbose=...
+    raw, order: int = 2, picks=None, tmin=None, tmax=None, verbose=None
 ):
     """Fit an AR model to raw data and creates the corresponding IIR filter.
 

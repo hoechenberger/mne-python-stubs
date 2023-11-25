@@ -6,13 +6,13 @@ BASE_URL: str
 
 def fetch_data(
     subjects,
-    recording=...,
-    path=...,
-    force_update: bool = ...,
-    base_url=...,
-    on_missing: str = ...,
+    recording=(1, 2),
+    path=None,
+    force_update: bool = False,
+    base_url="https://physionet.org/physiobank/database/sleep-edfx/sleep-cassette/",
+    on_missing: str = "raise",
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Get paths to local copies of PhysioNet Polysomnography dataset files.
 

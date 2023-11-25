@@ -17,7 +17,7 @@ from .utils import (
 )
 from _typeshed import Incomplete
 
-def pick_events(events, include=..., exclude=..., step: bool = ...):
+def pick_events(events, include=None, exclude=None, step: bool = False):
     """Select some :term:`events`.
 
     Parameters
@@ -47,7 +47,7 @@ def pick_events(events, include=..., exclude=..., step: bool = ...):
     """
 
 def define_target_events(
-    events, reference_id, target_id, sfreq, tmin, tmax, new_id=..., fill_na=...
+    events, reference_id, target_id, sfreq, tmin, tmax, new_id=None, fill_na=None
 ):
     """Define new events by co-occurrence of existing events.
 
@@ -87,12 +87,12 @@ def define_target_events(
 
 def read_events(
     filename,
-    include=...,
-    exclude=...,
-    mask=...,
-    mask_type: str = ...,
-    return_event_id: bool = ...,
-    verbose=...,
+    include=None,
+    exclude=None,
+    mask=None,
+    mask_type: str = "and",
+    return_event_id: bool = False,
+    verbose=None,
 ):
     """Read :term:`events` from fif or text file.
 
@@ -158,7 +158,7 @@ def read_events(
     :func:`mne.find_events`.
     """
 
-def write_events(filename, events, *, overwrite: bool = ..., verbose=...) -> None:
+def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> None:
     """Write :term:`events` to file.
 
     Parameters
@@ -192,7 +192,7 @@ def write_events(filename, events, *, overwrite: bool = ..., verbose=...) -> Non
     """
 
 def find_stim_steps(
-    raw, pad_start=..., pad_stop=..., merge: int = ..., stim_channel=...
+    raw, pad_start=None, pad_stop=None, merge: int = 0, stim_channel=None
 ):
     """Find all steps in data from a stim channel.
 
@@ -233,16 +233,16 @@ def find_stim_steps(
 
 def find_events(
     raw,
-    stim_channel=...,
-    output: str = ...,
-    consecutive: str = ...,
-    min_duration: int = ...,
-    shortest_event: int = ...,
-    mask=...,
-    uint_cast: bool = ...,
-    mask_type: str = ...,
-    initial_event: bool = ...,
-    verbose=...,
+    stim_channel=None,
+    output: str = "onset",
+    consecutive: str = "increasing",
+    min_duration: int = 0,
+    shortest_event: int = 2,
+    mask=None,
+    uint_cast: bool = False,
+    mask_type: str = "and",
+    initial_event: bool = False,
+    verbose=None,
 ):
     """Find :term:`events` from raw file.
 
@@ -400,7 +400,7 @@ def find_events(
               2 '0000010'
     """
 
-def merge_events(events, ids, new_id, replace_events: bool = ...):
+def merge_events(events, ids, new_id, replace_events: bool = True):
     """Merge a set of :term:`events`.
 
     Parameters
@@ -472,12 +472,12 @@ def shift_time_events(events, ids, tshift, sfreq):
 
 def make_fixed_length_events(
     raw,
-    id: int = ...,
-    start: int = ...,
-    stop=...,
-    duration: float = ...,
-    first_samp: bool = ...,
-    overlap: float = ...,
+    id: int = 1,
+    start: int = 0,
+    stop=None,
+    duration: float = 1.0,
+    first_samp: bool = True,
+    overlap: float = 0.0,
 ):
     """Make a set of :term:`events` separated by a fixed duration.
 
@@ -543,68 +543,43 @@ def concatenate_events(events, first_samps, last_samps):
     """
 
 class AcqParserFIF:
-    """Get averaging parameters for a condition (averaging category).
+    """Parser for Elekta data acquisition settings.
 
-    Output is designed to be used with the Epochs class to extract the
-    corresponding epochs.
+    This class parses parameters (e.g. events and averaging categories) that
+    are defined in the Elekta TRIUX/VectorView data acquisition software (DACQ)
+    and stored in ``info['acq_pars']``. It can be used to reaverage raw data
+    according to DACQ settings and modify original averaging settings if
+    necessary.
 
     Parameters
     ----------
-    raw : Raw object
-        An instance of Raw.
-    condition : None | str | dict | list of dict
-        Condition or a list of conditions. Conditions can be strings
-        (DACQ comment field, e.g. 'Auditory left') or category dicts
-        (e.g. acqp['Auditory left'], where acqp is an instance of
-        AcqParserFIF). If None, get all conditions marked active in
-        DACQ.
-    stim_channel : None | str | list of str
-        Name of the stim channel or all the stim channels
-        affected by the trigger. If None, the config variables
-        'MNE_STIM_CHANNEL', 'MNE_STIM_CHANNEL_1', 'MNE_STIM_CHANNEL_2',
-        etc. are read. If these are not found, it will fall back to
-        'STI101' or 'STI 014' if present, then fall back to the first
-        channel of type 'stim', if present.
-    mask : int | None
-        The value of the digital mask to apply to the stim channel values.
-        If None (default), no masking is performed.
-    uint_cast : bool
-        If True (default False), do a cast to ``uint16`` on the channel
-        data. This can be used to fix a bug with STI101 and STI014 in
-        Neuromag acquisition setups that use channel STI016 (channel 16
-        turns data into e.g. -32768), similar to ``mne_fix_stim14 --32``
-        in MNE-C.
-    mask_type : 'and' | 'not_and'
-        The type of operation between the mask and the trigger.
-        Choose 'and' for MNE-C masking behavior.
-    delayed_lookup : bool
-        If True, use the 'delayed lookup' procedure implemented in Elekta
-        software. When a trigger transition occurs, the lookup of
-        the new trigger value will not happen immediately at the following
-        sample, but with a 1-sample delay. This allows a slight
-        asynchrony between trigger onsets, when they are intended to be
-        synchronous. If you have accurate hardware and want to detect
-        transitions with a resolution of one sample, use
-        delayed_lookup=False.
 
-    Returns
-    -------
-    conds_data : dict or list of dict
-        Each dict has the following keys:
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement. This is where the DACQ parameters will be taken from.
 
-        events : array, shape (n_epochs_out, 3)
-            List of zero time points (t0) for the epochs matching the
-            condition. Use as the ``events`` parameter to Epochs. Note
-            that these are not (necessarily) actual events.
-        event_id : dict
-            Name of condition and index compatible with ``events``.
-            Should be passed as the ``event_id`` parameter to Epochs.
-        tmin : float
-            Epoch starting time relative to t0. Use as the ``tmin``
-            parameter to Epochs.
-        tmax : float
-            Epoch ending time relative to t0. Use as the ``tmax``
-            parameter to Epochs.
+    Attributes
+    ----------
+    categories : list
+        List of averaging categories marked active in DACQ.
+    events : list
+        List of events that are in use (referenced by some averaging category).
+    reject : dict
+        Rejection criteria from DACQ that can be used with mne.Epochs.
+        Note that mne does not support all DACQ rejection criteria
+        (e.g. spike, slope).
+    flat : dict
+        Flatness rejection criteria from DACQ that can be used with mne.Epochs.
+    acq_dict : dict
+        All DACQ parameters.
+
+    See Also
+    --------
+    mne.io.Raw.acqparser : Access the parser through a Raw attribute.
+
+    Notes
+    -----
+    Any averaging category (also non-active ones) can be accessed by indexing
+    as ``acqparserfif['category_name']``.
     """
 
     acq_dict: Incomplete
@@ -662,6 +637,7 @@ class AcqParserFIF:
                 by the user after collecting the epochs.
 
         """
+        ...
     def __len__(self) -> int:
         """Return number of averaging categories marked active in DACQ.
 
@@ -670,27 +646,30 @@ class AcqParserFIF:
         n_cat : int
             The number of categories.
         """
+        ...
     @property
     def categories(self):
         """Return list of averaging categories ordered by DACQ index.
 
         Only returns categories marked active in DACQ.
         """
+        ...
     @property
     def events(self):
         """Return events ordered by DACQ index.
 
         Only returns events that are in use (referred to by a category).
         """
+        ...
     def get_condition(
         self,
         raw,
-        condition=...,
-        stim_channel=...,
-        mask=...,
-        uint_cast=...,
-        mask_type: str = ...,
-        delayed_lookup: bool = ...,
+        condition=None,
+        stim_channel=None,
+        mask=None,
+        uint_cast=None,
+        mask_type: str = "and",
+        delayed_lookup: bool = True,
     ):
         """Get averaging parameters for a condition (averaging category).
 
@@ -755,8 +734,9 @@ class AcqParserFIF:
                 Epoch ending time relative to t0. Use as the ``tmax``
                 parameter to Epochs.
         """
+        ...
 
-def match_event_names(event_names, keys, *, on_missing: str = ...):
+def match_event_names(event_names, keys, *, on_missing: str = "raise"):
     """Search a collection of event names for matching (sub-)groups of events.
 
     This function is particularly helpful when using grouped event names
@@ -802,7 +782,7 @@ def match_event_names(event_names, keys, *, on_missing: str = ...):
         ['auditory/left', 'auditory/right', 'visual/left']
     """
 
-def count_events(events, ids=...):
+def count_events(events, ids=None):
     """Count events.
 
     Parameters

@@ -3,10 +3,10 @@ from .utils import plt_show as plt_show
 def circular_layout(
     node_names,
     node_order,
-    start_pos: int = ...,
-    start_between: bool = ...,
-    group_boundaries=...,
-    group_sep: int = ...,
+    start_pos: int = 90,
+    start_between: bool = True,
+    group_boundaries=None,
+    group_sep: int = 10,
 ):
     """Create layout arranging nodes on a circle.
 
@@ -36,7 +36,7 @@ def circular_layout(
         Node angles in degrees.
     """
 
-def plot_channel_labels_circle(labels, colors=..., picks=..., **kwargs):
+def plot_channel_labels_circle(labels, colors=None, picks=None, **kwargs):
     """Plot labels for each channel in a circle plot.
 
     .. note:: This primarily makes sense for sEEG channels where each

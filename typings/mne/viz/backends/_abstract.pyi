@@ -4,12 +4,16 @@ from _typeshed import Incomplete
 from abc import ABC, abstractmethod
 
 class Figure3D(ABC):
-    """The native 3D plotting widget.
+    """Class that refers to a 3D figure.
 
-    Returns
-    -------
-    plotter : instance of pyvista.Plotter
-        The plotter. Useful for interacting with the native 3D library.
+    .. note::
+        This class should not be instantiated directly via
+        ``mne.viz.Figure3D(...)``. Instead, use
+        :func:`mne.viz.create_3d_figure`.
+
+    See Also
+    --------
+    mne.viz.create_3d_figure
     """
 
     @property
@@ -21,19 +25,20 @@ class Figure3D(ABC):
         plotter : instance of pyvista.Plotter
             The plotter. Useful for interacting with the native 3D library.
         """
+        ...
 
 class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def __init__(
         self,
-        fig=...,
-        size=...,
-        bgcolor=...,
-        name=...,
-        show: bool = ...,
-        shape=...,
-        splash: bool = ...,
+        fig=None,
+        size=(600, 600),
+        bgcolor=(0.0, 0.0, 0.0),
+        name=None,
+        show: bool = False,
+        shape=(1, 1),
+        splash: bool = False,
     ):
         """Set up the scene."""
     @classmethod
@@ -53,10 +58,10 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     def legend(
         self,
         labels,
-        border: bool = ...,
-        size: float = ...,
-        face: str = ...,
-        loc: str = ...,
+        border: bool = False,
+        size: float = 0.1,
+        face: str = "triangle",
+        loc: str = "upper left",
     ):
         """Add a legend to the scene.
 
@@ -91,17 +96,17 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         z,
         triangles,
         color,
-        opacity: float = ...,
-        backface_culling: bool = ...,
-        scalars=...,
-        colormap=...,
-        vmin=...,
-        vmax=...,
-        interpolate_before_map: bool = ...,
-        representation: str = ...,
-        line_width: float = ...,
-        normals=...,
-        polygon_offset=...,
+        opacity: float = 1.0,
+        backface_culling: bool = False,
+        scalars=None,
+        colormap=None,
+        vmin=None,
+        vmax=None,
+        interpolate_before_map: bool = True,
+        representation: str = "surface",
+        line_width: float = 1.0,
+        normals=None,
+        polygon_offset=None,
         **kwargs,
     ):
         """Add a mesh in the scene.
@@ -163,14 +168,14 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         surface,
         scalars,
         contours,
-        width: float = ...,
-        opacity: float = ...,
-        vmin=...,
-        vmax=...,
-        colormap=...,
-        normalized_colormap: bool = ...,
-        kind: str = ...,
-        color=...,
+        width: float = 1.0,
+        opacity: float = 1.0,
+        vmin=None,
+        vmax=None,
+        colormap=None,
+        normalized_colormap: bool = False,
+        kind: str = "line",
+        color=None,
     ):
         """Add a contour in the scene.
 
@@ -208,15 +213,15 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     def surface(
         self,
         surface,
-        color=...,
-        opacity: float = ...,
-        vmin=...,
-        vmax=...,
-        colormap=...,
-        normalized_colormap: bool = ...,
-        scalars=...,
-        backface_culling: bool = ...,
-        polygon_offset=...,
+        color=None,
+        opacity: float = 1.0,
+        vmin=None,
+        vmax=None,
+        colormap=None,
+        normalized_colormap: bool = False,
+        scalars=None,
+        backface_culling: bool = False,
+        polygon_offset=None,
     ):
         """Add a surface in the scene.
 
@@ -252,10 +257,10 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         center,
         color,
         scale,
-        opacity: float = ...,
-        resolution: int = ...,
-        backface_culling: bool = ...,
-        radius=...,
+        opacity: float = 1.0,
+        resolution: int = 8,
+        backface_culling: bool = False,
+        radius=None,
     ):
         """Add sphere in the scene.
 
@@ -287,14 +292,14 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         self,
         origin,
         destination,
-        radius: float = ...,
-        color: str = ...,
-        scalars=...,
-        vmin=...,
-        vmax=...,
-        colormap: str = ...,
-        normalized_colormap: bool = ...,
-        reverse_lut: bool = ...,
+        radius: float = 0.001,
+        color: str = "white",
+        scalars=None,
+        vmin=None,
+        vmax=None,
+        colormap: str = "RdBu",
+        normalized_colormap: bool = False,
+        reverse_lut: bool = False,
     ):
         """Add tube in the scene.
 
@@ -347,19 +352,19 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         color,
         scale,
         mode,
-        resolution: int = ...,
-        glyph_height=...,
-        glyph_center=...,
-        glyph_resolution=...,
-        opacity: float = ...,
-        scale_mode: str = ...,
-        scalars=...,
-        backface_culling: bool = ...,
-        colormap=...,
-        vmin=...,
-        vmax=...,
-        line_width: float = ...,
-        name=...,
+        resolution: int = 8,
+        glyph_height=None,
+        glyph_center=None,
+        glyph_resolution=None,
+        opacity: float = 1.0,
+        scale_mode: str = "none",
+        scalars=None,
+        backface_culling: bool = False,
+        colormap=None,
+        vmin=None,
+        vmax=None,
+        line_width: float = 2.0,
+        name=None,
     ):
         """Add quiver3d in the scene.
 
@@ -425,7 +430,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         """
     @classmethod
     @abc.abstractmethod
-    def text2d(self, x_window, y_window, text, size: int = ..., color: str = ...):
+    def text2d(self, x_window, y_window, text, size: int = 14, color: str = "white"):
         """Add 2d text in the scene.
 
         Parameters
@@ -447,7 +452,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         """
     @classmethod
     @abc.abstractmethod
-    def text3d(self, x, y, z, text, width, color: str = ...):
+    def text3d(self, x, y, z, text, width, color: str = "white"):
         """Add 2d text in the scene.
 
         Parameters
@@ -470,7 +475,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def scalarbar(
-        self, source, color: str = ..., title=..., n_labels: int = ..., bgcolor=...
+        self, source, color: str = "white", title=None, n_labels: int = 4, bgcolor=None
     ):
         """Add a scalar bar in the scene.
 
@@ -499,13 +504,13 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def set_camera(
         self,
-        azimuth=...,
-        elevation=...,
-        distance=...,
-        focalpoint=...,
-        roll=...,
+        azimuth=None,
+        elevation=None,
+        distance=None,
+        focalpoint=None,
+        roll=None,
         *,
-        reset_camera=...,
+        reset_camera=None,
     ):
         """Configure the camera of the scene.
 
@@ -530,7 +535,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         """Reset the camera properties."""
     @classmethod
     @abc.abstractmethod
-    def screenshot(self, mode: str = ..., filename=...):
+    def screenshot(self, mode: str = "rgb", filename=None):
         """Take a screenshot of the scene.
 
         Parameters
@@ -572,22 +577,22 @@ class _AbstractWidget(ABC, metaclass=abc.ABCMeta):
 class _AbstractLabel(_AbstractWidget, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
-    def __init__(self, value, center: bool = ..., selectable: bool = ...): ...
+    def __init__(self, value, center: bool = False, selectable: bool = False): ...
 
 class _AbstractText(_AbstractWidget, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
-    def __init__(self, value=..., placeholder=..., callback=...): ...
+    def __init__(self, value=None, placeholder=None, callback=None): ...
 
 class _AbstractButton(_AbstractWidget, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
-    def __init__(self, value, callback, icon=...): ...
+    def __init__(self, value, callback, icon=None): ...
 
 class _AbstractSlider(_AbstractWidget, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
-    def __init__(self, value, rng, callback, horizontal: bool = ...): ...
+    def __init__(self, value, rng, callback, horizontal: bool = True): ...
 
 class _AbstractProgressBar(_AbstractWidget, metaclass=abc.ABCMeta):
     @classmethod
@@ -602,7 +607,7 @@ class _AbstractCheckBox(_AbstractWidget, metaclass=abc.ABCMeta):
 class _AbstractSpinBox(_AbstractWidget, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
-    def __init__(self, value, rng, callback, step=...): ...
+    def __init__(self, value, rng, callback, step=None): ...
 
 class _AbstractComboBox(_AbstractWidget, metaclass=abc.ABCMeta):
     @classmethod
@@ -625,12 +630,12 @@ class _AbstractFileButton(_AbstractWidget, metaclass=abc.ABCMeta):
     def __init__(
         self,
         callback,
-        content_filter=...,
-        initial_directory=...,
-        save: bool = ...,
-        is_directory: bool = ...,
-        icon: str = ...,
-        window=...,
+        content_filter=None,
+        initial_directory=None,
+        save: bool = False,
+        is_directory: bool = False,
+        icon: str = "folder",
+        window=None,
     ): ...
 
 class _AbstractPlayMenu(_AbstractWidget, metaclass=abc.ABCMeta):
@@ -644,32 +649,32 @@ class _AbstractPopup(_AbstractWidget, metaclass=abc.ABCMeta):
         self,
         title,
         text,
-        info_text=...,
-        callback=...,
-        icon: str = ...,
-        buttons=...,
-        window=...,
+        info_text=None,
+        callback=None,
+        icon: str = "Warning",
+        buttons=None,
+        window=None,
     ): ...
 
 class _AbstractBoxLayout(ABC, metaclass=abc.ABCMeta): ...
 
 class _AbstractHBoxLayout(_AbstractBoxLayout, metaclass=abc.ABCMeta):
     @abstractmethod
-    def __init__(self, height=..., scroll=...): ...
+    def __init__(self, height=None, scroll=None): ...
 
 class _AbstractVBoxLayout(_AbstractBoxLayout, metaclass=abc.ABCMeta):
     @abstractmethod
-    def __init__(self, width=..., scroll=...): ...
+    def __init__(self, width=None, scroll=None): ...
 
 class _AbstractGridLayout(ABC, metaclass=abc.ABCMeta):
     @abstractmethod
-    def __init__(self, height=..., width=..., scroll=...): ...
+    def __init__(self, height=None, width=None, scroll=None): ...
 
 class _AbstractAppWindow(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, size=..., fullscreen: bool = ...) -> None: ...
+    def __init__(self, size=None, fullscreen: bool = False) -> None: ...
 
 class _AbstractCanvas(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, width=..., height=..., dpi=...) -> None:
+    def __init__(self, width=None, height=None, dpi=None) -> None:
         """Initialize the matplotlib Canvas."""
     def show(self) -> None:
         """Show the canvas."""
@@ -718,7 +723,7 @@ class _AbstractWdgt(ABC, metaclass=abc.ABCMeta):
     @abstractmethod
     def is_enabled(self): ...
     @abstractmethod
-    def update(self, repaint: bool = ...): ...
+    def update(self, repaint: bool = True): ...
     @abstractmethod
     def get_tooltip(self): ...
     @abstractmethod
@@ -744,9 +749,9 @@ class _AbstractMplCanvas(ABC):
 
     def __init__(self, width, height, dpi) -> None:
         """Initialize the MplCanvas."""
-    def plot(self, x, y, label, update: bool = ..., **kwargs):
+    def plot(self, x, y, label, update: bool = True, **kwargs):
         """Plot a curve."""
-    def plot_time_line(self, x, label, update: bool = ..., **kwargs):
+    def plot_time_line(self, x, label, update: bool = True, **kwargs):
         """Plot the vertical line."""
     def update_plot(self) -> None:
         """Update the plot."""

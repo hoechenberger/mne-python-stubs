@@ -15,7 +15,7 @@ from ..utils import (
 )
 from .parametric import f_oneway as f_oneway, ttest_1samp_no_p as ttest_1samp_no_p
 
-def bin_perm_rep(ndim, a: int = ..., b: int = ...):
+def bin_perm_rep(ndim, a: int = 0, b: int = 1):
     """Ndim permutations with repetitions of (a,b).
 
     Returns an array with all the possible permutations with repetitions of
@@ -37,21 +37,21 @@ def bin_perm_rep(ndim, a: int = ..., b: int = ...):
 
 def permutation_cluster_test(
     X,
-    threshold=...,
-    n_permutations: int = ...,
-    tail: int = ...,
-    stat_fun=...,
-    adjacency=...,
-    n_jobs=...,
-    seed=...,
-    max_step: int = ...,
-    exclude=...,
-    step_down_p: int = ...,
-    t_power: int = ...,
-    out_type: str = ...,
-    check_disjoint: bool = ...,
-    buffer_size: int = ...,
-    verbose=...,
+    threshold=None,
+    n_permutations: int = 1024,
+    tail: int = 0,
+    stat_fun=None,
+    adjacency=None,
+    n_jobs=None,
+    seed=None,
+    max_step: int = 1,
+    exclude=None,
+    step_down_p: int = 0,
+    t_power: int = 1,
+    out_type: str = "indices",
+    check_disjoint: bool = False,
+    buffer_size: int = 1000,
+    verbose=None,
 ):
     """Cluster-level statistical permutation test.
 
@@ -223,21 +223,21 @@ def permutation_cluster_test(
 
 def permutation_cluster_1samp_test(
     X,
-    threshold=...,
-    n_permutations: int = ...,
-    tail: int = ...,
-    stat_fun=...,
-    adjacency=...,
-    n_jobs=...,
-    seed=...,
-    max_step: int = ...,
-    exclude=...,
-    step_down_p: int = ...,
-    t_power: int = ...,
-    out_type: str = ...,
-    check_disjoint: bool = ...,
-    buffer_size: int = ...,
-    verbose=...,
+    threshold=None,
+    n_permutations: int = 1024,
+    tail: int = 0,
+    stat_fun=None,
+    adjacency=None,
+    n_jobs=None,
+    seed=None,
+    max_step: int = 1,
+    exclude=None,
+    step_down_p: int = 0,
+    t_power: int = 1,
+    out_type: str = "indices",
+    check_disjoint: bool = False,
+    buffer_size: int = 1000,
+    verbose=None,
 ):
     """Non-parametric cluster-level paired t-test.
 
@@ -424,21 +424,21 @@ def permutation_cluster_1samp_test(
 
 def spatio_temporal_cluster_1samp_test(
     X,
-    threshold=...,
-    n_permutations: int = ...,
-    tail: int = ...,
-    stat_fun=...,
-    adjacency=...,
-    n_jobs=...,
-    seed=...,
-    max_step: int = ...,
-    spatial_exclude=...,
-    step_down_p: int = ...,
-    t_power: int = ...,
-    out_type: str = ...,
-    check_disjoint: bool = ...,
-    buffer_size: int = ...,
-    verbose=...,
+    threshold=None,
+    n_permutations: int = 1024,
+    tail: int = 0,
+    stat_fun=None,
+    adjacency=None,
+    n_jobs=None,
+    seed=None,
+    max_step: int = 1,
+    spatial_exclude=None,
+    step_down_p: int = 0,
+    t_power: int = 1,
+    out_type: str = "indices",
+    check_disjoint: bool = False,
+    buffer_size: int = 1000,
+    verbose=None,
 ):
     """Non-parametric cluster-level paired t-test for spatio-temporal data.
 
@@ -602,21 +602,21 @@ def spatio_temporal_cluster_1samp_test(
 
 def spatio_temporal_cluster_test(
     X,
-    threshold=...,
-    n_permutations: int = ...,
-    tail: int = ...,
-    stat_fun=...,
-    adjacency=...,
-    n_jobs=...,
-    seed=...,
-    max_step: int = ...,
-    spatial_exclude=...,
-    step_down_p: int = ...,
-    t_power: int = ...,
-    out_type: str = ...,
-    check_disjoint: bool = ...,
-    buffer_size: int = ...,
-    verbose=...,
+    threshold=None,
+    n_permutations: int = 1024,
+    tail: int = 0,
+    stat_fun=None,
+    adjacency=None,
+    n_jobs=None,
+    seed=None,
+    max_step: int = 1,
+    spatial_exclude=None,
+    step_down_p: int = 0,
+    t_power: int = 1,
+    out_type: str = "indices",
+    check_disjoint: bool = False,
+    buffer_size: int = 1000,
+    verbose=None,
 ):
     """Non-parametric cluster-level test for spatio-temporal data.
 
@@ -779,11 +779,11 @@ def spatio_temporal_cluster_test(
 
 def summarize_clusters_stc(
     clu,
-    p_thresh: float = ...,
-    tstep: float = ...,
-    tmin: int = ...,
-    subject: str = ...,
-    vertices=...,
+    p_thresh: float = 0.05,
+    tstep: float = 1.0,
+    tmin: int = 0,
+    subject: str = "fsaverage",
+    vertices=None,
 ):
     """Assemble summary SourceEstimate from spatiotemporal cluster results.
 

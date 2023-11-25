@@ -186,7 +186,7 @@ def linkcode_resolve(domain, info):
     Adapted from SciPy (doc/source/conf.py).
     """
 
-def open_docs(kind=..., version=...) -> None:
+def open_docs(kind=None, version=None) -> None:
     """Launch a new web browser tab with the MNE documentation.
 
     Parameters
@@ -202,18 +202,7 @@ def open_docs(kind=..., version=...) -> None:
     """
 
 class _decorator:
-    """Call.
-
-    Parameters
-    ----------
-    obj : object
-        Object to call.
-
-    Returns
-    -------
-    obj : object
-        The modified object.
-    """
+    """Inject code or modify the docstring of a class, method, or function."""
 
     kind: Incomplete
     extra: Incomplete
@@ -233,6 +222,7 @@ class _decorator:
         obj : object
             The modified object.
         """
+        ...
 
 class deprecated(_decorator):
     """Mark a function, class, or method as deprecated (decorator).
@@ -251,7 +241,7 @@ class deprecated(_decorator):
         and in a sphinx warning box in the docstring.
     """
 
-def deprecated_alias(dep_name, func, removed_in=...) -> None:
+def deprecated_alias(dep_name, func, removed_in=None) -> None:
     """Inject a deprecated alias into the namespace."""
 
 class legacy(_decorator):
@@ -269,4 +259,4 @@ class legacy(_decorator):
         and in a sphinx warning box in the docstring.
     """
 
-    def __init__(self, alt, extra: str = ...) -> None: ...
+    def __init__(self, alt, extra: str = "") -> None: ...

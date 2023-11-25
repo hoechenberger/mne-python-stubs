@@ -48,5 +48,5 @@ class RawArray(BaseRaw):
     """
 
     def __init__(
-        self, data, info, first_samp: int = ..., copy: str = ..., verbose=...
+        self, data, info, first_samp: int = 0, copy: str = "auto", verbose=None
     ) -> None: ...

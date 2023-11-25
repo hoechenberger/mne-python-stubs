@@ -4,18 +4,18 @@ from ..utils import logger as logger
 def psd_array_welch(
     x,
     sfreq,
-    fmin: int = ...,
+    fmin: int = 0,
     fmax=...,
-    n_fft: int = ...,
-    n_overlap: int = ...,
-    n_per_seg=...,
-    n_jobs=...,
-    average: str = ...,
-    window: str = ...,
-    remove_dc: bool = ...,
+    n_fft: int = 256,
+    n_overlap: int = 0,
+    n_per_seg=None,
+    n_jobs=None,
+    average: str = "mean",
+    window: str = "hamming",
+    remove_dc: bool = True,
     *,
-    output: str = ...,
-    verbose=...,
+    output: str = "power",
+    verbose=None,
 ):
     """Compute power spectral density (PSD) using Welch's method.
 

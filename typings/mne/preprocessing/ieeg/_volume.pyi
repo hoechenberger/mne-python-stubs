@@ -2,7 +2,7 @@ from ...channels import DigMontage as DigMontage, make_dig_montage as make_dig_m
 from ...transforms import Transform as Transform, apply_trans as apply_trans
 from ...utils import warn as warn
 
-def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=...):
+def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
     """Warp a montage to a template with image volumes using SDR.
 
     .. note:: This is likely only applicable for channels inside the brain
@@ -41,11 +41,11 @@ def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=...):
 def make_montage_volume(
     montage,
     base_image,
-    thresh: float = ...,
-    max_peak_dist: int = ...,
-    voxels_max: int = ...,
-    use_min: bool = ...,
-    verbose=...,
+    thresh: float = 0.5,
+    max_peak_dist: int = 1,
+    voxels_max: int = 100,
+    use_min: bool = False,
+    verbose=None,
 ):
     """Make a volume from intracranial electrode contact locations.
 

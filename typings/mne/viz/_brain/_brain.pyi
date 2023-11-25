@@ -32,7 +32,207 @@ from .view import views_dicts as views_dicts
 from _typeshed import Incomplete
 
 class Brain:
-    """Hash the object."""
+    """Class for visualizing a brain.
+
+    .. warning::
+       The API for this class is not currently complete. We suggest using
+       :meth:`mne.viz.plot_source_estimates` with the PyVista backend
+       enabled to obtain a ``Brain`` instance.
+
+    Parameters
+    ----------
+    subject : str
+        Subject name in Freesurfer subjects dir.
+
+        .. versionchanged:: 1.2
+           This parameter was renamed from ``subject_id`` to ``subject``.
+    hemi : str
+        Hemisphere id (ie 'lh', 'rh', 'both', or 'split'). In the case
+        of 'both', both hemispheres are shown in the same window.
+        In the case of 'split' hemispheres are displayed side-by-side
+        in different viewing panes.
+    surf : str
+        FreeSurfer surface mesh name (ie 'white', 'inflated', etc.).
+    title : str
+        Title for the window.
+    cortex : str, list, dict
+        Specifies how the cortical surface is rendered. Options:
+
+        1. The name of one of the preset cortex styles:
+            ``'classic'`` (default), ``'high_contrast'``,
+            ``'low_contrast'``, or ``'bone'``.
+        2. A single color-like argument to render the cortex as a single
+            color, e.g. ``'red'`` or ``(0.1, 0.4, 1.)``.
+        3. A list of two color-like used to render binarized curvature
+            values for gyral (first) and sulcal (second). regions, e.g.,
+            ``['red', 'blue']`` or ``[(1, 0, 0), (0, 0, 1)]``.
+        4. A dict containing keys ``'vmin', 'vmax', 'colormap'`` with
+            values used to render the binarized curvature (where 0 is gyral,
+            1 is sulcal).
+
+        .. versionchanged:: 0.24
+           Add support for non-string arguments.
+    alpha : float in [0, 1]
+        Alpha level to control opacity of the cortical surface.
+    size : int | array-like, shape (2,)
+        The size of the window, in pixels. can be one number to specify
+        a square window, or a length-2 sequence to specify (width, height).
+    background : tuple(int, int, int)
+        The color definition of the background: (red, green, blue).
+    foreground : matplotlib color
+        Color of the foreground (will be used for colorbars and text).
+        None (default) will use black or white depending on the value
+        of ``background``.
+    figure : list of Figure | None
+        If None (default), a new window will be created with the appropriate
+        views.
+    subjects_dir : str | None
+        If not None, this directory will be used as the subjects directory
+        instead of the value set using the SUBJECTS_DIR environment
+        variable.
+
+    views : str | list
+        View to use. Using multiple views (list) is not supported for mpl
+        backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+        valid string options.
+    offset : bool | str
+        If True, shifts the right- or left-most x coordinate of the left and
+        right surfaces, respectively, to be at zero. This is useful for viewing
+        inflated surface where hemispheres typically overlap. Can be "auto"
+        (default) use True with inflated surfaces and False otherwise
+        (Default: 'auto'). Only used when ``hemi='both'``.
+
+        .. versionchanged:: 0.23
+           Default changed to "auto".
+    offscreen : bool
+        If True, rendering will be done offscreen (not shown). Useful
+        mostly for generating images or screenshots, but can be buggy.
+        Use at your own risk.
+    interaction : str
+        Can be "trackball" (default) or "terrain", i.e. a turntable-style
+        camera.
+    units : str
+        Can be 'm' or 'mm' (default).
+
+    view_layout : str
+        Can be "vertical" (default) or "horizontal". When using "horizontal" mode,
+        the PyVista backend must be used and hemi cannot be "split".
+    silhouette : dict | bool
+       As a dict, it contains the ``color``, ``linewidth``, ``alpha`` opacity
+       and ``decimate`` (level of decimation between 0 and 1 or None) of the
+       brain's silhouette to display. If True, the default values are used
+       and if False, no silhouette will be displayed. Defaults to False.
+
+    theme : str | path-like
+        Can be "auto", "light", or "dark" or a path-like to a
+        custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
+        :mod:`qdarkstyle` and
+        `darkdetect <https://github.com/albertosottile/darkdetect>`__,
+        respectively, are required.    If None (default), the config option MNE_3D_OPTION_THEME will be used,
+        defaulting to "auto" if it's not found.
+    show : bool
+        Display the window as soon as it is ready. Defaults to True.
+    block : bool
+        If True, start the Qt application event loop. Default to False.
+
+    Attributes
+    ----------
+    geo : dict
+        A dictionary of PyVista surface objects for each hemisphere.
+    overlays : dict
+        The overlays.
+
+    Notes
+    -----
+    The figure will publish and subscribe to the following UI events:
+
+    * :class:mne.viz.ui_events.TimeChange`
+    * :class:mne.viz.ui_events.PlaybackSpeed`
+    * :class:mne.viz.ui_events.ColormapRange`, ``kind="distributed_source_power"``
+    * :class:mne.viz.ui_events.VertexSelect`
+
+    This table shows the capabilities of each Brain backend ("✓" for full
+    support, and "-" for partial support):
+
+    .. table::
+       :widths: auto
+
+       +-------------------------------------+--------------+---------------+
+       | 3D function:                        | surfer.Brain | mne.viz.Brain |
+       +=====================================+==============+===============+
+       | :meth:`add_annotation`              | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_data`                    | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_dipole`                  |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_foci`                    | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_forward`                 |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_head`                    |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_label`                   | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_sensors`                 |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_skull`                   |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_text`                    | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_volume_labels`           |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`close`                       | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | data                                | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | foci                                | ✓            |               |
+       +-------------------------------------+--------------+---------------+
+       | labels                              | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_data`                 |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_dipole`               |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_forward`              |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_head`                 |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_labels`               | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_annotations`          | -            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_sensors`              |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_skull`                |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_text`                 |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`remove_volume_labels`        |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`save_image`                  | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`save_movie`                  | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`screenshot`                  | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`show_view`                   | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | TimeViewer                          | ✓            | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`get_picked_points`           |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | :meth:`add_data(volume) <add_data>` |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | view_layout                         |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | flatmaps                            |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | vertex picking                      |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+       | label picking                       |              | ✓             |
+       +-------------------------------------+--------------+---------------+
+    """
 
     time_viewer: bool
     silhouette: bool
@@ -43,27 +243,27 @@ class Brain:
     def __init__(
         self,
         subject,
-        hemi: str = ...,
-        surf: str = ...,
-        title=...,
-        cortex: str = ...,
-        alpha: float = ...,
-        size: int = ...,
-        background: str = ...,
-        foreground=...,
-        figure=...,
-        subjects_dir=...,
-        views: str = ...,
+        hemi: str = "both",
+        surf: str = "pial",
+        title=None,
+        cortex: str = "classic",
+        alpha: float = 1.0,
+        size: int = 800,
+        background: str = "black",
+        foreground=None,
+        figure=None,
+        subjects_dir=None,
+        views: str = "auto",
         *,
-        offset: str = ...,
-        offscreen: bool = ...,
-        interaction: str = ...,
-        units: str = ...,
-        view_layout: str = ...,
-        silhouette: bool = ...,
-        theme=...,
-        show: bool = ...,
-        block: bool = ...,
+        offset: str = "auto",
+        offscreen: bool = False,
+        interaction: str = "trackball",
+        units: str = "mm",
+        view_layout: str = "vertical",
+        silhouette: bool = False,
+        theme=None,
+        show: bool = True,
+        block: bool = False,
     ) -> None: ...
     orientation: Incomplete
     default_smoothing_range: Incomplete
@@ -94,7 +294,7 @@ class Brain:
     traces_mode: str
 
     def setup_time_viewer(
-        self, time_viewer: bool = ..., show_traces: bool = ...
+        self, time_viewer: bool = True, show_traces: bool = True
     ) -> None:
         """Configure the time viewer parameters.
 
@@ -123,7 +323,8 @@ class Brain:
         'Left': Decrease camera azimuth angle
         'Right': Increase camera azimuth angle
         """
-    def toggle_interface(self, value=...) -> None:
+        ...
+    def toggle_interface(self, value=None) -> None:
         """Toggle the interface.
 
         Parameters
@@ -133,11 +334,14 @@ class Brain:
             are hidden. If None, the state of the widgets is
             toggled. Defaults to None.
         """
+        ...
     def apply_auto_scaling(self) -> None:
         """Detect automatically fitting scaling parameters."""
+        ...
     def restore_user_scaling(self) -> None:
         """Restore original scaling parameters."""
-    def toggle_playback(self, value=...) -> None:
+        ...
+    def toggle_playback(self, value=None) -> None:
         """Toggle time playback.
 
         Parameters
@@ -147,8 +351,10 @@ class Brain:
             it's disabled. If None, the state of time playback is toggled.
             Defaults to None.
         """
+        ...
     def reset(self) -> None:
         """Reset view, current time and time step."""
+        ...
     def set_playback_speed(self, speed) -> None:
         """Set the time playback speed.
 
@@ -157,9 +363,11 @@ class Brain:
         speed : float
             The speed of the playback.
         """
+        ...
     def clear_glyphs(self) -> None:
         """Clear the picking glyphs."""
-    def plot_time_course(self, hemi, vertex_id, color, update: bool = ...):
+        ...
+    def plot_time_course(self, hemi, vertex_id, color, update: bool = True):
         """Plot the vertex time course.
 
         Parameters
@@ -179,9 +387,10 @@ class Brain:
         line : matplotlib object
             The time line object.
         """
+        ...
     time_line: Incomplete
 
-    def plot_time_line(self, update: bool = ...) -> None:
+    def plot_time_line(self, update: bool = True) -> None:
         """Add the time line to the MPL widget.
 
         Parameters
@@ -190,41 +399,45 @@ class Brain:
         update : bool
             Force an update of the plot. Defaults to True.
         """
+        ...
     def help(self) -> None:
         """Display the help window."""
+        ...
     @property
     def interaction(self):
         """The interaction style."""
+        ...
     @interaction.setter
     def interaction(self, interaction) -> None:
         """The interaction style."""
+        ...
     def add_data(
         self,
         array,
-        fmin=...,
-        fmid=...,
-        fmax=...,
-        thresh=...,
-        center=...,
-        transparent: bool = ...,
-        colormap: str = ...,
-        alpha: int = ...,
-        vertices=...,
-        smoothing_steps=...,
-        time=...,
-        time_label: str = ...,
-        colorbar: bool = ...,
-        hemi=...,
-        remove_existing=...,
-        time_label_size=...,
-        initial_time=...,
-        scale_factor=...,
-        vector_alpha=...,
-        clim=...,
-        src=...,
-        volume_options: float = ...,
-        colorbar_kwargs=...,
-        verbose=...,
+        fmin=None,
+        fmid=None,
+        fmax=None,
+        thresh=None,
+        center=None,
+        transparent: bool = False,
+        colormap: str = "auto",
+        alpha: int = 1,
+        vertices=None,
+        smoothing_steps=None,
+        time=None,
+        time_label: str = "auto",
+        colorbar: bool = True,
+        hemi=None,
+        remove_existing=None,
+        time_label_size=None,
+        initial_time=None,
+        scale_factor=None,
+        vector_alpha=None,
+        clim=None,
+        src=None,
+        volume_options: float = 0.4,
+        colorbar_kwargs=None,
+        verbose=None,
     ) -> None:
         """Display data from a numpy array on the surface or volume.
 
@@ -368,23 +581,27 @@ class Brain:
         Due to a VTK alpha rendering bug, ``vector_alpha`` is
         clamped to be strictly < 1.
         """
+        ...
     def remove_data(self) -> None:
         """Remove rendered data from the mesh."""
+        ...
     def remove_labels(self) -> None:
         """Remove all the ROI labels from the image."""
+        ...
     def remove_annotations(self) -> None:
         """Remove all annotations from the image."""
+        ...
     def add_label(
         self,
         label,
-        color=...,
-        alpha: int = ...,
-        scalar_thresh=...,
-        borders: bool = ...,
-        hemi=...,
-        subdir=...,
+        color=None,
+        alpha: int = 1,
+        scalar_thresh=None,
+        borders: bool = False,
+        hemi=None,
+        subdir=None,
         *,
-        reset_camera=...,
+        reset_camera=None,
     ) -> None:
         """Add an ROI label to the image.
 
@@ -423,7 +640,8 @@ class Brain:
         -----
         To remove previously added labels, run Brain.remove_labels().
         """
-    def add_forward(self, fwd, trans, alpha: int = ..., scale=...) -> None:
+        ...
+    def add_forward(self, fwd, trans, alpha: int = 1, scale=None) -> None:
         """Add a quiver to render positions of dipoles.
 
         Parameters
@@ -448,10 +666,12 @@ class Brain:
         -----
         .. versionadded:: 1.0
         """
+        ...
     def remove_forward(self) -> None:
         """Remove forward sources from the rendered scene."""
+        ...
     def add_dipole(
-        self, dipole, trans, colors: str = ..., alpha: int = ..., scales=...
+        self, dipole, trans, colors: str = "red", alpha: int = 1, scales=None
     ) -> None:
         """Add a quiver to render positions of dipoles.
 
@@ -479,9 +699,13 @@ class Brain:
         -----
         .. versionadded:: 1.0
         """
+        ...
     def remove_dipole(self) -> None:
         """Remove dipole objects from the rendered scene."""
-    def add_head(self, dense: bool = ..., color: str = ..., alpha: float = ...) -> None:
+        ...
+    def add_head(
+        self, dense: bool = True, color: str = "gray", alpha: float = 0.5
+    ) -> None:
         """Add a mesh to render the outer head surface.
 
         Parameters
@@ -500,10 +724,12 @@ class Brain:
         -----
         .. versionadded:: 0.24
         """
+        ...
     def remove_head(self) -> None:
         """Remove head objects from the rendered scene."""
+        ...
     def add_skull(
-        self, outer: bool = ..., color: str = ..., alpha: float = ...
+        self, outer: bool = True, color: str = "gray", alpha: float = 0.5
     ) -> None:
         """Add a mesh to render the skull surface.
 
@@ -522,17 +748,19 @@ class Brain:
         -----
         .. versionadded:: 0.24
         """
+        ...
     def remove_skull(self) -> None:
         """Remove skull objects from the rendered scene."""
+        ...
     def add_volume_labels(
         self,
-        aseg: str = ...,
-        labels=...,
-        colors=...,
-        alpha: float = ...,
-        smooth: float = ...,
-        fill_hole_size=...,
-        legend=...,
+        aseg: str = "aparc+aseg",
+        labels=None,
+        colors=None,
+        alpha: float = 0.5,
+        smooth: float = 0.9,
+        fill_hole_size=None,
+        legend=None,
     ) -> None:
         """Add labels to the rendering from an anatomical segmentation.
 
@@ -572,19 +800,21 @@ class Brain:
         -----
         .. versionadded:: 0.24
         """
+        ...
     def remove_volume_labels(self) -> None:
         """Remove the volume labels from the rendered scene."""
+        ...
     def add_foci(
         self,
         coords,
-        coords_as_verts: bool = ...,
-        map_surface=...,
-        scale_factor: int = ...,
-        color: str = ...,
-        alpha: int = ...,
-        name=...,
-        hemi=...,
-        resolution: int = ...,
+        coords_as_verts: bool = False,
+        map_surface=None,
+        scale_factor: int = 1,
+        color: str = "white",
+        alpha: int = 1,
+        name=None,
+        hemi=None,
+        resolution: int = 50,
     ) -> None:
         """Add spherical foci, possibly mapping to displayed surf.
 
@@ -622,20 +852,21 @@ class Brain:
         resolution : int
             The resolution of the spheres.
         """
+        ...
     def add_sensors(
         self,
         info,
         trans,
-        meg=...,
-        eeg: str = ...,
-        fnirs: bool = ...,
-        ecog: bool = ...,
-        seeg: bool = ...,
-        dbs: bool = ...,
-        max_dist: float = ...,
+        meg=None,
+        eeg: str = "original",
+        fnirs: bool = True,
+        ecog: bool = True,
+        seeg: bool = True,
+        dbs: bool = True,
+        max_dist: float = 0.004,
         *,
-        sensor_colors=...,
-        verbose=...,
+        sensor_colors=None,
+        verbose=None,
     ) -> None:
         """Add mesh objects to represent sensor positions.
 
@@ -726,7 +957,8 @@ class Brain:
         -----
         .. versionadded:: 0.24
         """
-    def remove_sensors(self, kind=...) -> None:
+        ...
+    def remove_sensors(self, kind=None) -> None:
         """Remove sensors from the rendered scene.
 
         Parameters
@@ -736,18 +968,19 @@ class Brain:
             Can be "meg", "eeg", "fnirs", "ecog", "seeg", "dbs" or "helmet"
             to remove that item.
         """
+        ...
     def add_text(
         self,
         x,
         y,
         text,
-        name=...,
-        color=...,
-        opacity: float = ...,
-        row: int = ...,
-        col: int = ...,
-        font_size=...,
-        justification=...,
+        name=None,
+        color=None,
+        opacity: float = 1.0,
+        row: int = 0,
+        col: int = 0,
+        font_size=None,
+        justification=None,
     ) -> None:
         """Add a text to the visualization.
 
@@ -777,7 +1010,8 @@ class Brain:
         justification : str | None
             The text justification.
         """
-    def remove_text(self, name=...) -> None:
+        ...
+    def remove_text(self, name=None) -> None:
         """Remove text from the rendered scene.
 
         Parameters
@@ -785,14 +1019,15 @@ class Brain:
         name : str | None
             Remove specific text by name. If None, all text will be removed.
         """
+        ...
     def add_annotation(
         self,
         annot,
-        borders: bool = ...,
-        alpha: int = ...,
-        hemi=...,
-        remove_existing: bool = ...,
-        color=...,
+        borders: bool = True,
+        alpha: int = 1,
+        hemi=None,
+        remove_existing: bool = True,
+        color=None,
     ) -> None:
         """Add an annotation file.
 
@@ -822,11 +1057,14 @@ class Brain:
             If used, show all annotations in the same (specified) color.
             Probably useful only when showing annotation borders.
         """
+        ...
     def close(self) -> None:
         """Close all figures and cleanup data structure."""
+        ...
     def show(self) -> None:
         """Display the window."""
-    def get_view(self, row: int = ..., col: int = ..., *, align: bool = ...):
+        ...
+    def get_view(self, row: int = 0, col: int = 0, *, align: bool = True):
         """Get the camera orientation for a given subplot display.
 
         Parameters
@@ -867,21 +1105,22 @@ class Brain:
             plot units (either m or mm). When ``"auto"``, it is set to the center of
             mass of the visible bounds.
         """
+        ...
     def show_view(
         self,
-        view=...,
-        roll=...,
-        distance=...,
+        view=None,
+        roll=None,
+        distance=None,
         *,
-        row=...,
-        col=...,
-        hemi=...,
-        align: bool = ...,
-        azimuth=...,
-        elevation=...,
-        focalpoint=...,
-        update: bool = ...,
-        verbose=...,
+        row=None,
+        col=None,
+        hemi=None,
+        align: bool = True,
+        azimuth=None,
+        elevation=None,
+        focalpoint=None,
+        update: bool = True,
+        verbose=None,
     ) -> None:
         """Orient camera to display view.
 
@@ -977,9 +1216,11 @@ class Brain:
         Three letter abbreviations (e.g., ``'lat'``) of all of the above are
         also supported.
         """
+        ...
     def reset_view(self) -> None:
         """Reset the camera."""
-    def save_image(self, filename=..., mode: str = ...) -> None:
+        ...
+    def save_image(self, filename=None, mode: str = "rgb") -> None:
         """Save view from all panels to disk.
 
         Parameters
@@ -989,7 +1230,8 @@ class Brain:
         mode : str
             Either ``'rgb'`` or ``'rgba'`` for values to return.
         """
-    def screenshot(self, mode: str = ..., time_viewer: bool = ...):
+        ...
+    def screenshot(self, mode: str = "rgb", time_viewer: bool = False):
         """Generate a screenshot of current view.
 
         Parameters
@@ -1006,7 +1248,8 @@ class Brain:
         screenshot : array
             Image pixel values.
         """
-    def update_lut(self, fmin=..., fmid=..., fmax=..., alpha=...) -> None:
+        ...
+    def update_lut(self, fmin=None, fmid=None, fmax=None, alpha=None) -> None:
         """Update the range of the color map.
 
         Parameters
@@ -1023,6 +1266,7 @@ class Brain:
         alpha : float in [0, 1]
             Alpha level to control opacity.
         """
+        ...
     def set_data_smoothing(self, n_steps) -> None:
         """Set the number of smoothing steps.
 
@@ -1031,9 +1275,11 @@ class Brain:
         n_steps : int
             Number of smoothing steps.
         """
+        ...
     @property
     def time_interpolation(self):
         """The interpolation mode."""
+        ...
     def set_time_interpolation(self, interpolation) -> None:
         """Set the interpolation mode.
 
@@ -1045,6 +1291,7 @@ class Brain:
             Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
             ``'quadratic'`` or ``'cubic'``.
         """
+        ...
     def set_time_point(self, time_idx) -> None:
         """Set the time point to display (can be a float to interpolate).
 
@@ -1054,6 +1301,7 @@ class Brain:
             The time index to use. Can be a float to use interpolation
             between indices.
         """
+        ...
     def set_time(self, time) -> None:
         """Set the time to display (in seconds).
 
@@ -1062,9 +1310,11 @@ class Brain:
         time : float
             The time to show, in seconds.
         """
+        ...
     @property
     def data(self):
         """Data used by time viewer and color bar widgets."""
+        ...
     @property
     def labels(self): ...
     @property
@@ -1073,16 +1323,16 @@ class Brain:
     def hemis(self): ...
     def save_movie(
         self,
-        filename=...,
-        time_dilation: float = ...,
-        tmin=...,
-        tmax=...,
-        framerate: int = ...,
-        interpolation=...,
-        codec=...,
-        bitrate=...,
-        callback=...,
-        time_viewer: bool = ...,
+        filename=None,
+        time_dilation: float = 4.0,
+        tmin=None,
+        tmax=None,
+        framerate: int = 24,
+        interpolation=None,
+        codec=None,
+        bitrate=None,
+        callback=None,
+        time_viewer: bool = False,
         **kwargs,
     ) -> None:
         """Save a movie (for data with a time axis).
@@ -1135,6 +1385,7 @@ class Brain:
         **kwargs : dict
             Specify additional options for :mod:`imageio`.
         """
+        ...
     def get_picked_points(self):
         """Return the vertices of the picked points.
 
@@ -1143,8 +1394,10 @@ class Brain:
         points : list of int | None
             The vertices picked by the time viewer.
         """
+        ...
     def __hash__(self):
         """Hash the object."""
+        ...
 
 class _FakeIren:
     def EnterEvent(self) -> None: ...

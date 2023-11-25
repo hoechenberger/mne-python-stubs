@@ -96,7 +96,7 @@ def head_pos_to_trans_rot_t(quats):
     write_head_pos
     """
 
-def extract_chpi_locs_ctf(raw, verbose=...):
+def extract_chpi_locs_ctf(raw, verbose=None):
     """Extract cHPI locations from CTF data.
 
     Parameters
@@ -132,7 +132,7 @@ def extract_chpi_locs_ctf(raw, verbose=...):
     .. versionadded:: 0.20
     """
 
-def extract_chpi_locs_kit(raw, stim_channel: str = ..., *, verbose=...):
+def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
     """Extract cHPI locations from KIT data.
 
     Parameters
@@ -160,7 +160,7 @@ def extract_chpi_locs_kit(raw, stim_channel: str = ..., *, verbose=...):
     .. versionadded:: 0.23
     """
 
-def get_chpi_info(info, on_missing: str = ..., verbose=...):
+def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     """Retrieve cHPI information from the data.
 
     Parameters
@@ -199,10 +199,10 @@ def get_chpi_info(info, on_missing: str = ..., verbose=...):
 def compute_head_pos(
     info,
     chpi_locs,
-    dist_limit: float = ...,
-    gof_limit: float = ...,
-    adjust_dig: bool = ...,
-    verbose=...,
+    dist_limit: float = 0.005,
+    gof_limit: float = 0.98,
+    adjust_dig: bool = False,
+    verbose=None,
 ):
     """Compute time-varying head positions.
 
@@ -251,12 +251,12 @@ def compute_head_pos(
 
 def compute_chpi_snr(
     raw,
-    t_step_min: float = ...,
-    t_window: str = ...,
-    ext_order: int = ...,
-    tmin: int = ...,
-    tmax=...,
-    verbose=...,
+    t_step_min: float = 0.01,
+    t_window: str = "auto",
+    ext_order: int = 1,
+    tmin: int = 0,
+    tmax=None,
+    verbose=None,
 ):
     """Compute time-varying estimates of cHPI SNR.
 
@@ -310,12 +310,12 @@ def compute_chpi_snr(
 
 def compute_chpi_amplitudes(
     raw,
-    t_step_min: float = ...,
-    t_window: str = ...,
-    ext_order: int = ...,
-    tmin: int = ...,
-    tmax=...,
-    verbose=...,
+    t_step_min: float = 0.01,
+    t_window: str = "auto",
+    ext_order: int = 1,
+    tmin: int = 0,
+    tmax=None,
+    verbose=None,
 ):
     """Compute time-varying cHPI amplitudes.
 
@@ -388,10 +388,10 @@ def compute_chpi_amplitudes(
 def compute_chpi_locs(
     info,
     chpi_amplitudes,
-    t_step_max: float = ...,
-    too_close: str = ...,
-    adjust_dig: bool = ...,
-    verbose=...,
+    t_step_max: float = 1.0,
+    too_close: str = "raise",
+    adjust_dig: bool = False,
+    verbose=None,
 ):
     """Compute locations of each cHPI coils over time.
 
@@ -455,12 +455,12 @@ def compute_chpi_locs(
 
 def filter_chpi(
     raw,
-    include_line: bool = ...,
-    t_step: float = ...,
-    t_window: str = ...,
-    ext_order: int = ...,
-    allow_line_only: bool = ...,
-    verbose=...,
+    include_line: bool = True,
+    t_step: float = 0.01,
+    t_window: str = "auto",
+    ext_order: int = 1,
+    allow_line_only: bool = False,
+    verbose=None,
 ):
     """Remove cHPI and line noise from data.
 
@@ -514,7 +514,7 @@ def filter_chpi(
     .. versionadded:: 0.12
     """
 
-def get_active_chpi(raw, *, on_missing: str = ..., verbose=...):
+def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
     """Determine how many HPI coils were active for a time point.
 
     Parameters

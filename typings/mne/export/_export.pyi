@@ -4,12 +4,12 @@ from ._egimff import export_evokeds_mff as export_evokeds_mff
 def export_raw(
     fname,
     raw,
-    fmt: str = ...,
-    physical_range: str = ...,
-    add_ch_type: bool = ...,
+    fmt: str = "auto",
+    physical_range: str = "auto",
+    add_ch_type: bool = False,
     *,
-    overwrite: bool = ...,
-    verbose=...,
+    overwrite: bool = False,
+    verbose=None,
 ) -> None:
     """Export Raw to external formats.
 
@@ -92,7 +92,7 @@ def export_raw(
     """
 
 def export_epochs(
-    fname, epochs, fmt: str = ..., *, overwrite: bool = ..., verbose=...
+    fname, epochs, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
     """Export Epochs to external formats.
 
@@ -144,7 +144,7 @@ def export_epochs(
     """
 
 def export_evokeds(
-    fname, evoked, fmt: str = ..., *, overwrite: bool = ..., verbose=...
+    fname, evoked, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
     """Export evoked dataset to external formats.
 

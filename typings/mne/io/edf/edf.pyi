@@ -124,17 +124,17 @@ class RawEDF(BaseRaw):
     def __init__(
         self,
         input_fname,
-        eog=...,
-        misc=...,
-        stim_channel: str = ...,
-        exclude=...,
-        infer_types: bool = ...,
-        preload: bool = ...,
-        include=...,
-        units=...,
-        encoding: str = ...,
+        eog=None,
+        misc=None,
+        stim_channel: str = "auto",
+        exclude=(),
+        infer_types: bool = False,
+        preload: bool = False,
+        include=None,
+        units=None,
+        encoding: str = "utf8",
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
 
 class RawGDF(BaseRaw):
@@ -196,13 +196,13 @@ class RawGDF(BaseRaw):
     def __init__(
         self,
         input_fname,
-        eog=...,
-        misc=...,
-        stim_channel: str = ...,
-        exclude=...,
-        preload: bool = ...,
-        include=...,
-        verbose=...,
+        eog=None,
+        misc=None,
+        stim_channel: str = "auto",
+        exclude=(),
+        preload: bool = False,
+        include=None,
+        verbose=None,
     ) -> None: ...
 
 INT8: str
@@ -220,17 +220,17 @@ GDFTYPE_BYTE: Incomplete
 
 def read_raw_edf(
     input_fname,
-    eog=...,
-    misc=...,
-    stim_channel: str = ...,
-    exclude=...,
-    infer_types: bool = ...,
-    include=...,
-    preload: bool = ...,
-    units=...,
-    encoding: str = ...,
+    eog=None,
+    misc=None,
+    stim_channel: str = "auto",
+    exclude=(),
+    infer_types: bool = False,
+    include=None,
+    preload: bool = False,
+    units=None,
+    encoding: str = "utf8",
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Reader function for EDF and EDF+ files.
 
@@ -359,17 +359,17 @@ def read_raw_edf(
 
 def read_raw_bdf(
     input_fname,
-    eog=...,
-    misc=...,
-    stim_channel: str = ...,
-    exclude=...,
-    infer_types: bool = ...,
-    include=...,
-    preload: bool = ...,
-    units=...,
-    encoding: str = ...,
+    eog=None,
+    misc=None,
+    stim_channel: str = "auto",
+    exclude=(),
+    infer_types: bool = False,
+    include=None,
+    preload: bool = False,
+    units=None,
+    encoding: str = "utf8",
     *,
-    verbose=...,
+    verbose=None,
 ):
     """Reader function for BDF files.
 
@@ -490,13 +490,13 @@ def read_raw_bdf(
 
 def read_raw_gdf(
     input_fname,
-    eog=...,
-    misc=...,
-    stim_channel: str = ...,
-    exclude=...,
-    include=...,
-    preload: bool = ...,
-    verbose=...,
+    eog=None,
+    misc=None,
+    stim_channel: str = "auto",
+    exclude=(),
+    include=None,
+    preload: bool = False,
+    verbose=None,
 ):
     """Reader function for GDF files.
 

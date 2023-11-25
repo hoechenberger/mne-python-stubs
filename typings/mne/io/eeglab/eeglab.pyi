@@ -20,11 +20,11 @@ CAL: float
 
 def read_raw_eeglab(
     input_fname,
-    eog=...,
-    preload: bool = ...,
-    uint16_codec=...,
-    montage_units: str = ...,
-    verbose=...,
+    eog=(),
+    preload: bool = False,
+    uint16_codec=None,
+    montage_units: str = "auto",
+    verbose=None,
 ):
     """Read an EEGLAB .set file.
 
@@ -87,13 +87,13 @@ def read_raw_eeglab(
 
 def read_epochs_eeglab(
     input_fname,
-    events=...,
-    event_id=...,
-    eog=...,
+    events=None,
+    event_id=None,
+    eog=(),
     *,
-    uint16_codec=...,
-    montage_units: str = ...,
-    verbose=...,
+    uint16_codec=None,
+    montage_units: str = "auto",
+    verbose=None,
 ):
     """Reader function for EEGLAB epochs files.
 
@@ -215,12 +215,12 @@ class RawEEGLAB(BaseRaw):
     def __init__(
         self,
         input_fname,
-        eog=...,
-        preload: bool = ...,
+        eog=(),
+        preload: bool = False,
         *,
-        uint16_codec=...,
-        montage_units: str = ...,
-        verbose=...,
+        uint16_codec=None,
+        montage_units: str = "auto",
+        verbose=None,
     ) -> None: ...
 
 class EpochsEEGLAB(BaseEpochs):
@@ -297,16 +297,16 @@ class EpochsEEGLAB(BaseEpochs):
     def __init__(
         self,
         input_fname,
-        events=...,
-        event_id=...,
-        tmin: int = ...,
-        baseline=...,
-        reject=...,
-        flat=...,
-        reject_tmin=...,
-        reject_tmax=...,
-        eog=...,
-        uint16_codec=...,
-        montage_units: str = ...,
-        verbose=...,
+        events=None,
+        event_id=None,
+        tmin: int = 0,
+        baseline=None,
+        reject=None,
+        flat=None,
+        reject_tmin=None,
+        reject_tmax=None,
+        eog=(),
+        uint16_codec=None,
+        montage_units: str = "auto",
+        verbose=None,
     ) -> None: ...

@@ -2,7 +2,9 @@ from ...utils import logger as logger
 
 EEGMI_URL: str
 
-def data_path(url, path=..., force_update: bool = ..., update_path=..., *, verbose=...):
+def data_path(
+    url, path=None, force_update: bool = False, update_path=None, *, verbose=None
+):
     """Get path to local copy of EEGMMI dataset URL.
 
     This is a low-level function useful for getting a local copy of a remote EEGBCI
@@ -56,11 +58,11 @@ def data_path(url, path=..., force_update: bool = ..., update_path=..., *, verbo
 def load_data(
     subject,
     runs,
-    path=...,
-    force_update: bool = ...,
-    update_path=...,
-    base_url=...,
-    verbose=...,
+    path=None,
+    force_update: bool = False,
+    update_path=None,
+    base_url="https://physionet.org/files/eegmmidb/1.0.0/",
+    verbose=None,
 ):
     """Get paths to local copies of EEGBCI dataset files.
 

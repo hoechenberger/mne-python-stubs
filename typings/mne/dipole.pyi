@@ -28,19 +28,66 @@ from .viz import (
 from _typeshed import Incomplete
 
 class Dipole(TimeMixin):
-    """Return the number of dipoles.
+    """Dipole class for sequential dipole fits.
 
-    Returns
-    -------
-    len : int
-        The number of dipoles.
+    .. note::
+        This class should usually not be instantiated directly via
+        ``mne.Dipole(...)``. Instead, use one of the functions
+        listed in the See Also section below.
 
-    Examples
+    Used to store positions, orientations, amplitudes, times, goodness of fit
+    of dipoles, typically obtained with Neuromag/xfit, mne_dipole_fit
+    or certain inverse solvers. Note that dipole position vectors are given in
+    the head coordinate frame.
+
+    Parameters
+    ----------
+    times : array, shape (n_dipoles,)
+        The time instants at which each dipole was fitted (s).
+    pos : array, shape (n_dipoles, 3)
+        The dipoles positions (m) in head coordinates.
+    amplitude : array, shape (n_dipoles,)
+        The amplitude of the dipoles (Am).
+    ori : array, shape (n_dipoles, 3)
+        The dipole orientations (normalized to unit length).
+    gof : array, shape (n_dipoles,)
+        The goodness of fit.
+    name : str | None
+        Name of the dipole.
+    conf : dict
+        Confidence limits in dipole orientation for "vol" in m^3 (volume),
+        "depth" in m (along the depth axis), "long" in m (longitudinal axis),
+        "trans" in m (transverse axis), "qlong" in Am, and "qtrans" in Am
+        (currents). The current confidence limit in the depth direction is
+        assumed to be zero (although it can be non-zero when a BEM is used).
+
+        .. versionadded:: 0.15
+    khi2 : array, shape (n_dipoles,)
+        The χ^2 values for the fits.
+
+        .. versionadded:: 0.15
+    nfree : array, shape (n_dipoles,)
+        The number of free parameters for each fit.
+
+        .. versionadded:: 0.15
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    See Also
     --------
-    This can be used as::
+    fit_dipole
+    DipoleFixed
+    read_dipole
 
-        >>> len(dipoles)  # doctest: +SKIP
-        10
+    Notes
+    -----
+    This class is for sequential dipole fits, where the position
+    changes as a function of time. For fixed dipole fits, where the
+    position is fixed as a function of time, use :class:`mne.DipoleFixed`.
     """
 
     pos: Incomplete
@@ -59,14 +106,14 @@ class Dipole(TimeMixin):
         amplitude,
         ori,
         gof,
-        name=...,
-        conf=...,
-        khi2=...,
-        nfree=...,
+        name=None,
+        conf=None,
+        khi2=None,
+        nfree=None,
         *,
-        verbose=...,
+        verbose=None,
     ) -> None: ...
-    def save(self, fname, overwrite: bool = ..., *, verbose=...) -> None:
+    def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
         """Save dipole in a ``.dip`` or ``.bdip`` file.
 
         Parameters
@@ -91,7 +138,8 @@ class Dipole(TimeMixin):
         .. versionchanged:: 0.20
            Support for writing bdip (Xfit binary) files.
         """
-    def crop(self, tmin=..., tmax=..., include_tmax: bool = ..., verbose=...):
+        ...
+    def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
         """Crop data to a given time interval.
 
         Parameters
@@ -118,6 +166,7 @@ class Dipole(TimeMixin):
         self : instance of Dipole
             The cropped instance.
         """
+        ...
     def copy(self):
         """Copy the Dipoles object.
 
@@ -126,28 +175,29 @@ class Dipole(TimeMixin):
         dip : instance of Dipole
             The copied dipole instance.
         """
+        ...
     def plot_locations(
         self,
         trans,
         subject,
-        subjects_dir=...,
-        mode: str = ...,
-        coord_frame: str = ...,
-        idx: str = ...,
-        show_all: bool = ...,
-        ax=...,
-        block: bool = ...,
-        show: bool = ...,
-        scale=...,
-        color=...,
+        subjects_dir=None,
+        mode: str = "orthoview",
+        coord_frame: str = "mri",
+        idx: str = "gof",
+        show_all: bool = True,
+        ax=None,
+        block: bool = False,
+        show: bool = True,
+        scale=None,
+        color=None,
         *,
-        highlight_color: str = ...,
-        fig=...,
-        title=...,
-        head_source: str = ...,
-        surf: str = ...,
-        width=...,
-        verbose=...,
+        highlight_color: str = "r",
+        fig=None,
+        title=None,
+        head_source: str = "seghead",
+        surf: str = "pial",
+        width=None,
+        verbose=None,
     ):
         """Plot dipole locations.
 
@@ -284,7 +334,8 @@ class Dipole(TimeMixin):
         -----
         .. versionadded:: 0.9.0
         """
-    def to_mni(self, subject, trans, subjects_dir=..., verbose=...):
+        ...
+    def to_mni(self, subject, trans, subjects_dir=None, verbose=None):
         """Convert dipole location from head to MNI coordinates.
 
         Parameters
@@ -314,7 +365,8 @@ class Dipole(TimeMixin):
         pos_mni : array, shape (n_pos, 3)
             The MNI coordinates (in mm) of pos.
         """
-    def to_mri(self, subject, trans, subjects_dir=..., verbose=...):
+        ...
+    def to_mri(self, subject, trans, subjects_dir=None, verbose=None):
         """Convert dipole location from head to MRI surface RAS coordinates.
 
         Parameters
@@ -344,8 +396,14 @@ class Dipole(TimeMixin):
         pos_mri : array, shape (n_pos, 3)
             The Freesurfer surface RAS coordinates (in mm) of pos.
         """
+        ...
     def to_volume_labels(
-        self, trans, subject: str = ..., aseg: str = ..., subjects_dir=..., verbose=...
+        self,
+        trans,
+        subject: str = "fsaverage",
+        aseg: str = "aparc+aseg",
+        subjects_dir=None,
+        verbose=None,
     ):
         """Find an ROI in atlas for the dipole positions.
 
@@ -389,7 +447,8 @@ class Dipole(TimeMixin):
         -----
         .. versionadded:: 0.24
         """
-    def plot_amplitudes(self, color: str = ..., show: bool = ...):
+        ...
+    def plot_amplitudes(self, color: str = "k", show: bool = True):
         """Plot the dipole amplitudes as a function of time.
 
         Parameters
@@ -404,6 +463,7 @@ class Dipole(TimeMixin):
         fig : matplotlib.figure.Figure
             The figure object containing the plot.
         """
+        ...
     def __getitem__(self, item):
         """Get a time slice.
 
@@ -417,6 +477,7 @@ class Dipole(TimeMixin):
         dip : instance of Dipole
             The sliced dipole.
         """
+        ...
     def __len__(self) -> int:
         """Return the number of dipoles.
 
@@ -432,23 +493,51 @@ class Dipole(TimeMixin):
             >>> len(dipoles)  # doctest: +SKIP
             10
         """
+        ...
 
 class DipoleFixed(ExtendedTimeMixin):
-    """Plot dipole data.
+    """Dipole class for fixed-position dipole fits.
+
+    .. note::
+        This class should usually not be instantiated directly
+        via ``mne.DipoleFixed(...)``. Instead, use one of the functions
+        listed in the See Also section below.
 
     Parameters
     ----------
-    show : bool
-        Call pyplot.show() at the end or not.
-    time_unit : str
-        The units for the time axis, can be "ms" or "s" (default).
 
-        .. versionadded:: 0.16
+    info : mne.Info
+        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+    data : array, shape (n_channels, n_times)
+        The dipole data.
+    times : array, shape (n_times,)
+        The time points.
+    nave : int
+        Number of averages.
+    aspect_kind : int
+        The kind of data.
+    comment : str
+        The dipole comment.
 
-    Returns
-    -------
-    fig : instance of matplotlib.figure.Figure
-        The figure containing the time courses.
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    See Also
+    --------
+    read_dipole
+    Dipole
+    fit_dipole
+
+    Notes
+    -----
+    This class is for fixed-position dipole fits, where the position
+    (and maybe orientation) is static over time. For sequential dipole fits,
+    where the position can change a function of time, use :class:`mne.Dipole`.
+
+    .. versionadded:: 0.12
     """
 
     info: Incomplete
@@ -459,7 +548,7 @@ class DipoleFixed(ExtendedTimeMixin):
     preload: bool
 
     def __init__(
-        self, info, data, times, nave, aspect_kind, comment: str = ..., *, verbose=...
+        self, info, data, times, nave, aspect_kind, comment: str = "", *, verbose=None
     ) -> None: ...
     def copy(self):
         """Copy the DipoleFixed object.
@@ -473,10 +562,12 @@ class DipoleFixed(ExtendedTimeMixin):
         -----
         .. versionadded:: 0.16
         """
+        ...
     @property
     def ch_names(self):
         """Channel names."""
-    def save(self, fname, verbose=...) -> None:
+        ...
+    def save(self, fname, verbose=None) -> None:
         """Save dipole in a .fif file.
 
         Parameters
@@ -492,7 +583,8 @@ class DipoleFixed(ExtendedTimeMixin):
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-    def plot(self, show: bool = ..., time_unit: str = ...):
+        ...
+    def plot(self, show: bool = True, time_unit: str = "s"):
         """Plot dipole data.
 
         Parameters
@@ -509,8 +601,9 @@ class DipoleFixed(ExtendedTimeMixin):
         fig : instance of matplotlib.figure.Figure
             The figure containing the time courses.
         """
+        ...
 
-def read_dipole(fname, verbose=...):
+def read_dipole(fname, verbose=None):
     """Read ``.dip`` file from Neuromag/xfit or MNE.
 
     Parameters
@@ -552,15 +645,15 @@ def fit_dipole(
     evoked,
     cov,
     bem,
-    trans=...,
-    min_dist: float = ...,
-    n_jobs=...,
-    pos=...,
-    ori=...,
-    rank=...,
-    accuracy: str = ...,
-    tol: float = ...,
-    verbose=...,
+    trans=None,
+    min_dist: float = 5.0,
+    n_jobs=None,
+    pos=None,
+    ori=None,
+    rank=None,
+    accuracy: str = "normal",
+    tol: float = 5e-05,
+    verbose=None,
 ):
     """Fit a dipole.
 
@@ -690,7 +783,7 @@ def fit_dipole(
     .. versionadded:: 0.9.0
     """
 
-def get_phantom_dipoles(kind: str = ...):
+def get_phantom_dipoles(kind: str = "vectorview"):
     """Get standard phantom dipole locations and orientations.
 
     Parameters

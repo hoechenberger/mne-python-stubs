@@ -10,14 +10,14 @@ from _typeshed import Incomplete
 
 def regress_artifact(
     inst,
-    picks=...,
+    picks=None,
     *,
-    exclude: str = ...,
-    picks_artifact: str = ...,
-    betas=...,
-    proj: bool = ...,
-    copy: bool = ...,
-    verbose=...,
+    exclude: str = "bads",
+    picks_artifact: str = "eog",
+    betas=None,
+    proj: bool = True,
+    copy: bool = True,
+    verbose=None,
 ):
     """Remove artifacts using regression based on reference channels.
 
@@ -83,16 +83,59 @@ def regress_artifact(
     """
 
 class EOGRegression:
-    """Save the regression model to an HDF5 file.
+    """Remove EOG artifact signals from other channels by regression.
+
+    Employs linear regression to remove signals captured by some channels,
+    typically EOG, as described in :footcite:`GrattonEtAl1983`. You can also
+    choose to fit the regression coefficients on evoked blink/saccade data and
+    then apply them to continuous data, as described in
+    :footcite:`CroftBarry2000`.
 
     Parameters
     ----------
-    fname : path-like
-        The file to write the regression weights to. Should end in ``.h5``.
+    picks : str | array-like | slice | None
+        Channels to include. Slices and lists of integers will be interpreted as
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+        string values "all" to pick all channels, or "data" to pick :term:`data
+        channels`. None (default) will pick good data channels. Note that channels
+        in ``info['bads']`` *will be included* if their names or indices are
+        explicitly provided.
+    exclude : list | 'bads'
+        List of channels to exclude from the regression, only used when picking
+        based on types (e.g., exclude="bads" when picks="meg").
+        Specify ``'bads'`` (the default) to exclude all channels marked as bad.
+    picks_artifact : array-like | str
+        Channel picks to use as predictor/explanatory variables capturing
+        the artifact of interest (default is "eog").
+    proj : bool
+        Whether to automatically apply SSP projection vectors before fitting
+        and applying the regression. Default is ``True``.
 
-    overwrite : bool
-        If True (default False), overwrite the destination file if it
-        exists.
+    Attributes
+    ----------
+    coef_ : ndarray, shape (n, n)
+        The regression coefficients. Only available after fitting.
+    info_ : Info
+        Channel information corresponding to the regression weights.
+        Only available after fitting.
+    picks : array-like | str
+        Channels to perform the regression on.
+    exclude : list | 'bads'
+        Channels to exclude from the regression.
+    picks_artifact : array-like | str
+        The channels designated as containing the artifacts of interest.
+    proj : bool
+        Whether projections will be applied before performing the regression.
+
+    Notes
+    -----
+    .. versionadded:: 1.2
+
+    References
+    ----------
+    .. footbibliography::
     """
 
     picks: Incomplete
@@ -101,7 +144,11 @@ class EOGRegression:
     proj: Incomplete
 
     def __init__(
-        self, picks=..., exclude: str = ..., picks_artifact: str = ..., proj: bool = ...
+        self,
+        picks=None,
+        exclude: str = "bads",
+        picks_artifact: str = "eog",
+        proj: bool = True,
     ) -> None: ...
     coef_: Incomplete
     info_: Incomplete
@@ -126,7 +173,8 @@ class EOGRegression:
         reference (see :func:`mne.set_eeg_reference`) before performing EOG
         regression.
         """
-    def apply(self, inst, copy: bool = ...):
+        ...
+    def apply(self, inst, copy: bool = True):
         """Apply the regression coefficients to data.
 
         Parameters
@@ -151,29 +199,30 @@ class EOGRegression:
         ----------
         .. footbibliography::
         """
+        ...
     def plot(
         self,
-        ch_type=...,
-        sensors: bool = ...,
-        show_names: bool = ...,
-        mask=...,
-        mask_params=...,
-        contours: int = ...,
-        outlines: str = ...,
-        sphere=...,
-        image_interp=...,
-        extrapolate=...,
-        border=...,
-        res: int = ...,
-        size: int = ...,
-        cmap=...,
-        vlim=...,
-        cnorm=...,
-        axes=...,
-        colorbar: bool = ...,
-        cbar_fmt: str = ...,
-        title=...,
-        show: bool = ...,
+        ch_type=None,
+        sensors: bool = True,
+        show_names: bool = False,
+        mask=None,
+        mask_params=None,
+        contours: int = 6,
+        outlines: str = "head",
+        sphere=None,
+        image_interp="cubic",
+        extrapolate="auto",
+        border="mean",
+        res: int = 64,
+        size: int = 1,
+        cmap=None,
+        vlim=(None, None),
+        cnorm=None,
+        axes=None,
+        colorbar: bool = True,
+        cbar_fmt: str = "%1.1e",
+        title=None,
+        show: bool = True,
     ):
         """Plot the regression weights of a fitted EOGRegression model.
 
@@ -335,7 +384,8 @@ class EOGRegression:
         -----
         .. versionadded:: 1.2
         """
-    def save(self, fname, overwrite: bool = ...) -> None:
+        ...
+    def save(self, fname, overwrite: bool = False) -> None:
         """Save the regression model to an HDF5 file.
 
         Parameters
@@ -347,6 +397,7 @@ class EOGRegression:
             If True (default False), overwrite the destination file if it
             exists.
         """
+        ...
 
 def read_eog_regression(fname):
     """Read an EOG regression model from an HDF5 file.

@@ -1,6 +1,6 @@
 from ..utils import logger as logger
 
-def stft(x, wsize, tstep=..., verbose=...):
+def stft(x, wsize, tstep=None, verbose=None):
     """STFT Short-Term Fourier Transform using a sine window.
 
     The transformation is designed to be a tight frame that can be
@@ -34,7 +34,7 @@ def stft(x, wsize, tstep=..., verbose=...):
     stftfreq
     """
 
-def istft(X, tstep=..., Tx=...):
+def istft(X, tstep=None, Tx=None):
     """ISTFT Inverse Short-Term Fourier Transform using a sine window.
 
     Parameters
@@ -57,7 +57,7 @@ def istft(X, tstep=..., Tx=...):
     stft
     """
 
-def stftfreq(wsize, sfreq=...):
+def stftfreq(wsize, sfreq=None):
     """Compute frequencies of stft transformation.
 
     Parameters

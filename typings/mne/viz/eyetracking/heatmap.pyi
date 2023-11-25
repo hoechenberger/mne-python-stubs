@@ -6,12 +6,12 @@ def plot_gaze(
     width,
     height,
     *,
-    sigma: int = ...,
-    cmap=...,
-    alpha: float = ...,
-    vlim=...,
-    axes=...,
-    show: bool = ...,
+    sigma: int = 25,
+    cmap=None,
+    alpha: float = 1.0,
+    vlim=(None, None),
+    axes=None,
+    show: bool = True,
 ):
     """Plot a heatmap of eyetracking gaze data.
 

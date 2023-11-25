@@ -11,10 +11,10 @@ from .docs import fill_doc as fill_doc
 from _typeshed import Incomplete
 from collections.abc import Generator
 
-def split_list(v, n, idx: bool = ...) -> Generator[Incomplete, None, None]:
+def split_list(v, n, idx: bool = False) -> Generator[Incomplete, None, None]:
     """Split list in n (approx) equal pieces, possibly giving indices."""
 
-def array_split_idx(ary, indices_or_sections, axis: int = ..., n_per_split: int = ...):
+def array_split_idx(ary, indices_or_sections, axis: int = 0, n_per_split: int = 1):
     """Do what numpy.array_split does, but add indices."""
 
 def create_chunks(sequence, size):
@@ -45,7 +45,7 @@ def sum_squared(X):
 def compute_corr(x, y):
     """Compute pearson correlations between a vector and a matrix."""
 
-def random_permutation(n_samples, random_state=...):
+def random_permutation(n_samples, random_state=None):
     """Emulate the randperm matlab function.
 
     It returns a vector containing a random permutation of the
@@ -82,7 +82,7 @@ def random_permutation(n_samples, random_state=...):
         Randomly permuted sequence between 0 and n-1.
     """
 
-def hashfunc(fname, block_size: int = ..., hash_type: str = ...):
+def hashfunc(fname, block_size: int = 1048576, hash_type: str = "md5"):
     """Calculate the hash for a file.
 
     Parameters
@@ -98,7 +98,7 @@ def hashfunc(fname, block_size: int = ..., hash_type: str = ...):
         The hexadecimal digest of the hash.
     """
 
-def create_slices(start, stop, step=..., length: int = ...):
+def create_slices(start, stop, step=None, length: int = 1):
     """Generate slices of time indexes.
 
     Parameters
@@ -119,7 +119,7 @@ def create_slices(start, stop, step=..., length: int = ...):
         List of slice objects.
     """
 
-def grand_average(all_inst, interpolate_bads: bool = ..., drop_bads: bool = ...):
+def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = True):
     """Make grand average of a list of Evoked or AverageTFR data.
 
     For :class:`mne.Evoked` data, the function interpolates bad channels based
@@ -162,7 +162,7 @@ class _HashableNdarray(np.ndarray):
     def __hash__(self): ...
     def __eq__(self, other): ...
 
-def object_hash(x, h=...):
+def object_hash(x, h=None):
     """Hash a reasonable python object.
 
     Parameters
@@ -179,7 +179,7 @@ def object_hash(x, h=...):
         The digest resulting from the hash.
     """
 
-def object_size(x, memo=...):
+def object_size(x, memo=None):
     """Estimate the size of a reasonable python object.
 
     Parameters
@@ -197,7 +197,7 @@ def object_size(x, memo=...):
         The estimated size in bytes of the object.
     """
 
-def object_diff(a, b, pre: str = ..., *, allclose: bool = ...):
+def object_diff(a, b, pre: str = "", *, allclose: bool = False):
     """Compute all differences between two python variables.
 
     Parameters
@@ -224,8 +224,8 @@ class _PCA:
     n_components: Incomplete
     whiten: Incomplete
 
-    def __init__(self, n_components=..., whiten: bool = ...) -> None: ...
-    def fit_transform(self, X, y=...): ...
+    def __init__(self, n_components=None, whiten: bool = False) -> None: ...
+    def fit_transform(self, X, y=None): ...
 
 class _ReuseCycle:
     """Cycle over a variable, preferring to reuse earlier indices.

@@ -5,11 +5,11 @@ from .utils import fill_doc as fill_doc, logger as logger, warn as warn
 
 def estimate_rank(
     data,
-    tol: str = ...,
-    return_singular: bool = ...,
-    norm: bool = ...,
-    tol_kind: str = ...,
-    verbose=...,
+    tol: str = "auto",
+    return_singular: bool = False,
+    norm: bool = True,
+    tol_kind: str = "absolute",
+    verbose=None,
 ):
     """Estimate the rank of data.
 
@@ -63,14 +63,14 @@ def estimate_rank(
 
 def compute_rank(
     inst,
-    rank=...,
-    scalings=...,
-    info=...,
-    tol: str = ...,
-    proj: bool = ...,
-    tol_kind: str = ...,
-    on_rank_mismatch: str = ...,
-    verbose=...,
+    rank=None,
+    scalings=None,
+    info=None,
+    tol: str = "auto",
+    proj: bool = True,
+    tol_kind: str = "absolute",
+    on_rank_mismatch: str = "ignore",
+    verbose=None,
 ):
     """Compute the rank of data or noise covariance.
 

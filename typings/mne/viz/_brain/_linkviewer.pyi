@@ -11,10 +11,10 @@ class _LinkViewer:
     def __init__(
         self,
         brains,
-        time: bool = ...,
-        camera: bool = ...,
-        colorbar: bool = ...,
-        picking: bool = ...,
+        time: bool = True,
+        camera: bool = False,
+        colorbar: bool = True,
+        picking: bool = False,
     ) -> None: ...
     def set_fmin(self, value) -> None: ...
     def set_fmid(self, value) -> None: ...

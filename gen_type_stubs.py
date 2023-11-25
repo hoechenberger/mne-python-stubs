@@ -6,14 +6,13 @@ import shutil
 import subprocess
 from pathlib import Path
 
-import black
-import black.mode
 from mypy import stubgen
 
 # Module exclusion patterns
 # Note that __init__.py files are handled specially below, do not
 # include them here.
 MODULE_PY_EXCLUDE_PATTERNS = [
+    "mne/viz/backends/_pyvista.py",  # causing errors when running stubdefaulter
     "mne/report/js_and_css/bootstrap-icons/gen_css_for_mne.py",  # cannot be imported
     "**/tests/**",  # don't include any tests
 ]
@@ -139,15 +138,22 @@ for stub_path in stub_paths:
                         f"📝 Expanding docstring for "
                         f"{module_name}.{obj.name}.{method.name}"
                     )
-                    obj.body[0].value.value = expanded_docstring
+                    # FIXME We do have a docstring, but sometimes the AST doesn't
+                    # contain the "pass" of otherwise methods! So we add an
+                    # ellipsis here manually
+                    method.body[0].value.value = expanded_docstring
+                    if len(method.body) == 1:
+                        print(
+                            f"⛑️ Fixing method body for "
+                            f"{module_name}.{obj.name}.{method.name}"
+                        )
+                        method.body.append(ast.Expr(ast.Ellipsis()))
                 else:
                     print(
                         f"⏭️  No docstring found for "
                         f"{module_name}.{obj.name}.{method.name}, skipping"
                     )
                     continue
-
-                method.body[0].value.value = expanded_docstring
 
     # Clean the stub file contents
     print(f"🧽 Cleaning stub file: {stub_path}")
@@ -161,12 +167,6 @@ for stub_path in stub_paths:
         .replace("from ...utils import verbose as verbose", "")
         .replace("`~", "")
     )
-    unparsed_cleaned = black.format_str(
-        unparsed_cleaned,
-        mode=black.Mode(
-            target_versions=set([black.mode.TargetVersion.PY311]), is_pyi=True
-        ),
-    )
     del unparsed
 
     # Write modified stub to disk
@@ -176,7 +176,13 @@ for stub_path in stub_paths:
 print("💾 Writing py.typed file")
 (stubs_out_dir / "mne" / "py.typed").write_text("partial\n", encoding="utf-8")
 
-print("🏁 Running ruff on stub files")
+print("📊 Adding parameter default values to stub files")
+subprocess.run(["python", "-m", "stubdefaulter", "--packages=typings"])
+
+print("😵‍💫 Running Ruff on stub files")
 subprocess.run(["ruff", "--ignore=F811", "--fix", f"{stubs_out_dir}/mne"])
+
+print("⚫️ Running Black on stub files")
+subprocess.run(["black", f"{stubs_out_dir}/mne"])
 
 print("\n💚 Done! Happy typing!")

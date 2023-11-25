@@ -8,17 +8,27 @@ from .mixin import (
 from _typeshed import Incomplete
 
 class EMS(TransformerMixin, EstimatorMixin):
-    """Transform the data by the spatial filters.
+    """Transformer to compute event-matched spatial filters.
 
-    Parameters
+    This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
+    time course. No time
+    window needs to be specified. The result is a spatial filter at each
+    time point and a corresponding time course. Intuitively, the result
+    gives the similarity between the filter at each time point and the
+    data vector (sensors) at that time point.
+
+    .. note:: EMS only works for binary classification.
+
+    Attributes
     ----------
-    X : array, shape (n_epochs, n_channels, n_times)
-        The input data.
+    filters_ : ndarray, shape (n_channels, n_times)
+        The set of spatial filters.
+    classes_ : ndarray, shape (n_classes,)
+        The target classes.
 
-    Returns
-    -------
-    X : array, shape (n_epochs, n_times)
-        The input data transformed by the spatial filters.
+    References
+    ----------
+    .. footbibliography::
     """
 
     classes_: Incomplete
@@ -42,6 +52,7 @@ class EMS(TransformerMixin, EstimatorMixin):
         self : instance of EMS
             Returns self.
         """
+        ...
     def transform(self, X):
         """Transform the data by the spatial filters.
 
@@ -55,8 +66,11 @@ class EMS(TransformerMixin, EstimatorMixin):
         X : array, shape (n_epochs, n_times)
             The input data transformed by the spatial filters.
         """
+        ...
 
-def compute_ems(epochs, conditions=..., picks=..., n_jobs=..., cv=..., verbose=...):
+def compute_ems(
+    epochs, conditions=None, picks=None, n_jobs=None, cv=None, verbose=None
+):
     """Compute event-matched spatial filter on epochs.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire

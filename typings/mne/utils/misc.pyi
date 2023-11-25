@@ -8,7 +8,7 @@ class _DefaultEventParser:
     event_ids: Incomplete
 
     def __init__(self) -> None: ...
-    def __call__(self, description, offset: int = ...): ...
+    def __call__(self, description, offset: int = 1): ...
 
 class _FormatDict(dict):
     """Help pformat() work properly."""
@@ -24,7 +24,7 @@ def pformat(temp, **fmt):
     'x_{b}'
     """
 
-def run_subprocess(command, return_code: bool = ..., verbose=..., *args, **kwargs):
+def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kwargs):
     """Run command using subprocess.Popen.
 
     Run command and wait for command to complete. If the return code was zero
@@ -61,7 +61,7 @@ def run_subprocess(command, return_code: bool = ..., verbose=..., *args, **kwarg
     """
 
 def running_subprocess(
-    command, after: str = ..., verbose=..., *args, **kwargs
+    command, after: str = "wait", verbose=None, *args, **kwargs
 ) -> Generator[Incomplete, None, None]:
     """Context manager to do something with a command running via Popen.
 

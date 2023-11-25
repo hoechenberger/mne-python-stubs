@@ -11,10 +11,10 @@ from _typeshed import Incomplete
 def groups_norm2(A, n_orient):
     """Compute squared L2 norms of groups inplace."""
 
-def norm_l2inf(A, n_orient, copy: bool = ...):
+def norm_l2inf(A, n_orient, copy: bool = True):
     """L2-inf norm."""
 
-def norm_l21(A, n_orient, copy: bool = ...):
+def norm_l21(A, n_orient, copy: bool = True):
     """L21 norm."""
 
 def dgap_l21(M, G, X, active_set, alpha, n_orient):
@@ -57,17 +57,17 @@ def mixed_norm_solver(
     M,
     G,
     alpha,
-    maxit: int = ...,
-    tol: float = ...,
-    verbose=...,
-    active_set_size: int = ...,
-    debias: bool = ...,
-    n_orient: int = ...,
-    solver: str = ...,
-    return_gap: bool = ...,
-    dgap_freq: int = ...,
-    active_set_init=...,
-    X_init=...,
+    maxit: int = 3000,
+    tol: float = 1e-08,
+    verbose=None,
+    active_set_size: int = 50,
+    debias: bool = True,
+    n_orient: int = 1,
+    solver: str = "auto",
+    return_gap: bool = False,
+    dgap_freq: int = 10,
+    active_set_init=None,
+    X_init=None,
 ):
     """Solve L1/L2 mixed-norm inverse problem with active set strategy.
 
@@ -136,15 +136,15 @@ def iterative_mixed_norm_solver(
     G,
     alpha,
     n_mxne_iter,
-    maxit: int = ...,
-    tol: float = ...,
-    verbose=...,
-    active_set_size: int = ...,
-    debias: bool = ...,
-    n_orient: int = ...,
-    dgap_freq: int = ...,
-    solver: str = ...,
-    weight_init=...,
+    maxit: int = 3000,
+    tol: float = 1e-08,
+    verbose=None,
+    active_set_size: int = 50,
+    debias: bool = True,
+    n_orient: int = 1,
+    dgap_freq: int = 10,
+    solver: str = "auto",
+    weight_init=None,
 ):
     """Solve L0.5/L2 mixed-norm inverse problem with active set strategy.
 
@@ -200,7 +200,7 @@ def iterative_mixed_norm_solver(
     .. footbibliography::
     """
 
-def tf_lipschitz_constant(M, G, phi, phiT, tol: float = ..., verbose=...):
+def tf_lipschitz_constant(M, G, phi, phiT, tol: float = 0.001, verbose=None):
     """Compute lipschitz constant for FISTA.
 
     It uses a power iteration method.
@@ -213,7 +213,7 @@ def safe_max_abs_diff(A, ia, B, ib):
     """Compute np.max(np.abs(A)) possible with empty A."""
 
 class _Phi:
-    """Squared L2 norm if ord == 2 and L1 norm if order == 1."""
+    """Have phi stft as callable w/o using a lambda that does not pickle."""
 
     wsize: Incomplete
     tstep: Incomplete
@@ -226,8 +226,9 @@ class _Phi:
 
     def __init__(self, wsize, tstep, n_coefs, n_times) -> None: ...
     def __call__(self, x): ...
-    def norm(self, z, ord: int = ...):
+    def norm(self, z, ord: int = 2):
         """Squared L2 norm if ord == 2 and L1 norm if order == 1."""
+        ...
 
 class _PhiT:
     """Have phi.T istft as callable w/o using a lambda that does not pickle."""
@@ -244,13 +245,13 @@ class _PhiT:
     def __init__(self, tstep, n_freqs, n_steps, n_times) -> None: ...
     def __call__(self, z): ...
 
-def norm_l21_tf(Z, phi, n_orient, w_space=...):
+def norm_l21_tf(Z, phi, n_orient, w_space=None):
     """L21 norm for TF."""
 
 def norm_l1_tf(Z, phi, n_orient, w_time):
     """L1 norm for TF."""
 
-def norm_epsilon(Y, l1_ratio, phi, w_space: float = ..., w_time=...):
+def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
     """Weighted epsilon norm.
 
     The weighted epsilon norm is the dual norm of::
@@ -291,7 +292,7 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = ..., w_time=...):
     .. footbibliography::
     """
 
-def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=..., w_time=...):
+def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=None, w_time=None):
     """Weighted epsilon-inf norm of phi(np.dot(G.T, R)).
 
     Parameters
@@ -332,8 +333,8 @@ def dgap_l21l1(
     phiT,
     n_orient,
     highest_d_obj,
-    w_space=...,
-    w_time=...,
+    w_space=None,
+    w_time=None,
 ):
     """Duality gap for the time-frequency mixed norm inverse problem.
 
@@ -388,16 +389,16 @@ def tf_mixed_norm_solver(
     G,
     alpha_space,
     alpha_time,
-    wsize: int = ...,
-    tstep: int = ...,
-    n_orient: int = ...,
-    maxit: int = ...,
-    tol: float = ...,
-    active_set_size=...,
-    debias: bool = ...,
-    return_gap: bool = ...,
-    dgap_freq: int = ...,
-    verbose=...,
+    wsize: int = 64,
+    tstep: int = 4,
+    n_orient: int = 1,
+    maxit: int = 200,
+    tol: float = 1e-08,
+    active_set_size=None,
+    debias: bool = True,
+    return_gap: bool = False,
+    dgap_freq: int = 10,
+    verbose=None,
 ):
     """Solve TF L21+L1 inverse solver with BCD and active set approach.
 
@@ -468,14 +469,14 @@ def iterative_tf_mixed_norm_solver(
     alpha_space,
     alpha_time,
     n_tfmxne_iter,
-    wsize: int = ...,
-    tstep: int = ...,
-    maxit: int = ...,
-    tol: float = ...,
-    debias: bool = ...,
-    n_orient: int = ...,
-    dgap_freq: int = ...,
-    verbose=...,
+    wsize: int = 64,
+    tstep: int = 4,
+    maxit: int = 3000,
+    tol: float = 1e-08,
+    debias: bool = True,
+    n_orient: int = 1,
+    dgap_freq: int = 10,
+    verbose=None,
 ):
     """Solve TF L0.5/L1 + L0.5 inverse problem with BCD + active set approach.
 

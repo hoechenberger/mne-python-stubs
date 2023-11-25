@@ -14,11 +14,11 @@ from _typeshed import Incomplete
 def select_source_in_label(
     src,
     label,
-    random_state=...,
-    location: str = ...,
-    subject=...,
-    subjects_dir=...,
-    surf: str = ...,
+    random_state=None,
+    location: str = "random",
+    subject=None,
+    subjects_dir=None,
+    surf: str = "sphere",
 ):
     """Select source positions using a label.
 
@@ -76,12 +76,12 @@ def simulate_sparse_stc(
     n_dipoles,
     times,
     data_fun=...,
-    labels=...,
-    random_state=...,
-    location: str = ...,
-    subject=...,
-    subjects_dir=...,
-    surf: str = ...,
+    labels=None,
+    random_state=None,
+    location: str = "random",
+    subject=None,
+    subjects_dir=None,
+    surf: str = "sphere",
 ):
     """Generate sparse (n_dipoles) sources time courses from data_fun.
 
@@ -156,7 +156,7 @@ def simulate_sparse_stc(
     """
 
 def simulate_stc(
-    src, labels, stc_data, tmin, tstep, value_fun=..., allow_overlap: bool = ...
+    src, labels, stc_data, tmin, tstep, value_fun=None, allow_overlap: bool = False
 ):
     """Simulate sources time courses from waveforms and labels.
 
@@ -197,19 +197,43 @@ def simulate_stc(
     """
 
 class SourceSimulator:
-    """Iterate over 1 second STCs."""
+    """Class to generate simulated Source Estimates.
+
+    Parameters
+    ----------
+    src : instance of SourceSpaces
+        Source space.
+    tstep : float
+        Time step between successive samples in data. Default is 0.001 s.
+    duration : float | None
+        Time interval during which the simulation takes place in seconds.
+        If None, it is computed using existing events and waveform lengths.
+    first_samp : int
+        First sample from which the simulation takes place, as an integer.
+        Comparable to the :term:`first_samp` property of mne.io.Raw` objects.
+        Default is 0.
+
+    Attributes
+    ----------
+    duration : float
+        The duration of the simulation in seconds.
+    n_times : int
+        The number of time samples of the simulation.
+    """
 
     first_samp: Incomplete
 
     def __init__(
-        self, src, tstep: float = ..., duration=..., first_samp: int = ...
+        self, src, tstep: float = 0.001, duration=None, first_samp: int = 0
     ) -> None: ...
     @property
     def duration(self):
         """Duration of the simulation in same units as tstep."""
+        ...
     @property
     def n_times(self):
         """Number of time samples in the simulation."""
+        ...
     @property
     def last_samp(self): ...
     def add_data(self, label, waveform, events) -> None:
@@ -231,7 +255,8 @@ class SourceSimulator:
             Events associated to the waveform(s) to specify when the activity
             should occur.
         """
-    def get_stim_channel(self, start_sample: int = ..., stop_sample=...):
+        ...
+    def get_stim_channel(self, start_sample: int = 0, stop_sample=None):
         """Get the stim channel from the provided data.
 
         Returns the stim channel data according to the simulation parameters
@@ -252,7 +277,8 @@ class SourceSimulator:
         stim_data : ndarray of int, shape (n_samples,)
             The stimulation channel data.
         """
-    def get_stc(self, start_sample=..., stop_sample=...):
+        ...
+    def get_stc(self, start_sample=None, stop_sample=None):
         """Simulate a SourceEstimate from the provided data.
 
         Returns a SourceEstimate object constructed according to the simulation
@@ -274,5 +300,7 @@ class SourceSimulator:
         stc : SourceEstimate object
             The generated source time courses.
         """
+        ...
     def __iter__(self):
         """Iterate over 1 second STCs."""
+        ...

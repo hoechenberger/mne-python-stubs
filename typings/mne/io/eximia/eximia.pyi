@@ -2,7 +2,7 @@ from ..._fiff.meas_info import create_info as create_info
 from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
-def read_raw_eximia(fname, preload: bool = ..., verbose=...):
+def read_raw_eximia(fname, preload: bool = False, verbose=None):
     """Reader for an eXimia EEG file.
 
     Parameters
@@ -60,4 +60,4 @@ class RawEximia(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     """
 
-    def __init__(self, fname, preload: bool = ..., verbose=...) -> None: ...
+    def __init__(self, fname, preload: bool = False, verbose=None) -> None: ...

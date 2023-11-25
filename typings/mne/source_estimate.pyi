@@ -25,7 +25,7 @@ from .viz import (
 )
 from _typeshed import Incomplete
 
-def read_source_estimate(fname, subject=...):
+def read_source_estimate(fname, subject=None):
     """Read a source estimate object.
 
     Parameters
@@ -65,15 +65,15 @@ class _BaseSourceEstimate(TimeMixin):
     subject: Incomplete
 
     def __init__(
-        self, data, vertices, tmin, tstep, subject=..., verbose=...
+        self, data, vertices, tmin, tstep, subject=None, verbose=None
     ) -> None: ...
     def get_peak(
         self,
-        tmin=...,
-        tmax=...,
-        mode: str = ...,
-        vert_as_index: bool = ...,
-        time_as_index: bool = ...,
+        tmin=None,
+        tmax=None,
+        mode: str = "abs",
+        vert_as_index: bool = False,
+        time_as_index: bool = False,
     ):
         """Get location and latency of peak amplitude.
 
@@ -89,7 +89,7 @@ class _BaseSourceEstimate(TimeMixin):
             The latency in seconds.
         """
     def extract_label_time_course(
-        self, labels, src, mode: str = ..., allow_empty: bool = ..., verbose=...
+        self, labels, src, mode: str = "auto", allow_empty: bool = False, verbose=None
     ):
         """Extract label time courses for lists of labels.
 
@@ -116,7 +116,7 @@ class _BaseSourceEstimate(TimeMixin):
         -----
         %(eltc_mode_notes)s
         """
-    def apply_baseline(self, baseline=..., *, verbose=...):
+    def apply_baseline(self, baseline=(None, 0), *, verbose=None):
         """Baseline correct source estimate data.
 
         Parameters
@@ -136,7 +136,7 @@ class _BaseSourceEstimate(TimeMixin):
         Baseline correction can be done multiple times.
         """
     def save(
-        self, fname, ftype: str = ..., *, overwrite: bool = ..., verbose=...
+        self, fname, ftype: str = "h5", *, overwrite: bool = False, verbose=None
     ) -> None:
         """Save the full source estimate to an HDF5 file.
 
@@ -154,41 +154,41 @@ class _BaseSourceEstimate(TimeMixin):
         """
     def plot(
         self,
-        subject=...,
-        surface: str = ...,
-        hemi: str = ...,
-        colormap: str = ...,
-        time_label: str = ...,
-        smoothing_steps: int = ...,
-        transparent: bool = ...,
-        alpha: float = ...,
-        time_viewer: str = ...,
-        subjects_dir=...,
-        figure=...,
-        views: str = ...,
-        colorbar: bool = ...,
-        clim: str = ...,
-        cortex: str = ...,
-        size: int = ...,
-        background: str = ...,
-        foreground=...,
-        initial_time=...,
-        time_unit: str = ...,
-        backend: str = ...,
-        spacing: str = ...,
-        title=...,
-        show_traces: str = ...,
-        src=...,
-        volume_options: float = ...,
-        view_layout: str = ...,
-        add_data_kwargs=...,
-        brain_kwargs=...,
-        verbose=...,
+        subject=None,
+        surface: str = "inflated",
+        hemi: str = "lh",
+        colormap: str = "auto",
+        time_label: str = "auto",
+        smoothing_steps: int = 10,
+        transparent: bool = True,
+        alpha: float = 1.0,
+        time_viewer: str = "auto",
+        subjects_dir=None,
+        figure=None,
+        views: str = "auto",
+        colorbar: bool = True,
+        clim: str = "auto",
+        cortex: str = "classic",
+        size: int = 800,
+        background: str = "black",
+        foreground=None,
+        initial_time=None,
+        time_unit: str = "s",
+        backend: str = "auto",
+        spacing: str = "oct6",
+        title=None,
+        show_traces: str = "auto",
+        src=None,
+        volume_options: float = 1.0,
+        view_layout: str = "vertical",
+        add_data_kwargs=None,
+        brain_kwargs=None,
+        verbose=None,
     ): ...
     @property
     def sfreq(self):
         """Sample rate of the data."""
-    def crop(self, tmin=..., tmax=..., include_tmax: bool = ...):
+    def crop(self, tmin=None, tmax=None, include_tmax: bool = True):
         """Restrict SourceEstimate to a time interval.
 
         Parameters
@@ -205,7 +205,12 @@ class _BaseSourceEstimate(TimeMixin):
             The cropped source estimate.
         """
     def resample(
-        self, sfreq, npad: str = ..., window: str = ..., n_jobs=..., verbose=...
+        self,
+        sfreq,
+        npad: str = "auto",
+        window: str = "boxcar",
+        n_jobs=None,
+        verbose=None,
     ):
         """Resample data.
 
@@ -324,7 +329,7 @@ class _BaseSourceEstimate(TimeMixin):
         stc : instance of SourceEstimate
             A copy of the source estimate.
         """
-    def bin(self, width, tstart=..., tstop=..., func=...):
+    def bin(self, width, tstart=None, tstop=None, func=...):
         """Return a source estimate object with data summarized over time bins.
 
         Time bins of ``width`` seconds. This method is intended for
@@ -351,7 +356,7 @@ class _BaseSourceEstimate(TimeMixin):
         stc : SourceEstimate | VectorSourceEstimate
             The binned source estimate.
         """
-    def transform_data(self, func, idx=..., tmin_idx=..., tmax_idx=...):
+    def transform_data(self, func, idx=None, tmin_idx=None, tmax_idx=None):
         """Get data after a linear (time) transform has been applied.
 
         The transform is applied to each source time course independently.
@@ -388,7 +393,7 @@ class _BaseSourceEstimate(TimeMixin):
         Inverse methods, e.g., "apply_inverse_epochs", or "apply_lcmv_epochs"
         do this automatically (if possible).
         """
-    def transform(self, func, idx=..., tmin=..., tmax=..., copy: bool = ...):
+    def transform(self, func, idx=None, tmin=None, tmax=None, copy: bool = False):
         """Apply linear transform.
 
         The transform is applied to each source time course independently.
@@ -439,12 +444,12 @@ class _BaseSourceEstimate(TimeMixin):
         """
     def to_data_frame(
         self,
-        index=...,
-        scalings=...,
-        long_format: bool = ...,
-        time_format=...,
+        index=None,
+        scalings=None,
+        long_format: bool = False,
+        time_format=None,
         *,
-        verbose=...,
+        verbose=None,
     ):
         """Export data in tabular structure as a pandas DataFrame.
 
@@ -549,7 +554,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
             The modified stc (note: method operates inplace).
         """
     def to_original_src(
-        self, src_orig, subject_orig=..., subjects_dir=..., verbose=...
+        self, src_orig, subject_orig=None, subjects_dir=None, verbose=None
     ):
         """Get a source estimate from morphed source to the original subject.
 
@@ -579,12 +584,12 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         """
     def get_peak(
         self,
-        hemi=...,
-        tmin=...,
-        tmax=...,
-        mode: str = ...,
-        vert_as_index: bool = ...,
-        time_as_index: bool = ...,
+        hemi=None,
+        tmin=None,
+        tmax=None,
+        mode: str = "abs",
+        vert_as_index: bool = False,
+        time_as_index: bool = False,
     ):
         """Get location and latency of peak amplitude.
 
@@ -605,70 +610,66 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         """
 
 class SourceEstimate(_BaseSurfaceSourceEstimate):
-    """Compute the center of mass of activity.
-
-    This function computes the spatial center of mass on the surface
-    as well as the temporal center of mass as in :footcite:`LarsonLee2013`.
-
-    .. note:: All activity must occur in a single hemisphere, otherwise
-              an error is raised. The "mass" of each point in space for
-              computing the spatial center of mass is computed by summing
-              across time, and vice-versa for each point in time in
-              computing the temporal center of mass. This is useful for
-              quantifying spatio-temporal cluster locations, especially
-              when combined with :func:`mne.vertex_to_mni`.
+    """Container for surface source estimates.
 
     Parameters
     ----------
+    data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
+        The data in source space. When it is a single array, the
+        left hemisphere is stored in data[:len(vertices[0])] and the right
+        hemisphere is stored in data[-len(vertices[1]):].
+        When data is a tuple, it contains two arrays:
+
+        - "kernel" shape (n_vertices, n_sensors) and
+        - "sens_data" shape (n_sensors, n_times).
+
+        In this case, the source space data corresponds to
+        ``np.dot(kernel, sens_data)``.
+    vertices : list of array, shape (2,)
+        Vertex numbers corresponding to the data. The first element of the list
+        contains vertices of left hemisphere and the second element contains
+        vertices of right hemisphere.
+
+    tmin : scalar
+        Time point of the first sample in data.
+
+    tstep : scalar
+        Time step between successive samples in data.
+
+    subject : str
+        The FreeSurfer subject name. While not necessary, it is safer to set the
+        subject parameter to avoid analysis errors.
+
+    verbose : bool | str | int | None
+        Control verbosity of the logging output. If ``None``, use the default
+        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        :func:`mne.verbose` for details. Should only be passed as a keyword
+        argument.
+
+    Attributes
+    ----------
     subject : str | None
-        The subject the stc is defined for.
-    hemi : int, or None
-        Calculate the center of mass for the left (0) or right (1)
-        hemisphere. If None, one of the hemispheres must be all zeroes,
-        and the center of mass will be calculated for the other
-        hemisphere (useful for getting COM for clusters).
-    restrict_vertices : bool | array of int | instance of SourceSpaces
-        If True, returned vertex will be one from stc. Otherwise, it could
-        be any vertex from surf. If an array of int, the returned vertex
-        will come from that array. If instance of SourceSpaces (as of
-        0.13), the returned vertex will be from the given source space.
-        For most accuruate estimates, do not restrict vertices.
-
-    subjects_dir : path-like | None
-        The path to the directory containing the FreeSurfer subjects
-        reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
-        variable.
-    surf : str
-        The surface to use for Euclidean distance center of mass
-        finding. The default here is "sphere", which finds the center
-        of mass on the spherical surface to help avoid potential issues
-        with cortical folding.
-
-    Returns
-    -------
-    vertex : int
-        Vertex of the spatial center of mass for the inferred hemisphere,
-        with each vertex weighted by the sum of the stc across time. For a
-        boolean stc, then, this would be weighted purely by the duration
-        each vertex was active.
-    hemi : int
-        Hemisphere the vertex was taken from.
-    t : float
-        Time of the temporal center of mass (weighted by the sum across
-        source vertices).
+        The subject name.
+    times : array of shape (n_times,)
+        The time vector.
+    vertices : list of array, shape (2,)
+        The indices of the dipoles in the left and right source space.
+    data : array of shape (n_dipoles, n_times)
+        The data in source space.
+    shape : tuple
+        The shape of the data. A tuple of int (n_dipoles, n_times).
 
     See Also
     --------
-    mne.Label.center_of_mass
-    mne.vertex_to_mni
-
-    References
-    ----------
-    .. footbibliography::
+    VectorSourceEstimate : A container for vector surface source estimates.
+    VolSourceEstimate : A container for volume source estimates.
+    VolVectorSourceEstimate : A container for volume vector source estimates.
+    MixedSourceEstimate : A container for mixed surface + volume source
+                          estimates.
     """
 
     def save(
-        self, fname, ftype: str = ..., *, overwrite: bool = ..., verbose=...
+        self, fname, ftype: str = "stc", *, overwrite: bool = False, verbose=None
     ) -> None:
         """Save the source estimates to a file.
 
@@ -696,7 +697,8 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
-    def estimate_snr(self, info, fwd, cov, verbose=...):
+        ...
+    def estimate_snr(self, info, fwd, cov, verbose=None):
         """Compute time-varying SNR in the source space.
 
         This function should only be used with source estimates with units
@@ -746,13 +748,14 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         ----------
         .. footbibliography::
         """
+        ...
     def center_of_mass(
         self,
-        subject=...,
-        hemi=...,
-        restrict_vertices: bool = ...,
-        subjects_dir=...,
-        surf: str = ...,
+        subject=None,
+        hemi=None,
+        restrict_vertices: bool = False,
+        subjects_dir=None,
+        surf: str = "sphere",
     ):
         """Compute the center of mass of activity.
 
@@ -815,10 +818,11 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         ----------
         .. footbibliography::
         """
+        ...
 
 class _BaseVectorSourceEstimate(_BaseSourceEstimate):
     def __init__(
-        self, data, vertices=..., tmin=..., tstep=..., subject=..., verbose=...
+        self, data, vertices=None, tmin=None, tstep=None, subject=None, verbose=None
     ) -> None: ...
     def magnitude(self):
         """Compute magnitude of activity without directionality.
@@ -828,7 +832,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         stc : instance of SourceEstimate
             The source estimate without directionality information.
         """
-    def project(self, directions, src=..., use_cps: bool = ...):
+    def project(self, directions, src=None, use_cps: bool = True):
         """Project the data for each vertex in a given direction.
 
         Parameters
@@ -871,96 +875,96 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         """
     def plot(
         self,
-        subject=...,
-        hemi: str = ...,
-        colormap: str = ...,
-        time_label: str = ...,
-        smoothing_steps: int = ...,
-        transparent: bool = ...,
-        brain_alpha: float = ...,
-        overlay_alpha=...,
-        vector_alpha: float = ...,
-        scale_factor=...,
-        time_viewer: str = ...,
-        subjects_dir=...,
-        figure=...,
-        views: str = ...,
-        colorbar: bool = ...,
-        clim: str = ...,
-        cortex: str = ...,
-        size: int = ...,
-        background: str = ...,
-        foreground=...,
-        initial_time=...,
-        time_unit: str = ...,
-        show_traces: str = ...,
-        src=...,
-        volume_options: float = ...,
-        view_layout: str = ...,
-        add_data_kwargs=...,
-        brain_kwargs=...,
-        verbose=...,
+        subject=None,
+        hemi: str = "lh",
+        colormap: str = "hot",
+        time_label: str = "auto",
+        smoothing_steps: int = 10,
+        transparent: bool = True,
+        brain_alpha: float = 0.4,
+        overlay_alpha=None,
+        vector_alpha: float = 1.0,
+        scale_factor=None,
+        time_viewer: str = "auto",
+        subjects_dir=None,
+        figure=None,
+        views: str = "lateral",
+        colorbar: bool = True,
+        clim: str = "auto",
+        cortex: str = "classic",
+        size: int = 800,
+        background: str = "black",
+        foreground=None,
+        initial_time=None,
+        time_unit: str = "s",
+        show_traces: str = "auto",
+        src=None,
+        volume_options: float = 1.0,
+        view_layout: str = "vertical",
+        add_data_kwargs=None,
+        brain_kwargs=None,
+        verbose=None,
     ): ...
 
 class _BaseVolSourceEstimate(_BaseSourceEstimate):
     def plot_3d(
         self,
-        subject=...,
-        surface: str = ...,
-        hemi: str = ...,
-        colormap: str = ...,
-        time_label: str = ...,
-        smoothing_steps: int = ...,
-        transparent: bool = ...,
-        alpha: float = ...,
-        time_viewer: str = ...,
-        subjects_dir=...,
-        figure=...,
-        views: str = ...,
-        colorbar: bool = ...,
-        clim: str = ...,
-        cortex: str = ...,
-        size: int = ...,
-        background: str = ...,
-        foreground=...,
-        initial_time=...,
-        time_unit: str = ...,
-        backend: str = ...,
-        spacing: str = ...,
-        title=...,
-        show_traces: str = ...,
-        src=...,
-        volume_options: float = ...,
-        view_layout: str = ...,
-        add_data_kwargs=...,
-        brain_kwargs=...,
-        verbose=...,
+        subject=None,
+        surface: str = "white",
+        hemi: str = "both",
+        colormap: str = "auto",
+        time_label: str = "auto",
+        smoothing_steps: int = 10,
+        transparent: bool = True,
+        alpha: float = 0.1,
+        time_viewer: str = "auto",
+        subjects_dir=None,
+        figure=None,
+        views: str = "axial",
+        colorbar: bool = True,
+        clim: str = "auto",
+        cortex: str = "classic",
+        size: int = 800,
+        background: str = "black",
+        foreground=None,
+        initial_time=None,
+        time_unit: str = "s",
+        backend: str = "auto",
+        spacing: str = "oct6",
+        title=None,
+        show_traces: str = "auto",
+        src=None,
+        volume_options: float = 1.0,
+        view_layout: str = "vertical",
+        add_data_kwargs=None,
+        brain_kwargs=None,
+        verbose=None,
     ): ...
     def plot(
         self,
         src,
-        subject=...,
-        subjects_dir=...,
-        mode: str = ...,
-        bg_img: str = ...,
-        colorbar: bool = ...,
-        colormap: str = ...,
-        clim: str = ...,
-        transparent: str = ...,
-        show: bool = ...,
-        initial_time=...,
-        initial_pos=...,
-        verbose=...,
+        subject=None,
+        subjects_dir=None,
+        mode: str = "stat_map",
+        bg_img: str = "T1.mgz",
+        colorbar: bool = True,
+        colormap: str = "auto",
+        clim: str = "auto",
+        transparent: str = "auto",
+        show: bool = True,
+        initial_time=None,
+        initial_pos=None,
+        verbose=None,
     ): ...
     def extract_label_time_course(
         self,
         labels,
         src,
-        mode: str = ...,
-        allow_empty: bool = ...,
+        mode: str = "auto",
+        allow_empty: bool = False,
         *,
-        mri_resolution: bool = ...,
-        verbose=...,
+        mri_resolution: bool = True,
+        verbose=None,
     ):
         """Extract label time courses for lists of labels.
 
@@ -988,7 +992,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         -----
         %(eltc_mode_notes)s
         """
-    def in_label(self, label, mri, src, *, verbose=...):
+    def in_label(self, label, mri, src, *, verbose=None):
         """Get a source estimate object restricted to a label.
 
         SourceEstimate contains the time course of
@@ -1019,12 +1023,12 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         self,
         fname,
         src,
-        dest: str = ...,
-        mri_resolution: bool = ...,
-        format: str = ...,
+        dest: str = "mri",
+        mri_resolution: bool = False,
+        format: str = "nifti1",
         *,
-        overwrite: bool = ...,
-        verbose=...,
+        overwrite: bool = False,
+        verbose=None,
     ) -> None:
         """Save a volume source estimate in a NIfTI file.
 
@@ -1064,7 +1068,11 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         .. versionadded:: 0.9.0
         """
     def as_volume(
-        self, src, dest: str = ..., mri_resolution: bool = ..., format: str = ...
+        self,
+        src,
+        dest: str = "mri",
+        mri_resolution: bool = False,
+        format: str = "nifti1",
     ):
         """Export volume source estimate as a nifti object.
 
@@ -1096,33 +1104,66 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         """
 
 class VolSourceEstimate(_BaseVolSourceEstimate):
-    """Save the source estimates to a file.
+    """Container for volume source estimates.
 
     Parameters
     ----------
-    fname : path-like
-        The stem of the file name. The stem is extended with ``"-vl.stc"``
-        or ``"-vl.w"``.
-    ftype : str
-        File format to use. Allowed values are ``"stc"`` (default),
-        ``"w"``, and ``"h5"``. The ``"w"`` format only supports a single
-        time point.
+    data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
+        The data in source space. The data can either be a single array or
+        a tuple with two arrays: "kernel" shape (n_vertices, n_sensors) and
+        "sens_data" shape (n_sensors, n_times). In this case, the source
+        space data corresponds to ``np.dot(kernel, sens_data)``.
 
-    overwrite : bool
-        If True (default False), overwrite the destination file if it
-        exists.
+    vertices : list of array of int
+        The indices of the dipoles in the source space. Should be a single
+        array of shape (n_dipoles,) unless there are subvolumes.
 
-        .. versionadded:: 1.0
+    tmin : scalar
+        Time point of the first sample in data.
+
+    tstep : scalar
+        Time step between successive samples in data.
+
+    subject : str
+        The FreeSurfer subject name. While not necessary, it is safer to set the
+        subject parameter to avoid analysis errors.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
+
+    Attributes
+    ----------
+    subject : str | None
+        The subject name.
+    times : array of shape (n_times,)
+        The time vector.
+
+    vertices : list of array of int
+        The indices of the dipoles in the source space. Should be a single
+        array of shape (n_dipoles,) unless there are subvolumes.
+    data : array of shape (n_dipoles, n_times)
+        The data in source space.
+    shape : tuple
+        The shape of the data. A tuple of int (n_dipoles, n_times).
+
+    See Also
+    --------
+    SourceEstimate : A container for surface source estimates.
+    VectorSourceEstimate : A container for vector surface source estimates.
+    VolVectorSourceEstimate : A container for volume vector source estimates.
+    MixedSourceEstimate : A container for mixed surface + volume source
+                          estimates.
+
+    Notes
+    -----
+    .. versionadded:: 0.9.0
     """
 
     def save(
-        self, fname, ftype: str = ..., *, overwrite: bool = ..., verbose=...
+        self, fname, ftype: str = "stc", *, overwrite: bool = False, verbose=None
     ) -> None:
         """Save the source estimates to a file.
 
@@ -1148,158 +1189,30 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
             :func:`mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
+        ...
 
 class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate):
-    """Plot VectorSourceEstimate with PyVista.
-
-    A "glass brain" is drawn and all dipoles defined in the source estimate
-    are shown using arrows, depicting the direction and magnitude of the
-    current moment at the dipole. Additionally, an overlay is plotted on top of
-    the cortex with the magnitude of the current.
+    """Container for volume source estimates.
 
     Parameters
     ----------
-    subject : str | None
-        The FreeSurfer subject name.
-        If ``None``, ``stc.subject`` will be used.
-    hemi : str, 'lh' | 'rh' | 'split' | 'both'
-        The hemisphere to display.
+    data : array of shape (n_dipoles, 3, n_times)
+        The data in source space. Each dipole contains three vectors that
+        denote the dipole strength in X, Y and Z directions over time.
 
-    colormap : str | np.ndarray of float, shape(n_colors, 3 | 4)
-        Name of colormap to use or a custom look up table. If array, must
-        be (n x 3) or (n x 4) array for with RGB or RGBA values between
-        0 and 255.
-        This should be a sequential colormap.
+    vertices : list of array of int
+        The indices of the dipoles in the source space. Should be a single
+        array of shape (n_dipoles,) unless there are subvolumes.
 
-    time_label : str | callable | None
-        Format of the time label (a format string, a function that maps
-        floating point time values to strings, or None for no label). The
-        default is ``'auto'``, which will use ``time=%0.2f ms`` if there
-        is more than one time point.
-    smoothing_steps : int
-        The amount of smoothing.
+    tmin : scalar
+        Time point of the first sample in data.
 
-    transparent : bool | None
-        If True: use a linear transparency between fmin and fmid
-        and make values below fmin fully transparent (symmetrically for
-        divergent colormaps). None will choose automatically based on colormap
-        type.
-    brain_alpha : float
-        Alpha value to apply globally to the surface meshes. Defaults to 0.4.
-    overlay_alpha : float
-        Alpha value to apply globally to the overlay. Defaults to
-        ``brain_alpha``.
-    vector_alpha : float
-        Alpha value to apply globally to the vector glyphs. Defaults to 1.
-    scale_factor : float | None
-        Scaling factor for the vector glyphs. By default, an attempt is made to
-        automatically determine a sane value.
-    time_viewer : bool | str
-        Display time viewer GUI. Can be "auto", which is True for the PyVista
-        backend and False otherwise.
+    tstep : scalar
+        Time step between successive samples in data.
 
-        .. versionchanged:: 0.20
-           Added "auto" option and default.
-    subjects_dir : str
-        The path to the freesurfer subjects reconstructions.
-        It corresponds to Freesurfer environment variable SUBJECTS_DIR.
-    figure : instance of Figure3D | list | int | None
-        If None, a new figure will be created. If multiple views or a
-        split view is requested, this must be a list of the appropriate
-        length. If int is provided it will be used to identify the PyVista
-        figure by it's id or create a new figure with the given id.
-
-    views : str | list
-        View to use. Using multiple views (list) is not supported for mpl
-        backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
-        valid string options.
-    colorbar : bool
-        If True, display colorbar on scene.
-
-    clim : str | dict
-        Colorbar properties specification. If 'auto', set clim automatically
-        based on data percentiles. If dict, should contain:
-
-            ``kind`` : 'value' | 'percent'
-                Flag to specify type of limits.
-            ``lims`` : list | np.ndarray | tuple of float, 3 elements
-                Lower, middle, and upper bound for colormap.
-
-        Unlike :meth:`stc.plot <mne.SourceEstimate.plot>`, it cannot use
-        ``pos_lims``, as the surface plot must show the magnitude.
-    cortex : str or tuple
-        Specifies how binarized curvature values are rendered.
-        either the name of a preset Brain cortex colorscheme (one of
-        'classic', 'bone', 'low_contrast', or 'high_contrast'), or the
-        name of a colormap, or a tuple with values (colormap, min,
-        max, reverse) to fully specify the curvature colors.
-    size : float or tuple of float
-        The size of the window, in pixels. can be one number to specify
-        a square window, or the (width, height) of a rectangular window.
-    background : matplotlib color
-        Color of the background of the display window.
-    foreground : matplotlib color | None
-        Color of the foreground of the display window.
-        None will choose black or white based on the background color.
-    initial_time : float | None
-        The time to display on the plot initially. ``None`` to display the
-        first time sample (default).
-    time_unit : 's' | 'ms'
-        Whether time is represented in seconds ("s", default) or
-        milliseconds ("ms").
-
-    show_traces : bool | str | float
-        If True, enable interactive picking of a point on the surface of the
-        brain and plot its time course.
-        This feature is only available with the PyVista 3d backend, and requires
-        ``time_viewer=True``. Defaults to 'auto', which will use True if and
-        only if ``time_viewer=True``, the backend is PyVista, and there is more
-        than one time point. If float (between zero and one), it specifies what
-        proportion of the total window should be devoted to traces (True is
-        equivalent to 0.25, i.e., it will occupy the bottom 1/4 of the figure).
-
-        .. versionadded:: 0.20.0
-
-    src : instance of SourceSpaces | None
-        The source space corresponding to the source estimate. Only necessary
-        if the STC is a volume or mixed source estimate.
-    volume_options : float | dict | None
-        Options for volumetric source estimate plotting, with key/value pairs:
-
-        - ``'resolution'`` : float | None
-            Resolution (in mm) of volume rendering. Smaller (e.g., 1.) looks
-            better at the cost of speed. None (default) uses the volume source
-            space resolution, which is often something like 7 or 5 mm,
-            without resampling.
-        - ``'blending'`` : str
-            Can be "mip" (default) for :term:`maximum intensity projection` or
-            "composite" for composite blending using alpha values.
-        - ``'alpha'`` : float | None
-            Alpha for the volumetric rendering. Defaults are 0.4 for vector source
-            estimates and 1.0 for scalar source estimates.
-        - ``'surface_alpha'`` : float | None
-            Alpha for the surface enclosing the volume(s). None (default) will use
-            half the volume alpha. Set to zero to avoid plotting the surface.
-        - ``'silhouette_alpha'`` : float | None
-            Alpha for a silhouette along the outside of the volume. None (default)
-            will use ``0.25 * surface_alpha``.
-        - ``'silhouette_linewidth'`` : float
-            The line width to use for the silhouette. Default is 2.
-
-        A float input (default 1.) or None will be used for the ``'resolution'``
-        entry.
-
-    view_layout : str
-        Can be "vertical" (default) or "horizontal". When using "horizontal" mode,
-        the PyVista backend must be used and hemi cannot be "split".
-
-    add_data_kwargs : dict | None
-        Additional arguments to brain.add_data (e.g.,
-        ``dict(time_label_size=10)``).
-
-    brain_kwargs : dict | None
-        Additional arguments to the :class:`mne.viz.Brain` constructor (e.g.,
-        ``dict(silhouette=True)``).
+    subject : str
+        The FreeSurfer subject name. While not necessary, it is safer to set the
+        subject parameter to avoid analysis errors.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
@@ -1307,50 +1220,65 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
-    -------
-    brain : mne.viz.Brain
-        A instance of :class:`mne.viz.Brain`.
+    Attributes
+    ----------
+    subject : str | None
+        The subject name.
+    times : array of shape (n_times,)
+        The time vector.
+
+    vertices : list of array of int
+        The indices of the dipoles in the source space. Should be a single
+        array of shape (n_dipoles,) unless there are subvolumes.
+    data : array of shape (n_dipoles, n_times)
+        The data in source space.
+    shape : tuple
+        The shape of the data. A tuple of int (n_dipoles, n_times).
+
+    See Also
+    --------
+    SourceEstimate : A container for surface source estimates.
+    VectorSourceEstimate : A container for vector surface source estimates.
+    VolSourceEstimate : A container for volume source estimates.
+    MixedSourceEstimate : A container for mixed surface + volume source
+                          estimates.
 
     Notes
     -----
-    .. versionadded:: 0.15
-
-    If the current magnitude overlay is not desired, set ``overlay_alpha=0``
-    and ``smoothing_steps=1``.
+    .. versionadded:: 0.9.0
     """
 
     def plot_3d(
         self,
-        subject=...,
-        hemi: str = ...,
-        colormap: str = ...,
-        time_label: str = ...,
-        smoothing_steps: int = ...,
-        transparent: bool = ...,
-        brain_alpha: float = ...,
-        overlay_alpha=...,
-        vector_alpha: float = ...,
-        scale_factor=...,
-        time_viewer: str = ...,
-        subjects_dir=...,
-        figure=...,
-        views: str = ...,
-        colorbar: bool = ...,
-        clim: str = ...,
-        cortex: str = ...,
-        size: int = ...,
-        background: str = ...,
-        foreground=...,
-        initial_time=...,
-        time_unit: str = ...,
-        show_traces: str = ...,
-        src=...,
-        volume_options: float = ...,
-        view_layout: str = ...,
-        add_data_kwargs=...,
-        brain_kwargs=...,
-        verbose=...,
+        subject=None,
+        hemi: str = "both",
+        colormap: str = "hot",
+        time_label: str = "auto",
+        smoothing_steps: int = 10,
+        transparent: bool = True,
+        brain_alpha: float = 0.4,
+        overlay_alpha=None,
+        vector_alpha: float = 1.0,
+        scale_factor=None,
+        time_viewer: str = "auto",
+        subjects_dir=None,
+        figure=None,
+        views: str = "axial",
+        colorbar: bool = True,
+        clim: str = "auto",
+        cortex: str = "classic",
+        size: int = 800,
+        background: str = "black",
+        foreground=None,
+        initial_time=None,
+        time_unit: str = "s",
+        show_traces: str = "auto",
+        src=None,
+        volume_options: float = 1.0,
+        view_layout: str = "vertical",
+        add_data_kwargs=None,
+        brain_kwargs=None,
+        verbose=None,
     ):
         """Plot VectorSourceEstimate with PyVista.
 
@@ -1521,6 +1449,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
         If the current magnitude overlay is not desired, set ``overlay_alpha=0``
         and ``smoothing_steps=1``.
         """
+        ...
 
 class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate):
     """Container for vector surface source estimates.
@@ -1577,7 +1506,7 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
 
 class _BaseMixedSourceEstimate(_BaseSourceEstimate):
     def __init__(
-        self, data, vertices=..., tmin=..., tstep=..., subject=..., verbose=...
+        self, data, vertices=None, tmin=None, tstep=None, subject=None, verbose=None
     ) -> None: ...
     def surface(self):
         """Return the cortical surface source estimate.
@@ -1702,7 +1631,7 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
     .. versionadded:: 0.21.0
     """
 
-def spatio_temporal_src_adjacency(src, n_times, dist=..., verbose=...):
+def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
     """Compute adjacency for a source space activation over time.
 
     Parameters
@@ -1733,7 +1662,7 @@ def spatio_temporal_src_adjacency(src, n_times, dist=..., verbose=...):
         during time 2, etc.
     """
 
-def grade_to_tris(grade, verbose=...):
+def grade_to_tris(grade, verbose=None):
     """Get tris defined for a certain grade.
 
     Parameters
@@ -1755,7 +1684,7 @@ def grade_to_tris(grade, verbose=...):
     """
 
 def spatio_temporal_tris_adjacency(
-    tris, n_times, remap_vertices: bool = ..., verbose=...
+    tris, n_times, remap_vertices: bool = False, verbose=None
 ):
     """Compute adjacency from triangles and time instants.
 
@@ -1785,7 +1714,7 @@ def spatio_temporal_tris_adjacency(
         during time 2, etc.
     """
 
-def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=...):
+def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
     """Compute adjacency from distances in a source space and time instants.
 
     Parameters
@@ -1817,7 +1746,7 @@ def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=...):
         during time 2, etc.
     """
 
-def spatial_src_adjacency(src, dist=..., verbose=...):
+def spatial_src_adjacency(src, dist=None, verbose=None):
     """Compute adjacency for a source space activation.
 
     Parameters
@@ -1842,7 +1771,7 @@ def spatial_src_adjacency(src, dist=..., verbose=...):
         The adjacency matrix describing the spatial graph structure.
     """
 
-def spatial_tris_adjacency(tris, remap_vertices: bool = ..., verbose=...):
+def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
     """Compute adjacency from triangles.
 
     Parameters
@@ -1865,7 +1794,7 @@ def spatial_tris_adjacency(tris, remap_vertices: bool = ..., verbose=...):
         The adjacency matrix describing the spatial graph structure.
     """
 
-def spatial_dist_adjacency(src, dist, verbose=...):
+def spatial_dist_adjacency(src, dist, verbose=None):
     """Compute adjacency from distances in a source space.
 
     Parameters
@@ -1891,7 +1820,7 @@ def spatial_dist_adjacency(src, dist, verbose=...):
         The adjacency matrix describing the spatial graph structure.
     """
 
-def spatial_inter_hemi_adjacency(src, dist, verbose=...):
+def spatial_inter_hemi_adjacency(src, dist, verbose=None):
     """Get vertices on each hemisphere that are close to the other hemisphere.
 
     Parameters
@@ -1921,12 +1850,12 @@ def extract_label_time_course(
     stcs,
     labels,
     src,
-    mode: str = ...,
-    allow_empty: bool = ...,
-    return_generator: bool = ...,
+    mode: str = "auto",
+    allow_empty: bool = False,
+    return_generator: bool = False,
     *,
-    mri_resolution: bool = ...,
-    verbose=...,
+    mri_resolution: bool = True,
+    verbose=None,
 ):
     """Extract label time course for lists of labels and source estimates.
 
@@ -2044,14 +1973,14 @@ def stc_near_sensors(
     evoked,
     trans,
     subject,
-    distance: float = ...,
-    mode: str = ...,
-    project: bool = ...,
-    subjects_dir=...,
-    src=...,
-    picks=...,
-    surface: str = ...,
-    verbose=...,
+    distance: float = 0.01,
+    mode: str = "sum",
+    project: bool = True,
+    subjects_dir=None,
+    src=None,
+    picks=None,
+    surface: str = "pial",
+    verbose=None,
 ):
     """Create a STC from ECoG, sEEG and DBS sensor data.
 

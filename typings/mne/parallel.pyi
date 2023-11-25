@@ -9,13 +9,13 @@ from .utils import (
 def parallel_func(
     func,
     n_jobs,
-    max_nbytes: str = ...,
-    pre_dispatch: str = ...,
-    total=...,
-    prefer=...,
+    max_nbytes: str = "auto",
+    pre_dispatch: str = "n_jobs",
+    total=None,
+    prefer=None,
     *,
-    max_jobs=...,
-    verbose=...,
+    max_jobs=None,
+    verbose=None,
 ):
     """Return parallel instance with delayed function.
 

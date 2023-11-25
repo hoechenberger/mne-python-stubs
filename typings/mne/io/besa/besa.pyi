@@ -2,7 +2,7 @@ from ..._fiff.meas_info import create_info as create_info
 from ...evoked import EvokedArray as EvokedArray
 from ...utils import fill_doc as fill_doc, logger as logger
 
-def read_evoked_besa(fname, verbose=...):
+def read_evoked_besa(fname, verbose=None):
     """Reader function for BESA ``.avr`` or ``.mul`` files.
 
     When a ``.elp`` sidecar file is present, it will be used to determine

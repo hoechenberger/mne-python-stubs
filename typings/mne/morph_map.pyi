@@ -14,7 +14,7 @@ from .surface import read_surface as read_surface
 from .utils import get_subjects_dir as get_subjects_dir, logger as logger, warn as warn
 
 def read_morph_map(
-    subject_from, subject_to, subjects_dir=..., xhemi: bool = ..., verbose=...
+    subject_from, subject_to, subjects_dir=None, xhemi: bool = False, verbose=None
 ):
     """Read morph map.
 

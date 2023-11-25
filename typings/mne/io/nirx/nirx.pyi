@@ -6,7 +6,9 @@ from ...transforms import apply_trans as apply_trans
 from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
-def read_raw_nirx(fname, saturated: str = ..., preload: bool = ..., verbose=...):
+def read_raw_nirx(
+    fname, saturated: str = "annotate", preload: bool = False, verbose=None
+):
     """Reader for a NIRX fNIRS recording.
 
     Parameters
@@ -128,4 +130,6 @@ class RawNIRX(BaseRaw):
     saturated data.
     """
 
-    def __init__(self, fname, saturated, preload: bool = ..., verbose=...) -> None: ...
+    def __init__(
+        self, fname, saturated, preload: bool = False, verbose=None
+    ) -> None: ...

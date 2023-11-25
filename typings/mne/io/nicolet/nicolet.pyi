@@ -5,12 +5,12 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_nicolet(
     input_fname,
     ch_type,
-    eog=...,
-    ecg=...,
-    emg=...,
-    misc=...,
-    preload: bool = ...,
-    verbose=...,
+    eog=(),
+    ecg=(),
+    emg=(),
+    misc=(),
+    preload: bool = False,
+    verbose=None,
 ):
     """Read Nicolet data as raw object.
 
@@ -102,10 +102,10 @@ class RawNicolet(BaseRaw):
         self,
         input_fname,
         ch_type,
-        eog=...,
-        ecg=...,
-        emg=...,
-        misc=...,
-        preload: bool = ...,
-        verbose=...,
+        eog=(),
+        ecg=(),
+        emg=(),
+        misc=(),
+        preload: bool = False,
+        verbose=None,
     ) -> None: ...

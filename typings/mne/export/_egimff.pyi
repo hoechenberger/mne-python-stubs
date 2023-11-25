@@ -2,7 +2,7 @@ from .._fiff.pick import pick_channels as pick_channels, pick_types as pick_type
 from ..utils import warn as warn
 
 def export_evokeds_mff(
-    fname, evoked, history=..., *, overwrite: bool = ..., verbose=...
+    fname, evoked, history=None, *, overwrite: bool = False, verbose=None
 ) -> None:
     """Export evoked dataset to MFF.
 

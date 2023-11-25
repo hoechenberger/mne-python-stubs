@@ -5,13 +5,13 @@ from _typeshed import Incomplete
 
 def read_raw_egi(
     input_fname,
-    eog=...,
-    misc=...,
-    include=...,
-    exclude=...,
-    preload: bool = ...,
-    channel_naming: str = ...,
-    verbose=...,
+    eog=None,
+    misc=None,
+    include=None,
+    exclude=None,
+    preload: bool = False,
+    channel_naming: str = "E%d",
+    verbose=None,
 ):
     """Read EGI simple binary as raw object.
 
@@ -94,11 +94,11 @@ class RawEGI(BaseRaw):
     def __init__(
         self,
         input_fname,
-        eog=...,
-        misc=...,
-        include=...,
-        exclude=...,
-        preload: bool = ...,
-        channel_naming: str = ...,
-        verbose=...,
+        eog=None,
+        misc=None,
+        include=None,
+        exclude=None,
+        preload: bool = False,
+        channel_naming: str = "E%d",
+        verbose=None,
     ) -> None: ...
