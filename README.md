@@ -7,7 +7,7 @@ like Pylance in VS Code.
 ## Installation
 
 ```shell
-pip install https://github.com/hoechenberger/men-python-stubs/archive/refs/heads/main.zip
+pip install https://github.com/hoechenberger/mne-python-stubs/archive/refs/heads/main.zip
 ```
 
 ## Notes
@@ -17,5 +17,4 @@ pip install https://github.com/hoechenberger/men-python-stubs/archive/refs/heads
 * the stubs will be deployed into a directory named `mne-stubs` inside the
   Python `site-packages` directory.
 
-Except for the first point, this is consistent with
-[https://github.com/python/typeshed](https://github.com/python/typeshed).
+Except for the first point, this is consistent with [typeshed](https://github.com/python/typeshed).
