@@ -9,9 +9,9 @@ def rescale(
     picks=None,
     verbose=None,
 ):
-    """Rescale (baseline correct) data.
+    """### Rescale (baseline correct) data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array
         It can be of any shape. The only constraint is that the last
@@ -28,7 +28,7 @@ def rescale(
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
     mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio'
         Perform baseline correction by
@@ -52,11 +52,11 @@ def rescale(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     data_scaled: array
         Array of same shape as data after rescaling.

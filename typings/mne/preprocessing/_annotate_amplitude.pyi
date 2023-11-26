@@ -13,7 +13,7 @@ def annotate_amplitude(
     *,
     verbose=None,
 ):
-    """Annotate raw data based on peak-to-peak amplitude.
+    """### Annotate raw data based on peak-to-peak amplitude.
 
     Creates annotations ``BAD_peak`` or ``BAD_flat`` for spans of data where
     consecutive samples exceed the threshold in ``peak`` or fall below the
@@ -25,7 +25,7 @@ def annotate_amplitude(
     `mne.io.Raw` object; use `mne.io.Raw.set_annotations` and
     `info['bads'] <mne.Info>` to do so.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data.
@@ -66,18 +66,18 @@ def annotate_amplitude(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     annotations : instance of Annotations
         The annotated bad segments.
     bads : list
         The channels detected as bad.
 
-    Notes
+    ### 📖 Notes
     -----
     This function does not use a window to detect small peak-to-peak or large
     peak-to-peak amplitude changes as the ``reject`` and ``flat`` argument from
@@ -102,6 +102,6 @@ def annotate_amplitude(
     loads data one channel type at a time (across all time points), which is
     typically not an efficient way to read raw data from disk.
 
-    .. versionadded:: 1.0
+    ✨ Added in vesion 1.0
     """
     ...

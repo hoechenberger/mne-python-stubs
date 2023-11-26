@@ -15,9 +15,9 @@ from ..base import BaseRaw as BaseRaw
 from _typeshed import Incomplete
 
 class RawBrainVision(BaseRaw):
-    """Raw object from Brain Vision EEG file.
+    """### Raw object from Brain Vision EEG file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     vhdr_fname : path-like
         Path to the EEG header file.
@@ -43,11 +43,11 @@ class RawBrainVision(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     impedances : dict
         A dictionary of all electrodes and their impedances.
@@ -77,9 +77,9 @@ def read_raw_brainvision(
     preload: bool = False,
     verbose=None,
 ):
-    """Reader for Brain Vision EEG file.
+    """### Reader for Brain Vision EEG file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     vhdr_fname : path-like
         Path to the EEG header file.
@@ -105,11 +105,11 @@ def read_raw_brainvision(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawBrainVision
         A Raw object containing BrainVision data.
@@ -122,8 +122,8 @@ def read_raw_brainvision(
     ...
 
 class _BVEventParser(_DefaultEventParser):
-    """Parse standard brainvision events, accounting for non-standard ones."""
+    """### Parse standard brainvision events, accounting for non-standard ones."""
 
     def __call__(self, description):
-        """Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
+        """### Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
         ...

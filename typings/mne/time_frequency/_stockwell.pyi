@@ -14,7 +14,7 @@ def tfr_array_stockwell(
     return_itc: bool = False,
     n_jobs=None,
 ):
-    """Compute power and intertrial coherence using Stockwell (S) transform.
+    """### Compute power and intertrial coherence using Stockwell (S) transform.
 
     Same computation as `mne.time_frequency.tfr_stockwell`, but operates on
     `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` objects.
@@ -22,7 +22,7 @@ def tfr_array_stockwell(
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : ndarray, shape (n_epochs, n_channels, n_times)
         The signal to transform.
@@ -52,7 +52,7 @@ def tfr_array_stockwell(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    Returns
+    ### ⏎ Returns
     -------
     st_power : ndarray
         The multitaper power of the Stockwell transformed data.
@@ -87,7 +87,7 @@ def tfr_stockwell(
     n_jobs=None,
     verbose=None,
 ):
-    """Compute Time-Frequency Representation (TFR) using Stockwell Transform.
+    """### Compute Time-Frequency Representation (TFR) using Stockwell Transform.
 
     Same computation as `mne.time_frequency.tfr_array_stockwell`, but operates
     on `mne.Epochs` objects instead of `NumPy arrays <numpy.ndarray>`.
@@ -95,7 +95,7 @@ def tfr_stockwell(
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : Epochs | Evoked
         The epochs or evoked object.
@@ -120,11 +120,11 @@ def tfr_stockwell(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     power : AverageTFR
         The averaged power.
@@ -139,9 +139,9 @@ def tfr_stockwell(
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_array_morlet
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
 
     References
     ----------

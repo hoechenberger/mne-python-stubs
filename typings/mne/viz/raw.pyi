@@ -41,9 +41,9 @@ def plot_raw(
     splash: bool = True,
     verbose=None,
 ):
-    """Plot raw data.
+    """### Plot raw data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data to plot.
@@ -93,7 +93,7 @@ def plot_raw(
                  emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                  resp=1, chpi=1e-4, whitened=1e2)
 
-        .. note::
+        ### 💡 Note
             A particular scaling value ``s`` corresponds to half of the visualized
             signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
             ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -135,7 +135,7 @@ def plot_raw(
         order twice ``filtorder``). Filtering may produce some edge artifacts
         (at the left and right edges) of the signals during display.
 
-        .. versionchanged:: 0.18
+        🎭 Changed in version 0.18
            Support for ``filtorder=0`` to use FIR filtering.
     clipping : str | float | None
         If None, channels are allowed to exceed their designated bounds in
@@ -146,7 +146,7 @@ def plot_raw(
         of their dedicated range, so ``clipping=1.`` is an alias for
         ``clipping='transparent'``.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
            Support for float, and default changed from None to 1.5.
     show_first_samp : bool
         If True, show time axis relative to the ``raw.first_samp``.
@@ -186,26 +186,26 @@ def plot_raw(
         magnetometers and gradiometers may introduce differences in scaling,
         consider using `mne.Evoked.plot_white`.
 
-        .. versionadded:: 0.16.0
+        ✨ Added in vesion 0.16.0
     event_id : dict | None
         Event IDs used to show at event markers (default None shows
         the event numbers).
 
-        .. versionadded:: 0.16.0
+        ✨ Added in vesion 0.16.0
 
     show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
-        .. versionadded:: 0.19.0
+        ✨ Added in vesion 0.19.0
 
     show_scalebars : bool
         Whether to show scale bars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`s` while the plot window is focused.
         Default is ``True``.
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
 
     time_format : 'float' | 'clock'
         Style of time labels on the horizontal axis. If ``'float'``, labels will be
@@ -213,7 +213,7 @@ def plot_raw(
         labels will show "clock time" (hours/minutes/seconds) inferred from
         ``raw.info['meas_date']``. Default is ``'float'``.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     precompute : bool | str
         Whether to load all data (not just the visible portion) into RAM and
@@ -224,8 +224,8 @@ def plot_raw(
         the precomputed data, and precomputes only if enough RAM is available.
         This is only used with the Qt backend.
 
-        .. versionadded:: 0.24
-        .. versionchanged:: 1.0
+        ✨ Added in vesion 0.24
+        🎭 Changed in version 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
     use_opengl : bool | None
@@ -236,7 +236,7 @@ def plot_raw(
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
         see `mne.set_config`.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
@@ -247,7 +247,7 @@ def plot_raw(
         defaulting to "auto" if it's not found.
         Only supported by the ``'qt'`` backend.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     overview_mode : str | None
         Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -255,27 +255,27 @@ def plot_raw(
         ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
         if it's not found.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     splash : bool
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
-    Notes
+    ### 📖 Notes
     -----
     The arrow keys (up/down/left/right) can typically be used to navigate
     between channels and time ranges, but this depends on the backend
@@ -312,9 +312,9 @@ def plot_raw(
     `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
-    .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
+    ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
-    .. note:: To report issues with the PyQtGraph backend, please use the
+    ### 💡 Note To report issues with the PyQtGraph backend, please use the
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
     """
@@ -348,7 +348,7 @@ def plot_raw_psd(
     exclude: str = "bads",
     verbose=None,
 ):
-    """.. warning:: LEGACY: New code should use Raw.compute_psd().plot().
+    """### ### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot().
 
     Plot power or amplitude spectra.
 
@@ -359,7 +359,7 @@ def plot_raw_psd(
     be interactive, and click-dragging on the spectrum will generate a
     scalp topography plot for the chosen frequency range in a new figure.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw object.
@@ -450,31 +450,31 @@ def plot_raw_psd(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     window : str | float | tuple
         Windowing function to use. See `scipy.signal.get_window`.
 
-        .. versionadded:: 0.22.0
+        ✨ Added in vesion 0.22.0
     exclude : list of str | 'bads'
         Channels names to exclude from being shown. If 'bads', the bad channels
         are excluded. Pass an empty list to plot all channels (including
         channels marked "bad", if any).
 
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         Figure with frequency spectra of the data channels.
 
-    Notes
+    ### 📖 Notes
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
@@ -503,11 +503,11 @@ def plot_raw_psd_topo(
     n_jobs=None,
     verbose=None,
 ):
-    """.. warning:: LEGACY: New code should use Raw.compute_psd().plot_topo().
+    """### ### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot_topo().
 
     Plot power spectral density, separately for each channel.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of io.Raw
         The raw instance to use.
@@ -558,11 +558,11 @@ def plot_raw_psd_topo(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         Figure distributing one image per channel across sensor topography.

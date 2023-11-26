@@ -25,9 +25,9 @@ def infomax(
     verbose=None,
     return_n_iter: bool = False,
 ):
-    """Run (extended) Infomax ICA decomposition on raw data.
+    """### Run (extended) Infomax ICA decomposition on raw data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : np.ndarray, shape (n_samples, n_features)
         The whitened data to unmix.
@@ -38,7 +38,7 @@ def infomax(
         This quantity indicates the relative size of the change in weights.
         Defaults to ``0.01 / log(n_features ** 2)``.
 
-        .. note:: Smaller learning rates will slow down the ICA procedure.
+        ### 💡 Note Smaller learning rates will slow down the ICA procedure.
 
     block : int
         The block size of randomly chosen data segments.
@@ -97,14 +97,14 @@ def infomax(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     return_n_iter : bool
         Whether to return the number of iterations performed. Defaults to
         False.
 
-    Returns
+    ### ⏎ Returns
     -------
     unmixing_matrix : np.ndarray, shape (n_features, n_features)
         The linear unmixing operator.

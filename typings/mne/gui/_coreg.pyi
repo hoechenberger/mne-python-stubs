@@ -38,9 +38,9 @@ class _WorkerData:
     def __init__(self, name, params=None) -> None: ...
 
 class CoregistrationUI(HasTraits):
-    """Class for coregistration assisted by graphical interface.
+    """### Class for coregistration assisted by graphical interface.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     info_file : None | str
         The FIFF file with digitizer data for coregistration.
@@ -109,7 +109,7 @@ class CoregistrationUI(HasTraits):
         (``False``).
         The default is False.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     interaction : 'trackball' | 'terrain'
         How interactions with the scene via an input device (e.g., mouse or
@@ -120,15 +120,15 @@ class CoregistrationUI(HasTraits):
         some axes.
         Defaults to ``'terrain'``.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     coreg : mne.coreg.Coregistration
         The coregistration instance used by the graphical interface.
@@ -164,5 +164,5 @@ class CoregistrationUI(HasTraits):
         verbose=None,
     ) -> None: ...
     def close(self) -> None:
-        """Close interface and cleanup data structure."""
+        """### Close interface and cleanup data structure."""
         ...

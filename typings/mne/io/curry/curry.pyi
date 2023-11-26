@@ -31,9 +31,9 @@ class CurryParameters(NamedTuple):
     chanidx_in_file: Incomplete
 
 def read_raw_curry(fname, preload: bool = False, verbose=None):
-    """Read raw data from Curry files.
+    """### Read raw data from Curry files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to a curry file with extensions ``.dat``, ``.dap``, ``.rs3``,
@@ -48,11 +48,11 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawCurry
         A Raw object containing Curry data.
@@ -65,9 +65,9 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
     ...
 
 class RawCurry(BaseRaw):
-    """Raw object from Curry file.
+    """### Raw object from Curry file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to a curry file with extensions ``.dat``, ``.dap``, ``.rs3``,

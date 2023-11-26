@@ -11,9 +11,9 @@ def plot_projs_joint(
     show: bool = True,
     verbose=None,
 ):
-    """Plot projectors and evoked jointly.
+    """### Plot projectors and evoked jointly.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     projs : list of Projection
         The projectors to plot.
@@ -36,16 +36,16 @@ def plot_projs_joint(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib Figure
         The figure.
 
-    Notes
+    ### 📖 Notes
     -----
     This function creates a figure with three columns:
 
@@ -64,6 +64,6 @@ def plot_projs_joint(
           This is useful for visualizing the "ground truth" of the time
           course, e.g. the measured EOG or ECG channel time courses.
 
-    .. versionadded:: 1.1
+    ✨ Added in vesion 1.1
     """
     ...

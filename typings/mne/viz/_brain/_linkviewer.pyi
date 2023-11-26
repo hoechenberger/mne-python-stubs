@@ -3,7 +3,7 @@ from ..ui_events import link as link
 from _typeshed import Incomplete
 
 class _LinkViewer:
-    """Class to link multiple Brain objects."""
+    """### Class to link multiple Brain objects."""
 
     brains: Incomplete
     leader: Incomplete

@@ -18,9 +18,9 @@ def fetch_dataset(
     auth=None,
     token=None,
 ):
-    """Fetch an MNE-compatible dataset using pooch.
+    """### Fetch an MNE-compatible dataset using pooch.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     dataset_params : list of dict | dict
         The dataset name(s) and corresponding parameters to download the
@@ -67,7 +67,7 @@ def fetch_dataset(
     token : str | None
         Optional authentication token passed to `pooch.HTTPDownloader`.
 
-    Returns
+    ### ⏎ Returns
     -------
     data_path : instance of Path
         The path to the fetched dataset.
@@ -80,7 +80,7 @@ def fetch_dataset(
     mne.set_config
     mne.datasets.has_dataset
 
-    Notes
+    ### 📖 Notes
     -----
     The ``dataset_params`` argument must contain the following keys:
 
@@ -93,7 +93,7 @@ def fetch_dataset(
     - ``config_key`` (optional): key passed to `mne.set_config` to store
         the on-disk location of the downloaded dataset (e.g.,
         ``"MNE_DATASETS_EEGBCI_PATH"``). This will only work for the provided
-        datasets listed :ref:`here <datasets>`; do not use for user-defined
+        datasets listed `here <datasets>`; do not use for user-defined
         datasets.
 
     An example would look like::

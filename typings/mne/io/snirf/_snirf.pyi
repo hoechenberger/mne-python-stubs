@@ -9,16 +9,16 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_snirf(
     fname, optode_frame: str = "unknown", preload: bool = False, verbose=None
 ):
-    """Reader for a continuous wave SNIRF data.
+    """### Reader for a continuous wave SNIRF data.
 
-    .. note:: This reader supports the .snirf file type only,
+    ### 💡 Note This reader supports the .snirf file type only,
               not the .jnirs version.
               Files with either 3D or 2D locations can be read.
               However, we strongly recommend using 3D positions.
               If 2D positions are used the behaviour of MNE functions
               can not be guaranteed.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the SNIRF data file.
@@ -37,11 +37,11 @@ def read_raw_snirf(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawSNIRF
         A Raw object containing fNIRS data.
@@ -54,9 +54,9 @@ def read_raw_snirf(
     ...
 
 class RawSNIRF(BaseRaw):
-    """Raw object from a continuous wave SNIRF file.
+    """### Raw object from a continuous wave SNIRF file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the SNIRF data file.
@@ -75,7 +75,7 @@ class RawSNIRF(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 

@@ -4,7 +4,7 @@ from ..utils import check_random_state as check_random_state, logger as logger
 def permutation_t_test(
     X, n_permutations: int = 10000, tail: int = 0, n_jobs=None, seed=None, verbose=None
 ):
-    """One sample/paired sample permutation test based on a t-statistic.
+    """### One sample/paired sample permutation test based on a t-statistic.
 
     This function can perform the test on one variable or
     simultaneously on multiple variables. When applying the test to multiple
@@ -15,7 +15,7 @@ def permutation_t_test(
     powerful than Bonferroni correction when different variables in the test
     are correlated (see :footcite:`NicholsHolmes2002`).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : array, shape (n_samples, n_tests)
         Samples (observations) by number of tests (variables).
@@ -48,11 +48,11 @@ def permutation_t_test(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     T_obs : array of shape [n_tests]
         T-statistic observed for all variables.
@@ -62,7 +62,7 @@ def permutation_t_test(
         T-statistic obtained by permutations and t-max trick for multiple
         comparison.
 
-    Notes
+    ### 📖 Notes
     -----
     If ``n_permutations >= 2 ** (n_samples - (tail == 0))``,
     ``n_permutations`` and ``seed`` will be ignored since an exact test
@@ -81,9 +81,9 @@ def bootstrap_confidence_interval(
     stat_fun: str = "mean",
     random_state=None,
 ):
-    """Get confidence intervals from non-parametric bootstrap.
+    """### Get confidence intervals from non-parametric bootstrap.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     arr : ndarray, shape (n_samples, ...)
         The input data on which to calculate the confidence interval.
@@ -96,7 +96,7 @@ def bootstrap_confidence_interval(
     random_state : int | float | array_like | None
         The seed at which to initialize the bootstrap.
 
-    Returns
+    ### ⏎ Returns
     -------
     cis : ndarray, shape (2, ...)
         Containing the lower boundary of the CI at ``cis[0, ...]`` and the

@@ -15,9 +15,9 @@ def read_raw_artemis123(
     pos_fname=None,
     add_head_trans: bool = True,
 ):
-    """Read Artemis123 data as raw object.
+    """### Read Artemis123 data as raw object.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the data file (extension ``.bin``). The header file with the
@@ -33,7 +33,7 @@ def read_raw_artemis123(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     pos_fname : path-like | None
@@ -44,7 +44,7 @@ def read_raw_artemis123(
         HPI coils are in info['dig'] hpi coils are assumed to be in canonical
         order of fiducial points (nas, rpa, lpa).
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of Raw
         A Raw object containing the data.
@@ -56,9 +56,9 @@ def read_raw_artemis123(
     ...
 
 class RawArtemis123(BaseRaw):
-    """Raw object from Artemis123 file.
+    """### Raw object from Artemis123 file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the Artemis123 data file (ending in ``'.bin'``).

@@ -21,14 +21,14 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Annotations:
-    """Annotation object for annotating segments of raw data.
+    """### Annotation object for annotating segments of raw data.
 
-    .. note::
+    ### 💡 Note
        To convert events to `mne.Annotations`, use
        `mne.annotations_from_events`. To convert existing `mne.Annotations`
        to events, use  `mne.events_from_annotations`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     onset : array of float, shape (n_annotations,)
         The starting time of annotations in seconds after ``orig_time``.
@@ -62,14 +62,14 @@ class Annotations:
                         description=['Start', 'BAD_flux', 'BAD_noise'],
                         ch_names=[[], ['MEG0111', 'MEG2563'], ['MEG1443']])
 
-        .. versionadded:: 0.23
+        ✨ Added in vesion 0.23
 
     See Also
     --------
     mne.annotations_from_events
     mne.events_from_annotations
 
-    Notes
+    ### 📖 Notes
     -----
     Annotations are added to instance of `mne.io.Raw` as the attribute
     :attr:`raw.annotations <mne.io.Raw.annotations>`.
@@ -176,7 +176,7 @@ class Annotations:
              e                        +------+
          orig_time                 onset[0]'
 
-    .. warning::
+    ### ⛔️ Warning
        This means that when ``raw.info['meas_date'] is None``, doing
        ``raw.set_annotations(raw.annotations)`` will not alter ``raw`` if and
        only if ``raw.first_samp == 0``. When it's non-zero,
@@ -196,34 +196,34 @@ class Annotations:
     ) -> None: ...
     @property
     def orig_time(self):
-        """The time base of the Annotations."""
+        """### The time base of the Annotations."""
         ...
     def __eq__(self, other):
-        """Compare to another Annotations instance."""
+        """### Compare to another Annotations instance."""
         ...
     def __len__(self) -> int:
-        """Return the number of annotations.
+        """### Return the number of annotations.
 
-        Returns
+        ### ⏎ Returns
         -------
         n_annot : int
             The number of annotations.
         """
         ...
     def __add__(self, other):
-        """Add (concatencate) two Annotation objects."""
+        """### Add (concatencate) two Annotation objects."""
         ...
     def __iadd__(self, other):
-        """Add (concatencate) two Annotation objects in-place.
+        """### Add (concatencate) two Annotation objects in-place.
 
         Both annotations must have the same orig_time
         """
         ...
     def __iter__(self):
-        """Iterate over the annotations."""
+        """### Iterate over the annotations."""
         ...
     def __getitem__(self, key, *, with_ch_names=None):
-        """Propagate indexing and slicing to the underlying numpy structure."""
+        """### Propagate indexing and slicing to the underlying numpy structure."""
         ...
     onset: Incomplete
     duration: Incomplete
@@ -231,9 +231,9 @@ class Annotations:
     ch_names: Incomplete
 
     def append(self, onset, duration, description, ch_names=None):
-        """Add an annotated segment. Operates inplace.
+        """### Add an annotated segment. Operates inplace.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         onset : float | array-like
             Annotation time onset from the beginning of the recording in
@@ -256,14 +256,14 @@ class Annotations:
                             description=['Start', 'BAD_flux', 'BAD_noise'],
                             ch_names=[[], ['MEG0111', 'MEG2563'], ['MEG1443']])
 
-            .. versionadded:: 0.23
+            ✨ Added in vesion 0.23
 
-        Returns
+        ### ⏎ Returns
         -------
         self : mne.Annotations
             The modified Annotations object.
 
-        Notes
+        ### 📖 Notes
         -----
         The array-like support for arguments allows this to be used similarly
         to not only ``list.append``, but also
@@ -271,18 +271,18 @@ class Annotations:
         """
         ...
     def copy(self):
-        """Return a copy of the Annotations.
+        """### Return a copy of the Annotations.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Annotations
             A copy of the object.
         """
         ...
     def delete(self, idx) -> None:
-        """Remove an annotation. Operates inplace.
+        """### Remove an annotation. Operates inplace.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         idx : int | array-like of int
             Index of the annotation to remove. Can be array-like to
@@ -290,9 +290,9 @@ class Annotations:
         """
         ...
     def to_data_frame(self):
-        """Export annotations in tabular structure as a pandas DataFrame.
+        """### Export annotations in tabular structure as a pandas DataFrame.
 
-        Returns
+        ### ⏎ Returns
         -------
         result : pandas.DataFrame
             Returns a pandas DataFrame with onset, duration, and
@@ -301,9 +301,9 @@ class Annotations:
         """
         ...
     def count(self):
-        """Count annotations.
+        """### Count annotations.
 
-        Returns
+        ### ⏎ Returns
         -------
         counts : dict
             A dictionary containing unique annotation descriptions as keys with their
@@ -311,14 +311,14 @@ class Annotations:
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """Save annotations to FIF, CSV or TXT.
+        """### Save annotations to FIF, CSV or TXT.
 
         Typically annotations get saved in the FIF file for raw data
         (e.g., as ``raw.annotations``), but this offers the possibility
         to also save them to disk separately in different file formats
         which are easier to share between packages.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The filename to use.
@@ -327,15 +327,15 @@ class Annotations:
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 0.23
+            ✨ Added in vesion 0.23
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Notes
+        ### 📖 Notes
         -----
         The format of the information stored in the saved annotation objects
         depends on the chosen file format. :file:`.csv` files store the onset
@@ -352,11 +352,11 @@ class Annotations:
         use_orig_time: bool = True,
         verbose=None,
     ):
-        """Remove all annotation that are outside of [tmin, tmax].
+        """### Remove all annotation that are outside of [tmin, tmax].
 
         The method operates inplace.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tmin : float | datetime | None
             Start time of selection in seconds.
@@ -371,20 +371,20 @@ class Annotations:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Annotations
             The cropped Annotations object.
         """
         ...
     def set_durations(self, mapping, verbose=None):
-        """Set annotation duration(s). Operates inplace.
+        """### Set annotation duration(s). Operates inplace.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         mapping : dict | float
             A dictionary mapping the annotation description to a duration in
@@ -394,24 +394,24 @@ class Annotations:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : mne.Annotations
             The modified Annotations object.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def rename(self, mapping, verbose=None):
-        """Rename annotation description(s). Operates inplace.
+        """### Rename annotation description(s). Operates inplace.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         mapping : dict
             A dictionary mapping the old description to a new description,
@@ -419,34 +419,34 @@ class Annotations:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : mne.Annotations
             The modified Annotations object.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
 
 class EpochAnnotationsMixin:
-    """Mixin class for Annotations in Epochs."""
+    """### Mixin class for Annotations in Epochs."""
 
     @property
     def annotations(self): ...
     def set_annotations(self, annotations, on_missing: str = "raise", *, verbose=None):
-        """Setter for Epoch annotations from Raw.
+        """### Setter for Epoch annotations from Raw.
 
         This method does not handle offsetting the times based
         on first_samp or measurement dates, since that is expected
         to occur in Raw.set_annotations().
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         annotations : instance of mne.Annotations | None
             Annotations to set.
@@ -455,20 +455,20 @@ class EpochAnnotationsMixin:
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
 
-            .. versionadded:: 0.23.0
+            ✨ Added in vesion 0.23.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Epochs
             The epochs object with annotations.
 
-        Notes
+        ### 📖 Notes
         -----
         Annotation onsets and offsets are stored as time in seconds (not as
         sample numbers).
@@ -487,13 +487,13 @@ class EpochAnnotationsMixin:
             annotations = raw.annotations
             epochs.set_annotations(annotations)
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
         """
         ...
     def get_annotations_per_epoch(self):
-        """Get a list of annotations that occur during each epoch.
+        """### Get a list of annotations that occur during each epoch.
 
-        Returns
+        ### ⏎ Returns
         -------
         epoch_annots : list
             A list of lists (with length equal to number of epochs) where each
@@ -507,7 +507,7 @@ class EpochAnnotationsMixin:
     metadata: Incomplete
 
     def add_annotations_to_metadata(self, overwrite: bool = False):
-        """Add raw annotations into the Epochs metadata data frame.
+        """### Add raw annotations into the Epochs metadata data frame.
 
         Adds three columns to the ``metadata`` consisting of a list
         in each row:
@@ -518,33 +518,33 @@ class EpochAnnotationsMixin:
         - ``annot_description``: the free-form text description of each
         Annotation.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         overwrite : bool
             Whether to overwrite existing columns in metadata or not.
             Default is False.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Epochs
             The modified instance (instance is also modified inplace).
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
         """
         ...
 
 def read_annotations(
     fname, sfreq: str = "auto", uint16_codec=None, encoding: str = "utf8"
 ):
-    """Read annotations from a file.
+    """### Read annotations from a file.
 
     This function reads a ``.fif``, ``.fif.gz``, ``.vmrk``, ``.amrk``,
     ``.edf``, ``.txt``, ``.csv``, ``.cnt``, ``.cef``, or ``.set`` file and
     makes an `mne.Annotations` object.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename.
@@ -571,12 +571,12 @@ def read_annotations(
         encoding according to the EDF+ standard).
         Only used when reading EDF annotations.
 
-    Returns
+    ### ⏎ Returns
     -------
     annot : instance of Annotations | None
         The annotations.
 
-    Notes
+    ### 📖 Notes
     -----
     The annotations stored in a ``.csv`` require the onset columns to be
     timestamps. If you have onsets as floats (in seconds), you should use the
@@ -592,9 +592,9 @@ def events_from_annotations(
     chunk_duration=None,
     verbose=None,
 ):
-    """Get :term:`events` and ``event_id`` from an Annotations object.
+    """### Get :term:`events` and ``event_id`` from an Annotations object.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data for which Annotations are defined.
@@ -615,13 +615,13 @@ def events_from_annotations(
             all others like ``None`` with an offset of 10000.
           - Other raw formats: Behaves like None.
 
-          .. versionadded:: 0.18
+          ✨ Added in vesion 0.18
     regexp : str | None
         Regular expression used to filter the annotations whose
         descriptions is a match. The default ignores descriptions beginning
         ``'bad'`` or ``'edge'`` (case-insensitive).
 
-        .. versionchanged:: 0.18
+        🎭 Changed in version 0.18
            Default ignores bad and edge descriptions.
     use_rounding : bool
         If True, use rounding (instead of truncation) when converting
@@ -636,11 +636,11 @@ def events_from_annotations(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     events : array of int, shape (n_events, 3)
@@ -654,7 +654,7 @@ def events_from_annotations(
     --------
     mne.annotations_from_events
 
-    Notes
+    ### 📖 Notes
     -----
     For data formats that store integer events as strings (e.g., NeuroScan
     ``.cnt`` files), passing the Python built-in function `int` as the
@@ -667,9 +667,9 @@ def events_from_annotations(
 def annotations_from_events(
     events, sfreq, event_desc=None, first_samp: int = 0, orig_time=None, verbose=None
 ):
-    """Convert an event array to an Annotations object.
+    """### Convert an event array to an Annotations object.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     events : ndarray, shape (n_events, 3)
         The events.
@@ -696,11 +696,11 @@ def annotations_from_events(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     annot : instance of Annotations
         The annotations.
@@ -709,7 +709,7 @@ def annotations_from_events(
     --------
     mne.events_from_annotations
 
-    Notes
+    ### 📖 Notes
     -----
     Annotations returned by this function will all have zero (null) duration.
 
@@ -724,14 +724,14 @@ def annotations_from_events(
     ...
 
 def count_annotations(annotations):
-    """Count annotations.
+    """### Count annotations.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     annotations : mne.Annotations
         The annotations instance.
 
-    Returns
+    ### ⏎ Returns
     -------
     counts : dict
         A dictionary containing unique annotation descriptions as keys with their

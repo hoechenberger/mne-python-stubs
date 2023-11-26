@@ -12,9 +12,9 @@ def compute_fine_calibration(
     calibration=None,
     verbose=None,
 ):
-    """Compute fine calibration from empty-room data.
+    """### Compute fine calibration from empty-room data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data to use. Should be from an empty-room recording,
@@ -51,11 +51,11 @@ def compute_fine_calibration(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     calibration : dict
         Fine calibration data.
@@ -67,7 +67,7 @@ def compute_fine_calibration(
     --------
     mne.preprocessing.maxwell_filter
 
-    Notes
+    ### 📖 Notes
     -----
     This algorithm proceeds in two steps, both optimizing the fit between the
     data and a reconstruction of the data based only on an external multipole
@@ -91,22 +91,22 @@ def compute_fine_calibration(
     there were some minimal usable ``count`` number of segments (default 5)
     that were included in the estimate.
 
-    .. versionadded:: 0.21
+    ✨ Added in vesion 0.21
     """
     ...
 
 def read_fine_calibration(fname):
-    """Read fine calibration information from a ``.dat`` file.
+    """### Read fine calibration information from a ``.dat`` file.
 
     The fine calibration typically includes improved sensor locations,
     calibration coefficients, and gradiometer imbalance information.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename.
 
-    Returns
+    ### ⏎ Returns
     -------
     calibration : dict
         Fine calibration information. Key-value pairs are:
@@ -122,9 +122,9 @@ def read_fine_calibration(fname):
     ...
 
 def write_fine_calibration(fname, calibration) -> None:
-    """Write fine calibration information to a ``.dat`` file.
+    """### Write fine calibration information to a ``.dat`` file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename to write out.

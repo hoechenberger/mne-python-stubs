@@ -1,9 +1,9 @@
 from ..utils.check import int_like as int_like
 
 def combine_adjacency(*structure):
-    """Create a sparse binary adjacency/neighbors matrix.
+    """### Create a sparse binary adjacency/neighbors matrix.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     *structure : list
         The adjacency along each dimension. Each entry can be:
@@ -17,7 +17,7 @@ def combine_adjacency(*structure):
             reflecting that element N of an array is adjacent to
             elements at indices N - 1 and N + 1.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : scipy.sparse.coo_matrix, shape (n_features, n_features)
         The square adjacency matrix, where the shape ``n_features``
@@ -29,7 +29,7 @@ def combine_adjacency(*structure):
     mne.channels.find_ch_adjacency
     mne.channels.read_ch_adjacency
 
-    Notes
+    ### 📖 Notes
     -----
     For 4-dimensional data with shape ``(n_obs, n_times, n_freqs, n_chans)``,
     you can specify **no** connections among elements in a particular

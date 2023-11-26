@@ -2,9 +2,9 @@ from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
 
 class RawArray(BaseRaw):
-    """Raw object from numpy array.
+    """### Raw object from numpy array.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array, shape (n_channels, n_times)
         The channels' time series. See notes for proper units of measure.
@@ -15,17 +15,17 @@ class RawArray(BaseRaw):
     first_samp : int
         First sample offset used during recording (default 0).
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     copy : {'data', 'info', 'both', 'auto', None}
         Determines what gets copied on instantiation. "auto" (default)
         will copy info, and copy "data" only if necessary to get to
         double floating point precision.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -35,7 +35,7 @@ class RawArray(BaseRaw):
     mne.EvokedArray
     mne.create_info
 
-    Notes
+    ### 📖 Notes
     -----
     Proper units of measure:
 

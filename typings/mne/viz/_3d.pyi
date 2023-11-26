@@ -49,9 +49,9 @@ def plot_head_positions(
     color: str = "k",
     axes=None,
 ):
-    """Plot head positions.
+    """### Plot head positions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     pos : ndarray, shape (n_pos, 10) | list of ndarray
         The head position data. Can also be a list to treat as a
@@ -71,24 +71,24 @@ def plot_head_positions(
         coordinates. See `mne.preprocessing.maxwell_filter` for
         details.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     info : mne.Info | None
         The `mne.Info` object with information about the sensors and methods of measurement. If provided, will be used to show the destination position when
         ``destination is None``, and for showing the MEG sensors.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
     color : color object
         The color to use for lines in ``mode == 'traces'`` and quiver
         arrows in ``mode == 'field'``.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
     axes : array-like, shape (3, 2)
         The matplotlib axes to use. Only used for ``mode == 'traces'``.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         The figure.
@@ -112,9 +112,9 @@ def plot_evoked_field(
     time_viewer: str = "auto",
     verbose=None,
 ):
-    """Plot MEG/EEG fields on head surface and helmet in 3D.
+    """### Plot MEG/EEG fields on head surface and helmet in 3D.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of mne.Evoked
         The evoked object.
@@ -136,41 +136,41 @@ def plot_evoked_field(
         If None (default), a new figure will be created, otherwise it will
         plot into the given figure.
 
-        .. versionadded:: 0.20
-        .. versionadded:: 1.4
+        ✨ Added in vesion 0.20
+        ✨ Added in vesion 1.4
             ``fig`` can also be a ``Brain`` figure.
     vmax : float | dict | None
         Maximum intensity. Can be a dictionary with two entries ``"eeg"`` and ``"meg"``
         to specify separate values for EEG and MEG fields respectively. Can be
         ``None`` to use the maximum value of the data.
 
-        .. versionadded:: 0.21
-        .. versionadded:: 1.4
+        ✨ Added in vesion 0.21
+        ✨ Added in vesion 1.4
             ``vmax`` can be a dictionary to specify separate values for EEG and
             MEG fields.
     n_contours : int
         The number of contours.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
     show_density : bool
         Whether to draw the field density as an overlay on top of the helmet/head
         surface. Defaults to ``True``.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
     alpha : float | dict | None
         Opacity of the meshes (between 0 and 1). Can be a dictionary with two
         entries ``"eeg"`` and ``"meg"`` to specify separate values for EEG and
         MEG fields respectively. Can be ``None`` to use 1.0 when a single field
         map is shown, or ``dict(eeg=1.0, meg=0.5)`` when both field maps are shown.
 
-        .. versionadded:: 1.4
+        ✨ Added in vesion 1.4
 
     interpolation : str | None
         Interpolation method (`scipy.interpolate.interp1d` parameter).
         Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
         ``'quadratic'`` or ``'cubic'``.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
     interaction : 'trackball' | 'terrain'
         How interactions with the scene via an input device (e.g., mouse or
@@ -181,20 +181,20 @@ def plot_evoked_field(
         some axes.
         Defaults to ``'terrain'``.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
     time_viewer : bool | str
         Display time viewer GUI. Can also be ``"auto"``, which will mean
         ``True`` if there is more than one time point and ``False`` otherwise.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : Figure3D | mne.viz.EvokedField
         Without the time viewer active, the figure is returned. With the time
@@ -227,9 +227,9 @@ def plot_alignment(
     sensor_colors=None,
     verbose=None,
 ):
-    """Plot head, sensor, and source space alignment in 3D.
+    """### Plot head, sensor, and source space alignment in 3D.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info | None
@@ -242,7 +242,7 @@ def plot_alignment(
         If trans is None, an identity matrix is assumed. "auto" will load trans from the FreeSurfer directory
         specified by ``subject`` and ``subjects_dir`` parameters.
 
-        .. versionchanged:: 0.19
+        🎭 Changed in version 0.19
             Support for 'fsaverage' argument.
 
     subject : str
@@ -271,12 +271,12 @@ def plot_alignment(
         Defaults to 'auto', which will look for a head surface and plot
         it if found.
 
-        .. note:: For single layer BEMs it is recommended to use ``'brain'``.
+        ### 💡 Note For single layer BEMs it is recommended to use ``'brain'``.
     coord_frame : 'auto' | 'head' | 'meg' | 'mri'
         The coordinate frame to use. If ``'auto'`` (default), chooses ``'mri'``
         if ``trans`` was passed, and ``'head'`` otherwise.
 
-        .. versionchanged:: 1.0
+        🎭 Changed in version 1.0
            Defaults to ``'auto'``.
 
     meg : str | list | dict | bool | None
@@ -286,7 +286,7 @@ def plot_alignment(
         ``('helmet', 'sensors', 'ref')``. Can also be a dict to specify alpha values,
         e.g. ``{"helmet": 0.1, "sensors": 0.8}``.
 
-        .. versionchanged:: 1.6
+        🎭 Changed in version 1.6
            Added support for specifying alpha values as a dict.
 
     eeg : bool | str | list | dict
@@ -302,7 +302,7 @@ def plot_alignment(
         Can also be a list of these options, or a dict to specify the alpha values
         to use, e.g. ``dict(original=0.2, projected=0.8)``.
 
-        .. versionchanged:: 1.6
+        🎭 Changed in version 1.6
            Added support for specifying alpha values as a dict.
 
     fwd : instance of Forward
@@ -322,7 +322,7 @@ def plot_alignment(
         it can be ``'estimated'`` to use `mne.coreg.get_mni_fiducials`,
         otherwise it should provide the full path to the fiducials file.
 
-        .. versionadded:: 0.22
+        ✨ Added in vesion 0.22
            Support for ``'estimated'``.
     bem : list of dict | instance of ConductorModel | None
         Can be either the BEM surfaces (list of dict), a BEM solution or a
@@ -343,9 +343,9 @@ def plot_alignment(
         alpha values (but only "channels" and "pairs" will be used), e.g.
         ``dict(channels=0.2, pairs=0.7)``.
 
-        .. versionchanged:: 1.6
+        🎭 Changed in version 1.6
            Added support for specifying alpha values as a dict.
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
     show_axes : bool
         If True (default False), coordinate frame axis indicators will be
         shown:
@@ -354,7 +354,7 @@ def plot_alignment(
         * MRI in gray (if ``trans is not None``).
         * MEG in blue (if MEG sensors are present).
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     dbs : bool
         If True (default), show DBS (deep brain stimulation) electrodes.
@@ -362,7 +362,7 @@ def plot_alignment(
         PyVista scene in which to plot the alignment.
         If ``None``, creates a new 600x600 pixel figure with black background.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     interaction : 'trackball' | 'terrain'
         How interactions with the scene via an input device (e.g., mouse or
@@ -372,8 +372,8 @@ def plot_alignment(
         movement, but you may incidentally perform unintentional rotations along
         some axes.
 
-        .. versionadded:: 0.16
-        .. versionchanged:: 1.0
+        ✨ Added in vesion 0.16
+        🎭 Changed in version 1.0
            Defaults to ``'terrain'``.
 
     sensor_colors : array-like of color | dict | None
@@ -388,16 +388,16 @@ def plot_alignment(
         are the string ``"k"``, a list of ``n_eeg`` color strings, or an NumPy ndarray of
         shape ``(n_eeg, 3)`` or ``(n_eeg, 4)``.
 
-        .. versionchanged:: 1.6
+        🎭 Changed in version 1.6
             Support for passing a ``dict`` was added.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure3D
         The figure.
@@ -406,7 +406,7 @@ def plot_alignment(
     --------
     mne.viz.plot_bem
 
-    Notes
+    ### 📖 Notes
     -----
     This function serves the purpose of checking the validity of the many
     different steps of source reconstruction:
@@ -416,7 +416,7 @@ def plot_alignment(
     - sphere conductor model (keywords ``bem`` and ``surfaces``) and
     - source space (keywords ``surfaces`` and ``src``).
 
-    .. versionadded:: 0.15
+    ✨ Added in vesion 0.15
     """
     ...
 
@@ -427,9 +427,9 @@ def link_brains(
     colorbar: bool = True,
     picking: bool = False,
 ) -> None:
-    """Plot multiple SourceEstimate objects with PyVista.
+    """### Plot multiple SourceEstimate objects with PyVista.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     brains : list, tuple or np.ndarray
         The collection of brains to plot.
@@ -477,9 +477,9 @@ def plot_source_estimates(
     brain_kwargs=None,
     verbose=None,
 ):
-    """Plot SourceEstimate.
+    """### Plot SourceEstimate.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     stc : SourceEstimate
         The source estimates to plot.
@@ -522,7 +522,7 @@ def plot_source_estimates(
         Display time viewer GUI. Can also be 'auto', which will mean True
         for the PyVista backend and False otherwise.
 
-        .. versionchanged:: 0.20.0
+        🎭 Changed in version 0.20.0
            "auto" mode added.
 
     subjects_dir : path-like | None
@@ -547,7 +547,7 @@ def plot_source_estimates(
 
         Using multiple views (list) is not supported by the matplotlib backend.
 
-        .. versionchanged:: 0.21.0
+        🎭 Changed in version 0.21.0
            Support for flatmaps.
     colorbar : bool
         If True, display colorbar on scene.
@@ -565,7 +565,7 @@ def plot_source_estimates(
                 will be mirrored directly across zero during colormap
                 construction to obtain negative control points.
 
-        .. note:: Only one of ``lims`` or ``pos_lims`` should be provided.
+        ### 💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
                   Only sequential colormaps should be used with ``lims``, and
                   only divergent colormaps should be used with ``pos_lims``.
     cortex : str | tuple
@@ -594,7 +594,7 @@ def plot_source_estimates(
         Which backend to use. If ``'auto'`` (default), tries to plot with
         pyvistaqt, but resorts to matplotlib if no 3d backend is available.
 
-        .. versionadded:: 0.15.0
+        ✨ Added in vesion 0.15.0
     spacing : str
         Only affects the matplotlib backend.
         The spacing to use for the source space. Can be ``'ico#'`` for a
@@ -603,11 +603,11 @@ def plot_source_estimates(
         speed up the plotting by selecting a sparser source space.
         Defaults  to 'oct6'.
 
-        .. versionadded:: 0.15.0
+        ✨ Added in vesion 0.15.0
     title : str | None
         Title for the figure. If None, the subject name will be used.
 
-        .. versionadded:: 0.17.0
+        ✨ Added in vesion 0.17.0
 
     show_traces : bool | str | float
         If True, enable interactive picking of a point on the surface of the
@@ -619,7 +619,7 @@ def plot_source_estimates(
         proportion of the total window should be devoted to traces (True is
         equivalent to 0.25, i.e., it will occupy the bottom 1/4 of the figure).
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
 
     src : instance of SourceSpaces | None
         The source space corresponding to the source estimate. Only necessary
@@ -664,16 +664,16 @@ def plot_source_estimates(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     figure : instance of mne.viz.Brain | matplotlib.figure.Figure
         An instance of `mne.viz.Brain` or matplotlib figure.
 
-    Notes
+    ### 📖 Notes
     -----
     Flatmaps are available by default for ``fsaverage`` but not for other
     subjects reconstructed by FreeSurfer. We recommend using
@@ -702,9 +702,9 @@ def plot_volume_source_estimates(
     initial_pos=None,
     verbose=None,
 ):
-    """Plot Nutmeg style volumetric source estimates using nilearn.
+    """### Plot Nutmeg style volumetric source estimates using nilearn.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     stc : VectorSourceEstimate
         The vector source estimate to plot.
@@ -712,7 +712,7 @@ def plot_volume_source_estimates(
         The source space. Can also be a SourceMorph to morph the STC to
         a new subject (see Examples).
 
-        .. versionchanged:: 0.18
+        🎭 Changed in version 0.18
            Support for `nibabel.spatialimages.SpatialImage`.
 
     subject : str | None
@@ -752,7 +752,7 @@ def plot_volume_source_estimates(
                 will be mirrored directly across zero during colormap
                 construction to obtain negative control points.
 
-        .. note:: Only one of ``lims`` or ``pos_lims`` should be provided.
+        ### 💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
                   Only sequential colormaps should be used with ``lims``, and
                   only divergent colormaps should be used with ``pos_lims``.
 
@@ -769,27 +769,27 @@ def plot_volume_source_estimates(
         or the ``initial_pos`` voxel (if ``initial_pos is None`` or not,
         respectively).
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
     initial_pos : ndarray, shape (3,) | None
         The initial position to use (in m). Can be None (default) to use the
         voxel with the maximum absolute value activation across all time points
         or at ``initial_time`` (if ``initial_time is None`` or not,
         respectively).
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         The figure.
 
-    Notes
+    ### 📖 Notes
     -----
     Click on any of the anatomical slices to explore the time series.
     Clicking on any time point will bring up the corresponding anatomical map.
@@ -801,9 +801,9 @@ def plot_volume_source_estimates(
     brain using the FreeSurfer Talairach transformation
     ``$SUBJECTS_DIR/$SUBJECT/mri/transforms/talairach.xfm``.
 
-    .. versionadded:: 0.17
+    ✨ Added in vesion 0.17
 
-    .. versionchanged:: 0.19
+    🎭 Changed in version 0.19
        MRI volumes are automatically transformed to MNI space in
        ``'glass_brain'`` mode.
 
@@ -850,14 +850,14 @@ def plot_vector_source_estimates(
     brain_kwargs=None,
     verbose=None,
 ):
-    """Plot VectorSourceEstimate with PyVista.
+    """### Plot VectorSourceEstimate with PyVista.
 
     A "glass brain" is drawn and all dipoles defined in the source estimate
     are shown using arrows, depicting the direction and magnitude of the
     current moment at the dipole. Additionally, an overlay is plotted on top of
     the cortex with the magnitude of the current.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     stc : VectorSourceEstimate | MixedVectorSourceEstimate
         The vector source estimate to plot.
@@ -901,7 +901,7 @@ def plot_vector_source_estimates(
         Display time viewer GUI. Can be "auto", which is True for the PyVista
         backend and False otherwise.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Added "auto" option and default.
     subjects_dir : str
         The path to the freesurfer subjects reconstructions.
@@ -961,7 +961,7 @@ def plot_vector_source_estimates(
         proportion of the total window should be devoted to traces (True is
         equivalent to 0.25, i.e., it will occupy the bottom 1/4 of the figure).
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
 
     src : instance of SourceSpaces | None
         The source space corresponding to the source estimate. Only necessary
@@ -1006,18 +1006,18 @@ def plot_vector_source_estimates(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     brain : mne.viz.Brain
         A instance of `mne.viz.Brain`.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.15
+    ✨ Added in vesion 0.15
 
     If the current magnitude overlay is not desired, set ``overlay_alpha=0``
     and ``smoothing_steps=1``.
@@ -1043,13 +1043,13 @@ def plot_sparse_source_estimates(
     verbose=None,
     **kwargs,
 ):
-    """Plot source estimates obtained with sparse solver.
+    """### Plot source estimates obtained with sparse solver.
 
     Active dipoles are represented in a "Glass" brain.
     If the same source is active in multiple source estimates it is
     displayed with a sphere otherwise with a cone in 3D.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : dict
         The source space.
@@ -1090,13 +1090,13 @@ def plot_sparse_source_estimates(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     **kwargs : kwargs
         Keyword arguments to pass to renderer.mesh.
 
-    Returns
+    ### ⏎ Returns
     -------
     surface : instance of Figure3D
         The 3D figure containing the triangular mesh surface.
@@ -1126,12 +1126,12 @@ def plot_dipole_locations(
     width=None,
     verbose=None,
 ):
-    """Plot dipole locations.
+    """### Plot dipole locations.
 
     If mode is set to 'arrow' or 'sphere', only the location of the first
     time point of each dipole is shown else use the show_all parameter.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     dipoles : list of instances of Dipole | Dipole
         The dipoles to plot.
@@ -1161,14 +1161,14 @@ def plot_dipole_locations(
             dipoles in three axes (axial, coronal, and sagittal views),
             with the arrow pivoting in the middle of the arrow.
 
-        .. versionchanged:: 1.1
+        🎭 Changed in version 1.1
            Added support for ``'outlines'``.
     coord_frame : str
         Coordinate frame to use: 'head' or 'mri'. Can also be 'mri_rotated'
         when mode equals ``'outlines'``. Defaults to 'mri'.
 
-        .. versionadded:: 0.14.0
-        .. versionchanged:: 1.1
+        ✨ Added in vesion 0.14.0
+        🎭 Changed in version 1.1
            Added support for ``'mri_rotated'``.
     idx : int | 'gof' | 'amplitude'
         Index of the initially plotted dipole. Can also be 'gof' to plot the
@@ -1177,7 +1177,7 @@ def plot_dipole_locations(
         through using up/down arrow keys or mouse scroll. Defaults to 'gof'.
         Only used if mode equals 'orthoview'.
 
-        .. versionadded:: 0.14.0
+        ✨ Added in vesion 0.14.0
     show_all : bool
         Whether to always plot all the dipoles. If ``True`` (default), the
         active dipole is plotted as a red dot and its location determines the
@@ -1185,19 +1185,19 @@ def plot_dipole_locations(
         dots. If ``False``, only the active dipole is plotted.
         Only used if ``mode='orthoview'``.
 
-        .. versionadded:: 0.14.0
+        ✨ Added in vesion 0.14.0
     ax : instance of matplotlib Axes3D | list of matplotlib Axes | None
         Axes to plot into. If None (default), axes will be created.
         If mode equals ``'orthoview'``, must be a single ``Axes3D``.
         If mode equals ``'outlines'``, must be a list of three ``Axes``.
 
-        .. versionadded:: 0.14.0
+        ✨ Added in vesion 0.14.0
     block : bool
         Whether to halt program execution until the figure is closed. Defaults
         to False.
         Only used if mode equals 'orthoview'.
 
-        .. versionadded:: 0.14.0
+        ✨ Added in vesion 0.14.0
     show : bool
         Show figure if True. Defaults to True.
         Only used if mode equals 'orthoview'.
@@ -1211,37 +1211,37 @@ def plot_dipole_locations(
         ``show_all`` is True, else 'r'. Can also be a list of colors to use
         when mode is ``'outlines'``.
 
-        .. versionchanged:: 0.19.0
+        🎭 Changed in version 0.19.0
            Color is now passed in orthoview mode.
     highlight_color : color
         The highlight color. Only used in orthoview mode with
         ``show_all=True``.
 
-        .. versionadded:: 0.19.0
+        ✨ Added in vesion 0.19.0
     fig : instance of Figure3D | None
         3D figure in which to plot the alignment.
         If ``None``, creates a new 600x600 pixel figure with black background.
         Only used when mode is ``'arrow'`` or ``'sphere'``.
 
-        .. versionadded:: 0.19.0
+        ✨ Added in vesion 0.19.0
     title : str | None
         The title of the figure if ``mode='orthoview'`` (ignored for all other
         modes). If ``None``, dipole number and its properties (amplitude,
         orientation etc.) will be shown. Defaults to ``None``.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     head_source : str | list of str
         Head source(s) to use. See the ``source`` option of
         `mne.get_head_surf` for more information.
         Only used when mode equals ``'outlines'``.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
     surf : str | None
         Brain surface to show outlines for, can be ``'white'``, ``'pial'``, or
         ``None``. Only used when mode is ``'outlines'``.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
     width : float | None
         Width of the matplotlib quiver arrow, see
         `matplotlib:matplotlib.axes.Axes.quiver`. If None (default),
@@ -1250,30 +1250,30 @@ def plot_dipole_locations(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure3D or matplotlib.figure.Figure
         The PyVista figure or matplotlib Figure.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...
 
 def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
-    """Take a snapshot of a PyVista Scene and project channels onto 2d coords.
+    """### Take a snapshot of a PyVista Scene and project channels onto 2d coords.
 
     Note that this will take the raw values for 3d coordinates of each channel,
     without applying any transforms. If brain images are flipped up/dn upon
     using `matplotlib.pyplot.imshow`, check your matplotlib backend as this
     behavior changes.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fig : instance of Figure3D
         The figure on which you've plotted electrodes using
@@ -1287,7 +1287,7 @@ def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
         The sensors will always be shown in the final figure. If you want an
         image of just the brain, use `mne.viz.Brain` instead.
 
-    Returns
+    ### ⏎ Returns
     -------
     xy : array, shape (n_channels, 2)
         The 2d location of each channel on the image of the current scene view.
@@ -1308,9 +1308,9 @@ def plot_brain_colorbar(
     label: str = "Activation",
     bgcolor: str = "0.5",
 ):
-    """Plot a colorbar that corresponds to a brain activation map.
+    """### Plot a colorbar that corresponds to a brain activation map.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ax : instance of Axes
         The Axes to plot into.
@@ -1328,7 +1328,7 @@ def plot_brain_colorbar(
                 will be mirrored directly across zero during colormap
                 construction to obtain negative control points.
 
-        .. note:: Only one of ``lims`` or ``pos_lims`` should be provided.
+        ### 💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
                   Only sequential colormaps should be used with ``lims``, and
                   only divergent colormaps should be used with ``pos_lims``.
 
@@ -1349,14 +1349,14 @@ def plot_brain_colorbar(
     bgcolor : color
         The color behind the colorbar (for alpha blending).
 
-    Returns
+    ### ⏎ Returns
     -------
     cbar : instance of ColorbarBase
         The colorbar.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.19
+    ✨ Added in vesion 0.19
     """
     ...
 
@@ -1374,9 +1374,9 @@ class _3d_Options:
 def set_3d_options(
     antialias=None, depth_peeling=None, smooth_shading=None, *, multi_samples=None
 ) -> None:
-    """Set 3D rendering options.
+    """### Set 3D rendering options.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     antialias : bool | None
         If bool, whether to enable or disable full-screen anti-aliasing.
@@ -1400,10 +1400,10 @@ def set_3d_options(
         Number of multi-samples. Should be 1 for MESA for volumetric rendering
         to work properly.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.21.0
+    ✨ Added in vesion 0.21.0
     """
     ...

@@ -25,9 +25,9 @@ def make_field_map(
     head_source=("bem", "head"),
     verbose=None,
 ):
-    """Compute surface maps used for field display in 3D.
+    """### Compute surface maps used for field display in 3D.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : Evoked | Epochs | Raw
         The measurement file. Need to have info attribute.
@@ -39,7 +39,7 @@ def make_field_map(
         If trans is None, an identity matrix is assumed. ``"auto"`` (default) will load trans from the FreeSurfer
         directory specified by ``subject`` and ``subjects_dir`` parameters.
 
-        .. versionchanged:: 0.19
+        🎭 Changed in version 0.19
             Support for ``'fsaverage'`` argument.
     subject : str | None
         The subject name corresponding to FreeSurfer environment
@@ -62,7 +62,7 @@ def make_field_map(
         Can be ``'auto'``, which means a head-digitization-based origin
         fit. Default is ``(0., 0., 0.04)``.
 
-        .. versionadded:: 0.11
+        ✨ Added in vesion 0.11
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
@@ -75,15 +75,15 @@ def make_field_map(
         Head source(s) to use. See the ``source`` option of
         `mne.get_head_surf` for more information.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     surf_maps : list
         The surface maps to be used for field plots. The list contains

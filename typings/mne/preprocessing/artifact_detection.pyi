@@ -20,7 +20,7 @@ def annotate_muscle_zscore(
     n_jobs=None,
     verbose=None,
 ):
-    """Create annotations for segments that likely contain muscle artifacts.
+    """### Create annotations for segments that likely contain muscle artifacts.
 
     Detects data segments containing activity in the frequency range given by
     ``filter_freq`` whose envelope magnitude exceeds the specified z-score
@@ -32,7 +32,7 @@ def annotate_muscle_zscore(
     See :footcite:`Muthukumaraswamy2013` for background on choosing
     ``filter_freq`` and ``threshold``.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Data to estimate segments with muscle artifacts.
@@ -60,11 +60,11 @@ def annotate_muscle_zscore(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     annot : mne.Annotations
         Periods with muscle artifacts annotated as BAD_muscle.
@@ -85,13 +85,13 @@ def annotate_movement(
     mean_distance_limit=None,
     use_dev_head_trans: str = "average",
 ):
-    """Detect segments with movement.
+    """### Detect segments with movement.
 
     Detects segments periods further from rotation_velocity_limit,
     translation_velocity_limit and mean_distance_limit. It returns an
     annotation with the bad segments.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Data to compute head position.
@@ -111,7 +111,7 @@ def annotate_movement(
         computed using ``compute_average_dev_head_t``.
         If ``info``, ``raw.info['dev_head_t']`` is used.
 
-    Returns
+    ### ⏎ Returns
     -------
     annot : mne.Annotations
         Periods with head motion.
@@ -125,19 +125,19 @@ def annotate_movement(
     ...
 
 def compute_average_dev_head_t(raw, pos):
-    """Get new device to head transform based on good segments.
+    """### Get new device to head transform based on good segments.
 
     Segments starting with "BAD" annotations are not included for calculating
     the mean head position.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Data to compute head position.
     pos : array, shape (N, 10)
         The position and quaternion parameters from cHPI fitting.
 
-    Returns
+    ### ⏎ Returns
     -------
     dev_head_t : instance of Transform
         New ``dev_head_t`` transformation using the averaged good head positions.
@@ -154,14 +154,14 @@ def annotate_break(
     *,
     verbose=None,
 ):
-    """Create `mne.Annotations` for breaks in an ongoing recording.
+    """### Create `mne.Annotations` for breaks in an ongoing recording.
 
     This function first searches for segments in the data that are not
     annotated or do not contain any events and are at least
     ``min_break_duration`` seconds long, and then proceeds to creating
     annotations for those break periods.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The continuous data to analyze.
@@ -175,7 +175,7 @@ def annotate_break(
         between two consecutive events (if ``events`` is an array) to consider
         this period a "break". Defaults to 15 seconds.
 
-        .. note:: This value defines the minimum duration of a break period in
+        ### 💡 Note This value defines the minimum duration of a break period in
                   the data, **not** the minimum duration of the generated
                   annotations! See also ``t_start_after_previous`` and
                   ``t_stop_before_next`` for details.
@@ -191,7 +191,7 @@ def annotate_break(
         seconds before the second stimulus, yielding an annotated break of
         ``30 - 5 - 3 = 22`` seconds. Both default to 5 seconds.
 
-        .. note:: The beginning and the end of the recording will be annotated
+        ### 💡 Note The beginning and the end of the recording will be annotated
                   as breaks, too, if the period from recording start until the
                   first annotation or event (or from last annotation or event
                   until recording end) is at least ``min_break_duration``
@@ -208,19 +208,19 @@ def annotate_break(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     break_annotations : instance of Annotations
         The break annotations, each with the description ``'BAD_break'``. If
         no breaks could be found given the provided function parameters, an
         empty `mne.Annotations` object will be returned.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
     """
     ...

@@ -31,14 +31,14 @@ def compute_source_morph(
     precompute: bool = False,
     verbose=None,
 ):
-    """Create a SourceMorph from one subject to another.
+    """### Create a SourceMorph from one subject to another.
 
     Method is based on spherical morphing by FreeSurfer for surface
     cortical estimates :footcite:`GreveEtAl2013` and
     Symmetric Diffeomorphic Registration for volumic data
     :footcite:`AvantsEtAl2008`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces | instance of SourceEstimate
         The SourceSpaces of subject_from (can be a
@@ -51,7 +51,7 @@ def compute_source_morph(
         Default is ``'fsaverage'``. If None, ``src_to[0]['subject_his_id']``
         will be used.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Support for subject_to=None.
 
     subjects_dir : path-like | None
@@ -65,7 +65,7 @@ def compute_source_morph(
         Can also be ``'auto'`` to use ``5.`` if ``src_to is None`` and
         the zooms from ``src_to`` otherwise.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Support for 'auto' mode.
     niter_affine : tuple of int
         Number of levels (``len(niter_affine)``) and number of
@@ -84,7 +84,7 @@ def compute_source_morph(
         vertices specified in in ``spacing[0]`` and ``spacing[1]``.
         This will be ignored if ``src_to`` is supplied.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
            src_to, if provided, takes precedence.
     smooth : int | str | None
         Number of iterations for the smoothing of the surface data.
@@ -92,7 +92,7 @@ def compute_source_morph(
         with non-zero values. Can also be ``'nearest'`` to use the nearest
         vertices on the surface.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Added support for 'nearest'.
     warn : bool
         If True, warn if not all vertices were used. The default is warn=True.
@@ -115,7 +115,7 @@ def compute_source_morph(
           subject/source space have the vertices.
         - For mixed (surface + volume) morphing, this is required.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
     precompute : bool
         If True (default False), compute the sparse matrix representation of
         the volumetric morph (if present). This takes a long time to
@@ -123,20 +123,20 @@ def compute_source_morph(
         See `mne.SourceMorph.compute_vol_morph_mat` (which can be called
         later if desired) for more information.
 
-        .. versionadded:: 0.22
+        ✨ Added in vesion 0.22
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     morph : instance of SourceMorph
         The `mne.SourceMorph` object.
 
-    Notes
+    ### 📖 Notes
     -----
     This function can be used to morph surface data between hemispheres by
     setting ``xhemi=True``. The full cross-hemisphere morph matrix maps left
@@ -156,9 +156,9 @@ def compute_source_morph(
     comparisons between hemispheres, use of the symmetric ``fsaverage_sym``
     model is recommended to minimize bias :footcite:`GreveEtAl2013`.
 
-    .. versionadded:: 0.17.0
+    ✨ Added in vesion 0.17.0
 
-    .. versionadded:: 0.21.0
+    ✨ Added in vesion 0.21.0
        Support for morphing mixed source estimates.
 
     References
@@ -168,14 +168,14 @@ def compute_source_morph(
     ...
 
 class SourceMorph:
-    """Morph source space data from one subject to another.
+    """### Morph source space data from one subject to another.
 
-    .. note::
+    ### 💡 Note
         This class should not be instantiated directly via
         ``mne.SourceMorph(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject_from : str | None
         Name of the subject from which to morph as named in the SUBJECTS_DIR.
@@ -225,7 +225,7 @@ class SourceMorph:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -234,9 +234,9 @@ class SourceMorph:
     compute_source_morph
     read_source_morph
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.17
+    ✨ Added in vesion 0.17
 
     References
     ----------
@@ -291,9 +291,9 @@ class SourceMorph:
         mri_space=None,
         verbose=None,
     ):
-        """Morph source space data.
+        """### Morph source space data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         stc_from : VolSourceEstimate | VolVectorSourceEstimate | SourceEstimate | VectorSourceEstimate
             The source estimate to morph.
@@ -312,34 +312,34 @@ class SourceMorph:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc_to : VolSourceEstimate | SourceEstimate | VectorSourceEstimate | Nifti1Image | Nifti2Image
             The morphed source estimates.
         """
         ...
     def compute_vol_morph_mat(self, *, verbose=None):
-        """Compute the sparse matrix representation of the volumetric morph.
+        """### Compute the sparse matrix representation of the volumetric morph.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         morph : instance of SourceMorph
             The instance (modified in-place).
 
-        Notes
+        ### 📖 Notes
         -----
         For a volumetric morph, this will compute the morph for an identity
         source volume, i.e., with one source vertex active at a time, and store
@@ -354,13 +354,13 @@ class SourceMorph:
         nothing if the morph matrix has already been computed, or if there is
         no volume morphing necessary.
 
-        .. versionadded:: 0.22
+        ✨ Added in vesion 0.22
         """
         ...
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
-        """Save the morph for source estimates to a file.
+        """### Save the morph for source estimates to a file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The path to the file. ``'-morph.h5'`` will be added if fname does
@@ -372,21 +372,21 @@ class SourceMorph:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
 
 def read_source_morph(fname):
-    """Load the morph for source estimates from a file.
+    """### Load the morph for source estimates from a file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the file containing the morph source estimates.
 
-    Returns
+    ### ⏎ Returns
     -------
     source_morph : instance of SourceMorph
         The loaded morph.
@@ -394,9 +394,9 @@ def read_source_morph(fname):
     ...
 
 def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=None):
-    """Convert a grade to source space vertices for a given subject.
+    """### Convert a grade to source space vertices for a given subject.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject : str
         Name of the subject.
@@ -425,11 +425,11 @@ def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=No
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     vertices : list of array of int
         Vertex numbers for LH and RH.

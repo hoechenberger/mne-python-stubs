@@ -2,22 +2,22 @@ from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 from .constants import FIFF as FIFF
 
 def get_channel_type_constants(include_defaults: bool = False):
-    """Return all known channel types, and associated FIFF constants.
+    """### Return all known channel types, and associated FIFF constants.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     include_defaults : bool
         Whether to include default values for "unit" and "coil_type" for all
         entries (see Notes). Defaults are generally based on values normally
         present for a VectorView MEG system. Defaults to ``False``.
 
-    Returns
+    ### ⏎ Returns
     -------
     channel_types : dict
         The keys are channel type strings, and the values are dictionaries of
         FIFF constants for "kind", and possibly "unit" and "coil_type".
 
-    Notes
+    ### 📖 Notes
     -----
     Values which might vary within a channel type across real data
     recordings are excluded unless ``include_defaults=True``. For example,
@@ -29,9 +29,9 @@ def get_channel_type_constants(include_defaults: bool = False):
     ...
 
 def channel_type(info, idx):
-    """Get channel type.
+    """### Get channel type.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -39,7 +39,7 @@ def channel_type(info, idx):
     idx : int
         Index of channel.
 
-    Returns
+    ### ⏎ Returns
     -------
     type : str
         Type of channel. Will be one of::
@@ -52,18 +52,18 @@ def channel_type(info, idx):
     ...
 
 def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
-    """Pick channels by names.
+    """### Pick channels by names.
 
     Returns the indices of ``ch_names`` in ``include`` but not in ``exclude``.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ch_names : list of str
         List of channels.
     include : list of str
         List of channels to include (if empty include all available).
 
-        .. note:: This is to be treated as a set. The order of this list
+        ### 💡 Note This is to be treated as a set. The order of this list
            is not used or maintained in ``sel``.
 
     exclude : list of str
@@ -74,17 +74,17 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        .. versionadded:: 0.20.0
-        .. versionchanged:: 1.5
+        ✨ Added in vesion 0.20.0
+        🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     sel : array of int
         Indices of good channels.
@@ -96,11 +96,11 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     ...
 
 def pick_channels_regexp(ch_names, regexp):
-    """Pick channels using regular expression.
+    """### Pick channels using regular expression.
 
     Returns the indices of the good channels in ch_names.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ch_names : list of str
         List of channels.
@@ -109,7 +109,7 @@ def pick_channels_regexp(ch_names, regexp):
         The regular expression. See python standard module for regular
         expressions.
 
-    Returns
+    ### ⏎ Returns
     -------
     sel : array of int
         Indices of good channels.
@@ -158,9 +158,9 @@ def pick_types(
     exclude: str = "bads",
     selection=None,
 ):
-    """Pick channels by type and names.
+    """### Pick channels by type and names.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -234,7 +234,7 @@ def pick_types(
     selection : list of str
         Restrict sensor channels (MEG, EEG, etc.) to this list of channel names.
 
-    Returns
+    ### ⏎ Returns
     -------
     sel : array of int
         Indices of good channels.
@@ -242,9 +242,9 @@ def pick_types(
     ...
 
 def pick_info(info, sel=(), copy: bool = True, verbose=None):
-    """Restrict an info structure to a selection of channels.
+    """### Restrict an info structure to a selection of channels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -257,11 +257,11 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     res : dict
         Info structure restricted to a selection of channels.
@@ -271,9 +271,9 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
 def pick_channels_forward(
     orig, include=[], exclude=[], ordered=None, copy: bool = True, *, verbose=None
 ):
-    """Pick channels from forward operator.
+    """### Pick channels from forward operator.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     orig : dict
         A forward solution.
@@ -288,21 +288,21 @@ def pick_channels_forward(
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        .. versionadded:: 0.20.0
-        .. versionchanged:: 1.5
+        ✨ Added in vesion 0.20.0
+        🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
     copy : bool
         If True (default), make a copy.
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     res : dict
         Forward solution restricted to selected channels. If include and
@@ -321,9 +321,9 @@ def pick_types_forward(
     include=[],
     exclude=[],
 ):
-    """Pick by channel type and names from a forward operator.
+    """### Pick by channel type and names from a forward operator.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     orig : dict
         A forward solution.
@@ -347,7 +347,7 @@ def pick_types_forward(
         List of channels to exclude. If empty do not exclude any (default).
         If 'bads', exclude channels in orig['info']['bads'].
 
-    Returns
+    ### ⏎ Returns
     -------
     res : dict
         Forward solution restricted to selected channel types.
@@ -355,9 +355,9 @@ def pick_types_forward(
     ...
 
 def channel_indices_by_type(info, picks=None):
-    """Get indices of channels by type.
+    """### Get indices of channels by type.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -372,7 +372,7 @@ def channel_indices_by_type(info, picks=None):
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
-    Returns
+    ### ⏎ Returns
     -------
     idx_by_type : dict
         A dictionary that maps each channel type to a (possibly empty) list of
@@ -389,9 +389,9 @@ def pick_channels_cov(
     *,
     verbose=None,
 ):
-    """Pick channels from covariance matrix.
+    """### Pick channels from covariance matrix.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     orig : Covariance
         A covariance.
@@ -404,22 +404,22 @@ def pick_channels_cov(
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        .. versionadded:: 0.20.0
-        .. versionchanged:: 1.5
+        ✨ Added in vesion 0.20.0
+        🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
     copy : bool
         If True (the default), return a copy of the covariance matrix with the
         modified channels. If False, channels are modified in-place.
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     res : dict
         Covariance solution restricted to selected channels.

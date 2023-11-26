@@ -40,7 +40,7 @@ def compute_proj_ecg(
     meg: str = "separate",
     verbose=None,
 ):
-    """Compute SSP (signal-space projection) vectors for ECG artifacts.
+    """### Compute SSP (signal-space projection) vectors for ECG artifacts.
 
     This function will:
 
@@ -57,9 +57,9 @@ def compute_proj_ecg(
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.
 
-    .. note:: Raw data will be loaded if it hasn't been preloaded already.
+    ### 💡 Note Raw data will be loaded if it hasn't been preloaded already.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : mne.io.Raw
         Raw input file.
@@ -125,22 +125,22 @@ def compute_proj_ecg(
     return_drop_log : bool
         If True, return the drop log.
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
     meg : str
         Can be ``'separate'`` (default) or ``'combined'`` to compute projectors
         for magnetometers and gradiometers separately or jointly.
         If ``'combined'``, ``n_mag == n_grad`` is required and the number of
         projectors computed for MEG will be ``n_mag``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     projs : list of Projection
@@ -155,7 +155,7 @@ def compute_proj_ecg(
     find_ecg_events
     create_ecg_epochs
 
-    Notes
+    ### 📖 Notes
     -----
     Filtering is applied to the ECG channel while finding events using
     ``ecg_l_freq`` and ``ecg_h_freq``, and then to the ``raw`` instance
@@ -194,7 +194,7 @@ def compute_proj_eog(
     meg: str = "separate",
     verbose=None,
 ):
-    """Compute SSP (signal-space projection) vectors for EOG artifacts.
+    """### Compute SSP (signal-space projection) vectors for EOG artifacts.
 
     This function will:
 
@@ -212,9 +212,9 @@ def compute_proj_eog(
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.
 
-    .. note:: Raw data must be preloaded.
+    ### 💡 Note Raw data must be preloaded.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : mne.io.Raw
         Raw input file.
@@ -276,22 +276,22 @@ def compute_proj_eog(
     return_drop_log : bool
         If True, return the drop log.
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
     meg : str
         Can be 'separate' (default) or 'combined' to compute projectors
         for magnetometers and gradiometers separately or jointly.
         If 'combined', ``n_mag == n_grad`` is required and the number of
         projectors computed for MEG will be ``n_mag``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     projs : list of Projection
@@ -306,7 +306,7 @@ def compute_proj_eog(
     find_eog_events
     create_eog_epochs
 
-    Notes
+    ### 📖 Notes
     -----
     Filtering is applied to the EOG channel while finding events using
     ``eog_l_freq`` and ``eog_h_freq``, and then to the ``raw`` instance

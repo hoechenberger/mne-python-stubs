@@ -4,9 +4,9 @@ from _typeshed import Incomplete
 PHANTOM_MANIFEST_PATH: Incomplete
 
 def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
-    """Fetch and update a phantom subject.
+    """### Fetch and update a phantom subject.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     kind : str
         The kind of phantom to fetch. Can only be ``'otaniemi'`` (default).
@@ -18,11 +18,11 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     subject_dir : str
         The resulting phantom subject directory.
@@ -31,7 +31,7 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
     --------
     mne.dipole.get_phantom_dipoles
 
-    Notes
+    ### 📖 Notes
     -----
     This function is designed to provide a head surface and T1.mgz for
     the 32-dipole Otaniemi phantom. The VectorView/TRIUX phantom has the same
@@ -41,6 +41,6 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
     to the "head" coordinate frame, so an identity head<->MRI :term:`trans`
     is appropriate.
 
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
     """
     ...

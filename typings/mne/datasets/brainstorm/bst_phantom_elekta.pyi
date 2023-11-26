@@ -7,9 +7,9 @@ def data_path(
     *,
     verbose=None,
 ):
-    """Get path to local copy of brainstorm (bst_phantom_elekta) dataset.
+    """### Get path to local copy of brainstorm (bst_phantom_elekta) dataset.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     path : None | str
         Location of where to look for the brainstorm (bst_phantom_elekta) dataset.
@@ -34,20 +34,20 @@ def data_path(
         If True (default False), accept the license terms of this dataset.
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : instance of Path
         Path to brainstorm (bst_phantom_elekta) dataset directory."""
     ...
 
 def get_version():
-    """Get version of the local brainstorm dataset.
+    """### Get version of the local brainstorm dataset.
 
-    Returns
+    ### ⏎ Returns
     -------
     version : str | None
         Version of the brainstorm local dataset, or None if the dataset
@@ -55,5 +55,5 @@ def get_version():
     ...
 
 def description() -> None:
-    """Get description of brainstorm (bst_phantom_elekta) dataset."""
+    """### Get description of brainstorm (bst_phantom_elekta) dataset."""
     ...

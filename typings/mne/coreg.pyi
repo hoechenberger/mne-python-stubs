@@ -61,9 +61,9 @@ fid_fname_general: Incomplete
 src_fname: Incomplete
 
 def coregister_fiducials(info, fiducials, tol: float = 0.01):
-    """Create a head-MRI transform by aligning 3 fiducial points.
+    """### Create a head-MRI transform by aligning 3 fiducial points.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -72,12 +72,12 @@ def coregister_fiducials(info, fiducials, tol: float = 0.01):
         Fiducials in MRI coordinate space (either path to a ``*-fiducials.fif``
         file or list of fiducials as returned by `read_fiducials`.
 
-    Returns
+    ### ⏎ Returns
     -------
     trans : Transform
         The device-MRI transform.
 
-    .. note:: The `mne.Info` object fiducials must be in the
+    ### 💡 Note The `mne.Info` object fiducials must be in the
               head coordinate space.
     """
     ...
@@ -85,12 +85,12 @@ def coregister_fiducials(info, fiducials, tol: float = 0.01):
 def create_default_subject(
     fs_home=None, update: bool = False, subjects_dir=None, verbose=None
 ) -> None:
-    """Create an average brain subject for subjects without structural MRI.
+    """### Create an average brain subject for subjects without structural MRI.
 
     Create a copy of fsaverage from the Freesurfer directory in subjects_dir
     and add auxiliary files from the mne package.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fs_home : None | str
         The freesurfer home directory (only needed if ``FREESURFER_HOME`` is
@@ -105,11 +105,11 @@ def create_default_subject(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
     When no structural MRI is available for a subject, an average brain can be
     substituted. Freesurfer comes with such an average brain model, and MNE
@@ -131,14 +131,14 @@ def fit_matched_points(
     out: str = "trans",
     weights=None,
 ):
-    """Find a transform between matched sets of points.
+    """### Find a transform between matched sets of points.
 
     This minimizes the squared distance between two matching sets of points.
 
     Uses `scipy.optimize.leastsq` to find a transformation involving
     a combination of rotation, translation, and scaling (in that order).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src_pts : array, shape = (n, 3)
         Points to which the transform should be applied.
@@ -163,7 +163,7 @@ def fit_matched_points(
         the fit parameters; 'trans' returns a transformation matrix of shape
         (4, 4).
 
-    Returns
+    ### ⏎ Returns
     -------
     trans : array, shape (4, 4)
         Transformation that, if applied to src_pts, minimizes the squared
@@ -175,16 +175,16 @@ def fit_matched_points(
     ...
 
 def read_mri_cfg(subject, subjects_dir=None):
-    """Read information from the cfg file of a scaled MRI brain.
+    """### Read information from the cfg file of a scaled MRI brain.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject : str
         Name of the scaled MRI subject.
     subjects_dir : None | path-like
         Override the ``SUBJECTS_DIR`` environment variable.
 
-    Returns
+    ### ⏎ Returns
     -------
     cfg : dict
         Dictionary with entries from the MRI's cfg file.
@@ -201,9 +201,9 @@ def scale_bem(
     on_defects: str = "raise",
     verbose=None,
 ) -> None:
-    """Scale a bem file.
+    """### Scale a bem file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject_to : str
         Name of the scaled MRI subject (the destination mri subject).
@@ -229,11 +229,11 @@ def scale_bem(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
@@ -247,9 +247,9 @@ def scale_labels(
     scale=None,
     subjects_dir=None,
 ) -> None:
-    """Scale labels to match a brain that was previously created by scaling.
+    """### Scale labels to match a brain that was previously created by scaling.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject_to : str
         Name of the scaled MRI subject (the destination brain).
@@ -285,9 +285,9 @@ def scale_mri(
     on_defects: str = "raise",
     verbose=None,
 ) -> None:
-    """Create a scaled copy of an MRI subject.
+    """### Create a scaled copy of an MRI subject.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject_from : str
         Name of the subject providing the MRI.
@@ -316,11 +316,11 @@ def scale_mri(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -330,7 +330,7 @@ def scale_mri(
     scale_labels : Add labels to a scaled MRI.
     scale_source_space : Add a source space to a scaled MRI.
 
-    Notes
+    ### 📖 Notes
     -----
     This function will automatically call `scale_bem`,
     `scale_labels`, and `scale_source_space` based on expected
@@ -347,9 +347,9 @@ def scale_source_space(
     n_jobs=None,
     verbose=None,
 ) -> None:
-    """Scale a source space for an mri created with scale_mri().
+    """### Scale a source space for an mri created with scale_mri().
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject_to : str
         Name of the scaled MRI subject (the destination mri subject).
@@ -374,11 +374,11 @@ def scale_source_space(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
     When scaling volume source spaces, the source (vertex) locations are
     scaled, but the reference to the MRI volume is left unchanged. Transforms
@@ -388,9 +388,9 @@ def scale_source_space(
     ...
 
 class Coregistration:
-    """Class for MRI<->head coregistration.
+    """### Class for MRI<->head coregistration.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     info : instance of Info | None
         The measurement info.
@@ -425,9 +425,9 @@ class Coregistration:
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
-    Attributes
+    ### 📊 Attributes
     ----------
     fiducials : instance of DigMontage
         A montage containing the MRI fiducials.
@@ -438,7 +438,7 @@ class Coregistration:
     --------
     mne.scale_mri
 
-    Notes
+    ### 📖 Notes
     -----
     Internal computation quantities parameters are in the following units:
 
@@ -460,9 +460,9 @@ class Coregistration:
         on_defects: str = "raise",
     ) -> None: ...
     def set_scale_mode(self, scale_mode):
-        """Select how to fit the scale parameters.
+        """### Select how to fit the scale parameters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         scale_mode : None | str
             The scale mode can be 'uniform', '3-axis' or disabled.
@@ -472,63 +472,63 @@ class Coregistration:
             * '3-axis': 3 scale factors are recovered.
             * None: do not scale the MRI.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
         """
         ...
     def set_grow_hair(self, value):
-        """Compensate for hair on the digitizer head shape.
+        """### Compensate for hair on the digitizer head shape.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         value : float
             Move the back of the MRI head outwards by ``value`` (mm).
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
         """
         ...
     def set_rotation(self, rot):
-        """Set the rotation parameter.
+        """### Set the rotation parameter.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         rot : array, shape (3,)
             The rotation parameter (in radians).
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
         """
         ...
     def set_translation(self, tra):
-        """Set the translation parameter.
+        """### Set the translation parameter.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tra : array, shape (3,)
             The translation parameter (in m.).
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
         """
         ...
     def set_scale(self, sca):
-        """Set the scale parameter.
+        """### Set the scale parameter.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         sca : array, shape (3,)
             The scale parameter.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
@@ -536,9 +536,9 @@ class Coregistration:
         ...
     @property
     def scale(self):
-        """Get the current scale factor.
+        """### Get the current scale factor.
 
-        Returns
+        ### ⏎ Returns
         -------
         scale : ndarray, shape (3,)
             The scale factors.
@@ -551,9 +551,9 @@ class Coregistration:
         rpa_weight: float = 1.0,
         verbose=None,
     ):
-        """Find rotation and translation to fit all 3 fiducials.
+        """### Find rotation and translation to fit all 3 fiducials.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         lpa_weight : float
             Relative weight for LPA. The default value is 1.
@@ -564,27 +564,27 @@ class Coregistration:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
         """
         ...
     def set_fid_match(self, match):
-        """Set the strategy for fitting anatomical landmark (fiducial) points.
+        """### Set the strategy for fitting anatomical landmark (fiducial) points.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         match : 'nearest' | 'matched'
             Alignment strategy; ``'nearest'`` aligns anatomical landmarks to
             any point on the head surface; ``'matched'`` aligns to the fiducial
             points in the MRI.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
@@ -602,9 +602,9 @@ class Coregistration:
         callback=None,
         verbose=None,
     ):
-        """Find MRI scaling, translation, and rotation to match HSP.
+        """### Find MRI scaling, translation, and rotation to match HSP.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         n_iterations : int
             Maximum number of iterations.
@@ -627,35 +627,35 @@ class Coregistration:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
         """
         ...
     def omit_head_shape_points(self, distance):
-        """Exclude head shape points that are far away from the MRI head.
+        """### Exclude head shape points that are far away from the MRI head.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         distance : float
             Exclude all points that are further away from the MRI head than
             this distance (in m.). A value of distance <= 0 excludes nothing.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.
         """
         ...
     def compute_dig_mri_distances(self):
-        """Compute distance between head shape points and MRI skin surface.
+        """### Compute distance between head shape points and MRI skin surface.
 
-        Returns
+        ### ⏎ Returns
         -------
         dist : array, shape (n_points,)
             The distance of the head shape points to the MRI skin surface.
@@ -667,12 +667,12 @@ class Coregistration:
         ...
     @property
     def trans(self):
-        """The head->mri `mne.transforms.Transform`."""
+        """### The head->mri `mne.transforms.Transform`."""
         ...
     def reset(self):
-        """Reset all the parameters affecting the coregistration.
+        """### Reset all the parameters affecting the coregistration.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : Coregistration
             The modified Coregistration object.

@@ -11,9 +11,9 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_fil(
     binfile, precision: str = "single", preload: bool = False, *, verbose=None
 ):
-    """Raw object from FIL-OPMEG formatted data.
+    """### Raw object from FIL-OPMEG formatted data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     binfile : path-like
         Path to the MEG data binary (ending in ``'_meg.bin'``).
@@ -30,11 +30,11 @@ def read_raw_fil(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawFIL
         The raw data.
@@ -47,9 +47,9 @@ def read_raw_fil(
     ...
 
 class RawFIL(BaseRaw):
-    """Raw object from FIL-OPMEG formatted data.
+    """### Raw object from FIL-OPMEG formatted data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     binfile : path-like
         Path to the MEG data binary (ending in ``'_meg.bin'``).
@@ -64,7 +64,7 @@ class RawFIL(BaseRaw):
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawFIL
         The raw data.

@@ -17,11 +17,11 @@ def parallel_func(
     max_jobs=None,
     verbose=None,
 ):
-    """Return parallel instance with delayed function.
+    """### Return parallel instance with delayed function.
 
     Util function to use joblib only if available
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     func : callable
         A function.
@@ -49,7 +49,7 @@ def parallel_func(
         If str, can be ``"processes"`` or ``"threads"``.
         See `joblib.Parallel`.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
     max_jobs : int | None
         The upper limit of jobs to use. This is useful when you know ahead
         of a the maximum number of calls into `joblib.Parallel` that
@@ -58,12 +58,12 @@ def parallel_func(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument. INFO or DEBUG
         will print parallel status, others will not.
 
-    Returns
+    ### ⏎ Returns
     -------
     parallel: instance of joblib.Parallel or list
         The parallel object.

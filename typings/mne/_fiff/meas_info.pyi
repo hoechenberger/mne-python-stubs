@@ -40,12 +40,12 @@ from _typeshed import Incomplete
 b = bytes
 
 class MontageMixin:
-    """Mixin for Montage getting and setting."""
+    """### Mixin for Montage getting and setting."""
 
     def get_montage(self):
-        """Get a DigMontage from instance.
+        """### Get a DigMontage from instance.
 
-        Returns
+        ### ⏎ Returns
         -------
 
         montage : None | str | DigMontage
@@ -67,9 +67,9 @@ class MontageMixin:
         on_missing: str = "raise",
         verbose=None,
     ):
-        """Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
+        """### Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         montage : None | str | DigMontage
@@ -85,7 +85,7 @@ class MontageMixin:
         match_case : bool
             If True (default), channel name matching will be case sensitive.
 
-            .. versionadded:: 0.20
+            ✨ Added in vesion 0.20
 
         match_alias : bool | dict
             Whether to use a lookup table to match unrecognized channel location names
@@ -94,21 +94,21 @@ class MontageMixin:
             will be used instead, and should map from non-standard channel names to
             names in the specified ``montage``. Default is ``False``.
 
-            .. versionadded:: 0.23
+            ✨ Added in vesion 0.23
 
         on_missing : 'raise' | 'warn' | 'ignore'
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when channels have missing coordinates.
 
-            .. versionadded:: 0.20.1
+            ✨ Added in vesion 0.20.1
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw | Epochs | Evoked
             The instance, modified in-place.
@@ -119,17 +119,17 @@ class MontageMixin:
         mne.channels.make_dig_montage
         mne.channels.read_custom_montage
 
-        Notes
+        ### 📖 Notes
         -----
-        .. warning::
+        ### ⛔️ Warning
             Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
             a montage. Other channel types (e.g., MEG channels) should have
             their positions defined properly using their data reading
             functions.
-        .. warning::
+        ### ⛔️ Warning
             Applying a montage will only set locations of channels that exist
             at the time it is applied. This means when
-            :ref:`re-referencing <tut-set-eeg-ref>`
+            `re-referencing <tut-set-eeg-ref>`
             make sure to apply the montage only after calling
             `mne.add_reference_channels`
         """
@@ -138,12 +138,12 @@ class MontageMixin:
 channel_type_constants: Incomplete
 
 class SetChannelsMixin(MontageMixin):
-    """Mixin class for Raw, Evoked, Epochs."""
+    """### Mixin class for Raw, Evoked, Epochs."""
 
     def set_channel_types(self, mapping, *, on_unit_change: str = "warn", verbose=None):
-        """Specify the sensor types of channels.
+        """### Specify the sensor types of channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         mapping : dict
             A dictionary mapping channel names to sensor types, e.g.,
@@ -152,23 +152,23 @@ class SetChannelsMixin(MontageMixin):
             What to do if the measurement unit of a channel is changed
             automatically to match the new sensor type.
 
-            .. versionadded:: 1.4
+            ✨ Added in vesion 1.4
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw | Epochs | Evoked
             The instance (modified in place).
 
-            .. versionchanged:: 0.20
+            🎭 Changed in version 0.20
                Return the instance.
 
-        Notes
+        ### 📖 Notes
         -----
         The following sensor types are accepted:
 
@@ -177,13 +177,13 @@ class SetChannelsMixin(MontageMixin):
             fnirs_fd_phase, fnirs_od, eyetrack_pos, eyetrack_pupil,
             temperature, gsr
 
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
     def rename_channels(self, mapping, allow_duplicates: bool = False, *, verbose=None):
-        """Rename channels.
+        """### Rename channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         mapping : dict | callable
@@ -191,31 +191,31 @@ class SetChannelsMixin(MontageMixin):
             e.g. ``{'EEG061' : 'EEG161'}``. Can also be a callable function
             that takes and returns a string.
 
-            .. versionchanged:: 0.10.0
+            🎭 Changed in version 0.10.0
                Support for a callable function.
         allow_duplicates : bool
             If True (default False), allow duplicates, which will automatically
             be renamed with ``-N`` at the end.
 
-            .. versionadded:: 0.22.0
+            ✨ Added in vesion 0.22.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw | Epochs | Evoked
             The instance (modified in place).
 
-            .. versionchanged:: 0.20
+            🎭 Changed in version 0.20
                Return the instance.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
     def plot_sensors(
@@ -233,9 +233,9 @@ class SetChannelsMixin(MontageMixin):
         *,
         verbose=None,
     ):
-        """Plot sensor positions.
+        """### Plot sensor positions.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         kind : str
             Whether to plot the sensors as 3d, topomap or as an interactive
@@ -261,23 +261,23 @@ class SetChannelsMixin(MontageMixin):
             into 8 regions. See ``order`` kwarg of `mne.viz.plot_raw`. If
             array, the channels are divided by picks given in the array.
 
-            .. versionadded:: 0.13.0
+            ✨ Added in vesion 0.13.0
         to_sphere : bool
             Whether to project the 3d locations to a sphere. When False, the
             sensor array appears similar as to looking downwards straight above
             the subject's head. Has no effect when kind='3d'. Defaults to True.
 
-            .. versionadded:: 0.14.0
+            ✨ Added in vesion 0.14.0
         axes : instance of Axes | instance of Axes3D | None
             Axes to draw the sensors to. If ``kind='3d'``, axes must be an
             instance of Axes3D. If None (default), a new axes will be created.
 
-            .. versionadded:: 0.13.0
+            ✨ Added in vesion 0.13.0
         block : bool
             Whether to halt program execution until the figure is closed.
             Defaults to False.
 
-            .. versionadded:: 0.13.0
+            ✨ Added in vesion 0.13.0
         show : bool
             Show figure if True. Defaults to True.
         sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
@@ -292,16 +292,16 @@ class SetChannelsMixin(MontageMixin):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure
             Figure containing the sensor topography.
@@ -312,19 +312,19 @@ class SetChannelsMixin(MontageMixin):
         --------
         mne.viz.plot_layout
 
-        Notes
+        ### 📖 Notes
         -----
         This function plots the sensor locations from the info structure using
         matplotlib. For drawing the sensors using PyVista see
         `mne.viz.plot_alignment`.
 
-        .. versionadded:: 0.12.0
+        ✨ Added in vesion 0.12.0
         """
         ...
     def anonymize(self, daysback=None, keep_his: bool = False, verbose=None):
-        """Anonymize measurement information in place.
+        """### Anonymize measurement information in place.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         daysback : int | None
@@ -337,21 +337,21 @@ class SetChannelsMixin(MontageMixin):
             If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
             Defaults to ``False``.
 
-            .. warning:: This could mean that ``info`` is not fully
+            ### ⛔️ Warning This could mean that ``info`` is not fully
                          anonymized. Use with caution.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw | Epochs | Evoked
             The modified instance.
 
-        Notes
+        ### 📖 Notes
         -----
 
         Removes potentially identifying information if it exists in ``info``.
@@ -378,13 +378,13 @@ class SetChannelsMixin(MontageMixin):
 
         Operates in place.
 
-        .. versionadded:: 0.13.0
+        ✨ Added in vesion 0.13.0
         """
         ...
     def set_meas_date(self, meas_date):
-        """Set the measurement start date.
+        """### Set the measurement start date.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         meas_date : datetime | float | tuple | None
             The new measurement date.
@@ -394,7 +394,7 @@ class SetChannelsMixin(MontageMixin):
             object will be automatically created. If None, will remove
             the time reference.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw | Epochs | Evoked
             The modified raw instance. Operates in place.
@@ -403,29 +403,29 @@ class SetChannelsMixin(MontageMixin):
         --------
         mne.io.Raw.anonymize
 
-        Notes
+        ### 📖 Notes
         -----
         If you want to remove all time references in the file, call
         `mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
         after calling ``inst.set_meas_date(None)``.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
         """
         ...
 
 class ContainsMixin:
-    """Mixin class for Raw, Evoked, Epochs and Info."""
+    """### Mixin class for Raw, Evoked, Epochs and Info."""
 
     def __contains__(self, ch_type) -> bool:
-        """Check channel type membership.
+        """### Check channel type membership.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_type : str
             Channel type to check for. Can be e.g. ``'meg'``, ``'eeg'``,
             ``'stim'``, etc.
 
-        Returns
+        ### ⏎ Returns
         -------
         in : bool
             Whether or not the instance contains the given channel type.
@@ -443,14 +443,14 @@ class ContainsMixin:
         ...
     @property
     def compensation_grade(self):
-        """The current gradient compensation grade."""
+        """### The current gradient compensation grade."""
         ...
     def get_channel_types(
         self, picks=None, unique: bool = False, only_data_chs: bool = False
     ):
-        """Get a list of channel type for each channel.
+        """### Get a list of channel type for each channel.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -466,7 +466,7 @@ class ContainsMixin:
         only_data_chs : bool
             Whether to ignore non-data channels. Default is ``False``.
 
-        Returns
+        ### ⏎ Returns
         -------
         channel_types : list
             The channel types.
@@ -474,7 +474,7 @@ class ContainsMixin:
         ...
 
 class MNEBadsList(list):
-    """Subclass of bads that checks inplace operations."""
+    """### Subclass of bads that checks inplace operations."""
 
     def __init__(self, *, bads, info) -> None: ...
     def extend(self, iterable): ...
@@ -482,7 +482,7 @@ class MNEBadsList(list):
     def __iadd__(self, x): ...
 
 class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
-    """Measurement information.
+    """### Measurement information.
 
     This data structure behaves like a dictionary. It contains all metadata
     that is available for a recording. However, its keys are restricted to
@@ -490,12 +490,12 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     `FIF format specification <https://github.com/mne-tools/fiff-constants>`__,
     so new entries should not be manually added.
 
-    .. note::
+    ### 💡 Note
         This class should not be instantiated directly via
         ``mne.Info(...)``. Instead, use `mne.create_info` to create
         measurement information from scratch.
 
-    .. warning::
+    ### ⛔️ Warning
         The only entries that should be manually changed by the user are:
         ``info['bads']``, ``info['description']``, ``info['device_info']``
         ``info['dev_head_t']``, ``info['experimenter']``,
@@ -506,14 +506,14 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         modified by various MNE-Python functions or methods (which have
         safeguards to ensure all fields remain in sync).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     *args : list
         Arguments.
     **kwargs : dict
         Keyword arguments.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     acq_pars : str | None
         MEG system acquisition parameters.
@@ -551,7 +551,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     device_info : dict | None
         Information about the acquisition device. See Notes for details.
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
     dig : list of dict | None
         The Polhemus digitization data in head coordinates.
         See Notes for more information.
@@ -569,7 +569,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     helium_info : dict | None
         Information about the device helium. See Notes for details.
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
     highpass : float
         Highpass corner frequency in Hertz. Zero indicates a DC recording.
     hpi_meas : list of dict
@@ -597,7 +597,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     meas_date : datetime
         The time (UTC) of the recording.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            This is stored as a `python:datetime.datetime` object
            instead of a tuple of seconds/microseconds.
     meas_file : str | None
@@ -634,11 +634,11 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         Can be used to store temporary objects in an Info instance. It will not
         survive an I/O roundtrip.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
     utc_offset : str
         "UTC offset of related meas_date (sHH:MM).
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
     working_dir : str
         Working directory used when the source space was created (used for
         source estimation).
@@ -649,7 +649,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     --------
     mne.create_info
 
-    Notes
+    ### 📖 Notes
     -----
     The following parameters have a nested structure.
 
@@ -892,22 +892,22 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
 
     def __init__(self, *args, **kwargs) -> None: ...
     def __setitem__(self, key, val) -> None:
-        """Attribute setter."""
+        """### Attribute setter."""
         ...
     def update(self, other=None, **kwargs) -> None:
-        """Update method using __setitem__()."""
+        """### Update method using __setitem__()."""
         ...
     def copy(self):
-        """Copy the instance.
+        """### Copy the instance.
 
-        Returns
+        ### ⏎ Returns
         -------
         info : instance of Info
             The copied info.
         """
         ...
     def normalize_proj(self) -> None:
-        """(Re-)Normalize projection vectors after subselection.
+        """### (Re-)Normalize projection vectors after subselection.
 
         Applying projection after sub-selecting a set of channels that
         were originally used to compute the original projection vectors
@@ -922,14 +922,14 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         """
         ...
     def __deepcopy__(self, memodict):
-        """Make a deepcopy."""
+        """### Make a deepcopy."""
         ...
     @property
     def ch_names(self): ...
     def save(self, fname) -> None:
-        """Write measurement info in fif file.
+        """### Write measurement info in fif file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The name of the file. Should end by ``'-info.fif'``.
@@ -937,20 +937,20 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         ...
 
 def read_fiducials(fname, verbose=None):
-    """Read fiducials from a fiff file.
+    """### Read fiducials from a fiff file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename to read.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     pts : list of dict
         List of digitizer points (each point in a dict).
@@ -963,9 +963,9 @@ def read_fiducials(fname, verbose=None):
 def write_fiducials(
     fname, pts, coord_frame: str = "unknown", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """Write fiducials to a fiff file.
+    """### Write fiducials to a fiff file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Destination file name.
@@ -984,31 +984,31 @@ def write_fiducials(
         If True (default False), overwrite the destination file if it
         exists.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
 
 def read_info(fname, verbose=None):
-    """Read measurement info from a file.
+    """### Read measurement info from a file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         File name.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     info : mne.Info
@@ -1017,16 +1017,16 @@ def read_info(fname, verbose=None):
     ...
 
 def read_bad_channels(fid, node):
-    """Read bad channels.
+    """### Read bad channels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fid : file
         The file descriptor.
     node : dict
         The node of the FIF tree that contains info on the bad channels.
 
-    Returns
+    ### ⏎ Returns
     -------
     bads : list
         A list of bad channel's names.
@@ -1034,9 +1034,9 @@ def read_bad_channels(fid, node):
     ...
 
 def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
-    """Read the measurement info.
+    """### Read the measurement info.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fid : file
         Open file descriptor.
@@ -1049,11 +1049,11 @@ def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     info : mne.Info
@@ -1064,9 +1064,9 @@ def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
     ...
 
 def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None:
-    """Write measurement info into a file id (from a fif file).
+    """### Write measurement info into a file id (from a fif file).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fid : file
         Open file descriptor.
@@ -1080,16 +1080,16 @@ def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None
     reset_range : bool
         If True, info['chs'][k]['range'] will be set to unity.
 
-    Notes
+    ### 📖 Notes
     -----
     Tags are written in a particular order for compatibility with maxfilter.
     """
     ...
 
 def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
-    """Write measurement info in fif file.
+    """### Write measurement info in fif file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The name of the file. Should end by ``-info.fif``.
@@ -1106,9 +1106,9 @@ def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
     ...
 
 def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
-    """Create a basic Info instance suitable for use with create_raw.
+    """### Create a basic Info instance suitable for use with create_raw.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ch_names : list of str | int
         Channel names. If an int, a list of channel names will be created
@@ -1125,17 +1125,17 @@ def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
 
-    Notes
+    ### 📖 Notes
     -----
     The info dictionary will be sparsely populated to enable functionality
     within the rest of the package. Advanced functionality such as source
@@ -1159,16 +1159,16 @@ def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
 RAW_INFO_FIELDS: Incomplete
 
 def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
-    """Anonymize measurement information in place.
+    """### Anonymize measurement information in place.
 
-    .. warning:: If ``info`` is part of an object like
+    ### ⛔️ Warning If ``info`` is part of an object like
                  `raw.info <mne.io.Raw>`, you should directly use
                  the method `raw.anonymize() <mne.io.Raw.anonymize>`
                  to ensure that all parts of the data are anonymized and
                  stay synchronized (e.g.,
                  `raw.annotations <mne.Annotations>`).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -1184,21 +1184,21 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
         If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
         Defaults to ``False``.
 
-        .. warning:: This could mean that ``info`` is not fully
+        ### ⛔️ Warning This could mean that ``info`` is not fully
                      anonymized. Use with caution.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     info : instance of Info
         The anonymized measurement information.
 
-    Notes
+    ### 📖 Notes
     -----
 
     Removes potentially identifying information if it exists in ``info``.

@@ -4,14 +4,14 @@ from ..utils import logger as logger, warn as warn
 def dpss_windows(
     N, half_nbw, Kmax, *, sym: bool = True, norm=None, low_bias: bool = True
 ):
-    """Compute Discrete Prolate Spheroidal Sequences.
+    """### Compute Discrete Prolate Spheroidal Sequences.
 
     Will give of orders [0,Kmax-1] for a given frequency-spacing multiple
     NW and sequence length N.
 
-    .. note:: Copied from NiTime.
+    ### 💡 Note Copied from NiTime.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     N : int
         Sequence length.
@@ -25,7 +25,7 @@ def dpss_windows(
         a periodic window (``False``, for spectral analysis). Default is
         ``True``.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
     norm : 2 | ``'approximate'`` | ``'subsample'`` | None
         Window normalization method. If ``'approximate'`` or ``'subsample'``,
         windows are normalized by the maximum, and a correction scale-factor
@@ -34,17 +34,17 @@ def dpss_windows(
         ("subsample"). ``2`` uses the L2 norm. ``None`` (the default) uses
         ``"approximate"`` when ``Kmax=None`` and ``2`` otherwise.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
     low_bias : bool
         Keep only tapers with eigenvalues > 0.9.
 
-    Returns
+    ### ⏎ Returns
     -------
     v, e : tuple,
         The v array contains DPSS windows shaped (Kmax, N).
         e are the eigenvalues.
 
-    Notes
+    ### 📖 Notes
     -----
     Tridiagonal form of DPSS calculation from :footcite:`Slepian1978`.
 
@@ -70,12 +70,12 @@ def psd_array_multitaper(
     max_iter: int = 150,
     verbose=None,
 ):
-    """Compute power spectral density (PSD) using a multi-taper method.
+    """### Compute power spectral density (PSD) using a multi-taper method.
 
     The power spectral density is computed with DPSS
     tapers :footcite:p:`Slepian1978`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x : array, shape=(..., n_times)
         The data to compute PSD from.
@@ -97,7 +97,7 @@ def psd_array_multitaper(
     normalization : 'full' | 'length'
         Normalization strategy. If "full", the PSD will be normalized by the
         sampling rate as well as the length of the signal (as in
-        :ref:`Nitime <nitime:users-guide>`). Default is ``'length'``.
+        `Nitime <nitime:users-guide>`). Default is ``'length'``.
 
     remove_dc : bool
         If ``True``, the mean is subtracted from each segment before computing
@@ -124,11 +124,11 @@ def psd_array_multitaper(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     psds : ndarray, shape (..., n_freqs) or (..., n_tapers, n_freqs)
         The power spectral densities. All dimensions up to the last (or the
@@ -146,9 +146,9 @@ def psd_array_multitaper(
     mne.Epochs.compute_psd
     mne.Evoked.compute_psd
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.14.0
+    ✨ Added in vesion 0.14.0
 
     References
     ----------
@@ -170,13 +170,13 @@ def tfr_array_multitaper(
     *,
     verbose=None,
 ):
-    """Compute Time-Frequency Representation (TFR) using DPSS tapers.
+    """### Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
     Same computation as `mne.time_frequency.tfr_multitaper`, but operates on
     `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` or
     `mne.Evoked` objects.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epoch_data : array of shape (n_epochs, n_channels, n_times)
         The epochs.
@@ -211,7 +211,7 @@ def tfr_array_multitaper(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        .. note::
+        ### 💡 Note
             Decimation is done after convolutions and may create aliasing
             artifacts.
     output : str, default 'complex'
@@ -233,11 +233,11 @@ def tfr_array_multitaper(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     out : array
         Time frequency transform of ``epoch_data``.
@@ -260,7 +260,7 @@ def tfr_array_multitaper(
     mne.time_frequency.tfr_stockwell
     mne.time_frequency.tfr_array_stockwell
 
-    Notes
+    ### 📖 Notes
     -----
 
     In spectrotemporal analysis (as with traditional fourier methods),
@@ -315,7 +315,7 @@ def tfr_array_multitaper(
     is unique about multitaper methods — namely their ability to improve accuracy /
     reduce noise in the power estimates by using several (orthogonal) tapers.
 
-    .. warning::
+    ### ⛔️ Warning
 
         In `mne.time_frequency.tfr_array_multitaper` and
         `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
@@ -327,6 +327,6 @@ def tfr_array_multitaper(
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 
-    .. versionadded:: 0.14.0
+    ✨ Added in vesion 0.14.0
     """
     ...

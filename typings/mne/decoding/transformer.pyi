@@ -7,7 +7,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class _ConstantScaler:
-    """Scale channel types using constant values."""
+    """### Scale channel types using constant values."""
 
     def __init__(self, info, scalings, do_scaling: bool = True) -> None: ...
     std_: Incomplete
@@ -19,7 +19,7 @@ class _ConstantScaler:
     def fit_transform(self, X, y=None): ...
 
 class Scaler(TransformerMixin, BaseEstimator):
-    """Standardize channel data.
+    """### Standardize channel data.
 
     This class scales data for each channel. It differs from scikit-learn
     classes (e.g., `sklearn.preprocessing.StandardScaler`) in that
@@ -28,7 +28,7 @@ class Scaler(TransformerMixin, BaseEstimator):
     (i.e., each time point for each channel) by estimating using μ and σ
     using data from all epochs.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info | None
@@ -65,47 +65,47 @@ class Scaler(TransformerMixin, BaseEstimator):
         self, info=None, scalings=None, with_mean: bool = True, with_std: bool = True
     ) -> None: ...
     def fit(self, epochs_data, y=None):
-        """Standardize data across channels.
+        """### Standardize data across channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels, n_times)
             The data to concatenate channels.
         y : array, shape (n_epochs,)
             The label for each epoch.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Scaler
             The modified instance.
         """
         ...
     def transform(self, epochs_data):
-        """Standardize data across channels.
+        """### Standardize data across channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels[, n_times])
             The data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_channels, n_times)
             The data concatenated over channels.
 
-        Notes
+        ### 📖 Notes
         -----
         This function makes a copy of the data before the operations and the
         memory usage may be large with big data.
         """
         ...
     def fit_transform(self, epochs_data, y=None):
-        """Fit to data, then transform it.
+        """### Fit to data, then transform it.
 
         Fits transformer to epochs_data and y and returns a transformed version
         of epochs_data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels, n_times)
             The data.
@@ -113,31 +113,31 @@ class Scaler(TransformerMixin, BaseEstimator):
             The label for each epoch.
             Defaults to None.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_channels, n_times)
             The data concatenated over channels.
 
-        Notes
+        ### 📖 Notes
         -----
         This function makes a copy of the data before the operations and the
         memory usage may be large with big data.
         """
         ...
     def inverse_transform(self, epochs_data):
-        """Invert standardization of data across channels.
+        """### Invert standardization of data across channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels, n_times)
             The data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_channels, n_times)
             The data concatenated over channels.
 
-        Notes
+        ### 📖 Notes
         -----
         This function makes a copy of the data before the operations and the
         memory usage may be large with big data.
@@ -145,12 +145,12 @@ class Scaler(TransformerMixin, BaseEstimator):
         ...
 
 class Vectorizer(TransformerMixin):
-    """Transform n-dimensional array into 2D array of n_samples by n_features.
+    """### Transform n-dimensional array into 2D array of n_samples by n_features.
 
     This class reshapes an n-dimensional array into an n_samples * n_features
     array, usable by the estimators and transformers of scikit-learn.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     features_shape_ : tuple
          Stores the original shape of data.
@@ -164,9 +164,9 @@ class Vectorizer(TransformerMixin):
     features_shape_: Incomplete
 
     def fit(self, X, y=None):
-        """Store the shape of the features of X.
+        """### Store the shape of the features of X.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array-like
             The data to fit. Can be, for example a list, or an array of at
@@ -176,16 +176,16 @@ class Vectorizer(TransformerMixin):
         y : None | array, shape (n_samples,)
             Used for scikit-learn compatibility.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Vectorizer
             Return the modified instance.
         """
         ...
     def transform(self, X):
-        """Convert given array into two dimensions.
+        """### Convert given array into two dimensions.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array-like
             The data to fit. Can be, for example a list, or an array of at
@@ -193,16 +193,16 @@ class Vectorizer(TransformerMixin):
             samples are the independent samples used by the estimator
             (e.g. n_epochs for epoched data).
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_samples, n_features)
             The transformed data.
         """
         ...
     def fit_transform(self, X, y=None):
-        """Fit the data, then transform in one step.
+        """### Fit the data, then transform in one step.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array-like
             The data to fit. Can be, for example a list, or an array of at
@@ -212,21 +212,21 @@ class Vectorizer(TransformerMixin):
         y : None | array, shape (n_samples,)
             Used for scikit-learn compatibility.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_samples, -1)
             The transformed data.
         """
         ...
     def inverse_transform(self, X):
-        """Transform 2D data back to its original feature shape.
+        """### Transform 2D data back to its original feature shape.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array-like, shape (n_samples,  n_features)
             Data to be transformed back to original shape.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array
             The data transformed into shape as used in fit. The first
@@ -235,9 +235,9 @@ class Vectorizer(TransformerMixin):
         ...
 
 class PSDEstimator(TransformerMixin):
-    """Compute power spectral density (PSD) using a multi-taper method.
+    """### Compute power spectral density (PSD) using a multi-taper method.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     sfreq : float
         The sampling frequency.
@@ -258,11 +258,11 @@ class PSDEstimator(TransformerMixin):
     normalization : 'full' | 'length'
         Normalization strategy. If "full", the PSD will be normalized by the
         sampling rate as well as the length of the signal (as in
-        :ref:`Nitime <nitime:users-guide>`). Default is ``'length'``.
+        `Nitime <nitime:users-guide>`). Default is ``'length'``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -297,30 +297,30 @@ class PSDEstimator(TransformerMixin):
         verbose=None,
     ) -> None: ...
     def fit(self, epochs_data, y):
-        """Compute power spectral density (PSD) using a multi-taper method.
+        """### Compute power spectral density (PSD) using a multi-taper method.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels, n_times)
             The data.
         y : array, shape (n_epochs,)
             The label for each epoch.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of PSDEstimator
             The modified instance.
         """
         ...
     def transform(self, epochs_data):
-        """Compute power spectral density (PSD) using a multi-taper method.
+        """### Compute power spectral density (PSD) using a multi-taper method.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels, n_times)
             The data.
 
-        Returns
+        ### ⏎ Returns
         -------
         psd : array, shape (n_signals, n_freqs) or (n_freqs,)
             The computed PSD.
@@ -328,7 +328,7 @@ class PSDEstimator(TransformerMixin):
         ...
 
 class FilterEstimator(TransformerMixin):
-    """Estimator to filter RtEpochs.
+    """### Estimator to filter RtEpochs.
 
     Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
     filter to the channels selected by "picks".
@@ -344,7 +344,7 @@ class FilterEstimator(TransformerMixin):
     If n_jobs > 1, more memory is required as "len(picks) * n_times"
     additional time points need to be temporarily stored in memory.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -415,11 +415,11 @@ class FilterEstimator(TransformerMixin):
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -427,7 +427,7 @@ class FilterEstimator(TransformerMixin):
     --------
     TemporalFilter
 
-    Notes
+    ### 📖 Notes
     -----
     This is primarily meant for use in conjunction with
     `mne_realtime.RtEpochs`. In general it is not recommended in a
@@ -464,30 +464,30 @@ class FilterEstimator(TransformerMixin):
         verbose=None,
     ) -> None: ...
     def fit(self, epochs_data, y):
-        """Filter data.
+        """### Filter data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels, n_times)
             The data.
         y : array, shape (n_epochs,)
             The label for each epoch.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of FilterEstimator
             The modified instance.
         """
         ...
     def transform(self, epochs_data):
-        """Filter data.
+        """### Filter data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs_data : array, shape (n_epochs, n_channels, n_times)
             The data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_channels, n_times)
             The data after filtering.
@@ -495,9 +495,9 @@ class FilterEstimator(TransformerMixin):
         ...
 
 class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
-    """Use unsupervised spatial filtering across time and samples.
+    """### Use unsupervised spatial filtering across time and samples.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     estimator : instance of sklearn.base.BaseEstimator
         Estimator using some decomposition algorithm.
@@ -511,60 +511,60 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
 
     def __init__(self, estimator, average: bool = False) -> None: ...
     def fit(self, X, y=None):
-        """Fit the spatial filters.
+        """### Fit the spatial filters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times)
             The data to be filtered.
         y : None | array, shape (n_samples,)
             Used for scikit-learn compatibility.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of UnsupervisedSpatialFilter
             Return the modified instance.
         """
         ...
     def fit_transform(self, X, y=None):
-        """Transform the data to its filtered components after fitting.
+        """### Transform the data to its filtered components after fitting.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times)
             The data to be filtered.
         y : None | array, shape (n_samples,)
             Used for scikit-learn compatibility.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_channels, n_times)
             The transformed data.
         """
         ...
     def transform(self, X):
-        """Transform the data to its spatial filters.
+        """### Transform the data to its spatial filters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times)
             The data to be filtered.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_channels, n_times)
             The transformed data.
         """
         ...
     def inverse_transform(self, X):
-        """Inverse transform the data to its original space.
+        """### Inverse transform the data to its original space.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_components, n_times)
             The data to be inverted.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_channels, n_times)
             The transformed data.
@@ -572,7 +572,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         ...
 
 class TemporalFilter(TransformerMixin):
-    """Estimator to filter data array along the last dimension.
+    """### Estimator to filter data array along the last dimension.
 
     Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
     filter to the channels.
@@ -587,7 +587,7 @@ class TemporalFilter(TransformerMixin):
 
     See `mne.filter.filter_data`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     l_freq : float | None
         Low cut-off frequency in Hz. If None the data are only low-passed.
@@ -644,11 +644,11 @@ class TemporalFilter(TransformerMixin):
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -688,9 +688,9 @@ class TemporalFilter(TransformerMixin):
         verbose=None,
     ) -> None: ...
     def fit(self, X, y=None):
-        """Do nothing (for scikit-learn compatibility purposes).
+        """### Do nothing (for scikit-learn compatibility purposes).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times) or or shape (n_channels, n_times)
             The data to be filtered over the last dimension. The channels
@@ -698,22 +698,22 @@ class TemporalFilter(TransformerMixin):
         y : None
             Not used, for scikit-learn compatibility issues.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of TemporalFilter
             The modified instance.
         """
         ...
     def transform(self, X):
-        """Filter data along the last dimension.
+        """### Filter data along the last dimension.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times) or shape (n_channels, n_times)
             The data to be filtered over the last dimension. The channels
             dimension can be zero when passing a 2D array.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array
             The data after filtering.

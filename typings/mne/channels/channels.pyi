@@ -28,14 +28,14 @@ from dataclasses import dataclass
 from typing import Union
 
 def equalize_channels(instances, copy: bool = True, verbose=None):
-    """Equalize channel picks and ordering across multiple MNE-Python objects.
+    """### Equalize channel picks and ordering across multiple MNE-Python objects.
 
     First, all channels that are not common to each object are dropped. Then,
     using the first object in the list as a template, the channels of each
     object are re-ordered to match the template. The end result is that all
     given objects define the same channels, in the same order.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     instances : list
         A list of MNE-Python objects to equalize the channels for. Objects can
@@ -46,41 +46,41 @@ def equalize_channels(instances, copy: bool = True, verbose=None):
         when this parameter is set to ``True``. When set to ``False`` (the
         default) the dropping and re-ordering of channels happens in-place.
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     equalized_instances : list
         A list of MNE-Python objects that have the same channels defined in the
         same order.
 
-    Notes
+    ### 📖 Notes
     -----
     This function operates inplace.
     """
     ...
 
 def unify_bad_channels(insts):
-    """Unify bad channels across a list of instances.
+    """### Unify bad channels across a list of instances.
 
     All instances must be of the same type and have matching channel names and channel
     order. The ``.info["bads"]`` of each instance will be set to the union of
     ``.info["bads"]`` across all instances.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     insts : list
         List of instances (`mne.io.Raw`, `mne.Epochs`,
         `mne.Evoked`, `mne.time_frequency.Spectrum`,
         `mne.time_frequency.EpochsSpectrum`) across which to unify bad channels.
 
-    Returns
+    ### ⏎ Returns
     -------
     insts : list
         List of instances with bad channels unified across instances.
@@ -91,16 +91,16 @@ def unify_bad_channels(insts):
     mne.channels.rename_channels
     mne.channels.combine_channels
 
-    Notes
+    ### 📖 Notes
     -----
     This function modifies the instances in-place.
 
-    .. versionadded:: 1.6
+    ✨ Added in vesion 1.6
     """
     ...
 
 class ReferenceMixin(MontageMixin):
-    """Mixin class for Raw, Evoked, Epochs."""
+    """### Mixin class for Raw, Evoked, Epochs."""
 
     def set_eeg_reference(
         self,
@@ -112,14 +112,14 @@ class ReferenceMixin(MontageMixin):
         joint: bool = False,
         verbose=None,
     ):
-        """Specify which reference to use for EEG data.
+        """### Specify which reference to use for EEG data.
 
         Use this function to explicitly specify the desired reference for EEG.
         This can be either an existing electrode or a new virtual channel.
         This function will re-reference the data according to the desired
         reference.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         ref_channels : list of str | str
@@ -148,29 +148,29 @@ class ReferenceMixin(MontageMixin):
             ``'dbs'``. If ``'auto'``, the first channel type of eeg, ecog, seeg or dbs
             that is found (in that order) will be selected.
 
-            .. versionadded:: 0.19
-            .. versionchanged:: 1.2
+            ✨ Added in vesion 0.19
+            🎭 Changed in version 1.2
                ``list-of-str`` is now supported with ``projection=True``.
 
         forward : instance of Forward | None
             Forward solution to use. Only used with ``ref_channels='REST'``.
 
-            .. versionadded:: 0.21
+            ✨ Added in vesion 0.21
 
         joint : bool
             How to handle list-of-str ``ch_type``. If False (default), one projector
             is created per channel type. If True, one projector is created across
             all channel types. This is only used when ``projection=True``.
 
-            .. versionadded:: 1.2
+            ✨ Added in vesion 1.2
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw | Epochs | Evoked
             Data with EEG channels re-referenced. If ``ref_channels='average'``
@@ -182,7 +182,7 @@ class ReferenceMixin(MontageMixin):
         mne.set_bipolar_reference : Convenience function for creating bipolar
                                 references.
 
-        Notes
+        ### 📖 Notes
         -----
         Some common referencing schemes and the corresponding value for the
         ``ref_channels`` parameter:
@@ -219,7 +219,7 @@ class ReferenceMixin(MontageMixin):
         4. For an average or REST reference, bad EEG channels are automatically
            excluded if they are properly set in ``info['bads']``.
 
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
 
         References
         ----------
@@ -228,7 +228,7 @@ class ReferenceMixin(MontageMixin):
         ...
 
 class UpdateChannelsMixin:
-    """Mixin class for Raw, Evoked, Epochs, Spectrum, AverageTFR."""
+    """### Mixin class for Raw, Evoked, Epochs, Spectrum, AverageTFR."""
 
     def pick_types(
         self,
@@ -262,11 +262,11 @@ class UpdateChannelsMixin:
         selection=None,
         verbose=None,
     ):
-        """.. warning:: LEGACY: New code should use inst.pick(...).
+        """### ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
 
         Pick some channels by type and names.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         meg : bool | str
@@ -339,11 +339,11 @@ class UpdateChannelsMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
@@ -352,17 +352,17 @@ class UpdateChannelsMixin:
         --------
         pick_channels
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
-        """.. warning:: LEGACY: New code should use inst.pick(...).
+        """### ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
 
         Pick some channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_names : list
             The list of channels to select.
@@ -371,19 +371,19 @@ class UpdateChannelsMixin:
             If True (default False), ensure that the order of the channels in
             the modified instance matches the order of ``ch_names``.
 
-            .. versionadded:: 0.20.0
-            .. versionchanged:: 1.5
+            ✨ Added in vesion 0.20.0
+            🎭 Changed in version 1.5
                 The default changed from False in 1.4 to True in 1.5.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-            .. versionadded:: 1.1
+            ✨ Added in vesion 1.1
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
@@ -394,19 +394,19 @@ class UpdateChannelsMixin:
         pick_types
         reorder_channels
 
-        Notes
+        ### 📖 Notes
         -----
         The channel names given are assumed to be a set, i.e. the order
         does not matter. The original order of the channels is preserved.
         You can use ``reorder_channels`` to set channel order if necessary.
 
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
     def pick(self, picks, exclude=(), *, verbose=None):
-        """Pick a subset of channels.
+        """### Pick a subset of channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -423,27 +423,27 @@ class UpdateChannelsMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
         """
         ...
     def reorder_channels(self, ch_names):
-        """Reorder channels.
+        """### Reorder channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_names : list
             The desired channel order.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
@@ -454,18 +454,18 @@ class UpdateChannelsMixin:
         pick_types
         pick_channels
 
-        Notes
+        ### 📖 Notes
         -----
         Channel names must be unique. Channels that are not in ``ch_names``
         are dropped.
 
-        .. versionadded:: 0.16.0
+        ✨ Added in vesion 0.16.0
         """
         ...
     def drop_channels(self, ch_names, on_missing: str = "raise"):
-        """Drop channel(s).
+        """### Drop channel(s).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_names : iterable or str
             Iterable (e.g. list) of channel name(s) or channel name to remove.
@@ -474,9 +474,9 @@ class UpdateChannelsMixin:
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
 
-            .. versionadded:: 0.23.0
+            ✨ Added in vesion 0.23.0
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
@@ -487,18 +487,18 @@ class UpdateChannelsMixin:
         pick_channels
         pick_types
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
     info: Incomplete
     picks: Incomplete
 
     def add_channels(self, add_list, force_update_info: bool = False):
-        """Append new channels to the instance.
+        """### Append new channels to the instance.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         add_list : list
             A list of objects to append to self. Must contain all the same
@@ -508,9 +508,9 @@ class UpdateChannelsMixin:
             values in ``self``. This should generally only be used when adding
             stim channels for which important metadata won't be overwritten.
 
-            .. versionadded:: 0.12
+            ✨ Added in vesion 0.12
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
@@ -519,20 +519,20 @@ class UpdateChannelsMixin:
         --------
         drop_channels
 
-        Notes
+        ### 📖 Notes
         -----
         If ``self`` is a Raw instance that has been preloaded into a
         :obj:`numpy.memmap` instance, the memmap will be resized.
         """
         ...
     def add_reference_channels(self, ref_channels):
-        """Add reference channels to data that consists of all zeros.
+        """### Add reference channels to data that consists of all zeros.
 
         Adds reference channels to data that were not included during
         recording. This is useful when you need to re-reference your data
         to different channels. These added channels will consist of all zeros.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         ref_channels : str | list of str
@@ -540,7 +540,7 @@ class UpdateChannelsMixin:
             recording. If a name is provided, a corresponding channel is added
             and its data is set to 0. This is useful for later re-referencing.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw | Epochs | Evoked
                The modified instance.
@@ -548,7 +548,7 @@ class UpdateChannelsMixin:
         ...
 
 class InterpolationMixin:
-    """Mixin class for Raw, Evoked, Epochs."""
+    """### Mixin class for Raw, Evoked, Epochs."""
 
     def interpolate_bads(
         self,
@@ -559,11 +559,11 @@ class InterpolationMixin:
         exclude=(),
         verbose=None,
     ):
-        """Interpolate bad MEG and EEG channels.
+        """### Interpolate bad MEG and EEG channels.
 
         Operates in place.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         reset_bads : bool
             If True, remove the bads from info.
@@ -576,7 +576,7 @@ class InterpolationMixin:
             Can be ``'auto'`` (default), which means a head-digitization-based
             origin fit.
 
-            .. versionadded:: 0.17
+            ✨ Added in vesion 0.17
         method : dict | str | None
             Method to use for each channel type.
 
@@ -592,40 +592,40 @@ class InterpolationMixin:
             types supported and available in the instance. The method ``"nan"`` will
             replace the channel data with ``np.nan``.
 
-            .. warning::
+            ### ⛔️ Warning
                 Be careful when using ``method="nan"``; the default value
                 ``reset_bads=True`` may not be what you want.
 
-            .. versionadded:: 0.21
+            ✨ Added in vesion 0.21
         exclude : list | tuple
             The channels to exclude from interpolation. If excluded a bad
             channel will stay in bads.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
 
-        Notes
+        ### 📖 Notes
         -----
         The ``"MNE"`` method uses minimum-norm projection to a sphere and back.
 
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
 
 def rename_channels(
     info, mapping, allow_duplicates: bool = False, *, verbose=None
 ) -> None:
-    """Rename channels.
+    """### Rename channels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -636,17 +636,17 @@ def rename_channels(
         e.g. ``{'EEG061' : 'EEG161'}``. Can also be a callable function
         that takes and returns a string.
 
-        .. versionchanged:: 0.10.0
+        🎭 Changed in version 0.10.0
            Support for a callable function.
     allow_duplicates : bool
         If True (default False), allow duplicates, which will automatically
         be renamed with ``-N`` at the end.
 
-        .. versionadded:: 0.22.0
+        ✨ Added in vesion 0.22.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
@@ -662,12 +662,12 @@ class _BuiltinChannelAdjacency:
     def __init__(self, name, description, fname, source_url) -> None: ...
 
 def get_builtin_ch_adjacencies(*, descriptions: bool = False):
-    """Get a list of all FieldTrip neighbor definitions shipping with MNE.
+    """### Get a list of all FieldTrip neighbor definitions shipping with MNE.
 
     The names of the these neighbor definitions can be passed to
     `read_ch_adjacency`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     descriptions : bool
         Whether to return not only the neighbor definition names, but also
@@ -676,7 +676,7 @@ def get_builtin_ch_adjacencies(*, descriptions: bool = False):
         and the second is the description. If ``False`` (default), only the
         names are returned.
 
-    Returns
+    ### ⏎ Returns
     -------
     neighbor_name : list of str | list of tuple
         If ``descriptions=False``, the names of all builtin FieldTrip neighbor
@@ -684,26 +684,26 @@ def get_builtin_ch_adjacencies(*, descriptions: bool = False):
 
         If ``descriptions=True``, a list of tuples ``(name, description)``.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.1
+    ✨ Added in vesion 1.1
     """
     ...
 
 def read_ch_adjacency(fname, picks=None):
-    """Read a channel adjacency ("neighbors") file that ships with MNE.
+    """### Read a channel adjacency ("neighbors") file that ships with MNE.
 
     More information on these neighbor definitions can be found on the related
     `FieldTrip documentation pages
     <http://www.fieldtriptoolbox.org/template/neighbours/>`__.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like | str
         The path to the file to load, or the name of a channel adjacency
         matrix that ships with MNE-Python.
 
-        .. note::
+        ### 💡 Note
             You can retrieve the names of all
             built-in channel adjacencies via
             `mne.channels.get_builtin_ch_adjacencies`.
@@ -714,7 +714,7 @@ def read_ch_adjacency(fname, picks=None):
         channels. Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
 
-    Returns
+    ### ⏎ Returns
     -------
     ch_adjacency : scipy.sparse.csr_matrix, shape (n_channels, n_channels)
         The adjacency matrix.
@@ -728,7 +728,7 @@ def read_ch_adjacency(fname, picks=None):
     find_ch_adjacency
     mne.stats.combine_adjacency
 
-    Notes
+    ### 📖 Notes
     -----
     If the neighbor definition you need is not shipped by MNE-Python,
     you may use `find_ch_adjacency` to compute the
@@ -741,13 +741,13 @@ def read_ch_adjacency(fname, picks=None):
     ...
 
 def find_ch_adjacency(info, ch_type):
-    """Find the adjacency matrix for the given channels.
+    """### Find the adjacency matrix for the given channels.
 
     This function tries to infer the appropriate adjacency matrix template
     for the given channels. If a template is not found, the adjacency matrix
     is computed using Delaunay triangulation based on 2D sensor locations.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -757,7 +757,7 @@ def find_ch_adjacency(info, ch_type):
         supports ``'mag'``, ``'grad'``, ``'eeg'`` and ``None``.
         If ``None``, the info must contain only one channel type.
 
-    Returns
+    ### ⏎ Returns
     -------
     ch_adjacency : scipy.sparse.csr_matrix, shape (n_channels, n_channels)
         The adjacency matrix.
@@ -771,9 +771,9 @@ def find_ch_adjacency(info, ch_type):
     get_builtin_ch_adjacencies
     read_ch_adjacency
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.15
+    ✨ Added in vesion 0.15
 
     Automatic detection of an appropriate adjacency matrix template only
     works for MEG data at the moment. This means that the adjacency matrix
@@ -781,7 +781,7 @@ def find_ch_adjacency(info, ch_type):
     you want to load a template for a given montage use
     `read_ch_adjacency` directly.
 
-    .. warning::
+    ### ⛔️ Warning
         If Delaunay triangulation is used to calculate the adjacency matrix it
         may yield partially unexpected results (e.g., include unwanted edges
         between non-adjacent sensors). Therefore, it is recommended to check
@@ -795,9 +795,9 @@ def find_ch_adjacency(info, ch_type):
     ...
 
 def fix_mag_coil_types(info, use_cal: bool = False) -> None:
-    """Fix magnetometer coil types.
+    """### Fix magnetometer coil types.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -806,7 +806,7 @@ def fix_mag_coil_types(info, use_cal: bool = False) -> None:
         If True, further refine the check for old coil types by checking
         ``info['chs'][ii]['cal']``.
 
-    Notes
+    ### 📖 Notes
     -----
     This function changes magnetometer coil types 3022 (T1: SQ20483N) and
     3023 (T2: SQ20483-A) to 3024 (T3: SQ20950N) in the channel definition
@@ -822,7 +822,7 @@ def fix_mag_coil_types(info, use_cal: bool = False) -> None:
     software coil type 3024 is fully supported. Therefore, it is now safe
     to upgrade the data files to use the true coil type.
 
-    .. note:: The effect of the difference between the coil sizes on the
+    ### 💡 Note The effect of the difference between the coil sizes on the
               current estimates computed by the MNE software is very small.
               Therefore the use of ``fix_mag_coil_types`` is not mandatory.
     """
@@ -831,7 +831,7 @@ def fix_mag_coil_types(info, use_cal: bool = False) -> None:
 def make_1020_channel_selections(
     info, midline: str = "z", *, return_ch_names: bool = False
 ):
-    """Map hemisphere names to corresponding EEG channel names or indices.
+    """### Map hemisphere names to corresponding EEG channel names or indices.
 
     This function uses a simple heuristic to separate channel names into three
     Region of Interest-based selections: ``Left``, ``Midline`` and ``Right``.
@@ -844,7 +844,7 @@ def make_1020_channel_selections(
     This is appropriate for 10/20, 10/10, 10/05, …, sensor arrangements, but
     not for other naming conventions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -857,9 +857,9 @@ def make_1020_channel_selections(
     return_ch_names : bool
         Whether to return channel names instead of channel indices.
 
-        .. versionadded:: 1.4.0
+        ✨ Added in vesion 1.4.0
 
-    Returns
+    ### ⏎ Returns
     -------
     selections : dict
         A dictionary mapping from region of interest name to a list of channel
@@ -876,9 +876,9 @@ def combine_channels(
     drop_bad: bool = False,
     verbose=None,
 ):
-    """Combine channels based on specified channel grouping.
+    """### Combine channels based on specified channel grouping.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Raw, Epochs, or Evoked
         An MNE-Python object to combine the channels for. The object can be of
@@ -916,11 +916,11 @@ def combine_channels(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     combined_inst : instance of Raw, Epochs, or Evoked
         An MNE-Python object of the same type as the input ``inst``, containing
@@ -930,9 +930,9 @@ def combine_channels(
     ...
 
 def read_vectorview_selection(name, fname=None, info=None, verbose=None):
-    """Read Neuromag Vector View channel selection from a file.
+    """### Read Neuromag Vector View channel selection from a file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     name : str | list of str
         Name of the selection. If a list, the selections are combined.
@@ -953,11 +953,11 @@ def read_vectorview_selection(name, fname=None, info=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     sel : list of str
         List with channel names in the selection.

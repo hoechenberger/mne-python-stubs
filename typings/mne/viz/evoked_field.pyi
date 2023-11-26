@@ -13,9 +13,9 @@ from .utils import mne_analyze_colormap as mne_analyze_colormap
 from _typeshed import Incomplete
 
 class EvokedField:
-    """Plot MEG/EEG fields on head surface and helmet in 3D.
+    """### Plot MEG/EEG fields on head surface and helmet in 3D.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of mne.Evoked
         The evoked object.
@@ -37,20 +37,20 @@ class EvokedField:
         If None (default), a new figure will be created, otherwise it will
         plot into the given figure.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
     vmax : float | dict | None
         Maximum intensity. Can be a dictionary with two entries ``"eeg"`` and ``"meg"``
         to specify separate values for EEG and MEG fields respectively. Can be
         ``None`` to use the maximum value of the data.
 
-        .. versionadded:: 0.21
-        .. versionadded:: 1.4
+        ✨ Added in vesion 0.21
+        ✨ Added in vesion 1.4
             ``vmax`` can be a dictionary to specify separate values for EEG and
             MEG fields.
     n_contours : int
         The number of contours.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
     show_density : bool
         Whether to draw the field density as an overlay on top of the helmet/head
         surface. Defaults to ``True``.
@@ -60,14 +60,14 @@ class EvokedField:
         MEG fields respectively. Can be ``None`` to use 1.0 when a single field
         map is shown, or ``dict(eeg=1.0, meg=0.5)`` when both field maps are shown.
 
-        .. versionadded:: 1.4
+        ✨ Added in vesion 1.4
 
     interpolation : str | None
         Interpolation method (`scipy.interpolate.interp1d` parameter).
         Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
         ``'quadratic'`` or ``'cubic'``.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
     interaction : 'trackball' | 'terrain'
         How interactions with the scene via an input device (e.g., mouse or
@@ -78,20 +78,20 @@ class EvokedField:
         some axes.
         Defaults to ``'terrain'``.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
     time_viewer : bool | str
         Display time viewer GUI. Can also be ``"auto"``, which will mean
         ``True`` if there is more than one time point and ``False`` otherwise.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
     The figure will publish and subscribe to the following UI events:
 
@@ -123,27 +123,27 @@ class EvokedField:
         verbose=None,
     ) -> None: ...
     def set_time(self, time) -> None:
-        """Set the time to display (in seconds).
+        """### Set the time to display (in seconds).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         time : float
             The time to show, in seconds.
         """
         ...
     def set_contours(self, n_contours) -> None:
-        """Adjust the number of contour lines to use when drawing the fieldlines.
+        """### Adjust the number of contour lines to use when drawing the fieldlines.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         n_contours : int
             The number of contour lines to use.
         """
         ...
     def set_vmax(self, vmax, type: str = "meg") -> None:
-        """Change the color range of the density maps.
+        """### Change the color range of the density maps.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         vmax : float
             The new maximum value of the color range.

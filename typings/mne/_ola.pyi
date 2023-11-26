@@ -3,9 +3,9 @@ from _typeshed import Incomplete
 from collections.abc import Generator
 
 class _Interp2:
-    """Interpolate between two points.
+    """### Interpolate between two points.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     control_points : array, shape (n_changes,)
         The control points (indices) to use.
@@ -15,7 +15,7 @@ class _Interp2:
     interp : str
         Can be 'zero', 'linear', 'hann', or 'cos2' (same as hann).
 
-    Notes
+    ### 📖 Notes
     -----
     This will process data using overlapping windows of potentially
     different sizes to achieve a constant output value using different
@@ -39,16 +39,16 @@ class _Interp2:
 
     def __init__(self, control_points, values, interp: str = "hann") -> None: ...
     def feed_generator(self, n_pts) -> Generator[Incomplete, None, None]:
-        """Feed data and get interpolators as a generator."""
+        """### Feed data and get interpolators as a generator."""
         ...
     def feed(self, n_pts):
-        """Feed data and get interpolated values."""
+        """### Feed data and get interpolated values."""
         ...
 
 class _COLA:
-    """Constant overlap-add processing helper.
+    """### Constant overlap-add processing helper.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     process : callable
         A function that takes a chunk of input data with shape
@@ -68,7 +68,7 @@ class _COLA:
     tol : float
         The tolerance for COLA checking.
 
-    Notes
+    ### 📖 Notes
     -----
     This will process data using overlapping windows to achieve a constant
     output value. For example, for ``n_total=27``, ``n_samples=10``,
@@ -105,11 +105,11 @@ class _COLA:
         verbose=None,
     ) -> None: ...
     def feed(self, *datas, verbose=None, **kwargs) -> None:
-        """Pass in a chunk of data."""
+        """### Pass in a chunk of data."""
         ...
 
 class _Storer:
-    """Store data in chunks."""
+    """### Store data in chunks."""
 
     outs: Incomplete
     idx: int

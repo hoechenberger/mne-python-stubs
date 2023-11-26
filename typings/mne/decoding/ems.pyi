@@ -8,7 +8,7 @@ from .mixin import (
 from _typeshed import Incomplete
 
 class EMS(TransformerMixin, EstimatorMixin):
-    """Transformer to compute event-matched spatial filters.
+    """### Transformer to compute event-matched spatial filters.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
     time course. No time
@@ -17,9 +17,9 @@ class EMS(TransformerMixin, EstimatorMixin):
     gives the similarity between the filter at each time point and the
     data vector (sensors) at that time point.
 
-    .. note:: EMS only works for binary classification.
+    ### 💡 Note EMS only works for binary classification.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     filters_ : ndarray, shape (n_channels, n_times)
         The set of spatial filters.
@@ -35,33 +35,33 @@ class EMS(TransformerMixin, EstimatorMixin):
     filters_: Incomplete
 
     def fit(self, X, y):
-        """Fit the spatial filters.
+        """### Fit the spatial filters.
 
         .. note : EMS is fitted on data normalized by channel type before the
                   fitting of the spatial filters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times)
             The training data.
         y : array of int, shape (n_epochs)
             The target classes.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of EMS
             Returns self.
         """
         ...
     def transform(self, X):
-        """Transform the data by the spatial filters.
+        """### Transform the data by the spatial filters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times)
             The input data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape (n_epochs, n_times)
             The input data transformed by the spatial filters.
@@ -71,7 +71,7 @@ class EMS(TransformerMixin, EstimatorMixin):
 def compute_ems(
     epochs, conditions=None, picks=None, n_jobs=None, cv=None, verbose=None
 ):
-    """Compute event-matched spatial filter on epochs.
+    """### Compute event-matched spatial filter on epochs.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
     time course. No time
@@ -91,7 +91,7 @@ def compute_ems(
     .. note : Because of the leave-one-out, this function needs an equal
               number of epochs in each of the two conditions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of mne.Epochs
         The epochs.
@@ -120,11 +120,11 @@ def compute_ems(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     surrogate_trials : ndarray, shape (n_trials // 2, n_times)
         The trial surrogates.

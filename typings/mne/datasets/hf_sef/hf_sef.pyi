@@ -8,12 +8,12 @@ def data_path(
     *,
     verbose=None,
 ):
-    """Get path to local copy of the high frequency SEF dataset.
+    """### Get path to local copy of the high frequency SEF dataset.
 
     Gets a local copy of the high frequency SEF MEG dataset
     :footcite:`NurminenEtAl2017`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     dataset : 'evoked' | 'raw'
         Whether to get the main dataset (evoked, structural and the rest) or
@@ -33,11 +33,11 @@ def data_path(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : str
         Local path to the directory where the HF-SEF data is stored.

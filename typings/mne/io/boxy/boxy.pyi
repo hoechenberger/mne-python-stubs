@@ -4,12 +4,12 @@ from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_boxy(fname, preload: bool = False, verbose=None):
-    """Reader for an optical imaging recording.
+    """### Reader for an optical imaging recording.
 
     This function has been tested using the ISS Imagent I and II systems
     and versions 0.40/0.84 of the BOXY recording software.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the BOXY data file.
@@ -23,11 +23,11 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawBOXY
         A Raw object containing BOXY data.
@@ -40,9 +40,9 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
     ...
 
 class RawBOXY(BaseRaw):
-    """Raw object from a BOXY optical imaging file.
+    """### Raw object from a BOXY optical imaging file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the BOXY data file.
@@ -56,7 +56,7 @@ class RawBOXY(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 

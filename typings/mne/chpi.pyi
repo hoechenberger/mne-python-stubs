@@ -30,15 +30,15 @@ from .utils import (
 )
 
 def read_head_pos(fname):
-    """Read MaxFilter-formatted head position parameters.
+    """### Read MaxFilter-formatted head position parameters.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename to read. This can be produced by e.g.,
         ``maxfilter -headpos <name>.pos``.
 
-    Returns
+    ### ⏎ Returns
     -------
     pos : array, shape (N, 10)
         The position and quaternion parameters from cHPI fitting.
@@ -48,16 +48,16 @@ def read_head_pos(fname):
     write_head_pos
     head_pos_to_trans_rot_t
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.12
+    ✨ Added in vesion 0.12
     """
     ...
 
 def write_head_pos(fname, pos) -> None:
-    """Write MaxFilter-formatted head position parameters.
+    """### Write MaxFilter-formatted head position parameters.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename to write.
@@ -69,21 +69,21 @@ def write_head_pos(fname, pos) -> None:
     read_head_pos
     head_pos_to_trans_rot_t
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.12
+    ✨ Added in vesion 0.12
     """
     ...
 
 def head_pos_to_trans_rot_t(quats):
-    """Convert Maxfilter-formatted head position quaternions.
+    """### Convert Maxfilter-formatted head position quaternions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     quats : ndarray, shape (N, 10)
         MaxFilter-formatted position and quaternion parameters.
 
-    Returns
+    ### ⏎ Returns
     -------
     translation : ndarray, shape (N, 3)
         Translations at each time point.
@@ -100,27 +100,27 @@ def head_pos_to_trans_rot_t(quats):
     ...
 
 def extract_chpi_locs_ctf(raw, verbose=None):
-    """Extract cHPI locations from CTF data.
+    """### Extract cHPI locations from CTF data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data with CTF cHPI information.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
 
-    Notes
+    ### 📖 Notes
     -----
     CTF continuous head monitoring stores the x,y,z location (m) of each chpi
     coil as separate channels in the dataset:
@@ -132,14 +132,14 @@ def extract_chpi_locs_ctf(raw, verbose=None):
     This extracts these positions for use with
     `mne.chpi.compute_head_pos`.
 
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
     """
     ...
 
 def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
-    """Extract cHPI locations from KIT data.
+    """### Extract cHPI locations from KIT data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of RawKIT
         Raw data with KIT cHPI information.
@@ -148,27 +148,27 @@ def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.23
+    ✨ Added in vesion 0.23
     """
     ...
 
 def get_chpi_info(info, on_missing: str = "raise", verbose=None):
-    """Retrieve cHPI information from the data.
+    """### Retrieve cHPI information from the data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -182,11 +182,11 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     hpi_freqs : array, shape (n_coils,)
         The frequency used for each individual cHPI coil.
@@ -196,9 +196,9 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     hpi_on : array, shape (n_coils,)
         The values coding for the "on" state of each individual cHPI coil.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
     """
     ...
 
@@ -210,9 +210,9 @@ def compute_head_pos(
     adjust_dig: bool = False,
     verbose=None,
 ):
-    """Compute time-varying head positions.
+    """### Compute time-varying head positions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -234,11 +234,11 @@ def compute_head_pos(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     quats : ndarray, shape (n_pos, 10)
         The ``[t, q1, q2, q3, x, y, z, gof, err, v]`` for each fit.
@@ -250,9 +250,9 @@ def compute_head_pos(
     read_head_pos
     write_head_pos
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
     """
     ...
 
@@ -265,9 +265,9 @@ def compute_chpi_snr(
     tmax=None,
     verbose=None,
 ):
-    """Compute time-varying estimates of cHPI SNR.
+    """### Compute time-varying estimates of cHPI SNR.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data with cHPI information.
@@ -282,7 +282,7 @@ def compute_chpi_snr(
         The external order for SSS-like interfence suppression.
         The SSS bases are used as projection vectors during fitting.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
             Added ``ext_order=1`` by default, which should improve
             detection of true HPI signals.
 
@@ -294,11 +294,11 @@ def compute_chpi_snr(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     chpi_snrs : dict
         The time-varying cHPI SNR estimates, with entries "times", "freqs",
@@ -310,9 +310,9 @@ def compute_chpi_snr(
     --------
     mne.chpi.compute_chpi_locs, mne.chpi.compute_chpi_amplitudes
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
     """
     ...
 
@@ -325,9 +325,9 @@ def compute_chpi_amplitudes(
     tmax=None,
     verbose=None,
 ):
-    """Compute time-varying cHPI amplitudes.
+    """### Compute time-varying cHPI amplitudes.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data with cHPI information.
@@ -342,7 +342,7 @@ def compute_chpi_amplitudes(
         The external order for SSS-like interfence suppression.
         The SSS bases are used as projection vectors during fitting.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
             Added ``ext_order=1`` by default, which should improve
             detection of true HPI signals.
 
@@ -354,11 +354,11 @@ def compute_chpi_amplitudes(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     chpi_amplitudes : dict
@@ -369,7 +369,7 @@ def compute_chpi_amplitudes(
     --------
     mne.chpi.compute_chpi_locs, mne.chpi.compute_chpi_snr
 
-    Notes
+    ### 📖 Notes
     -----
     This function will:
 
@@ -390,7 +390,7 @@ def compute_chpi_amplitudes(
 
     The output is meant to be used with `mne.chpi.compute_chpi_locs`.
 
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
     """
     ...
 
@@ -402,9 +402,9 @@ def compute_chpi_locs(
     adjust_dig: bool = False,
     verbose=None,
 ):
-    """Compute locations of each cHPI coils over time.
+    """### Compute locations of each cHPI coils over time.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -426,11 +426,11 @@ def compute_chpi_locs(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     chpi_locs : dict
@@ -445,7 +445,7 @@ def compute_chpi_locs(
     write_head_pos
     extract_chpi_locs_ctf
 
-    Notes
+    ### 📖 Notes
     -----
     This function is designed to take the output of
     `mne.chpi.compute_chpi_amplitudes` and:
@@ -459,7 +459,7 @@ def compute_chpi_locs(
     movements as well as ``t_step_max`` (and ``t_step_min`` from
     `mne.chpi.compute_chpi_amplitudes`).
 
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
     """
     ...
 
@@ -472,12 +472,12 @@ def filter_chpi(
     allow_line_only: bool = False,
     verbose=None,
 ):
-    """Remove cHPI and line noise from data.
+    """### Remove cHPI and line noise from data.
 
-    .. note:: This function will only work properly if cHPI was on
+    ### 💡 Note This function will only work properly if cHPI was on
               during the recording.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data with cHPI information. Must be preloaded. Operates in-place.
@@ -494,41 +494,41 @@ def filter_chpi(
         The external order for SSS-like interfence suppression.
         The SSS bases are used as projection vectors during fitting.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
             Added ``ext_order=1`` by default, which should improve
             detection of true HPI signals.
     allow_line_only : bool
         If True, allow filtering line noise only. The default is False,
         which only allows the function to run when cHPI information is present.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of Raw
         The raw data.
 
-    Notes
+    ### 📖 Notes
     -----
     cHPI signals are in general not stationary, because head movements act
     like amplitude modulators on cHPI signals. Thus it is recommended to
     use this procedure, which uses an iterative fitting method, to
     remove cHPI signals, as opposed to notch filtering.
 
-    .. versionadded:: 0.12
+    ✨ Added in vesion 0.12
     """
     ...
 
 def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
-    """Determine how many HPI coils were active for a time point.
+    """### Determine how many HPI coils were active for a time point.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data with cHPI information.
@@ -541,17 +541,17 @@ def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     n_active : array, shape (n_times)
         The number of active cHPIs for every timepoint in raw.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.2
+    ✨ Added in vesion 1.2
     """
     ...

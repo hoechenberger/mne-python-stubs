@@ -8,9 +8,9 @@ from _typeshed import Incomplete
 CH_TYPE_MAPPING: Incomplete
 
 class RawEDF(BaseRaw):
-    """Raw object from EDF, EDF+ or BDF file.
+    """### Raw object from EDF, EDF+ or BDF file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the EDF, EDF+ or BDF file.
@@ -40,12 +40,12 @@ class RawEDF(BaseRaw):
         modified. If False, do not infer types and assume all channels are of
         type 'EEG'.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
     include : list of str | str
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
@@ -66,7 +66,7 @@ class RawEDF(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -76,7 +76,7 @@ class RawEDF(BaseRaw):
     mne.io.read_raw_edf : Recommended way to read EDF/EDF+ files.
     mne.io.read_raw_bdf : Recommended way to read BDF files.
 
-    Notes
+    ### 📖 Notes
     -----
 
     `mne.io.Raw` only stores signals with matching sampling frequencies.
@@ -138,9 +138,9 @@ class RawEDF(BaseRaw):
     ) -> None: ...
 
 class RawGDF(BaseRaw):
-    """Raw object from GDF file.
+    """### Raw object from GDF file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the GDF file.
@@ -161,12 +161,12 @@ class RawGDF(BaseRaw):
         Channel names to exclude. This can help when reading data with
         different sampling rates to avoid unnecessary resampling.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
     include : list of str | str
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
@@ -177,7 +177,7 @@ class RawGDF(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -186,7 +186,7 @@ class RawGDF(BaseRaw):
     mne.io.Raw : Documentation of attributes and methods.
     mne.io.read_raw_gdf : Recommended way to read GDF files.
 
-    Notes
+    ### 📖 Notes
     -----
     If channels named 'status' or 'trigger' are present, they are considered as
     STIM channels by default. Use func:`mne.find_events` to parse events
@@ -232,9 +232,9 @@ def read_raw_edf(
     *,
     verbose=None,
 ):
-    """Reader function for EDF and EDF+ files.
+    """### Reader function for EDF and EDF+ files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the EDF or EDF+ file.
@@ -264,12 +264,12 @@ def read_raw_edf(
         modified. If False, do not infer types and assume all channels are of
         type 'EEG'.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
     include : list of str | str
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
@@ -290,11 +290,11 @@ def read_raw_edf(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawEDF
         The raw instance.
@@ -307,7 +307,7 @@ def read_raw_edf(
     mne.export.export_raw : Export function for EDF files.
     mne.io.Raw : Documentation of attributes and methods of RawEDF.
 
-    Notes
+    ### 📖 Notes
     -----
 
     `mne.io.Raw` only stores signals with matching sampling frequencies.
@@ -372,9 +372,9 @@ def read_raw_bdf(
     *,
     verbose=None,
 ):
-    """Reader function for BDF files.
+    """### Reader function for BDF files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the BDF file.
@@ -404,12 +404,12 @@ def read_raw_bdf(
         modified. If False, do not infer types and assume all channels are of
         type 'EEG'.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
     include : list of str | str
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
@@ -430,11 +430,11 @@ def read_raw_bdf(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawEDF
         The raw instance.
@@ -446,7 +446,7 @@ def read_raw_bdf(
     mne.io.read_raw_gdf : Reader function for GDF files.
     mne.io.Raw : Documentation of attributes and methods of RawEDF.
 
-    Notes
+    ### 📖 Notes
     -----
     `mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
@@ -500,9 +500,9 @@ def read_raw_gdf(
     preload: bool = False,
     verbose=None,
 ):
-    """Reader function for GDF files.
+    """### Reader function for GDF files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the GDF file.
@@ -536,11 +536,11 @@ def read_raw_gdf(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawGDF
         The raw instance.
@@ -552,7 +552,7 @@ def read_raw_gdf(
     mne.io.read_raw_bdf : Reader function for BDF files.
     mne.io.Raw : Documentation of attributes and methods of RawGDF.
 
-    Notes
+    ### 📖 Notes
     -----
     If channels named 'status' or 'trigger' are present, they are considered as
     STIM channels by default. Use func:`mne.find_events` to parse events

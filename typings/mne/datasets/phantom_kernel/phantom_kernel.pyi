@@ -6,9 +6,9 @@ def data_path(
     *,
     verbose=None,
 ):
-    """Get path to local copy of phantom_kernel dataset.
+    """### Get path to local copy of phantom_kernel dataset.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     path : None | str
         Location of where to look for the phantom_kernel dataset.
@@ -31,20 +31,20 @@ def data_path(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : instance of Path
         Path to phantom_kernel dataset directory."""
     ...
 
 def get_version():
-    """Get version of the local phantom_kernel dataset.
+    """### Get version of the local phantom_kernel dataset.
 
-    Returns
+    ### ⏎ Returns
     -------
     version : str | None
         Version of the phantom_kernel local dataset, or None if the dataset

@@ -52,9 +52,9 @@ def plot_projs_topomap(
     axes=None,
     show: bool = True,
 ):
-    """Plot topographic maps of SSP projections.
+    """### Plot topographic maps of SSP projections.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     projs : list of Projection
         The projections.
@@ -62,7 +62,7 @@ def plot_projs_topomap(
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. Must be associated with the channels in the projectors.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
             The positional argument ``layout`` was deprecated and replaced
             by ``info``.
 
@@ -79,7 +79,7 @@ def plot_projs_topomap(
         ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
         non-masked sensor names will be shown.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     contours : int | array-like
         The number of contour lines to draw. If ``0``, no contours will be drawn.
@@ -110,8 +110,8 @@ def plot_projs_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -136,9 +136,9 @@ def plot_projs_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -148,7 +148,7 @@ def plot_projs_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -167,7 +167,7 @@ def plot_projs_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -180,45 +180,45 @@ def plot_projs_topomap(
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.
     cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
+        Formatting string for colorbar tick labels. See `formatspec` for
         details.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     units : str | None
         The units to use for the colorbar label. Ignored if ``colorbar=False``.
         If ``None`` the label will be "AU" indicating arbitrary units.
         Default is ``None``.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
     axes : instance of Axes | list of Axes | None
         The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
         will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
     show : bool
         Show the figure if ``True``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         Figure with a topomap subplot for each projector.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...
 
 class _GridData:
-    """Unstructured (x,y) data interpolator.
+    """### Unstructured (x,y) data interpolator.
 
     This class allows optimized interpolation by computing parameters
     for a fixed set of true points, and allowing the values at those points
@@ -237,16 +237,16 @@ class _GridData:
     interpolator: Incomplete
 
     def set_values(self, v):
-        """Set the values at interpolation points."""
+        """### Set the values at interpolation points."""
         ...
     Xi: Incomplete
     Yi: Incomplete
 
     def set_locations(self, Xi, Yi):
-        """Set locations for easier (delayed) calling."""
+        """### Set locations for easier (delayed) calling."""
         ...
     def __call__(self, *args):
-        """Evaluate the interpolator."""
+        """### Evaluate the interpolator."""
         ...
 
 def plot_topomap(
@@ -273,9 +273,9 @@ def plot_topomap(
     show: bool = True,
     onselect=None,
 ):
-    """Plot a topographic map as image.
+    """### Plot a topographic map as image.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array, shape (n_chan,)
         The data values to plot.
@@ -290,7 +290,7 @@ def plot_topomap(
         collected in pairs and the RMS for each pair is plotted. If
         ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
@@ -344,8 +344,8 @@ def plot_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -370,9 +370,9 @@ def plot_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -382,7 +382,7 @@ def plot_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -401,7 +401,7 @@ def plot_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -411,21 +411,21 @@ def plot_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
     axes : instance of Axes | None
         The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
         will be created. Default is ``None``.
 
-        .. versionchanged:: 1.2
+        🎭 Changed in version 1.2
            If ``axes=None``, a new `matplotlib.figure.Figure` is
            created instead of plotting into the current axes.
     show : bool
@@ -436,7 +436,7 @@ def plot_topomap(
         `matplotlib.widgets.RectangleSelector`). If ``None``
         interactive channel selection is disabled. Defaults to ``None``.
 
-    Returns
+    ### ⏎ Returns
     -------
     im : matplotlib.image.AxesImage
         The interpolated data.
@@ -477,9 +477,9 @@ def plot_ica_components(
     psd_args=None,
     verbose=None,
 ):
-    """Project mixing matrix on interpolated sensor topography.
+    """### Project mixing matrix on interpolated sensor topography.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ica : instance of mne.preprocessing.ICA
         The ICA solution.
@@ -554,8 +554,8 @@ def plot_ica_components(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -580,13 +580,13 @@ def plot_ica_components(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     border : float | 'mean'
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -594,7 +594,7 @@ def plot_ica_components(
     size : float
         Side length of each subplot in inches.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
         Colormap to use. If `tuple`, the first value indicates the colormap
@@ -607,7 +607,7 @@ def plot_ica_components(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -617,21 +617,21 @@ def plot_ica_components(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.
     cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
+        Formatting string for colorbar tick labels. See `formatspec` for
         details.
     axes : Axes | array of Axes | None
         The subplot(s) to plot to. Either a single Axes or an iterable of Axes
@@ -652,7 +652,7 @@ def plot_ica_components(
         components in a grid and return multiple figures as needed. Default is
         ``nrows='auto', ncols='auto'``.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
     show : bool
         Show the figure if ``True``.
     image_args : dict | None
@@ -666,16 +666,16 @@ def plot_ica_components(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure | list of matplotlib.figure.Figure
         The figure object(s).
 
-    Notes
+    ### 📖 Notes
     -----
     When run in interactive mode, ``plot_ica_components`` allows to reject
     components by clicking on their title label. The state of each component
@@ -717,9 +717,9 @@ def plot_tfr_topomap(
     axes=None,
     show: bool = True,
 ):
-    """Plot topographic maps of specific time-frequency intervals of TFR data.
+    """### Plot topographic maps of specific time-frequency intervals of TFR data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tfr : AverageTFR
         The AverageTFR object.
@@ -809,8 +809,8 @@ def plot_tfr_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -835,7 +835,7 @@ def plot_tfr_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -845,7 +845,7 @@ def plot_tfr_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -864,7 +864,7 @@ def plot_tfr_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -874,21 +874,21 @@ def plot_tfr_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.
     cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
+        Formatting string for colorbar tick labels. See `formatspec` for
         details.
 
     units : str | None
@@ -901,7 +901,7 @@ def plot_tfr_topomap(
     show : bool
         Show the figure if ``True``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : matplotlib.figure.Figure
         The figure containing the topography.
@@ -941,9 +941,9 @@ def plot_evoked_topomap(
     ncols: str = "auto",
     show: bool = True,
 ):
-    """Plot topographic maps of specific time points of evoked data.
+    """### Plot topographic maps of specific time points of evoked data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : Evoked
         The Evoked object.
@@ -965,7 +965,7 @@ def plot_evoked_topomap(
         passing an ``array-like`` object (e.g., ``[0.1, 0.2, 0.3]``). If
         ``None`` (default), no averaging will take place.
 
-        .. versionchanged:: 1.1
+        🎭 Changed in version 1.1
            Support for ``array-like`` input.
     ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
         The channel type to plot. For ``'grad'``, the gradiometers are
@@ -983,7 +983,7 @@ def plot_evoked_topomap(
         M/EEG data will be reconstructed via field mapping to reduce the signal
         bias caused by projection.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
            Support for 'reconstruct' was added.
 
     sensors : bool | str
@@ -1041,8 +1041,8 @@ def plot_evoked_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -1067,9 +1067,9 @@ def plot_evoked_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -1079,7 +1079,7 @@ def plot_evoked_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -1098,7 +1098,7 @@ def plot_evoked_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1108,21 +1108,21 @@ def plot_evoked_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.
     cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
+        Formatting string for colorbar tick labels. See `formatspec` for
         details.
 
     units : dict | str | None
@@ -1135,7 +1135,7 @@ def plot_evoked_topomap(
     time_unit : str
         The units for the time axis, can be "ms" or "s" (default).
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
     time_format : str | None
         String format for topomap values. Defaults (None) to "%01d ms" if
         ``time_unit='ms'``, "%0.3f s" if ``time_unit='s'``, and
@@ -1146,23 +1146,23 @@ def plot_evoked_topomap(
         or ``ncols`` is ``'auto'``, the necessary number will be inferred. Defaults
         to ``nrows=1, ncols='auto'``. Ignored when times == 'interactive'.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
     show : bool
         Show the figure if ``True``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
        The figure.
 
-    Notes
+    ### 📖 Notes
     -----
     When existing ``axes`` are provided and ``colorbar=True``, note that the
     colorbar scale will only accurately reflect topomaps that are generated in
     the same call as the colorbar. Note also that the colorbar will not be
     resized automatically when ``axes`` are provided; use Matplotlib's
     `axes.set_position() <matplotlib.axes.Axes.set_position>` method or
-    :ref:`gridspec <matplotlib:arranging_axes>` interface to adjust the colorbar
+    `gridspec <matplotlib:arranging_axes>` interface to adjust the colorbar
     size yourself.
 
     When ``time=="interactive"``, the figure will publish and subscribe to the
@@ -1210,11 +1210,11 @@ def plot_epochs_psd_topomap(
     n_jobs=None,
     verbose=None,
 ):
-    """.. warning:: LEGACY: New code should use Epochs.compute_psd().plot_topomap().
+    """### ### ⛔️ Warning LEGACY: New code should use Epochs.compute_psd().plot_topomap().
 
     Plot the topomap of the power spectral density across epochs.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of Epochs
         The epochs object.
@@ -1231,13 +1231,13 @@ def plot_epochs_psd_topomap(
                      'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                      'Gamma (30-45 Hz)': (30, 45)}
 
-        .. note::
+        ### 💡 Note
            For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
            also accepted, where the last element of the tuple is the subplot title
            and the other entries are frequency values (a single value or band
            edges). New code should use `dict` or ``None``.
 
-        .. versionchanged:: 1.2
+        🎭 Changed in version 1.2
            Allow passing a dict and discourage passing tuples.
     tmin, tmax : float | None
         First and last times to include, in seconds. ``None`` uses the first or
@@ -1258,7 +1258,7 @@ def plot_epochs_psd_topomap(
     normalization : 'full' | 'length'
         Normalization strategy. If "full", the PSD will be normalized by the
         sampling rate as well as the length of the signal (as in
-        :ref:`Nitime <nitime:users-guide>`). Default is ``'length'``.
+        `Nitime <nitime:users-guide>`). Default is ``'length'``.
     ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
         The channel type to plot. For ``'grad'``, the gradiometers are
         collected in pairs and the mean for each pair is plotted. If
@@ -1327,8 +1327,8 @@ def plot_epochs_psd_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -1353,7 +1353,7 @@ def plot_epochs_psd_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -1363,7 +1363,7 @@ def plot_epochs_psd_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -1382,7 +1382,7 @@ def plot_epochs_psd_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1392,21 +1392,21 @@ def plot_epochs_psd_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.
     cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
+        Formatting string for colorbar tick labels. See `formatspec` for
         details.
         If ``'auto'``, is equivalent to '%0.3f' if ``dB=False`` and '%0.1f' if
         ``dB=True``. Defaults to ``'auto'``.
@@ -1430,11 +1430,11 @@ def plot_epochs_psd_topomap(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         Figure showing one scalp topography per frequency band.
@@ -1472,9 +1472,9 @@ def plot_psds_topomap(
     axes=None,
     show: bool = True,
 ):
-    """Plot spatial maps of PSDs.
+    """### Plot spatial maps of PSDs.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     psds : array of float, shape (n_channels, n_freqs)
         Power spectral densities.
@@ -1496,13 +1496,13 @@ def plot_psds_topomap(
                      'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                      'Gamma (30-45 Hz)': (30, 45)}
 
-        .. note::
+        ### 💡 Note
            For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
            also accepted, where the last element of the tuple is the subplot title
            and the other entries are frequency values (a single value or band
            edges). New code should use `dict` or ``None``.
 
-        .. versionchanged:: 1.2
+        🎭 Changed in version 1.2
            Allow passing a dict and discourage passing tuples.
     ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
         The channel type to plot. For ``'grad'``, the gradiometers are
@@ -1572,8 +1572,8 @@ def plot_psds_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -1598,7 +1598,7 @@ def plot_psds_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -1608,7 +1608,7 @@ def plot_psds_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -1627,7 +1627,7 @@ def plot_psds_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1637,21 +1637,21 @@ def plot_psds_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.
     cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
+        Formatting string for colorbar tick labels. See `formatspec` for
         details.
         If ``'auto'``, is equivalent to '%0.3f' if ``dB=False`` and '%0.1f' if
         ``dB=True``. Defaults to ``'auto'``.
@@ -1664,7 +1664,7 @@ def plot_psds_topomap(
     show : bool
         Show the figure if ``True``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         Figure with a topomap subplot for each band.
@@ -1672,9 +1672,9 @@ def plot_psds_topomap(
     ...
 
 def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
-    """Plot the sensor positions.
+    """### Plot the sensor positions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     layout : None | Layout
         Layout instance specifying sensor positions.
@@ -1686,14 +1686,14 @@ def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
     show : bool
         Show figure if True. Defaults to True.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         Figure containing the sensor topography.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.12.0
+    ✨ Added in vesion 0.12.0
     """
     ...
 
@@ -1719,7 +1719,7 @@ def plot_arrowmap(
     extrapolate="auto",
     sphere=None,
 ):
-    """Plot arrow map.
+    """### Plot arrow map.
 
     Compute arrowmaps, based upon the Hosaka-Cohen transformation
     :footcite:`CohenHosaka1976`, these arrows represents an estimation of the
@@ -1732,7 +1732,7 @@ def plot_arrowmap(
     ``info_from`` and ``info_to`` parameters to interpolate from
     gradiometer data to magnetometer data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array, shape (n_channels,)
         The data values to plot.
@@ -1750,16 +1750,16 @@ def plot_arrowmap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     cmap : matplotlib colormap | None
         Colormap to use. If None, 'Reds' is used for all positive data,
@@ -1845,9 +1845,9 @@ def plot_arrowmap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -1864,17 +1864,17 @@ def plot_arrowmap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : matplotlib.figure.Figure
         The Figure of the plot.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.17
+    ✨ Added in vesion 0.17
 
     References
     ----------
@@ -1885,9 +1885,9 @@ def plot_arrowmap(
 def plot_bridged_electrodes(
     info, bridged_idx, ed_matrix, title=None, topomap_args=None
 ):
-    """Topoplot electrode distance matrix with bridged electrodes connected.
+    """### Topoplot electrode distance matrix with bridged electrodes connected.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -1906,7 +1906,7 @@ def plot_bridged_electrodes(
     topomap_args : dict | None
         Arguments to pass to `mne.viz.plot_topomap`.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         The topoplot figure handle.
@@ -1918,9 +1918,9 @@ def plot_bridged_electrodes(
     ...
 
 def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = False):
-    """Plot channel adjacency.
+    """### Plot channel adjacency.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     info : instance of Info
         Info object with channel locations.
@@ -1942,7 +1942,7 @@ def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = 
         an activated channel deactivates it. Editing is currently only
         supported for ``kind='2d'``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : Figure
         The `matplotlib.figure.Figure` instance where the channel
@@ -1954,9 +1954,9 @@ def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = 
     mne.channels.read_ch_adjacency
     mne.channels.find_ch_adjacency
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.1
+    ✨ Added in vesion 1.1
     """
     ...
 
@@ -1985,9 +1985,9 @@ def plot_regression_weights(
     title=None,
     show: bool = True,
 ):
-    """Plot the regression weights of a fitted EOGRegression model.
+    """### Plot the regression weights of a fitted EOGRegression model.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     model : EOGRegression
         The fitted EOGRegression model whose weights will be plotted.
@@ -2051,8 +2051,8 @@ def plot_regression_weights(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     image_interp : str
         The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -2077,7 +2077,7 @@ def plot_regression_weights(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
 
            - The default was changed to ``'local'`` for MEG sensors.
            - ``'local'`` was changed to use a convex hull mask
@@ -2087,7 +2087,7 @@ def plot_regression_weights(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
@@ -2106,7 +2106,7 @@ def plot_regression_weights(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        .. warning::  Interactive mode works smoothly only for a small amount
+        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -2119,9 +2119,9 @@ def plot_regression_weights(
     cnorm : matplotlib.colors.Normalize | None
         How to normalize the colormap. If ``None``, standard linear normalization
         is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-        See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+        See `Matplotlib docs <matplotlib:colormapnorms>`
         for more details on colormap normalization, and
-        :ref:`the ERDs example<cnorm-example>` for an example of its use.
+        `the ERDs example<cnorm-example>` for an example of its use.
     axes : instance of Axes | list of Axes | None
         The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
         will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
@@ -2129,7 +2129,7 @@ def plot_regression_weights(
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.
     cbar_fmt : str
-        Formatting string for colorbar tick labels. See :ref:`formatspec` for
+        Formatting string for colorbar tick labels. See `formatspec` for
         details.
 
     title : str | None
@@ -2138,13 +2138,13 @@ def plot_regression_weights(
     show : bool
         Show the figure if ``True``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         Figure with a topomap subplot for each channel type.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.2
+    ✨ Added in vesion 1.2
     """
     ...

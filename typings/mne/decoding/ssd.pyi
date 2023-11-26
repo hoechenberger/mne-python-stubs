@@ -8,7 +8,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class SSD(BaseEstimator, TransformerMixin):
-    """
+    """###
     Signal decomposition using the Spatio-Spectral Decomposition (SSD).
 
     SSD seeks to maximize the power at a frequency band of interest while
@@ -19,7 +19,7 @@ class SSD(BaseEstimator, TransformerMixin):
     SSD can either be used as a dimensionality reduction method or a
     ‘denoised’ low rank factorization method :footcite:`HaufeEtAl2014b`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -63,7 +63,7 @@ class SSD(BaseEstimator, TransformerMixin):
         See Notes of `mne.compute_rank` for details.
         We recommend to use 'full' when working with epoched data.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     filters_ : array, shape (n_channels, n_components)
         The spatial filters to be multiplied with the signal.
@@ -103,7 +103,7 @@ class SSD(BaseEstimator, TransformerMixin):
         cov_method_params=None,
         rank=None,
     ) -> None:
-        """Initialize instance."""
+        """### Initialize instance."""
         ...
     eigvals_: Incomplete
     filters_: Incomplete
@@ -111,9 +111,9 @@ class SSD(BaseEstimator, TransformerMixin):
     sorter_spec: Incomplete
 
     def fit(self, X, y=None):
-        """Estimate the SSD decomposition on raw or epoched data.
+        """### Estimate the SSD decomposition on raw or epoched data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The input data from which to estimate the SSD. Either 2D array
@@ -122,40 +122,40 @@ class SSD(BaseEstimator, TransformerMixin):
         y : None | array, shape (n_samples,)
             Used for scikit-learn compatibility.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of SSD
             Returns the modified instance.
         """
         ...
     def transform(self, X):
-        """Estimate epochs sources given the SSD filters.
+        """### Estimate epochs sources given the SSD filters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The input data from which to estimate the SSD. Either 2D array
             obtained from continuous data or 3D array obtained from epoched
             data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X_ssd : array, shape ([n_epochs, ]n_components, n_times)
             The processed data.
         """
         ...
     def get_spectral_ratio(self, ssd_sources):
-        """Get the spectal signal-to-noise ratio for each spatial filter.
+        """### Get the spectal signal-to-noise ratio for each spatial filter.
 
         Spectral ratio measure for best n_components selection
         See :footcite:`NikulinEtAl2011`, Eq. (24).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ssd_sources : array
             Data projected to SSD space.
 
-        Returns
+        ### ⏎ Returns
         -------
         spec_ratio : array, shape (n_channels)
             Array with the sprectal ratio value for each component.
@@ -168,27 +168,27 @@ class SSD(BaseEstimator, TransformerMixin):
         """
         ...
     def inverse_transform(self) -> None:
-        """Not implemented yet."""
+        """### Not implemented yet."""
         ...
     def apply(self, X):
-        """Remove selected components from the signal.
+        """### Remove selected components from the signal.
 
         This procedure will reconstruct M/EEG signals from which the dynamics
         described by the excluded components is subtracted
         (denoised by low-rank factorization).
         See :footcite:`HaufeEtAl2014b` for more information.
 
-        .. note:: Unlike in other classes with an apply method,
+        ### 💡 Note Unlike in other classes with an apply method,
            only NumPy arrays are supported (not instances of MNE objects).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The input data from which to estimate the SSD. Either 2D array
             obtained from continuous data or 3D array obtained from epoched
             data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The processed data.

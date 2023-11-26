@@ -14,16 +14,16 @@ UINT32: str
 INT32: str
 
 class UnsupportedKITFormat(ValueError):
-    """Our reader is not guaranteed to work with old files."""
+    """### Our reader is not guaranteed to work with old files."""
 
     sqd_version: Incomplete
 
     def __init__(self, sqd_version, *args, **kwargs) -> None: ...
 
 class RawKIT(BaseRaw):
-    """Raw object from KIT SQD file.
+    """### Raw object from KIT SQD file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the SQD file.
@@ -81,11 +81,11 @@ class RawKIT(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
     ``elp`` and ``hsp`` are usually the exported text files (*.txt) from the
     Polhemus FastScan system. ``hsp`` refers to the headshape surface points.
@@ -119,14 +119,14 @@ class RawKIT(BaseRaw):
         verbose=None,
     ) -> None: ...
     def read_stim_ch(self, buffer_size: float = 100000.0):
-        """Read events from data.
+        """### Read events from data.
 
         Parameter
         ---------
         buffer_size : int
             The size of chunk to by which the data are scanned.
 
-        Returns
+        ### ⏎ Returns
         -------
         events : array, [samples]
            The event vector (1 x samples).
@@ -134,9 +134,9 @@ class RawKIT(BaseRaw):
         ...
 
 class EpochsKIT(BaseEpochs):
-    """Epochs Array object from KIT SQD file.
+    """### Epochs Array object from KIT SQD file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the sqd file.
@@ -167,7 +167,7 @@ class EpochsKIT(BaseEpochs):
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -195,12 +195,12 @@ class EpochsKIT(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        .. note:: Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -212,7 +212,7 @@ class EpochsKIT(BaseEpochs):
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     reject_tmin, reject_tmax : float | None
@@ -221,7 +221,7 @@ class EpochsKIT(BaseEpochs):
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        .. note:: This parameter controls the time period used in conjunction with
+        ### 💡 Note This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     mrk : path-like | array of shape (5, 3) | list | None
@@ -248,11 +248,11 @@ class EpochsKIT(BaseEpochs):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
     ``elp`` and ``hsp`` are usually the exported text files (*.txt) from the
     Polhemus FastScan system. hsp refers to the headshape surface points. elp
@@ -286,9 +286,9 @@ class EpochsKIT(BaseEpochs):
     ) -> None: ...
 
 def get_kit_info(rawfile, allow_unknown_format, standardize_names=None, verbose=None):
-    """Extract all the information from the sqd/con file.
+    """### Extract all the information from the sqd/con file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     rawfile : path-like
         KIT file to be read.
@@ -303,11 +303,11 @@ def get_kit_info(rawfile, allow_unknown_format, standardize_names=None, verbose=
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     info : mne.Info
@@ -331,9 +331,9 @@ def read_raw_kit(
     standardize_names: bool = False,
     verbose=None,
 ):
-    """Reader function for Ricoh/KIT conversion to FIF.
+    """### Reader function for Ricoh/KIT conversion to FIF.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the SQD file.
@@ -391,11 +391,11 @@ def read_raw_kit(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawKIT
         A Raw object containing KIT data.
@@ -405,7 +405,7 @@ def read_raw_kit(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawKIT.
 
-    Notes
+    ### 📖 Notes
     -----
     ``elp`` and ``hsp`` are usually the exported text files (\\*.txt) from the
     Polhemus FastScan system. ``hsp`` refers to the headshape surface points.
@@ -428,9 +428,9 @@ def read_epochs_kit(
     standardize_names: bool = False,
     verbose=None,
 ):
-    """Reader function for Ricoh/KIT epochs files.
+    """### Reader function for Ricoh/KIT epochs files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the SQD file.
@@ -474,17 +474,17 @@ def read_epochs_kit(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : instance of Epochs
         The epochs.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...

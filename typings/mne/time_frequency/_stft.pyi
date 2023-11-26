@@ -1,12 +1,12 @@
 from ..utils import logger as logger
 
 def stft(x, wsize, tstep=None, verbose=None):
-    """STFT Short-Term Fourier Transform using a sine window.
+    """### STFT Short-Term Fourier Transform using a sine window.
 
     The transformation is designed to be a tight frame that can be
     perfectly inverted. It only returns the positive frequencies.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x : array, shape (n_signals, n_times)
         Containing multi-channels signal.
@@ -18,11 +18,11 @@ def stft(x, wsize, tstep=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     X : array, shape (n_signals, wsize // 2 + 1, n_step)
         STFT coefficients for positive frequencies with
@@ -36,9 +36,9 @@ def stft(x, wsize, tstep=None, verbose=None):
     ...
 
 def istft(X, tstep=None, Tx=None):
-    """ISTFT Inverse Short-Term Fourier Transform using a sine window.
+    """### ISTFT Inverse Short-Term Fourier Transform using a sine window.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : array, shape (..., wsize / 2 + 1, n_step)
         The STFT coefficients for positive frequencies.
@@ -48,7 +48,7 @@ def istft(X, tstep=None, Tx=None):
     Tx : int
         Length of returned signal. If None Tx = n_step * tstep.
 
-    Returns
+    ### ⏎ Returns
     -------
     x : array, shape (Tx,)
         Array containing the inverse STFT signal.
@@ -60,9 +60,9 @@ def istft(X, tstep=None, Tx=None):
     ...
 
 def stftfreq(wsize, sfreq=None):
-    """Compute frequencies of stft transformation.
+    """### Compute frequencies of stft transformation.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     wsize : int
         Size of stft window.
@@ -70,7 +70,7 @@ def stftfreq(wsize, sfreq=None):
         Sampling frequency. If None the frequencies are given between 0 and pi
         otherwise it's given in Hz.
 
-    Returns
+    ### ⏎ Returns
     -------
     freqs : array
         The positive frequencies returned by stft.
@@ -83,17 +83,17 @@ def stftfreq(wsize, sfreq=None):
     ...
 
 def stft_norm2(X):
-    """Compute L2 norm of STFT transform.
+    """### Compute L2 norm of STFT transform.
 
     It takes into account that stft only return positive frequencies.
     As we use tight frame this quantity is conserved by the stft.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : 3D complex array
         The STFT transforms
 
-    Returns
+    ### ⏎ Returns
     -------
     norms2 : array
         The squared L2 norm of every row of X.
@@ -101,16 +101,16 @@ def stft_norm2(X):
     ...
 
 def stft_norm1(X):
-    """Compute L1 norm of STFT transform.
+    """### Compute L1 norm of STFT transform.
 
     It takes into account that stft only return positive frequencies.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : 3D complex array
         The STFT transforms
 
-    Returns
+    ### ⏎ Returns
     -------
     norms : array
         The L1 norm of every row of X.

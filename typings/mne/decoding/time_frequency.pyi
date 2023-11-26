@@ -4,11 +4,11 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class TimeFrequency(TransformerMixin, BaseEstimator):
-    """Time frequency transformer.
+    """### Time frequency transformer.
 
     Time-frequency transform of times series along the last axis.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     freqs : array-like of float, shape (n_freqs,)
         The frequencies.
@@ -34,7 +34,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         If `int`, returns tfr[..., ::decim].
         If `slice`, returns tfr[..., decim].
 
-        .. note:: Decimation may create aliasing artifacts, yet decimation
+        ### 💡 Note Decimation may create aliasing artifacts, yet decimation
                   is done after the convolutions.
 
     output : str, default 'complex'
@@ -53,7 +53,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -87,12 +87,12 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         n_jobs: int = 1,
         verbose=None,
     ) -> None:
-        """Init TimeFrequency transformer."""
+        """### Init TimeFrequency transformer."""
         ...
     def fit_transform(self, X, y=None):
-        """Time-frequency transform of times series along the last axis.
+        """### Time-frequency transform of times series along the last axis.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_samples, n_channels, n_times)
             The training data samples. The channel dimension can be zero- or
@@ -100,7 +100,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         y : None
             For scikit-learn compatibility purposes.
 
-        Returns
+        ### ⏎ Returns
         -------
         Xt : array, shape (n_samples, n_channels, n_freqs, n_times)
             The time-frequency transform of the data, where n_channels can be
@@ -108,31 +108,31 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         """
         ...
     def fit(self, X, y=None):
-        """Do nothing (for scikit-learn compatibility purposes).
+        """### Do nothing (for scikit-learn compatibility purposes).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_samples, n_channels, n_times)
             The training data.
         y : array | None
             The target values.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : object
             Return self.
         """
         ...
     def transform(self, X):
-        """Time-frequency transform of times series along the last axis.
+        """### Time-frequency transform of times series along the last axis.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_samples, n_channels, n_times)
             The training data samples. The channel dimension can be zero- or
             1-dimensional.
 
-        Returns
+        ### ⏎ Returns
         -------
         Xt : array, shape (n_samples, n_channels, n_freqs, n_times)
             The time-frequency transform of the data, where n_channels can be

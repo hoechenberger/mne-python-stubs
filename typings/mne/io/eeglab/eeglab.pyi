@@ -26,9 +26,9 @@ def read_raw_eeglab(
     montage_units: str = "auto",
     verbose=None,
 ):
-    """Read an EEGLAB .set file.
+    """### Read an EEGLAB .set file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
@@ -59,18 +59,18 @@ def read_raw_eeglab(
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
-        .. versionchanged:: 1.6
+        🎭 Changed in version 1.6
            Support for ``'auto'`` was added and is the new default.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawEEGLAB
         A Raw object containing EEGLAB .set data.
@@ -80,9 +80,9 @@ def read_raw_eeglab(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawEEGLAB.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.11.0
+    ✨ Added in vesion 0.11.0
     """
     ...
 
@@ -96,9 +96,9 @@ def read_epochs_eeglab(
     montage_units: str = "auto",
     verbose=None,
 ):
-    """Reader function for EEGLAB epochs files.
+    """### Reader function for EEGLAB epochs files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
@@ -137,18 +137,18 @@ def read_epochs_eeglab(
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
-        .. versionchanged:: 1.6
+        🎭 Changed in version 1.6
            Support for ``'auto'`` was added and is the new default.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : instance of Epochs
         The epochs.
@@ -157,16 +157,16 @@ def read_epochs_eeglab(
     --------
     mne.Epochs : Documentation of attributes and methods.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.11.0
+    ✨ Added in vesion 0.11.0
     """
     ...
 
 class RawEEGLAB(BaseRaw):
-    """Raw object from EEGLAB .set file.
+    """### Raw object from EEGLAB .set file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
@@ -197,11 +197,11 @@ class RawEEGLAB(BaseRaw):
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -209,9 +209,9 @@ class RawEEGLAB(BaseRaw):
     --------
     mne.io.Raw : Documentation of attributes and methods.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.11.0
+    ✨ Added in vesion 0.11.0
     """
 
     def __init__(
@@ -226,9 +226,9 @@ class RawEEGLAB(BaseRaw):
     ) -> None: ...
 
 class EpochsEEGLAB(BaseEpochs):
-    """Epochs from EEGLAB .set file.
+    """### Epochs from EEGLAB .set file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
@@ -291,9 +291,9 @@ class EpochsEEGLAB(BaseEpochs):
     --------
     mne.Epochs : Documentation of attributes and methods.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.11.0
+    ✨ Added in vesion 0.11.0
     """
 
     def __init__(

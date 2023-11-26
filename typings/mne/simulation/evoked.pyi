@@ -17,15 +17,15 @@ def simulate_evoked(
     use_cps: bool = True,
     verbose=None,
 ):
-    """Generate noisy evoked data.
+    """### Generate noisy evoked data.
 
-    .. note:: No projections from ``info`` will be present in the
+    ### 💡 Note No projections from ``info`` will be present in the
               output ``evoked``. You can use e.g.
               `evoked.add_proj <mne.Evoked.add_proj>` or
               `evoked.set_eeg_reference <mne.Evoked.set_eeg_reference>`
               to add them afterward as necessary.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fwd : instance of Forward
         A forward solution.
@@ -39,7 +39,7 @@ def simulate_evoked(
     nave : int
         Number of averaged epochs (defaults to 30).
 
-        .. versionadded:: 0.15.0
+        ✨ Added in vesion 0.15.0
     iir_filter : None | array
         IIR filter coefficients (denominator) e.g. [1, -1, 0.2].
 
@@ -55,15 +55,15 @@ def simulate_evoked(
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     evoked : Evoked object
         The simulated evoked data.
@@ -74,7 +74,7 @@ def simulate_evoked(
     simulate_stc
     simulate_sparse_stc
 
-    Notes
+    ### 📖 Notes
     -----
     To make the equivalence between snr and nave, when the snr is given
     instead of nave::
@@ -83,16 +83,16 @@ def simulate_evoked(
 
     where actual_snr is the snr to the generated noise before scaling.
 
-    .. versionadded:: 0.10.0
+    ✨ Added in vesion 0.10.0
     """
     ...
 
 def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
-    """Create noise as a multivariate Gaussian.
+    """### Create noise as a multivariate Gaussian.
 
     The spatial covariance of the noise is given from the cov matrix.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Evoked, Epochs, or Raw
         Instance to which to add noise.
@@ -111,22 +111,22 @@ def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     inst : instance of Evoked, Epochs, or Raw
         The instance, modified to have additional noise.
 
-    Notes
+    ### 📖 Notes
     -----
     Only channels in both ``inst.info['ch_names']`` and
     ``cov['names']`` will have noise added to them.
 
     This function operates inplace on ``inst``.
 
-    .. versionadded:: 0.18.0
+    ✨ Added in vesion 0.18.0
     """
     ...

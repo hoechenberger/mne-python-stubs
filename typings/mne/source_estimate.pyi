@@ -26,9 +26,9 @@ from .viz import (
 from _typeshed import Incomplete
 
 def read_source_estimate(fname, subject=None):
-    """Read a source estimate object.
+    """### Read a source estimate object.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to (a) source-estimate file(s).
@@ -39,12 +39,12 @@ def read_source_estimate(fname, subject=None):
         subjects). Note that due to file specification limitations, the
         subject name isn't saved to or loaded from files written to disk.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate | MixedSourceEstimate
         The source estimate object loaded from file.
 
-    Notes
+    ### 📖 Notes
     -----
      - for volume source estimates, ``fname`` should provide the path to a
        single file named ``'*-vl.stc``` or ``'*-vol.stc'``
@@ -76,9 +76,9 @@ class _BaseSourceEstimate(TimeMixin):
         vert_as_index: bool = False,
         time_as_index: bool = False,
     ):
-        """Get location and latency of peak amplitude.
+        """### Get location and latency of peak amplitude.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         tmin : float | None
@@ -97,7 +97,7 @@ class _BaseSourceEstimate(TimeMixin):
             Whether to return the time index (True) instead of the latency
             (False, default).
 
-        Returns
+        ### ⏎ Returns
         -------
         pos : int
             The vertex exhibiting the maximum response, either ID or index.
@@ -108,12 +108,12 @@ class _BaseSourceEstimate(TimeMixin):
     def extract_label_time_course(
         self, labels, src, mode: str = "auto", allow_empty: bool = False, verbose=None
     ):
-        """Extract label time courses for lists of labels.
+        """### Extract label time courses for lists of labels.
 
         This function will extract one time course for each label. The way the
         time courses are extracted depends on the mode parameter.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         labels : Label | BiHemiLabel | list | tuple | str
@@ -128,7 +128,7 @@ class _BaseSourceEstimate(TimeMixin):
               and the second being a list or dict of ``volume_labels`` to extract
               (see `mne.setup_volume_source_space` for details).
 
-            .. versionchanged:: 0.21.0
+            🎭 Changed in version 0.21.0
                Support for volume source estimates.
 
         src : instance of SourceSpaces
@@ -144,16 +144,16 @@ class _BaseSourceEstimate(TimeMixin):
             source estimate, and True will emit a warning while and "ignore" will
             just log a message.
 
-            .. versionchanged:: 0.21.0
+            🎭 Changed in version 0.21.0
                Support for "ignore".
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
 
         label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
@@ -163,7 +163,7 @@ class _BaseSourceEstimate(TimeMixin):
         --------
         extract_label_time_course : Extract time courses for multiple STCs.
 
-        Notes
+        ### 📖 Notes
         -----
 
         Valid values for ``mode`` are:
@@ -197,7 +197,7 @@ class _BaseSourceEstimate(TimeMixin):
             No aggregation is performed, and an array of shape ``(n_vertices, n_times)`` is
             returned.
 
-            .. versionadded:: 0.21
+            ✨ Added in vesion 0.21
                Support for ``'auto'``, vector, and volume source estimates.
 
         The only modes that work for vector and volume source estimates are ``'mean'``,
@@ -205,9 +205,9 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
-        """Baseline correct source estimate data.
+        """### Baseline correct source estimate data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         baseline : None | tuple of length 2
@@ -219,7 +219,7 @@ class _BaseSourceEstimate(TimeMixin):
             is ``None``, it is set to the **end** of the interval.
             If ``(None, None)``, the entire time interval is used.
 
-            .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+            ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
             Correction is applied **to each source individually** in the following
@@ -228,7 +228,7 @@ class _BaseSourceEstimate(TimeMixin):
             1. Calculate the mean signal of the baseline period.
             2. Subtract this mean from the **entire** source estimate data.
 
-            .. note:: Baseline correction is appropriate when signal and noise are
+            ### 💡 Note Baseline correction is appropriate when signal and noise are
                       approximately additive, and the noise level can be estimated from
                       the baseline interval. This can be the case for non-normalized
                       source activities (e.g. signed and unsigned MNE), but it is not
@@ -240,16 +240,16 @@ class _BaseSourceEstimate(TimeMixin):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate
             The baseline-corrected source estimate object.
 
-        Notes
+        ### 📖 Notes
         -----
         Baseline correction can be done multiple times.
         """
@@ -257,9 +257,9 @@ class _BaseSourceEstimate(TimeMixin):
     def save(
         self, fname, ftype: str = "h5", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """Save the full source estimate to an HDF5 file.
+        """### Save the full source estimate to an HDF5 file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The file name to write the source estimate to, should end in
@@ -271,11 +271,11 @@ class _BaseSourceEstimate(TimeMixin):
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 1.0
+            ✨ Added in vesion 1.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
@@ -313,9 +313,9 @@ class _BaseSourceEstimate(TimeMixin):
         brain_kwargs=None,
         verbose=None,
     ):
-        """Plot SourceEstimate.
+        """### Plot SourceEstimate.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         subject : str | None
             The FreeSurfer subject name.
@@ -355,7 +355,7 @@ class _BaseSourceEstimate(TimeMixin):
             Display time viewer GUI. Can also be 'auto', which will mean True
             for the PyVista backend and False otherwise.
 
-            .. versionchanged:: 0.20.0
+            🎭 Changed in version 0.20.0
                "auto" mode added.
 
         subjects_dir : path-like | None
@@ -380,7 +380,7 @@ class _BaseSourceEstimate(TimeMixin):
 
             Using multiple views (list) is not supported by the matplotlib backend.
 
-            .. versionchanged:: 0.21.0
+            🎭 Changed in version 0.21.0
                Support for flatmaps.
         colorbar : bool
             If True, display colorbar on scene.
@@ -398,7 +398,7 @@ class _BaseSourceEstimate(TimeMixin):
                     will be mirrored directly across zero during colormap
                     construction to obtain negative control points.
 
-            .. note:: Only one of ``lims`` or ``pos_lims`` should be provided.
+            ### 💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
                       Only sequential colormaps should be used with ``lims``, and
                       only divergent colormaps should be used with ``pos_lims``.
         cortex : str | tuple
@@ -427,7 +427,7 @@ class _BaseSourceEstimate(TimeMixin):
             Which backend to use. If ``'auto'`` (default), tries to plot with
             pyvistaqt, but resorts to matplotlib if no 3d backend is available.
 
-            .. versionadded:: 0.15.0
+            ✨ Added in vesion 0.15.0
         spacing : str
             Only affects the matplotlib backend.
             The spacing to use for the source space. Can be ``'ico#'`` for a
@@ -436,11 +436,11 @@ class _BaseSourceEstimate(TimeMixin):
             speed up the plotting by selecting a sparser source space.
             Defaults  to 'oct6'.
 
-            .. versionadded:: 0.15.0
+            ✨ Added in vesion 0.15.0
         title : str | None
             Title for the figure. If None, the subject name will be used.
 
-            .. versionadded:: 0.17.0
+            ✨ Added in vesion 0.17.0
 
         show_traces : bool | str | float
             If True, enable interactive picking of a point on the surface of the
@@ -452,7 +452,7 @@ class _BaseSourceEstimate(TimeMixin):
             proportion of the total window should be devoted to traces (True is
             equivalent to 0.25, i.e., it will occupy the bottom 1/4 of the figure).
 
-            .. versionadded:: 0.20.0
+            ✨ Added in vesion 0.20.0
 
         src : instance of SourceSpaces | None
             The source space corresponding to the source estimate. Only necessary
@@ -497,16 +497,16 @@ class _BaseSourceEstimate(TimeMixin):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         figure : instance of mne.viz.Brain | matplotlib.figure.Figure
             An instance of `mne.viz.Brain` or matplotlib figure.
 
-        Notes
+        ### 📖 Notes
         -----
         Flatmaps are available by default for ``fsaverage`` but not for other
         subjects reconstructed by FreeSurfer. We recommend using
@@ -520,12 +520,12 @@ class _BaseSourceEstimate(TimeMixin):
         ...
     @property
     def sfreq(self):
-        """Sample rate of the data."""
+        """### Sample rate of the data."""
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True):
-        """Restrict SourceEstimate to a time interval.
+        """### Restrict SourceEstimate to a time interval.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tmin : float | None
             The first time point in seconds. If None the first present is used.
@@ -536,9 +536,9 @@ class _BaseSourceEstimate(TimeMixin):
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
-            .. versionadded:: 0.19
+            ✨ Added in vesion 0.19
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate
             The cropped source estimate.
@@ -552,12 +552,12 @@ class _BaseSourceEstimate(TimeMixin):
         n_jobs=None,
         verbose=None,
     ):
-        """Resample data.
+        """### Resample data.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
-        See :ref:`resampling-and-decimating` for more information.
+        See `resampling-and-decimating` for more information.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         sfreq : float
             New sample rate to use.
@@ -577,16 +577,16 @@ class _BaseSourceEstimate(TimeMixin):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate
             The resampled source estimate.
 
-        Notes
+        ### 📖 Notes
         -----
         For some data, it may be more accurate to use npad=0 to reduce
         artifacts. This is dataset dependent -- check your data!
@@ -596,74 +596,74 @@ class _BaseSourceEstimate(TimeMixin):
         ...
     @property
     def data(self):
-        """Numpy array of source estimate data."""
+        """### Numpy array of source estimate data."""
         ...
     @data.setter
     def data(self, value) -> None:
-        """Numpy array of source estimate data."""
+        """### Numpy array of source estimate data."""
         ...
     @property
     def shape(self):
-        """Shape of the data."""
+        """### Shape of the data."""
         ...
     @property
     def tmin(self):
-        """The first timestamp."""
+        """### The first timestamp."""
         ...
     @tmin.setter
     def tmin(self, value) -> None:
-        """The first timestamp."""
+        """### The first timestamp."""
         ...
     @property
     def tstep(self):
-        """The change in time between two consecutive samples (1 / sfreq)."""
+        """### The change in time between two consecutive samples (1 / sfreq)."""
         ...
     @tstep.setter
     def tstep(self, value) -> None:
-        """The change in time between two consecutive samples (1 / sfreq)."""
+        """### The change in time between two consecutive samples (1 / sfreq)."""
         ...
     @property
     def times(self):
-        """A timestamp for each sample."""
+        """### A timestamp for each sample."""
         ...
     @times.setter
     def times(self, value) -> None:
-        """A timestamp for each sample."""
+        """### A timestamp for each sample."""
         ...
     def __add__(self, a):
-        """Add source estimates."""
+        """### Add source estimates."""
         ...
     def __iadd__(self, a): ...
     def mean(self):
-        """Make a summary stc file with mean over time points.
+        """### Make a summary stc file with mean over time points.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : SourceEstimate | VectorSourceEstimate
             The modified stc.
         """
         ...
     def sum(self):
-        """Make a summary stc file with sum over time points.
+        """### Make a summary stc file with sum over time points.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : SourceEstimate | VectorSourceEstimate
             The modified stc.
         """
         ...
     def __sub__(self, a):
-        """Subtract source estimates."""
+        """### Subtract source estimates."""
         ...
     def __isub__(self, a): ...
     def __truediv__(self, a): ...
     def __div__(self, a):
-        """Divide source estimates."""
+        """### Divide source estimates."""
         ...
     def __itruediv__(self, a): ...
     def __idiv__(self, a): ...
     def __mul__(self, a):
-        """Multiply source estimates."""
+        """### Multiply source estimates."""
         ...
     def __imul__(self, a): ...
     def __pow__(self, a): ...
@@ -673,13 +673,13 @@ class _BaseSourceEstimate(TimeMixin):
     def __rmul__(self, a): ...
     def __rdiv__(self, a): ...
     def __neg__(self):
-        """Negate the source estimate."""
+        """### Negate the source estimate."""
         ...
     def __pos__(self): ...
     def __abs__(self):
-        """Compute the absolute value of the data.
+        """### Compute the absolute value of the data.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of _BaseSourceEstimate
             A version of the source estimate, where the data attribute is set
@@ -687,31 +687,31 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def sqrt(self):
-        """Take the square root.
+        """### Take the square root.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate
             A copy of the SourceEstimate with sqrt(data).
         """
         ...
     def copy(self):
-        """Return copy of source estimate instance.
+        """### Return copy of source estimate instance.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate
             A copy of the source estimate.
         """
         ...
     def bin(self, width, tstart=None, tstop=None, func=...):
-        """Return a source estimate object with data summarized over time bins.
+        """### Return a source estimate object with data summarized over time bins.
 
         Time bins of ``width`` seconds. This method is intended for
         visualization only. No filter is applied to the data before binning,
         making the method inappropriate as a tool for downsampling data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         width : scalar
             Width of the individual bins in seconds.
@@ -726,18 +726,18 @@ class _BaseSourceEstimate(TimeMixin):
             Function that is applied to summarize the data. Needs to accept a
             numpy.array as first input and an ``axis`` keyword argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : SourceEstimate | VectorSourceEstimate
             The binned source estimate.
         """
         ...
     def transform_data(self, func, idx=None, tmin_idx=None, tmax_idx=None):
-        """Get data after a linear (time) transform has been applied.
+        """### Get data after a linear (time) transform has been applied.
 
         The transform is applied to each source time course independently.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         func : callable
             The transform to be applied, including parameters (see, e.g.,
@@ -756,12 +756,12 @@ class _BaseSourceEstimate(TimeMixin):
             Index of the first time point not to include. If None, time points
             up to (and including) the last time point are included.
 
-        Returns
+        ### ⏎ Returns
         -------
         data_t : ndarray
             The transformed data.
 
-        Notes
+        ### 📖 Notes
         -----
         Applying transforms can be significantly faster if the
         SourceEstimate object was created using "(kernel, sens_data)", for
@@ -771,11 +771,11 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def transform(self, func, idx=None, tmin=None, tmax=None, copy: bool = False):
-        """Apply linear transform.
+        """### Apply linear transform.
 
         The transform is applied to each source time course independently.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         func : callable
             The transform to be applied, including parameters (see, e.g.,
@@ -793,14 +793,14 @@ class _BaseSourceEstimate(TimeMixin):
             If True, return a new instance of SourceEstimate instead of
             modifying the input inplace.
 
-        Returns
+        ### ⏎ Returns
         -------
         stcs : SourceEstimate | VectorSourceEstimate | list
             The transformed stc or, in the case of transforms which yield
             N-dimensional output (where N > 2), a list of stcs. For a list,
             copy must be True.
 
-        Notes
+        ### 📖 Notes
         -----
         Transforms which yield 3D
         output (e.g. time-frequency transforms) are valid, so long as the
@@ -829,13 +829,13 @@ class _BaseSourceEstimate(TimeMixin):
         *,
         verbose=None,
     ):
-        """Export data in tabular structure as a pandas DataFrame.
+        """### Export data in tabular structure as a pandas DataFrame.
 
         Vertices are converted to columns in the DataFrame. By default,
         an additional column "time" is added, unless ``index='time'``
         (in which case time values form the DataFrame's index).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         index : 'time' | None
@@ -862,15 +862,15 @@ class _BaseSourceEstimate(TimeMixin):
             time values will be converted to `pandas.Timedelta` values.
             Default is ``None``.
 
-            .. versionadded:: 0.20
+            ✨ Added in vesion 0.20
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
 
         df : instance of pandas.DataFrame
@@ -880,9 +880,9 @@ class _BaseSourceEstimate(TimeMixin):
         ...
 
 class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
-    """Abstract base class for surface source estimates.
+    """### Abstract base class for surface source estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array
         The data in source space.
@@ -903,11 +903,11 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     subject : str | None
         The subject name.
@@ -925,34 +925,34 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
 
     @property
     def lh_data(self):
-        """Left hemisphere data."""
+        """### Left hemisphere data."""
         ...
     @property
     def rh_data(self):
-        """Right hemisphere data."""
+        """### Right hemisphere data."""
         ...
     @property
     def lh_vertno(self):
-        """Left hemisphere vertno."""
+        """### Left hemisphere vertno."""
         ...
     @property
     def rh_vertno(self):
-        """Right hemisphere vertno."""
+        """### Right hemisphere vertno."""
         ...
     def in_label(self, label):
-        """Get a source estimate object restricted to a label.
+        """### Get a source estimate object restricted to a label.
 
         SourceEstimate contains the time course of
         activation of all sources inside the label.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         label : Label | BiHemiLabel
             The label (as created for example by mne.read_label). If the label
             does not match any sources in the SourceEstimate, a ValueError is
             raised.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : SourceEstimate | VectorSourceEstimate
             The source estimate restricted to the given label.
@@ -961,17 +961,17 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     data: Incomplete
 
     def expand(self, vertices):
-        """Expand SourceEstimate to include more vertices.
+        """### Expand SourceEstimate to include more vertices.
 
         This will add rows to stc.data (zero-filled) and modify stc.vertices
         to include all vertices in stc.vertices and the input vertices.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         vertices : list of array
             New vertices to add. Can also contain old values.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : SourceEstimate | VectorSourceEstimate
             The modified stc (note: method operates inplace).
@@ -980,9 +980,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     def to_original_src(
         self, src_orig, subject_orig=None, subjects_dir=None, verbose=None
     ):
-        """Get a source estimate from morphed source to the original subject.
+        """### Get a source estimate from morphed source to the original subject.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         src_orig : instance of SourceSpaces
             The original source spaces that were morphed to the current
@@ -998,11 +998,11 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : SourceEstimate | VectorSourceEstimate
             The transformed source estimate.
@@ -1011,9 +1011,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         --------
         morph_source_spaces
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.10.0
+        ✨ Added in vesion 0.10.0
         """
         ...
     def get_peak(
@@ -1025,9 +1025,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         vert_as_index: bool = False,
         time_as_index: bool = False,
     ):
-        """Get location and latency of peak amplitude.
+        """### Get location and latency of peak amplitude.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         hemi : {'lh', 'rh', None}
             The hemi to be considered. If None, the entire source space is
@@ -1049,7 +1049,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
             Whether to return the time index (True) instead of the latency
             (False, default).
 
-        Returns
+        ### ⏎ Returns
         -------
         pos : int
             The vertex exhibiting the maximum response, either ID or index.
@@ -1060,9 +1060,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         ...
 
 class SourceEstimate(_BaseSurfaceSourceEstimate):
-    """Container for surface source estimates.
+    """### Container for surface source estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
         The data in source space. When it is a single array, the
@@ -1092,11 +1092,11 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     subject : str | None
         The subject name.
@@ -1121,9 +1121,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
     def save(
         self, fname, ftype: str = "stc", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """Save the source estimates to a file.
+        """### Save the source estimates to a file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The stem of the file name. The file names used for surface source
@@ -1139,26 +1139,26 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 1.0
+            ✨ Added in vesion 1.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
     def estimate_snr(self, info, fwd, cov, verbose=None):
-        """Compute time-varying SNR in the source space.
+        """### Compute time-varying SNR in the source space.
 
         This function should only be used with source estimates with units
         nanoAmperes (i.e., MNE-like solutions, *not* dSPM or sLORETA).
         See also :footcite:`GoldenholzEtAl2009`.
 
-        .. warning:: This function currently only works properly for fixed
+        ### ⛔️ Warning This function currently only works properly for fixed
                      orientation.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         info : mne.Info
@@ -1171,16 +1171,16 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         snr_stc : instance of SourceEstimate
             The source estimate with the SNR computed.
 
-        Notes
+        ### 📖 Notes
         -----
         We define the SNR in decibels for each source location at each
         time point as:
@@ -1207,12 +1207,12 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         subjects_dir=None,
         surf: str = "sphere",
     ):
-        """Compute the center of mass of activity.
+        """### Compute the center of mass of activity.
 
         This function computes the spatial center of mass on the surface
         as well as the temporal center of mass as in :footcite:`LarsonLee2013`.
 
-        .. note:: All activity must occur in a single hemisphere, otherwise
+        ### 💡 Note All activity must occur in a single hemisphere, otherwise
                   an error is raised. The "mass" of each point in space for
                   computing the spatial center of mass is computed by summing
                   across time, and vice-versa for each point in time in
@@ -1220,7 +1220,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
                   quantifying spatio-temporal cluster locations, especially
                   when combined with `mne.vertex_to_mni`.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         subject : str | None
             The subject the stc is defined for.
@@ -1246,7 +1246,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
             of mass on the spherical surface to help avoid potential issues
             with cortical folding.
 
-        Returns
+        ### ⏎ Returns
         -------
         vertex : int
             Vertex of the spatial center of mass for the inferred hemisphere,
@@ -1275,18 +1275,18 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         self, data, vertices=None, tmin=None, tstep=None, subject=None, verbose=None
     ) -> None: ...
     def magnitude(self):
-        """Compute magnitude of activity without directionality.
+        """### Compute magnitude of activity without directionality.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate
             The source estimate without directionality information.
         """
         ...
     def project(self, directions, src=None, use_cps: bool = True):
-        """Project the data for each vertex in a given direction.
+        """### Project the data for each vertex in a given direction.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         directions : ndarray, shape (n_vertices, 3) | str
             Can be:
@@ -1309,14 +1309,14 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             Should be the same value that was used when the forward model
             was computed (typically True).
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate
             The projected source estimate.
         directions : ndarray, shape (n_vertices, 3)
             The directions that were computed (or just used).
 
-        Notes
+        ### 📖 Notes
         -----
         When using SVD, there is a sign ambiguity for the direction of maximal
         power. When ``src is None``, the direction is chosen that makes the
@@ -1325,7 +1325,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         of the source normals, i.e., outward from cortex for surface source
         spaces and in the +Z / superior direction for volume source spaces.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
         """
         ...
     def plot(
@@ -1360,14 +1360,14 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         brain_kwargs=None,
         verbose=None,
     ):
-        """Plot VectorSourceEstimate with PyVista.
+        """### Plot VectorSourceEstimate with PyVista.
 
         A "glass brain" is drawn and all dipoles defined in the source estimate
         are shown using arrows, depicting the direction and magnitude of the
         current moment at the dipole. Additionally, an overlay is plotted on top of
         the cortex with the magnitude of the current.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         subject : str | None
             The FreeSurfer subject name.
@@ -1408,7 +1408,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             Display time viewer GUI. Can be "auto", which is True for the PyVista
             backend and False otherwise.
 
-            .. versionchanged:: 0.20
+            🎭 Changed in version 0.20
                Added "auto" option and default.
         subjects_dir : str
             The path to the freesurfer subjects reconstructions.
@@ -1468,7 +1468,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             proportion of the total window should be devoted to traces (True is
             equivalent to 0.25, i.e., it will occupy the bottom 1/4 of the figure).
 
-            .. versionadded:: 0.20.0
+            ✨ Added in vesion 0.20.0
 
         src : instance of SourceSpaces | None
             The source space corresponding to the source estimate. Only necessary
@@ -1513,18 +1513,18 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         brain : mne.viz.Brain
             A instance of `mne.viz.Brain`.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
         If the current magnitude overlay is not desired, set ``overlay_alpha=0``
         and ``smoothing_steps=1``.
@@ -1565,9 +1565,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         brain_kwargs=None,
         verbose=None,
     ):
-        """Plot SourceEstimate.
+        """### Plot SourceEstimate.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         subject : str | None
             The FreeSurfer subject name.
@@ -1607,7 +1607,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             Display time viewer GUI. Can also be 'auto', which will mean True
             for the PyVista backend and False otherwise.
 
-            .. versionchanged:: 0.20.0
+            🎭 Changed in version 0.20.0
                "auto" mode added.
 
         subjects_dir : path-like | None
@@ -1632,7 +1632,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
             Using multiple views (list) is not supported by the matplotlib backend.
 
-            .. versionchanged:: 0.21.0
+            🎭 Changed in version 0.21.0
                Support for flatmaps.
         colorbar : bool
             If True, display colorbar on scene.
@@ -1650,7 +1650,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
                     will be mirrored directly across zero during colormap
                     construction to obtain negative control points.
 
-            .. note:: Only one of ``lims`` or ``pos_lims`` should be provided.
+            ### 💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
                       Only sequential colormaps should be used with ``lims``, and
                       only divergent colormaps should be used with ``pos_lims``.
         cortex : str | tuple
@@ -1679,7 +1679,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             Which backend to use. If ``'auto'`` (default), tries to plot with
             pyvistaqt, but resorts to matplotlib if no 3d backend is available.
 
-            .. versionadded:: 0.15.0
+            ✨ Added in vesion 0.15.0
         spacing : str
             Only affects the matplotlib backend.
             The spacing to use for the source space. Can be ``'ico#'`` for a
@@ -1688,11 +1688,11 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             speed up the plotting by selecting a sparser source space.
             Defaults  to 'oct6'.
 
-            .. versionadded:: 0.15.0
+            ✨ Added in vesion 0.15.0
         title : str | None
             Title for the figure. If None, the subject name will be used.
 
-            .. versionadded:: 0.17.0
+            ✨ Added in vesion 0.17.0
 
         show_traces : bool | str | float
             If True, enable interactive picking of a point on the surface of the
@@ -1704,7 +1704,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             proportion of the total window should be devoted to traces (True is
             equivalent to 0.25, i.e., it will occupy the bottom 1/4 of the figure).
 
-            .. versionadded:: 0.20.0
+            ✨ Added in vesion 0.20.0
 
         src : instance of SourceSpaces | None
             The source space corresponding to the source estimate. Only necessary
@@ -1749,16 +1749,16 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         figure : instance of mne.viz.Brain | matplotlib.figure.Figure
             An instance of `mne.viz.Brain` or matplotlib figure.
 
-        Notes
+        ### 📖 Notes
         -----
         Flatmaps are available by default for ``fsaverage`` but not for other
         subjects reconstructed by FreeSurfer. We recommend using
@@ -1786,15 +1786,15 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         initial_pos=None,
         verbose=None,
     ):
-        """Plot Nutmeg style volumetric source estimates using nilearn.
+        """### Plot Nutmeg style volumetric source estimates using nilearn.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         src : instance of SourceSpaces | instance of SourceMorph
             The source space. Can also be a SourceMorph to morph the STC to
             a new subject (see Examples).
 
-            .. versionchanged:: 0.18
+            🎭 Changed in version 0.18
                Support for `nibabel.spatialimages.SpatialImage`.
 
         subject : str | None
@@ -1834,7 +1834,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
                     will be mirrored directly across zero during colormap
                     construction to obtain negative control points.
 
-            .. note:: Only one of ``lims`` or ``pos_lims`` should be provided.
+            ### 💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
                       Only sequential colormaps should be used with ``lims``, and
                       only divergent colormaps should be used with ``pos_lims``.
 
@@ -1851,27 +1851,27 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             or the ``initial_pos`` voxel (if ``initial_pos is None`` or not,
             respectively).
 
-            .. versionadded:: 0.19
+            ✨ Added in vesion 0.19
         initial_pos : ndarray, shape (3,) | None
             The initial position to use (in m). Can be None (default) to use the
             voxel with the maximum absolute value activation across all time points
             or at ``initial_time`` (if ``initial_time is None`` or not,
             respectively).
 
-            .. versionadded:: 0.19
+            ✨ Added in vesion 0.19
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure
             The figure.
 
-        Notes
+        ### 📖 Notes
         -----
         Click on any of the anatomical slices to explore the time series.
         Clicking on any time point will bring up the corresponding anatomical map.
@@ -1883,9 +1883,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         brain using the FreeSurfer Talairach transformation
         ``$SUBJECTS_DIR/$SUBJECT/mri/transforms/talairach.xfm``.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
 
-        .. versionchanged:: 0.19
+        🎭 Changed in version 0.19
            MRI volumes are automatically transformed to MNI space in
            ``'glass_brain'`` mode.
 
@@ -1909,12 +1909,12 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         mri_resolution: bool = True,
         verbose=None,
     ):
-        """Extract label time courses for lists of labels.
+        """### Extract label time courses for lists of labels.
 
         This function will extract one time course for each label. The way the
         time courses are extracted depends on the mode parameter.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         labels : Label | BiHemiLabel | list | tuple | str
@@ -1929,7 +1929,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
               and the second being a list or dict of ``volume_labels`` to extract
               (see `mne.setup_volume_source_space` for details).
 
-            .. versionchanged:: 0.21.0
+            🎭 Changed in version 0.21.0
                Support for volume source estimates.
 
         src : instance of SourceSpaces
@@ -1945,7 +1945,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             source estimate, and True will emit a warning while and "ignore" will
             just log a message.
 
-            .. versionchanged:: 0.21.0
+            🎭 Changed in version 0.21.0
                Support for "ignore".
 
         mri_resolution : bool
@@ -1955,15 +1955,15 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             activations. When False, only the original source space points are used,
             and some atlas labels thus may not contain any source space vertices.
 
-            .. versionadded:: 0.21.0
+            ✨ Added in vesion 0.21.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
 
         label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
@@ -1973,7 +1973,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         --------
         extract_label_time_course : Extract time courses for multiple STCs.
 
-        Notes
+        ### 📖 Notes
         -----
 
         Valid values for ``mode`` are:
@@ -2007,7 +2007,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             No aggregation is performed, and an array of shape ``(n_vertices, n_times)`` is
             returned.
 
-            .. versionadded:: 0.21
+            ✨ Added in vesion 0.21
                Support for ``'auto'``, vector, and volume source estimates.
 
         The only modes that work for vector and volume source estimates are ``'mean'``,
@@ -2015,12 +2015,12 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         """
         ...
     def in_label(self, label, mri, src, *, verbose=None):
-        """Get a source estimate object restricted to a label.
+        """### Get a source estimate object restricted to a label.
 
         SourceEstimate contains the time course of
         activation of all sources inside the label.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         label : str | int
             The label to use. Can be the name of a label if using a standard
@@ -2033,18 +2033,18 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : VolSourceEstimate | VolVectorSourceEstimate
             The source estimate restricted to the given label.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
         """
         ...
     def save_as_volume(
@@ -2058,9 +2058,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """Save a volume source estimate in a NIfTI file.
+        """### Save a volume source estimate in a NIfTI file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The name of the generated nifti file.
@@ -2078,30 +2078,30 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         format : str
             Either ``'nifti1'`` (default) or ``'nifti2'``.
 
-            .. versionadded:: 0.17
+            ✨ Added in vesion 0.17
 
         overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 1.0
+            ✨ Added in vesion 1.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-            .. versionadded:: 1.0
+            ✨ Added in vesion 1.0
 
-        Returns
+        ### ⏎ Returns
         -------
         img : instance Nifti1Image
             The image object.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
     def as_volume(
@@ -2111,9 +2111,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         mri_resolution: bool = False,
         format: str = "nifti1",
     ):
-        """Export volume source estimate as a nifti object.
+        """### Export volume source estimate as a nifti object.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         src : instance of SourceSpaces
             The source spaces (should all be of type volume, or part of a
@@ -2130,21 +2130,21 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         format : str
             Either 'nifti1' (default) or 'nifti2'.
 
-        Returns
+        ### ⏎ Returns
         -------
         img : instance of Nifti1Image
             The image object.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
         """
         ...
 
 class VolSourceEstimate(_BaseVolSourceEstimate):
-    """Container for volume source estimates.
+    """### Container for volume source estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
         The data in source space. The data can either be a single array or
@@ -2168,11 +2168,11 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     subject : str | None
         The subject name.
@@ -2195,17 +2195,17 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
 
     def save(
         self, fname, ftype: str = "stc", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """Save the source estimates to a file.
+        """### Save the source estimates to a file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The stem of the file name. The stem is extended with ``"-vl.stc"``
@@ -2219,20 +2219,20 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 1.0
+            ✨ Added in vesion 1.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
 
 class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate):
-    """Container for volume source estimates.
+    """### Container for volume source estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array of shape (n_dipoles, 3, n_times)
         The data in source space. Each dipole contains three vectors that
@@ -2254,11 +2254,11 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     subject : str | None
         The subject name.
@@ -2281,9 +2281,9 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
 
     def plot_3d(
@@ -2318,14 +2318,14 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
         brain_kwargs=None,
         verbose=None,
     ):
-        """Plot VectorSourceEstimate with PyVista.
+        """### Plot VectorSourceEstimate with PyVista.
 
         A "glass brain" is drawn and all dipoles defined in the source estimate
         are shown using arrows, depicting the direction and magnitude of the
         current moment at the dipole. Additionally, an overlay is plotted on top of
         the cortex with the magnitude of the current.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         subject : str | None
             The FreeSurfer subject name.
@@ -2366,7 +2366,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
             Display time viewer GUI. Can be "auto", which is True for the PyVista
             backend and False otherwise.
 
-            .. versionchanged:: 0.20
+            🎭 Changed in version 0.20
                Added "auto" option and default.
         subjects_dir : str
             The path to the freesurfer subjects reconstructions.
@@ -2426,7 +2426,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
             proportion of the total window should be devoted to traces (True is
             equivalent to 0.25, i.e., it will occupy the bottom 1/4 of the figure).
 
-            .. versionadded:: 0.20.0
+            ✨ Added in vesion 0.20.0
 
         src : instance of SourceSpaces | None
             The source space corresponding to the source estimate. Only necessary
@@ -2471,18 +2471,18 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         brain : mne.viz.Brain
             A instance of `mne.viz.Brain`.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
         If the current magnitude overlay is not desired, set ``overlay_alpha=0``
         and ``smoothing_steps=1``.
@@ -2490,12 +2490,12 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
         ...
 
 class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate):
-    """Container for vector surface source estimates.
+    """### Container for vector surface source estimates.
 
     For each vertex, the magnitude of the current is defined in the X, Y and Z
     directions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array of shape (n_dipoles, 3, n_times)
         The data in source space. Each dipole contains three vectors that
@@ -2517,11 +2517,11 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     subject : str | None
         The subject name.
@@ -2537,9 +2537,9 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.15
+    ✨ Added in vesion 0.15
     """
 
     ...
@@ -2549,18 +2549,18 @@ class _BaseMixedSourceEstimate(_BaseSourceEstimate):
         self, data, vertices=None, tmin=None, tstep=None, subject=None, verbose=None
     ) -> None: ...
     def surface(self):
-        """Return the cortical surface source estimate.
+        """### Return the cortical surface source estimate.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of SourceEstimate or VectorSourceEstimate
             The surface source estimate.
         """
         ...
     def volume(self):
-        """Return the volume surface source estimate.
+        """### Return the volume surface source estimate.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : instance of VolSourceEstimate or VolVectorSourceEstimate
             The volume source estimate.
@@ -2568,9 +2568,9 @@ class _BaseMixedSourceEstimate(_BaseSourceEstimate):
         ...
 
 class MixedSourceEstimate(_BaseMixedSourceEstimate):
-    """Container for mixed surface and volume source estimates.
+    """### Container for mixed surface and volume source estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
         The data in source space. The data can either be a single array or
@@ -2593,11 +2593,11 @@ class MixedSourceEstimate(_BaseMixedSourceEstimate):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     subject : str | None
         The subject name.
@@ -2618,17 +2618,17 @@ class MixedSourceEstimate(_BaseMixedSourceEstimate):
     VolSourceEstimate : A container for volume source estimates.
     VolVectorSourceEstimate : A container for Volume vector source estimates.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
 
     ...
 
 class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstimate):
-    """Container for volume source estimates.
+    """### Container for volume source estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array, shape (n_dipoles, 3, n_times)
         The data in source space. Each dipole contains three vectors that
@@ -2648,11 +2648,11 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     subject : str | None
         The subject name.
@@ -2670,17 +2670,17 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.21.0
+    ✨ Added in vesion 0.21.0
     """
 
     ...
 
 def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
-    """Compute adjacency for a source space activation over time.
+    """### Compute adjacency for a source space activation over time.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space. It can be a surface source space or a
@@ -2694,11 +2694,11 @@ def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatio-temporal
@@ -2710,20 +2710,20 @@ def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
     ...
 
 def grade_to_tris(grade, verbose=None):
-    """Get tris defined for a certain grade.
+    """### Get tris defined for a certain grade.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     grade : int
         Grade of an icosahedral mesh.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     tris : list
         2-element list containing Nx3 arrays of tris, suitable for use in
@@ -2734,9 +2734,9 @@ def grade_to_tris(grade, verbose=None):
 def spatio_temporal_tris_adjacency(
     tris, n_times, remap_vertices: bool = False, verbose=None
 ):
-    """Compute adjacency from triangles and time instants.
+    """### Compute adjacency from triangles and time instants.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tris : array
         N x 3 array defining triangles.
@@ -2748,11 +2748,11 @@ def spatio_temporal_tris_adjacency(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatio-temporal
@@ -2764,9 +2764,9 @@ def spatio_temporal_tris_adjacency(
     ...
 
 def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
-    """Compute adjacency from distances in a source space and time instants.
+    """### Compute adjacency from distances in a source space and time instants.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space must have distances between vertices computed, such
@@ -2781,11 +2781,11 @@ def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatio-temporal
@@ -2797,9 +2797,9 @@ def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
     ...
 
 def spatial_src_adjacency(src, dist=None, verbose=None):
-    """Compute adjacency for a source space activation.
+    """### Compute adjacency for a source space activation.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space. It can be a surface source space or a
@@ -2811,11 +2811,11 @@ def spatial_src_adjacency(src, dist=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
@@ -2823,9 +2823,9 @@ def spatial_src_adjacency(src, dist=None, verbose=None):
     ...
 
 def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
-    """Compute adjacency from triangles.
+    """### Compute adjacency from triangles.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tris : array
         N x 3 array defining triangles.
@@ -2835,11 +2835,11 @@ def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
@@ -2847,9 +2847,9 @@ def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
     ...
 
 def spatial_dist_adjacency(src, dist, verbose=None):
-    """Compute adjacency from distances in a source space.
+    """### Compute adjacency from distances in a source space.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space must have distances between vertices computed, such
@@ -2862,11 +2862,11 @@ def spatial_dist_adjacency(src, dist, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
@@ -2874,9 +2874,9 @@ def spatial_dist_adjacency(src, dist, verbose=None):
     ...
 
 def spatial_inter_hemi_adjacency(src, dist, verbose=None):
-    """Get vertices on each hemisphere that are close to the other hemisphere.
+    """### Get vertices on each hemisphere that are close to the other hemisphere.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space. Must be surface type.
@@ -2886,11 +2886,11 @@ def spatial_inter_hemi_adjacency(src, dist, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
@@ -2911,13 +2911,13 @@ def extract_label_time_course(
     mri_resolution: bool = True,
     verbose=None,
 ):
-    """Extract label time course for lists of labels and source estimates.
+    """### Extract label time course for lists of labels and source estimates.
 
     This function will extract one time course for each label and source
     estimate. The way the time courses are extracted depends on the mode
     parameter (see Notes).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     stcs : SourceEstimate | list (or generator) of SourceEstimate
         The source estimates from which to extract the time course.
@@ -2934,7 +2934,7 @@ def extract_label_time_course(
           and the second being a list or dict of ``volume_labels`` to extract
           (see `mne.setup_volume_source_space` for details).
 
-        .. versionchanged:: 0.21.0
+        🎭 Changed in version 0.21.0
            Support for volume source estimates.
 
     src : instance of SourceSpaces
@@ -2950,7 +2950,7 @@ def extract_label_time_course(
         source estimate, and True will emit a warning while and "ignore" will
         just log a message.
 
-        .. versionchanged:: 0.21.0
+        🎭 Changed in version 0.21.0
            Support for "ignore".
     return_generator : bool
         If True, a generator instead of a list is returned.
@@ -2962,21 +2962,21 @@ def extract_label_time_course(
         activations. When False, only the original source space points are used,
         and some atlas labels thus may not contain any source space vertices.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
         Extracted time course for each label and source estimate.
 
-    Notes
+    ### 📖 Notes
     -----
 
     Valid values for ``mode`` are:
@@ -3010,7 +3010,7 @@ def extract_label_time_course(
         No aggregation is performed, and an array of shape ``(n_vertices, n_times)`` is
         returned.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
            Support for ``'auto'``, vector, and volume source estimates.
 
     The only modes that work for vector and volume source estimates are ``'mean'``,
@@ -3037,9 +3037,9 @@ def stc_near_sensors(
     surface: str = "pial",
     verbose=None,
 ):
-    """Create a STC from ECoG, sEEG and DBS sensor data.
+    """### Create a STC from ECoG, sEEG and DBS sensor data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked
         The evoked data. Must contain ECoG, sEEG or DBS channels.
@@ -3050,7 +3050,7 @@ def stc_near_sensors(
         fsaverage transformation.
         If trans is None, an identity matrix is assumed.
 
-        .. versionchanged:: 0.19
+        🎭 Changed in version 0.19
             Support for 'fsaverage' argument.
     subject : str
         The subject name.
@@ -3062,7 +3062,7 @@ def stc_near_sensors(
         nearest sensor, or ``"single"`` to do a distance-weight of the nearest
         sensor. Default is ``"sum"``. See Notes.
 
-        .. versionchanged:: 0.24
+        🎭 Changed in version 0.24
            Added "weighted" option.
     project : bool
         If True, project the sensors to the nearest ``'pial`` surface
@@ -3076,7 +3076,7 @@ def stc_near_sensors(
     src : instance of SourceSpaces
         The source space.
 
-        .. warning:: If a surface source space is used, make sure that
+        ### ⛔️ Warning If a surface source space is used, make sure that
                      ``surface='pial'`` was used during construction,
                      or that you set ``surface='pial'`` here.
     picks : str | array-like | slice | None
@@ -3087,20 +3087,20 @@ def stc_near_sensors(
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good sEEG, ECoG, and DBS channels.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
     surface : str | None
         The surface to use if ``src=None``. Default is the pial surface.
         If None, the source space surface will be used.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : instance of SourceEstimate
         The surface source estimate. If src is None, a surface source
@@ -3112,7 +3112,7 @@ def stc_near_sensors(
         vertices will match those of src (i.e., there may be me
         many all-zero values in stc.data).
 
-    Notes
+    ### 📖 Notes
     -----
     For surface projections, this function projects the ECoG sensors to
     the pial surface (if ``project``), then the activation at each pial
@@ -3141,6 +3141,6 @@ def stc_near_sensors(
     Then the activation at each volume vertex is given by the mode
     in the same way as ECoG surface projections.
 
-    .. versionadded:: 0.22
+    ✨ Added in vesion 0.22
     """
     ...

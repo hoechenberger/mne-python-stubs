@@ -23,11 +23,11 @@ def qrs_detector(
     filter_length: str = "10s",
     verbose=None,
 ):
-    """Detect QRS component in ECG channels.
+    """### Detect QRS component in ECG channels.
 
     QRS is the main wave on the heart beat.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     sfreq : float
         Sampling rate
@@ -54,11 +54,11 @@ def qrs_detector(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     events : array
         Indices of ECG peaks.
@@ -78,9 +78,9 @@ def find_ecg_events(
     reject_by_annotation: bool = True,
     verbose=None,
 ):
-    """Find ECG events by localizing the R wave peaks.
+    """### Find ECG events by localizing the R wave peaks.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data.
@@ -120,15 +120,15 @@ def find_ecg_events(
         (default), annotated segments whose description begins with ``'bad'`` are
         omitted. If ``False``, no rejection based on annotations is performed.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     ecg_events : array
         The events corresponding to the peaks of the R waves.
@@ -166,7 +166,7 @@ def create_ecg_epochs(
     decim: int = 1,
     verbose=None,
 ):
-    """Conveniently generate epochs around ECG artifact events.
+    """### Conveniently generate epochs around ECG artifact events.
 
     This function will:
 
@@ -176,12 +176,12 @@ def create_ecg_epochs(
 
     #. Create `mne.Epochs` around the R wave peaks, capturing the heartbeats.
 
-    .. note:: Filtering is only applied to the ECG channel while finding
+    ### 💡 Note Filtering is only applied to the ECG channel while finding
                 events. The resulting ``ecg_epochs`` will have no filtering
                 applied (i.e., have the same filter properties as the input
                 ``raw`` instance).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data.
@@ -232,12 +232,12 @@ def create_ecg_epochs(
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        .. note:: Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -249,7 +249,7 @@ def create_ecg_epochs(
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     baseline : None | tuple of length 2
@@ -261,7 +261,7 @@ def create_ecg_epochs(
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -283,26 +283,26 @@ def create_ecg_epochs(
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        .. versionadded:: 0.14.0
+        ✨ Added in vesion 0.14.0
 
     decim : int
         Factor by which to subsample the data.
 
-        .. warning:: Low-pass filtering is not performed, this simply selects
+        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts
                      may occur.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     ecg_epochs : instance of Epochs
         Data epoched around ECG R wave peaks.
@@ -312,7 +312,7 @@ def create_ecg_epochs(
     find_ecg_events
     compute_proj_ecg
 
-    Notes
+    ### 📖 Notes
     -----
     If you already have a list of R-peak times, or want to compute R-peaks
     outside MNE-Python using a different algorithm, the recommended approach is

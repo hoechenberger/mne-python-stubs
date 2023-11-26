@@ -5,13 +5,13 @@ EEGMI_URL: str
 def data_path(
     url, path=None, force_update: bool = False, update_path=None, *, verbose=None
 ):
-    """Get path to local copy of EEGMMI dataset URL.
+    """### Get path to local copy of EEGMMI dataset URL.
 
     This is a low-level function useful for getting a local copy of a remote EEGBCI
     dataset :footcite:`SchalkEtAl2004`, which is also available at PhysioNet
     :footcite:`GoldbergerEtAl2000`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     url : str
         The dataset to use.
@@ -29,17 +29,17 @@ def data_path(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : list of Path
         Local path to the given data file. This path is contained inside a list of
         length one for compatibility.
 
-    Notes
+    ### 📖 Notes
     -----
     For example, one could do:
 
@@ -65,12 +65,12 @@ def load_data(
     base_url="https://physionet.org/files/eegmmidb/1.0.0/",
     verbose=None,
 ):
-    """Get paths to local copies of EEGBCI dataset files.
+    """### Get paths to local copies of EEGBCI dataset files.
 
     This will fetch data for the EEGBCI dataset :footcite:`SchalkEtAl2004`, which is
     also available at PhysioNet :footcite:`GoldbergerEtAl2000`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject : int
         The subject to use. Can be in the range of 1-109 (inclusive).
@@ -92,16 +92,16 @@ def load_data(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     paths : list
         List of local data paths of the given type.
 
-    Notes
+    ### 📖 Notes
     -----
     The run numbers correspond to:
 
@@ -132,9 +132,9 @@ def load_data(
     ...
 
 def standardize(raw) -> None:
-    """Standardize channel positions and names.
+    """### Standardize channel positions and names.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data to standardize. Operates in-place.

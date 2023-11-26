@@ -27,7 +27,7 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Label:
-    """A FreeSurfer/MNE label with vertices restricted to one hemisphere.
+    """### A FreeSurfer/MNE label with vertices restricted to one hemisphere.
 
     Labels can be combined with the ``+`` operator:
 
@@ -36,7 +36,7 @@ class Label:
           is raised.
         * Values of duplicate vertices are summed.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     vertices : array, shape (N,)
         Vertex indices (0 based).
@@ -61,11 +61,11 @@ class Label:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     color : None | tuple
         Default label color, represented as RGBA tuple with values between 0
@@ -113,47 +113,47 @@ class Label:
         verbose=None,
     ) -> None: ...
     def __len__(self) -> int:
-        """Return the number of vertices.
+        """### Return the number of vertices.
 
-        Returns
+        ### ⏎ Returns
         -------
         n_vertices : int
             The number of vertices.
         """
         ...
     def __add__(self, other):
-        """Add Labels."""
+        """### Add Labels."""
         ...
     def __sub__(self, other):
-        """Subtract Labels."""
+        """### Subtract Labels."""
         ...
     def save(self, filename) -> None:
-        """Write to disk as FreeSurfer \\*.label file.
+        """### Write to disk as FreeSurfer \\*.label file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         filename : path-like
             Path to label file to produce.
 
-        Notes
+        ### 📖 Notes
         -----
         Note that due to file specification limitations, the Label's subject
         and color attributes are not saved to disk.
         """
         ...
     def copy(self):
-        """Copy the label instance.
+        """### Copy the label instance.
 
-        Returns
+        ### ⏎ Returns
         -------
         label : instance of Label
             The copied label.
         """
         ...
     def fill(self, src, name=None):
-        """Fill the surface between sources for a source space label.
+        """### Fill the surface between sources for a source space label.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         src : SourceSpaces
             Source space in which the label was defined. If a source space is
@@ -165,7 +165,7 @@ class Label:
         name : None | str
             Name for the new Label (default is self.name).
 
-        Returns
+        ### ⏎ Returns
         -------
         label : Label
             The label covering the same vertices in source space but also
@@ -178,16 +178,16 @@ class Label:
         """
         ...
     def restrict(self, src, name=None):
-        """Restrict a label to a source space.
+        """### Restrict a label to a source space.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         src : instance of SourceSpaces
             The source spaces to use to restrict the label.
         name : None | str
             Name for the new Label (default is self.name).
 
-        Returns
+        ### ⏎ Returns
         -------
         label : instance of Label
             The Label restricted to the set of source space vertices.
@@ -196,9 +196,9 @@ class Label:
         --------
         Label.fill
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
         """
         ...
     def smooth(
@@ -210,12 +210,12 @@ class Label:
         n_jobs=None,
         verbose=None,
     ):
-        """Smooth the label.
+        """### Smooth the label.
 
         Useful for filling in labels made in a
         decimated source space for display.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         subject : str | None
@@ -252,16 +252,16 @@ class Label:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         label : instance of Label
             The smoothed label.
 
-        Notes
+        ### 📖 Notes
         -----
         This function will set label.pos to be all zeros. If the positions
         on the new surface are required, consider using mne.read_surface
@@ -278,11 +278,11 @@ class Label:
         n_jobs=None,
         verbose=None,
     ):
-        """Morph the label.
+        """### Morph the label.
 
         Useful for transforming a label from one subject to another.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         subject_from : str | None
             The name of the subject of the current label. If None, the
@@ -319,11 +319,11 @@ class Label:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         label : instance of Label
             The morphed label.
@@ -332,7 +332,7 @@ class Label:
         --------
         mne.morph_labels : Morph a set of labels.
 
-        Notes
+        ### 📖 Notes
         -----
         This function will set label.pos to be all zeros. If the positions
         on the new surface are required, consider using `mne.read_surface`
@@ -342,9 +342,9 @@ class Label:
     def split(
         self, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
     ):
-        """Split the Label into two or more parts.
+        """### Split the Label into two or more parts.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         parts : int >= 2 | tuple of str | str
             Number of labels to create (default is 2), or tuple of strings
@@ -367,13 +367,13 @@ class Label:
             ``freesurfer`` to ``True`` in order to replicate label splits from
             FreeSurfer's ``mris_divide_parcellation``.
 
-        Returns
+        ### ⏎ Returns
         -------
         labels : list of Label, shape (n_parts,)
             The labels, starting from the lowest to the highest end of the
             projection axis.
 
-        Notes
+        ### 📖 Notes
         -----
         If using 'contiguous' split, you must ensure that the label being split
         uses the same triangular resolution as the surface mesh files in
@@ -386,24 +386,24 @@ class Label:
         """
         ...
     def get_vertices_used(self, vertices=None):
-        """Get the source space's vertices inside the label.
+        """### Get the source space's vertices inside the label.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         vertices : ndarray of int, shape (n_vertices,) | None
             The set of vertices to compare the label to. If None, equals to
             ``np.arange(10242)``. Defaults to None.
 
-        Returns
+        ### ⏎ Returns
         -------
         label_verts : ndarray of in, shape (n_label_vertices,)
             The vertices of the label corresponding used by the data.
         """
         ...
     def get_tris(self, tris, vertices=None):
-        """Get the source space's triangles inside the label.
+        """### Get the source space's triangles inside the label.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tris : ndarray of int, shape (n_tris, 3)
             The set of triangles corresponding to the vertices in a
@@ -412,7 +412,7 @@ class Label:
             The set of vertices to compare the label to. If None, equals to
             ``np.arange(10242)``. Defaults to None.
 
-        Returns
+        ### ⏎ Returns
         -------
         label_tris : ndarray of int, shape (n_tris, 3)
             The subset of tris used by the label.
@@ -425,12 +425,12 @@ class Label:
         subjects_dir=None,
         surf: str = "sphere",
     ):
-        """Compute the center of mass of the label.
+        """### Compute the center of mass of the label.
 
         This function computes the spatial center of mass on the surface
         as in :footcite:`LarsonLee2013`.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         subject : str | None
@@ -454,7 +454,7 @@ class Label:
             of mass on the spherical surface to help avoid potential issues
             with cortical folding.
 
-        Returns
+        ### ⏎ Returns
         -------
         vertex : int
             Vertex of the spatial center of mass for the inferred hemisphere,
@@ -465,9 +465,9 @@ class Label:
         SourceEstimate.center_of_mass
         vertex_to_mni
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
         References
         ----------
@@ -477,9 +477,9 @@ class Label:
     def distances_to_outside(
         self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
-        """Compute the distance from each vertex to outside the label.
+        """### Compute the distance from each vertex to outside the label.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         subject : str | None
@@ -496,11 +496,11 @@ class Label:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         dist : ndarray, shape (n_vertices,)
             The distance from each vertex in ``self.vertices`` to exit the
@@ -509,19 +509,19 @@ class Label:
             For each vertex in the label, the nearest vertex outside the
             label.
 
-        Notes
+        ### 📖 Notes
         -----
         Distances are computed along the cortical surface.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
         """
         ...
     def compute_area(
         self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
-        """Compute the surface area of a label.
+        """### Compute the surface area of a label.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         subject : str | None
@@ -538,25 +538,25 @@ class Label:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         area : float
             The area (in m²) of the label.
 
-        Notes
+        ### 📖 Notes
         -----
         ..versionadded:: 0.24
         """
         ...
 
 class BiHemiLabel:
-    """A freesurfer/MNE label with vertices in both hemispheres.
+    """### A freesurfer/MNE label with vertices in both hemispheres.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     lh : Label
         Label for the left hemisphere.
@@ -569,7 +569,7 @@ class BiHemiLabel:
         Note that due to file specification limitations, the color isn't saved
         to or loaded from files written to disk.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     lh : Label
         Label for the left hemisphere.
@@ -590,25 +590,25 @@ class BiHemiLabel:
 
     def __init__(self, lh, rh, name=None, color=None) -> None: ...
     def __len__(self) -> int:
-        """Return the number of vertices.
+        """### Return the number of vertices.
 
-        Returns
+        ### ⏎ Returns
         -------
         n_vertices : int
             The number of vertices.
         """
         ...
     def __add__(self, other):
-        """Add labels."""
+        """### Add labels."""
         ...
     def __sub__(self, other):
-        """Subtract labels."""
+        """### Subtract labels."""
         ...
 
 def read_label(filename, subject=None, color=None, *, verbose=None):
-    """Read FreeSurfer Label file.
+    """### Read FreeSurfer Label file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     filename : str
         Path to label file.
@@ -627,11 +627,11 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     label : Label
         Instance of Label object with attributes:
@@ -649,9 +649,9 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
     ...
 
 def write_label(filename, label, verbose=None) -> None:
-    """Write a FreeSurfer label.
+    """### Write a FreeSurfer label.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     filename : str
         Path to label file to produce.
@@ -660,7 +660,7 @@ def write_label(filename, label, verbose=None) -> None:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -668,7 +668,7 @@ def write_label(filename, label, verbose=None) -> None:
     --------
     write_labels_to_annot
 
-    Notes
+    ### 📖 Notes
     -----
     Note that due to file specification limitations, the Label's subject and
     color attributes are not saved to disk.
@@ -678,9 +678,9 @@ def write_label(filename, label, verbose=None) -> None:
 def split_label(
     label, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
 ):
-    """Split a Label into two or more parts.
+    """### Split a Label into two or more parts.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     label : Label | str
         Label which is to be split (Label object or path to a label file).
@@ -704,13 +704,13 @@ def split_label(
         ``freesurfer`` to ``True`` in order to replicate label splits from
         FreeSurfer's ``mris_divide_parcellation``.
 
-    Returns
+    ### ⏎ Returns
     -------
     labels : list of Label, shape (n_parts,)
         The labels, starting from the lowest to the highest end of the
         projection axis.
 
-    Notes
+    ### 📖 Notes
     -----
     Works by finding the label's principal eigen-axis on the spherical surface,
     projecting all label vertex coordinates onto this axis and dividing them at
@@ -719,16 +719,16 @@ def split_label(
     ...
 
 def label_sign_flip(label, src):
-    """Compute sign for label averaging.
+    """### Compute sign for label averaging.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     label : Label | BiHemiLabel
         A label.
     src : SourceSpaces
         The source space over which the label is defined.
 
-    Returns
+    ### ⏎ Returns
     -------
     flip : array
         Sign flip vector (contains 1 or -1).
@@ -743,9 +743,9 @@ def stc_to_label(
     subjects_dir=None,
     verbose=None,
 ):
-    """Compute a label from the non-zero sources in an stc object.
+    """### Compute a label from the non-zero sources in an stc object.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     stc : SourceEstimate
         The source estimates.
@@ -769,11 +769,11 @@ def stc_to_label(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     labels : list of Label | list of list of Label
         The generated labels. If connected is False, it returns
@@ -797,14 +797,14 @@ def grow_labels(
     surface: str = "white",
     colors=None,
 ):
-    """Generate circular labels in source space with region growing.
+    """### Generate circular labels in source space with region growing.
 
     This function generates a number of labels in source space by growing
     regions starting from the vertices defined in "seeds". For each seed, a
     label is generated containing all vertices within a maximum geodesic
     distance on the white matter surface from the seed.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -846,14 +846,14 @@ def grow_labels(
         from the array. The first three values will be interpreted as RGB
         colors and the fourth column as the alpha value (commonly 1).
 
-    Returns
+    ### ⏎ Returns
     -------
     labels : list of Label
         The labels' ``comment`` attribute contains information on the seed
         vertex and extent; the ``values``  attribute contains distance from the
         seed in millimeters.
 
-    Notes
+    ### 📖 Notes
     -----
     "extents" and "hemis" can either be arrays with the same length as
     seeds, which allows using a different extent and hemisphere for
@@ -870,13 +870,13 @@ def random_parcellation(
     surface: str = "white",
     random_state=None,
 ):
-    """Generate random cortex parcellation by growing labels.
+    """### Generate random cortex parcellation by growing labels.
 
     This function generates a number of labels which don't intersect and
     cover the whole surface. Regions are growing around randomly chosen
     seeds.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -904,7 +904,7 @@ def random_parcellation(
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
-    Returns
+    ### ⏎ Returns
     -------
     labels : list of Label
         Random cortex parcellation.
@@ -922,11 +922,11 @@ def read_labels_from_annot(
     sort: bool = True,
     verbose=None,
 ):
-    """Read labels from a FreeSurfer annotation file.
+    """### Read labels from a FreeSurfer annotation file.
 
     Note: Only cortical labels will be returned.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -953,15 +953,15 @@ def read_labels_from_annot(
     sort : bool
         If true, labels will be sorted by name before being returned.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     labels : list of Label
         The labels, sorted by label name (ascending).
@@ -981,13 +981,13 @@ def morph_labels(
     surf_name: str = "white",
     verbose=None,
 ):
-    """Morph a set of labels.
+    """### Morph a set of labels.
 
     This is useful when morphing a set of non-overlapping labels (such as those
     obtained with `read_labels_from_annot`) from one subject to
     another.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     labels : list
         The labels to morph.
@@ -1006,11 +1006,11 @@ def morph_labels(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     labels : list
         The morphed labels.
@@ -1020,25 +1020,25 @@ def morph_labels(
     read_labels_from_annot
     mne.Label.morph
 
-    Notes
+    ### 📖 Notes
     -----
     This does not use the same algorithm as Freesurfer, so the results
     morphing (e.g., from ``'fsaverage'`` to your subject) might not match
     what Freesurfer produces during ``recon-all``.
 
-    .. versionadded:: 0.18
+    ✨ Added in vesion 0.18
     """
     ...
 
 def labels_to_stc(
     labels, values, tmin: int = 0, tstep: int = 1, subject=None, src=None, verbose=None
 ):
-    """Convert a set of labels and values to a STC.
+    """### Convert a set of labels and values to a STC.
 
     This function is meant to work like the opposite of
     `extract_label_time_course`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     labels : Label | BiHemiLabel | list | tuple | str
@@ -1053,7 +1053,7 @@ def labels_to_stc(
           and the second being a list or dict of ``volume_labels`` to extract
           (see `mne.setup_volume_source_space` for details).
 
-        .. versionchanged:: 0.21.0
+        🎭 Changed in version 0.21.0
            Support for volume source estimates.
     values : ndarray, shape (n_labels, ...)
         The values in each label. Can be 1D or 2D.
@@ -1071,15 +1071,15 @@ def labels_to_stc(
         the label vertices will determine the output STC vertices.
         Required if using a volumetric source space.
 
-        .. versionadded:: 0.22
+        ✨ Added in vesion 0.22
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : instance of SourceEstimate | instance of VolSourceEstimate
         The values-in-labels converted to a STC.
@@ -1088,11 +1088,11 @@ def labels_to_stc(
     --------
     extract_label_time_course
 
-    Notes
+    ### 📖 Notes
     -----
     Vertices that appear in more than one label will be averaged.
 
-    .. versionadded:: 0.18
+    ✨ Added in vesion 0.18
     """
     ...
 
@@ -1109,9 +1109,9 @@ def write_labels_to_annot(
     table_name="MNE-Python Colortable",
     verbose=None,
 ):
-    """Create a FreeSurfer annotation from a list of labels.
+    """### Create a FreeSurfer annotation from a list of labels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     labels : list with instances of mne.Label
         The labels to create a parcellation from.
@@ -1139,15 +1139,15 @@ def write_labels_to_annot(
     sort : bool
         If True (default), labels will be sorted by name before writing.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
     table_name : str
         The table name to use for the colortable.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -1155,7 +1155,7 @@ def write_labels_to_annot(
     --------
     read_labels_from_annot
 
-    Notes
+    ### 📖 Notes
     -----
     Vertices that are not covered by any of the labels are assigned to a label
     named ``"unknown"``.
@@ -1173,9 +1173,9 @@ def select_sources(
     random_state=None,
     surf: str = "white",
 ):
-    """Select sources from a label.
+    """### Select sources from a label.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -1212,12 +1212,12 @@ def select_sources(
     surf : str
         The surface used to simulated the label, defaults to the white surface.
 
-    Returns
+    ### ⏎ Returns
     -------
     label : instance of Label
         The label that contains the selected sources.
 
-    Notes
+    ### 📖 Notes
     -----
     This function selects a region of interest on the cortical surface based
     on a label (or a hemisphere). The sources are selected by growing a region
@@ -1228,6 +1228,6 @@ def select_sources(
     The selected sources are returned in the form of a new Label object. The
     values of the label contain the distance from the seed in millimeters.
 
-    .. versionadded:: 0.18
+    ✨ Added in vesion 0.18
     """
     ...

@@ -4,9 +4,9 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_nihon(fname, preload: bool = False, verbose=None):
-    """Reader for an Nihon Kohden EEG file.
+    """### Reader for an Nihon Kohden EEG file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the Nihon Kohden data file (``.EEG``).
@@ -15,11 +15,11 @@ def read_raw_nihon(fname, preload: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawNihon
         A Raw object containing Nihon Kohden data.
@@ -32,9 +32,9 @@ def read_raw_nihon(fname, preload: bool = False, verbose=None):
     ...
 
 class RawNihon(BaseRaw):
-    """Raw object from a Nihon Kohden EEG file.
+    """### Raw object from a Nihon Kohden EEG file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the Nihon Kohden data ``.eeg`` file.
@@ -43,7 +43,7 @@ class RawNihon(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 

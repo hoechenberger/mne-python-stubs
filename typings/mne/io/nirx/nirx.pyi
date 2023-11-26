@@ -9,9 +9,9 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_nirx(
     fname, saturated: str = "annotate", preload: bool = False, verbose=None
 ):
-    """Reader for a NIRX fNIRS recording.
+    """### Reader for a NIRX fNIRS recording.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the NIRX data folder or header file.
@@ -31,7 +31,7 @@ def read_raw_nirx(
         This argument will only be used if there is no .nosatflags file
         (only if a NIRSport device is used and saturation occurred).
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
@@ -42,11 +42,11 @@ def read_raw_nirx(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawNIRX
         A Raw object containing NIRX data.
@@ -56,7 +56,7 @@ def read_raw_nirx(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNIRX.
 
-    Notes
+    ### 📖 Notes
     -----
 
     This function has only been tested with NIRScout and NIRSport devices,
@@ -74,9 +74,9 @@ def read_raw_nirx(
     ...
 
 class RawNIRX(BaseRaw):
-    """Raw object from a NIRX fNIRS file.
+    """### Raw object from a NIRX fNIRS file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the NIRX data folder or header file.
@@ -96,7 +96,7 @@ class RawNIRX(BaseRaw):
         This argument will only be used if there is no .nosatflags file
         (only if a NIRSport device is used and saturation occurred).
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
@@ -107,7 +107,7 @@ class RawNIRX(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -115,7 +115,7 @@ class RawNIRX(BaseRaw):
     --------
     mne.io.Raw : Documentation of attributes and methods.
 
-    Notes
+    ### 📖 Notes
     -----
 
     This function has only been tested with NIRScout and NIRSport devices,

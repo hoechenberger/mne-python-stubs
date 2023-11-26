@@ -36,9 +36,9 @@ def make_forward_solution(
     n_jobs=None,
     verbose=None,
 ):
-    """Calculate a forward solution for a subject.
+    """### Calculate a forward solution for a subject.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info | path-like
@@ -52,7 +52,7 @@ def make_forward_solution(
         fsaverage transformation.
         If trans is None, an identity matrix is assumed.
 
-        .. versionchanged:: 0.19
+        🎭 Changed in version 0.19
             Support for ``'fsaverage'`` argument.
     src : path-like | instance of SourceSpaces
         Either a path to a source space file or a loaded or generated
@@ -82,11 +82,11 @@ def make_forward_solution(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fwd : instance of Forward
         The forward solution.
@@ -95,7 +95,7 @@ def make_forward_solution(
     --------
     convert_forward_solution
 
-    Notes
+    ### 📖 Notes
     -----
     The ``--grad`` option from MNE-C (to compute gradients) is not implemented
     here.
@@ -103,18 +103,18 @@ def make_forward_solution(
     To create a fixed-orientation forward solution, use this function
     followed by `mne.convert_forward_solution`.
 
-    .. note::
+    ### 💡 Note
         If the BEM solution was computed with :doc:`OpenMEEG <openmeeg:index>`
         in `mne.make_bem_solution`, then OpenMEEG will automatically
         be used to compute the forward solution.
 
-    .. versionchanged:: 1.2
+    🎭 Changed in version 1.2
        Added support for OpenMEEG-based forward solution calculations.
     """
     ...
 
 def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=None):
-    """Convert dipole object to source estimate and calculate forward operator.
+    """### Convert dipole object to source estimate and calculate forward operator.
 
     The instance of Dipole is converted to a discrete source space,
     which is then combined with a BEM or a sphere model and
@@ -123,11 +123,11 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
     The source estimate object (with the forward operator) can be projected to
     sensor-space using `mne.simulation.simulate_evoked`.
 
-    .. note:: If the (unique) time points of the dipole object are unevenly
+    ### 💡 Note If the (unique) time points of the dipole object are unevenly
               spaced, the first output will be a list of single-timepoint
               source estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     dipole : instance of Dipole | list of Dipole
@@ -136,7 +136,7 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
         assigning them identical times. Alternatively, multiple simultaneous
         dipoles may also be specified as a list of Dipole objects.
 
-        .. versionchanged:: 1.1
+        🎭 Changed in version 1.1
             Added support for a list of `mne.Dipole` instances.
     bem : str | dict
         The BEM filename (str) or a loaded sphere model (dict).
@@ -156,11 +156,11 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fwd : instance of Forward
         The forward solution corresponding to the source estimate(s).
@@ -173,26 +173,26 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
     --------
     mne.simulation.simulate_evoked
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.12.0
+    ✨ Added in vesion 0.12.0
     """
     ...
 
 def use_coil_def(fname) -> Generator[None, None, None]:
-    """Use a custom coil definition file.
+    """### Use a custom coil definition file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename of the coil definition file.
 
-    Returns
+    ### ⏎ Returns
     -------
     context : contextmanager
         The context for using the coil definition.
 
-    Notes
+    ### 📖 Notes
     -----
     This is meant to be used a context manager such as:
 

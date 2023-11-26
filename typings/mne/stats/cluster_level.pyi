@@ -16,7 +16,7 @@ from ..utils import (
 from .parametric import f_oneway as f_oneway, ttest_1samp_no_p as ttest_1samp_no_p
 
 def bin_perm_rep(ndim, a: int = 0, b: int = 1):
-    """Ndim permutations with repetitions of (a,b).
+    """### Ndim permutations with repetitions of (a,b).
 
     Returns an array with all the possible permutations with repetitions of
     (0,1) in ndim dimensions.  The array is shaped as (2**ndim,ndim), and is
@@ -54,7 +54,7 @@ def permutation_cluster_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """Cluster-level statistical permutation test.
+    """### Cluster-level statistical permutation test.
 
     For a list of `NumPy arrays <numpy.ndarray>` of data,
     calculate some statistics corrected for multiple comparisons using
@@ -64,7 +64,7 @@ def permutation_cluster_test(
     generated with random partitions of the data. For details, see
     :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : list of array, shape (n_observations, p[, q][, r])
         The data to be clustered. Each array in ``X`` should contain the
@@ -88,7 +88,7 @@ def permutation_cluster_test(
         observations (only valid when using an F-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -191,11 +191,11 @@ def permutation_cluster_test(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     F_obs : array, shape (p[, q][, r])
         Statistic (F by default) observed for all variables.
@@ -206,7 +206,7 @@ def permutation_cluster_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    Notes
+    ### 📖 Notes
     -----
 
     For computing a ``threshold`` based on a p-value, use the conversion
@@ -241,11 +241,11 @@ def permutation_cluster_1samp_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """Non-parametric cluster-level paired t-test.
+    """### Non-parametric cluster-level paired t-test.
 
     For details, see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : array, shape (n_observations, p[, q][, r])
         The data to be clustered. The first dimension should correspond to the
@@ -264,7 +264,7 @@ def permutation_cluster_1samp_test(
         observations (only valid when using a t-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -368,11 +368,11 @@ def permutation_cluster_1samp_test(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     t_obs : array, shape (p[, q][, r])
         T-statistic observed for all variables.
@@ -383,7 +383,7 @@ def permutation_cluster_1samp_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    Notes
+    ### 📖 Notes
     -----
     From an array of paired observations, e.g. a difference in signal
     amplitudes or power spectra in two conditions, calculate if the data
@@ -397,7 +397,7 @@ def permutation_cluster_1samp_test(
     mathematically equivalent to a paired t-test, internally this function
     computes a 1-sample t-test (by default) and uses sign flipping (always)
     to perform permutations. This might not be suitable for the case where
-    there is truly a single observation under test; see :ref:`disc-stats`.
+    there is truly a single observation under test; see `disc-stats`.
 
     For computing a ``threshold`` based on a p-value, use the conversion
     from `scipy.stats.rv_continuous.ppf`::
@@ -443,7 +443,7 @@ def spatio_temporal_cluster_1samp_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """Non-parametric cluster-level paired t-test for spatio-temporal data.
+    """### Non-parametric cluster-level paired t-test for spatio-temporal data.
 
     This function provides a convenient wrapper for
     `mne.stats.permutation_cluster_1samp_test`, for use with data
@@ -452,7 +452,7 @@ def spatio_temporal_cluster_1samp_test(
     (observations × time × frequencies × space). For details, see
     :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : array, shape (n_observations, p[, q], n_vertices)
         The data to be clustered. The first dimension should correspond to the
@@ -469,7 +469,7 @@ def spatio_temporal_cluster_1samp_test(
         observations (only valid when using a t-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -570,11 +570,11 @@ def spatio_temporal_cluster_1samp_test(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     t_obs : array, shape (p[, q], n_vertices)
         T-statistic observed for all variables.
@@ -585,7 +585,7 @@ def spatio_temporal_cluster_1samp_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    Notes
+    ### 📖 Notes
     -----
 
     For computing a ``threshold`` based on a p-value, use the conversion
@@ -622,7 +622,7 @@ def spatio_temporal_cluster_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """Non-parametric cluster-level test for spatio-temporal data.
+    """### Non-parametric cluster-level test for spatio-temporal data.
 
     This function provides a convenient wrapper for
     `mne.stats.permutation_cluster_test`, for use with data
@@ -631,7 +631,7 @@ def spatio_temporal_cluster_test(
     (observations × time × frequencies × space). For more information,
     see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     X : list of array, shape (n_observations, p[, q], n_vertices)
         The data to be clustered. Each array in ``X`` should contain the
@@ -650,7 +650,7 @@ def spatio_temporal_cluster_test(
         observations (only valid when using an F-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        :ref:`TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -750,11 +750,11 @@ def spatio_temporal_cluster_test(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     F_obs : array, shape (p[, q], n_vertices)
         Statistic (F by default) observed for all variables.
@@ -765,7 +765,7 @@ def spatio_temporal_cluster_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    Notes
+    ### 📖 Notes
     -----
 
     For computing a ``threshold`` based on a p-value, use the conversion
@@ -790,12 +790,12 @@ def summarize_clusters_stc(
     subject: str = "fsaverage",
     vertices=None,
 ):
-    """Assemble summary SourceEstimate from spatiotemporal cluster results.
+    """### Assemble summary SourceEstimate from spatiotemporal cluster results.
 
     This helps visualizing results from spatio-temporal-clustering
     permutation tests.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     clu : tuple
         The output from clustering permutation tests.
@@ -815,10 +815,10 @@ def summarize_clusters_stc(
         to None. If None, equals ``[np.arange(10242), np.arange(10242)]``.
         Can also be an instance of SourceSpaces to get vertex numbers from.
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
            Added support for SourceSpaces.
 
-    Returns
+    ### ⏎ Returns
     -------
     out : instance of SourceEstimate
         A summary of the clusters. The first time point in this SourceEstimate
@@ -827,7 +827,7 @@ def summarize_clusters_stc(
         corresponds to the duration spanned by the cluster (duration units are
         determined by ``tstep``).
 
-        .. versionchanged:: 0.21
+        🎭 Changed in version 0.21
            Added support for volume and mixed source estimates.
     """
     ...

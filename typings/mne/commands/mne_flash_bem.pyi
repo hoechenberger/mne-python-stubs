@@ -4,5 +4,5 @@ from mne.bem import (
 )
 
 def run() -> None:
-    """Run command."""
+    """### Run command."""
     ...

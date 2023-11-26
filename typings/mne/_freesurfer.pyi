@@ -11,9 +11,9 @@ from .transforms import (
 from .utils import get_subjects_dir as get_subjects_dir, logger as logger
 
 def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_ids=None):
-    """Return a list of names and colors of segmented volumes.
+    """### Return a list of names and colors of segmented volumes.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     mgz_fname : path-like
         Filename to read. Typically ``aseg.mgz`` or some variant in the
@@ -24,9 +24,9 @@ def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_id
         A lookup table providing a mapping from region names (str) to ID values
         (int). Can be None to use the standard Freesurfer LUT.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
-    Returns
+    ### ⏎ Returns
     -------
     label_names : list of str
         The names of segmented volumes included in this mgz file.
@@ -37,13 +37,13 @@ def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_id
     --------
     read_freesurfer_lut
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionchanged:: 0.21.0
+    🎭 Changed in version 0.21.0
        The label names are now sorted in the same order as their corresponding
        values in the MRI file.
 
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...
 
@@ -57,9 +57,9 @@ def head_to_mri(
     unscale: bool = False,
     verbose=None,
 ):
-    """Convert pos from head coordinate system to MRI ones.
+    """### Convert pos from head coordinate system to MRI ones.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     pos : array, shape (n_pos, 3)
         The coordinates (in m) in head coordinate system.
@@ -78,35 +78,35 @@ def head_to_mri(
         FreeSurfer surface RAS or ``'ras'`` (default in 1.2) to use MRI RAS
         (scanner RAS).
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
     unscale : bool
         For surrogate MRIs (e.g., scaled using ``mne coreg``), if True
         (default False), use the MRI scaling parameters to obtain points in
         the original/surrogate subject's MRI space.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     coordinates : array, shape (n_pos, 3)
         The MRI RAS coordinates (in mm) of pos.
 
-    Notes
+    ### 📖 Notes
     -----
     This function requires nibabel.
     """
     ...
 
 def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
-    """Convert the array of vertices for a hemisphere to MNI coordinates.
+    """### Convert the array of vertices for a hemisphere to MNI coordinates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     vertices : int, or list of int
         Vertex number(s) to convert.
@@ -120,11 +120,11 @@ def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     coordinates : array, shape (n_vertices, 3)
         The MNI coordinates (in mm) of the vertices.
@@ -132,9 +132,9 @@ def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
     ...
 
 def head_to_mni(pos, subject, mri_head_t, subjects_dir=None, verbose=None):
-    """Convert pos from head coordinate system to MNI ones.
+    """### Convert pos from head coordinate system to MNI ones.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     pos : array, shape (n_pos, 3)
         The coordinates (in m) in head coordinate system.
@@ -151,25 +151,25 @@ def head_to_mni(pos, subject, mri_head_t, subjects_dir=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     coordinates : array, shape (n_pos, 3)
         The MNI coordinates (in mm) of pos.
 
-    Notes
+    ### 📖 Notes
     -----
     This function requires either nibabel.
     """
     ...
 
 def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
-    """Estimate fiducials for a subject.
+    """### Estimate fiducials for a subject.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -182,17 +182,17 @@ def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fids_mri : list
         List of estimated fiducials (each point in a dict), in the order
         LPA, nasion, RPA.
 
-    Notes
+    ### 📖 Notes
     -----
     This takes the ``fsaverage-fiducials.fif`` file included with MNE—which
     contain the LPA, nasion, and RPA for the ``fsaverage`` subject—and
@@ -204,18 +204,18 @@ def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
 
     For more details about the coordinate systems and transformations involved,
     see https://surfer.nmr.mgh.harvard.edu/fswiki/CoordinateSystems and
-    :ref:`tut-source-alignment`.
+    `tut-source-alignment`.
     """
     ...
 
 def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
-    """Estimate the head->mri transform from fsaverage fiducials.
+    """### Estimate the head->mri transform from fsaverage fiducials.
 
     A subject's fiducials can be estimated given a Freesurfer ``recon-all``
     by transforming ``fsaverage`` fiducials using the inverse Talairach
     transform, see `mne.coreg.get_mni_fiducials`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -228,11 +228,11 @@ def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     trans : str | dict | instance of Transform
@@ -243,20 +243,20 @@ def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
     ...
 
 def read_lta(fname, verbose=None):
-    """Read a Freesurfer linear transform array file.
+    """### Read a Freesurfer linear transform array file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The transform filename.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     affine : ndarray
         The affine transformation described by the lta file.
@@ -264,9 +264,9 @@ def read_lta(fname, verbose=None):
     ...
 
 def read_talxfm(subject, subjects_dir=None, verbose=None):
-    """Compute MRI-to-MNI transform from FreeSurfer talairach.xfm file.
+    """### Compute MRI-to-MNI transform from FreeSurfer talairach.xfm file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -279,11 +279,11 @@ def read_talxfm(subject, subjects_dir=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     mri_mni_t : instance of Transform
         The affine transformation from MRI to MNI space for the subject.
@@ -291,14 +291,14 @@ def read_talxfm(subject, subjects_dir=None, verbose=None):
     ...
 
 def read_freesurfer_lut(fname=None):
-    """Read a Freesurfer-formatted LUT.
+    """### Read a Freesurfer-formatted LUT.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like | None
         The filename. Can be None to read the standard Freesurfer LUT.
 
-    Returns
+    ### ⏎ Returns
     -------
     atlas_ids : dict
         Mapping from label names to IDs.

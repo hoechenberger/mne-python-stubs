@@ -4,9 +4,9 @@ from _typeshed import Incomplete
 from threading import Thread
 
 class ProgressBar:
-    """Generate a command-line progressbar.
+    """### Generate a command-line progressbar.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     iterable : iterable | int | None
         The iterable to use. Can also be an int for backward compatibility
@@ -44,9 +44,9 @@ class ProgressBar:
         **kwargs,
     ) -> None: ...
     def update(self, cur_value) -> None:
-        """Update progressbar with current value of process.
+        """### Update progressbar with current value of process.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         cur_value : number
             Current value of process.  Should be <= max_value (but this is not
@@ -55,9 +55,9 @@ class ProgressBar:
         """
         ...
     def update_with_increment_value(self, increment_value) -> None:
-        """Update progressbar with an increment.
+        """### Update progressbar with an increment.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         increment_value : int
             Value of the increment of process.  The percent of the progressbar
@@ -66,17 +66,17 @@ class ProgressBar:
         """
         ...
     def __iter__(self):
-        """Iterate to auto-increment the pbar with 1."""
+        """### Iterate to auto-increment the pbar with 1."""
         ...
     def subset(self, idx):
-        """Make a joblib-friendly index subset updater.
+        """### Make a joblib-friendly index subset updater.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         idx : ndarray
             List of indices for this subset.
 
-        Returns
+        ### ⏎ Returns
         -------
         updater : instance of PBSubsetUpdater
             Class with a ``.update(ii)`` method.
@@ -90,7 +90,7 @@ class ProgressBar:
         traceback: types.TracebackType | None,
     ) -> None: ...
     def __del__(self) -> None:
-        """Ensure output completes."""
+        """### Ensure output completes."""
         ...
 
 class _UpdateThread(Thread):

@@ -4,16 +4,16 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_hitachi(fname, preload: bool = False, verbose=None):
-    """Reader for a Hitachi fNIRS recording.
+    """### Reader for a Hitachi fNIRS recording.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : list | str
         Path(s) to the Hitachi CSV file(s). This should only be a list for
         multiple probes that were acquired simultaneously.
 
-        .. versionchanged:: 1.2
+        🎭 Changed in version 1.2
             Added support for list-of-str.
 
     preload : bool or str (default False)
@@ -25,11 +25,11 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawHitachi
         A Raw object containing Hitachi data.
@@ -39,7 +39,7 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
     --------
     mne.io.Raw : Documentation of attributes and methods of RawHitachi.
 
-    Notes
+    ### 📖 Notes
     -----
 
     Hitachi does not encode their channel positions, so you will need to
@@ -90,21 +90,21 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
     source-detector pairs in the first row, then between the first and second row,
     then the second row, etc.
 
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
     """
     ...
 
 class RawHitachi(BaseRaw):
-    """Raw object from a Hitachi fNIRS file.
+    """### Raw object from a Hitachi fNIRS file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : list | str
         Path(s) to the Hitachi CSV file(s). This should only be a list for
         multiple probes that were acquired simultaneously.
 
-        .. versionchanged:: 1.2
+        🎭 Changed in version 1.2
             Added support for list-of-str.
 
     preload : bool or str (default False)
@@ -116,7 +116,7 @@ class RawHitachi(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -124,7 +124,7 @@ class RawHitachi(BaseRaw):
     --------
     mne.io.Raw : Documentation of attributes and methods.
 
-    Notes
+    ### 📖 Notes
     -----
 
     Hitachi does not encode their channel positions, so you will need to
@@ -175,7 +175,7 @@ class RawHitachi(BaseRaw):
     source-detector pairs in the first row, then between the first and second row,
     then the second row, etc.
 
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
     """
 
     def __init__(self, fname, preload: bool = False, *, verbose=None) -> None: ...

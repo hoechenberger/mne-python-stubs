@@ -13,9 +13,9 @@ def plot_montage(
     axes=None,
     verbose=None,
 ):
-    """Plot a montage.
+    """### Plot a montage.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     montage : instance of DigMontage
         The montage to visualize.
@@ -40,22 +40,22 @@ def plot_montage(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     axes : instance of Axes | instance of Axes3D | None
         Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
         of Axes3D. If None (default), a new axes will be created.
 
-        .. versionadded:: 1.4
+        ✨ Added in vesion 1.4
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         The figure object.

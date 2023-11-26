@@ -5,9 +5,9 @@ from .base import BaseEstimator as BaseEstimator
 from _typeshed import Incomplete
 
 class TimeDelayingRidge(BaseEstimator):
-    """Ridge regression of data with time delays.
+    """### Ridge regression of data with time delays.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tmin : int | float
         The starting lag, in seconds (or samples if ``sfreq`` == 1).
@@ -29,7 +29,7 @@ class TimeDelayingRidge(BaseEstimator):
     n_jobs : int | str
         The number of jobs to use. Can be an int (default 1) or ``'cuda'``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
     edge_correction : bool
         If True (default), correct the autocorrelation coefficients for
         non-zero delays for the fact that fewer samples are available.
@@ -37,13 +37,13 @@ class TimeDelayingRidge(BaseEstimator):
         depending on the relationship between epoch length and model
         duration. Only used if ``estimator`` is float or None.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     See Also
     --------
     mne.decoding.ReceptiveField
 
-    Notes
+    ### 📖 Notes
     -----
     This class is meant to be used with `mne.decoding.ReceptiveField`
     by only implicitly doing the time delaying. For reasonable receptive
@@ -76,30 +76,30 @@ class TimeDelayingRidge(BaseEstimator):
     intercept_: Incomplete
 
     def fit(self, X, y):
-        """Estimate the coefficients of the linear model.
+        """### Estimate the coefficients of the linear model.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_samples[, n_epochs], n_features)
             The training input samples to estimate the linear coefficients.
         y : array, shape (n_samples[, n_epochs],  n_outputs)
             The target values.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of TimeDelayingRidge
             Returns the modified instance.
         """
         ...
     def predict(self, X):
-        """Predict the output.
+        """### Predict the output.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_samples[, n_epochs], n_features)
             The data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : ndarray
             The predicted response.

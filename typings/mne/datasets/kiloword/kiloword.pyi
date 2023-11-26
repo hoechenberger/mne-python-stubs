@@ -6,11 +6,11 @@ def data_path(
     *,
     verbose=None,
 ):
-    """Get path to local copy of the kiloword dataset.
+    """### Get path to local copy of the kiloword dataset.
 
     This is the dataset from :footcite:`DufauEtAl2015`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     path : None | str
         Location of where to look for the kiloword data storing
@@ -33,11 +33,11 @@ def data_path(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : list of Path
         Local path to the given data file. This path is contained inside a list
@@ -50,9 +50,9 @@ def data_path(
     ...
 
 def get_version():
-    """Get version of the local kiloword dataset.
+    """### Get version of the local kiloword dataset.
 
-    Returns
+    ### ⏎ Returns
     -------
     version : str | None
         Version of the kiloword local dataset, or None if the dataset

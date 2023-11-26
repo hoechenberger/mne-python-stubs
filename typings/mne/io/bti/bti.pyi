@@ -33,7 +33,7 @@ dtypes: Incomplete
 DTYPES: Incomplete
 
 class _bytes_io_mock_context:
-    """Make a context for BytesIO."""
+    """### Make a context for BytesIO."""
 
     target: Incomplete
 
@@ -47,9 +47,9 @@ class _bytes_io_mock_context:
     ) -> None: ...
 
 class RawBTi(BaseRaw):
-    """Raw object from 4D Neuroimaging MagnesWH3600 data.
+    """### Raw object from 4D Neuroimaging MagnesWH3600 data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     pdf_fname : path-like
         Path to the processed data file (PDF).
@@ -78,7 +78,7 @@ class RawBTi(BaseRaw):
         as regular EEG channels.
     %(preload)s
 
-        .. versionadded:: 0.11
+        ✨ Added in vesion 0.11
 
     %(verbose)s
     """
@@ -113,9 +113,9 @@ def read_raw_bti(
     preload: bool = False,
     verbose=None,
 ):
-    """Raw object from 4D Neuroimaging MagnesWH3600 data.
+    """### Raw object from 4D Neuroimaging MagnesWH3600 data.
 
-    .. note::
+    ### 💡 Note
         1. Currently direct inclusion of reference channel weights
            is not supported. Please use ``mne_create_comp_data`` to include
            the weights or use the low level functions from this module to
@@ -125,7 +125,7 @@ def read_raw_bti(
            channels are present in your dataset but 'ECG 01' and 'EOG 01',
            'EOG 02' don't appear in the channel names of the raw object.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     pdf_fname : path-like
         Path to the processed data file (PDF).
@@ -160,15 +160,15 @@ def read_raw_bti(
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-        .. versionadded:: 0.11
+        ✨ Added in vesion 0.11
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawBTi
         A Raw object containing BTI data.

@@ -3,9 +3,9 @@ from ..utils import logger as logger
 def oversampled_temporal_projection(
     raw, duration: float = 10.0, picks=None, verbose=None
 ):
-    """Denoise MEG channels using leave-one-out temporal projection.
+    """### Denoise MEG channels using leave-one-out temporal projection.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data to denoise.
@@ -24,16 +24,16 @@ def oversampled_temporal_projection(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw_clean : instance of Raw
         The cleaned data.
 
-    Notes
+    ### 📖 Notes
     -----
     This algorithm is computationally expensive, and can be several times
     slower than realtime for conventional M/EEG datasets. It uses a
@@ -54,7 +54,7 @@ def oversampled_temporal_projection(
 
     Use of this algorithm is covered by a provisional patent.
 
-    .. versionadded:: 0.16
+    ✨ Added in vesion 0.16
 
     References
     ----------

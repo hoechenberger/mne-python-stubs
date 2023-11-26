@@ -3,12 +3,12 @@ from ...transforms import Transform as Transform, apply_trans as apply_trans
 from ...utils import warn as warn
 
 def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
-    """Warp a montage to a template with image volumes using SDR.
+    """### Warp a montage to a template with image volumes using SDR.
 
-    .. note:: This is likely only applicable for channels inside the brain
+    ### 💡 Note This is likely only applicable for channels inside the brain
               (intracranial electrodes).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     montage : instance of mne.channels.DigMontage
         The montage object containing the channels.
@@ -28,11 +28,11 @@ def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     montage_warped : mne.channels.DigMontage
         The modified montage object containing the channels.
@@ -48,14 +48,14 @@ def make_montage_volume(
     use_min: bool = False,
     verbose=None,
 ):
-    """Make a volume from intracranial electrode contact locations.
+    """### Make a volume from intracranial electrode contact locations.
 
     Find areas of the input volume with intensity greater than
     a threshold surrounding local extrema near the channel location.
     Monotonicity from the peak is enforced to prevent channels
     bleeding into each other.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     montage : instance of mne.channels.DigMontage
         The montage object containing the channels.
@@ -79,11 +79,11 @@ def make_montage_volume(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     elec_image : nibabel.spatialimages.SpatialImage
         An image in Freesurfer surface RAS space with voxel values

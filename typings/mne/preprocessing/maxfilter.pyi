@@ -28,13 +28,13 @@ def apply_maxfilter(
     overwrite: bool = True,
     verbose=None,
 ):
-    """# DEPRECATED apply_maxfilter will be removed in 1.7, use mne.preprocessing.maxwell_filter or the MEGIN command-line utility maxfilter and mne.bem.fit_sphere_to_headshape instead..
+    """###     # DEPRECATED apply_maxfilter will be removed in 1.7, use mne.preprocessing.maxwell_filter or the MEGIN command-line utility maxfilter and mne.bem.fit_sphere_to_headshape instead..
 
     Apply NeuroMag MaxFilter to raw data.
 
     Needs Maxfilter license, maxfilter has to be in PATH.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     in_fname : path-like
         Input file name.
@@ -96,11 +96,11 @@ def apply_maxfilter(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     origin: str
         Head origin in selected coordinate frame.

@@ -4,9 +4,9 @@ from _typeshed import Incomplete
 FSAVERAGE_MANIFEST_PATH: Incomplete
 
 def fetch_fsaverage(subjects_dir=None, *, verbose=None):
-    """Fetch and update fsaverage.
+    """### Fetch and update fsaverage.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subjects_dir : str | None
         The path to use as the subjects directory in the MNE-Python
@@ -16,17 +16,17 @@ def fetch_fsaverage(subjects_dir=None, *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fs_dir : str
         The fsaverage directory.
         (essentially ``subjects_dir + '/fsaverage'``).
 
-    Notes
+    ### 📖 Notes
     -----
     This function is designed to provide
 
@@ -40,6 +40,6 @@ def fetch_fsaverage(subjects_dir=None, *, verbose=None):
     the zip file is downloaded and files are updated. No files will
     be overwritten.
 
-    .. versionadded:: 0.18
+    ✨ Added in vesion 0.18
     """
     ...

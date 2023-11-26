@@ -10,9 +10,9 @@ def read_raw_eyelink(
     overlap_threshold: float = 0.05,
     verbose=None,
 ):
-    """Reader for an Eyelink ``.asc`` file.
+    """### Reader for an Eyelink ``.asc`` file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : path-like
@@ -48,11 +48,11 @@ def read_raw_eyelink(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawEyelink
         A Raw object containing eyetracker data.
@@ -61,7 +61,7 @@ def read_raw_eyelink(
     --------
     mne.io.Raw : Documentation of attribute and methods.
 
-    Notes
+    ### 📖 Notes
     -----
     It is common for SR Research Eyelink eye trackers to only record data during trials.
     To avoid frequent data discontinuities and to ensure that the data is continuous
@@ -72,9 +72,9 @@ def read_raw_eyelink(
     ...
 
 class RawEyelink(BaseRaw):
-    """Raw object from an XXX file.
+    """### Raw object from an XXX file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : path-like
@@ -110,7 +110,7 @@ class RawEyelink(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 

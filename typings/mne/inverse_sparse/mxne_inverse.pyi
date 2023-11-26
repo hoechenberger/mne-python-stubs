@@ -20,9 +20,9 @@ from .mxne_optim import (
 )
 
 def make_stc_from_dipoles(dipoles, src, verbose=None):
-    """Convert a list of spatio-temporal dipoles into a SourceEstimate.
+    """### Convert a list of spatio-temporal dipoles into a SourceEstimate.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     dipoles : Dipole | list of instances of Dipole
         The dipoles to convert.
@@ -31,11 +31,11 @@ def make_stc_from_dipoles(dipoles, src, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate
         The source estimate.
@@ -67,12 +67,12 @@ def mixed_norm(
     random_state=None,
     verbose=None,
 ):
-    """Mixed-norm estimate (MxNE) and iterative reweighted MxNE (irMxNE).
+    """### Mixed-norm estimate (MxNE) and iterative reweighted MxNE (irMxNE).
 
     Compute L1/L2 mixed-norm solution :footcite:`GramfortEtAl2012` or L0.5/L2
     :footcite:`StrohmeierEtAl2016` mixed-norm solution on evoked data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked or list of instances of Evoked
         Evoked data to invert.
@@ -86,7 +86,7 @@ def mixed_norm(
         If ``'sure'`` (default), the SURE method from
         :footcite:`DeledalleEtAl2014` will be used.
 
-        .. versionchanged:: 0.24
+        🎭 Changed in version 0.24
           The default was changed to ``'sure'``.
 
     loose : float | 'auto' | dict
@@ -111,7 +111,7 @@ def mixed_norm(
         `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
     maxit : int
         Maximum number of iterations.
@@ -191,7 +191,7 @@ def mixed_norm(
 
         The default is ``None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     pick_ori : None | "normal" | "vector"
 
@@ -214,20 +214,20 @@ def mixed_norm(
         distributed alphas between alpha_max and 0.1 * alpha_max. If array, the
         grid is directly specified. Ignored if alpha is not "sure".
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
     random_state : int | None
         The random state used in a random number generator for delta and
         epsilon used for the SURE computation. Defaults to None.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate | list of SourceEstimate
         Source time courses for each evoked data passed as input.
@@ -270,13 +270,13 @@ def tf_mixed_norm(
     n_tfmxne_iter: int = 1,
     verbose=None,
 ):
-    """Time-Frequency Mixed-norm estimate (TF-MxNE).
+    """### Time-Frequency Mixed-norm estimate (TF-MxNE).
 
     Compute L1/L2 + L1 mixed-norm solution on time-frequency
     dictionary. Works with evoked data
     :footcite:`GramfortEtAl2013b,GramfortEtAl2011`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked
         Evoked data to invert.
@@ -307,7 +307,7 @@ def tf_mixed_norm(
         `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
     maxit : int
         Maximum number of iterations.
@@ -402,7 +402,7 @@ def tf_mixed_norm(
 
         The default is ``None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     pick_ori : None | "normal" | "vector"
 
@@ -425,11 +425,11 @@ def tf_mixed_norm(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : instance of SourceEstimate
         Source time courses.

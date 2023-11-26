@@ -6,9 +6,9 @@ def data_path(
     *,
     verbose=None,
 ):
-    """Get path to local copy of opm dataset.
+    """### Get path to local copy of opm dataset.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     path : None | str
         Location of where to look for the opm dataset.
@@ -31,20 +31,20 @@ def data_path(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : instance of Path
         Path to opm dataset directory."""
     ...
 
 def get_version():
-    """Get version of the local opm dataset.
+    """### Get version of the local opm dataset.
 
-    Returns
+    ### ⏎ Returns
     -------
     version : str | None
         Version of the opm local dataset, or None if the dataset

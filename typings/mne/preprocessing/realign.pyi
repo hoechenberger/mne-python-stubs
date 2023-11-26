@@ -2,14 +2,14 @@ from ..io import BaseRaw as BaseRaw
 from ..utils import logger as logger, warn as warn
 
 def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
-    """Realign two simultaneous recordings.
+    """### Realign two simultaneous recordings.
 
     Due to clock drift, recordings at a given same sample rate made by two
     separate devices simultaneously can become out of sync over time. This
     function uses event times captured by both acquisition devices to resample
     ``other`` to match ``raw``.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The first raw instance.
@@ -25,11 +25,11 @@ def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
     This function operates inplace. It will:
 
@@ -46,6 +46,6 @@ def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
     sample rate, but it can also operate on recordings made at different
     sample rates to resample and deal with clock drift simultaneously.
 
-    .. versionadded:: 0.22
+    ✨ Added in vesion 0.22
     """
     ...

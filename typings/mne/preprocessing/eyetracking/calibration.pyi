@@ -2,16 +2,16 @@ from ...utils import fill_doc as fill_doc, logger as logger
 from ...viz.utils import plt_show as plt_show
 
 class Calibration(dict):
-    """Eye-tracking calibration info.
+    """### Eye-tracking calibration info.
 
     This data structure behaves like a dictionary. It contains information regarding a
     calibration that was conducted during an eye-tracking recording.
 
-    .. note::
+    ### 💡 Note
         When possible, a Calibration instance should be created with a helper function,
         such as `mne.preprocessing.eyetracking.read_eyelink_calibration`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     onset : float
         The onset of the calibration in seconds. If the calibration was
@@ -64,18 +64,18 @@ class Calibration(dict):
         screen_resolution=None,
     ) -> None: ...
     def copy(self):
-        """Copy the instance.
+        """### Copy the instance.
 
-        Returns
+        ### ⏎ Returns
         -------
         cal : instance of Calibration
             The copied Calibration.
         """
         ...
     def plot(self, show_offsets: bool = True, axes=None, show: bool = True):
-        """Visualize calibration.
+        """### Visualize calibration.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         show_offsets : bool
             Whether to display the offset (in visual degrees) of each calibration
@@ -86,7 +86,7 @@ class Calibration(dict):
         show : bool
             Whether to show the figure or not. Defaults to ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
             The resulting figure object for the calibration plot.
@@ -96,9 +96,9 @@ class Calibration(dict):
 def read_eyelink_calibration(
     fname, screen_size=None, screen_distance=None, screen_resolution=None
 ):
-    """Return info on calibrations collected in an eyelink file.
+    """### Return info on calibrations collected in an eyelink file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the eyelink file (.asc).
@@ -114,7 +114,7 @@ def read_eyelink_calibration(
         was collected with. For example, ``(1920, 1080)`` for a 1920x1080
         resolution display. Defaults to ``None``.
 
-    Returns
+    ### ⏎ Returns
     -------
     calibrations : list
         A list of `mne.preprocessing.eyetracking.Calibration` instances, one for

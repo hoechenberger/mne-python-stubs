@@ -1,9 +1,9 @@
 from ...utils import get_subjects_dir as get_subjects_dir
 
 def fetch_infant_template(age, subjects_dir=..., *, verbose=...):
-    """Fetch and update an infant MRI template.
+    """### Fetch and update an infant MRI template.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     age : str
         Age to download. Can be one of ``{'2wk', '1mo', '2mo', '3mo', '4.5mo',
@@ -13,21 +13,21 @@ def fetch_infant_template(age, subjects_dir=..., *, verbose=...):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     subject : str
         The standard subject name, e.g. ``ANTS4-5Month3T``.
 
-    Notes
+    ### 📖 Notes
     -----
     If you use these templates in your work, please cite
     :footcite:`OReillyEtAl2021` and :footcite:`RichardsEtAl2016`.
 
-    .. versionadded:: 0.23
+    ✨ Added in vesion 0.23
 
     References
     ----------

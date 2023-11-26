@@ -11,18 +11,18 @@ def export_raw(
     overwrite: bool = False,
     verbose=None,
 ) -> None:
-    """Export Raw to external formats.
+    """### Export Raw to external formats.
 
     Supported formats:
         - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
         - EEGLAB (``.set``, uses `eeglabio`)
         - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
-    .. warning::
+    ### ⛔️ Warning
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : str
@@ -51,17 +51,17 @@ def export_raw(
         If True (default False), overwrite the destination file if it
         exists.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
@@ -95,16 +95,16 @@ def export_raw(
 def export_epochs(
     fname, epochs, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """Export Epochs to external formats.
+    """### Export Epochs to external formats.
 
     Supported formats:
         - EEGLAB (``.set``, uses `eeglabio`)
 
-    .. warning::
+    ### ⛔️ Warning
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : str
@@ -121,17 +121,17 @@ def export_epochs(
         If True (default False), overwrite the destination file if it
         exists.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
@@ -148,7 +148,7 @@ def export_epochs(
 def export_evokeds(
     fname, evoked, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """Export evoked dataset to external formats.
+    """### Export evoked dataset to external formats.
 
     This function is a wrapper for format-specific export functions. The export
     function is selected based on the inferred file format. For additional
@@ -157,11 +157,11 @@ def export_evokeds(
     Supported formats:
         - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
 
-    .. warning::
+    ### ⛔️ Warning
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : str
@@ -180,11 +180,11 @@ def export_evokeds(
         If True (default False), overwrite the destination file if it
         exists.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -193,9 +193,9 @@ def export_evokeds(
     mne.write_evokeds
     mne.export.export_evokeds_mff
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,

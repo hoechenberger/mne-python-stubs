@@ -23,9 +23,9 @@ def get_head_surf(
     on_defects: str = "raise",
     verbose=None,
 ):
-    """Load the subject head surface.
+    """### Load the subject head surface.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject : str
         Subject name.
@@ -49,15 +49,15 @@ def get_head_surf(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     surf : dict
         The head surface.
@@ -65,9 +65,9 @@ def get_head_surf(
     ...
 
 def get_meg_helmet_surf(info, trans=None, *, verbose=None):
-    """Load the MEG helmet associated with the MEG sensors.
+    """### Load the MEG helmet associated with the MEG sensors.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -79,16 +79,16 @@ def get_meg_helmet_surf(info, trans=None, *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     surf : dict
         The MEG helmet as a surface.
 
-    Notes
+    ### 📖 Notes
     -----
     A built-in helmet is loaded if possible. If not, a helmet surface
     will be approximated based on the sensor locations.
@@ -96,25 +96,25 @@ def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     ...
 
 def fast_cross_3d(x, y):
-    """Compute cross product between list of 3D vectors.
+    """### Compute cross product between list of 3D vectors.
 
     Much faster than np.cross() when the number of cross products
     becomes large (>= 500). This is because np.cross() methods become
     less memory efficient at this stage.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x : array
         Input array 1, shape (..., 3).
     y : array
         Input array 2, shape (..., 3).
 
-    Returns
+    ### ⏎ Returns
     -------
     z : array, shape (..., 3)
         Cross product of x and y along the last dimension.
 
-    Notes
+    ### 📖 Notes
     -----
     x and y must broadcast against each other.
     """
@@ -128,9 +128,9 @@ def complete_surface_info(
     *,
     verbose=None,
 ):
-    """Complete surface information.
+    """### Complete surface information.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     surf : dict
         The surface.
@@ -143,11 +143,11 @@ def complete_surface_info(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     surf : dict
         The transformed surface.
@@ -155,13 +155,13 @@ def complete_surface_info(
     ...
 
 class _CDist:
-    """Wrapper for cdist that uses a Tree-like pattern."""
+    """### Wrapper for cdist that uses a Tree-like pattern."""
 
     def __init__(self, xhs) -> None: ...
     def query(self, rr): ...
 
 class _DistanceQuery:
-    """Wrapper for fast distance queries."""
+    """### Wrapper for fast distance queries."""
 
     query: Incomplete
     data: Incomplete
@@ -171,7 +171,7 @@ class _DistanceQuery:
     ) -> None: ...
 
 class _CheckInside:
-    """Efficiently check if points are inside a surface."""
+    """### Efficiently check if points are inside a surface."""
 
     mode: Incomplete
     surf: Incomplete
@@ -180,16 +180,16 @@ class _CheckInside:
     def __call__(self, rr, n_jobs=None, verbose=None): ...
 
 def read_curvature(filepath, binary: bool = True):
-    """Load in curvature values from the ?h.curv file.
+    """### Load in curvature values from the ?h.curv file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     filepath : path-like
         Input path to the ``.curv`` file.
     binary : bool
         Specify if the output array is to hold binary values. Defaults to True.
 
-    Returns
+    ### ⏎ Returns
     -------
     curv : array of shape (n_vertices,)
         The curvature values loaded from the user given file.
@@ -203,9 +203,9 @@ def read_surface(
     file_format: str = "auto",
     verbose=None,
 ):
-    """Load a Freesurfer surface mesh in triangular format.
+    """### Load a Freesurfer surface mesh in triangular format.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The name of the file containing the surface.
@@ -225,7 +225,7 @@ def read_surface(
             * 'zras' : array of float, shape (3,)
             * 'cras' : array of float, shape (3,)
 
-        .. versionadded:: 0.13.0
+        ✨ Added in vesion 0.13.0
 
     return_dict : bool
         If True, a dictionary with surface parameters is returned.
@@ -235,15 +235,15 @@ def read_surface(
         importing in other software), or 'auto' to attempt to infer from the
         file name. Defaults to 'auto'.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     rr : array, shape=(n_vertices, 3)
         Coordinate points.
@@ -273,11 +273,11 @@ def write_surface(
     *,
     verbose=None,
 ) -> None:
-    """Write a triangular Freesurfer surface mesh.
+    """### Write a triangular Freesurfer surface mesh.
 
     Accepts the same data format as is returned by read_surface().
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         File to write.
@@ -303,14 +303,14 @@ def write_surface(
             * 'zras' : array of float, shape (3,)
             * 'cras' : array of float, shape (3,)
 
-        .. versionadded:: 0.13.0
+        ✨ Added in vesion 0.13.0
     file_format : 'auto' | 'freesurfer' | 'obj'
         File format to use. Can be 'freesurfer' to write a FreeSurfer surface
         file, or 'obj' to write a Wavefront .obj file (common format for
         importing in other software), or 'auto' to attempt to infer from the
         file name. Defaults to 'auto'.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     overwrite : bool
         If True (default False), overwrite the destination file if it
@@ -318,7 +318,7 @@ def write_surface(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -332,9 +332,9 @@ def write_surface(
 def decimate_surface(
     points, triangles, n_triangles, method: str = "quadric", *, verbose=None
 ):
-    """Decimate surface data.
+    """### Decimate surface data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     points : ndarray
         The surface to be decimated, a 3 x number of points array.
@@ -347,22 +347,22 @@ def decimate_surface(
         sphere using Freesurfer and downsample to an icosahedral or
         octahedral mesh.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     points : ndarray
         The decimated points.
     triangles : ndarray
         The decimated triangles.
 
-    Notes
+    ### 📖 Notes
     -----
     **"quadric" mode**
 
@@ -385,14 +385,14 @@ def decimate_surface(
     ...
 
 def mesh_edges(tris):
-    """Return sparse matrix with edges as an adjacency matrix.
+    """### Return sparse matrix with edges as an adjacency matrix.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tris : array of shape [n_triangles x 3]
         The triangles.
 
-    Returns
+    ### ⏎ Returns
     -------
     edges : scipy.sparse.spmatrix
         The adjacency matrix.
@@ -400,19 +400,19 @@ def mesh_edges(tris):
     ...
 
 def mesh_dist(tris, vert):
-    """Compute adjacency matrix weighted by distances.
+    """### Compute adjacency matrix weighted by distances.
 
     It generates an adjacency matrix where the entries are the distances
     between neighboring vertices.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tris : array (n_tris x 3)
         Mesh triangulation.
     vert : array (n_vert x 3)
         Vertex locations.
 
-    Returns
+    ### ⏎ Returns
     -------
     dist_matrix : scipy.sparse.csr_matrix
         Sparse matrix with distances between adjacent vertices.
@@ -420,9 +420,9 @@ def mesh_dist(tris, vert):
     ...
 
 def read_tri(fname_in, swap: bool = False, verbose=None):
-    """Read triangle definitions from an ascii file.
+    """### Read triangle definitions from an ascii file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname_in : path-like
         Path to surface ASCII file (ending with ``'.tri'``).
@@ -432,11 +432,11 @@ def read_tri(fname_in, swap: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     rr : array, shape=(n_vertices, 3)
         Coordinate points.
@@ -449,9 +449,9 @@ def read_tri(fname_in, swap: bool = False, verbose=None):
     read_surface
     write_surface
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.13.0
+    ✨ Added in vesion 0.13.0
     """
     ...
 
@@ -465,13 +465,13 @@ def dig_mri_distances(
     on_defects: str = "raise",
     verbose=None,
 ):
-    """Compute distances between head shape points and the scalp surface.
+    """### Compute distances between head shape points and the scalp surface.
 
     This function is useful to check that coregistration is correct.
     Unless outliers are present in the head shape points,
     one can assume an average distance around 2-3 mm.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -506,15 +506,15 @@ def dig_mri_distances(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     dists : array, shape (n_points,)
         The distances.
@@ -523,21 +523,21 @@ def dig_mri_distances(
     --------
     mne.bem.get_fitting_dig
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.19
+    ✨ Added in vesion 0.19
     """
     ...
 
 def get_montage_volume_labels(
     montage, subject, subjects_dir=None, aseg: str = "aparc+aseg", dist: int = 2
 ):
-    """Get regions of interest near channels from a Freesurfer parcellation.
+    """### Get regions of interest near channels from a Freesurfer parcellation.
 
-    .. note:: This is applicable for channels inside the brain
+    ### 💡 Note This is applicable for channels inside the brain
               (intracranial electrodes).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     montage : None | str | DigMontage
@@ -565,7 +565,7 @@ def get_montage_volume_labels(
     dist : float
         The distance in mm to use for identifying regions of interest.
 
-    Returns
+    ### ⏎ Returns
     -------
     labels : dict
         The regions of interest labels within ``dist`` of each channel.

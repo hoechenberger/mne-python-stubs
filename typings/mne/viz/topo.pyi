@@ -17,7 +17,7 @@ def iter_topography(
     layout_scale=None,
     legend: bool = False,
 ):
-    """Create iterator over channel positions.
+    """### Create iterator over channel positions.
 
     This function returns a generator that unpacks into
     a series of matplotlib axis objects and data / channel
@@ -25,7 +25,7 @@ def iter_topography(
     of the related layout passed or inferred from the channel info.
     Hence, this enables convenient topography plot customization.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -54,7 +54,7 @@ def iter_topography(
         that can be used to, e.g., construct a legend. The index of this
         axis will be -1.
 
-    Returns
+    ### ⏎ Returns
     -------
     gen : generator
         A generator that can be unpacked into:
@@ -84,9 +84,9 @@ def plot_topo_image_epochs(
     font_color: str = "w",
     show: bool = True,
 ):
-    """Plot Event Related Potential / Fields image on topographies.
+    """### Plot Event Related Potential / Fields image on topographies.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of `mne.Epochs`
         The epochs.
@@ -132,12 +132,12 @@ def plot_topo_image_epochs(
     show : bool
         Whether to show the figure. Defaults to ``True``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of `matplotlib.figure.Figure`
         Figure distributing one image per channel across sensor topography.
 
-    Notes
+    ### 📖 Notes
     -----
     In an interactive Python session, this plot will be interactive; clicking
     on a channel image will pop open a larger view of the image; this image

@@ -19,9 +19,9 @@ def regress_artifact(
     copy: bool = True,
     verbose=None,
 ):
-    """Remove artifacts using regression based on reference channels.
+    """### Remove artifacts using regression based on reference channels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Epochs | Raw
         The instance to process.
@@ -39,7 +39,7 @@ def regress_artifact(
         based on types (e.g., exclude="bads" when picks="meg").
         Specify ``'bads'`` (the default) to exclude all channels marked as bad.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
     picks_artifact : array-like | str
         Channel picks to use as predictor/explanatory variables capturing
         the artifact of interest (default is "eog").
@@ -54,18 +54,18 @@ def regress_artifact(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     inst : instance of Epochs | Raw
         The processed data.
     betas : ndarray, shape (n_picks, n_picks_ref)
         The betas used during regression.
 
-    Notes
+    ### 📖 Notes
     -----
     To implement the method outlined in :footcite:`GrattonEtAl1983`,
     remove the evoked response from epochs before estimating the
@@ -84,7 +84,7 @@ def regress_artifact(
     ...
 
 class EOGRegression:
-    """Remove EOG artifact signals from other channels by regression.
+    """### Remove EOG artifact signals from other channels by regression.
 
     Employs linear regression to remove signals captured by some channels,
     typically EOG, as described in :footcite:`GrattonEtAl1983`. You can also
@@ -92,7 +92,7 @@ class EOGRegression:
     then apply them to continuous data, as described in
     :footcite:`CroftBarry2000`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
@@ -114,7 +114,7 @@ class EOGRegression:
         Whether to automatically apply SSP projection vectors before fitting
         and applying the regression. Default is ``True``.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     coef_ : ndarray, shape (n, n)
         The regression coefficients. Only available after fitting.
@@ -130,9 +130,9 @@ class EOGRegression:
     proj : bool
         Whether projections will be applied before performing the regression.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.2
+    ✨ Added in vesion 1.2
 
     References
     ----------
@@ -155,20 +155,20 @@ class EOGRegression:
     info_: Incomplete
 
     def fit(self, inst):
-        """Fit EOG regression coefficients.
+        """### Fit EOG regression coefficients.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         inst : Raw | Epochs | Evoked
             The data on which the EOG regression weights should be fitted.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : EOGRegression
             The fitted ``EOGRegression`` object. The regression coefficients
             are available as the ``.coef_`` and ``.intercept_`` attributes.
 
-        Notes
+        ### 📖 Notes
         -----
         If your data contains EEG channels, make sure to apply the desired
         reference (see `mne.set_eeg_reference`) before performing EOG
@@ -176,9 +176,9 @@ class EOGRegression:
         """
         ...
     def apply(self, inst, copy: bool = True):
-        """Apply the regression coefficients to data.
+        """### Apply the regression coefficients to data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         inst : Raw | Epochs | Evoked
             The data on which to apply the regression.
@@ -187,12 +187,12 @@ class EOGRegression:
             If ``True``, data will be copied. Otherwise data may be modified in place.
             Defaults to ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : Raw | Epochs | Evoked
             A version of the data with the artifact channels regressed out.
 
-        Notes
+        ### 📖 Notes
         -----
         Only works after ``.fit()`` has been used.
 
@@ -225,9 +225,9 @@ class EOGRegression:
         title=None,
         show: bool = True,
     ):
-        """Plot the regression weights of a fitted EOGRegression model.
+        """### Plot the regression weights of a fitted EOGRegression model.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
             The channel type to plot. For ``'grad'``, the gradiometers are
@@ -289,8 +289,8 @@ class EOGRegression:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -315,7 +315,7 @@ class EOGRegression:
                 but it can extend beyond the head when sensors are plotted outside
                 the head circle.
 
-            .. versionchanged:: 0.21
+            🎭 Changed in version 0.21
 
                - The default was changed to ``'local'`` for MEG sensors.
                - ``'local'`` was changed to use a convex hull mask
@@ -325,7 +325,7 @@ class EOGRegression:
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            .. versionadded:: 0.20
+            ✨ Added in vesion 0.20
 
         res : int
             The resolution of the topomap image (number of pixels along each side).
@@ -344,7 +344,7 @@ class EOGRegression:
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            .. warning::  Interactive mode works smoothly only for a small amount
+            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -357,9 +357,9 @@ class EOGRegression:
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-            See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+            See `Matplotlib docs <matplotlib:colormapnorms>`
             for more details on colormap normalization, and
-            :ref:`the ERDs example<cnorm-example>` for an example of its use.
+            `the ERDs example<cnorm-example>` for an example of its use.
         axes : instance of Axes | list of Axes | None
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
@@ -367,7 +367,7 @@ class EOGRegression:
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
         cbar_fmt : str
-            Formatting string for colorbar tick labels. See :ref:`formatspec` for
+            Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
         title : str | None
@@ -376,20 +376,20 @@ class EOGRegression:
         show : bool
             Show the figure if ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
             Figure with a topomap subplot for each channel type.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
         """
         ...
     def save(self, fname, overwrite: bool = False) -> None:
-        """Save the regression model to an HDF5 file.
+        """### Save the regression model to an HDF5 file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The file to write the regression weights to. Should end in ``.h5``.
@@ -401,20 +401,20 @@ class EOGRegression:
         ...
 
 def read_eog_regression(fname):
-    """Read an EOG regression model from an HDF5 file.
+    """### Read an EOG regression model from an HDF5 file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The file to read the regression model from. Should end in ``.h5``.
 
-    Returns
+    ### ⏎ Returns
     -------
     model : EOGRegression
         The regression model read from the file.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.2
+    ✨ Added in vesion 1.2
     """
     ...

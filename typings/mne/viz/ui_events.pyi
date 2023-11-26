@@ -6,9 +6,9 @@ from matplotlib.colors import Colormap
 from typing import List, Optional, Union
 
 class UIEvent:
-    """Abstract base class for all events.
+    """### Abstract base class for all events.
 
-    Attributes
+    ### 📊 Attributes
     ----------
 
     name : str
@@ -21,13 +21,13 @@ class UIEvent:
 
     @property
     def name(self):
-        """The name of the event, which is the class name in snake case."""
+        """### The name of the event, which is the class name in snake case."""
         ...
 
 class FigureClosing(UIEvent):
-    """Indicates that the user has requested to close a figure.
+    """### Indicates that the user has requested to close a figure.
 
-    Attributes
+    ### 📊 Attributes
     ----------
 
     name : str
@@ -42,12 +42,12 @@ class FigureClosing(UIEvent):
 class TimeChange(UIEvent):
     """Indicates that the user has selected a time.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     time : float
         The new time in seconds.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     %(ui_event_name_source)s
     time : float
@@ -62,12 +62,12 @@ class TimeChange(UIEvent):
 class PlaybackSpeed(UIEvent):
     """Indicates that the user has selected a different playback speed for videos.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     speed : float
         The new speed in seconds per frame.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     %(ui_event_name_source)s
     speed : float
@@ -82,7 +82,7 @@ class PlaybackSpeed(UIEvent):
 class ColormapRange(UIEvent):
     """Indicates that the user has updated the bounds of the colormap.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     kind : str
         Kind of colormap being updated. The Notes section of the drawing
@@ -95,7 +95,7 @@ class ColormapRange(UIEvent):
         The colormap to use. Either string or matplotlib.colors.Colormap
         instance.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     kind : str
         Kind of colormap being updated. The Notes section of the drawing
@@ -126,7 +126,7 @@ class ColormapRange(UIEvent):
 class VertexSelect(UIEvent):
     """Indicates that the user has selected a vertex.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     hemi : str
         The hemisphere the vertex was selected on.
@@ -134,7 +134,7 @@ class VertexSelect(UIEvent):
     vertex_id : int
         The vertex number (in the high resolution mesh) that was selected.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     %(ui_event_name_source)s
     hemi : str
@@ -153,7 +153,7 @@ class VertexSelect(UIEvent):
 class Contours(UIEvent):
     """Indicates that the user has changed the contour lines.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     kind : str
         The kind of contours lines being changed. The Notes section of the
@@ -162,7 +162,7 @@ class Contours(UIEvent):
     contours : list of float
         The new values at which contour lines need to be drawn.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     %(ui_event_name_source)s
     kind : str
@@ -179,13 +179,13 @@ class Contours(UIEvent):
     def __init__(self, kind, contours) -> None: ...
 
 def publish(fig, event, *, verbose=None) -> None:
-    """Publish an event to all subscribers of the figure's channel.
+    """### Publish an event to all subscribers of the figure's channel.
 
     The figure's event channel and all linked event channels are searched for
     subscribers to the given event. Each subscriber had provided a callback
     function when subscribing, so we call that.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fig : matplotlib.figure.Figure | Figure3D
         The figure that publishes the event.
@@ -194,16 +194,16 @@ def publish(fig, event, *, verbose=None) -> None:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
 
 def subscribe(fig, event_name, callback, *, verbose=None) -> None:
-    """Subscribe to an event on a figure's event channel.
+    """### Subscribe to an event on a figure's event channel.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fig : matplotlib.figure.Figure | Figure3D
         The figure of which event channel to subscribe.
@@ -214,16 +214,16 @@ def subscribe(fig, event_name, callback, *, verbose=None) -> None:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
 
 def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
-    """Unsubscribe from an event on a figure's event channel.
+    """### Unsubscribe from an event on a figure's event channel.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fig : matplotlib.figure.Figure | Figure3D
         The figure of which event channel to unsubscribe from.
@@ -238,20 +238,20 @@ def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
 
 def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
-    """Link the event channels of two figures together.
+    """### Link the event channels of two figures together.
 
     When event channels are linked, any events that are published on one
     channel are simultaneously published on the other channel. Links are
     bi-directional.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     *figs : tuple of matplotlib.figure.Figure | tuple of Figure3D
         The figures whose event channel will be linked.
@@ -266,16 +266,16 @@ def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
 
 def unlink(fig, *, verbose=None) -> None:
-    """Remove all links involving the event channel of the given figure.
+    """### Remove all links involving the event channel of the given figure.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fig : matplotlib.figure.Figure | Figure3D
         The figure whose event channel should be unlinked from all other event
@@ -283,16 +283,16 @@ def unlink(fig, *, verbose=None) -> None:
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
 
 def disable_ui_events(fig) -> Generator[None, None, None]:
-    """Temporarily disable generation of UI events. Use as context manager.
+    """### Temporarily disable generation of UI events. Use as context manager.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fig : matplotlib.figure.Figure | Figure3D
         The figure whose UI event generation should be temporarily disabled.

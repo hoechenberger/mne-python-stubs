@@ -12,14 +12,14 @@ def read_raw_nicolet(
     preload: bool = False,
     verbose=None,
 ):
-    """Read Nicolet data as raw object.
+    """### Read Nicolet data as raw object.
 
     ..note:: This reader takes data files with the extension ``.data`` as an
              input. The header file with the same file name stem and an
              extension ``.head`` is expected to be found in the same
              directory.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the data file (ending with ``.data`` not ``.head``).
@@ -51,11 +51,11 @@ def read_raw_nicolet(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of Raw
         A Raw object containing the data.
@@ -67,9 +67,9 @@ def read_raw_nicolet(
     ...
 
 class RawNicolet(BaseRaw):
-    """Raw object from Nicolet file.
+    """### Raw object from Nicolet file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the Nicolet file.

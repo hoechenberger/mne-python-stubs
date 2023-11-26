@@ -27,7 +27,7 @@ def maxwell_filter_prepare_emptyroom(
     emit_warning: bool = False,
     verbose=None,
 ):
-    """Prepare an empty-room recording for Maxwell filtering.
+    """### Prepare an empty-room recording for Maxwell filtering.
 
     Empty-room data by default lacks certain properties that are required to
     ensure running `mne.preprocessing.maxwell_filter` will process the
@@ -35,7 +35,7 @@ def maxwell_filter_prepare_emptyroom(
     preconditions an empty-room raw data instance accordingly so it can be used
     for Maxwell filtering. Please see the ``Notes`` section for details.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw_er : instance of Raw
         The empty-room recording. It will not be modified.
@@ -51,7 +51,7 @@ def maxwell_filter_prepare_emptyroom(
         comparison to the experimental recording. If ``'keep'``, don't alter
         the existing list of bad channels.
 
-        .. note::
+        ### 💡 Note
            Non-MEG channels are silently dropped from the list of bads.
     annotations : 'from_raw' | 'union' | 'keep'
         Whether to copy the annotations over from ``raw`` (default),
@@ -70,16 +70,16 @@ def maxwell_filter_prepare_emptyroom(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw_er_prepared : instance of Raw
         A copy of the passed empty-room recording, ready for Maxwell filtering.
 
-    Notes
+    ### 📖 Notes
     -----
     This function will:
 
@@ -95,7 +95,7 @@ def maxwell_filter_prepare_emptyroom(
     * Adjust annotations according to the ``annotations`` parameter.
     * Adjust the measurement date according to the ``meas_date`` parameter.
 
-    .. versionadded:: 1.1
+    ✨ Added in vesion 1.1
     """
     ...
 
@@ -121,14 +121,14 @@ def maxwell_filter(
     extended_proj=(),
     verbose=None,
 ):
-    """Maxwell filter data using multipole moments.
+    """### Maxwell filter data using multipole moments.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Data to be filtered.
 
-        .. warning:: It is critical to mark bad channels in
+        ### ⛔️ Warning It is critical to mark bad channels in
                      ``raw.info['bads']`` prior to processing in order to
                      prevent artifact spreading. Manual inspection and use
                      of `find_bad_channels_maxwell` is recommended.
@@ -204,14 +204,14 @@ def maxwell_filter(
         The array should be of shape (N, 10), holding the position
         parameters as returned by e.g. ``read_head_pos``.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
 
     st_fixed : bool
         If True (default), do tSSS using the median head position during the
         ``st_duration`` window. This is the default behavior of MaxFilter
         and has been most extensively tested.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     st_only : bool
         If True, only tSSS (temporal) projection of MEG data will be
         performed on the output data. The non-tSSS parameters (e.g.,
@@ -224,7 +224,7 @@ def maxwell_filter(
         evoked movement compensation will be performed with
         `mne.epochs.average_movements`.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
 
     mag_scale : float | str
         The magenetometer scale-factor used to bring the magnetometers
@@ -234,7 +234,7 @@ def maxwell_filter(
         between the gradiometer pickup loops (e.g., 0.0168 m yields
         59.5 for VectorView).
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     skip_by_annotation : str | list of str
         If a string (or list of str), any annotation segment that begins
@@ -246,21 +246,21 @@ def maxwell_filter(
         or `mne.io.Raw.append`, or separated during acquisition.
         To disable, provide an empty list.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
 
     extended_proj : list
         The empty-room projection vectors used to extend the external
         SSS basis (i.e., use eSSS).
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw_sss : instance of Raw
         The raw data with Maxwell filtering applied.
@@ -273,17 +273,17 @@ def maxwell_filter(
     mne.chpi.read_head_pos
     mne.epochs.average_movements
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.11
+    ✨ Added in vesion 0.11
 
     Some of this code was adapted and relicensed (with BSD form) with
     permission from Jussi Nurminen. These algorithms are based on work
     from :footcite:`TauluKajola2005` and :footcite:`TauluSimola2006`.
-    It will likely use multiple CPU cores, see the :ref:`FAQ <faq_cpu>`
+    It will likely use multiple CPU cores, see the `FAQ <faq_cpu>`
     for more information.
 
-    .. warning:: Maxwell filtering in MNE is not designed or certified
+    ### ⛔️ Warning Maxwell filtering in MNE is not designed or certified
                  for clinical use.
 
     Compared to the MEGIN MaxFilter™ software, the MNE Maxwell filtering
@@ -343,7 +343,7 @@ def maxwell_filter(
     * Coil integration has not been optimized using Abramowitz/Stegun
       definitions.
 
-    .. note:: Various Maxwell filtering algorithm components are covered by
+    ### 💡 Note Various Maxwell filtering algorithm components are covered by
               patents owned by MEGIN. These patents include, but may not be
               limited to:
 
@@ -391,9 +391,9 @@ def find_bad_channels_maxwell(
     extended_proj=(),
     verbose=None,
 ):
-    """Find bad channels using Maxwell filtering.
+    """### Find bad channels using Maxwell filtering.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data to process.
@@ -404,7 +404,7 @@ def find_bad_channels_maxwell(
         the original and Maxwell-filtered data. See the ``Notes`` section for
         details.
 
-        .. note:: This setting only concerns *noisy* channel detection.
+        ### 💡 Note This setting only concerns *noisy* channel detection.
                   The limit for *flat* channel detection currently cannot be
                   controlled by the user. Flat channel detection is always run
                   before noisy channel detection.
@@ -418,12 +418,12 @@ def find_bad_channels_maxwell(
         If ``True``, return a dictionary with scoring information for each
         evaluated segment of the data. Default is ``False``.
 
-        .. warning:: This feature is experimental and may change in a future
+        ### ⛔️ Warning This feature is experimental and may change in a future
                      version of MNE-Python without prior notice. Please
                      report any problems and enhancement proposals to the
                      developers.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     origin : array-like, shape (3,) | str
         Origin of internal and external multipolar moment space in meters.
@@ -501,15 +501,15 @@ def find_bad_channels_maxwell(
         The empty-room projection vectors used to extend the external
         SSS basis (i.e., use eSSS).
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     noisy_chs : list
         List of bad MEG channels that were automatically detected as being
@@ -546,7 +546,7 @@ def find_bad_channels_maxwell(
             The score thresholds (in standard scores) above which a segment was
             classified as "noisy".
 
-        .. note:: The scores and limits for channels marked as ``bad`` in the
+        ### 💡 Note The scores and limits for channels marked as ``bad`` in the
                   input data will be set to ``np.nan``.
 
     See Also
@@ -554,7 +554,7 @@ def find_bad_channels_maxwell(
     annotate_amplitude
     maxwell_filter
 
-    Notes
+    ### 📖 Notes
     -----
     All arguments after ``raw``, ``limit``, ``duration``, ``min_count``, and
     ``return_scores`` are the same as `maxwell_filter`, except that the
@@ -595,7 +595,7 @@ def find_bad_channels_maxwell(
     particularly susceptible to being different between the two
     implementations.
 
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
     """
     ...
 
@@ -613,9 +613,9 @@ def compute_maxwell_basis(
     extended_proj=(),
     verbose=None,
 ):
-    """Compute the SSS basis for a given measurement info structure.
+    """### Compute the SSS basis for a given measurement info structure.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -674,15 +674,15 @@ def compute_maxwell_basis(
         The empty-room projection vectors used to extend the external
         SSS basis (i.e., use eSSS).
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     S : ndarray, shape (n_meg, n_moments)
         The basis that can be used to reconstruct the data.
@@ -693,7 +693,7 @@ def compute_maxwell_basis(
     n_use_in : int
         The number of kept moments that were in the internal space.
 
-    Notes
+    ### 📖 Notes
     -----
     This outputs variants of :math:`\\mathbf{S}` and :math:`\\mathbf{S^\\dagger}`
     from equations 27 and 37 of :footcite:`TauluKajola2005` with the coil scale
@@ -703,7 +703,7 @@ def compute_maxwell_basis(
 
         phi_in = S[:, :n_use_in] @ pS[:n_use_in] @ data_meg_good
 
-    .. versionadded:: 0.23
+    ✨ Added in vesion 0.23
 
     References
     ----------

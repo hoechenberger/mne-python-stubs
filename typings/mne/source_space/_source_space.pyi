@@ -51,18 +51,18 @@ from ..viz import plot_alignment as plot_alignment
 from _typeshed import Incomplete
 
 class SourceSpaces(list):
-    """Represent a list of source space.
+    """### Represent a list of source space.
 
     This class acts like a list of dictionaries containing the source
     space information, one entry in the list per source space type. See
     Notes for details.
 
-    .. warning::
+    ### ⛔️ Warning
         This class should not be created or modified by the end user. Use
         `mne.setup_source_space`, `mne.setup_volume_source_space`,
         or `mne.read_source_spaces` to create `SourceSpaces`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     source_spaces : list
         A list of dictionaries containing the source space information.
@@ -70,7 +70,7 @@ class SourceSpaces(list):
         Dictionary with information about the creation of the source space
         file. Has keys ``'working_dir'`` and ``'command_line'``.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     kind : ``'surface'`` | ``'volume'`` | ``'discrete'`` | ``'mixed'``
         The kind of source space.
@@ -84,7 +84,7 @@ class SourceSpaces(list):
     mne.setup_volume_source_space : Setup a volume source space.
     mne.read_source_spaces : Read source spaces from a file.
 
-    Notes
+    ### 📖 Notes
     -----
     Each element in SourceSpaces (e.g., ``src[0]``) is a dictionary. For
     example, a surface source space will have ``len(src) == 2``, one entry for
@@ -250,9 +250,9 @@ class SourceSpaces(list):
         trans=None,
         verbose=None,
     ):
-        """Plot the source space.
+        """### Plot the source space.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         head : bool
             If True, show head surface.
@@ -280,38 +280,38 @@ class SourceSpaces(list):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure3D
             The figure.
         """
         ...
     def __getitem__(self, *args, **kwargs):
-        """Get an item."""
+        """### Get an item."""
         ...
     def __add__(self, other):
-        """Combine source spaces."""
+        """### Combine source spaces."""
         ...
     def copy(self):
-        """Make a copy of the source spaces.
+        """### Make a copy of the source spaces.
 
-        Returns
+        ### ⏎ Returns
         -------
         src : instance of SourceSpaces
             The copied source spaces.
         """
         ...
     def __deepcopy__(self, memodict):
-        """Make a deepcopy."""
+        """### Make a deepcopy."""
         ...
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
-        """Save the source spaces to a fif file.
+        """### Save the source spaces to a fif file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             File to write, which should end with ``-src.fif`` or ``-src.fif.gz``.
@@ -322,7 +322,7 @@ class SourceSpaces(list):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
@@ -339,9 +339,9 @@ class SourceSpaces(list):
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """Export source spaces to nifti or mgz file.
+        """### Export source spaces to nifti or mgz file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             Name of nifti or mgz file to write.
@@ -368,7 +368,7 @@ class SourceSpaces(list):
             single voxel in the high-resolution MRI is filled in for each
             source point.
 
-            .. versionchanged:: 0.21.0
+            🎭 Changed in version 0.21.0
                Support for ``"sparse"`` was added.
         use_lut : bool
             If True, assigns a numeric value to each source space that
@@ -378,24 +378,24 @@ class SourceSpaces(list):
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 0.19
+            ✨ Added in vesion 0.19
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Notes
+        ### 📖 Notes
         -----
         This method requires nibabel.
         """
         ...
 
 def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
-    """Read the source spaces from a FIF file.
+    """### Read the source spaces from a FIF file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The name of the file, which should end with ``-src.fif`` or
@@ -405,11 +405,11 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     src : SourceSpaces
         The source spaces.
@@ -421,14 +421,14 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
     ...
 
 def find_source_space_hemi(src):
-    """Return the hemisphere id for a source space.
+    """### Return the hemisphere id for a source space.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : dict
         The source space to investigate.
 
-    Returns
+    ### ⏎ Returns
     -------
     hemi : int
         Deduced hemisphere id.
@@ -436,16 +436,16 @@ def find_source_space_hemi(src):
     ...
 
 def label_src_vertno_sel(label, src):
-    """Find vertex numbers and indices from label.
+    """### Find vertex numbers and indices from label.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     label : Label
         Source space label.
     src : dict
         Source space.
 
-    Returns
+    ### ⏎ Returns
     -------
     vertices : list of length 2
         Vertex numbers for lh and rh.
@@ -455,9 +455,9 @@ def label_src_vertno_sel(label, src):
     ...
 
 def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) -> None:
-    """Write source spaces to a file.
+    """### Write source spaces to a file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The name of the file, which should end with ``-src.fif`` or
@@ -471,7 +471,7 @@ def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) ->
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -491,9 +491,9 @@ def setup_source_space(
     *,
     verbose=None,
 ):
-    """Set up bilateral hemisphere surface-based source space with subsampling.
+    """### Set up bilateral hemisphere surface-based source space with subsampling.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -504,7 +504,7 @@ def setup_source_space(
         ``'all'`` for all points, or an integer to use approximate
         distance-based spacing (in mm).
 
-        .. versionchanged:: 0.18
+        🎭 Changed in version 0.18
            Support for integers for distance-based spacing.
     surface : str
         The surface to use.
@@ -518,7 +518,7 @@ def setup_source_space(
         time so precomputing it is recommended. Can also be 'patch' to only
         compute patch information.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Support for ``add_dist='patch'``.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
@@ -531,11 +531,11 @@ def setup_source_space(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     src : SourceSpaces
         The source space for each hemisphere.
@@ -564,9 +564,9 @@ def setup_volume_source_space(
     n_jobs=None,
     verbose=None,
 ):
-    """Set up a volume source space with grid spacing or discrete source space.
+    """### Set up a volume source space with grid spacing or discrete source space.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject : str | None
         Subject to process. If None, the path to the MRI volume must be
@@ -580,7 +580,7 @@ def setup_volume_source_space(
         space locations (in meters) and normals, respectively, creating a
         discrete source space.
 
-        .. note:: For a discrete source space (``pos`` is a dict),
+        ### 💡 Note For a discrete source space (``pos`` is a dict),
                   ``mri`` must be None.
     mri : str | None
         The filename of an MRI volume (mgh or mgz) to create the
@@ -624,7 +624,7 @@ def setup_volume_source_space(
         are assumed. If dict, should be a mapping of region names to atlas
         id numbers, allowing the use of other atlases.
 
-        .. versionchanged:: 0.21.0
+        🎭 Changed in version 0.21.0
            Support for dict added.
     add_interpolator : bool
         If True and ``mri`` is not None, then an interpolation matrix
@@ -632,7 +632,7 @@ def setup_volume_source_space(
     sphere_units : str
         Defaults to ``"m"``.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
     single_volume : bool
         If True, multiple values of ``volume_label`` will be merged into a
         a single source space instead of occupying multiple source spaces
@@ -640,7 +640,7 @@ def setup_volume_source_space(
         ``len(volume_label)``. This can help conserve memory and disk space
         when many labels are used.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
@@ -649,15 +649,15 @@ def setup_volume_source_space(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     src : SourceSpaces
         A `SourceSpaces` object containing one source space for each
@@ -668,7 +668,7 @@ def setup_volume_source_space(
     --------
     setup_source_space
 
-    Notes
+    ### 📖 Notes
     -----
     Volume source spaces are related to an MRI image such as T1 and allow to
     visualize source estimates overlaid on MRIs and to morph estimates
@@ -698,14 +698,14 @@ def setup_volume_source_space(
     ...
 
 def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None):
-    """Compute inter-source distances along the cortical surface.
+    """### Compute inter-source distances along the cortical surface.
 
     This function will also try to add patch info for the source space.
     It will only occur if the ``dist_limit`` is sufficiently high that all
     points on the surface are within ``dist_limit`` of a point in the
     source space.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source spaces to compute distances for.
@@ -725,18 +725,18 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     src : instance of SourceSpaces
         The original source spaces, with distance information added.
         The distances are stored in src[n]['dist'].
         Note: this function operates in-place.
 
-    Notes
+    ### 📖 Notes
     -----
     This function can be memory- and CPU-intensive. On a high-end machine
     (2012) running 6 jobs in parallel, an ico-5 (10242 per hemi) source space
@@ -750,9 +750,9 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
     ...
 
 def get_volume_labels_from_src(src, subject, subjects_dir):
-    """Return a list of Label of segmented volumes included in the src space.
+    """### Return a list of Label of segmented volumes included in the src space.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space containing the volume regions.
@@ -762,7 +762,7 @@ def get_volume_labels_from_src(src, subject, subjects_dir):
     subjects_dir : str
         Freesurfer folder of the subjects.
 
-    Returns
+    ### ⏎ Returns
     -------
     labels_aseg : list of Label
         List of Label of segmented volumes included in src space.
@@ -777,13 +777,13 @@ def morph_source_spaces(
     subjects_dir=None,
     verbose=None,
 ):
-    """Morph an existing source space to a different subject.
+    """### Morph an existing source space to a different subject.
 
-    .. warning:: This can be used in place of morphing source estimates for
+    ### ⛔️ Warning This can be used in place of morphing source estimates for
                  multiple subjects, but there may be consequences in terms
                  of dipole topology.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src_from : instance of SourceSpaces
         Surface source spaces to morph.
@@ -799,25 +799,25 @@ def morph_source_spaces(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     src : instance of SourceSpaces
         The morphed source spaces.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.10.0
+    ✨ Added in vesion 0.10.0
     """
     ...
 
 def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None):
-    """Compute distances between vertices and sensors.
+    """### Compute distances between vertices and sensors.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The object with vertex positions for which to compute distances to
@@ -843,11 +843,11 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     depth : array of shape (n_vertices, n_channels)
         The Euclidean distances of source space vertices with respect to
@@ -856,22 +856,22 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
     ...
 
 def get_decimated_surfaces(src):
-    """Get the decimated surfaces from a source space.
+    """### Get the decimated surfaces from a source space.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces | path-like
         The source space with decimated surfaces.
 
-    Returns
+    ### ⏎ Returns
     -------
     surfaces : list of dict
         The decimated surfaces present in the source space. Each dict
         which contains 'rr' and 'tris' keys for vertices positions and
         triangle indices.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.0
+    ✨ Added in vesion 1.0
     """
     ...

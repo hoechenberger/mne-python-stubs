@@ -66,12 +66,12 @@ class _ContentElement:
     def __init__(self, name, section, dom_id, tags, html) -> None: ...
 
 def open_report(fname, **params):
-    """Read a saved report or, if it doesn't exist yet, create a new one.
+    """### Read a saved report or, if it doesn't exist yet, create a new one.
 
     The returned report can be used as a context manager, in which case any
     changes to the report are saved when exiting the context block.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The file containing the report, stored in the HDF5 format. If the file
@@ -83,7 +83,7 @@ def open_report(fname, **params):
         reading an existing report, the parameters are checked with the
         loaded report and an exception is raised when they don't match.
 
-    Returns
+    ### ⏎ Returns
     -------
     report : instance of Report
         The report.
@@ -94,9 +94,9 @@ mne_logo_path: Incomplete
 mne_logo: Incomplete
 
 class Report:
-    """Object for rendering HTML.
+    """### Object for rendering HTML.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     info_fname : None | str
         Name of the file containing the info dictionary.
@@ -121,7 +121,7 @@ class Report:
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied in the following way **to each channel:**
@@ -138,8 +138,8 @@ class Report:
         file size and browser image rendering time as well.
         ``'webp'`` format requires matplotlib >= 3.6.
 
-        .. versionadded:: 0.15
-        .. versionchanged:: 1.3
+        ✨ Added in vesion 0.15
+        🎭 Changed in version 1.3
            Added support for ``'webp'`` format, removed support for GIF, and
            set the default to ``'auto'``.
     raw_psd : bool | dict
@@ -147,22 +147,22 @@ class Report:
         omit, True to plot, or a dict to pass as ``kwargs`` to
         `mne.time_frequency.Spectrum.plot`.
 
-        .. versionadded:: 0.17
-        .. versionchanged:: 1.4
+        ✨ Added in vesion 0.17
+        🎭 Changed in version 1.4
            kwargs are sent to ``spectrum.plot`` instead of ``raw.plot_psd``.
     projs : bool
         Whether to include topographic plots of SSP projectors, if present in
         the data. Defaults to ``False``.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     info_fname : None | str
         Name of the file containing the info dictionary.
@@ -187,7 +187,7 @@ class Report:
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied in the following way **to each channel:**
@@ -200,24 +200,24 @@ class Report:
     image_format : str
         Default image format to use.
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
     raw_psd : bool | dict
         If True, include PSD plots for raw files. Can be False (default) to
         omit, True to plot, or a dict to pass as ``kwargs`` to
         `mne.time_frequency.Spectrum.plot`.
 
-        .. versionadded:: 0.17
-        .. versionchanged:: 1.4
+        ✨ Added in vesion 0.17
+        🎭 Changed in version 1.4
            kwargs are sent to ``spectrum.plot`` instead of ``raw.plot_psd``.
     projs : bool
         Whether to include topographic plots of SSP projectors, if present in
         the data. Defaults to ``False``.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     html : list of str
@@ -231,11 +231,11 @@ class Report:
     lang : str
         language setting for the HTML file.
 
-    Notes
+    ### 📖 Notes
     -----
-    See :ref:`tut-report` for an introduction to using ``mne.Report``.
+    See `tut-report` for an introduction to using ``mne.Report``.
 
-    .. versionadded:: 0.8.0
+    ✨ Added in vesion 0.8.0
     """
 
     info_fname: Incomplete
@@ -267,9 +267,9 @@ class Report:
         verbose=None,
     ) -> None: ...
     def __len__(self) -> int:
-        """Return the number of files processed by the report.
+        """### Return the number of files processed by the report.
 
-        Returns
+        ### ⏎ Returns
         -------
         n_files : int
             The number of files processed.
@@ -277,38 +277,38 @@ class Report:
         ...
     @property
     def html(self):
-        """A list of HTML representations for all content elements."""
+        """### A list of HTML representations for all content elements."""
         ...
     @property
     def tags(self):
-        """All tags currently used in the report."""
+        """### All tags currently used in the report."""
         ...
     def add_custom_css(self, css) -> None:
-        """Add custom CSS to the report.
+        """### Add custom CSS to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         css : str
             Style definitions to add to the report. The content of this string
             will be embedded between HTML ``<style>`` and ``</style>`` tags.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.23
+        ✨ Added in vesion 0.23
         """
         ...
     def add_custom_js(self, js) -> None:
-        """Add custom JavaScript to the report.
+        """### Add custom JavaScript to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         js : str
             JavaScript code to add to the report. The content of this string
             will be embedded between HTML ``<script>`` and ``</script>`` tags.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.23
+        ✨ Added in vesion 0.23
         """
         ...
     def add_epochs(
@@ -323,9 +323,9 @@ class Report:
         tags=("epochs",),
         replace: bool = False,
     ) -> None:
-        """Add `mne.Epochs` to the report.
+        """### Add `mne.Epochs` to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         epochs : path-like | instance of Epochs
             The epochs to add to the report.
@@ -337,7 +337,7 @@ class Report:
             cover at least this duration. Epochs will be picked across the
             entire time range in equally-spaced distance.
 
-            .. note::
+            ### 💡 Note
               In rare edge cases, we may not be able to create a grid of
               equally-spaced epochs that cover the entire requested time range.
               In these situations, a warning will be emitted, informing you
@@ -366,9 +366,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_evokeds(
@@ -384,9 +384,9 @@ class Report:
         topomap_kwargs=None,
         n_jobs=None,
     ) -> None:
-        """Add `mne.Evoked` objects to the report.
+        """### Add `mne.Evoked` objects to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         evokeds : path-like | instance of Evoked | list of Evoked
             The evoked data to add to the report. Multiple `mne.Evoked`
@@ -428,9 +428,9 @@ class Report:
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_raw(
@@ -446,9 +446,9 @@ class Report:
         replace: bool = False,
         topomap_kwargs=None,
     ) -> None:
-        """Add `mne.io.Raw` objects to the report.
+        """### Add `mne.io.Raw` objects to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         raw : path-like | instance of Raw
             The data to add to the report.
@@ -482,7 +482,7 @@ class Report:
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            .. note::
+            ### 💡 Note
                 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -501,9 +501,9 @@ class Report:
         topomap_kwargs : dict | None
             Keyword arguments to pass to the topomap-generating functions.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_stc(
@@ -518,9 +518,9 @@ class Report:
         replace: bool = False,
         stc_plot_kwargs=None,
     ) -> None:
-        """Add a `mne.SourceEstimate` (STC) to the report.
+        """### Add a `mne.SourceEstimate` (STC) to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         stc : path-like | instance of SourceEstimate
             The `mne.SourceEstimate` to add to the report.
@@ -552,9 +552,9 @@ class Report:
             `mne.SourceEstimate.plot`. Only used when plotting in 3D
             mode.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_forward(
@@ -567,9 +567,9 @@ class Report:
         tags=("forward-solution",),
         replace: bool = False,
     ) -> None:
-        """Add a forward solution.
+        """### Add a forward solution.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         forward : instance of Forward | path-like
             The forward solution to add to the report.
@@ -592,9 +592,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_inverse_operator(
@@ -608,9 +608,9 @@ class Report:
         tags=("inverse-operator",),
         replace: bool = False,
     ) -> None:
-        """Add an inverse operator.
+        """### Add an inverse operator.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         inverse_operator : instance of InverseOperator | path-like
             The inverse operator to add to the report.
@@ -636,9 +636,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_trans(
@@ -653,9 +653,9 @@ class Report:
         tags=("coregistration",),
         replace: bool = False,
     ) -> None:
-        """Add a coregistration visualization to the report.
+        """### Add a coregistration visualization to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         trans : path-like | instance of Transform
             The ``head -> MRI`` transformation to render.
@@ -684,17 +684,17 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_covariance(
         self, cov, *, info, title, tags=("covariance",), replace: bool = False
     ) -> None:
-        """Add covariance to the report.
+        """### Add covariance to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         cov : path-like | instance of Covariance
             The `mne.Covariance` to add to the report.
@@ -712,9 +712,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_events(
@@ -728,9 +728,9 @@ class Report:
         tags=("events",),
         replace: bool = False,
     ) -> None:
-        """Add events to the report.
+        """### Add events to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         events : path-like | array, shape (n_events, 3)
             An MNE-Python events array.
@@ -753,9 +753,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_projs(
@@ -768,9 +768,9 @@ class Report:
         tags=("ssp",),
         replace: bool = False,
     ) -> None:
-        """Render (SSP) projection vectors.
+        """### Render (SSP) projection vectors.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         info : instance of Info | path-like
             An `mne.Info` structure or the path of a file containing one. This
@@ -794,9 +794,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_ica(
@@ -814,9 +814,9 @@ class Report:
         tags=("ica",),
         replace: bool = False,
     ) -> None:
-        """Add (a fitted) `mne.preprocessing.ICA` to the report.
+        """### Add (a fitted) `mne.preprocessing.ICA` to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ica : path-like | instance of mne.preprocessing.ICA
             The fitted ICA to add.
@@ -860,37 +860,37 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def remove(self, *, title=None, tags=None, remove_all: bool = False):
-        """Remove elements from the report.
+        """### Remove elements from the report.
 
         The element to remove is searched for by its title. Optionally, tags
         may be specified as well to narrow down the search to elements that
         have the supplied tags.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         title : str
             The title of the element(s) to remove.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         tags : array-like of str | str | None
              If supplied, restrict the operation to elements with the supplied
              tags.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         remove_all : bool
             Controls the behavior if multiple elements match the search
             criteria. If ``False`` (default) only the element last added to the
             report will be removed. If ``True``, all matches will be removed.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
-        Returns
+        ### ⏎ Returns
         -------
         removed_index : int | tuple of int | None
             The indices of the elements that were removed, or ``None`` if no
@@ -898,7 +898,7 @@ class Report:
             returned if ``remove_all`` was set to ``True`` and at least one
             element was removed.
 
-            .. versionchanged:: 0.24.0
+            🎭 Changed in version 0.24.0
                Returns tuple if ``remove_all`` is ``True``.
         """
         ...
@@ -911,15 +911,15 @@ class Report:
         tags=("code",),
         replace: bool = False,
     ) -> None:
-        """Add a code snippet (e.g., an analysis script) to the report.
+        """### Add a code snippet (e.g., an analysis script) to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         code : str | pathlib.Path
             The code to add to the report as a string, or the path to a file
             as a `pathlib.Path` object.
 
-            .. note:: Paths must be passed as `pathlib.Path` object, since
+            ### 💡 Note Paths must be passed as `pathlib.Path` object, since
                       strings will be treated as literal code.
         title : str
             The title corresponding to the code.
@@ -936,20 +936,20 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_sys_info(
         self, title, *, tags=("mne-sysinfo",), replace: bool = False
     ) -> None:
-        """Add a MNE-Python system information to the report.
+        """### Add a MNE-Python system information to the report.
 
         This is a convenience method that captures the output of
         `mne.sys_info` and adds it to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         title : str
             The title to assign.
@@ -963,9 +963,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_figure(
@@ -979,9 +979,9 @@ class Report:
         section=None,
         replace: bool = False,
     ) -> None:
-        """Add figures to the report.
+        """### Add figures to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fig : matplotlib.figure.Figure | Figure3D | array | array-like of matplotlib.figure.Figure | array-like of Figure3D | array-like of array
             One or more figures to add to the report. All figures must be an
@@ -1011,7 +1011,7 @@ class Report:
             table of contents. Hence, using sections is a way to declutter the table
             of contents, and to easy navigation of the report.
 
-            .. versionadded:: 1.1
+            ✨ Added in vesion 1.1
 
         replace : bool
             If ``True``, content already present that has the same ``title`` and
@@ -1019,9 +1019,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_image(
@@ -1034,9 +1034,9 @@ class Report:
         section=None,
         replace: bool = False,
     ) -> None:
-        """Add an image (e.g., PNG or JPEG pictures) to the report.
+        """### Add an image (e.g., PNG or JPEG pictures) to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         image : path-like
             The image to add.
@@ -1056,7 +1056,7 @@ class Report:
             table of contents. Hence, using sections is a way to declutter the table
             of contents, and to easy navigation of the report.
 
-            .. versionadded:: 1.1
+            ✨ Added in vesion 1.1
 
         replace : bool
             If ``True``, content already present that has the same ``title`` and
@@ -1064,17 +1064,17 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_html(
         self, html, title, *, tags=("custom-html",), section=None, replace: bool = False
     ) -> None:
-        """Add HTML content to the report.
+        """### Add HTML content to the report.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         html : str
             The HTML content to add.
@@ -1092,9 +1092,9 @@ class Report:
             table of contents. Hence, using sections is a way to declutter the table
             of contents, and to easy navigation of the report.
 
-            .. versionadded:: 1.1
+            ✨ Added in vesion 1.1
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         replace : bool
             If ``True``, content already present that has the same ``title`` and
@@ -1102,9 +1102,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def add_bem(
@@ -1119,9 +1119,9 @@ class Report:
         tags=("bem",),
         replace: bool = False,
     ) -> None:
-        """Render a visualization of the boundary element model (BEM) surfaces.
+        """### Render a visualization of the boundary element model (BEM) surfaces.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         subject : str
             The FreeSurfer subject name.
@@ -1157,9 +1157,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
         """
         ...
     def parse_folder(
@@ -1180,9 +1180,9 @@ class Report:
         topomap_kwargs=None,
         verbose=None,
     ) -> None:
-        """Render all the files in the folder.
+        """### Render all the files in the folder.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         data_path : str
             Path to the folder containing data whose HTML report will be
@@ -1193,7 +1193,7 @@ class Report:
             as well as `mne.Evoked` files. If ``None``, include all supported
             file formats.
 
-            .. versionchanged:: 0.23
+            🎭 Changed in version 0.23
                Include supported non-FIFF files by default.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
@@ -1210,7 +1210,7 @@ class Report:
             raw -> events -> epochs -> evoked -> covariance -> coregistration
             -> bem -> forward-solution -> inverse-operator -> source-estimate.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         on_error : str
             What to do if a file cannot be rendered. Can be 'ignore',
             'warn' (default), or 'raise'.
@@ -1221,11 +1221,11 @@ class Report:
             None (default) will use the default specified during `mne.Report`
             instantiation.
 
-            .. versionadded:: 0.15
+            ✨ Added in vesion 0.15
         render_bem : bool
             If True (default), try to render the BEM.
 
-            .. versionadded:: 0.16
+            ✨ Added in vesion 0.16
         n_time_points_evokeds, n_time_points_stcs : int | None
             The number of equidistant time points to render for `mne.Evoked`
             and `mne.SourceEstimate` data, respectively. If ``None``,
@@ -1233,28 +1233,28 @@ class Report:
             at 51 time points, unless the respective data contains fewer time
             points, in which call all will be rendered.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         raw_butterfly : bool
             Whether to render butterfly plots for (decimated) `mne.io.Raw`
             data.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
         stc_plot_kwargs : dict
             Dictionary of keyword arguments to pass to
             `mne.SourceEstimate.plot`. Only used when plotting in 3D
             mode.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
         topomap_kwargs : dict | None
             Keyword arguments to pass to the topomap-generating functions.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
@@ -1268,9 +1268,9 @@ class Report:
         *,
         verbose=None,
     ):
-        """Save the report and optionally open it in browser.
+        """### Save the report and optionally open it in browser.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like | None
             Output filename. If the name ends with ``.h5`` or ``.hdf5``, the
@@ -1295,22 +1295,22 @@ class Report:
             raw -> events -> epochs -> evoked -> covariance -> coregistration
             -> bem -> forward-solution -> inverse-operator -> source-estimate.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         fname : str
             The file name to which the report was saved.
         """
         ...
     def __enter__(self):
-        """Do nothing when entering the context block."""
+        """### Do nothing when entering the context block."""
         ...
     def __exit__(
         self,
@@ -1318,11 +1318,11 @@ class Report:
         value: BaseException | None,
         traceback: types.TracebackType | None,
     ) -> None:
-        """Save the report when leaving the context block."""
+        """### Save the report when leaving the context block."""
         ...
 
 class _ReportScraper:
-    """Scrape Report outputs.
+    """### Scrape Report outputs.
 
     Only works properly if conf.py is configured properly and the file
     is written to the same directory as the example script.

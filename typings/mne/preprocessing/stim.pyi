@@ -14,12 +14,12 @@ def fix_stim_artifact(
     stim_channel=None,
     picks=None,
 ):
-    """Eliminate stimulation's artifacts from instance.
+    """### Eliminate stimulation's artifacts from instance.
 
-    .. note:: This function operates in-place, consider passing
+    ### 💡 Note This function operates in-place, consider passing
               ``inst.copy()`` if this is not desired.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Raw or Epochs or Evoked
         The data.
@@ -48,7 +48,7 @@ def fix_stim_artifact(
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
-    Returns
+    ### ⏎ Returns
     -------
     inst : instance of Raw or Evoked or Epochs
         Instance with modified data.

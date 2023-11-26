@@ -11,13 +11,13 @@ def estimate_rank(
     tol_kind: str = "absolute",
     verbose=None,
 ):
-    """Estimate the rank of data.
+    """### Estimate the rank of data.
 
     This function will normalize the rows of the data (typically
     channels or vertices) such that non-zero singular values
     should be close to one.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array
         Data to estimate the rank of (should be 2-dimensional).
@@ -50,9 +50,9 @@ def estimate_rank(
             This mode can fail if you have one or more large components in the
             data (e.g., artifacts).
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
-    Returns
+    ### ⏎ Returns
     -------
     rank : int
         Estimated rank of the data.
@@ -73,13 +73,13 @@ def compute_rank(
     on_rank_mismatch: str = "ignore",
     verbose=None,
 ):
-    """Compute the rank of data or noise covariance.
+    """### Compute the rank of data or noise covariance.
 
     This function will normalize the rows of the data (typically
     channels or vertices) such that non-zero singular values
     should be close to one.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Raw, Epochs, or Covariance
         Raw measurements to compute the rank from or the covariance.
@@ -162,7 +162,7 @@ def compute_rank(
             This mode can fail if you have one or more large components in the
             data (e.g., artifacts).
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     on_rank_mismatch : str
         If an explicit MEG value is passed, what to do when it does not match
@@ -170,22 +170,22 @@ def compute_rank(
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
 
-        .. versionadded:: 0.23
+        ✨ Added in vesion 0.23
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     rank : dict
         Estimated rank of the data for each channel type.
         To get the total rank, you can use ``sum(rank.values())``.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.18
+    ✨ Added in vesion 0.18
     """
     ...

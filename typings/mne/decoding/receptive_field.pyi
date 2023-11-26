@@ -5,14 +5,14 @@ from .time_delaying_ridge import TimeDelayingRidge as TimeDelayingRidge
 from _typeshed import Incomplete
 
 class ReceptiveField(BaseEstimator):
-    """Fit a receptive field model.
+    """### Fit a receptive field model.
 
     This allows you to fit an encoding model (stimulus to brain) or a decoding
     model (brain to stimulus) using time-lagged input features (for example, a
     spectro- or spatio-temporal receptive field, or STRF)
     :footcite:`TheunissenEtAl2001,WillmoreSmyth2003,CrosseEtAl2016,HoldgrafEtAl2016`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tmin : float
         The starting lag, in seconds (or samples if ``sfreq`` == 1).
@@ -47,7 +47,7 @@ class ReceptiveField(BaseEstimator):
         Number of jobs to run in parallel. Can be 'cuda' if CuPy
         is installed properly and ``estimator is None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
     edge_correction : bool
         If True (default), correct the autocorrelation coefficients for
         non-zero delays for the fact that fewer samples are available.
@@ -55,15 +55,15 @@ class ReceptiveField(BaseEstimator):
         depending on the relationship between epoch length and model
         duration. Only used if ``estimator`` is float or None.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     coef_ : array, shape ([n_outputs, ]n_features, n_delays)
         The coefficients from the model fit, reshaped for easy visualization.
@@ -84,7 +84,7 @@ class ReceptiveField(BaseEstimator):
     --------
     mne.decoding.TimeDelayingRidge
 
-    Notes
+    ### 📖 Notes
     -----
     For a causal system, the encoding model will have significant
     non-zero values only at positive lags. In other words, lags point
@@ -130,30 +130,30 @@ class ReceptiveField(BaseEstimator):
     patterns_: Incomplete
 
     def fit(self, X, y):
-        """Fit a receptive field model.
+        """### Fit a receptive field model.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_times[, n_epochs], n_features)
             The input features for the model.
         y : array, shape (n_times[, n_epochs][, n_outputs])
             The output features for the model.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance
             The instance so you can chain operations.
         """
         ...
     def predict(self, X):
-        """Generate predictions with a receptive field.
+        """### Generate predictions with a receptive field.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_times[, n_epochs], n_channels)
             The input features for the model.
 
-        Returns
+        ### ⏎ Returns
         -------
         y_pred : array, shape (n_times[, n_epochs][, n_outputs])
             The output predictions. "Note that valid samples (those
@@ -162,20 +162,20 @@ class ReceptiveField(BaseEstimator):
         """
         ...
     def score(self, X, y):
-        """Score predictions generated with a receptive field.
+        """### Score predictions generated with a receptive field.
 
         This calls ``self.predict``, then masks the output of this
         and ``y` with ``self.valid_samples_``. Finally, it passes
         this to a `sklearn.metrics` scorer.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_times[, n_epochs], n_channels)
             The input features for the model.
         y : array, shape (n_times[, n_epochs][, n_outputs])
             Used for scikit-learn compatibility.
 
-        Returns
+        ### ⏎ Returns
         -------
         scores : list of float, shape (n_outputs,)
             The scores estimated by the model for each output (e.g. mean

@@ -43,17 +43,17 @@ from ..utils import (
 )
 
 class Forward(dict):
-    """Forward class to represent info from forward solution.
+    """### Forward class to represent info from forward solution.
 
     Like `mne.Info`, this data structure behaves like a dictionary.
     It contains all metadata necessary for a forward solution.
 
-    .. warning::
+    ### ⛔️ Warning
         This class should not be modified or created by users.
         Forward objects should be obtained using
         `mne.make_forward_solution` or `mne.read_forward_solution`.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     ch_names : list of str
         A convenience wrapper accessible as ``fwd.ch_names`` which wraps
@@ -64,7 +64,7 @@ class Forward(dict):
     mne.make_forward_solution
     mne.read_forward_solution
 
-    Notes
+    ### 📖 Notes
     -----
     Forward data is accessible via string keys using standard
     `python:dict` access (e.g., ``fwd['nsource'] == 4096``):
@@ -119,12 +119,12 @@ class Forward(dict):
     """
 
     def copy(self):
-        """Copy the Forward instance."""
+        """### Copy the Forward instance."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """Save the forward solution.
+        """### Save the forward solution.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         fname : path-like
@@ -138,7 +138,7 @@ class Forward(dict):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
@@ -146,9 +146,9 @@ class Forward(dict):
     @property
     def ch_names(self): ...
     def pick_channels(self, ch_names, ordered: bool = False):
-        """Pick channels from this forward operator.
+        """### Pick channels from this forward operator.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_names : list of str
             List of channels to include.
@@ -156,23 +156,23 @@ class Forward(dict):
             If true (default False), treat ``include`` as an ordered list
             rather than a set.
 
-        Returns
+        ### ⏎ Returns
         -------
         fwd : instance of Forward.
             The modified forward model.
 
-        Notes
+        ### 📖 Notes
         -----
         Operates in-place.
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
         """
         ...
 
 def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbose=None):
-    """Read a forward solution a.k.a. lead field.
+    """### Read a forward solution a.k.a. lead field.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The file name, which should end with ``-fwd.fif``, ``-fwd.fif.gz``,
@@ -187,17 +187,17 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        .. versionadded:: 0.20.0
-        .. versionchanged:: 1.5
+        ✨ Added in vesion 0.20.0
+        🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fwd : instance of Forward
         The forward solution.
@@ -206,7 +206,7 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
     --------
     write_forward_solution, make_forward_solution
 
-    Notes
+    ### 📖 Notes
     -----
     Forward solutions, which are derived from an original forward solution with
     free orientation, are always stored on disk as forward solution with free
@@ -232,9 +232,9 @@ def convert_forward_solution(
     *,
     verbose=None,
 ):
-    """Convert forward solution between different source orientations.
+    """### Convert forward solution between different source orientations.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fwd : Forward
         The forward solution to modify.
@@ -252,11 +252,11 @@ def convert_forward_solution(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fwd : Forward
         The modified forward solution.
@@ -264,9 +264,9 @@ def convert_forward_solution(
     ...
 
 def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) -> None:
-    """Write forward solution to a file.
+    """### Write forward solution to a file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : path-like
@@ -282,7 +282,7 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -290,7 +290,7 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
     --------
     read_forward_solution
 
-    Notes
+    ### 📖 Notes
     -----
     Forward solutions, which are derived from an original forward solution with
     free orientation, are always stored on disk as forward solution with free
@@ -308,9 +308,9 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
     ...
 
 def is_fixed_orient(forward, orig: bool = False):
-    """Check if the forward operator is fixed orientation.
+    """### Check if the forward operator is fixed orientation.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     forward : instance of Forward
         The forward.
@@ -318,7 +318,7 @@ def is_fixed_orient(forward, orig: bool = False):
         If True, consider the original source orientation.
         If False (default), consider the current source orientation.
 
-    Returns
+    ### ⏎ Returns
     -------
     fixed_ori : bool
         Whether or not it is fixed orientation.
@@ -326,9 +326,9 @@ def is_fixed_orient(forward, orig: bool = False):
     ...
 
 def write_forward_meas_info(fid, info) -> None:
-    """Write measurement info stored in forward solution.
+    """### Write measurement info stored in forward solution.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fid : file id
         The file id
@@ -339,9 +339,9 @@ def write_forward_meas_info(fid, info) -> None:
     ...
 
 def compute_orient_prior(forward, loose: str = "auto", verbose=None):
-    """Compute orientation prior.
+    """### Compute orientation prior.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     forward : instance of Forward
         Forward operator.
@@ -362,11 +362,11 @@ def compute_orient_prior(forward, loose: str = "auto", verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     orient_prior : ndarray, shape (n_sources,)
         Orientation priors.
@@ -388,9 +388,9 @@ def compute_depth_prior(
     rank=None,
     verbose=None,
 ):
-    """Compute depth prior for depth weighting.
+    """### Compute depth prior for depth weighting.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     forward : instance of Forward
         The forward solution.
@@ -407,7 +407,7 @@ def compute_depth_prior(
         The default is True, which whitens based on the source sensitivity
         of the highest-SNR channel type. See Notes for details.
 
-        .. versionchanged:: 0.18
+        🎭 Changed in version 0.18
            Added the "whiten" option.
     combine_xyz : 'spectral' | 'fro'
         When a loose (or free) orientation is used, how the depth weighting
@@ -415,12 +415,12 @@ def compute_depth_prior(
         If 'spectral', use the squared spectral norm of Gk.
         If 'fro', use the squared Frobenius norm of Gk.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
     noise_cov : instance of Covariance | None
         The noise covariance to use to whiten the gain matrix when
         ``limit_depth_chs='whiten'``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
@@ -467,15 +467,15 @@ def compute_depth_prior(
 
         The default is ``None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     depth_prior : ndarray, shape (n_vertices,)
         The depth prior.
@@ -484,7 +484,7 @@ def compute_depth_prior(
     --------
     compute_orient_prior
 
-    Notes
+    ### 📖 Notes
     -----
     The defaults used by the minimum norm code and sparse solvers differ.
     In particular, the values for MNE are::
@@ -512,7 +512,7 @@ def compute_depth_prior(
           depend on both sensor geometry and the data of interest captured
           by the noise covariance (e.g., projections, SNR).
 
-          .. versionadded:: 0.18
+          ✨ Added in vesion 0.18
     * :data:`python:False`
           Use all channels. Not recommended since the depth weighting will be
           biased toward whichever channel type has the largest values in
@@ -530,7 +530,7 @@ def apply_forward(
     on_missing: str = "raise",
     verbose=None,
 ):
-    """Project source space currents to sensor space using a forward operator.
+    """### Project source space currents to sensor space using a forward operator.
 
     The sensor space data is computed for all channels present in fwd. Use
     pick_channels_forward or pick_types_forward to restrict the solution to a
@@ -541,7 +541,7 @@ def apply_forward(
     which the original data was acquired. An exception will be raised if the
     forward operator contains channels that are not present in the template.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fwd : Forward
         Forward operator to use.
@@ -559,22 +559,22 @@ def apply_forward(
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "raise".
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     evoked : Evoked
         Evoked object with computed sensor space data.
@@ -595,7 +595,7 @@ def apply_forward_raw(
     use_cps: bool = True,
     verbose=None,
 ):
-    """Project source space currents to sensor space using a forward operator.
+    """### Project source space currents to sensor space using a forward operator.
 
     The sensor space data is computed for all channels present in fwd. Use
     pick_channels_forward or pick_types_forward to restrict the solution to a
@@ -606,7 +606,7 @@ def apply_forward_raw(
     original data was acquired. An exception will be raised if the forward
     operator contains channels that are not present in the info.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fwd : Forward
         Forward operator to use.
@@ -625,21 +625,21 @@ def apply_forward_raw(
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "raise".
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : Raw object
         Raw object with computed sensor space data.
@@ -651,9 +651,9 @@ def apply_forward_raw(
     ...
 
 def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
-    """Restrict forward operator to active sources in a source estimate.
+    """### Restrict forward operator to active sources in a source estimate.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fwd : instance of Forward
         Forward operator.
@@ -665,9 +665,9 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "ignore".
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
-    Returns
+    ### ⏎ Returns
     -------
     fwd_out : instance of Forward
         Restricted forward operator.
@@ -679,16 +679,16 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
     ...
 
 def restrict_forward_to_label(fwd, labels):
-    """Restrict forward operator to labels.
+    """### Restrict forward operator to labels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fwd : Forward
         Forward operator.
     labels : instance of Label | list
         Label object or list of label objects.
 
-    Returns
+    ### ⏎ Returns
     -------
     fwd_out : dict
         Restricted forward operator.
@@ -700,9 +700,9 @@ def restrict_forward_to_label(fwd, labels):
     ...
 
 def average_forward_solutions(fwds, weights=None, verbose=None):
-    """Average forward solutions.
+    """### Average forward solutions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fwds : list of Forward
         Forward solutions to average. Each entry (dict) should be a
@@ -714,11 +714,11 @@ def average_forward_solutions(fwds, weights=None, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fwd : Forward
         The averaged forward solution.

@@ -4,12 +4,12 @@ from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
 from ..io import BaseRaw as BaseRaw, RawArray as RawArray
 
 def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
-    """Interpolate or mark bads consistently for a list of instances.
+    """### Interpolate or mark bads consistently for a list of instances.
 
     Once called on a list of instances, the instances can be concatenated
     as they will have the same list of bad channels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     insts : list
         The list of instances (Evoked, Epochs or Raw) to consider
@@ -24,7 +24,7 @@ def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
     copy : bool
         If True then the returned instances will be copies.
 
-    Returns
+    ### ⏎ Returns
     -------
     insts_bads : list
         The list of instances, with the same channel(s) marked as bad in all of
@@ -33,7 +33,7 @@ def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
     ...
 
 def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
-    """Interpolate bridged electrode pairs.
+    """### Interpolate bridged electrode pairs.
 
     Because bridged electrodes contain brain signal, it's just that the
     signal is spatially smeared between the two electrodes, we can
@@ -41,7 +41,7 @@ def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
     that to aid in interpolation rather than completely discarding the
     data from the two channels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Epochs, Evoked, or Raw
         The data object with channels that are to be interpolated.
@@ -53,9 +53,9 @@ def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
         (included) and interpolated. Above this number, an error will be
         raised.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
-    Returns
+    ### ⏎ Returns
     -------
     inst : instance of Epochs, Evoked, or Raw
         The modified data object.

@@ -13,12 +13,12 @@ def read_raw_egi(
     channel_naming: str = "E%d",
     verbose=None,
 ):
-    """Read EGI simple binary as raw object.
+    """### Read EGI simple binary as raw object.
 
-    .. note:: This function attempts to create a synthetic trigger channel.
+    ### 💡 Note This function attempts to create a synthetic trigger channel.
               See the Notes section below.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the raw file. Files with an extension ``.mff`` are
@@ -46,21 +46,21 @@ def read_raw_egi(
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-        .. versionadded:: 0.11
+        ✨ Added in vesion 0.11
     channel_naming : str
         Channel naming convention for the data channels. Defaults to ``'E%d'``
         (resulting in channel names ``'E1'``, ``'E2'``, ``'E3'``...). The
         effective default prior to 0.14.0 was ``'EEG %03d'``.
 
-         .. versionadded:: 0.14.0
+         ✨ Added in vesion 0.14.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawEGI
         A Raw object containing EGI data.
@@ -70,7 +70,7 @@ def read_raw_egi(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawEGI.
 
-    Notes
+    ### 📖 Notes
     -----
     The trigger channel names are based on the arbitrary user dependent event
     codes used. However this function will attempt to generate a **synthetic
@@ -88,7 +88,7 @@ def read_raw_egi(
     ...
 
 class RawEGI(BaseRaw):
-    """Raw object from EGI simple binary file."""
+    """### Raw object from EGI simple binary file."""
 
     event_id: Incomplete
 

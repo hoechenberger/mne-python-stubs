@@ -1,7 +1,7 @@
 def eigh(a, overwrite_a: bool = False, check_finite: bool = True):
-    """Efficient wrapper for eigh.
+    """### Efficient wrapper for eigh.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     a : ndarray, shape (n_components, n_components)
         The symmetric array operate on.
@@ -10,7 +10,7 @@ def eigh(a, overwrite_a: bool = False, check_finite: bool = True):
     check_finite : bool
         If True, check that all elements are finite.
 
-    Returns
+    ### ⏎ Returns
     -------
     w : ndarray, shape (n_components,)
         The N eigenvalues, in ascending order, each repeated according to
@@ -22,9 +22,9 @@ def eigh(a, overwrite_a: bool = False, check_finite: bool = True):
     ...
 
 def sqrtm_sym(A, rcond: float = 1e-07, inv: bool = False):
-    """Compute the sqrt of a positive, semi-definite matrix (or its inverse).
+    """### Compute the sqrt of a positive, semi-definite matrix (or its inverse).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     A : ndarray, shape (..., n, n)
         The array to take the square root of.
@@ -34,7 +34,7 @@ def sqrtm_sym(A, rcond: float = 1e-07, inv: bool = False):
         If True, compute the inverse of the square root rather than the
         square root itself.
 
-    Returns
+    ### ⏎ Returns
     -------
     A_sqrt : ndarray, shape (..., n, n)
         The (possibly inverted) square root of A.

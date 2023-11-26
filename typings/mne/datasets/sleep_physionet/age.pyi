@@ -14,7 +14,7 @@ def fetch_data(
     *,
     verbose=None,
 ):
-    """Get paths to local copies of PhysioNet Polysomnography dataset files.
+    """### Get paths to local copies of PhysioNet Polysomnography dataset files.
 
     This will fetch data from the publicly available subjects from PhysioNet's
     study of age effects on sleep in healthy subjects
@@ -27,7 +27,7 @@ def fetch_data(
     See more details in
     `physionet website <https://physionet.org/physiobank/database/sleep-edfx/sleep-cassette/>`_.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subjects : list of int
         The subjects to use. Can be in the range of 0-82 (inclusive), however
@@ -55,11 +55,11 @@ def fetch_data(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     paths : list
         List of local data paths of the given type.
@@ -68,7 +68,7 @@ def fetch_data(
     --------
     mne.datasets.sleep_physionet.temazepam.fetch_data
 
-    Notes
+    ### 📖 Notes
     -----
     For example, one could do:
 

@@ -28,9 +28,9 @@ def plot_cov(
     show: bool = True,
     verbose=None,
 ):
-    """Plot Covariance data.
+    """### Plot Covariance data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     cov : instance of Covariance
         The covariance matrix.
@@ -52,11 +52,11 @@ def plot_cov(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig_cov : instance of matplotlib.figure.Figure
         The covariance plot.
@@ -67,12 +67,12 @@ def plot_cov(
     --------
     mne.compute_rank
 
-    Notes
+    ### 📖 Notes
     -----
     For each channel type, the rank is estimated using
     `mne.compute_rank`.
 
-    .. versionchanged:: 0.19
+    🎭 Changed in version 0.19
        Approximate ranks for each channel type are shown with red dashed lines.
     """
     ...
@@ -86,9 +86,9 @@ def plot_source_spectrogram(
     colorbar: bool = False,
     show: bool = True,
 ):
-    """Plot source power in time-freqency grid.
+    """### Plot source power in time-freqency grid.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     stcs : list of SourceEstimate
         Source power for consecutive time windows, one SourceEstimate object
@@ -107,7 +107,7 @@ def plot_source_spectrogram(
     show : bool
         Show figure if True.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         The figure.
@@ -126,9 +126,9 @@ def plot_bem(
     mri: str = "T1.mgz",
     show_orientation: bool = True,
 ):
-    """Plot BEM contours on anatomical MRI slices.
+    """### Plot BEM contours on anatomical MRI slices.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     subject : str
@@ -153,7 +153,7 @@ def plot_bem(
         plane). Path can be absolute or relative to the subject's ``bem``
         folder.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            All sources are shown on the nearest slice rather than some
            being omitted.
     show : bool
@@ -161,23 +161,23 @@ def plot_bem(
     show_indices : bool
         Show slice indices if True.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
     mri : str
         The name of the MRI to use. Can be a standard FreeSurfer MRI such as
         ``'T1.mgz'``, or a full path to a custom MRI file.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
     show_orientation : bool | str
         Show the orientation (L/R, P/A, I/S) of the data slices.
         True (default) will only show it on the outside most edges of the
         figure, False will never show labels, and "always" will label each
         plot.
 
-        .. versionadded:: 0.21
-        .. versionchanged:: 0.24
+        ✨ Added in vesion 0.21
+        🎭 Changed in version 0.24
            Added support for "always".
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         The figure.
@@ -186,7 +186,7 @@ def plot_bem(
     --------
     mne.viz.plot_alignment
 
-    Notes
+    ### 📖 Notes
     -----
     Images are plotted in MRI voxel coordinates.
 
@@ -214,9 +214,9 @@ def plot_events(
     on_missing: str = "raise",
     verbose=None,
 ):
-    """Plot :term:`events` to get a visual display of the paradigm.
+    """### Plot :term:`events` to get a visual display of the paradigm.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     events : array of int, shape (n_events, 3)
@@ -235,7 +235,7 @@ def plot_events(
         Dictionary of event_id integers as keys and colors as values. If None,
         colors are automatically drawn from a default list (cycled through if
         number of events longer than list of default colors). Color can be any
-        valid :ref:`matplotlib color <matplotlib:colors_def>`.
+        valid `matplotlib color <matplotlib:colors_def>`.
     event_id : dict | None
         Dictionary of event labels (e.g. 'aud_l') as keys and their associated
         event_id values. Labels are used to plot a legend. If None, no legend
@@ -254,29 +254,29 @@ def plot_events(
         ``event_id`` they will be ignored and a warning emitted; consider
         using ``verbose='error'`` in this case.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : matplotlib.figure.Figure
         The figure object containing the plot.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...
 
 def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
-    """Plot the amplitude traces of a set of dipoles.
+    """### Plot the amplitude traces of a set of dipoles.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     dipoles : list of instance of Dipole
         The dipoles whose amplitudes should be shown.
@@ -285,21 +285,21 @@ def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
     show : bool
         Show figure if True.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : matplotlib.figure.Figure
         The figure object containing the plot.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...
 
 def adjust_axes(axes, remove_spines=("top", "right"), grid: bool = True) -> None:
-    """Adjust some properties of axes.
+    """### Adjust some properties of axes.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     axes : list
         List of axes to process.
@@ -327,9 +327,9 @@ def plot_filter(
     *,
     dlim=None,
 ):
-    """Plot properties of a filter.
+    """### Plot properties of a filter.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     h : dict or ndarray
         An IIR dict or 1D ndarray of coefficients (for FIR filter).
@@ -365,27 +365,27 @@ def plot_filter(
           by filtering backward and forward, and the frequency response
           by squaring it.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
     plot : list | tuple | str
         A list of the requested plots from ``time``, ``magnitude`` and
         ``delay``. Default is to plot all three filter properties
         ('time', 'magnitude', 'delay').
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
     axes : instance of Axes | list | None
         The axes to plot to. If list, the list must be a list of Axes of
         the same length as the number of requested plot types. If instance of
         Axes, there must be only one filter property plotted.
         Defaults to ``None``.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
     dlim : None | tuple
         The y-axis delay limits (s) to use (default:
         ``(-tmax / 2., tmax / 2.)``).
 
-        .. versionadded:: 1.1.0
+        ✨ Added in vesion 1.1.0
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : matplotlib.figure.Figure
         The figure containing the plots.
@@ -395,9 +395,9 @@ def plot_filter(
     mne.filter.create_filter
     plot_ideal_filter
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.14
+    ✨ Added in vesion 0.14
     """
     ...
 
@@ -414,9 +414,9 @@ def plot_ideal_filter(
     linestyle: str = "--",
     show: bool = True,
 ):
-    """Plot an ideal filter response.
+    """### Plot an ideal filter response.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     freq : array-like
         The ideal response frequencies to plot (must be in ascending order).
@@ -442,7 +442,7 @@ def plot_ideal_filter(
     show : bool
         Show figure if True (default).
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         The figure.
@@ -451,9 +451,9 @@ def plot_ideal_filter(
     --------
     plot_filter
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.14
+    ✨ Added in vesion 0.14
 
     Examples
     --------
@@ -476,12 +476,12 @@ def plot_csd(
     n_cols=None,
     show: bool = True,
 ):
-    """Plot CSD matrices.
+    """### Plot CSD matrices.
 
     A sub-plot is created for each frequency. If an info object is passed to
     the function, different channel types are plotted in different figures.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     csd : instance of CrossSpectralDensity
         The CSD matrix to plot.
@@ -506,7 +506,7 @@ def plot_csd(
     show : bool
         Whether to show the figure. Defaults to ``True``.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : list of Figure
         The figures created by this function.
@@ -514,9 +514,9 @@ def plot_csd(
     ...
 
 def plot_chpi_snr(snr_dict, axes=None):
-    """Plot time-varying SNR estimates of the HPI coils.
+    """### Plot time-varying SNR estimates of the HPI coils.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     snr_dict : dict
         The dictionary returned by `mne.chpi.compute_chpi_snr`. Must have keys
@@ -529,19 +529,19 @@ def plot_chpi_snr(snr_dict, axes=None):
         `matplotlib.figure.Figure` is created with the required number of
         axes.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         A figure with subplots for SNR, power, and residual variance,
         separately for magnetometers and/or gradiometers (depending on what is
         present in ``snr_dict``).
 
-    Notes
+    ### 📖 Notes
     -----
     If you supply a list of existing `matplotlib.axes.Axes`, then the figure
     legend will not be drawn automatically. If you still want it, running
     ``fig.legend(loc='right', title='cHPI frequencies')`` will recreate it.
 
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
     """
     ...

@@ -85,14 +85,14 @@ class BaseEpochs(
     EpochAnnotationsMixin,
     SpectrumMixin,
 ):
-    """Abstract base class for `mne.Epochs`-type classes.
+    """### Abstract base class for `mne.Epochs`-type classes.
 
-    .. note::
+    ### 💡 Note
         This class should not be instantiated directly via
         ``mne.BaseEpochs(...)``. Instead, use one of the functions listed in
         the See Also section below.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -130,7 +130,7 @@ class BaseEpochs(
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -172,12 +172,12 @@ class BaseEpochs(
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        .. note:: Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -189,13 +189,13 @@ class BaseEpochs(
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     decim : int
         Factor by which to subsample the data.
 
-        .. warning:: Low-pass filtering is not performed, this simply selects
+        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts
@@ -207,7 +207,7 @@ class BaseEpochs(
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        .. note:: This parameter controls the time period used in conjunction with
+        ### 💡 Note This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     detrend : int | None
@@ -237,7 +237,7 @@ class BaseEpochs(
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        .. note::
+        ### 💡 Note
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
     preload_at_end : bool
@@ -250,7 +250,7 @@ class BaseEpochs(
         Iterable of indices of selected epochs. If ``None``, will be
         automatically generated, corresponding to all non-zero events.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     drop_log : tuple | None
         Tuple of tuple of strings indicating which epochs have been marked to
@@ -268,7 +268,7 @@ class BaseEpochs(
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     event_repeated : str
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
@@ -276,7 +276,7 @@ class BaseEpochs(
         first in the :term:`events`, or ``'merge'`` to combine the coinciding
         events (=duplicates) into a new event (see Notes for details).
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
 
     raw_sfreq : float
         The original Raw object sampling rate. If None, then it is set to
@@ -286,7 +286,7 @@ class BaseEpochs(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -296,7 +296,7 @@ class BaseEpochs(
     EpochsArray
     make_fixed_length_epochs
 
-    Notes
+    ### 📖 Notes
     -----
     The ``BaseEpochs`` class is public to allow for stable type-checking in
     user code (i.e., ``isinstance(my_epochs, BaseEpochs)``) but should not be
@@ -349,7 +349,7 @@ class BaseEpochs(
         verbose=None,
     ) -> None: ...
     def reset_drop_log_selection(self) -> None:
-        """Reset the drop_log and selection entries.
+        """### Reset the drop_log and selection entries.
 
         This method will simplify ``self.drop_log`` and ``self.selection``
         so that they are meaningless (tuple of empty tuples and increasing
@@ -359,24 +359,24 @@ class BaseEpochs(
         """
         ...
     def load_data(self):
-        """Load the data if not already preloaded.
+        """### Load the data if not already preloaded.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             The epochs object.
 
-        Notes
+        ### 📖 Notes
         -----
         This function operates in-place.
 
-        .. versionadded:: 0.10.0
+        ✨ Added in vesion 0.10.0
         """
         ...
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
-        """Baseline correct epochs.
+        """### Baseline correct epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         baseline : None | tuple of length 2
@@ -388,7 +388,7 @@ class BaseEpochs(
             is ``None``, it is set to the **end** of the interval.
             If ``(None, None)``, the entire time interval is used.
 
-            .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+            ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
             Correction is applied **to each epoch and channel individually** in the
@@ -402,32 +402,32 @@ class BaseEpochs(
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             The baseline-corrected Epochs object.
 
-        Notes
+        ### 📖 Notes
         -----
         Baseline correction can be done multiple times, but can never be
         reverted once the data has been loaded.
 
-        .. versionadded:: 0.10.0
+        ✨ Added in vesion 0.10.0
         """
         ...
     def iter_evoked(self, copy: bool = False) -> Generator[Incomplete, None, None]:
-        """Iterate over epochs as a sequence of Evoked objects.
+        """### Iterate over epochs as a sequence of Evoked objects.
 
         The Evoked objects yielded will each contain a single epoch (i.e., no
         averaging is performed).
 
         This method resets the object iteration state to the first epoch.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         copy : bool
             If False copies of data and measurement info will be omitted
@@ -435,18 +435,18 @@ class BaseEpochs(
         """
         ...
     def subtract_evoked(self, evoked=None):
-        """Subtract an evoked response from each epoch.
+        """### Subtract an evoked response from each epoch.
 
         Can be used to exclude the evoked response when analyzing induced
         activity, see e.g. [1]_.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         evoked : instance of Evoked | None
             The evoked response to subtract. If None, the evoked response
             is computed from Epochs itself.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Epochs
             The modified instance (instance is also modified inplace).
@@ -458,9 +458,9 @@ class BaseEpochs(
         """
         ...
     def average(self, picks=None, method: str = "mean", by_event_type: bool = False):
-        """Compute an average over epochs.
+        """### Compute an average over epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -488,9 +488,9 @@ class BaseEpochs(
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
-        Returns
+        ### ⏎ Returns
         -------
 
         evoked : instance of Evoked | list of Evoked
@@ -500,7 +500,7 @@ class BaseEpochs(
             same order as the event types as specified in the ``event_id``
             dictionary.
 
-        Notes
+        ### 📖 Notes
         -----
         Computes an average of all epochs in the instance, even if
         they correspond to different conditions. To average by condition,
@@ -522,9 +522,9 @@ class BaseEpochs(
         """
         ...
     def standard_error(self, picks=None, by_event_type: bool = False):
-        """Compute standard error over epochs.
+        """### Compute standard error over epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -544,9 +544,9 @@ class BaseEpochs(
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
 
-        Returns
+        ### ⏎ Returns
         -------
 
         std_err : instance of Evoked | list of Evoked
@@ -559,7 +559,7 @@ class BaseEpochs(
         ...
     @property
     def ch_names(self):
-        """Channel names."""
+        """### Channel names."""
         ...
     def plot(
         self,
@@ -588,14 +588,14 @@ class BaseEpochs(
         overview_mode=None,
         splash: bool = True,
     ):
-        """Visualize epochs.
+        """### Visualize epochs.
 
         Bad epochs can be marked with a left click on top of the epoch. Bad
         channels can be selected by clicking the channel name on the left side of
         the main axes. Calling this function drops all the selected bad epochs as
         well as bad epochs marked beforehand with rejection parameters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -619,7 +619,7 @@ class BaseEpochs(
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            .. note::
+            ### 💡 Note
                 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -638,12 +638,12 @@ class BaseEpochs(
             same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
             plot events).
 
-            .. warning::  If the epochs have been resampled, the events no longer
+            ### ⛔️ Warning  If the epochs have been resampled, the events no longer
                 align with the data.
 
-            .. versionadded:: 0.14.0
+            ✨ Added in vesion 0.14.0
 
-            .. versionchanged:: 1.6
+            🎭 Changed in version 1.6
                 Passing ``events=None`` was disallowed.
                 The new equivalent is ``events=False``.
 
@@ -658,7 +658,7 @@ class BaseEpochs(
         order : array of str | None
             Order in which to plot channel types.
 
-            .. versionadded:: 0.18.0
+            ✨ Added in vesion 0.18.0
         show : bool
             Show figure if True. Defaults to True.
         block : bool
@@ -673,7 +673,7 @@ class BaseEpochs(
             larger than ``info['lowpass']`` (e.g., a 40 Hz lowpass will result in
             at least a 120 Hz displayed sample rate).
 
-            .. versionadded:: 0.15.0
+            ✨ Added in vesion 0.15.0
         noise_cov : instance of Covariance | str | None
             Noise covariance used to whiten the data while plotting.
             Whitened data channels are scaled by ``scalings['whitened']``,
@@ -685,25 +685,25 @@ class BaseEpochs(
             magnetometers and gradiometers may introduce differences in scaling,
             consider using `mne.Evoked.plot_white`.
 
-            .. versionadded:: 0.16.0
+            ✨ Added in vesion 0.16.0
         butterfly : bool
             Whether to directly call the butterfly view.
 
-            .. versionadded:: 0.18.0
+            ✨ Added in vesion 0.18.0
 
         show_scrollbars : bool
             Whether to show scrollbars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
-            .. versionadded:: 0.19.0
+            ✨ Added in vesion 0.19.0
 
         show_scalebars : bool
             Whether to show scale bars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`s` while the plot window is focused.
             Default is ``True``.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         epoch_colors : list of (n_epochs) list (of n_channels) | None
             Colors to use for individual epochs. If None, use default colors.
         event_id : bool | dict
@@ -713,7 +713,7 @@ class BaseEpochs(
             entries whose *values* are integer codes for events being drawn. Ignored if
             ``events=False``.
 
-            .. versionadded:: 0.20
+            ✨ Added in vesion 0.20
 
         group_by : str
             How to group channels. ``'type'`` groups by channel type,
@@ -735,8 +735,8 @@ class BaseEpochs(
             the precomputed data, and precomputes only if enough RAM is available.
             This is only used with the Qt backend.
 
-            .. versionadded:: 0.24
-            .. versionchanged:: 1.0
+            ✨ Added in vesion 0.24
+            🎭 Changed in version 1.0
                Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
         use_opengl : bool | None
@@ -747,7 +747,7 @@ class BaseEpochs(
             ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
             see `mne.set_config`.
 
-            .. versionadded:: 0.24
+            ✨ Added in vesion 0.24
 
         theme : str | path-like
             Can be "auto", "light", or "dark" or a path-like to a
@@ -758,7 +758,7 @@ class BaseEpochs(
             defaulting to "auto" if it's not found.
             Only supported by the ``'qt'`` backend.
 
-            .. versionadded:: 1.0
+            ✨ Added in vesion 1.0
 
         overview_mode : str | None
             Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -766,21 +766,21 @@ class BaseEpochs(
             ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
             if it's not found.
 
-            .. versionadded:: 1.1
+            ✨ Added in vesion 1.1
 
         splash : bool
             If True (default), a splash screen is shown during the application startup. Only
             applicable to the ``qt`` backend.
 
-            .. versionadded:: 1.6
+            ✨ Added in vesion 1.6
 
-        Returns
+        ### ⏎ Returns
         -------
 
         fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
             Browser instance.
 
-        Notes
+        ### 📖 Notes
         -----
         The arrow keys (up/down/left/right) can be used to navigate between
         channels and epochs and the scaling can be adjusted with - and + (or =)
@@ -804,13 +804,13 @@ class BaseEpochs(
         `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
-        .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
+        ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
                   you must run the magic command ``%gui qt5`` first.
-        .. note:: To report issues with the PyQtGraph backend, please use the
+        ### 💡 Note To report issues with the PyQtGraph backend, please use the
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
 
-        .. versionadded:: 0.10.0
+        ✨ Added in vesion 0.10.0
         """
         ...
     def plot_topo_image(
@@ -831,9 +831,9 @@ class BaseEpochs(
         font_color: str = "w",
         show: bool = True,
     ):
-        """Plot Event Related Potential / Fields image on topographies.
+        """### Plot Event Related Potential / Fields image on topographies.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         layout : instance of Layout
             System specific sensor positions.
@@ -877,12 +877,12 @@ class BaseEpochs(
         show : bool
             Whether to show the figure. Defaults to ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of `matplotlib.figure.Figure`
             Figure distributing one image per channel across sensor topography.
 
-        Notes
+        ### 📖 Notes
         -----
         In an interactive Python session, this plot will be interactive; clicking
         on a channel image will pop open a larger view of the image; this image
@@ -891,19 +891,19 @@ class BaseEpochs(
         """
         ...
     def drop_bad(self, reject: str = "existing", flat: str = "existing", verbose=None):
-        """Drop bad epochs without retaining the epochs data.
+        """### Drop bad epochs without retaining the epochs data.
 
         Should be used before slicing operations.
 
-        .. warning:: This operation is slow since all epochs have to be read
+        ### ⛔️ Warning This operation is slow since all epochs have to be read
                      from disk. To avoid reading epochs from disk multiple
                      times, use `mne.Epochs.load_data()`.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, set ``epochs.reject_tmin`` and
                   ``epochs.reject_tmax``, respectively.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         reject : dict | str | None
@@ -924,7 +924,7 @@ class BaseEpochs(
                               eog=250e-6      # unit: V (EOG channels)
                               )
 
-            .. note:: Since rejection is based on a signal **difference**
+            ### 💡 Note Since rejection is based on a signal **difference**
                       calculated for each channel separately, applying baseline
                       correction does not affect the rejection procedure, as the
                       difference will be preserved.
@@ -943,16 +943,16 @@ class BaseEpochs(
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             The epochs with bad epochs dropped. Operates in-place.
 
-        Notes
+        ### 📖 Notes
         -----
         Dropping bad epochs can be done multiple times with different
         ``reject`` and ``flat`` parameters. However, once an epoch is
@@ -962,14 +962,14 @@ class BaseEpochs(
         """
         ...
     def drop_log_stats(self, ignore=("IGNORED",)):
-        """Compute the channel stats based on a drop_log from Epochs.
+        """### Compute the channel stats based on a drop_log from Epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ignore : list
             The drop reasons to ignore.
 
-        Returns
+        ### ⏎ Returns
         -------
         perc : float
             Total percentage of epochs dropped.
@@ -989,9 +989,9 @@ class BaseEpochs(
         ignore=("IGNORED",),
         show: bool = True,
     ):
-        """Show the channel stats based on a drop_log from Epochs.
+        """### Show the channel stats based on a drop_log from Epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         threshold : float
             The percentage threshold to use to decide whether or not to
@@ -1002,10 +1002,10 @@ class BaseEpochs(
             The subject name to use in the title of the plot. If ``None``, do not
             display a subject name.
 
-            .. versionchanged:: 0.23
+            🎭 Changed in version 0.23
                Added support for ``None``.
 
-            .. versionchanged:: 1.0
+            🎭 Changed in version 1.0
                Defaults to ``None``.
         color : tuple | str
             Color to use for the bars.
@@ -1016,7 +1016,7 @@ class BaseEpochs(
         show : bool
             Show figure if True.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
             The figure.
@@ -1044,9 +1044,9 @@ class BaseEpochs(
         title=None,
         clear: bool = False,
     ):
-        """Plot Event Related Potential / Fields image.
+        """### Plot Event Related Potential / Fields image.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -1170,13 +1170,13 @@ class BaseEpochs(
             Whether to clear the axes before plotting (if ``fig`` or ``axes`` are
             provided). Defaults to ``False``.
 
-        Returns
+        ### ⏎ Returns
         -------
         figs : list of Figure
             One figure per channel, channel type, or group, depending on values of
             ``picks``, ``group_by``, and ``combine``. See Notes.
 
-        Notes
+        ### 📖 Notes
         -----
         You can control how channels are aggregated into one figure or plotted in
         separate figures through a combination of the ``picks``, ``group_by``, and
@@ -1208,9 +1208,9 @@ class BaseEpochs(
         """
         ...
     def drop(self, indices, reason: str = "USER", verbose=None):
-        """Drop epochs based on indices or boolean mask.
+        """### Drop epochs based on indices or boolean mask.
 
-        .. note:: The indices refer to the current set of undropped epochs
+        ### 💡 Note The indices refer to the current set of undropped epochs
                   rather than the complete set of dropped and undropped epochs.
                   They are therefore not necessarily consistent with any
                   external indices (e.g., behavioral logs). To drop epochs
@@ -1219,7 +1219,7 @@ class BaseEpochs(
                   method before calling the `mne.Epochs.drop_bad` or
                   `mne.Epochs.load_data` methods.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         indices : array of int or bool
             Set epochs to remove by specifying indices to remove or a boolean
@@ -1231,11 +1231,11 @@ class BaseEpochs(
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             The epochs with indices dropped. Operates in-place.
@@ -1252,9 +1252,9 @@ class BaseEpochs(
         copy=None,
         verbose=None,
     ):
-        """Get all epochs as a 3D array.
+        """### Get all epochs as a 3D array.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -1272,13 +1272,13 @@ class BaseEpochs(
             for repeated access on large Epochs objects.
             None (default) is an alias for ``slice(None)``.
 
-            .. versionadded:: 0.20
+            ✨ Added in vesion 0.20
 
         units : str | dict | None
             Specify the unit(s) that the data should be returned in. If
             ``None`` (default), the data is returned in the
             channel-type-specific default units, which are SI units (see
-            :ref:`units` and :term:`data channels`). If a string, must be a
+            `units` and :term:`data channels`). If a string, must be a
             sub-multiple of SI units that will be used to scale the data from
             all channels of the type associated with that unit. This only works
             if the data contains one channel type that has a unit (unitless
@@ -1291,39 +1291,39 @@ class BaseEpochs(
             accordingly, but all other channel types will remain in their
             channel-type-specific default unit.
 
-            .. versionadded:: 0.24
+            ✨ Added in vesion 0.24
         tmin : int | float | None
             Start time of data to get in seconds.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         tmax : int | float | None
             End time of data to get in seconds.
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         copy : bool
             Whether to return a copy of the object's data, or (if possible) a view.
-            See :ref:`the NumPy docs <numpy:basics.copies-and-views>` for an
+            See `the NumPy docs <numpy:basics.copies-and-views>` for an
             explanation. Default is ``False`` in 1.6 but will change to ``True`` in 1.7,
             set it explicitly to avoid a warning in some cases. A view is only possible
             when ``item is None``, ``picks is None``, ``units is None``, and data are
             preloaded.
 
-            .. warning::
+            ### ⛔️ Warning
                Using ``copy=False`` and then modifying the returned ``data`` will in
                turn modify the Epochs object. Use with caution!
 
-            .. versionchanged:: 1.7
+            🎭 Changed in version 1.7
                The default changed from ``False`` to ``True``.
 
-            .. versionadded:: 1.6
+            ✨ Added in vesion 1.6
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         data : array of shape (n_epochs, n_channels, n_times)
             The epochs data. Will be a copy when ``copy=True`` and will be a view
@@ -1340,7 +1340,7 @@ class BaseEpochs(
         verbose=None,
         **kwargs,
     ):
-        """Apply a function to a subset of channels.
+        """### Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The epochs object's data is modified in-place. If the function returns a different
@@ -1348,14 +1348,14 @@ class BaseEpochs(
         using the ``dtype`` parameter, which causes the data type of **all** the data
         to change (even if the function is only applied to channels in ``picks``). The object has to have the data loaded e.g. with ``preload=True`` or ``self.load_data()``.
 
-        .. note:: If ``n_jobs`` > 1, more memory is required as
+        ### 💡 Note If ``n_jobs`` > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
-        .. note:: If the data type changes (``dtype != None``), more memory is
+        ### 💡 Note If the data type changes (``dtype != None``), more memory is
                   required since the original and the converted data needs
                   to be stored in memory.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         fun : callable
@@ -1391,14 +1391,14 @@ class BaseEpochs(
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         **kwargs : dict
             Additional keyword arguments to pass to ``fun``.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Epochs
             The epochs object with transformed data.
@@ -1406,12 +1406,12 @@ class BaseEpochs(
         ...
     @property
     def filename(self):
-        """The filename."""
+        """### The filename."""
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """Crop a time interval from the epochs.
+        """### Crop a time interval from the epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tmin : float | None
             Start time of selection in seconds.
@@ -1422,20 +1422,20 @@ class BaseEpochs(
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
-            .. versionadded:: 0.19
+            ✨ Added in vesion 0.19
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             The cropped epochs object, modified in-place.
 
-        Notes
+        ### 📖 Notes
         -----
 
         Unlike Python slices, MNE time intervals by default include **both**
@@ -1445,16 +1445,16 @@ class BaseEpochs(
         """
         ...
     def copy(self):
-        """Return copy of Epochs instance.
+        """### Return copy of Epochs instance.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             A copy of the object.
         """
         ...
     def __deepcopy__(self, memodict):
-        """Make a deepcopy."""
+        """### Make a deepcopy."""
         ...
     def save(
         self,
@@ -1465,9 +1465,9 @@ class BaseEpochs(
         split_naming: str = "neuromag",
         verbose=None,
     ) -> None:
-        """Save epochs in a fif file.
+        """### Save epochs in a fif file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The name of the file, which should end with ``-epo.fif`` or
@@ -1479,7 +1479,7 @@ class BaseEpochs(
             also possible to pass a human-readable string, e.g., 100MB.
             Note: Due to FIFF file limitations, the maximum split size is 2GB.
 
-            .. versionadded:: 0.10.0
+            ✨ Added in vesion 0.10.0
         fmt : str
             Format to save data. Valid options are 'double' or
             'single' for 64- or 32-bit float, or for 128- or
@@ -1487,7 +1487,7 @@ class BaseEpochs(
             double precision. Choosing single-precision, the saved data
             will slightly differ due to the reduction in precision.
 
-            .. versionadded:: 0.17
+            ✨ Added in vesion 0.17
 
         overwrite : bool
             If True (default False), overwrite the destination file if it
@@ -1496,7 +1496,7 @@ class BaseEpochs(
             data must be preloaded upon reading. This defaults to True in 0.18
             but will change to False in 0.19.
 
-            .. versionadded:: 0.18
+            ✨ Added in vesion 0.18
 
         split_naming : 'neuromag' | 'bids'
             When splitting files, append a filename partition with the appropriate
@@ -1504,15 +1504,15 @@ class BaseEpochs(
             ``fname.fif``, ``fname-1.fif``, ``fname-2.fif`` etc.; while for ``'bids'``,
             it will be named ``fname_split-01.fif``, ``fname_split-02.fif``, etc.
 
-            .. versionadded:: 0.24
+            ✨ Added in vesion 0.24
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Notes
+        ### 📖 Notes
         -----
         Bad epochs will be dropped before saving the epochs to disk.
         """
@@ -1520,16 +1520,16 @@ class BaseEpochs(
     def export(
         self, fname, fmt: str = "auto", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """Export Epochs to external formats.
+        """### Export Epochs to external formats.
 
         Supported formats:
             - EEGLAB (``.set``, uses `eeglabio`)
 
-        .. warning::
+        ### ⛔️ Warning
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         fname : str
@@ -1544,17 +1544,17 @@ class BaseEpochs(
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 0.24.1
+            ✨ Added in vesion 0.24.1
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
         Export to external format may not preserve all the information from the
         instance. To save in native MNE format (``.fif``) without information loss,
@@ -1568,7 +1568,7 @@ class BaseEpochs(
         """
         ...
     def equalize_event_counts(self, event_ids=None, method: str = "mintime"):
-        """Equalize the number of trials in each condition.
+        """### Equalize the number of trials in each condition.
 
         It tries to make the remaining epochs occurring as close as possible in
         time. This method works based on the idea that if there happened to be
@@ -1582,7 +1582,7 @@ class BaseEpochs(
         times ``[1, 2]`` for the first event type – and not the events at times
         ``[120, 121]``.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         event_ids : None | list | dict
             The event types to equalize.
@@ -1612,14 +1612,14 @@ class BaseEpochs(
             type of events. If ``'mintime'``, timing differences between each
             event type will be minimized.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             The modified instance. It is modified in-place.
         indices : array of int
             Indices from the original events list that were dropped.
 
-        Notes
+        ### 📖 Notes
         -----
         For example (if ``epochs.event_id`` was ``{'Left': 1, 'Right': 2,
         'Nonspatial':3}``:
@@ -1635,7 +1635,7 @@ class BaseEpochs(
         conditions will contribute equally. E.g., it is possible to end up
         with 70 ``'Nonspatial'`` epochs, 69 ``'Left'`` and 1 ``'Right'``.
 
-        .. versionchanged:: 0.23
+        🎭 Changed in version 0.23
             Default to equalizing all events in the passed instance if no
             event names were specified explicitly.
         """
@@ -1656,9 +1656,9 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """Perform spectral analysis on sensor data.
+        """### Perform spectral analysis on sensor data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         method : ``'welch'`` | ``'multitaper'``
@@ -1702,7 +1702,7 @@ class BaseEpochs(
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
@@ -1713,14 +1713,14 @@ class BaseEpochs(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
-        Returns
+        ### ⏎ Returns
         -------
         spectrum : instance of EpochsSpectrum
             The spectral representation of each epoch.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
         References
         ----------
@@ -1754,7 +1754,7 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """Plot power or amplitude spectra.
+        """### Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -1763,7 +1763,7 @@ class BaseEpochs(
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
@@ -1835,16 +1835,16 @@ class BaseEpochs(
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-            .. versionadded:: 0.22.0
+            ✨ Added in vesion 0.22.0
         exclude : list of str | 'bads'
             Channels names to exclude from being shown. If 'bads', the bad
             channels are excluded. Pass an empty list to plot all channels
             (including channels marked "bad", if any).
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         ax : instance of Axes | list of Axes | None
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
@@ -1860,7 +1860,7 @@ class BaseEpochs(
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
@@ -1871,12 +1871,12 @@ class BaseEpochs(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure
             Figure with frequency spectra of the data channels.
 
-        Notes
+        ### 📖 Notes
         -----
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
@@ -1894,7 +1894,7 @@ class BaseEpochs(
         *,
         verbose=None,
     ):
-        """Export data in tabular structure as a pandas DataFrame.
+        """### Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         additional columns "time", "epoch" (epoch number), and "condition"
@@ -1902,7 +1902,7 @@ class BaseEpochs(
         (in which case the columns specified in ``index`` will be used to form
         the DataFrame's index instead).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -1943,15 +1943,15 @@ class BaseEpochs(
             time values will be converted to `pandas.Timedelta` values.
             Default is ``None``.
 
-            .. versionadded:: 0.20
+            ✨ Added in vesion 0.20
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
 
         df : instance of pandas.DataFrame
@@ -1960,14 +1960,14 @@ class BaseEpochs(
         """
         ...
     def as_type(self, ch_type: str = "grad", mode: str = "fast"):
-        """Compute virtual epochs using interpolated fields.
+        """### Compute virtual epochs using interpolated fields.
 
-        .. Warning:: Using virtual epochs to compute inverse can yield
+        ### ⛔️ Warning Using virtual epochs to compute inverse can yield
             unexpected results. The virtual channels have ``'_v'`` appended
             at the end of the names to emphasize that the data contained in
             them are interpolated.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_type : str
             The destination channel type. It can be 'mag' or 'grad'.
@@ -1976,17 +1976,17 @@ class BaseEpochs(
             Legendre polynomial expansion used. ``'fast'`` should be sufficient
             for most applications.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of mne.EpochsArray
             The transformed epochs object containing only virtual channels.
 
-        Notes
+        ### 📖 Notes
         -----
         This method returns a copy and does not modify the data it
         operates on. It also returns an EpochsArray instance.
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
         """
         ...
 
@@ -2000,7 +2000,7 @@ def make_metadata(
     keep_first=None,
     keep_last=None,
 ):
-    """Automatically generate metadata for use with `mne.Epochs` from events.
+    """### Automatically generate metadata for use with `mne.Epochs` from events.
 
     This function mimics the epoching process (it constructs time windows
     around time-locked "events of interest") and collates information about
@@ -2013,7 +2013,7 @@ def make_metadata(
     dictionary that correspond to the generated metadata, which together can then be
     readily fed into `mne.Epochs`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     events : array, shape (m, 3)
         The :term:`events array <events>`. By default, the returned metadata
@@ -2028,7 +2028,7 @@ def make_metadata(
         Start and end of the time interval for metadata generation in seconds, relative
         to the time-locked event of the respective time window (the "row events").
 
-        .. note::
+        ### 💡 Note
            If you are planning to attach the generated metadata to
            `mne.Epochs` and intend to include only events that fall inside
            your epochs time interval, pass the same ``tmin`` and ``tmax``
@@ -2039,12 +2039,12 @@ def make_metadata(
         greatly, but each trial starts with a known event (e.g., a visual cue or
         fixation).
 
-        .. note::
+        ### 💡 Note
            If ``tmin=None``, the first time window for metadata generation starts with
            the first row event. If ``tmax=None``, the last time window for metadata
            generation ends with the last event in ``events``.
 
-        .. versionchanged:: 1.6.0
+        🎭 Changed in version 1.6.0
            Added support for ``None``.
     sfreq : float
         The sampling frequency of the data from which the events array was
@@ -2061,7 +2061,7 @@ def make_metadata(
         the **first occurrence** within each time window shall be stored in
         addition to the original events.
 
-        .. note::
+        ### 💡 Note
            There is currently no way to retain **all** occurrences of a
            repeated event. The ``keep_first`` parameter can be used to specify
            subsets of HEDs, effectively creating a new event type that is the
@@ -2081,7 +2081,7 @@ def make_metadata(
         ``keep_first=['response', 'stimulus']``. If ``None`` (default), no
         event aggregation will take place and no new columns will be created.
 
-        .. note::
+        ### 💡 Note
            By default, this function will always retain  the first instance
            of any event in each time window. For example, if a time window
            contains two ``'response'`` events, the generated ``response``
@@ -2095,7 +2095,7 @@ def make_metadata(
         of matching events. The column indicating the **type** of an event
         ``myevent`` will be named ``last_myevent``.
 
-    Returns
+    ### ⏎ Returns
     -------
     metadata : pandas.DataFrame
         Metadata for each row event, with the following columns:
@@ -2124,7 +2124,7 @@ def make_metadata(
         be identical to the input dictionary unless ``row_events`` is supplied,
         in which case it will only contain the events provided there.
 
-    Notes
+    ### 📖 Notes
     -----
     The time window used for metadata generation need not correspond to the
     time window used to create the `mne.Epochs`, to which the metadata will
@@ -2134,7 +2134,7 @@ def make_metadata(
     If either ``tmin``, ``tmax``, or both are ``None``, the time window will
     typically vary, too.
 
-    .. versionadded:: 0.23
+    ✨ Added in vesion 0.23
 
     References
     ----------
@@ -2143,9 +2143,9 @@ def make_metadata(
     ...
 
 class Epochs(BaseEpochs):
-    """Epochs extracted from a Raw instance.
+    """### Epochs extracted from a Raw instance.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     raw : Raw object
@@ -2180,7 +2180,7 @@ class Epochs(BaseEpochs):
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -2224,12 +2224,12 @@ class Epochs(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        .. note:: Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -2241,7 +2241,7 @@ class Epochs(BaseEpochs):
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     proj : bool | 'delayed'
@@ -2259,7 +2259,7 @@ class Epochs(BaseEpochs):
     decim : int
         Factor by which to subsample the data.
 
-        .. warning:: Low-pass filtering is not performed, this simply selects
+        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts
@@ -2271,7 +2271,7 @@ class Epochs(BaseEpochs):
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        .. note:: This parameter controls the time period used in conjunction with
+        ### 💡 Note This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     detrend : int | None
@@ -2289,7 +2289,7 @@ class Epochs(BaseEpochs):
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        .. note::
+        ### 💡 Note
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
@@ -2308,7 +2308,7 @@ class Epochs(BaseEpochs):
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     event_repeated : str
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
@@ -2316,15 +2316,15 @@ class Epochs(BaseEpochs):
         first in the :term:`events`, or ``'merge'`` to combine the coinciding
         events (=duplicates) into a new event (see Notes for details).
 
-        .. versionadded:: 0.19
+        ✨ Added in vesion 0.19
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
 
     info : mne.Info
@@ -2366,7 +2366,7 @@ class Epochs(BaseEpochs):
     mne.epochs.combine_event_ids
     mne.Epochs.equalize_event_counts
 
-    Notes
+    ### 📖 Notes
     -----
     When accessing data, Epochs are detrended, baseline-corrected, and
     decimated, then projectors are (optionally) applied.
@@ -2429,9 +2429,9 @@ class Epochs(BaseEpochs):
     ) -> None: ...
 
 class EpochsArray(BaseEpochs):
-    """Epochs object from numpy array.
+    """### Epochs object from numpy array.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array, shape (n_epochs, n_channels, n_times)
         The channels' time series for each epoch. See notes for proper units of
@@ -2477,12 +2477,12 @@ class EpochsArray(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        .. note:: Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -2494,7 +2494,7 @@ class EpochsArray(BaseEpochs):
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        .. note:: To constrain the time period used for estimation of signal
+        ### 💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     reject_tmin, reject_tmax : float | None
@@ -2503,7 +2503,7 @@ class EpochsArray(BaseEpochs):
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        .. note:: This parameter controls the time period used in conjunction with
+        ### 💡 Note This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     baseline : None | tuple of length 2
@@ -2515,7 +2515,7 @@ class EpochsArray(BaseEpochs):
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        .. note:: The baseline ``(a, b)`` includes both endpoints, i.e. all
+        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -2544,7 +2544,7 @@ class EpochsArray(BaseEpochs):
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        .. note::
+        ### 💡 Note
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
@@ -2558,7 +2558,7 @@ class EpochsArray(BaseEpochs):
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     selection : iterable | None
         Iterable of indices of selected epochs. If ``None``, will be
@@ -2568,17 +2568,17 @@ class EpochsArray(BaseEpochs):
         Tuple of tuple of strings indicating which epochs have been marked to
         be ignored.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     raw_sfreq : float
         The original Raw object sampling rate. If None, then it is set to
         ``info['sfreq']``.
 
-        .. versionadded:: 1.3
+        ✨ Added in vesion 1.3
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -2588,7 +2588,7 @@ class EpochsArray(BaseEpochs):
     EvokedArray
     io.RawArray
 
-    Notes
+    ### 📖 Notes
     -----
     Proper units of measure:
 
@@ -2628,9 +2628,9 @@ class EpochsArray(BaseEpochs):
     ) -> None: ...
 
 def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
-    """Collapse event_ids from an epochs instance into a new event_id.
+    """### Collapse event_ids from an epochs instance into a new event_id.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of Epochs
         The epochs to operate on.
@@ -2643,12 +2643,12 @@ def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
     copy : bool
         Whether to return a new instance or modify in place.
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : instance of Epochs
         The modified epochs.
 
-    Notes
+    ### 📖 Notes
     -----
     This For example (if epochs.event_id was ``{'Left': 1, 'Right': 2}``::
 
@@ -2660,9 +2660,9 @@ def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
     ...
 
 def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
-    """Equalize the number of trials in multiple Epoch instances.
+    """### Equalize the number of trials in multiple Epoch instances.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs_list : list of Epochs instances
         The Epochs instances to equalize trial counts for.
@@ -2671,7 +2671,7 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
         list. If 'mintime', timing differences between each event list will be
         minimized.
 
-    Notes
+    ### 📖 Notes
     -----
     This tries to make the remaining epochs occurring as close as possible in
     time. This method works based on the idea that if there happened to be some
@@ -2690,9 +2690,9 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
     ...
 
 def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
-    """Read epochs from a fif file.
+    """### Read epochs from a fif file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : path-like | file-like
@@ -2716,11 +2716,11 @@ def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : instance of Epochs
         The epochs.
@@ -2728,7 +2728,7 @@ def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
     ...
 
 class _RawContainer:
-    """Helper for a raw data container."""
+    """### Helper for a raw data container."""
 
     fid: Incomplete
     data_tag: Incomplete
@@ -2742,9 +2742,9 @@ class _RawContainer:
     def __del__(self) -> None: ...
 
 class EpochsFIF(BaseEpochs):
-    """Epochs read from disk.
+    """### Epochs read from disk.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : path-like | file-like
@@ -2768,7 +2768,7 @@ class EpochsFIF(BaseEpochs):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -2786,9 +2786,9 @@ class EpochsFIF(BaseEpochs):
     ) -> None: ...
 
 def bootstrap(epochs, random_state=None):
-    """Compute epochs selected by bootstrapping.
+    """### Compute epochs selected by bootstrapping.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : Epochs instance
         epochs data to be bootstrapped
@@ -2801,7 +2801,7 @@ def bootstrap(epochs, random_state=None):
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : Epochs instance
         The bootstrap samples
@@ -2811,12 +2811,12 @@ def bootstrap(epochs, random_state=None):
 def concatenate_epochs(
     epochs_list, add_offset: bool = True, *, on_mismatch: str = "raise", verbose=None
 ):
-    """Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
+    """### Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
 
-    .. note:: Unlike `mne.concatenate_raws`, this function does **not**
+    ### 💡 Note Unlike `mne.concatenate_raws`, this function does **not**
               modify any of the input data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs_list : list
         List of `mne.Epochs` instances to concatenate (in that order).
@@ -2831,24 +2831,24 @@ def concatenate_epochs(
         warning, or ``'ignore'`` to ignore when the device-to-head transformation differs between
         instances.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : instance of EpochsArray
         The result of the concatenation. All data will be loaded into memory.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...
 
@@ -2867,9 +2867,9 @@ def average_movements(
     mag_scale: float = 100.0,
     verbose=None,
 ):
-    """Average data using Maxwell filtering, transforming using head positions.
+    """### Average data using Maxwell filtering, transforming using head positions.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of Epochs
         The epochs to operate on.
@@ -2936,15 +2936,15 @@ def average_movements(
         between the gradiometer pickup loops (e.g., 0.0168 m yields
         59.5 for VectorView).
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     evoked : instance of Evoked
         The averaged epochs.
@@ -2954,7 +2954,7 @@ def average_movements(
     mne.preprocessing.maxwell_filter
     mne.chpi.read_head_pos
 
-    Notes
+    ### 📖 Notes
     -----
     The Maxwell filtering version of this algorithm is described in [1]_,
     in section V.B "Virtual signals and movement correction", equations
@@ -2965,7 +2965,7 @@ def average_movements(
     Fine calibration and cross-talk cancellation, however, could be added
     to this algorithm based on user demand.
 
-    .. versionadded:: 0.11
+    ✨ Added in vesion 0.11
 
     References
     ----------
@@ -2988,9 +2988,9 @@ def make_fixed_length_epochs(
     id: int = 1,
     verbose=None,
 ):
-    """Divide continuous raw data into equal-sized consecutive epochs.
+    """### Divide continuous raw data into equal-sized consecutive epochs.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data to divide into segments.
@@ -3009,7 +3009,7 @@ def make_fixed_length_epochs(
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     proj : bool | 'delayed'
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
@@ -3023,30 +3023,30 @@ def make_fixed_length_epochs(
         If proj is False no projections will be applied which is the
         recommended value if SSPs are not used for cleaning the data.
 
-        .. versionadded:: 0.22.0
+        ✨ Added in vesion 0.22.0
     overlap : float
         The overlap between epochs, in seconds. Must be
         ``0 <= overlap < duration``. Default is 0, i.e., no overlap.
 
-        .. versionadded:: 0.23.0
+        ✨ Added in vesion 0.23.0
     id : int
         The id to use (default 1).
 
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : instance of Epochs
         Segmented data.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
     """
     ...

@@ -24,7 +24,7 @@ def plot_ica_sources(
     overview_mode=None,
     splash: bool = True,
 ):
-    """Plot estimated latent sources given the unmixing matrix.
+    """### Plot estimated latent sources given the unmixing matrix.
 
     Typical usecases:
 
@@ -32,7 +32,7 @@ def plot_ica_sources(
     2. plot latent source around event related time windows (Epochs input)
     3. plot time-locking in ICA space (Evoked input)
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ica : instance of mne.preprocessing.ICA
         The ICA solution.
@@ -70,7 +70,7 @@ def plot_ica_sources(
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
-        .. versionadded:: 0.19.0
+        ✨ Added in vesion 0.19.0
 
     time_format : 'float' | 'clock'
         Style of time labels on the horizontal axis. If ``'float'``, labels will be
@@ -78,7 +78,7 @@ def plot_ica_sources(
         labels will show "clock time" (hours/minutes/seconds) inferred from
         ``raw.info['meas_date']``. Default is ``'float'``.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     precompute : bool | str
         Whether to load all data (not just the visible portion) into RAM and
@@ -89,8 +89,8 @@ def plot_ica_sources(
         the precomputed data, and precomputes only if enough RAM is available.
         This is only used with the Qt backend.
 
-        .. versionadded:: 0.24
-        .. versionchanged:: 1.0
+        ✨ Added in vesion 0.24
+        🎭 Changed in version 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
     use_opengl : bool | None
@@ -101,7 +101,7 @@ def plot_ica_sources(
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
         see `mne.set_config`.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
@@ -112,7 +112,7 @@ def plot_ica_sources(
         defaulting to "auto" if it's not found.
         Only supported by the ``'qt'`` backend.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     overview_mode : str | None
         Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -120,21 +120,21 @@ def plot_ica_sources(
         ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
         if it's not found.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     splash : bool
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
-    Returns
+    ### ⏎ Returns
     -------
 
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
-    Notes
+    ### 📖 Notes
     -----
     For raw and epoch instances, it is possible to select components for
     exclusion by clicking on the line. The selected components are added to
@@ -151,13 +151,13 @@ def plot_ica_sources(
     `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
-    .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
+    ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
-    .. note:: To report issues with the PyQtGraph backend, please use the
+    ### 💡 Note To report issues with the PyQtGraph backend, please use the
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
 
-    .. versionadded:: 0.10.0
+    ✨ Added in vesion 0.10.0
     """
     ...
 
@@ -179,19 +179,19 @@ def plot_ica_properties(
     *,
     verbose=None,
 ):
-    """Display component properties.
+    """### Display component properties.
 
     Properties include the topography, epochs image, ERP/ERF, power
     spectrum, and epoch variance.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ica : instance of mne.preprocessing.ICA
         The ICA solution.
     inst : instance of Epochs or Raw
         The data to use in plotting properties.
 
-        .. note::
+        ### 💡 Note
            You can interactively cycle through topographic maps for different
            channel types by pressing :kbd:`T`.
     picks : int | list of int | slice | None
@@ -220,10 +220,10 @@ def plot_ica_properties(
         Whether to use a logarithmic frequency axis to plot the spectrum.
         Defaults to ``False``.
 
-        .. note::
+        ### 💡 Note
            You can interactively toggle this setting by pressing :kbd:`L`.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
     topomap_args : dict | None
         Dictionary of arguments to ``plot_topomap``. If None, doesn't pass any
         additional arguments. Defaults to None.
@@ -252,22 +252,22 @@ def plot_ica_properties(
 
         Has no effect if ``inst`` is not a `mne.io.Raw` object.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : list
         List of matplotlib figures.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.13
+    ✨ Added in vesion 0.13
     """
     ...
 
@@ -282,12 +282,12 @@ def plot_ica_scores(
     n_cols=None,
     show: bool = True,
 ):
-    """Plot scores related to detected components.
+    """### Plot scores related to detected components.
 
     Use this function to asses how well your score describes outlier
     sources and how well you were detecting them.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ica : instance of mne.preprocessing.ICA
         The ICA object.
@@ -316,7 +316,7 @@ def plot_ica_scores(
     show : bool
         Show figure if True.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         The figure object.
@@ -337,11 +337,11 @@ def plot_ica_overlay(
     on_baseline: str = "warn",
     verbose=None,
 ):
-    """Overlay of raw and cleaned signals given the unmixing matrix.
+    """### Overlay of raw and cleaned signals given the unmixing matrix.
 
     This method helps visualizing signal quality and artifact rejection.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     ica : instance of mne.preprocessing.ICA
         The ICA object.
@@ -379,7 +379,7 @@ def plot_ica_overlay(
         the ``ica.n_pca_components`` from initialization will be used in 0.22;
         in 0.23 all components will be used.
 
-        .. versionadded:: 0.22
+        ✨ Added in vesion 0.22
 
     on_baseline : str
         How to handle baseline-corrected epochs or evoked data.
@@ -387,15 +387,15 @@ def plot_ica_overlay(
         warning, ``'ignore'`` to ignore, or "reapply" to reapply the baseline
         after applying ICA.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         The figure.

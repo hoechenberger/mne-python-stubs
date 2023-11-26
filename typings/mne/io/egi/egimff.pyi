@@ -12,7 +12,7 @@ from _typeshed import Incomplete
 REFERENCE_NAMES: Incomplete
 
 class _FixedOffset(datetime.tzinfo):
-    """Fixed offset in minutes east from UTC.
+    """### Fixed offset in minutes east from UTC.
 
     Adapted from the official Python documentation.
     """
@@ -23,7 +23,7 @@ class _FixedOffset(datetime.tzinfo):
     def dst(self, dt): ...
 
 class RawMff(BaseRaw):
-    """RawMff class."""
+    """### RawMff class."""
 
     event_id: Incomplete
 
@@ -38,15 +38,15 @@ class RawMff(BaseRaw):
         channel_naming: str = "E%d",
         verbose=None,
     ) -> None:
-        """Init the RawMff class."""
+        """### Init the RawMff class."""
         ...
 
 def read_evokeds_mff(
     fname, condition=None, channel_naming: str = "E%d", baseline=None, verbose=None
 ):
-    """Read averaged MFF file as EvokedArray or list of EvokedArray.
+    """### Read averaged MFF file as EvokedArray or list of EvokedArray.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         File path to averaged MFF file. Should end in ``.mff``.
@@ -71,11 +71,11 @@ def read_evokeds_mff(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     evoked : EvokedArray or list of EvokedArray
         The evoked dataset(s); one EvokedArray if condition is int or str,
@@ -94,8 +94,8 @@ def read_evokeds_mff(
     --------
     Evoked, EvokedArray, create_info
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.22
+    ✨ Added in vesion 0.22
     """
     ...

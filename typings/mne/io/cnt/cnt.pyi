@@ -18,7 +18,7 @@ def read_raw_cnt(
     preload: bool = False,
     verbose=None,
 ):
-    """Read CNT data as raw object.
+    """### Read CNT data as raw object.
 
     .. Note::
         2d spatial coordinates (x, y) for EEG channels are read from the file
@@ -39,7 +39,7 @@ def read_raw_cnt(
         - Other reader functions are listed under *See Also* at
           `mne.channels.DigMontage`
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the data file.
@@ -71,7 +71,7 @@ def read_raw_cnt(
         if either contain a bad channel make channel bad.
         Defaults to ``'auto'``.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
     preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
@@ -82,11 +82,11 @@ def read_raw_cnt(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawCNT.
         The raw data.
@@ -96,14 +96,14 @@ def read_raw_cnt(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawCNT.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.12
+    ✨ Added in vesion 0.12
     """
     ...
 
 class RawCNT(BaseRaw):
-    """Raw object from Neuroscan CNT file.
+    """### Raw object from Neuroscan CNT file.
 
     .. Note::
         The channel positions are read from the file header. Channels that are
@@ -116,7 +116,7 @@ class RawCNT(BaseRaw):
         the header are correct, it is probably safer to use a (standard)
         montage. See `mne.channels.make_standard_montage`
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : path-like
         Path to the CNT file.
@@ -157,16 +157,16 @@ class RawCNT(BaseRaw):
         Add a stim channel from the events. Defaults to None to trigger a
         future warning.
 
-        .. warning:: This defaults to True in 0.18 but will change to False in
+        ### ⛔️ Warning This defaults to True in 0.18 but will change to False in
                      0.19 (when no stim channel synthesis will be allowed)
                      and be removed in 0.20; migrate code to use
                      `mne.events_from_annotations` instead.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 

@@ -19,9 +19,9 @@ def make_lcmv(
     inversion: str = "matrix",
     verbose=None,
 ):
-    """Compute LCMV spatial filter.
+    """### Compute LCMV spatial filter.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -39,7 +39,7 @@ def make_lcmv(
         noise covariance is mandatory if you mix sensor types, e.g.
         gradiometers with magnetometers or EEG with MEG.
 
-        .. note::
+        ### 💡 Note
             If ``noise_cov`` is ``None`` and ``weight_norm='unit-noise-gain'``,
             the unit noise is assumed to be 1 in SI units, e.g., 1 T for
             magnetometers, 1 V for EEG, so resulting amplitudes will be tiny.
@@ -149,7 +149,7 @@ def make_lcmv(
         Setting ``reduce_rank=True`` is typically necessary if you use a single
         sphere model with MEG data.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
             Support for reducing rank in all modes (previously only supported
             ``pick='max_power'`` with weight normalization).
 
@@ -161,10 +161,10 @@ def make_lcmv(
         `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     inversion : 'single' | 'matrix'
         This determines how the beamformer deals with source spaces in "free"
@@ -178,15 +178,15 @@ def make_lcmv(
         precise. See section 5 of :footcite:`vanVlietEtAl2018`.
         Defaults to ``'matrix'``.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     filters : instance of Beamformer
         Dictionary containing filter weights from LCMV beamformer.
@@ -241,7 +241,7 @@ def make_lcmv(
                 separately or jointly for all dipoles at each vertex using a
                 matrix inversion.
 
-    Notes
+    ### 📖 Notes
     -----
     The original reference is :footcite:`VanVeenEtAl1997`.
 
@@ -249,7 +249,7 @@ def make_lcmv(
     ``weight_norm='unit-noise-gain', pick_ori='vector'`` followed by
     `vec_stc.project('pca', src) <mne.VectorSourceEstimate.project>`.
 
-    .. versionchanged:: 0.21
+    🎭 Changed in version 0.21
        The computations were extensively reworked, and the default for
        ``weight_norm`` was set to ``'unit-noise-gain-invariant'``.
 
@@ -260,12 +260,12 @@ def make_lcmv(
     ...
 
 def apply_lcmv(evoked, filters, *, verbose=None):
-    """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """### Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on evoked data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : Evoked
         Evoked data to invert.
@@ -275,11 +275,11 @@ def apply_lcmv(evoked, filters, *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate | VolSourceEstimate | VectorSourceEstimate
         Source time courses.
@@ -288,19 +288,19 @@ def apply_lcmv(evoked, filters, *, verbose=None):
     --------
     make_lcmv, apply_lcmv_raw, apply_lcmv_epochs, apply_lcmv_cov
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.18
+    ✨ Added in vesion 0.18
     """
     ...
 
 def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbose=None):
-    """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """### Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on single trial data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : Epochs
         Single trial epochs.
@@ -313,11 +313,11 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc: list | generator of (SourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
@@ -329,12 +329,12 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
     ...
 
 def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
-    """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """### Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on raw data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : mne.io.Raw
         Raw data to invert.
@@ -348,11 +348,11 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate | VolSourceEstimate
         Source time courses.
@@ -364,12 +364,12 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     ...
 
 def apply_lcmv_cov(data_cov, filters, verbose=None):
-    """Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
+    """### Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     to a data covariance matrix to estimate source power.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data_cov : instance of Covariance
         Data covariance matrix.
@@ -379,11 +379,11 @@ def apply_lcmv_cov(data_cov, filters, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate | VolSourceEstimate
         Source power.

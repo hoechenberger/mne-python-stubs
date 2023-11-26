@@ -18,9 +18,9 @@ from .utils import (
 from _typeshed import Incomplete
 
 def pick_events(events, include=None, exclude=None, step: bool = False):
-    """Select some :term:`events`.
+    """### Select some :term:`events`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     events : array of int, shape (n_events, 3)
@@ -40,7 +40,7 @@ def pick_events(events, include=None, exclude=None, step: bool = False):
         In this case, the two last columns are considered in inclusion/
         exclusion criteria.
 
-    Returns
+    ### ⏎ Returns
     -------
     events : array, shape (n_events, 3)
         The list of events.
@@ -50,14 +50,14 @@ def pick_events(events, include=None, exclude=None, step: bool = False):
 def define_target_events(
     events, reference_id, target_id, sfreq, tmin, tmax, new_id=None, fill_na=None
 ):
-    """Define new events by co-occurrence of existing events.
+    """### Define new events by co-occurrence of existing events.
 
     This function can be used to evaluate events depending on the
     temporal lag to another event. For example, this can be used to
     analyze evoked responses which were followed by a button press within
     a defined time window.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     events : ndarray
         Array as returned by mne.find_events.
@@ -78,7 +78,7 @@ def define_target_events(
         Fill event to be inserted if target is not available within the time
         window specified. If None, the 'null' events will be dropped.
 
-    Returns
+    ### ⏎ Returns
     -------
     new_events : ndarray
         The new defined events.
@@ -96,12 +96,12 @@ def read_events(
     return_event_id: bool = False,
     verbose=None,
 ):
-    """Read :term:`events` from fif or text file.
+    """### Read :term:`events` from fif or text file.
 
-    See :ref:`tut-events-vs-annotations` and :ref:`tut-event-arrays`
+    See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     filename : path-like
         Name of the input file.
@@ -124,20 +124,20 @@ def read_events(
         The type of operation between the mask and the trigger.
         Choose 'and' (default) for MNE-C masking behavior.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
     return_event_id : bool
         If True, ``event_id`` will be returned. This is only possible for
         ``-annot.fif`` files produced with MNE-C ``mne_browse_raw``.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     events : array of int, shape (n_events, 3)
@@ -151,7 +151,7 @@ def read_events(
     --------
     find_events, write_events
 
-    Notes
+    ### 📖 Notes
     -----
     This function will discard the offset line (i.e., first line with zero
     event number) if it is present in a text file.
@@ -162,9 +162,9 @@ def read_events(
     ...
 
 def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> None:
-    """Write :term:`events` to file.
+    """### Write :term:`events` to file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     filename : path-like
         Name of the output file.
@@ -185,7 +185,7 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -198,9 +198,9 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
 def find_stim_steps(
     raw, pad_start=None, pad_stop=None, merge: int = 0, stim_channel=None
 ):
-    """Find all steps in data from a stim channel.
+    """### Find all steps in data from a stim channel.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : Raw object
         The raw data.
@@ -222,7 +222,7 @@ def find_stim_steps(
         etc. are read. If these are not found, it will default to
         'STI101' or 'STI 014', whichever is present.
 
-    Returns
+    ### ⏎ Returns
     -------
     steps : array, shape = (n_samples, 3)
         For each step in the stim channel the values [sample, v_from, v_to].
@@ -249,12 +249,12 @@ def find_events(
     initial_event: bool = False,
     verbose=None,
 ):
-    """Find :term:`events` from raw file.
+    """### Find :term:`events` from raw file.
 
-    See :ref:`tut-events-vs-annotations` and :ref:`tut-event-arrays`
+    See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : Raw object
         The raw data.
@@ -292,26 +292,26 @@ def find_events(
         turns data into e.g. -32768), similar to ``mne_fix_stim14 --32``
         in MNE-C.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     mask_type : 'and' | 'not_and'
         The type of operation between the mask and the trigger.
         Choose 'and' (default) for MNE-C masking behavior.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
     initial_event : bool
         If True (default False), an event is created if the stim channel has a
         value different from 0 as its first sample. This is useful if an event
         at t=0s is present.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     events : array of int, shape (n_events, 3)
@@ -325,9 +325,9 @@ def find_events(
     read_events : Read events from disk.
     write_events : Write events to disk.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. warning:: If you are working with downsampled data, events computed
+    ### ⛔️ Warning If you are working with downsampled data, events computed
                  before decimation are no longer valid. Please recompute
                  your events after decimation, but note this reduces the
                  precision of event timing.
@@ -407,9 +407,9 @@ def find_events(
     ...
 
 def merge_events(events, ids, new_id, replace_events: bool = True):
-    """Merge a set of :term:`events`.
+    """### Merge a set of :term:`events`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     events : array, shape (n_events_in, 3)
         Events.
@@ -421,12 +421,12 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
         If True (default), old event ids are replaced. Otherwise,
         new events will be added to the old event list.
 
-    Returns
+    ### ⏎ Returns
     -------
     new_events : array, shape (n_events_out, 3)
         The new events.
 
-    Notes
+    ### 📖 Notes
     -----
     Rather than merging events you can use hierarchical event_id
     in Epochs. For example, here::
@@ -454,9 +454,9 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
     ...
 
 def shift_time_events(events, ids, tshift, sfreq):
-    """Shift a set of :term:`events`.
+    """### Shift a set of :term:`events`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     events : array of int, shape (n_events, 3)
@@ -471,7 +471,7 @@ def shift_time_events(events, ids, tshift, sfreq):
     sfreq : float
         The sampling frequency of the data.
 
-    Returns
+    ### ⏎ Returns
     -------
     new_events : array of int, shape (n_new_events, 3)
         The new events.
@@ -487,9 +487,9 @@ def make_fixed_length_events(
     first_samp: bool = True,
     overlap: float = 0.0,
 ):
-    """Make a set of :term:`events` separated by a fixed duration.
+    """### Make a set of :term:`events` separated by a fixed duration.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         A raw object to use the data from.
@@ -512,9 +512,9 @@ def make_fixed_length_events(
         The overlap between events (in seconds).
         Must be ``0 <= overlap < duration``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
-    Returns
+    ### ⏎ Returns
     -------
 
     events : array of int, shape (n_events, 3)
@@ -525,13 +525,13 @@ def make_fixed_length_events(
     ...
 
 def concatenate_events(events, first_samps, last_samps):
-    """Concatenate event lists to be compatible with concatenate_raws.
+    """### Concatenate event lists to be compatible with concatenate_raws.
 
     This is useful, for example, if you processed and/or changed
     events in raw files separately before combining them using
     `mne.concatenate_raws`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     events : list of array
         List of :term:`events` arrays, typically each extracted from a
@@ -541,7 +541,7 @@ def concatenate_events(events, first_samps, last_samps):
     last_samps : list or array of int
         Last sample numbers of the raw files concatenated.
 
-    Returns
+    ### ⏎ Returns
     -------
     events : array
         The concatenated events.
@@ -553,7 +553,7 @@ def concatenate_events(events, first_samps, last_samps):
     ...
 
 class AcqParserFIF:
-    """Parser for Elekta data acquisition settings.
+    """### Parser for Elekta data acquisition settings.
 
     This class parses parameters (e.g. events and averaging categories) that
     are defined in the Elekta TRIUX/VectorView data acquisition software (DACQ)
@@ -561,13 +561,13 @@ class AcqParserFIF:
     according to DACQ settings and modify original averaging settings if
     necessary.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. This is where the DACQ parameters will be taken from.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     categories : list
         List of averaging categories marked active in DACQ.
@@ -586,7 +586,7 @@ class AcqParserFIF:
     --------
     mne.io.Raw.acqparser : Access the parser through a Raw attribute.
 
-    Notes
+    ### 📖 Notes
     -----
     Any averaging category (also non-active ones) can be accessed by indexing
     as ``acqparserfif['category_name']``.
@@ -600,14 +600,14 @@ class AcqParserFIF:
 
     def __init__(self, info) -> None: ...
     def __getitem__(self, item):
-        """Return an averaging category, or list of categories.
+        """### Return an averaging category, or list of categories.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         item : str | list of str
             Name of the category (comment field in DACQ).
 
-        Returns
+        ### ⏎ Returns
         -------
         conds : dict | list of dict
             Each dict should have the following keys:
@@ -649,9 +649,9 @@ class AcqParserFIF:
         """
         ...
     def __len__(self) -> int:
-        """Return number of averaging categories marked active in DACQ.
+        """### Return number of averaging categories marked active in DACQ.
 
-        Returns
+        ### ⏎ Returns
         -------
         n_cat : int
             The number of categories.
@@ -659,14 +659,14 @@ class AcqParserFIF:
         ...
     @property
     def categories(self):
-        """Return list of averaging categories ordered by DACQ index.
+        """### Return list of averaging categories ordered by DACQ index.
 
         Only returns categories marked active in DACQ.
         """
         ...
     @property
     def events(self):
-        """Return events ordered by DACQ index.
+        """### Return events ordered by DACQ index.
 
         Only returns events that are in use (referred to by a category).
         """
@@ -681,12 +681,12 @@ class AcqParserFIF:
         mask_type: str = "and",
         delayed_lookup: bool = True,
     ):
-        """Get averaging parameters for a condition (averaging category).
+        """### Get averaging parameters for a condition (averaging category).
 
         Output is designed to be used with the Epochs class to extract the
         corresponding epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         raw : Raw object
             An instance of Raw.
@@ -725,7 +725,7 @@ class AcqParserFIF:
             transitions with a resolution of one sample, use
             delayed_lookup=False.
 
-        Returns
+        ### ⏎ Returns
         -------
         conds_data : dict or list of dict
             Each dict has the following keys:
@@ -747,13 +747,13 @@ class AcqParserFIF:
         ...
 
 def match_event_names(event_names, keys, *, on_missing: str = "raise"):
-    """Search a collection of event names for matching (sub-)groups of events.
+    """### Search a collection of event names for matching (sub-)groups of events.
 
     This function is particularly helpful when using grouped event names
     (i.e., event names containing forward slashes ``/``). Please see the
     Examples section below for a working example.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     event_names : array-like of str | dict
         Either a collection of event names, or the ``event_id`` dictionary
@@ -765,14 +765,14 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
         ``event_names``. If ``'warn'`` or ``'ignore'``, an empty list will be
         returned.
 
-    Returns
+    ### ⏎ Returns
     -------
     matches : list of str
         All event names that match any of the ``keys`` provided.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.0
+    ✨ Added in vesion 1.0
 
     Examples
     --------
@@ -794,9 +794,9 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
     ...
 
 def count_events(events, ids=None):
-    """Count events.
+    """### Count events.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     events : ndarray, shape (N, 3)
         The events array (consisting of N events).
@@ -804,7 +804,7 @@ def count_events(events, ids=None):
         If ``None``, count all event types present in the input. If array-like
         of int, count only those event types given by ``ids``.
 
-    Returns
+    ### ⏎ Returns
     -------
     counts : dict
         A dictionary containing the event types as keys with their counts as

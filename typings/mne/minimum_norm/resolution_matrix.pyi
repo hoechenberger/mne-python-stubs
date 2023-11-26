@@ -18,9 +18,9 @@ def make_inverse_resolution_matrix(
     lambda2=0.1111111111111111,
     verbose=None,
 ):
-    """Compute resolution matrix for linear inverse operator.
+    """### Compute resolution matrix for linear inverse operator.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     forward : instance of Forward
         Forward Operator.
@@ -33,11 +33,11 @@ def make_inverse_resolution_matrix(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     resmat: array, shape (n_orient_inv * n_dipoles, n_orient_fwd * n_dipoles)
         Resolution matrix (inverse operator times forward operator).
@@ -61,9 +61,9 @@ def get_point_spread(
     vector: bool = False,
     verbose=None,
 ):
-    """Get point-spread (PSFs) functions for vertices.
+    """### Get point-spread (PSFs) functions for vertices.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     resmat : array, shape (n_dipoles, n_dipoles)
         Forward Operator.
@@ -121,15 +121,15 @@ def get_point_spread(
         Only allowed to be True if corresponding dimension of resolution matrix
         is 3 * n_dipoles. Defaults to False.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     stcs : instance of SourceEstimate | list of instances of SourceEstimate
@@ -165,9 +165,9 @@ def get_cross_talk(
     vector: bool = False,
     verbose=None,
 ):
-    """Get cross-talk (CTFs) function for vertices.
+    """### Get cross-talk (CTFs) function for vertices.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     resmat : array, shape (n_dipoles, n_dipoles)
         Forward Operator.
@@ -225,15 +225,15 @@ def get_cross_talk(
         Only allowed to be True if corresponding dimension of resolution matrix
         is 3 * n_dipoles. Defaults to False.
 
-        .. versionadded:: 1.2
+        ✨ Added in vesion 1.2
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     stcs : instance of SourceEstimate | list of instances of SourceEstimate

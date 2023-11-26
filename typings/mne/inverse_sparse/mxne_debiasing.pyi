@@ -7,11 +7,11 @@ from ..utils import (
 def power_iteration_kron(
     A, C, max_iter: int = 1000, tol: float = 0.001, random_state: int = 0
 ):
-    """Find the largest singular value for the matrix kron(C.T, A).
+    """### Find the largest singular value for the matrix kron(C.T, A).
 
     It uses power iterations.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     A : array
         An array
@@ -28,12 +28,12 @@ def power_iteration_kron(
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
-    Returns
+    ### ⏎ Returns
     -------
     L : float
         largest singular value
 
-    Notes
+    ### 📖 Notes
     -----
     http://en.wikipedia.org/wiki/Power_iteration
     """
@@ -42,7 +42,7 @@ def power_iteration_kron(
 def compute_bias(
     M, G, X, max_iter: int = 1000, tol: float = 1e-06, n_orient: int = 1, verbose=None
 ):
-    """Compute scaling to correct amplitude bias.
+    """### Compute scaling to correct amplitude bias.
 
     It solves the following optimization problem using FISTA:
 
@@ -55,7 +55,7 @@ def compute_bias(
     Problems, SIAM J. Imaging Sci., 2(1), 183-202. (20 pages)
     http://epubs.siam.org/doi/abs/10.1137/080716542
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     M : array
         measurement data.
@@ -72,11 +72,11 @@ def compute_bias(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     D : array
         Debiasing weights.

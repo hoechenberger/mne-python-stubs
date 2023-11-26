@@ -19,7 +19,7 @@ def compute_current_source_density(
     *,
     verbose=None,
 ):
-    """Get the current source density (CSD) transformation.
+    """### Get the current source density (CSD) transformation.
 
     Transformation based on spherical spline surface Laplacian
     :footcite:`PerrinEtAl1987,PerrinEtAl1989,Cohen2014,KayserTenke2015`.
@@ -27,7 +27,7 @@ def compute_current_source_density(
     This function can be used to re-reference the signal using a Laplacian
     (LAP) "reference-free" transformation.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Raw, Epochs or Evoked
         The data to be transformed.
@@ -46,18 +46,18 @@ def compute_current_source_density(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     inst_csd : instance of Raw, Epochs or Evoked
         The transformed data. Output type will match input type.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
 
     References
     ----------
@@ -75,7 +75,7 @@ def compute_bridged_electrodes(
     bw_method=None,
     verbose=None,
 ):
-    """Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
+    """### Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
 
     First, an electrical distance matrix is computed by taking the pairwise
     variance between electrodes. Local minimums in this matrix below
@@ -88,7 +88,7 @@ def compute_bridged_electrodes(
     and the `EEGLAB implementation
     <https://psychophysiology.cpmc.columbia.edu/software/eBridge/index.html>`_.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Raw, Epochs or Evoked
         The data to compute electrode bridging on.
@@ -115,11 +115,11 @@ def compute_bridged_electrodes(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     bridged_idx : list of tuple
         The indices of channels marked as bridged with each bridged
@@ -127,9 +127,9 @@ def compute_bridged_electrodes(
     ed_matrix : ndarray of float, shape (n_epochs, n_channels, n_channels)
         The electrical distance matrix for each pair of EEG electrodes.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.1
+    ✨ Added in vesion 1.1
 
     References
     ----------

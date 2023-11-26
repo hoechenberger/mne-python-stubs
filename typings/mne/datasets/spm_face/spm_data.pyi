@@ -12,9 +12,9 @@ def data_path(
     *,
     verbose=None,
 ):
-    """Get path to local copy of spm dataset.
+    """### Get path to local copy of spm dataset.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     path : None | str
         Location of where to look for the spm dataset.
@@ -37,20 +37,20 @@ def data_path(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : instance of Path
         Path to spm dataset directory."""
     ...
 
 def get_version():
-    """Get version of the local spm dataset.
+    """### Get version of the local spm dataset.
 
-    Returns
+    ### ⏎ Returns
     -------
     version : str | None
         Version of the spm local dataset, or None if the dataset
@@ -58,5 +58,5 @@ def get_version():
     ...
 
 def requires_spm_data(func):
-    """Skip testing data test."""
+    """### Skip testing data test."""
     ...

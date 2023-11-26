@@ -1,19 +1,19 @@
 def create_lut(cmap, n_colors: int = 256, center=None):
-    """Return a colormap suitable for setting as a LUT."""
+    """### Return a colormap suitable for setting as a LUT."""
     ...
 
 def scale_sequential_lut(lut_table, fmin, fmid, fmax):
-    """Scale a sequential colormap."""
+    """### Scale a sequential colormap."""
     ...
 
 def get_fill_colors(cols, n_fill):
-    """Get the fill colors for the middle of divergent colormaps."""
+    """### Get the fill colors for the middle of divergent colormaps."""
     ...
 
 def calculate_lut(
     lut_table, alpha, fmin, fmid, fmax, center=None, transparent: bool = True
 ):
-    """Transparent color map calculation.
+    """### Transparent color map calculation.
 
     A colormap may be sequential or divergent. When the colormap is
     divergent indicate this by providing a value for 'center'. The
@@ -33,7 +33,7 @@ def calculate_lut(
     while center-fmid will map to the fmid of the first half of the
     original colormap and center-fmid to the fmid of the second half.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     lim_cmap : Colormap
         Color map obtained from _process_mapdata.
@@ -54,7 +54,7 @@ def calculate_lut(
         values below fmin fully transparent (symmetrically for divergent
         colormaps)
 
-    Returns
+    ### ⏎ Returns
     -------
     cmap : matplotlib.ListedColormap
         Color map with transparency channel.

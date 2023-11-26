@@ -20,7 +20,7 @@ def gamma_map(
     pick_ori=None,
     verbose=None,
 ):
-    """Hierarchical Bayes (Gamma-MAP) sparse source localization method.
+    """### Hierarchical Bayes (Gamma-MAP) sparse source localization method.
 
     Models each source time course using a zero-mean Gaussian prior with an
     unknown variance (gamma) parameter. During estimation, most gammas are
@@ -32,7 +32,7 @@ def gamma_map(
     gamma is used for the three source time courses at each source space point
     (separate gammas can be used in this case by using xyz_same_gamma=False).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked
         Evoked data to invert.
@@ -65,7 +65,7 @@ def gamma_map(
         `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
-        .. versionchanged:: 0.20
+        🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
     xyz_same_gamma : bool
         Use same gamma for xyz current components at each source space point.
@@ -131,7 +131,7 @@ def gamma_map(
 
         The default is ``None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
     pick_ori : None | "normal" | "vector"
 
@@ -152,11 +152,11 @@ def gamma_map(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : instance of SourceEstimate
         Source time courses.

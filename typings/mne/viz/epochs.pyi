@@ -29,9 +29,9 @@ def plot_epochs_image(
     title=None,
     clear: bool = False,
 ):
-    """Plot Event Related Potential / Fields image.
+    """### Plot Event Related Potential / Fields image.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of Epochs
         The epochs.
@@ -157,13 +157,13 @@ def plot_epochs_image(
         Whether to clear the axes before plotting (if ``fig`` or ``axes`` are
         provided). Defaults to ``False``.
 
-    Returns
+    ### ⏎ Returns
     -------
     figs : list of Figure
         One figure per channel, channel type, or group, depending on values of
         ``picks``, ``group_by``, and ``combine``. See Notes.
 
-    Notes
+    ### 📖 Notes
     -----
     You can control how channels are aggregated into one figure or plotted in
     separate figures through a combination of the ``picks``, ``group_by``, and
@@ -205,9 +205,9 @@ def plot_drop_log(
     ignore=("IGNORED",),
     show: bool = True,
 ):
-    """Show the channel stats based on a drop_log from Epochs.
+    """### Show the channel stats based on a drop_log from Epochs.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     drop_log : list of list
         Epoch drop log from Epochs.drop_log.
@@ -220,10 +220,10 @@ def plot_drop_log(
         The subject name to use in the title of the plot. If ``None``, do not
         display a subject name.
 
-        .. versionchanged:: 0.23
+        🎭 Changed in version 0.23
            Added support for ``None``.
 
-        .. versionchanged:: 1.0
+        🎭 Changed in version 1.0
            Defaults to ``None``.
     color : tuple | str
         Color to use for the bars.
@@ -234,7 +234,7 @@ def plot_drop_log(
     show : bool
         Show figure if True.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of matplotlib.figure.Figure
         The figure.
@@ -268,14 +268,14 @@ def plot_epochs(
     overview_mode=None,
     splash: bool = True,
 ):
-    """Visualize epochs.
+    """### Visualize epochs.
 
     Bad epochs can be marked with a left click on top of the epoch. Bad
     channels can be selected by clicking the channel name on the left side of
     the main axes. Calling this function drops all the selected bad epochs as
     well as bad epochs marked beforehand with rejection parameters.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of Epochs
         The epochs object.
@@ -301,7 +301,7 @@ def plot_epochs(
                  emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                  resp=1, chpi=1e-4, whitened=1e2)
 
-        .. note::
+        ### 💡 Note
             A particular scaling value ``s`` corresponds to half of the visualized
             signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
             ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -320,12 +320,12 @@ def plot_epochs(
         same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
         plot events).
 
-        .. warning::  If the epochs have been resampled, the events no longer
+        ### ⛔️ Warning  If the epochs have been resampled, the events no longer
             align with the data.
 
-        .. versionadded:: 0.14.0
+        ✨ Added in vesion 0.14.0
 
-        .. versionchanged:: 1.6
+        🎭 Changed in version 1.6
             Passing ``events=None`` was disallowed.
             The new equivalent is ``events=False``.
 
@@ -340,7 +340,7 @@ def plot_epochs(
     order : array of str | None
         Order in which to plot channel types.
 
-        .. versionadded:: 0.18.0
+        ✨ Added in vesion 0.18.0
     show : bool
         Show figure if True. Defaults to True.
     block : bool
@@ -355,7 +355,7 @@ def plot_epochs(
         larger than ``info['lowpass']`` (e.g., a 40 Hz lowpass will result in
         at least a 120 Hz displayed sample rate).
 
-        .. versionadded:: 0.15.0
+        ✨ Added in vesion 0.15.0
     noise_cov : instance of Covariance | str | None
         Noise covariance used to whiten the data while plotting.
         Whitened data channels are scaled by ``scalings['whitened']``,
@@ -367,25 +367,25 @@ def plot_epochs(
         magnetometers and gradiometers may introduce differences in scaling,
         consider using `mne.Evoked.plot_white`.
 
-        .. versionadded:: 0.16.0
+        ✨ Added in vesion 0.16.0
     butterfly : bool
         Whether to directly call the butterfly view.
 
-        .. versionadded:: 0.18.0
+        ✨ Added in vesion 0.18.0
 
     show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
-        .. versionadded:: 0.19.0
+        ✨ Added in vesion 0.19.0
 
     show_scalebars : bool
         Whether to show scale bars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`s` while the plot window is focused.
         Default is ``True``.
 
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
     epoch_colors : list of (n_epochs) list (of n_channels) | None
         Colors to use for individual epochs. If None, use default colors.
     event_id : bool | dict
@@ -395,7 +395,7 @@ def plot_epochs(
         entries whose *values* are integer codes for events being drawn. Ignored if
         ``events=False``.
 
-        .. versionadded:: 0.20
+        ✨ Added in vesion 0.20
 
     group_by : str
         How to group channels. ``'type'`` groups by channel type,
@@ -417,8 +417,8 @@ def plot_epochs(
         the precomputed data, and precomputes only if enough RAM is available.
         This is only used with the Qt backend.
 
-        .. versionadded:: 0.24
-        .. versionchanged:: 1.0
+        ✨ Added in vesion 0.24
+        🎭 Changed in version 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
     use_opengl : bool | None
@@ -429,7 +429,7 @@ def plot_epochs(
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
         see `mne.set_config`.
 
-        .. versionadded:: 0.24
+        ✨ Added in vesion 0.24
 
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
@@ -440,7 +440,7 @@ def plot_epochs(
         defaulting to "auto" if it's not found.
         Only supported by the ``'qt'`` backend.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     overview_mode : str | None
         Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -448,21 +448,21 @@ def plot_epochs(
         ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
         if it's not found.
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
 
     splash : bool
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
 
-    Returns
+    ### ⏎ Returns
     -------
 
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
-    Notes
+    ### 📖 Notes
     -----
     The arrow keys (up/down/left/right) can be used to navigate between
     channels and epochs and the scaling can be adjusted with - and + (or =)
@@ -486,13 +486,13 @@ def plot_epochs(
     `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
-    .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
+    ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
-    .. note:: To report issues with the PyQtGraph backend, please use the
+    ### 💡 Note To report issues with the PyQtGraph backend, please use the
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
 
-    .. versionadded:: 0.10.0
+    ✨ Added in vesion 0.10.0
     """
     ...
 
@@ -524,7 +524,7 @@ def plot_epochs_psd(
     exclude: str = "bads",
     verbose=None,
 ):
-    """.. warning:: LEGACY: New code should use Epochs.compute_psd().plot().
+    """### ### ⛔️ Warning LEGACY: New code should use Epochs.compute_psd().plot().
 
     Plot power or amplitude spectra.
 
@@ -535,7 +535,7 @@ def plot_epochs_psd(
     be interactive, and click-dragging on the spectrum will generate a
     scalp topography plot for the chosen frequency range in a new figure.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of Epochs
         The epochs object.
@@ -560,7 +560,7 @@ def plot_epochs_psd(
     normalization : 'full' | 'length'
         Normalization strategy. If "full", the PSD will be normalized by the
         sampling rate as well as the length of the signal (as in
-        :ref:`Nitime <nitime:users-guide>`). Default is ``'length'``.
+        `Nitime <nitime:users-guide>`). Default is ``'length'``.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -629,27 +629,27 @@ def plot_epochs_psd(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        .. versionadded:: 0.20
-        .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+        ✨ Added in vesion 0.20
+        🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     exclude : list of str | 'bads'
         Channels names to exclude from being shown. If 'bads', the bad channels
         are excluded. Pass an empty list to plot all channels (including
         channels marked "bad", if any).
 
-        .. versionadded:: 0.24.0
+        ✨ Added in vesion 0.24.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fig : instance of Figure
         Figure with frequency spectra of the data channels.
 
-    Notes
+    ### 📖 Notes
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance

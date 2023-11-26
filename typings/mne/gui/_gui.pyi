@@ -26,7 +26,7 @@ def coregistration(
     block: bool = False,
     verbose=None,
 ):
-    """Coregister an MRI with a subject's head shape.
+    """### Coregister an MRI with a subject's head shape.
 
     The GUI can be launched through the command line interface:
 
@@ -34,9 +34,9 @@ def coregistration(
 
         $ mne coreg
 
-    or using a python interpreter as shown in :ref:`tut-source-alignment`.
+    or using a python interpreter as shown in `tut-source-alignment`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     tabbed : bool
         Combine the data source panel and the coregistration panel into a
@@ -81,17 +81,17 @@ def coregistration(
         If True (default), orient EEG electrode and head shape points
         to the head surface.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
     scale_by_distance : bool | None
         If True (default), scale the digitization points by their
         distance from the scalp surface.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
     mark_inside : bool | None
         If True (default), mark points inside the head surface in a
         different color.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     interaction : 'trackball' | 'terrain' | None
         How interactions with the scene via an input device (e.g., mouse or
@@ -104,25 +104,25 @@ def coregistration(
         used.
         Defaults to ``'terrain'``.
 
-        .. versionadded:: 0.16
-        .. versionchanged:: 1.0
+        ✨ Added in vesion 0.16
+        🎭 Changed in version 1.0
            Default interaction mode if ``None`` and no config setting found
            changed from ``'trackball'`` to ``'terrain'``.
     scale : float | None
         The scaling for the scene.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
     advanced_rendering : bool
         Use advanced OpenGL rendering techniques (default True).
         For some renderers (such as MESA software) this can cause rendering
         bugs.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
     head_inside : bool
         If True (default), add opaque inner scalp head surface to help occlude
         points behind the head.
 
-        .. versionadded:: 0.23
+        ✨ Added in vesion 0.23
 
     fullscreen : bool
         Whether to start in fullscreen (``True``) or windowed mode
@@ -130,7 +130,7 @@ def coregistration(
         Default is None, which uses ``MNE_COREG_FULLSCREEN`` config value
         (which defaults to False).
 
-        .. versionadded:: 1.1
+        ✨ Added in vesion 1.1
     show : bool
         Show the GUI if True.
     block : bool
@@ -138,16 +138,16 @@ def coregistration(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     frame : instance of CoregistrationUI
         The coregistration frame.
 
-    Notes
+    ### 📖 Notes
     -----
     Many parameters (e.g., ``head_opacity``) take None as a parameter,
     which means that the default will be read from the MNE-Python
@@ -160,6 +160,6 @@ def coregistration(
     ...
 
 class _GUIScraper:
-    """Scrape GUI outputs."""
+    """### Scrape GUI outputs."""
 
     def __call__(self, block, block_vars, gallery_conf): ...

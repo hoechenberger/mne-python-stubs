@@ -19,7 +19,7 @@ from .psd import psd_array_welch as psd_array_welch
 from _typeshed import Incomplete
 
 class SpectrumMixin:
-    """Mixin providing spectral plotting methods to sensor-space containers."""
+    """### Mixin providing spectral plotting methods to sensor-space containers."""
 
     def plot_psd(
         self,
@@ -49,7 +49,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """.. warning:: LEGACY: New code should use .compute_psd().plot().
+        """### ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot().
 
         Plot power or amplitude spectra.
 
@@ -60,7 +60,7 @@ class SpectrumMixin:
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
@@ -136,16 +136,16 @@ class SpectrumMixin:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-            .. versionadded:: 0.22.0
+            ✨ Added in vesion 0.22.0
         exclude : list of str | 'bads'
             Channels names to exclude from being shown. If 'bads', the bad
             channels are excluded. Pass an empty list to plot all channels
             (including channels marked "bad", if any).
 
-            .. versionadded:: 0.24.0
+            ✨ Added in vesion 0.24.0
         ax : instance of Axes | list of Axes | None
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
@@ -161,7 +161,7 @@ class SpectrumMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
@@ -172,12 +172,12 @@ class SpectrumMixin:
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure
             Figure with frequency spectra of the data channels.
 
-        Notes
+        ### 📖 Notes
         -----
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
@@ -205,11 +205,11 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """.. warning:: LEGACY: New code should use .compute_psd().plot_topo().
+        """### ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topo().
 
         Plot power spectral density, separately for each channel.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tmin, tmax : float | None
             First and last times to include, in seconds. ``None`` uses the first or
@@ -259,7 +259,7 @@ class SpectrumMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
@@ -270,7 +270,7 @@ class SpectrumMixin:
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details. Defaults to ``dict(n_fft=2048)``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
             Figure distributing one image per channel across sensor topography.
@@ -312,11 +312,11 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """.. warning:: LEGACY: New code should use .compute_psd().plot_topomap().
+        """### ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topomap().
 
         Plot scalp topography of PSD for chosen frequency bands.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         bands : None | dict | list of tuple
@@ -331,13 +331,13 @@ class SpectrumMixin:
                          'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                          'Gamma (30-45 Hz)': (30, 45)}
 
-            .. note::
+            ### 💡 Note
                For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
                also accepted, where the last element of the tuple is the subplot title
                and the other entries are frequency values (a single value or band
                edges). New code should use `dict` or ``None``.
 
-            .. versionchanged:: 1.2
+            🎭 Changed in version 1.2
                Allow passing a dict and discourage passing tuples.
         tmin, tmax : float | None
             First and last times to include, in seconds. ``None`` uses the first or
@@ -422,8 +422,8 @@ class SpectrumMixin:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -469,7 +469,7 @@ class SpectrumMixin:
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            .. warning::  Interactive mode works smoothly only for a small amount
+            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -482,16 +482,16 @@ class SpectrumMixin:
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-            See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+            See `Matplotlib docs <matplotlib:colormapnorms>`
             for more details on colormap normalization, and
-            :ref:`the ERDs example<cnorm-example>` for an example of its use.
+            `the ERDs example<cnorm-example>` for an example of its use.
 
-            .. versionadded:: 1.2
+            ✨ Added in vesion 1.2
 
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
         cbar_fmt : str
-            Formatting string for colorbar tick labels. See :ref:`formatspec` for
+            Formatting string for colorbar tick labels. See `formatspec` for
             details.
             If ``'auto'``, is equivalent to '%0.3f' if ``dB=False`` and '%0.1f' if
             ``dB=True``. Defaults to ``'auto'``.
@@ -515,7 +515,7 @@ class SpectrumMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
@@ -526,7 +526,7 @@ class SpectrumMixin:
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure
             Figure showing one scalp topography per frequency band.
@@ -534,7 +534,7 @@ class SpectrumMixin:
         ...
 
 class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
-    """Base class for Spectrum and EpochsSpectrum."""
+    """### Base class for Spectrum and EpochsSpectrum."""
 
     inst: Incomplete
     info: Incomplete
@@ -558,7 +558,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         **method_kw,
     ) -> None: ...
     def __eq__(self, other):
-        """Test equivalence of two Spectrum instances."""
+        """### Test equivalence of two Spectrum instances."""
         ...
     @property
     def ch_names(self): ...
@@ -571,9 +571,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     @property
     def shape(self): ...
     def copy(self):
-        """Return copy of the Spectrum instance.
+        """### Return copy of the Spectrum instance.
 
-        Returns
+        ### ⏎ Returns
         -------
         spectrum : instance of Spectrum
             A copy of the object.
@@ -587,9 +587,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         fmax=...,
         return_freqs: bool = False,
     ):
-        """Get spectrum data in NumPy array format.
+        """### Get spectrum data in NumPy array format.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -610,7 +610,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             Whether to return the frequency bin values for the requested
             frequency range. Default is ``False``.
 
-        Returns
+        ### ⏎ Returns
         -------
         data : array
             The requested data in a NumPy array.
@@ -637,7 +637,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         axes=None,
         show: bool = True,
     ):
-        """Plot power or amplitude spectra.
+        """### Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -646,7 +646,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -658,7 +658,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
 
-            .. versionchanged:: 1.5
+            🎭 Changed in version 1.5
                 In version 1.5, the default behavior changed so that all
                 :term:`data channels` (not just "good" data channels) are shown
                 by default.
@@ -711,14 +711,14 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
         exclude : list of str | 'bads'
             Channel names to exclude from being drawn. If ``'bads'``, channels
             in ``spectrum.info['bads']`` are excluded; pass an empty list to
             include all channels (including "bad" channels, if any).
 
-            .. versionchanged:: 1.5
+            🎭 Changed in version 1.5
                 In version 1.5, the default behavior changed from
                 ``exclude='bads'`` to ``exclude=()``.
         axes : instance of Axes | list of Axes | None
@@ -727,7 +727,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         show : bool
             Show the figure if ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
             Figure with spectra plotted in separate subplots for each channel
@@ -746,9 +746,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         block: bool = False,
         show: bool = True,
     ):
-        """Plot power spectral density, separately for each channel.
+        """### Plot power spectral density, separately for each channel.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         dB : bool
             Whether to plot on a decibel-like scale. If ``True``, plots
@@ -775,7 +775,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         show : bool
             Show the figure if ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
             Figure distributing one image per channel across sensor topography.
@@ -810,9 +810,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         axes=None,
         show: bool = True,
     ):
-        """Plot scalp topography of PSD for chosen frequency bands.
+        """### Plot scalp topography of PSD for chosen frequency bands.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         bands : None | dict | list of tuple
@@ -827,13 +827,13 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
                          'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                          'Gamma (30-45 Hz)': (30, 45)}
 
-            .. note::
+            ### 💡 Note
                For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
                also accepted, where the last element of the tuple is the subplot title
                and the other entries are frequency values (a single value or band
                edges). New code should use `dict` or ``None``.
 
-            .. versionchanged:: 1.2
+            🎭 Changed in version 1.2
                Allow passing a dict and discourage passing tuples.
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
             The channel type to plot. For ``'grad'``, the gradiometers are
@@ -906,8 +906,8 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -953,7 +953,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            .. warning::  Interactive mode works smoothly only for a small amount
+            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -966,14 +966,14 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-            See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+            See `Matplotlib docs <matplotlib:colormapnorms>`
             for more details on colormap normalization, and
-            :ref:`the ERDs example<cnorm-example>` for an example of its use.
+            `the ERDs example<cnorm-example>` for an example of its use.
 
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
         cbar_fmt : str
-            Formatting string for colorbar tick labels. See :ref:`formatspec` for
+            Formatting string for colorbar tick labels. See `formatspec` for
             details.
             If ``'auto'``, is equivalent to '%0.3f' if ``dB=False`` and '%0.1f' if
             ``dB=True``. Defaults to ``'auto'``.
@@ -988,16 +988,16 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         show : bool
             Show the figure if ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure
             Figure showing one scalp topography per frequency band.
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """Save spectrum data to disk (in HDF5 format).
+        """### Save spectrum data to disk (in HDF5 format).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             Path of file to save to.
@@ -1008,7 +1008,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
@@ -1026,13 +1026,13 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         *,
         verbose=None,
     ):
-        """Export data in tabular structure as a pandas DataFrame.
+        """### Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         an additional column "freq" is added, unless ``index='freq'``
         (in which case frequency values form the DataFrame's index).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -1061,18 +1061,18 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
 
         df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
             packages.
 
-        Notes
+        ### 📖 Notes
         -----
         Valid values for ``index`` depend on whether the Spectrum was created
         from continuous data (`mne.io.Raw`, `mne.Evoked`) or
@@ -1084,14 +1084,14 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         """
         ...
     def units(self, latex: bool = False):
-        """Get the spectrum units for each channel type.
+        """### Get the spectrum units for each channel type.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         latex : bool
             Whether to format the unit strings as LaTeX. Default is ``False``.
 
-        Returns
+        ### ⏎ Returns
         -------
         units : dict
             Mapping from channel type to a string representation of the units
@@ -1100,15 +1100,15 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         ...
 
 class Spectrum(BaseSpectrum):
-    """Data object for spectral representations of continuous data.
+    """### Data object for spectral representations of continuous data.
 
-    .. warning:: The preferred means of creating Spectrum objects from
+    ### ⛔️ Warning The preferred means of creating Spectrum objects from
                  continuous or averaged data is via the instance methods
                  `mne.io.Raw.compute_psd` or
                  `mne.Evoked.compute_psd`. Direct class instantiation
                  is not supported.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Raw or Evoked
         The data from which to compute the frequency spectrum.
@@ -1159,7 +1159,7 @@ class Spectrum(BaseSpectrum):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     **method_kw
@@ -1170,7 +1170,7 @@ class Spectrum(BaseSpectrum):
         method). See `mne.time_frequency.psd_array_welch` and
         `mne.time_frequency.psd_array_multitaper` for details.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     ch_names : list
         The channel names.
@@ -1216,19 +1216,19 @@ class Spectrum(BaseSpectrum):
         **method_kw,
     ) -> None: ...
     def __getitem__(self, item):
-        """Get Spectrum data.
+        """### Get Spectrum data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         item : int | slice | array-like
             Indexing is similar to a `NumPy array<numpy.ndarray>`; see
             Notes.
 
-        Returns
+        ### ⏎ Returns
         -------
         %(getitem_spectrum_return)s
 
-        Notes
+        ### 📖 Notes
         -----
         Integer-, list-, and slice-based indexing is possible:
 
@@ -1238,7 +1238,7 @@ class Spectrum(BaseSpectrum):
           the first and third channels
         - ``spectrum[(4, 7)]`` is the same as ``spectrum[4, 7]``.
 
-        .. note::
+        ### 💡 Note
 
            Unlike `mne.io.Raw` objects (which returns a tuple of the
            requested data values and the corresponding times), accessing
@@ -1249,9 +1249,9 @@ class Spectrum(BaseSpectrum):
         ...
 
 class SpectrumArray(Spectrum):
-    """Data object for precomputed spectral data (in NumPy array format).
+    """### Data object for precomputed spectral data (in NumPy array format).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array, shape (n_channels, n_freqs)
         The power spectral density for each channel.
@@ -1264,7 +1264,7 @@ class SpectrumArray(Spectrum):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -1275,7 +1275,7 @@ class SpectrumArray(Spectrum):
     mne.io.RawArray
     EpochsSpectrumArray
 
-    Notes
+    ### 📖 Notes
     -----
 
     It is assumed that the data passed in represent spectral *power* (not amplitude,
@@ -1284,19 +1284,19 @@ class SpectrumArray(Spectrum):
     something other than power, at the very least axis labels will be inaccurate (and
     other things may also not work or be incorrect).
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
     """
 
     def __init__(self, data, info, freqs, *, verbose=None) -> None: ...
 
 class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
-    """Data object for spectral representations of epoched data.
+    """### Data object for spectral representations of epoched data.
 
-    .. warning:: The preferred means of creating Spectrum objects from Epochs
+    ### ⛔️ Warning The preferred means of creating Spectrum objects from Epochs
                  is via the instance method `mne.Epochs.compute_psd`.
                  Direct class instantiation is not supported.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Epochs
         The data from which to compute the frequency spectrum.
@@ -1341,7 +1341,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     **method_kw
@@ -1352,7 +1352,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         method). See `mne.time_frequency.psd_array_welch` and
         `mne.time_frequency.psd_array_multitaper` for details.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     ch_names : list
         The channel names.
@@ -1399,24 +1399,24 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         **method_kw,
     ) -> None: ...
     def __getitem__(self, item):
-        """Subselect epochs from an EpochsSpectrum.
+        """### Subselect epochs from an EpochsSpectrum.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         item : int | slice | array-like | str
             Access options are the same as for `mne.Epochs` objects,
             see the docstring of `mne.Epochs.__getitem__` for
             explanation.
 
-        Returns
+        ### ⏎ Returns
         -------
         %(getitem_epochspectrum_return)s
         """
         ...
     def average(self, method: str = "mean"):
-        """Average the spectra across epochs.
+        """### Average the spectra across epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         method : 'mean' | 'median' | callable
             How to aggregate spectra across epochs. If callable, must take a
@@ -1424,7 +1424,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
             ``(n_epochs, n_channels, n_freqs)`` and return an array of shape
             ``(n_channels, n_freqs)``. Default is ``'mean'``.
 
-        Returns
+        ### ⏎ Returns
         -------
         spectrum : instance of Spectrum
             The aggregated spectrum object.
@@ -1432,9 +1432,9 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         ...
 
 class EpochsSpectrumArray(EpochsSpectrum):
-    """Data object for precomputed epoched spectral data (in NumPy array format).
+    """### Data object for precomputed epoched spectral data (in NumPy array format).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array, shape (n_epochs, n_channels, n_freqs)
         The power spectral density for each channel in each epoch.
@@ -1462,7 +1462,7 @@ class EpochsSpectrumArray(EpochsSpectrum):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -1472,7 +1472,7 @@ class EpochsSpectrumArray(EpochsSpectrum):
     mne.EpochsArray
     SpectrumArray
 
-    Notes
+    ### 📖 Notes
     -----
 
     It is assumed that the data passed in represent spectral *power* (not amplitude,
@@ -1481,7 +1481,7 @@ class EpochsSpectrumArray(EpochsSpectrum):
     something other than power, at the very least axis labels will be inaccurate (and
     other things may also not work or be incorrect).
 
-        .. versionadded:: 1.6
+        ✨ Added in vesion 1.6
     """
 
     def __init__(
@@ -1489,14 +1489,14 @@ class EpochsSpectrumArray(EpochsSpectrum):
     ) -> None: ...
 
 def read_spectrum(fname):
-    """Load a `mne.time_frequency.Spectrum` object from disk.
+    """### Load a `mne.time_frequency.Spectrum` object from disk.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to a spectrum file in HDF5 format.
 
-    Returns
+    ### ⏎ Returns
     -------
     spectrum : instance of Spectrum
         The loaded Spectrum object.

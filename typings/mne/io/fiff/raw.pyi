@@ -15,9 +15,9 @@ from ...utils import (
 from ..base import BaseRaw as BaseRaw
 
 class Raw(BaseRaw):
-    """Raw data in FIF format.
+    """### Raw data in FIF format.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like | file-like
         The raw filename to load. For files that have automatically been split,
@@ -27,7 +27,7 @@ class Raw(BaseRaw):
         ``.gz`` extension) will generate a warning. If a file-like object is
         provided, preloading must be used.
 
-        .. versionchanged:: 0.18
+        🎭 Changed in version 0.18
            Support for file-like objects.
     allow_maxshield : bool | str (default False)
         If True, allow loading of data that has been recorded with internal
@@ -47,15 +47,15 @@ class Raw(BaseRaw):
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when split file is missing.
 
-        .. versionadded:: 0.22
+        ✨ Added in vesion 0.22
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
 
     info : mne.Info
@@ -73,7 +73,7 @@ class Raw(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
@@ -89,14 +89,14 @@ class Raw(BaseRaw):
         verbose=None,
     ) -> None: ...
     def fix_mag_coil_types(self):
-        """Fix Elekta magnetometer coil types.
+        """### Fix Elekta magnetometer coil types.
 
-        Returns
+        ### ⏎ Returns
         -------
         raw : instance of Raw
             The raw object. Operates in place.
 
-        Notes
+        ### 📖 Notes
         -----
         This function changes magnetometer coil types 3022 (T1: SQ20483N) and
         3023 (T2: SQ20483-A) to 3024 (T3: SQ20950N) in the channel definition
@@ -112,14 +112,14 @@ class Raw(BaseRaw):
         software coil type 3024 is fully supported. Therefore, it is now safe
         to upgrade the data files to use the true coil type.
 
-        .. note:: The effect of the difference between the coil sizes on the
+        ### 💡 Note The effect of the difference between the coil sizes on the
                   current estimates computed by the MNE software is very small.
                   Therefore the use of mne_fix_mag_coil_types is not mandatory.
         """
         ...
     @property
     def acqparser(self):
-        """The AcqParserFIF for the measurement info.
+        """### The AcqParserFIF for the measurement info.
 
         See Also
         --------
@@ -134,9 +134,9 @@ def read_raw_fif(
     on_split_missing: str = "raise",
     verbose=None,
 ):
-    """Reader function for Raw FIF data.
+    """### Reader function for Raw FIF data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like | file-like
         The raw filename to load. For files that have automatically been split,
@@ -145,7 +145,7 @@ def read_raw_fif(
         raw_tsss.fif.gz, or _meg.fif. If a file-like object is provided,
         preloading must be used.
 
-        .. versionchanged:: 0.18
+        🎭 Changed in version 0.18
            Support for file-like objects.
     allow_maxshield : bool | str (default False)
         If True, allow loading of data that has been recorded with internal
@@ -165,22 +165,22 @@ def read_raw_fif(
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when split file is missing.
 
-        .. versionadded:: 0.22
+        ✨ Added in vesion 0.22
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of Raw
         A Raw object containing FIF data.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
 
     When reading a FIF file, note that the first N seconds annotated
     ``BAD_ACQ_SKIP`` are **skipped**. They are removed from ``raw.times`` and

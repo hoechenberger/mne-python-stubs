@@ -16,12 +16,12 @@ def find_eog_events(
     thresh=None,
     verbose=None,
 ):
-    """Locate EOG artifacts.
+    """### Locate EOG artifacts.
 
-    .. note:: To control true-positive and true-negative detection rates, you
+    ### 💡 Note To control true-positive and true-negative detection rates, you
               may adjust the ``thresh`` parameter.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data.
@@ -56,11 +56,11 @@ def find_eog_events(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     eog_events : array
         Events.
@@ -90,7 +90,7 @@ def create_eog_epochs(
     decim: int = 1,
     verbose=None,
 ):
-    """Conveniently generate epochs around EOG artifact events.
+    """### Conveniently generate epochs around EOG artifact events.
 
     This function will:
 
@@ -101,7 +101,7 @@ def create_eog_epochs(
 
     #. Create `mne.Epochs` around the eyeblinks.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data.
@@ -166,28 +166,28 @@ def create_eog_epochs(
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        .. versionadded:: 0.14.0
+        ✨ Added in vesion 0.14.0
     thresh : float
         Threshold to trigger EOG event.
 
     decim : int
         Factor by which to subsample the data.
 
-        .. warning:: Low-pass filtering is not performed, this simply selects
+        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts
                      may occur.
 
-        .. versionadded:: 0.21.0
+        ✨ Added in vesion 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     eog_epochs : instance of Epochs
         Data epoched around EOG events.
@@ -197,7 +197,7 @@ def create_eog_epochs(
     find_eog_events
     compute_proj_eog
 
-    Notes
+    ### 📖 Notes
     -----
     Filtering is only applied to the EOG channel while finding events.
     The resulting ``eog_epochs`` will have no filtering applied (i.e., have

@@ -6,7 +6,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class CSP(TransformerMixin, BaseEstimator):
-    """M/EEG signal decomposition using the Common Spatial Patterns (CSP).
+    """### M/EEG signal decomposition using the Common Spatial Patterns (CSP).
 
     This class can be used as a supervised decomposition to estimate spatial
     filters for feature extraction. CSP in the context of EEG was first
@@ -14,7 +14,7 @@ class CSP(TransformerMixin, BaseEstimator):
     be found in :footcite:`BlankertzEtAl2008`. Multi-class solving is
     implemented from :footcite:`Grosse-WentrupBuss2008`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     n_components : int (default 4)
         The number of components to decompose M/EEG signals. This number should
@@ -47,7 +47,7 @@ class CSP(TransformerMixin, BaseEstimator):
     cov_method_params : dict | None
         Parameters to pass to `mne.compute_covariance`.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
@@ -94,7 +94,7 @@ class CSP(TransformerMixin, BaseEstimator):
 
         The default is ``None``.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
     component_order : 'mutual_info' | 'alternate' (default 'mutual_info')
         If ``'mutual_info'`` order components by decreasing mutual information
         (in the two-class case this uses a simplification which orders
@@ -104,9 +104,9 @@ class CSP(TransformerMixin, BaseEstimator):
         the smallest, the second-to-largest, the second-to-smallest, and so on
         :footcite:`BlankertzEtAl2008`.
 
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
 
-    Attributes
+    ### 📊 Attributes
     ----------
     filters_ :  ndarray, shape (n_channels, n_channels)
         If fit, the CSP components used to decompose the data, else None.
@@ -154,30 +154,30 @@ class CSP(TransformerMixin, BaseEstimator):
     std_: Incomplete
 
     def fit(self, X, y):
-        """Estimate the CSP decomposition on epochs.
+        """### Estimate the CSP decomposition on epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : ndarray, shape (n_epochs, n_channels, n_times)
             The data on which to estimate the CSP.
         y : array, shape (n_epochs,)
             The class for each epoch.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of CSP
             Returns the modified instance.
         """
         ...
     def transform(self, X):
-        """Estimate epochs sources given the CSP filters.
+        """### Estimate epochs sources given the CSP filters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times)
             The data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : ndarray
             If self.transform_into == 'average_power' then returns the power of
@@ -187,12 +187,12 @@ class CSP(TransformerMixin, BaseEstimator):
         """
         ...
     def fit_transform(self, X, y, **fit_params):
-        """Fit to data, then transform it.
+        """### Fit to data, then transform it.
 
         Fits transformer to ``X`` and ``y`` with optional parameters
         ``fit_params``, and returns a transformed version of ``X``.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_samples, n_features)
             Training set.
@@ -201,7 +201,7 @@ class CSP(TransformerMixin, BaseEstimator):
         **fit_params : dict
             Additional fitting parameters passed to the ``fit`` method..
 
-        Returns
+        ### ⏎ Returns
         -------
         X_new : array, shape (n_samples, n_features_new)
             Transformed array.
@@ -239,12 +239,12 @@ class CSP(TransformerMixin, BaseEstimator):
         ncols: str = "auto",
         show: bool = True,
     ):
-        """Plot topographic patterns of components.
+        """### Plot topographic patterns of components.
 
         The patterns explain how the measured data was generated from the
         neural sources (a.k.a. the forward model).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         info : mne.Info
@@ -262,7 +262,7 @@ class CSP(TransformerMixin, BaseEstimator):
             passing an ``array-like`` object (e.g., ``[0.1, 0.2, 0.3]``). If
             ``None`` (default), no averaging will take place.
 
-            .. versionchanged:: 1.1
+            🎭 Changed in version 1.1
                Support for ``array-like`` input.
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
             The channel type to plot. For ``'grad'``, the gradiometers are
@@ -327,8 +327,8 @@ class CSP(TransformerMixin, BaseEstimator):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -353,13 +353,13 @@ class CSP(TransformerMixin, BaseEstimator):
                 but it can extend beyond the head when sensors are plotted outside
                 the head circle.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         border : float | 'mean'
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         res : int
             The resolution of the topomap image (number of pixels along each side).
@@ -378,7 +378,7 @@ class CSP(TransformerMixin, BaseEstimator):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            .. warning::  Interactive mode works smoothly only for a small amount
+            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -388,21 +388,21 @@ class CSP(TransformerMixin, BaseEstimator):
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data. Defaults to ``(None, None)``.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-            See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+            See `Matplotlib docs <matplotlib:colormapnorms>`
             for more details on colormap normalization, and
-            :ref:`the ERDs example<cnorm-example>` for an example of its use.
+            `the ERDs example<cnorm-example>` for an example of its use.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
         cbar_fmt : str
-            Formatting string for colorbar tick labels. See :ref:`formatspec` for
+            Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
         units : str | None
@@ -420,11 +420,11 @@ class CSP(TransformerMixin, BaseEstimator):
             or ``ncols`` is ``'auto'``, the necessary number will be inferred. Defaults
             to ``nrows=1, ncols='auto'``.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
         show : bool
             Show the figure if ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
            The figure.
@@ -462,12 +462,12 @@ class CSP(TransformerMixin, BaseEstimator):
         ncols: str = "auto",
         show: bool = True,
     ):
-        """Plot topographic filters of components.
+        """### Plot topographic filters of components.
 
         The filters are used to extract discriminant neural sources from
         the measured data (a.k.a. the backward model).
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         info : mne.Info
@@ -485,7 +485,7 @@ class CSP(TransformerMixin, BaseEstimator):
             passing an ``array-like`` object (e.g., ``[0.1, 0.2, 0.3]``). If
             ``None`` (default), no averaging will take place.
 
-            .. versionchanged:: 1.1
+            🎭 Changed in version 1.1
                Support for ``array-like`` input.
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
             The channel type to plot. For ``'grad'``, the gradiometers are
@@ -550,8 +550,8 @@ class CSP(TransformerMixin, BaseEstimator):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -576,13 +576,13 @@ class CSP(TransformerMixin, BaseEstimator):
                 but it can extend beyond the head when sensors are plotted outside
                 the head circle.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         border : float | 'mean'
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         res : int
             The resolution of the topomap image (number of pixels along each side).
@@ -601,7 +601,7 @@ class CSP(TransformerMixin, BaseEstimator):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            .. warning::  Interactive mode works smoothly only for a small amount
+            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -611,21 +611,21 @@ class CSP(TransformerMixin, BaseEstimator):
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-            See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+            See `Matplotlib docs <matplotlib:colormapnorms>`
             for more details on colormap normalization, and
-            :ref:`the ERDs example<cnorm-example>` for an example of its use.
+            `the ERDs example<cnorm-example>` for an example of its use.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
 
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
         cbar_fmt : str
-            Formatting string for colorbar tick labels. See :ref:`formatspec` for
+            Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
         units : str | None
@@ -643,11 +643,11 @@ class CSP(TransformerMixin, BaseEstimator):
             or ``ncols`` is ``'auto'``, the necessary number will be inferred. Defaults
             to ``nrows=1, ncols='auto'``.
 
-            .. versionadded:: 1.3
+            ✨ Added in vesion 1.3
         show : bool
             Show the figure if ``True``.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of matplotlib.figure.Figure
            The figure.
@@ -655,7 +655,7 @@ class CSP(TransformerMixin, BaseEstimator):
         ...
 
 class SPoC(CSP):
-    """Implementation of the SPoC spatial filtering.
+    """### Implementation of the SPoC spatial filtering.
 
     Source Power Comodulation (SPoC) :footcite:`DahneEtAl2014` allows to
     extract spatial filters and
@@ -668,7 +668,7 @@ class SPoC(CSP):
     extraction of motor patterns using EMG power or audio patterns using sound
     envelope.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     n_components : int
         The number of components to decompose M/EEG signals.
@@ -689,7 +689,7 @@ class SPoC(CSP):
     cov_method_params : dict | None
         Parameters to pass to `mne.compute_covariance`.
 
-        .. versionadded:: 0.16
+        ✨ Added in vesion 0.16
 
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
@@ -736,9 +736,9 @@ class SPoC(CSP):
 
         The default is ``None``.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
 
-    Attributes
+    ### 📊 Attributes
     ----------
     filters_ : ndarray, shape (n_channels, n_channels)
         If fit, the SPoC spatial filters, else None.
@@ -767,7 +767,7 @@ class SPoC(CSP):
         cov_method_params=None,
         rank=None,
     ) -> None:
-        """Init of SPoC."""
+        """### Init of SPoC."""
         ...
     patterns_: Incomplete
     filters_: Incomplete
@@ -775,30 +775,30 @@ class SPoC(CSP):
     std_: Incomplete
 
     def fit(self, X, y):
-        """Estimate the SPoC decomposition on epochs.
+        """### Estimate the SPoC decomposition on epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : ndarray, shape (n_epochs, n_channels, n_times)
             The data on which to estimate the SPoC.
         y : array, shape (n_epochs,)
             The class for each epoch.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of SPoC
             Returns the modified instance.
         """
         ...
     def transform(self, X):
-        """Estimate epochs sources given the SPoC filters.
+        """### Estimate epochs sources given the SPoC filters.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_epochs, n_channels, n_times)
             The data.
 
-        Returns
+        ### ⏎ Returns
         -------
         X : ndarray
             If self.transform_into == 'average_power' then returns the power of

@@ -9,23 +9,23 @@ from .mxne_debiasing import compute_bias as compute_bias
 from _typeshed import Incomplete
 
 def groups_norm2(A, n_orient):
-    """Compute squared L2 norms of groups inplace."""
+    """### Compute squared L2 norms of groups inplace."""
     ...
 
 def norm_l2inf(A, n_orient, copy: bool = True):
-    """L2-inf norm."""
+    """### L2-inf norm."""
     ...
 
 def norm_l21(A, n_orient, copy: bool = True):
-    """L21 norm."""
+    """### L21 norm."""
     ...
 
 def dgap_l21(M, G, X, active_set, alpha, n_orient):
-    """Duality gap for the mixed norm inverse problem.
+    """### Duality gap for the mixed norm inverse problem.
 
     See :footcite:`GramfortEtAl2012`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     M : array, shape (n_sensors, n_times)
         The data.
@@ -40,7 +40,7 @@ def dgap_l21(M, G, X, active_set, alpha, n_orient):
     n_orient : int
         Number of dipoles per locations (typically 1 or 3).
 
-    Returns
+    ### ⏎ Returns
     -------
     gap : float
         Dual gap.
@@ -73,12 +73,12 @@ def mixed_norm_solver(
     active_set_init=None,
     X_init=None,
 ):
-    """Solve L1/L2 mixed-norm inverse problem with active set strategy.
+    """### Solve L1/L2 mixed-norm inverse problem with active set strategy.
 
     See references :footcite:`GramfortEtAl2012,StrohmeierEtAl2016,
     BertrandEtAl2020`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     M : array, shape (n_sensors, n_times)
         The data.
@@ -94,7 +94,7 @@ def mixed_norm_solver(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     active_set_size : int
@@ -118,7 +118,7 @@ def mixed_norm_solver(
         The initial weight matrix used for warm starting the solver. If None,
         the weights are initialized at zero.
 
-    Returns
+    ### ⏎ Returns
     -------
     X : array, shape (n_active, n_times)
         The source estimates.
@@ -151,11 +151,11 @@ def iterative_mixed_norm_solver(
     solver: str = "auto",
     weight_init=None,
 ):
-    """Solve L0.5/L2 mixed-norm inverse problem with active set strategy.
+    """### Solve L0.5/L2 mixed-norm inverse problem with active set strategy.
 
     See reference :footcite:`StrohmeierEtAl2016`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     M : array, shape (n_sensors, n_times)
         The data.
@@ -174,7 +174,7 @@ def iterative_mixed_norm_solver(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     active_set_size : int
@@ -191,7 +191,7 @@ def iterative_mixed_norm_solver(
         The initial weight used for reweighting the gain matrix. If None, the
         weights are initialized with ones.
 
-    Returns
+    ### ⏎ Returns
     -------
     X : array, shape (n_active, n_times)
         The source estimates.
@@ -207,22 +207,22 @@ def iterative_mixed_norm_solver(
     ...
 
 def tf_lipschitz_constant(M, G, phi, phiT, tol: float = 0.001, verbose=None):
-    """Compute lipschitz constant for FISTA.
+    """### Compute lipschitz constant for FISTA.
 
     It uses a power iteration method.
     """
     ...
 
 def safe_max_abs(A, ia):
-    """Compute np.max(np.abs(A[ia])) possible with empty A."""
+    """### Compute np.max(np.abs(A[ia])) possible with empty A."""
     ...
 
 def safe_max_abs_diff(A, ia, B, ib):
-    """Compute np.max(np.abs(A)) possible with empty A."""
+    """### Compute np.max(np.abs(A)) possible with empty A."""
     ...
 
 class _Phi:
-    """Have phi stft as callable w/o using a lambda that does not pickle."""
+    """### Have phi stft as callable w/o using a lambda that does not pickle."""
 
     wsize: Incomplete
     tstep: Incomplete
@@ -236,11 +236,11 @@ class _Phi:
     def __init__(self, wsize, tstep, n_coefs, n_times) -> None: ...
     def __call__(self, x): ...
     def norm(self, z, ord: int = 2):
-        """Squared L2 norm if ord == 2 and L1 norm if order == 1."""
+        """### Squared L2 norm if ord == 2 and L1 norm if order == 1."""
         ...
 
 class _PhiT:
-    """Have phi.T istft as callable w/o using a lambda that does not pickle."""
+    """### Have phi.T istft as callable w/o using a lambda that does not pickle."""
 
     tstep: Incomplete
     n_freqs: Incomplete
@@ -255,15 +255,15 @@ class _PhiT:
     def __call__(self, z): ...
 
 def norm_l21_tf(Z, phi, n_orient, w_space=None):
-    """L21 norm for TF."""
+    """### L21 norm for TF."""
     ...
 
 def norm_l1_tf(Z, phi, n_orient, w_time):
-    """L1 norm for TF."""
+    """### L1 norm for TF."""
     ...
 
 def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
-    """Weighted epsilon norm.
+    """### Weighted epsilon norm.
 
     The weighted epsilon norm is the dual norm of::
 
@@ -277,7 +277,7 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
     Y and w_time are non-negative. See
     :footcite:`NdiayeEtAl2016,BurdakovMerkulov2001`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     Y : array, shape (n_coefs,)
         The input data.
@@ -293,7 +293,7 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
         to 1 are used.
 
 
-    Returns
+    ### ⏎ Returns
     -------
     nu : float
         The value of the dual norm evaluated at Y.
@@ -305,9 +305,9 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
     ...
 
 def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=None, w_time=None):
-    """Weighted epsilon-inf norm of phi(np.dot(G.T, R)).
+    """### Weighted epsilon-inf norm of phi(np.dot(G.T, R)).
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     G : array, shape (n_sensors, n_sources)
         Gain matrix a.k.a. lead field.
@@ -327,7 +327,7 @@ def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=None, w_time=None):
         Weights for the L1 term of the epsilon norm. If None, weights are
         all equal to 1.
 
-    Returns
+    ### ⏎ Returns
     -------
     nu : float
         The maximum value of the epsilon norms over groups of n_orient dipoles
@@ -349,11 +349,11 @@ def dgap_l21l1(
     w_space=None,
     w_time=None,
 ):
-    """Duality gap for the time-frequency mixed norm inverse problem.
+    """### Duality gap for the time-frequency mixed norm inverse problem.
 
     See :footcite:`GramfortEtAl2012,NdiayeEtAl2016`
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     M : array, shape (n_sensors, n_times)
         The data.
@@ -381,7 +381,7 @@ def dgap_l21l1(
     w_time : array, shape (n_positions, n_coefs)
         Array of TF weights.
 
-    Returns
+    ### ⏎ Returns
     -------
     gap : float
         Dual gap
@@ -414,11 +414,11 @@ def tf_mixed_norm_solver(
     dgap_freq: int = 10,
     verbose=None,
 ):
-    """Solve TF L21+L1 inverse solver with BCD and active set approach.
+    """### Solve TF L21+L1 inverse solver with BCD and active set approach.
 
     See :footcite:`GramfortEtAl2013b,GramfortEtAl2011,BekhtiEtAl2016`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     M : array, shape (n_sensors, n_times)
         The data.
@@ -456,11 +456,11 @@ def tf_mixed_norm_solver(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     X : array, shape (n_active, n_times)
         The source estimates.
@@ -493,9 +493,9 @@ def iterative_tf_mixed_norm_solver(
     dgap_freq: int = 10,
     verbose=None,
 ):
-    """Solve TF L0.5/L1 + L0.5 inverse problem with BCD + active set approach.
+    """### Solve TF L0.5/L1 + L0.5 inverse problem with BCD + active set approach.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     M: array, shape (n_sensors, n_times)
         The data.
@@ -536,11 +536,11 @@ def iterative_tf_mixed_norm_solver(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     X : array, shape (n_active, n_times)
         The source estimates.

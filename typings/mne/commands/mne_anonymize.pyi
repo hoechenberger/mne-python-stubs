@@ -3,9 +3,9 @@ from _typeshed import Incomplete
 ANONYMIZE_FILE_PREFIX: str
 
 def mne_anonymize(fif_fname, out_fname, keep_his, daysback, overwrite) -> None:
-    """Call *anonymize_info* on fif file and save.
+    """### Call *anonymize_info* on fif file and save.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fif_fname : path-like
         Raw fif File
@@ -25,7 +25,7 @@ def mne_anonymize(fif_fname, out_fname, keep_his, daysback, overwrite) -> None:
     ...
 
 def run() -> None:
-    """Run *mne_anonymize* command."""
+    """### Run *mne_anonymize* command."""
     ...
 
 is_main: Incomplete

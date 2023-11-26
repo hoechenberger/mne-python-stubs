@@ -3,9 +3,9 @@ from .constants import FIFF as FIFF
 from _typeshed import Incomplete
 
 class Tag:
-    """Tag in FIF tree structure.
+    """### Tag in FIF tree structure.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     kind : int
         Kind of Tag.
@@ -30,13 +30,13 @@ class Tag:
     def __eq__(self, tag): ...
 
 def read_tag_info(fid):
-    """Read Tag info (or header)."""
+    """### Read Tag info (or header)."""
     ...
 
 def read_tag(fid, pos=None, shape=None, rlims=None):
-    """Read a Tag from a file at a given position.
+    """### Read a Tag from a file at a given position.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fid : file
         The open FIF file descriptor.
@@ -51,7 +51,7 @@ def read_tag(fid, pos=None, shape=None, rlims=None):
         be used with data stored as a vector (not implemented for matrices
         yet).
 
-    Returns
+    ### ⏎ Returns
     -------
     tag : Tag
         The Tag read.
@@ -59,9 +59,9 @@ def read_tag(fid, pos=None, shape=None, rlims=None):
     ...
 
 def find_tag(fid, node, findkind):
-    """Find Tag in an open FIF file descriptor.
+    """### Find Tag in an open FIF file descriptor.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fid : file-like
         Open file.
@@ -70,7 +70,7 @@ def find_tag(fid, node, findkind):
     findkind : int
         Tag kind to find.
 
-    Returns
+    ### ⏎ Returns
     -------
     tag : instance of Tag
         The first tag found.
@@ -78,5 +78,5 @@ def find_tag(fid, node, findkind):
     ...
 
 def has_tag(node, kind):
-    """Check if the node contains a Tag of a given kind."""
+    """### Check if the node contains a Tag of a given kind."""
     ...

@@ -5,9 +5,9 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_neuralynx(
     fname, *, preload: bool = False, exclude_fname_patterns=None, verbose=None
 ):
-    """Reader for Neuralynx files.
+    """### Reader for Neuralynx files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to a folder with Neuralynx .ncs files.
@@ -25,11 +25,11 @@ def read_raw_neuralynx(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawNeuralynx
         A Raw object containing Neuralynx data.
@@ -42,7 +42,7 @@ def read_raw_neuralynx(
     ...
 
 class RawNeuralynx(BaseRaw):
-    """RawNeuralynx class."""
+    """### RawNeuralynx class."""
 
     def __init__(
         self,

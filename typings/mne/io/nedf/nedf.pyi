@@ -3,16 +3,16 @@ from ...utils import warn as warn
 from ..base import BaseRaw as BaseRaw
 
 class RawNedf(BaseRaw):
-    """Raw object from NeuroElectrics nedf file."""
+    """### Raw object from NeuroElectrics nedf file."""
 
     def __init__(self, filename, preload: bool = False, verbose=None) -> None: ...
 
 def read_raw_nedf(filename, preload: bool = False, verbose=None):
-    """Read NeuroElectrics .nedf files.
+    """### Read NeuroElectrics .nedf files.
 
     NEDF file versions starting from 1.3 are supported.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     filename : path-like
         Path to the ``.nedf`` file.
@@ -26,11 +26,11 @@ def read_raw_nedf(filename, preload: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawNedf
         A Raw object containing NEDF data.

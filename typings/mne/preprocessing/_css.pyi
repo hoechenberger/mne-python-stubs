@@ -9,9 +9,9 @@ def cortical_signal_suppression(
     *,
     verbose=None,
 ):
-    """Apply cortical signal suppression (CSS) to evoked data.
+    """### Apply cortical signal suppression (CSS) to evoked data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked
         The evoked object to use for CSS. Must contain magnetometer,
@@ -38,17 +38,17 @@ def cortical_signal_suppression(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     evoked_subcortical : instance of Evoked
         The evoked object with cortical contributions to the EEG data
         suppressed.
 
-    Notes
+    ### 📖 Notes
     -----
     This method removes the common signal subspace between the magnetometer
     data and the gradiometer data from the EEG data. This is done by a temporal

@@ -16,9 +16,9 @@ def project_sensors_onto_brain(
     copy: bool = True,
     verbose=None,
 ):
-    """Project sensors onto the brain surface.
+    """### Project sensors onto the brain surface.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -55,24 +55,24 @@ def project_sensors_onto_brain(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
 
-    Notes
+    ### 📖 Notes
     -----
     This is useful in ECoG analysis for compensating for "brain shift"
     or shrinking of the brain away from the skull due to changes
     in pressure during the craniotomy.
 
     To use the brain surface, a BEM model must be created e.g. using
-    :ref:`mne watershed_bem` using the T1 or :ref:`mne flash_bem`
+    `mne watershed_bem` using the T1 or `mne flash_bem`
     using a FLASH scan.
     """
     ...

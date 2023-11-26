@@ -9,9 +9,9 @@ def resolution_metrics(
     threshold: float = 0.5,
     verbose=None,
 ):
-    """Compute spatial resolution metrics for linear solvers.
+    """### Compute spatial resolution metrics for linear solvers.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     resmat : array, shape (n_orient * n_vertices, n_vertices)
         The resolution matrix.
@@ -53,20 +53,20 @@ def resolution_metrics(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     resolution_metric : instance of SourceEstimate
         The resolution metric.
 
-    Notes
+    ### 📖 Notes
     -----
     For details, see :footcite:`MolinsEtAl2008,HaukEtAl2019`.
 
-    .. versionadded:: 0.20
+    ✨ Added in vesion 0.20
 
     References
     ----------

@@ -1,9 +1,9 @@
 from ..utils import logger as logger
 
 def peak_finder(x0, thresh=None, extrema: int = 1, verbose=None):
-    """Noise-tolerant fast peak-finding algorithm.
+    """### Noise-tolerant fast peak-finding algorithm.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x0 : 1d array
         A real vector from the maxima will be found (required).
@@ -18,18 +18,18 @@ def peak_finder(x0, thresh=None, extrema: int = 1, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     peak_loc : array
         The indices of the identified peaks in x0.
     peak_mag : array
         The magnitude of the identified peaks.
 
-    Notes
+    ### 📖 Notes
     -----
     If repeated values are found the first is identified as the peak.
     Conversion from initial Matlab code from:

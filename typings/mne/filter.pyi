@@ -2,14 +2,14 @@ from .parallel import parallel_func as parallel_func
 from .utils import logger as logger, sum_squared as sum_squared, warn as warn
 
 def is_power2(num):
-    """Test if number is a power of 2.
+    """### Test if number is a power of 2.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     num : int
         Number.
 
-    Returns
+    ### ⏎ Returns
     -------
     b : bool
         True if is power of 2.
@@ -24,33 +24,33 @@ def is_power2(num):
     ...
 
 def next_fast_len(target):
-    """Find the next fast size of input data to `fft`, for zero-padding, etc.
+    """### Find the next fast size of input data to `fft`, for zero-padding, etc.
 
     SciPy's FFTPACK has efficient functions for radix {2, 3, 4, 5}, so this
     returns the next composite of the prime factors 2, 3, and 5 which is
     greater than or equal to `target`. (These are also known as 5-smooth
     numbers, regular numbers, or Hamming numbers.)
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     target : int
         Length to start searching from.  Must be a positive integer.
 
-    Returns
+    ### ⏎ Returns
     -------
     out : int
         The first 5-smooth number greater than or equal to `target`.
 
-    Notes
+    ### 📖 Notes
     -----
     Copied from SciPy with minor modifications.
     """
     ...
 
 def estimate_ringing_samples(system, max_try: int = 100000):
-    """Estimate filter ringing.
+    """### Estimate filter ringing.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     system : tuple | ndarray
         A tuple of (b, a) or ndarray of second-order sections coefficients.
@@ -58,7 +58,7 @@ def estimate_ringing_samples(system, max_try: int = 100000):
         Approximate maximum number of samples to try.
         This will be changed to a multiple of 1000.
 
-    Returns
+    ### ⏎ Returns
     -------
     n : int
         The approximate ringing.
@@ -76,7 +76,7 @@ def construct_iir_filter(
     phase: str = "zero",
     verbose=None,
 ):
-    """Use IIR parameters to get filtering coefficients.
+    """### Use IIR parameters to get filtering coefficients.
 
     This function works like a wrapper for iirdesign and iirfilter in
     scipy.signal to make filter coefficients for IIR filtering. It also
@@ -85,7 +85,7 @@ def construct_iir_filter(
     function) with the filter coefficients ('b' and 'a') and an estimate
     of the padding necessary ('padlen') so IIR filtering can be performed.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     iir_params : dict
         Dictionary of parameters to use for IIR filtering.
@@ -93,7 +93,7 @@ def construct_iir_filter(
             * If ``iir_params['sos']`` exists, it will be used as
               second-order sections to perform IIR filtering.
 
-              .. versionadded:: 0.13
+              ✨ Added in vesion 0.13
 
             * Otherwise, if ``iir_params['b']`` and ``iir_params['a']``
               exist, these will be used as coefficients to perform IIR
@@ -147,15 +147,15 @@ def construct_iir_filter(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     iir_params : dict
         Updated iir_params dict, with the entries (set only if they didn't
@@ -167,13 +167,13 @@ def construct_iir_filter(
     mne.filter.filter_data
     mne.io.Raw.filter
 
-    Notes
+    ### 📖 Notes
     -----
     This function triages calls to `scipy.signal.iirfilter` and
     `scipy.signal.iirdesign` based on the input arguments (see
     linked functions for more details).
 
-    .. versionchanged:: 0.14
+    🎭 Changed in version 0.14
        Second-order sections are used in filter design by default (replacing
        ``output='ba'`` by ``output='sos'``) to help ensure filter stability
        and reduce numerical error.
@@ -212,7 +212,7 @@ def construct_iir_filter(
     (array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]), [1, 0], 0)
 
     For more information, see the tutorials
-    :ref:`disc-filtering` and :ref:`tut-filter-resample`.
+    `disc-filtering` and `tut-filter-resample`.
     """
     ...
 
@@ -236,9 +236,9 @@ def filter_data(
     *,
     verbose=None,
 ):
-    """Filter a subset of channels.
+    """### Filter a subset of channels.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : ndarray, shape (..., n_times)
         The data to filter.
@@ -323,13 +323,13 @@ def filter_data(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     fir_window : str
         The window to use in FIR design, can be "hamming" (default),
         "hann" (default in 0.13), or "blackman".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     fir_design : str
         Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -337,7 +337,7 @@ def filter_data(
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     pad : str
         The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -348,15 +348,15 @@ def filter_data(
         Only used for ``method='fir'``.
         The default is ``'reflect_limited'``.
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     data : ndarray, shape (..., n_times)
         The filtered data.
@@ -369,7 +369,7 @@ def filter_data(
     notch_filter
     resample
 
-    Notes
+    ### 📖 Notes
     -----
     Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
     filter to the channels selected by ``picks``.
@@ -382,12 +382,12 @@ def filter_data(
         * ``l_freq is not None and h_freq is None``: high-pass filter
         * ``l_freq is None and h_freq is not None``: low-pass filter
 
-    .. note:: If n_jobs > 1, more memory is required as
+    ### 💡 Note If n_jobs > 1, more memory is required as
               ``len(picks) * n_times`` additional time points need to
               be temporarily stored in memory.
 
     For more information, see the tutorials
-    :ref:`disc-filtering` and :ref:`tut-filter-resample` and
+    `disc-filtering` and `tut-filter-resample` and
     `mne.filter.create_filter`.
     """
     ...
@@ -407,7 +407,7 @@ def create_filter(
     fir_design: str = "firwin",
     verbose=None,
 ):
-    """Create a FIR or IIR filter.
+    """### Create a FIR or IIR filter.
 
     ``l_freq`` and ``h_freq`` are the frequencies below which and above
     which, respectively, to filter out of the data. Thus the uses are:
@@ -417,7 +417,7 @@ def create_filter(
         * ``l_freq is not None and h_freq is None``: high-pass filter
         * ``l_freq is None and h_freq is not None``: low-pass filter
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : ndarray, shape (..., n_times) | None
         The data that will be filtered. This is used for sanity checking
@@ -492,13 +492,13 @@ def create_filter(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     fir_window : str
         The window to use in FIR design, can be "hamming" (default),
         "hann" (default in 0.13), or "blackman".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     fir_design : str
         Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -506,15 +506,15 @@ def create_filter(
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     filt : array or dict
         Will be an array of FIR coefficients for method='fir', and dict
@@ -524,9 +524,9 @@ def create_filter(
     --------
     filter_data
 
-    Notes
+    ### 📖 Notes
     -----
-    .. note:: For FIR filters, the *cutoff frequency*, i.e. the -6 dB point,
+    ### 💡 Note For FIR filters, the *cutoff frequency*, i.e. the -6 dB point,
               is in the middle of the transition band (when using phase='zero'
               and fir_design='firwin'). For IIR filters, the cutoff frequency
               is given by ``l_freq`` or ``h_freq`` directly, and
@@ -598,7 +598,7 @@ def create_filter(
 
     Where ``Fstop = Fp - trans_bandwidth``.
 
-    .. versionadded:: 0.14
+    ✨ Added in vesion 0.14
     """
     ...
 
@@ -623,12 +623,12 @@ def notch_filter(
     *,
     verbose=None,
 ):
-    """Notch filter for the signal x.
+    """### Notch filter for the signal x.
 
     Applies a zero-phase notch filter to the signal x, operating on the last
     dimension.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x : array
         Signal to filter.
@@ -718,13 +718,13 @@ def notch_filter(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     fir_window : str
         The window to use in FIR design, can be "hamming" (default),
         "hann" (default in 0.13), or "blackman".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     fir_design : str
         Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -732,7 +732,7 @@ def notch_filter(
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     pad : str
         The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -745,11 +745,11 @@ def notch_filter(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     xf : array
         The x array filtered.
@@ -759,7 +759,7 @@ def notch_filter(
     filter_data
     resample
 
-    Notes
+    ### 📖 Notes
     -----
     The frequency response is (approximately) given by::
 
@@ -796,11 +796,11 @@ def resample(
     *,
     verbose=None,
 ):
-    """Resample an array.
+    """### Resample an array.
 
     Operates along the last dimension of the array.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x : ndarray
         Signal to resample.
@@ -831,20 +831,20 @@ def resample(
         of the vector, followed by zeros.
         The default is ``'reflect_limited'``.
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     y : array
         The x array resampled.
 
-    Notes
+    ### 📖 Notes
     -----
     This uses (hopefully) intelligent edge padding and frequency-domain
     windowing improve scipy.signal.resample's resampling method, which
@@ -860,9 +860,9 @@ def resample(
     ...
 
 def detrend(x, order: int = 1, axis: int = -1):
-    """Detrend the array x.
+    """### Detrend the array x.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x : n-d array
         Signal to detrend.
@@ -871,7 +871,7 @@ def detrend(x, order: int = 1, axis: int = -1):
     axis : int
         Axis of the array to operate on.
 
-    Returns
+    ### ⏎ Returns
     -------
     y : array
         The x array detrended.
@@ -890,12 +890,12 @@ def detrend(x, order: int = 1, axis: int = -1):
     ...
 
 class FilterMixin:
-    """Object for Epoch/Evoked filtering."""
+    """### Object for Epoch/Evoked filtering."""
 
     def savgol_filter(self, h_freq, verbose=None):
-        """Filter the data using Savitzky-Golay polynomial method.
+        """### Filter the data using Savitzky-Golay polynomial method.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         h_freq : float
             Approximate high cut-off frequency in Hz. Note that this
@@ -907,11 +907,11 @@ class FilterMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Epochs or Evoked
             The object with the filtering applied.
@@ -920,13 +920,13 @@ class FilterMixin:
         --------
         mne.io.Raw.filter
 
-        Notes
+        ### 📖 Notes
         -----
         For Savitzky-Golay low-pass approximation, see:
 
             https://gist.github.com/larsoner/bbac101d50176611136b
 
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
 
         References
         ----------
@@ -961,9 +961,9 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """Filter a subset of channels.
+        """### Filter a subset of channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         l_freq : float | None
@@ -1045,13 +1045,13 @@ class FilterMixin:
             If ``phase='forward'``, it constructs and applies forward IIR filter using
             `scipy.signal.lfilter`.
 
-            .. versionadded:: 0.13
+            ✨ Added in vesion 0.13
 
         fir_window : str
             The window to use in FIR design, can be "hamming" (default),
             "hann" (default in 0.13), or "blackman".
 
-            .. versionadded:: 0.15
+            ✨ Added in vesion 0.15
 
         fir_design : str
             Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -1059,7 +1059,7 @@ class FilterMixin:
             a time-domain design technique that generally gives improved
             attenuation using fewer samples than "firwin2".
 
-            .. versionadded:: 0.15
+            ✨ Added in vesion 0.15
 
         skip_by_annotation : str | list of str
             If a string (or list of str), any annotation segment that begins
@@ -1071,7 +1071,7 @@ class FilterMixin:
             or `mne.io.Raw.append`, or separated during acquisition.
             To disable, provide an empty list. Only used if ``inst`` is raw.
 
-            .. versionadded:: 0.16.
+            ✨ Added in vesion 0.16.
 
         pad : str
             The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -1083,11 +1083,11 @@ class FilterMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Epochs, Evoked, or Raw
             The filtered data.
@@ -1102,7 +1102,7 @@ class FilterMixin:
         mne.filter.filter_data
         mne.filter.construct_iir_filter
 
-        Notes
+        ### 📖 Notes
         -----
         Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
         filter to the channels selected by ``picks``.
@@ -1122,15 +1122,15 @@ class FilterMixin:
         ``self.info['lowpass']`` and ``self.info['highpass']`` are only
         updated with picks=None.
 
-        .. note:: If n_jobs > 1, more memory is required as
+        ### 💡 Note If n_jobs > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
 
         For more information, see the tutorials
-        :ref:`disc-filtering` and :ref:`tut-filter-resample` and
+        `disc-filtering` and `tut-filter-resample` and
         `mne.filter.create_filter`.
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
         """
         ...
     def resample(
@@ -1143,14 +1143,14 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """Resample data.
+        """### Resample data.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
-        See :ref:`resampling-and-decimating` for more information.
+        See `resampling-and-decimating` for more information.
 
-        .. note:: Data must be loaded.
+        ### 💡 Note Data must be loaded.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         sfreq : float
             New sample rate to use.
@@ -1176,15 +1176,15 @@ class FilterMixin:
             The default is ``'edge'``, which pads with the edge values of each
             vector.
 
-            .. versionadded:: 0.15
+            ✨ Added in vesion 0.15
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Epochs or Evoked
             The resampled object.
@@ -1193,7 +1193,7 @@ class FilterMixin:
         --------
         mne.io.Raw.resample
 
-        Notes
+        ### 📖 Notes
         -----
         For some data, it may be more accurate to use npad=0 to reduce
         artifacts. This is dataset dependent -- check your data!
@@ -1208,9 +1208,9 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """Compute analytic signal or envelope for a subset of channels.
+        """### Compute analytic signal or envelope for a subset of channels.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
@@ -1239,16 +1239,16 @@ class FilterMixin:
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of Raw, Epochs, or Evoked
             The raw object with transformed data.
 
-        Notes
+        ### 📖 Notes
         -----
         **Parameters**
 
@@ -1300,9 +1300,9 @@ def design_mne_c_filter(
     h_trans_bandwidth: float = 5.0,
     verbose=None,
 ):
-    """Create a FIR filter like that used by MNE-C.
+    """### Create a FIR filter like that used by MNE-C.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     sfreq : float
         The sample frequency.
@@ -1319,16 +1319,16 @@ def design_mne_c_filter(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     h : ndarray, shape (8193,)
         The linear-phase (symmetric) FIR filter coefficients.
 
-    Notes
+    ### 📖 Notes
     -----
     This function is provided mostly for reference purposes.
 

@@ -4,21 +4,21 @@ from ..utils import warn as warn
 from _typeshed import Incomplete
 
 class LinearModel(BaseEstimator):
-    """Compute and store patterns from linear models.
+    """### Compute and store patterns from linear models.
 
     The linear model coefficients (filters) are used to extract discriminant
     neural sources from the measured data. This class computes the
     corresponding patterns of these linear filters to make them more
     interpretable :footcite:`HaufeEtAl2014`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     model : object | None
         A linear model from scikit-learn with a fit method
         that updates a ``coef_`` attribute.
         If None the model will be LogisticRegression.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     filters_ : ndarray, shape ([n_targets], n_features)
         If fit, the filters used to decompose the data.
@@ -31,9 +31,9 @@ class LinearModel(BaseEstimator):
     mne.preprocessing.ICA
     mne.preprocessing.Xdawn
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.10
+    ✨ Added in vesion 0.10
 
     References
     ----------
@@ -44,17 +44,17 @@ class LinearModel(BaseEstimator):
 
     def __init__(self, model=None) -> None: ...
     def __getattr__(self, attr):
-        """Wrap to model for some attributes."""
+        """### Wrap to model for some attributes."""
         ...
     patterns_: Incomplete
 
     def fit(self, X, y, **fit_params):
-        """Estimate the coefficients of the linear model.
+        """### Estimate the coefficients of the linear model.
 
         Save the coefficients in the attribute ``filters_`` and
         computes the attribute ``patterns_``.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         X : array, shape (n_samples, n_features)
             The training input samples to estimate the linear coefficients.
@@ -63,7 +63,7 @@ class LinearModel(BaseEstimator):
         **fit_params : dict of string -> object
             Parameters to pass to the fit method of the estimator.
 
-        Returns
+        ### ⏎ Returns
         -------
         self : instance of LinearModel
             Returns the modified instance.
@@ -73,12 +73,12 @@ class LinearModel(BaseEstimator):
     def filters_(self): ...
 
 def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False):
-    """Retrieve the coefficients of an estimator ending with a Linear Model.
+    """### Retrieve the coefficients of an estimator ending with a Linear Model.
 
     This is typically useful to retrieve "spatial filters" or "spatial
     patterns" of decoding models :footcite:`HaufeEtAl2014`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     estimator : object | None
         An estimator from scikit-learn.
@@ -89,7 +89,7 @@ def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False)
         If True, returns the coefficients after inverse transforming them with
         the transformer steps of the estimator.
 
-    Returns
+    ### ⏎ Returns
     -------
     coef : array
         The coefficients.
@@ -112,9 +112,9 @@ def cross_val_multiscore(
     fit_params=None,
     pre_dispatch: str = "2*n_jobs",
 ):
-    """Evaluate a score by cross-validation.
+    """### Evaluate a score by cross-validation.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     estimator : instance of sklearn.base.BaseEstimator
         The object to use to fit the data.
@@ -158,7 +158,7 @@ def cross_val_multiscore(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
     fit_params : dict, optional
@@ -178,7 +178,7 @@ def cross_val_multiscore(
         - A string, giving an expression as a function of n_jobs,
           as in '2*n_jobs'
 
-    Returns
+    ### ⏎ Returns
     -------
     scores : array of float, shape (n_splits,) | shape (n_splits, n_scores)
         Array of scores of the estimator for each run of the cross validation.

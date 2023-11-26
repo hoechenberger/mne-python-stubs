@@ -20,9 +20,9 @@ def select_source_in_label(
     subjects_dir=None,
     surf: str = "sphere",
 ):
-    """Select source positions using a label.
+    """### Select source positions using a label.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : list of dict
         The source space.
@@ -42,28 +42,28 @@ def select_source_in_label(
         both in the label and in the source space). Note that for 'center'
         mode the label values are used as weights.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
     subject : str | None
         The subject the label is defined for.
         Only used with ``location='center'``.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
     surf : str
         The surface to use for Euclidean distance center of mass
         finding. The default here is "sphere", which finds the center
         of mass on the spherical surface to help avoid potential issues
         with cortical folding.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
-    Returns
+    ### ⏎ Returns
     -------
     lh_vertno : list
         Selected source coefficients on the left hemisphere.
@@ -84,14 +84,14 @@ def simulate_sparse_stc(
     subjects_dir=None,
     surf: str = "sphere",
 ):
-    """Generate sparse (n_dipoles) sources time courses from data_fun.
+    """### Generate sparse (n_dipoles) sources time courses from data_fun.
 
     This function randomly selects ``n_dipoles`` vertices in the whole
     cortex or one single vertex (randomly in or in the center of) each
     label if ``labels is not None``. It uses ``data_fun`` to generate
     waveforms for each vertex.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space.
@@ -119,28 +119,28 @@ def simulate_sparse_stc(
         ``'center'`` to use `mne.Label.center_of_mass`. Note that for
         ``'center'`` mode the label values are used as weights.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
     subject : str | None
         The subject the label is defined for.
         Only used with ``location='center'``.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
     subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
     surf : str
         The surface to use for Euclidean distance center of mass
         finding. The default here is "sphere", which finds the center
         of mass on the spherical surface to help avoid potential issues
         with cortical folding.
 
-        .. versionadded:: 0.13
+        ✨ Added in vesion 0.13
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate
         The generated source time courses.
@@ -151,21 +151,21 @@ def simulate_sparse_stc(
     simulate_evoked
     simulate_stc
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.10.0
+    ✨ Added in vesion 0.10.0
     """
     ...
 
 def simulate_stc(
     src, labels, stc_data, tmin, tstep, value_fun=None, allow_overlap: bool = False
 ):
-    """Simulate sources time courses from waveforms and labels.
+    """### Simulate sources time courses from waveforms and labels.
 
     This function generates a source estimate with extended sources by
     filling the labels with the waveforms given in stc_data.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         The source space.
@@ -184,9 +184,9 @@ def simulate_stc(
     allow_overlap : bool
         Allow overlapping labels or not. Default value is False.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
 
-    Returns
+    ### ⏎ Returns
     -------
     stc : SourceEstimate
         The generated source time courses.
@@ -200,9 +200,9 @@ def simulate_stc(
     ...
 
 class SourceSimulator:
-    """Class to generate simulated Source Estimates.
+    """### Class to generate simulated Source Estimates.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     src : instance of SourceSpaces
         Source space.
@@ -216,7 +216,7 @@ class SourceSimulator:
         Comparable to the :term:`first_samp` property of `mne.io.Raw` objects.
         Default is 0.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     duration : float
         The duration of the simulation in seconds.
@@ -231,21 +231,21 @@ class SourceSimulator:
     ) -> None: ...
     @property
     def duration(self):
-        """Duration of the simulation in same units as tstep."""
+        """### Duration of the simulation in same units as tstep."""
         ...
     @property
     def n_times(self):
-        """Number of time samples in the simulation."""
+        """### Number of time samples in the simulation."""
         ...
     @property
     def last_samp(self): ...
     def add_data(self, label, waveform, events) -> None:
-        """Add data to the simulation.
+        """### Add data to the simulation.
 
         Data should be added in the form of a triplet of
         Label (Where) - Waveform(s) (What) - Event(s) (When)
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         label : instance of Label
             The label (as created for example by mne.read_label). If the label
@@ -260,13 +260,13 @@ class SourceSimulator:
         """
         ...
     def get_stim_channel(self, start_sample: int = 0, stop_sample=None):
-        """Get the stim channel from the provided data.
+        """### Get the stim channel from the provided data.
 
         Returns the stim channel data according to the simulation parameters
         which should be added through the add_data method. If both start_sample
         and stop_sample are not specified, the entire duration is used.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         start_sample : int
             First sample in chunk. Default is the value of the ``first_samp``
@@ -275,21 +275,21 @@ class SourceSimulator:
             The final sample of the returned stc. If None, then all samples
             from start_sample onward are returned.
 
-        Returns
+        ### ⏎ Returns
         -------
         stim_data : ndarray of int, shape (n_samples,)
             The stimulation channel data.
         """
         ...
     def get_stc(self, start_sample=None, stop_sample=None):
-        """Simulate a SourceEstimate from the provided data.
+        """### Simulate a SourceEstimate from the provided data.
 
         Returns a SourceEstimate object constructed according to the simulation
         parameters which should be added through function add_data. If both
         start_sample and stop_sample are not specified, the entire duration is
         used.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         start_sample : int | None
             First sample in chunk. If ``None`` the value of the ``first_samp``
@@ -298,12 +298,12 @@ class SourceSimulator:
             The final sample of the returned STC. If ``None``, then all samples
             past ``start_sample`` are returned.
 
-        Returns
+        ### ⏎ Returns
         -------
         stc : SourceEstimate object
             The generated source time courses.
         """
         ...
     def __iter__(self):
-        """Iterate over 1 second STCs."""
+        """### Iterate over 1 second STCs."""
         ...

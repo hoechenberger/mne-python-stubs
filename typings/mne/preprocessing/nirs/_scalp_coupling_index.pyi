@@ -8,13 +8,13 @@ def scalp_coupling_index(
     h_trans_bandwidth: float = 0.3,
     verbose: bool = False,
 ):
-    """Calculate scalp coupling index.
+    """### Calculate scalp coupling index.
 
     This function calculates the scalp coupling index
     :footcite:`pollonini2014auditory`. This is a measure of the quality of the
     connection between the optode and the scalp.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         The raw data.
@@ -47,11 +47,11 @@ def scalp_coupling_index(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     sci : array of float
         Array containing scalp coupling index for each channel.

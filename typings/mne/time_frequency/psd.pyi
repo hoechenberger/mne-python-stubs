@@ -17,11 +17,11 @@ def psd_array_welch(
     output: str = "power",
     verbose=None,
 ):
-    """Compute power spectral density (PSD) using Welch's method.
+    """### Compute power spectral density (PSD) using Welch's method.
 
     Welch's method is described in :footcite:t:`Welch1967`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     x : array, shape=(..., n_times)
         The data to compute PSD from.
@@ -53,11 +53,11 @@ def psd_array_welch(
         its bias relative to the mean. If ``None``, returns the unaggregated
         segments.
 
-        .. versionadded:: 0.19.0
+        ✨ Added in vesion 0.19.0
     window : str | float | tuple
         Windowing function to use. See `scipy.signal.get_window`.
 
-        .. versionadded:: 0.22.0
+        ✨ Added in vesion 0.22.0
 
     remove_dc : bool
         If ``True``, the mean is subtracted from each segment before computing
@@ -71,15 +71,15 @@ def psd_array_welch(
         * ``'complex'`` : the complex fourier coefficients are returned per
           window.
 
-        .. versionadded:: 1.4.0
+        ✨ Added in vesion 1.4.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     psds : ndarray, shape (..., n_freqs) or (..., n_freqs, n_segments)
         The power spectral densities. If ``average='mean`` or
@@ -91,9 +91,9 @@ def psd_array_welch(
     freqs : ndarray, shape (n_freqs,)
         The frequencies.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.14.0
+    ✨ Added in vesion 0.14.0
 
     References
     ----------

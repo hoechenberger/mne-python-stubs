@@ -3,9 +3,9 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_eximia(fname, preload: bool = False, verbose=None):
-    """Reader for an eXimia EEG file.
+    """### Reader for an eXimia EEG file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the eXimia ``.nxe`` data file.
@@ -19,11 +19,11 @@ def read_raw_eximia(fname, preload: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawEximia
         A Raw object containing eXimia data.
@@ -36,9 +36,9 @@ def read_raw_eximia(fname, preload: bool = False, verbose=None):
     ...
 
 class RawEximia(BaseRaw):
-    """Raw object from an Eximia EEG file.
+    """### Raw object from an Eximia EEG file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Path to the eXimia data file (.nxe).
@@ -52,7 +52,7 @@ class RawEximia(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 

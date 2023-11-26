@@ -10,13 +10,13 @@ def compute_proj_hfc(
     accuracy: str = "accurate",
     verbose=None,
 ):
-    """Generate projectors to perform homogeneous/harmonic correction to data.
+    """### Generate projectors to perform homogeneous/harmonic correction to data.
 
     Remove evironmental fields from magentometer data by assuming it is
     explained as a homogeneous :footcite:`TierneyEtAl2021` or harmonic field
     :footcite:`TierneyEtAl2022`. Useful for arrays of OPMs.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info | None
@@ -39,11 +39,11 @@ def compute_proj_hfc(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
 
     projs : list of Projection
@@ -54,12 +54,12 @@ def compute_proj_hfc(
     mne.io.Raw.add_proj
     mne.io.Raw.apply_proj
 
-    Notes
+    ### 📖 Notes
     -----
     To apply the projectors to a dataset, use
     ``inst.add_proj(projs).apply_proj()``.
 
-    .. versionadded:: 1.4
+    ✨ Added in vesion 1.4
 
     References
     ----------

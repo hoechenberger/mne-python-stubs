@@ -4,13 +4,13 @@ from ..utils import warn as warn
 def export_evokeds_mff(
     fname, evoked, history=None, *, overwrite: bool = False, verbose=None
 ) -> None:
-    """Export evoked dataset to MFF.
+    """### Export evoked dataset to MFF.
 
-    .. warning::
+    ### ⛔️ Warning
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     fname : str
@@ -29,17 +29,17 @@ def export_evokeds_mff(
         If True (default False), overwrite the destination file if it
         exists.
 
-        .. versionadded:: 0.24.1
+        ✨ Added in vesion 0.24.1
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.24
+    ✨ Added in vesion 0.24
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,

@@ -135,6 +135,9 @@ for stub_path in stub_paths:
                     expanded_docstring[line_idx] = (obj.col_offset + 4) * " " + line
                     break
 
+            # Make first line bold
+            expanded_docstring[0] = f"### {expanded_docstring[0]}"
+
             expanded_docstring = "\n".join(expanded_docstring)
             obj.body[0].value.value = expanded_docstring
 
@@ -187,6 +190,9 @@ for stub_path in stub_paths:
                             ) * " " + line
                             break
 
+                    # Make first line bold
+                    expanded_docstring[0] = f"### {expanded_docstring[0]}"
+
                     expanded_docstring = "\n".join(expanded_docstring)
                     method.body[0].value.value = expanded_docstring
 
@@ -220,6 +226,16 @@ for stub_path in stub_paths:
         .replace(":meth:", "")
         .replace(":func:", "")
         .replace(":mod:", "")
+        .replace(":ref:", "")
+        .replace(".. warning::", "### ⛔️ Warning")
+        .replace(".. Warning::", "### ⛔️ Warning")
+        .replace(".. note::", "### 💡 Note")
+        .replace(".. versionadded::", "✨ Added in vesion")
+        .replace(".. versionchanged::", "🎭 Changed in version")
+        .replace("Parameters\n", "### 🛠️ Parameters\n")
+        .replace("Attributes\n", "### 📊 Attributes\n")
+        .replace("Returns\n", "### ⏎ Returns\n")
+        .replace("Notes\n", "### 📖 Notes\n")
     )
     del unparsed
 

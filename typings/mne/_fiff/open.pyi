@@ -5,7 +5,7 @@ from .tree import dir_tree_find as dir_tree_find, make_dir_tree as make_dir_tree
 from _typeshed import Incomplete
 
 class _NoCloseRead:
-    """Create a wrapper that will not close when used as a context manager."""
+    """### Create a wrapper that will not close when used as a context manager."""
 
     fid: Incomplete
 
@@ -22,9 +22,9 @@ class _NoCloseRead:
     def read(self, size: int = -1): ...
 
 def fiff_open(fname, preload: bool = False, verbose=None):
-    """Open a FIF file.
+    """### Open a FIF file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like | fid
         Name of the fif file, or an opened file (will seek back to 0).
@@ -35,11 +35,11 @@ def fiff_open(fname, preload: bool = False, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     fid : file
         The file descriptor of the open file.
@@ -62,11 +62,11 @@ def show_fiff(
     show_bytes: bool = False,
     verbose=None,
 ):
-    """Show FIFF information.
+    """### Show FIFF information.
 
     This function is similar to mne_show_fiff.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         Filename to evaluate.
@@ -88,11 +88,11 @@ def show_fiff(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     contents : str
         The contents of the file.

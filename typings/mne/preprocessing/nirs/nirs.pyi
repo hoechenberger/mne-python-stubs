@@ -2,9 +2,9 @@ from ..._fiff.pick import pick_types as pick_types
 from ...utils import fill_doc as fill_doc
 
 def source_detector_distances(info, picks=None):
-    """Determine the distance between NIRS source and detectors.
+    """### Determine the distance between NIRS source and detectors.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -19,7 +19,7 @@ def source_detector_distances(info, picks=None):
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
-    Returns
+    ### ⏎ Returns
     -------
     dists : array of float
         Array containing distances in meters.
@@ -28,12 +28,12 @@ def source_detector_distances(info, picks=None):
     ...
 
 def short_channels(info, threshold: float = 0.01):
-    """Determine which NIRS channels are short.
+    """### Determine which NIRS channels are short.
 
     Channels with a source to detector distance of less than
     ``threshold`` are reported as short. The default threshold is 0.01 m.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -41,7 +41,7 @@ def short_channels(info, threshold: float = 0.01):
     threshold : float
         The threshold distance for what is considered short in meters.
 
-    Returns
+    ### ⏎ Returns
     -------
     short : array of bool
         Array indicating which channels are short.

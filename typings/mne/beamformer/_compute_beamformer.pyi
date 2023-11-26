@@ -6,26 +6,26 @@ from ..time_frequency.csd import CrossSpectralDensity as CrossSpectralDensity
 from ..utils import check_fname as check_fname, logger as logger, warn as warn
 
 class Beamformer(dict):
-    """A computed beamformer.
+    """### A computed beamformer.
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.17
+    ✨ Added in vesion 0.17
     """
 
     def copy(self):
-        """Copy the beamformer.
+        """### Copy the beamformer.
 
-        Returns
+        ### ⏎ Returns
         -------
         beamformer : instance of Beamformer
             A deep copy of the beamformer.
         """
         ...
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
-        """Save the beamformer filter.
+        """### Save the beamformer filter.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             The filename to use to write the HDF5 data.
@@ -37,21 +37,21 @@ class Beamformer(dict):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
 
 def read_beamformer(fname):
-    """Read a beamformer filter.
+    """### Read a beamformer filter.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The filename of the HDF5 file.
 
-    Returns
+    ### ⏎ Returns
     -------
     filter : instance of Beamformer
         The beamformer filter.

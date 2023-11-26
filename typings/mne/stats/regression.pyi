@@ -5,9 +5,9 @@ from ..source_estimate import SourceEstimate as SourceEstimate
 from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 
 def linear_regression(inst, design_matrix, names=None):
-    """Fit Ordinary Least Squares (OLS) regression.
+    """### Fit Ordinary Least Squares (OLS) regression.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     inst : instance of Epochs | iterable of SourceEstimate
         The data to be regressed. Contains all the trials, sensors, and time
@@ -24,7 +24,7 @@ def linear_regression(inst, design_matrix, names=None):
         present). Otherwise, the default names are ``'x0'``, ``'x1'``,
         ``'x2', …, 'x(n-1)'`` for ``n`` regressors.
 
-    Returns
+    ### ⏎ Returns
     -------
     results : dict of namedtuple
         For each regressor (key), a namedtuple is provided with the
@@ -59,7 +59,7 @@ def linear_regression_raw(
     picks=None,
     solver: str = "cholesky",
 ):
-    """Estimate regression-based evoked potentials/fields by linear modeling.
+    """### Estimate regression-based evoked potentials/fields by linear modeling.
 
     This models the full M/EEG time course, including correction for
     overlapping potentials and allowing for continuous/scalar predictors.
@@ -68,7 +68,7 @@ def linear_regression_raw(
     ``Y = bX`` and returning ``b`` as evoked-like time series split by
     condition. See :footcite:`SmithKutas2015`.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         A raw object. Note: be very careful about data that is not
@@ -144,7 +144,7 @@ def linear_regression_raw(
         If str, must be ``'cholesky'``, in which case the solver used is
         ``linalg.solve(dot(X.T, X), dot(X.T, y))``.
 
-    Returns
+    ### ⏎ Returns
     -------
     evokeds : dict
         A dict where the keys correspond to conditions and the values are

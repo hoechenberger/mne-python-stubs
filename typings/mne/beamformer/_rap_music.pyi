@@ -17,15 +17,15 @@ def rap_music(
     *,
     verbose=None,
 ):
-    """RAP-MUSIC source localization method.
+    """### RAP-MUSIC source localization method.
 
     Compute Recursively Applied and Projected MUltiple SIgnal Classification
     (RAP-MUSIC) :footcite:`MosherLeahy1999,MosherLeahy1996` on evoked data.
 
-    .. note:: The goodness of fit (GOF) of all the returned dipoles is the
+    ### 💡 Note The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked
         Evoked data to localize.
@@ -40,11 +40,11 @@ def rap_music(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     dipoles : list of instance of Dipole
         The dipole fits.
@@ -57,9 +57,9 @@ def rap_music(
     mne.fit_dipole
     mne.beamformer.trap_music
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
 
     References
     ----------
@@ -76,15 +76,15 @@ def trap_music(
     *,
     verbose=None,
 ):
-    """TRAP-MUSIC source localization method.
+    """### TRAP-MUSIC source localization method.
 
     Compute Truncated Recursively Applied and Projected MUltiple SIgnal Classification
     (TRAP-MUSIC) :footcite:`Makela2018` on evoked data.
 
-    .. note:: The goodness of fit (GOF) of all the returned dipoles is the
+    ### 💡 Note The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked
         Evoked data to localize.
@@ -99,11 +99,11 @@ def trap_music(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     dipoles : list of instance of Dipole
         The dipole fits.
@@ -116,9 +116,9 @@ def trap_music(
     mne.fit_dipole
     mne.beamformer.rap_music
 
-    Notes
+    ### 📖 Notes
     -----
-    .. versionadded:: 1.4
+    ✨ Added in vesion 1.4
 
     References
     ----------

@@ -32,14 +32,14 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Covariance(dict):
-    """Noise covariance matrix.
+    """### Noise covariance matrix.
 
-    .. note::
+    ### 💡 Note
         This class should not be instantiated directly via
         ``mne.Covariance(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     data : array-like
         The data.
@@ -62,11 +62,11 @@ class Covariance(dict):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Attributes
+    ### 📊 Attributes
     ----------
     data : array of shape (n_channels, n_channels)
         The covariance.
@@ -99,24 +99,24 @@ class Covariance(dict):
         *,
         verbose=None,
     ) -> None:
-        """Init of covariance."""
+        """### Init of covariance."""
         ...
     @property
     def data(self):
-        """Numpy array of Noise covariance matrix."""
+        """### Numpy array of Noise covariance matrix."""
         ...
     @property
     def ch_names(self):
-        """Channel names."""
+        """### Channel names."""
         ...
     @property
     def nfree(self):
-        """Number of degrees of freedom."""
+        """### Number of degrees of freedom."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """Save covariance matrix in a FIF file.
+        """### Save covariance matrix in a FIF file.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         fname : path-like
             Output filename.
@@ -125,33 +125,33 @@ class Covariance(dict):
             If True (default False), overwrite the destination file if it
             exists.
 
-            .. versionadded:: 1.0
+            ✨ Added in vesion 1.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
     def copy(self):
-        """Copy the Covariance object.
+        """### Copy the Covariance object.
 
-        Returns
+        ### ⏎ Returns
         -------
         cov : instance of Covariance
             The copied object.
         """
         ...
     def as_diag(self):
-        """Set covariance to be processed as being diagonal.
+        """### Set covariance to be processed as being diagonal.
 
-        Returns
+        ### ⏎ Returns
         -------
         cov : dict
             The covariance.
 
-        Notes
+        ### 📖 Notes
         -----
         This function allows creation of inverse operators
         equivalent to using the old "--diagnoise" mne option.
@@ -160,10 +160,10 @@ class Covariance(dict):
         """
         ...
     def __add__(self, cov):
-        """Add Covariance taking into account number of degrees of freedom."""
+        """### Add Covariance taking into account number of degrees of freedom."""
         ...
     def __iadd__(self, cov):
-        """Add Covariance taking into account number of degrees of freedom."""
+        """### Add Covariance taking into account number of degrees of freedom."""
         ...
     def plot(
         self,
@@ -175,9 +175,9 @@ class Covariance(dict):
         show: bool = True,
         verbose=None,
     ):
-        """Plot Covariance data.
+        """### Plot Covariance data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         info : mne.Info
             The `mne.Info` object with information about the sensors and methods of measurement.
@@ -196,11 +196,11 @@ class Covariance(dict):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig_cov : instance of matplotlib.figure.Figure
             The covariance plot.
@@ -211,12 +211,12 @@ class Covariance(dict):
         --------
         mne.compute_rank
 
-        Notes
+        ### 📖 Notes
         -----
         For each channel type, the rank is estimated using
         `mne.compute_rank`.
 
-        .. versionchanged:: 0.19
+        🎭 Changed in version 0.19
            Approximate ranks for each channel type are shown with red dashed lines.
         """
         ...
@@ -250,9 +250,9 @@ class Covariance(dict):
         show: bool = True,
         verbose=None,
     ):
-        """Plot a topomap of the covariance diagonal.
+        """### Plot a topomap of the covariance diagonal.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         info : mne.Info
@@ -262,7 +262,7 @@ class Covariance(dict):
             collected in pairs and the RMS for each pair is plotted. If
             ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
 
-            .. versionadded:: 0.21
+            ✨ Added in vesion 0.21
 
         scalings : dict | float | None
             The scalings of the channel types to be applied for plotting.
@@ -275,7 +275,7 @@ class Covariance(dict):
             M/EEG data will be reconstructed via field mapping to reduce the signal
             bias caused by projection.
 
-            .. versionchanged:: 0.21
+            🎭 Changed in version 0.21
                Support for 'reconstruct' was added.
         noise_cov : instance of Covariance | None
             If not None, whiten the instance with ``noise_cov`` before
@@ -336,8 +336,8 @@ class Covariance(dict):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            .. versionadded:: 0.20
-            .. versionchanged:: 1.1 Added ``'eeglab'`` option.
+            ✨ Added in vesion 0.20
+            🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
@@ -362,7 +362,7 @@ class Covariance(dict):
                 but it can extend beyond the head when sensors are plotted outside
                 the head circle.
 
-            .. versionchanged:: 0.21
+            🎭 Changed in version 0.21
 
                - The default was changed to ``'local'`` for MEG sensors.
                - ``'local'`` was changed to use a convex hull mask
@@ -372,7 +372,7 @@ class Covariance(dict):
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            .. versionadded:: 0.20
+            ✨ Added in vesion 0.20
 
         res : int
             The resolution of the topomap image (number of pixels along each side).
@@ -391,7 +391,7 @@ class Covariance(dict):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            .. warning::  Interactive mode works smoothly only for a small amount
+            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -401,21 +401,21 @@ class Covariance(dict):
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data. Defaults to ``(None, None)``.
 
-            .. versionadded:: 1.2
+            ✨ Added in vesion 1.2
 
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
-            See :ref:`Matplotlib docs <matplotlib:colormapnorms>`
+            See `Matplotlib docs <matplotlib:colormapnorms>`
             for more details on colormap normalization, and
-            :ref:`the ERDs example<cnorm-example>` for an example of its use.
+            `the ERDs example<cnorm-example>` for an example of its use.
 
-            .. versionadded:: 1.2
+            ✨ Added in vesion 1.2
 
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
         cbar_fmt : str
-            Formatting string for colorbar tick labels. See :ref:`formatspec` for
+            Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
         units : dict | str | None
@@ -430,24 +430,24 @@ class Covariance(dict):
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         fig : instance of Figure
             The matplotlib figure.
 
-        Notes
+        ### 📖 Notes
         -----
-        .. versionadded:: 0.21
+        ✨ Added in vesion 0.21
         """
         ...
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
-        """Pick channels from this covariance matrix.
+        """### Pick channels from this covariance matrix.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         ch_names : list of str
             List of channels to keep. All other channels are dropped.
@@ -456,33 +456,33 @@ class Covariance(dict):
             If True (default False), ensure that the order of the channels in
             the modified instance matches the order of ``ch_names``.
 
-            .. versionadded:: 0.20.0
-            .. versionchanged:: 1.5
+            ✨ Added in vesion 0.20.0
+            🎭 Changed in version 1.5
                 The default changed from False in 1.4 to True in 1.5.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         cov : instance of Covariance.
             The modified covariance matrix.
 
-        Notes
+        ### 📖 Notes
         -----
         Operates in-place.
 
-        .. versionadded:: 0.20.0
+        ✨ Added in vesion 0.20.0
         """
         ...
 
 def read_cov(fname, verbose=None):
-    """Read a noise covariance from a FIF file.
+    """### Read a noise covariance from a FIF file.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The path-like of file containing the covariance matrix. It should end
@@ -490,11 +490,11 @@ def read_cov(fname, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     cov : Covariance
         The noise covariance matrix.
@@ -506,9 +506,9 @@ def read_cov(fname, verbose=None):
     ...
 
 def make_ad_hoc_cov(info, std=None, *, verbose=None):
-    """Create an ad hoc noise covariance.
+    """### Create an ad hoc noise covariance.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
 
     info : mne.Info
@@ -520,21 +520,21 @@ def make_ad_hoc_cov(info, std=None, *, verbose=None):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     cov : instance of Covariance
         The ad hoc diagonal noise covariance for the M/EEG data channels.
 
-    Notes
+    ### 📖 Notes
     -----
     The default noise values are 5 fT/cm, 20 fT, and 0.2 µV for gradiometers,
     magnetometers, and EEG channels respectively.
 
-    .. versionadded:: 0.9.0
+    ✨ Added in vesion 0.9.0
     """
     ...
 
@@ -556,15 +556,15 @@ def compute_raw_covariance(
     rank=None,
     verbose=None,
 ):
-    """Estimate noise covariance matrix from a continuous segment of raw data.
+    """### Estimate noise covariance matrix from a continuous segment of raw data.
 
     It is typically useful to estimate a noise covariance from empty room
     data or time intervals before starting the stimulation.
 
-    .. note:: To estimate the noise covariance from epoched data, use
+    ### 💡 Note To estimate the noise covariance from epoched data, use
               `mne.compute_covariance` instead.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     raw : instance of Raw
         Raw data.
@@ -607,24 +607,24 @@ def compute_raw_covariance(
         The method used for covariance estimation.
         See `mne.compute_covariance`.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     method_params : dict | None (default None)
         Additional parameters to the estimation procedure.
         See `mne.compute_covariance`.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     cv : int | sklearn.model_selection object (default 3)
         The cross validation method. Defaults to 3, which will
         internally trigger by default `sklearn.model_selection.KFold`
         with 3 splits.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     scalings : dict | None (default None)
         Defaults to ``dict(mag=1e15, grad=1e13, eeg=1e6)``.
         These defaults will scale magnetometers and gradiometers
         at the same unit.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
@@ -633,19 +633,19 @@ def compute_raw_covariance(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
     return_estimators : bool (default False)
         Whether to return all estimators or the best. Only considered if
         method equals 'auto' or is a list of str. Defaults to False.
 
-        .. versionadded:: 0.12
+        ✨ Added in vesion 0.12
 
     reject_by_annotation : bool
         Whether to reject based on annotations. If ``True`` (default), epochs
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        .. versionadded:: 0.14
+        ✨ Added in vesion 0.14
 
     rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
@@ -692,18 +692,18 @@ def compute_raw_covariance(
 
         The default is ``None``.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
            Support for 'info' mode.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     cov : instance of Covariance | list
         The computed covariance. If method equals 'auto' or is a list of str
@@ -715,7 +715,7 @@ def compute_raw_covariance(
     --------
     compute_covariance : Estimate noise covariance matrix from epoched data.
 
-    Notes
+    ### 📖 Notes
     -----
     This function will:
 
@@ -748,7 +748,7 @@ def compute_covariance(
     rank=None,
     verbose=None,
 ):
-    """Estimate noise covariance matrix from epochs.
+    """### Estimate noise covariance matrix from epochs.
 
     The noise covariance is typically estimated on pre-stimulus periods
     when the stimulus onset is defined from events.
@@ -761,11 +761,11 @@ def compute_covariance(
         2. an Epochs object is created for multiple events and passed
            to this function.
 
-    .. note:: To estimate the noise covariance from non-epoched raw data, such
+    ### 💡 Note To estimate the noise covariance from non-epoched raw data, such
               as an empty-room recording, use
               `mne.compute_raw_covariance` instead.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     epochs : instance of Epochs, or list of Epochs
         The epochs.
@@ -800,7 +800,7 @@ def compute_covariance(
         The ``'auto'`` mode is not recommended if there are many
         segments of data, since computation can take a long time.
 
-        .. versionadded:: 0.9.0
+        ✨ Added in vesion 0.9.0
     method_params : dict | None (default None)
         Additional parameters to the estimation procedure. Only considered if
         method is not None. Keys must correspond to the value(s) of ``method``.
@@ -886,18 +886,18 @@ def compute_covariance(
 
         The default is ``None``.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
            Support for 'info' mode.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     cov : instance of Covariance | list
         The computed covariance. If method equals ``'auto'`` or is a list of str
@@ -910,7 +910,7 @@ def compute_covariance(
     compute_raw_covariance : Estimate noise covariance from raw data, such as
         empty-room recordings.
 
-    Notes
+    ### 📖 Notes
     -----
     Baseline correction or sufficient high-passing should be used
     when creating the `Epochs` to ensure that the data are zero mean,
@@ -926,7 +926,7 @@ def compute_covariance(
     * ``'shrinkage'``
         Fixed shrinkage.
 
-      .. versionadded:: 0.16
+      ✨ Added in vesion 0.16
     * ``'ledoit_wolf'``
         The Ledoit-Wolf estimator, which uses an
         empirical formula for the optimal shrinkage value :footcite:`LedoitWolf2004`.
@@ -934,7 +934,7 @@ def compute_covariance(
         The OAS estimator :footcite:`ChenEtAl2010`, which uses a different
         empricial formula for the optimal shrinkage value.
 
-      .. versionadded:: 0.16
+      ✨ Added in vesion 0.16
     * ``'shrunk'``
         Like 'ledoit_wolf', but with cross-validation for optimal alpha.
     * ``'pca'``
@@ -961,7 +961,7 @@ def compute_covariance(
     Details are described in :footcite:t:`EngemannGramfort2015`.
 
     For more information on the advanced estimation methods, see
-    :ref:`the sklearn manual <sklearn:covariance>`.
+    `the sklearn manual <sklearn:covariance>`.
 
     References
     ----------
@@ -970,7 +970,7 @@ def compute_covariance(
     ...
 
 class _RegCovariance(BaseEstimator):
-    """Aux class."""
+    """### Aux class."""
 
     info: Incomplete
     grad: Incomplete
@@ -1012,17 +1012,17 @@ class _RegCovariance(BaseEstimator):
     covariance_: Incomplete
 
     def fit(self, X):
-        """Fit covariance model with classical diagonal regularization."""
+        """### Fit covariance model with classical diagonal regularization."""
         ...
     def score(self, X_test, y=None):
-        """Delegate call to modified EmpiricalCovariance instance."""
+        """### Delegate call to modified EmpiricalCovariance instance."""
         ...
     def get_precision(self):
-        """Delegate call to modified EmpiricalCovariance instance."""
+        """### Delegate call to modified EmpiricalCovariance instance."""
         ...
 
 class _ShrunkCovariance(BaseEstimator):
-    """Aux class."""
+    """### Aux class."""
 
     store_precision: Incomplete
     assume_centered: Incomplete
@@ -1035,19 +1035,19 @@ class _ShrunkCovariance(BaseEstimator):
     zero_cross_cov_: Incomplete
 
     def fit(self, X):
-        """Fit covariance model with oracle shrinkage regularization."""
+        """### Fit covariance model with oracle shrinkage regularization."""
         ...
     def score(self, X_test, y=None):
-        """Delegate to modified EmpiricalCovariance instance."""
+        """### Delegate to modified EmpiricalCovariance instance."""
         ...
     def get_precision(self):
-        """Delegate to modified EmpiricalCovariance instance."""
+        """### Delegate to modified EmpiricalCovariance instance."""
         ...
 
 def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
-    """Write a noise covariance matrix.
+    """### Write a noise covariance matrix.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     fname : path-like
         The name of the file. It should end with ``-cov.fif`` or
@@ -1059,11 +1059,11 @@ def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
         If True (default False), overwrite the destination file if it
         exists.
 
-        .. versionadded:: 1.0
+        ✨ Added in vesion 1.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
@@ -1082,9 +1082,9 @@ def prepare_noise_cov(
     on_rank_mismatch: str = "ignore",
     verbose=None,
 ):
-    """Prepare noise covariance matrix.
+    """### Prepare noise covariance matrix.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     noise_cov : instance of Covariance
         The noise covariance to process.
@@ -1140,7 +1140,7 @@ def prepare_noise_cov(
 
         The default is ``None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
            Support for 'info' mode.
     scalings : dict | None
         Data will be rescaled before rank estimation to improve accuracy.
@@ -1154,15 +1154,15 @@ def prepare_noise_cov(
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
 
-        .. versionadded:: 0.23
+        ✨ Added in vesion 0.23
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     cov : instance of Covariance
         A copy of the covariance with the good channels subselected
@@ -1192,19 +1192,19 @@ def regularize(
     scalings=None,
     verbose=None,
 ):
-    """Regularize noise covariance matrix.
+    """### Regularize noise covariance matrix.
 
     This method works by adding a constant to the diagonal for each
     channel type separately. Special care is taken to keep the
     rank of the data constant.
 
-    .. note:: This function is kept for reasons of backward-compatibility.
+    ### 💡 Note This function is kept for reasons of backward-compatibility.
               Please consider explicitly using the ``method`` parameter in
               `mne.compute_covariance` to directly combine estimation
               with regularization in a data-driven fashion. See the
-              :ref:`FAQ <faq_how_should_i_regularize>` for more information.
+              `FAQ <faq_how_should_i_regularize>` for more information.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     cov : Covariance
         The noise covariance matrix.
@@ -1289,23 +1289,23 @@ def regularize(
 
         The default is ``None``.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
            Support for 'info' mode.
     scalings : dict | None
         Data will be rescaled before rank estimation to improve accuracy.
         See `mne.compute_covariance`.
 
-        .. versionadded:: 0.17
+        ✨ Added in vesion 0.17
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     reg_cov : Covariance
         The regularized covariance matrix.
@@ -1328,9 +1328,9 @@ def compute_whitener(
     on_rank_mismatch: str = "warn",
     verbose=None,
 ):
-    """Compute whitening matrix.
+    """### Compute whitening matrix.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     noise_cov : Covariance
         The noise covariance.
@@ -1393,7 +1393,7 @@ def compute_whitener(
 
         The default is ``None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
            Support for 'info' mode.
     scalings : dict | None
         The rescaling method to be applied. See documentation of
@@ -1401,7 +1401,7 @@ def compute_whitener(
     return_rank : bool
         If True, return the rank used to compute the whitener.
 
-        .. versionadded:: 0.15
+        ✨ Added in vesion 0.15
     pca : bool | str
         Space to project the data into. Options:
 
@@ -1415,7 +1415,7 @@ def compute_whitener(
             Whitener will be shape (n_channels, n_channels), potentially rank
             deficient, and rotated back to the space of the original data.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
     return_colorer : bool
         If True, return the colorer as well.
 
@@ -1425,15 +1425,15 @@ def compute_whitener(
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
 
-        .. versionadded:: 0.23
+        ✨ Added in vesion 0.23
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     W : ndarray, shape (n_channels, n_channels) or (n_nonzero, n_channels)
         The whitening matrix.
@@ -1449,9 +1449,9 @@ def compute_whitener(
 def whiten_evoked(
     evoked, noise_cov, picks=None, diag=None, rank=None, scalings=None, verbose=None
 ):
-    """Whiten evoked data using given noise covariance.
+    """### Whiten evoked data using given noise covariance.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     evoked : instance of Evoked
         The evoked data.
@@ -1514,7 +1514,7 @@ def whiten_evoked(
 
         The default is ``None``.
 
-        .. versionadded:: 0.18
+        ✨ Added in vesion 0.18
            Support for 'info' mode.
     scalings : dict | None (default None)
         To achieve reliable rank estimation on multiple sensors,
@@ -1526,11 +1526,11 @@ def whiten_evoked(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     evoked_white : instance of Evoked
         The whitened evoked data.

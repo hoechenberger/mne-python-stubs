@@ -8,13 +8,13 @@ root_url: str
 def data_path(
     subject, path=None, force_update: bool = False, update_path=None, *, verbose=None
 ):
-    """Get path to local copy of LIMO dataset URL.
+    """### Get path to local copy of LIMO dataset URL.
 
     This is a low-level function useful for getting a local copy of the
     remote LIMO dataset :footcite:`Rousselet2016`. The complete dataset is
     available at datashare.is.ed.ac.uk/.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject : int
         Subject to download. Must be of `ìnt` in the range from 1
@@ -34,16 +34,16 @@ def data_path(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     path : str
         Local path to the given data file.
 
-    Notes
+    ### 📖 Notes
     -----
     For example, one could do:
 
@@ -63,9 +63,9 @@ def data_path(
 def load_data(
     subject, path=None, force_update: bool = False, update_path=None, verbose=None
 ):
-    """Fetch subjects epochs data for the LIMO data set.
+    """### Fetch subjects epochs data for the LIMO data set.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     subject : int
         Subject to use. Must be of class ìnt in the range from 1 to 18.
@@ -82,11 +82,11 @@ def load_data(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     epochs : instance of Epochs
         The epochs.

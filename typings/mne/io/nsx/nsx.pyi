@@ -18,9 +18,9 @@ def read_raw_nsx(
     *,
     verbose=None,
 ):
-    """Reader function for NSx (Blackrock Microsystems) files.
+    """### Reader function for NSx (Blackrock Microsystems) files.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : str
         Path to the NSx file.
@@ -47,17 +47,17 @@ def read_raw_nsx(
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Returns
+    ### ⏎ Returns
     -------
     raw : instance of RawEDF
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    Notes
+    ### 📖 Notes
     -----
     NSx files with id (= NEURALSG), i.e., version 2.1 is currently not
     supported.
@@ -69,9 +69,9 @@ def read_raw_nsx(
     ...
 
 class RawNSX(BaseRaw):
-    """Raw object from NSx file from Blackrock Microsystems.
+    """### Raw object from NSx file from Blackrock Microsystems.
 
-    Parameters
+    ### 🛠️ Parameters
     ----------
     input_fname : str
         Path to the NSx file.
@@ -98,11 +98,11 @@ class RawNSX(BaseRaw):
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
-        verbosity level. See the :ref:`logging documentation <tut-logging>` and
+        verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    Notes
+    ### 📖 Notes
     -----
     NSx files with id (= NEURALSG), i.e., version 2.1 is currently not
     supported.

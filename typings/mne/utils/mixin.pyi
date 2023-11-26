@@ -5,26 +5,26 @@ from _typeshed import Incomplete
 logger: Incomplete
 
 class SizeMixin:
-    """Estimate MNE object sizes."""
+    """### Estimate MNE object sizes."""
 
     def __eq__(self, other):
-        """Compare self to other.
+        """### Compare self to other.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         other : object
             The object to compare to.
 
-        Returns
+        ### ⏎ Returns
         -------
         eq : bool
             True if the two objects are equal.
         """
         ...
     def __hash__(self):
-        """Hash the object.
+        """### Hash the object.
 
-        Returns
+        ### ⏎ Returns
         -------
         hash : int
             The hash
@@ -32,22 +32,22 @@ class SizeMixin:
         ...
 
 class GetEpochsMixin:
-    """Class to add epoch selection and metadata to certain classes."""
+    """### Class to add epoch selection and metadata to certain classes."""
 
     def __getitem__(self, item):
-        """Return an Epochs object with a copied subset of epochs.
+        """### Return an Epochs object with a copied subset of epochs.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         item : slice, array-like, str, or list
             See below for use cases.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : instance of Epochs
             See below for use cases.
 
-        Notes
+        ### 📖 Notes
         -----
         Epochs can be accessed as ``epochs[...]`` in several ways:
 
@@ -98,18 +98,18 @@ class GetEpochsMixin:
            Query-based indexing only works if Pandas is installed and
            ``self.metadata`` is a `pandas.DataFrame`.
 
-           .. versionadded:: 0.16
+           ✨ Added in vesion 0.16
         """
         ...
     def __len__(self) -> int:
-        """Return the number of epochs.
+        """### Return the number of epochs.
 
-        Returns
+        ### ⏎ Returns
         -------
         n_epochs : int
             The number of remaining epochs.
 
-        Notes
+        ### 📖 Notes
         -----
         This function only works if bad epochs have been dropped.
 
@@ -125,11 +125,11 @@ class GetEpochsMixin:
         """
         ...
     def __iter__(self):
-        """Facilitate iteration over epochs.
+        """### Facilitate iteration over epochs.
 
         This method resets the object iteration state to the first epoch.
 
-        Notes
+        ### 📖 Notes
         -----
         This enables the use of this Python pattern::
 
@@ -141,14 +141,14 @@ class GetEpochsMixin:
         """
         ...
     def __next__(self, return_event_id: bool = False):
-        """Iterate over epoch data.
+        """### Iterate over epoch data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         return_event_id : bool
             If True, return both the epoch data and an event_id.
 
-        Returns
+        ### ⏎ Returns
         -------
         epoch : array of shape (n_channels, n_times)
             The epoch data.
@@ -160,20 +160,20 @@ class GetEpochsMixin:
 
     @property
     def metadata(self):
-        """Get the metadata."""
+        """### Get the metadata."""
         ...
     @metadata.setter
     def metadata(self, metadata, verbose=...) -> None:
-        """Get the metadata."""
+        """### Get the metadata."""
         ...
 
 class TimeMixin:
-    """Class for time operations on any MNE object that has a time axis."""
+    """### Class for time operations on any MNE object that has a time axis."""
 
     def time_as_index(self, times, use_rounding: bool = False):
-        """Convert time to indices.
+        """### Convert time to indices.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         times : list-like | float | int
             List of numbers or a number representing points in time.
@@ -181,7 +181,7 @@ class TimeMixin:
             If True, use rounding (instead of truncation) when converting
             times to indices. This can help avoid non-unique indices.
 
-        Returns
+        ### ⏎ Returns
         -------
         index : ndarray
             Indices corresponding to the times supplied.
@@ -189,24 +189,24 @@ class TimeMixin:
         ...
     @property
     def times(self):
-        """Time vector in seconds."""
+        """### Time vector in seconds."""
         ...
 
 class ExtendedTimeMixin(TimeMixin):
-    """Class for time operations on epochs/evoked-like MNE objects."""
+    """### Class for time operations on epochs/evoked-like MNE objects."""
 
     @property
     def tmin(self):
-        """First time point."""
+        """### First time point."""
         ...
     @property
     def tmax(self):
-        """Last time point."""
+        """### Last time point."""
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """Crop data to a given time interval.
+        """### Crop data to a given time interval.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tmin : float | None
             Start time of selection in seconds.
@@ -217,20 +217,20 @@ class ExtendedTimeMixin(TimeMixin):
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
-            .. versionadded:: 0.19
+            ✨ Added in vesion 0.19
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : instance of Raw, Epochs, Evoked, AverageTFR, or SourceEstimate
             The cropped time-series object, modified in-place.
 
-        Notes
+        ### 📖 Notes
         -----
 
         Unlike Python slices, MNE time intervals by default include **both**
@@ -240,15 +240,15 @@ class ExtendedTimeMixin(TimeMixin):
         """
         ...
     def decimate(self, decim, offset: int = 0, *, verbose=None):
-        """Decimate the time-series data.
+        """### Decimate the time-series data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
 
         decim : int
             Factor by which to subsample the data.
 
-            .. warning:: Low-pass filtering is not performed, this simply selects
+            ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
                          every Nth sample (where N is the value passed to
                          ``decim``), i.e., it compresses the signal (see Notes).
                          If the data are not properly filtered, aliasing artifacts
@@ -259,15 +259,15 @@ class ExtendedTimeMixin(TimeMixin):
             sample corresponding to t=0. The offset is in samples at the
             current sampling rate.
 
-            .. versionadded:: 0.12
+            ✨ Added in vesion 0.12
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
-            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        Returns
+        ### ⏎ Returns
         -------
         inst : MNE-object
             The decimated object.
@@ -277,7 +277,7 @@ class ExtendedTimeMixin(TimeMixin):
         mne.Epochs.resample
         mne.io.Raw.resample
 
-        Notes
+        ### 📖 Notes
         -----
 
         For historical reasons, ``decim`` / "decimation" refers to simply subselecting
@@ -300,7 +300,7 @@ class ExtendedTimeMixin(TimeMixin):
 
         If ``decim`` is 1, this method does not copy the underlying data.
 
-        .. versionadded:: 0.10.0
+        ✨ Added in vesion 0.10.0
 
         References
         ----------
@@ -308,9 +308,9 @@ class ExtendedTimeMixin(TimeMixin):
         """
         ...
     def shift_time(self, tshift, relative: bool = True):
-        """Shift time scale in epoched or evoked data.
+        """### Shift time scale in epoched or evoked data.
 
-        Parameters
+        ### 🛠️ Parameters
         ----------
         tshift : float
             The (absolute or relative) time shift in seconds. If ``relative``
@@ -321,12 +321,12 @@ class ExtendedTimeMixin(TimeMixin):
             Otherwise, shift the time values such that the time of the first
             sample equals ``tshift``.
 
-        Returns
+        ### ⏎ Returns
         -------
         epochs : MNE-object
             The modified instance.
 
-        Notes
+        ### 📖 Notes
         -----
         This method allows you to shift the *time* values associated with each
         data sample by an arbitrary amount. It does *not* resample the signal
