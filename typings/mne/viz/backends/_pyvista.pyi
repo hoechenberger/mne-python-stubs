@@ -593,7 +593,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         ...
     def reset_camera(self) -> None:
         """Reset the camera properties.
-        .. warning:: DEPRECATED: reset_camera is deprecated and will be removed in 1.7, use set_camera(distance='auto') instead.
+        # DEPRECATED reset_camera is deprecated and will be removed in 1.7, use set_camera(distance='auto') instead.
         """
         ...
     def screenshot(self, mode: str = "rgb", filename=None):

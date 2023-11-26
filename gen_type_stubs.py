@@ -119,7 +119,6 @@ for stub_path in stub_paths:
             continue
         elif expanded_docstring:
             print(f"📝 Expanding docstring for {module_name}.{obj.name}")
-            obj.body[0].value.value = expanded_docstring
 
             expanded_docstring = expanded_docstring.split("\n")
             for line_idx, line in enumerate(expanded_docstring):
@@ -128,9 +127,12 @@ for stub_path in stub_paths:
                         f"🦄 Applying special handling for @deprecated {obj_type} "
                         f"{module_name}.{obj.name}.{obj.name}"
                     )
+                    line = line.replace(".. warning:: DEPRECATED:", "# DEPRECATED")
                     expanded_docstring[line_idx] = (obj.col_offset + 4) * " " + line
+                    break
 
             expanded_docstring = "\n".join(expanded_docstring)
+            obj.body[0].value.value = expanded_docstring
 
             # FIXME We do have a docstring, but sometimes the AST doesn't
             # contain the method body?! So we add an ellipsis here manually
@@ -173,9 +175,13 @@ for stub_path in stub_paths:
                                 f"🦄 Applying special handling for @deprecated method "
                                 f"{module_name}.{obj.name}.{method.name}"
                             )
+                            line = line.replace(
+                                ".. warning:: DEPRECATED:", "# DEPRECATED"
+                            )
                             expanded_docstring[line_idx] = (
                                 method.col_offset + 4
                             ) * " " + line
+                            break
 
                     expanded_docstring = "\n".join(expanded_docstring)
                     method.body[0].value.value = expanded_docstring

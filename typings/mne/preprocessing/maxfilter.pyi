@@ -28,7 +28,7 @@ def apply_maxfilter(
     overwrite: bool = True,
     verbose=None,
 ):
-    """.. warning:: DEPRECATED: apply_maxfilter will be removed in 1.7, use mne.preprocessing.maxwell_filter or the MEGIN command-line utility maxfilter and mne.bem.fit_sphere_to_headshape instead..
+    """# DEPRECATED apply_maxfilter will be removed in 1.7, use mne.preprocessing.maxwell_filter or the MEGIN command-line utility maxfilter and mne.bem.fit_sphere_to_headshape instead..
 
     Apply NeuroMag MaxFilter to raw data.
 
