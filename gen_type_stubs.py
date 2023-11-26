@@ -235,36 +235,21 @@ for stub_path in stub_paths:
         .replace(".. versionchanged::", "🎭 Changed in version")
     )
 
-    unparsed_cleaned = re.sub(
-        pattern=r"(\s*)Parameters\n(\1)----------\n",
-        repl=r"\1-----\n\1### 🛠️ Parameters\n\n",
-        string=unparsed_cleaned,
-    )
-    unparsed_cleaned = re.sub(
-        pattern=r"(\s*)Attributes\n(\1)----------\n",
-        repl=r"\1-----\n\1### 📊 Attributes\n\n",
-        string=unparsed_cleaned,
-    )
-    unparsed_cleaned = re.sub(
-        pattern=r"(\s*)Returns\n(\1)-------\n",
-        repl=r"\1-----\n\1### ⏎ Returns\n\n",
-        string=unparsed_cleaned,
-    )
-    unparsed_cleaned = re.sub(
-        pattern=r"(\s*)Notes\n(\1)-----\n",
-        repl=r"\1-----\n\1### 📖 Notes\n\n",
-        string=unparsed_cleaned,
-    )
-    unparsed_cleaned = re.sub(
-        pattern=r"(\s*)See Also\n(\1)--------\n",
-        repl=r"\1-----\n\1### 👉 See Also\n\n",
-        string=unparsed_cleaned,
-    )
-    unparsed_cleaned = re.sub(
-        pattern=r"(\s*)Examples\n(\1)--------\n",
-        repl=r"\1-----\n\1### 🖥️ Examples\n\n",
-        string=unparsed_cleaned,
-    )
+    # Make the section headers nicer
+    SECTION_HEADER_REPLACE_MAP = {
+        "Parameters": "🛠️ Parameters",
+        "Attributes": "📊 Attributes",
+        "Returns": "⏎ Returns",
+        "Notes": "📖 Notes",
+        "See Also": "👉 See Also",
+        "Examples": "🖥️ Examples",
+    }
+    for orig, replacement in SECTION_HEADER_REPLACE_MAP.items():
+        unparsed_cleaned = re.sub(
+            pattern=f"(\\s*){orig}\\n(\\1){'-' * len(orig)}\\n",
+            repl=f"\\1-----\\n\\1### {replacement}\\n\\n",
+            string=unparsed_cleaned,
+        )
 
     del unparsed
 
