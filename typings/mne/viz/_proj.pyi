@@ -24,8 +24,8 @@ def plot_projs_joint(
     #### `picks_trace : str | array-like | slice | None`
         Channels to show alongside the projected time courses. Typically
         these are the ground-truth channels for an artifact (e.g., ``'eog'`` or
-        ``'ecg'``). Slices and lists of integers will be interpreted as channel indices. In lists, channel *type* strings (e.g., ``['meg', 'eeg']``) will
-        pick channels of those types, channel *name* strings (e.g., ``['MEG0111', 'MEG2623']``
+        ``'ecg'``). Slices and lists of integers will be interpreted as channel indices. In lists, channel `type` strings (e.g., ``['meg', 'eeg']``) will
+        pick channels of those types, channel `name` strings (e.g., ``['MEG0111', 'MEG2623']``
         will pick the given channels.
         Can also be the string values "all" to pick
         all channels, or "data" to pick :term:`data channels`.

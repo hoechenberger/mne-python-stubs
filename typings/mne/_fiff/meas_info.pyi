@@ -350,7 +350,7 @@ class SetChannelsMixin(MontageMixin):
             ``info['meas_date']`` is ``None`` (i.e., no acquisition date has been set).
 
         #### `keep_his : bool`
-            If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
+            If ``True``, ``his_id`` of ``subject_info`` will `not` be overwritten.
             Defaults to ``False``.
 
             ### ⛔️ Warning This could mean that ``info`` is not fully
@@ -480,12 +480,12 @@ class ContainsMixin:
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `unique : bool`
             Whether to return only unique channel types. Default is ``False``.
@@ -1230,7 +1230,7 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
         ``info['meas_date']`` is ``None`` (i.e., no acquisition date has been set).
 
     #### `keep_his : bool`
-        If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
+        If ``True``, ``his_id`` of ``subject_info`` will `not` be overwritten.
         Defaults to ``False``.
 
         ### ⛔️ Warning This could mean that ``info`` is not fully

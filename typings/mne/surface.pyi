@@ -384,14 +384,14 @@ def decimate_surface(
     -----
     ### 📖 Notes
 
-    **"quadric" mode**
+    `"quadric" mode`
 
     This requires VTK. If an odd target number was requested,
     the ``'decimation'`` algorithm used results in the
     next even number of triangles. For example a reduction request
     to 30001 triangles may result in 30000 triangles.
 
-    **"sphere" mode**
+    `"sphere" mode`
 
     This requires Freesurfer to be installed and available in the
     environment. The destination number of triangles must be one of

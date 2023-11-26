@@ -389,12 +389,12 @@ class BaseRaw(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `start : int`
             The first sample to include. Defaults to 0.
@@ -471,7 +471,7 @@ class BaseRaw(
         The function ``fun`` is applied to the channels defined in ``picks``.
         The raw object's data is modified in-place. If the function returns a different
         data type (e.g. :py:obj:`numpy.complex128`) it must be specified
-        using the ``dtype`` parameter, which causes the data type of **all** the data
+        using the ``dtype`` parameter, which causes the data type of `all` the data
         to change (even if the function is only applied to channels in ``picks``). The object has to have the data loaded e.g. with ``preload=True`` or ``self.load_data()``.
 
         ### 💡 Note If ``n_jobs`` > 1, more memory is required as
@@ -492,12 +492,12 @@ class BaseRaw(
             The function must return an `numpy.ndarray` shaped like its input.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
 
         #### `dtype : numpy.dtype`
@@ -567,27 +567,27 @@ class BaseRaw(
             cutoff frequency. If None the data are only high-passed.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `filter_length : str | int`
             Length of the FIR filter to use (if applicable):
 
-            * **'auto' (default)**: The filter length is chosen based
+            * `'auto' (default)`: The filter length is chosen based
               on the size of the transition regions (6.6 times the reciprocal
               of the shortest transition band for fir_window='hamming'
               and fir_design="firwin2", and half that for "firwin").
-            * **str**: A human-readable time in
+            * `str`: A human-readable time in
               units of "s" or "ms" (e.g., "10s" or "5500ms") will be
               converted to that number of samples if ``phase="zero"``, or
               the shortest power-of-two length at least that duration for
               ``phase="zero-double"``.
-            * **int**: Specified length in samples. For fir_design="firwin",
+            * `int`: Specified length in samples. For fir_design="firwin",
               this should not be used.
 
         #### `l_trans_bandwidth : float | str`
@@ -760,27 +760,27 @@ class BaseRaw(
             components.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `filter_length : str | int`
             Length of the FIR filter to use (if applicable):
 
-            * **'auto' (default)**: The filter length is chosen based
+            * `'auto' (default)`: The filter length is chosen based
               on the size of the transition regions (6.6 times the reciprocal
               of the shortest transition band for fir_window='hamming'
               and fir_design="firwin2", and half that for "firwin").
-            * **str**: A human-readable time in
+            * `str`: A human-readable time in
               units of "s" or "ms" (e.g., "10s" or "5500ms") will be
               converted to that number of samples if ``phase="zero"``, or
               the shortest power-of-two length at least that duration for
               ``phase="zero-double"``.
-            * **int**: Specified length in samples. For fir_design="firwin",
+            * `int`: Specified length in samples. For fir_design="firwin",
               this should not be used.
 
             When ``method=='spectrum_fit'``, this sets the effective window duration
@@ -1105,12 +1105,12 @@ class BaseRaw(
             append an additional ``.gz`` suffix to enable gzip compression.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `tmin : float`
@@ -1132,7 +1132,7 @@ class BaseRaw(
         #### `fmt : 'single' | 'double' | 'int' | 'short'`
             Format to use to save raw data. Valid options are 'double',
             'single', 'int', and 'short' for 64- or 32-bit float, or 32- or
-            16-bit integers, respectively. It is **strongly** recommended to
+            16-bit integers, respectively. It is `strongly` recommended to
             use 'single', as this is backward-compatible, and is standard for
             maintaining precision. Note that using 'short' or 'int' may result
             in loss of precision, complex data cannot be saved as 'short',
@@ -1171,7 +1171,7 @@ class BaseRaw(
         -----
         ### 📖 Notes
 
-        If Raw is a concatenation of several raw files, **be warned** that
+        If Raw is a concatenation of several raw files, `be warned` that
         only the measurement information from the first raw file is stored.
         This likely means that certain operations with external tools may not
         work properly on a saved concatenated file (e.g., probably some
@@ -1345,7 +1345,7 @@ class BaseRaw(
             Color(s) to use for :term:`events`. To show all :term:`events` in the same
             color, pass any matplotlib-compatible color. To color events differently,
             pass a `dict` that maps event names or integer event numbers to colors
-            (must include entries for *all* events, or include a "fallback" entry with
+            (must include entries for `all` events, or include a "fallback" entry with
             key ``-1``). If ``None``, colors are chosen from the current Matplotlib
             color cycle.
             Defaults to ``'cyan'``.
@@ -1752,12 +1752,12 @@ class BaseRaw(
             times).
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
         #### `exclude : list of str | 'bads'`
             Channel names to exclude. If ``'bads'``, channels
@@ -1835,12 +1835,12 @@ class BaseRaw(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `index : 'time' | None`

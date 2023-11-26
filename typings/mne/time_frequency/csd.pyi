@@ -419,12 +419,12 @@ def csd_fourier(
         sample.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if
+        MEG channels). Note that channels in ``info['bads']`` `will be included` if
         their names or indices are explicitly provided.
     #### `n_fft : int | None`
         Length of the FFT. If ``None``, the exact number of samples between
@@ -576,12 +576,12 @@ def csd_multitaper(
         sample.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if
+        MEG channels). Note that channels in ``info['bads']`` `will be included` if
         their names or indices are explicitly provided.
     #### `n_fft : int | None`
         Length of the FFT. If ``None``, the exact number of samples between
@@ -752,12 +752,12 @@ def csd_morlet(
         sample.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if
+        MEG channels). Note that channels in ``info['bads']`` `will be included` if
         their names or indices are explicitly provided.
     #### `n_cycles : float | list of float | None`
         Number of cycles to use when constructing Morlet wavelets. Fixed number
@@ -910,12 +910,12 @@ def csd_tfr(epochs_tfr, tmin=None, tmax=None, picks=None, projs=None, verbose=No
         sample.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if
+        MEG channels). Note that channels in ``info['bads']`` `will be included` if
         their names or indices are explicitly provided.
     #### `projs : list of Projection | None`
         List of projectors to store in the CSD object. Defaults to ``None``,

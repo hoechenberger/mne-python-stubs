@@ -173,12 +173,12 @@ class Evoked(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `units : str | dict | None`
@@ -222,7 +222,7 @@ class Evoked(
         The function ``fun`` is applied to the channels defined in ``picks``.
         The evoked object's data is modified in-place. If the function returns a different
         data type (e.g. :py:obj:`numpy.complex128`) it must be specified
-        using the ``dtype`` parameter, which causes the data type of **all** the data
+        using the ``dtype`` parameter, which causes the data type of `all` the data
         to change (even if the function is only applied to channels in ``picks``).
 
         ### 💡 Note If ``n_jobs`` > 1, more memory is required as
@@ -243,12 +243,12 @@ class Evoked(
             The function must return an `numpy.ndarray` shaped like its input.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
 
         #### `dtype : numpy.dtype`
@@ -293,18 +293,18 @@ class Evoked(
             correction. If ``None``, do not apply baseline correction.
             If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
             (in seconds), including the endpoints.
-            If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-            is ``None``, it is set to the **end** of the interval.
+            If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+            is ``None``, it is set to the `end` of the interval.
             If ``(None, None)``, the entire time interval is used.
 
             ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
-            Correction is applied **to each channel individually** in the following
+            Correction is applied `to each channel individually` in the following
             way:
 
             1. Calculate the mean signal of the baseline period.
-            2. Subtract this mean from the **entire** ``Evoked``.
+            2. Subtract this mean from the `entire` ``Evoked``.
 
             Defaults to ``(None, 0)``, i.e. beginning of the the data until
             time point zero.
@@ -449,12 +449,12 @@ class Evoked(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `exclude : list of str | 'bads'`
             Channels names to exclude from being shown. If 'bads', the
@@ -636,12 +636,12 @@ class Evoked(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
             This parameter can also be used to set the order the channels
             are shown in, as the channel image is sorted by the order of picks.
@@ -1290,18 +1290,18 @@ class Evoked(
             `dict`
                 Calculate the rank only for a subset of channel types, and explicitly
                 specify the rank for the remaining channel types. This can be
-                extremely useful if you already **know** the rank of (part of) your
+                extremely useful if you already `know` the rank of (part of) your
                 data, for instance in case you have calculated it earlier.
 
-                This parameter must be a dictionary whose **keys** correspond to
+                This parameter must be a dictionary whose `keys` correspond to
                 channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-                ``'eeg'``), and whose **values** are integers representing the
+                ``'eeg'``), and whose `values` are integers representing the
                 respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
                 a rank of ``90`` and ``45`` for magnetometer data and EEG data,
                 respectively.
 
                 The ranks for all channel types present in the data, but
-                **not** specified in the dictionary will be estimated empirically.
+                `not` specified in the dictionary will be estimated empirically.
                 That is, if you passed a dataset containing magnetometer, gradiometer,
                 and EEG data together with the dictionary from the previous example,
                 only the gradiometer rank would be determined, while the specified
@@ -1405,12 +1405,12 @@ class Evoked(
             axes may be removed during placement of the title axis.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `exclude : None | list of str | 'bads'`
             Channels names to exclude from being shown. If ``'bads'``, the
@@ -1616,12 +1616,12 @@ class Evoked(
             (DC) detrend, 1 is a linear detrend.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         -----
@@ -1669,7 +1669,7 @@ class Evoked(
 
         #### `ch_type : str | None`
             The channel type to use. Defaults to None. If more than one channel
-            type is present in the data, this value **must** be provided.
+            type is present in the data, this value `must` be provided.
         #### `tmin : float | None`
             The minimum point in time to be considered for peak getting.
             If None (default), the beginning of the data is used.
@@ -1740,12 +1740,12 @@ class Evoked(
             times).
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
         #### `proj : bool`
             Whether to apply SSP projection vectors before spectral estimation.
@@ -1842,12 +1842,12 @@ class Evoked(
             times).
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
         #### `proj : bool`
             Whether to apply SSP projection vectors before spectral estimation.
@@ -1976,12 +1976,12 @@ class Evoked(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `index : 'time' | None`
@@ -2056,18 +2056,18 @@ class EvokedArray(Evoked):
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied **to each channel individually** in the following
+        Correction is applied `to each channel individually` in the following
         way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** ``Evoked``.
+        2. Subtract this mean from the `entire` ``Evoked``.
 
         Defaults to ``None``, i.e. no baseline correction.
 
@@ -2185,29 +2185,29 @@ def read_evokeds(
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied **to each channel individually** in the following
+        Correction is applied `to each channel individually` in the following
         way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** ``Evoked``.
+        2. Subtract this mean from the `entire` ``Evoked``.
 
         If ``None`` (default), do not apply baseline correction.
 
         ### 💡 Note Note that if the read  `mne.Evoked` objects have already
                   been baseline-corrected, the data retrieved from disk will
-                  **always** be baseline-corrected (in fact, only the
+                  `always` be baseline-corrected (in fact, only the
                   baseline-corrected version of the data will be saved, so
-                  there is no way to undo this procedure). Only **after** the
+                  there is no way to undo this procedure). Only `after` the
                   data has been loaded, a custom (additional) baseline
-                  correction **may** be optionally applied by passing a tuple
-                  here. Passing ``None`` will **not** remove an existing
+                  correction `may` be optionally applied by passing a tuple
+                  here. Passing ``None`` will `not` remove an existing
                   baseline correction, but merely omit the optional, additional
                   baseline correction.
     #### `kind : str`

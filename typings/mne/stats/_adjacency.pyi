@@ -36,7 +36,7 @@ def combine_adjacency(*structure):
     ### 📖 Notes
 
     For 4-dimensional data with shape ``(n_obs, n_times, n_freqs, n_chans)``,
-    you can specify **no** connections among elements in a particular
+    you can specify `no` connections among elements in a particular
     dimension by passing a matrix of zeros. For example:
 
     >>> import numpy as np

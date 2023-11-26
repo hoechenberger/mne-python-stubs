@@ -191,7 +191,7 @@ def read_raw_fif(
     ✨ Added in vesion 0.9.0
 
     When reading a FIF file, note that the first N seconds annotated
-    ``BAD_ACQ_SKIP`` are **skipped**. They are removed from ``raw.times`` and
+    ``BAD_ACQ_SKIP`` are `skipped`. They are removed from ``raw.times`` and
     ``raw.n_times`` parameters but ``raw.first_samp`` and ``raw.first_time``
     are updated accordingly.
     """

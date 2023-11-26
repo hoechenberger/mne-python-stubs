@@ -39,8 +39,8 @@ def project_sensors_onto_brain(
         variable.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick only ``ecog`` channels.

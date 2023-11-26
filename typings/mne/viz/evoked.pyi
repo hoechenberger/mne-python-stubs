@@ -47,12 +47,12 @@ def plot_evoked(
         The evoked data.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` *will be included* if their names or indices are
+        ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
     #### `exclude : list of str | 'bads'`
         Channels names to exclude from being shown. If 'bads', the
@@ -337,12 +337,12 @@ def plot_evoked_image(
         The evoked data.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` *will be included* if their names or indices are
+        ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
         This parameter can also be used to set the order the channels
         are shown in, as the channel image is sorted by the order of picks.
@@ -521,18 +521,18 @@ def plot_evoked_white(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -679,12 +679,12 @@ def plot_evoked_joint(
         axes may be removed during placement of the title axis.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` *will be included* if their names or indices are
+        ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
     #### `exclude : None | list of str | 'bads'`
         Channels names to exclude from being shown. If ``'bads'``, the
@@ -764,12 +764,12 @@ def plot_compare_evokeds(
         If dict, keys must be of type str.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all data channels. Note that channels
-        in ``info['bads']`` *will be included* if their names or indices are
+        in ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
 
         * If picks is None or a (collection of) data channel types, the

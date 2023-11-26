@@ -620,12 +620,12 @@ def compute_raw_covariance(
         If flat is None then no rejection is done.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if
+        MEG channels). Note that channels in ``info['bads']`` `will be included` if
         their names or indices are explicitly provided.
     #### `method : str | list | None (default 'empirical')`
         The method used for covariance estimation.
@@ -697,18 +697,18 @@ def compute_raw_covariance(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -754,8 +754,7 @@ def compute_raw_covariance(
     This will produce a slightly different result compared to using
     `make_fixed_length_events`, `Epochs`, and
     `compute_covariance` directly, since that would (with the recommended
-    baseline correction) subtract the mean across time *for each epoch*
-    (instead of across epochs) for each channel.
+    baseline correction) subtract the mean across time `for each epoch`     (instead of across epochs) for each channel.
     """
     ...
 
@@ -895,18 +894,18 @@ def compute_covariance(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -1155,18 +1154,18 @@ def prepare_noise_cov(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -1306,18 +1305,18 @@ def regularize(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -1379,12 +1378,12 @@ def compute_whitener(
         prepared with `prepare_noise_cov`.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` *will be included* if
+        MEG channels). Note that channels in ``info['bads']`` `will be included` if
         their names or indices are explicitly provided.
 
     #### `rank : None | 'info' | 'full' | dict`
@@ -1413,18 +1412,18 @@ def compute_whitener(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -1500,12 +1499,12 @@ def whiten_evoked(
         The noise covariance.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` *will be included* if their names or indices are
+        in ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
     #### `diag : bool (default False)`
         If True, whiten using only the diagonal of the covariance.
@@ -1536,18 +1535,18 @@ def whiten_evoked(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified

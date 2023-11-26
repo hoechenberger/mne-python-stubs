@@ -790,18 +790,18 @@ def make_inverse_operator(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already **know** the rank of (part of) your
+            extremely useful if you already `know` the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose **keys** correspond to
+            This parameter must be a dictionary whose `keys` correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose **values** are integers representing the
+            ``'eeg'``), and whose `values` are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            **not** specified in the dictionary will be estimated empirically.
+            `not` specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -828,17 +828,17 @@ def make_inverse_operator(
     -----
     ### 📖 Notes
 
-    For different sets of options (**loose**, **depth**, **fixed**) to work,
+    For different sets of options (`loose**, **depth**, **fixed`) to work,
     the forward operator must have been loaded using a certain configuration
-    (i.e., with **force_fixed** and **surf_ori** set appropriately). For
+    (i.e., with `force_fixed** and **surf_ori` set appropriately). For
     example, given the desired inverse type (with representative choices
-    of **loose** = 0.2 and **depth** = 0.8 shown in the table in various
+    of `loose** = 0.2 and **depth` = 0.8 shown in the table in various
     places, as these are the defaults for those parameters):
 
         +---------------------+-----------+-----------+-----------+-----------------+--------------+
         | Inverse desired                             | Forward parameters allowed                 |
         +=====================+===========+===========+===========+=================+==============+
-        |                     | **loose** | **depth** | **fixed** | **force_fixed** | **surf_ori** |
+        |                     | `loose** | **depth** | **fixed** | **force_fixed** | **surf_ori` |
         +---------------------+-----------+-----------+-----------+-----------------+--------------+
         | | Loose constraint, | 0.2       | 0.8       | False     | False           | True         |
         | | Depth weighted    |           |           |           |                 |              |

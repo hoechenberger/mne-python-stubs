@@ -444,8 +444,7 @@ class SelectFromCollection:
     -----
     ### 📖 Notes
 
-    This tool selects collection objects based on their *origins*
-    (i.e., ``offsets``). Calls all callbacks in self.callbacks when selection
+    This tool selects collection objects based on their `origins`     (i.e., ``offsets``). Calls all callbacks in self.callbacks when selection
     is ready.
     """
 

@@ -25,8 +25,8 @@ def rescale(
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all

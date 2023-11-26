@@ -55,8 +55,8 @@ class ICA(ContainsMixin):
 
         🎭 Changed in version 0.22
            For a `python:float`, the number of components will account
-           for *greater than* the given variance level instead of *less than or
-           equal to* it. The default (None) will also take into account the
+           for `greater than` the given variance level instead of `less than or
+           equal to` it. The default (None) will also take into account the
            rank deficiency of the data.
     #### `noise_cov : None | instance of Covariance`
         Noise covariance used for pre-whitening. If None (default), channels
@@ -161,7 +161,7 @@ class ICA(ContainsMixin):
         Warn if `mne.Epochs` were baseline-corrected.
 
     ### 💡 Note If you intend to fit ICA on `mne.Epochs`, it is  recommended to
-              high-pass filter, but **not** baseline correct the data for good
+              high-pass filter, but `not` baseline correct the data for good
               ICA performance. A warning will be emitted otherwise.
 
     A trailing ``_`` in an attribute name signifies that the attribute was
@@ -318,12 +318,12 @@ class ICA(ContainsMixin):
             The data to be decomposed.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
             This selection remains throughout the initialized ICA solution.
         #### `start, stop : int | float | None`
@@ -1665,8 +1665,8 @@ class ICA(ContainsMixin):
             listed in ``ICA.exclude`` will be used.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels that were included during fitting.

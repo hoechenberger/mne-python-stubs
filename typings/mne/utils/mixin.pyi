@@ -57,11 +57,11 @@ class GetEpochsMixin:
 
         Epochs can be accessed as ``epochs[...]`` in several ways:
 
-        1. **Integer or slice:** ``epochs[idx]`` will return an `mne.Epochs`
+        1. `Integer or slice:` ``epochs[idx]`` will return an `mne.Epochs`
            object with a subset of epochs chosen by index (supports single
            index and Python-style slicing).
 
-        2. **String:** ``epochs['name']`` will return an `mne.Epochs` object
+        2. `String:` ``epochs['name']`` will return an `mne.Epochs` object
            comprising only the epochs labeled ``'name'`` (i.e., epochs created
            around events with the label ``'name'``).
 
@@ -72,27 +72,26 @@ class GetEpochsMixin:
            epochs labeled ``'audio/left'`` and ``'visual/left'``, but not
            ``'audio_left'``).
 
-           If multiple tags are provided *as a single string* (e.g.,
-           ``epochs['name_1/name_2']``), this selects epochs containing *all*
-           provided tags. For example, ``epochs['audio/left']`` selects
+           If multiple tags are provided `as a single string` (e.g.,
+           ``epochs['name_1/name_2']``), this selects epochs containing `all`            provided tags. For example, ``epochs['audio/left']`` selects
            ``'audio/left'`` and ``'audio/quiet/left'``, but not
            ``'audio/right'``. Note that tag-based selection is insensitive to
            order: tags like ``'audio/left'`` and ``'left/audio'`` will be
            treated the same way when selecting via tag.
 
-        3. **List of strings:** ``epochs[['name_1', 'name_2', ... ]]`` will
-           return an `mne.Epochs` object comprising epochs that match *any* of
+        3. `List of strings:` ``epochs[['name_1', 'name_2', ... ]]`` will
+           return an `mne.Epochs` object comprising epochs that match `any` of
            the provided names (i.e., the list of names is treated as an
-           inclusive-or condition). If *none* of the provided names match any
+           inclusive-or condition). If `none` of the provided names match any
            epoch labels, a ``KeyError`` will be raised.
 
            If epoch labels are /-separated tags, then providing multiple tags
-           *as separate list entries* will likewise act as an inclusive-or
+           `as separate list entries` will likewise act as an inclusive-or
            filter. For example, ``epochs[['audio', 'left']]`` would select
            ``'audio/left'``, ``'audio/right'``, and ``'visual/left'``, but not
            ``'visual/right'``.
 
-        4. **Pandas query:** ``epochs['pandas query']`` will return an
+        4. `Pandas query:` ``epochs['pandas query']`` will return an
            `mne.Epochs` object with a subset of epochs (and matching
            metadata) selected by the query called with
            ``self.metadata.eval``, e.g.::
@@ -250,7 +249,7 @@ class ExtendedTimeMixin(TimeMixin):
         ### 📖 Notes
 
 
-        Unlike Python slices, MNE time intervals by default include **both**
+        Unlike Python slices, MNE time intervals by default include `both`
         their end points; ``crop(tmin, tmax)`` returns the interval
         ``tmin <= t <= tmax``. Pass ``include_tmax=False`` to specify the half-open
         interval ``tmin <= t < tmax`` instead.
@@ -352,8 +351,8 @@ class ExtendedTimeMixin(TimeMixin):
         -----
         ### 📖 Notes
 
-        This method allows you to shift the *time* values associated with each
-        data sample by an arbitrary amount. It does *not* resample the signal
-        or change the *data* values in any way.
+        This method allows you to shift the `time` values associated with each
+        data sample by an arbitrary amount. It does `not` resample the signal
+        or change the `data` values in any way.
         """
         ...

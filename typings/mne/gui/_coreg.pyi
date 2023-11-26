@@ -56,8 +56,8 @@ class CoregistrationUI(HasTraits):
 
     #### `fiducials : list | dict | str`
         The fiducials given in the MRI (surface RAS) coordinate
-        system. If a dictionary is provided, it must contain the **keys**
-        ``'lpa'``, ``'rpa'``, and ``'nasion'``, with **values** being the
+        system. If a dictionary is provided, it must contain the `keys`
+        ``'lpa'``, ``'rpa'``, and ``'nasion'``, with `values` being the
         respective coordinates in meters.
         If a list, it must be a list of ``DigPoint`` instances as returned by the
         `mne.io.read_fiducials` function.

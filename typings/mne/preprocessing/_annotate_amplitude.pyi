@@ -31,15 +31,15 @@ def annotate_amplitude(
     #### `raw : instance of Raw`
         The raw data.
     #### `peak : float | dict | None`
-        Annotate segments based on **maximum** peak-to-peak signal amplitude
-        (PTP). Valid **keys** can be any channel type present in the object.
-        The **values** are floats that set the maximum acceptable PTP. If the
+        Annotate segments based on `maximum` peak-to-peak signal amplitude
+        (PTP). Valid `keys` can be any channel type present in the object.
+        The `values` are floats that set the maximum acceptable PTP. If the
         PTP is larger than this threshold, the segment will be annotated.
         If float, the minimum acceptable PTP is applied to all channels.
     #### `flat : float | dict | None`
-        Annotate segments based on **minimum** peak-to-peak signal amplitude
-        (PTP). Valid **keys** can be any channel type present in the object.
-        The **values** are floats that set the minimum acceptable PTP. If the
+        Annotate segments based on `minimum` peak-to-peak signal amplitude
+        (PTP). Valid `keys` can be any channel type present in the object.
+        The `values` are floats that set the minimum acceptable PTP. If the
         PTP is smaller than this threshold, the segment will be annotated.
         If float, the minimum acceptable PTP is applied to all channels.
     #### `bad_percent : float`
@@ -57,12 +57,12 @@ def annotate_amplitude(
         not totally uncommon. Defaults to ``0.005`` (5 ms).
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` *will be included* if their names or indices are
+        in ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
 
     #### `verbose : bool | str | int | None`

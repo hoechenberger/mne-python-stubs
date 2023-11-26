@@ -184,7 +184,7 @@ def annotate_break(
         this period a "break". Defaults to 15 seconds.
 
         ### 💡 Note This value defines the minimum duration of a break period in
-                  the data, **not** the minimum duration of the generated
+                  the data, `not` the minimum duration of the generated
                   annotations! See also ``t_start_after_previous`` and
                   ``t_stop_before_next`` for details.
 

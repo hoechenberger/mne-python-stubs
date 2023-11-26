@@ -31,7 +31,7 @@ def dpss_windows(
         Window normalization method. If ``'approximate'`` or ``'subsample'``,
         windows are normalized by the maximum, and a correction scale-factor
         for even-length windows is applied either using
-        ``N**2/(N**2+half_nbw)`` ("approximate") or a FFT-based subsample shift
+        ``N`2/(N`2+half_nbw)`` ("approximate") or a FFT-based subsample shift
         ("subsample"). ``2`` uses the L2 norm. ``None`` (the default) uses
         ``"approximate"`` when ``Kmax=None`` and ``2`` otherwise.
 
@@ -204,8 +204,7 @@ def tfr_array_multitaper(
         If True, make sure the wavelets have a mean of zero. Defaults to True.
 
     #### `time_bandwidth : float ``≥ 2.0```
-        Product between the temporal window length (in seconds) and the *full*
-        frequency bandwidth (in Hz). This product can be seen as the surface of the
+        Product between the temporal window length (in seconds) and the `full`         frequency bandwidth (in Hz). This product can be seen as the surface of the
         window on the time/frequency plane and controls the frequency bandwidth
         (thus the frequency resolution) and the number of good tapers. See notes
         for additional information.
@@ -330,12 +329,12 @@ def tfr_array_multitaper(
 
         In `mne.time_frequency.tfr_array_multitaper` and
         `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
-        product of the temporal window length with the *full* frequency bandwidth
+        product of the temporal window length with the `full` frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
 
         This is not the case for `mne.time_frequency.psd_array_multitaper` where
-        the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
+        the argument ``bandwidth`` defines the `half` frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 
     ✨ Added in vesion 0.14.0

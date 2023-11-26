@@ -225,18 +225,18 @@ class _BaseSourceEstimate(TimeMixin):
             correction. If ``None``, do not apply baseline correction.
             If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
             (in seconds), including the endpoints.
-            If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-            is ``None``, it is set to the **end** of the interval.
+            If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+            is ``None``, it is set to the `end` of the interval.
             If ``(None, None)``, the entire time interval is used.
 
             ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
-            Correction is applied **to each source individually** in the following
+            Correction is applied `to each source individually` in the following
             way:
 
             1. Calculate the mean signal of the baseline period.
-            2. Subtract this mean from the **entire** source estimate data.
+            2. Subtract this mean from the `entire` source estimate data.
 
             ### 💡 Note Baseline correction is appropriate when signal and noise are
                       approximately additive, and the noise level can be estimated from
@@ -1204,7 +1204,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         """## 🧠 Compute time-varying SNR in the source space.
 
         This function should only be used with source estimates with units
-        nanoAmperes (i.e., MNE-like solutions, *not* dSPM or sLORETA).
+        nanoAmperes (i.e., MNE-like solutions, `not` dSPM or sLORETA).
         See also :footcite:`GoldenholzEtAl2009`.
 
         ### ⛔️ Warning This function currently only works properly for fixed
@@ -3212,8 +3212,8 @@ def stc_near_sensors(
                      or that you set ``surface='pial'`` here.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good sEEG, ECoG, and DBS channels.

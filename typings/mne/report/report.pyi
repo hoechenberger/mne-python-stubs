@@ -120,19 +120,19 @@ class Report:
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied in the following way **to each channel:**
+        Correction is applied in the following way `to each channel:`
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** time period.
+        2. Subtract this mean from the `entire` time period.
 
-        For `mne.Epochs`, this algorithm is run **on each epoch individually.**
+        For `mne.Epochs`, this algorithm is run `on each epoch individually.`
         Defaults to ``None``, i.e. no baseline correction.
     #### `image_format : 'png' | 'svg' | 'webp' | 'auto'`
         Default image format to use (default is ``'auto'``, which will use
@@ -187,19 +187,19 @@ class Report:
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied in the following way **to each channel:**
+        Correction is applied in the following way `to each channel:`
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** time period.
+        2. Subtract this mean from the `entire` time period.
 
-        For `mne.Epochs`, this algorithm is run **on each epoch individually.**
+        For `mne.Epochs`, this algorithm is run `on each epoch individually.`
         Defaults to ``None``, i.e. no baseline correction.
     #### `image_format : str`
         Default image format to use.
@@ -1325,9 +1325,9 @@ class Report:
             report is saved in HDF5 format, so it can later be loaded again
             with `open_report`. For any other suffix, the report will be
             saved in HTML format. If ``None`` and `Report.parse_folder`
-            was **not** called, the report is saved as ``report.html`` in the
+            was `not` called, the report is saved as ``report.html`` in the
             current working directory. If ``None`` and
-            `Report.parse_folder` **was** used, the report is saved as
+            `Report.parse_folder` `was` used, the report is saved as
             ``report.html`` inside the ``data_path`` supplied to
             `Report.parse_folder`.
         #### `open_browser : bool`

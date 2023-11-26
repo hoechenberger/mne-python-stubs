@@ -259,6 +259,18 @@ for stub_path in stub_paths:
         string=unparsed_cleaned,
     )
 
+    # Change markup of reST bold and italic parameters
+    unparsed_cleaned = re.sub(
+        pattern=r"\*\*(.+)\*\*",  # bold
+        repl=r"`\1`",
+        string=unparsed_cleaned,
+    )
+    unparsed_cleaned = re.sub(
+        pattern=r"\s\*([a-z,\s]+)\*\s",  # italic
+        repl=r" `\1` ",
+        string=unparsed_cleaned,
+    )
+
     del unparsed
 
     # Write modified stub to disk

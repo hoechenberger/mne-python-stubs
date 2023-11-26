@@ -83,7 +83,7 @@ def simulate_evoked(
     To make the equivalence between snr and nave, when the snr is given
     instead of nave::
 
-        nave = (1 / 10 ** ((actual_snr - snr)) / 20) ** 2
+        nave = (1 / 10 ` ((actual_snr - snr)) / 20) ` 2
 
     where actual_snr is the snr to the generated noise before scaling.
 

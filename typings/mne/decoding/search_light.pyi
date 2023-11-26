@@ -27,7 +27,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         ``score_func(y, y_pred, **kwargs)``.
         Note that the "predict" method is automatically identified if scoring is
         a string (e.g. ``scoring='roc_auc'`` calls ``predict_proba``), but is
-        **not**  automatically set if ``scoring`` is a callable (e.g.
+        `not`  automatically set if ``scoring`` is a callable (e.g.
         ``scoring=sklearn.metrics.roc_auc_score``).
     #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
@@ -264,7 +264,7 @@ class GeneralizingEstimator(SlidingEstimator):
         ``score_func(y, y_pred, **kwargs)``.
         Note that the "predict" method is automatically identified if scoring is
         a string (e.g. ``scoring='roc_auc'`` calls ``predict_proba``), but is
-        **not**  automatically set if ``scoring`` is a callable (e.g.
+        `not`  automatically set if ``scoring`` is a callable (e.g.
         ``scoring=sklearn.metrics.roc_auc_score``).
     #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set

@@ -10,7 +10,7 @@ def read_raw_fieldtrip(fname, info, data_name: str = "data"):
 
     ### ⛔️ Warning FieldTrip does not normally store the original information
                  concerning channel location, orientation, type etc. It is
-                 therefore **highly recommended** to provide the info field.
+                 therefore `highly recommended` to provide the info field.
                  This can be obtained by reading the original raw data file
                  with MNE functions (without preload). The returned object
                  contains the necessary info field.
@@ -55,7 +55,7 @@ def read_epochs_fieldtrip(
 
     ### ⛔️ Warning FieldTrip does not normally store the original information
                  concerning channel location, orientation, type etc. It is
-                 therefore **highly recommended** to provide the info field.
+                 therefore `highly recommended` to provide the info field.
                  This can be obtained by reading the original raw data file
                  with MNE functions (without preload). The returned object
                  contains the necessary info field.
@@ -91,7 +91,7 @@ def read_evoked_fieldtrip(fname, info, comment=None, data_name: str = "data"):
 
     ### ⛔️ Warning FieldTrip does not normally store the original information
                  concerning channel location, orientation, type etc. It is
-                 therefore **highly recommended** to provide the info field.
+                 therefore `highly recommended` to provide the info field.
                  This can be obtained by reading the original raw data file
                  with MNE functions (without preload). The returned object
                  contains the necessary info field.

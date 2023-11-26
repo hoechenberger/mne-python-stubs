@@ -102,7 +102,7 @@ class SourceSpaces(list):
     ``src[0]['type'] == 'surf'``). The relevant key/value pairs depend on
     the source space type:
 
-    **Relevant to all source spaces**
+    `Relevant to all source spaces`
 
     The following are always present:
 
@@ -131,7 +131,7 @@ class SourceSpaces(list):
         #### `subject_his_id : str`
             The FreeSurfer subject name.
 
-    **Surface source spaces**
+    `Surface source spaces`
 
     Surface source spaces created using `mne.setup_source_space` can have
     the following additional entries (which will be missing, or have values of
@@ -206,7 +206,7 @@ class SourceSpaces(list):
         #### `nearest_dist : ndarray, shape (np,)`
             The distances corresponding to ``nearest``.
 
-    **Volume source spaces**
+    `Volume source spaces`
 
     Volume source spaces created using `mne.setup_volume_source_space`
     can have the following additional entries (which will be missing, or
@@ -863,12 +863,12 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
         be computed.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` *will be included* if their names or indices are
+        in ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
 
     #### `trans : str | dict | instance of Transform`

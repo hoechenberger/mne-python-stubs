@@ -168,29 +168,29 @@ class EpochsKIT(BaseEpochs):
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied **to each epoch and channel individually** in the
+        Correction is applied `to each epoch and channel individually` in the
         following way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** epoch.
+        2. Subtract this mean from the `entire` epoch.
 
 
     #### `reject : dict | None`
-        Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
+        Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
         i.e. the absolute difference between the lowest and the highest signal
         value. In each individual epoch, the PTP is calculated for every channel.
         If the PTP of any one channel exceeds the rejection threshold, the
         respective epoch will be dropped.
 
         The dictionary keys correspond to the different channel types; valid
-        **keys** can be any channel type present in the object.
+        `keys` can be any channel type present in the object.
 
         Example::
 
@@ -200,7 +200,7 @@ class EpochsKIT(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        ### 💡 Note Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal `difference`
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
@@ -211,9 +211,9 @@ class EpochsKIT(BaseEpochs):
         If ``reject`` is ``None`` (default), no rejection is performed.
 
     #### `flat : dict | None`
-        Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
-        Valid **keys** can be any channel type present in the object. The
-        **values** are floats that set the minimum acceptable PTP. If the PTP
+        Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
+        Valid `keys` can be any channel type present in the object. The
+        `values` are floats that set the minimum acceptable PTP. If the PTP
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 

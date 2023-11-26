@@ -163,7 +163,7 @@ def simulate_raw(
     -----
     ### 📖 Notes
 
-    **Stim channel encoding**
+    `Stim channel encoding`
 
     By default, the stimulus channel will have the head position number
     (starting at 1) stored in the trigger channel (if available) at the
@@ -171,7 +171,7 @@ def simulate_raw(
     ``(SourceEstimate, ndarray)`` the array values will be placed in the
     stim channel aligned with the `mne.SourceEstimate`.
 
-    **Data simulation**
+    `Data simulation`
 
     In the most advanced case where ``stc`` is an iterable of tuples the output
     will be concatenated in time as:

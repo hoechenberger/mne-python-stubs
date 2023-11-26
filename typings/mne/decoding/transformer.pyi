@@ -23,9 +23,8 @@ class Scaler(TransformerMixin, BaseEstimator):
 
     This class scales data for each channel. It differs from scikit-learn
     classes (e.g., `sklearn.preprocessing.StandardScaler`) in that
-    it scales each *channel* by estimating μ and σ using data from all
-    time points and epochs, as opposed to standardizing each *feature*
-    (i.e., each time point for each channel) by estimating using μ and σ
+    it scales each `channel` by estimating μ and σ using data from all
+    time points and epochs, as opposed to standardizing each `feature`     (i.e., each time point for each channel) by estimating using μ and σ
     using data from all epochs.
 
     -----
@@ -388,27 +387,27 @@ class FilterEstimator(TransformerMixin):
         cutoff frequency. If None the data are only high-passed.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` *will be included* if their names or indices are
+        in ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
 
     #### `filter_length : str | int`
         Length of the FIR filter to use (if applicable):
 
-        * **'auto' (default)**: The filter length is chosen based
+        * `'auto' (default)`: The filter length is chosen based
           on the size of the transition regions (6.6 times the reciprocal
           of the shortest transition band for fir_window='hamming'
           and fir_design="firwin2", and half that for "firwin").
-        * **str**: A human-readable time in
+        * `str`: A human-readable time in
           units of "s" or "ms" (e.g., "10s" or "5500ms") will be
           converted to that number of samples if ``phase="zero"``, or
           the shortest power-of-two length at least that duration for
           ``phase="zero-double"``.
-        * **int**: Specified length in samples. For fir_design="firwin",
+        * `int`: Specified length in samples. For fir_design="firwin",
           this should not be used.
 
     #### `l_trans_bandwidth : float | str`

@@ -127,18 +127,18 @@ class BaseEpochs(
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied **to each epoch and channel individually** in the
+        Correction is applied `to each epoch and channel individually` in the
         following way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** epoch.
+        2. Subtract this mean from the `entire` epoch.
 
         Defaults to ``(None, 0)``, i.e. beginning of the the data until
         time point zero.
@@ -147,23 +147,23 @@ class BaseEpochs(
         An instance of `mne.io.Raw`.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` *will be included* if their names or indices are
+        ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
 
     #### `reject : dict | None`
-        Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
+        Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
         i.e. the absolute difference between the lowest and the highest signal
         value. In each individual epoch, the PTP is calculated for every channel.
         If the PTP of any one channel exceeds the rejection threshold, the
         respective epoch will be dropped.
 
         The dictionary keys correspond to the different channel types; valid
-        **keys** can be any channel type present in the object.
+        `keys` can be any channel type present in the object.
 
         Example::
 
@@ -173,7 +173,7 @@ class BaseEpochs(
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        ### 💡 Note Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal `difference`
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
@@ -184,9 +184,9 @@ class BaseEpochs(
         If ``reject`` is ``None`` (default), no rejection is performed.
 
     #### `flat : dict | None`
-        Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
-        Valid **keys** can be any channel type present in the object. The
-        **values** are floats that set the minimum acceptable PTP. If the PTP
+        Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
+        Valid `keys` can be any channel type present in the object. The
+        `values` are floats that set the minimum acceptable PTP. If the PTP
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
@@ -390,18 +390,18 @@ class BaseEpochs(
             correction. If ``None``, do not apply baseline correction.
             If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
             (in seconds), including the endpoints.
-            If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-            is ``None``, it is set to the **end** of the interval.
+            If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+            is ``None``, it is set to the `end` of the interval.
             If ``(None, None)``, the entire time interval is used.
 
             ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
-            Correction is applied **to each epoch and channel individually** in the
+            Correction is applied `to each epoch and channel individually` in the
             following way:
 
             1. Calculate the mean signal of the baseline period.
-            2. Subtract this mean from the **entire** epoch.
+            2. Subtract this mean from the `entire` epoch.
 
             Defaults to ``(None, 0)``, i.e. beginning of the the data until
             time point zero.
@@ -476,12 +476,12 @@ class BaseEpochs(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `method : str | callable`
             How to combine the data. If "mean"/"median", the mean/median
@@ -543,12 +543,12 @@ class BaseEpochs(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `by_event_type : bool`
@@ -616,12 +616,12 @@ class BaseEpochs(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `scalings : 'auto' | dict | None`
@@ -668,7 +668,7 @@ class BaseEpochs(
             Color(s) to use for :term:`events`. To show all :term:`events` in the same
             color, pass any matplotlib-compatible color. To color events differently,
             pass a `dict` that maps event names or integer event numbers to colors
-            (must include entries for *all* events, or include a "fallback" entry with
+            (must include entries for `all` events, or include a "fallback" entry with
             key ``-1``). If ``None``, colors are chosen from the current Matplotlib
             color cycle.
             Defaults to ``None``.
@@ -726,8 +726,8 @@ class BaseEpochs(
         #### `event_id : bool | dict`
             Determines to label the event markers on the plot. If ``True``, uses
             ``epochs.event_id``. If ``False``, uses integer event codes instead of IDs.
-            If a ``dict`` is passed, uses its *keys* as event labels on the plot for
-            entries whose *values* are integer codes for events being drawn. Ignored if
+            If a ``dict`` is passed, uses its `keys` as event labels on the plot for
+            entries whose `values` are integer codes for events being drawn. Ignored if
             ``events=False``.
 
             ✨ Added in vesion 0.20
@@ -930,14 +930,14 @@ class BaseEpochs(
 
 
         #### `reject : dict | str | None`
-            Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
+            Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
             i.e. the absolute difference between the lowest and the highest signal
             value. In each individual epoch, the PTP is calculated for every channel.
             If the PTP of any one channel exceeds the rejection threshold, the
             respective epoch will be dropped.
 
             The dictionary keys correspond to the different channel types; valid
-            **keys** can be any channel type present in the object.
+            `keys` can be any channel type present in the object.
 
             Example::
 
@@ -947,7 +947,7 @@ class BaseEpochs(
                               eog=250e-6      # unit: V (EOG channels)
                               )
 
-            ### 💡 Note Since rejection is based on a signal **difference**
+            ### 💡 Note Since rejection is based on a signal `difference`
                       calculated for each channel separately, applying baseline
                       correction does not affect the rejection procedure, as the
                       difference will be preserved.
@@ -956,9 +956,9 @@ class BaseEpochs(
             (default), then the rejection parameters set at instantiation are used.
 
         #### `flat : dict | str | None`
-            Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
-            Valid **keys** can be any channel type present in the object. The
-            **values** are floats that set the minimum acceptable PTP. If the PTP
+            Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
+            Valid `keys` can be any channel type present in the object. The
+            `values` are floats that set the minimum acceptable PTP. If the PTP
             is smaller than this threshold, the epoch will be dropped. If ``None``
             then no rejection is performed based on flatness of the signal.
             If ``'existing'``, then the flat parameters set during epoch creation are
@@ -1081,12 +1081,12 @@ class BaseEpochs(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
             ``picks`` interacts with ``group_by`` and ``combine`` to determine the
             number of figures generated; see Notes.
@@ -1294,12 +1294,12 @@ class BaseEpochs(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `item : slice | array-like | str | list | None`
             The items to get. See `mne.Epochs.__getitem__` for
@@ -1382,7 +1382,7 @@ class BaseEpochs(
         The function ``fun`` is applied to the channels defined in ``picks``.
         The epochs object's data is modified in-place. If the function returns a different
         data type (e.g. :py:obj:`numpy.complex128`) it must be specified
-        using the ``dtype`` parameter, which causes the data type of **all** the data
+        using the ``dtype`` parameter, which causes the data type of `all` the data
         to change (even if the function is only applied to channels in ``picks``). The object has to have the data loaded e.g. with ``preload=True`` or ``self.load_data()``.
 
         ### 💡 Note If ``n_jobs`` > 1, more memory is required as
@@ -1403,12 +1403,12 @@ class BaseEpochs(
             The function must return an `numpy.ndarray` shaped like its input.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
 
         #### `dtype : numpy.dtype`
@@ -1480,7 +1480,7 @@ class BaseEpochs(
         ### 📖 Notes
 
 
-        Unlike Python slices, MNE time intervals by default include **both**
+        Unlike Python slices, MNE time intervals by default include `both`
         their end points; ``crop(tmin, tmax)`` returns the interval
         ``tmin <= t <= tmax``. Pass ``include_tmax=False`` to specify the half-open
         interval ``tmin <= t < tmax`` instead.
@@ -1635,7 +1635,7 @@ class BaseEpochs(
         #### `event_ids : None | list | dict`
             The event types to equalize.
 
-            If ``None`` (default), equalize the counts of **all** event types
+            If ``None`` (default), equalize the counts of `all` event types
             present in the `mne.Epochs` instance.
 
             If a list, each element can either be a string (event name) or a
@@ -1725,12 +1725,12 @@ class BaseEpochs(
             times).
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
         #### `proj : bool`
             Whether to apply SSP projection vectors before spectral estimation.
@@ -1827,12 +1827,12 @@ class BaseEpochs(
             times).
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
         #### `proj : bool`
             Whether to apply SSP projection vectors before spectral estimation.
@@ -1963,12 +1963,12 @@ class BaseEpochs(
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `index : str | list of str | None`
@@ -2113,18 +2113,18 @@ def make_metadata(
         extracted.
     #### `row_events : list of str | str | None`
         Event types around which to create the time windows. For each of these
-        time-locked events, we will create a **row** in the returned metadata
+        time-locked events, we will create a `row` in the returned metadata
         `pandas.DataFrame`. If provided, the string(s) must be keys of
-        ``event_id``. If ``None`` (default), rows are created for **all** event types
+        ``event_id``. If ``None`` (default), rows are created for `all` event types
         present in ``event_id``.
     #### `keep_first : str | list of str | None`
         Specify subsets of :term:`hierarchical event descriptors` (HEDs,
         inspired by :footcite:`BigdelyShamloEtAl2013`) matching events of which
-        the **first occurrence** within each time window shall be stored in
+        the `first occurrence` within each time window shall be stored in
         addition to the original events.
 
         ### 💡 Note
-           There is currently no way to retain **all** occurrences of a
+           There is currently no way to retain `all` occurrences of a
            repeated event. The ``keep_first`` parameter can be used to specify
            subsets of HEDs, effectively creating a new event type that is the
            union of all events types described by the matching HED pattern.
@@ -2134,9 +2134,9 @@ def make_metadata(
         ``response/left`` and ``response/right``; and in trials with both
         responses occurring, you want to keep only the first response. In this
         case, you can pass ``keep_first='response'``. This will add two new
-        columns to the metadata: ``response``, indicating at what **time** the
+        columns to the metadata: ``response``, indicating at what `time` the
         event  occurred, relative to the time-locked event; and
-        ``first_response``, stating which **type** (``'left'`` or ``'right'``)
+        ``first_response``, stating which `type` (``'left'`` or ``'right'``)
         of event occurred.
         To match specific subsets of HEDs describing different sets of events,
         pass a list of these subsets, e.g.
@@ -2148,13 +2148,13 @@ def make_metadata(
            of any event in each time window. For example, if a time window
            contains two ``'response'`` events, the generated ``response``
            column will automatically refer to the first of the two events. In
-           this specific case, it is therefore **not** necessary to make use of
+           this specific case, it is therefore `not` necessary to make use of
            the ``keep_first`` parameter – unless you need to differentiate
            between two types of responses, like in the example above.
 
     #### `keep_last : list of str | None`
-        Same as ``keep_first``, but for keeping only the **last**  occurrence
-        of matching events. The column indicating the **type** of an event
+        Same as ``keep_first``, but for keeping only the `last`  occurrence
+        of matching events. The column indicating the `type` of an event
         ``myevent`` will be named ``last_myevent``.
 
     -----
@@ -2241,29 +2241,29 @@ class Epochs(BaseEpochs):
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied **to each epoch and channel individually** in the
+        Correction is applied `to each epoch and channel individually` in the
         following way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** epoch.
+        2. Subtract this mean from the `entire` epoch.
 
         Defaults to ``(None, 0)``, i.e. beginning of the the data until
         time point zero.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` *will be included* if their names or indices are
+        ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
     #### `preload : bool`
 
@@ -2272,14 +2272,14 @@ class Epochs(BaseEpochs):
         efficient but can be slower).
 
     #### `reject : dict | None`
-        Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
+        Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
         i.e. the absolute difference between the lowest and the highest signal
         value. In each individual epoch, the PTP is calculated for every channel.
         If the PTP of any one channel exceeds the rejection threshold, the
         respective epoch will be dropped.
 
         The dictionary keys correspond to the different channel types; valid
-        **keys** can be any channel type present in the object.
+        `keys` can be any channel type present in the object.
 
         Example::
 
@@ -2289,7 +2289,7 @@ class Epochs(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        ### 💡 Note Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal `difference`
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
@@ -2300,9 +2300,9 @@ class Epochs(BaseEpochs):
         If ``reject`` is ``None`` (default), no rejection is performed.
 
     #### `flat : dict | None`
-        Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
-        Valid **keys** can be any channel type present in the object. The
-        **values** are floats that set the minimum acceptable PTP. If the PTP
+        Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
+        Valid `keys` can be any channel type present in the object. The
+        `values` are floats that set the minimum acceptable PTP. If the PTP
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
@@ -2529,14 +2529,14 @@ class EpochsArray(BaseEpochs):
         with string integer names corresponding to the event id integers.
 
     #### `reject : dict | None`
-        Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
+        Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
         i.e. the absolute difference between the lowest and the highest signal
         value. In each individual epoch, the PTP is calculated for every channel.
         If the PTP of any one channel exceeds the rejection threshold, the
         respective epoch will be dropped.
 
         The dictionary keys correspond to the different channel types; valid
-        **keys** can be any channel type present in the object.
+        `keys` can be any channel type present in the object.
 
         Example::
 
@@ -2546,7 +2546,7 @@ class EpochsArray(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        ### 💡 Note Since rejection is based on a signal **difference**
+        ### 💡 Note Since rejection is based on a signal `difference`
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
@@ -2557,9 +2557,9 @@ class EpochsArray(BaseEpochs):
         If ``reject`` is ``None`` (default), no rejection is performed.
 
     #### `flat : dict | None`
-        Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
-        Valid **keys** can be any channel type present in the object. The
-        **values** are floats that set the minimum acceptable PTP. If the PTP
+        Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
+        Valid `keys` can be any channel type present in the object. The
+        `values` are floats that set the minimum acceptable PTP. If the PTP
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
@@ -2580,18 +2580,18 @@ class EpochsArray(BaseEpochs):
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
-        is ``None``, it is set to the **end** of the interval.
+        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
+        is ``None``, it is set to the `end` of the interval.
         If ``(None, None)``, the entire time interval is used.
 
         ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied **to each epoch and channel individually** in the
+        Correction is applied `to each epoch and channel individually` in the
         following way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the **entire** epoch.
+        2. Subtract this mean from the `entire` epoch.
 
         Defaults to ``None``, i.e. no baseline correction.
 
@@ -2896,7 +2896,7 @@ def concatenate_epochs(
 ):
     """## 🧠 Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
 
-    ### 💡 Note Unlike `mne.concatenate_raws`, this function does **not**
+    ### 💡 Note Unlike `mne.concatenate_raws`, this function does `not`
               modify any of the input data.
 
     -----
@@ -2971,12 +2971,12 @@ def average_movements(
         if data have not been decimated or resampled.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all data channels. Note that channels
-        in ``info['bads']`` *will be included* if their names or indices are
+        in ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
 
     #### `origin : array-like, shape (3,) | str`

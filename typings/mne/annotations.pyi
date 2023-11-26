@@ -92,7 +92,7 @@ class Annotations:
     >>> raw.set_annotations(annotations)  # doctest: +SKIP
     >>> epochs = mne.Epochs(raw, events, event_id, tmin, tmax)  # doctest: +SKIP
 
-    **ch_names**
+    `ch_names`
 
     Specifying channel names allows the creation of channel-specific
     annotations. Once the annotations are assigned to a raw instance with
@@ -101,7 +101,7 @@ class Annotations:
     from the raw instance, any channel-specific annotation that has no channels
     left in the raw instance will also be removed.
 
-    **orig_time**
+    `orig_time`
 
     If ``orig_time`` is None, the annotations are synced to the start of the
     data (0 seconds). Otherwise the annotations are synced to sample 0 and
@@ -187,7 +187,7 @@ class Annotations:
        the original data (with ``first_samp==0``), and will be re-referenced to
        the new time offset!
 
-    **Specific annotation**
+    `Specific annotation`
 
     ``BAD_ACQ_SKIP`` annotation leads to specific reading/writing file
     behaviours. See `mne.io.read_raw_fif` and
@@ -633,13 +633,13 @@ def events_from_annotations(
     #### `event_id : dict | callable | None | ``'auto'```
         Can be:
 
-        - **dict**: map descriptions (keys) to integer event codes (values).
+        - `dict`: map descriptions (keys) to integer event codes (values).
           Only the descriptions present will be mapped, others will be ignored.
-        - **callable**: must take a string input and return an integer event
+        - `callable`: must take a string input and return an integer event
           code, or return ``None`` to ignore the event.
-        - **None**: Map descriptions to unique integer values based on their
+        - `None`: Map descriptions to unique integer values based on their
           ``sorted`` order.
-        - **'auto' (default)**: prefer a raw-format-specific parser:
+        - `'auto' (default)`: prefer a raw-format-specific parser:
 
           - Brainvision: map stimulus events to their integer part; response
             events to integer part + 1000; optic events to integer part + 2000;
@@ -714,14 +714,14 @@ def annotations_from_events(
     #### `event_desc : dict | array-like | callable | None`
         Events description. Can be:
 
-        - **dict**: map integer event codes (keys) to descriptions (values).
+        - `dict`: map integer event codes (keys) to descriptions (values).
           Only the descriptions present will be mapped, others will be ignored.
-        - **array-like**: list, or 1d array of integers event codes to include.
+        - `array-like`: list, or 1d array of integers event codes to include.
           Only the event codes present will be mapped, others will be ignored.
           Event codes will be passed as string descriptions.
-        - **callable**: must take a integer event code as input and return a
+        - `callable`: must take a integer event code as input and return a
           string description or None to ignore it.
-        - **None**: Use integer event codes as descriptions.
+        - `None`: Use integer event codes as descriptions.
     #### `first_samp : int`
         The first data sample (default=0). See :attr:`mne.io.Raw.first_samp`
         docstring.

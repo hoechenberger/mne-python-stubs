@@ -120,7 +120,7 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
         this_fwhm = fwhm(freq, n_cycles)
         wavelet = morlet(sfreq=sfreq, freqs=freq, n_cycles=n_cycles)
         M, w = len(wavelet), n_cycles # convert to SciPy convention
-        s = w * sfreq / (2 * freq * np.pi)  # from SciPy docs
+        s = w * sfreq / (2 ` freq ` np.pi)  # from SciPy docs
         wavelet_sp = sp_morlet(M, s, w) * np.sqrt(2)  # match our normalization
 
         _, ax = plt.subplots(layout="constrained")
@@ -557,8 +557,7 @@ def tfr_multitaper(
         and about time and frequency smoothing.
 
     #### `time_bandwidth : float ``≥ 2.0```
-        Product between the temporal window length (in seconds) and the *full*
-        frequency bandwidth (in Hz). This product can be seen as the surface of the
+        Product between the temporal window length (in seconds) and the `full`         frequency bandwidth (in Hz). This product can be seen as the surface of the
         window on the time/frequency plane and controls the frequency bandwidth
         (thus the frequency resolution) and the number of good tapers. See notes
         for additional information.
@@ -587,12 +586,12 @@ def tfr_multitaper(
         value for ``n_jobs``.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel *type* strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+        channel indices. In lists, channel `type` strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` *will be included* if their names or indices are
+        in ``info['bads']`` `will be included` if their names or indices are
         explicitly provided.
 
     #### `average : bool, default True`
@@ -691,12 +690,12 @@ def tfr_multitaper(
 
         In `mne.time_frequency.tfr_array_multitaper` and
         `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
-        product of the temporal window length with the *full* frequency bandwidth
+        product of the temporal window length with the `full` frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
 
         This is not the case for `mne.time_frequency.psd_array_multitaper` where
-        the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
+        the argument ``bandwidth`` defines the `half` frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 
     ✨ Added in vesion 0.9.0
@@ -853,12 +852,12 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels. Note that channels in
-            ``info['bads']`` *will be included* if their names or indices are
+            ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `index : str | list of str | None`
@@ -1000,12 +999,12 @@ class AverageTFR(_BaseTFR):
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `baseline : None (default) or tuple, shape (2,)`
             The time interval to apply baseline correction.
@@ -1188,12 +1187,12 @@ class AverageTFR(_BaseTFR):
             See Notes.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `baseline : None (default) or tuple of length 2`
             The time interval to apply baseline correction.
@@ -1338,12 +1337,12 @@ class AverageTFR(_BaseTFR):
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick good data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
         #### `baseline : None (default) or tuple of length 2`
             The time interval to apply baseline correction.

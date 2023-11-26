@@ -1698,7 +1698,7 @@ def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
         Layout instance specifying sensor positions.
     #### `picks : list | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as channel indices.
-        None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
+        None (default) will pick all channels. Note that channels in ``info['bads']`` `will be included` if their indices are explicitly provided.
     #### `show_axes : bool`
             Show layout axes if True. Defaults to False.
     #### `show : bool`

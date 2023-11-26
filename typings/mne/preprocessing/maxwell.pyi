@@ -60,7 +60,7 @@ def maxwell_filter_prepare_emptyroom(
     #### `meas_date : 'keep' | 'from_raw'`
         Whether to transfer the measurement date from ``raw`` or to keep
         it as is (default). If you intend to manually transfer annotations
-        from ``raw`` **after** running this function, you should set this to
+        from ``raw`` `after` running this function, you should set this to
         ``'from_raw'``.
 
     #### `emit_warning : bool`
@@ -221,7 +221,7 @@ def maxwell_filter(
         performed on the output data. The non-tSSS parameters (e.g.,
         ``int_order``, ``calibration``, ``head_pos``, etc.) will still be
         used to form the SSS bases used to calculate temporal projectors,
-        but the output MEG data will *only* have temporal projections
+        but the output MEG data will `only` have temporal projections
         performed. Noise reduction from SSS basis multiplication,
         cross-talk cancellation, movement compensation, and so forth
         will not be applied to the data. This is useful, for example, when
@@ -340,7 +340,7 @@ def maxwell_filter(
     Epoch-based movement compensation is described in :footcite:`TauluKajola2005`.
 
     Use of Maxwell filtering routines with non-Neuromag systems is currently
-    **experimental**. Worse results for non-Neuromag systems are expected due
+    `experimental`. Worse results for non-Neuromag systems are expected due
     to (at least):
 
     * Missing fine-calibration and cross-talk cancellation data for
@@ -412,8 +412,8 @@ def find_bad_channels_maxwell(
         the original and Maxwell-filtered data. See the ``Notes`` section for
         details.
 
-        ### 💡 Note This setting only concerns *noisy* channel detection.
-                  The limit for *flat* channel detection currently cannot be
+        ### 💡 Note This setting only concerns `noisy` channel detection.
+                  The limit for `flat` channel detection currently cannot be
                   controlled by the user. Flat channel detection is always run
                   before noisy channel detection.
     #### `duration : float`
@@ -576,10 +576,10 @@ def find_bad_channels_maxwell(
     This algorithm, for a given chunk of data:
 
     1. Runs SSS on the data, without removing external components.
-    2. Excludes channels as *flat* that have had low variability
+    2. Excludes channels as `flat` that have had low variability
        (standard deviation < 0.01 fT or fT/cm in a 30 ms window) in the given
        or any previous chunk.
-    3. For each channel :math:`k`, computes the *range* or peak-to-peak
+    3. For each channel :math:`k`, computes the `range` or peak-to-peak
        :math:`d_k` of the difference between the reconstructed and original
        data.
     4. Computes the average :math:`\\mu_d` and standard deviation
@@ -595,7 +595,7 @@ def find_bad_channels_maxwell(
     Data are processed in chunks of the given ``duration``, and channels that
     are bad for at least ``min_count`` chunks are returned.
 
-    Channels marked as *flat* in step 2 are excluded from all subsequent steps
+    Channels marked as `flat` in step 2 are excluded from all subsequent steps
     of noisy channel detection.
 
     This algorithm gives results similar to, but not identical with,

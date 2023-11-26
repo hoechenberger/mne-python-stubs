@@ -268,23 +268,23 @@ def filter_data(
         cutoff frequency. If None the data are only high-passed.
     #### `picks : list | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as channel indices.
-        None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
+        None (default) will pick all channels. Note that channels in ``info['bads']`` `will be included` if their indices are explicitly provided.
         Currently this is only supported for 2D (n_channels, n_times) and
         3D (n_epochs, n_channels, n_times) arrays.
 
     #### `filter_length : str | int`
         Length of the FIR filter to use (if applicable):
 
-        * **'auto' (default)**: The filter length is chosen based
+        * `'auto' (default)`: The filter length is chosen based
           on the size of the transition regions (6.6 times the reciprocal
           of the shortest transition band for fir_window='hamming'
           and fir_design="firwin2", and half that for "firwin").
-        * **str**: A human-readable time in
+        * `str`: A human-readable time in
           units of "s" or "ms" (e.g., "10s" or "5500ms") will be
           converted to that number of samples if ``phase="zero"``, or
           the shortest power-of-two length at least that duration for
           ``phase="zero-double"``.
-        * **int**: Specified length in samples. For fir_design="firwin",
+        * `int`: Specified length in samples. For fir_design="firwin",
           this should not be used.
 
     #### `l_trans_bandwidth : float | str`
@@ -455,16 +455,16 @@ def create_filter(
     #### `filter_length : str | int`
         Length of the FIR filter to use (if applicable):
 
-        * **'auto' (default)**: The filter length is chosen based
+        * `'auto' (default)`: The filter length is chosen based
           on the size of the transition regions (6.6 times the reciprocal
           of the shortest transition band for fir_window='hamming'
           and fir_design="firwin2", and half that for "firwin").
-        * **str**: A human-readable time in
+        * `str`: A human-readable time in
           units of "s" or "ms" (e.g., "10s" or "5500ms") will be
           converted to that number of samples if ``phase="zero"``, or
           the shortest power-of-two length at least that duration for
           ``phase="zero-double"``.
-        * **int**: Specified length in samples. For fir_design="firwin",
+        * `int`: Specified length in samples. For fir_design="firwin",
           this should not be used.
 
     #### `l_trans_bandwidth : float | str`
@@ -553,7 +553,7 @@ def create_filter(
               is given by ``l_freq`` or ``h_freq`` directly, and
               ``l_trans_bandwidth`` and ``h_trans_bandwidth`` are ignored.
 
-    **Band-pass filter**
+    `Band-pass filter`
 
     The frequency response is (approximately) given by::
 
@@ -571,7 +571,7 @@ def create_filter(
         * Fs1 = Fp1 - l_trans_bandwidth in Hz
         * Fs2 = Fp2 + h_trans_bandwidth in Hz
 
-    **Band-stop filter**
+    `Band-stop filter`
 
     The frequency response is (approximately) given by::
 
@@ -589,7 +589,7 @@ def create_filter(
 
     Multiple stop bands can be specified using arrays.
 
-    **Low-pass filter**
+    `Low-pass filter`
 
     The frequency response is (approximately) given by::
 
@@ -604,7 +604,7 @@ def create_filter(
 
     Where ``Fstop = Fp + trans_bandwidth``.
 
-    **High-pass filter**
+    `High-pass filter`
 
     The frequency response is (approximately) given by::
 
@@ -665,16 +665,16 @@ def notch_filter(
     #### `filter_length : str | int`
         Length of the FIR filter to use (if applicable):
 
-        * **'auto' (default)**: The filter length is chosen based
+        * `'auto' (default)`: The filter length is chosen based
           on the size of the transition regions (6.6 times the reciprocal
           of the shortest transition band for fir_window='hamming'
           and fir_design="firwin2", and half that for "firwin").
-        * **str**: A human-readable time in
+        * `str`: A human-readable time in
           units of "s" or "ms" (e.g., "10s" or "5500ms") will be
           converted to that number of samples if ``phase="zero"``, or
           the shortest power-of-two length at least that duration for
           ``phase="zero-double"``.
-        * **int**: Specified length in samples. For fir_design="firwin",
+        * `int`: Specified length in samples. For fir_design="firwin",
           this should not be used.
 
         When ``method=='spectrum_fit'``, this sets the effective window duration
@@ -713,7 +713,7 @@ def notch_filter(
         number of frequencies, so large p-values may be justified.
     #### `picks : list | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as channel indices.
-        None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
+        None (default) will pick all channels. Note that channels in ``info['bads']`` `will be included` if their indices are explicitly provided.
         Only supported for 2D (n_channels, n_times) and 3D
         (n_epochs, n_channels, n_times) data.
 
@@ -1012,27 +1012,27 @@ class FilterMixin:
             cutoff frequency. If None the data are only high-passed.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels. Note that channels
-            in ``info['bads']`` *will be included* if their names or indices are
+            in ``info['bads']`` `will be included` if their names or indices are
             explicitly provided.
 
         #### `filter_length : str | int`
             Length of the FIR filter to use (if applicable):
 
-            * **'auto' (default)**: The filter length is chosen based
+            * `'auto' (default)`: The filter length is chosen based
               on the size of the transition regions (6.6 times the reciprocal
               of the shortest transition band for fir_window='hamming'
               and fir_design="firwin2", and half that for "firwin").
-            * **str**: A human-readable time in
+            * `str`: A human-readable time in
               units of "s" or "ms" (e.g., "10s" or "5500ms") will be
               converted to that number of samples if ``phase="zero"``, or
               the shortest power-of-two length at least that duration for
               ``phase="zero-double"``.
-            * **int**: Specified length in samples. For fir_design="firwin",
+            * `int`: Specified length in samples. For fir_design="firwin",
               this should not be used.
 
         #### `l_trans_bandwidth : float | str`
@@ -1259,12 +1259,12 @@ class FilterMixin:
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel *type* strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            channel indices. In lists, channel `type` strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` *will be included* if
+            MEG channels). Note that channels in ``info['bads']`` `will be included` if
             their names or indices are explicitly provided.
         #### `envelope : bool`
             Compute the envelope signal of each channel. Default False.
@@ -1297,7 +1297,7 @@ class FilterMixin:
         -----
         ### 📖 Notes
 
-        **Parameters**
+        `Parameters`
 
         If ``envelope=False``, the analytic signal for the channels defined in
         ``picks`` is computed and the data of the Raw object is converted to
@@ -1323,7 +1323,7 @@ class FilterMixin:
         is cut off, but it may result in a slightly different result
         (particularly around the edges). Use at your own risk.
 
-        **Analytic signal**
+        `Analytic signal`
 
         The analytic signal "x_a(t)" of "x(t)" is::
 
