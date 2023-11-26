@@ -126,7 +126,7 @@ class BaseRaw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
 
@@ -663,7 +663,7 @@ class BaseRaw(
         inst : instance of Epochs, Evoked, or Raw
             The filtered data.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.filter.create_filter
         mne.Evoked.savgol_filter
@@ -857,7 +857,7 @@ class BaseRaw(
         raw : instance of Raw
             The raw instance with filtered data.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.filter.notch_filter
         mne.io.Raw.filter
@@ -960,7 +960,7 @@ class BaseRaw(
         events : array, shape (n_events, 3) | None
             If events are jointly resampled, these are returned with the raw.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.io.Raw.filter
         mne.Epochs.resample

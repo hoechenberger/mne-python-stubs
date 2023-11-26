@@ -59,7 +59,7 @@ class Forward(dict):
         A convenience wrapper accessible as ``fwd.ch_names`` which wraps
         ``fwd['info']['ch_names']``.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.make_forward_solution
     mne.read_forward_solution
@@ -202,7 +202,7 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
     fwd : instance of Forward
         The forward solution.
 
-    See Also
+    ### 👉 See Also
     --------
     write_forward_solution, make_forward_solution
 
@@ -286,7 +286,7 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_forward_solution
 
@@ -371,7 +371,7 @@ def compute_orient_prior(forward, loose: str = "auto", verbose=None):
     orient_prior : ndarray, shape (n_sources,)
         Orientation priors.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_depth_prior
     """
@@ -480,7 +480,7 @@ def compute_depth_prior(
     depth_prior : ndarray, shape (n_vertices,)
         The depth prior.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_orient_prior
 
@@ -579,7 +579,7 @@ def apply_forward(
     evoked : Evoked
         Evoked object with computed sensor space data.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_forward_raw: Compute sensor space data and return a Raw object.
     """
@@ -644,7 +644,7 @@ def apply_forward_raw(
     raw : Raw object
         Raw object with computed sensor space data.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_forward: Compute sensor space data and return an Evoked object.
     """
@@ -672,7 +672,7 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
     fwd_out : instance of Forward
         Restricted forward operator.
 
-    See Also
+    ### 👉 See Also
     --------
     restrict_forward_to_label
     """
@@ -693,7 +693,7 @@ def restrict_forward_to_label(fwd, labels):
     fwd_out : dict
         Restricted forward operator.
 
-    See Also
+    ### 👉 See Also
     --------
     restrict_forward_to_stc
     """

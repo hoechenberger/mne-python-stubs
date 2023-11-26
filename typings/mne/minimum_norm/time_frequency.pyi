@@ -376,7 +376,7 @@ def compute_source_psd(
     sensor_psd : instance of EvokedArray
         The PSD of each sensor. Only returned if ``return_sensor`` is True.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_source_psd_epochs
 
@@ -502,7 +502,7 @@ def compute_source_psd_epochs(
         A list (or generator) for the source space PSD (and optionally the
         sensor PSD) for each epoch.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_source_psd
     """

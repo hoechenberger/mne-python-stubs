@@ -91,7 +91,7 @@ def make_forward_solution(
     fwd : instance of Forward
         The forward solution.
 
-    See Also
+    ### 👉 See Also
     --------
     convert_forward_solution
 
@@ -169,7 +169,7 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
         time courses. If the time points of the dipole are unevenly spaced,
         a list of single-timepoint source estimates are returned.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.simulation.simulate_evoked
 

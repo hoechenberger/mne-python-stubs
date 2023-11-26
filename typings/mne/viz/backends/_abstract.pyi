@@ -11,7 +11,7 @@ class Figure3D(ABC):
         ``mne.viz.Figure3D(...)``. Instead, use
         `mne.viz.create_3d_figure`.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.create_3d_figure
     """

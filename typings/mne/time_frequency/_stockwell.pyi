@@ -62,7 +62,7 @@ def tfr_array_stockwell(
     freqs : ndarray
         The frequencies.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_stockwell
     mne.time_frequency.tfr_multitaper
@@ -131,7 +131,7 @@ def tfr_stockwell(
     itc : AverageTFR
         The intertrial coherence. Only returned if return_itc is True.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_array_stockwell
     mne.time_frequency.tfr_multitaper

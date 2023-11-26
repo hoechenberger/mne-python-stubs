@@ -78,7 +78,7 @@ class SourceSpaces(list):
         Dictionary with information about the creation of the source space
         file. Has keys ``'working_dir'`` and ``'command_line'``.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.setup_source_space : Setup a surface source space.
     mne.setup_volume_source_space : Setup a volume source space.
@@ -414,7 +414,7 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
     src : SourceSpaces
         The source spaces.
 
-    See Also
+    ### 👉 See Also
     --------
     write_source_spaces, setup_source_space, setup_volume_source_space
     """
@@ -475,7 +475,7 @@ def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) ->
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_source_spaces
     """
@@ -540,7 +540,7 @@ def setup_source_space(
     src : SourceSpaces
         The source space for each hemisphere.
 
-    See Also
+    ### 👉 See Also
     --------
     setup_volume_source_space
     """
@@ -664,7 +664,7 @@ def setup_volume_source_space(
         entry of ``volume_labels``, or a single source space if
         ``volume_labels`` was not specified.
 
-    See Also
+    ### 👉 See Also
     --------
     setup_source_space
 

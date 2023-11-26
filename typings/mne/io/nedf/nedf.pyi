@@ -36,7 +36,7 @@ def read_raw_nedf(filename, preload: bool = False, verbose=None):
         A Raw object containing NEDF data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNedf.
     """

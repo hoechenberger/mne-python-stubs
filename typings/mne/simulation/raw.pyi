@@ -146,7 +146,7 @@ def simulate_raw(
     raw : instance of Raw
         The simulated raw file.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.chpi.read_head_pos
     add_chpi
@@ -250,7 +250,7 @@ def add_eog(
     raw : instance of Raw
         The instance, modified in place.
 
-    See Also
+    ### 👉 See Also
     --------
     add_chpi
     add_ecg
@@ -339,7 +339,7 @@ def add_ecg(
     raw : instance of Raw
         The instance, modified in place.
 
-    See Also
+    ### 👉 See Also
     --------
     add_chpi
     add_eog

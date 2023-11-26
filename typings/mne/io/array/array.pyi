@@ -29,7 +29,7 @@ class RawArray(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.EpochsArray
     mne.EvokedArray

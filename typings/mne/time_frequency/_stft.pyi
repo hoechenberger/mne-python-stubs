@@ -28,7 +28,7 @@ def stft(x, wsize, tstep=None, verbose=None):
         STFT coefficients for positive frequencies with
         ``n_step = ceil(T / tstep)``.
 
-    See Also
+    ### 👉 See Also
     --------
     istft
     stftfreq
@@ -53,7 +53,7 @@ def istft(X, tstep=None, Tx=None):
     x : array, shape (Tx,)
         Array containing the inverse STFT signal.
 
-    See Also
+    ### 👉 See Also
     --------
     stft
     """
@@ -75,7 +75,7 @@ def stftfreq(wsize, sfreq=None):
     freqs : array
         The positive frequencies returned by stft.
 
-    See Also
+    ### 👉 See Also
     --------
     stft
     istft

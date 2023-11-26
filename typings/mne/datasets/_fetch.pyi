@@ -74,7 +74,7 @@ def fetch_dataset(
     version : str
         Only returned if ``return_version`` is True.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.get_config
     mne.set_config

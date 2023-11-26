@@ -1911,7 +1911,7 @@ def plot_bridged_electrodes(
     fig : instance of matplotlib.figure.Figure
         The topoplot figure handle.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.preprocessing.compute_bridged_electrodes
     """
@@ -1948,7 +1948,7 @@ def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = 
         The `matplotlib.figure.Figure` instance where the channel
         adjacency is plotted.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.channels.get_builtin_ch_adjacencies
     mne.channels.read_ch_adjacency

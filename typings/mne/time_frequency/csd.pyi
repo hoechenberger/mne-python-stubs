@@ -87,7 +87,7 @@ class CrossSpectralDensity:
         object to compute a DICS beamformer. Defaults to ``None``, which means
         no projectors will be applied.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_fourier
     csd_multitaper
@@ -185,7 +185,7 @@ class CrossSpectralDensity:
             A CSD object containing a single CSD matrix that corresponds to the
             requested frequency or frequency-bin.
 
-        See Also
+        ### 👉 See Also
         --------
         get_data
         """
@@ -217,7 +217,7 @@ class CrossSpectralDensity:
         csd : ndarray, shape (n_channels, n_channels) | instance of Covariance
             The CSD matrix corresponding to the requested frequency.
 
-        See Also
+        ### 👉 See Also
         --------
         pick_frequency
         """
@@ -301,7 +301,7 @@ class CrossSpectralDensity:
 
             ✨ Added in vesion 1.0
 
-        See Also
+        ### 👉 See Also
         --------
         read_csd : For reading CSD objects from a file.
         """
@@ -353,7 +353,7 @@ def read_csd(fname):
     csd : instance of CrossSpectralDensity
         The CSD that was stored in the file.
 
-    See Also
+    ### 👉 See Also
     --------
     CrossSpectralDensity.save : For saving CSD objects.
     """
@@ -422,7 +422,7 @@ def csd_fourier(
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_array_fourier
     csd_array_morlet
@@ -497,7 +497,7 @@ def csd_array_fourier(
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_array_morlet
     csd_array_multitaper
@@ -580,7 +580,7 @@ def csd_multitaper(
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_array_fourier
     csd_array_morlet
@@ -671,7 +671,7 @@ def csd_array_multitaper(
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_array_fourier
     csd_array_morlet
@@ -753,7 +753,7 @@ def csd_morlet(
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_array_fourier
     csd_array_morlet
@@ -837,7 +837,7 @@ def csd_array_morlet(
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_array_fourier
     csd_array_multitaper

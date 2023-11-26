@@ -343,7 +343,7 @@ def plot_sensors(
     selection : list
         A list of selected channels. Only returned if ``kind=='select'``.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.plot_layout
 

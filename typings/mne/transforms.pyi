@@ -259,7 +259,7 @@ def read_trans(fname, return_all: bool = False, verbose=None):
     trans : dict | list of dict
         The transformation dictionary from the fif file.
 
-    See Also
+    ### 👉 See Also
     --------
     write_trans
     mne.transforms.Transform
@@ -286,7 +286,7 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_trans
     """
@@ -488,7 +488,7 @@ def quat_to_rot(quat):
     rot : array, shape (..., 3, 3)
         The corresponding rotation matrices.
 
-    See Also
+    ### 👉 See Also
     --------
     rot_to_quat
     """
@@ -508,7 +508,7 @@ def rot_to_quat(rot):
         The q1, q2, and q3 (x, y, z) parameters of the corresponding
         unit quaternions.
 
-    See Also
+    ### 👉 See Also
     --------
     quat_to_rot
     """

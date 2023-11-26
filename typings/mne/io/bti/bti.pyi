@@ -174,7 +174,7 @@ def read_raw_bti(
         A Raw object containing BTI data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawBTi.
     """

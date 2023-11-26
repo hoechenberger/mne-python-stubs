@@ -64,7 +64,7 @@ class Annotations:
 
         ✨ Added in vesion 0.23
 
-    See Also
+    ### 👉 See Also
     --------
     mne.annotations_from_events
     mne.events_from_annotations
@@ -650,7 +650,7 @@ def events_from_annotations(
     event_id : dict
         The event_id variable that can be passed to `mne.Epochs`.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.annotations_from_events
 
@@ -705,7 +705,7 @@ def annotations_from_events(
     annot : instance of Annotations
         The annotations.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.events_from_annotations
 

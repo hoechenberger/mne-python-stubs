@@ -162,7 +162,7 @@ def construct_iir_filter(
         exist before) for 'sos' (or 'b', 'a'), and 'padlen' for
         IIR filtering.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.filter.filter_data
     mne.io.Raw.filter
@@ -361,7 +361,7 @@ def filter_data(
     data : ndarray, shape (..., n_times)
         The filtered data.
 
-    See Also
+    ### 👉 See Also
     --------
     construct_iir_filter
     create_filter
@@ -520,7 +520,7 @@ def create_filter(
         Will be an array of FIR coefficients for method='fir', and dict
         with IIR parameters for method='iir'.
 
-    See Also
+    ### 👉 See Also
     --------
     filter_data
 
@@ -754,7 +754,7 @@ def notch_filter(
     xf : array
         The x array filtered.
 
-    See Also
+    ### 👉 See Also
     --------
     filter_data
     resample
@@ -916,7 +916,7 @@ class FilterMixin:
         inst : instance of Epochs or Evoked
             The object with the filtering applied.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.io.Raw.filter
 
@@ -1092,7 +1092,7 @@ class FilterMixin:
         inst : instance of Epochs, Evoked, or Raw
             The filtered data.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.filter.create_filter
         mne.Evoked.savgol_filter
@@ -1189,7 +1189,7 @@ class FilterMixin:
         inst : instance of Epochs or Evoked
             The resampled object.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.io.Raw.resample
 

@@ -82,7 +82,7 @@ def get_config(
     value : dict | str | None
         The preference key value.
 
-    See Also
+    ### 👉 See Also
     --------
     set_config
     """
@@ -105,7 +105,7 @@ def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
         If True (default), update :data:`os.environ` in addition to
         updating the MNE-Python config file.
 
-    See Also
+    ### 👉 See Also
     --------
     get_config
     """

@@ -235,7 +235,7 @@ def mixed_norm(
         The residual a.k.a. data not explained by the sources.
         Only returned if return_residual is True.
 
-    See Also
+    ### 👉 See Also
     --------
     tf_mixed_norm
 
@@ -437,7 +437,7 @@ def tf_mixed_norm(
         The residual a.k.a. data not explained by the sources.
         Only returned if return_residual is True.
 
-    See Also
+    ### 👉 See Also
     --------
     mixed_norm
 

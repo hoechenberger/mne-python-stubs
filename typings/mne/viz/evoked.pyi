@@ -195,7 +195,7 @@ def plot_evoked(
     fig : instance of matplotlib.figure.Figure
         Figure containing the butterfly plots.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.plot_evoked_white
     """
@@ -565,7 +565,7 @@ def plot_evoked_white(
     fig : instance of matplotlib.figure.Figure
         The figure object containing the plot.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.Evoked.plot
 

@@ -102,7 +102,7 @@ def make_dig_montage(
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     DigMontage
     read_dig_captrak
@@ -127,7 +127,7 @@ class DigMontage:
     ch_names : list of str
         The names of the EEG channels.
 
-    See Also
+    ### 👉 See Also
     --------
     read_dig_captrak
     read_dig_dat
@@ -349,7 +349,7 @@ class DigMontage:
         inst : instance of DigMontage
             The instance, modified in-place.
 
-        See Also
+        ### 👉 See Also
         --------
         `tut-source-alignment`
 
@@ -476,7 +476,7 @@ def read_dig_dat(fname):
     montage : DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     read_dig_captrak
     read_dig_dat
@@ -511,7 +511,7 @@ def read_dig_fif(fname):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     DigMontage
     read_dig_dat
@@ -539,7 +539,7 @@ def read_dig_hpts(fname, unit: str = "mm"):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     DigMontage
     read_dig_captrak
@@ -607,7 +607,7 @@ def read_dig_egi(fname):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     DigMontage
     read_dig_captrak
@@ -634,7 +634,7 @@ def read_dig_captrak(fname):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     DigMontage
     read_dig_dat
@@ -666,7 +666,7 @@ def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     DigMontage
     read_dig_captrak
@@ -701,7 +701,7 @@ def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     DigMontage
     make_dig_montage
@@ -744,7 +744,7 @@ def read_polhemus_fastscan(
     points : array, shape (n_points, 3)
         The digitization points in digitizer coordinates.
 
-    See Also
+    ### 👉 See Also
     --------
     read_dig_polhemus_isotrak
     make_dig_montage
@@ -778,7 +778,7 @@ def read_custom_montage(fname, head_size=0.095, coord_frame=None):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     make_dig_montage
     make_standard_montage
@@ -866,7 +866,7 @@ def make_standard_montage(kind, head_size: str = "auto"):
     montage : instance of DigMontage
         The montage.
 
-    See Also
+    ### 👉 See Also
     --------
     get_builtin_montages
     make_dig_montage

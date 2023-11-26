@@ -33,7 +33,7 @@ def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_id
     label_colors : list of str
         The RGB colors of the labels included in this mgz file.
 
-    See Also
+    ### 👉 See Also
     --------
     read_freesurfer_lut
 

@@ -76,7 +76,7 @@ def read_raw_eeglab(
         A Raw object containing EEGLAB .set data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawEEGLAB.
 
@@ -153,7 +153,7 @@ def read_epochs_eeglab(
     epochs : instance of Epochs
         The epochs.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.Epochs : Documentation of attributes and methods.
 
@@ -205,7 +205,7 @@ class RawEEGLAB(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
 
@@ -287,7 +287,7 @@ class EpochsEEGLAB(BaseEpochs):
     %(montage_units)s
     %(verbose)s
 
-    See Also
+    ### 👉 See Also
     --------
     mne.Epochs : Documentation of attributes and methods.
 

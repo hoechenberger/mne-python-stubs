@@ -77,7 +77,7 @@ class Dipole(TimeMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     fit_dipole
     DipoleFixed
@@ -525,7 +525,7 @@ class DipoleFixed(ExtendedTimeMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_dipole
     Dipole
@@ -629,7 +629,7 @@ def read_dipole(fname, verbose=None):
         🎭 Changed in version 1.1
             Added support for a list of `mne.Dipole` instances.
 
-    See Also
+    ### 👉 See Also
     --------
     Dipole
     DipoleFixed
@@ -772,7 +772,7 @@ def fit_dipole(
     residual : instance of Evoked
         The M-EEG data channels with the fitted dipolar activity removed.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.beamformer.rap_music
     Dipole
@@ -810,7 +810,7 @@ def get_phantom_dipoles(kind: str = "vectorview"):
     ori : ndarray, shape (n_dipoles, 3)
         The dipole orientations.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.datasets.fetch_phantom
 

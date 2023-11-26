@@ -141,7 +141,7 @@ def find_ecg_events(
         The ECG data of the synthesized ECG channel, if any. This will only
         be returned if ``return_ecg=True`` was passed.
 
-    See Also
+    ### 👉 See Also
     --------
     create_ecg_epochs
     compute_proj_ecg
@@ -307,7 +307,7 @@ def create_ecg_epochs(
     ecg_epochs : instance of Epochs
         Data epoched around ECG R wave peaks.
 
-    See Also
+    ### 👉 See Also
     --------
     find_ecg_events
     compute_proj_ecg

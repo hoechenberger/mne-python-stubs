@@ -77,7 +77,7 @@ class Covariance(dict):
     dim : int
         The number of channels ``n_channels``.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_covariance
     compute_raw_covariance
@@ -207,7 +207,7 @@ class Covariance(dict):
         fig_svd : instance of matplotlib.figure.Figure | None
             The SVD spectra plot of the covariance.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.compute_rank
 
@@ -499,7 +499,7 @@ def read_cov(fname, verbose=None):
     cov : Covariance
         The noise covariance matrix.
 
-    See Also
+    ### 👉 See Also
     --------
     write_cov, compute_covariance, compute_raw_covariance
     """
@@ -711,7 +711,7 @@ def compute_raw_covariance(
         returned (sorted by log-likelihood, from high to low, i.e. from best
         to worst).
 
-    See Also
+    ### 👉 See Also
     --------
     compute_covariance : Estimate noise covariance matrix from epoched data.
 
@@ -905,7 +905,7 @@ def compute_covariance(
         returned (sorted by log-likelihood, from high to low, i.e. from best
         to worst).
 
-    See Also
+    ### 👉 See Also
     --------
     compute_raw_covariance : Estimate noise covariance from raw data, such as
         empty-room recordings.
@@ -1067,7 +1067,7 @@ def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_cov
     """
@@ -1310,7 +1310,7 @@ def regularize(
     reg_cov : Covariance
         The regularized covariance matrix.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.compute_covariance
     """

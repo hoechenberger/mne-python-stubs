@@ -159,7 +159,7 @@ class _BaseSourceEstimate(TimeMixin):
         label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
             Extracted time course for each label and source estimate.
 
-        See Also
+        ### 👉 See Also
         --------
         extract_label_time_course : Extract time courses for multiple STCs.
 
@@ -1007,7 +1007,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         stc : SourceEstimate | VectorSourceEstimate
             The transformed source estimate.
 
-        See Also
+        ### 👉 See Also
         --------
         morph_source_spaces
 
@@ -1109,7 +1109,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
-    See Also
+    ### 👉 See Also
     --------
     VectorSourceEstimate : A container for vector surface source estimates.
     VolSourceEstimate : A container for volume source estimates.
@@ -1259,7 +1259,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
             Time of the temporal center of mass (weighted by the sum across
             source vertices).
 
-        See Also
+        ### 👉 See Also
         --------
         mne.Label.center_of_mass
         mne.vertex_to_mni
@@ -1969,7 +1969,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
             Extracted time course for each label and source estimate.
 
-        See Also
+        ### 👉 See Also
         --------
         extract_label_time_course : Extract time courses for multiple STCs.
 
@@ -2187,7 +2187,7 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
-    See Also
+    ### 👉 See Also
     --------
     SourceEstimate : A container for surface source estimates.
     VectorSourceEstimate : A container for vector surface source estimates.
@@ -2273,7 +2273,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
-    See Also
+    ### 👉 See Also
     --------
     SourceEstimate : A container for surface source estimates.
     VectorSourceEstimate : A container for vector surface source estimates.
@@ -2530,7 +2530,7 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
-    See Also
+    ### 👉 See Also
     --------
     SourceEstimate : A container for surface source estimates.
     VolSourceEstimate : A container for volume source estimates.
@@ -2611,7 +2611,7 @@ class MixedSourceEstimate(_BaseMixedSourceEstimate):
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
-    See Also
+    ### 👉 See Also
     --------
     SourceEstimate : A container for surface source estimates.
     VectorSourceEstimate : A container for vector surface source estimates.
@@ -2665,7 +2665,7 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
-    See Also
+    ### 👉 See Also
     --------
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.

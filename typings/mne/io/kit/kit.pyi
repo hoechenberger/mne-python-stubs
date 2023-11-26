@@ -95,7 +95,7 @@ class RawKIT(BaseRaw):
     If ``mrk``\\, ``hsp`` or ``elp`` are :term:`array_like` inputs, then the
     numbers in xyz coordinates should be in units of meters.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """
@@ -259,7 +259,7 @@ class EpochsKIT(BaseEpochs):
     refers to the points in head-space that corresponds to the HPI points.
     Currently, '*.elp' and '*.hsp' files are NOT supported.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.Epochs : Documentation of attributes and methods.
     """
@@ -401,7 +401,7 @@ def read_raw_kit(
         A Raw object containing KIT data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawKIT.
 

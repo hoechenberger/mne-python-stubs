@@ -229,7 +229,7 @@ class SourceMorph:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_source_morph
     read_source_morph

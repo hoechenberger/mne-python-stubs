@@ -188,7 +188,7 @@ def export_evokeds(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.write_evokeds
     mne.export.export_evokeds_mff

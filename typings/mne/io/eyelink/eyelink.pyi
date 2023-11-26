@@ -57,7 +57,7 @@ def read_raw_eyelink(
     raw : instance of RawEyelink
         A Raw object containing eyetracker data.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attribute and methods.
 
@@ -114,7 +114,7 @@ class RawEyelink(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attribute and methods.
     """

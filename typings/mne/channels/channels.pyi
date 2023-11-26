@@ -85,7 +85,7 @@ def unify_bad_channels(insts):
     insts : list
         List of instances with bad channels unified across instances.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.channels.equalize_channels
     mne.channels.rename_channels
@@ -177,7 +177,7 @@ class ReferenceMixin(MontageMixin):
             and ``projection=True`` a projection will be added instead of
             directly re-referencing the data.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.set_bipolar_reference : Convenience function for creating bipolar
                                 references.
@@ -348,7 +348,7 @@ class UpdateChannelsMixin:
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
 
-        See Also
+        ### 👉 See Also
         --------
         pick_channels
 
@@ -388,7 +388,7 @@ class UpdateChannelsMixin:
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
 
-        See Also
+        ### 👉 See Also
         --------
         drop_channels
         pick_types
@@ -448,7 +448,7 @@ class UpdateChannelsMixin:
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
 
-        See Also
+        ### 👉 See Also
         --------
         drop_channels
         pick_types
@@ -481,7 +481,7 @@ class UpdateChannelsMixin:
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
 
-        See Also
+        ### 👉 See Also
         --------
         reorder_channels
         pick_channels
@@ -515,7 +515,7 @@ class UpdateChannelsMixin:
         inst : instance of Raw, Epochs, or Evoked
             The modified instance.
 
-        See Also
+        ### 👉 See Also
         --------
         drop_channels
 
@@ -721,7 +721,7 @@ def read_ch_adjacency(fname, picks=None):
     ch_names : list
         The list of channel names present in adjacency matrix.
 
-    See Also
+    ### 👉 See Also
     --------
     get_builtin_ch_adjacencies
     mne.viz.plot_ch_adjacency
@@ -764,7 +764,7 @@ def find_ch_adjacency(info, ch_type):
     ch_names : list
         The list of channel names present in adjacency matrix.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.plot_ch_adjacency
     mne.stats.combine_adjacency

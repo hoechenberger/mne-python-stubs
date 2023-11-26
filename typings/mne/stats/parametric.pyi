@@ -134,7 +134,7 @@ def f_threshold_mway_rm(
         List of F-values for each effect if the number of effects
         requested > 2, else float.
 
-    See Also
+    ### 👉 See Also
     --------
     f_oneway
     f_mway_rm
@@ -198,7 +198,7 @@ def f_mway_rm(
     p_vals : ndarray
         If not requested via return_pvals, defaults to an empty array.
 
-    See Also
+    ### 👉 See Also
     --------
     f_oneway
     f_threshold_mway_rm

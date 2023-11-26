@@ -40,7 +40,7 @@ def read_raw_fil(
         The raw data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawFIL.
     """
@@ -70,7 +70,7 @@ class RawFIL(BaseRaw):
         The raw data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawFIL.
     """

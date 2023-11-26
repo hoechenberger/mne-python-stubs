@@ -265,7 +265,7 @@ def maxwell_filter(
     raw_sss : instance of Raw
         The raw data with Maxwell filtering applied.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.preprocessing.annotate_amplitude
     mne.preprocessing.find_bad_channels_maxwell
@@ -549,7 +549,7 @@ def find_bad_channels_maxwell(
         ### 💡 Note The scores and limits for channels marked as ``bad`` in the
                   input data will be set to ``np.nan``.
 
-    See Also
+    ### 👉 See Also
     --------
     annotate_amplitude
     maxwell_filter

@@ -65,7 +65,7 @@ def find_eog_events(
     eog_events : array
         Events.
 
-    See Also
+    ### 👉 See Also
     --------
     create_eog_epochs
     compute_proj_eog
@@ -192,7 +192,7 @@ def create_eog_epochs(
     eog_epochs : instance of Epochs
         Data epoched around EOG events.
 
-    See Also
+    ### 👉 See Also
     --------
     find_eog_events
     compute_proj_eog

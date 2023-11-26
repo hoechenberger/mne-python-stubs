@@ -324,7 +324,7 @@ def scale_mri(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     scale_bem : Add a scaled BEM to a scaled MRI.
     scale_labels : Add labels to a scaled MRI.
@@ -434,7 +434,7 @@ class Coregistration:
     trans : instance of Transform
         MRI<->Head coordinate transformation.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.scale_mri
 
@@ -660,7 +660,7 @@ class Coregistration:
         dist : array, shape (n_points,)
             The distance of the head shape points to the MRI skin surface.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.dig_mri_distances
         """

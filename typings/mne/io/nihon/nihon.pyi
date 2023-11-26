@@ -25,7 +25,7 @@ def read_raw_nihon(fname, preload: bool = False, verbose=None):
         A Raw object containing Nihon Kohden data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNihon.
     """
@@ -47,7 +47,7 @@ class RawNihon(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """

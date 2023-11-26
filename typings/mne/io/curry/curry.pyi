@@ -58,7 +58,7 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
         A Raw object containing Curry data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawCurry.
     """
@@ -75,7 +75,7 @@ class RawCurry(BaseRaw):
     %(preload)s
     %(verbose)s
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
 

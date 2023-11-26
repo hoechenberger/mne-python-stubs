@@ -52,7 +52,7 @@ def read_raw_nirx(
         A Raw object containing NIRX data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNIRX.
 
@@ -111,7 +111,7 @@ class RawNIRX(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
 

@@ -150,7 +150,7 @@ def compute_proj_ecg(
     drop_log : list
         The drop log, if requested.
 
-    See Also
+    ### 👉 See Also
     --------
     find_ecg_events
     create_ecg_epochs
@@ -301,7 +301,7 @@ def compute_proj_eog(
     drop_log : list
         The drop log, if requested.
 
-    See Also
+    ### 👉 See Also
     --------
     find_eog_events
     create_eog_epochs

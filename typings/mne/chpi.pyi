@@ -43,7 +43,7 @@ def read_head_pos(fname):
     pos : array, shape (N, 10)
         The position and quaternion parameters from cHPI fitting.
 
-    See Also
+    ### 👉 See Also
     --------
     write_head_pos
     head_pos_to_trans_rot_t
@@ -64,7 +64,7 @@ def write_head_pos(fname, pos) -> None:
     pos : array, shape (N, 10)
         The position and quaternion parameters from cHPI fitting.
 
-    See Also
+    ### 👉 See Also
     --------
     read_head_pos
     head_pos_to_trans_rot_t
@@ -92,7 +92,7 @@ def head_pos_to_trans_rot_t(quats):
     t : ndarray, shape (N,)
         The time points.
 
-    See Also
+    ### 👉 See Also
     --------
     read_head_pos
     write_head_pos
@@ -243,7 +243,7 @@ def compute_head_pos(
     quats : ndarray, shape (n_pos, 10)
         The ``[t, q1, q2, q3, x, y, z, gof, err, v]`` for each fit.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_chpi_locs
     extract_chpi_locs_ctf
@@ -306,7 +306,7 @@ def compute_chpi_snr(
         "power_grad", and "resid_grad", depending on which channel types are
         present in ``raw``).
 
-    See Also
+    ### 👉 See Also
     --------
     mne.chpi.compute_chpi_locs, mne.chpi.compute_chpi_amplitudes
 
@@ -365,7 +365,7 @@ def compute_chpi_amplitudes(
         The time-varying cHPI coil amplitudes, with entries
         "times", "proj", and "slopes".
 
-    See Also
+    ### 👉 See Also
     --------
     mne.chpi.compute_chpi_locs, mne.chpi.compute_chpi_snr
 
@@ -437,7 +437,7 @@ def compute_chpi_locs(
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
 
-    See Also
+    ### 👉 See Also
     --------
     compute_chpi_amplitudes
     compute_head_pos

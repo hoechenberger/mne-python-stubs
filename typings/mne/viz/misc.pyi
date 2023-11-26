@@ -63,7 +63,7 @@ def plot_cov(
     fig_svd : instance of matplotlib.figure.Figure | None
         The SVD spectra plot of the covariance.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.compute_rank
 
@@ -182,7 +182,7 @@ def plot_bem(
     fig : instance of matplotlib.figure.Figure
         The figure.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.plot_alignment
 
@@ -390,7 +390,7 @@ def plot_filter(
     fig : matplotlib.figure.Figure
         The figure containing the plots.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.filter.create_filter
     plot_ideal_filter
@@ -447,7 +447,7 @@ def plot_ideal_filter(
     fig : instance of matplotlib.figure.Figure
         The figure.
 
-    See Also
+    ### 👉 See Also
     --------
     plot_filter
 

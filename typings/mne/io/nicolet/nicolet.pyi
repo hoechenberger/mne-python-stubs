@@ -60,7 +60,7 @@ def read_raw_nicolet(
     raw : instance of Raw
         A Raw object containing the data.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """
@@ -94,7 +94,7 @@ class RawNicolet(BaseRaw):
     %(preload)s
     %(verbose)s
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """

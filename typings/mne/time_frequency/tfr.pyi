@@ -56,7 +56,7 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
         The wavelets time series. If ``freqs`` was a float, a single
         ndarray is returned instead of a list of ndarray.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.fwhm
 
@@ -201,7 +201,7 @@ def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
     tfr : array, shape (n_signals, n_freqs, n_times)
         The time-frequency decompositions.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_morlet : Compute time-frequency decomposition
                                     with Morlet wavelets.
@@ -304,7 +304,7 @@ def tfr_morlet(
         The inter-trial coherence (ITC). Only returned if return_itc
         is True.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_array_morlet
     mne.time_frequency.tfr_multitaper
@@ -446,7 +446,7 @@ def tfr_array_morlet(
         contain the average power and the imaginary values contain the ITC:
         :math:`out = power_{avg} + i * itc`.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_multitaper
@@ -601,7 +601,7 @@ def tfr_multitaper(
         The inter-trial coherence (ITC). Only returned if return_itc
         is True.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_array_multitaper
     mne.time_frequency.tfr_stockwell
@@ -795,7 +795,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        See Also
+        ### 👉 See Also
         --------
         read_tfrs, write_tfrs
         """
@@ -1838,7 +1838,7 @@ def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_tfrs
 
@@ -1871,7 +1871,7 @@ def read_tfrs(fname, condition=None, *, verbose=None):
         Depending on ``condition`` either the TFR object or a list of multiple
         TFR objects.
 
-    See Also
+    ### 👉 See Also
     --------
     write_tfrs
 

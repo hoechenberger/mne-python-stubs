@@ -44,7 +44,7 @@ class Layout:
         overwrite : bool
             If True, overwrites the destination file if it exists.
 
-        See Also
+        ### 👉 See Also
         --------
         read_layout
         """
@@ -91,7 +91,7 @@ def read_layout(fname=None, *, scale: bool = True):
     layout : instance of Layout
         The layout.
 
-    See Also
+    ### 👉 See Also
     --------
     Layout.save
 
@@ -182,7 +182,7 @@ def make_eeg_layout(
     layout : Layout
         The generated Layout.
 
-    See Also
+    ### 👉 See Also
     --------
     make_grid_layout, generate_2d_layout
     """
@@ -211,7 +211,7 @@ def make_grid_layout(info, picks=None, n_col=None):
     layout : Layout
         The generated layout.
 
-    See Also
+    ### 👉 See Also
     --------
     make_eeg_layout, generate_2d_layout
     """
@@ -293,7 +293,7 @@ def generate_2d_layout(
         A Layout object that can be plotted with plot_topo
         functions and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     make_eeg_layout, make_grid_layout
 

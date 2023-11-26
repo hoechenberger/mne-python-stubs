@@ -117,7 +117,7 @@ class CSP(TransformerMixin, BaseEstimator):
     std_ : ndarray, shape (n_components,)
         If fit, the std squared power for each component.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.preprocessing.Xdawn, SPoC
 
@@ -749,7 +749,7 @@ class SPoC(CSP):
     std_ : ndarray, shape (n_components,)
         If fit, the std squared power for each component.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.preprocessing.Xdawn, CSP
 

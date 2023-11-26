@@ -52,7 +52,7 @@ class RawBrainVision(BaseRaw):
     impedances : dict
         A dictionary of all electrodes and their impedances.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """
@@ -115,7 +115,7 @@ def read_raw_brainvision(
         A Raw object containing BrainVision data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawBrainVision.
     """

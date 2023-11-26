@@ -68,7 +68,7 @@ def simulate_evoked(
     evoked : Evoked object
         The simulated evoked data.
 
-    See Also
+    ### 👉 See Also
     --------
     simulate_raw
     simulate_stc

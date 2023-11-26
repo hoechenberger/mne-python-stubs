@@ -118,7 +118,7 @@ def annotate_movement(
     hpi_disp : array
         Head position over time with respect to the mean head pos.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_average_dev_head_t
     """

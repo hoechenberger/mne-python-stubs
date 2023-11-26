@@ -135,7 +135,7 @@ def set_eeg_reference(
         Array of reference data subtracted from EEG channels. This will be
         ``None`` if ``projection=True`` or ``ref_channels='REST'``.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.set_bipolar_reference : Convenience function for creating bipolar
                             references.
@@ -248,7 +248,7 @@ def set_bipolar_reference(
     inst : instance of Raw | Epochs | Evoked
         Data with the specified channels re-referenced.
 
-    See Also
+    ### 👉 See Also
     --------
     set_eeg_reference : Convenience function for creating an EEG reference.
 

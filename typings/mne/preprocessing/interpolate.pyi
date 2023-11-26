@@ -60,7 +60,7 @@ def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
     inst : instance of Epochs, Evoked, or Raw
         The modified data object.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.preprocessing.compute_bridged_electrodes
     """

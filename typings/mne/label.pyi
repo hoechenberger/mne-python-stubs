@@ -171,7 +171,7 @@ class Label:
             The label covering the same vertices in source space but also
             including intermediate surface vertices.
 
-        See Also
+        ### 👉 See Also
         --------
         Label.restrict
         Label.smooth
@@ -192,7 +192,7 @@ class Label:
         label : instance of Label
             The Label restricted to the set of source space vertices.
 
-        See Also
+        ### 👉 See Also
         --------
         Label.fill
 
@@ -328,7 +328,7 @@ class Label:
         label : instance of Label
             The morphed label.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.morph_labels : Morph a set of labels.
 
@@ -460,7 +460,7 @@ class Label:
             Vertex of the spatial center of mass for the inferred hemisphere,
             with each vertex weighted by its label value.
 
-        See Also
+        ### 👉 See Also
         --------
         SourceEstimate.center_of_mass
         vertex_to_mni
@@ -641,7 +641,7 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
             - ``pos``: locations in meters (columns 2 - 4 divided by 1000)
             - ``values``: values at the vertices (column 5)
 
-    See Also
+    ### 👉 See Also
     --------
     read_labels_from_annot
     write_labels_to_annot
@@ -664,7 +664,7 @@ def write_label(filename, label, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     write_labels_to_annot
 
@@ -966,7 +966,7 @@ def read_labels_from_annot(
     labels : list of Label
         The labels, sorted by label name (ascending).
 
-    See Also
+    ### 👉 See Also
     --------
     write_labels_to_annot
     morph_labels
@@ -1015,7 +1015,7 @@ def morph_labels(
     labels : list
         The morphed labels.
 
-    See Also
+    ### 👉 See Also
     --------
     read_labels_from_annot
     mne.Label.morph
@@ -1084,7 +1084,7 @@ def labels_to_stc(
     stc : instance of SourceEstimate | instance of VolSourceEstimate
         The values-in-labels converted to a STC.
 
-    See Also
+    ### 👉 See Also
     --------
     extract_label_time_course
 
@@ -1151,7 +1151,7 @@ def write_labels_to_annot(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_labels_from_annot
 

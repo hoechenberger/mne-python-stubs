@@ -145,7 +145,7 @@ def simulate_sparse_stc(
     stc : SourceEstimate
         The generated source time courses.
 
-    See Also
+    ### 👉 See Also
     --------
     simulate_raw
     simulate_evoked
@@ -191,7 +191,7 @@ def simulate_stc(
     stc : SourceEstimate
         The generated source time courses.
 
-    See Also
+    ### 👉 See Also
     --------
     simulate_raw
     simulate_evoked

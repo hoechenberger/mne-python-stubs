@@ -121,7 +121,7 @@ class Raw(BaseRaw):
     def acqparser(self):
         """### The AcqParserFIF for the measurement info.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.AcqParserFIF
         """

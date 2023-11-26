@@ -236,6 +236,7 @@ for stub_path in stub_paths:
         .replace("Attributes\n", "### 📊 Attributes\n")
         .replace("Returns\n", "### ⏎ Returns\n")
         .replace("Notes\n", "### 📖 Notes\n")
+        .replace("See Also\n", "### 👉 See Also\n")
     )
     del unparsed
 

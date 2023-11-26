@@ -69,7 +69,7 @@ def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
     bem : instance of ConductorModel
         The BEM solution.
 
-    See Also
+    ### 👉 See Also
     --------
     make_bem_model
     read_bem_surfaces
@@ -130,7 +130,7 @@ def make_bem_model(
         The BEM surfaces. Use `mne.make_bem_solution` to turn these into a
         `mne.bem.ConductorModel` suitable for forward calculation.
 
-    See Also
+    ### 👉 See Also
     --------
     make_bem_solution
     make_sphere_model
@@ -182,7 +182,7 @@ def make_sphere_model(
     sphere : instance of ConductorModel
         The resulting spherical conductor model.
 
-    See Also
+    ### 👉 See Also
     --------
     make_bem_model
     make_bem_solution
@@ -360,7 +360,7 @@ def make_watershed_bem(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.plot_bem
 
@@ -413,7 +413,7 @@ def read_bem_surfaces(
         A list of dictionaries that each contain a surface. If ``s_id``
         is not None, only the requested surface will be returned.
 
-    See Also
+    ### 👉 See Also
     --------
     write_bem_surfaces, write_bem_solution, make_bem_model
     """
@@ -438,7 +438,7 @@ def read_bem_solution(fname, *, verbose=None):
     bem : instance of ConductorModel
         The BEM solution.
 
-    See Also
+    ### 👉 See Also
     --------
     read_bem_surfaces
     write_bem_surfaces
@@ -525,7 +525,7 @@ def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> 
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_bem_solution
     """
@@ -651,7 +651,7 @@ def make_flash_bem(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     convert_flash_mris
 

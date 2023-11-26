@@ -147,7 +147,7 @@ def read_events(
     event_id : dict
         Dictionary of ``{str: int}`` mappings of event IDs.
 
-    See Also
+    ### 👉 See Also
     --------
     find_events, write_events
 
@@ -189,7 +189,7 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_events
     """
@@ -230,7 +230,7 @@ def find_stim_steps(
         with the new value). The second column contains the stim channel value
         before the step, and the third column contains value after the step.
 
-    See Also
+    ### 👉 See Also
     --------
     find_events : More sophisticated options for finding events in a Raw file.
     """
@@ -319,7 +319,7 @@ def find_events(
         samples, with :term:`first_samp` included. The third column contains the
         event id.
 
-    See Also
+    ### 👉 See Also
     --------
     find_stim_steps : Find all the steps in the stim channel.
     read_events : Read events from disk.
@@ -546,7 +546,7 @@ def concatenate_events(events, first_samps, last_samps):
     events : array
         The concatenated events.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.concatenate_raws
     """
@@ -582,7 +582,7 @@ class AcqParserFIF:
     acq_dict : dict
         All DACQ parameters.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw.acqparser : Access the parser through a Raw attribute.
 

@@ -90,7 +90,7 @@ def read_evokeds_mff(
     ValueError
         If no categories.xml file in MFF directory specified by ``fname``.
 
-    See Also
+    ### 👉 See Also
     --------
     Evoked, EvokedArray, create_info
 

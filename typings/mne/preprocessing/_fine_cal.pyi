@@ -63,7 +63,7 @@ def compute_fine_calibration(
         The number of good segments used to compute the magnetometer
         parameters.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.preprocessing.maxwell_filter
 

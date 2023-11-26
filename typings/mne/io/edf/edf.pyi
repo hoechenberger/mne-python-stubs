@@ -70,7 +70,7 @@ class RawEDF(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     mne.io.read_raw_edf : Recommended way to read EDF/EDF+ files.
@@ -181,7 +181,7 @@ class RawGDF(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     mne.io.read_raw_gdf : Recommended way to read GDF files.
@@ -300,7 +300,7 @@ def read_raw_edf(
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.read_raw_bdf : Reader function for BDF files.
     mne.io.read_raw_gdf : Reader function for GDF files.
@@ -440,7 +440,7 @@ def read_raw_bdf(
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.read_raw_edf : Reader function for EDF and EDF+ files.
     mne.io.read_raw_gdf : Reader function for GDF files.
@@ -546,7 +546,7 @@ def read_raw_gdf(
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.read_raw_edf : Reader function for EDF and EDF+ files.
     mne.io.read_raw_bdf : Reader function for BDF files.

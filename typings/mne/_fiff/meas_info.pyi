@@ -113,7 +113,7 @@ class MontageMixin:
         inst : instance of Raw | Epochs | Evoked
             The instance, modified in-place.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.channels.make_standard_montage
         mne.channels.make_dig_montage
@@ -308,7 +308,7 @@ class SetChannelsMixin(MontageMixin):
         selection : list
             A list of selected channels. Only returned if ``kind=='select'``.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.viz.plot_layout
 
@@ -399,7 +399,7 @@ class SetChannelsMixin(MontageMixin):
         inst : instance of Raw | Epochs | Evoked
             The modified raw instance. Operates in place.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.io.Raw.anonymize
 
@@ -645,7 +645,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     xplotter_layout : str
         Layout of the Xplotter (Neuromag system only).
 
-    See Also
+    ### 👉 See Also
     --------
     mne.create_info
 

@@ -80,7 +80,7 @@ class ReceptiveField(BaseEstimator):
         output equivalent to using `numpy.convolve` or
         `numpy.correlate` with ``mode='valid'``.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.decoding.TimeDelayingRidge
 

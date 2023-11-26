@@ -64,7 +64,7 @@ def fetch_data(
     paths : list
         List of local data paths of the given type.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.datasets.sleep_physionet.temazepam.fetch_data
 

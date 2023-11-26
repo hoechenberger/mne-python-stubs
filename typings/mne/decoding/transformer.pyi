@@ -266,7 +266,7 @@ class PSDEstimator(TransformerMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.psd_array_multitaper
     mne.io.Raw.compute_psd
@@ -423,7 +423,7 @@ class FilterEstimator(TransformerMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     TemporalFilter
 
@@ -652,7 +652,7 @@ class TemporalFilter(TransformerMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     FilterEstimator
     Vectorizer

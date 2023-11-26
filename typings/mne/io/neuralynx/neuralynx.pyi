@@ -35,7 +35,7 @@ def read_raw_neuralynx(
         A Raw object containing Neuralynx data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNeuralynx.
     """

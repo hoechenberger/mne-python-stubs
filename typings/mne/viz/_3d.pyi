@@ -402,7 +402,7 @@ def plot_alignment(
     fig : instance of Figure3D
         The figure.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.plot_bem
 

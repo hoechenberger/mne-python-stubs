@@ -57,7 +57,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_multitaper

@@ -24,7 +24,7 @@ def combine_adjacency(*structure):
         corresponds to the product of the length of all dimensions.
         For example ``len(times) * len(freqs) * len(chans)``.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.channels.find_ch_adjacency
     mne.channels.read_ch_adjacency

@@ -35,7 +35,7 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
         A Raw object containing Hitachi data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawHitachi.
 
@@ -120,7 +120,7 @@ class RawHitachi(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
 

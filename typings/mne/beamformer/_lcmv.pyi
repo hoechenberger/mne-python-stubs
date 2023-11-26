@@ -284,7 +284,7 @@ def apply_lcmv(evoked, filters, *, verbose=None):
     stc : SourceEstimate | VolSourceEstimate | VectorSourceEstimate
         Source time courses.
 
-    See Also
+    ### 👉 See Also
     --------
     make_lcmv, apply_lcmv_raw, apply_lcmv_epochs, apply_lcmv_cov
 
@@ -322,7 +322,7 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
     stc: list | generator of (SourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
-    See Also
+    ### 👉 See Also
     --------
     make_lcmv, apply_lcmv_raw, apply_lcmv, apply_lcmv_cov
     """
@@ -357,7 +357,7 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     stc : SourceEstimate | VolSourceEstimate
         Source time courses.
 
-    See Also
+    ### 👉 See Also
     --------
     make_lcmv, apply_lcmv_epochs, apply_lcmv, apply_lcmv_cov
     """
@@ -388,7 +388,7 @@ def apply_lcmv_cov(data_cov, filters, verbose=None):
     stc : SourceEstimate | VolSourceEstimate
         Source power.
 
-    See Also
+    ### 👉 See Also
     --------
     make_lcmv, apply_lcmv, apply_lcmv_epochs, apply_lcmv_raw
     """

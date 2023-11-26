@@ -139,7 +139,7 @@ def psd_array_multitaper(
         The weights used for averaging across tapers. Only returned if
         ``output='complex'``.
 
-    See Also
+    ### 👉 See Also
     --------
     csd_multitaper
     mne.io.Raw.compute_psd
@@ -252,7 +252,7 @@ def tfr_array_multitaper(
         contain the average power and the imaginary values contain the
         inter-trial coherence: :math:`out = power_{avg} + i * ITC`.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.tfr_multitaper
     mne.time_frequency.tfr_morlet

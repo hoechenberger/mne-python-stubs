@@ -290,7 +290,7 @@ class BaseEpochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     Epochs
     EpochsArray
@@ -974,7 +974,7 @@ class BaseEpochs(
         perc : float
             Total percentage of epochs dropped.
 
-        See Also
+        ### 👉 See Also
         --------
         plot_drop_log
         """
@@ -2361,7 +2361,7 @@ class Epochs(BaseEpochs):
         between consecutive time samples is equal to the inverse of the
         sampling frequency.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.epochs.combine_event_ids
     mne.Epochs.equalize_event_counts
@@ -2582,7 +2582,7 @@ class EpochsArray(BaseEpochs):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     create_info
     EvokedArray
@@ -2772,7 +2772,7 @@ class EpochsFIF(BaseEpochs):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.Epochs
     mne.epochs.combine_event_ids
@@ -2949,7 +2949,7 @@ def average_movements(
     evoked : instance of Evoked
         The averaged epochs.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.preprocessing.maxwell_filter
     mne.chpi.read_head_pos

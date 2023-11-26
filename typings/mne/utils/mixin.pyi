@@ -272,7 +272,7 @@ class ExtendedTimeMixin(TimeMixin):
         inst : MNE-object
             The decimated object.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.Epochs.resample
         mne.io.Raw.resample

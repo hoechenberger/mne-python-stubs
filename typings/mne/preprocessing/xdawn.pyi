@@ -156,7 +156,7 @@ class Xdawn(_XdawnTransformer):
     correct_overlap_ : bool
         Whether overlap correction was applied.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.decoding.CSP, mne.decoding.SPoC
 

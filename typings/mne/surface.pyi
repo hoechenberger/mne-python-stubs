@@ -255,7 +255,7 @@ def read_surface(
     surf : dict
         The surface parameters. Only returned if ``return_dict`` is True.
 
-    See Also
+    ### 👉 See Also
     --------
     write_surface
     read_tri
@@ -322,7 +322,7 @@ def write_surface(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_surface
     read_tri
@@ -444,7 +444,7 @@ def read_tri(fname_in, swap: bool = False, verbose=None):
         Triangulation (each line contains indices for three points which
         together form a face).
 
-    See Also
+    ### 👉 See Also
     --------
     read_surface
     write_surface
@@ -519,7 +519,7 @@ def dig_mri_distances(
     dists : array, shape (n_points,)
         The distances.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.bem.get_fitting_dig
 

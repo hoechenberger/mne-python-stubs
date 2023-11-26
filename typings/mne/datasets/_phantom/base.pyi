@@ -27,7 +27,7 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
     subject_dir : str
         The resulting phantom subject directory.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.dipole.get_phantom_dipoles
 

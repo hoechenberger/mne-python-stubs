@@ -49,7 +49,7 @@ def compute_proj_hfc(
     projs : list of Projection
         List of computed projection vectors.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw.add_proj
     mne.io.Raw.apply_proj

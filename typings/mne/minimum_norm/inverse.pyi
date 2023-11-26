@@ -85,7 +85,7 @@ def read_inverse_operator(fname, *, verbose=None):
     inv : instance of InverseOperator
         The inverse operator.
 
-    See Also
+    ### 👉 See Also
     --------
     write_inverse_operator, make_inverse_operator
     """
@@ -116,7 +116,7 @@ def write_inverse_operator(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     read_inverse_operator
     """
@@ -265,7 +265,7 @@ def apply_inverse(
     residual : instance of Evoked
         The residual evoked data, only returned if return_residual is True.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_inverse_raw : Apply inverse operator to raw object.
     apply_inverse_epochs : Apply inverse operator to epochs object.
@@ -410,7 +410,7 @@ def apply_inverse_raw(
     stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
         The source estimates.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_inverse : Apply inverse operator to evoked object.
     apply_inverse_epochs : Apply inverse operator to epochs object.
@@ -498,7 +498,7 @@ def apply_inverse_epochs(
     stcs : list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_inverse_raw : Apply inverse operator to raw object.
     apply_inverse : Apply inverse operator to evoked object.
@@ -584,7 +584,7 @@ def apply_inverse_tfr_epochs(
         The source estimates for all frequencies (outside list) and for
         all epochs (inside list).
 
-    See Also
+    ### 👉 See Also
     --------
     apply_inverse_raw : Apply inverse operator to raw object.
     apply_inverse : Apply inverse operator to evoked object.
@@ -660,7 +660,7 @@ def apply_inverse_cov(
     stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
         The source estimates.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_inverse : Apply inverse operator to evoked object.
     apply_inverse_raw : Apply inverse operator to raw object.

@@ -246,7 +246,7 @@ def make_dics(
                 When pick_ori='max-power', this fields contains the estimated
                 direction of maximum power at each source location.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_dics_csd
 
@@ -317,7 +317,7 @@ def apply_dics(evoked, filters, verbose=None):
         than one frequency, a list is returned containing for each frequency
         the corresponding time courses.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_dics_epochs
     apply_dics_tfr_epochs
@@ -363,7 +363,7 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
     stc: list | generator of (SourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_dics
     apply_dics_tfr_epochs
@@ -402,7 +402,7 @@ def apply_dics_tfr_epochs(
         The source estimates for all epochs (outside list) and for
         all frequencies (inside list).
 
-    See Also
+    ### 👉 See Also
     --------
     apply_dics
     apply_dics_epochs
@@ -448,7 +448,7 @@ def apply_dics_csd(csd, filters, verbose=None):
         data CSD object defines frequency-bins instead of exact frequencies,
         the mean of each bin is returned.
 
-    See Also
+    ### 👉 See Also
     --------
     apply_dics
     apply_dics_epochs

@@ -1012,7 +1012,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.time_frequency.read_spectrum
         """
@@ -1184,7 +1184,7 @@ class Spectrum(BaseSpectrum):
         The method used to compute the spectrum (``'welch'`` or
         ``'multitaper'``).
 
-    See Also
+    ### 👉 See Also
     --------
     EpochsSpectrum
     SpectrumArray
@@ -1268,7 +1268,7 @@ class SpectrumArray(Spectrum):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.create_info
     mne.EvokedArray
@@ -1365,7 +1365,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
     method : str
         The method used to compute the spectrum ('welch' or 'multitaper').
 
-    See Also
+    ### 👉 See Also
     --------
     EpochsSpectrumArray
     Spectrum
@@ -1466,7 +1466,7 @@ class EpochsSpectrumArray(EpochsSpectrum):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.create_info
     mne.EpochsArray
@@ -1501,7 +1501,7 @@ def read_spectrum(fname):
     spectrum : instance of Spectrum
         The loaded Spectrum object.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.time_frequency.Spectrum.save
     """

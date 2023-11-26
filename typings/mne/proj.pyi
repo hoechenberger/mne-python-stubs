@@ -39,7 +39,7 @@ def read_proj(fname, verbose=None):
     projs : list of Projection
         The list of projection vectors.
 
-    See Also
+    ### 👉 See Also
     --------
     write_proj
     """
@@ -70,7 +70,7 @@ def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
 
         ✨ Added in vesion 1.0
 
-    See Also
+    ### 👉 See Also
     --------
     read_proj
     """
@@ -141,7 +141,7 @@ def compute_proj_epochs(
     projs: list of Projection
         List of projection vectors.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_proj_raw, compute_proj_evoked
     """
@@ -205,7 +205,7 @@ def compute_proj_evoked(
     projs : list of Projection
         List of projection vectors.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_proj_raw, compute_proj_epochs
     """
@@ -289,7 +289,7 @@ def compute_proj_raw(
     projs: list of Projection
         List of projection vectors.
 
-    See Also
+    ### 👉 See Also
     --------
     compute_proj_epochs, compute_proj_evoked
     """

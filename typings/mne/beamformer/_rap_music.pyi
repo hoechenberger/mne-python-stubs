@@ -52,7 +52,7 @@ def rap_music(
         The residual a.k.a. data not explained by the dipoles.
         Only returned if return_residual is True.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.fit_dipole
     mne.beamformer.trap_music
@@ -111,7 +111,7 @@ def trap_music(
         The residual a.k.a. data not explained by the dipoles.
         Only returned if return_residual is True.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.fit_dipole
     mne.beamformer.rap_music

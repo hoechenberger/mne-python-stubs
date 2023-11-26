@@ -66,7 +66,7 @@ def read_raw_egi(
         A Raw object containing EGI data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawEGI.
 

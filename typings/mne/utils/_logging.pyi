@@ -25,7 +25,7 @@ def verbose(function: _FuncT) -> _FuncT:
     dec : callable
         The decorated function.
 
-    See Also
+    ### 👉 See Also
     --------
     set_log_level
     set_config
@@ -70,7 +70,7 @@ class use_log_level:
         information using formatting. Default (None) does not change the
         formatting. This can add overhead so is meant only for debugging.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.verbose
 

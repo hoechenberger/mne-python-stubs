@@ -39,7 +39,7 @@ class TimeDelayingRidge(BaseEstimator):
 
         ✨ Added in vesion 0.18
 
-    See Also
+    ### 👉 See Also
     --------
     mne.decoding.ReceptiveField
 

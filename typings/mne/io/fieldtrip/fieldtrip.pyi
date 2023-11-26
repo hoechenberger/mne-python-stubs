@@ -33,7 +33,7 @@ def read_raw_fieldtrip(fname, info, data_name: str = "data"):
         A Raw Object containing the loaded data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawArray.
     """

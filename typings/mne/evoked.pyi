@@ -582,7 +582,7 @@ class Evoked(
         fig : instance of matplotlib.figure.Figure
             Figure containing the butterfly plots.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.viz.plot_evoked_white
         """
@@ -1313,7 +1313,7 @@ class Evoked(
         fig : instance of matplotlib.figure.Figure
             The figure object containing the plot.
 
-        See Also
+        ### 👉 See Also
         --------
         mne.Evoked.plot
 
@@ -2023,7 +2023,7 @@ class EvokedArray(Evoked):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     EpochsArray, io.RawArray, create_info
 
@@ -2172,7 +2172,7 @@ def read_evokeds(
         integer or string; or a list of `mne.Evoked` if ``condition`` is
         ``None`` or a list.
 
-    See Also
+    ### 👉 See Also
     --------
     write_evokeds
 
@@ -2220,7 +2220,7 @@ def write_evokeds(
 
         ✨ Added in vesion 0.24
 
-    See Also
+    ### 👉 See Also
     --------
     read_evokeds
 

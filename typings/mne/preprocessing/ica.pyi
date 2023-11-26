@@ -603,7 +603,7 @@ class ICA(ContainsMixin):
             If method is 'ctps', the normalized Kuiper index scores. If method
             is 'correlation', the correlation scores.
 
-        See Also
+        ### 👉 See Also
         --------
         find_bads_eog, find_bads_ref, find_bads_muscle
 
@@ -711,7 +711,7 @@ class ICA(ContainsMixin):
         scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
-        See Also
+        ### 👉 See Also
         --------
         find_bads_ecg, find_bads_eog, find_bads_muscle
 
@@ -825,7 +825,7 @@ class ICA(ContainsMixin):
         scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
-        See Also
+        ### 👉 See Also
         --------
         find_bads_ecg, find_bads_eog, find_bads_ref
 
@@ -915,7 +915,7 @@ class ICA(ContainsMixin):
         scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
-        See Also
+        ### 👉 See Also
         --------
         find_bads_ecg, find_bads_ref
         """
@@ -1027,7 +1027,7 @@ class ICA(ContainsMixin):
         ica : instance of ICA
             The object.
 
-        See Also
+        ### 👉 See Also
         --------
         read_ica
         """

@@ -47,7 +47,7 @@ def read_raw_snirf(
         A Raw object containing fNIRS data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawSNIRF.
     """
@@ -79,7 +79,7 @@ class RawSNIRF(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """

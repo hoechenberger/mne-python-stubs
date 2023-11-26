@@ -89,7 +89,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     sel : array of int
         Indices of good channels.
 
-    See Also
+    ### 👉 See Also
     --------
     pick_channels_regexp, pick_types
     """
@@ -114,7 +114,7 @@ def pick_channels_regexp(ch_names, regexp):
     sel : array of int
         Indices of good channels.
 
-    See Also
+    ### 👉 See Also
     --------
     pick_channels
 

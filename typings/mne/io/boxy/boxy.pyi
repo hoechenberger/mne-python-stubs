@@ -33,7 +33,7 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
         A Raw object containing BOXY data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods of RawBOXY.
     """
@@ -60,7 +60,7 @@ class RawBOXY(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """

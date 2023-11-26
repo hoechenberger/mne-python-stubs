@@ -17,7 +17,7 @@ class PyVistaFigure(Figure3D):
               ``mne.viz.PyVistaFigure(...)``. Instead, use
               `mne.viz.create_3d_figure`.
 
-    See Also
+    ### 👉 See Also
     --------
     mne.viz.create_3d_figure
     """
