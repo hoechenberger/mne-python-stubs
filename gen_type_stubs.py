@@ -151,7 +151,9 @@ for stub_path in stub_paths:
                 )
                 obj.body.append(ast.Expr(ast.Ellipsis()))
         else:
-            print(f"⏭️  No docstring found for {module_name}.{obj.name}, skipping")
+            print(
+                f"⏭️  No docstring found for {obj_type} {module_name}.{obj.name}, skipping"
+            )
             # Still continue below if object is a class
             if not isinstance(obj, ast.ClassDef):
                 continue
@@ -207,7 +209,7 @@ for stub_path in stub_paths:
                         method.body.append(ast.Expr(ast.Ellipsis()))
                 else:
                     print(
-                        f"⏭️  No docstring found for "
+                        f"⏭️  No docstring found for method "
                         f"{module_name}.{obj.name}.{method.name}, skipping"
                     )
                     continue
