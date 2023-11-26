@@ -257,6 +257,7 @@ for stub_path in stub_paths:
     print(f"💾 Writing stub file to disk: {stub_path}")
     stub_path.write_text(unparsed_cleaned, encoding="utf-8")
 
+# %%
 print("💾 Writing py.typed file")
 (stubs_out_dir / "mne" / "py.typed").write_text("partial\n", encoding="utf-8")
 
