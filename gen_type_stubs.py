@@ -13,9 +13,7 @@ from mypy import stubgen
 # Module exclusion patterns
 # Note that __init__.py files are handled specially below, do not
 # include them here.
-# Note that individual objects can be excluded via OBJS_EXCLUDES below
 MODULE_PY_EXCLUDE_PATTERNS = [
-    # "mne/viz/backends/_pyvista.py",  # causing errors when running stubdefaulter
     "mne/report/js_and_css/bootstrap-icons/gen_css_for_mne.py",  # cannot be imported
     "**/tests/**",  # don't include any tests
 ]
@@ -82,15 +80,6 @@ for init_pyi_path in init_pyi_paths:
 
 stub_paths = list(stubs_out_dir.rglob("*.pyi"))
 
-OBJS_EXCLUDES = [
-    # NamedTuples – somehow I cannot detect them via isinstance(obj, tuple)??
-    "CurryParameters",
-    "CNTEventType1",
-    "CNTEventType2",
-    "CNTEventType3",
-    "_ica_node",
-]
-
 for stub_path in stub_paths:
     module_ast = ast.parse(stub_path.read_text(encoding="utf-8"))
     module_name = (
@@ -112,11 +101,21 @@ for stub_path in stub_paths:
             assert isinstance(obj, ast.FunctionDef)
             obj_type = "function"
 
-        if obj.name in OBJS_EXCLUDES:
-            print(f"⏭️  {module_name}.{obj.name} is explicitly excluded, skipping")
+        # Omit NamedTuples
+        if (
+            obj_type == "class"
+            and obj.bases
+            and (id_ := getattr(obj.bases[0], "id", None))
+            and id_ == "NamedTuple"
+        ):
+            print(
+                f"⏭️  {module_name}.{obj.name} is a NamedTuple, skipping "
+                f"docstring expansion"
+            )
             continue
+
         if dataclasses.is_dataclass(getattr(module_imported, obj.name)):
-            print(f"⏭️  {module_name}.{obj.name} is a dataclass, skipping")
+            print(f"⏭️  {module_name}.{obj.name} is a dataclass, skipping ")
             continue
         elif expanded_docstring:
             print(f"📝 Expanding docstring for {module_name}.{obj.name}")
