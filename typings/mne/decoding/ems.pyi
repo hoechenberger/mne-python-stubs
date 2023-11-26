@@ -36,7 +36,7 @@ class EMS(TransformerMixin, EstimatorMixin):
     filters_: Incomplete
 
     def fit(self, X, y):
-        """### Fit the spatial filters.
+        """## 🧠 Fit the spatial filters.
 
         .. note : EMS is fitted on data normalized by channel type before the
                   fitting of the spatial filters.
@@ -57,7 +57,7 @@ class EMS(TransformerMixin, EstimatorMixin):
         """
         ...
     def transform(self, X):
-        """### Transform the data by the spatial filters.
+        """## 🧠 Transform the data by the spatial filters.
 
         -----
         ### 🛠️ Parameters

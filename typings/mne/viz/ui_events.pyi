@@ -22,7 +22,7 @@ class UIEvent:
 
     @property
     def name(self):
-        """### The name of the event, which is the class name in snake case."""
+        """## 🧠 The name of the event, which is the class name in snake case."""
         ...
 
 class FigureClosing(UIEvent):

@@ -36,7 +36,7 @@ class Layout:
 
     def __init__(self, box, pos, names, ids, kind) -> None: ...
     def save(self, fname, overwrite: bool = False) -> None:
-        """### Save Layout to disk.
+        """## 🧠 Save Layout to disk.
 
         -----
         ### 🛠️ Parameters
@@ -53,7 +53,7 @@ class Layout:
         """
         ...
     def plot(self, picks=None, show_axes: bool = False, show: bool = True):
-        """### Plot the sensor positions.
+        """## 🧠 Plot the sensor positions.
 
         -----
         ### 🛠️ Parameters

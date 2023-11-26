@@ -91,7 +91,7 @@ class Raw(BaseRaw):
         verbose=None,
     ) -> None: ...
     def fix_mag_coil_types(self):
-        """### Fix Elekta magnetometer coil types.
+        """## 🧠 Fix Elekta magnetometer coil types.
 
         -----
         ### ⏎ Returns
@@ -123,7 +123,7 @@ class Raw(BaseRaw):
         ...
     @property
     def acqparser(self):
-        """### The AcqParserFIF for the measurement info.
+        """## 🧠 The AcqParserFIF for the measurement info.
 
         -----
         ### 👉 See Also

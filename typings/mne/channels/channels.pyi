@@ -119,7 +119,7 @@ class ReferenceMixin(MontageMixin):
         joint: bool = False,
         verbose=None,
     ):
-        """### Specify which reference to use for EEG data.
+        """## 🧠 Specify which reference to use for EEG data.
 
         Use this function to explicitly specify the desired reference for EEG.
         This can be either an existing electrode or a new virtual channel.
@@ -273,7 +273,7 @@ class UpdateChannelsMixin:
         selection=None,
         verbose=None,
     ):
-        """### ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
+        """## 🧠 ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
 
         Pick some channels by type and names.
 
@@ -373,7 +373,7 @@ class UpdateChannelsMixin:
         """
         ...
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
-        """### ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
+        """## 🧠 ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
 
         Pick some channels.
 
@@ -423,7 +423,7 @@ class UpdateChannelsMixin:
         """
         ...
     def pick(self, picks, exclude=(), *, verbose=None):
-        """### Pick a subset of channels.
+        """## 🧠 Pick a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -457,7 +457,7 @@ class UpdateChannelsMixin:
         """
         ...
     def reorder_channels(self, ch_names):
-        """### Reorder channels.
+        """## 🧠 Reorder channels.
 
         -----
         ### 🛠️ Parameters
@@ -488,7 +488,7 @@ class UpdateChannelsMixin:
         """
         ...
     def drop_channels(self, ch_names, on_missing: str = "raise"):
-        """### Drop channel(s).
+        """## 🧠 Drop channel(s).
 
         -----
         ### 🛠️ Parameters
@@ -525,7 +525,7 @@ class UpdateChannelsMixin:
     picks: Incomplete
 
     def add_channels(self, add_list, force_update_info: bool = False):
-        """### Append new channels to the instance.
+        """## 🧠 Append new channels to the instance.
 
         -----
         ### 🛠️ Parameters
@@ -559,7 +559,7 @@ class UpdateChannelsMixin:
         """
         ...
     def add_reference_channels(self, ref_channels):
-        """### Add reference channels to data that consists of all zeros.
+        """## 🧠 Add reference channels to data that consists of all zeros.
 
         Adds reference channels to data that were not included during
         recording. This is useful when you need to re-reference your data
@@ -594,7 +594,7 @@ class InterpolationMixin:
         exclude=(),
         verbose=None,
     ):
-        """### Interpolate bad MEG and EEG channels.
+        """## 🧠 Interpolate bad MEG and EEG channels.
 
         Operates in place.
 

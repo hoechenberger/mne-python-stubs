@@ -42,10 +42,10 @@ class _Projection:
     plotter: Incomplete
 
     def __init__(self, *, xy, pts, plotter) -> None:
-        """### Store input projection information into attributes."""
+        """## 🧠 Store input projection information into attributes."""
         ...
     def visible(self, state) -> None:
-        """### Modify visibility attribute of the sensors."""
+        """## 🧠 Modify visibility attribute of the sensors."""
         ...
 
 class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
@@ -82,14 +82,14 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         multi_samples=None,
     ) -> None: ...
     def subplot(self, x, y) -> None:
-        """### Set the active subplot."""
+        """## 🧠 Set the active subplot."""
         ...
     def scene(self):
-        """### Return scene handle."""
+        """## 🧠 Return scene handle."""
         ...
     def update_lighting(self) -> None: ...
     def set_interaction(self, interaction) -> None:
-        """### Set interaction mode."""
+        """## 🧠 Set interaction mode."""
         ...
     def legend(
         self,
@@ -99,7 +99,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         face: str = "triangle",
         loc: str = "upper left",
     ):
-        """### Add a legend to the scene.
+        """## 🧠 Add a legend to the scene.
 
         -----
         ### 🛠️ Parameters
@@ -163,7 +163,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         polygon_offset=None,
         **kwargs,
     ):
-        """### Add a mesh in the scene.
+        """## 🧠 Add a mesh in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -232,7 +232,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         kind: str = "line",
         color=None,
     ):
-        """### Add a contour in the scene.
+        """## 🧠 Add a contour in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -278,7 +278,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         backface_culling: bool = False,
         polygon_offset=None,
     ):
-        """### Add a surface in the scene.
+        """## 🧠 Add a surface in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -317,7 +317,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         backface_culling: bool = False,
         radius=None,
     ):
-        """### Add sphere in the scene.
+        """## 🧠 Add sphere in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -357,7 +357,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         reverse_lut: bool = False,
         opacity=None,
     ):
-        """### Add tube in the scene.
+        """## 🧠 Add tube in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -427,7 +427,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         *,
         clim=None,
     ):
-        """### Add quiver3d in the scene.
+        """## 🧠 Add quiver3d in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -501,7 +501,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         color: str = "white",
         justification=None,
     ):
-        """### Add 2d text in the scene.
+        """## 🧠 Add 2d text in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -523,7 +523,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         """
         ...
     def text3d(self, x, y, z, text, scale, color: str = "white"):
-        """### Add 2d text in the scene.
+        """## 🧠 Add 2d text in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -553,7 +553,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         bgcolor=None,
         **extra_kwargs,
     ):
-        """### Add a scalar bar in the scene.
+        """## 🧠 Add a scalar bar in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -571,10 +571,10 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         """
         ...
     def show(self) -> None:
-        """### Render the scene."""
+        """## 🧠 Render the scene."""
         ...
     def close(self) -> None:
-        """### Close the scene."""
+        """## 🧠 Close the scene."""
         ...
     def get_camera(self, *, rigid=None): ...
     def set_camera(
@@ -589,7 +589,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         update: bool = True,
         reset_camera=None,
     ) -> None:
-        """### Configure the camera of the scene.
+        """## 🧠 Configure the camera of the scene.
 
         -----
         ### 🛠️ Parameters
@@ -609,12 +609,12 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         """
         ...
     def reset_camera(self) -> None:
-        """### Reset the camera properties.
+        """## 🧠 Reset the camera properties.
         # DEPRECATED reset_camera is deprecated and will be removed in 1.7, use set_camera(distance='auto') instead.
         """
         ...
     def screenshot(self, mode: str = "rgb", filename=None):
-        """### Take a screenshot of the scene.
+        """## 🧠 Take a screenshot of the scene.
 
         -----
         ### 🛠️ Parameters
@@ -627,7 +627,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         """
         ...
     def project(self, xyz, ch_names):
-        """### Convert 3d points to a 2d perspective.
+        """## 🧠 Convert 3d points to a 2d perspective.
 
         -----
         ### 🛠️ Parameters
@@ -639,7 +639,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         """
         ...
     def remove_mesh(self, mesh_data) -> None:
-        """### Remove the given mesh from the scene.
+        """## 🧠 Remove the given mesh from the scene.
 
         -----
         ### 🛠️ Parameters
@@ -651,5 +651,5 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
 
 class _SafeBackgroundPlotter(BackgroundPlotter):
     def __del__(self) -> None:
-        """### Delete the qt plotter."""
+        """## 🧠 Delete the qt plotter."""
         ...

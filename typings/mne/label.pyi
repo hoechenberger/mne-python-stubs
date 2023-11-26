@@ -115,7 +115,7 @@ class Label:
         verbose=None,
     ) -> None: ...
     def __len__(self) -> int:
-        """### Return the number of vertices.
+        """## 🧠 Return the number of vertices.
 
         -----
         ### ⏎ Returns
@@ -125,13 +125,13 @@ class Label:
         """
         ...
     def __add__(self, other):
-        """### Add Labels."""
+        """## 🧠 Add Labels."""
         ...
     def __sub__(self, other):
-        """### Subtract Labels."""
+        """## 🧠 Subtract Labels."""
         ...
     def save(self, filename) -> None:
-        """### Write to disk as FreeSurfer \\*.label file.
+        """## 🧠 Write to disk as FreeSurfer \\*.label file.
 
         -----
         ### 🛠️ Parameters
@@ -147,7 +147,7 @@ class Label:
         """
         ...
     def copy(self):
-        """### Copy the label instance.
+        """## 🧠 Copy the label instance.
 
         -----
         ### ⏎ Returns
@@ -157,7 +157,7 @@ class Label:
         """
         ...
     def fill(self, src, name=None):
-        """### Fill the surface between sources for a source space label.
+        """## 🧠 Fill the surface between sources for a source space label.
 
         -----
         ### 🛠️ Parameters
@@ -187,7 +187,7 @@ class Label:
         """
         ...
     def restrict(self, src, name=None):
-        """### Restrict a label to a source space.
+        """## 🧠 Restrict a label to a source space.
 
         -----
         ### 🛠️ Parameters
@@ -223,7 +223,7 @@ class Label:
         n_jobs=None,
         verbose=None,
     ):
-        """### Smooth the label.
+        """## 🧠 Smooth the label.
 
         Useful for filling in labels made in a
         decimated source space for display.
@@ -294,7 +294,7 @@ class Label:
         n_jobs=None,
         verbose=None,
     ):
-        """### Morph the label.
+        """## 🧠 Morph the label.
 
         Useful for transforming a label from one subject to another.
 
@@ -362,7 +362,7 @@ class Label:
     def split(
         self, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
     ):
-        """### Split the Label into two or more parts.
+        """## 🧠 Split the Label into two or more parts.
 
         -----
         ### 🛠️ Parameters
@@ -409,7 +409,7 @@ class Label:
         """
         ...
     def get_vertices_used(self, vertices=None):
-        """### Get the source space's vertices inside the label.
+        """## 🧠 Get the source space's vertices inside the label.
 
         -----
         ### 🛠️ Parameters
@@ -426,7 +426,7 @@ class Label:
         """
         ...
     def get_tris(self, tris, vertices=None):
-        """### Get the source space's triangles inside the label.
+        """## 🧠 Get the source space's triangles inside the label.
 
         -----
         ### 🛠️ Parameters
@@ -452,7 +452,7 @@ class Label:
         subjects_dir=None,
         surf: str = "sphere",
     ):
-        """### Compute the center of mass of the label.
+        """## 🧠 Compute the center of mass of the label.
 
         This function computes the spatial center of mass on the surface
         as in :footcite:`LarsonLee2013`.
@@ -508,7 +508,7 @@ class Label:
     def distances_to_outside(
         self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
-        """### Compute the distance from each vertex to outside the label.
+        """## 🧠 Compute the distance from each vertex to outside the label.
 
         -----
         ### 🛠️ Parameters
@@ -553,7 +553,7 @@ class Label:
     def compute_area(
         self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
-        """### Compute the surface area of a label.
+        """## 🧠 Compute the surface area of a label.
 
         -----
         ### 🛠️ Parameters
@@ -629,7 +629,7 @@ class BiHemiLabel:
 
     def __init__(self, lh, rh, name=None, color=None) -> None: ...
     def __len__(self) -> int:
-        """### Return the number of vertices.
+        """## 🧠 Return the number of vertices.
 
         -----
         ### ⏎ Returns
@@ -639,10 +639,10 @@ class BiHemiLabel:
         """
         ...
     def __add__(self, other):
-        """### Add labels."""
+        """## 🧠 Add labels."""
         ...
     def __sub__(self, other):
-        """### Subtract labels."""
+        """## 🧠 Subtract labels."""
         ...
 
 def read_label(filename, subject=None, color=None, *, verbose=None):

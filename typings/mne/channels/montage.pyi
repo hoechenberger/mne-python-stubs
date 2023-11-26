@@ -166,7 +166,7 @@ class DigMontage:
         axes=None,
         verbose=None,
     ):
-        """### Plot a montage.
+        """## 🧠 Plot a montage.
 
         -----
         ### 🛠️ Parameters
@@ -215,7 +215,7 @@ class DigMontage:
         """
         ...
     def rename_channels(self, mapping, allow_duplicates: bool = False) -> None:
-        """### Rename the channels.
+        """## 🧠 Rename the channels.
 
         -----
         ### 🛠️ Parameters
@@ -242,7 +242,7 @@ class DigMontage:
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save digitization points to FIF.
+        """## 🧠 Save digitization points to FIF.
 
         -----
         ### 🛠️ Parameters
@@ -262,7 +262,7 @@ class DigMontage:
         """
         ...
     def __iadd__(self, other):
-        """### Add two DigMontages in place.
+        """## 🧠 Add two DigMontages in place.
 
         -----
         ### 📖 Notes
@@ -273,7 +273,7 @@ class DigMontage:
         """
         ...
     def copy(self):
-        """### Copy the DigMontage object.
+        """## 🧠 Copy the DigMontage object.
 
         -----
         ### ⏎ Returns
@@ -283,10 +283,10 @@ class DigMontage:
         """
         ...
     def __add__(self, other):
-        """### Add two DigMontages."""
+        """## 🧠 Add two DigMontages."""
         ...
     def __eq__(self, other):
-        """### Compare different DigMontage objects for equality.
+        """## 🧠 Compare different DigMontage objects for equality.
 
         -----
         ### ⏎ Returns
@@ -295,7 +295,7 @@ class DigMontage:
         """
         ...
     def get_positions(self):
-        """### Get all channel and fiducial positions.
+        """## 🧠 Get all channel and fiducial positions.
 
         -----
         ### ⏎ Returns
@@ -321,7 +321,7 @@ class DigMontage:
         """
         ...
     def apply_trans(self, trans, verbose=None) -> None:
-        """### Apply a transformation matrix to the montage.
+        """## 🧠 Apply a transformation matrix to the montage.
 
         -----
         ### 🛠️ Parameters
@@ -337,7 +337,7 @@ class DigMontage:
         """
         ...
     def add_estimated_fiducials(self, subject, subjects_dir=None, verbose=None):
-        """### Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
+        """## 🧠 Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
 
         This takes a montage with the ``mri`` coordinate frame,
         corresponding to the FreeSurfer RAS (xyz in the volume) T1w
@@ -386,7 +386,7 @@ class DigMontage:
         """
         ...
     def add_mni_fiducials(self, subjects_dir=None, verbose=None):
-        """### Add fiducials to a montage in MNI space.
+        """## 🧠 Add fiducials to a montage in MNI space.
 
         -----
         ### 🛠️ Parameters
@@ -422,7 +422,7 @@ class DigMontage:
         """
         ...
     def remove_fiducials(self, verbose=None):
-        """### Remove the fiducial points from a montage.
+        """## 🧠 Remove the fiducial points from a montage.
 
         -----
         ### 🛠️ Parameters

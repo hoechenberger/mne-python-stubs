@@ -924,7 +924,7 @@ class FilterMixin:
     """## 🧠 Object for Epoch/Evoked filtering."""
 
     def savgol_filter(self, h_freq, verbose=None):
-        """### Filter the data using Savitzky-Golay polynomial method.
+        """## 🧠 Filter the data using Savitzky-Golay polynomial method.
 
         -----
         ### 🛠️ Parameters
@@ -997,7 +997,7 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """### Filter a subset of channels.
+        """## 🧠 Filter a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -1183,7 +1183,7 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """### Resample data.
+        """## 🧠 Resample data.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
@@ -1252,7 +1252,7 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """### Compute analytic signal or envelope for a subset of channels.
+        """## 🧠 Compute analytic signal or envelope for a subset of channels.
 
         -----
         ### 🛠️ Parameters

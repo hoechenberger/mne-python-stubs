@@ -131,5 +131,5 @@ class _BVEventParser(_DefaultEventParser):
     """## 🧠 Parse standard brainvision events, accounting for non-standard ones."""
 
     def __call__(self, description):
-        """### Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
+        """## 🧠 Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
         ...

@@ -633,7 +633,7 @@ class AcqParserFIF:
 
     def __init__(self, info) -> None: ...
     def __getitem__(self, item):
-        """### Return an averaging category, or list of categories.
+        """## 🧠 Return an averaging category, or list of categories.
 
         -----
         ### 🛠️ Parameters
@@ -684,7 +684,7 @@ class AcqParserFIF:
         """
         ...
     def __len__(self) -> int:
-        """### Return number of averaging categories marked active in DACQ.
+        """## 🧠 Return number of averaging categories marked active in DACQ.
 
         -----
         ### ⏎ Returns
@@ -695,14 +695,14 @@ class AcqParserFIF:
         ...
     @property
     def categories(self):
-        """### Return list of averaging categories ordered by DACQ index.
+        """## 🧠 Return list of averaging categories ordered by DACQ index.
 
         Only returns categories marked active in DACQ.
         """
         ...
     @property
     def events(self):
-        """### Return events ordered by DACQ index.
+        """## 🧠 Return events ordered by DACQ index.
 
         Only returns events that are in use (referred to by a category).
         """
@@ -717,7 +717,7 @@ class AcqParserFIF:
         mask_type: str = "and",
         delayed_lookup: bool = True,
     ):
-        """### Get averaging parameters for a condition (averaging category).
+        """## 🧠 Get averaging parameters for a condition (averaging category).
 
         Output is designed to be used with the Epochs class to extract the
         corresponding epochs.

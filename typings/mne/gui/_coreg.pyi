@@ -166,5 +166,5 @@ class CoregistrationUI(HasTraits):
         verbose=None,
     ) -> None: ...
     def close(self) -> None:
-        """### Close interface and cleanup data structure."""
+        """## 🧠 Close interface and cleanup data structure."""
         ...

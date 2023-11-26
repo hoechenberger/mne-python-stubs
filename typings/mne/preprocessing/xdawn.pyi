@@ -60,12 +60,12 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
     def __init__(
         self, n_components: int = 2, reg=None, signal_cov=None, method_params=None
     ) -> None:
-        """### Init."""
+        """## 🧠 Init."""
         ...
     classes_: Incomplete
 
     def fit(self, X, y=None):
-        """### Fit Xdawn spatial filters.
+        """## 🧠 Fit Xdawn spatial filters.
 
         -----
         ### 🛠️ Parameters
@@ -83,7 +83,7 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
         """
         ...
     def transform(self, X):
-        """### Transform data with spatial filters.
+        """## 🧠 Transform data with spatial filters.
 
         -----
         ### 🛠️ Parameters
@@ -99,7 +99,7 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
         """
         ...
     def inverse_transform(self, X):
-        """### Remove selected components from the signal.
+        """## 🧠 Remove selected components from the signal.
 
         Given the unmixing matrix, transform data, zero out components,
         and inverse transform the data. This procedure will reconstruct
@@ -190,13 +190,13 @@ class Xdawn(_XdawnTransformer):
         correct_overlap: str = "auto",
         reg=None,
     ) -> None:
-        """### Init."""
+        """## 🧠 Init."""
         ...
     event_id_: Incomplete
     correct_overlap_: Incomplete
 
     def fit(self, epochs, y=None):
-        """### Fit Xdawn from epochs.
+        """## 🧠 Fit Xdawn from epochs.
 
         -----
         ### 🛠️ Parameters
@@ -214,7 +214,7 @@ class Xdawn(_XdawnTransformer):
         """
         ...
     def transform(self, inst):
-        """### Apply Xdawn dim reduction.
+        """## 🧠 Apply Xdawn dim reduction.
 
         -----
         ### 🛠️ Parameters
@@ -230,7 +230,7 @@ class Xdawn(_XdawnTransformer):
         """
         ...
     def apply(self, inst, event_id=None, include=None, exclude=None):
-        """### Remove selected components from the signal.
+        """## 🧠 Remove selected components from the signal.
 
         Given the unmixing matrix, transform data,
         zero out components, and inverse transform the data.
@@ -263,5 +263,5 @@ class Xdawn(_XdawnTransformer):
         """
         ...
     def inverse_transform(self) -> None:
-        """### Not implemented, see Xdawn.apply() instead."""
+        """## 🧠 Not implemented, see Xdawn.apply() instead."""
         ...

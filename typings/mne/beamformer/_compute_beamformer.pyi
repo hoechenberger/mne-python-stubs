@@ -15,7 +15,7 @@ class Beamformer(dict):
     """
 
     def copy(self):
-        """### Copy the beamformer.
+        """## 🧠 Copy the beamformer.
 
         -----
         ### ⏎ Returns
@@ -25,7 +25,7 @@ class Beamformer(dict):
         """
         ...
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
-        """### Save the beamformer filter.
+        """## 🧠 Save the beamformer filter.
 
         -----
         ### 🛠️ Parameters

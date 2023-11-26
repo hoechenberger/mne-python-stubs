@@ -304,7 +304,7 @@ class ICA(ContainsMixin):
         reject_by_annotation: bool = True,
         verbose=None,
     ):
-        """### Run the ICA decomposition on raw data.
+        """## 🧠 Run the ICA decomposition on raw data.
 
         Caveat! If supplying a noise covariance keep track of the projections
         available in the cov, the raw or the epochs object. For example,
@@ -387,7 +387,7 @@ class ICA(ContainsMixin):
         """
         ...
     def get_components(self):
-        """### Get ICA topomap for components as numpy arrays.
+        """## 🧠 Get ICA topomap for components as numpy arrays.
 
         -----
         ### ⏎ Returns
@@ -397,7 +397,7 @@ class ICA(ContainsMixin):
         """
         ...
     def get_explained_variance_ratio(self, inst, *, components=None, ch_type=None):
-        """### Get the proportion of data variance explained by ICA components.
+        """## 🧠 Get the proportion of data variance explained by ICA components.
 
         -----
         ### 🛠️ Parameters
@@ -437,7 +437,7 @@ class ICA(ContainsMixin):
         """
         ...
     def get_sources(self, inst, add_channels=None, start=None, stop=None):
-        """### Estimate sources given the unmixing matrix.
+        """## 🧠 Estimate sources given the unmixing matrix.
 
         This method will return the sources in the container format passed.
         Typical usecases:
@@ -480,7 +480,7 @@ class ICA(ContainsMixin):
         reject_by_annotation: bool = True,
         verbose=None,
     ):
-        """### Assign score to components based on statistic or metric.
+        """## 🧠 Assign score to components based on statistic or metric.
 
         -----
         ### 🛠️ Parameters
@@ -547,7 +547,7 @@ class ICA(ContainsMixin):
         measure: str = "zscore",
         verbose=None,
     ):
-        """### Detect ECG related components.
+        """## 🧠 Detect ECG related components.
 
         Cross-trial phase statistics :footcite:`DammersEtAl2008` or Pearson
         correlation can be used for detection.
@@ -660,7 +660,7 @@ class ICA(ContainsMixin):
         measure: str = "zscore",
         verbose=None,
     ):
-        """### Detect MEG reference related components using correlation.
+        """## 🧠 Detect MEG reference related components using correlation.
 
         -----
         ### 🛠️ Parameters
@@ -787,7 +787,7 @@ class ICA(ContainsMixin):
         sphere=None,
         verbose=None,
     ):
-        """### Detect muscle related components.
+        """## 🧠 Detect muscle related components.
 
         Detection is based on :footcite:`DharmapraniEtAl2016` which uses
         data from a subject who has been temporarily paralyzed
@@ -873,7 +873,7 @@ class ICA(ContainsMixin):
         measure: str = "zscore",
         verbose=None,
     ):
-        """### Detect EOG related components using correlation.
+        """## 🧠 Detect EOG related components using correlation.
 
         Detection is based on Pearson correlation between the
         filtered data and the filtered EOG channel.
@@ -961,7 +961,7 @@ class ICA(ContainsMixin):
         on_baseline: str = "warn",
         verbose=None,
     ):
-        """### Remove selected components from the signal.
+        """## 🧠 Remove selected components from the signal.
 
         Given the unmixing matrix, transform the data,
         zero out all excluded components, and inverse-transform the data.
@@ -1034,7 +1034,7 @@ class ICA(ContainsMixin):
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None):
-        """### Store ICA solution into a fiff file.
+        """## 🧠 Store ICA solution into a fiff file.
 
         -----
         ### 🛠️ Parameters
@@ -1068,7 +1068,7 @@ class ICA(ContainsMixin):
         """
         ...
     def copy(self):
-        """### Copy the ICA object.
+        """## 🧠 Copy the ICA object.
 
         -----
         ### ⏎ Returns
@@ -1109,7 +1109,7 @@ class ICA(ContainsMixin):
         psd_args=None,
         verbose=None,
     ):
-        """### Project mixing matrix on interpolated sensor topography.
+        """## 🧠 Project mixing matrix on interpolated sensor topography.
 
         -----
         ### 🛠️ Parameters
@@ -1335,7 +1335,7 @@ class ICA(ContainsMixin):
         *,
         verbose=None,
     ):
-        """### Display component properties.
+        """## 🧠 Display component properties.
 
         Properties include the topography, epochs image, ERP/ERF, power
         spectrum, and epoch variance.
@@ -1446,7 +1446,7 @@ class ICA(ContainsMixin):
         overview_mode=None,
         splash: bool = True,
     ):
-        """### Plot estimated latent sources given the unmixing matrix.
+        """## 🧠 Plot estimated latent sources given the unmixing matrix.
 
         Typical usecases:
 
@@ -1594,7 +1594,7 @@ class ICA(ContainsMixin):
         n_cols=None,
         show: bool = True,
     ):
-        """### Plot scores related to detected components.
+        """## 🧠 Plot scores related to detected components.
 
         Use this function to asses how well your score describes outlier
         sources and how well you were detecting them.
@@ -1648,7 +1648,7 @@ class ICA(ContainsMixin):
         on_baseline: str = "warn",
         verbose=None,
     ):
-        """### Overlay of raw and cleaned signals given the unmixing matrix.
+        """## 🧠 Overlay of raw and cleaned signals given the unmixing matrix.
 
         This method helps visualizing signal quality and artifact rejection.
 

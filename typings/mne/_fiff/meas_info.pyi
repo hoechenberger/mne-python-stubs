@@ -43,7 +43,7 @@ class MontageMixin:
     """## 🧠 Mixin for Montage getting and setting."""
 
     def get_montage(self):
-        """### Get a DigMontage from instance.
+        """## 🧠 Get a DigMontage from instance.
 
         -----
         ### ⏎ Returns
@@ -68,7 +68,7 @@ class MontageMixin:
         on_missing: str = "raise",
         verbose=None,
     ):
-        """### Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
+        """## 🧠 Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
 
         -----
         ### 🛠️ Parameters
@@ -146,7 +146,7 @@ class SetChannelsMixin(MontageMixin):
     """## 🧠 Mixin class for Raw, Evoked, Epochs."""
 
     def set_channel_types(self, mapping, *, on_unit_change: str = "warn", verbose=None):
-        """### Specify the sensor types of channels.
+        """## 🧠 Specify the sensor types of channels.
 
         -----
         ### 🛠️ Parameters
@@ -189,7 +189,7 @@ class SetChannelsMixin(MontageMixin):
         """
         ...
     def rename_channels(self, mapping, allow_duplicates: bool = False, *, verbose=None):
-        """### Rename channels.
+        """## 🧠 Rename channels.
 
         -----
         ### 🛠️ Parameters
@@ -244,7 +244,7 @@ class SetChannelsMixin(MontageMixin):
         *,
         verbose=None,
     ):
-        """### Plot sensor positions.
+        """## 🧠 Plot sensor positions.
 
         -----
         ### 🛠️ Parameters
@@ -337,7 +337,7 @@ class SetChannelsMixin(MontageMixin):
         """
         ...
     def anonymize(self, daysback=None, keep_his: bool = False, verbose=None):
-        """### Anonymize measurement information in place.
+        """## 🧠 Anonymize measurement information in place.
 
         -----
         ### 🛠️ Parameters
@@ -400,7 +400,7 @@ class SetChannelsMixin(MontageMixin):
         """
         ...
     def set_meas_date(self, meas_date):
-        """### Set the measurement start date.
+        """## 🧠 Set the measurement start date.
 
         -----
         ### 🛠️ Parameters
@@ -439,7 +439,7 @@ class ContainsMixin:
     """## 🧠 Mixin class for Raw, Evoked, Epochs and Info."""
 
     def __contains__(self, ch_type) -> bool:
-        """### Check channel type membership.
+        """## 🧠 Check channel type membership.
 
         -----
         ### 🛠️ Parameters
@@ -468,12 +468,12 @@ class ContainsMixin:
         ...
     @property
     def compensation_grade(self):
-        """### The current gradient compensation grade."""
+        """## 🧠 The current gradient compensation grade."""
         ...
     def get_channel_types(
         self, picks=None, unique: bool = False, only_data_chs: bool = False
     ):
-        """### Get a list of channel type for each channel.
+        """## 🧠 Get a list of channel type for each channel.
 
         -----
         ### 🛠️ Parameters
@@ -923,13 +923,13 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
 
     def __init__(self, *args, **kwargs) -> None: ...
     def __setitem__(self, key, val) -> None:
-        """### Attribute setter."""
+        """## 🧠 Attribute setter."""
         ...
     def update(self, other=None, **kwargs) -> None:
-        """### Update method using __setitem__()."""
+        """## 🧠 Update method using __setitem__()."""
         ...
     def copy(self):
-        """### Copy the instance.
+        """## 🧠 Copy the instance.
 
         -----
         ### ⏎ Returns
@@ -939,7 +939,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         """
         ...
     def normalize_proj(self) -> None:
-        """### (Re-)Normalize projection vectors after subselection.
+        """## 🧠 (Re-)Normalize projection vectors after subselection.
 
         Applying projection after sub-selecting a set of channels that
         were originally used to compute the original projection vectors
@@ -954,12 +954,12 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         """
         ...
     def __deepcopy__(self, memodict):
-        """### Make a deepcopy."""
+        """## 🧠 Make a deepcopy."""
         ...
     @property
     def ch_names(self): ...
     def save(self, fname) -> None:
-        """### Write measurement info in fif file.
+        """## 🧠 Write measurement info in fif file.
 
         -----
         ### 🛠️ Parameters

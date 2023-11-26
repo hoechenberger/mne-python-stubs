@@ -122,10 +122,10 @@ class Forward(dict):
     """
 
     def copy(self):
-        """### Copy the Forward instance."""
+        """## 🧠 Copy the Forward instance."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save the forward solution.
+        """## 🧠 Save the forward solution.
 
         -----
         ### 🛠️ Parameters
@@ -150,7 +150,7 @@ class Forward(dict):
     @property
     def ch_names(self): ...
     def pick_channels(self, ch_names, ordered: bool = False):
-        """### Pick channels from this forward operator.
+        """## 🧠 Pick channels from this forward operator.
 
         -----
         ### 🛠️ Parameters

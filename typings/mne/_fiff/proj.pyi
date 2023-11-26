@@ -52,13 +52,13 @@ class Projection(dict):
         explained_var=None,
     ) -> None: ...
     def __deepcopy__(self, memodict):
-        """### Make a deepcopy."""
+        """## 🧠 Make a deepcopy."""
         ...
     def __eq__(self, other):
-        """### Equality == method."""
+        """## 🧠 Equality == method."""
         ...
     def __ne__(self, other):
-        """### Different != method."""
+        """## 🧠 Different != method."""
         ...
     def plot_topomap(
         self,
@@ -83,7 +83,7 @@ class Projection(dict):
         axes=None,
         show: bool = True,
     ):
-        """### Plot topographic maps of SSP projections.
+        """## 🧠 Plot topographic maps of SSP projections.
 
         -----
         ### 🛠️ Parameters
@@ -268,10 +268,10 @@ class ProjMixin:
 
     @property
     def proj(self):
-        """### Whether or not projections are active."""
+        """## 🧠 Whether or not projections are active."""
         ...
     def add_proj(self, projs, remove_existing: bool = False, verbose=None):
-        """### Add SSP projection vectors.
+        """## 🧠 Add SSP projection vectors.
 
         -----
         ### 🛠️ Parameters
@@ -295,7 +295,7 @@ class ProjMixin:
         """
         ...
     def apply_proj(self, verbose=None):
-        """### Apply the signal space projection (SSP) operators to the data.
+        """## 🧠 Apply the signal space projection (SSP) operators to the data.
 
         -----
         ### 🛠️ Parameters
@@ -336,7 +336,7 @@ class ProjMixin:
         """
         ...
     def del_proj(self, idx: str = "all"):
-        """### Remove SSP projection vector.
+        """## 🧠 Remove SSP projection vector.
 
         ### 💡 Note The projection vector can only be removed if it is inactive
                   (has not been applied to the data).
@@ -378,7 +378,7 @@ class ProjMixin:
         axes=None,
         show: bool = True,
     ):
-        """### Plot SSP vector.
+        """## 🧠 Plot SSP vector.
 
         -----
         ### 🛠️ Parameters

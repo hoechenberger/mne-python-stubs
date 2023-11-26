@@ -134,7 +134,7 @@ class ReceptiveField(BaseEstimator):
     patterns_: Incomplete
 
     def fit(self, X, y):
-        """### Fit a receptive field model.
+        """## 🧠 Fit a receptive field model.
 
         -----
         ### 🛠️ Parameters
@@ -152,7 +152,7 @@ class ReceptiveField(BaseEstimator):
         """
         ...
     def predict(self, X):
-        """### Generate predictions with a receptive field.
+        """## 🧠 Generate predictions with a receptive field.
 
         -----
         ### 🛠️ Parameters
@@ -170,7 +170,7 @@ class ReceptiveField(BaseEstimator):
         """
         ...
     def score(self, X, y):
-        """### Score predictions generated with a receptive field.
+        """## 🧠 Score predictions generated with a receptive field.
 
         This calls ``self.predict``, then masks the output of this
         and ``y` with ``self.valid_samples_``. Finally, it passes

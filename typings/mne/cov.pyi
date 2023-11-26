@@ -102,22 +102,22 @@ class Covariance(dict):
         *,
         verbose=None,
     ) -> None:
-        """### Init of covariance."""
+        """## 🧠 Init of covariance."""
         ...
     @property
     def data(self):
-        """### Numpy array of Noise covariance matrix."""
+        """## 🧠 Numpy array of Noise covariance matrix."""
         ...
     @property
     def ch_names(self):
-        """### Channel names."""
+        """## 🧠 Channel names."""
         ...
     @property
     def nfree(self):
-        """### Number of degrees of freedom."""
+        """## 🧠 Number of degrees of freedom."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save covariance matrix in a FIF file.
+        """## 🧠 Save covariance matrix in a FIF file.
 
         -----
         ### 🛠️ Parameters
@@ -139,7 +139,7 @@ class Covariance(dict):
         """
         ...
     def copy(self):
-        """### Copy the Covariance object.
+        """## 🧠 Copy the Covariance object.
 
         -----
         ### ⏎ Returns
@@ -149,7 +149,7 @@ class Covariance(dict):
         """
         ...
     def as_diag(self):
-        """### Set covariance to be processed as being diagonal.
+        """## 🧠 Set covariance to be processed as being diagonal.
 
         -----
         ### ⏎ Returns
@@ -167,10 +167,10 @@ class Covariance(dict):
         """
         ...
     def __add__(self, cov):
-        """### Add Covariance taking into account number of degrees of freedom."""
+        """## 🧠 Add Covariance taking into account number of degrees of freedom."""
         ...
     def __iadd__(self, cov):
-        """### Add Covariance taking into account number of degrees of freedom."""
+        """## 🧠 Add Covariance taking into account number of degrees of freedom."""
         ...
     def plot(
         self,
@@ -182,7 +182,7 @@ class Covariance(dict):
         show: bool = True,
         verbose=None,
     ):
-        """### Plot Covariance data.
+        """## 🧠 Plot Covariance data.
 
         -----
         ### 🛠️ Parameters
@@ -261,7 +261,7 @@ class Covariance(dict):
         show: bool = True,
         verbose=None,
     ):
-        """### Plot a topomap of the covariance diagonal.
+        """## 🧠 Plot a topomap of the covariance diagonal.
 
         -----
         ### 🛠️ Parameters
@@ -459,7 +459,7 @@ class Covariance(dict):
         """
         ...
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
-        """### Pick channels from this covariance matrix.
+        """## 🧠 Pick channels from this covariance matrix.
 
         -----
         ### 🛠️ Parameters
@@ -1043,13 +1043,13 @@ class _RegCovariance(BaseEstimator):
     covariance_: Incomplete
 
     def fit(self, X):
-        """### Fit covariance model with classical diagonal regularization."""
+        """## 🧠 Fit covariance model with classical diagonal regularization."""
         ...
     def score(self, X_test, y=None):
-        """### Delegate call to modified EmpiricalCovariance instance."""
+        """## 🧠 Delegate call to modified EmpiricalCovariance instance."""
         ...
     def get_precision(self):
-        """### Delegate call to modified EmpiricalCovariance instance."""
+        """## 🧠 Delegate call to modified EmpiricalCovariance instance."""
         ...
 
 class _ShrunkCovariance(BaseEstimator):
@@ -1066,13 +1066,13 @@ class _ShrunkCovariance(BaseEstimator):
     zero_cross_cov_: Incomplete
 
     def fit(self, X):
-        """### Fit covariance model with oracle shrinkage regularization."""
+        """## 🧠 Fit covariance model with oracle shrinkage regularization."""
         ...
     def score(self, X_test, y=None):
-        """### Delegate to modified EmpiricalCovariance instance."""
+        """## 🧠 Delegate to modified EmpiricalCovariance instance."""
         ...
     def get_precision(self):
-        """### Delegate to modified EmpiricalCovariance instance."""
+        """## 🧠 Delegate to modified EmpiricalCovariance instance."""
         ...
 
 def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:

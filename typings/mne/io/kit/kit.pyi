@@ -122,7 +122,7 @@ class RawKIT(BaseRaw):
         verbose=None,
     ) -> None: ...
     def read_stim_ch(self, buffer_size: float = 100000.0):
-        """### Read events from data.
+        """## 🧠 Read events from data.
 
         Parameter
         ---------

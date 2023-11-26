@@ -66,7 +66,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         self, info=None, scalings=None, with_mean: bool = True, with_std: bool = True
     ) -> None: ...
     def fit(self, epochs_data, y=None):
-        """### Standardize data across channels.
+        """## 🧠 Standardize data across channels.
 
         -----
         ### 🛠️ Parameters
@@ -84,7 +84,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         """
         ...
     def transform(self, epochs_data):
-        """### Standardize data across channels.
+        """## 🧠 Standardize data across channels.
 
         -----
         ### 🛠️ Parameters
@@ -106,7 +106,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         """
         ...
     def fit_transform(self, epochs_data, y=None):
-        """### Fit to data, then transform it.
+        """## 🧠 Fit to data, then transform it.
 
         Fits transformer to epochs_data and y and returns a transformed version
         of epochs_data.
@@ -134,7 +134,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         """
         ...
     def inverse_transform(self, epochs_data):
-        """### Invert standardization of data across channels.
+        """## 🧠 Invert standardization of data across channels.
 
         -----
         ### 🛠️ Parameters
@@ -178,7 +178,7 @@ class Vectorizer(TransformerMixin):
     features_shape_: Incomplete
 
     def fit(self, X, y=None):
-        """### Store the shape of the features of X.
+        """## 🧠 Store the shape of the features of X.
 
         -----
         ### 🛠️ Parameters
@@ -199,7 +199,7 @@ class Vectorizer(TransformerMixin):
         """
         ...
     def transform(self, X):
-        """### Convert given array into two dimensions.
+        """## 🧠 Convert given array into two dimensions.
 
         -----
         ### 🛠️ Parameters
@@ -218,7 +218,7 @@ class Vectorizer(TransformerMixin):
         """
         ...
     def fit_transform(self, X, y=None):
-        """### Fit the data, then transform in one step.
+        """## 🧠 Fit the data, then transform in one step.
 
         -----
         ### 🛠️ Parameters
@@ -239,7 +239,7 @@ class Vectorizer(TransformerMixin):
         """
         ...
     def inverse_transform(self, X):
-        """### Transform 2D data back to its original feature shape.
+        """## 🧠 Transform 2D data back to its original feature shape.
 
         -----
         ### 🛠️ Parameters
@@ -321,7 +321,7 @@ class PSDEstimator(TransformerMixin):
         verbose=None,
     ) -> None: ...
     def fit(self, epochs_data, y):
-        """### Compute power spectral density (PSD) using a multi-taper method.
+        """## 🧠 Compute power spectral density (PSD) using a multi-taper method.
 
         -----
         ### 🛠️ Parameters
@@ -339,7 +339,7 @@ class PSDEstimator(TransformerMixin):
         """
         ...
     def transform(self, epochs_data):
-        """### Compute power spectral density (PSD) using a multi-taper method.
+        """## 🧠 Compute power spectral density (PSD) using a multi-taper method.
 
         -----
         ### 🛠️ Parameters
@@ -495,7 +495,7 @@ class FilterEstimator(TransformerMixin):
         verbose=None,
     ) -> None: ...
     def fit(self, epochs_data, y):
-        """### Filter data.
+        """## 🧠 Filter data.
 
         -----
         ### 🛠️ Parameters
@@ -513,7 +513,7 @@ class FilterEstimator(TransformerMixin):
         """
         ...
     def transform(self, epochs_data):
-        """### Filter data.
+        """## 🧠 Filter data.
 
         -----
         ### 🛠️ Parameters
@@ -547,7 +547,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
 
     def __init__(self, estimator, average: bool = False) -> None: ...
     def fit(self, X, y=None):
-        """### Fit the spatial filters.
+        """## 🧠 Fit the spatial filters.
 
         -----
         ### 🛠️ Parameters
@@ -565,7 +565,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         """
         ...
     def fit_transform(self, X, y=None):
-        """### Transform the data to its filtered components after fitting.
+        """## 🧠 Transform the data to its filtered components after fitting.
 
         -----
         ### 🛠️ Parameters
@@ -583,7 +583,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         """
         ...
     def transform(self, X):
-        """### Transform the data to its spatial filters.
+        """## 🧠 Transform the data to its spatial filters.
 
         -----
         ### 🛠️ Parameters
@@ -599,7 +599,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         """
         ...
     def inverse_transform(self, X):
-        """### Inverse transform the data to its original space.
+        """## 🧠 Inverse transform the data to its original space.
 
         -----
         ### 🛠️ Parameters
@@ -734,7 +734,7 @@ class TemporalFilter(TransformerMixin):
         verbose=None,
     ) -> None: ...
     def fit(self, X, y=None):
-        """### Do nothing (for scikit-learn compatibility purposes).
+        """## 🧠 Do nothing (for scikit-learn compatibility purposes).
 
         -----
         ### 🛠️ Parameters
@@ -753,7 +753,7 @@ class TemporalFilter(TransformerMixin):
         """
         ...
     def transform(self, X):
-        """### Filter data along the last dimension.
+        """## 🧠 Filter data along the last dimension.
 
         -----
         ### 🛠️ Parameters

@@ -715,14 +715,14 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
     def data(self, data) -> None: ...
     @property
     def ch_names(self):
-        """### Channel names."""
+        """## 🧠 Channel names."""
         ...
     freqs: Incomplete
 
     def crop(
         self, tmin=None, tmax=None, fmin=None, fmax=None, include_tmax: bool = True
     ):
-        """### Crop data to a given time interval in place.
+        """## 🧠 Crop data to a given time interval in place.
 
         -----
         ### 🛠️ Parameters
@@ -754,7 +754,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         """
         ...
     def copy(self):
-        """### Return a copy of the instance.
+        """## 🧠 Return a copy of the instance.
 
         -----
         ### ⏎ Returns
@@ -764,7 +764,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         """
         ...
     def apply_baseline(self, baseline, mode: str = "mean", verbose=None):
-        """### Baseline correct the data.
+        """## 🧠 Baseline correct the data.
 
         -----
         ### 🛠️ Parameters
@@ -806,7 +806,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         """
         ...
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
-        """### Save TFR object to hdf5 file.
+        """## 🧠 Save TFR object to hdf5 file.
 
         -----
         ### 🛠️ Parameters
@@ -839,7 +839,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         *,
         verbose=None,
     ):
-        """### Export data in tabular structure as a pandas DataFrame.
+        """## 🧠 Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         additional columns ``'time'``, ``'freq'``, ``'epoch'``, and
@@ -993,7 +993,7 @@ class AverageTFR(_BaseTFR):
         cnorm=None,
         verbose=None,
     ):
-        """### Plot TFRs as a two-dimensional image(s).
+        """## 🧠 Plot TFRs as a two-dimensional image(s).
 
         -----
         ### 🛠️ Parameters
@@ -1178,7 +1178,7 @@ class AverageTFR(_BaseTFR):
         image_args=None,
         verbose=None,
     ):
-        """### Plot TFRs as a two-dimensional image with topomaps.
+        """## 🧠 Plot TFRs as a two-dimensional image with topomaps.
 
         -----
         ### 🛠️ Parameters
@@ -1331,7 +1331,7 @@ class AverageTFR(_BaseTFR):
         yscale: str = "auto",
         verbose=None,
     ):
-        """### Plot TFRs in a topography with images.
+        """## 🧠 Plot TFRs in a topography with images.
 
         -----
         ### 🛠️ Parameters
@@ -1460,7 +1460,7 @@ class AverageTFR(_BaseTFR):
         axes=None,
         show: bool = True,
     ):
-        """### Plot topographic maps of specific time-frequency intervals of TFR data.
+        """## 🧠 Plot topographic maps of specific time-frequency intervals of TFR data.
 
         -----
         ### 🛠️ Parameters
@@ -1651,19 +1651,19 @@ class AverageTFR(_BaseTFR):
         """
         ...
     def __add__(self, tfr):
-        """### Add instances."""
+        """## 🧠 Add instances."""
         ...
     def __iadd__(self, tfr): ...
     def __sub__(self, tfr):
-        """### Subtract instances."""
+        """## 🧠 Subtract instances."""
         ...
     def __isub__(self, tfr): ...
     def __truediv__(self, a):
-        """### Divide instances."""
+        """## 🧠 Divide instances."""
         ...
     def __itruediv__(self, a): ...
     def __mul__(self, a):
-        """### Multiply source instances."""
+        """## 🧠 Multiply source instances."""
         ...
     def __imul__(self, a): ...
 
@@ -1795,10 +1795,10 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
         verbose=None,
     ) -> None: ...
     def __abs__(self):
-        """### Take the absolute value."""
+        """## 🧠 Take the absolute value."""
         ...
     def average(self, method: str = "mean", dim: str = "epochs", copy: bool = False):
-        """### Average the data across epochs.
+        """## 🧠 Average the data across epochs.
 
         -----
         ### 🛠️ Parameters

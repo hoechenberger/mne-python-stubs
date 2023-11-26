@@ -479,7 +479,7 @@ class Coregistration:
         on_defects: str = "raise",
     ) -> None: ...
     def set_scale_mode(self, scale_mode):
-        """### Select how to fit the scale parameters.
+        """## 🧠 Select how to fit the scale parameters.
 
         -----
         ### 🛠️ Parameters
@@ -500,7 +500,7 @@ class Coregistration:
         """
         ...
     def set_grow_hair(self, value):
-        """### Compensate for hair on the digitizer head shape.
+        """## 🧠 Compensate for hair on the digitizer head shape.
 
         -----
         ### 🛠️ Parameters
@@ -516,7 +516,7 @@ class Coregistration:
         """
         ...
     def set_rotation(self, rot):
-        """### Set the rotation parameter.
+        """## 🧠 Set the rotation parameter.
 
         -----
         ### 🛠️ Parameters
@@ -532,7 +532,7 @@ class Coregistration:
         """
         ...
     def set_translation(self, tra):
-        """### Set the translation parameter.
+        """## 🧠 Set the translation parameter.
 
         -----
         ### 🛠️ Parameters
@@ -548,7 +548,7 @@ class Coregistration:
         """
         ...
     def set_scale(self, sca):
-        """### Set the scale parameter.
+        """## 🧠 Set the scale parameter.
 
         -----
         ### 🛠️ Parameters
@@ -565,7 +565,7 @@ class Coregistration:
         ...
     @property
     def scale(self):
-        """### Get the current scale factor.
+        """## 🧠 Get the current scale factor.
 
         -----
         ### ⏎ Returns
@@ -581,7 +581,7 @@ class Coregistration:
         rpa_weight: float = 1.0,
         verbose=None,
     ):
-        """### Find rotation and translation to fit all 3 fiducials.
+        """## 🧠 Find rotation and translation to fit all 3 fiducials.
 
         -----
         ### 🛠️ Parameters
@@ -607,7 +607,7 @@ class Coregistration:
         """
         ...
     def set_fid_match(self, match):
-        """### Set the strategy for fitting anatomical landmark (fiducial) points.
+        """## 🧠 Set the strategy for fitting anatomical landmark (fiducial) points.
 
         -----
         ### 🛠️ Parameters
@@ -636,7 +636,7 @@ class Coregistration:
         callback=None,
         verbose=None,
     ):
-        """### Find MRI scaling, translation, and rotation to match HSP.
+        """## 🧠 Find MRI scaling, translation, and rotation to match HSP.
 
         -----
         ### 🛠️ Parameters
@@ -674,7 +674,7 @@ class Coregistration:
         """
         ...
     def omit_head_shape_points(self, distance):
-        """### Exclude head shape points that are far away from the MRI head.
+        """## 🧠 Exclude head shape points that are far away from the MRI head.
 
         -----
         ### 🛠️ Parameters
@@ -691,7 +691,7 @@ class Coregistration:
         """
         ...
     def compute_dig_mri_distances(self):
-        """### Compute distance between head shape points and MRI skin surface.
+        """## 🧠 Compute distance between head shape points and MRI skin surface.
 
         -----
         ### ⏎ Returns
@@ -707,10 +707,10 @@ class Coregistration:
         ...
     @property
     def trans(self):
-        """### The head->mri `mne.transforms.Transform`."""
+        """## 🧠 The head->mri `mne.transforms.Transform`."""
         ...
     def reset(self):
-        """### Reset all the parameters affecting the coregistration.
+        """## 🧠 Reset all the parameters affecting the coregistration.
 
         -----
         ### ⏎ Returns

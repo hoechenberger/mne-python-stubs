@@ -48,12 +48,12 @@ class LinearModel(BaseEstimator):
 
     def __init__(self, model=None) -> None: ...
     def __getattr__(self, attr):
-        """### Wrap to model for some attributes."""
+        """## 🧠 Wrap to model for some attributes."""
         ...
     patterns_: Incomplete
 
     def fit(self, X, y, **fit_params):
-        """### Estimate the coefficients of the linear model.
+        """## 🧠 Estimate the coefficients of the linear model.
 
         Save the coefficients in the attribute ``filters_`` and
         computes the attribute ``patterns_``.

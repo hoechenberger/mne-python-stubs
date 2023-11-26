@@ -272,7 +272,7 @@ class Report:
         verbose=None,
     ) -> None: ...
     def __len__(self) -> int:
-        """### Return the number of files processed by the report.
+        """## 🧠 Return the number of files processed by the report.
 
         -----
         ### ⏎ Returns
@@ -283,14 +283,14 @@ class Report:
         ...
     @property
     def html(self):
-        """### A list of HTML representations for all content elements."""
+        """## 🧠 A list of HTML representations for all content elements."""
         ...
     @property
     def tags(self):
-        """### All tags currently used in the report."""
+        """## 🧠 All tags currently used in the report."""
         ...
     def add_custom_css(self, css) -> None:
-        """### Add custom CSS to the report.
+        """## 🧠 Add custom CSS to the report.
 
         -----
         ### 🛠️ Parameters
@@ -306,7 +306,7 @@ class Report:
         """
         ...
     def add_custom_js(self, js) -> None:
-        """### Add custom JavaScript to the report.
+        """## 🧠 Add custom JavaScript to the report.
 
         -----
         ### 🛠️ Parameters
@@ -333,7 +333,7 @@ class Report:
         tags=("epochs",),
         replace: bool = False,
     ) -> None:
-        """### Add `mne.Epochs` to the report.
+        """## 🧠 Add `mne.Epochs` to the report.
 
         -----
         ### 🛠️ Parameters
@@ -396,7 +396,7 @@ class Report:
         topomap_kwargs=None,
         n_jobs=None,
     ) -> None:
-        """### Add `mne.Evoked` objects to the report.
+        """## 🧠 Add `mne.Evoked` objects to the report.
 
         -----
         ### 🛠️ Parameters
@@ -460,7 +460,7 @@ class Report:
         replace: bool = False,
         topomap_kwargs=None,
     ) -> None:
-        """### Add `mne.io.Raw` objects to the report.
+        """## 🧠 Add `mne.io.Raw` objects to the report.
 
         -----
         ### 🛠️ Parameters
@@ -534,7 +534,7 @@ class Report:
         replace: bool = False,
         stc_plot_kwargs=None,
     ) -> None:
-        """### Add a `mne.SourceEstimate` (STC) to the report.
+        """## 🧠 Add a `mne.SourceEstimate` (STC) to the report.
 
         -----
         ### 🛠️ Parameters
@@ -585,7 +585,7 @@ class Report:
         tags=("forward-solution",),
         replace: bool = False,
     ) -> None:
-        """### Add a forward solution.
+        """## 🧠 Add a forward solution.
 
         -----
         ### 🛠️ Parameters
@@ -628,7 +628,7 @@ class Report:
         tags=("inverse-operator",),
         replace: bool = False,
     ) -> None:
-        """### Add an inverse operator.
+        """## 🧠 Add an inverse operator.
 
         -----
         ### 🛠️ Parameters
@@ -675,7 +675,7 @@ class Report:
         tags=("coregistration",),
         replace: bool = False,
     ) -> None:
-        """### Add a coregistration visualization to the report.
+        """## 🧠 Add a coregistration visualization to the report.
 
         -----
         ### 🛠️ Parameters
@@ -716,7 +716,7 @@ class Report:
     def add_covariance(
         self, cov, *, info, title, tags=("covariance",), replace: bool = False
     ) -> None:
-        """### Add covariance to the report.
+        """## 🧠 Add covariance to the report.
 
         -----
         ### 🛠️ Parameters
@@ -754,7 +754,7 @@ class Report:
         tags=("events",),
         replace: bool = False,
     ) -> None:
-        """### Add events to the report.
+        """## 🧠 Add events to the report.
 
         -----
         ### 🛠️ Parameters
@@ -796,7 +796,7 @@ class Report:
         tags=("ssp",),
         replace: bool = False,
     ) -> None:
-        """### Render (SSP) projection vectors.
+        """## 🧠 Render (SSP) projection vectors.
 
         -----
         ### 🛠️ Parameters
@@ -844,7 +844,7 @@ class Report:
         tags=("ica",),
         replace: bool = False,
     ) -> None:
-        """### Add (a fitted) `mne.preprocessing.ICA` to the report.
+        """## 🧠 Add (a fitted) `mne.preprocessing.ICA` to the report.
 
         -----
         ### 🛠️ Parameters
@@ -898,7 +898,7 @@ class Report:
         """
         ...
     def remove(self, *, title=None, tags=None, remove_all: bool = False):
-        """### Remove elements from the report.
+        """## 🧠 Remove elements from the report.
 
         The element to remove is searched for by its title. Optionally, tags
         may be specified as well to narrow down the search to elements that
@@ -945,7 +945,7 @@ class Report:
         tags=("code",),
         replace: bool = False,
     ) -> None:
-        """### Add a code snippet (e.g., an analysis script) to the report.
+        """## 🧠 Add a code snippet (e.g., an analysis script) to the report.
 
         -----
         ### 🛠️ Parameters
@@ -980,7 +980,7 @@ class Report:
     def add_sys_info(
         self, title, *, tags=("mne-sysinfo",), replace: bool = False
     ) -> None:
-        """### Add a MNE-Python system information to the report.
+        """## 🧠 Add a MNE-Python system information to the report.
 
         This is a convenience method that captures the output of
         `mne.sys_info` and adds it to the report.
@@ -1017,7 +1017,7 @@ class Report:
         section=None,
         replace: bool = False,
     ) -> None:
-        """### Add figures to the report.
+        """## 🧠 Add figures to the report.
 
         -----
         ### 🛠️ Parameters
@@ -1074,7 +1074,7 @@ class Report:
         section=None,
         replace: bool = False,
     ) -> None:
-        """### Add an image (e.g., PNG or JPEG pictures) to the report.
+        """## 🧠 Add an image (e.g., PNG or JPEG pictures) to the report.
 
         -----
         ### 🛠️ Parameters
@@ -1114,7 +1114,7 @@ class Report:
     def add_html(
         self, html, title, *, tags=("custom-html",), section=None, replace: bool = False
     ) -> None:
-        """### Add HTML content to the report.
+        """## 🧠 Add HTML content to the report.
 
         -----
         ### 🛠️ Parameters
@@ -1163,7 +1163,7 @@ class Report:
         tags=("bem",),
         replace: bool = False,
     ) -> None:
-        """### Render a visualization of the boundary element model (BEM) surfaces.
+        """## 🧠 Render a visualization of the boundary element model (BEM) surfaces.
 
         -----
         ### 🛠️ Parameters
@@ -1226,7 +1226,7 @@ class Report:
         topomap_kwargs=None,
         verbose=None,
     ) -> None:
-        """### Render all the files in the folder.
+        """## 🧠 Render all the files in the folder.
 
         -----
         ### 🛠️ Parameters
@@ -1315,7 +1315,7 @@ class Report:
         *,
         verbose=None,
     ):
-        """### Save the report and optionally open it in browser.
+        """## 🧠 Save the report and optionally open it in browser.
 
         -----
         ### 🛠️ Parameters
@@ -1359,7 +1359,7 @@ class Report:
         """
         ...
     def __enter__(self):
-        """### Do nothing when entering the context block."""
+        """## 🧠 Do nothing when entering the context block."""
         ...
     def __exit__(
         self,
@@ -1367,7 +1367,7 @@ class Report:
         value: BaseException | None,
         traceback: types.TracebackType | None,
     ) -> None:
-        """### Save the report when leaving the context block."""
+        """## 🧠 Save the report when leaving the context block."""
         ...
 
 class _ReportScraper:

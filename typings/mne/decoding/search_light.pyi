@@ -77,7 +77,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
     fit_params_: Incomplete
 
     def fit(self, X, y, **fit_params):
-        """### Fit a series of independent estimators to the dataset.
+        """## 🧠 Fit a series of independent estimators to the dataset.
 
         -----
         ### 🛠️ Parameters
@@ -100,7 +100,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         """
         ...
     def fit_transform(self, X, y, **fit_params):
-        """### Fit and transform a series of independent estimators to the dataset.
+        """## 🧠 Fit and transform a series of independent estimators to the dataset.
 
         -----
         ### 🛠️ Parameters
@@ -124,7 +124,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         """
         ...
     def transform(self, X):
-        """### Transform each data slice/task with a series of independent estimators.
+        """## 🧠 Transform each data slice/task with a series of independent estimators.
 
         The number of tasks in X should match the number of tasks/estimators
         given at fit time.
@@ -147,7 +147,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         """
         ...
     def predict(self, X):
-        """### Predict each data slice/task with a series of independent estimators.
+        """## 🧠 Predict each data slice/task with a series of independent estimators.
 
         The number of tasks in X should match the number of tasks/estimators
         given at fit time.
@@ -170,7 +170,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         """
         ...
     def predict_proba(self, X):
-        """### Predict each data slice with a series of independent estimators.
+        """## 🧠 Predict each data slice with a series of independent estimators.
 
         The number of tasks in X should match the number of tasks/estimators
         given at fit time.
@@ -193,7 +193,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         """
         ...
     def decision_function(self, X):
-        """### Estimate distances of each data slice to the hyperplanes.
+        """## 🧠 Estimate distances of each data slice to the hyperplanes.
 
         -----
         ### 🛠️ Parameters
@@ -218,7 +218,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         """
         ...
     def score(self, X, y):
-        """### Score each estimator on each task.
+        """## 🧠 Score each estimator on each task.
 
         The number of tasks in X should match the number of tasks/estimators
         given at fit time, i.e. we need
@@ -288,7 +288,7 @@ class GeneralizingEstimator(SlidingEstimator):
     """
 
     def transform(self, X):
-        """### Transform each data slice with all possible estimators.
+        """## 🧠 Transform each data slice with all possible estimators.
 
         -----
         ### 🛠️ Parameters
@@ -307,7 +307,7 @@ class GeneralizingEstimator(SlidingEstimator):
         """
         ...
     def predict(self, X):
-        """### Predict each data slice with all possible estimators.
+        """## 🧠 Predict each data slice with all possible estimators.
 
         -----
         ### 🛠️ Parameters
@@ -326,7 +326,7 @@ class GeneralizingEstimator(SlidingEstimator):
         """
         ...
     def predict_proba(self, X):
-        """### Estimate probabilistic estimates of each data slice with all possible estimators.
+        """## 🧠 Estimate probabilistic estimates of each data slice with all possible estimators.
 
         -----
         ### 🛠️ Parameters
@@ -350,7 +350,7 @@ class GeneralizingEstimator(SlidingEstimator):
         """
         ...
     def decision_function(self, X):
-        """### Estimate distances of each data slice to all hyperplanes.
+        """## 🧠 Estimate distances of each data slice to all hyperplanes.
 
         -----
         ### 🛠️ Parameters
@@ -376,7 +376,7 @@ class GeneralizingEstimator(SlidingEstimator):
         """
         ...
     def score(self, X, y):
-        """### Score each of the estimators on the tested dimensions.
+        """## 🧠 Score each of the estimators on the tested dimensions.
 
         -----
         ### 🛠️ Parameters

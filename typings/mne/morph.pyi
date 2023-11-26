@@ -297,7 +297,7 @@ class SourceMorph:
         mri_space=None,
         verbose=None,
     ):
-        """### Morph source space data.
+        """## 🧠 Morph source space data.
 
         -----
         ### 🛠️ Parameters
@@ -331,7 +331,7 @@ class SourceMorph:
         """
         ...
     def compute_vol_morph_mat(self, *, verbose=None):
-        """### Compute the sparse matrix representation of the volumetric morph.
+        """## 🧠 Compute the sparse matrix representation of the volumetric morph.
 
         -----
         ### 🛠️ Parameters
@@ -369,7 +369,7 @@ class SourceMorph:
         """
         ...
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
-        """### Save the morph for source estimates to a file.
+        """## 🧠 Save the morph for source estimates to a file.
 
         -----
         ### 🛠️ Parameters

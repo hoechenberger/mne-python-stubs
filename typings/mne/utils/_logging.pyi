@@ -164,7 +164,7 @@ class ClosingStringIO(StringIO):
     """## 🧠 StringIO that closes after getvalue()."""
 
     def getvalue(self, close: bool = True):
-        """### Get the value."""
+        """## 🧠 Get the value."""
         ...
 
 class catch_logging:

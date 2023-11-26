@@ -79,7 +79,7 @@ class _BaseSourceEstimate(TimeMixin):
         vert_as_index: bool = False,
         time_as_index: bool = False,
     ):
-        """### Get location and latency of peak amplitude.
+        """## 🧠 Get location and latency of peak amplitude.
 
         -----
         ### 🛠️ Parameters
@@ -113,7 +113,7 @@ class _BaseSourceEstimate(TimeMixin):
     def extract_label_time_course(
         self, labels, src, mode: str = "auto", allow_empty: bool = False, verbose=None
     ):
-        """### Extract label time courses for lists of labels.
+        """## 🧠 Extract label time courses for lists of labels.
 
         This function will extract one time course for each label. The way the
         time courses are extracted depends on the mode parameter.
@@ -214,7 +214,7 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
-        """### Baseline correct source estimate data.
+        """## 🧠 Baseline correct source estimate data.
 
         -----
         ### 🛠️ Parameters
@@ -269,7 +269,7 @@ class _BaseSourceEstimate(TimeMixin):
     def save(
         self, fname, ftype: str = "h5", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """### Save the full source estimate to an HDF5 file.
+        """## 🧠 Save the full source estimate to an HDF5 file.
 
         -----
         ### 🛠️ Parameters
@@ -326,7 +326,7 @@ class _BaseSourceEstimate(TimeMixin):
         brain_kwargs=None,
         verbose=None,
     ):
-        """### Plot SourceEstimate.
+        """## 🧠 Plot SourceEstimate.
 
         -----
         ### 🛠️ Parameters
@@ -536,10 +536,10 @@ class _BaseSourceEstimate(TimeMixin):
         ...
     @property
     def sfreq(self):
-        """### Sample rate of the data."""
+        """## 🧠 Sample rate of the data."""
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True):
-        """### Restrict SourceEstimate to a time interval.
+        """## 🧠 Restrict SourceEstimate to a time interval.
 
         -----
         ### 🛠️ Parameters
@@ -570,7 +570,7 @@ class _BaseSourceEstimate(TimeMixin):
         n_jobs=None,
         verbose=None,
     ):
-        """### Resample data.
+        """## 🧠 Resample data.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
@@ -617,46 +617,46 @@ class _BaseSourceEstimate(TimeMixin):
         ...
     @property
     def data(self):
-        """### Numpy array of source estimate data."""
+        """## 🧠 Numpy array of source estimate data."""
         ...
     @data.setter
     def data(self, value) -> None:
-        """### Numpy array of source estimate data."""
+        """## 🧠 Numpy array of source estimate data."""
         ...
     @property
     def shape(self):
-        """### Shape of the data."""
+        """## 🧠 Shape of the data."""
         ...
     @property
     def tmin(self):
-        """### The first timestamp."""
+        """## 🧠 The first timestamp."""
         ...
     @tmin.setter
     def tmin(self, value) -> None:
-        """### The first timestamp."""
+        """## 🧠 The first timestamp."""
         ...
     @property
     def tstep(self):
-        """### The change in time between two consecutive samples (1 / sfreq)."""
+        """## 🧠 The change in time between two consecutive samples (1 / sfreq)."""
         ...
     @tstep.setter
     def tstep(self, value) -> None:
-        """### The change in time between two consecutive samples (1 / sfreq)."""
+        """## 🧠 The change in time between two consecutive samples (1 / sfreq)."""
         ...
     @property
     def times(self):
-        """### A timestamp for each sample."""
+        """## 🧠 A timestamp for each sample."""
         ...
     @times.setter
     def times(self, value) -> None:
-        """### A timestamp for each sample."""
+        """## 🧠 A timestamp for each sample."""
         ...
     def __add__(self, a):
-        """### Add source estimates."""
+        """## 🧠 Add source estimates."""
         ...
     def __iadd__(self, a): ...
     def mean(self):
-        """### Make a summary stc file with mean over time points.
+        """## 🧠 Make a summary stc file with mean over time points.
 
         -----
         ### ⏎ Returns
@@ -666,7 +666,7 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def sum(self):
-        """### Make a summary stc file with sum over time points.
+        """## 🧠 Make a summary stc file with sum over time points.
 
         -----
         ### ⏎ Returns
@@ -676,17 +676,17 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def __sub__(self, a):
-        """### Subtract source estimates."""
+        """## 🧠 Subtract source estimates."""
         ...
     def __isub__(self, a): ...
     def __truediv__(self, a): ...
     def __div__(self, a):
-        """### Divide source estimates."""
+        """## 🧠 Divide source estimates."""
         ...
     def __itruediv__(self, a): ...
     def __idiv__(self, a): ...
     def __mul__(self, a):
-        """### Multiply source estimates."""
+        """## 🧠 Multiply source estimates."""
         ...
     def __imul__(self, a): ...
     def __pow__(self, a): ...
@@ -696,11 +696,11 @@ class _BaseSourceEstimate(TimeMixin):
     def __rmul__(self, a): ...
     def __rdiv__(self, a): ...
     def __neg__(self):
-        """### Negate the source estimate."""
+        """## 🧠 Negate the source estimate."""
         ...
     def __pos__(self): ...
     def __abs__(self):
-        """### Compute the absolute value of the data.
+        """## 🧠 Compute the absolute value of the data.
 
         -----
         ### ⏎ Returns
@@ -711,7 +711,7 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def sqrt(self):
-        """### Take the square root.
+        """## 🧠 Take the square root.
 
         -----
         ### ⏎ Returns
@@ -721,7 +721,7 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def copy(self):
-        """### Return copy of source estimate instance.
+        """## 🧠 Return copy of source estimate instance.
 
         -----
         ### ⏎ Returns
@@ -731,7 +731,7 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def bin(self, width, tstart=None, tstop=None, func=...):
-        """### Return a source estimate object with data summarized over time bins.
+        """## 🧠 Return a source estimate object with data summarized over time bins.
 
         Time bins of ``width`` seconds. This method is intended for
         visualization only. No filter is applied to the data before binning,
@@ -761,7 +761,7 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def transform_data(self, func, idx=None, tmin_idx=None, tmax_idx=None):
-        """### Get data after a linear (time) transform has been applied.
+        """## 🧠 Get data after a linear (time) transform has been applied.
 
         The transform is applied to each source time course independently.
 
@@ -802,7 +802,7 @@ class _BaseSourceEstimate(TimeMixin):
         """
         ...
     def transform(self, func, idx=None, tmin=None, tmax=None, copy: bool = False):
-        """### Apply linear transform.
+        """## 🧠 Apply linear transform.
 
         The transform is applied to each source time course independently.
 
@@ -863,7 +863,7 @@ class _BaseSourceEstimate(TimeMixin):
         *,
         verbose=None,
     ):
-        """### Export data in tabular structure as a pandas DataFrame.
+        """## 🧠 Export data in tabular structure as a pandas DataFrame.
 
         Vertices are converted to columns in the DataFrame. By default,
         an additional column "time" is added, unless ``index='time'``
@@ -963,22 +963,22 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
 
     @property
     def lh_data(self):
-        """### Left hemisphere data."""
+        """## 🧠 Left hemisphere data."""
         ...
     @property
     def rh_data(self):
-        """### Right hemisphere data."""
+        """## 🧠 Right hemisphere data."""
         ...
     @property
     def lh_vertno(self):
-        """### Left hemisphere vertno."""
+        """## 🧠 Left hemisphere vertno."""
         ...
     @property
     def rh_vertno(self):
-        """### Right hemisphere vertno."""
+        """## 🧠 Right hemisphere vertno."""
         ...
     def in_label(self, label):
-        """### Get a source estimate object restricted to a label.
+        """## 🧠 Get a source estimate object restricted to a label.
 
         SourceEstimate contains the time course of
         activation of all sources inside the label.
@@ -1001,7 +1001,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     data: Incomplete
 
     def expand(self, vertices):
-        """### Expand SourceEstimate to include more vertices.
+        """## 🧠 Expand SourceEstimate to include more vertices.
 
         This will add rows to stc.data (zero-filled) and modify stc.vertices
         to include all vertices in stc.vertices and the input vertices.
@@ -1022,7 +1022,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     def to_original_src(
         self, src_orig, subject_orig=None, subjects_dir=None, verbose=None
     ):
-        """### Get a source estimate from morphed source to the original subject.
+        """## 🧠 Get a source estimate from morphed source to the original subject.
 
         -----
         ### 🛠️ Parameters
@@ -1071,7 +1071,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         vert_as_index: bool = False,
         time_as_index: bool = False,
     ):
-        """### Get location and latency of peak amplitude.
+        """## 🧠 Get location and latency of peak amplitude.
 
         -----
         ### 🛠️ Parameters
@@ -1172,7 +1172,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
     def save(
         self, fname, ftype: str = "stc", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """### Save the source estimates to a file.
+        """## 🧠 Save the source estimates to a file.
 
         -----
         ### 🛠️ Parameters
@@ -1201,7 +1201,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         """
         ...
     def estimate_snr(self, info, fwd, cov, verbose=None):
-        """### Compute time-varying SNR in the source space.
+        """## 🧠 Compute time-varying SNR in the source space.
 
         This function should only be used with source estimates with units
         nanoAmperes (i.e., MNE-like solutions, *not* dSPM or sLORETA).
@@ -1262,7 +1262,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         subjects_dir=None,
         surf: str = "sphere",
     ):
-        """### Compute the center of mass of activity.
+        """## 🧠 Compute the center of mass of activity.
 
         This function computes the spatial center of mass on the surface
         as well as the temporal center of mass as in :footcite:`LarsonLee2013`.
@@ -1333,7 +1333,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         self, data, vertices=None, tmin=None, tstep=None, subject=None, verbose=None
     ) -> None: ...
     def magnitude(self):
-        """### Compute magnitude of activity without directionality.
+        """## 🧠 Compute magnitude of activity without directionality.
 
         -----
         ### ⏎ Returns
@@ -1343,7 +1343,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         """
         ...
     def project(self, directions, src=None, use_cps: bool = True):
-        """### Project the data for each vertex in a given direction.
+        """## 🧠 Project the data for each vertex in a given direction.
 
         -----
         ### 🛠️ Parameters
@@ -1422,7 +1422,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         brain_kwargs=None,
         verbose=None,
     ):
-        """### Plot VectorSourceEstimate with PyVista.
+        """## 🧠 Plot VectorSourceEstimate with PyVista.
 
         A "glass brain" is drawn and all dipoles defined in the source estimate
         are shown using arrows, depicting the direction and magnitude of the
@@ -1630,7 +1630,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         brain_kwargs=None,
         verbose=None,
     ):
-        """### Plot SourceEstimate.
+        """## 🧠 Plot SourceEstimate.
 
         -----
         ### 🛠️ Parameters
@@ -1854,7 +1854,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         initial_pos=None,
         verbose=None,
     ):
-        """### Plot Nutmeg style volumetric source estimates using nilearn.
+        """## 🧠 Plot Nutmeg style volumetric source estimates using nilearn.
 
         -----
         ### 🛠️ Parameters
@@ -1981,7 +1981,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         mri_resolution: bool = True,
         verbose=None,
     ):
-        """### Extract label time courses for lists of labels.
+        """## 🧠 Extract label time courses for lists of labels.
 
         This function will extract one time course for each label. The way the
         time courses are extracted depends on the mode parameter.
@@ -2091,7 +2091,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         """
         ...
     def in_label(self, label, mri, src, *, verbose=None):
-        """### Get a source estimate object restricted to a label.
+        """## 🧠 Get a source estimate object restricted to a label.
 
         SourceEstimate contains the time course of
         activation of all sources inside the label.
@@ -2137,7 +2137,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """### Save a volume source estimate in a NIfTI file.
+        """## 🧠 Save a volume source estimate in a NIfTI file.
 
         -----
         ### 🛠️ Parameters
@@ -2193,7 +2193,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         mri_resolution: bool = False,
         format: str = "nifti1",
     ):
-        """### Export volume source estimate as a nifti object.
+        """## 🧠 Export volume source estimate as a nifti object.
 
         -----
         ### 🛠️ Parameters
@@ -2292,7 +2292,7 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
     def save(
         self, fname, ftype: str = "stc", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """### Save the source estimates to a file.
+        """## 🧠 Save the source estimates to a file.
 
         -----
         ### 🛠️ Parameters
@@ -2412,7 +2412,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
         brain_kwargs=None,
         verbose=None,
     ):
-        """### Plot VectorSourceEstimate with PyVista.
+        """## 🧠 Plot VectorSourceEstimate with PyVista.
 
         A "glass brain" is drawn and all dipoles defined in the source estimate
         are shown using arrows, depicting the direction and magnitude of the
@@ -2650,7 +2650,7 @@ class _BaseMixedSourceEstimate(_BaseSourceEstimate):
         self, data, vertices=None, tmin=None, tstep=None, subject=None, verbose=None
     ) -> None: ...
     def surface(self):
-        """### Return the cortical surface source estimate.
+        """## 🧠 Return the cortical surface source estimate.
 
         -----
         ### ⏎ Returns
@@ -2660,7 +2660,7 @@ class _BaseMixedSourceEstimate(_BaseSourceEstimate):
         """
         ...
     def volume(self):
-        """### Return the volume surface source estimate.
+        """## 🧠 Return the volume surface source estimate.
 
         -----
         ### ⏎ Returns

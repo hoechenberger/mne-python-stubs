@@ -45,7 +45,7 @@ class ProgressBar:
         **kwargs,
     ) -> None: ...
     def update(self, cur_value) -> None:
-        """### Update progressbar with current value of process.
+        """## 🧠 Update progressbar with current value of process.
 
         -----
         ### 🛠️ Parameters
@@ -57,7 +57,7 @@ class ProgressBar:
         """
         ...
     def update_with_increment_value(self, increment_value) -> None:
-        """### Update progressbar with an increment.
+        """## 🧠 Update progressbar with an increment.
 
         -----
         ### 🛠️ Parameters
@@ -69,10 +69,10 @@ class ProgressBar:
         """
         ...
     def __iter__(self):
-        """### Iterate to auto-increment the pbar with 1."""
+        """## 🧠 Iterate to auto-increment the pbar with 1."""
         ...
     def subset(self, idx):
-        """### Make a joblib-friendly index subset updater.
+        """## 🧠 Make a joblib-friendly index subset updater.
 
         -----
         ### 🛠️ Parameters
@@ -95,7 +95,7 @@ class ProgressBar:
         traceback: types.TracebackType | None,
     ) -> None: ...
     def __del__(self) -> None:
-        """### Ensure output completes."""
+        """## 🧠 Ensure output completes."""
         ...
 
 class _UpdateThread(Thread):

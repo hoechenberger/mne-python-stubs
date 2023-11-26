@@ -30,10 +30,10 @@ class DigPoint(dict):
     """
 
     def __deepcopy__(self, memodict):
-        """### Make a deepcopy."""
+        """## 🧠 Make a deepcopy."""
         ...
     def __eq__(self, other):
-        """### Compare two DigPoints.
+        """## 🧠 Compare two DigPoints.
 
         Two digpoints are equal if they are the same kind, share the same
         coordinate frame and position.

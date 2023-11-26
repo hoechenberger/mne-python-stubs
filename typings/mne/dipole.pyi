@@ -117,7 +117,7 @@ class Dipole(TimeMixin):
         verbose=None,
     ) -> None: ...
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
-        """### Save dipole in a ``.dip`` or ``.bdip`` file.
+        """## 🧠 Save dipole in a ``.dip`` or ``.bdip`` file.
 
         -----
         ### 🛠️ Parameters
@@ -145,7 +145,7 @@ class Dipole(TimeMixin):
         """
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """### Crop data to a given time interval.
+        """## 🧠 Crop data to a given time interval.
 
         -----
         ### 🛠️ Parameters
@@ -175,7 +175,7 @@ class Dipole(TimeMixin):
         """
         ...
     def copy(self):
-        """### Copy the Dipoles object.
+        """## 🧠 Copy the Dipoles object.
 
         -----
         ### ⏎ Returns
@@ -207,7 +207,7 @@ class Dipole(TimeMixin):
         width=None,
         verbose=None,
     ):
-        """### Plot dipole locations.
+        """## 🧠 Plot dipole locations.
 
         If mode is set to 'arrow' or 'sphere', only the location of the first
         time point of each dipole is shown else use the show_all parameter.
@@ -347,7 +347,7 @@ class Dipole(TimeMixin):
         """
         ...
     def to_mni(self, subject, trans, subjects_dir=None, verbose=None):
-        """### Convert dipole location from head to MNI coordinates.
+        """## 🧠 Convert dipole location from head to MNI coordinates.
 
         -----
         ### 🛠️ Parameters
@@ -380,7 +380,7 @@ class Dipole(TimeMixin):
         """
         ...
     def to_mri(self, subject, trans, subjects_dir=None, verbose=None):
-        """### Convert dipole location from head to MRI surface RAS coordinates.
+        """## 🧠 Convert dipole location from head to MRI surface RAS coordinates.
 
         -----
         ### 🛠️ Parameters
@@ -420,7 +420,7 @@ class Dipole(TimeMixin):
         subjects_dir=None,
         verbose=None,
     ):
-        """### Find an ROI in atlas for the dipole positions.
+        """## 🧠 Find an ROI in atlas for the dipole positions.
 
         -----
         ### 🛠️ Parameters
@@ -467,7 +467,7 @@ class Dipole(TimeMixin):
         """
         ...
     def plot_amplitudes(self, color: str = "k", show: bool = True):
-        """### Plot the dipole amplitudes as a function of time.
+        """## 🧠 Plot the dipole amplitudes as a function of time.
 
         -----
         ### 🛠️ Parameters
@@ -485,7 +485,7 @@ class Dipole(TimeMixin):
         """
         ...
     def __getitem__(self, item):
-        """### Get a time slice.
+        """## 🧠 Get a time slice.
 
         -----
         ### 🛠️ Parameters
@@ -501,7 +501,7 @@ class Dipole(TimeMixin):
         """
         ...
     def __len__(self) -> int:
-        """### Return the number of dipoles.
+        """## 🧠 Return the number of dipoles.
 
         -----
         ### ⏎ Returns
@@ -578,7 +578,7 @@ class DipoleFixed(ExtendedTimeMixin):
         self, info, data, times, nave, aspect_kind, comment: str = "", *, verbose=None
     ) -> None: ...
     def copy(self):
-        """### Copy the DipoleFixed object.
+        """## 🧠 Copy the DipoleFixed object.
 
         -----
         ### ⏎ Returns
@@ -594,10 +594,10 @@ class DipoleFixed(ExtendedTimeMixin):
         ...
     @property
     def ch_names(self):
-        """### Channel names."""
+        """## 🧠 Channel names."""
         ...
     def save(self, fname, verbose=None) -> None:
-        """### Save dipole in a .fif file.
+        """## 🧠 Save dipole in a .fif file.
 
         -----
         ### 🛠️ Parameters
@@ -615,7 +615,7 @@ class DipoleFixed(ExtendedTimeMixin):
         """
         ...
     def plot(self, show: bool = True, time_unit: str = "s"):
-        """### Plot dipole data.
+        """## 🧠 Plot dipole data.
 
         -----
         ### 🛠️ Parameters

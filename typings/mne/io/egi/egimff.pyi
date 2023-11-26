@@ -38,7 +38,7 @@ class RawMff(BaseRaw):
         channel_naming: str = "E%d",
         verbose=None,
     ) -> None:
-        """### Init the RawMff class."""
+        """## 🧠 Init the RawMff class."""
         ...
 
 def read_evokeds_mff(

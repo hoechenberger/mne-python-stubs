@@ -161,7 +161,7 @@ class EOGRegression:
     info_: Incomplete
 
     def fit(self, inst):
-        """### Fit EOG regression coefficients.
+        """## 🧠 Fit EOG regression coefficients.
 
         -----
         ### 🛠️ Parameters
@@ -185,7 +185,7 @@ class EOGRegression:
         """
         ...
     def apply(self, inst, copy: bool = True):
-        """### Apply the regression coefficients to data.
+        """## 🧠 Apply the regression coefficients to data.
 
         -----
         ### 🛠️ Parameters
@@ -237,7 +237,7 @@ class EOGRegression:
         title=None,
         show: bool = True,
     ):
-        """### Plot the regression weights of a fitted EOGRegression model.
+        """## 🧠 Plot the regression weights of a fitted EOGRegression model.
 
         -----
         ### 🛠️ Parameters
@@ -402,7 +402,7 @@ class EOGRegression:
         """
         ...
     def save(self, fname, overwrite: bool = False) -> None:
-        """### Save the regression model to an HDF5 file.
+        """## 🧠 Save the regression model to an HDF5 file.
 
         -----
         ### 🛠️ Parameters

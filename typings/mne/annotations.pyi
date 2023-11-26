@@ -199,13 +199,13 @@ class Annotations:
     ) -> None: ...
     @property
     def orig_time(self):
-        """### The time base of the Annotations."""
+        """## 🧠 The time base of the Annotations."""
         ...
     def __eq__(self, other):
-        """### Compare to another Annotations instance."""
+        """## 🧠 Compare to another Annotations instance."""
         ...
     def __len__(self) -> int:
-        """### Return the number of annotations.
+        """## 🧠 Return the number of annotations.
 
         -----
         ### ⏎ Returns
@@ -215,19 +215,19 @@ class Annotations:
         """
         ...
     def __add__(self, other):
-        """### Add (concatencate) two Annotation objects."""
+        """## 🧠 Add (concatencate) two Annotation objects."""
         ...
     def __iadd__(self, other):
-        """### Add (concatencate) two Annotation objects in-place.
+        """## 🧠 Add (concatencate) two Annotation objects in-place.
 
         Both annotations must have the same orig_time
         """
         ...
     def __iter__(self):
-        """### Iterate over the annotations."""
+        """## 🧠 Iterate over the annotations."""
         ...
     def __getitem__(self, key, *, with_ch_names=None):
-        """### Propagate indexing and slicing to the underlying numpy structure."""
+        """## 🧠 Propagate indexing and slicing to the underlying numpy structure."""
         ...
     onset: Incomplete
     duration: Incomplete
@@ -235,7 +235,7 @@ class Annotations:
     ch_names: Incomplete
 
     def append(self, onset, duration, description, ch_names=None):
-        """### Add an annotated segment. Operates inplace.
+        """## 🧠 Add an annotated segment. Operates inplace.
 
         -----
         ### 🛠️ Parameters
@@ -278,7 +278,7 @@ class Annotations:
         """
         ...
     def copy(self):
-        """### Return a copy of the Annotations.
+        """## 🧠 Return a copy of the Annotations.
 
         -----
         ### ⏎ Returns
@@ -288,7 +288,7 @@ class Annotations:
         """
         ...
     def delete(self, idx) -> None:
-        """### Remove an annotation. Operates inplace.
+        """## 🧠 Remove an annotation. Operates inplace.
 
         -----
         ### 🛠️ Parameters
@@ -299,7 +299,7 @@ class Annotations:
         """
         ...
     def to_data_frame(self):
-        """### Export annotations in tabular structure as a pandas DataFrame.
+        """## 🧠 Export annotations in tabular structure as a pandas DataFrame.
 
         -----
         ### ⏎ Returns
@@ -311,7 +311,7 @@ class Annotations:
         """
         ...
     def count(self):
-        """### Count annotations.
+        """## 🧠 Count annotations.
 
         -----
         ### ⏎ Returns
@@ -322,7 +322,7 @@ class Annotations:
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save annotations to FIF, CSV or TXT.
+        """## 🧠 Save annotations to FIF, CSV or TXT.
 
         Typically annotations get saved in the FIF file for raw data
         (e.g., as ``raw.annotations``), but this offers the possibility
@@ -365,7 +365,7 @@ class Annotations:
         use_orig_time: bool = True,
         verbose=None,
     ):
-        """### Remove all annotation that are outside of [tmin, tmax].
+        """## 🧠 Remove all annotation that are outside of [tmin, tmax].
 
         The method operates inplace.
 
@@ -397,7 +397,7 @@ class Annotations:
         """
         ...
     def set_durations(self, mapping, verbose=None):
-        """### Set annotation duration(s). Operates inplace.
+        """## 🧠 Set annotation duration(s). Operates inplace.
 
         -----
         ### 🛠️ Parameters
@@ -427,7 +427,7 @@ class Annotations:
         """
         ...
     def rename(self, mapping, verbose=None):
-        """### Rename annotation description(s). Operates inplace.
+        """## 🧠 Rename annotation description(s). Operates inplace.
 
         -----
         ### 🛠️ Parameters
@@ -461,7 +461,7 @@ class EpochAnnotationsMixin:
     @property
     def annotations(self): ...
     def set_annotations(self, annotations, on_missing: str = "raise", *, verbose=None):
-        """### Setter for Epoch annotations from Raw.
+        """## 🧠 Setter for Epoch annotations from Raw.
 
         This method does not handle offsetting the times based
         on first_samp or measurement dates, since that is expected
@@ -515,7 +515,7 @@ class EpochAnnotationsMixin:
         """
         ...
     def get_annotations_per_epoch(self):
-        """### Get a list of annotations that occur during each epoch.
+        """## 🧠 Get a list of annotations that occur during each epoch.
 
         -----
         ### ⏎ Returns
@@ -532,7 +532,7 @@ class EpochAnnotationsMixin:
     metadata: Incomplete
 
     def add_annotations_to_metadata(self, overwrite: bool = False):
-        """### Add raw annotations into the Epochs metadata data frame.
+        """## 🧠 Add raw annotations into the Epochs metadata data frame.
 
         Adds three columns to the ``metadata`` consisting of a list
         in each row:

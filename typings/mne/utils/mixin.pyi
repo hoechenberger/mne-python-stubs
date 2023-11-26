@@ -8,7 +8,7 @@ class SizeMixin:
     """## 🧠 Estimate MNE object sizes."""
 
     def __eq__(self, other):
-        """### Compare self to other.
+        """## 🧠 Compare self to other.
 
         -----
         ### 🛠️ Parameters
@@ -24,7 +24,7 @@ class SizeMixin:
         """
         ...
     def __hash__(self):
-        """### Hash the object.
+        """## 🧠 Hash the object.
 
         -----
         ### ⏎ Returns
@@ -38,7 +38,7 @@ class GetEpochsMixin:
     """## 🧠 Class to add epoch selection and metadata to certain classes."""
 
     def __getitem__(self, item):
-        """### Return an Epochs object with a copied subset of epochs.
+        """## 🧠 Return an Epochs object with a copied subset of epochs.
 
         -----
         ### 🛠️ Parameters
@@ -108,7 +108,7 @@ class GetEpochsMixin:
         """
         ...
     def __len__(self) -> int:
-        """### Return the number of epochs.
+        """## 🧠 Return the number of epochs.
 
         -----
         ### ⏎ Returns
@@ -134,7 +134,7 @@ class GetEpochsMixin:
         """
         ...
     def __iter__(self):
-        """### Facilitate iteration over epochs.
+        """## 🧠 Facilitate iteration over epochs.
 
         This method resets the object iteration state to the first epoch.
 
@@ -151,7 +151,7 @@ class GetEpochsMixin:
         """
         ...
     def __next__(self, return_event_id: bool = False):
-        """### Iterate over epoch data.
+        """## 🧠 Iterate over epoch data.
 
         -----
         ### 🛠️ Parameters
@@ -172,18 +172,18 @@ class GetEpochsMixin:
 
     @property
     def metadata(self):
-        """### Get the metadata."""
+        """## 🧠 Get the metadata."""
         ...
     @metadata.setter
     def metadata(self, metadata, verbose=...) -> None:
-        """### Get the metadata."""
+        """## 🧠 Get the metadata."""
         ...
 
 class TimeMixin:
     """## 🧠 Class for time operations on any MNE object that has a time axis."""
 
     def time_as_index(self, times, use_rounding: bool = False):
-        """### Convert time to indices.
+        """## 🧠 Convert time to indices.
 
         -----
         ### 🛠️ Parameters
@@ -203,7 +203,7 @@ class TimeMixin:
         ...
     @property
     def times(self):
-        """### Time vector in seconds."""
+        """## 🧠 Time vector in seconds."""
         ...
 
 class ExtendedTimeMixin(TimeMixin):
@@ -211,14 +211,14 @@ class ExtendedTimeMixin(TimeMixin):
 
     @property
     def tmin(self):
-        """### First time point."""
+        """## 🧠 First time point."""
         ...
     @property
     def tmax(self):
-        """### Last time point."""
+        """## 🧠 Last time point."""
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """### Crop data to a given time interval.
+        """## 🧠 Crop data to a given time interval.
 
         -----
         ### 🛠️ Parameters
@@ -257,7 +257,7 @@ class ExtendedTimeMixin(TimeMixin):
         """
         ...
     def decimate(self, decim, offset: int = 0, *, verbose=None):
-        """### Decimate the time-series data.
+        """## 🧠 Decimate the time-series data.
 
         -----
         ### 🛠️ Parameters
@@ -329,7 +329,7 @@ class ExtendedTimeMixin(TimeMixin):
         """
         ...
     def shift_time(self, tshift, relative: bool = True):
-        """### Shift time scale in epoched or evoked data.
+        """## 🧠 Shift time scale in epoched or evoked data.
 
         -----
         ### 🛠️ Parameters

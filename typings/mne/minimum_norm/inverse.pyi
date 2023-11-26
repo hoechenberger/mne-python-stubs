@@ -54,15 +54,15 @@ class InverseOperator(dict):
     """## 🧠 InverseOperator class to represent info from inverse operator."""
 
     def copy(self):
-        """### Return a copy of the InverseOperator."""
+        """## 🧠 Return a copy of the InverseOperator."""
         ...
     @property
     def ch_names(self):
-        """### Name of channels attached to the inverse operator."""
+        """## 🧠 Name of channels attached to the inverse operator."""
         ...
     @property
     def info(self):
-        """### `mne.Info` attached to the inverse operator."""
+        """## 🧠 `mne.Info` attached to the inverse operator."""
         ...
 
 def read_inverse_operator(fname, *, verbose=None):

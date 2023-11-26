@@ -174,28 +174,28 @@ class QFloatSlider(QSlider):
     floatValueChanged: Incomplete
 
     def __init__(self, ori, parent=None) -> None:
-        """### Initialize the slider."""
+        """## 🧠 Initialize the slider."""
         ...
     def minimum(self):
-        """### Get the minimum."""
+        """## 🧠 Get the minimum."""
         ...
     def setMinimum(self, value) -> None:
-        """### Set the minimum."""
+        """## 🧠 Set the minimum."""
         ...
     def maximum(self):
-        """### Get the maximum."""
+        """## 🧠 Get the maximum."""
         ...
     def setMaximum(self, value) -> None:
-        """### Set the maximum."""
+        """## 🧠 Set the maximum."""
         ...
     def value(self):
-        """### Get the current value."""
+        """## 🧠 Get the current value."""
         ...
     def setValue(self, value) -> None:
-        """### Set the current value."""
+        """## 🧠 Set the current value."""
         ...
     def mousePressEvent(self, event) -> None:
-        """### Add snap-to-location handling."""
+        """## 🧠 Add snap-to-location handling."""
         ...
 
 class _QtToolBar(_AbstractToolBar, _QtLayout): ...

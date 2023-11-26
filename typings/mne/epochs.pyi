@@ -352,7 +352,7 @@ class BaseEpochs(
         verbose=None,
     ) -> None: ...
     def reset_drop_log_selection(self) -> None:
-        """### Reset the drop_log and selection entries.
+        """## 🧠 Reset the drop_log and selection entries.
 
         This method will simplify ``self.drop_log`` and ``self.selection``
         so that they are meaningless (tuple of empty tuples and increasing
@@ -362,7 +362,7 @@ class BaseEpochs(
         """
         ...
     def load_data(self):
-        """### Load the data if not already preloaded.
+        """## 🧠 Load the data if not already preloaded.
 
         -----
         ### ⏎ Returns
@@ -379,7 +379,7 @@ class BaseEpochs(
         """
         ...
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
-        """### Baseline correct epochs.
+        """## 🧠 Baseline correct epochs.
 
         -----
         ### 🛠️ Parameters
@@ -428,7 +428,7 @@ class BaseEpochs(
         """
         ...
     def iter_evoked(self, copy: bool = False) -> Generator[Incomplete, None, None]:
-        """### Iterate over epochs as a sequence of Evoked objects.
+        """## 🧠 Iterate over epochs as a sequence of Evoked objects.
 
         The Evoked objects yielded will each contain a single epoch (i.e., no
         averaging is performed).
@@ -444,7 +444,7 @@ class BaseEpochs(
         """
         ...
     def subtract_evoked(self, evoked=None):
-        """### Subtract an evoked response from each epoch.
+        """## 🧠 Subtract an evoked response from each epoch.
 
         Can be used to exclude the evoked response when analyzing induced
         activity, see e.g. [1]_.
@@ -469,7 +469,7 @@ class BaseEpochs(
         """
         ...
     def average(self, picks=None, method: str = "mean", by_event_type: bool = False):
-        """### Compute an average over epochs.
+        """## 🧠 Compute an average over epochs.
 
         -----
         ### 🛠️ Parameters
@@ -536,7 +536,7 @@ class BaseEpochs(
         """
         ...
     def standard_error(self, picks=None, by_event_type: bool = False):
-        """### Compute standard error over epochs.
+        """## 🧠 Compute standard error over epochs.
 
         -----
         ### 🛠️ Parameters
@@ -575,7 +575,7 @@ class BaseEpochs(
         ...
     @property
     def ch_names(self):
-        """### Channel names."""
+        """## 🧠 Channel names."""
         ...
     def plot(
         self,
@@ -604,7 +604,7 @@ class BaseEpochs(
         overview_mode=None,
         splash: bool = True,
     ):
-        """### Visualize epochs.
+        """## 🧠 Visualize epochs.
 
         Bad epochs can be marked with a left click on top of the epoch. Bad
         channels can be selected by clicking the channel name on the left side of
@@ -850,7 +850,7 @@ class BaseEpochs(
         font_color: str = "w",
         show: bool = True,
     ):
-        """### Plot Event Related Potential / Fields image on topographies.
+        """## 🧠 Plot Event Related Potential / Fields image on topographies.
 
         -----
         ### 🛠️ Parameters
@@ -913,7 +913,7 @@ class BaseEpochs(
         """
         ...
     def drop_bad(self, reject: str = "existing", flat: str = "existing", verbose=None):
-        """### Drop bad epochs without retaining the epochs data.
+        """## 🧠 Drop bad epochs without retaining the epochs data.
 
         Should be used before slicing operations.
 
@@ -987,7 +987,7 @@ class BaseEpochs(
         """
         ...
     def drop_log_stats(self, ignore=("IGNORED",)):
-        """### Compute the channel stats based on a drop_log from Epochs.
+        """## 🧠 Compute the channel stats based on a drop_log from Epochs.
 
         -----
         ### 🛠️ Parameters
@@ -1017,7 +1017,7 @@ class BaseEpochs(
         ignore=("IGNORED",),
         show: bool = True,
     ):
-        """### Show the channel stats based on a drop_log from Epochs.
+        """## 🧠 Show the channel stats based on a drop_log from Epochs.
 
         -----
         ### 🛠️ Parameters
@@ -1074,7 +1074,7 @@ class BaseEpochs(
         title=None,
         clear: bool = False,
     ):
-        """### Plot Event Related Potential / Fields image.
+        """## 🧠 Plot Event Related Potential / Fields image.
 
         -----
         ### 🛠️ Parameters
@@ -1241,7 +1241,7 @@ class BaseEpochs(
         """
         ...
     def drop(self, indices, reason: str = "USER", verbose=None):
-        """### Drop epochs based on indices or boolean mask.
+        """## 🧠 Drop epochs based on indices or boolean mask.
 
         ### 💡 Note The indices refer to the current set of undropped epochs
                   rather than the complete set of dropped and undropped epochs.
@@ -1287,7 +1287,7 @@ class BaseEpochs(
         copy=None,
         verbose=None,
     ):
-        """### Get all epochs as a 3D array.
+        """## 🧠 Get all epochs as a 3D array.
 
         -----
         ### 🛠️ Parameters
@@ -1377,7 +1377,7 @@ class BaseEpochs(
         verbose=None,
         **kwargs,
     ):
-        """### Apply a function to a subset of channels.
+        """## 🧠 Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The epochs object's data is modified in-place. If the function returns a different
@@ -1445,10 +1445,10 @@ class BaseEpochs(
         ...
     @property
     def filename(self):
-        """### The filename."""
+        """## 🧠 The filename."""
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """### Crop a time interval from the epochs.
+        """## 🧠 Crop a time interval from the epochs.
 
         -----
         ### 🛠️ Parameters
@@ -1487,7 +1487,7 @@ class BaseEpochs(
         """
         ...
     def copy(self):
-        """### Return copy of Epochs instance.
+        """## 🧠 Return copy of Epochs instance.
 
         -----
         ### ⏎ Returns
@@ -1497,7 +1497,7 @@ class BaseEpochs(
         """
         ...
     def __deepcopy__(self, memodict):
-        """### Make a deepcopy."""
+        """## 🧠 Make a deepcopy."""
         ...
     def save(
         self,
@@ -1508,7 +1508,7 @@ class BaseEpochs(
         split_naming: str = "neuromag",
         verbose=None,
     ) -> None:
-        """### Save epochs in a fif file.
+        """## 🧠 Save epochs in a fif file.
 
         -----
         ### 🛠️ Parameters
@@ -1565,7 +1565,7 @@ class BaseEpochs(
     def export(
         self, fname, fmt: str = "auto", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """### Export Epochs to external formats.
+        """## 🧠 Export Epochs to external formats.
 
         Supported formats:
             - EEGLAB (``.set``, uses `eeglabio`)
@@ -1615,7 +1615,7 @@ class BaseEpochs(
         """
         ...
     def equalize_event_counts(self, event_ids=None, method: str = "mintime"):
-        """### Equalize the number of trials in each condition.
+        """## 🧠 Equalize the number of trials in each condition.
 
         It tries to make the remaining epochs occurring as close as possible in
         time. This method works based on the idea that if there happened to be
@@ -1706,7 +1706,7 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """### Perform spectral analysis on sensor data.
+        """## 🧠 Perform spectral analysis on sensor data.
 
         -----
         ### 🛠️ Parameters
@@ -1807,7 +1807,7 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """### Plot power or amplitude spectra.
+        """## 🧠 Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -1950,7 +1950,7 @@ class BaseEpochs(
         *,
         verbose=None,
     ):
-        """### Export data in tabular structure as a pandas DataFrame.
+        """## 🧠 Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         additional columns "time", "epoch" (epoch number), and "condition"
@@ -2018,7 +2018,7 @@ class BaseEpochs(
         """
         ...
     def as_type(self, ch_type: str = "grad", mode: str = "fast"):
-        """### Compute virtual epochs using interpolated fields.
+        """## 🧠 Compute virtual epochs using interpolated fields.
 
         ### ⛔️ Warning Using virtual epochs to compute inverse can yield
             unexpected results. The virtual channels have ``'_v'`` appended

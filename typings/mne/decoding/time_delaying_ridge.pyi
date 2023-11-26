@@ -79,7 +79,7 @@ class TimeDelayingRidge(BaseEstimator):
     intercept_: Incomplete
 
     def fit(self, X, y):
-        """### Estimate the coefficients of the linear model.
+        """## 🧠 Estimate the coefficients of the linear model.
 
         -----
         ### 🛠️ Parameters
@@ -97,7 +97,7 @@ class TimeDelayingRidge(BaseEstimator):
         """
         ...
     def predict(self, X):
-        """### Predict the output.
+        """## 🧠 Predict the output.
 
         -----
         ### 🛠️ Parameters

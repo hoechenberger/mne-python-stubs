@@ -125,7 +125,7 @@ class EvokedField:
         verbose=None,
     ) -> None: ...
     def set_time(self, time) -> None:
-        """### Set the time to display (in seconds).
+        """## 🧠 Set the time to display (in seconds).
 
         -----
         ### 🛠️ Parameters
@@ -135,7 +135,7 @@ class EvokedField:
         """
         ...
     def set_contours(self, n_contours) -> None:
-        """### Adjust the number of contour lines to use when drawing the fieldlines.
+        """## 🧠 Adjust the number of contour lines to use when drawing the fieldlines.
 
         -----
         ### 🛠️ Parameters
@@ -145,7 +145,7 @@ class EvokedField:
         """
         ...
     def set_vmax(self, vmax, type: str = "meg") -> None:
-        """### Change the color range of the density maps.
+        """## 🧠 Change the color range of the density maps.
 
         -----
         ### 🛠️ Parameters

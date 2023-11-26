@@ -49,7 +49,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """### ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot().
+        """## 🧠 ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot().
 
         Plot power or amplitude spectra.
 
@@ -208,7 +208,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """### ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topo().
+        """## 🧠 ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topo().
 
         Plot power spectral density, separately for each channel.
 
@@ -317,7 +317,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """### ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topomap().
+        """## 🧠 ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topomap().
 
         Plot scalp topography of PSD for chosen frequency bands.
 
@@ -565,7 +565,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         **method_kw,
     ) -> None: ...
     def __eq__(self, other):
-        """### Test equivalence of two Spectrum instances."""
+        """## 🧠 Test equivalence of two Spectrum instances."""
         ...
     @property
     def ch_names(self): ...
@@ -578,7 +578,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     @property
     def shape(self): ...
     def copy(self):
-        """### Return copy of the Spectrum instance.
+        """## 🧠 Return copy of the Spectrum instance.
 
         -----
         ### ⏎ Returns
@@ -595,7 +595,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         fmax=...,
         return_freqs: bool = False,
     ):
-        """### Get spectrum data in NumPy array format.
+        """## 🧠 Get spectrum data in NumPy array format.
 
         -----
         ### 🛠️ Parameters
@@ -647,7 +647,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         axes=None,
         show: bool = True,
     ):
-        """### Plot power or amplitude spectra.
+        """## 🧠 Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -758,7 +758,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         block: bool = False,
         show: bool = True,
     ):
-        """### Plot power spectral density, separately for each channel.
+        """## 🧠 Plot power spectral density, separately for each channel.
 
         -----
         ### 🛠️ Parameters
@@ -824,7 +824,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         axes=None,
         show: bool = True,
     ):
-        """### Plot scalp topography of PSD for chosen frequency bands.
+        """## 🧠 Plot scalp topography of PSD for chosen frequency bands.
 
         -----
         ### 🛠️ Parameters
@@ -1011,7 +1011,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save spectrum data to disk (in HDF5 format).
+        """## 🧠 Save spectrum data to disk (in HDF5 format).
 
         -----
         ### 🛠️ Parameters
@@ -1044,7 +1044,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         *,
         verbose=None,
     ):
-        """### Export data in tabular structure as a pandas DataFrame.
+        """## 🧠 Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         an additional column "freq" is added, unless ``index='freq'``
@@ -1105,7 +1105,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         """
         ...
     def units(self, latex: bool = False):
-        """### Get the spectrum units for each channel type.
+        """## 🧠 Get the spectrum units for each channel type.
 
         -----
         ### 🛠️ Parameters
@@ -1242,7 +1242,7 @@ class Spectrum(BaseSpectrum):
         **method_kw,
     ) -> None: ...
     def __getitem__(self, item):
-        """### Get Spectrum data.
+        """## 🧠 Get Spectrum data.
 
         -----
         ### 🛠️ Parameters
@@ -1434,7 +1434,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         **method_kw,
     ) -> None: ...
     def __getitem__(self, item):
-        """### Subselect epochs from an EpochsSpectrum.
+        """## 🧠 Subselect epochs from an EpochsSpectrum.
 
         -----
         ### 🛠️ Parameters
@@ -1451,7 +1451,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         """
         ...
     def average(self, method: str = "mean"):
-        """### Average the spectra across epochs.
+        """## 🧠 Average the spectra across epochs.
 
         -----
         ### 🛠️ Parameters

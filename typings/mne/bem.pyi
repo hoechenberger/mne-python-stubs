@@ -38,11 +38,11 @@ class ConductorModel(dict):
     """
 
     def copy(self):
-        """### Return copy of ConductorModel instance."""
+        """## 🧠 Return copy of ConductorModel instance."""
         ...
     @property
     def radius(self):
-        """### Sphere radius if an EEG sphere model."""
+        """## 🧠 Sphere radius if an EEG sphere model."""
         ...
 
 def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):

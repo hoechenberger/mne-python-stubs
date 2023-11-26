@@ -254,7 +254,7 @@ class SourceSpaces(list):
         trans=None,
         verbose=None,
     ):
-        """### Plot the source space.
+        """## 🧠 Plot the source space.
 
         -----
         ### 🛠️ Parameters
@@ -297,13 +297,13 @@ class SourceSpaces(list):
         """
         ...
     def __getitem__(self, *args, **kwargs):
-        """### Get an item."""
+        """## 🧠 Get an item."""
         ...
     def __add__(self, other):
-        """### Combine source spaces."""
+        """## 🧠 Combine source spaces."""
         ...
     def copy(self):
-        """### Make a copy of the source spaces.
+        """## 🧠 Make a copy of the source spaces.
 
         -----
         ### ⏎ Returns
@@ -313,10 +313,10 @@ class SourceSpaces(list):
         """
         ...
     def __deepcopy__(self, memodict):
-        """### Make a deepcopy."""
+        """## 🧠 Make a deepcopy."""
         ...
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
-        """### Save the source spaces to a fif file.
+        """## 🧠 Save the source spaces to a fif file.
 
         -----
         ### 🛠️ Parameters
@@ -347,7 +347,7 @@ class SourceSpaces(list):
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """### Export source spaces to nifti or mgz file.
+        """## 🧠 Export source spaces to nifti or mgz file.
 
         -----
         ### 🛠️ Parameters

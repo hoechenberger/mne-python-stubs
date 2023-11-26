@@ -167,7 +167,7 @@ class BaseRaw(
         verbose=None,
     ) -> None: ...
     def apply_gradient_compensation(self, grade, verbose=None):
-        """### Apply CTF gradient compensation.
+        """## 🧠 Apply CTF gradient compensation.
 
         ### ⛔️ Warning The compensation matrices are stored with single
                      precision, so repeatedly switching between different
@@ -197,7 +197,7 @@ class BaseRaw(
         """
         ...
     def load_data(self, verbose=None):
-        """### Load raw data.
+        """## 🧠 Load raw data.
 
         -----
         ### 🛠️ Parameters
@@ -226,21 +226,21 @@ class BaseRaw(
         ...
     @property
     def first_samp(self):
-        """### The first data sample.
+        """## 🧠 The first data sample.
 
         See :term:`first_samp`.
         """
         ...
     @property
     def first_time(self):
-        """### The first time point (including first_samp but not meas_date)."""
+        """## 🧠 The first time point (including first_samp but not meas_date)."""
         ...
     @property
     def last_samp(self):
-        """### The last data sample."""
+        """## 🧠 The last data sample."""
         ...
     def time_as_index(self, times, use_rounding: bool = False, origin=None):
-        """### Convert time to indices.
+        """## 🧠 Convert time to indices.
 
         -----
         ### 🛠️ Parameters
@@ -266,11 +266,11 @@ class BaseRaw(
         ...
     @property
     def annotations(self):
-        """### `mne.Annotations` for marking segments of data."""
+        """## 🧠 `mne.Annotations` for marking segments of data."""
         ...
     @property
     def filenames(self):
-        """### The filenames used."""
+        """## 🧠 The filenames used."""
         ...
     def set_annotations(
         self,
@@ -280,7 +280,7 @@ class BaseRaw(
         *,
         verbose=None,
     ):
-        """### Setter for annotations.
+        """## 🧠 Setter for annotations.
 
         This setter checks if they are inside the data range.
 
@@ -316,7 +316,7 @@ class BaseRaw(
         ...
     def __del__(self) -> None: ...
     def __enter__(self):
-        """### Entering with block."""
+        """## 🧠 Entering with block."""
         ...
     def __exit__(
         self,
@@ -324,10 +324,10 @@ class BaseRaw(
         exception_val: BaseException | None,
         trace: types.TracebackType | None,
     ):
-        """### Exit with block."""
+        """## 🧠 Exit with block."""
         ...
     def __getitem__(self, item):
-        """### Get raw data and times.
+        """## 🧠 Get raw data and times.
 
         -----
         ### 🛠️ Parameters
@@ -367,7 +367,7 @@ class BaseRaw(
         """
         ...
     def __setitem__(self, item, value) -> None:
-        """### Set raw data content."""
+        """## 🧠 Set raw data content."""
         ...
     def get_data(
         self,
@@ -382,7 +382,7 @@ class BaseRaw(
         tmax=None,
         verbose=None,
     ):
-        """### Get data in the given range.
+        """## 🧠 Get data in the given range.
 
         -----
         ### 🛠️ Parameters
@@ -466,7 +466,7 @@ class BaseRaw(
         verbose=None,
         **kwargs,
     ):
-        """### Apply a function to a subset of channels.
+        """## 🧠 Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The raw object's data is modified in-place. If the function returns a different
@@ -552,7 +552,7 @@ class BaseRaw(
         pad: str = "reflect_limited",
         verbose=None,
     ):
-        """### Filter a subset of channels.
+        """## 🧠 Filter a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -747,7 +747,7 @@ class BaseRaw(
         skip_by_annotation=("edge", "bad_acq_skip"),
         verbose=None,
     ):
-        """### Notch filter a subset of channels.
+        """## 🧠 Notch filter a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -916,7 +916,7 @@ class BaseRaw(
         pad: str = "reflect_limited",
         verbose=None,
     ):
-        """### Resample all channels.
+        """## 🧠 Resample all channels.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
@@ -1011,7 +1011,7 @@ class BaseRaw(
     def crop(
         self, tmin: float = 0.0, tmax=None, include_tmax: bool = True, *, verbose=None
     ):
-        """### Crop raw data file.
+        """## 🧠 Crop raw data file.
 
         Limit the data from the raw file to go between specific times. Note
         that the new ``tmin`` is assumed to be ``t=0`` for all subsequently
@@ -1052,7 +1052,7 @@ class BaseRaw(
         """
         ...
     def crop_by_annotations(self, annotations=None, *, verbose=None):
-        """### Get crops of raw data file for selected annotations.
+        """## 🧠 Get crops of raw data file for selected annotations.
 
         -----
         ### 🛠️ Parameters
@@ -1089,7 +1089,7 @@ class BaseRaw(
         split_naming: str = "neuromag",
         verbose=None,
     ) -> None:
-        """### Save raw data to file.
+        """## 🧠 Save raw data to file.
 
         -----
         ### 🛠️ Parameters
@@ -1192,7 +1192,7 @@ class BaseRaw(
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """### Export Raw to external formats.
+        """## 🧠 Export Raw to external formats.
 
         Supported formats:
             - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
@@ -1311,7 +1311,7 @@ class BaseRaw(
         splash: bool = True,
         verbose=None,
     ):
-        """### Plot raw data.
+        """## 🧠 Plot raw data.
 
         -----
         ### 🛠️ Parameters
@@ -1592,18 +1592,18 @@ class BaseRaw(
         ...
     @property
     def ch_names(self):
-        """### Channel names."""
+        """## 🧠 Channel names."""
         ...
     @property
     def times(self):
-        """### Time points."""
+        """## 🧠 Time points."""
         ...
     @property
     def n_times(self):
-        """### Number of time points."""
+        """## 🧠 Number of time points."""
         ...
     def __len__(self) -> int:
-        """### Return the number of time points.
+        """## 🧠 Return the number of time points.
 
         -----
         ### ⏎ Returns
@@ -1623,7 +1623,7 @@ class BaseRaw(
     def load_bad_channels(
         self, bad_file=None, force: bool = False, verbose=None
     ) -> None:
-        """### Mark channels as bad from a text file.
+        """## 🧠 Mark channels as bad from a text file.
 
         This function operates mostly in the style of the C function
         ``mne_mark_bad_channels``. Each line in the text file will be
@@ -1649,7 +1649,7 @@ class BaseRaw(
         """
         ...
     def append(self, raws, preload=None) -> None:
-        """### Concatenate raw instances as if they were continuous.
+        """## 🧠 Concatenate raw instances as if they were continuous.
 
         ### 💡 Note Boundaries of the raw files are annotated bad. If you wish to
                   use the data as continuous recording, you can remove the
@@ -1674,14 +1674,14 @@ class BaseRaw(
         """
         ...
     def close(self) -> None:
-        """### Clean up the object.
+        """## 🧠 Clean up the object.
 
         Does nothing for objects that close their file descriptors.
         Things like Raw will override this method.
         """
         ...
     def copy(self):
-        """### Return copy of Raw instance.
+        """## 🧠 Return copy of Raw instance.
 
         -----
         ### ⏎ Returns
@@ -1691,7 +1691,7 @@ class BaseRaw(
         """
         ...
     def add_events(self, events, stim_channel=None, replace: bool = False) -> None:
-        """### Add events to stim channel.
+        """## 🧠 Add events to stim channel.
 
         -----
         ### 🛠️ Parameters
@@ -1733,7 +1733,7 @@ class BaseRaw(
         verbose=None,
         **method_kw,
     ):
-        """### Perform spectral analysis on sensor data.
+        """## 🧠 Perform spectral analysis on sensor data.
 
         -----
         ### 🛠️ Parameters
@@ -1824,7 +1824,7 @@ class BaseRaw(
         *,
         verbose=None,
     ):
-        """### Export data in tabular structure as a pandas DataFrame.
+        """## 🧠 Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default, an
         additional column "time" is added, unless ``index`` is not ``None``
@@ -1896,7 +1896,7 @@ class BaseRaw(
         """
         ...
     def describe(self, data_frame: bool = False):
-        """### Describe channels (name, type, descriptive statistics).
+        """## 🧠 Describe channels (name, type, descriptive statistics).
 
         -----
         ### 🛠️ Parameters

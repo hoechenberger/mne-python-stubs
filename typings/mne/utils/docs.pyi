@@ -233,7 +233,7 @@ class _decorator:
 
     def __init__(self, extra) -> None: ...
     def __call__(self, obj):
-        """### Call.
+        """## 🧠 Call.
 
         -----
         ### 🛠️ Parameters

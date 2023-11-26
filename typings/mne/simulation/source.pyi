@@ -242,16 +242,16 @@ class SourceSimulator:
     ) -> None: ...
     @property
     def duration(self):
-        """### Duration of the simulation in same units as tstep."""
+        """## 🧠 Duration of the simulation in same units as tstep."""
         ...
     @property
     def n_times(self):
-        """### Number of time samples in the simulation."""
+        """## 🧠 Number of time samples in the simulation."""
         ...
     @property
     def last_samp(self): ...
     def add_data(self, label, waveform, events) -> None:
-        """### Add data to the simulation.
+        """## 🧠 Add data to the simulation.
 
         Data should be added in the form of a triplet of
         Label (Where) - Waveform(s) (What) - Event(s) (When)
@@ -272,7 +272,7 @@ class SourceSimulator:
         """
         ...
     def get_stim_channel(self, start_sample: int = 0, stop_sample=None):
-        """### Get the stim channel from the provided data.
+        """## 🧠 Get the stim channel from the provided data.
 
         Returns the stim channel data according to the simulation parameters
         which should be added through the add_data method. If both start_sample
@@ -296,7 +296,7 @@ class SourceSimulator:
         """
         ...
     def get_stc(self, start_sample=None, stop_sample=None):
-        """### Simulate a SourceEstimate from the provided data.
+        """## 🧠 Simulate a SourceEstimate from the provided data.
 
         Returns a SourceEstimate object constructed according to the simulation
         parameters which should be added through function add_data. If both
@@ -321,5 +321,5 @@ class SourceSimulator:
         """
         ...
     def __iter__(self):
-        """### Iterate over 1 second STCs."""
+        """## 🧠 Iterate over 1 second STCs."""
         ...

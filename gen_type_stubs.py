@@ -193,7 +193,7 @@ for stub_path in stub_paths:
                             break
 
                     # Make first line bold
-                    expanded_docstring[0] = f"### {expanded_docstring[0]}"
+                    expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
 
                     expanded_docstring = "\n".join(expanded_docstring)
                     method.body[0].value.value = expanded_docstring

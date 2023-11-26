@@ -41,7 +41,7 @@ class Transform(dict):
 
     def __init__(self, fro, to, trans=None) -> None: ...
     def __eq__(self, other, rtol: float = 0.0, atol: float = 0.0):
-        """### Check for equality.
+        """## 🧠 Check for equality.
 
         Parameter
         ---------
@@ -60,7 +60,7 @@ class Transform(dict):
         """
         ...
     def __ne__(self, other, rtol: float = 0.0, atol: float = 0.0):
-        """### Check for inequality.
+        """## 🧠 Check for inequality.
 
         Parameter
         ---------
@@ -80,14 +80,14 @@ class Transform(dict):
         ...
     @property
     def from_str(self):
-        """### The "from" frame as a string."""
+        """## 🧠 The "from" frame as a string."""
         ...
     @property
     def to_str(self):
-        """### The "to" frame as a string."""
+        """## 🧠 The "to" frame as a string."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save the transform as -trans.fif file.
+        """## 🧠 Save the transform as -trans.fif file.
 
         -----
         ### 🛠️ Parameters
@@ -107,7 +107,7 @@ class Transform(dict):
         """
         ...
     def copy(self):
-        """### Make a copy of the transform."""
+        """## 🧠 Make a copy of the transform."""
         ...
 
 def apply_trans(trans, pts, move: bool = True):
@@ -402,7 +402,7 @@ class _TPSWarp:
 
     def fit(self, source, destination, reg: float = 0.001): ...
     def transform(self, pts, verbose=None):
-        """### Apply the warp.
+        """## 🧠 Apply the warp.
 
         -----
         ### 🛠️ Parameters
@@ -455,7 +455,7 @@ class _SphericalSurfaceWarp:
         match: str = "oct5",
         verbose=None,
     ):
-        """### Fit the warp from source points to destination points.
+        """## 🧠 Fit the warp from source points to destination points.
 
         -----
         ### 🛠️ Parameters
@@ -490,7 +490,7 @@ class _SphericalSurfaceWarp:
         """
         ...
     def transform(self, source, verbose=None):
-        """### Transform arbitrary source points to the destination.
+        """## 🧠 Transform arbitrary source points to the destination.
 
         -----
         ### 🛠️ Parameters

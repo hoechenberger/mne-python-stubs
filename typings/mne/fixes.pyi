@@ -17,7 +17,7 @@ class BaseEstimator:
     """
 
     def get_params(self, deep: bool = True):
-        """### Get parameters for this estimator.
+        """## 🧠 Get parameters for this estimator.
 
         -----
         ### 🛠️ Parameters
@@ -34,7 +34,7 @@ class BaseEstimator:
         """
         ...
     def set_params(self, **params):
-        """### Set the parameters of this estimator.
+        """## 🧠 Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
         (such as pipelines). The latter have parameters of the form
@@ -113,7 +113,7 @@ class EmpiricalCovariance(BaseEstimator):
         self, store_precision: bool = True, assume_centered: bool = False
     ) -> None: ...
     def get_precision(self):
-        """### Getter for the precision matrix.
+        """## 🧠 Getter for the precision matrix.
 
         -----
         ### ⏎ Returns
@@ -126,7 +126,7 @@ class EmpiricalCovariance(BaseEstimator):
     location_: Incomplete
 
     def fit(self, X, y=None):
-        """### Fit the Maximum Likelihood Estimator covariance model.
+        """## 🧠 Fit the Maximum Likelihood Estimator covariance model.
 
         -----
         ### 🛠️ Parameters
@@ -145,7 +145,7 @@ class EmpiricalCovariance(BaseEstimator):
         """
         ...
     def score(self, X_test, y=None):
-        """### Compute the log-likelihood of a Gaussian dataset.
+        """## 🧠 Compute the log-likelihood of a Gaussian dataset.
 
         Uses ``self.covariance_`` as an estimator of its covariance matrix.
 
@@ -175,7 +175,7 @@ class EmpiricalCovariance(BaseEstimator):
         scaling: bool = True,
         squared: bool = True,
     ):
-        """### Compute the Mean Squared Error between two covariance estimators.
+        """## 🧠 Compute the Mean Squared Error between two covariance estimators.
 
         -----
         ### 🛠️ Parameters
@@ -203,7 +203,7 @@ class EmpiricalCovariance(BaseEstimator):
         """
         ...
     def mahalanobis(self, observations):
-        """### Compute the squared Mahalanobis distances of given observations.
+        """## 🧠 Compute the squared Mahalanobis distances of given observations.
 
         -----
         ### 🛠️ Parameters

@@ -113,10 +113,10 @@ class CrossSpectralDensity:
     ) -> None: ...
     @property
     def n_channels(self):
-        """### Number of time series defined in this CSD object."""
+        """## 🧠 Number of time series defined in this CSD object."""
         ...
     def __len__(self) -> int:
-        """### Return number of frequencies.
+        """## 🧠 Return number of frequencies.
 
         -----
         ### ⏎ Returns
@@ -126,7 +126,7 @@ class CrossSpectralDensity:
         """
         ...
     def sum(self, fmin=None, fmax=None):
-        """### Calculate the sum CSD in the given frequency range(s).
+        """## 🧠 Calculate the sum CSD in the given frequency range(s).
 
         If the exact given frequencies are not available, the nearest
         frequencies will be chosen.
@@ -153,7 +153,7 @@ class CrossSpectralDensity:
         """
         ...
     def mean(self, fmin=None, fmax=None):
-        """### Calculate the mean CSD in the given frequency range(s).
+        """## 🧠 Calculate the mean CSD in the given frequency range(s).
 
         -----
         ### 🛠️ Parameters
@@ -177,7 +177,7 @@ class CrossSpectralDensity:
         """
         ...
     def pick_frequency(self, freq=None, index=None):
-        """### Get a CrossSpectralDensity object with only the given frequency.
+        """## 🧠 Get a CrossSpectralDensity object with only the given frequency.
 
         -----
         ### 🛠️ Parameters
@@ -203,7 +203,7 @@ class CrossSpectralDensity:
         """
         ...
     def get_data(self, frequency=None, index=None, as_cov: bool = False):
-        """### Get the CSD matrix for a given frequency as NumPy array.
+        """## 🧠 Get the CSD matrix for a given frequency as NumPy array.
 
         If there is only one matrix defined in the CSD object, calling this
         method without any parameters will return it. If multiple matrices are
@@ -246,7 +246,7 @@ class CrossSpectralDensity:
         n_cols=None,
         show: bool = True,
     ):
-        """### Plot CSD matrices.
+        """## 🧠 Plot CSD matrices.
 
         A sub-plot is created for each frequency. If an info object is passed to
         the function, different channel types are plotted in different figures.
@@ -282,7 +282,7 @@ class CrossSpectralDensity:
         """
         ...
     def __getitem__(self, sel):
-        """### Subselect frequencies.
+        """## 🧠 Subselect frequencies.
 
         -----
         ### 🛠️ Parameters
@@ -298,7 +298,7 @@ class CrossSpectralDensity:
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save the CSD to an HDF5 file.
+        """## 🧠 Save the CSD to an HDF5 file.
 
         -----
         ### 🛠️ Parameters
@@ -328,7 +328,7 @@ class CrossSpectralDensity:
         """
         ...
     def copy(self):
-        """### Return copy of the CrossSpectralDensity object.
+        """## 🧠 Return copy of the CrossSpectralDensity object.
 
         -----
         ### ⏎ Returns
@@ -338,7 +338,7 @@ class CrossSpectralDensity:
         """
         ...
     def pick_channels(self, ch_names, ordered: bool = False):
-        """### Pick channels from this cross-spectral density matrix.
+        """## 🧠 Pick channels from this cross-spectral density matrix.
 
         -----
         ### 🛠️ Parameters

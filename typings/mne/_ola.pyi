@@ -41,10 +41,10 @@ class _Interp2:
 
     def __init__(self, control_points, values, interp: str = "hann") -> None: ...
     def feed_generator(self, n_pts) -> Generator[Incomplete, None, None]:
-        """### Feed data and get interpolators as a generator."""
+        """## 🧠 Feed data and get interpolators as a generator."""
         ...
     def feed(self, n_pts):
-        """### Feed data and get interpolated values."""
+        """## 🧠 Feed data and get interpolated values."""
         ...
 
 class _COLA:
@@ -109,7 +109,7 @@ class _COLA:
         verbose=None,
     ) -> None: ...
     def feed(self, *datas, verbose=None, **kwargs) -> None:
-        """### Pass in a chunk of data."""
+        """## 🧠 Pass in a chunk of data."""
         ...
 
 class _Storer:

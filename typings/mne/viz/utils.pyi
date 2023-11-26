@@ -174,10 +174,10 @@ class ClickableImage:
     im: Incomplete
 
     def __init__(self, imdata, **kwargs) -> None:
-        """### Display the image for clicking."""
+        """## 🧠 Display the image for clicking."""
         ...
     def onclick(self, event) -> None:
-        """### Handle Mouse clicks.
+        """## 🧠 Handle Mouse clicks.
 
         -----
         ### 🛠️ Parameters
@@ -187,7 +187,7 @@ class ClickableImage:
         """
         ...
     def plot_clicks(self, **kwargs) -> None:
-        """### Plot the x/y positions stored in self.coords.
+        """## 🧠 Plot the x/y positions stored in self.coords.
 
         -----
         ### 🛠️ Parameters
@@ -197,7 +197,7 @@ class ClickableImage:
         """
         ...
     def to_layout(self, **kwargs):
-        """### Turn coordinates into an MNE Layout object.
+        """## 🧠 Turn coordinates into an MNE Layout object.
 
         Normalizes by the image you used to generate clicks
 
@@ -402,22 +402,22 @@ class DraggableColorbar:
     scroll: Incomplete
 
     def connect(self) -> None:
-        """### Connect to all the events we need."""
+        """## 🧠 Connect to all the events we need."""
         ...
     def on_press(self, event) -> None:
-        """### Handle button press."""
+        """## 🧠 Handle button press."""
         ...
     def key_press(self, event) -> None:
-        """### Handle key press."""
+        """## 🧠 Handle key press."""
         ...
     def on_motion(self, event) -> None:
-        """### Handle mouse movements."""
+        """## 🧠 Handle mouse movements."""
         ...
     def on_release(self, event) -> None:
-        """### Handle release."""
+        """## 🧠 Handle release."""
         ...
     def on_scroll(self, event) -> None:
-        """### Handle scroll."""
+        """## 🧠 Handle scroll."""
         ...
 
 class SelectFromCollection:
@@ -476,22 +476,22 @@ class SelectFromCollection:
         linewidth_selected: int = 1,
     ) -> None: ...
     def on_select(self, verts) -> None:
-        """### Select a subset from the collection."""
+        """## 🧠 Select a subset from the collection."""
         ...
     def select_one(self, ind) -> None:
-        """### Select or deselect one sensor."""
+        """## 🧠 Select or deselect one sensor."""
         ...
     def notify(self) -> None:
-        """### Notify listeners that a selection has been made."""
+        """## 🧠 Notify listeners that a selection has been made."""
         ...
     def select_many(self, inds) -> None:
-        """### Select many sensors using indices (for predefined selections)."""
+        """## 🧠 Select many sensors using indices (for predefined selections)."""
         ...
     def style_sensors(self, inds) -> None:
-        """### Style selected sensors as "active"."""
+        """## 🧠 Style selected sensors as "active"."""
         ...
     def disconnect(self) -> None:
-        """### Disconnect the lasso selector."""
+        """## 🧠 Disconnect the lasso selector."""
         ...
 
 class DraggableLine:
@@ -517,19 +517,19 @@ class DraggableLine:
 
     def __init__(self, line, modify_callback, drag_callback) -> None: ...
     def set_x(self, x) -> None:
-        """### Repoisition the line."""
+        """## 🧠 Repoisition the line."""
         ...
     def on_press(self, event) -> None:
-        """### Store button press if on top of the line."""
+        """## 🧠 Store button press if on top of the line."""
         ...
     def on_motion(self, event) -> None:
-        """### Move the line on drag."""
+        """## 🧠 Move the line on drag."""
         ...
     def on_release(self, event) -> None:
-        """### Handle release."""
+        """## 🧠 Handle release."""
         ...
     def remove(self) -> None:
-        """### Remove the line."""
+        """## 🧠 Remove the line."""
         ...
 
 def centers_to_edges(*arrays):

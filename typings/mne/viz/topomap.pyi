@@ -240,16 +240,16 @@ class _GridData:
     interpolator: Incomplete
 
     def set_values(self, v):
-        """### Set the values at interpolation points."""
+        """## 🧠 Set the values at interpolation points."""
         ...
     Xi: Incomplete
     Yi: Incomplete
 
     def set_locations(self, Xi, Yi):
-        """### Set locations for easier (delayed) calling."""
+        """## 🧠 Set locations for easier (delayed) calling."""
         ...
     def __call__(self, *args):
-        """### Evaluate the interpolator."""
+        """## 🧠 Evaluate the interpolator."""
         ...
 
 def plot_topomap(

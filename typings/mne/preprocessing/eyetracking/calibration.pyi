@@ -65,7 +65,7 @@ class Calibration(dict):
         screen_resolution=None,
     ) -> None: ...
     def copy(self):
-        """### Copy the instance.
+        """## 🧠 Copy the instance.
 
         -----
         ### ⏎ Returns
@@ -75,7 +75,7 @@ class Calibration(dict):
         """
         ...
     def plot(self, show_offsets: bool = True, axes=None, show: bool = True):
-        """### Visualize calibration.
+        """## 🧠 Visualize calibration.
 
         -----
         ### 🛠️ Parameters

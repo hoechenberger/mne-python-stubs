@@ -26,7 +26,7 @@ class BrowserBase(ABC, metaclass=abc.ABCMeta):
 
     def __init__(self, **kwargs) -> None: ...
     def fake_keypress(self, key, fig=None):
-        """### Pass a fake keypress to the figure.
+        """## 🧠 Pass a fake keypress to the figure.
 
         -----
         ### 🛠️ Parameters

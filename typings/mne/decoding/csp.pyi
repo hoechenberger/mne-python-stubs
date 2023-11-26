@@ -157,7 +157,7 @@ class CSP(TransformerMixin, BaseEstimator):
     std_: Incomplete
 
     def fit(self, X, y):
-        """### Estimate the CSP decomposition on epochs.
+        """## 🧠 Estimate the CSP decomposition on epochs.
 
         -----
         ### 🛠️ Parameters
@@ -175,7 +175,7 @@ class CSP(TransformerMixin, BaseEstimator):
         """
         ...
     def transform(self, X):
-        """### Estimate epochs sources given the CSP filters.
+        """## 🧠 Estimate epochs sources given the CSP filters.
 
         -----
         ### 🛠️ Parameters
@@ -194,7 +194,7 @@ class CSP(TransformerMixin, BaseEstimator):
         """
         ...
     def fit_transform(self, X, y, **fit_params):
-        """### Fit to data, then transform it.
+        """## 🧠 Fit to data, then transform it.
 
         Fits transformer to ``X`` and ``y`` with optional parameters
         ``fit_params``, and returns a transformed version of ``X``.
@@ -248,7 +248,7 @@ class CSP(TransformerMixin, BaseEstimator):
         ncols: str = "auto",
         show: bool = True,
     ):
-        """### Plot topographic patterns of components.
+        """## 🧠 Plot topographic patterns of components.
 
         The patterns explain how the measured data was generated from the
         neural sources (a.k.a. the forward model).
@@ -473,7 +473,7 @@ class CSP(TransformerMixin, BaseEstimator):
         ncols: str = "auto",
         show: bool = True,
     ):
-        """### Plot topographic filters of components.
+        """## 🧠 Plot topographic filters of components.
 
         The filters are used to extract discriminant neural sources from
         the measured data (a.k.a. the backward model).
@@ -783,7 +783,7 @@ class SPoC(CSP):
         cov_method_params=None,
         rank=None,
     ) -> None:
-        """### Init of SPoC."""
+        """## 🧠 Init of SPoC."""
         ...
     patterns_: Incomplete
     filters_: Incomplete
@@ -791,7 +791,7 @@ class SPoC(CSP):
     std_: Incomplete
 
     def fit(self, X, y):
-        """### Estimate the SPoC decomposition on epochs.
+        """## 🧠 Estimate the SPoC decomposition on epochs.
 
         -----
         ### 🛠️ Parameters
@@ -809,7 +809,7 @@ class SPoC(CSP):
         """
         ...
     def transform(self, X):
-        """### Estimate epochs sources given the SPoC filters.
+        """## 🧠 Estimate epochs sources given the SPoC filters.
 
         -----
         ### 🛠️ Parameters

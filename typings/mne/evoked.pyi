@@ -151,22 +151,22 @@ class Evoked(
     ) -> None: ...
     @property
     def kind(self):
-        """### The data kind."""
+        """## 🧠 The data kind."""
         ...
     @kind.setter
     def kind(self, kind) -> None:
-        """### The data kind."""
+        """## 🧠 The data kind."""
         ...
     @property
     def data(self):
-        """### The data matrix."""
+        """## 🧠 The data matrix."""
         ...
     @data.setter
     def data(self, data) -> None:
-        """### The data matrix."""
+        """## 🧠 The data matrix."""
         ...
     def get_data(self, picks=None, units=None, tmin=None, tmax=None):
-        """### Get evoked data as 2D array.
+        """## 🧠 Get evoked data as 2D array.
 
         -----
         ### 🛠️ Parameters
@@ -217,7 +217,7 @@ class Evoked(
     def apply_function(
         self, fun, picks=None, dtype=None, n_jobs=None, verbose=None, **kwargs
     ):
-        """### Apply a function to a subset of channels.
+        """## 🧠 Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The evoked object's data is modified in-place. If the function returns a different
@@ -282,7 +282,7 @@ class Evoked(
     baseline: Incomplete
 
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
-        """### Baseline correct evoked data.
+        """## 🧠 Baseline correct evoked data.
 
         -----
         ### 🛠️ Parameters
@@ -330,7 +330,7 @@ class Evoked(
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """### Save evoked data to a file.
+        """## 🧠 Save evoked data to a file.
 
         -----
         ### 🛠️ Parameters
@@ -363,7 +363,7 @@ class Evoked(
     def export(
         self, fname, fmt: str = "auto", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """### Export Evoked to external formats.
+        """## 🧠 Export Evoked to external formats.
 
         Supported formats:
             - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
@@ -409,7 +409,7 @@ class Evoked(
         ...
     @property
     def ch_names(self):
-        """### Channel names."""
+        """## 🧠 Channel names."""
         ...
     def plot(
         self,
@@ -437,7 +437,7 @@ class Evoked(
         highlight=None,
         verbose=None,
     ):
-        """### Plot evoked data using butterfly plots.
+        """## 🧠 Plot evoked data using butterfly plots.
 
         Left click to a line shows the channel name. Selecting an area by clicking
         and holding left mouse button plots a topographic map of the painted area.
@@ -629,7 +629,7 @@ class Evoked(
         group_by=None,
         sphere=None,
     ):
-        """### Plot evoked data as images.
+        """## 🧠 Plot evoked data as images.
 
         -----
         ### 🛠️ Parameters
@@ -785,7 +785,7 @@ class Evoked(
         exclude: str = "bads",
         show: bool = True,
     ):
-        """### Plot 2D topography of evoked responses.
+        """## 🧠 Plot 2D topography of evoked responses.
 
         Clicking on the plot of an individual sensor opens a new figure showing
         the evoked response for the selected sensor.
@@ -900,7 +900,7 @@ class Evoked(
         ncols: str = "auto",
         show: bool = True,
     ):
-        """### Plot topographic maps of specific time points of evoked data.
+        """## 🧠 Plot topographic maps of specific time points of evoked data.
 
         -----
         ### 🛠️ Parameters
@@ -1148,7 +1148,7 @@ class Evoked(
         time_viewer: str = "auto",
         verbose=None,
     ):
-        """### Plot MEG/EEG fields on head surface and helmet in 3D.
+        """## 🧠 Plot MEG/EEG fields on head surface and helmet in 3D.
 
         -----
         ### 🛠️ Parameters
@@ -1248,7 +1248,7 @@ class Evoked(
         axes=None,
         verbose=None,
     ):
-        """### Plot whitened evoked response.
+        """## 🧠 Plot whitened evoked response.
 
         Plots the whitened evoked response and the whitened GFP as described in
         :footcite:`EngemannGramfort2015`. This function is especially useful for
@@ -1383,7 +1383,7 @@ class Evoked(
         ts_args=None,
         topomap_args=None,
     ):
-        """### Plot evoked data as butterfly plot and add topomaps for time points.
+        """## 🧠 Plot evoked data as butterfly plot and add topomaps for time points.
 
         ### 💡 Note Axes to plot in can be passed by the user through ``ts_args`` or
                   ``topomap_args``. In that case both ``ts_args`` and
@@ -1463,7 +1463,7 @@ class Evoked(
         vmax=None,
         verbose=None,
     ):
-        """### Make animation of evoked data as topomap timeseries.
+        """## 🧠 Make animation of evoked data as topomap timeseries.
 
         The animation can be paused/resumed with left mouse button.
         Left and right arrow keys can be used to move backward or forward
@@ -1571,7 +1571,7 @@ class Evoked(
         """
         ...
     def as_type(self, ch_type: str = "grad", mode: str = "fast"):
-        """### Compute virtual evoked using interpolated fields.
+        """## 🧠 Compute virtual evoked using interpolated fields.
 
         ### ⛔️ Warning Using virtual evoked to compute inverse can yield
             unexpected results. The virtual channels have ``'_v'`` appended
@@ -1604,7 +1604,7 @@ class Evoked(
         """
         ...
     def detrend(self, order: int = 1, picks=None):
-        """### Detrend data.
+        """## 🧠 Detrend data.
 
         This function operates in-place.
 
@@ -1632,7 +1632,7 @@ class Evoked(
         """
         ...
     def copy(self):
-        """### Copy the instance of evoked.
+        """## 🧠 Copy the instance of evoked.
 
         -----
         ### ⏎ Returns
@@ -1642,7 +1642,7 @@ class Evoked(
         """
         ...
     def __neg__(self):
-        """### Negate channel responses.
+        """## 🧠 Negate channel responses.
 
         -----
         ### ⏎ Returns
@@ -1662,7 +1662,7 @@ class Evoked(
         merge_grads: bool = False,
         return_amplitude: bool = False,
     ):
-        """### Get location and latency of peak amplitude.
+        """## 🧠 Get location and latency of peak amplitude.
 
         -----
         ### 🛠️ Parameters
@@ -1721,7 +1721,7 @@ class Evoked(
         verbose=None,
         **method_kw,
     ):
-        """### Perform spectral analysis on sensor data.
+        """## 🧠 Perform spectral analysis on sensor data.
 
         -----
         ### 🛠️ Parameters
@@ -1822,7 +1822,7 @@ class Evoked(
         verbose=None,
         **method_kw,
     ):
-        """### Plot power or amplitude spectra.
+        """## 🧠 Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -1965,7 +1965,7 @@ class Evoked(
         *,
         verbose=None,
     ):
-        """### Export data in tabular structure as a pandas DataFrame.
+        """## 🧠 Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         an additional column "time" is added, unless ``index='time'``
