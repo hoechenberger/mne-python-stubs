@@ -39,6 +39,7 @@ def data_path(
     -------
     path : instance of Path
         Path to sample dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local sample dataset.
@@ -48,3 +49,4 @@ def get_version():
     version : str | None
         Version of the sample local dataset, or None if the dataset
         does not exist locally."""
+    ...

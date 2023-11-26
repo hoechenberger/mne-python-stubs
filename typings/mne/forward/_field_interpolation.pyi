@@ -89,3 +89,4 @@ def make_field_map(
         The surface maps to be used for field plots. The list contains
         separate ones for MEG and EEG (if both MEG and EEG are present).
     """
+    ...

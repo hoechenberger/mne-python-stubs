@@ -22,19 +22,24 @@ class _TempDir(str):
 
 def requires_mne(func):
     """Decorate a function as requiring MNE."""
+    ...
 
 def requires_mne_mark():
     """Mark pytest tests that require MNE-C."""
+    ...
 
 def requires_openmeeg_mark():
     """Mark pytest tests that require OpenMEEG."""
+    ...
 
 def requires_freesurfer(arg):
     """Require Freesurfer."""
+    ...
 
 def requires_good_network(func): ...
 def run_command_if_main() -> None:
     """Run a given command if it's __main__."""
+    ...
 
 class ArgvSetter:
     """Temporarily set sys.argv."""
@@ -66,18 +71,23 @@ class SilenceStdout:
 
 def has_mne_c():
     """Check for MNE-C."""
+    ...
 
 def has_freesurfer():
     """Check for Freesurfer."""
+    ...
 
 def buggy_mkl_svd(function):
     """Decorate tests that make calls to SVD and intermittently fail."""
+    ...
 
 def assert_and_remove_boundary_annot(annotations, n: int = 1) -> None:
     """Assert that there are boundary annotations and remove them."""
+    ...
 
 def assert_object_equal(a, b) -> None:
     """Assert two objects are equal."""
+    ...
 
 def assert_meg_snr(
     actual,
@@ -92,12 +102,16 @@ def assert_meg_snr(
     Mostly useful for operations like Maxwell filtering that modify
     MEG channels while leaving EEG and others intact.
     """
+    ...
 
 def assert_snr(actual, desired, tol) -> None:
     """Assert actual and desired arrays are within some SNR tolerance."""
+    ...
 
 def assert_stcs_equal(stc1, stc2) -> None:
     """Check that two STC are equal."""
+    ...
 
 def assert_dig_allclose(info_py, info_bin, limit=None) -> None:
     """Assert dig allclose."""
+    ...

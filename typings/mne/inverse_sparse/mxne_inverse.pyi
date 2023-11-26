@@ -40,6 +40,7 @@ def make_stc_from_dipoles(dipoles, src, verbose=None):
     stc : SourceEstimate
         The source estimate.
     """
+    ...
 
 def mixed_norm(
     evoked,
@@ -242,6 +243,7 @@ def mixed_norm(
     ----------
     .. footbibliography::
     """
+    ...
 
 def tf_mixed_norm(
     evoked,
@@ -443,3 +445,4 @@ def tf_mixed_norm(
     ----------
     .. footbibliography::
     """
+    ...

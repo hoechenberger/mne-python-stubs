@@ -46,3 +46,4 @@ def data_path(
     ----------
     .. footbibliography::
     """
+    ...

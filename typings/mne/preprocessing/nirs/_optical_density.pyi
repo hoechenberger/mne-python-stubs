@@ -21,3 +21,4 @@ def optical_density(raw, *, verbose=None):
     raw : instance of Raw
         The modified raw instance.
     """
+    ...

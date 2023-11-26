@@ -64,6 +64,7 @@ def read_raw_nicolet(
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """
+    ...
 
 class RawNicolet(BaseRaw):
     """Raw object from Nicolet file.

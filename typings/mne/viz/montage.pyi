@@ -60,3 +60,4 @@ def plot_montage(
     fig : instance of matplotlib.figure.Figure
         The figure object.
     """
+    ...

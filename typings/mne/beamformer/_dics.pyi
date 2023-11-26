@@ -279,6 +279,7 @@ def make_dics(
     ----------
     .. footbibliography::
     """
+    ...
 
 def apply_dics(evoked, filters, verbose=None):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
@@ -322,6 +323,7 @@ def apply_dics(evoked, filters, verbose=None):
     apply_dics_tfr_epochs
     apply_dics_csd
     """
+    ...
 
 def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=None):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
@@ -367,6 +369,7 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
     apply_dics_tfr_epochs
     apply_dics_csd
     """
+    ...
 
 def apply_dics_tfr_epochs(
     epochs_tfr, filters, return_generator: bool = False, verbose=None
@@ -405,6 +408,7 @@ def apply_dics_tfr_epochs(
     apply_dics_epochs
     apply_dics_csd
     """
+    ...
 
 def apply_dics_csd(csd, filters, verbose=None):
     """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
@@ -454,3 +458,4 @@ def apply_dics_csd(csd, filters, verbose=None):
     ----------
     .. footbibliography::
     """
+    ...

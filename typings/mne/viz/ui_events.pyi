@@ -36,6 +36,8 @@ class FigureClosing(UIEvent):
         The figure that published the event.
     """
 
+    ...
+
 @dataclass
 class TimeChange(UIEvent):
     """Indicates that the user has selected a time.
@@ -196,6 +198,7 @@ def publish(fig, event, *, verbose=None) -> None:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def subscribe(fig, event_name, callback, *, verbose=None) -> None:
     """Subscribe to an event on a figure's event channel.
@@ -215,6 +218,7 @@ def subscribe(fig, event_name, callback, *, verbose=None) -> None:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
     """Unsubscribe from an event on a figure's event channel.
@@ -238,6 +242,7 @@ def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
     """Link the event channels of two figures together.
@@ -265,6 +270,7 @@ def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def unlink(fig, *, verbose=None) -> None:
     """Remove all links involving the event channel of the given figure.
@@ -281,6 +287,7 @@ def unlink(fig, *, verbose=None) -> None:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def disable_ui_events(fig) -> Generator[None, None, None]:
     """Temporarily disable generation of UI events. Use as context manager.
@@ -290,3 +297,4 @@ def disable_ui_events(fig) -> Generator[None, None, None]:
     fig : matplotlib.figure.Figure | Figure3D
         The figure whose UI event generation should be temporarily disabled.
     """
+    ...

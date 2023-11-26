@@ -39,6 +39,7 @@ def data_path(
     -------
     path : instance of Path
         Path to visual_92_categories dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local visual_92_categories dataset.
@@ -48,3 +49,4 @@ def get_version():
     version : str | None
         Version of the visual_92_categories local dataset, or None if the dataset
         does not exist locally."""
+    ...

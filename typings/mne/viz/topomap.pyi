@@ -215,6 +215,7 @@ def plot_projs_topomap(
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 class _GridData:
     """Unstructured (x,y) data interpolator.
@@ -442,6 +443,7 @@ def plot_topomap(
     cn : matplotlib.contour.ContourSet
         The fieldlines.
     """
+    ...
 
 def plot_ica_components(
     ica,
@@ -682,6 +684,7 @@ def plot_ica_components(
     topomap (this option is only available when the ``inst`` argument is
     supplied).
     """
+    ...
 
 def plot_tfr_topomap(
     tfr,
@@ -903,6 +906,7 @@ def plot_tfr_topomap(
     fig : matplotlib.figure.Figure
         The figure containing the topography.
     """
+    ...
 
 def plot_evoked_topomap(
     evoked,
@@ -1166,6 +1170,7 @@ def plot_evoked_topomap(
 
     * :class:mne.viz.ui_events.TimeChange` whenever a new time is selected.
     """
+    ...
 
 def plot_epochs_psd_topomap(
     epochs,
@@ -1434,6 +1439,7 @@ def plot_epochs_psd_topomap(
     fig : instance of Figure
         Figure showing one scalp topography per frequency band.
     """
+    ...
 
 def plot_psds_topomap(
     psds,
@@ -1663,6 +1669,7 @@ def plot_psds_topomap(
     fig : instance of matplotlib.figure.Figure
         Figure with a topomap subplot for each band.
     """
+    ...
 
 def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
     """Plot the sensor positions.
@@ -1688,6 +1695,7 @@ def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
     -----
     .. versionadded:: 0.12.0
     """
+    ...
 
 def plot_arrowmap(
     data,
@@ -1872,6 +1880,7 @@ def plot_arrowmap(
     ----------
     .. footbibliography::
     """
+    ...
 
 def plot_bridged_electrodes(
     info, bridged_idx, ed_matrix, title=None, topomap_args=None
@@ -1906,6 +1915,7 @@ def plot_bridged_electrodes(
     --------
     mne.preprocessing.compute_bridged_electrodes
     """
+    ...
 
 def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = False):
     """Plot channel adjacency.
@@ -1948,6 +1958,7 @@ def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = 
     -----
     .. versionadded:: 1.1
     """
+    ...
 
 def plot_regression_weights(
     model,
@@ -2136,3 +2147,4 @@ def plot_regression_weights(
     -----
     .. versionadded:: 1.2
     """
+    ...

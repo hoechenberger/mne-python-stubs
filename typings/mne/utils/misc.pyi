@@ -23,6 +23,7 @@ def pformat(temp, **fmt):
     >>> pformat("{a}_{b}", a='x')
     'x_{b}'
     """
+    ...
 
 def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kwargs):
     """Run command using subprocess.Popen.
@@ -59,6 +60,7 @@ def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kw
     code : int
         The return code, only returned if ``return_code == True``.
     """
+    ...
 
 def running_subprocess(
     command, after: str = "wait", verbose=None, *args, **kwargs
@@ -86,6 +88,7 @@ def running_subprocess(
     p : instance of Popen
         The process.
     """
+    ...
 
 def sizeof_fmt(num):
     """Turn number of bytes into human-readable str.
@@ -100,6 +103,7 @@ def sizeof_fmt(num):
     size : str
         The size in human-readable format.
     """
+    ...
 
 def repr_html(f):
     """Decorate _repr_html_ methods.
@@ -118,3 +122,4 @@ def repr_html(f):
     wrapper : function
         The decorated function.
     """
+    ...

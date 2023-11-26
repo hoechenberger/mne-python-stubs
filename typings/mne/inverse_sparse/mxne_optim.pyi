@@ -10,12 +10,15 @@ from _typeshed import Incomplete
 
 def groups_norm2(A, n_orient):
     """Compute squared L2 norms of groups inplace."""
+    ...
 
 def norm_l2inf(A, n_orient, copy: bool = True):
     """L2-inf norm."""
+    ...
 
 def norm_l21(A, n_orient, copy: bool = True):
     """L21 norm."""
+    ...
 
 def dgap_l21(M, G, X, active_set, alpha, n_orient):
     """Duality gap for the mixed norm inverse problem.
@@ -52,6 +55,7 @@ def dgap_l21(M, G, X, active_set, alpha, n_orient):
     ----------
     .. footbibilography::
     """
+    ...
 
 def mixed_norm_solver(
     M,
@@ -130,6 +134,7 @@ def mixed_norm_solver(
     ----------
     .. footbibliography::
     """
+    ...
 
 def iterative_mixed_norm_solver(
     M,
@@ -199,18 +204,22 @@ def iterative_mixed_norm_solver(
     ----------
     .. footbibliography::
     """
+    ...
 
 def tf_lipschitz_constant(M, G, phi, phiT, tol: float = 0.001, verbose=None):
     """Compute lipschitz constant for FISTA.
 
     It uses a power iteration method.
     """
+    ...
 
 def safe_max_abs(A, ia):
     """Compute np.max(np.abs(A[ia])) possible with empty A."""
+    ...
 
 def safe_max_abs_diff(A, ia, B, ib):
     """Compute np.max(np.abs(A)) possible with empty A."""
+    ...
 
 class _Phi:
     """Have phi stft as callable w/o using a lambda that does not pickle."""
@@ -247,9 +256,11 @@ class _PhiT:
 
 def norm_l21_tf(Z, phi, n_orient, w_space=None):
     """L21 norm for TF."""
+    ...
 
 def norm_l1_tf(Z, phi, n_orient, w_time):
     """L1 norm for TF."""
+    ...
 
 def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
     """Weighted epsilon norm.
@@ -291,6 +302,7 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
     ----------
     .. footbibliography::
     """
+    ...
 
 def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=None, w_time=None):
     """Weighted epsilon-inf norm of phi(np.dot(G.T, R)).
@@ -321,6 +333,7 @@ def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=None, w_time=None):
         The maximum value of the epsilon norms over groups of n_orient dipoles
         (consecutive rows of phi(np.dot(G.T, R))).
     """
+    ...
 
 def dgap_l21l1(
     M,
@@ -383,6 +396,7 @@ def dgap_l21l1(
     ----------
     .. footbibliography::
     """
+    ...
 
 def tf_mixed_norm_solver(
     M,
@@ -462,6 +476,7 @@ def tf_mixed_norm_solver(
     ----------
     .. footbibliography::
     """
+    ...
 
 def iterative_tf_mixed_norm_solver(
     M,
@@ -534,3 +549,4 @@ def iterative_tf_mixed_norm_solver(
     E : list
         The value of the objective function over iterations.
     """
+    ...

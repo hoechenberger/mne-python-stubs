@@ -41,3 +41,4 @@ def data_path(
     -------
     path : instance of Path
         Path to misc dataset directory."""
+    ...

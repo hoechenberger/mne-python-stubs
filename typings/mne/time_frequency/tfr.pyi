@@ -140,6 +140,7 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
         ax.legend(loc='upper right')
         ax.set(xlabel='Time (s)', ylabel='Amplitude')
     """
+    ...
 
 def fwhm(freq, n_cycles):
     """Compute the full-width half maximum of a Morlet wavelet.
@@ -167,6 +168,7 @@ def fwhm(freq, n_cycles):
     ----------
     .. footbibliography::
     """
+    ...
 
 def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
     """Compute time-frequency decomposition with continuous wavelet transform.
@@ -204,6 +206,7 @@ def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
     mne.time_frequency.tfr_morlet : Compute time-frequency decomposition
                                     with Morlet wavelets.
     """
+    ...
 
 def tfr_morlet(
     inst,
@@ -355,6 +358,7 @@ def tfr_morlet(
     ----------
     .. footbibliography::
     """
+    ...
 
 def tfr_array_morlet(
     epoch_data,
@@ -495,6 +499,7 @@ def tfr_array_morlet(
     ----------
     .. footbibliography::
     """
+    ...
 
 def tfr_multitaper(
     inst,
@@ -673,6 +678,7 @@ def tfr_multitaper(
 
     .. versionadded:: 0.9.0
     """
+    ...
 
 class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin):
     """Base TFR class."""
@@ -687,6 +693,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
     @property
     def ch_names(self):
         """Channel names."""
+        ...
     freqs: Incomplete
 
     def crop(
@@ -708,13 +715,19 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             Highest frequency of selection in Hz.
 
             .. versionadded:: 0.18.0
-        %(include_tmax)s
+
+        include_tmax : bool
+            If True (default), include tmax. If False, exclude tmax (similar to how
+            Python indexing typically works).
+
+            .. versionadded:: 0.19
 
         Returns
         -------
         inst : instance of AverageTFR
             The modified instance.
         """
+        ...
     def copy(self):
         """Return a copy of the instance.
 
@@ -723,6 +736,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         copy : instance of EpochsTFR | instance of AverageTFR
             A copy of the instance.
         """
+        ...
     def apply_baseline(self, baseline, mode: str = "mean", verbose=None):
         """Baseline correct the data.
 
@@ -750,13 +764,19 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             - dividing by the mean of baseline values, taking the log, and
               dividing by the standard deviation of log baseline values
               ('zlogratio')
-        %(verbose)s
+
+        verbose : bool | str | int | None
+            Control verbosity of the logging output. If ``None``, use the default
+            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            :func:`mne.verbose` for details. Should only be passed as a keyword
+            argument.
 
         Returns
         -------
         inst : instance of AverageTFR
             The modified instance.
         """
+        ...
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
         """Save TFR object to hdf5 file.
 
@@ -764,13 +784,22 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         ----------
         fname : path-like
             The file name, which should end with ``-tfr.h5``.
-        %(overwrite)s
-        %(verbose)s
+
+        overwrite : bool
+            If True (default False), overwrite the destination file if it
+            exists.
+
+        verbose : bool | str | int | None
+            Control verbosity of the logging output. If ``None``, use the default
+            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            :func:`mne.verbose` for details. Should only be passed as a keyword
+            argument.
 
         See Also
         --------
         read_tfrs, write_tfrs
         """
+        ...
     def to_data_frame(
         self,
         picks=None,
@@ -791,22 +820,54 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
 
         Parameters
         ----------
-        %(picks_all)s
-        %(index_df_epo)s
+        picks : str | array-like | slice | None
+            Channels to include. Slices and lists of integers will be interpreted as
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
+            ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
+            string values "all" to pick all channels, or "data" to pick :term:`data
+            channels`. None (default) will pick all channels. Note that channels in
+            ``info['bads']`` *will be included* if their names or indices are
+            explicitly provided.
+
+        index : str | list of str | None
+            Kind of index to use for the DataFrame. If ``None``, a sequential
+            integer index (:class:`pandas.RangeIndex`) will be used. If ``'time'``, a
+            ``pandas.Index`` or :class:`pandas.TimedeltaIndex` will be used
+            (depending on the value of ``time_format``). If a list of two or more string values, a :class:`pandas.MultiIndex` will be created.
             Valid string values are ``'time'``, ``'freq'``, ``'epoch'``, and
             ``'condition'`` for ``EpochsTFR`` and ``'time'`` and ``'freq'``
             for ``AverageTFR``.
             Defaults to ``None``.
-        %(long_format_df_epo)s
-        %(time_format_df)s
+
+        long_format : bool
+            If True, the DataFrame is returned in long format where each row is one
+            observation of the signal at a unique combination of time point, channel, epoch number, and condition.
+            For convenience, a ``ch_type`` column is added to facilitate subsetting the resulting DataFrame. Defaults to ``False``.
+
+        time_format : str | None
+            Desired time format. If ``None``, no conversion is applied, and time values
+            remain as float values in seconds. If ``'ms'``, time values will be rounded
+            to the nearest millisecond and converted to integers. If ``'timedelta'``,
+            time values will be converted to :class:`pandas.Timedelta` values.
+            Default is ``None``.
 
             .. versionadded:: 0.23
-        %(verbose)s
+
+        verbose : bool | str | int | None
+            Control verbosity of the logging output. If ``None``, use the default
+            verbosity level. See the :ref:`logging documentation <tut-logging>` and
+            :func:`mne.verbose` for details. Should only be passed as a keyword
+            argument.
 
         Returns
         -------
-        %(df_return)s
+
+        df : instance of pandas.DataFrame
+            A dataframe suitable for usage with other statistical/plotting/analysis
+            packages.
         """
+        ...
 
 class AverageTFR(_BaseTFR):
     """Container for Time-Frequency data.
@@ -1753,6 +1814,7 @@ def combine_tfr(all_tfr, weights: str = "nave"):
     -----
     .. versionadded:: 0.11.0
     """
+    ...
 
 def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
     """Write a TFR dataset to hdf5.
@@ -1784,6 +1846,7 @@ def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def read_tfrs(fname, condition=None, *, verbose=None):
     """Read TFR datasets from hdf5 file.
@@ -1816,3 +1879,4 @@ def read_tfrs(fname, condition=None, *, verbose=None):
     -----
     .. versionadded:: 0.9.0
     """
+    ...

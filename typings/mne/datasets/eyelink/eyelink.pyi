@@ -39,6 +39,7 @@ def data_path(
     -------
     path : instance of Path
         Path to eyelink dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local eyelink dataset.
@@ -48,3 +49,4 @@ def get_version():
     version : str | None
         Version of the eyelink local dataset, or None if the dataset
         does not exist locally."""
+    ...

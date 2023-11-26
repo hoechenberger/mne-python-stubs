@@ -37,6 +37,7 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
     --------
     mne.io.Raw : Documentation of attributes and methods of RawBOXY.
     """
+    ...
 
 class RawBOXY(BaseRaw):
     """Raw object from a BOXY optical imaging file.

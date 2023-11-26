@@ -92,6 +92,7 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
 
     .. versionadded:: 0.24
     """
+    ...
 
 class RawHitachi(BaseRaw):
     """Raw object from a Hitachi fNIRS file.

@@ -30,3 +30,4 @@ def make_lcmv_resolution_matrix(filters, forward, info):
         constraints of filter and forward solution, respectively (e.g. factor 3
         for free dipole orientation versus factor 1 for scalar beamformers).
     """
+    ...

@@ -27,6 +27,8 @@ def clean_ecg_eog(
     in_path : str
         Path where all the files are.
     """
+    ...
 
 def run() -> None:
     """Run command."""
+    ...

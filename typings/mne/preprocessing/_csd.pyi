@@ -63,6 +63,7 @@ def compute_current_source_density(
     ----------
     .. footbibliography::
     """
+    ...
 
 def compute_bridged_electrodes(
     inst,
@@ -134,3 +135,4 @@ def compute_bridged_electrodes(
     ----------
     .. footbibliography::
     """
+    ...

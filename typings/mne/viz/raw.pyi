@@ -318,6 +318,7 @@ def plot_raw(
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
     """
+    ...
 
 def plot_raw_psd(
     raw,
@@ -479,6 +480,7 @@ def plot_raw_psd(
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
     of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
     """
+    ...
 
 def plot_raw_psd_topo(
     raw,
@@ -565,3 +567,4 @@ def plot_raw_psd_topo(
     fig : instance of matplotlib.figure.Figure
         Figure distributing one image per channel across sensor topography.
     """
+    ...

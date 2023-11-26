@@ -57,3 +57,4 @@ def plot_gaze(
     -----
     .. versionadded:: 1.6
     """
+    ...

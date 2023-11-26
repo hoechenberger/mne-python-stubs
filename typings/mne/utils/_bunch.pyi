@@ -31,5 +31,9 @@ class _Named:
 class NamedInt(_Named, int):
     """Int with a name in __repr__."""
 
+    ...
+
 class NamedFloat(_Named, float):
     """Float with a name in __repr__."""
+
+    ...

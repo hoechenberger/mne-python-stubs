@@ -39,6 +39,7 @@ def read_raw_neuralynx(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNeuralynx.
     """
+    ...
 
 class RawNeuralynx(BaseRaw):
     """RawNeuralynx class."""

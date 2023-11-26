@@ -257,6 +257,7 @@ def make_lcmv(
     ----------
     .. footbibliography::
     """
+    ...
 
 def apply_lcmv(evoked, filters, *, verbose=None):
     """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
@@ -291,6 +292,7 @@ def apply_lcmv(evoked, filters, *, verbose=None):
     -----
     .. versionadded:: 0.18
     """
+    ...
 
 def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbose=None):
     """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
@@ -324,6 +326,7 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
     --------
     make_lcmv, apply_lcmv_raw, apply_lcmv, apply_lcmv_cov
     """
+    ...
 
 def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
@@ -358,6 +361,7 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     --------
     make_lcmv, apply_lcmv_epochs, apply_lcmv, apply_lcmv_cov
     """
+    ...
 
 def apply_lcmv_cov(data_cov, filters, verbose=None):
     """Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
@@ -388,3 +392,4 @@ def apply_lcmv_cov(data_cov, filters, verbose=None):
     --------
     make_lcmv, apply_lcmv, apply_lcmv_epochs, apply_lcmv_raw
     """
+    ...

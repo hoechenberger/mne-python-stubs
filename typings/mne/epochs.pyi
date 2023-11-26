@@ -2140,6 +2140,7 @@ def make_metadata(
     ----------
     .. footbibliography::
     """
+    ...
 
 class Epochs(BaseEpochs):
     """Epochs extracted from a Raw instance.
@@ -2656,6 +2657,7 @@ def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
     would create a 'Directional' entry in epochs.event_id replacing
     'Left' and 'Right' (combining their trials).
     """
+    ...
 
 def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
     """Equalize the number of trials in multiple Epoch instances.
@@ -2685,6 +2687,7 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
     --------
     >>> equalize_epoch_counts([epochs1, epochs2])  # doctest: +SKIP
     """
+    ...
 
 def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
     """Read epochs from a fif file.
@@ -2722,6 +2725,7 @@ def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
     epochs : instance of Epochs
         The epochs.
     """
+    ...
 
 class _RawContainer:
     """Helper for a raw data container."""
@@ -2802,6 +2806,7 @@ def bootstrap(epochs, random_state=None):
     epochs : Epochs instance
         The bootstrap samples
     """
+    ...
 
 def concatenate_epochs(
     epochs_list, add_offset: bool = True, *, on_mismatch: str = "raise", verbose=None
@@ -2845,6 +2850,7 @@ def concatenate_epochs(
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def average_movements(
     epochs,
@@ -2970,6 +2976,7 @@ def average_movements(
            of children in MEG: Quantification, effects on source
            estimation, and compensation. NeuroImage 40:541–550, 2008.
     """
+    ...
 
 def make_fixed_length_epochs(
     raw,
@@ -3042,3 +3049,4 @@ def make_fixed_length_epochs(
     -----
     .. versionadded:: 0.20
     """
+    ...

@@ -66,6 +66,7 @@ def read_raw_nsx(
     STIM channels by default. Use func:`mne.find_events` to parse events
     encoded in such analog stim channels.
     """
+    ...
 
 class RawNSX(BaseRaw):
     """Raw object from NSx file from Blackrock Microsystems.

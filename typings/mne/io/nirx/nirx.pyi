@@ -71,6 +71,7 @@ def read_raw_nirx(
     mathematical functions the default behaviour is to return the
     saturated data.
     """
+    ...
 
 class RawNIRX(BaseRaw):
     """Raw object from a NIRX fNIRS file.

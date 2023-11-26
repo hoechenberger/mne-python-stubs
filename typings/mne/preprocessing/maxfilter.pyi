@@ -105,3 +105,4 @@ def apply_maxfilter(
     origin: str
         Head origin in selected coordinate frame.
     """
+    ...

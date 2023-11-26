@@ -31,6 +31,7 @@ def ctps(data, is_raw: bool = True):
         components of neuromagnetic recordings. Biomedical
         Engineering, IEEE Transactions on 55 (10), 2353-2362.
     """
+    ...
 
 def kuiper(data, dtype=...):
     """Kuiper's test of uniform distribution.
@@ -49,3 +50,4 @@ def kuiper(data, dtype=...):
     pk : ndarray
         Normalized probability of Kuiper's statistic [0, 1].
     """
+    ...

@@ -70,6 +70,7 @@ def select_source_in_label(
     rh_vertno : list
         Selected source coefficients on the right hemisphere.
     """
+    ...
 
 def simulate_sparse_stc(
     src,
@@ -154,6 +155,7 @@ def simulate_sparse_stc(
     -----
     .. versionadded:: 0.10.0
     """
+    ...
 
 def simulate_stc(
     src, labels, stc_data, tmin, tstep, value_fun=None, allow_overlap: bool = False
@@ -195,6 +197,7 @@ def simulate_stc(
     simulate_evoked
     simulate_sparse_stc
     """
+    ...
 
 class SourceSimulator:
     """Class to generate simulated Source Estimates.

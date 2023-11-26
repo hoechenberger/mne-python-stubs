@@ -84,6 +84,7 @@ def set_3d_backend(backend_name, verbose=None):
        | Toolbar                              | ✓         | ✓        |
        +--------------------------------------+-----------+----------+
     """
+    ...
 
 def get_3d_backend():
     """Return the 3D backend currently used.
@@ -98,6 +99,7 @@ def get_3d_backend():
            The ``'pyvista'`` backend has been renamed ``'pyvistaqt'``, so
            ``'pyvista'`` is no longer returned by this function.
     """
+    ...
 
 def use_3d_backend(backend_name) -> Generator[None, None, None]:
     """Create a 3d visualization context using the designated backend.
@@ -110,6 +112,7 @@ def use_3d_backend(backend_name) -> Generator[None, None, None]:
     backend_name : {'pyvistaqt', 'notebook'}
         The 3d backend to use in the context.
     """
+    ...
 
 def set_3d_view(
     figure,
@@ -152,6 +155,7 @@ def set_3d_view(
     reset_camera : bool
        Deprecated, use ``distance="auto"`` instead.
     """
+    ...
 
 def set_3d_title(figure, title, size: int = 40) -> None:
     """Configure the title of the given scene.
@@ -165,6 +169,7 @@ def set_3d_title(figure, title, size: int = 40) -> None:
     size : int
         The size of the title.
     """
+    ...
 
 def create_3d_figure(
     size,
@@ -207,6 +212,7 @@ def create_3d_figure(
     figure : instance of Figure3D or ``Renderer``
         The requested empty figure or renderer, depending on ``scene``.
     """
+    ...
 
 def close_3d_figure(figure) -> None:
     """Close the given scene.
@@ -216,9 +222,11 @@ def close_3d_figure(figure) -> None:
     figure : object
         The scene which needs to be closed.
     """
+    ...
 
 def close_all_3d_figures() -> None:
     """Close all the scenes of the current 3d backend."""
+    ...
 
 def get_brain_class():
     """Return the proper Brain class based on the current 3d backend.
@@ -228,6 +236,9 @@ def get_brain_class():
     brain : object
         The Brain class corresponding to the current 3d backend.
     """
+    ...
 
 class _TimeInteraction:
     """Mixin enabling time interaction controls."""
+
+    ...

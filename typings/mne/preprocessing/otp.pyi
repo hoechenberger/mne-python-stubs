@@ -60,3 +60,4 @@ def oversampled_temporal_projection(
     ----------
     .. footbibliography::
     """
+    ...

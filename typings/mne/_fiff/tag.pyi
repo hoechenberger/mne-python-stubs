@@ -31,6 +31,7 @@ class Tag:
 
 def read_tag_info(fid):
     """Read Tag info (or header)."""
+    ...
 
 def read_tag(fid, pos=None, shape=None, rlims=None):
     """Read a Tag from a file at a given position.
@@ -55,6 +56,7 @@ def read_tag(fid, pos=None, shape=None, rlims=None):
     tag : Tag
         The Tag read.
     """
+    ...
 
 def find_tag(fid, node, findkind):
     """Find Tag in an open FIF file descriptor.
@@ -73,6 +75,8 @@ def find_tag(fid, node, findkind):
     tag : instance of Tag
         The first tag found.
     """
+    ...
 
 def has_tag(node, kind):
     """Check if the node contains a Tag of a given kind."""
+    ...

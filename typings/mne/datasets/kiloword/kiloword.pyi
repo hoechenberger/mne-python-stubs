@@ -47,6 +47,7 @@ def data_path(
     ----------
     .. footbibliography::
     """
+    ...
 
 def get_version():
     """Get version of the local kiloword dataset.
@@ -56,3 +57,4 @@ def get_version():
     version : str | None
         Version of the kiloword local dataset, or None if the dataset
         does not exist locally."""
+    ...

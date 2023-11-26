@@ -75,3 +75,4 @@ def project_sensors_onto_brain(
     :ref:`mne watershed_bem` using the T1 or :ref:`mne flash_bem`
     using a FLASH scan.
     """
+    ...

@@ -157,6 +157,7 @@ def coregistration(
 
     .. youtube:: ALV5qqMHLlQ
     """
+    ...
 
 class _GUIScraper:
     """Scrape GUI outputs."""

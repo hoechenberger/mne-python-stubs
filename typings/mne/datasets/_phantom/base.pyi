@@ -43,3 +43,4 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
 
     .. versionadded:: 0.24
     """
+    ...

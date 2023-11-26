@@ -93,6 +93,7 @@ def plot_head_positions(
     fig : instance of matplotlib.figure.Figure
         The figure.
     """
+    ...
 
 def plot_evoked_field(
     evoked,
@@ -200,6 +201,7 @@ def plot_evoked_field(
         viewer active, an object is returned that can be used to control
         different aspects of the figure.
     """
+    ...
 
 def plot_alignment(
     info=None,
@@ -416,6 +418,7 @@ def plot_alignment(
 
     .. versionadded:: 0.15
     """
+    ...
 
 def link_brains(
     brains,
@@ -439,6 +442,7 @@ def link_brains(
     picking : bool
         If True, link the vertices picked with the mouse. Defaults to False.
     """
+    ...
 
 def plot_source_estimates(
     stc,
@@ -680,6 +684,7 @@ def plot_source_estimates(
     - https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferOccipitalFlattenedPatch
     - https://openwetware.org/wiki/Beauchamp:FreeSurfer
     """
+    ...
 
 def plot_volume_source_estimates(
     stc,
@@ -811,6 +816,7 @@ def plot_volume_source_estimates(
     >>> morph = mne.compute_source_morph(src_sample, subject_to='fsaverage')  # doctest: +SKIP
     >>> fig = stc_vol_sample.plot(morph)  # doctest: +SKIP
     """
+    ...
 
 def plot_vector_source_estimates(
     stc,
@@ -1016,6 +1022,7 @@ def plot_vector_source_estimates(
     If the current magnitude overlay is not desired, set ``overlay_alpha=0``
     and ``smoothing_steps=1``.
     """
+    ...
 
 def plot_sparse_source_estimates(
     src,
@@ -1094,6 +1101,7 @@ def plot_sparse_source_estimates(
     surface : instance of Figure3D
         The 3D figure containing the triangular mesh surface.
     """
+    ...
 
 def plot_dipole_locations(
     dipoles,
@@ -1255,6 +1263,7 @@ def plot_dipole_locations(
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
     """Take a snapshot of a PyVista Scene and project channels onto 2d coords.
@@ -1285,6 +1294,7 @@ def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
     im : array, shape (m, n, 3)
         The screenshot of the current scene view.
     """
+    ...
 
 RAS_AFFINE: Incomplete
 RAS_SHAPE: Incomplete
@@ -1348,6 +1358,7 @@ def plot_brain_colorbar(
     -----
     .. versionadded:: 0.19
     """
+    ...
 
 @dataclass()
 class _3d_Options:
@@ -1395,3 +1406,4 @@ def set_3d_options(
     -----
     .. versionadded:: 0.21.0
     """
+    ...

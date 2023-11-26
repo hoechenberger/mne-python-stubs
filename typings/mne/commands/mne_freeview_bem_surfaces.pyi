@@ -15,6 +15,8 @@ def freeview_bem_surfaces(subject, subjects_dir, method) -> None:
     method : str
         Can be ``'flash'`` or ``'watershed'``.
     """
+    ...
 
 def run() -> None:
     """Run command."""
+    ...

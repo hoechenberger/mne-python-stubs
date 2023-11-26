@@ -10,6 +10,7 @@ def get_score_funcs():
     score_funcs : dict
         The score functions.
     """
+    ...
 
 class ICA(ContainsMixin):
     """Data decomposition using Independent Component Analysis (ICA).
@@ -1710,6 +1711,7 @@ def ica_find_ecg_events(
     average_pulse : float.
         Estimated average pulse.
     """
+    ...
 
 def ica_find_eog_events(
     raw,
@@ -1745,6 +1747,7 @@ def ica_find_eog_events(
     eog_events : array
         Events.
     """
+    ...
 
 def read_ica(fname, verbose=None):
     """Restore ICA solution from fif file.
@@ -1766,6 +1769,7 @@ def read_ica(fname, verbose=None):
     ica : instance of ICA
         The ICA estimator.
     """
+    ...
 
 class _ica_node(NamedTuple):
     name: Incomplete
@@ -1801,3 +1805,4 @@ def read_ica_eeglab(fname, *, montage_units: str = "auto", verbose=None):
     ica : instance of ICA
         An ICA object based on the information contained in the input file.
     """
+    ...

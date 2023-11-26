@@ -2,6 +2,7 @@ from ..utils import fill_doc as fill_doc
 
 def split_name_ext(fname):
     """Return name and supported file extension."""
+    ...
 
 def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
     """Read raw file.
@@ -49,3 +50,4 @@ def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
     raw : mne.io.Raw
         Raw object.
     """
+    ...

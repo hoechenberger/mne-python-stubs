@@ -582,6 +582,7 @@ def read_annotations(
     timestamps. If you have onsets as floats (in seconds), you should use the
     ``.txt`` extension.
     """
+    ...
 
 def events_from_annotations(
     raw,
@@ -661,6 +662,7 @@ def events_from_annotations(
     circumstances: return an ``event_id`` dictionary that maps event ``'1'`` to
     integer event code ``1``, ``'2'`` to ``2``, etc.
     """
+    ...
 
 def annotations_from_events(
     events, sfreq, event_desc=None, first_samp: int = 0, orig_time=None, verbose=None
@@ -719,6 +721,7 @@ def annotations_from_events(
 
         event_desc = {v: k for k, v in event_id.items()}
     """
+    ...
 
 def count_annotations(annotations):
     """Count annotations.
@@ -740,3 +743,4 @@ def count_annotations(annotations):
         >>> count_annotations(annotations)
         {'T0': 2, 'T1': 1}
     """
+    ...

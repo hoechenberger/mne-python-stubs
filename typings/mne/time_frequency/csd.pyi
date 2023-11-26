@@ -48,6 +48,7 @@ def pick_channels_csd(
     res : instance of CrossSpectralDensity
         Cross-spectral density restricted to selected channels.
     """
+    ...
 
 class CrossSpectralDensity:
     """Cross-spectral density.
@@ -356,6 +357,7 @@ def read_csd(fname):
     --------
     CrossSpectralDensity.save : For saving CSD objects.
     """
+    ...
 
 def csd_fourier(
     epochs,
@@ -428,6 +430,7 @@ def csd_fourier(
     csd_morlet
     csd_multitaper
     """
+    ...
 
 def csd_array_fourier(
     X,
@@ -502,6 +505,7 @@ def csd_array_fourier(
     csd_morlet
     csd_multitaper
     """
+    ...
 
 def csd_multitaper(
     epochs,
@@ -584,6 +588,7 @@ def csd_multitaper(
     csd_fourier
     csd_morlet
     """
+    ...
 
 def csd_array_multitaper(
     X,
@@ -674,6 +679,7 @@ def csd_array_multitaper(
     csd_morlet
     csd_multitaper
     """
+    ...
 
 def csd_morlet(
     epochs,
@@ -755,6 +761,7 @@ def csd_morlet(
     csd_fourier
     csd_multitaper
     """
+    ...
 
 def csd_array_morlet(
     X,
@@ -838,6 +845,7 @@ def csd_array_morlet(
     csd_morlet
     csd_multitaper
     """
+    ...
 
 def csd_tfr(epochs_tfr, tmin=None, tmax=None, picks=None, projs=None, verbose=None):
     """Compute covariance matrices across frequencies for TFR epochs.
@@ -878,3 +886,4 @@ def csd_tfr(epochs_tfr, tmin=None, tmax=None, picks=None, projs=None, verbose=No
     res : instance of CrossSpectralDensity
         Cross-spectral density restricted to selected channels.
     """
+    ...

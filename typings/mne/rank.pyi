@@ -60,6 +60,7 @@ def estimate_rank(
         If return_singular is True, the singular values that were
         thresholded to determine the rank are also returned.
     """
+    ...
 
 def compute_rank(
     inst,
@@ -187,3 +188,4 @@ def compute_rank(
     -----
     .. versionadded:: 0.18
     """
+    ...

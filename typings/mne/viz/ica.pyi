@@ -159,6 +159,7 @@ def plot_ica_sources(
 
     .. versionadded:: 0.10.0
     """
+    ...
 
 def plot_ica_properties(
     ica,
@@ -268,6 +269,7 @@ def plot_ica_properties(
     -----
     .. versionadded:: 0.13
     """
+    ...
 
 def plot_ica_scores(
     ica,
@@ -319,6 +321,7 @@ def plot_ica_scores(
     fig : instance of Figure
         The figure object.
     """
+    ...
 
 def plot_ica_overlay(
     ica,
@@ -397,3 +400,4 @@ def plot_ica_overlay(
     fig : instance of Figure
         The figure.
     """
+    ...

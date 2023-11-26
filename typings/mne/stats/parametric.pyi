@@ -31,6 +31,7 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
     ----------
     .. footbibliography::
     """
+    ...
 
 def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     """Independent samples t-test without p calculation.
@@ -59,6 +60,7 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     ----------
     .. footbibliography::
     """
+    ...
 
 def f_oneway(*args):
     """Perform a 1-way ANOVA.
@@ -100,6 +102,7 @@ def f_oneway(*args):
     ----------
     .. footbibliography::
     """
+    ...
 
 def f_threshold_mway_rm(
     n_subjects, factor_levels, effects: str = "A*B", pvalue: float = 0.05
@@ -140,6 +143,7 @@ def f_threshold_mway_rm(
     -----
     .. versionadded:: 0.10
     """
+    ...
 
 def f_mway_rm(
     data,
@@ -203,3 +207,4 @@ def f_mway_rm(
     -----
     .. versionadded:: 0.10
     """
+    ...

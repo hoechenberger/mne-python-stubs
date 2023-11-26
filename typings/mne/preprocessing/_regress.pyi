@@ -81,6 +81,7 @@ def regress_artifact(
     ----------
     .. footbibliography::
     """
+    ...
 
 class EOGRegression:
     """Remove EOG artifact signals from other channels by regression.
@@ -416,3 +417,4 @@ def read_eog_regression(fname):
     -----
     .. versionadded:: 1.2
     """
+    ...

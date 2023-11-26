@@ -640,6 +640,7 @@ def read_dipole(fname, verbose=None):
     .. versionchanged:: 0.20
        Support for reading bdip (Xfit binary) format.
     """
+    ...
 
 def fit_dipole(
     evoked,
@@ -782,6 +783,7 @@ def fit_dipole(
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def get_phantom_dipoles(kind: str = "vectorview"):
     """Get standard phantom dipole locations and orientations.
@@ -821,3 +823,4 @@ def get_phantom_dipoles(kind: str = "vectorview"):
     ----------
     .. footbibliography::
     """
+    ...

@@ -45,6 +45,7 @@ def data_path(
     -------
     path : instance of Path
         Path to testing dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local testing dataset.
@@ -54,6 +55,8 @@ def get_version():
     version : str | None
         Version of the testing local dataset, or None if the dataset
         does not exist locally."""
+    ...
 
 def requires_testing_data(func):
     """Skip testing data test."""
+    ...

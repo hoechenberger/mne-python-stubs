@@ -190,6 +190,7 @@ def simulate_raw(
     ----------
     .. footbibliography::
     """
+    ...
 
 def add_eog(
     raw,
@@ -278,6 +279,7 @@ def add_eog(
     ----------
     .. footbibliography::
     """
+    ...
 
 def add_ecg(
     raw,
@@ -364,6 +366,7 @@ def add_ecg(
 
     .. versionadded:: 0.18
     """
+    ...
 
 def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None):
     """Add cHPI activations to raw data.
@@ -410,6 +413,7 @@ def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None
     -----
     .. versionadded:: 0.18
     """
+    ...
 
 class _HPIForwards:
     offsets: Incomplete

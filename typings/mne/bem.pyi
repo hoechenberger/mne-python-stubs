@@ -81,6 +81,7 @@ def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
     -----
     .. versionadded:: 0.10.0
     """
+    ...
 
 def make_bem_model(
     subject,
@@ -140,6 +141,7 @@ def make_bem_model(
     -----
     .. versionadded:: 0.10.0
     """
+    ...
 
 def make_sphere_model(
     r0=(0.0, 0.0, 0.04),
@@ -198,6 +200,7 @@ def make_sphere_model(
 
     .. versionadded:: 0.9.0
     """
+    ...
 
 def fit_sphere_to_headshape(
     info, dig_kinds: str = "auto", units: str = "m", verbose=None
@@ -241,6 +244,7 @@ def fit_sphere_to_headshape(
     This function excludes any points that are low and frontal
     (``z < 0 and y > 0``) to improve the fit.
     """
+    ...
 
 def get_fitting_dig(
     info, dig_kinds: str = "auto", exclude_frontal: bool = True, verbose=None
@@ -285,6 +289,7 @@ def get_fitting_dig(
 
     .. versionadded:: 0.14
     """
+    ...
 
 def make_watershed_bem(
     subject,
@@ -367,6 +372,7 @@ def make_watershed_bem(
 
     .. versionadded:: 0.10
     """
+    ...
 
 def read_bem_surfaces(
     fname, patch_stats: bool = False, s_id=None, on_defects: str = "raise", verbose=None
@@ -411,6 +417,7 @@ def read_bem_surfaces(
     --------
     write_bem_surfaces, write_bem_solution, make_bem_model
     """
+    ...
 
 def read_bem_solution(fname, *, verbose=None):
     """Read the BEM solution from a file.
@@ -438,6 +445,7 @@ def read_bem_solution(fname, *, verbose=None):
     make_bem_solution
     write_bem_solution
     """
+    ...
 
 def write_bem_surfaces(fname, surfs, overwrite: bool = False, *, verbose=None) -> None:
     """Write BEM surfaces to a FIF file.
@@ -459,6 +467,7 @@ def write_bem_surfaces(fname, surfs, overwrite: bool = False, *, verbose=None) -
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def write_head_bem(
     fname, rr, tris, on_defects: str = "raise", overwrite: bool = False, *, verbose=None
@@ -494,6 +503,7 @@ def write_head_bem(
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> None:
     """Write a BEM model with solution.
@@ -519,6 +529,7 @@ def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> 
     --------
     read_bem_solution
     """
+    ...
 
 def convert_flash_mris(
     subject,
@@ -583,6 +594,7 @@ def convert_flash_mris(
     has been completed. In particular, the T1.mgz and brain.mgz MRI volumes
     should be, as usual, in the subject's mri directory.
     """
+    ...
 
 def make_flash_bem(
     subject,
@@ -651,6 +663,7 @@ def make_flash_bem(
     outer skin) from a FLASH 5 MRI image synthesized from multiecho FLASH
     images acquired with spin angles of 5 and 30 degrees.
     """
+    ...
 
 def make_scalp_surfaces(
     subject,
@@ -707,6 +720,7 @@ def make_scalp_surfaces(
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def distance_to_bem(pos, bem, trans=None, verbose=None):
     """Calculate the distance of positions to inner skull surface.
@@ -743,3 +757,4 @@ def distance_to_bem(pos, bem, trans=None, verbose=None):
     -----
     .. versionadded:: 1.1
     """
+    ...

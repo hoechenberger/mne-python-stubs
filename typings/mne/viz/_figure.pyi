@@ -99,6 +99,7 @@ def set_browser_backend(backend_name, verbose=None):
 
     .. versionadded:: 0.24
     """
+    ...
 
 def get_browser_backend():
     """Return the 2D backend currently used.
@@ -109,6 +110,7 @@ def get_browser_backend():
         The 2D browser backend currently in use. If no backend is found,
         returns ``None``.
     """
+    ...
 
 def use_browser_backend(backend_name) -> Generator[Incomplete, None, None]:
     """Create a 2D browser visualization context using the designated backend.
@@ -121,3 +123,4 @@ def use_browser_backend(backend_name) -> Generator[Incomplete, None, None]:
     backend_name : {'qt', 'matplotlib'}
         The 2D browser backend to use in the context.
     """
+    ...

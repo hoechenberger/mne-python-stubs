@@ -45,6 +45,7 @@ def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_id
 
     .. versionadded:: 0.9.0
     """
+    ...
 
 def head_to_mri(
     pos,
@@ -100,6 +101,7 @@ def head_to_mri(
     -----
     This function requires nibabel.
     """
+    ...
 
 def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
     """Convert the array of vertices for a hemisphere to MNI coordinates.
@@ -127,6 +129,7 @@ def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
     coordinates : array, shape (n_vertices, 3)
         The MNI coordinates (in mm) of the vertices.
     """
+    ...
 
 def head_to_mni(pos, subject, mri_head_t, subjects_dir=None, verbose=None):
     """Convert pos from head coordinate system to MNI ones.
@@ -161,6 +164,7 @@ def head_to_mni(pos, subject, mri_head_t, subjects_dir=None, verbose=None):
     -----
     This function requires either nibabel.
     """
+    ...
 
 def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
     """Estimate fiducials for a subject.
@@ -202,6 +206,7 @@ def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
     see https://surfer.nmr.mgh.harvard.edu/fswiki/CoordinateSystems and
     :ref:`tut-source-alignment`.
     """
+    ...
 
 def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
     """Estimate the head->mri transform from fsaverage fiducials.
@@ -235,6 +240,7 @@ def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
         during coregistration. Can also be ``'fsaverage'`` to use the built-in
         fsaverage transformation.
     """
+    ...
 
 def read_lta(fname, verbose=None):
     """Read a Freesurfer linear transform array file.
@@ -255,6 +261,7 @@ def read_lta(fname, verbose=None):
     affine : ndarray
         The affine transformation described by the lta file.
     """
+    ...
 
 def read_talxfm(subject, subjects_dir=None, verbose=None):
     """Compute MRI-to-MNI transform from FreeSurfer talairach.xfm file.
@@ -281,6 +288,7 @@ def read_talxfm(subject, subjects_dir=None, verbose=None):
     mri_mni_t : instance of Transform
         The affine transformation from MRI to MNI space for the subject.
     """
+    ...
 
 def read_freesurfer_lut(fname=None):
     """Read a Freesurfer-formatted LUT.
@@ -297,3 +305,4 @@ def read_freesurfer_lut(fname=None):
     colors : dict
         Mapping from label names to colors.
     """
+    ...

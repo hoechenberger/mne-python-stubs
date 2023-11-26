@@ -84,6 +84,7 @@ def read_raw_eeglab(
     -----
     .. versionadded:: 0.11.0
     """
+    ...
 
 def read_epochs_eeglab(
     input_fname,
@@ -160,6 +161,7 @@ def read_epochs_eeglab(
     -----
     .. versionadded:: 0.11.0
     """
+    ...
 
 class RawEEGLAB(BaseRaw):
     """Raw object from EEGLAB .set file.

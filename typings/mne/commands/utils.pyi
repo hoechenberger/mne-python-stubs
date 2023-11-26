@@ -14,9 +14,12 @@ def load_module(name, path):
         Imported module.
 
     """
+    ...
 
 def get_optparser(cmdpath, usage=None, prog_prefix: str = "mne", version=None):
     """Create OptionParser with cmd specific settings (e.g., prog value)."""
+    ...
 
 def main() -> None:
     """Entrypoint for mne <command> usage."""
+    ...

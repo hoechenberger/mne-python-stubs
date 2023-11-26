@@ -15,6 +15,7 @@ def parse_config(fname):
             tmin, tmax, name, grad_reject, mag_reject,
             eeg_reject, eog_reject
     """
+    ...
 
 def read_reject_parameters(fname):
     """Read rejection parameters from .cov or .ave config file.
@@ -29,6 +30,8 @@ def read_reject_parameters(fname):
     params : dict
         The rejection parameters.
     """
+    ...
 
 def read_flat_parameters(fname):
     """Read flat channel rejection parameters from .cov or .ave config file."""
+    ...

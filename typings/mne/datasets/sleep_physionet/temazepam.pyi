@@ -67,3 +67,4 @@ def fetch_data(
     ----------
     .. footbibliography::
     """
+    ...

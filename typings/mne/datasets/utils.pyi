@@ -29,6 +29,7 @@ def has_dataset(name):
     has : bool
         True if the dataset is present.
     """
+    ...
 
 def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
     """Fetch the modified subdivided aparc parcellation.
@@ -53,6 +54,7 @@ def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
     ----------
     .. footbibliography::
     """
+    ...
 
 def fetch_hcp_mmp_parcellation(
     subjects_dir=None, combine: bool = True, *, accept: bool = False, verbose=None
@@ -91,3 +93,4 @@ def fetch_hcp_mmp_parcellation(
     ----------
     .. footbibliography::
     """
+    ...

@@ -3,6 +3,7 @@ from _typeshed import Incomplete
 
 def rng_uniform(rng):
     """Get the unform/randint from the rng."""
+    ...
 
 class BaseEstimator:
     """Base class for all estimators in scikit-learn.
@@ -68,6 +69,7 @@ def empirical_covariance(X, assume_centered: bool = False):
     covariance : 2D ndarray, shape (n_features, n_features)
         Empirical covariance (Maximum Likelihood Estimator).
     """
+    ...
 
 class EmpiricalCovariance(BaseEstimator):
     """Maximum likelihood covariance estimator.
@@ -220,6 +222,7 @@ def log_likelihood(emp_cov, precision):
     -------
     sample mean of the log-likelihood
     """
+    ...
 
 def svd_flip(u, v, u_based_decision: bool = True): ...
 def stable_cumsum(arr, axis=None, rtol: float = 1e-05, atol: float = 1e-08):
@@ -237,6 +240,7 @@ def stable_cumsum(arr, axis=None, rtol: float = 1e-05, atol: float = 1e-08):
     atol : float
         Absolute tolerance, see ``np.allclose``
     """
+    ...
 
 prange: Incomplete
 
@@ -254,6 +258,8 @@ bincount = np.bincount
 
 def pinvh(a, rtol=None):
     """Compute a pseudo-inverse of a Hermitian matrix."""
+    ...
 
 def pinv(a, rtol=None):
     """Compute a pseudo-inverse of a matrix."""
+    ...

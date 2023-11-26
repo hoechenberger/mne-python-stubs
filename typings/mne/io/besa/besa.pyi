@@ -24,3 +24,4 @@ def read_evoked_besa(fname, verbose=None):
     ev : Evoked
         The evoked data in the .avr or .mul file.
     """
+    ...

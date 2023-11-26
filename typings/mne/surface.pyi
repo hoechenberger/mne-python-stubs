@@ -62,6 +62,7 @@ def get_head_surf(
     surf : dict
         The head surface.
     """
+    ...
 
 def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     """Load the MEG helmet associated with the MEG sensors.
@@ -92,6 +93,7 @@ def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     A built-in helmet is loaded if possible. If not, a helmet surface
     will be approximated based on the sensor locations.
     """
+    ...
 
 def fast_cross_3d(x, y):
     """Compute cross product between list of 3D vectors.
@@ -116,6 +118,7 @@ def fast_cross_3d(x, y):
     -----
     x and y must broadcast against each other.
     """
+    ...
 
 def complete_surface_info(
     surf,
@@ -149,6 +152,7 @@ def complete_surface_info(
     surf : dict
         The transformed surface.
     """
+    ...
 
 class _CDist:
     """Wrapper for cdist that uses a Tree-like pattern."""
@@ -190,6 +194,7 @@ def read_curvature(filepath, binary: bool = True):
     curv : array of shape (n_vertices,)
         The curvature values loaded from the user given file.
     """
+    ...
 
 def read_surface(
     fname,
@@ -255,6 +260,7 @@ def read_surface(
     write_surface
     read_tri
     """
+    ...
 
 def write_surface(
     fname,
@@ -321,6 +327,7 @@ def write_surface(
     read_surface
     read_tri
     """
+    ...
 
 def decimate_surface(
     points, triangles, n_triangles, method: str = "quadric", *, verbose=None
@@ -375,6 +382,7 @@ def decimate_surface(
     BEM creation (recommended ``n_triangles=5120``) due to better topological
     property preservation.
     """
+    ...
 
 def mesh_edges(tris):
     """Return sparse matrix with edges as an adjacency matrix.
@@ -389,6 +397,7 @@ def mesh_edges(tris):
     edges : scipy.sparse.spmatrix
         The adjacency matrix.
     """
+    ...
 
 def mesh_dist(tris, vert):
     """Compute adjacency matrix weighted by distances.
@@ -408,6 +417,7 @@ def mesh_dist(tris, vert):
     dist_matrix : scipy.sparse.csr_matrix
         Sparse matrix with distances between adjacent vertices.
     """
+    ...
 
 def read_tri(fname_in, swap: bool = False, verbose=None):
     """Read triangle definitions from an ascii file.
@@ -443,6 +453,7 @@ def read_tri(fname_in, swap: bool = False, verbose=None):
     -----
     .. versionadded:: 0.13.0
     """
+    ...
 
 def dig_mri_distances(
     info,
@@ -516,6 +527,7 @@ def dig_mri_distances(
     -----
     .. versionadded:: 0.19
     """
+    ...
 
 def get_montage_volume_labels(
     montage, subject, subjects_dir=None, aseg: str = "aparc+aseg", dist: int = 2
@@ -560,3 +572,4 @@ def get_montage_volume_labels(
     colors : dict
         The Freesurfer lookup table colors for the labels.
     """
+    ...

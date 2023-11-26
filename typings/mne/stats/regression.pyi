@@ -43,6 +43,7 @@ def linear_regression(inst, design_matrix, names=None):
         then the shape of each of the arrays will be
         ``(n_channels, n_timepoints)``.
     """
+    ...
 
 def linear_regression_raw(
     raw,
@@ -154,3 +155,4 @@ def linear_regression_raw(
     ----------
     .. footbibliography::
     """
+    ...

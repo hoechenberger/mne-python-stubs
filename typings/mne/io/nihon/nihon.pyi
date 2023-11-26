@@ -29,6 +29,7 @@ def read_raw_nihon(fname, preload: bool = False, verbose=None):
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNihon.
     """
+    ...
 
 class RawNihon(BaseRaw):
     """Raw object from a Nihon Kohden EEG file.

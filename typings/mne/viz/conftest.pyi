@@ -17,6 +17,8 @@ fname_nirx: Incomplete
 
 def fnirs_evoked():
     """Create an fnirs evoked structure."""
+    ...
 
 def fnirs_epochs():
     """Create an fnirs epoch structure."""
+    ...

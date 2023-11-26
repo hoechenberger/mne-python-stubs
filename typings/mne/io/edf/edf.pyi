@@ -356,6 +356,7 @@ def read_raw_edf(
     The EDF specification allows storage of subseconds in measurement date.
     However, this reader currently sets subseconds to 0 by default.
     """
+    ...
 
 def read_raw_bdf(
     input_fname,
@@ -487,6 +488,7 @@ def read_raw_bdf(
     STIM channels by default. Use func:`mne.find_events` to parse events
     encoded in such analog stim channels.
     """
+    ...
 
 def read_raw_gdf(
     input_fname,
@@ -556,3 +558,4 @@ def read_raw_gdf(
     STIM channels by default. Use func:`mne.find_events` to parse events
     encoded in such analog stim channels.
     """
+    ...

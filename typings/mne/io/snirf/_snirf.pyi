@@ -51,6 +51,7 @@ def read_raw_snirf(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawSNIRF.
     """
+    ...
 
 class RawSNIRF(BaseRaw):
     """Raw object from a continuous wave SNIRF file.

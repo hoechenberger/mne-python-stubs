@@ -958,6 +958,7 @@ def read_fiducials(fname, verbose=None):
         The coordinate frame of the points (one of
         ``mne.io.constants.FIFF.FIFFV_COORD_...``).
     """
+    ...
 
 def write_fiducials(
     fname, pts, coord_frame: str = "unknown", *, overwrite: bool = False, verbose=None
@@ -991,6 +992,7 @@ def write_fiducials(
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def read_info(fname, verbose=None):
     """Read measurement info from a file.
@@ -1012,6 +1014,7 @@ def read_info(fname, verbose=None):
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     """
+    ...
 
 def read_bad_channels(fid, node):
     """Read bad channels.
@@ -1028,6 +1031,7 @@ def read_bad_channels(fid, node):
     bads : list
         A list of bad channel's names.
     """
+    ...
 
 def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
     """Read the measurement info.
@@ -1057,6 +1061,7 @@ def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
     meas : dict
         Node in tree that contains the info.
     """
+    ...
 
 def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None:
     """Write measurement info into a file id (from a fif file).
@@ -1079,6 +1084,7 @@ def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None
     -----
     Tags are written in a particular order for compatibility with maxfilter.
     """
+    ...
 
 def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
     """Write measurement info in fif file.
@@ -1097,6 +1103,7 @@ def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
     reset_range : bool
         If True, info['chs'][k]['range'] will be set to unity.
     """
+    ...
 
 def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
     """Create a basic Info instance suitable for use with create_raw.
@@ -1147,6 +1154,7 @@ def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
     * Am: dipole
     * AU: misc
     """
+    ...
 
 RAW_INFO_FIELDS: Incomplete
 
@@ -1217,3 +1225,4 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
 
     Operates in place.
     """
+    ...

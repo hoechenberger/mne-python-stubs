@@ -187,3 +187,4 @@ def read_raw_fif(
     ``raw.n_times`` parameters but ``raw.first_samp`` and ``raw.first_time``
     are updated accordingly.
     """
+    ...

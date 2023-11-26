@@ -90,6 +90,7 @@ def export_raw(
     to store the montage separately and call :attr:`raw.set_montage()
     <mne.io.Raw.set_montage>`.
     """
+    ...
 
 def export_epochs(
     fname, epochs, fmt: str = "auto", *, overwrite: bool = False, verbose=None
@@ -142,6 +143,7 @@ def export_epochs(
     For EEGLAB exports, channel locations are expanded to full EEGLAB format.
     For more details see :func:`eeglabio.utils.cart_to_eeglab`.
     """
+    ...
 
 def export_evokeds(
     fname, evoked, fmt: str = "auto", *, overwrite: bool = False, verbose=None
@@ -202,3 +204,4 @@ def export_evokeds(
     Consider applying projector(s) before exporting with
     :meth:`mne.Evoked.apply_proj`.
     """
+    ...

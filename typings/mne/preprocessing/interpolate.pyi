@@ -30,6 +30,7 @@ def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
         The list of instances, with the same channel(s) marked as bad in all of
         them, possibly with some formerly bad channels interpolated.
     """
+    ...
 
 def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
     """Interpolate bridged electrode pairs.
@@ -63,3 +64,4 @@ def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
     --------
     mne.preprocessing.compute_bridged_electrodes
     """
+    ...

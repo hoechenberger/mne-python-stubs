@@ -88,6 +88,7 @@ def open_report(fname, **params):
     report : instance of Report
         The report.
     """
+    ...
 
 mne_logo_path: Incomplete
 mne_logo: Incomplete

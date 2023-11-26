@@ -162,6 +162,7 @@ def compute_proj_ecg(
     using ``l_freq`` and ``h_freq`` before creation of the epochs used to
     create the projectors.
     """
+    ...
 
 def compute_proj_eog(
     raw,
@@ -312,3 +313,4 @@ def compute_proj_eog(
     using ``l_freq`` and ``h_freq`` before creation of the epochs used to
     create the projectors.
     """
+    ...

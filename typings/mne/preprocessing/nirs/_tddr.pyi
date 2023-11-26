@@ -37,5 +37,6 @@ def temporal_derivative_distribution_repair(raw, *, verbose=None):
     ----------
     .. footbibliography::
     """
+    ...
 
 tddr = temporal_derivative_distribution_repair

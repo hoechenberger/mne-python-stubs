@@ -315,6 +315,7 @@ def get_kit_info(rawfile, allow_unknown_format, standardize_names=None, verbose=
     sqd : dict
         A dict containing all the sqd parameter settings.
     """
+    ...
 
 def read_raw_kit(
     input_fname,
@@ -414,6 +415,7 @@ def read_raw_kit(
     If ``mrk``\\, ``hsp`` or ``elp`` are :term:`array_like` inputs, then the
     numbers in xyz coordinates should be in units of meters.
     """
+    ...
 
 def read_epochs_kit(
     input_fname,
@@ -485,3 +487,4 @@ def read_epochs_kit(
     -----
     .. versionadded:: 0.9.0
     """
+    ...

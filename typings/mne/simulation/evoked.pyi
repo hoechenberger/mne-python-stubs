@@ -85,6 +85,7 @@ def simulate_evoked(
 
     .. versionadded:: 0.10.0
     """
+    ...
 
 def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
     """Create noise as a multivariate Gaussian.
@@ -128,3 +129,4 @@ def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
 
     .. versionadded:: 0.18.0
     """
+    ...

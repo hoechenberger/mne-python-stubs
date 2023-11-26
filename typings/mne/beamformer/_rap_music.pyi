@@ -65,6 +65,7 @@ def rap_music(
     ----------
     .. footbibliography::
     """
+    ...
 
 def trap_music(
     evoked,
@@ -123,3 +124,4 @@ def trap_music(
     ----------
     .. footbibliography::
     """
+    ...

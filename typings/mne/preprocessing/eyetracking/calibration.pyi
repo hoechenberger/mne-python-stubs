@@ -120,3 +120,4 @@ def read_eyelink_calibration(
         A list of :class:mne.preprocessing.eyetracking.Calibration` instances, one for
         each eye of every calibration that was performed during the recording session.
     """
+    ...

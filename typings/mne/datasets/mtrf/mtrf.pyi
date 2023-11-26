@@ -41,6 +41,7 @@ def data_path(
     -------
     path : instance of Path
         Path to mtrf dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local mtrf dataset.
@@ -50,3 +51,4 @@ def get_version():
     version : str | None
         Version of the mtrf local dataset, or None if the dataset
         does not exist locally."""
+    ...

@@ -54,6 +54,7 @@ def data_path(
     ----------
     .. footbibliography::
     """
+    ...
 
 def load_data(
     subject,
@@ -128,6 +129,7 @@ def load_data(
     ----------
     .. footbibliography::
     """
+    ...
 
 def standardize(raw) -> None:
     """Standardize channel positions and names.
@@ -137,3 +139,4 @@ def standardize(raw) -> None:
     raw : instance of Raw
         The raw data to standardize. Operates in-place.
     """
+    ...

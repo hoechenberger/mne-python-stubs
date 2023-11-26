@@ -64,6 +64,7 @@ def iter_topography(
         ch_dx : int
             The related channel index.
     """
+    ...
 
 def plot_topo_image_epochs(
     epochs,
@@ -143,3 +144,4 @@ def plot_topo_image_epochs(
     will always have a colorbar even when the topo plot does not (because it
     shows multiple sensor types).
     """
+    ...

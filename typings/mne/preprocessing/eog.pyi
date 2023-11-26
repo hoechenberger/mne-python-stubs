@@ -70,6 +70,7 @@ def find_eog_events(
     create_eog_epochs
     compute_proj_eog
     """
+    ...
 
 def create_eog_epochs(
     raw,
@@ -202,3 +203,4 @@ def create_eog_epochs(
     The resulting ``eog_epochs`` will have no filtering applied (i.e., have
     the same filter properties as the input ``raw`` instance).
     """
+    ...

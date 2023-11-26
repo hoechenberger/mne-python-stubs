@@ -13,9 +13,11 @@ from collections.abc import Generator
 
 def split_list(v, n, idx: bool = False) -> Generator[Incomplete, None, None]:
     """Split list in n (approx) equal pieces, possibly giving indices."""
+    ...
 
 def array_split_idx(ary, indices_or_sections, axis: int = 0, n_per_split: int = 1):
     """Do what numpy.array_split does, but add indices."""
+    ...
 
 def create_chunks(sequence, size):
     """Generate chunks from a sequence.
@@ -27,6 +29,7 @@ def create_chunks(sequence, size):
     size : int
         The chunksize to be returned
     """
+    ...
 
 def sum_squared(X):
     """Compute norm of an array.
@@ -41,9 +44,11 @@ def sum_squared(X):
     value : float
         Sum of squares of the input array X.
     """
+    ...
 
 def compute_corr(x, y):
     """Compute pearson correlations between a vector and a matrix."""
+    ...
 
 def random_permutation(n_samples, random_state=None):
     """Emulate the randperm matlab function.
@@ -81,6 +86,7 @@ def random_permutation(n_samples, random_state=None):
     randperm : ndarray, int
         Randomly permuted sequence between 0 and n-1.
     """
+    ...
 
 def hashfunc(fname, block_size: int = 1048576, hash_type: str = "md5"):
     """Calculate the hash for a file.
@@ -97,6 +103,7 @@ def hashfunc(fname, block_size: int = 1048576, hash_type: str = "md5"):
     hash_ : str
         The hexadecimal digest of the hash.
     """
+    ...
 
 def create_slices(start, stop, step=None, length: int = 1):
     """Generate slices of time indexes.
@@ -118,6 +125,7 @@ def create_slices(start, stop, step=None, length: int = 1):
     slices : list
         List of slice objects.
     """
+    ...
 
 def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = True):
     """Make grand average of a list of Evoked or AverageTFR data.
@@ -157,6 +165,7 @@ def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = Tru
     -----
     .. versionadded:: 0.11.0
     """
+    ...
 
 class _HashableNdarray(np.ndarray):
     def __hash__(self): ...
@@ -178,6 +187,7 @@ def object_hash(x, h=None):
     digest : int
         The digest resulting from the hash.
     """
+    ...
 
 def object_size(x, memo=None):
     """Estimate the size of a reasonable python object.
@@ -196,6 +206,7 @@ def object_size(x, memo=None):
     size : int
         The estimated size in bytes of the object.
     """
+    ...
 
 def object_diff(a, b, pre: str = "", *, allclose: bool = False):
     """Compute all differences between two python variables.
@@ -217,6 +228,7 @@ def object_diff(a, b, pre: str = "", *, allclose: bool = False):
     diffs : str
         A string representation of the differences.
     """
+    ...
 
 class _PCA:
     """Principal component analysis (PCA)."""

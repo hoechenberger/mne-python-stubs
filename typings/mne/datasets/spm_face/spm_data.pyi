@@ -45,6 +45,7 @@ def data_path(
     -------
     path : instance of Path
         Path to spm dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local spm dataset.
@@ -54,6 +55,8 @@ def get_version():
     version : str | None
         Version of the spm local dataset, or None if the dataset
         does not exist locally."""
+    ...
 
 def requires_spm_data(func):
     """Skip testing data test."""
+    ...

@@ -25,6 +25,7 @@ def source_detector_distances(info, picks=None):
         Array containing distances in meters.
         Of shape equal to number of channels, or shape of picks if supplied.
     """
+    ...
 
 def short_channels(info, threshold: float = 0.01):
     """Determine which NIRS channels are short.
@@ -46,3 +47,4 @@ def short_channels(info, threshold: float = 0.01):
         Array indicating which channels are short.
         Of shape equal to number of channels.
     """
+    ...

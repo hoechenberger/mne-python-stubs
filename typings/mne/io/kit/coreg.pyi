@@ -29,6 +29,7 @@ def read_mrk(fname):
     mrk_points : ndarray, shape (n_points, 3)
         Marker points in MEG space [m].
     """
+    ...
 
 def read_sns(fname):
     """Sensor coordinate extraction in MEG space.
@@ -43,3 +44,4 @@ def read_sns(fname):
     locs : numpy.array, shape = (n_points, 3)
         Sensor coil location.
     """
+    ...

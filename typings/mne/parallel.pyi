@@ -72,3 +72,4 @@ def parallel_func(
     n_jobs: int
         Number of jobs >= 1.
     """
+    ...

@@ -37,6 +37,7 @@ def power_iteration_kron(
     -----
     http://en.wikipedia.org/wiki/Power_iteration
     """
+    ...
 
 def compute_bias(
     M, G, X, max_iter: int = 1000, tol: float = 1e-06, n_orient: int = 1, verbose=None
@@ -80,3 +81,4 @@ def compute_bias(
     D : array
         Debiasing weights.
     """
+    ...

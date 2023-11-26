@@ -21,6 +21,7 @@ def is_power2(num):
     >>> is_power2(5)
     False
     """
+    ...
 
 def next_fast_len(target):
     """Find the next fast size of input data to `fft`, for zero-padding, etc.
@@ -44,6 +45,7 @@ def next_fast_len(target):
     -----
     Copied from SciPy with minor modifications.
     """
+    ...
 
 def estimate_ringing_samples(system, max_try: int = 100000):
     """Estimate filter ringing.
@@ -61,6 +63,7 @@ def estimate_ringing_samples(system, max_try: int = 100000):
     n : int
         The approximate ringing.
     """
+    ...
 
 def construct_iir_filter(
     iir_params,
@@ -211,6 +214,7 @@ def construct_iir_filter(
     For more information, see the tutorials
     :ref:`disc-filtering` and :ref:`tut-filter-resample`.
     """
+    ...
 
 def filter_data(
     data,
@@ -386,6 +390,7 @@ def filter_data(
     :ref:`disc-filtering` and :ref:`tut-filter-resample` and
     :func:`mne.filter.create_filter`.
     """
+    ...
 
 def create_filter(
     data,
@@ -595,6 +600,7 @@ def create_filter(
 
     .. versionadded:: 0.14
     """
+    ...
 
 def notch_filter(
     x,
@@ -776,6 +782,7 @@ def notch_filter(
     & Hemant Bokil, Oxford University Press, New York, 2008. Please
     cite this in publications if method 'spectrum_fit' is used.
     """
+    ...
 
 def resample(
     x,
@@ -850,6 +857,7 @@ def resample(
     current implementation is functionally equivalent to passing
     up=up/down and down=1.
     """
+    ...
 
 def detrend(x, order: int = 1, axis: int = -1):
     """Detrend the array x.
@@ -879,6 +887,7 @@ def detrend(x, order: int = 1, axis: int = -1):
         >>> bool((detrend(x) - noise).max() < 0.01)
         True
     """
+    ...
 
 class FilterMixin:
     """Object for Epoch/Evoked filtering."""
@@ -1328,3 +1337,4 @@ def design_mne_c_filter(
     4197 frequencies are directly constructed, with zeroes in the stop-band
     and ones in the passband, with squared cosine ramps in between.
     """
+    ...

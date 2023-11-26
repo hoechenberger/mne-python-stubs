@@ -45,6 +45,7 @@ def add_reference_channels(inst, ref_channels, copy: bool = True):
         only after calling this function. Applying a montage will only set
         locations of channels that exist at the time it is applied.
     """
+    ...
 
 def set_eeg_reference(
     inst,
@@ -182,6 +183,7 @@ def set_eeg_reference(
     ----------
     .. footbibliography::
     """
+    ...
 
 def set_bipolar_reference(
     inst,
@@ -262,3 +264,4 @@ def set_bipolar_reference(
 
     .. versionadded:: 0.9.0
     """
+    ...

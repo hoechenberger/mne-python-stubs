@@ -99,3 +99,4 @@ def psd_array_welch(
     ----------
     .. footbibliography::
     """
+    ...

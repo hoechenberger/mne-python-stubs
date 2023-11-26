@@ -100,6 +100,7 @@ def read_raw_cnt(
     -----
     .. versionadded:: 0.12
     """
+    ...
 
 class RawCNT(BaseRaw):
     """Raw object from Neuroscan CNT file.

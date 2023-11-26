@@ -42,3 +42,4 @@ def fetch_fsaverage(subjects_dir=None, *, verbose=None):
 
     .. versionadded:: 0.18
     """
+    ...

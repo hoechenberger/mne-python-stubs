@@ -45,6 +45,7 @@ def pick_events(events, include=None, exclude=None, step: bool = False):
     events : array, shape (n_events, 3)
         The list of events.
     """
+    ...
 
 def define_target_events(
     events, reference_id, target_id, sfreq, tmin, tmax, new_id=None, fill_na=None
@@ -84,6 +85,7 @@ def define_target_events(
     lag : ndarray
         Time lag between reference and target in milliseconds.
     """
+    ...
 
 def read_events(
     filename,
@@ -157,6 +159,7 @@ def read_events(
     For more information on ``mask`` and ``mask_type``, see
     :func:`mne.find_events`.
     """
+    ...
 
 def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> None:
     """Write :term:`events` to file.
@@ -190,6 +193,7 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
     --------
     read_events
     """
+    ...
 
 def find_stim_steps(
     raw, pad_start=None, pad_stop=None, merge: int = 0, stim_channel=None
@@ -230,6 +234,7 @@ def find_stim_steps(
     --------
     find_events : More sophisticated options for finding events in a Raw file.
     """
+    ...
 
 def find_events(
     raw,
@@ -399,6 +404,7 @@ def find_events(
          ----------------
               2 '0000010'
     """
+    ...
 
 def merge_events(events, ids, new_id, replace_events: bool = True):
     """Merge a set of :term:`events`.
@@ -445,6 +451,7 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
                [341,   0,  12],
                [502,   0,   3]])
     """
+    ...
 
 def shift_time_events(events, ids, tshift, sfreq):
     """Shift a set of :term:`events`.
@@ -469,6 +476,7 @@ def shift_time_events(events, ids, tshift, sfreq):
     new_events : array of int, shape (n_new_events, 3)
         The new events.
     """
+    ...
 
 def make_fixed_length_events(
     raw,
@@ -514,6 +522,7 @@ def make_fixed_length_events(
         samples, with :term:`first_samp` included. The third column contains the
         event id.
     """
+    ...
 
 def concatenate_events(events, first_samps, last_samps):
     """Concatenate event lists to be compatible with concatenate_raws.
@@ -541,6 +550,7 @@ def concatenate_events(events, first_samps, last_samps):
     --------
     mne.concatenate_raws
     """
+    ...
 
 class AcqParserFIF:
     """Parser for Elekta data acquisition settings.
@@ -781,6 +791,7 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
         ... )
         ['auditory/left', 'auditory/right', 'visual/left']
     """
+    ...
 
 def count_events(events, ids=None):
     """Count events.
@@ -809,3 +820,4 @@ def count_events(events, ids=None):
         >>> count_events(events, ids=[1, 11])
         {1: 2, 11: 0}
     """
+    ...

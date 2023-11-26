@@ -43,6 +43,7 @@ def read_proj(fname, verbose=None):
     --------
     write_proj
     """
+    ...
 
 def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
     """Write projections to a FIF file.
@@ -73,6 +74,7 @@ def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
     --------
     read_proj
     """
+    ...
 
 def compute_proj_epochs(
     epochs,
@@ -143,6 +145,7 @@ def compute_proj_epochs(
     --------
     compute_proj_raw, compute_proj_evoked
     """
+    ...
 
 def compute_proj_evoked(
     evoked,
@@ -206,6 +209,7 @@ def compute_proj_evoked(
     --------
     compute_proj_raw, compute_proj_epochs
     """
+    ...
 
 def compute_proj_raw(
     raw,
@@ -289,6 +293,7 @@ def compute_proj_raw(
     --------
     compute_proj_epochs, compute_proj_evoked
     """
+    ...
 
 def sensitivity_map(
     fwd,
@@ -338,3 +343,4 @@ def sensitivity_map(
     When mode is ``'fixed'`` or ``'free'``, the sensitivity map is normalized
     by its maximum value.
     """
+    ...

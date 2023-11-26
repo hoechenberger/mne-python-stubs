@@ -51,6 +51,7 @@ def get_builtin_montages(*, descriptions: bool = False):
 
         If ``descriptions=True``, a list of tuples ``(name, description)``.
     """
+    ...
 
 def make_dig_montage(
     ch_pos=None,
@@ -110,6 +111,7 @@ def make_dig_montage(
     read_dig_localite
     read_dig_polhemus_isotrak
     """
+    ...
 
 class DigMontage:
     """Montage for digitized electrode and headshape position data.
@@ -453,6 +455,7 @@ def transform_to_head(montage):
        Fiducial points will be added automatically if the montage does not
        have them.
     """
+    ...
 
 def read_dig_dat(fname):
     """Read electrode positions from a ``*.dat`` file.
@@ -489,6 +492,7 @@ def read_dig_dat(fname):
     ``*.dat`` files are plain text files and can be inspected and amended with
     a plain text editor.
     """
+    ...
 
 def read_dig_fif(fname):
     """Read digitized points from a .fif file.
@@ -518,6 +522,7 @@ def read_dig_fif(fname):
     read_dig_localite
     make_dig_montage
     """
+    ...
 
 def read_dig_hpts(fname, unit: str = "mm"):
     """Read historical ``.hpts`` MNE-C files.
@@ -587,6 +592,7 @@ def read_dig_hpts(fname, unit: str = "mm"):
         eeg    F7  -6.1042  -68.2969   45.4939
         ...
     """
+    ...
 
 def read_dig_egi(fname):
     """Read electrode locations from EGI system.
@@ -612,6 +618,7 @@ def read_dig_egi(fname):
     read_dig_polhemus_isotrak
     make_dig_montage
     """
+    ...
 
 def read_dig_captrak(fname):
     """Read electrode locations from CapTrak Brain Products system.
@@ -638,6 +645,7 @@ def read_dig_captrak(fname):
     read_dig_polhemus_isotrak
     make_dig_montage
     """
+    ...
 
 def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
     """Read Localite .csv file.
@@ -669,6 +677,7 @@ def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
     read_dig_polhemus_isotrak
     make_dig_montage
     """
+    ...
 
 def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
     """Read Polhemus digitizer data from a file.
@@ -703,6 +712,7 @@ def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
     read_dig_fif
     read_dig_localite
     """
+    ...
 
 def read_polhemus_fastscan(
     fname, unit: str = "mm", on_header_missing: str = "raise", *, verbose=None
@@ -739,6 +749,7 @@ def read_polhemus_fastscan(
     read_dig_polhemus_isotrak
     make_dig_montage
     """
+    ...
 
 def read_custom_montage(fname, head_size=0.095, coord_frame=None):
     """Read a montage from a file.
@@ -783,6 +794,7 @@ def read_custom_montage(fname, head_size=0.095, coord_frame=None):
     If you can have positions in memory you can also use
     :func:`make_dig_montage` that takes arrays as input.
     """
+    ...
 
 def compute_dev_head_t(montage):
     """Compute device to head transform from a DigMontage.
@@ -799,6 +811,7 @@ def compute_dev_head_t(montage):
     dev_head_t : Transform
         A Device-to-Head transformation matrix.
     """
+    ...
 
 def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
     """Compute the native-to-head transformation for a montage.
@@ -828,6 +841,7 @@ def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
     native_head_t : instance of Transform
         A native-to-head transformation matrix.
     """
+    ...
 
 def make_standard_montage(kind, head_size: str = "auto"):
     """Read a generic (built-in) standard montage that ships with MNE-Python.
@@ -867,3 +881,4 @@ def make_standard_montage(kind, head_size: str = "auto"):
 
     .. versionadded:: 0.19.0
     """
+    ...

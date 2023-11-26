@@ -104,3 +104,4 @@ def annotate_amplitude(
 
     .. versionadded:: 1.0
     """
+    ...

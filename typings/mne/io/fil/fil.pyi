@@ -44,6 +44,7 @@ def read_raw_fil(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawFIL.
     """
+    ...
 
 class RawFIL(BaseRaw):
     """Raw object from FIL-OPMEG formatted data.

@@ -52,6 +52,7 @@ def read_head_pos(fname):
     -----
     .. versionadded:: 0.12
     """
+    ...
 
 def write_head_pos(fname, pos) -> None:
     """Write MaxFilter-formatted head position parameters.
@@ -72,6 +73,7 @@ def write_head_pos(fname, pos) -> None:
     -----
     .. versionadded:: 0.12
     """
+    ...
 
 def head_pos_to_trans_rot_t(quats):
     """Convert Maxfilter-formatted head position quaternions.
@@ -95,6 +97,7 @@ def head_pos_to_trans_rot_t(quats):
     read_head_pos
     write_head_pos
     """
+    ...
 
 def extract_chpi_locs_ctf(raw, verbose=None):
     """Extract cHPI locations from CTF data.
@@ -131,6 +134,7 @@ def extract_chpi_locs_ctf(raw, verbose=None):
 
     .. versionadded:: 0.20
     """
+    ...
 
 def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
     """Extract cHPI locations from KIT data.
@@ -159,6 +163,7 @@ def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
     -----
     .. versionadded:: 0.23
     """
+    ...
 
 def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     """Retrieve cHPI information from the data.
@@ -195,6 +200,7 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     -----
     .. versionadded:: 0.24
     """
+    ...
 
 def compute_head_pos(
     info,
@@ -248,6 +254,7 @@ def compute_head_pos(
     -----
     .. versionadded:: 0.20
     """
+    ...
 
 def compute_chpi_snr(
     raw,
@@ -307,6 +314,7 @@ def compute_chpi_snr(
     -----
     .. versionadded:: 0.24
     """
+    ...
 
 def compute_chpi_amplitudes(
     raw,
@@ -384,6 +392,7 @@ def compute_chpi_amplitudes(
 
     .. versionadded:: 0.20
     """
+    ...
 
 def compute_chpi_locs(
     info,
@@ -452,6 +461,7 @@ def compute_chpi_locs(
 
     .. versionadded:: 0.20
     """
+    ...
 
 def filter_chpi(
     raw,
@@ -513,6 +523,7 @@ def filter_chpi(
 
     .. versionadded:: 0.12
     """
+    ...
 
 def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
     """Determine how many HPI coils were active for a time point.
@@ -543,3 +554,4 @@ def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
     -----
     .. versionadded:: 1.2
     """
+    ...

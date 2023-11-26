@@ -97,6 +97,7 @@ def maxwell_filter_prepare_emptyroom(
 
     .. versionadded:: 1.1
     """
+    ...
 
 def maxwell_filter(
     raw,
@@ -364,6 +365,7 @@ def maxwell_filter(
     ----------
     .. footbibliography::
     """
+    ...
 
 check_disable: Incomplete
 
@@ -595,6 +597,7 @@ def find_bad_channels_maxwell(
 
     .. versionadded:: 0.20
     """
+    ...
 
 def compute_maxwell_basis(
     info,
@@ -706,3 +709,4 @@ def compute_maxwell_basis(
     ----------
     .. footbibliography::
     """
+    ...

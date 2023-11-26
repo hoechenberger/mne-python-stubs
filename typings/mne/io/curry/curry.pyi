@@ -62,6 +62,7 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
     --------
     mne.io.Raw : Documentation of attributes and methods of RawCurry.
     """
+    ...
 
 class RawCurry(BaseRaw):
     """Raw object from Curry file.

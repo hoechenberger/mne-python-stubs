@@ -33,6 +33,7 @@ def stft(x, wsize, tstep=None, verbose=None):
     istft
     stftfreq
     """
+    ...
 
 def istft(X, tstep=None, Tx=None):
     """ISTFT Inverse Short-Term Fourier Transform using a sine window.
@@ -56,6 +57,7 @@ def istft(X, tstep=None, Tx=None):
     --------
     stft
     """
+    ...
 
 def stftfreq(wsize, sfreq=None):
     """Compute frequencies of stft transformation.
@@ -78,6 +80,7 @@ def stftfreq(wsize, sfreq=None):
     stft
     istft
     """
+    ...
 
 def stft_norm2(X):
     """Compute L2 norm of STFT transform.
@@ -95,6 +98,7 @@ def stft_norm2(X):
     norms2 : array
         The squared L2 norm of every row of X.
     """
+    ...
 
 def stft_norm1(X):
     """Compute L1 norm of STFT transform.
@@ -111,3 +115,4 @@ def stft_norm1(X):
     norms : array
         The L1 norm of every row of X.
     """
+    ...

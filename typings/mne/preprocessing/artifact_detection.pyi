@@ -75,6 +75,7 @@ def annotate_muscle_zscore(
     ----------
     .. footbibliography::
     """
+    ...
 
 def annotate_movement(
     raw,
@@ -121,6 +122,7 @@ def annotate_movement(
     --------
     compute_average_dev_head_t
     """
+    ...
 
 def compute_average_dev_head_t(raw, pos):
     """Get new device to head transform based on good segments.
@@ -140,6 +142,7 @@ def compute_average_dev_head_t(raw, pos):
     dev_head_t : instance of Transform
         New ``dev_head_t`` transformation using the averaged good head positions.
     """
+    ...
 
 def annotate_break(
     raw,
@@ -220,3 +223,4 @@ def annotate_break(
     -----
     .. versionadded:: 0.24
     """
+    ...

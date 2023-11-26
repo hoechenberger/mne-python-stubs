@@ -26,6 +26,7 @@ def get_channel_type_constants(include_defaults: bool = False):
     (depending on the recording system), so no "coil_type" entry is given
     for "ref_meg" unless ``include_defaults`` is requested.
     """
+    ...
 
 def channel_type(info, idx):
     """Get channel type.
@@ -48,6 +49,7 @@ def channel_type(info, idx):
               'bio', 'chpi', 'dipole', 'gof', 'ecog', 'hbo', 'hbr',
               'temperature', 'gsr', 'eyetrack'}
     """
+    ...
 
 def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     """Pick channels by names.
@@ -91,6 +93,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     --------
     pick_channels_regexp, pick_types
     """
+    ...
 
 def pick_channels_regexp(ch_names, regexp):
     """Pick channels using regular expression.
@@ -122,6 +125,7 @@ def pick_channels_regexp(ch_names, regexp):
     >>> pick_channels_regexp(['MEG 2331', 'MEG 2332', 'MEG 2333'], 'MEG *')
     [0, 1, 2]
     """
+    ...
 
 def pick_types(
     info,
@@ -235,6 +239,7 @@ def pick_types(
     sel : array of int
         Indices of good channels.
     """
+    ...
 
 def pick_info(info, sel=(), copy: bool = True, verbose=None):
     """Restrict an info structure to a selection of channels.
@@ -261,6 +266,7 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
     res : dict
         Info structure restricted to a selection of channels.
     """
+    ...
 
 def pick_channels_forward(
     orig, include=[], exclude=[], ordered=None, copy: bool = True, *, verbose=None
@@ -302,6 +308,7 @@ def pick_channels_forward(
         Forward solution restricted to selected channels. If include and
         exclude are empty it returns orig without copy.
     """
+    ...
 
 def pick_types_forward(
     orig,
@@ -345,6 +352,7 @@ def pick_types_forward(
     res : dict
         Forward solution restricted to selected channel types.
     """
+    ...
 
 def channel_indices_by_type(info, picks=None):
     """Get indices of channels by type.
@@ -370,6 +378,7 @@ def channel_indices_by_type(info, picks=None):
         A dictionary that maps each channel type to a (possibly empty) list of
         channel indices.
     """
+    ...
 
 def pick_channels_cov(
     orig,
@@ -415,3 +424,4 @@ def pick_channels_cov(
     res : dict
         Covariance solution restricted to selected channels.
     """
+    ...

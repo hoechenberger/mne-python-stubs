@@ -61,3 +61,4 @@ def rescale(
     data_scaled: array
         Array of same shape as data after rescaling.
     """
+    ...

@@ -35,6 +35,7 @@ def circular_layout(
     node_angles : array, shape=(n_node_names,)
         Node angles in degrees.
     """
+    ...
 
 def plot_channel_labels_circle(labels, colors=None, picks=None, **kwargs):
     """Plot labels for each channel in a circle plot.
@@ -62,3 +63,4 @@ def plot_channel_labels_circle(labels, colors=None, picks=None, **kwargs):
     axes : instance of matplotlib.projections.polar.PolarAxes
         The subplot handle.
     """
+    ...

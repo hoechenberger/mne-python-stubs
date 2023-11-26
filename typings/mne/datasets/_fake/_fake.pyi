@@ -39,6 +39,7 @@ def data_path(
     -------
     path : instance of Path
         Path to fake dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local fake dataset.
@@ -48,3 +49,4 @@ def get_version():
     version : str | None
         Version of the fake local dataset, or None if the dataset
         does not exist locally."""
+    ...

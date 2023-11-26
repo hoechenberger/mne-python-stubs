@@ -165,6 +165,7 @@ def compute_source_morph(
     ----------
     .. footbibliography::
     """
+    ...
 
 class SourceMorph:
     """Morph source space data from one subject to another.
@@ -390,6 +391,7 @@ def read_source_morph(fname):
     source_morph : instance of SourceMorph
         The loaded morph.
     """
+    ...
 
 def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=None):
     """Convert a grade to source space vertices for a given subject.
@@ -432,3 +434,4 @@ def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=No
     vertices : list of array of int
         Vertex numbers for LH and RH.
     """
+    ...

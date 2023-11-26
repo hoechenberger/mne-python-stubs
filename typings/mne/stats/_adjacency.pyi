@@ -48,3 +48,4 @@ def combine_adjacency(*structure):
     <5600x5600 sparse matrix of type '<class 'numpy.float64'>'
             with 27076 stored elements in COOrdinate format>
     """
+    ...

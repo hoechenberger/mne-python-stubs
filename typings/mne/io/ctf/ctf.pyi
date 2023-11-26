@@ -56,6 +56,7 @@ def read_raw_ctf(
     points will then automatically be read into the `mne.io.Raw`
     instance via `mne.io.read_raw_ctf`.
     """
+    ...
 
 class RawCTF(BaseRaw):
     """Raw object from CTF directory.

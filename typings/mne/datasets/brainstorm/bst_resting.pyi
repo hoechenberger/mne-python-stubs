@@ -42,6 +42,7 @@ def data_path(
     -------
     path : instance of Path
         Path to brainstorm (bst_resting) dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local brainstorm dataset.
@@ -51,6 +52,8 @@ def get_version():
     version : str | None
         Version of the brainstorm local dataset, or None if the dataset
         does not exist locally."""
+    ...
 
 def description() -> None:
     """Get description of brainstorm (bst_resting) dataset."""
+    ...

@@ -34,6 +34,7 @@ def bin_perm_rep(ndim, a: int = 0, b: int = 1):
            [1, 1, 0],
            [1, 1, 1]])
     """
+    ...
 
 def permutation_cluster_test(
     X,
@@ -220,6 +221,7 @@ def permutation_cluster_test(
     ----------
     .. footbibliography::
     """
+    ...
 
 def permutation_cluster_1samp_test(
     X,
@@ -421,6 +423,7 @@ def permutation_cluster_1samp_test(
     ----------
     .. footbibliography::
     """
+    ...
 
 def spatio_temporal_cluster_1samp_test(
     X,
@@ -599,6 +602,7 @@ def spatio_temporal_cluster_1samp_test(
     ----------
     .. footbibliography::
     """
+    ...
 
 def spatio_temporal_cluster_test(
     X,
@@ -776,6 +780,7 @@ def spatio_temporal_cluster_test(
     ----------
     .. footbibliography::
     """
+    ...
 
 def summarize_clusters_stc(
     clu,
@@ -825,3 +830,4 @@ def summarize_clusters_stc(
         .. versionchanged:: 0.21
            Added support for volume and mixed source estimates.
     """
+    ...

@@ -1,64 +1,93 @@
 import abc
-from ..ui_events import TimeChange as TimeChange, publish as publish
+from ...transforms import apply_trans as apply_trans
+from ...utils import (
+    copy_base_doc_to_subclass_doc as copy_base_doc_to_subclass_doc,
+    deprecated as deprecated,
+    warn as warn,
+)
+from ._abstract import Figure3D as Figure3D, _AbstractRenderer
+from ._utils import ALLOWED_QUIVER_MODES as ALLOWED_QUIVER_MODES
 from _typeshed import Incomplete
-from abc import ABC, abstractmethod
+from pyvistaqt import BackgroundPlotter
 
-class Figure3D(ABC):
-    """Class that refers to a 3D figure.
+class PyVistaFigure(Figure3D):
+    """PyVista-based 3D Figure.
 
-    .. note::
-        This class should not be instantiated directly via
-        ``mne.viz.Figure3D(...)``. Instead, use
-        :func:`mne.viz.create_3d_figure`.
+    .. note:: This class should not be instantiated directly via
+              ``mne.viz.PyVistaFigure(...)``. Instead, use
+              :func:`mne.viz.create_3d_figure`.
 
     See Also
     --------
     mne.viz.create_3d_figure
     """
 
-    @property
-    def plotter(self):
-        """The native 3D plotting widget.
+    def __init__(self) -> None: ...
 
-        Returns
-        -------
-        plotter : instance of pyvista.Plotter
-            The plotter. Useful for interacting with the native 3D library.
-        """
+class _Projection:
+    """Class storing projection information.
+
+    Attributes
+    ----------
+    xy : array
+        Result of 2d projection of 3d data.
+    pts : None
+        Scene sensors handle.
+    """
+
+    xy: Incomplete
+    pts: Incomplete
+    plotter: Incomplete
+
+    def __init__(self, *, xy, pts, plotter) -> None:
+        """Store input projection information into attributes."""
+        ...
+    def visible(self, state) -> None:
+        """Modify visibility attribute of the sensors."""
         ...
 
-class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
+class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
+    """Class managing rendering scene.
+
+    Attributes
+    ----------
+    plotter: Plotter
+        Main PyVista access point.
+    name: str
+        Name of the window.
+    """
+
+    font_family: str
+    tube_n_sides: int
+    antialias: Incomplete
+    depth_peeling: Incomplete
+    smooth_shading: Incomplete
+    figure: Incomplete
+    plotter: Incomplete
+
     def __init__(
         self,
         fig=None,
         size=(600, 600),
-        bgcolor=(0.0, 0.0, 0.0),
-        name=None,
+        bgcolor: str = "black",
+        name: str = "PyVista Scene",
         show: bool = False,
         shape=(1, 1),
+        notebook=None,
+        smooth_shading: bool = True,
         splash: bool = False,
-    ):
-        """Set up the scene."""
-        ...
-    @classmethod
-    @abc.abstractmethod
-    def subplot(self, x, y):
+        multi_samples=None,
+    ) -> None: ...
+    def subplot(self, x, y) -> None:
         """Set the active subplot."""
         ...
-    @classmethod
-    @abc.abstractmethod
     def scene(self):
         """Return scene handle."""
         ...
-    @classmethod
-    @abc.abstractmethod
-    def set_interaction(self, interaction):
+    def update_lighting(self) -> None: ...
+    def set_interaction(self, interaction) -> None:
         """Set interaction mode."""
         ...
-    @classmethod
-    @abc.abstractmethod
     def legend(
         self,
         labels,
@@ -92,8 +121,23 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             * Rectangle: ``"r"`` or ``'rectangle'``
         """
         ...
-    @classmethod
-    @abc.abstractmethod
+    def polydata(
+        self,
+        mesh,
+        color=None,
+        opacity: float = 1.0,
+        normals=None,
+        backface_culling: bool = False,
+        scalars=None,
+        colormap=None,
+        vmin=None,
+        vmax=None,
+        interpolate_before_map: bool = True,
+        representation: str = "surface",
+        line_width: float = 1.0,
+        polygon_offset=None,
+        **kwargs,
+    ): ...
     def mesh(
         self,
         x,
@@ -102,6 +146,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         triangles,
         color,
         opacity: float = 1.0,
+        *,
         backface_culling: bool = False,
         scalars=None,
         colormap=None,
@@ -167,8 +212,6 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             Handle of the mesh in the scene.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
     def contour(
         self,
         surface,
@@ -215,8 +258,6 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             or 'w').
         """
         ...
-    @classmethod
-    @abc.abstractmethod
     def surface(
         self,
         surface,
@@ -258,8 +299,6 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             If not None, the factor used to resolve coincident topology.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
     def sphere(
         self,
         center,
@@ -295,8 +334,6 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             sphere.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
     def tube(
         self,
         origin,
@@ -309,6 +346,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         colormap: str = "RdBu",
         normalized_colormap: bool = False,
         reverse_lut: bool = False,
+        opacity=None,
     ):
         """Add tube in the scene.
 
@@ -349,8 +387,6 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             Handle of the tube in the scene.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
     def quiver3d(
         self,
         x,
@@ -369,12 +405,16 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         opacity: float = 1.0,
         scale_mode: str = "none",
         scalars=None,
-        backface_culling: bool = False,
         colormap=None,
-        vmin=None,
-        vmax=None,
+        backface_culling: bool = False,
         line_width: float = 2.0,
         name=None,
+        glyph_width=None,
+        glyph_depth=None,
+        glyph_radius: float = 0.15,
+        solid_transform=None,
+        *,
+        clim=None,
     ):
         """Add quiver3d in the scene.
 
@@ -439,9 +479,15 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             Handle of the quiver in the scene.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
-    def text2d(self, x_window, y_window, text, size: int = 14, color: str = "white"):
+    def text2d(
+        self,
+        x_window,
+        y_window,
+        text,
+        size: int = 14,
+        color: str = "white",
+        justification=None,
+    ):
         """Add 2d text in the scene.
 
         Parameters
@@ -462,9 +508,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             or 'w').
         """
         ...
-    @classmethod
-    @abc.abstractmethod
-    def text3d(self, x, y, z, text, width, color: str = "white"):
+    def text3d(self, x, y, z, text, scale, color: str = "white"):
         """Add 2d text in the scene.
 
         Parameters
@@ -485,10 +529,14 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             or 'w').
         """
         ...
-    @classmethod
-    @abc.abstractmethod
     def scalarbar(
-        self, source, color: str = "white", title=None, n_labels: int = 4, bgcolor=None
+        self,
+        source,
+        color: str = "white",
+        title=None,
+        n_labels: int = 4,
+        bgcolor=None,
+        **extra_kwargs,
     ):
         """Add a scalar bar in the scene.
 
@@ -506,18 +554,13 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             The color of the background when there is transparency.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
-    def show(self):
+    def show(self) -> None:
         """Render the scene."""
         ...
-    @classmethod
-    @abc.abstractmethod
-    def close(self):
+    def close(self) -> None:
         """Close the scene."""
         ...
-    @classmethod
-    @abc.abstractmethod
+    def get_camera(self, *, rigid=None): ...
     def set_camera(
         self,
         azimuth=None,
@@ -526,8 +569,10 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         focalpoint=None,
         roll=None,
         *,
+        rigid=None,
+        update: bool = True,
         reset_camera=None,
-    ):
+    ) -> None:
         """Configure the camera of the scene.
 
         Parameters
@@ -546,13 +591,11 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
            Deprecated, used ``distance="auto"`` instead.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
-    def reset_camera(self):
-        """Reset the camera properties."""
+    def reset_camera(self) -> None:
+        """Reset the camera properties.
+        .. warning:: DEPRECATED: reset_camera is deprecated and will be removed in 1.7, use set_camera(distance='auto') instead.
+        """
         ...
-    @classmethod
-    @abc.abstractmethod
     def screenshot(self, mode: str = "rgb", filename=None):
         """Take a screenshot of the scene.
 
@@ -565,8 +608,6 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             If not None, save the figure to the disk.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
     def project(self, xyz, ch_names):
         """Convert 3d points to a 2d perspective.
 
@@ -578,9 +619,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             Names of the channels.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
-    def remove_mesh(self, mesh_data):
+    def remove_mesh(self, mesh_data) -> None:
         """Remove the given mesh from the scene.
 
         Parameters
@@ -590,235 +629,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         """
         ...
 
-class _AbstractWidget(ABC, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self): ...
-
-class _AbstractLabel(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, center: bool = False, selectable: bool = False): ...
-
-class _AbstractText(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value=None, placeholder=None, callback=None): ...
-
-class _AbstractButton(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, callback, icon=None): ...
-
-class _AbstractSlider(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, rng, callback, horizontal: bool = True): ...
-
-class _AbstractProgressBar(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, count): ...
-
-class _AbstractCheckBox(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, callback): ...
-
-class _AbstractSpinBox(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, rng, callback, step=None): ...
-
-class _AbstractComboBox(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, items, callback): ...
-
-class _AbstractRadioButtons(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, items, callback): ...
-
-class _AbstractGroupBox(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, name, items): ...
-
-class _AbstractFileButton(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(
-        self,
-        callback,
-        content_filter=None,
-        initial_directory=None,
-        save: bool = False,
-        is_directory: bool = False,
-        icon: str = "folder",
-        window=None,
-    ): ...
-
-class _AbstractPlayMenu(_AbstractWidget, metaclass=abc.ABCMeta):
-    @classmethod
-    @abc.abstractmethod
-    def __init__(self, value, rng, callback): ...
-
-class _AbstractPopup(_AbstractWidget, metaclass=abc.ABCMeta):
-    @abstractmethod
-    def __init__(
-        self,
-        title,
-        text,
-        info_text=None,
-        callback=None,
-        icon: str = "Warning",
-        buttons=None,
-        window=None,
-    ): ...
-
-class _AbstractBoxLayout(ABC, metaclass=abc.ABCMeta): ...
-
-class _AbstractHBoxLayout(_AbstractBoxLayout, metaclass=abc.ABCMeta):
-    @abstractmethod
-    def __init__(self, height=None, scroll=None): ...
-
-class _AbstractVBoxLayout(_AbstractBoxLayout, metaclass=abc.ABCMeta):
-    @abstractmethod
-    def __init__(self, width=None, scroll=None): ...
-
-class _AbstractGridLayout(ABC, metaclass=abc.ABCMeta):
-    @abstractmethod
-    def __init__(self, height=None, width=None, scroll=None): ...
-
-class _AbstractAppWindow(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, size=None, fullscreen: bool = False) -> None: ...
-
-class _AbstractCanvas(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, width=None, height=None, dpi=None) -> None:
-        """Initialize the matplotlib Canvas."""
+class _SafeBackgroundPlotter(BackgroundPlotter):
+    def __del__(self) -> None:
+        """Delete the qt plotter."""
         ...
-    def show(self) -> None:
-        """Show the canvas."""
-        ...
-    def close(self) -> None:
-        """Close the canvas."""
-        ...
-    def update(self) -> None:
-        """Update the canvas."""
-        ...
-    manager: Incomplete
-
-    def clear(self) -> None:
-        """Clear internal variables."""
-        ...
-
-class _AbstractToolBar(ABC, metaclass=abc.ABCMeta): ...
-class _AbstractDock(ABC, metaclass=abc.ABCMeta): ...
-class _AbstractMenuBar(ABC, metaclass=abc.ABCMeta): ...
-class _AbstractStatusBar(ABC, metaclass=abc.ABCMeta): ...
-class _AbstractPlayback(ABC, metaclass=abc.ABCMeta): ...
-class _AbstractKeyPress(ABC, metaclass=abc.ABCMeta): ...
-class _AbstractDialog(ABC, metaclass=abc.ABCMeta): ...
-class _AbstractLayout(ABC, metaclass=abc.ABCMeta): ...
-
-class _AbstractWidgetList(ABC, metaclass=abc.ABCMeta):
-    @abstractmethod
-    def set_enabled(self, state): ...
-    @abstractmethod
-    def get_value(self, idx): ...
-    @abstractmethod
-    def set_value(self, idx, value): ...
-
-class _AbstractWdgt(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, widget) -> None: ...
-    @property
-    def widget(self): ...
-    @abstractmethod
-    def set_value(self, value): ...
-    @abstractmethod
-    def get_value(self): ...
-    @abstractmethod
-    def set_range(self, rng): ...
-    @abstractmethod
-    def show(self): ...
-    @abstractmethod
-    def hide(self): ...
-    @abstractmethod
-    def set_enabled(self, state): ...
-    @abstractmethod
-    def is_enabled(self): ...
-    @abstractmethod
-    def update(self, repaint: bool = True): ...
-    @abstractmethod
-    def get_tooltip(self): ...
-    @abstractmethod
-    def set_tooltip(self, tooltip: str): ...
-    @abstractmethod
-    def set_style(self, style): ...
-
-class _AbstractAction(ABC, metaclass=abc.ABCMeta):
-    def __init__(self, action) -> None: ...
-    @abstractmethod
-    def trigger(self): ...
-    @abstractmethod
-    def set_icon(self): ...
-    @abstractmethod
-    def set_shortcut(self): ...
-
-class _AbstractMplInterface(ABC, metaclass=abc.ABCMeta): ...
-
-class _AbstractMplCanvas(ABC):
-    fig: Incomplete
-    axes: Incomplete
-    manager: Incomplete
-
-    def __init__(self, width, height, dpi) -> None:
-        """Initialize the MplCanvas."""
-        ...
-    def plot(self, x, y, label, update: bool = True, **kwargs):
-        """Plot a curve."""
-        ...
-    def plot_time_line(self, x, label, update: bool = True, **kwargs):
-        """Plot the vertical line."""
-        ...
-    def update_plot(self) -> None:
-        """Update the plot."""
-        ...
-    def set_color(self, bg_color, fg_color) -> None:
-        """Set the widget colors."""
-        ...
-    def show(self) -> None:
-        """Show the canvas."""
-        ...
-    def close(self) -> None:
-        """Close the canvas."""
-        ...
-    canvas: Incomplete
-
-    def clear(self) -> None:
-        """Clear internal variables."""
-        ...
-    def on_resize(self, event) -> None:
-        """Handle resize events."""
-        ...
-
-class _AbstractBrainMplCanvas(_AbstractMplCanvas):
-    brain: Incomplete
-
-    def __init__(self, brain, width, height, dpi) -> None:
-        """Initialize the MplCanvas."""
-        ...
-    def update_plot(self) -> None:
-        """Update the plot."""
-        ...
-    def on_button_press(self, event) -> None:
-        """Handle button presses."""
-        ...
-    on_motion_notify = on_button_press
-
-    def clear(self) -> None:
-        """Clear internal variables."""
-        ...
-
-class _AbstractWindow(ABC, metaclass=abc.ABCMeta): ...

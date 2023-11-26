@@ -27,6 +27,7 @@ from _typeshed import Incomplete
 
 def safe_event(fun, *args, **kwargs):
     """Protect against Qt exiting on event-handling errors."""
+    ...
 
 def plt_show(show: bool = True, fig=None, **kwargs) -> None:
     """Show a figure while suppressing warnings.
@@ -40,6 +41,7 @@ def plt_show(show: bool = True, fig=None, **kwargs) -> None:
     **kwargs : dict
         Extra arguments for :func:`matplotlib.pyplot.show`.
     """
+    ...
 
 def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
     """Return a colormap similar to that used by mne_analyze.
@@ -65,6 +67,7 @@ def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
     For this will return a colormap that will display correctly for data
     that are scaled by the plotting function to span [-fmax, fmax].
     """
+    ...
 
 def compare_fiff(
     fname_1,
@@ -110,6 +113,7 @@ def compare_fiff(
         The filename used for storing the diff. Could be useful for
         when a temporary file is used.
     """
+    ...
 
 def figure_nobar(*args, **kwargs):
     """Make matplotlib figure with no toolbar.
@@ -126,6 +130,7 @@ def figure_nobar(*args, **kwargs):
     fig : instance of Figure
         The figure.
     """
+    ...
 
 class ClickableImage:
     """Display an image so you can click on it and store x/y positions.
@@ -227,6 +232,7 @@ def add_background_image(fig, im, set_ratios=None):
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def plot_sensors(
     info,
@@ -349,6 +355,7 @@ def plot_sensors(
 
     .. versionadded:: 0.12.0
     """
+    ...
 
 class DraggableColorbar:
     """Enable interactive colorbar.
@@ -522,6 +529,7 @@ def centers_to_edges(*arrays):
     >>> centers_to_edges(x, y)  # doctest: +SKIP
     [array([-0.05, 0.05, 0.15, 0.25, 0.35]), array([15., 25., 35., 45.])]
     """
+    ...
 
 def concatenate_images(
     images,
@@ -553,3 +561,4 @@ def concatenate_images(
     img : ndarray
         The concatenated image.
     """
+    ...

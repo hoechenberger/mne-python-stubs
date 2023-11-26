@@ -58,6 +58,7 @@ def data_path(
     ----------
     .. footbibliography::
     """
+    ...
 
 def load_data(
     subject, path=None, force_update: bool = False, update_path=None, verbose=None
@@ -90,3 +91,4 @@ def load_data(
     epochs : instance of Epochs
         The epochs.
     """
+    ...

@@ -60,3 +60,4 @@ def scalp_coupling_index(
     ----------
     .. footbibliography::
     """
+    ...

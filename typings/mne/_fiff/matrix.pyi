@@ -21,3 +21,4 @@ def write_named_matrix(fid, kind, mat) -> None:
     matkind : int
         The type of matrix.
     """
+    ...

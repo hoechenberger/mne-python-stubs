@@ -137,3 +137,4 @@ def compute_ems(
     ----------
     .. footbibliography::
     """
+    ...

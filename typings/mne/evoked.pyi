@@ -2096,6 +2096,7 @@ def combine_evoked(all_evoked, weights):
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def read_evokeds(
     fname,
@@ -2182,6 +2183,7 @@ def read_evokeds(
         saving, this will be reflected in their ``baseline`` attribute after
         reading.
     """
+    ...
 
 def write_evokeds(
     fname, evoked, *, on_mismatch: str = "raise", overwrite: bool = False, verbose=None
@@ -2229,3 +2231,4 @@ def write_evokeds(
         mne.Evoked` object, and will be restored when reading the data again
         via `mne.read_evokeds`.
     """
+    ...

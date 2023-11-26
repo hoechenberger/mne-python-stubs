@@ -65,3 +65,4 @@ def compute_proj_hfc(
     ----------
     .. footbibliography::
     """
+    ...

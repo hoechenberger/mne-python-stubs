@@ -43,6 +43,7 @@ def fill_doc(f):
     f : callable
         The function, potentially with an updated ``__doc__``.
     """
+    ...
 
 def copy_doc(source):
     """Copy the docstring from another function (decorator).
@@ -77,6 +78,7 @@ def copy_doc(source):
     >>> print(B.m1.__doc__)
     Docstring for m1 this gets appended
     """
+    ...
 
 def copy_function_doc_to_method_doc(source):
     """Use the docstring from a function as docstring for a method.
@@ -146,6 +148,7 @@ def copy_function_doc_to_method_doc(source):
             .. versionadded:: 0.13.0
     <BLANKLINE>
     """
+    ...
 
 def copy_base_doc_to_subclass_doc(subclass):
     """Use the docstring from a parent class methods in derived class.
@@ -163,6 +166,7 @@ def copy_base_doc_to_subclass_doc(subclass):
     subclass : Derived class
         The decorated class with copied docstrings.
     """
+    ...
 
 def linkcode_resolve(domain, info):
     """Determine the URL corresponding to a Python object.
@@ -185,6 +189,7 @@ def linkcode_resolve(domain, info):
 
     Adapted from SciPy (doc/source/conf.py).
     """
+    ...
 
 def open_docs(kind=None, version=None) -> None:
     """Launch a new web browser tab with the MNE documentation.
@@ -200,6 +205,7 @@ def open_docs(kind=None, version=None) -> None:
         The default can be changed by setting the configuration value
         MNE_DOCS_VERSION.
     """
+    ...
 
 class _decorator:
     """Inject code or modify the docstring of a class, method, or function."""
@@ -241,8 +247,11 @@ class deprecated(_decorator):
         and in a sphinx warning box in the docstring.
     """
 
+    ...
+
 def deprecated_alias(dep_name, func, removed_in=None) -> None:
     """Inject a deprecated alias into the namespace."""
+    ...
 
 class legacy(_decorator):
     """Mark a function, class, or method as legacy (decorator).

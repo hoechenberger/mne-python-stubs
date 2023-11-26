@@ -93,6 +93,7 @@ def compute_fine_calibration(
 
     .. versionadded:: 0.21
     """
+    ...
 
 def read_fine_calibration(fname):
     """Read fine calibration information from a ``.dat`` file.
@@ -118,6 +119,7 @@ def read_fine_calibration(fname):
              For magnetometers, the calibration coefficients.
              For gradiometers, one or three imbalance parameters.
     """
+    ...
 
 def write_fine_calibration(fname, calibration) -> None:
     """Write fine calibration information to a ``.dat`` file.
@@ -129,3 +131,4 @@ def write_fine_calibration(fname, calibration) -> None:
     calibration : dict
         Fine calibration information.
     """
+    ...

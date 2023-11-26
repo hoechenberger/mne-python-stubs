@@ -37,6 +37,7 @@ def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
     montage_warped : mne.channels.DigMontage
         The modified montage object containing the channels.
     """
+    ...
 
 def make_montage_volume(
     montage,
@@ -89,3 +90,4 @@ def make_montage_volume(
         corresponding to the index of the channel. The background
         is 0s and this index starts at 1.
     """
+    ...

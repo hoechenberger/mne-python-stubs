@@ -53,6 +53,7 @@ def read_raw_artemis123(
     --------
     mne.io.Raw : Documentation of attributes and methods.
     """
+    ...
 
 class RawArtemis123(BaseRaw):
     """Raw object from Artemis123 file.

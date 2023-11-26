@@ -48,3 +48,4 @@ def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
 
     .. versionadded:: 0.22
     """
+    ...

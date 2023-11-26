@@ -70,3 +70,4 @@ def write_dig(
 
         .. versionadded:: 1.0
     """
+    ...

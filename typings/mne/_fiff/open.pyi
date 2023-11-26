@@ -49,6 +49,7 @@ def fiff_open(fname, preload: bool = False, verbose=None):
     directory : list
         A list of tags.
     """
+    ...
 
 def show_fiff(
     fname,
@@ -96,3 +97,4 @@ def show_fiff(
     contents : str
         The contents of the file.
     """
+    ...

@@ -51,6 +51,7 @@ def verbose(function: _FuncT) -> _FuncT:
         Number of samples used : 5880
         [done]
     """
+    ...
 
 class use_log_level:
     """Context manager for logging level.
@@ -121,6 +122,7 @@ def set_log_level(verbose=None, return_old_level: bool = False, add_frames=None)
     old_level : int
         The old level. Only returned if ``return_old_level`` is True.
     """
+    ...
 
 def set_log_file(
     fname=None, output_format: str = "%(message)s", overwrite=None
@@ -144,6 +146,7 @@ def set_log_file(
         but additionally raises a warning to notify the user that log
         entries will be appended.
     """
+    ...
 
 class ClosingStringIO(StringIO):
     """StringIO that closes after getvalue()."""
@@ -198,6 +201,7 @@ def warn(
 
         .. versionadded:: 0.24
     """
+    ...
 
 def filter_out_warnings(warn_record, category=None, match=None) -> None:
     """Remove particular records from ``warn_record``.
@@ -213,6 +217,7 @@ def filter_out_warnings(warn_record, category=None, match=None) -> None:
     match : str | None
         text or regex that matches the error message to filter out
     """
+    ...
 
 def wrapped_stdout(
     indent: str = "", cull_newlines: bool = False
@@ -226,3 +231,4 @@ def wrapped_stdout(
     cull_newlines : bool
         If True, cull any new/blank lines at the end.
     """
+    ...

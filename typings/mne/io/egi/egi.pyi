@@ -85,6 +85,7 @@ def read_raw_egi(
 
     This step will fail if events are not mutually exclusive.
     """
+    ...
 
 class RawEGI(BaseRaw):
     """Raw object from EGI simple binary file."""

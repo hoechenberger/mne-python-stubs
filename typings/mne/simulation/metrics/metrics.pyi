@@ -26,6 +26,7 @@ def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
 
     .. versionadded:: 0.10.0
     """
+    ...
 
 def cosine_score(stc_true, stc_est, per_sample: bool = True):
     """Compute cosine similarity between 2 source estimates.
@@ -55,6 +56,7 @@ def cosine_score(stc_true, stc_est, per_sample: bool = True):
     -----
     .. versionadded:: 1.2
     """
+    ...
 
 def region_localization_error(
     stc_true, stc_est, src, threshold: str = "90%", per_sample: bool = True
@@ -113,6 +115,7 @@ def region_localization_error(
     ----------
     .. footbibliography::
     """
+    ...
 
 def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     """Compute ROC AUC between 2 source estimates.
@@ -149,6 +152,7 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     -----
     .. versionadded:: 1.2
     """
+    ...
 
 def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
     """Compute the F1 score, also known as balanced F-score or F-measure.
@@ -192,6 +196,7 @@ def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True)
     -----
     .. versionadded:: 1.2
     """
+    ...
 
 def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
     """Compute the precision.
@@ -234,6 +239,7 @@ def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool 
     -----
     .. versionadded:: 1.2
     """
+    ...
 
 def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
     """Compute the recall.
@@ -275,6 +281,7 @@ def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = T
     -----
     .. versionadded:: 1.2
     """
+    ...
 
 def peak_position_error(
     stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
@@ -334,6 +341,7 @@ def peak_position_error(
     ----------
     .. footbibliography::
     """
+    ...
 
 def spatial_deviation_error(
     stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
@@ -392,3 +400,4 @@ def spatial_deviation_error(
     ----------
     .. footbibliography::
     """
+    ...

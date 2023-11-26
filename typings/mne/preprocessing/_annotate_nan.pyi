@@ -19,3 +19,4 @@ def annotate_nan(raw, *, verbose=None):
     annot : instance of Annotations
         New channel-specific annotations for the data.
     """
+    ...

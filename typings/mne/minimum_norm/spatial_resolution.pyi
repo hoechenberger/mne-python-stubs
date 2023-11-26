@@ -72,3 +72,4 @@ def resolution_metrics(
     ----------
     .. footbibliography::
     """
+    ...

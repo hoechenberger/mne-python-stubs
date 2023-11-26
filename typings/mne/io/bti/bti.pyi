@@ -178,3 +178,4 @@ def read_raw_bti(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawBTi.
     """
+    ...

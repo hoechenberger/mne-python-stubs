@@ -22,8 +22,10 @@ def mne_anonymize(fif_fname, out_fname, keep_his, daysback, overwrite) -> None:
     overwrite : bool
         Overwrite output file if it already exists
     """
+    ...
 
 def run() -> None:
     """Run *mne_anonymize* command."""
+    ...
 
 is_main: Incomplete

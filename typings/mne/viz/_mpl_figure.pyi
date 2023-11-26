@@ -29,8 +29,12 @@ class MNEFigure(Figure):
 class MNEAnnotationFigure(MNEFigure):
     """Interactive dialog figure for annotations."""
 
+    ...
+
 class MNESelectionFigure(MNEFigure):
     """Interactive dialog figure for channel selections."""
+
+    ...
 
 class MNEBrowseFigure(BrowserBase, MNEFigure):
     """Interactive figure with scrollbars, for data browsing."""

@@ -199,6 +199,7 @@ def plot_evoked(
     --------
     mne.viz.plot_evoked_white
     """
+    ...
 
 def plot_evoked_topo(
     evoked,
@@ -296,6 +297,7 @@ def plot_evoked_topo(
     fig : instance of matplotlib.figure.Figure
         Images of evoked responses at sensor locations.
     """
+    ...
 
 def plot_evoked_image(
     evoked,
@@ -456,6 +458,7 @@ def plot_evoked_image(
     fig : instance of matplotlib.figure.Figure
         Figure containing the images.
     """
+    ...
 
 def plot_evoked_white(
     evoked,
@@ -589,6 +592,7 @@ def plot_evoked_white(
            covariance estimation and spatial whitening of MEG and EEG
            signals, vol. 108, 328-342, NeuroImage.
     """
+    ...
 
 def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
     """Plot a data SNR estimate.
@@ -625,6 +629,7 @@ def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
 
     .. versionadded:: 0.9.0
     """
+    ...
 
 def plot_evoked_joint(
     evoked,
@@ -697,6 +702,7 @@ def plot_evoked_joint(
     -----
     .. versionadded:: 0.12.0
     """
+    ...
 
 def plot_compare_evokeds(
     evokeds,
@@ -958,3 +964,4 @@ def plot_compare_evokeds(
     |             | color strings  |                                          |
     +-------------+----------------+------------------------------------------+
     """
+    ...

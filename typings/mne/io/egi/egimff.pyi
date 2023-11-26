@@ -98,3 +98,4 @@ def read_evokeds_mff(
     -----
     .. versionadded:: 0.22
     """
+    ...

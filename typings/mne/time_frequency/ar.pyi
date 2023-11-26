@@ -45,3 +45,4 @@ def fit_iir_model_raw(
     a : ndarray
         Denominator filter coefficients.
     """
+    ...

@@ -16,6 +16,7 @@ def check_fname(fname, filetype, endings, endings_err=()) -> None:
     endings_err : tuple
         Obligatory possible endings for the filename.
     """
+    ...
 
 def check_version(
     library,
@@ -56,6 +57,7 @@ def check_version(
     version : str | None
         The version. Only returned when ``return_version=True``.
     """
+    ...
 
 def check_random_state(seed):
     """Turn seed into a numpy.random.mtrand.RandomState instance.
@@ -65,6 +67,7 @@ def check_random_state(seed):
     If seed is already a RandomState instance, return it.
     Otherwise raise ValueError.
     """
+    ...
 
 class _IntLike:
     @classmethod

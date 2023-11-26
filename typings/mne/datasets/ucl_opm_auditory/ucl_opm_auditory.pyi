@@ -39,6 +39,7 @@ def data_path(
     -------
     path : instance of Path
         Path to ucl_opm_auditory dataset directory."""
+    ...
 
 def get_version():
     """Get version of the local ucl_opm_auditory dataset.
@@ -48,3 +49,4 @@ def get_version():
     version : str | None
         Version of the ucl_opm_auditory local dataset, or None if the dataset
         does not exist locally."""
+    ...

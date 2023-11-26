@@ -52,6 +52,7 @@ def dpss_windows(
     ----------
     .. footbibliography::
     """
+    ...
 
 def psd_array_multitaper(
     x,
@@ -153,6 +154,7 @@ def psd_array_multitaper(
     ----------
     .. footbibliography::
     """
+    ...
 
 def tfr_array_multitaper(
     epoch_data,
@@ -327,3 +329,4 @@ def tfr_array_multitaper(
 
     .. versionadded:: 0.14.0
     """
+    ...

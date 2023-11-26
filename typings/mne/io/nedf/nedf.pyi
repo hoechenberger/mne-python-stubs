@@ -40,3 +40,4 @@ def read_raw_nedf(filename, preload: bool = False, verbose=None):
     --------
     mne.io.Raw : Documentation of attributes and methods of RawNedf.
     """
+    ...

@@ -122,6 +122,7 @@ def apply_trans(trans, pts, move: bool = True):
     transformed_pts : shape = (3,) | (n, 3)
         Transformed point(s).
     """
+    ...
 
 def rotation(x: int = 0, y: int = 0, z: int = 0):
     """Create an array with a 4 dimensional rotation matrix.
@@ -136,6 +137,7 @@ def rotation(x: int = 0, y: int = 0, z: int = 0):
     r : array, shape = (4, 4)
         The rotation matrix.
     """
+    ...
 
 def rotation3d(x: int = 0, y: int = 0, z: int = 0):
     """Create an array with a 3 dimensional rotation matrix.
@@ -150,6 +152,7 @@ def rotation3d(x: int = 0, y: int = 0, z: int = 0):
     r : array, shape = (3, 3)
         The rotation matrix.
     """
+    ...
 
 def rotation3d_align_z_axis(target_z_axis):
     """Compute a rotation matrix to align [ 0 0 1] with supplied target z axis.
@@ -164,6 +167,7 @@ def rotation3d_align_z_axis(target_z_axis):
     r : array, shape (3, 3)
         The rotation matrix.
     """
+    ...
 
 def rotation_angles(m):
     """Find rotation angles from a transformation matrix.
@@ -178,6 +182,7 @@ def rotation_angles(m):
     x, y, z : float
         Rotation around x, y and z axes.
     """
+    ...
 
 def scaling(x: int = 1, y: int = 1, z: int = 1):
     """Create an array with a scaling matrix.
@@ -192,6 +197,7 @@ def scaling(x: int = 1, y: int = 1, z: int = 1):
     s : array, shape = (4, 4)
         The scaling matrix.
     """
+    ...
 
 def translation(x: int = 0, y: int = 0, z: int = 0):
     """Create an array with a translation matrix.
@@ -206,6 +212,7 @@ def translation(x: int = 0, y: int = 0, z: int = 0):
     m : array, shape = (4, 4)
         The translation matrix.
     """
+    ...
 
 def combine_transforms(t_first, t_second, fro, to):
     """Combine two transforms.
@@ -226,6 +233,7 @@ def combine_transforms(t_first, t_second, fro, to):
     trans : dict
         Combined transformation.
     """
+    ...
 
 def read_trans(fname, return_all: bool = False, verbose=None):
     """Read a ``-trans.fif`` file.
@@ -256,6 +264,7 @@ def read_trans(fname, return_all: bool = False, verbose=None):
     write_trans
     mne.transforms.Transform
     """
+    ...
 
 def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     """Write a transformation FIF file.
@@ -281,6 +290,7 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     --------
     read_trans
     """
+    ...
 
 def invert_transform(trans):
     """Invert a transformation between coordinate systems.
@@ -295,6 +305,7 @@ def invert_transform(trans):
     inv_trans : dict
         Inverse transform.
     """
+    ...
 
 def transform_surface_to(surf, dest, trans, copy: bool = False):
     """Transform surface to the desired coordinate system.
@@ -317,6 +328,7 @@ def transform_surface_to(surf, dest, trans, copy: bool = False):
     res : dict
         Transformed source space.
     """
+    ...
 
 def get_ras_to_neuromag_trans(nasion, lpa, rpa):
     """Construct a transformation matrix to the MNE head coordinate system.
@@ -340,6 +352,7 @@ def get_ras_to_neuromag_trans(nasion, lpa, rpa):
     trans : numpy.array, shape = (4, 4)
         Transformation matrix to MNE head space.
     """
+    ...
 
 class _TPSWarp:
     """Transform points using thin-plate spline (TPS) warping.
@@ -479,6 +492,7 @@ def quat_to_rot(quat):
     --------
     rot_to_quat
     """
+    ...
 
 def rot_to_quat(rot):
     """Convert a set of rotations to quaternions.
@@ -498,6 +512,7 @@ def rot_to_quat(rot):
     --------
     quat_to_rot
     """
+    ...
 
 def read_ras_mni_t(subject, subjects_dir=None):
     """Read a subject's RAS to MNI transform.
@@ -517,6 +532,7 @@ def read_ras_mni_t(subject, subjects_dir=None):
     ras_mni_t : instance of Transform
         The transform from RAS to MNI (in mm).
     """
+    ...
 
 def compute_volume_registration(
     moving,
@@ -628,6 +644,7 @@ def compute_volume_registration(
 
     .. versionadded:: 0.24
     """
+    ...
 
 def apply_volume_registration(
     moving,
@@ -681,6 +698,7 @@ def apply_volume_registration(
     -----
     .. versionadded:: 0.24
     """
+    ...
 
 def apply_volume_registration_points(
     info, trans, moving, static, reg_affine, sdr_morph=None, verbose=None
@@ -732,6 +750,7 @@ def apply_volume_registration_points(
     -----
     .. versionadded:: 1.4.0
     """
+    ...
 
 class _MatchedDisplacementFieldInterpolator:
     """Interpolate from matched points using a displacement field in ND.

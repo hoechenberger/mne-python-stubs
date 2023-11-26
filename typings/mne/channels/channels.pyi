@@ -64,6 +64,7 @@ def equalize_channels(instances, copy: bool = True, verbose=None):
     -----
     This function operates inplace.
     """
+    ...
 
 def unify_bad_channels(insts):
     """Unify bad channels across a list of instances.
@@ -96,6 +97,7 @@ def unify_bad_channels(insts):
 
     .. versionadded:: 1.6
     """
+    ...
 
 class ReferenceMixin(MontageMixin):
     """Mixin class for Raw, Evoked, Epochs."""
@@ -648,6 +650,7 @@ def rename_channels(
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 @dataclass
 class _BuiltinChannelAdjacency:
@@ -685,6 +688,7 @@ def get_builtin_ch_adjacencies(*, descriptions: bool = False):
     -----
     .. versionadded:: 1.1
     """
+    ...
 
 def read_ch_adjacency(fname, picks=None):
     """Read a channel adjacency ("neighbors") file that ships with MNE.
@@ -734,6 +738,7 @@ def read_ch_adjacency(fname, picks=None):
     :func:`mne.stats.combine_adjacency` to prepare a final "adjacency"
     to pass to the eventual function.
     """
+    ...
 
 def find_ch_adjacency(info, ch_type):
     """Find the adjacency matrix for the given channels.
@@ -787,6 +792,7 @@ def find_ch_adjacency(info, ch_type):
     :func:`mne.stats.combine_adjacency` to prepare a final "adjacency"
     to pass to the eventual function.
     """
+    ...
 
 def fix_mag_coil_types(info, use_cal: bool = False) -> None:
     """Fix magnetometer coil types.
@@ -820,6 +826,7 @@ def fix_mag_coil_types(info, use_cal: bool = False) -> None:
               current estimates computed by the MNE software is very small.
               Therefore the use of ``fix_mag_coil_types`` is not mandatory.
     """
+    ...
 
 def make_1020_channel_selections(
     info, midline: str = "z", *, return_ch_names: bool = False
@@ -859,6 +866,7 @@ def make_1020_channel_selections(
         indices (if ``return_ch_names=False``) or to a list of channel names
         (if ``return_ch_names=True``).
     """
+    ...
 
 def combine_channels(
     inst,
@@ -919,6 +927,7 @@ def combine_channels(
         one virtual channel for each group in ``groups`` (and, if ``keep_stim``
         is ``True``, also containing stimulus channels).
     """
+    ...
 
 def read_vectorview_selection(name, fname=None, info=None, verbose=None):
     """Read Neuromag Vector View channel selection from a file.
@@ -953,3 +962,4 @@ def read_vectorview_selection(name, fname=None, info=None, verbose=None):
     sel : list of str
         List with channel names in the selection.
     """
+    ...

@@ -33,6 +33,7 @@ def read_ctf_comp(fid, node, chs, verbose=None):
     compdata : list
         The compensation data
     """
+    ...
 
 def write_ctf_comp(fid, comps) -> None:
     """Write the CTF compensation data into a fif file.
@@ -45,3 +46,4 @@ def write_ctf_comp(fid, comps) -> None:
     comps : list
         The compensation data to write
     """
+    ...

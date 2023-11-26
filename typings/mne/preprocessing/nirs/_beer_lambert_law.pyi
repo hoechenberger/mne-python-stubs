@@ -18,3 +18,4 @@ def beer_lambert_law(raw, ppf: float = 6.0):
     raw : instance of Raw
         The modified raw instance.
     """
+    ...

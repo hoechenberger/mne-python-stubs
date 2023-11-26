@@ -47,6 +47,7 @@ def make_inverse_resolution_matrix(
         The columns of the resolution matrix are the point-spread functions
         (PSFs) and the rows are the cross-talk functions (CTFs).
     """
+    ...
 
 def get_point_spread(
     resmat,
@@ -150,6 +151,7 @@ def get_point_spread(
         PSFs/CTFs for the specified vertices. Arrays for multiple labels are
         returned as list. Only returned if ``mode='svd'`` and ``return_pca_vars=True``.
     """
+    ...
 
 def get_cross_talk(
     resmat,
@@ -253,3 +255,4 @@ def get_cross_talk(
         PSFs/CTFs for the specified vertices. Arrays for multiple labels are
         returned as list. Only returned if ``mode='svd'`` and ``return_pca_vars=True``.
     """
+    ...

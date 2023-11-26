@@ -19,6 +19,7 @@ def get_cuda_memory(kind: str = "available"):
     memory : str
         The amount of available or total memory as a human-readable string.
     """
+    ...
 
 def init_cuda(ignore_config: bool = False, verbose=None) -> None:
     """Initialize CUDA functionality.
@@ -43,6 +44,7 @@ def init_cuda(ignore_config: bool = False, verbose=None) -> None:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def set_cuda_device(device_id, verbose=None) -> None:
     """Set the CUDA device temporarily for the current session.
@@ -58,3 +60,4 @@ def set_cuda_device(device_id, verbose=None) -> None:
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...

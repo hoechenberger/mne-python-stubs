@@ -33,3 +33,4 @@ def fetch_infant_template(age, subjects_dir=..., *, verbose=...):
     ----------
     .. footbibliography::
     """
+    ...

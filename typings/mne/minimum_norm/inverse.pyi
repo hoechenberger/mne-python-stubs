@@ -89,6 +89,7 @@ def read_inverse_operator(fname, *, verbose=None):
     --------
     write_inverse_operator, make_inverse_operator
     """
+    ...
 
 def write_inverse_operator(
     fname, inv, *, overwrite: bool = False, verbose=None
@@ -119,6 +120,7 @@ def write_inverse_operator(
     --------
     read_inverse_operator
     """
+    ...
 
 def combine_xyz(vec, square: bool = False):
     """Compute the three Cartesian components of a vector or matrix together.
@@ -134,6 +136,7 @@ def combine_xyz(vec, square: bool = False):
     comb : array
         Output vector [sqrt(x1^2+y1^2+z1^2), ..., sqrt(x_n^2+y_n^2+z_n^2)]
     """
+    ...
 
 def prepare_inverse_operator(
     orig,
@@ -178,6 +181,7 @@ def prepare_inverse_operator(
     inv : instance of InverseOperator
         Prepared inverse operator.
     """
+    ...
 
 def apply_inverse(
     evoked,
@@ -311,6 +315,7 @@ def apply_inverse(
     ----------
     .. footbibliography::
     """
+    ...
 
 def apply_inverse_raw(
     raw,
@@ -412,6 +417,7 @@ def apply_inverse_raw(
     apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
     apply_inverse_cov : Apply inverse operator to covariance object.
     """
+    ...
 
 def apply_inverse_epochs(
     epochs,
@@ -499,6 +505,7 @@ def apply_inverse_epochs(
     apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
     apply_inverse_cov : Apply inverse operator to a covariance object.
     """
+    ...
 
 def apply_inverse_tfr_epochs(
     epochs_tfr,
@@ -584,6 +591,7 @@ def apply_inverse_tfr_epochs(
     apply_inverse_epochs : Apply inverse operator to epochs object.
     apply_inverse_cov : Apply inverse operator to a covariance object.
     """
+    ...
 
 def apply_inverse_cov(
     cov,
@@ -671,6 +679,7 @@ def apply_inverse_cov(
     ----------
     .. footbibliography::
     """
+    ...
 
 def make_inverse_operator(
     info,
@@ -830,6 +839,7 @@ def make_inverse_operator(
     ----------
     .. footbibliography::
     """
+    ...
 
 def compute_rank_inverse(inv):
     """Compute the rank of a linear inverse operator (MNE, dSPM, etc.).
@@ -844,6 +854,7 @@ def compute_rank_inverse(inv):
     rank : int
         The rank of the inverse operator.
     """
+    ...
 
 def estimate_snr(evoked, inv, verbose=None):
     """Estimate the SNR as a function of time for evoked data.
@@ -915,3 +926,4 @@ def estimate_snr(evoked, inv, verbose=None):
 
     .. versionadded:: 0.9.0
     """
+    ...

@@ -193,6 +193,7 @@ def plot_epochs_image(
     |          | list of ch_names           | callable   |                   |
     +----------+----------------------------+------------+-------------------+
     """
+    ...
 
 def plot_drop_log(
     drop_log,
@@ -238,6 +239,7 @@ def plot_drop_log(
     fig : instance of matplotlib.figure.Figure
         The figure.
     """
+    ...
 
 def plot_epochs(
     epochs,
@@ -492,6 +494,7 @@ def plot_epochs(
 
     .. versionadded:: 0.10.0
     """
+    ...
 
 def plot_epochs_psd(
     epochs,
@@ -652,3 +655,4 @@ def plot_epochs_psd(
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
     of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
     """
+    ...

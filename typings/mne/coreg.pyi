@@ -80,6 +80,7 @@ def coregister_fiducials(info, fiducials, tol: float = 0.01):
     .. note:: The :class:`mne.Info` object fiducials must be in the
               head coordinate space.
     """
+    ...
 
 def create_default_subject(
     fs_home=None, update: bool = False, subjects_dir=None, verbose=None
@@ -117,6 +118,7 @@ def create_default_subject(
     files from Freesurfer into the current subjects_dir, and also adds the
     auxiliary files provided by MNE.
     """
+    ...
 
 def fit_matched_points(
     src_pts,
@@ -170,6 +172,7 @@ def fit_matched_points(
         A single tuple containing the rotation, translation, and scaling
         parameters in that order (as applicable).
     """
+    ...
 
 def read_mri_cfg(subject, subjects_dir=None):
     """Read information from the cfg file of a scaled MRI brain.
@@ -186,6 +189,7 @@ def read_mri_cfg(subject, subjects_dir=None):
     cfg : dict
         Dictionary with entries from the MRI's cfg file.
     """
+    ...
 
 def scale_bem(
     subject_to,
@@ -233,6 +237,7 @@ def scale_bem(
         :func:`mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
+    ...
 
 def scale_labels(
     subject_to,
@@ -265,6 +270,7 @@ def scale_labels(
     subjects_dir : None | path-like
         Override the ``SUBJECTS_DIR`` environment variable.
     """
+    ...
 
 def scale_mri(
     subject_from,
@@ -330,6 +336,7 @@ def scale_mri(
     :func:`scale_labels`, and :func:`scale_source_space` based on expected
     filename patterns in the subject directory.
     """
+    ...
 
 def scale_source_space(
     subject_to,
@@ -378,6 +385,7 @@ def scale_source_space(
     are updated so that source estimates can be plotted on the original MRI
     volume.
     """
+    ...
 
 class Coregistration:
     """Class for MRI<->head coregistration.

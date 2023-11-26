@@ -72,6 +72,7 @@ def permutation_t_test(
     ----------
     .. footbibliography::
     """
+    ...
 
 def bootstrap_confidence_interval(
     arr,
@@ -101,3 +102,4 @@ def bootstrap_confidence_interval(
         Containing the lower boundary of the CI at ``cis[0, ...]`` and the
         upper boundary of the CI at ``cis[1, ...]``.
     """
+    ...

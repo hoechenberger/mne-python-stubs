@@ -549,6 +549,7 @@ def make_projector(projs, ch_names, bads=(), include_active: bool = True):
     U : array
         The orthogonal basis of the projection vectors.
     """
+    ...
 
 def make_projector_info(info, include_active: bool = True):
     """Make an SSP operator using the measurement info.
@@ -570,6 +571,7 @@ def make_projector_info(info, include_active: bool = True):
     nproj : int
         How many items in the projector.
     """
+    ...
 
 def activate_proj(projs, copy: bool = True, verbose=None):
     """Set all projections to active.
@@ -594,6 +596,7 @@ def activate_proj(projs, copy: bool = True, verbose=None):
     projs : list
         The projectors.
     """
+    ...
 
 def deactivate_proj(projs, copy: bool = True, verbose=None):
     """Set all projections to inactive.
@@ -618,6 +621,7 @@ def deactivate_proj(projs, copy: bool = True, verbose=None):
     projs : list
         The projectors.
     """
+    ...
 
 def make_eeg_average_ref_proj(
     info, activate: bool = True, *, ch_type: str = "eeg", verbose=None
@@ -648,6 +652,7 @@ def make_eeg_average_ref_proj(
     proj: instance of Projection
         The SSP/PCA projector.
     """
+    ...
 
 def setup_proj(
     info,
@@ -688,3 +693,4 @@ def setup_proj(
     info : mne.Info
         The modified measurement info.
     """
+    ...

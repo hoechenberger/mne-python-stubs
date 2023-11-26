@@ -503,6 +503,7 @@ def read_cov(fname, verbose=None):
     --------
     write_cov, compute_covariance, compute_raw_covariance
     """
+    ...
 
 def make_ad_hoc_cov(info, std=None, *, verbose=None):
     """Create an ad hoc noise covariance.
@@ -535,6 +536,7 @@ def make_ad_hoc_cov(info, std=None, *, verbose=None):
 
     .. versionadded:: 0.9.0
     """
+    ...
 
 def compute_raw_covariance(
     raw,
@@ -728,6 +730,7 @@ def compute_raw_covariance(
     baseline correction) subtract the mean across time *for each epoch*
     (instead of across epochs) for each channel.
     """
+    ...
 
 def compute_covariance(
     epochs,
@@ -964,6 +967,7 @@ def compute_covariance(
     ----------
     .. footbibliography::
     """
+    ...
 
 class _RegCovariance(BaseEstimator):
     """Aux class."""
@@ -1067,6 +1071,7 @@ def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
     --------
     read_cov
     """
+    ...
 
 def prepare_noise_cov(
     noise_cov,
@@ -1163,6 +1168,7 @@ def prepare_noise_cov(
         A copy of the covariance with the good channels subselected
         and parameters updated.
     """
+    ...
 
 def regularize(
     cov,
@@ -1308,6 +1314,7 @@ def regularize(
     --------
     mne.compute_covariance
     """
+    ...
 
 def compute_whitener(
     noise_cov,
@@ -1437,6 +1444,7 @@ def compute_whitener(
     colorer : ndarray, shape (n_channels, n_channels) or (n_channels, n_nonzero)
         The coloring matrix.
     """
+    ...
 
 def whiten_evoked(
     evoked, noise_cov, picks=None, diag=None, rank=None, scalings=None, verbose=None
@@ -1527,3 +1535,4 @@ def whiten_evoked(
     evoked_white : instance of Evoked
         The whitened evoked data.
     """
+    ...

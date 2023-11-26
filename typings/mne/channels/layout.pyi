@@ -146,6 +146,7 @@ def read_layout(fname=None, *, scale: bool = True):
        | Vectorview-mag       |
        +----------------------+
     """
+    ...
 
 def make_eeg_layout(
     info,
@@ -185,6 +186,7 @@ def make_eeg_layout(
     --------
     make_grid_layout, generate_2d_layout
     """
+    ...
 
 def make_grid_layout(info, picks=None, n_col=None):
     """Generate .lout file for custom data, i.e., ICA sources.
@@ -213,6 +215,7 @@ def make_grid_layout(info, picks=None, n_col=None):
     --------
     make_eeg_layout, generate_2d_layout
     """
+    ...
 
 def find_layout(info, ch_type=None, exclude: str = "bads"):
     """Choose a layout based on the channels in the info 'chs' field.
@@ -236,6 +239,7 @@ def find_layout(info, ch_type=None, exclude: str = "bads"):
     layout : Layout instance | None
         None if layout not found.
     """
+    ...
 
 def generate_2d_layout(
     xy,
@@ -297,3 +301,4 @@ def generate_2d_layout(
     -----
     .. versionadded:: 0.9.0
     """
+    ...

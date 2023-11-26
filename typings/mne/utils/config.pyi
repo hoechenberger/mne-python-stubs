@@ -14,6 +14,7 @@ def set_cache_dir(cache_dir) -> None:
         Directory to use for temporary file storage. None disables
         temporary file storage.
     """
+    ...
 
 def set_memmap_min_size(memmap_min_size) -> None:
     """Set the minimum size for memmaping of arrays for parallel processing.
@@ -25,6 +26,7 @@ def set_memmap_min_size(memmap_min_size) -> None:
         mapping for parallel processing, e.g., '1M' for 1 megabyte.
         Use None to disable memmaping of large arrays.
     """
+    ...
 
 def get_config_path(home_dir=None):
     """Get path to standard mne-python config file.
@@ -42,6 +44,7 @@ def get_config_path(home_dir=None):
         will be '%USERPROFILE%\\.mne\\mne-python.json'. On every other
         system, this will be ~/.mne/mne-python.json.
     """
+    ...
 
 def get_config(
     key=None,
@@ -83,6 +86,7 @@ def get_config(
     --------
     set_config
     """
+    ...
 
 def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
     """Set a MNE-Python preference key in the config file and environment.
@@ -105,6 +109,7 @@ def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
     --------
     get_config
     """
+    ...
 
 def get_subjects_dir(subjects_dir=None, raise_error: bool = False):
     """Safely use subjects_dir input to return SUBJECTS_DIR.
@@ -123,6 +128,7 @@ def get_subjects_dir(subjects_dir=None, raise_error: bool = False):
     value : Path | None
         The SUBJECTS_DIR value.
     """
+    ...
 
 def sys_info(
     fid=None,
@@ -157,3 +163,4 @@ def sys_info(
 
         .. versionadded:: 1.6
     """
+    ...

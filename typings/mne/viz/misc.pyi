@@ -75,6 +75,7 @@ def plot_cov(
     .. versionchanged:: 0.19
        Approximate ranks for each channel type are shown with red dashed lines.
     """
+    ...
 
 def plot_source_spectrogram(
     stcs,
@@ -111,6 +112,7 @@ def plot_source_spectrogram(
     fig : instance of Figure
         The figure.
     """
+    ...
 
 def plot_bem(
     subject,
@@ -198,6 +200,7 @@ def plot_bem(
     on top of the midpoint MRI slice with the BEM boundary drawn for that
     slice.
     """
+    ...
 
 def plot_events(
     events,
@@ -268,6 +271,7 @@ def plot_events(
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
     """Plot the amplitude traces of a set of dipoles.
@@ -290,6 +294,7 @@ def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
     -----
     .. versionadded:: 0.9.0
     """
+    ...
 
 def adjust_axes(axes, remove_spines=("top", "right"), grid: bool = True) -> None:
     """Adjust some properties of axes.
@@ -303,6 +308,7 @@ def adjust_axes(axes, remove_spines=("top", "right"), grid: bool = True) -> None
     grid : bool
         Turn grid on (True) or off (False).
     """
+    ...
 
 def plot_filter(
     h,
@@ -393,6 +399,7 @@ def plot_filter(
     -----
     .. versionadded:: 0.14
     """
+    ...
 
 def plot_ideal_filter(
     freq,
@@ -458,6 +465,7 @@ def plot_ideal_filter(
         >>> plot_ideal_filter(freq, gain, flim=(0.1, 100))  #doctest: +SKIP
         <...Figure...>
     """
+    ...
 
 def plot_csd(
     csd,
@@ -503,6 +511,7 @@ def plot_csd(
     fig : list of Figure
         The figures created by this function.
     """
+    ...
 
 def plot_chpi_snr(snr_dict, axes=None):
     """Plot time-varying SNR estimates of the HPI coils.
@@ -535,3 +544,4 @@ def plot_chpi_snr(snr_dict, axes=None):
 
     .. versionadded:: 0.24
     """
+    ...

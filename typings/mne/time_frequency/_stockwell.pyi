@@ -74,6 +74,7 @@ def tfr_array_stockwell(
     ----------
     .. footbibliography::
     """
+    ...
 
 def tfr_stockwell(
     inst,
@@ -146,3 +147,4 @@ def tfr_stockwell(
     ----------
     .. footbibliography::
     """
+    ...

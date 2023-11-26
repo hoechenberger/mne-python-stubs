@@ -418,6 +418,7 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
     --------
     write_source_spaces, setup_source_space, setup_volume_source_space
     """
+    ...
 
 def find_source_space_hemi(src):
     """Return the hemisphere id for a source space.
@@ -432,6 +433,7 @@ def find_source_space_hemi(src):
     hemi : int
         Deduced hemisphere id.
     """
+    ...
 
 def label_src_vertno_sel(label, src):
     """Find vertex numbers and indices from label.
@@ -450,6 +452,7 @@ def label_src_vertno_sel(label, src):
     src_sel : array of int (len(idx) = len(vertices[0]) + len(vertices[1]))
         Indices of the selected vertices in sourse space.
     """
+    ...
 
 def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) -> None:
     """Write source spaces to a file.
@@ -476,6 +479,7 @@ def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) ->
     --------
     read_source_spaces
     """
+    ...
 
 def setup_source_space(
     subject,
@@ -540,6 +544,7 @@ def setup_source_space(
     --------
     setup_volume_source_space
     """
+    ...
 
 def setup_volume_source_space(
     subject=None,
@@ -690,6 +695,7 @@ def setup_volume_source_space(
     file with values corresponding to the freesurfer lookup-table (typically
     ``aseg.mgz``).
     """
+    ...
 
 def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None):
     """Compute inter-source distances along the cortical surface.
@@ -741,6 +747,7 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
     the source space to disk, as the computed distances will automatically be
     stored along with the source space data for future use.
     """
+    ...
 
 def get_volume_labels_from_src(src, subject, subjects_dir):
     """Return a list of Label of segmented volumes included in the src space.
@@ -760,6 +767,7 @@ def get_volume_labels_from_src(src, subject, subjects_dir):
     labels_aseg : list of Label
         List of Label of segmented volumes included in src space.
     """
+    ...
 
 def morph_source_spaces(
     src_from,
@@ -804,6 +812,7 @@ def morph_source_spaces(
     -----
     .. versionadded:: 0.10.0
     """
+    ...
 
 def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None):
     """Compute distances between vertices and sensors.
@@ -844,6 +853,7 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
         The Euclidean distances of source space vertices with respect to
         sensors.
     """
+    ...
 
 def get_decimated_surfaces(src):
     """Get the decimated surfaces from a source space.
@@ -864,3 +874,4 @@ def get_decimated_surfaces(src):
     -----
     .. versionadded:: 1.0
     """
+    ...

@@ -168,3 +168,4 @@ def gamma_map(
     ----------
     .. footbibliography::
     """
+    ...

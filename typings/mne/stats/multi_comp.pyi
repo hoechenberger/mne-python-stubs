@@ -27,6 +27,7 @@ def fdr_correction(pvals, alpha: float = 0.05, method: str = "indep"):
     ----------
     .. footbibliography::
     """
+    ...
 
 def bonferroni_correction(pval, alpha: float = 0.05):
     """P-value correction with Bonferroni method.
@@ -45,3 +46,4 @@ def bonferroni_correction(pval, alpha: float = 0.05):
     pval_corrected : array
         P-values adjusted for multiple hypothesis testing to limit FDR.
     """
+    ...

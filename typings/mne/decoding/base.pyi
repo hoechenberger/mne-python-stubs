@@ -98,6 +98,7 @@ def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False)
     ----------
     .. footbibliography::
     """
+    ...
 
 def cross_val_multiscore(
     estimator,
@@ -182,3 +183,4 @@ def cross_val_multiscore(
     scores : array of float, shape (n_splits,) | shape (n_splits, n_scores)
         Array of scores of the estimator for each run of the cross validation.
     """
+    ...

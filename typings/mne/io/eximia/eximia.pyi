@@ -33,6 +33,7 @@ def read_raw_eximia(fname, preload: bool = False, verbose=None):
     --------
     mne.io.Raw : Documentation of attributes and methods of RawEximia.
     """
+    ...
 
 class RawEximia(BaseRaw):
     """Raw object from an Eximia EEG file.

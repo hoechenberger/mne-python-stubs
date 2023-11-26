@@ -4,6 +4,7 @@ import dataclasses
 import importlib
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 from mypy import stubgen
@@ -13,7 +14,7 @@ from mypy import stubgen
 # include them here.
 # Note that individual objects can be excluded via OBJS_EXCLUDES below
 MODULE_PY_EXCLUDE_PATTERNS = [
-    "mne/viz/backends/_pyvista.py",  # causing errors when running stubdefaulter
+    # "mne/viz/backends/_pyvista.py",  # causing errors when running stubdefaulter
     "mne/report/js_and_css/bootstrap-icons/gen_css_for_mne.py",  # cannot be imported
     "**/tests/**",  # don't include any tests
 ]
@@ -87,8 +88,6 @@ OBJS_EXCLUDES = [
     "CNTEventType2",
     "CNTEventType3",
     "_ica_node",
-    # PyVista stuff causing trouble
-    "_SafeBackgroundPlotter",
 ]
 
 for stub_path in stub_paths:
@@ -104,11 +103,13 @@ for stub_path in stub_paths:
         o for o in module_ast.body if isinstance(o, (ast.ClassDef, ast.FunctionDef))
     ]
     for obj in top_level_objs:
-        if obj.name.startswith(("_Abstract", "_Base")):
-            print(f"⏭️  Skipping base class {obj.name}")
-            continue
-
         expanded_docstring = getattr(module_imported, obj.name).__doc__
+
+        if isinstance(obj, ast.ClassDef):
+            obj_type = "class"
+        else:
+            assert isinstance(obj, ast.FunctionDef)
+            obj_type = "function"
 
         if obj.name in OBJS_EXCLUDES:
             print(f"⏭️  {module_name}.{obj.name} is explicitly excluded, skipping")
@@ -119,6 +120,26 @@ for stub_path in stub_paths:
         elif expanded_docstring:
             print(f"📝 Expanding docstring for {module_name}.{obj.name}")
             obj.body[0].value.value = expanded_docstring
+
+            expanded_docstring = expanded_docstring.split("\n")
+            for line_idx, line in enumerate(expanded_docstring):
+                if line.startswith(".. warning:: DEPRECATED:"):
+                    print(
+                        f"🦄 Applying special handling for @deprecated {obj_type} "
+                        f"{module_name}.{obj.name}.{obj.name}"
+                    )
+                    expanded_docstring[line_idx] = (obj.col_offset + 4) * " " + line
+
+            expanded_docstring = "\n".join(expanded_docstring)
+
+            # FIXME We do have a docstring, but sometimes the AST doesn't
+            # contain the method body?! So we add an ellipsis here manually
+            if len(obj.body) == 1:
+                print(
+                    f"⛑️  Fixing empty body for {obj_type} "
+                    f"{module_name}.{obj.name}.{obj.name}"
+                )
+                obj.body.append(ast.Expr(ast.Ellipsis()))
         else:
             print(f"⏭️  No docstring found for {module_name}.{obj.name}, skipping")
             # Still continue below if object is a class
@@ -126,26 +147,44 @@ for stub_path in stub_paths:
                 continue
 
         # If it's a class, iterate over its methods
-        if isinstance(obj, ast.ClassDef):
+        if obj_type == "class":
             methods = [m for m in obj.body if isinstance(m, ast.FunctionDef)]
             if not methods:
                 continue
+
             for method in methods:
                 expanded_docstring = getattr(
                     getattr(module_imported, obj.name), method.name
                 ).__doc__
                 if expanded_docstring:
                     print(
-                        f"📝 Expanding docstring for "
+                        f"📝 Expanding docstring for method "
                         f"{module_name}.{obj.name}.{method.name}"
                     )
+
+                    # Special handling for docstring manipulation done through
+                    # the @deprecated decorator
+                    # We need to correct the indentation (add spaces before
+                    # the ".. warning::" directive)
+                    expanded_docstring = expanded_docstring.split("\n")
+                    for line_idx, line in enumerate(expanded_docstring):
+                        if line.startswith(".. warning:: DEPRECATED:"):
+                            print(
+                                f"🦄 Applying special handling for @deprecated method "
+                                f"{module_name}.{obj.name}.{method.name}"
+                            )
+                            expanded_docstring[line_idx] = (
+                                method.col_offset + 4
+                            ) * " " + line
+
+                    expanded_docstring = "\n".join(expanded_docstring)
                     method.body[0].value.value = expanded_docstring
 
                     # FIXME We do have a docstring, but sometimes the AST doesn't
                     # contain the method body?! So we add an ellipsis here manually
                     if len(method.body) == 1:
                         print(
-                            f"⛑️ Fixing method body for "
+                            f"⛑️  Fixing empty body for method "
                             f"{module_name}.{obj.name}.{method.name}"
                         )
                         method.body.append(ast.Expr(ast.Ellipsis()))
@@ -178,12 +217,23 @@ print("💾 Writing py.typed file")
 (stubs_out_dir / "mne" / "py.typed").write_text("partial\n", encoding="utf-8")
 
 print("📊 Adding parameter default values to stub files")
-subprocess.run(["python", "-m", "stubdefaulter", "--packages=typings"])
+if (
+    subprocess.run(["python", "-m", "stubdefaulter", "--packages=typings"]).returncode
+    != 0
+):
+    sys.exit(1)
 
-print("😵‍💫 Running Ruff on stub files")
-subprocess.run(["ruff", "--ignore=F811", "--fix", f"{stubs_out_dir}/mne"])
+print("😵 Running Ruff on stub files")
+if (
+    subprocess.run(
+        ["ruff", "--ignore=F811,F821", "--fix", f"{stubs_out_dir}/mne"]
+    ).returncode
+    != 0
+):
+    sys.exit(1)
 
 print("⚫️ Running Black on stub files")
-subprocess.run(["black", f"{stubs_out_dir}/mne"])
+if subprocess.run(["black", "--quiet", f"{stubs_out_dir}/mne"]).returncode != 0:
+    sys.exit(1)
 
 print("\n💚 Done! Happy typing!")

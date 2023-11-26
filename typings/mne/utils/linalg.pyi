@@ -19,6 +19,7 @@ def eigh(a, overwrite_a: bool = False, check_finite: bool = True):
         The normalized eigenvector corresponding to the eigenvalue ``w[i]``
         is the column ``v[:, i]``.
     """
+    ...
 
 def sqrtm_sym(A, rcond: float = 1e-07, inv: bool = False):
     """Compute the sqrt of a positive, semi-definite matrix (or its inverse).
@@ -40,3 +41,4 @@ def sqrtm_sym(A, rcond: float = 1e-07, inv: bool = False):
     s : ndarray, shape (..., n)
         The original square root singular values (not inverted).
     """
+    ...

@@ -69,6 +69,7 @@ def read_raw_eyelink(
     preserve the times between recording trials and annotate them with
     ``'BAD_ACQ_SKIP'``.
     """
+    ...
 
 class RawEyelink(BaseRaw):
     """Raw object from an XXX file.

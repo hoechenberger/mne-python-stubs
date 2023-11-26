@@ -121,6 +121,7 @@ def source_band_induced_power(
         For lists of one or more labels, the induced power estimate has shape
         (n_labels, n_frequencies, n_samples).
     """
+    ...
 
 def source_induced_power(
     epochs,
@@ -248,6 +249,7 @@ def source_induced_power(
         The phase-locking value array with shape (n_sources, n_freqs,
         n_samples). Only returned if ``return_plv=True``.
     """
+    ...
 
 def compute_source_psd(
     raw,
@@ -391,6 +393,7 @@ def compute_source_psd(
 
     Otherwise the two should produce identical results.
     """
+    ...
 
 def compute_source_psd_epochs(
     epochs,
@@ -503,3 +506,4 @@ def compute_source_psd_epochs(
     --------
     compute_source_psd
     """
+    ...

@@ -66,3 +66,4 @@ def plot_projs_joint(
 
     .. versionadded:: 1.1
     """
+    ...

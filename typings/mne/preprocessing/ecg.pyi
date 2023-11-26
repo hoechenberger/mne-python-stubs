@@ -63,6 +63,7 @@ def qrs_detector(
     events : array
         Indices of ECG peaks.
     """
+    ...
 
 def find_ecg_events(
     raw,
@@ -145,6 +146,7 @@ def find_ecg_events(
     create_ecg_epochs
     compute_proj_ecg
     """
+    ...
 
 def create_ecg_epochs(
     raw,
@@ -321,3 +323,4 @@ def create_ecg_epochs(
         mne.Epochs(raw, r_peak_events_array, tmin=-0.5, tmax=0.5,
                    baseline=None, preload=True, proj=False)  # doctest: +SKIP
     """
+    ...

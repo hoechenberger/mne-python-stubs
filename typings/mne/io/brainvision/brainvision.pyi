@@ -119,6 +119,7 @@ def read_raw_brainvision(
     --------
     mne.io.Raw : Documentation of attributes and methods of RawBrainVision.
     """
+    ...
 
 class _BVEventParser(_DefaultEventParser):
     """Parse standard brainvision events, accounting for non-standard ones."""

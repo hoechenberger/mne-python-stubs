@@ -47,3 +47,4 @@ def peak_finder(x0, thresh=None, extrema: int = 1, verbose=None):
     >>> peak_mags # doctest: +SKIP
     array([0.36900026, 1.76007351]) # doctest: +SKIP
     """
+    ...

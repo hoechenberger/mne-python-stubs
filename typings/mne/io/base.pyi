@@ -1965,6 +1965,7 @@ def concatenate_raws(
     events : ndarray of int, shape (n_events, 3)
         The events. Only returned if ``event_list`` is not None.
     """
+    ...
 
 def match_channel_orders(raws, copy: bool = True):
     """Ensure consistent channel order across raws.
@@ -1983,3 +1984,4 @@ def match_channel_orders(raws, copy: bool = True):
     list of Raw
         List of Raws with matched channel orders.
     """
+    ...

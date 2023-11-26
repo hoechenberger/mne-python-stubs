@@ -1505,3 +1505,4 @@ def read_spectrum(fname):
     --------
     mne.time_frequency.Spectrum.save
     """
+    ...

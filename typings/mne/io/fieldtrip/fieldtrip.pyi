@@ -37,6 +37,7 @@ def read_raw_fieldtrip(fname, info, data_name: str = "data"):
     --------
     mne.io.Raw : Documentation of attributes and methods of RawArray.
     """
+    ...
 
 def read_epochs_fieldtrip(
     fname, info, data_name: str = "data", trialinfo_column: int = 0
@@ -75,6 +76,7 @@ def read_epochs_fieldtrip(
     epochs : instance of EpochsArray
         An EpochsArray containing the loaded data.
     """
+    ...
 
 def read_evoked_fieldtrip(fname, info, comment=None, data_name: str = "data"):
     """Load evoked data from a FieldTrip timelocked structure.
@@ -108,3 +110,4 @@ def read_evoked_fieldtrip(fname, info, comment=None, data_name: str = "data"):
     evoked : instance of EvokedArray
         An EvokedArray containing the loaded data.
     """
+    ...

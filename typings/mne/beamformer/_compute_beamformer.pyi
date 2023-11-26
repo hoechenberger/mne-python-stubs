@@ -56,3 +56,4 @@ def read_beamformer(fname):
     filter : instance of Beamformer
         The beamformer filter.
     """
+    ...

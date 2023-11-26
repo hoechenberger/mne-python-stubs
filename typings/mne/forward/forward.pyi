@@ -221,6 +221,7 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
     surface-based, fixed orientation cannot be reverted after loading the
     forward solution with :func:`read_forward_solution`.
     """
+    ...
 
 def convert_forward_solution(
     fwd,
@@ -260,6 +261,7 @@ def convert_forward_solution(
     fwd : Forward
         The modified forward solution.
     """
+    ...
 
 def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) -> None:
     """Write forward solution to a file.
@@ -303,6 +305,7 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
     surface-based, fixed orientation cannot be reverted after loading the
     forward solution with :func:`read_forward_solution`.
     """
+    ...
 
 def is_fixed_orient(forward, orig: bool = False):
     """Check if the forward operator is fixed orientation.
@@ -320,6 +323,7 @@ def is_fixed_orient(forward, orig: bool = False):
     fixed_ori : bool
         Whether or not it is fixed orientation.
     """
+    ...
 
 def write_forward_meas_info(fid, info) -> None:
     """Write measurement info stored in forward solution.
@@ -332,6 +336,7 @@ def write_forward_meas_info(fid, info) -> None:
     info : mne.Info
         The :class:`mne.Info` object with information about the sensors and methods of measurement.
     """
+    ...
 
 def compute_orient_prior(forward, loose: str = "auto", verbose=None):
     """Compute orientation prior.
@@ -370,6 +375,7 @@ def compute_orient_prior(forward, loose: str = "auto", verbose=None):
     --------
     compute_depth_prior
     """
+    ...
 
 def compute_depth_prior(
     forward,
@@ -512,6 +518,7 @@ def compute_depth_prior(
           biased toward whichever channel type has the largest values in
           SI units (such as EEG being orders of magnitude larger than MEG).
     """
+    ...
 
 def apply_forward(
     fwd,
@@ -576,6 +583,7 @@ def apply_forward(
     --------
     apply_forward_raw: Compute sensor space data and return a Raw object.
     """
+    ...
 
 def apply_forward_raw(
     fwd,
@@ -640,6 +648,7 @@ def apply_forward_raw(
     --------
     apply_forward: Compute sensor space data and return an Evoked object.
     """
+    ...
 
 def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
     """Restrict forward operator to active sources in a source estimate.
@@ -667,6 +676,7 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
     --------
     restrict_forward_to_label
     """
+    ...
 
 def restrict_forward_to_label(fwd, labels):
     """Restrict forward operator to labels.
@@ -687,6 +697,7 @@ def restrict_forward_to_label(fwd, labels):
     --------
     restrict_forward_to_stc
     """
+    ...
 
 def average_forward_solutions(fwds, weights=None, verbose=None):
     """Average forward solutions.
@@ -712,3 +723,4 @@ def average_forward_solutions(fwds, weights=None, verbose=None):
     fwd : Forward
         The averaged forward solution.
     """
+    ...

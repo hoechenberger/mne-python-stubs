@@ -111,6 +111,7 @@ def make_forward_solution(
     .. versionchanged:: 1.2
        Added support for OpenMEEG-based forward solution calculations.
     """
+    ...
 
 def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=None):
     """Convert dipole object to source estimate and calculate forward operator.
@@ -176,6 +177,7 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
     -----
     .. versionadded:: 0.12.0
     """
+    ...
 
 def use_coil_def(fname) -> Generator[None, None, None]:
     """Use a custom coil definition file.
@@ -200,3 +202,4 @@ def use_coil_def(fname) -> Generator[None, None, None]:
     This allows using custom coil definitions with functions that require
     forward modeling.
     """
+    ...

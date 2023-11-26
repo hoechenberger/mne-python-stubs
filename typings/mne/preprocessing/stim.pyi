@@ -53,3 +53,4 @@ def fix_stim_artifact(
     inst : instance of Raw or Evoked or Epochs
         Instance with modified data.
     """
+    ...

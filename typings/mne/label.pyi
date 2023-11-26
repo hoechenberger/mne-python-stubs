@@ -646,6 +646,7 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
     read_labels_from_annot
     write_labels_to_annot
     """
+    ...
 
 def write_label(filename, label, verbose=None) -> None:
     """Write a FreeSurfer label.
@@ -672,6 +673,7 @@ def write_label(filename, label, verbose=None) -> None:
     Note that due to file specification limitations, the Label's subject and
     color attributes are not saved to disk.
     """
+    ...
 
 def split_label(
     label, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
@@ -714,6 +716,7 @@ def split_label(
     projecting all label vertex coordinates onto this axis and dividing them at
     regular spatial intervals.
     """
+    ...
 
 def label_sign_flip(label, src):
     """Compute sign for label averaging.
@@ -730,6 +733,7 @@ def label_sign_flip(label, src):
     flip : array
         Sign flip vector (contains 1 or -1).
     """
+    ...
 
 def stc_to_label(
     stc,
@@ -779,6 +783,7 @@ def stc_to_label(
         ordered in decreasing order depending of the maximum value in the stc.
         If no Label is available in an hemisphere, an empty list is returned.
     """
+    ...
 
 def grow_labels(
     subject,
@@ -855,6 +860,7 @@ def grow_labels(
     label, or integers, in which case the same extent and hemisphere is
     used for each label.
     """
+    ...
 
 def random_parcellation(
     subject,
@@ -903,6 +909,7 @@ def random_parcellation(
     labels : list of Label
         Random cortex parcellation.
     """
+    ...
 
 def read_labels_from_annot(
     subject,
@@ -964,6 +971,7 @@ def read_labels_from_annot(
     write_labels_to_annot
     morph_labels
     """
+    ...
 
 def morph_labels(
     labels,
@@ -1020,6 +1028,7 @@ def morph_labels(
 
     .. versionadded:: 0.18
     """
+    ...
 
 def labels_to_stc(
     labels, values, tmin: int = 0, tstep: int = 1, subject=None, src=None, verbose=None
@@ -1085,6 +1094,7 @@ def labels_to_stc(
 
     .. versionadded:: 0.18
     """
+    ...
 
 def write_labels_to_annot(
     labels,
@@ -1150,6 +1160,7 @@ def write_labels_to_annot(
     Vertices that are not covered by any of the labels are assigned to a label
     named ``"unknown"``.
     """
+    ...
 
 def select_sources(
     subject,
@@ -1219,3 +1230,4 @@ def select_sources(
 
     .. versionadded:: 0.18
     """
+    ...

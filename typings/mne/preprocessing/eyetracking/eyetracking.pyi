@@ -37,3 +37,4 @@ def set_channel_types_eyetrack(inst, mapping):
     if your data comes in ``deg`` (visual angle) it will be converted to
     ``rad``, if it is in ``mm`` it will be converted to ``m``.
     """
+    ...

@@ -43,6 +43,7 @@ def read_raw_persyst(fname, preload: bool = False, verbose=None):
     filename from the lay file, and look for that file inside the same
     directory as the lay file.
     """
+    ...
 
 class RawPersyst(BaseRaw):
     """Raw object from a Persyst file.

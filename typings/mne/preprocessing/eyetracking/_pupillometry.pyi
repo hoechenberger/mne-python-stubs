@@ -38,3 +38,4 @@ def interpolate_blinks(
     -----
     .. versionadded:: 1.5
     """
+    ...
