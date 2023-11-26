@@ -105,8 +105,8 @@ for stub_path in stub_paths:
         if (
             obj_type == "class"
             and obj.bases
-            and (id_ := getattr(obj.bases[0], "id", None))
-            and id_ == "NamedTuple"
+            and hasattr(obj.bases[0], "id")
+            and obj.bases[0].id == "NamedTuple"
         ):
             print(
                 f"⏭️  {module_name}.{obj.name} is a NamedTuple, skipping "
