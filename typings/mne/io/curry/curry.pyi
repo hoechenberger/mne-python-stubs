@@ -31,23 +31,23 @@ class CurryParameters(NamedTuple):
     chanidx_in_file: Incomplete
 
 def read_raw_curry(fname, preload: bool = False, verbose=None):
-    """### Read raw data from Curry files.
+    """## 🧠 Read raw data from Curry files.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         Path to a curry file with extensions ``.dat``, ``.dap``, ``.rs3``,
         ``.cdt``, ``.cdt.dpa``, ``.cdt.cef`` or ``.cef``.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -56,7 +56,7 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
     -----
     ### ⏎ Returns
 
-    raw : instance of RawCurry
+    #### `raw : instance of RawCurry`
         A Raw object containing Curry data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
@@ -68,12 +68,12 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
     ...
 
 class RawCurry(BaseRaw):
-    """### Raw object from Curry file.
+    """## 🧠 Raw object from Curry file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         Path to a curry file with extensions ``.dat``, ``.dap``, ``.rs3``,
         ``.cdt``, ``.cdt.dpa``, ``.cdt.cef`` or ``.cef``.
     %(preload)s

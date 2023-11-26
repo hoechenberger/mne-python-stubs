@@ -40,7 +40,7 @@ def compute_proj_ecg(
     meg: str = "separate",
     verbose=None,
 ):
-    """### Compute SSP (signal-space projection) vectors for ECG artifacts.
+    """## 🧠 Compute SSP (signal-space projection) vectors for ECG artifacts.
 
     This function will:
 
@@ -62,72 +62,72 @@ def compute_proj_ecg(
     -----
     ### 🛠️ Parameters
 
-    raw : mne.io.Raw
+    #### `raw : mne.io.Raw`
         Raw input file.
-    raw_event : mne.io.Raw or None
+    #### `raw_event : mne.io.Raw or None`
         Raw file to use for event detection (if None, raw is used).
-    tmin : float
+    #### `tmin : float`
         Time before event in seconds.
-    tmax : float
+    #### `tmax : float`
         Time after event in seconds.
-    n_grad : int
+    #### `n_grad : int`
         Number of SSP vectors for gradiometers.
-    n_mag : int
+    #### `n_mag : int`
         Number of SSP vectors for magnetometers.
-    n_eeg : int
+    #### `n_eeg : int`
         Number of SSP vectors for EEG.
-    l_freq : float | None
+    #### `l_freq : float | None`
         Filter low cut-off frequency for the data channels in Hz.
-    h_freq : float | None
+    #### `h_freq : float | None`
         Filter high cut-off frequency for the data channels in Hz.
-    average : bool
+    #### `average : bool`
         Compute SSP after averaging. Default is True.
-    filter_length : str | int | None
+    #### `filter_length : str | int | None`
         Number of taps to use for filtering.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    ch_name : str | None
+    #### `ch_name : str | None`
         Channel to use for ECG detection (Required if no ECG found).
-    reject : dict | None
+    #### `reject : dict | None`
         Epoch rejection configuration (see Epochs).
-    flat : dict | None
+    #### `flat : dict | None`
         Epoch flat configuration (see Epochs).
-    bads : list
+    #### `bads : list`
         List with (additional) bad channels.
-    avg_ref : bool
+    #### `avg_ref : bool`
         Add EEG average reference proj.
-    no_proj : bool
+    #### `no_proj : bool`
         Exclude the SSP projectors currently in the fiff file.
-    event_id : int
+    #### `event_id : int`
         ID to use for events.
-    ecg_l_freq : float
+    #### `ecg_l_freq : float`
         Low pass frequency applied to the ECG channel for event detection.
-    ecg_h_freq : float
+    #### `ecg_h_freq : float`
         High pass frequency applied to the ECG channel for event detection.
-    tstart : float
+    #### `tstart : float`
         Start artifact detection after tstart seconds.
-    qrs_threshold : float | str
+    #### `qrs_threshold : float | str`
         Between 0 and 1. qrs detection threshold. Can also be "auto" to
         automatically choose the threshold that generates a reasonable
         number of heartbeats (40-160 beats / min).
-    filter_method : str
+    #### `filter_method : str`
         Method for filtering ('iir' or 'fir').
-    iir_params : dict | None
+    #### `iir_params : dict | None`
         Dictionary of parameters to use for IIR filtering.
         See mne.filter.construct_iir_filter for details. If iir_params
         is None and method="iir", 4th order Butterworth will be used.
-    copy : bool
+    #### `copy : bool`
         If False, filtering raw data is done in place. Defaults to True.
-    return_drop_log : bool
+    #### `return_drop_log : bool`
         If True, return the drop log.
 
         ✨ Added in vesion 0.15
-    meg : str
+    #### `meg : str`
         Can be ``'separate'`` (default) or ``'combined'`` to compute projectors
         for magnetometers and gradiometers separately or jointly.
         If ``'combined'``, ``n_mag == n_grad`` is required and the number of
@@ -135,7 +135,7 @@ def compute_proj_ecg(
 
         ✨ Added in vesion 0.18
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -145,11 +145,11 @@ def compute_proj_ecg(
     ### ⏎ Returns
 
 
-    projs : list of Projection
+    #### `projs : list of Projection`
         List of computed projection vectors.
-    ecg_events : ndarray
+    #### `ecg_events : ndarray`
         Detected ECG events.
-    drop_log : list
+    #### `drop_log : list`
         The drop log, if requested.
 
     -----
@@ -198,7 +198,7 @@ def compute_proj_eog(
     meg: str = "separate",
     verbose=None,
 ):
-    """### Compute SSP (signal-space projection) vectors for EOG artifacts.
+    """## 🧠 Compute SSP (signal-space projection) vectors for EOG artifacts.
 
     This function will:
 
@@ -221,68 +221,68 @@ def compute_proj_eog(
     -----
     ### 🛠️ Parameters
 
-    raw : mne.io.Raw
+    #### `raw : mne.io.Raw`
         Raw input file.
-    raw_event : mne.io.Raw or None
+    #### `raw_event : mne.io.Raw or None`
         Raw file to use for event detection (if None, raw is used).
-    tmin : float
+    #### `tmin : float`
         Time before event in seconds.
-    tmax : float
+    #### `tmax : float`
         Time after event in seconds.
-    n_grad : int
+    #### `n_grad : int`
         Number of SSP vectors for gradiometers.
-    n_mag : int
+    #### `n_mag : int`
         Number of SSP vectors for magnetometers.
-    n_eeg : int
+    #### `n_eeg : int`
         Number of SSP vectors for EEG.
-    l_freq : float | None
+    #### `l_freq : float | None`
         Filter low cut-off frequency for the data channels in Hz.
-    h_freq : float | None
+    #### `h_freq : float | None`
         Filter high cut-off frequency for the data channels in Hz.
-    average : bool
+    #### `average : bool`
         Compute SSP after averaging. Default is True.
-    filter_length : str | int | None
+    #### `filter_length : str | int | None`
         Number of taps to use for filtering.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    reject : dict | None
+    #### `reject : dict | None`
         Epoch rejection configuration (see Epochs).
-    flat : dict | None
+    #### `flat : dict | None`
         Epoch flat configuration (see Epochs).
-    bads : list
+    #### `bads : list`
         List with (additional) bad channels.
-    avg_ref : bool
+    #### `avg_ref : bool`
         Add EEG average reference proj.
-    no_proj : bool
+    #### `no_proj : bool`
         Exclude the SSP projectors currently in the fiff file.
-    event_id : int
+    #### `event_id : int`
         ID to use for events.
-    eog_l_freq : float
+    #### `eog_l_freq : float`
         Low pass frequency applied to the E0G channel for event detection.
-    eog_h_freq : float
+    #### `eog_h_freq : float`
         High pass frequency applied to the EOG channel for event detection.
-    tstart : float
+    #### `tstart : float`
         Start artifact detection after tstart seconds.
-    filter_method : str
+    #### `filter_method : str`
         Method for filtering ('iir' or 'fir').
-    iir_params : dict | None
+    #### `iir_params : dict | None`
         Dictionary of parameters to use for IIR filtering.
         See mne.filter.construct_iir_filter for details. If iir_params
         is None and method="iir", 4th order Butterworth will be used.
-    ch_name : str | None
+    #### `ch_name : str | None`
         If not None, specify EOG channel name.
-    copy : bool
+    #### `copy : bool`
         If False, filtering raw data is done in place. Defaults to True.
-    return_drop_log : bool
+    #### `return_drop_log : bool`
         If True, return the drop log.
 
         ✨ Added in vesion 0.15
-    meg : str
+    #### `meg : str`
         Can be 'separate' (default) or 'combined' to compute projectors
         for magnetometers and gradiometers separately or jointly.
         If 'combined', ``n_mag == n_grad`` is required and the number of
@@ -290,7 +290,7 @@ def compute_proj_eog(
 
         ✨ Added in vesion 0.18
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -300,11 +300,11 @@ def compute_proj_eog(
     ### ⏎ Returns
 
 
-    projs : list of Projection
+    #### `projs : list of Projection`
         List of computed projection vectors.
     eog_events: ndarray
         Detected EOG events.
-    drop_log : list
+    #### `drop_log : list`
         The drop log, if requested.
 
     -----

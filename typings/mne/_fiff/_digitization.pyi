@@ -8,7 +8,7 @@ from .write import (
 )
 
 class DigPoint(dict):
-    """### Container for a digitization point.
+    """## 🧠 Container for a digitization point.
 
     This is a simple subclass of the standard dict type designed to provide
     a readable string representation.
@@ -16,16 +16,16 @@ class DigPoint(dict):
     -----
     ### 🛠️ Parameters
 
-    kind : int
+    #### `kind : int`
         The kind of channel,
         e.g. ``FIFFV_POINT_EEG``, ``FIFFV_POINT_CARDINAL``.
-    r : array, shape (3,)
+    #### `r : array, shape (3,)`
         3D position in m. and coord_frame.
-    ident : int
+    #### `ident : int`
         Number specifying the identity of the point.
         e.g.  ``FIFFV_POINT_NASION`` if kind is ``FIFFV_POINT_CARDINAL``,
         or 42 if kind is ``FIFFV_POINT_EEG``.
-    coord_frame : int
+    #### `coord_frame : int`
         The coordinate frame used, e.g. ``FIFFV_COORD_HEAD``.
     """
 
@@ -43,28 +43,28 @@ class DigPoint(dict):
 def write_dig(
     fname, pts, coord_frame=None, *, overwrite: bool = False, verbose=None
 ) -> None:
-    """### Write digitization data to a FIF file.
+    """## 🧠 Write digitization data to a FIF file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         Destination file name.
-    pts : iterator of dict
+    #### `pts : iterator of dict`
         Iterator through digitizer points. Each point is a dictionary with
         the keys 'kind', 'ident' and 'r'.
-    coord_frame : int | str | None
+    #### `coord_frame : int | str | None`
         If all the points have the same coordinate frame, specify the type
         here. Can be None (default) if the points could have varying
         coordinate frames.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
         ✨ Added in vesion 1.0
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

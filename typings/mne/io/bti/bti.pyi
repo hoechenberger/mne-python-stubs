@@ -33,7 +33,7 @@ dtypes: Incomplete
 DTYPES: Incomplete
 
 class _bytes_io_mock_context:
-    """### Make a context for BytesIO."""
+    """## 🧠 Make a context for BytesIO."""
 
     target: Incomplete
 
@@ -47,34 +47,34 @@ class _bytes_io_mock_context:
     ) -> None: ...
 
 class RawBTi(BaseRaw):
-    """### Raw object from 4D Neuroimaging MagnesWH3600 data.
+    """## 🧠 Raw object from 4D Neuroimaging MagnesWH3600 data.
 
     -----
     ### 🛠️ Parameters
 
-    pdf_fname : path-like
+    #### `pdf_fname : path-like`
         Path to the processed data file (PDF).
-    config_fname : path-like
+    #### `config_fname : path-like`
         Path to system config file.
-    head_shape_fname : path-like | None
+    #### `head_shape_fname : path-like | None`
         Path to the head shape file.
-    rotation_x : float
+    #### `rotation_x : float`
         Degrees to tilt x-axis for sensor frame misalignment. Ignored
         if convert is True.
-    translation : array-like, shape (3,)
+    #### `translation : array-like, shape (3,)`
         The translation to place the origin of coordinate system
         to the center of the head. Ignored if convert is True.
-    convert : bool
+    #### `convert : bool`
         Convert to Neuromag coordinates or not.
-    rename_channels : bool
+    #### `rename_channels : bool`
         Whether to keep original 4D channel labels or not. Defaults to True.
-    sort_by_ch_name : bool
+    #### `sort_by_ch_name : bool`
         Reorder channels according to channel label. 4D channels don't have
         monotonically increasing numbers in their labels. Defaults to True.
-    ecg_ch : str | None
+    #### `ecg_ch : str | None`
         The 4D name of the ECG channel. If None, the channel will be treated
         as regular EEG channel.
-    eog_ch : tuple of str | None
+    #### `eog_ch : tuple of str | None`
         The 4D names of the EOG channels. If None, the channels will be treated
         as regular EEG channels.
     %(preload)s
@@ -114,7 +114,7 @@ def read_raw_bti(
     preload: bool = False,
     verbose=None,
 ):
-    """### Raw object from 4D Neuroimaging MagnesWH3600 data.
+    """## 🧠 Raw object from 4D Neuroimaging MagnesWH3600 data.
 
     ### 💡 Note
         1. Currently direct inclusion of reference channel weights
@@ -129,33 +129,33 @@ def read_raw_bti(
     -----
     ### 🛠️ Parameters
 
-    pdf_fname : path-like
+    #### `pdf_fname : path-like`
         Path to the processed data file (PDF).
-    config_fname : path-like
+    #### `config_fname : path-like`
         Path to system config file.
-    head_shape_fname : path-like | None
+    #### `head_shape_fname : path-like | None`
         Path to the head shape file.
-    rotation_x : float
+    #### `rotation_x : float`
         Degrees to tilt x-axis for sensor frame misalignment. Ignored
         if convert is True.
-    translation : array-like, shape (3,)
+    #### `translation : array-like, shape (3,)`
         The translation to place the origin of coordinate system
         to the center of the head. Ignored if convert is True.
-    convert : bool
+    #### `convert : bool`
         Convert to Neuromag coordinates or not.
-    rename_channels : bool
+    #### `rename_channels : bool`
         Whether to keep original 4D channel labels or not. Defaults to True.
-    sort_by_ch_name : bool
+    #### `sort_by_ch_name : bool`
         Reorder channels according to channel label. 4D channels don't have
         monotonically increasing numbers in their labels. Defaults to True.
-    ecg_ch : str | None
+    #### `ecg_ch : str | None`
         The 4D name of the ECG channel. If None, the channel will be treated
         as regular EEG channel.
-    eog_ch : tuple of str | None
+    #### `eog_ch : tuple of str | None`
         The 4D names of the EOG channels. If None, the channels will be treated
         as regular EEG channels.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
@@ -164,7 +164,7 @@ def read_raw_bti(
 
         ✨ Added in vesion 0.11
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -173,7 +173,7 @@ def read_raw_bti(
     -----
     ### ⏎ Returns
 
-    raw : instance of RawBTi
+    #### `raw : instance of RawBTi`
         A Raw object containing BTI data.
         See `mne.io.Raw` for documentation of attributes and methods.
 

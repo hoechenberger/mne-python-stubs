@@ -51,7 +51,7 @@ from _typeshed import Incomplete
 INVERSE_METHODS: Incomplete
 
 class InverseOperator(dict):
-    """### InverseOperator class to represent info from inverse operator."""
+    """## 🧠 InverseOperator class to represent info from inverse operator."""
 
     def copy(self):
         """### Return a copy of the InverseOperator."""
@@ -66,16 +66,16 @@ class InverseOperator(dict):
         ...
 
 def read_inverse_operator(fname, *, verbose=None):
-    """### Read the inverse operator decomposition from a FIF file.
+    """## 🧠 Read the inverse operator decomposition from a FIF file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The name of the FIF file, which ends with ``-inv.fif`` or
         ``-inv.fif.gz``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -84,7 +84,7 @@ def read_inverse_operator(fname, *, verbose=None):
     -----
     ### ⏎ Returns
 
-    inv : instance of InverseOperator
+    #### `inv : instance of InverseOperator`
         The inverse operator.
 
     -----
@@ -97,24 +97,24 @@ def read_inverse_operator(fname, *, verbose=None):
 def write_inverse_operator(
     fname, inv, *, overwrite: bool = False, verbose=None
 ) -> None:
-    """### Write an inverse operator to a FIF file.
+    """## 🧠 Write an inverse operator to a FIF file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The name of the FIF file, which ends with ``-inv.fif`` or
         ``-inv.fif.gz``.
-    inv : dict
+    #### `inv : dict`
         The inverse operator.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
         ✨ Added in vesion 1.0
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -128,19 +128,19 @@ def write_inverse_operator(
     ...
 
 def combine_xyz(vec, square: bool = False):
-    """### Compute the three Cartesian components of a vector or matrix together.
+    """## 🧠 Compute the three Cartesian components of a vector or matrix together.
 
     -----
     ### 🛠️ Parameters
 
-    vec : 2d array of shape [3 n x p]
+    #### `vec : 2d array of shape [3 n x p]`
         Input [ x1 y1 z1 ... x_n y_n z_n ] where x1 ... z_n
         can be vectors
 
     -----
     ### ⏎ Returns
 
-    comb : array
+    #### `comb : array`
         Output vector [sqrt(x1^2+y1^2+z1^2), ..., sqrt(x_n^2+y_n^2+z_n^2)]
     """
     ...
@@ -154,31 +154,31 @@ def prepare_inverse_operator(
     copy: bool = True,
     verbose=None,
 ):
-    """### Prepare an inverse operator for actually computing the inverse.
+    """## 🧠 Prepare an inverse operator for actually computing the inverse.
 
     -----
     ### 🛠️ Parameters
 
-    orig : dict
+    #### `orig : dict`
         The inverse operator structure read from a file.
-    nave : int
+    #### `nave : int`
         Number of averages (scales the noise covariance).
     lambda2 : float
         The regularization factor. Recommended to be 1 / SNR**2.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
         ✨ Added in vesion 0.16
-    copy : bool | str
+    #### `copy : bool | str`
         If True (default), copy the inverse. False will not copy.
         Can be "non-src" to avoid copying the source space, which typically
         is not modified and can be large in memory.
 
         ✨ Added in vesion 0.21
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -187,7 +187,7 @@ def prepare_inverse_operator(
     -----
     ### ⏎ Returns
 
-    inv : instance of InverseOperator
+    #### `inv : instance of InverseOperator`
         Prepared inverse operator.
     """
     ...
@@ -205,24 +205,24 @@ def apply_inverse(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Apply inverse operator to evoked data.
+    """## 🧠 Apply inverse operator to evoked data.
 
     -----
     ### 🛠️ Parameters
 
-    evoked : Evoked object
+    #### `evoked : Evoked object`
         Evoked data.
-    inverse_operator : instance of InverseOperator
+    #### `inverse_operator : instance of InverseOperator`
         Inverse operator.
     lambda2 : float
         The regularization parameter.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm :footcite:`HamalainenIlmoniemi1994`,
         dSPM (default) :footcite:`DaleEtAl2000`,
         sLORETA :footcite:`Pascual-Marqui2002`, or
         eLORETA :footcite:`Pascual-Marqui2011`.
 
-    pick_ori : None | "normal" | "vector"
+    #### `pick_ori : None | "normal" | "vector"`
 
         Options:
 
@@ -238,22 +238,22 @@ def apply_inverse(
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a `mne.VectorSourceEstimate`
             object.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    label : Label | None
+    #### `label : Label | None`
         Restricts the source estimates to a given label. If None,
         source estimates will be computed for the entire source space.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes for details.
 
         ✨ Added in vesion 0.16
-    return_residual : bool
+    #### `return_residual : bool`
         If True (default False), return the residual evoked data.
         Cannot be used with ``method=='eLORETA'``.
 
         ✨ Added in vesion 0.17
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
@@ -262,7 +262,7 @@ def apply_inverse(
 
         ✨ Added in vesion 0.20
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -271,17 +271,17 @@ def apply_inverse(
     -----
     ### ⏎ Returns
 
-    stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
+    #### `stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate`
         The source estimates.
-    residual : instance of Evoked
+    #### `residual : instance of Evoked`
         The residual evoked data, only returned if return_residual is True.
 
     -----
     ### 👉 See Also
 
-    apply_inverse_raw : Apply inverse operator to raw object.
+    #### `apply_inverse_raw : Apply inverse operator to raw object.`
     apply_inverse_epochs : Apply inverse operator to epochs object.
-    apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
+    #### `apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.`
     apply_inverse_cov : Apply inverse operator to covariance object.
 
     -----
@@ -347,33 +347,33 @@ def apply_inverse_raw(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Apply inverse operator to Raw data.
+    """## 🧠 Apply inverse operator to Raw data.
 
     -----
     ### 🛠️ Parameters
 
-    raw : Raw object
+    #### `raw : Raw object`
         Raw data.
-    inverse_operator : dict
+    #### `inverse_operator : dict`
         Inverse operator.
     lambda2 : float
         The regularization parameter.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    label : Label | None
+    #### `label : Label | None`
         Restricts the source estimates to a given label. If None,
         source estimates will be computed for the entire source space.
-    start : int
+    #### `start : int`
         Index of first time sample (index not time is seconds).
-    stop : int
+    #### `stop : int`
         Index of first time sample not to include (index not time is seconds).
-    nave : int
+    #### `nave : int`
         Number of averages used to regularize the solution.
         Set to 1 on raw data.
-    time_func : callable
+    #### `time_func : callable`
         Linear function applied to sensor space time series.
 
-    pick_ori : None | "normal" | "vector"
+    #### `pick_ori : None | "normal" | "vector"`
 
         Options:
 
@@ -389,7 +389,7 @@ def apply_inverse_raw(
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a `mne.VectorSourceEstimate`
             object.
-    buffer_size : int (or None)
+    #### `buffer_size : int (or None)`
         If not None, the computation of the inverse and the combination of the
         current components is performed in segments of length buffer_size
         samples. While slightly slower, this is useful for long datasets as it
@@ -397,14 +397,14 @@ def apply_inverse_raw(
         buffer_size << data length).
         Note that this setting has no effect for fixed-orientation inverse
         operators.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
         ✨ Added in vesion 0.16
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
@@ -413,7 +413,7 @@ def apply_inverse_raw(
 
         ✨ Added in vesion 0.20
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -422,15 +422,15 @@ def apply_inverse_raw(
     -----
     ### ⏎ Returns
 
-    stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
+    #### `stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate`
         The source estimates.
 
     -----
     ### 👉 See Also
 
-    apply_inverse : Apply inverse operator to evoked object.
+    #### `apply_inverse : Apply inverse operator to evoked object.`
     apply_inverse_epochs : Apply inverse operator to epochs object.
-    apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
+    #### `apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.`
     apply_inverse_cov : Apply inverse operator to covariance object.
     """
     ...
@@ -449,27 +449,27 @@ def apply_inverse_epochs(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Apply inverse operator to Epochs.
+    """## 🧠 Apply inverse operator to Epochs.
 
     -----
     ### 🛠️ Parameters
 
-    epochs : Epochs object
+    #### `epochs : Epochs object`
         Single trial epochs.
-    inverse_operator : dict
+    #### `inverse_operator : dict`
         Inverse operator.
     lambda2 : float
         The regularization parameter.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    label : Label | None
+    #### `label : Label | None`
         Restricts the source estimates to a given label. If None,
         source estimates will be computed for the entire source space.
-    nave : int
+    #### `nave : int`
         Number of averages used to regularize the solution.
         Set to 1 on single Epoch by default.
 
-    pick_ori : None | "normal" | "vector"
+    #### `pick_ori : None | "normal" | "vector"`
 
         Options:
 
@@ -485,17 +485,17 @@ def apply_inverse_epochs(
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a `mne.VectorSourceEstimate`
             object.
-    return_generator : bool
+    #### `return_generator : bool`
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
         ✨ Added in vesion 0.16
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
@@ -504,7 +504,7 @@ def apply_inverse_epochs(
 
         ✨ Added in vesion 0.20
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -513,15 +513,15 @@ def apply_inverse_epochs(
     -----
     ### ⏎ Returns
 
-    stcs : list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)
+    #### `stcs : list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)`
         The source estimates for all epochs.
 
     -----
     ### 👉 See Also
 
-    apply_inverse_raw : Apply inverse operator to raw object.
+    #### `apply_inverse_raw : Apply inverse operator to raw object.`
     apply_inverse : Apply inverse operator to evoked object.
-    apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
+    #### `apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.`
     apply_inverse_cov : Apply inverse operator to a covariance object.
     """
     ...
@@ -540,28 +540,28 @@ def apply_inverse_tfr_epochs(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Apply inverse operator to EpochsTFR.
+    """## 🧠 Apply inverse operator to EpochsTFR.
 
     -----
     ### 🛠️ Parameters
 
-    epochs_tfr : EpochsTFR object
+    #### `epochs_tfr : EpochsTFR object`
         Single trial, phase-amplitude (complex-valued), time-frequency epochs.
-    inverse_operator : list of dict | dict
+    #### `inverse_operator : list of dict | dict`
         The inverse operator for each frequency or a single inverse operator
         to use for all frequencies.
     lambda2 : float
         The regularization parameter.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    label : Label | None
+    #### `label : Label | None`
         Restricts the source estimates to a given label. If None,
         source estimates will be computed for the entire source space.
-    nave : int
+    #### `nave : int`
         Number of averages used to regularize the solution.
         Set to 1 on single Epoch by default.
 
-    pick_ori : None | "normal" | "vector"
+    #### `pick_ori : None | "normal" | "vector"`
 
         Options:
 
@@ -577,22 +577,22 @@ def apply_inverse_tfr_epochs(
             No pooling of the orientations is done, and the vector result
             will be returned in the form of a `mne.VectorSourceEstimate`
             object.
-    return_generator : bool
+    #### `return_generator : bool`
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -601,16 +601,16 @@ def apply_inverse_tfr_epochs(
     -----
     ### ⏎ Returns
 
-    stcs : list of list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)
+    #### `stcs : list of list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)`
         The source estimates for all frequencies (outside list) and for
         all epochs (inside list).
 
     -----
     ### 👉 See Also
 
-    apply_inverse_raw : Apply inverse operator to raw object.
+    #### `apply_inverse_raw : Apply inverse operator to raw object.`
     apply_inverse : Apply inverse operator to evoked object.
-    apply_inverse_epochs : Apply inverse operator to epochs object.
+    #### `apply_inverse_epochs : Apply inverse operator to epochs object.`
     apply_inverse_cov : Apply inverse operator to a covariance object.
     """
     ...
@@ -629,27 +629,27 @@ def apply_inverse_cov(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Apply inverse operator to covariance data.
+    """## 🧠 Apply inverse operator to covariance data.
 
     -----
     ### 🛠️ Parameters
 
-    cov : instance of Covariance
+    #### `cov : instance of Covariance`
         Covariance data, computed on the time segment for which to compute
         source power.
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement. Used specify the channels to include.
-    inverse_operator : instance of InverseOperator
+    #### `inverse_operator : instance of InverseOperator`
         Inverse operator.
-    nave : int
+    #### `nave : int`
         Number of averages used to regularize the solution.
     lambda2 : float
         The regularization parameter.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
 
-    pick_ori : None | "normal"
+    #### `pick_ori : None | "normal"`
 
         Options:
 
@@ -660,19 +660,19 @@ def apply_inverse_cov(
         - ``"normal"``
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    label : Label | None
+    #### `label : Label | None`
         Restricts the source estimates to a given label. If None,
         source estimates will be computed for the entire source space.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes for details.
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -681,15 +681,15 @@ def apply_inverse_cov(
     -----
     ### ⏎ Returns
 
-    stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
+    #### `stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate`
         The source estimates.
 
     -----
     ### 👉 See Also
 
-    apply_inverse : Apply inverse operator to evoked object.
+    #### `apply_inverse : Apply inverse operator to evoked object.`
     apply_inverse_raw : Apply inverse operator to raw object.
-    apply_inverse_epochs : Apply inverse operator to epochs object.
+    #### `apply_inverse_epochs : Apply inverse operator to epochs object.`
     apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
 
     -----
@@ -718,24 +718,24 @@ def make_inverse_operator(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Assemble inverse operator.
+    """## 🧠 Assemble inverse operator.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
         Specifies the channels to include. Bad channels (in ``info['bads']``)
         are not used.
-    forward : instance of Forward
+    #### `forward : instance of Forward`
         Forward operator. See `mne.make_forward_solution` to create the operator.
-    noise_cov : instance of Covariance
+    #### `noise_cov : instance of Covariance`
         The noise covariance matrix. See `mne.compute_raw_covariance` and
         `mne.compute_covariance` to compute the noise covariance matrix on
         `mne.io.Raw` and `mne.Epochs` respectively.
 
-    loose : float | 'auto' | dict
+    #### `loose : float | 'auto' | dict`
         Value that weights the source variances of the dipole components
         that are parallel (tangential) to the cortical surface. Can be:
 
@@ -749,7 +749,7 @@ def make_inverse_operator(
             Mapping from the key for a given source space type (surface, volume,
             discrete) to the loose value. Useful mostly for mixed source spaces.
 
-    depth : None | float | dict
+    #### `depth : None | float | dict`
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
@@ -759,12 +759,12 @@ def make_inverse_operator(
 
         🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
-    fixed : bool | 'auto'
+    #### `fixed : bool | 'auto'`
         Use fixed source orientations normal to the cortical mantle. If True,
         the loose parameter must be ``"auto"`` or ``0``. If ``'auto'``, the loose value
         is used.
 
-    rank : None | 'info' | 'full' | dict
+    #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -809,11 +809,11 @@ def make_inverse_operator(
 
         The default is ``None``.
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -822,7 +822,7 @@ def make_inverse_operator(
     -----
     ### ⏎ Returns
 
-    inv : instance of InverseOperator
+    #### `inv : instance of InverseOperator`
         Inverse operator.
 
     -----
@@ -871,34 +871,34 @@ def make_inverse_operator(
     ...
 
 def compute_rank_inverse(inv):
-    """### Compute the rank of a linear inverse operator (MNE, dSPM, etc.).
+    """## 🧠 Compute the rank of a linear inverse operator (MNE, dSPM, etc.).
 
     -----
     ### 🛠️ Parameters
 
-    inv : instance of InverseOperator
+    #### `inv : instance of InverseOperator`
         The inverse operator.
 
     -----
     ### ⏎ Returns
 
-    rank : int
+    #### `rank : int`
         The rank of the inverse operator.
     """
     ...
 
 def estimate_snr(evoked, inv, verbose=None):
-    """### Estimate the SNR as a function of time for evoked data.
+    """## 🧠 Estimate the SNR as a function of time for evoked data.
 
     -----
     ### 🛠️ Parameters
 
-    evoked : instance of Evoked
+    #### `evoked : instance of Evoked`
         Evoked instance.
-    inv : instance of InverseOperator
+    #### `inv : instance of InverseOperator`
         The inverse operator.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -907,9 +907,9 @@ def estimate_snr(evoked, inv, verbose=None):
     -----
     ### ⏎ Returns
 
-    snr : ndarray, shape (n_times,)
+    #### `snr : ndarray, shape (n_times,)`
         The SNR estimated from the whitened data (i.e., GFP of whitened data).
-    snr_est : ndarray, shape (n_times,)
+    #### `snr_est : ndarray, shape (n_times,)`
         The SNR estimated using the mismatch between the unregularized
         solution and the regularized solution.
 

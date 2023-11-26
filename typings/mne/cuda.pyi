@@ -7,24 +7,24 @@ from .utils import (
 )
 
 def get_cuda_memory(kind: str = "available"):
-    """### Get the amount of free memory for CUDA operations.
+    """## 🧠 Get the amount of free memory for CUDA operations.
 
     -----
     ### 🛠️ Parameters
 
-    kind : str
+    #### `kind : str`
         Can be ``"available"`` or ``"total"``.
 
     -----
     ### ⏎ Returns
 
-    memory : str
+    #### `memory : str`
         The amount of available or total memory as a human-readable string.
     """
     ...
 
 def init_cuda(ignore_config: bool = False, verbose=None) -> None:
-    """### Initialize CUDA functionality.
+    """## 🧠 Initialize CUDA functionality.
 
     This function attempts to load the necessary interfaces
     (hardware connectivity) to run CUDA-based filtering. This
@@ -38,10 +38,10 @@ def init_cuda(ignore_config: bool = False, verbose=None) -> None:
     -----
     ### 🛠️ Parameters
 
-    ignore_config : bool
+    #### `ignore_config : bool`
         If True, ignore the config value MNE_USE_CUDA and force init.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -50,15 +50,15 @@ def init_cuda(ignore_config: bool = False, verbose=None) -> None:
     ...
 
 def set_cuda_device(device_id, verbose=None) -> None:
-    """### Set the CUDA device temporarily for the current session.
+    """## 🧠 Set the CUDA device temporarily for the current session.
 
     -----
     ### 🛠️ Parameters
 
-    device_id : int
+    #### `device_id : int`
         Numeric ID of the CUDA-capable device you want MNE-Python to use.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

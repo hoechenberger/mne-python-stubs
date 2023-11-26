@@ -9,14 +9,14 @@ MNE_BROWSER_BACKEND: Incomplete
 backend: Incomplete
 
 class BrowserParams:
-    """### Container object for 2D browser parameters."""
+    """## 🧠 Container object for 2D browser parameters."""
 
     close_key: str
 
     def __init__(self, **kwargs) -> None: ...
 
 class BrowserBase(ABC, metaclass=abc.ABCMeta):
-    """### A base class containing for the 2D browser.
+    """## 🧠 A base class containing for the 2D browser.
 
     This class contains all backend-independent attributes and methods.
     """
@@ -31,15 +31,15 @@ class BrowserBase(ABC, metaclass=abc.ABCMeta):
         -----
         ### 🛠️ Parameters
 
-        key : str
+        #### `key : str`
             The key to fake (e.g., ``'a'``).
-        fig : instance of Figure
+        #### `fig : instance of Figure`
             The figure to pass the keypress to.
         """
         ...
 
 def set_browser_backend(backend_name, verbose=None):
-    """### Set the 2D browser backend for MNE.
+    """## 🧠 Set the 2D browser backend for MNE.
 
     The backend will be set as specified and operations will use
     that backend.
@@ -47,13 +47,13 @@ def set_browser_backend(backend_name, verbose=None):
     -----
     ### 🛠️ Parameters
 
-    backend_name : str
+    #### `backend_name : str`
         The 2D browser backend to select. See Notes for the capabilities
         of each backend (``'qt'``, ``'matplotlib'``). The ``'qt'`` browser
         requires `mne-qt-browser
         <https://github.com/mne-tools/mne-qt-browser>`__.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -62,7 +62,7 @@ def set_browser_backend(backend_name, verbose=None):
     -----
     ### ⏎ Returns
 
-    old_backend_name : str | None
+    #### `old_backend_name : str | None`
         The old backend that was in use.
 
     -----
@@ -106,19 +106,19 @@ def set_browser_backend(backend_name, verbose=None):
     ...
 
 def get_browser_backend():
-    """### Return the 2D backend currently used.
+    """## 🧠 Return the 2D backend currently used.
 
     -----
     ### ⏎ Returns
 
-    backend_used : str | None
+    #### `backend_used : str | None`
         The 2D browser backend currently in use. If no backend is found,
         returns ``None``.
     """
     ...
 
 def use_browser_backend(backend_name) -> Generator[Incomplete, None, None]:
-    """### Create a 2D browser visualization context using the designated backend.
+    """## 🧠 Create a 2D browser visualization context using the designated backend.
 
     See `mne.viz.set_browser_backend` for more details on the available
     2D browser backends and their capabilities.
@@ -126,7 +126,7 @@ def use_browser_backend(backend_name) -> Generator[Incomplete, None, None]:
     -----
     ### 🛠️ Parameters
 
-    backend_name : {'qt', 'matplotlib'}
+    #### `backend_name : {'qt', 'matplotlib'}`
         The 2D browser backend to use in the context.
     """
     ...

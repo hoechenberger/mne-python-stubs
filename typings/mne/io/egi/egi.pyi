@@ -13,7 +13,7 @@ def read_raw_egi(
     channel_naming: str = "E%d",
     verbose=None,
 ):
-    """### Read EGI simple binary as raw object.
+    """## 🧠 Read EGI simple binary as raw object.
 
     ### 💡 Note This function attempts to create a synthetic trigger channel.
               See the Notes section below.
@@ -21,26 +21,26 @@ def read_raw_egi(
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the raw file. Files with an extension ``.mff`` are
         automatically considered to be EGI's native MFF format files.
-    eog : list or tuple
+    #### `eog : list or tuple`
         Names of channels or list of indices that should be designated
         EOG channels. Default is None.
-    misc : list or tuple
+    #### `misc : list or tuple`
         Names of channels or list of indices that should be designated
         MISC channels. Default is None.
-    include : None | list
+    #### `include : None | list`
        The event channels to be ignored when creating the synthetic
        trigger. Defaults to None.
        Note. Overrides ``exclude`` parameter.
-    exclude : None | list
+    #### `exclude : None | list`
        The event channels to be ignored when creating the synthetic
        trigger. Defaults to None. If None, channels that have more than
        one event and the ``sync`` and ``TREV`` channels will be
        ignored.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
@@ -48,14 +48,14 @@ def read_raw_egi(
         on the hard drive (slower, requires less memory).
 
         ✨ Added in vesion 0.11
-    channel_naming : str
+    #### `channel_naming : str`
         Channel naming convention for the data channels. Defaults to ``'E%d'``
         (resulting in channel names ``'E1'``, ``'E2'``, ``'E3'``...). The
         effective default prior to 0.14.0 was ``'EEG %03d'``.
 
          ✨ Added in vesion 0.14.0
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -64,7 +64,7 @@ def read_raw_egi(
     -----
     ### ⏎ Returns
 
-    raw : instance of RawEGI
+    #### `raw : instance of RawEGI`
         A Raw object containing EGI data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
@@ -92,7 +92,7 @@ def read_raw_egi(
     ...
 
 class RawEGI(BaseRaw):
-    """### Raw object from EGI simple binary file."""
+    """## 🧠 Raw object from EGI simple binary file."""
 
     event_id: Incomplete
 

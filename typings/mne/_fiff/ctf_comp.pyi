@@ -10,20 +10,20 @@ from .write import (
 )
 
 def read_ctf_comp(fid, node, chs, verbose=None):
-    """### Read the CTF software compensation data from the given node.
+    """## 🧠 Read the CTF software compensation data from the given node.
 
     -----
     ### 🛠️ Parameters
 
-    fid : file
+    #### `fid : file`
         The file descriptor.
-    node : dict
+    #### `node : dict`
         The node in the FIF tree.
-    chs : list
+    #### `chs : list`
         The list of channels from info['chs'] to match with
         compensators that are read.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -32,21 +32,21 @@ def read_ctf_comp(fid, node, chs, verbose=None):
     -----
     ### ⏎ Returns
 
-    compdata : list
+    #### `compdata : list`
         The compensation data
     """
     ...
 
 def write_ctf_comp(fid, comps) -> None:
-    """### Write the CTF compensation data into a fif file.
+    """## 🧠 Write the CTF compensation data into a fif file.
 
     -----
     ### 🛠️ Parameters
 
-    fid : file
+    #### `fid : file`
         The open FIF file descriptor
 
-    comps : list
+    #### `comps : list`
         The compensation data to write
     """
     ...

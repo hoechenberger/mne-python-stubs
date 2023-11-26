@@ -8,31 +8,31 @@ from _typeshed import Incomplete
 CH_TYPE_MAPPING: Incomplete
 
 class RawEDF(BaseRaw):
-    """### Raw object from EDF, EDF+ or BDF file.
+    """## 🧠 Raw object from EDF, EDF+ or BDF file.
 
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the EDF, EDF+ or BDF file.
-    eog : list or tuple
+    #### `eog : list or tuple`
         Names of channels or list of indices that should be designated EOG
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    misc : list or tuple
+    #### `misc : list or tuple`
         Names of channels or list of indices that should be designated MISC
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    stim_channel : ``'auto'`` | str | list of str | int | list of int
+    #### `stim_channel : ``'auto'`` | str | list of str | int | list of int`
         Defaults to ``'auto'``, which means that channels named ``'status'`` or
         ``'trigger'`` (case insensitive) are set to STIM. If str (or list of
         str), all channels matching the name(s) are set to STIM. If int (or
         list of ints), the channels corresponding to the indices are set to
         STIM.
-    exclude : list of str
+    #### `exclude : list of str`
         Channel names to exclude. This can help when reading data with
         different sampling rates to avoid unnecessary resampling.
-    infer_types : bool
+    #### `infer_types : bool`
         If True, try to infer channel types from channel labels. If a channel
         label starts with a known type (such as 'EEG') followed by a space and
         a name (such as 'Fp1'), the channel type will be set accordingly, and
@@ -42,30 +42,30 @@ class RawEDF(BaseRaw):
         type 'EEG'.
 
         ✨ Added in vesion 0.24.1
-    include : list of str | str
+    #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
         ✨ Added in vesion 1.1
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    units : dict | str
+    #### `units : dict | str`
         The units of the channels as stored in the file. This argument
         is useful only if the units are missing from the original file.
         If a dict, it must map a channel name to its unit, and if str
         it is assumed that all channels have the same units.
 
-    encoding : str
+    #### `encoding : str`
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -141,45 +141,45 @@ class RawEDF(BaseRaw):
     ) -> None: ...
 
 class RawGDF(BaseRaw):
-    """### Raw object from GDF file.
+    """## 🧠 Raw object from GDF file.
 
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the GDF file.
-    eog : list or tuple
+    #### `eog : list or tuple`
         Names of channels or list of indices that should be designated EOG
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    misc : list or tuple
+    #### `misc : list or tuple`
         Names of channels or list of indices that should be designated MISC
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    stim_channel : ``'auto'`` | str | list of str | int | list of int
+    #### `stim_channel : ``'auto'`` | str | list of str | int | list of int`
         Defaults to 'auto', which means that channels named 'status' or
         'trigger' (case insensitive) are set to STIM. If str (or list of str),
         all channels matching the name(s) are set to STIM. If int (or list of
         ints), channels corresponding to the indices are set to STIM.
-    exclude : list of str
+    #### `exclude : list of str`
         Channel names to exclude. This can help when reading data with
         different sampling rates to avoid unnecessary resampling.
 
         ✨ Added in vesion 0.24.1
-    include : list of str | str
+    #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
         ✨ Added in vesion 1.1
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -238,31 +238,31 @@ def read_raw_edf(
     *,
     verbose=None,
 ):
-    """### Reader function for EDF and EDF+ files.
+    """## 🧠 Reader function for EDF and EDF+ files.
 
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the EDF or EDF+ file.
-    eog : list or tuple
+    #### `eog : list or tuple`
         Names of channels or list of indices that should be designated EOG
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    misc : list or tuple
+    #### `misc : list or tuple`
         Names of channels or list of indices that should be designated MISC
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    stim_channel : ``'auto'`` | str | list of str | int | list of int
+    #### `stim_channel : ``'auto'`` | str | list of str | int | list of int`
         Defaults to ``'auto'``, which means that channels named ``'status'`` or
         ``'trigger'`` (case insensitive) are set to STIM. If str (or list of
         str), all channels matching the name(s) are set to STIM. If int (or
         list of ints), channels corresponding to the indices are set to STIM.
-    exclude : list of str | str
+    #### `exclude : list of str | str`
         Channel names to exclude. This can help when reading data with
         different sampling rates to avoid unnecessary resampling. A str is
         interpreted as a regular expression.
-    infer_types : bool
+    #### `infer_types : bool`
         If True, try to infer channel types from channel labels. If a channel
         label starts with a known type (such as 'EEG') followed by a space and
         a name (such as 'Fp1'), the channel type will be set accordingly, and
@@ -272,30 +272,30 @@ def read_raw_edf(
         type 'EEG'.
 
         ✨ Added in vesion 0.24.1
-    include : list of str | str
+    #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
         ✨ Added in vesion 1.1
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    units : dict | str
+    #### `units : dict | str`
         The units of the channels as stored in the file. This argument
         is useful only if the units are missing from the original file.
         If a dict, it must map a channel name to its unit, and if str
         it is assumed that all channels have the same units.
 
-    encoding : str
+    #### `encoding : str`
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -304,7 +304,7 @@ def read_raw_edf(
     -----
     ### ⏎ Returns
 
-    raw : instance of RawEDF
+    #### `raw : instance of RawEDF`
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
@@ -382,31 +382,31 @@ def read_raw_bdf(
     *,
     verbose=None,
 ):
-    """### Reader function for BDF files.
+    """## 🧠 Reader function for BDF files.
 
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the BDF file.
-    eog : list or tuple
+    #### `eog : list or tuple`
         Names of channels or list of indices that should be designated EOG
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    misc : list or tuple
+    #### `misc : list or tuple`
         Names of channels or list of indices that should be designated MISC
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    stim_channel : ``'auto'`` | str | list of str | int | list of int
+    #### `stim_channel : ``'auto'`` | str | list of str | int | list of int`
         Defaults to ``'auto'``, which means that channels named ``'status'`` or
         ``'trigger'`` (case insensitive) are set to STIM. If str (or list of
         str), all channels matching the name(s) are set to STIM. If int (or
         list of ints), channels corresponding to the indices are set to STIM.
-    exclude : list of str | str
+    #### `exclude : list of str | str`
         Channel names to exclude. This can help when reading data with
         different sampling rates to avoid unnecessary resampling. A str is
         interpreted as a regular expression.
-    infer_types : bool
+    #### `infer_types : bool`
         If True, try to infer channel types from channel labels. If a channel
         label starts with a known type (such as 'EEG') followed by a space and
         a name (such as 'Fp1'), the channel type will be set accordingly, and
@@ -416,30 +416,30 @@ def read_raw_bdf(
         type 'EEG'.
 
         ✨ Added in vesion 0.24.1
-    include : list of str | str
+    #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
         ✨ Added in vesion 1.1
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    units : dict | str
+    #### `units : dict | str`
         The units of the channels as stored in the file. This argument
         is useful only if the units are missing from the original file.
         If a dict, it must map a channel name to its unit, and if str
         it is assumed that all channels have the same units.
 
-    encoding : str
+    #### `encoding : str`
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -448,7 +448,7 @@ def read_raw_bdf(
     -----
     ### ⏎ Returns
 
-    raw : instance of RawEDF
+    #### `raw : instance of RawEDF`
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
@@ -514,42 +514,42 @@ def read_raw_gdf(
     preload: bool = False,
     verbose=None,
 ):
-    """### Reader function for GDF files.
+    """## 🧠 Reader function for GDF files.
 
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the GDF file.
-    eog : list or tuple
+    #### `eog : list or tuple`
         Names of channels or list of indices that should be designated EOG
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    misc : list or tuple
+    #### `misc : list or tuple`
         Names of channels or list of indices that should be designated MISC
         channels. Values should correspond to the electrodes in the file.
         Default is None.
-    stim_channel : ``'auto'`` | str | list of str | int | list of int
+    #### `stim_channel : ``'auto'`` | str | list of str | int | list of int`
         Defaults to ``'auto'``, which means that channels named ``'status'`` or
         ``'trigger'`` (case insensitive) are set to STIM. If str (or list of
         str), all channels matching the name(s) are set to STIM. If int (or
         list of ints), channels corresponding to the indices are set to STIM.
-    exclude : list of str | str
+    #### `exclude : list of str | str`
         Channel names to exclude. This can help when reading data with
         different sampling rates to avoid unnecessary resampling. A str is
         interpreted as a regular expression.
-    include : list of str | str
+    #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -558,7 +558,7 @@ def read_raw_gdf(
     -----
     ### ⏎ Returns
 
-    raw : instance of RawGDF
+    #### `raw : instance of RawGDF`
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 

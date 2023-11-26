@@ -7,7 +7,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class _ConstantScaler:
-    """### Scale channel types using constant values."""
+    """## 🧠 Scale channel types using constant values."""
 
     def __init__(self, info, scalings, do_scaling: bool = True) -> None: ...
     std_: Incomplete
@@ -19,7 +19,7 @@ class _ConstantScaler:
     def fit_transform(self, X, y=None): ...
 
 class Scaler(TransformerMixin, BaseEstimator):
-    """### Standardize channel data.
+    """## 🧠 Standardize channel data.
 
     This class scales data for each channel. It differs from scikit-learn
     classes (e.g., `sklearn.preprocessing.StandardScaler`) in that
@@ -32,9 +32,9 @@ class Scaler(TransformerMixin, BaseEstimator):
     ### 🛠️ Parameters
 
 
-    info : mne.Info | None
+    #### `info : mne.Info | None`
         The `mne.Info` object with information about the sensors and methods of measurement. Only necessary if ``scalings`` is a dict or None.
-    scalings : dict, str, default None
+    #### `scalings : dict, str, default None`
         Scaling method to be applied to data channel wise.
 
         * if scalings is None (default), scales mag by 1e15, grad by 1e13,
@@ -48,10 +48,10 @@ class Scaler(TransformerMixin, BaseEstimator):
           `sklearn.preprocessing.StandardScaler`
           is used.
 
-    with_mean : bool, default True
+    #### `with_mean : bool, default True`
         If True, center the data using mean (or median) before scaling.
         Ignored for channel-type scaling.
-    with_std : bool, default True
+    #### `with_std : bool, default True`
         If True, scale the data to unit variance (``scalings='mean'``),
         quantile range (``scalings='median``), or using channel type
         if ``scalings`` is a dict or None).
@@ -71,15 +71,15 @@ class Scaler(TransformerMixin, BaseEstimator):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
+        #### `epochs_data : array, shape (n_epochs, n_channels, n_times)`
             The data to concatenate channels.
-        y : array, shape (n_epochs,)
+        #### `y : array, shape (n_epochs,)`
             The label for each epoch.
 
         -----
         ### ⏎ Returns
 
-        self : instance of Scaler
+        #### `self : instance of Scaler`
             The modified instance.
         """
         ...
@@ -89,7 +89,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels[, n_times])
+        #### `epochs_data : array, shape (n_epochs, n_channels[, n_times])`
             The data.
 
         -----
@@ -114,9 +114,9 @@ class Scaler(TransformerMixin, BaseEstimator):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
+        #### `epochs_data : array, shape (n_epochs, n_channels, n_times)`
             The data.
-        y : None | array, shape (n_epochs,)
+        #### `y : None | array, shape (n_epochs,)`
             The label for each epoch.
             Defaults to None.
 
@@ -139,7 +139,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
+        #### `epochs_data : array, shape (n_epochs, n_channels, n_times)`
             The data.
 
         -----
@@ -157,7 +157,7 @@ class Scaler(TransformerMixin, BaseEstimator):
         ...
 
 class Vectorizer(TransformerMixin):
-    """### Transform n-dimensional array into 2D array of n_samples by n_features.
+    """## 🧠 Transform n-dimensional array into 2D array of n_samples by n_features.
 
     This class reshapes an n-dimensional array into an n_samples * n_features
     array, usable by the estimators and transformers of scikit-learn.
@@ -165,7 +165,7 @@ class Vectorizer(TransformerMixin):
     -----
     ### 📊 Attributes
 
-    features_shape_ : tuple
+    #### `features_shape_ : tuple`
          Stores the original shape of data.
 
     -----
@@ -188,13 +188,13 @@ class Vectorizer(TransformerMixin):
             least 2d. The first dimension must be of length n_samples, where
             samples are the independent samples used by the estimator
             (e.g. n_epochs for epoched data).
-        y : None | array, shape (n_samples,)
+        #### `y : None | array, shape (n_samples,)`
             Used for scikit-learn compatibility.
 
         -----
         ### ⏎ Returns
 
-        self : instance of Vectorizer
+        #### `self : instance of Vectorizer`
             Return the modified instance.
         """
         ...
@@ -228,7 +228,7 @@ class Vectorizer(TransformerMixin):
             least 2d. The first dimension must be of length n_samples, where
             samples are the independent samples used by the estimator
             (e.g. n_epochs for epoched data).
-        y : None | array, shape (n_samples,)
+        #### `y : None | array, shape (n_samples,)`
             Used for scikit-learn compatibility.
 
         -----
@@ -257,33 +257,33 @@ class Vectorizer(TransformerMixin):
         ...
 
 class PSDEstimator(TransformerMixin):
-    """### Compute power spectral density (PSD) using a multi-taper method.
+    """## 🧠 Compute power spectral density (PSD) using a multi-taper method.
 
     -----
     ### 🛠️ Parameters
 
-    sfreq : float
+    #### `sfreq : float`
         The sampling frequency.
-    fmin : float
+    #### `fmin : float`
         The lower frequency of interest.
-    fmax : float
+    #### `fmax : float`
         The upper frequency of interest.
-    bandwidth : float
+    #### `bandwidth : float`
         The bandwidth of the multi taper windowing function in Hz.
-    adaptive : bool
+    #### `adaptive : bool`
         Use adaptive weights to combine the tapered spectra into PSD
         (slow, use n_jobs >> 1 to speed up computation).
-    low_bias : bool
+    #### `low_bias : bool`
         Only use tapers with more than 90% spectral concentration within
         bandwidth.
-    n_jobs : int
+    #### `n_jobs : int`
         Number of parallel jobs to use (only used if adaptive=True).
-    normalization : 'full' | 'length'
+    #### `normalization : 'full' | 'length'`
         Normalization strategy. If "full", the PSD will be normalized by the
         sampling rate as well as the length of the signal (as in
         `Nitime <nitime:users-guide>`). Default is ``'length'``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -326,15 +326,15 @@ class PSDEstimator(TransformerMixin):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
+        #### `epochs_data : array, shape (n_epochs, n_channels, n_times)`
             The data.
-        y : array, shape (n_epochs,)
+        #### `y : array, shape (n_epochs,)`
             The label for each epoch.
 
         -----
         ### ⏎ Returns
 
-        self : instance of PSDEstimator
+        #### `self : instance of PSDEstimator`
             The modified instance.
         """
         ...
@@ -344,19 +344,19 @@ class PSDEstimator(TransformerMixin):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
+        #### `epochs_data : array, shape (n_epochs, n_channels, n_times)`
             The data.
 
         -----
         ### ⏎ Returns
 
-        psd : array, shape (n_signals, n_freqs) or (n_freqs,)
+        #### `psd : array, shape (n_signals, n_freqs) or (n_freqs,)`
             The computed PSD.
         """
         ...
 
 class FilterEstimator(TransformerMixin):
-    """### Estimator to filter RtEpochs.
+    """## 🧠 Estimator to filter RtEpochs.
 
     Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
     filter to the channels selected by "picks".
@@ -376,17 +376,17 @@ class FilterEstimator(TransformerMixin):
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
 
-    l_freq : float | None
+    #### `l_freq : float | None`
         For FIR filters, the lower pass-band edge; for IIR filters, the lower
         cutoff frequency. If None the data are only low-passed.
 
-    h_freq : float | None
+    #### `h_freq : float | None`
         For FIR filters, the upper pass-band edge; for IIR filters, the upper
         cutoff frequency. If None the data are only high-passed.
-    picks : str | array-like | slice | None
+    #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -396,7 +396,7 @@ class FilterEstimator(TransformerMixin):
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
-    filter_length : str | int
+    #### `filter_length : str | int`
         Length of the FIR filter to use (if applicable):
 
         * **'auto' (default)**: The filter length is chosen based
@@ -411,7 +411,7 @@ class FilterEstimator(TransformerMixin):
         * **int**: Specified length in samples. For fir_design="firwin",
           this should not be used.
 
-    l_trans_bandwidth : float | str
+    #### `l_trans_bandwidth : float | str`
         Width of the transition band at the low cut-off frequency in Hz
         (high pass or cutoff 1 in bandpass). Can be "auto"
         (default) to use a multiple of ``l_freq``::
@@ -420,7 +420,7 @@ class FilterEstimator(TransformerMixin):
 
         Only used for ``method='fir'``.
 
-    h_trans_bandwidth : float | str
+    #### `h_trans_bandwidth : float | str`
         Width of the transition band at the high cut-off frequency in Hz
         (low pass or cutoff 2 in bandpass). Can be "auto"
         (default in 0.14) to use a multiple of ``h_freq``::
@@ -428,17 +428,17 @@ class FilterEstimator(TransformerMixin):
             min(max(h_freq * 0.25, 2.), info['sfreq'] / 2. - h_freq)
 
         Only used for ``method='fir'``.
-    n_jobs : int | str
+    #### `n_jobs : int | str`
         Number of jobs to run in parallel.
         Can be 'cuda' if ``cupy`` is installed properly and method='fir'.
-    method : str
+    #### `method : str`
         'fir' will use overlap-add FIR filtering, 'iir' will use IIR filtering.
-    iir_params : dict | None
+    #### `iir_params : dict | None`
         Dictionary of parameters to use for IIR filtering.
         See mne.filter.construct_iir_filter for details. If iir_params
         is None and method="iir", 4th order Butterworth will be used.
 
-    fir_design : str
+    #### `fir_design : str`
         Can be "firwin" (default) to use `scipy.signal.firwin`,
         or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
@@ -446,7 +446,7 @@ class FilterEstimator(TransformerMixin):
 
         ✨ Added in vesion 0.15
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -500,15 +500,15 @@ class FilterEstimator(TransformerMixin):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
+        #### `epochs_data : array, shape (n_epochs, n_channels, n_times)`
             The data.
-        y : array, shape (n_epochs,)
+        #### `y : array, shape (n_epochs,)`
             The label for each epoch.
 
         -----
         ### ⏎ Returns
 
-        self : instance of FilterEstimator
+        #### `self : instance of FilterEstimator`
             The modified instance.
         """
         ...
@@ -518,7 +518,7 @@ class FilterEstimator(TransformerMixin):
         -----
         ### 🛠️ Parameters
 
-        epochs_data : array, shape (n_epochs, n_channels, n_times)
+        #### `epochs_data : array, shape (n_epochs, n_channels, n_times)`
             The data.
 
         -----
@@ -530,14 +530,14 @@ class FilterEstimator(TransformerMixin):
         ...
 
 class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
-    """### Use unsupervised spatial filtering across time and samples.
+    """## 🧠 Use unsupervised spatial filtering across time and samples.
 
     -----
     ### 🛠️ Parameters
 
-    estimator : instance of sklearn.base.BaseEstimator
+    #### `estimator : instance of sklearn.base.BaseEstimator`
         Estimator using some decomposition algorithm.
-    average : bool, default False
+    #### `average : bool, default False`
         If True, the estimator is fitted on the average across samples
         (e.g. epochs).
     """
@@ -554,13 +554,13 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
 
         X : array, shape (n_epochs, n_channels, n_times)
             The data to be filtered.
-        y : None | array, shape (n_samples,)
+        #### `y : None | array, shape (n_samples,)`
             Used for scikit-learn compatibility.
 
         -----
         ### ⏎ Returns
 
-        self : instance of UnsupervisedSpatialFilter
+        #### `self : instance of UnsupervisedSpatialFilter`
             Return the modified instance.
         """
         ...
@@ -572,7 +572,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
 
         X : array, shape (n_epochs, n_channels, n_times)
             The data to be filtered.
-        y : None | array, shape (n_samples,)
+        #### `y : None | array, shape (n_samples,)`
             Used for scikit-learn compatibility.
 
         -----
@@ -616,7 +616,7 @@ class UnsupervisedSpatialFilter(TransformerMixin, BaseEstimator):
         ...
 
 class TemporalFilter(TransformerMixin):
-    """### Estimator to filter data array along the last dimension.
+    """## 🧠 Estimator to filter data array along the last dimension.
 
     Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
     filter to the channels.
@@ -634,14 +634,14 @@ class TemporalFilter(TransformerMixin):
     -----
     ### 🛠️ Parameters
 
-    l_freq : float | None
+    #### `l_freq : float | None`
         Low cut-off frequency in Hz. If None the data are only low-passed.
-    h_freq : float | None
+    #### `h_freq : float | None`
         High cut-off frequency in Hz. If None the data are only
         high-passed.
-    sfreq : float, default 1.0
+    #### `sfreq : float, default 1.0`
         Sampling frequency in Hz.
-    filter_length : str | int, default 'auto'
+    #### `filter_length : str | int, default 'auto'`
         Length of the FIR filter to use (if applicable):
 
             * int: specified length in samples.
@@ -654,7 +654,7 @@ class TemporalFilter(TransformerMixin):
               the shortest power-of-two length at least that duration for
               ``phase="zero-double"``.
 
-    l_trans_bandwidth : float | str
+    #### `l_trans_bandwidth : float | str`
         Width of the transition band at the low cut-off frequency in Hz
         (high pass or cutoff 1 in bandpass). Can be "auto"
         (default in 0.14) to use a multiple of ``l_freq``::
@@ -662,7 +662,7 @@ class TemporalFilter(TransformerMixin):
             min(max(l_freq * 0.25, 2), l_freq)
 
         Only used for ``method='fir'``.
-    h_trans_bandwidth : float | str
+    #### `h_trans_bandwidth : float | str`
         Width of the transition band at the high cut-off frequency in Hz
         (low pass or cutoff 2 in bandpass). Can be "auto"
         (default in 0.14) to use a multiple of ``h_freq``::
@@ -670,20 +670,20 @@ class TemporalFilter(TransformerMixin):
             min(max(h_freq * 0.25, 2.), info['sfreq'] / 2. - h_freq)
 
         Only used for ``method='fir'``.
-    n_jobs : int | str, default 1
+    #### `n_jobs : int | str, default 1`
         Number of jobs to run in parallel.
         Can be 'cuda' if ``cupy`` is installed properly and method='fir'.
-    method : str, default 'fir'
+    #### `method : str, default 'fir'`
         'fir' will use overlap-add FIR filtering, 'iir' will use IIR
         forward-backward filtering (via filtfilt).
-    iir_params : dict | None, default None
+    #### `iir_params : dict | None, default None`
         Dictionary of parameters to use for IIR filtering.
         See mne.filter.construct_iir_filter for details. If iir_params
         is None and method="iir", 4th order Butterworth will be used.
-    fir_window : str, default 'hamming'
+    #### `fir_window : str, default 'hamming'`
         The window to use in FIR design, can be "hamming", "hann",
         or "blackman".
-    fir_design : str
+    #### `fir_design : str`
         Can be "firwin" (default) to use `scipy.signal.firwin`,
         or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
@@ -691,7 +691,7 @@ class TemporalFilter(TransformerMixin):
 
         ✨ Added in vesion 0.15
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -742,13 +742,13 @@ class TemporalFilter(TransformerMixin):
         X : array, shape (n_epochs, n_channels, n_times) or or shape (n_channels, n_times)
             The data to be filtered over the last dimension. The channels
             dimension can be zero when passing a 2D array.
-        y : None
+        #### `y : None`
             Not used, for scikit-learn compatibility issues.
 
         -----
         ### ⏎ Returns
 
-        self : instance of TemporalFilter
+        #### `self : instance of TemporalFilter`
             The modified instance.
         """
         ...

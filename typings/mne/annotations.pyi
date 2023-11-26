@@ -21,7 +21,7 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Annotations:
-    """### Annotation object for annotating segments of raw data.
+    """## 🧠 Annotation object for annotating segments of raw data.
 
     ### 💡 Note
        To convert events to `mne.Annotations`, use
@@ -31,16 +31,16 @@ class Annotations:
     -----
     ### 🛠️ Parameters
 
-    onset : array of float, shape (n_annotations,)
+    #### `onset : array of float, shape (n_annotations,)`
         The starting time of annotations in seconds after ``orig_time``.
-    duration : array of float, shape (n_annotations,) | float
+    #### `duration : array of float, shape (n_annotations,) | float`
         Durations of the annotations in seconds. If a float, all the
         annotations are given the same duration.
-    description : array of str, shape (n_annotations,) | str
+    #### `description : array of str, shape (n_annotations,) | str`
         Array of strings containing description for each annotation. If a
         string, all the annotations are given the same description. To reject
         epochs, use description starting with keyword 'bad'. See example above.
-    orig_time : float | str | datetime | tuple of int | None
+    #### `orig_time : float | str | datetime | tuple of int | None`
         A POSIX Timestamp, datetime or a tuple containing the timestamp as the
         first element and microseconds as the second element. Determines the
         starting time of annotation acquisition. If None (default),
@@ -51,7 +51,7 @@ class Annotations:
         More precisely to this '%Y-%m-%d %H:%M:%S.%f' particular case of
         the ISO8601 format where the delimiter between date and time is ' '.
 
-    ch_names : list | None
+    #### `ch_names : list | None`
         List of lists of channel names associated with the annotations.
         Empty entries are assumed to be associated with no specific channel,
         i.e., with all channels or with the time slice itself. None (default) is
@@ -210,7 +210,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        n_annot : int
+        #### `n_annot : int`
             The number of annotations.
         """
         ...
@@ -240,16 +240,16 @@ class Annotations:
         -----
         ### 🛠️ Parameters
 
-        onset : float | array-like
+        #### `onset : float | array-like`
             Annotation time onset from the beginning of the recording in
             seconds.
-        duration : float | array-like
+        #### `duration : float | array-like`
             Duration of the annotation in seconds.
-        description : str | array-like
+        #### `description : str | array-like`
             Description for the annotation. To reject epochs, use description
             starting with keyword 'bad'.
 
-        ch_names : list | None
+        #### `ch_names : list | None`
             List of lists of channel names associated with the annotations.
             Empty entries are assumed to be associated with no specific channel,
             i.e., with all channels or with the time slice itself. None (default) is
@@ -266,7 +266,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        self : mne.Annotations
+        #### `self : mne.Annotations`
             The modified Annotations object.
 
         -----
@@ -283,7 +283,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        inst : instance of Annotations
+        #### `inst : instance of Annotations`
             A copy of the object.
         """
         ...
@@ -293,7 +293,7 @@ class Annotations:
         -----
         ### 🛠️ Parameters
 
-        idx : int | array-like of int
+        #### `idx : int | array-like of int`
             Index of the annotation to remove. Can be array-like to
             remove multiple indices.
         """
@@ -304,7 +304,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        result : pandas.DataFrame
+        #### `result : pandas.DataFrame`
             Returns a pandas DataFrame with onset, duration, and
             description columns. A column named ch_names is added if any
             annotations are channel-specific.
@@ -316,7 +316,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        counts : dict
+        #### `counts : dict`
             A dictionary containing unique annotation descriptions as keys with their
             counts as values.
         """
@@ -332,16 +332,16 @@ class Annotations:
         -----
         ### 🛠️ Parameters
 
-        fname : path-like
+        #### `fname : path-like`
             The filename to use.
 
-        overwrite : bool
+        #### `overwrite : bool`
             If True (default False), overwrite the destination file if it
             exists.
 
             ✨ Added in vesion 0.23
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -372,18 +372,18 @@ class Annotations:
         -----
         ### 🛠️ Parameters
 
-        tmin : float | datetime | None
+        #### `tmin : float | datetime | None`
             Start time of selection in seconds.
-        tmax : float | datetime | None
+        #### `tmax : float | datetime | None`
             End time of selection in seconds.
-        emit_warning : bool
+        #### `emit_warning : bool`
             Whether to emit warnings when limiting or omitting annotations.
             Defaults to False.
-        use_orig_time : bool
+        #### `use_orig_time : bool`
             Whether to use orig_time as an offset.
             Defaults to True.
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -392,7 +392,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        self : instance of Annotations
+        #### `self : instance of Annotations`
             The cropped Annotations object.
         """
         ...
@@ -402,13 +402,13 @@ class Annotations:
         -----
         ### 🛠️ Parameters
 
-        mapping : dict | float
+        #### `mapping : dict | float`
             A dictionary mapping the annotation description to a duration in
             seconds e.g. ``{'ShortStimulus' : 3, 'LongStimulus' : 12}``.
             Alternatively, if a number is provided, then all annotations
             durations are set to the single provided value.
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -417,7 +417,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        self : mne.Annotations
+        #### `self : mne.Annotations`
             The modified Annotations object.
 
         -----
@@ -432,11 +432,11 @@ class Annotations:
         -----
         ### 🛠️ Parameters
 
-        mapping : dict
+        #### `mapping : dict`
             A dictionary mapping the old description to a new description,
             e.g. {'1.0' : 'Control', '2.0' : 'Stimulus'}.
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -445,7 +445,7 @@ class Annotations:
         -----
         ### ⏎ Returns
 
-        self : mne.Annotations
+        #### `self : mne.Annotations`
             The modified Annotations object.
 
         -----
@@ -456,7 +456,7 @@ class Annotations:
         ...
 
 class EpochAnnotationsMixin:
-    """### Mixin class for Annotations in Epochs."""
+    """## 🧠 Mixin class for Annotations in Epochs."""
 
     @property
     def annotations(self): ...
@@ -470,16 +470,16 @@ class EpochAnnotationsMixin:
         -----
         ### 🛠️ Parameters
 
-        annotations : instance of mne.Annotations | None
+        #### `annotations : instance of mne.Annotations | None`
             Annotations to set.
 
-        on_missing : 'raise' | 'warn' | 'ignore'
+        #### `on_missing : 'raise' | 'warn' | 'ignore'`
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
 
             ✨ Added in vesion 0.23.0
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -488,7 +488,7 @@ class EpochAnnotationsMixin:
         -----
         ### ⏎ Returns
 
-        self : instance of Epochs
+        #### `self : instance of Epochs`
             The epochs object with annotations.
 
         -----
@@ -520,7 +520,7 @@ class EpochAnnotationsMixin:
         -----
         ### ⏎ Returns
 
-        epoch_annots : list
+        #### `epoch_annots : list`
             A list of lists (with length equal to number of epochs) where each
             inner list contains any annotations that overlap the corresponding
             epoch. Annotations are stored as a `tuple` of onset,
@@ -546,14 +546,14 @@ class EpochAnnotationsMixin:
         -----
         ### 🛠️ Parameters
 
-        overwrite : bool
+        #### `overwrite : bool`
             Whether to overwrite existing columns in metadata or not.
             Default is False.
 
         -----
         ### ⏎ Returns
 
-        self : instance of Epochs
+        #### `self : instance of Epochs`
             The modified instance (instance is also modified inplace).
 
         -----
@@ -566,7 +566,7 @@ class EpochAnnotationsMixin:
 def read_annotations(
     fname, sfreq: str = "auto", uint16_codec=None, encoding: str = "utf8"
 ):
-    """### Read annotations from a file.
+    """## 🧠 Read annotations from a file.
 
     This function reads a ``.fif``, ``.fif.gz``, ``.vmrk``, ``.amrk``,
     ``.edf``, ``.txt``, ``.csv``, ``.cnt``, ``.cef``, or ``.set`` file and
@@ -575,9 +575,9 @@ def read_annotations(
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The filename.
-    sfreq : float | ``'auto'``
+    #### `sfreq : float | ``'auto'```
         The sampling frequency in the file. This parameter is necessary for
         \\*.vmrk, \\*.amrk, and \\*.cef files as Annotations are expressed in
         seconds and \\*.vmrk/\\*.amrk/\\*.cef files are in samples. For any other
@@ -595,7 +595,7 @@ def read_annotations(
         ``'latin1'`` or ``'utf-8'``) should be used when reading character
         arrays and can therefore help you solve this problem.
 
-    encoding : str
+    #### `encoding : str`
         Encoding of annotations channel(s). Default is "utf8" (the only correct
         encoding according to the EDF+ standard).
         Only used when reading EDF annotations.
@@ -603,7 +603,7 @@ def read_annotations(
     -----
     ### ⏎ Returns
 
-    annot : instance of Annotations | None
+    #### `annot : instance of Annotations | None`
         The annotations.
 
     -----
@@ -623,14 +623,14 @@ def events_from_annotations(
     chunk_duration=None,
     verbose=None,
 ):
-    """### Get :term:`events` and ``event_id`` from an Annotations object.
+    """## 🧠 Get :term:`events` and ``event_id`` from an Annotations object.
 
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         The raw data for which Annotations are defined.
-    event_id : dict | callable | None | ``'auto'``
+    #### `event_id : dict | callable | None | ``'auto'```
         Can be:
 
         - **dict**: map descriptions (keys) to integer event codes (values).
@@ -648,17 +648,17 @@ def events_from_annotations(
           - Other raw formats: Behaves like None.
 
           ✨ Added in vesion 0.18
-    regexp : str | None
+    #### `regexp : str | None`
         Regular expression used to filter the annotations whose
         descriptions is a match. The default ignores descriptions beginning
         ``'bad'`` or ``'edge'`` (case-insensitive).
 
         🎭 Changed in version 0.18
            Default ignores bad and edge descriptions.
-    use_rounding : bool
+    #### `use_rounding : bool`
         If True, use rounding (instead of truncation) when converting
         times to indices. This can help avoid non-unique indices.
-    chunk_duration : float | None
+    #### `chunk_duration : float | None`
         Chunk duration in seconds. If ``chunk_duration`` is set to None
         (default), generated events correspond to the annotation onsets.
         If not, `mne.events_from_annotations` returns as many events as
@@ -666,7 +666,7 @@ def events_from_annotations(
         ``chunk_duration``. As a consequence annotations with duration shorter
         than ``chunk_duration`` will not contribute events.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -676,11 +676,11 @@ def events_from_annotations(
     ### ⏎ Returns
 
 
-    events : array of int, shape (n_events, 3)
+    #### `events : array of int, shape (n_events, 3)`
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
-    event_id : dict
+    #### `event_id : dict`
         The event_id variable that can be passed to `mne.Epochs`.
 
     -----
@@ -702,16 +702,16 @@ def events_from_annotations(
 def annotations_from_events(
     events, sfreq, event_desc=None, first_samp: int = 0, orig_time=None, verbose=None
 ):
-    """### Convert an event array to an Annotations object.
+    """## 🧠 Convert an event array to an Annotations object.
 
     -----
     ### 🛠️ Parameters
 
-    events : ndarray, shape (n_events, 3)
+    #### `events : ndarray, shape (n_events, 3)`
         The events.
-    sfreq : float
+    #### `sfreq : float`
         Sampling frequency.
-    event_desc : dict | array-like | callable | None
+    #### `event_desc : dict | array-like | callable | None`
         Events description. Can be:
 
         - **dict**: map integer event codes (keys) to descriptions (values).
@@ -722,15 +722,15 @@ def annotations_from_events(
         - **callable**: must take a integer event code as input and return a
           string description or None to ignore it.
         - **None**: Use integer event codes as descriptions.
-    first_samp : int
+    #### `first_samp : int`
         The first data sample (default=0). See :attr:`mne.io.Raw.first_samp`
         docstring.
-    orig_time : float | str | datetime | tuple of int | None
+    #### `orig_time : float | str | datetime | tuple of int | None`
         Determines the starting time of annotation acquisition. If None
         (default), starting time is determined from beginning of raw data
         acquisition. For details, see `mne.Annotations` docstring.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -739,7 +739,7 @@ def annotations_from_events(
     -----
     ### ⏎ Returns
 
-    annot : instance of Annotations
+    #### `annot : instance of Annotations`
         The annotations.
 
     -----
@@ -763,18 +763,18 @@ def annotations_from_events(
     ...
 
 def count_annotations(annotations):
-    """### Count annotations.
+    """## 🧠 Count annotations.
 
     -----
     ### 🛠️ Parameters
 
-    annotations : mne.Annotations
+    #### `annotations : mne.Annotations`
         The annotations instance.
 
     -----
     ### ⏎ Returns
 
-    counts : dict
+    #### `counts : dict`
         A dictionary containing unique annotation descriptions as keys with their
         counts as values.
 

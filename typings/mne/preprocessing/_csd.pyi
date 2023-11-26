@@ -19,7 +19,7 @@ def compute_current_source_density(
     *,
     verbose=None,
 ):
-    """### Get the current source density (CSD) transformation.
+    """## 🧠 Get the current source density (CSD) transformation.
 
     Transformation based on spherical spline surface Laplacian
     :footcite:`PerrinEtAl1987,PerrinEtAl1989,Cohen2014,KayserTenke2015`.
@@ -30,22 +30,22 @@ def compute_current_source_density(
     -----
     ### 🛠️ Parameters
 
-    inst : instance of Raw, Epochs or Evoked
+    #### `inst : instance of Raw, Epochs or Evoked`
         The data to be transformed.
-    sphere : array-like, shape (4,) | str
+    #### `sphere : array-like, shape (4,) | str`
         The sphere, head-model of the form (x, y, z, r) where x, y, z
         is the center of the sphere and r is the radius in meters.
         Can also be "auto" to use a digitization-based fit.
     lambda2 : float
         Regularization parameter, produces smoothness. Defaults to 1e-5.
-    stiffness : float
+    #### `stiffness : float`
         Stiffness of the spline.
-    n_legendre_terms : int
+    #### `n_legendre_terms : int`
         Number of Legendre terms to evaluate.
-    copy : bool
+    #### `copy : bool`
         Whether to overwrite instance data or create a copy.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -54,7 +54,7 @@ def compute_current_source_density(
     -----
     ### ⏎ Returns
 
-    inst_csd : instance of Raw, Epochs or Evoked
+    #### `inst_csd : instance of Raw, Epochs or Evoked`
         The transformed data. Output type will match input type.
 
     -----
@@ -78,7 +78,7 @@ def compute_bridged_electrodes(
     bw_method=None,
     verbose=None,
 ):
-    """### Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
+    """## 🧠 Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
 
     First, an electrical distance matrix is computed by taking the pairwise
     variance between electrodes. Local minimums in this matrix below
@@ -94,30 +94,30 @@ def compute_bridged_electrodes(
     -----
     ### 🛠️ Parameters
 
-    inst : instance of Raw, Epochs or Evoked
+    #### `inst : instance of Raw, Epochs or Evoked`
         The data to compute electrode bridging on.
-    lm_cutoff : float
+    #### `lm_cutoff : float`
         The distance in :math:`{\\mu}V^2` cutoff below which to
         search for a local minimum (lm) indicative of bridging.
         EEGLAB defaults to 5 :math:`{\\mu}V^2`. MNE defaults to
         16 :math:`{\\mu}V^2` to be conservative based on the distributions in
         :footcite:t:`GreischarEtAl2004`.
-    epoch_threshold : float
+    #### `epoch_threshold : float`
         The proportion of epochs with electrical distance less than
         ``lm_cutoff`` in order to consider the channel bridged.
         The default is 0.5.
-    l_freq : float
+    #### `l_freq : float`
         The low cutoff frequency to use. Default is 0.5 Hz.
-    h_freq : float
+    #### `h_freq : float`
         The high cutoff frequency to use. Default is 30 Hz.
-    epoch_duration : float
+    #### `epoch_duration : float`
         The time in seconds to divide the raw into fixed-length epochs
         to check for consistent bridging. Only used if ``inst`` is
         `mne.io.BaseRaw`. The default is 2 seconds.
-    bw_method : None
+    #### `bw_method : None`
         ``bw_method`` to pass to `scipy.stats.gaussian_kde`.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -126,10 +126,10 @@ def compute_bridged_electrodes(
     -----
     ### ⏎ Returns
 
-    bridged_idx : list of tuple
+    #### `bridged_idx : list of tuple`
         The indices of channels marked as bridged with each bridged
         pair stored as a tuple.
-    ed_matrix : ndarray of float, shape (n_epochs, n_channels, n_channels)
+    #### `ed_matrix : ndarray of float, shape (n_epochs, n_channels, n_channels)`
         The electrical distance matrix for each pair of EEG electrodes.
 
     -----

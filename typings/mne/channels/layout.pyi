@@ -6,7 +6,7 @@ from ..viz.topomap import plot_layout as plot_layout
 from _typeshed import Incomplete
 
 class Layout:
-    """### Sensor layouts.
+    """## 🧠 Sensor layouts.
 
     Layouts are typically loaded from a file using
     `mne.channels.read_layout`. Only use this class directly if you're
@@ -15,16 +15,16 @@ class Layout:
     -----
     ### 🛠️ Parameters
 
-    box : tuple of length 4
+    #### `box : tuple of length 4`
         The box dimension (x_min, x_max, y_min, y_max).
-    pos : array, shape=(n_channels, 4)
+    #### `pos : array, shape=(n_channels, 4)`
         The unit-normalized positions of the channels in 2d
         (x, y, width, height).
-    names : list
+    #### `names : list`
         The channel names.
-    ids : list
+    #### `ids : list`
         The channel ids.
-    kind : str
+    #### `kind : str`
         The type of Layout (e.g. 'Vectorview-all').
     """
 
@@ -41,9 +41,9 @@ class Layout:
         -----
         ### 🛠️ Parameters
 
-        fname : path-like
+        #### `fname : path-like`
             The file name (e.g. ``'my_layout.lout'``).
-        overwrite : bool
+        #### `overwrite : bool`
             If True, overwrites the destination file if it exists.
 
         -----
@@ -58,18 +58,18 @@ class Layout:
         -----
         ### 🛠️ Parameters
 
-        picks : list | slice | None
+        #### `picks : list | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as channel indices.
             None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
-        show_axes : bool
+        #### `show_axes : bool`
             Show layout axes if True. Defaults to False.
-        show : bool
+        #### `show : bool`
             Show figure if True. Defaults to True.
 
         -----
         ### ⏎ Returns
 
-        fig : instance of matplotlib.figure.Figure
+        #### `fig : instance of matplotlib.figure.Figure`
             Figure containing the sensor topography.
 
         -----
@@ -80,23 +80,23 @@ class Layout:
         ...
 
 def read_layout(fname=None, *, scale: bool = True):
-    """### Read layout from a file.
+    """## 🧠 Read layout from a file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like | str
+    #### `fname : path-like | str`
         Either the path to a ``.lout`` or ``.lay`` file or the name of a
         built-in layout. c.f. Notes for a list of the available built-in
         layouts.
-    scale : bool
+    #### `scale : bool`
         Apply useful scaling for out the box plotting using ``layout.pos``.
         Defaults to True.
 
     -----
     ### ⏎ Returns
 
-    layout : instance of Layout
+    #### `layout : instance of Layout`
         The layout.
 
     -----
@@ -166,32 +166,32 @@ def make_eeg_layout(
     exclude: str = "bads",
     csd: bool = False,
 ):
-    """### Create .lout file from EEG electrode digitization.
+    """## 🧠 Create .lout file from EEG electrode digitization.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    radius : float
+    #### `radius : float`
         Viewport radius as a fraction of main figure height. Defaults to 0.5.
-    width : float | None
+    #### `width : float | None`
         Width of sensor axes as a fraction of main figure height. By default,
         this will be the maximum width possible without axes overlapping.
-    height : float | None
+    #### `height : float | None`
         Height of sensor axes as a fraction of main figure height. By default,
         this will be the maximum height possible without axes overlapping.
-    exclude : list of str | str
+    #### `exclude : list of str | str`
         List of channels to exclude. If empty do not exclude any.
         If 'bads', exclude channels in info['bads'] (default).
-    csd : bool
+    #### `csd : bool`
         Whether the channels contain current-source-density-transformed data.
 
     -----
     ### ⏎ Returns
 
-    layout : Layout
+    #### `layout : Layout`
         The generated Layout.
 
     -----
@@ -202,28 +202,28 @@ def make_eeg_layout(
     ...
 
 def make_grid_layout(info, picks=None, n_col=None):
-    """### Generate .lout file for custom data, i.e., ICA sources.
+    """## 🧠 Generate .lout file for custom data, i.e., ICA sources.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    picks : str | array-like | slice | None
+    #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all good misc channels.
-    n_col : int | None
+    #### `n_col : int | None`
         Number of columns to generate. If None, a square grid will be produced.
 
     -----
     ### ⏎ Returns
 
-    layout : Layout
+    #### `layout : Layout`
         The generated layout.
 
     -----
@@ -234,27 +234,27 @@ def make_grid_layout(info, picks=None, n_col=None):
     ...
 
 def find_layout(info, ch_type=None, exclude: str = "bads"):
-    """### Choose a layout based on the channels in the info 'chs' field.
+    """## 🧠 Choose a layout based on the channels in the info 'chs' field.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    ch_type : {'mag', 'grad', 'meg', 'eeg'} | None
+    #### `ch_type : {'mag', 'grad', 'meg', 'eeg'} | None`
         The channel type for selecting single channel layouts.
         Defaults to None. Note, this argument will only be considered for
         VectorView type layout. Use ``'meg'`` to force using the full layout
         in situations where the info does only contain one sensor type.
-    exclude : list of str | str
+    #### `exclude : list of str | str`
         List of channels to exclude. If empty do not exclude any.
         If 'bads', exclude channels in info['bads'] (default).
 
     -----
     ### ⏎ Returns
 
-    layout : Layout instance | None
+    #### `layout : Layout instance | None`
         None if layout not found.
     """
     ...
@@ -270,7 +270,7 @@ def generate_2d_layout(
     bg_image=None,
     normalize: bool = True,
 ):
-    """### Generate a custom 2D layout from xy points.
+    """## 🧠 Generate a custom 2D layout from xy points.
 
     Generates a 2-D layout for plotting with plot_topo methods and
     functions. XY points will be normalized between 0 and 1, where
@@ -280,36 +280,36 @@ def generate_2d_layout(
     -----
     ### 🛠️ Parameters
 
-    xy : ndarray, shape (N, 2)
+    #### `xy : ndarray, shape (N, 2)`
         The xy coordinates of sensor locations.
-    w : float
+    #### `w : float`
         The width of each sensor's axis (between 0 and 1).
-    h : float
+    #### `h : float`
         The height of each sensor's axis (between 0 and 1).
-    pad : float
+    #### `pad : float`
         Portion of the box to reserve for padding. The value can range between
         0.0 (boxes will touch, default) to 1.0 (boxes consist of only padding).
-    ch_names : list
+    #### `ch_names : list`
         The names of each channel. Must be a list of strings, with one
         string per channel.
-    ch_indices : list
+    #### `ch_indices : list`
         Index of each channel - must be a collection of unique integers,
         one index per channel.
-    name : str
+    #### `name : str`
         The name of this layout type.
-    bg_image : path-like | ndarray
+    #### `bg_image : path-like | ndarray`
         The image over which sensor axes will be plotted. Either a path to an
         image file, or an array that can be plotted with plt.imshow. If
         provided, xy points will be normalized by the width/height of this
         image. If not, xy points will be normalized by their own min/max.
-    normalize : bool
+    #### `normalize : bool`
         Whether to normalize the coordinates to run from 0 to 1. Defaults to
         True.
 
     -----
     ### ⏎ Returns
 
-    layout : Layout
+    #### `layout : Layout`
         A Layout object that can be plotted with plot_topo
         functions and methods.
 

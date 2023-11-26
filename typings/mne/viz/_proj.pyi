@@ -11,17 +11,17 @@ def plot_projs_joint(
     show: bool = True,
     verbose=None,
 ):
-    """### Plot projectors and evoked jointly.
+    """## 🧠 Plot projectors and evoked jointly.
 
     -----
     ### 🛠️ Parameters
 
-    projs : list of Projection
+    #### `projs : list of Projection`
         The projectors to plot.
-    evoked : instance of Evoked
+    #### `evoked : instance of Evoked`
         The data to plot. Typically this is the evoked instance created from
         averaging the epochs used to create the projection.
-    picks_trace : str | array-like | slice | None
+    #### `picks_trace : str | array-like | slice | None`
         Channels to show alongside the projected time courses. Typically
         these are the ground-truth channels for an artifact (e.g., ``'eog'`` or
         ``'ecg'``). Slices and lists of integers will be interpreted as channel indices. In lists, channel *type* strings (e.g., ``['meg', 'eeg']``) will
@@ -30,12 +30,12 @@ def plot_projs_joint(
         Can also be the string values "all" to pick
         all channels, or "data" to pick :term:`data channels`.
         None (default) will pick no channels.
-    topomap_kwargs : dict | None
+    #### `topomap_kwargs : dict | None`
         Keyword arguments to pass to `mne.viz.plot_projs_topomap`.
-    show : bool
+    #### `show : bool`
         Show the figure if ``True``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -44,7 +44,7 @@ def plot_projs_joint(
     -----
     ### ⏎ Returns
 
-    fig : instance of matplotlib Figure
+    #### `fig : instance of matplotlib Figure`
         The figure.
 
     -----

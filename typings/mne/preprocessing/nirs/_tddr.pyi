@@ -1,7 +1,7 @@
 from ...io import BaseRaw as BaseRaw
 
 def temporal_derivative_distribution_repair(raw, *, verbose=None):
-    """### Apply temporal derivative distribution repair to data.
+    """## 🧠 Apply temporal derivative distribution repair to data.
 
     Applies temporal derivative distribution repair (TDDR) to data
     :footcite:`FishburnEtAl2019`. This approach removes baseline shift
@@ -10,10 +10,10 @@ def temporal_derivative_distribution_repair(raw, *, verbose=None):
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         The raw data.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -22,7 +22,7 @@ def temporal_derivative_distribution_repair(raw, *, verbose=None):
     -----
     ### ⏎ Returns
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
          Data with TDDR applied.
 
     -----

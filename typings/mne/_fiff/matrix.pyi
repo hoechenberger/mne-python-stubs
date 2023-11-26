@@ -10,16 +10,16 @@ from .write import (
 )
 
 def write_named_matrix(fid, kind, mat) -> None:
-    """### Write named matrix from the given node.
+    """## 🧠 Write named matrix from the given node.
 
     -----
     ### 🛠️ Parameters
 
-    fid : file
+    #### `fid : file`
         The opened file descriptor.
-    kind : int
+    #### `kind : int`
         The kind of the matrix.
-    matkind : int
+    #### `matkind : int`
         The type of matrix.
     """
     ...

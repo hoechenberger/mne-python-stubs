@@ -5,7 +5,7 @@ from _typeshed import Incomplete
 logger: Incomplete
 
 class SizeMixin:
-    """### Estimate MNE object sizes."""
+    """## 🧠 Estimate MNE object sizes."""
 
     def __eq__(self, other):
         """### Compare self to other.
@@ -13,13 +13,13 @@ class SizeMixin:
         -----
         ### 🛠️ Parameters
 
-        other : object
+        #### `other : object`
             The object to compare to.
 
         -----
         ### ⏎ Returns
 
-        eq : bool
+        #### `eq : bool`
             True if the two objects are equal.
         """
         ...
@@ -29,13 +29,13 @@ class SizeMixin:
         -----
         ### ⏎ Returns
 
-        hash : int
+        #### `hash : int`
             The hash
         """
         ...
 
 class GetEpochsMixin:
-    """### Class to add epoch selection and metadata to certain classes."""
+    """## 🧠 Class to add epoch selection and metadata to certain classes."""
 
     def __getitem__(self, item):
         """### Return an Epochs object with a copied subset of epochs.
@@ -43,13 +43,13 @@ class GetEpochsMixin:
         -----
         ### 🛠️ Parameters
 
-        item : slice, array-like, str, or list
+        #### `item : slice, array-like, str, or list`
             See below for use cases.
 
         -----
         ### ⏎ Returns
 
-        epochs : instance of Epochs
+        #### `epochs : instance of Epochs`
             See below for use cases.
 
         -----
@@ -113,7 +113,7 @@ class GetEpochsMixin:
         -----
         ### ⏎ Returns
 
-        n_epochs : int
+        #### `n_epochs : int`
             The number of remaining epochs.
 
         -----
@@ -156,15 +156,15 @@ class GetEpochsMixin:
         -----
         ### 🛠️ Parameters
 
-        return_event_id : bool
+        #### `return_event_id : bool`
             If True, return both the epoch data and an event_id.
 
         -----
         ### ⏎ Returns
 
-        epoch : array of shape (n_channels, n_times)
+        #### `epoch : array of shape (n_channels, n_times)`
             The epoch data.
-        event_id : int
+        #### `event_id : int`
             The event id. Only returned if ``return_event_id`` is ``True``.
         """
         ...
@@ -180,7 +180,7 @@ class GetEpochsMixin:
         ...
 
 class TimeMixin:
-    """### Class for time operations on any MNE object that has a time axis."""
+    """## 🧠 Class for time operations on any MNE object that has a time axis."""
 
     def time_as_index(self, times, use_rounding: bool = False):
         """### Convert time to indices.
@@ -188,16 +188,16 @@ class TimeMixin:
         -----
         ### 🛠️ Parameters
 
-        times : list-like | float | int
+        #### `times : list-like | float | int`
             List of numbers or a number representing points in time.
-        use_rounding : bool
+        #### `use_rounding : bool`
             If True, use rounding (instead of truncation) when converting
             times to indices. This can help avoid non-unique indices.
 
         -----
         ### ⏎ Returns
 
-        index : ndarray
+        #### `index : ndarray`
             Indices corresponding to the times supplied.
         """
         ...
@@ -207,7 +207,7 @@ class TimeMixin:
         ...
 
 class ExtendedTimeMixin(TimeMixin):
-    """### Class for time operations on epochs/evoked-like MNE objects."""
+    """## 🧠 Class for time operations on epochs/evoked-like MNE objects."""
 
     @property
     def tmin(self):
@@ -223,18 +223,18 @@ class ExtendedTimeMixin(TimeMixin):
         -----
         ### 🛠️ Parameters
 
-        tmin : float | None
+        #### `tmin : float | None`
             Start time of selection in seconds.
-        tmax : float | None
+        #### `tmax : float | None`
             End time of selection in seconds.
 
-        include_tmax : bool
+        #### `include_tmax : bool`
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
             ✨ Added in vesion 0.19
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -243,7 +243,7 @@ class ExtendedTimeMixin(TimeMixin):
         -----
         ### ⏎ Returns
 
-        inst : instance of Raw, Epochs, Evoked, AverageTFR, or SourceEstimate
+        #### `inst : instance of Raw, Epochs, Evoked, AverageTFR, or SourceEstimate`
             The cropped time-series object, modified in-place.
 
         -----
@@ -263,7 +263,7 @@ class ExtendedTimeMixin(TimeMixin):
         ### 🛠️ Parameters
 
 
-        decim : int
+        #### `decim : int`
             Factor by which to subsample the data.
 
             ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
@@ -272,14 +272,14 @@ class ExtendedTimeMixin(TimeMixin):
                          If the data are not properly filtered, aliasing artifacts
                          may occur.
 
-        offset : int
+        #### `offset : int`
             Apply an offset to where the decimation starts relative to the
             sample corresponding to t=0. The offset is in samples at the
             current sampling rate.
 
             ✨ Added in vesion 0.12
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -288,7 +288,7 @@ class ExtendedTimeMixin(TimeMixin):
         -----
         ### ⏎ Returns
 
-        inst : MNE-object
+        #### `inst : MNE-object`
             The decimated object.
 
         -----
@@ -334,11 +334,11 @@ class ExtendedTimeMixin(TimeMixin):
         -----
         ### 🛠️ Parameters
 
-        tshift : float
+        #### `tshift : float`
             The (absolute or relative) time shift in seconds. If ``relative``
             is True, positive tshift increases the time value associated with
             each sample, while negative tshift decreases it.
-        relative : bool
+        #### `relative : bool`
             If True, increase or decrease time values by ``tshift`` seconds.
             Otherwise, shift the time values such that the time of the first
             sample equals ``tshift``.
@@ -346,7 +346,7 @@ class ExtendedTimeMixin(TimeMixin):
         -----
         ### ⏎ Returns
 
-        epochs : MNE-object
+        #### `epochs : MNE-object`
             The modified instance.
 
         -----

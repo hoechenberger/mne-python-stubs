@@ -18,24 +18,24 @@ from .utils import (
 from _typeshed import Incomplete
 
 def pick_events(events, include=None, exclude=None, step: bool = False):
-    """### Select some :term:`events`.
+    """## 🧠 Select some :term:`events`.
 
     -----
     ### 🛠️ Parameters
 
 
-    events : array of int, shape (n_events, 3)
+    #### `events : array of int, shape (n_events, 3)`
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
-    include : int | list | None
+    #### `include : int | list | None`
         A event id to include or a list of them.
         If None all events are included.
-    exclude : int | list | None
+    #### `exclude : int | list | None`
         A event id to exclude or a list of them.
         If None no event is excluded. If include is not None
         the exclude parameter is ignored.
-    step : bool
+    #### `step : bool`
         If True (default is False), events have a step format according
         to the argument output='step' in the function find_events().
         In this case, the two last columns are considered in inclusion/
@@ -44,7 +44,7 @@ def pick_events(events, include=None, exclude=None, step: bool = False):
     -----
     ### ⏎ Returns
 
-    events : array, shape (n_events, 3)
+    #### `events : array, shape (n_events, 3)`
         The list of events.
     """
     ...
@@ -52,7 +52,7 @@ def pick_events(events, include=None, exclude=None, step: bool = False):
 def define_target_events(
     events, reference_id, target_id, sfreq, tmin, tmax, new_id=None, fill_na=None
 ):
-    """### Define new events by co-occurrence of existing events.
+    """## 🧠 Define new events by co-occurrence of existing events.
 
     This function can be used to evaluate events depending on the
     temporal lag to another event. For example, this can be used to
@@ -62,31 +62,31 @@ def define_target_events(
     -----
     ### 🛠️ Parameters
 
-    events : ndarray
+    #### `events : ndarray`
         Array as returned by mne.find_events.
-    reference_id : int
+    #### `reference_id : int`
         The reference event. The event defining the epoch of interest.
-    target_id : int
+    #### `target_id : int`
         The target event. The event co-occurring in within a certain time
         window around the reference event.
-    sfreq : float
+    #### `sfreq : float`
         The sampling frequency of the data.
-    tmin : float
+    #### `tmin : float`
         The lower limit in seconds from the target event.
-    tmax : float
+    #### `tmax : float`
         The upper limit border in seconds from the target event.
-    new_id : int
+    #### `new_id : int`
         New ID for the new event.
-    fill_na : int | None
+    #### `fill_na : int | None`
         Fill event to be inserted if target is not available within the time
         window specified. If None, the 'null' events will be dropped.
 
     -----
     ### ⏎ Returns
 
-    new_events : ndarray
+    #### `new_events : ndarray`
         The new defined events.
-    lag : ndarray
+    #### `lag : ndarray`
         Time lag between reference and target in milliseconds.
     """
     ...
@@ -100,7 +100,7 @@ def read_events(
     return_event_id: bool = False,
     verbose=None,
 ):
-    """### Read :term:`events` from fif or text file.
+    """## 🧠 Read :term:`events` from fif or text file.
 
     See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
@@ -108,35 +108,35 @@ def read_events(
     -----
     ### 🛠️ Parameters
 
-    filename : path-like
+    #### `filename : path-like`
         Name of the input file.
         If the extension is ``.fif``, events are read assuming
         the file is in FIF format, otherwise (e.g., ``.eve``,
         ``.lst``, ``.txt``) events are read as coming from text.
         Note that new format event files do not contain
         the ``"time"`` column (used to be the second column).
-    include : int | list | None
+    #### `include : int | list | None`
         A event id to include or a list of them.
         If None all events are included.
-    exclude : int | list | None
+    #### `exclude : int | list | None`
         A event id to exclude or a list of them.
         If None no event is excluded. If include is not None
         the exclude parameter is ignored.
-    mask : int | None
+    #### `mask : int | None`
         The value of the digital mask to apply to the stim channel values.
         If None (default), no masking is performed.
-    mask_type : ``'and'`` | ``'not_and'``
+    #### `mask_type : ``'and'`` | ``'not_and'```
         The type of operation between the mask and the trigger.
         Choose 'and' (default) for MNE-C masking behavior.
 
         ✨ Added in vesion 0.13
-    return_event_id : bool
+    #### `return_event_id : bool`
         If True, ``event_id`` will be returned. This is only possible for
         ``-annot.fif`` files produced with MNE-C ``mne_browse_raw``.
 
         ✨ Added in vesion 0.20
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -146,11 +146,11 @@ def read_events(
     ### ⏎ Returns
 
 
-    events : array of int, shape (n_events, 3)
+    #### `events : array of int, shape (n_events, 3)`
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
-    event_id : dict
+    #### `event_id : dict`
         Dictionary of ``{str: int}`` mappings of event IDs.
 
     -----
@@ -170,12 +170,12 @@ def read_events(
     ...
 
 def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> None:
-    """### Write :term:`events` to file.
+    """## 🧠 Write :term:`events` to file.
 
     -----
     ### 🛠️ Parameters
 
-    filename : path-like
+    #### `filename : path-like`
         Name of the output file.
         If the extension is ``.fif``, events are written in
         binary FIF format, otherwise (e.g., ``.eve``,
@@ -183,16 +183,16 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
         Note that new format event files do not contain
         the ``"time"`` column (used to be the second column).
 
-    events : array of int, shape (n_events, 3)
+    #### `events : array of int, shape (n_events, 3)`
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -208,25 +208,25 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
 def find_stim_steps(
     raw, pad_start=None, pad_stop=None, merge: int = 0, stim_channel=None
 ):
-    """### Find all steps in data from a stim channel.
+    """## 🧠 Find all steps in data from a stim channel.
 
     -----
     ### 🛠️ Parameters
 
-    raw : Raw object
+    #### `raw : Raw object`
         The raw data.
-    pad_start : None | int
+    #### `pad_start : None | int`
         Values to assume outside of the stim channel (e.g., if pad_start=0 and
         the stim channel starts with value 5, an event of [0, 0, 5] will be
         inserted at the beginning). With None, no steps will be inserted.
-    pad_stop : None | int
+    #### `pad_stop : None | int`
         Values to assume outside of the stim channel, see ``pad_start``.
-    merge : int
+    #### `merge : int`
         Merge steps occurring in neighboring samples. The integer value
         indicates over how many samples events should be merged, and the sign
         indicates in which direction they should be merged (negative means
         towards the earlier event, positive towards the later event).
-    stim_channel : None | str | list of str
+    #### `stim_channel : None | str | list of str`
         Name of the stim channel or all the stim channels
         affected by the trigger. If None, the config variables
         'MNE_STIM_CHANNEL', 'MNE_STIM_CHANNEL_1', 'MNE_STIM_CHANNEL_2',
@@ -236,7 +236,7 @@ def find_stim_steps(
     -----
     ### ⏎ Returns
 
-    steps : array, shape = (n_samples, 3)
+    #### `steps : array, shape = (n_samples, 3)`
         For each step in the stim channel the values [sample, v_from, v_to].
         The first column contains the event time in samples (the first sample
         with the new value). The second column contains the stim channel value
@@ -245,7 +245,7 @@ def find_stim_steps(
     -----
     ### 👉 See Also
 
-    find_events : More sophisticated options for finding events in a Raw file.
+    #### `find_events : More sophisticated options for finding events in a Raw file.`
     """
     ...
 
@@ -262,7 +262,7 @@ def find_events(
     initial_event: bool = False,
     verbose=None,
 ):
-    """### Find :term:`events` from raw file.
+    """## 🧠 Find :term:`events` from raw file.
 
     See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
@@ -270,9 +270,9 @@ def find_events(
     -----
     ### 🛠️ Parameters
 
-    raw : Raw object
+    #### `raw : Raw object`
         The raw data.
-    stim_channel : None | str | list of str
+    #### `stim_channel : None | str | list of str`
         Name of the stim channel or all the stim channels
         affected by triggers. If None, the config variables
         'MNE_STIM_CHANNEL', 'MNE_STIM_CHANNEL_1', 'MNE_STIM_CHANNEL_2',
@@ -281,25 +281,25 @@ def find_events(
         'stim', if present. If multiple channels are provided
         then the returned events are the union of all the events
         extracted from individual stim channels.
-    output : 'onset' | 'offset' | 'step'
+    #### `output : 'onset' | 'offset' | 'step'`
         Whether to report when events start, when events end, or both.
-    consecutive : bool | 'increasing'
+    #### `consecutive : bool | 'increasing'`
         If True, consider instances where the value of the events
         channel changes without first returning to zero as multiple
         events. If False, report only instances where the value of the
         events channel changes from/to zero. If 'increasing', report
         adjacent events only when the second event code is greater than
         the first.
-    min_duration : float
+    #### `min_duration : float`
         The minimum duration of a change in the events channel required
         to consider it as an event (in seconds).
-    shortest_event : int
+    #### `shortest_event : int`
         Minimum number of samples an event must last (default is 2). If the
         duration is less than this an exception will be raised.
-    mask : int | None
+    #### `mask : int | None`
         The value of the digital mask to apply to the stim channel values.
         If None (default), no masking is performed.
-    uint_cast : bool
+    #### `uint_cast : bool`
         If True (default False), do a cast to ``uint16`` on the channel
         data. This can be used to fix a bug with STI101 and STI014 in
         Neuromag acquisition setups that use channel STI016 (channel 16
@@ -307,19 +307,19 @@ def find_events(
         in MNE-C.
 
         ✨ Added in vesion 0.12
-    mask_type : 'and' | 'not_and'
+    #### `mask_type : 'and' | 'not_and'`
         The type of operation between the mask and the trigger.
         Choose 'and' (default) for MNE-C masking behavior.
 
         ✨ Added in vesion 0.13
-    initial_event : bool
+    #### `initial_event : bool`
         If True (default False), an event is created if the stim channel has a
         value different from 0 as its first sample. This is useful if an event
         at t=0s is present.
 
         ✨ Added in vesion 0.16
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -329,7 +329,7 @@ def find_events(
     ### ⏎ Returns
 
 
-    events : array of int, shape (n_events, 3)
+    #### `events : array of int, shape (n_events, 3)`
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
@@ -337,9 +337,9 @@ def find_events(
     -----
     ### 👉 See Also
 
-    find_stim_steps : Find all the steps in the stim channel.
+    #### `find_stim_steps : Find all the steps in the stim channel.`
     read_events : Read events from disk.
-    write_events : Write events to disk.
+    #### `write_events : Write events to disk.`
 
     -----
     ### 📖 Notes
@@ -425,25 +425,25 @@ def find_events(
     ...
 
 def merge_events(events, ids, new_id, replace_events: bool = True):
-    """### Merge a set of :term:`events`.
+    """## 🧠 Merge a set of :term:`events`.
 
     -----
     ### 🛠️ Parameters
 
-    events : array, shape (n_events_in, 3)
+    #### `events : array, shape (n_events_in, 3)`
         Events.
-    ids : array of int
+    #### `ids : array of int`
         The ids of events to merge.
-    new_id : int
+    #### `new_id : int`
         The new id.
-    replace_events : bool
+    #### `replace_events : bool`
         If True (default), old event ids are replaced. Otherwise,
         new events will be added to the old event list.
 
     -----
     ### ⏎ Returns
 
-    new_events : array, shape (n_events_out, 3)
+    #### `new_events : array, shape (n_events_out, 3)`
         The new events.
 
     -----
@@ -476,28 +476,28 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
     ...
 
 def shift_time_events(events, ids, tshift, sfreq):
-    """### Shift a set of :term:`events`.
+    """## 🧠 Shift a set of :term:`events`.
 
     -----
     ### 🛠️ Parameters
 
 
-    events : array of int, shape (n_events, 3)
+    #### `events : array of int, shape (n_events, 3)`
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
-    ids : ndarray of int | None
+    #### `ids : ndarray of int | None`
         The ids of events to shift.
-    tshift : float
+    #### `tshift : float`
         Time-shift event. Use positive value tshift for forward shifting
         the event and negative value for backward shift.
-    sfreq : float
+    #### `sfreq : float`
         The sampling frequency of the data.
 
     -----
     ### ⏎ Returns
 
-    new_events : array of int, shape (n_new_events, 3)
+    #### `new_events : array of int, shape (n_new_events, 3)`
         The new events.
     """
     ...
@@ -511,29 +511,29 @@ def make_fixed_length_events(
     first_samp: bool = True,
     overlap: float = 0.0,
 ):
-    """### Make a set of :term:`events` separated by a fixed duration.
+    """## 🧠 Make a set of :term:`events` separated by a fixed duration.
 
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         A raw object to use the data from.
-    id : int
+    #### `id : int`
         The id to use (default 1).
-    start : float
+    #### `start : float`
         Time of first event (in seconds).
-    stop : float | None
+    #### `stop : float | None`
         Maximum time of last event (in seconds). If None, events extend to the
         end of the recording.
-    duration : float
+    #### `duration : float`
         The duration to separate events by (in seconds).
-    first_samp : bool
+    #### `first_samp : bool`
         If True (default), times will have :term:`first_samp` added to them, as
         in `mne.find_events`. This behavior is not desirable if the
         returned events will be combined with event times that already
         have :term:`first_samp` added to them, e.g. event times that come
         from `mne.find_events`.
-    overlap : float
+    #### `overlap : float`
         The overlap between events (in seconds).
         Must be ``0 <= overlap < duration``.
 
@@ -543,7 +543,7 @@ def make_fixed_length_events(
     ### ⏎ Returns
 
 
-    events : array of int, shape (n_events, 3)
+    #### `events : array of int, shape (n_events, 3)`
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
@@ -551,7 +551,7 @@ def make_fixed_length_events(
     ...
 
 def concatenate_events(events, first_samps, last_samps):
-    """### Concatenate event lists to be compatible with concatenate_raws.
+    """## 🧠 Concatenate event lists to be compatible with concatenate_raws.
 
     This is useful, for example, if you processed and/or changed
     events in raw files separately before combining them using
@@ -560,18 +560,18 @@ def concatenate_events(events, first_samps, last_samps):
     -----
     ### 🛠️ Parameters
 
-    events : list of array
+    #### `events : list of array`
         List of :term:`events` arrays, typically each extracted from a
         corresponding raw file that is being concatenated.
-    first_samps : list or array of int
+    #### `first_samps : list or array of int`
         First sample numbers of the raw files concatenated.
-    last_samps : list or array of int
+    #### `last_samps : list or array of int`
         Last sample numbers of the raw files concatenated.
 
     -----
     ### ⏎ Returns
 
-    events : array
+    #### `events : array`
         The concatenated events.
 
     -----
@@ -582,7 +582,7 @@ def concatenate_events(events, first_samps, last_samps):
     ...
 
 class AcqParserFIF:
-    """### Parser for Elekta data acquisition settings.
+    """## 🧠 Parser for Elekta data acquisition settings.
 
     This class parses parameters (e.g. events and averaging categories) that
     are defined in the Elekta TRIUX/VectorView data acquisition software (DACQ)
@@ -594,23 +594,23 @@ class AcqParserFIF:
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement. This is where the DACQ parameters will be taken from.
 
     -----
     ### 📊 Attributes
 
-    categories : list
+    #### `categories : list`
         List of averaging categories marked active in DACQ.
-    events : list
+    #### `events : list`
         List of events that are in use (referenced by some averaging category).
-    reject : dict
+    #### `reject : dict`
         Rejection criteria from DACQ that can be used with mne.Epochs.
         Note that mne does not support all DACQ rejection criteria
         (e.g. spike, slope).
-    flat : dict
+    #### `flat : dict`
         Flatness rejection criteria from DACQ that can be used with mne.Epochs.
-    acq_dict : dict
+    #### `acq_dict : dict`
         All DACQ parameters.
 
     -----
@@ -638,43 +638,43 @@ class AcqParserFIF:
         -----
         ### 🛠️ Parameters
 
-        item : str | list of str
+        #### `item : str | list of str`
             Name of the category (comment field in DACQ).
 
         -----
         ### ⏎ Returns
 
-        conds : dict | list of dict
+        #### `conds : dict | list of dict`
             Each dict should have the following keys:
 
             comment: str
                 The comment field in DACQ.
-            state : bool
+            #### `state : bool`
                 Whether the category was marked enabled in DACQ.
-            index : int
+            #### `index : int`
                 The index of the category in DACQ. Indices start from 1.
-            event : int
+            #### `event : int`
                 DACQ index of the reference event (trigger event, zero time for
                 the corresponding epochs). Note that the event indices start
                 from 1.
-            start : float
+            #### `start : float`
                 Start time of epoch relative to the reference event.
-            end : float
+            #### `end : float`
                 End time of epoch relative to the reference event.
-            reqevent : int
+            #### `reqevent : int`
                 Index of the required (conditional) event.
-            reqwhen : int
+            #### `reqwhen : int`
                 Whether the required event is required before (1) or after (2)
                 the reference event.
-            reqwithin : float
+            #### `reqwithin : float`
                 The time range within which the required event must occur,
                 before or after the reference event.
-            display : bool
+            #### `display : bool`
                 Whether the category was displayed online in DACQ.
-            nave : int
+            #### `nave : int`
                 Desired number of averages. DACQ stops collecting averages once
                 this number is reached.
-            subave : int
+            #### `subave : int`
                 Whether to compute normal and alternating subaverages, and
                 how many epochs to include. See the Elekta data acquisition
                 manual for details. Currently the class does not offer any
@@ -689,7 +689,7 @@ class AcqParserFIF:
         -----
         ### ⏎ Returns
 
-        n_cat : int
+        #### `n_cat : int`
             The number of categories.
         """
         ...
@@ -725,34 +725,34 @@ class AcqParserFIF:
         -----
         ### 🛠️ Parameters
 
-        raw : Raw object
+        #### `raw : Raw object`
             An instance of Raw.
-        condition : None | str | dict | list of dict
+        #### `condition : None | str | dict | list of dict`
             Condition or a list of conditions. Conditions can be strings
             (DACQ comment field, e.g. 'Auditory left') or category dicts
             (e.g. acqp['Auditory left'], where acqp is an instance of
             AcqParserFIF). If None, get all conditions marked active in
             DACQ.
-        stim_channel : None | str | list of str
+        #### `stim_channel : None | str | list of str`
             Name of the stim channel or all the stim channels
             affected by the trigger. If None, the config variables
             'MNE_STIM_CHANNEL', 'MNE_STIM_CHANNEL_1', 'MNE_STIM_CHANNEL_2',
             etc. are read. If these are not found, it will fall back to
             'STI101' or 'STI 014' if present, then fall back to the first
             channel of type 'stim', if present.
-        mask : int | None
+        #### `mask : int | None`
             The value of the digital mask to apply to the stim channel values.
             If None (default), no masking is performed.
-        uint_cast : bool
+        #### `uint_cast : bool`
             If True (default False), do a cast to ``uint16`` on the channel
             data. This can be used to fix a bug with STI101 and STI014 in
             Neuromag acquisition setups that use channel STI016 (channel 16
             turns data into e.g. -32768), similar to ``mne_fix_stim14 --32``
             in MNE-C.
-        mask_type : 'and' | 'not_and'
+        #### `mask_type : 'and' | 'not_and'`
             The type of operation between the mask and the trigger.
             Choose 'and' for MNE-C masking behavior.
-        delayed_lookup : bool
+        #### `delayed_lookup : bool`
             If True, use the 'delayed lookup' procedure implemented in Elekta
             software. When a trigger transition occurs, the lookup of
             the new trigger value will not happen immediately at the following
@@ -765,27 +765,27 @@ class AcqParserFIF:
         -----
         ### ⏎ Returns
 
-        conds_data : dict or list of dict
+        #### `conds_data : dict or list of dict`
             Each dict has the following keys:
 
-            events : array, shape (n_epochs_out, 3)
+            #### `events : array, shape (n_epochs_out, 3)`
                 List of zero time points (t0) for the epochs matching the
                 condition. Use as the ``events`` parameter to Epochs. Note
                 that these are not (necessarily) actual events.
-            event_id : dict
+            #### `event_id : dict`
                 Name of condition and index compatible with ``events``.
                 Should be passed as the ``event_id`` parameter to Epochs.
-            tmin : float
+            #### `tmin : float`
                 Epoch starting time relative to t0. Use as the ``tmin``
                 parameter to Epochs.
-            tmax : float
+            #### `tmax : float`
                 Epoch ending time relative to t0. Use as the ``tmax``
                 parameter to Epochs.
         """
         ...
 
 def match_event_names(event_names, keys, *, on_missing: str = "raise"):
-    """### Search a collection of event names for matching (sub-)groups of events.
+    """## 🧠 Search a collection of event names for matching (sub-)groups of events.
 
     This function is particularly helpful when using grouped event names
     (i.e., event names containing forward slashes ``/``). Please see the
@@ -794,12 +794,12 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
     -----
     ### 🛠️ Parameters
 
-    event_names : array-like of str | dict
+    #### `event_names : array-like of str | dict`
         Either a collection of event names, or the ``event_id`` dictionary
         mapping event names to event codes.
-    keys : array-like of str | str
+    #### `keys : array-like of str | str`
         One or multiple event names or groups to search for in ``event_names``.
-    on_missing : 'raise' | 'warn' | 'ignore'
+    #### `on_missing : 'raise' | 'warn' | 'ignore'`
         How to handle situations when none of the ``keys`` can be found in
         ``event_names``. If ``'warn'`` or ``'ignore'``, an empty list will be
         returned.
@@ -807,7 +807,7 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
     -----
     ### ⏎ Returns
 
-    matches : list of str
+    #### `matches : list of str`
         All event names that match any of the ``keys`` provided.
 
     -----
@@ -836,21 +836,21 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
     ...
 
 def count_events(events, ids=None):
-    """### Count events.
+    """## 🧠 Count events.
 
     -----
     ### 🛠️ Parameters
 
-    events : ndarray, shape (N, 3)
+    #### `events : ndarray, shape (N, 3)`
         The events array (consisting of N events).
-    ids : array-like of int | None
+    #### `ids : array-like of int | None`
         If ``None``, count all event types present in the input. If array-like
         of int, count only those event types given by ``ids``.
 
     -----
     ### ⏎ Returns
 
-    counts : dict
+    #### `counts : dict`
         A dictionary containing the event types as keys with their counts as
         values.
 

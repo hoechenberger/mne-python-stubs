@@ -20,7 +20,7 @@ def annotate_muscle_zscore(
     n_jobs=None,
     verbose=None,
 ):
-    """### Create annotations for segments that likely contain muscle artifacts.
+    """## 🧠 Create annotations for segments that likely contain muscle artifacts.
 
     Detects data segments containing activity in the frequency range given by
     ``filter_freq`` whose envelope magnitude exceeds the specified z-score
@@ -35,23 +35,23 @@ def annotate_muscle_zscore(
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         Data to estimate segments with muscle artifacts.
-    threshold : float
+    #### `threshold : float`
         The threshold in z-scores for marking segments as containing muscle
         activity artifacts.
-    ch_type : 'mag' | 'grad' | 'eeg' | None
+    #### `ch_type : 'mag' | 'grad' | 'eeg' | None`
         The type of sensors to use. If ``None`` it will take the first type in
         ``mag``, ``grad``, ``eeg``.
-    min_length_good : float | None
+    #### `min_length_good : float | None`
         The shortest allowed duration of "good data" (in seconds) between
         adjacent annotations; shorter segments will be incorporated into the
         surrounding annotations.``None`` is equivalent to ``0``.
         Default is ``0.1``.
-    filter_freq : array-like, shape (2,)
+    #### `filter_freq : array-like, shape (2,)`
         The lower and upper frequencies of the band-pass filter.
         Default is ``(110, 140)``.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -59,7 +59,7 @@ def annotate_muscle_zscore(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -68,9 +68,9 @@ def annotate_muscle_zscore(
     -----
     ### ⏎ Returns
 
-    annot : mne.Annotations
+    #### `annot : mne.Annotations`
         Periods with muscle artifacts annotated as BAD_muscle.
-    scores_muscle : array
+    #### `scores_muscle : array`
         Z-score values averaged across channels for each sample.
 
     References
@@ -87,7 +87,7 @@ def annotate_movement(
     mean_distance_limit=None,
     use_dev_head_trans: str = "average",
 ):
-    """### Detect segments with movement.
+    """## 🧠 Detect segments with movement.
 
     Detects segments periods further from rotation_velocity_limit,
     translation_velocity_limit and mean_distance_limit. It returns an
@@ -96,18 +96,18 @@ def annotate_movement(
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         Data to compute head position.
-    pos : array, shape (N, 10)
+    #### `pos : array, shape (N, 10)`
         The position and quaternion parameters from cHPI fitting. Obtained
         with `mne.chpi` functions.
-    rotation_velocity_limit : float
+    #### `rotation_velocity_limit : float`
         Head rotation velocity limit in degrees per second.
-    translation_velocity_limit : float
+    #### `translation_velocity_limit : float`
         Head translation velocity limit in meters per second.
-    mean_distance_limit : float
+    #### `mean_distance_limit : float`
         Head position limit from mean recording in meters.
-    use_dev_head_trans : 'average' (default) | 'info'
+    #### `use_dev_head_trans : 'average' (default) | 'info'`
         Identify the device to head transform used to define the
         fixed HPI locations for computing moving distances.
         If ``average`` the average device to head transform is
@@ -117,9 +117,9 @@ def annotate_movement(
     -----
     ### ⏎ Returns
 
-    annot : mne.Annotations
+    #### `annot : mne.Annotations`
         Periods with head motion.
-    hpi_disp : array
+    #### `hpi_disp : array`
         Head position over time with respect to the mean head pos.
 
     -----
@@ -130,7 +130,7 @@ def annotate_movement(
     ...
 
 def compute_average_dev_head_t(raw, pos):
-    """### Get new device to head transform based on good segments.
+    """## 🧠 Get new device to head transform based on good segments.
 
     Segments starting with "BAD" annotations are not included for calculating
     the mean head position.
@@ -138,15 +138,15 @@ def compute_average_dev_head_t(raw, pos):
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         Data to compute head position.
-    pos : array, shape (N, 10)
+    #### `pos : array, shape (N, 10)`
         The position and quaternion parameters from cHPI fitting.
 
     -----
     ### ⏎ Returns
 
-    dev_head_t : instance of Transform
+    #### `dev_head_t : instance of Transform`
         New ``dev_head_t`` transformation using the averaged good head positions.
     """
     ...
@@ -161,7 +161,7 @@ def annotate_break(
     *,
     verbose=None,
 ):
-    """### Create `mne.Annotations` for breaks in an ongoing recording.
+    """## 🧠 Create `mne.Annotations` for breaks in an ongoing recording.
 
     This function first searches for segments in the data that are not
     annotated or do not contain any events and are at least
@@ -171,13 +171,13 @@ def annotate_break(
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         The continuous data to analyze.
-    events : None | array, shape (n_events, 3)
+    #### `events : None | array, shape (n_events, 3)`
         If ``None`` (default), operate based solely on the annotations present
         in ``raw``. If an events array, ignore any annotations in the raw data,
         and operate based on these events only.
-    min_break_duration : float
+    #### `min_break_duration : float`
         The minimum time span in seconds between the offset of one and the
         onset of the subsequent annotation (if ``events`` is ``None``) or
         between two consecutive events (if ``events`` is an array) to consider
@@ -188,7 +188,7 @@ def annotate_break(
                   annotations! See also ``t_start_after_previous`` and
                   ``t_stop_before_next`` for details.
 
-    t_start_after_previous, t_stop_before_next : float
+    #### `t_start_after_previous, t_stop_before_next : float`
         Specifies how far the to-be-created "break" annotation extends towards
         the two annotations or events spanning the break. This can be used to
         ensure e.g. that the break annotation doesn't start and end immediately
@@ -205,7 +205,7 @@ def annotate_break(
                   until recording end) is at least ``min_break_duration``
                   seconds long.
 
-    ignore : iterable of str
+    #### `ignore : iterable of str`
         Annotation descriptions starting with these strings will be ignored by
         the break-finding algorithm. The string comparison is case-insensitive,
         i.e., ``('bad',)`` and ``('BAD',)`` are equivalent. By default, all
@@ -214,7 +214,7 @@ def annotate_break(
         ignored. Pass an empty list or tuple to take all existing annotations
         into account. If ``events`` is passed, this parameter has no effect.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -223,7 +223,7 @@ def annotate_break(
     -----
     ### ⏎ Returns
 
-    break_annotations : instance of Annotations
+    #### `break_annotations : instance of Annotations`
         The break annotations, each with the description ``'BAD_break'``. If
         no breaks could be found given the provided function parameters, an
         empty `mne.Annotations` object will be returned.

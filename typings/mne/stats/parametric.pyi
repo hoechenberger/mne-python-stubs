@@ -1,5 +1,5 @@
 def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
-    """### Perform one-sample t-test.
+    """## 🧠 Perform one-sample t-test.
 
     This is a modified version of `scipy.stats.ttest_1samp` that avoids
     a (relatively) time-consuming p-value calculation, and can adjust
@@ -10,18 +10,18 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
 
     X : array
         Array to return t-values for.
-    sigma : float
+    #### `sigma : float`
         The variance estimate will be given by ``var + sigma * max(var)`` or
         ``var + sigma``, depending on "method". By default this is 0 (no
         adjustment). See Notes for details.
-    method : str
+    #### `method : str`
         If 'relative', the minimum variance estimate will be sigma * max(var),
         if 'absolute' the minimum variance estimate will be sigma.
 
     -----
     ### ⏎ Returns
 
-    t : array
+    #### `t : array`
         T-values, potentially adjusted using the hat method.
 
     -----
@@ -37,7 +37,7 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
     ...
 
 def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
-    """### Independent samples t-test without p calculation.
+    """## 🧠 Independent samples t-test without p calculation.
 
     This is a modified version of `scipy.stats.ttest_ind`. It operates
     along the first axis. The ``sigma`` parameter provides an optional "hat"
@@ -46,19 +46,19 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     -----
     ### 🛠️ Parameters
 
-    a : array-like
+    #### `a : array-like`
         The first array.
-    b : array-like
+    #### `b : array-like`
         The second array.
-    equal_var : bool
+    #### `equal_var : bool`
         Assume equal variance. See `scipy.stats.ttest_ind`.
-    sigma : float
+    #### `sigma : float`
         The regularization. See `ttest_1samp_no_p`.
 
     -----
     ### ⏎ Returns
 
-    t : array
+    #### `t : array`
         T values.
 
     References
@@ -68,7 +68,7 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     ...
 
 def f_oneway(*args):
-    """### Perform a 1-way ANOVA.
+    """## 🧠 Perform a 1-way ANOVA.
 
     The one-way ANOVA tests the null hypothesis that 2 or more groups have
     the same population mean. The test is applied to samples from two or
@@ -115,16 +115,16 @@ def f_oneway(*args):
 def f_threshold_mway_rm(
     n_subjects, factor_levels, effects: str = "A*B", pvalue: float = 0.05
 ):
-    """### Compute F-value thresholds for a two-way ANOVA.
+    """## 🧠 Compute F-value thresholds for a two-way ANOVA.
 
     -----
     ### 🛠️ Parameters
 
-    n_subjects : int
+    #### `n_subjects : int`
         The number of subjects to be analyzed.
-    factor_levels : list-like
+    #### `factor_levels : list-like`
         The number of levels per factor.
-    effects : str
+    #### `effects : str`
         A string denoting the effect to be returned. The following
         mapping is currently supported:
 
@@ -134,7 +134,7 @@ def f_threshold_mway_rm(
             * ``'A+B'``: both main effects
             * ``'A*B'``: all three effects
 
-    pvalue : float
+    #### `pvalue : float`
         The p-value to be thresholded.
 
     -----
@@ -164,12 +164,12 @@ def f_mway_rm(
     correction: bool = False,
     return_pvals: bool = True,
 ):
-    """### Compute M-way repeated measures ANOVA for fully balanced designs.
+    """## 🧠 Compute M-way repeated measures ANOVA for fully balanced designs.
 
     -----
     ### 🛠️ Parameters
 
-    data : ndarray
+    #### `data : ndarray`
         3D array where the first two dimensions are compliant
         with a subjects X conditions scheme where the first
         factor repeats slowest::
@@ -181,9 +181,9 @@ def f_mway_rm(
 
         The last dimensions is thought to carry the observations
         for mass univariate analysis.
-    factor_levels : list-like
+    #### `factor_levels : list-like`
         The number of levels per factor.
-    effects : str | list
+    #### `effects : str | list`
         A string denoting the effect to be returned. The following
         mapping is currently supported (example with 2 factors):
 
@@ -195,11 +195,11 @@ def f_mway_rm(
             * ``'all'``: all effects (equals 'A*B' in a 2 way design)
 
         If list, effect names are used: ``['A', 'B', 'A:B']``.
-    correction : bool
+    #### `correction : bool`
         The correction method to be employed if one factor has more than two
         levels. If True, sphericity correction using the Greenhouse-Geisser
         method will be applied.
-    return_pvals : bool
+    #### `return_pvals : bool`
         If True, return p-values corresponding to F-values.
 
     -----
@@ -209,7 +209,7 @@ def f_mway_rm(
         An array of F-statistics with length corresponding to the number
         of effects estimated. The shape depends on the number of effects
         estimated.
-    p_vals : ndarray
+    #### `p_vals : ndarray`
         If not requested via return_pvals, defaults to an empty array.
 
     -----

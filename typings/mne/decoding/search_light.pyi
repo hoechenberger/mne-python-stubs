@@ -9,7 +9,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class SlidingEstimator(BaseEstimator, TransformerMixin):
-    """### Search Light.
+    """## 🧠 Search Light.
 
     Fit, predict and score a series of models to each subset of the dataset
     along the last dimension. Each entry in the last dimension is referred
@@ -19,17 +19,17 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
     ### 🛠️ Parameters
 
 
-    base_estimator : object
+    #### `base_estimator : object`
         The base estimator to iteratively fit on a subset of the dataset.
 
-    scoring : callable | str | None
+    #### `scoring : callable | str | None`
         Score function (or loss function) with signature
         ``score_func(y, y_pred, **kwargs)``.
         Note that the "predict" method is automatically identified if scoring is
         a string (e.g. ``scoring='roc_auc'`` calls ``predict_proba``), but is
         **not**  automatically set if ``scoring`` is a callable (e.g.
         ``scoring=sklearn.metrics.roc_auc_score``).
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -37,13 +37,13 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    position : int
+    #### `position : int`
         The position for the progress bar.
 
     allow_2d : bool
         If True, allow 2D data as input (i.e. n_samples, n_features).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -52,7 +52,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
     -----
     ### 📊 Attributes
 
-    estimators_ : array-like, shape (n_tasks,)
+    #### `estimators_ : array-like, shape (n_tasks,)`
         List of fitted scikit-learn estimators (one per task).
     """
 
@@ -87,7 +87,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
             is fitted independently. The feature dimension can be
             multidimensional e.g.
             X.shape = (n_samples, n_features_1, n_features_2, n_tasks).
-        y : array, shape (n_samples,) | (n_samples, n_targets)
+        #### `y : array, shape (n_samples,) | (n_samples, n_targets)`
             The target values.
         **fit_params : dict of string -> object
             Parameters to pass to the fit method of the estimator.
@@ -95,7 +95,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         -----
         ### ⏎ Returns
 
-        self : object
+        #### `self : object`
             Return self.
         """
         ...
@@ -111,7 +111,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
             multidimensional, e.g.::
 
                 X.shape = (n_samples, n_features_1, n_features_2, n_estimators)
-        y : array, shape (n_samples,) | (n_samples, n_targets)
+        #### `y : array, shape (n_samples,) | (n_samples, n_targets)`
             The target values.
         **fit_params : dict of string -> object
             Parameters to pass to the fit method of the estimator.
@@ -119,7 +119,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_samples, n_tasks) | (n_samples, n_tasks, n_targets)
+        #### `y_pred : array, shape (n_samples, n_tasks) | (n_samples, n_tasks, n_targets)`
             The predicted values for each estimator.
         """
         ...
@@ -165,7 +165,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_samples, n_estimators) | (n_samples, n_tasks, n_targets)
+        #### `y_pred : array, shape (n_samples, n_estimators) | (n_samples, n_tasks, n_targets)`
             Predicted values for each estimator/data slice.
         """
         ...
@@ -188,7 +188,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_samples, n_tasks, n_classes)
+        #### `y_pred : array, shape (n_samples, n_tasks, n_classes)`
             Predicted probabilities for each estimator/data slice/task.
         """
         ...
@@ -208,7 +208,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_samples, n_estimators, n_classes * (n_classes-1) // 2)
+        #### `y_pred : array, shape (n_samples, n_estimators, n_classes * (n_classes-1) // 2)`
             Predicted distances for each estimator/data slice.
 
         -----
@@ -233,13 +233,13 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
             ``[estimators[ii].score(X[..., ii], y) for ii in range(n_estimators)]``.
             The feature dimension can be multidimensional e.g.
             X.shape = (n_samples, n_features_1, n_features_2, n_tasks).
-        y : array, shape (n_samples,) | (n_samples, n_targets)
+        #### `y : array, shape (n_samples,) | (n_samples, n_targets)`
             The target values.
 
         -----
         ### ⏎ Returns
 
-        score : array, shape (n_samples, n_estimators)
+        #### `score : array, shape (n_samples, n_estimators)`
             Score for each estimator/task.
         """
         ...
@@ -247,7 +247,7 @@ class SlidingEstimator(BaseEstimator, TransformerMixin):
     def classes_(self): ...
 
 class GeneralizingEstimator(SlidingEstimator):
-    """### Generalization Light.
+    """## 🧠 Generalization Light.
 
     Fit a search-light along the last dimension and use them to apply a
     systematic cross-tasks generalization.
@@ -256,17 +256,17 @@ class GeneralizingEstimator(SlidingEstimator):
     ### 🛠️ Parameters
 
 
-    base_estimator : object
+    #### `base_estimator : object`
         The base estimator to iteratively fit on a subset of the dataset.
 
-    scoring : callable | str | None
+    #### `scoring : callable | str | None`
         Score function (or loss function) with signature
         ``score_func(y, y_pred, **kwargs)``.
         Note that the "predict" method is automatically identified if scoring is
         a string (e.g. ``scoring='roc_auc'`` calls ``predict_proba``), but is
         **not**  automatically set if ``scoring`` is a callable (e.g.
         ``scoring=sklearn.metrics.roc_auc_score``).
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -274,13 +274,13 @@ class GeneralizingEstimator(SlidingEstimator):
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    position : int
+    #### `position : int`
         The position for the progress bar.
 
     allow_2d : bool
         If True, allow 2D data as input (i.e. n_samples, n_features).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -321,7 +321,7 @@ class GeneralizingEstimator(SlidingEstimator):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_samples, n_estimators, n_slices) | (n_samples, n_estimators, n_slices, n_targets)
+        #### `y_pred : array, shape (n_samples, n_estimators, n_slices) | (n_samples, n_estimators, n_slices, n_targets)`
             The predicted values for each estimator.
         """
         ...
@@ -340,7 +340,7 @@ class GeneralizingEstimator(SlidingEstimator):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_samples, n_estimators, n_slices, n_classes)
+        #### `y_pred : array, shape (n_samples, n_estimators, n_slices, n_classes)`
             The predicted values for each estimator.
 
         -----
@@ -365,7 +365,7 @@ class GeneralizingEstimator(SlidingEstimator):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_samples, n_estimators, n_slices, n_classes * (n_classes-1) // 2)
+        #### `y_pred : array, shape (n_samples, n_estimators, n_slices, n_classes * (n_classes-1) // 2)`
             The predicted values for each estimator.
 
         -----
@@ -387,13 +387,13 @@ class GeneralizingEstimator(SlidingEstimator):
             ``[estimators[ii].score(X[..., ii], y) for ii in range(n_slices)]``.
             The feature dimension can be multidimensional e.g.
             ``X.shape = (n_samples, n_features_1, n_features_2, n_estimators)``.
-        y : array, shape (n_samples,) | (n_samples, n_targets)
+        #### `y : array, shape (n_samples,) | (n_samples, n_targets)`
             The target values.
 
         -----
         ### ⏎ Returns
 
-        score : array, shape (n_samples, n_estimators, n_slices)
+        #### `score : array, shape (n_samples, n_estimators, n_slices)`
             Score for each estimator / data slice couple.
         """
         ...

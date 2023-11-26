@@ -26,18 +26,18 @@ from .ui_events import (
 from _typeshed import Incomplete
 
 def safe_event(fun, *args, **kwargs):
-    """### Protect against Qt exiting on event-handling errors."""
+    """## 🧠 Protect against Qt exiting on event-handling errors."""
     ...
 
 def plt_show(show: bool = True, fig=None, **kwargs) -> None:
-    """### Show a figure while suppressing warnings.
+    """## 🧠 Show a figure while suppressing warnings.
 
     -----
     ### 🛠️ Parameters
 
-    show : bool
+    #### `show : bool`
         Show the figure.
-    fig : instance of Figure | None
+    #### `fig : instance of Figure | None`
         If non-None, use fig.show().
     **kwargs : dict
         Extra arguments for `matplotlib.pyplot.show`.
@@ -45,15 +45,15 @@ def plt_show(show: bool = True, fig=None, **kwargs) -> None:
     ...
 
 def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
-    """### Return a colormap similar to that used by mne_analyze.
+    """## 🧠 Return a colormap similar to that used by mne_analyze.
 
     -----
     ### 🛠️ Parameters
 
-    limits : list (or array) of length 3 or 6
+    #### `limits : list (or array) of length 3 or 6`
         Bounds for the colormap, which will be mirrored across zero if length
         3, or completely specified (and potentially asymmetric) if length 6.
-    format : str
+    #### `format : str`
         Type of colormap to return. If 'matplotlib', will return a
         matplotlib.colors.LinearSegmentedColormap. If 'vtk', will
         return an RGBA array of shape (256, 4).
@@ -61,7 +61,7 @@ def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
     -----
     ### ⏎ Returns
 
-    cmap : instance of colormap | array
+    #### `cmap : instance of colormap | array`
         A teal->blue->gray->red->yellow colormap. See docstring of the 'format'
         argument for further details.
 
@@ -83,7 +83,7 @@ def compare_fiff(
     max_str: int = 30,
     verbose=None,
 ):
-    """### Compare the contents of two fiff files using diff and show_fiff.
+    """## 🧠 Compare the contents of two fiff files using diff and show_fiff.
 
     -----
     ### 🛠️ Parameters
@@ -92,21 +92,21 @@ def compare_fiff(
         First file to compare.
     fname_2 : path-like
         Second file to compare.
-    fname_out : path-like | None
+    #### `fname_out : path-like | None`
         Filename to store the resulting diff. If None, a temporary
         file will be created.
-    show : bool
+    #### `show : bool`
         If True, show the resulting diff in a new tab in a web browser.
-    indent : str
+    #### `indent : str`
         How to indent the lines.
-    read_limit : int
+    #### `read_limit : int`
         Max number of bytes of data to read from a tag. Can be np.inf
         to always read all data (helps test read completion).
-    max_str : int
+    #### `max_str : int`
         Max number of characters of string representation to print for
         each tag's data.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -115,14 +115,14 @@ def compare_fiff(
     -----
     ### ⏎ Returns
 
-    fname_out : str
+    #### `fname_out : str`
         The filename used for storing the diff. Could be useful for
         when a temporary file is used.
     """
     ...
 
 def figure_nobar(*args, **kwargs):
-    """### Make matplotlib figure with no toolbar.
+    """## 🧠 Make matplotlib figure with no toolbar.
 
     -----
     ### 🛠️ Parameters
@@ -135,13 +135,13 @@ def figure_nobar(*args, **kwargs):
     -----
     ### ⏎ Returns
 
-    fig : instance of Figure
+    #### `fig : instance of Figure`
         The figure.
     """
     ...
 
 class ClickableImage:
-    """### Display an image so you can click on it and store x/y positions.
+    """## 🧠 Display an image so you can click on it and store x/y positions.
 
     Takes as input an image array (can be any array that works with imshow,
     but will work best with images.  Displays the image and lets you
@@ -154,7 +154,7 @@ class ClickableImage:
     -----
     ### 🛠️ Parameters
 
-    imdata : ndarray
+    #### `imdata : ndarray`
         The image that you wish to click on for 2-d points.
     **kwargs : dict
         Keyword arguments. Passed to ax.imshow.
@@ -182,7 +182,7 @@ class ClickableImage:
         -----
         ### 🛠️ Parameters
 
-        event : matplotlib.backend_bases.Event
+        #### `event : matplotlib.backend_bases.Event`
             The matplotlib object that we use to get x/y position.
         """
         ...
@@ -210,13 +210,13 @@ class ClickableImage:
         -----
         ### ⏎ Returns
 
-        layout : instance of Layout
+        #### `layout : instance of Layout`
             The layout.
         """
         ...
 
 def add_background_image(fig, im, set_ratios=None):
-    """### Add a background image to a plot.
+    """## 🧠 Add a background image to a plot.
 
     Adds the image specified in ``im`` to the
     figure ``fig``. This is generally meant to
@@ -228,12 +228,12 @@ def add_background_image(fig, im, set_ratios=None):
     -----
     ### 🛠️ Parameters
 
-    fig : Figure
+    #### `fig : Figure`
         The figure you wish to add a bg image to.
-    im : array, shape (M, N, {3, 4})
+    #### `im : array, shape (M, N, {3, 4})`
         A background image for the figure. This must be a valid input to
         `matplotlib.pyplot.imshow`. Defaults to None.
-    set_ratios : None | str
+    #### `set_ratios : None | str`
         Set the aspect ratio of any axes in fig
         to the value in set_ratios. Defaults to None,
         which does nothing to axes.
@@ -241,7 +241,7 @@ def add_background_image(fig, im, set_ratios=None):
     -----
     ### ⏎ Returns
 
-    ax_im : instance of Axes
+    #### `ax_im : instance of Axes`
         Axes created corresponding to the image you added.
 
     -----
@@ -269,34 +269,34 @@ def plot_sensors(
     cmap=None,
     verbose=None,
 ):
-    """### Plot sensors positions.
+    """## 🧠 Plot sensors positions.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    kind : str
+    #### `kind : str`
         Whether to plot the sensors as 3d, topomap or as an interactive
         sensor selection dialog. Available options ``'topomap'``, ``'3d'``,
         ``'select'``. If ``'select'``, a set of channels can be selected
         interactively by using lasso selector or clicking while holding control
         key. The selected channels are returned along with the figure instance.
         Defaults to ``'topomap'``.
-    ch_type : None | str
+    #### `ch_type : None | str`
         The channel type to plot. Available options ``'mag'``, ``'grad'``,
         ``'eeg'``, ``'seeg'``, ``'dbs'``, ``'ecog'``, ``'all'``. If ``'all'``,
         all the available mag, grad, eeg, seeg, dbs and ecog channels are
         plotted. If None (default), then channels are chosen in the order given
         above.
-    title : str | None
+    #### `title : str | None`
         Title for the figure. If None (default), equals to
         ``'Sensor positions (%s)' % ch_type``.
-    show_names : bool | array of str
+    #### `show_names : bool | array of str`
         Whether to display all channel names. If an array, only the channel
         names in the array are shown. Defaults to False.
-    ch_groups : 'position' | list of list | None
+    #### `ch_groups : 'position' | list of list | None`
         Channel groups for coloring the sensors. If None (default), default
         coloring scheme is used. If 'position', the sensors are divided
         into 8 regions. See ``order`` kwarg of `mne.viz.plot_raw`. If
@@ -305,26 +305,26 @@ def plot_sensors(
         different sizes.
 
         ✨ Added in vesion 0.13.0
-    to_sphere : bool
+    #### `to_sphere : bool`
         Whether to project the 3d locations to a sphere. When False, the
         sensor array appears similar as to looking downwards straight above the
         subject's head. Has no effect when ``kind='3d'``. Defaults to True.
 
         ✨ Added in vesion 0.14.0
 
-    axes : instance of Axes | instance of Axes3D | None
+    #### `axes : instance of Axes | instance of Axes3D | None`
         Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
         of Axes3D. If None (default), a new axes will be created.
 
         ✨ Added in vesion 0.13.0
-    block : bool
+    #### `block : bool`
         Whether to halt program execution until the figure is closed. Defaults
         to False.
 
         ✨ Added in vesion 0.13.0
-    show : bool
+    #### `show : bool`
         Show figure if True. Defaults to True.
-    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
+    #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -338,17 +338,17 @@ def plot_sensors(
 
         ✨ Added in vesion 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
-    pointsize : float | None
+    #### `pointsize : float | None`
         The size of the points. If None (default), will bet set to ``75`` if
         ``kind='3d'``, or ``25`` otherwise.
-    linewidth : float
+    #### `linewidth : float`
         The width of the outline. If ``0``, the outline will not be drawn.
-    cmap : str | instance of matplotlib.colors.Colormap | None
+    #### `cmap : str | instance of matplotlib.colors.Colormap | None`
         Colormap for coloring ch_groups. Has effect only when ``ch_groups``
         is list of list. If None, set to ``matplotlib.rcParams["image.cmap"]``.
         Defaults to None.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -357,9 +357,9 @@ def plot_sensors(
     -----
     ### ⏎ Returns
 
-    fig : instance of Figure
+    #### `fig : instance of Figure`
         Figure containing the sensor topography.
-    selection : list
+    #### `selection : list`
         A list of selected channels. Only returned if ``kind=='select'``.
 
     -----
@@ -379,7 +379,7 @@ def plot_sensors(
     ...
 
 class DraggableColorbar:
-    """### Enable interactive colorbar.
+    """## 🧠 Enable interactive colorbar.
 
     See http://www.ster.kuleuven.be/~pieterd/python/html/plotting/interactive_colorbar.html
     """
@@ -421,7 +421,7 @@ class DraggableColorbar:
         ...
 
 class SelectFromCollection:
-    """### Select channels from a matplotlib collection using ``LassoSelector``.
+    """## 🧠 Select channels from a matplotlib collection using ``LassoSelector``.
 
     Selected channels are saved in the ``selection`` attribute. This tool
     highlights selected points by fading other points out (i.e., reducing their
@@ -430,15 +430,15 @@ class SelectFromCollection:
     -----
     ### 🛠️ Parameters
 
-    ax : instance of Axes
+    #### `ax : instance of Axes`
         Axes to interact with.
-    collection : instance of matplotlib collection
+    #### `collection : instance of matplotlib collection`
         Collection you want to select from.
-    alpha_other : 0 <= float <= 1
+    #### `alpha_other : 0 <= float <= 1`
         To highlight a selection, this tool sets all selected points to an
         alpha value of 1 and non-selected points to ``alpha_other``.
         Defaults to 0.3.
-    linewidth_other : float
+    #### `linewidth_other : float`
         Linewidth to use for non-selected sensors. Default is 1.
 
     -----
@@ -495,14 +495,14 @@ class SelectFromCollection:
         ...
 
 class DraggableLine:
-    """### Custom matplotlib line for moving around by drag and drop.
+    """## 🧠 Custom matplotlib line for moving around by drag and drop.
 
     -----
     ### 🛠️ Parameters
 
-    line : instance of matplotlib Line2D
+    #### `line : instance of matplotlib Line2D`
         Line to add interactivity to.
-    callback : function
+    #### `callback : function`
         Callback to call when line is released.
     """
 
@@ -533,7 +533,7 @@ class DraggableLine:
         ...
 
 def centers_to_edges(*arrays):
-    """### Convert center points to edges.
+    """## 🧠 Convert center points to edges.
 
     -----
     ### 🛠️ Parameters
@@ -545,7 +545,7 @@ def centers_to_edges(*arrays):
     -----
     ### ⏎ Returns
 
-    arrays : list of ndarray
+    #### `arrays : list of ndarray`
         Given each input of shape (N,), the output will have shape (N+1,).
 
     -----
@@ -565,29 +565,29 @@ def concatenate_images(
     centered: bool = True,
     n_channels: int = 3,
 ):
-    """### Concatenate a list of images.
+    """## 🧠 Concatenate a list of images.
 
     -----
     ### 🛠️ Parameters
 
-    images : list of ndarray
+    #### `images : list of ndarray`
         The list of images to concatenate.
-    axis : 0 or 1
+    #### `axis : 0 or 1`
         The images are concatenated horizontally if 0 and vertically otherwise.
         The default orientation is horizontal.
-    bgcolor : str | list
+    #### `bgcolor : str | list`
         The color of the background. The name of the color is accepted
         (e.g 'red') or a list of RGB values between 0 and 1. Defaults to
         'black'.
-    centered : bool
+    #### `centered : bool`
         If True, the images are centered. Defaults to True.
-    n_channels : int
+    #### `n_channels : int`
         Number of color channels. Can be 3 or 4. The default value is 3.
 
     -----
     ### ⏎ Returns
 
-    img : ndarray
+    #### `img : ndarray`
         The concatenated image.
     """
     ...

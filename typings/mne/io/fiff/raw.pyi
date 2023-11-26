@@ -15,12 +15,12 @@ from ...utils import (
 from ..base import BaseRaw as BaseRaw
 
 class Raw(BaseRaw):
-    """### Raw data in FIF format.
+    """## 🧠 Raw data in FIF format.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like | file-like
+    #### `fname : path-like | file-like`
         The raw filename to load. For files that have automatically been split,
         the split part will be automatically loaded. Filenames not ending with
         ``raw.fif``, ``raw_sss.fif``, ``raw_tsss.fif``, ``_meg.fif``,
@@ -30,27 +30,27 @@ class Raw(BaseRaw):
 
         🎭 Changed in version 0.18
            Support for file-like objects.
-    allow_maxshield : bool | str (default False)
+    #### `allow_maxshield : bool | str (default False)`
         If True, allow loading of data that has been recorded with internal
         active compensation (MaxShield). Data recorded with MaxShield should
         generally not be loaded directly, but should first be processed using
         SSS/tSSS to remove the compensation signals that may also affect brain
         activity. Can also be "yes" to load without eliciting a warning.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    on_split_missing : str
+    #### `on_split_missing : str`
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when split file is missing.
 
         ✨ Added in vesion 0.22
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -60,20 +60,20 @@ class Raw(BaseRaw):
     ### 📊 Attributes
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    ch_names : list of string
+    #### `ch_names : list of string`
         List of channels' names.
-    n_times : int
+    #### `n_times : int`
         Total number of time points in the raw file.
-    times :  ndarray
+    #### `times :  ndarray`
         Time vector in seconds. Starts from 0, independently of `first_samp`
         value. Time interval between consecutive time samples is equal to the
         inverse of the sampling frequency.
-    preload : bool
+    #### `preload : bool`
         Indicates whether raw data are in memory.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -96,7 +96,7 @@ class Raw(BaseRaw):
         -----
         ### ⏎ Returns
 
-        raw : instance of Raw
+        #### `raw : instance of Raw`
             The raw object. Operates in place.
 
         -----
@@ -139,12 +139,12 @@ def read_raw_fif(
     on_split_missing: str = "raise",
     verbose=None,
 ):
-    """### Reader function for Raw FIF data.
+    """## 🧠 Reader function for Raw FIF data.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like | file-like
+    #### `fname : path-like | file-like`
         The raw filename to load. For files that have automatically been split,
         the split part will be automatically loaded. Filenames should end
         with raw.fif, raw.fif.gz, raw_sss.fif, raw_sss.fif.gz, raw_tsss.fif,
@@ -153,27 +153,27 @@ def read_raw_fif(
 
         🎭 Changed in version 0.18
            Support for file-like objects.
-    allow_maxshield : bool | str (default False)
+    #### `allow_maxshield : bool | str (default False)`
         If True, allow loading of data that has been recorded with internal
         active compensation (MaxShield). Data recorded with MaxShield should
         generally not be loaded directly, but should first be processed using
         SSS/tSSS to remove the compensation signals that may also affect brain
         activity. Can also be "yes" to load without eliciting a warning.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    on_split_missing : str
+    #### `on_split_missing : str`
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when split file is missing.
 
         ✨ Added in vesion 0.22
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -182,7 +182,7 @@ def read_raw_fif(
     -----
     ### ⏎ Returns
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         A Raw object containing FIF data.
 
     -----

@@ -18,7 +18,7 @@ def read_raw_cnt(
     preload: bool = False,
     verbose=None,
 ):
-    """### Read CNT data as raw object.
+    """## 🧠 Read CNT data as raw object.
 
     .. Note::
         2d spatial coordinates (x, y) for EEG channels are read from the file
@@ -42,31 +42,31 @@ def read_raw_cnt(
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the data file.
-    eog : list | tuple | ``'auto'`` | ``'header'``
+    #### `eog : list | tuple | ``'auto'`` | ``'header'```
         Names of channels or list of indices that should be designated
         EOG channels. If 'header', VEOG and HEOG channels assigned in the file
         header are used. If ``'auto'``, channel names containing ``'EOG'`` are
         used. Defaults to empty tuple.
-    misc : list | tuple
+    #### `misc : list | tuple`
         Names of channels or list of indices that should be designated
         MISC channels. Defaults to empty tuple.
-    ecg : list | tuple | ``'auto'``
+    #### `ecg : list | tuple | ``'auto'```
         Names of channels or list of indices that should be designated
         ECG channels. If ``'auto'``, the channel names containing ``'ECG'`` are
         used. Defaults to empty tuple.
-    emg : list | tuple
+    #### `emg : list | tuple`
         Names of channels or list of indices that should be designated
         EMG channels. If 'auto', the channel names containing 'EMG' are used.
         Defaults to empty tuple.
-    data_format : ``'auto'`` | ``'int16'`` | ``'int32'``
+    #### `data_format : ``'auto'`` | ``'int16'`` | ``'int32'```
         Defines the data format the data is read in. If ``'auto'``, it is
         determined from the file header using ``numsamples`` field.
         Defaults to ``'auto'``.
-    date_format : ``'mm/dd/yy'`` | ``'dd/mm/yy'``
+    #### `date_format : ``'mm/dd/yy'`` | ``'dd/mm/yy'```
         Format of date in the header. Defaults to ``'mm/dd/yy'``.
-    header : ``'auto'`` | ``'new'`` | ``'old'``
+    #### `header : ``'auto'`` | ``'new'`` | ``'old'```
         Defines the header format. Used to describe how bad channels
         are formatted. If auto, reads using old and new header and
         if either contain a bad channel make channel bad.
@@ -74,14 +74,14 @@ def read_raw_cnt(
 
         ✨ Added in vesion 1.6
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -90,7 +90,7 @@ def read_raw_cnt(
     -----
     ### ⏎ Returns
 
-    raw : instance of RawCNT.
+    #### `raw : instance of RawCNT.`
         The raw data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
@@ -107,7 +107,7 @@ def read_raw_cnt(
     ...
 
 class RawCNT(BaseRaw):
-    """### Raw object from Neuroscan CNT file.
+    """## 🧠 Raw object from Neuroscan CNT file.
 
     .. Note::
         The channel positions are read from the file header. Channels that are
@@ -123,42 +123,42 @@ class RawCNT(BaseRaw):
     -----
     ### 🛠️ Parameters
 
-    input_fname : path-like
+    #### `input_fname : path-like`
         Path to the CNT file.
-    eog : list | tuple
+    #### `eog : list | tuple`
         Names of channels or list of indices that should be designated
         EOG channels. If ``'auto'``, the channel names beginning with
         ``EOG`` are used. Defaults to empty tuple.
-    misc : list | tuple
+    #### `misc : list | tuple`
         Names of channels or list of indices that should be designated
         MISC channels. Defaults to empty tuple.
-    ecg : list | tuple
+    #### `ecg : list | tuple`
         Names of channels or list of indices that should be designated
         ECG channels. If ``'auto'``, the channel names beginning with
         ``ECG`` are used. Defaults to empty tuple.
-    emg : list | tuple
+    #### `emg : list | tuple`
         Names of channels or list of indices that should be designated
         EMG channels. If ``'auto'``, the channel names beginning with
         ``EMG`` are used. Defaults to empty tuple.
-    data_format : ``'auto'`` | ``'int16'`` | ``'int32'``
+    #### `data_format : ``'auto'`` | ``'int16'`` | ``'int32'```
         Defines the data format the data is read in. If ``'auto'``, it is
         determined from the file header using ``numsamples`` field.
         Defaults to ``'auto'``.
-    date_format : ``'mm/dd/yy'`` | ``'dd/mm/yy'``
+    #### `date_format : ``'mm/dd/yy'`` | ``'dd/mm/yy'```
         Format of date in the header. Defaults to ``'mm/dd/yy'``.
-    header : ``'auto'`` | ``'new'`` | ``'old'``
+    #### `header : ``'auto'`` | ``'new'`` | ``'old'```
         Defines the header format. Used to describe how bad channels
         are formatted. If auto, reads using old and new header and
         if either contain a bad channel make channel bad.
         Defaults to ``'auto'``.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
-    stim_channel : bool | None
+    #### `stim_channel : bool | None`
         Add a stim channel from the events. Defaults to None to trigger a
         future warning.
 
@@ -169,7 +169,7 @@ class RawCNT(BaseRaw):
 
         ✨ Added in vesion 0.18
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

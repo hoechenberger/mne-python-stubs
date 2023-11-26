@@ -4,7 +4,7 @@ from ..utils import warn as warn
 def export_evokeds_mff(
     fname, evoked, history=None, *, overwrite: bool = False, verbose=None
 ) -> None:
-    """### Export evoked dataset to MFF.
+    """## 🧠 Export evoked dataset to MFF.
 
     ### ⛔️ Warning
         Since we are exporting to external formats, there's no guarantee that all
@@ -14,25 +14,25 @@ def export_evokeds_mff(
     ### 🛠️ Parameters
 
 
-    fname : str
+    #### `fname : str`
         Name of the output file.
-    evoked : list of Evoked instances
+    #### `evoked : list of Evoked instances`
         List of evoked datasets to export to one file. Note that the
         measurement info from the first evoked instance is used, so be sure
         that information matches.
-    history : None (default) | list of dict
+    #### `history : None (default) | list of dict`
         Optional list of history entries (dictionaries) to be written to
         history.xml. This must adhere to the format described in
         mffpy.xml_files.History.content. If None, no history.xml will be
         written.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
         ✨ Added in vesion 0.24.1
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

@@ -4,25 +4,25 @@ from _typeshed import Incomplete
 from threading import Thread
 
 class ProgressBar:
-    """### Generate a command-line progressbar.
+    """## 🧠 Generate a command-line progressbar.
 
     -----
     ### 🛠️ Parameters
 
-    iterable : iterable | int | None
+    #### `iterable : iterable | int | None`
         The iterable to use. Can also be an int for backward compatibility
         (acts like ``max_value``).
-    initial_value : int
+    #### `initial_value : int`
         Initial value of process, useful when resuming process from a specific
         value, defaults to 0.
-    mesg : str
+    #### `mesg : str`
         Message to include at end of progress bar.
-    max_total_width : int | str
+    #### `max_total_width : int | str`
         Maximum total message width. Can use "auto" (default) to try to set
         a sane value based on the current terminal width.
-    max_value : int | None
+    #### `max_value : int | None`
         The max value. If None, the length of ``iterable`` will be used.
-    which_tqdm : str | None
+    #### `which_tqdm : str | None`
         Which tqdm module to use. Can be "tqdm", "tqdm.notebook", or "off".
         Defaults to ``None``, which uses the value of the MNE_TQDM environment
         variable, or ``"tqdm.auto"`` if that is not set.
@@ -50,7 +50,7 @@ class ProgressBar:
         -----
         ### 🛠️ Parameters
 
-        cur_value : number
+        #### `cur_value : number`
             Current value of process.  Should be <= max_value (but this is not
             enforced).  The percent of the progressbar will be computed as
             ``(cur_value / max_value) * 100``.
@@ -62,7 +62,7 @@ class ProgressBar:
         -----
         ### 🛠️ Parameters
 
-        increment_value : int
+        #### `increment_value : int`
             Value of the increment of process.  The percent of the progressbar
             will be computed as
             ``(self.cur_value + increment_value / max_value) * 100``.
@@ -77,13 +77,13 @@ class ProgressBar:
         -----
         ### 🛠️ Parameters
 
-        idx : ndarray
+        #### `idx : ndarray`
             List of indices for this subset.
 
         -----
         ### ⏎ Returns
 
-        updater : instance of PBSubsetUpdater
+        #### `updater : instance of PBSubsetUpdater`
             Class with a ``.update(ii)`` method.
         """
         ...

@@ -3,17 +3,17 @@ from ..utils import logger as logger
 def oversampled_temporal_projection(
     raw, duration: float = 10.0, picks=None, verbose=None
 ):
-    """### Denoise MEG channels using leave-one-out temporal projection.
+    """## 🧠 Denoise MEG channels using leave-one-out temporal projection.
 
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         Raw data to denoise.
-    duration : float | str
+    #### `duration : float | str`
         The window duration (in seconds; default 10.) to use. Can also
         be "min" to use as short a window as possible.
-    picks : str | array-like | slice | None
+    #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -23,7 +23,7 @@ def oversampled_temporal_projection(
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -32,7 +32,7 @@ def oversampled_temporal_projection(
     -----
     ### ⏎ Returns
 
-    raw_clean : instance of Raw
+    #### `raw_clean : instance of Raw`
         The cleaned data.
 
     -----

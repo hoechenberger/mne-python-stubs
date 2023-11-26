@@ -2,12 +2,12 @@ from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 from .constants import FIFF as FIFF
 
 def get_channel_type_constants(include_defaults: bool = False):
-    """### Return all known channel types, and associated FIFF constants.
+    """## 🧠 Return all known channel types, and associated FIFF constants.
 
     -----
     ### 🛠️ Parameters
 
-    include_defaults : bool
+    #### `include_defaults : bool`
         Whether to include default values for "unit" and "coil_type" for all
         entries (see Notes). Defaults are generally based on values normally
         present for a VectorView MEG system. Defaults to ``False``.
@@ -15,7 +15,7 @@ def get_channel_type_constants(include_defaults: bool = False):
     -----
     ### ⏎ Returns
 
-    channel_types : dict
+    #### `channel_types : dict`
         The keys are channel type strings, and the values are dictionaries of
         FIFF constants for "kind", and possibly "unit" and "coil_type".
 
@@ -32,21 +32,21 @@ def get_channel_type_constants(include_defaults: bool = False):
     ...
 
 def channel_type(info, idx):
-    """### Get channel type.
+    """## 🧠 Get channel type.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    idx : int
+    #### `idx : int`
         Index of channel.
 
     -----
     ### ⏎ Returns
 
-    type : str
+    #### `type : str`
         Type of channel. Will be one of::
 
             {'grad', 'mag', 'eeg', 'csd', 'stim', 'eog', 'emg', 'ecg',
@@ -57,26 +57,26 @@ def channel_type(info, idx):
     ...
 
 def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
-    """### Pick channels by names.
+    """## 🧠 Pick channels by names.
 
     Returns the indices of ``ch_names`` in ``include`` but not in ``exclude``.
 
     -----
     ### 🛠️ Parameters
 
-    ch_names : list of str
+    #### `ch_names : list of str`
         List of channels.
-    include : list of str
+    #### `include : list of str`
         List of channels to include (if empty include all available).
 
         ### 💡 Note This is to be treated as a set. The order of this list
            is not used or maintained in ``sel``.
 
-    exclude : list of str
+    #### `exclude : list of str`
         List of channels to exclude (if empty do not exclude any channel).
         Defaults to [].
 
-    ordered : bool
+    #### `ordered : bool`
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
@@ -84,7 +84,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
         🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -93,7 +93,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     -----
     ### ⏎ Returns
 
-    sel : array of int
+    #### `sel : array of int`
         Indices of good channels.
 
     -----
@@ -104,24 +104,24 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     ...
 
 def pick_channels_regexp(ch_names, regexp):
-    """### Pick channels using regular expression.
+    """## 🧠 Pick channels using regular expression.
 
     Returns the indices of the good channels in ch_names.
 
     -----
     ### 🛠️ Parameters
 
-    ch_names : list of str
+    #### `ch_names : list of str`
         List of channels.
 
-    regexp : str
+    #### `regexp : str`
         The regular expression. See python standard module for regular
         expressions.
 
     -----
     ### ⏎ Returns
 
-    sel : array of int
+    #### `sel : array of int`
         Indices of good channels.
 
     -----
@@ -170,107 +170,107 @@ def pick_types(
     exclude: str = "bads",
     selection=None,
 ):
-    """### Pick channels by type and names.
+    """## 🧠 Pick channels by type and names.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
 
-    meg : bool | str
+    #### `meg : bool | str`
         If True include MEG channels. If string it can be 'mag', 'grad',
         'planar1' or 'planar2' to select only magnetometers, all
         gradiometers, or a specific type of gradiometer.
-    eeg : bool
+    #### `eeg : bool`
         If True include EEG channels.
-    stim : bool
+    #### `stim : bool`
         If True include stimulus channels.
-    eog : bool
+    #### `eog : bool`
         If True include EOG channels.
-    ecg : bool
+    #### `ecg : bool`
         If True include ECG channels.
-    emg : bool
+    #### `emg : bool`
         If True include EMG channels.
-    ref_meg : bool | str
+    #### `ref_meg : bool | str`
         If True include CTF / 4D reference channels. If 'auto', reference
         channels are included if compensations are present and ``meg`` is
         not False. Can also be the string options for the ``meg``
         parameter.
-    misc : bool
+    #### `misc : bool`
         If True include miscellaneous analog channels.
-    resp : bool
+    #### `resp : bool`
         If ``True`` include respiratory channels.
-    chpi : bool
+    #### `chpi : bool`
         If True include continuous HPI coil channels.
-    exci : bool
+    #### `exci : bool`
         Flux excitation channel used to be a stimulus channel.
-    ias : bool
+    #### `ias : bool`
         Internal Active Shielding data (maybe on Triux only).
-    syst : bool
+    #### `syst : bool`
         System status channel information (on Triux systems only).
-    seeg : bool
+    #### `seeg : bool`
         Stereotactic EEG channels.
-    dipole : bool
+    #### `dipole : bool`
         Dipole time course channels.
-    gof : bool
+    #### `gof : bool`
         Dipole goodness of fit channels.
-    bio : bool
+    #### `bio : bool`
         Bio channels.
-    ecog : bool
+    #### `ecog : bool`
         Electrocorticography channels.
-    fnirs : bool | str
+    #### `fnirs : bool | str`
         Functional near-infrared spectroscopy channels. If True include all
         fNIRS channels. If False (default) include none. If string it can
         be 'hbo' (to include channels measuring oxyhemoglobin) or 'hbr' (to
         include channels measuring deoxyhemoglobin).
-    csd : bool
+    #### `csd : bool`
         EEG-CSD channels.
-    dbs : bool
+    #### `dbs : bool`
         Deep brain stimulation channels.
-    temperature : bool
+    #### `temperature : bool`
         Temperature channels.
-    gsr : bool
+    #### `gsr : bool`
         Galvanic skin response channels.
-    eyetrack : bool | str
+    #### `eyetrack : bool | str`
         Eyetracking channels. If True include all eyetracking channels. If False
         (default) include none. If string it can be 'eyegaze' (to include
         eye position channels) or 'pupil' (to include pupil-size
         channels).
-    include : list of str
+    #### `include : list of str`
         List of additional channels to include. If empty do not include
         any.
-    exclude : list of str | str
+    #### `exclude : list of str | str`
         List of channels to exclude. If 'bads' (default), exclude channels
         in ``info['bads']``.
-    selection : list of str
+    #### `selection : list of str`
         Restrict sensor channels (MEG, EEG, etc.) to this list of channel names.
 
     -----
     ### ⏎ Returns
 
-    sel : array of int
+    #### `sel : array of int`
         Indices of good channels.
     """
     ...
 
 def pick_info(info, sel=(), copy: bool = True, verbose=None):
-    """### Restrict an info structure to a selection of channels.
+    """## 🧠 Restrict an info structure to a selection of channels.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    sel : list of int | None
+    #### `sel : list of int | None`
         Indices of channels to include. If None, all channels
         are included.
-    copy : bool
+    #### `copy : bool`
         If copy is False, info is modified inplace.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -279,7 +279,7 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
     -----
     ### ⏎ Returns
 
-    res : dict
+    #### `res : dict`
         Info structure restricted to a selection of channels.
     """
     ...
@@ -287,33 +287,33 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
 def pick_channels_forward(
     orig, include=[], exclude=[], ordered=None, copy: bool = True, *, verbose=None
 ):
-    """### Pick channels from forward operator.
+    """## 🧠 Pick channels from forward operator.
 
     -----
     ### 🛠️ Parameters
 
-    orig : dict
+    #### `orig : dict`
         A forward solution.
-    include : list of str
+    #### `include : list of str`
         List of channels to include (if empty, include all available).
         Defaults to [].
-    exclude : list of str | 'bads'
+    #### `exclude : list of str | 'bads'`
         Channels to exclude (if empty, do not exclude any). Defaults to [].
         If 'bads', then exclude bad channels in orig.
 
-    ordered : bool
+    #### `ordered : bool`
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
         ✨ Added in vesion 0.20.0
         🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
-    copy : bool
+    #### `copy : bool`
         If True (default), make a copy.
 
         ✨ Added in vesion 0.19
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -322,7 +322,7 @@ def pick_channels_forward(
     -----
     ### ⏎ Returns
 
-    res : dict
+    #### `res : dict`
         Forward solution restricted to selected channels. If include and
         exclude are empty it returns orig without copy.
     """
@@ -339,51 +339,51 @@ def pick_types_forward(
     include=[],
     exclude=[],
 ):
-    """### Pick by channel type and names from a forward operator.
+    """## 🧠 Pick by channel type and names from a forward operator.
 
     -----
     ### 🛠️ Parameters
 
-    orig : dict
+    #### `orig : dict`
         A forward solution.
-    meg : bool | str
+    #### `meg : bool | str`
         If True include MEG channels. If string it can be 'mag', 'grad',
         'planar1' or 'planar2' to select only magnetometers, all gradiometers,
         or a specific type of gradiometer.
-    eeg : bool
+    #### `eeg : bool`
         If True include EEG channels.
-    ref_meg : bool
+    #### `ref_meg : bool`
         If True include CTF / 4D reference channels.
-    seeg : bool
+    #### `seeg : bool`
         If True include stereotactic EEG channels.
-    ecog : bool
+    #### `ecog : bool`
         If True include electrocorticography channels.
-    dbs : bool
+    #### `dbs : bool`
         If True include deep brain stimulation channels.
-    include : list of str
+    #### `include : list of str`
         List of additional channels to include. If empty do not include any.
-    exclude : list of str | str
+    #### `exclude : list of str | str`
         List of channels to exclude. If empty do not exclude any (default).
         If 'bads', exclude channels in orig['info']['bads'].
 
     -----
     ### ⏎ Returns
 
-    res : dict
+    #### `res : dict`
         Forward solution restricted to selected channel types.
     """
     ...
 
 def channel_indices_by_type(info, picks=None):
-    """### Get indices of channels by type.
+    """## 🧠 Get indices of channels by type.
 
     -----
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
-    picks : str | array-like | slice | None
+    #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -396,7 +396,7 @@ def channel_indices_by_type(info, picks=None):
     -----
     ### ⏎ Returns
 
-    idx_by_type : dict
+    #### `idx_by_type : dict`
         A dictionary that maps each channel type to a (possibly empty) list of
         channel indices.
     """
@@ -411,32 +411,32 @@ def pick_channels_cov(
     *,
     verbose=None,
 ):
-    """### Pick channels from covariance matrix.
+    """## 🧠 Pick channels from covariance matrix.
 
     -----
     ### 🛠️ Parameters
 
-    orig : Covariance
+    #### `orig : Covariance`
         A covariance.
-    include : list of str, (optional)
+    #### `include : list of str, (optional)`
         List of channels to include (if empty, include all available).
-    exclude : list of str, (optional) | 'bads'
+    #### `exclude : list of str, (optional) | 'bads'`
         Channels to exclude (if empty, do not exclude any). Defaults to 'bads'.
 
-    ordered : bool
+    #### `ordered : bool`
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
         ✨ Added in vesion 0.20.0
         🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
-    copy : bool
+    #### `copy : bool`
         If True (the default), return a copy of the covariance matrix with the
         modified channels. If False, channels are modified in-place.
 
         ✨ Added in vesion 0.20.0
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -445,7 +445,7 @@ def pick_channels_cov(
     -----
     ### ⏎ Returns
 
-    res : dict
+    #### `res : dict`
         Covariance solution restricted to selected channels.
     """
     ...

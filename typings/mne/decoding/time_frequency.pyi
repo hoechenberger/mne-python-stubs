@@ -4,32 +4,32 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class TimeFrequency(TransformerMixin, BaseEstimator):
-    """### Time frequency transformer.
+    """## 🧠 Time frequency transformer.
 
     Time-frequency transform of times series along the last axis.
 
     -----
     ### 🛠️ Parameters
 
-    freqs : array-like of float, shape (n_freqs,)
+    #### `freqs : array-like of float, shape (n_freqs,)`
         The frequencies.
-    sfreq : float | int, default 1.0
+    #### `sfreq : float | int, default 1.0`
         Sampling frequency of the data.
-    method : 'multitaper' | 'morlet', default 'morlet'
+    #### `method : 'multitaper' | 'morlet', default 'morlet'`
         The time-frequency method. 'morlet' convolves a Morlet wavelet.
         'multitaper' uses Morlet wavelets windowed with multiple DPSS
         multitapers.
-    n_cycles : float | array of float, default 7.0
+    #### `n_cycles : float | array of float, default 7.0`
         Number of cycles  in the Morlet wavelet. Fixed number
         or one per frequency.
-    time_bandwidth : float, default None
+    #### `time_bandwidth : float, default None`
         If None and method=multitaper, will be set to 4.0 (3 tapers).
         Time x (Full) Bandwidth product. Only applies if
         method == 'multitaper'. The number of good tapers (low-bias) is
         chosen automatically based on this to equal floor(time_bandwidth - 1).
-    use_fft : bool, default True
+    #### `use_fft : bool, default True`
         Use the FFT for convolutions or not.
-    decim : int | slice, default 1
+    #### `decim : int | slice, default 1`
         To reduce memory usage, decimation factor after time-frequency
         decomposition.
         If `int`, returns tfr[..., ::decim].
@@ -38,11 +38,11 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         ### 💡 Note Decimation may create aliasing artifacts, yet decimation
                   is done after the convolutions.
 
-    output : str, default 'complex'
+    #### `output : str, default 'complex'`
         * 'complex' : single trial complex.
         * 'power' : single trial power.
         * 'phase' : single trial phase.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -52,7 +52,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         The number of epochs to process at the same time. The parallelization
         is implemented across channels.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -100,7 +100,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         X : array, shape (n_samples, n_channels, n_times)
             The training data samples. The channel dimension can be zero- or
             1-dimensional.
-        y : None
+        #### `y : None`
             For scikit-learn compatibility purposes.
 
         -----
@@ -119,13 +119,13 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
 
         X : array, shape (n_samples, n_channels, n_times)
             The training data.
-        y : array | None
+        #### `y : array | None`
             The target values.
 
         -----
         ### ⏎ Returns
 
-        self : object
+        #### `self : object`
             Return self.
         """
         ...

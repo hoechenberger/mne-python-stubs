@@ -12,28 +12,28 @@ def compute_fine_calibration(
     calibration=None,
     verbose=None,
 ):
-    """### Compute fine calibration from empty-room data.
+    """## 🧠 Compute fine calibration from empty-room data.
 
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         The raw data to use. Should be from an empty-room recording,
         and all channels should be good.
-    n_imbalance : int
+    #### `n_imbalance : int`
         Can be 1 or 3 (default), indicating the number of gradiometer
         imbalance components. Only used if gradiometers are present.
-    t_window : float
+    #### `t_window : float`
         Time window to use for surface normal rotation in seconds.
         Default is 10.
 
-    ext_order : int
+    #### `ext_order : int`
         Order of external component of spherical expansion.
         Default is 2, which is lower than the default (3) for
         `mne.preprocessing.maxwell_filter` because it tends to yield
         more stable parameter estimates.
 
-    origin : array-like, shape (3,) | str
+    #### `origin : array-like, shape (3,) | str`
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
@@ -43,14 +43,14 @@ def compute_fine_calibration(
         consider separately calling the fitting function with different
         options or specifying the origin manually.
 
-    cross_talk : str | None
+    #### `cross_talk : str | None`
         Path to the FIF file with cross-talk correction information.
-    calibration : dict | None
+    #### `calibration : dict | None`
         Dictionary with existing calibration. If provided, the magnetometer
         imbalances and adjusted normals will be used and only the gradiometer
         imbalances will be estimated (see step 2 in Notes below).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -59,9 +59,9 @@ def compute_fine_calibration(
     -----
     ### ⏎ Returns
 
-    calibration : dict
+    #### `calibration : dict`
         Fine calibration data.
-    count : int
+    #### `count : int`
         The number of good segments used to compute the magnetometer
         parameters.
 
@@ -100,7 +100,7 @@ def compute_fine_calibration(
     ...
 
 def read_fine_calibration(fname):
-    """### Read fine calibration information from a ``.dat`` file.
+    """## 🧠 Read fine calibration information from a ``.dat`` file.
 
     The fine calibration typically includes improved sensor locations,
     calibration coefficients, and gradiometer imbalance information.
@@ -108,13 +108,13 @@ def read_fine_calibration(fname):
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The filename.
 
     -----
     ### ⏎ Returns
 
-    calibration : dict
+    #### `calibration : dict`
         Fine calibration information. Key-value pairs are:
 
         - ``ch_names``
@@ -128,14 +128,14 @@ def read_fine_calibration(fname):
     ...
 
 def write_fine_calibration(fname, calibration) -> None:
-    """### Write fine calibration information to a ``.dat`` file.
+    """## 🧠 Write fine calibration information to a ``.dat`` file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The filename to write out.
-    calibration : dict
+    #### `calibration : dict`
         Fine calibration information.
     """
     ...

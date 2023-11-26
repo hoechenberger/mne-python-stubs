@@ -1,7 +1,7 @@
 from ..._fiff.constants import FIFF as FIFF
 
 def set_channel_types_eyetrack(inst, mapping):
-    """### Define sensor type for eyetrack channels.
+    """## 🧠 Define sensor type for eyetrack channels.
 
     This function can set all eye tracking specific information:
     channel type, unit, eye (and x/y component; only for gaze channels)
@@ -16,9 +16,9 @@ def set_channel_types_eyetrack(inst, mapping):
     -----
     ### 🛠️ Parameters
 
-    inst : instance of Raw, Epochs, or Evoked
+    #### `inst : instance of Raw, Epochs, or Evoked`
         The data instance.
-    mapping : dict
+    #### `mapping : dict`
         A dictionary mapping a channel to a list/tuple including
         channel type, unit, eye, [and x/y component] (all as str),  e.g.,
         ``{'l_x': ('eyegaze', 'deg', 'left', 'x')}`` or
@@ -27,7 +27,7 @@ def set_channel_types_eyetrack(inst, mapping):
     -----
     ### ⏎ Returns
 
-    inst : instance of Raw | Epochs | Evoked
+    #### `inst : instance of Raw | Epochs | Evoked`
         The instance, modified in place.
 
     -----

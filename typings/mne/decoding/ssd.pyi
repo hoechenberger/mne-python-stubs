@@ -8,7 +8,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class SSD(BaseEstimator, TransformerMixin):
-    """###
+    """## 🧠
     Signal decomposition using the Spatio-Spectral Decomposition (SSD).
 
     SSD seeks to maximize the power at a frequency band of interest while
@@ -23,40 +23,40 @@ class SSD(BaseEstimator, TransformerMixin):
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement. Must match the input data.
-    filt_params_signal : dict
+    #### `filt_params_signal : dict`
         Filtering for the frequencies of interest.
-    filt_params_noise : dict
+    #### `filt_params_noise : dict`
         Filtering for the frequencies of non-interest.
-    reg : float | str | None (default)
+    #### `reg : float | str | None (default)`
         Which covariance estimator to use.
         If not None (same as 'empirical'), allow regularization for covariance
         estimation. If float, shrinkage is used (0 <= shrinkage <= 1). For str
         options, reg will be passed to method `mne.compute_covariance`.
-    n_components : int | None (default None)
+    #### `n_components : int | None (default None)`
         The number of components to extract from the signal.
         If None, the number of components equal to the rank of the data are
         returned (see ``rank``).
-    picks : array of int | None (default None)
+    #### `picks : array of int | None (default None)`
         The indices of good channels.
-    sort_by_spectral_ratio : bool (default True)
+    #### `sort_by_spectral_ratio : bool (default True)`
         If set to True, the components are sorted according to the spectral
         ratio.
         See Eq. (24) in :footcite:`NikulinEtAl2011`.
-    return_filtered : bool (default False)
+    #### `return_filtered : bool (default False)`
         If return_filtered is True, data is bandpassed and projected onto the
         SSD components.
-    n_fft : int (default None)
+    #### `n_fft : int (default None)`
        If sort_by_spectral_ratio is set to True, then the SSD sources will be
        sorted according to their spectral ratio which is calculated based on
        `mne.time_frequency.psd_array_welch`. The n_fft parameter sets the
        length of FFT used.
        See `mne.time_frequency.psd_array_welch` for more information.
-    cov_method_params : dict | None (default None)
+    #### `cov_method_params : dict | None (default None)`
         As in `mne.decoding.SPoC`
         The default is None.
-    rank : None | dict | ‘info’ | ‘full’
+    #### `rank : None | dict | ‘info’ | ‘full’`
         As in `mne.decoding.SPoC`
         This controls the rank computation that can be read from the
         measurement info or estimated from the data, which determines the
@@ -67,9 +67,9 @@ class SSD(BaseEstimator, TransformerMixin):
     -----
     ### 📊 Attributes
 
-    filters_ : array, shape (n_channels, n_components)
+    #### `filters_ : array, shape (n_channels, n_components)`
         The spatial filters to be multiplied with the signal.
-    patterns_ : array, shape (n_components, n_channels)
+    #### `patterns_ : array, shape (n_components, n_channels)`
         The patterns for reconstructing the signal from the filtered data.
 
     References
@@ -122,13 +122,13 @@ class SSD(BaseEstimator, TransformerMixin):
             The input data from which to estimate the SSD. Either 2D array
             obtained from continuous data or 3D array obtained from epoched
             data.
-        y : None | array, shape (n_samples,)
+        #### `y : None | array, shape (n_samples,)`
             Used for scikit-learn compatibility.
 
         -----
         ### ⏎ Returns
 
-        self : instance of SSD
+        #### `self : instance of SSD`
             Returns the modified instance.
         """
         ...
@@ -159,15 +159,15 @@ class SSD(BaseEstimator, TransformerMixin):
         -----
         ### 🛠️ Parameters
 
-        ssd_sources : array
+        #### `ssd_sources : array`
             Data projected to SSD space.
 
         -----
         ### ⏎ Returns
 
-        spec_ratio : array, shape (n_channels)
+        #### `spec_ratio : array, shape (n_channels)`
             Array with the sprectal ratio value for each component.
-        sorter_spec : array, shape (n_channels)
+        #### `sorter_spec : array, shape (n_channels)`
             Array of indices for sorting spec_ratio.
 
         References

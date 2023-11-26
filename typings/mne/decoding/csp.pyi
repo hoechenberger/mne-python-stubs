@@ -6,7 +6,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class CSP(TransformerMixin, BaseEstimator):
-    """### M/EEG signal decomposition using the Common Spatial Patterns (CSP).
+    """## 🧠 M/EEG signal decomposition using the Common Spatial Patterns (CSP).
 
     This class can be used as a supervised decomposition to estimate spatial
     filters for feature extraction. CSP in the context of EEG was first
@@ -17,40 +17,40 @@ class CSP(TransformerMixin, BaseEstimator):
     -----
     ### 🛠️ Parameters
 
-    n_components : int (default 4)
+    #### `n_components : int (default 4)`
         The number of components to decompose M/EEG signals. This number should
         be set by cross-validation.
-    reg : float | str | None (default None)
+    #### `reg : float | str | None (default None)`
         If not None (same as ``'empirical'``, default), allow regularization
         for covariance estimation. If float (between 0 and 1), shrinkage is
         used. For str values, ``reg`` will be passed as ``method`` to
         `mne.compute_covariance`.
-    log : None | bool (default None)
+    #### `log : None | bool (default None)`
         If ``transform_into`` equals ``'average_power'`` and ``log`` is None or
         True, then apply a log transform to standardize features, else features
         are z-scored. If ``transform_into`` is ``'csp_space'``, ``log`` must be
         None.
-    cov_est : 'concat' | 'epoch' (default 'concat')
+    #### `cov_est : 'concat' | 'epoch' (default 'concat')`
         If ``'concat'``, covariance matrices are estimated on concatenated
         epochs for each class. If ``'epoch'``, covariance matrices are
         estimated on each epoch separately and then averaged over each class.
-    transform_into : 'average_power' | 'csp_space' (default 'average_power')
+    #### `transform_into : 'average_power' | 'csp_space' (default 'average_power')`
         If 'average_power' then ``self.transform`` will return the average
         power of each spatial filter. If ``'csp_space'``, ``self.transform``
         will return the data in CSP space.
-    norm_trace : bool (default False)
+    #### `norm_trace : bool (default False)`
         Normalize class covariance by its trace. Trace normalization is a step
         of the original CSP algorithm :footcite:`KolesEtAl1990` to eliminate
         magnitude variations in the EEG between individuals. It is not applied
         in more recent work :footcite:`BlankertzEtAl2008`,
         :footcite:`Grosse-WentrupBuss2008` and can have a negative impact on
         pattern order.
-    cov_method_params : dict | None
+    #### `cov_method_params : dict | None`
         Parameters to pass to `mne.compute_covariance`.
 
         ✨ Added in vesion 0.16
 
-    rank : None | 'info' | 'full' | dict
+    #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -96,7 +96,7 @@ class CSP(TransformerMixin, BaseEstimator):
         The default is ``None``.
 
         ✨ Added in vesion 0.17
-    component_order : 'mutual_info' | 'alternate' (default 'mutual_info')
+    #### `component_order : 'mutual_info' | 'alternate' (default 'mutual_info')`
         If ``'mutual_info'`` order components by decreasing mutual information
         (in the two-class case this uses a simplification which orders
         components by decreasing absolute deviation of the eigenvalues from 0.5
@@ -110,13 +110,13 @@ class CSP(TransformerMixin, BaseEstimator):
     -----
     ### 📊 Attributes
 
-    filters_ :  ndarray, shape (n_channels, n_channels)
+    #### `filters_ :  ndarray, shape (n_channels, n_channels)`
         If fit, the CSP components used to decompose the data, else None.
-    patterns_ : ndarray, shape (n_channels, n_channels)
+    #### `patterns_ : ndarray, shape (n_channels, n_channels)`
         If fit, the CSP patterns used to restore M/EEG signals, else None.
-    mean_ : ndarray, shape (n_components,)
+    #### `mean_ : ndarray, shape (n_components,)`
         If fit, the mean squared power for each component.
-    std_ : ndarray, shape (n_components,)
+    #### `std_ : ndarray, shape (n_components,)`
         If fit, the std squared power for each component.
 
     -----
@@ -164,13 +164,13 @@ class CSP(TransformerMixin, BaseEstimator):
 
         X : ndarray, shape (n_epochs, n_channels, n_times)
             The data on which to estimate the CSP.
-        y : array, shape (n_epochs,)
+        #### `y : array, shape (n_epochs,)`
             The class for each epoch.
 
         -----
         ### ⏎ Returns
 
-        self : instance of CSP
+        #### `self : instance of CSP`
             Returns the modified instance.
         """
         ...
@@ -204,7 +204,7 @@ class CSP(TransformerMixin, BaseEstimator):
 
         X : array, shape (n_samples, n_features)
             Training set.
-        y : array, shape (n_samples,)
+        #### `y : array, shape (n_samples,)`
             Target values or class labels.
         **fit_params : dict
             Additional fitting parameters passed to the ``fit`` method..
@@ -257,13 +257,13 @@ class CSP(TransformerMixin, BaseEstimator):
         ### 🛠️ Parameters
 
 
-        info : mne.Info
+        #### `info : mne.Info`
             The `mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
             `mne.create_info`.
-        components : float | array of float | None
+        #### `components : float | array of float | None`
            The patterns to plot. If ``None``, all components will be shown.
 
-        average : float | array-like of float, shape (n_times,) | None
+        #### `average : float | array-like of float, shape (n_times,) | None`
             The time window (in seconds) around a given time point to be used for
             averaging. For example, 0.2 would translate into a time window that
             starts 0.1 s before and ends 0.1 s after the given time point. If the
@@ -274,41 +274,41 @@ class CSP(TransformerMixin, BaseEstimator):
 
             🎭 Changed in version 1.1
                Support for ``array-like`` input.
-        ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
+        #### `ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None`
             The channel type to plot. For ``'grad'``, the gradiometers are
             collected in pairs and the RMS for each pair is plotted. If
             ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
-        scalings : dict | float | None
+        #### `scalings : dict | float | None`
             The scalings of the channel types to be applied for plotting.
             If None, defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
 
-        sensors : bool | str
+        #### `sensors : bool | str`
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
             Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
-        show_names : bool | callable
+        #### `show_names : bool | callable`
             If ``True``, show channel names next to each sensor marker. If callable,
             channel names will be formatted using the callable; e.g., to
             delete the prefix 'MEG ' from all channel names, pass the function
             ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
             non-masked sensor names will be shown.
 
-        mask : ndarray of bool, shape (n_channels, n_patterns) | None
+        #### `mask : ndarray of bool, shape (n_channels, n_patterns) | None`
             Array indicating channel-pattern combinations to highlight with a distinct
             plotting style. Array elements set to ``True`` will be plotted
             with the parameters given in ``mask_params``. Defaults to ``None``,
             equivalent to an array of all ``False`` elements.
 
-        mask_params : dict | None
+        #### `mask_params : dict | None`
             Additional plotting parameters for plotting significant sensors.
             Default (None) equals::
 
                 dict(marker='o', markerfacecolor='w', markeredgecolor='k',
                         linewidth=0, markersize=4)
 
-        contours : int | array-like
+        #### `contours : int | array-like`
             The number of contour lines to draw. If ``0``, no contours will be drawn.
             If a positive integer, that number of contour levels are chosen using the
             matplotlib tick locator (may sometimes be inaccurate, use array for
@@ -317,7 +317,7 @@ class CSP(TransformerMixin, BaseEstimator):
             gradiometers. If ``colorbar=True``, the colorbar will have ticks
             corresponding to the contour levels. Default is ``6``.
 
-        outlines : 'head' | dict | None
+        #### `outlines : 'head' | dict | None`
             The outlines to be drawn. If 'head', the default head scheme will be
             drawn. If dict, each key refers to a tuple of x and y positions, the values
             in 'mask_pos' will serve as image mask.
@@ -325,7 +325,7 @@ class CSP(TransformerMixin, BaseEstimator):
             masking options, either directly or as a function that returns patches
             (required for multi-axis plots). If None, nothing will be drawn.
             Defaults to 'head'.
-        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
+        #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -340,13 +340,13 @@ class CSP(TransformerMixin, BaseEstimator):
             ✨ Added in vesion 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-        image_interp : str
+        #### `image_interp : str`
             The image interpolation to be used. Options are ``'cubic'`` (default)
             to use `scipy.interpolate.CloughTocher2DInterpolator`,
             ``'nearest'`` to use `scipy.spatial.Voronoi` or
             ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
-        extrapolate : str
+        #### `extrapolate : str`
             Options:
 
             - ``'box'``
@@ -365,19 +365,19 @@ class CSP(TransformerMixin, BaseEstimator):
 
             ✨ Added in vesion 1.3
 
-        border : float | 'mean'
+        #### `border : float | 'mean'`
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
             ✨ Added in vesion 1.3
 
-        res : int
+        #### `res : int`
             The resolution of the topomap image (number of pixels along each side).
 
-        size : float
+        #### `size : float`
             Side length of each subplot in inches.
 
-        cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
+        #### `cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None`
             Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
@@ -392,7 +392,7 @@ class CSP(TransformerMixin, BaseEstimator):
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
-        vlim : tuple of length 2
+        #### `vlim : tuple of length 2`
             Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
@@ -400,7 +400,7 @@ class CSP(TransformerMixin, BaseEstimator):
 
             ✨ Added in vesion 1.3
 
-        cnorm : matplotlib.colors.Normalize | None
+        #### `cnorm : matplotlib.colors.Normalize | None`
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
             See `Matplotlib docs <matplotlib:colormapnorms>`
@@ -409,35 +409,35 @@ class CSP(TransformerMixin, BaseEstimator):
 
             ✨ Added in vesion 1.3
 
-        colorbar : bool
+        #### `colorbar : bool`
             Plot a colorbar in the rightmost column of the figure.
-        cbar_fmt : str
+        #### `cbar_fmt : str`
             Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
-        units : str | None
+        #### `units : str | None`
             The units to use for the colorbar label. Ignored if ``colorbar=False``.
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
-        axes : instance of Axes | list of Axes | None
+        #### `axes : instance of Axes | list of Axes | None`
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
-        name_format : str
+        #### `name_format : str`
             String format for topomap values. Defaults to "CSP%01d".
 
-        nrows, ncols : int | 'auto'
+        #### `nrows, ncols : int | 'auto'`
             The number of rows and columns of topographies to plot. If either ``nrows``
             or ``ncols`` is ``'auto'``, the necessary number will be inferred. Defaults
             to ``nrows=1, ncols='auto'``.
 
             ✨ Added in vesion 1.3
-        show : bool
+        #### `show : bool`
             Show the figure if ``True``.
 
         -----
         ### ⏎ Returns
 
-        fig : instance of matplotlib.figure.Figure
+        #### `fig : instance of matplotlib.figure.Figure`
            The figure.
         """
         ...
@@ -482,13 +482,13 @@ class CSP(TransformerMixin, BaseEstimator):
         ### 🛠️ Parameters
 
 
-        info : mne.Info
+        #### `info : mne.Info`
             The `mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
             `mne.create_info`.
-        components : float | array of float | None
+        #### `components : float | array of float | None`
            The patterns to plot. If ``None``, all components will be shown.
 
-        average : float | array-like of float, shape (n_times,) | None
+        #### `average : float | array-like of float, shape (n_times,) | None`
             The time window (in seconds) around a given time point to be used for
             averaging. For example, 0.2 would translate into a time window that
             starts 0.1 s before and ends 0.1 s after the given time point. If the
@@ -499,41 +499,41 @@ class CSP(TransformerMixin, BaseEstimator):
 
             🎭 Changed in version 1.1
                Support for ``array-like`` input.
-        ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
+        #### `ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None`
             The channel type to plot. For ``'grad'``, the gradiometers are
             collected in pairs and the RMS for each pair is plotted. If
             ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
-        scalings : dict | float | None
+        #### `scalings : dict | float | None`
             The scalings of the channel types to be applied for plotting.
             If None, defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
 
-        sensors : bool | str
+        #### `sensors : bool | str`
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
             Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
-        show_names : bool | callable
+        #### `show_names : bool | callable`
             If ``True``, show channel names next to each sensor marker. If callable,
             channel names will be formatted using the callable; e.g., to
             delete the prefix 'MEG ' from all channel names, pass the function
             ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
             non-masked sensor names will be shown.
 
-        mask : ndarray of bool, shape (n_channels, n_patterns) | None
+        #### `mask : ndarray of bool, shape (n_channels, n_patterns) | None`
             Array indicating channel-pattern combinations to highlight with a distinct
             plotting style. Array elements set to ``True`` will be plotted
             with the parameters given in ``mask_params``. Defaults to ``None``,
             equivalent to an array of all ``False`` elements.
 
-        mask_params : dict | None
+        #### `mask_params : dict | None`
             Additional plotting parameters for plotting significant sensors.
             Default (None) equals::
 
                 dict(marker='o', markerfacecolor='w', markeredgecolor='k',
                         linewidth=0, markersize=4)
 
-        contours : int | array-like
+        #### `contours : int | array-like`
             The number of contour lines to draw. If ``0``, no contours will be drawn.
             If a positive integer, that number of contour levels are chosen using the
             matplotlib tick locator (may sometimes be inaccurate, use array for
@@ -542,7 +542,7 @@ class CSP(TransformerMixin, BaseEstimator):
             gradiometers. If ``colorbar=True``, the colorbar will have ticks
             corresponding to the contour levels. Default is ``6``.
 
-        outlines : 'head' | dict | None
+        #### `outlines : 'head' | dict | None`
             The outlines to be drawn. If 'head', the default head scheme will be
             drawn. If dict, each key refers to a tuple of x and y positions, the values
             in 'mask_pos' will serve as image mask.
@@ -550,7 +550,7 @@ class CSP(TransformerMixin, BaseEstimator):
             masking options, either directly or as a function that returns patches
             (required for multi-axis plots). If None, nothing will be drawn.
             Defaults to 'head'.
-        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
+        #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -565,13 +565,13 @@ class CSP(TransformerMixin, BaseEstimator):
             ✨ Added in vesion 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-        image_interp : str
+        #### `image_interp : str`
             The image interpolation to be used. Options are ``'cubic'`` (default)
             to use `scipy.interpolate.CloughTocher2DInterpolator`,
             ``'nearest'`` to use `scipy.spatial.Voronoi` or
             ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
-        extrapolate : str
+        #### `extrapolate : str`
             Options:
 
             - ``'box'``
@@ -590,19 +590,19 @@ class CSP(TransformerMixin, BaseEstimator):
 
             ✨ Added in vesion 1.3
 
-        border : float | 'mean'
+        #### `border : float | 'mean'`
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
             ✨ Added in vesion 1.3
 
-        res : int
+        #### `res : int`
             The resolution of the topomap image (number of pixels along each side).
 
-        size : float
+        #### `size : float`
             Side length of each subplot in inches.
 
-        cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
+        #### `cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None`
             Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
@@ -617,7 +617,7 @@ class CSP(TransformerMixin, BaseEstimator):
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
-        vlim : tuple of length 2 | 'joint'
+        #### `vlim : tuple of length 2 | 'joint'`
             Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
@@ -625,7 +625,7 @@ class CSP(TransformerMixin, BaseEstimator):
 
             ✨ Added in vesion 1.3
 
-        cnorm : matplotlib.colors.Normalize | None
+        #### `cnorm : matplotlib.colors.Normalize | None`
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
             See `Matplotlib docs <matplotlib:colormapnorms>`
@@ -634,41 +634,41 @@ class CSP(TransformerMixin, BaseEstimator):
 
             ✨ Added in vesion 1.3
 
-        colorbar : bool
+        #### `colorbar : bool`
             Plot a colorbar in the rightmost column of the figure.
-        cbar_fmt : str
+        #### `cbar_fmt : str`
             Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
-        units : str | None
+        #### `units : str | None`
             The units to use for the colorbar label. Ignored if ``colorbar=False``.
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
-        axes : instance of Axes | list of Axes | None
+        #### `axes : instance of Axes | list of Axes | None`
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
-        name_format : str
+        #### `name_format : str`
             String format for topomap values. Defaults to "CSP%01d".
 
-        nrows, ncols : int | 'auto'
+        #### `nrows, ncols : int | 'auto'`
             The number of rows and columns of topographies to plot. If either ``nrows``
             or ``ncols`` is ``'auto'``, the necessary number will be inferred. Defaults
             to ``nrows=1, ncols='auto'``.
 
             ✨ Added in vesion 1.3
-        show : bool
+        #### `show : bool`
             Show the figure if ``True``.
 
         -----
         ### ⏎ Returns
 
-        fig : instance of matplotlib.figure.Figure
+        #### `fig : instance of matplotlib.figure.Figure`
            The figure.
         """
         ...
 
 class SPoC(CSP):
-    """### Implementation of the SPoC spatial filtering.
+    """## 🧠 Implementation of the SPoC spatial filtering.
 
     Source Power Comodulation (SPoC) :footcite:`DahneEtAl2014` allows to
     extract spatial filters and
@@ -684,28 +684,28 @@ class SPoC(CSP):
     -----
     ### 🛠️ Parameters
 
-    n_components : int
+    #### `n_components : int`
         The number of components to decompose M/EEG signals.
-    reg : float | str | None (default None)
+    #### `reg : float | str | None (default None)`
         If not None (same as ``'empirical'``, default), allow
         regularization for covariance estimation.
         If float, shrinkage is used (0 <= shrinkage <= 1).
         For str options, ``reg`` will be passed to ``method`` to
         `mne.compute_covariance`.
-    log : None | bool (default None)
+    #### `log : None | bool (default None)`
         If transform_into == 'average_power' and log is None or True, then
         applies a log transform to standardize the features, else the features
         are z-scored. If transform_into == 'csp_space', then log must be None.
-    transform_into : {'average_power', 'csp_space'}
+    #### `transform_into : {'average_power', 'csp_space'}`
         If 'average_power' then self.transform will return the average power of
         each spatial filter. If 'csp_space' self.transform will return the data
         in CSP space. Defaults to 'average_power'.
-    cov_method_params : dict | None
+    #### `cov_method_params : dict | None`
         Parameters to pass to `mne.compute_covariance`.
 
         ✨ Added in vesion 0.16
 
-    rank : None | 'info' | 'full' | dict
+    #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -755,13 +755,13 @@ class SPoC(CSP):
     -----
     ### 📊 Attributes
 
-    filters_ : ndarray, shape (n_channels, n_channels)
+    #### `filters_ : ndarray, shape (n_channels, n_channels)`
         If fit, the SPoC spatial filters, else None.
-    patterns_ : ndarray, shape (n_channels, n_channels)
+    #### `patterns_ : ndarray, shape (n_channels, n_channels)`
         If fit, the SPoC spatial patterns, else None.
-    mean_ : ndarray, shape (n_components,)
+    #### `mean_ : ndarray, shape (n_components,)`
         If fit, the mean squared power for each component.
-    std_ : ndarray, shape (n_components,)
+    #### `std_ : ndarray, shape (n_components,)`
         If fit, the std squared power for each component.
 
     -----
@@ -798,13 +798,13 @@ class SPoC(CSP):
 
         X : ndarray, shape (n_epochs, n_channels, n_times)
             The data on which to estimate the SPoC.
-        y : array, shape (n_epochs,)
+        #### `y : array, shape (n_epochs,)`
             The class for each epoch.
 
         -----
         ### ⏎ Returns
 
-        self : instance of SPoC
+        #### `self : instance of SPoC`
             Returns the modified instance.
         """
         ...

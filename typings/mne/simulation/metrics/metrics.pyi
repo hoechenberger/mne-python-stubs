@@ -1,7 +1,7 @@
 from ...utils import fill_doc as fill_doc
 
 def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
-    """### Calculate STC similarities across all sources and times.
+    """## 🧠 Calculate STC similarities across all sources and times.
 
     -----
     ### 🛠️ Parameters
@@ -10,13 +10,13 @@ def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
         First source estimate for comparison.
     stc2 : SourceEstimate
         Second source estimate for comparison.
-    metric : str
+    #### `metric : str`
         Metric to calculate, ``'rms'`` or ``'cosine'``.
 
     -----
     ### ⏎ Returns
 
-    score : float | array
+    #### `score : float | array`
         Calculated metric.
 
     -----
@@ -32,20 +32,20 @@ def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
     ...
 
 def cosine_score(stc_true, stc_est, per_sample: bool = True):
-    """### Compute cosine similarity between 2 source estimates.
+    """## 🧠 Compute cosine similarity between 2 source estimates.
 
     -----
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -53,7 +53,7 @@ def cosine_score(stc_true, stc_est, per_sample: bool = True):
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
@@ -67,7 +67,7 @@ def cosine_score(stc_true, stc_est, per_sample: bool = True):
 def region_localization_error(
     stc_true, stc_est, src, threshold: str = "90%", per_sample: bool = True
 ):
-    """### Compute region localization error (RLE) between 2 source estimates.
+    """## 🧠 Compute region localization error (RLE) between 2 source estimates.
 
     .. math::
 
@@ -83,20 +83,20 @@ def region_localization_error(
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
-    src : instance of SourceSpaces
+    #### `src : instance of SourceSpaces`
         The source space on which the source estimates are defined.
-    threshold : float | str
+    #### `threshold : float | str`
         The threshold to apply to source estimates before computing
         the dipole localization error. If a string the threshold is
         a percentage and it should end with the percent character.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -104,7 +104,7 @@ def region_localization_error(
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
@@ -127,7 +127,7 @@ def region_localization_error(
     ...
 
 def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
-    """### Compute ROC AUC between 2 source estimates.
+    """## 🧠 Compute ROC AUC between 2 source estimates.
 
     ROC stands for receiver operating curve and AUC is Area under the curve.
     When computing this metric the stc_true must be thresholded
@@ -140,14 +140,14 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -155,7 +155,7 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
@@ -167,7 +167,7 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     ...
 
 def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
-    """### Compute the F1 score, also known as balanced F-score or F-measure.
+    """## 🧠 Compute the F1 score, also known as balanced F-score or F-measure.
 
     The F1 score can be interpreted as a weighted average of the precision
     and recall, where an F1 score reaches its best value at 1 and worst score
@@ -183,18 +183,18 @@ def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True)
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
-    threshold : float | str
+    #### `threshold : float | str`
         The threshold to apply to source estimates before computing
         the f1 score. If a string the threshold is
         a percentage and it should end with the percent character.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -202,7 +202,7 @@ def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True)
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
@@ -214,7 +214,7 @@ def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True)
     ...
 
 def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
-    """### Compute the precision.
+    """## 🧠 Compute the precision.
 
     The precision is the ratio ``tp / (tp + fp)`` where ``tp`` is the number of
     true positives and ``fp`` the number of false positives. The precision is
@@ -229,18 +229,18 @@ def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool 
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
-    threshold : float | str
+    #### `threshold : float | str`
         The threshold to apply to source estimates before computing
         the precision. If a string the threshold is
         a percentage and it should end with the percent character.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -248,7 +248,7 @@ def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool 
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
@@ -260,7 +260,7 @@ def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool 
     ...
 
 def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
-    """### Compute the recall.
+    """## 🧠 Compute the recall.
 
     The recall is the ratio ``tp / (tp + fn)`` where ``tp`` is the number of
     true positives and ``fn`` the number of false negatives. The recall is
@@ -274,18 +274,18 @@ def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = T
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
-    threshold : float | str
+    #### `threshold : float | str`
         The threshold to apply to source estimates before computing
         the recall. If a string the threshold is
         a percentage and it should end with the percent character.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -293,7 +293,7 @@ def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = T
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
@@ -307,7 +307,7 @@ def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = T
 def peak_position_error(
     stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
 ):
-    """### Compute the peak position error.
+    """## 🧠 Compute the peak position error.
 
     The peak position error measures the distance between the center-of-mass
     of the estimated and the true source.
@@ -328,20 +328,20 @@ def peak_position_error(
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
-    src : instance of SourceSpaces
+    #### `src : instance of SourceSpaces`
         The source space on which the source estimates are defined.
-    threshold : float | str
+    #### `threshold : float | str`
         The threshold to apply to source estimates before computing
         the recall. If a string the threshold is
         a percentage and it should end with the percent character.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -349,7 +349,7 @@ def peak_position_error(
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
@@ -370,7 +370,7 @@ def peak_position_error(
 def spatial_deviation_error(
     stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
 ):
-    """### Compute the spatial deviation.
+    """## 🧠 Compute the spatial deviation.
 
     The spatial deviation characterizes the spread of the estimate source
     around the true source.
@@ -390,20 +390,20 @@ def spatial_deviation_error(
     ### 🛠️ Parameters
 
 
-    stc_true : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_true : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing correct values.
 
-    stc_est : instance of (Vol|Mixed)SourceEstimate
+    #### `stc_est : instance of (Vol|Mixed)SourceEstimate`
         The source estimates containing estimated values
         e.g. obtained with a source imaging method.
-    src : instance of SourceSpaces
+    #### `src : instance of SourceSpaces`
         The source space on which the source estimates are defined.
-    threshold : float | str
+    #### `threshold : float | str`
         The threshold to apply to source estimates before computing
         the recall. If a string the threshold is
         a percentage and it should end with the percent character.
 
-    per_sample : bool
+    #### `per_sample : bool`
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
@@ -411,7 +411,7 @@ def spatial_deviation_error(
     ### ⏎ Returns
 
 
-    metric : float | array, shape (n_times,)
+    #### `metric : float | array, shape (n_times,)`
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 

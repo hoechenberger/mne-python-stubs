@@ -31,24 +31,24 @@ t_test: Incomplete
 docdict_indented: Incomplete
 
 def fill_doc(f):
-    """### Fill a docstring with docdict entries.
+    """## 🧠 Fill a docstring with docdict entries.
 
     -----
     ### 🛠️ Parameters
 
-    f : callable
+    #### `f : callable`
         The function to fill the docstring of. Will be modified in place.
 
     -----
     ### ⏎ Returns
 
-    f : callable
+    #### `f : callable`
         The function, potentially with an updated ``__doc__``.
     """
     ...
 
 def copy_doc(source):
-    """### Copy the docstring from another function (decorator).
+    """## 🧠 Copy the docstring from another function (decorator).
 
     The docstring of the source function is prepepended to the docstring of the
     function wrapped by this decorator.
@@ -59,13 +59,13 @@ def copy_doc(source):
     -----
     ### 🛠️ Parameters
 
-    source : function
+    #### `source : function`
         Function to copy the docstring from
 
     -----
     ### ⏎ Returns
 
-    wrapper : function
+    #### `wrapper : function`
         The decorated function
 
     -----
@@ -86,7 +86,7 @@ def copy_doc(source):
     ...
 
 def copy_function_doc_to_method_doc(source):
-    """### Use the docstring from a function as docstring for a method.
+    """## 🧠 Use the docstring from a function as docstring for a method.
 
     The docstring of the source function is prepepended to the docstring of the
     function wrapped by this decorator. Additionally, the first parameter
@@ -100,13 +100,13 @@ def copy_function_doc_to_method_doc(source):
     -----
     ### 🛠️ Parameters
 
-    source : function
+    #### `source : function`
         Function to copy the docstring from.
 
     -----
     ### ⏎ Returns
 
-    wrapper : function
+    #### `wrapper : function`
         The decorated method.
 
     -----
@@ -148,9 +148,9 @@ def copy_function_doc_to_method_doc(source):
         -----
         ### 🛠️ Parameters
 
-        a : int
+        #### `a : int`
             Some parameter
-        b : int
+        #### `b : int`
             Some parameter
     <BLANKLINE>
             -----
@@ -162,7 +162,7 @@ def copy_function_doc_to_method_doc(source):
     ...
 
 def copy_base_doc_to_subclass_doc(subclass):
-    """### Use the docstring from a parent class methods in derived class.
+    """## 🧠 Use the docstring from a parent class methods in derived class.
 
     The docstring of a parent class method is prepended to the
     docstring of the method of the class wrapped by this decorator.
@@ -170,32 +170,32 @@ def copy_base_doc_to_subclass_doc(subclass):
     -----
     ### 🛠️ Parameters
 
-    subclass : wrapped class
+    #### `subclass : wrapped class`
         Class to copy the docstring to.
 
     -----
     ### ⏎ Returns
 
-    subclass : Derived class
+    #### `subclass : Derived class`
         The decorated class with copied docstrings.
     """
     ...
 
 def linkcode_resolve(domain, info):
-    """### Determine the URL corresponding to a Python object.
+    """## 🧠 Determine the URL corresponding to a Python object.
 
     -----
     ### 🛠️ Parameters
 
-    domain : str
+    #### `domain : str`
         Only useful when 'py'.
-    info : dict
+    #### `info : dict`
         With keys "module" and "fullname".
 
     -----
     ### ⏎ Returns
 
-    url : str
+    #### `url : str`
         The code URL.
 
     -----
@@ -208,16 +208,16 @@ def linkcode_resolve(domain, info):
     ...
 
 def open_docs(kind=None, version=None) -> None:
-    """### Launch a new web browser tab with the MNE documentation.
+    """## 🧠 Launch a new web browser tab with the MNE documentation.
 
     -----
     ### 🛠️ Parameters
 
-    kind : str | None
+    #### `kind : str | None`
         Can be "api" (default), "tutorials", or "examples".
         The default can be changed by setting the configuration value
         MNE_DOCS_KIND.
-    version : str | None
+    #### `version : str | None`
         Can be "stable" (default) or "dev".
         The default can be changed by setting the configuration value
         MNE_DOCS_VERSION.
@@ -225,7 +225,7 @@ def open_docs(kind=None, version=None) -> None:
     ...
 
 class _decorator:
-    """### Inject code or modify the docstring of a class, method, or function."""
+    """## 🧠 Inject code or modify the docstring of a class, method, or function."""
 
     kind: Incomplete
     extra: Incomplete
@@ -238,19 +238,19 @@ class _decorator:
         -----
         ### 🛠️ Parameters
 
-        obj : object
+        #### `obj : object`
             Object to call.
 
         -----
         ### ⏎ Returns
 
-        obj : object
+        #### `obj : object`
             The modified object.
         """
         ...
 
 class deprecated(_decorator):
-    """### Mark a function, class, or method as deprecated (decorator).
+    """## 🧠 Mark a function, class, or method as deprecated (decorator).
 
     Originally adapted from sklearn and
     http://wiki.python.org/moin/PythonDecoratorLibrary, then modified to make
@@ -260,7 +260,7 @@ class deprecated(_decorator):
     -----
     ### 🛠️ Parameters
 
-    extra : str
+    #### `extra : str`
         Extra information beyond just saying the class/function/method is
         deprecated. Should be a complete sentence (trailing period will be
         added automatically). Will be included in FutureWarning messages
@@ -270,19 +270,19 @@ class deprecated(_decorator):
     ...
 
 def deprecated_alias(dep_name, func, removed_in=None) -> None:
-    """### Inject a deprecated alias into the namespace."""
+    """## 🧠 Inject a deprecated alias into the namespace."""
     ...
 
 class legacy(_decorator):
-    """### Mark a function, class, or method as legacy (decorator).
+    """## 🧠 Mark a function, class, or method as legacy (decorator).
 
     -----
     ### 🛠️ Parameters
 
-    alt : str
+    #### `alt : str`
         Description of the alternate, preferred way to achieve a comparable
         result.
-    extra : str
+    #### `extra : str`
         Extra information beyond just saying the class/function/method is
         legacy. Should be a complete sentence (trailing period will be
         added automatically). Will be included in logger.info messages

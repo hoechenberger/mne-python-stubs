@@ -3,17 +3,17 @@ from _typeshed import Incomplete
 from collections.abc import Generator
 
 class _Interp2:
-    """### Interpolate between two points.
+    """## 🧠 Interpolate between two points.
 
     -----
     ### 🛠️ Parameters
 
-    control_points : array, shape (n_changes,)
+    #### `control_points : array, shape (n_changes,)`
         The control points (indices) to use.
-    values : callable | array, shape (n_changes, ...)
+    #### `values : callable | array, shape (n_changes, ...)`
         Callable that takes the control point and returns a list of
         arrays that must be interpolated.
-    interp : str
+    #### `interp : str`
         Can be 'zero', 'linear', 'hann', or 'cos2' (same as hann).
 
     -----
@@ -48,27 +48,27 @@ class _Interp2:
         ...
 
 class _COLA:
-    """### Constant overlap-add processing helper.
+    """## 🧠 Constant overlap-add processing helper.
 
     -----
     ### 🛠️ Parameters
 
-    process : callable
+    #### `process : callable`
         A function that takes a chunk of input data with shape
         ``(n_channels, n_samples)`` and processes it.
-    store : callable | ndarray
+    #### `store : callable | ndarray`
         A function that takes a completed chunk of output data.
         Can also be an ``ndarray``, in which case it is treated as the
         output data in which to store the results.
-    n_total : int
+    #### `n_total : int`
         The total number of samples.
-    n_samples : int
+    #### `n_samples : int`
         The number of samples per window.
-    n_overlap : int
+    #### `n_overlap : int`
         The overlap between windows.
-    window : str
+    #### `window : str`
         The window to use. Default is "hann".
-    tol : float
+    #### `tol : float`
         The tolerance for COLA checking.
 
     -----
@@ -113,7 +113,7 @@ class _COLA:
         ...
 
 class _Storer:
-    """### Store data in chunks."""
+    """## 🧠 Store data in chunks."""
 
     outs: Incomplete
     idx: int

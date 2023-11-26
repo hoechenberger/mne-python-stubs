@@ -2,11 +2,11 @@ import numpy as np
 from _typeshed import Incomplete
 
 def rng_uniform(rng):
-    """### Get the unform/randint from the rng."""
+    """## 🧠 Get the unform/randint from the rng."""
     ...
 
 class BaseEstimator:
-    """### Base class for all estimators in scikit-learn.
+    """## 🧠 Base class for all estimators in scikit-learn.
 
     -----
     ### 📖 Notes
@@ -22,14 +22,14 @@ class BaseEstimator:
         -----
         ### 🛠️ Parameters
 
-        deep : bool, optional
+        #### `deep : bool, optional`
             If True, will return the parameters for this estimator and
             contained subobjects that are estimators.
 
         -----
         ### ⏎ Returns
 
-        params : dict
+        #### `params : dict`
             Parameter names mapped to their values.
         """
         ...
@@ -50,13 +50,13 @@ class BaseEstimator:
         -----
         ### ⏎ Returns
 
-        inst : instance
+        #### `inst : instance`
             The object.
         """
         ...
 
 def empirical_covariance(X, assume_centered: bool = False):
-    """### Compute the Maximum likelihood covariance estimator.
+    """## 🧠 Compute the Maximum likelihood covariance estimator.
 
     -----
     ### 🛠️ Parameters
@@ -64,7 +64,7 @@ def empirical_covariance(X, assume_centered: bool = False):
     X : ndarray, shape (n_samples, n_features)
         Data from which to compute the covariance estimate
 
-    assume_centered : Boolean
+    #### `assume_centered : Boolean`
         If True, data are not centered before computation.
         Useful when working with data whose mean is almost, but not exactly
         zero.
@@ -73,23 +73,23 @@ def empirical_covariance(X, assume_centered: bool = False):
     -----
     ### ⏎ Returns
 
-    covariance : 2D ndarray, shape (n_features, n_features)
+    #### `covariance : 2D ndarray, shape (n_features, n_features)`
         Empirical covariance (Maximum Likelihood Estimator).
     """
     ...
 
 class EmpiricalCovariance(BaseEstimator):
-    """### Maximum likelihood covariance estimator.
+    """## 🧠 Maximum likelihood covariance estimator.
 
     Read more in the `User Guide <covariance>`.
 
     -----
     ### 🛠️ Parameters
 
-    store_precision : bool
+    #### `store_precision : bool`
         Specifies if the estimated precision is stored.
 
-    assume_centered : bool
+    #### `assume_centered : bool`
         If True, data are not centered before computation.
         Useful when working with data whose mean is almost, but not exactly
         zero.
@@ -98,10 +98,10 @@ class EmpiricalCovariance(BaseEstimator):
     -----
     ### 📊 Attributes
 
-    covariance_ : 2D ndarray, shape (n_features, n_features)
+    #### `covariance_ : 2D ndarray, shape (n_features, n_features)`
         Estimated covariance matrix
 
-    precision_ : 2D ndarray, shape (n_features, n_features)
+    #### `precision_ : 2D ndarray, shape (n_features, n_features)`
         Estimated pseudo-inverse matrix.
         (stored only if store_precision is True)
     """
@@ -118,7 +118,7 @@ class EmpiricalCovariance(BaseEstimator):
         -----
         ### ⏎ Returns
 
-        precision_ : array-like,
+        #### `precision_ : array-like,`
             The precision matrix associated to the current covariance object.
 
         """
@@ -134,13 +134,13 @@ class EmpiricalCovariance(BaseEstimator):
         X : array-like, shape = [n_samples, n_features]
           Training data, where n_samples is the number of samples and
           n_features is the number of features.
-        y : ndarray | None
+        #### `y : ndarray | None`
             Not used, present for API consistency.
 
         -----
         ### ⏎ Returns
 
-        self : object
+        #### `self : object`
             Returns self.
         """
         ...
@@ -157,13 +157,13 @@ class EmpiricalCovariance(BaseEstimator):
             the number of samples and n_features is the number of features.
             X_test is assumed to be drawn from the same distribution than
             the data used in fit (including centering).
-        y : ndarray | None
+        #### `y : ndarray | None`
             Not used, present for API consistency.
 
         -----
         ### ⏎ Returns
 
-        res : float
+        #### `res : float`
             The likelihood of the data set with `self.covariance_` as an
             estimator of its covariance matrix.
         """
@@ -180,17 +180,17 @@ class EmpiricalCovariance(BaseEstimator):
         -----
         ### 🛠️ Parameters
 
-        comp_cov : array-like, shape = [n_features, n_features]
+        #### `comp_cov : array-like, shape = [n_features, n_features]`
             The covariance to compare with.
-        norm : str
+        #### `norm : str`
             The type of norm used to compute the error. Available error types:
             - 'frobenius' (default): sqrt(tr(A^t.A))
             - 'spectral': sqrt(max(eigenvalues(A^t.A))
             where A is the error ``(comp_cov - self.covariance_)``.
-        scaling : bool
+        #### `scaling : bool`
             If True (default), the squared error norm is divided by n_features.
             If False, the squared error norm is not rescaled.
-        squared : bool
+        #### `squared : bool`
             Whether to compute the squared error norm or the error norm.
             If True (default), the squared error norm is returned.
             If False, the error norm is returned.
@@ -208,7 +208,7 @@ class EmpiricalCovariance(BaseEstimator):
         -----
         ### 🛠️ Parameters
 
-        observations : array-like, shape = [n_observations, n_features]
+        #### `observations : array-like, shape = [n_observations, n_features]`
             The observations, the Mahalanobis distances of the which we
             compute. Observations are assumed to be drawn from the same
             distribution than the data used in fit.
@@ -216,13 +216,13 @@ class EmpiricalCovariance(BaseEstimator):
         -----
         ### ⏎ Returns
 
-        mahalanobis_distance : array, shape = [n_observations,]
+        #### `mahalanobis_distance : array, shape = [n_observations,]`
             Squared Mahalanobis distances of the observations.
         """
         ...
 
 def log_likelihood(emp_cov, precision):
-    """### Compute the sample mean of the log_likelihood under a covariance model.
+    """## 🧠 Compute the sample mean of the log_likelihood under a covariance model.
 
     computes the empirical expected log-likelihood (accounting for the
     normalization terms and scaling), allowing for universal comparison (beyond
@@ -231,10 +231,10 @@ def log_likelihood(emp_cov, precision):
     -----
     ### 🛠️ Parameters
 
-    emp_cov : 2D ndarray (n_features, n_features)
+    #### `emp_cov : 2D ndarray (n_features, n_features)`
         Maximum Likelihood Estimator of covariance
 
-    precision : 2D ndarray (n_features, n_features)
+    #### `precision : 2D ndarray (n_features, n_features)`
         The precision matrix of the covariance model to be tested
 
     -----
@@ -246,19 +246,19 @@ def log_likelihood(emp_cov, precision):
 
 def svd_flip(u, v, u_based_decision: bool = True): ...
 def stable_cumsum(arr, axis=None, rtol: float = 1e-05, atol: float = 1e-08):
-    """### Use high precision for cumsum and check that final value matches sum.
+    """## 🧠 Use high precision for cumsum and check that final value matches sum.
 
     -----
     ### 🛠️ Parameters
 
-    arr : array-like
+    #### `arr : array-like`
         To be cumulatively summed as flat
-    axis : int, optional
+    #### `axis : int, optional`
         Axis along which the cumulative sum is computed.
         The default (None) is to compute the cumsum over the flattened array.
-    rtol : float
+    #### `rtol : float`
         Relative tolerance, see ``np.allclose``
-    atol : float
+    #### `atol : float`
         Absolute tolerance, see ``np.allclose``
     """
     ...
@@ -278,9 +278,9 @@ prange = range
 bincount = np.bincount
 
 def pinvh(a, rtol=None):
-    """### Compute a pseudo-inverse of a Hermitian matrix."""
+    """## 🧠 Compute a pseudo-inverse of a Hermitian matrix."""
     ...
 
 def pinv(a, rtol=None):
-    """### Compute a pseudo-inverse of a matrix."""
+    """## 🧠 Compute a pseudo-inverse of a matrix."""
     ...

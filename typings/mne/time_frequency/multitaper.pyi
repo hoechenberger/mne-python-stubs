@@ -4,7 +4,7 @@ from ..utils import logger as logger, warn as warn
 def dpss_windows(
     N, half_nbw, Kmax, *, sym: bool = True, norm=None, low_bias: bool = True
 ):
-    """### Compute Discrete Prolate Spheroidal Sequences.
+    """## 🧠 Compute Discrete Prolate Spheroidal Sequences.
 
     Will give of orders [0,Kmax-1] for a given frequency-spacing multiple
     NW and sequence length N.
@@ -16,18 +16,18 @@ def dpss_windows(
 
     N : int
         Sequence length.
-    half_nbw : float
+    #### `half_nbw : float`
         Standardized half bandwidth corresponding to 2 * half_bw = BW*f0
         = BW*N/dt but with dt taken as 1.
     Kmax : int
         Number of DPSS windows to return is Kmax (orders 0 through Kmax-1).
-    sym : bool
+    #### `sym : bool`
         Whether to generate a symmetric window (``True``, for filter design) or
         a periodic window (``False``, for spectral analysis). Default is
         ``True``.
 
         ✨ Added in vesion 1.3
-    norm : 2 | ``'approximate'`` | ``'subsample'`` | None
+    #### `norm : 2 | ``'approximate'`` | ``'subsample'`` | None`
         Window normalization method. If ``'approximate'`` or ``'subsample'``,
         windows are normalized by the maximum, and a correction scale-factor
         for even-length windows is applied either using
@@ -36,13 +36,13 @@ def dpss_windows(
         ``"approximate"`` when ``Kmax=None`` and ``2`` otherwise.
 
         ✨ Added in vesion 1.3
-    low_bias : bool
+    #### `low_bias : bool`
         Keep only tapers with eigenvalues > 0.9.
 
     -----
     ### ⏎ Returns
 
-    v, e : tuple,
+    #### `v, e : tuple,`
         The v array contains DPSS windows shaped (Kmax, N).
         e are the eigenvalues.
 
@@ -73,7 +73,7 @@ def psd_array_multitaper(
     max_iter: int = 150,
     verbose=None,
 ):
-    """### Compute power spectral density (PSD) using a multi-taper method.
+    """## 🧠 Compute power spectral density (PSD) using a multi-taper method.
 
     The power spectral density is computed with DPSS
     tapers :footcite:p:`Slepian1978`.
@@ -81,39 +81,39 @@ def psd_array_multitaper(
     -----
     ### 🛠️ Parameters
 
-    x : array, shape=(..., n_times)
+    #### `x : array, shape=(..., n_times)`
         The data to compute PSD from.
-    sfreq : float
+    #### `sfreq : float`
         The sampling frequency.
-    fmin, fmax : float
+    #### `fmin, fmax : float`
         The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
-    bandwidth : float
+    #### `bandwidth : float`
         Frequency bandwidth of the multi-taper window function in Hz. For a
         given frequency, frequencies at ``± bandwidth / 2`` are smoothed
         together. The default value is a bandwidth of
         ``8 * (sfreq / n_times)``.
-    adaptive : bool
+    #### `adaptive : bool`
         Use adaptive weights to combine the tapered spectra into PSD
         (slow, use n_jobs >> 1 to speed up computation).
-    low_bias : bool
+    #### `low_bias : bool`
         Only use tapers with more than 90% spectral concentration within
         bandwidth.
-    normalization : 'full' | 'length'
+    #### `normalization : 'full' | 'length'`
         Normalization strategy. If "full", the PSD will be normalized by the
         sampling rate as well as the length of the signal (as in
         `Nitime <nitime:users-guide>`). Default is ``'length'``.
 
-    remove_dc : bool
+    #### `remove_dc : bool`
         If ``True``, the mean is subtracted from each segment before computing
         its spectrum.
-    output : str
+    #### `output : str`
         The format of the returned ``psds`` array, ``'complex'`` or
         ``'power'``:
 
         * ``'power'`` : the power spectral density is returned.
         * ``'complex'`` : the complex fourier coefficients are returned per
           taper.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -121,12 +121,12 @@ def psd_array_multitaper(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    max_iter : int
+    #### `max_iter : int`
         Maximum number of iterations to reach convergence when combining the
         tapered spectra with adaptive weights (see argument ``adaptive``). This
         argument has not effect if ``adaptive`` is set to ``False``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -135,12 +135,12 @@ def psd_array_multitaper(
     -----
     ### ⏎ Returns
 
-    psds : ndarray, shape (..., n_freqs) or (..., n_tapers, n_freqs)
+    #### `psds : ndarray, shape (..., n_freqs) or (..., n_tapers, n_freqs)`
         The power spectral densities. All dimensions up to the last (or the
         last two if ``output='complex'``) will be the same as input.
-    freqs : array
+    #### `freqs : array`
         The frequency points in Hz of the PSD.
-    weights : ndarray
+    #### `weights : ndarray`
         The weights used for averaging across tapers. Only returned if
         ``output='complex'``.
 
@@ -177,7 +177,7 @@ def tfr_array_multitaper(
     *,
     verbose=None,
 ):
-    """### Compute Time-Frequency Representation (TFR) using DPSS tapers.
+    """## 🧠 Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
     Same computation as `mne.time_frequency.tfr_multitaper`, but operates on
     `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` or
@@ -186,33 +186,33 @@ def tfr_array_multitaper(
     -----
     ### 🛠️ Parameters
 
-    epoch_data : array of shape (n_epochs, n_channels, n_times)
+    #### `epoch_data : array of shape (n_epochs, n_channels, n_times)`
         The epochs.
-    sfreq : float
+    #### `sfreq : float`
         Sampling frequency of the data in Hz.
 
-    freqs : array of float, shape (n_freqs,)
+    #### `freqs : array of float, shape (n_freqs,)`
         The frequencies of interest in Hz.
 
-    n_cycles : int | array of int, shape (n_freqs,)
+    #### `n_cycles : int | array of int, shape (n_freqs,)`
         Number of cycles in the wavelet, either a fixed number or one per
         frequency. The number of cycles ``n_cycles`` and the frequencies of
         interest ``freqs`` define the temporal window length. See notes for
         additional information about the relationship between those arguments
         and about time and frequency smoothing.
-    zero_mean : bool
+    #### `zero_mean : bool`
         If True, make sure the wavelets have a mean of zero. Defaults to True.
 
-    time_bandwidth : float ``≥ 2.0``
+    #### `time_bandwidth : float ``≥ 2.0```
         Product between the temporal window length (in seconds) and the *full*
         frequency bandwidth (in Hz). This product can be seen as the surface of the
         window on the time/frequency plane and controls the frequency bandwidth
         (thus the frequency resolution) and the number of good tapers. See notes
         for additional information.
-    use_fft : bool
+    #### `use_fft : bool`
         Use the FFT for convolutions or not. Defaults to True.
 
-    decim : int | slice, default 1
+    #### `decim : int | slice, default 1`
         To reduce memory usage, decimation factor after time-frequency
         decomposition.
 
@@ -222,7 +222,7 @@ def tfr_array_multitaper(
         ### 💡 Note
             Decimation is done after convolutions and may create aliasing
             artifacts.
-    output : str, default 'complex'
+    #### `output : str, default 'complex'`
 
         * ``'complex'`` : single trial per taper complex values.
         * ``'power'`` : single trial power.
@@ -231,7 +231,7 @@ def tfr_array_multitaper(
         * ``'itc'`` : inter-trial coherence.
         * ``'avg_power_itc'`` : average of single trial power and inter-trial
           coherence across trials.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -239,7 +239,7 @@ def tfr_array_multitaper(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -248,7 +248,7 @@ def tfr_array_multitaper(
     -----
     ### ⏎ Returns
 
-    out : array
+    #### `out : array`
         Time frequency transform of ``epoch_data``.
 
         - if ``output in ('complex',' 'phase')``, array of shape

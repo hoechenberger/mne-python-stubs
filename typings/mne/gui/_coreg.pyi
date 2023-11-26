@@ -38,23 +38,23 @@ class _WorkerData:
     def __init__(self, name, params=None) -> None: ...
 
 class CoregistrationUI(HasTraits):
-    """### Class for coregistration assisted by graphical interface.
+    """## 🧠 Class for coregistration assisted by graphical interface.
 
     -----
     ### 🛠️ Parameters
 
-    info_file : None | str
+    #### `info_file : None | str`
         The FIFF file with digitizer data for coregistration.
 
-    subject : str
+    #### `subject : str`
         The FreeSurfer subject name.
 
-    subjects_dir : path-like | None
+    #### `subjects_dir : path-like | None`
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
 
-    fiducials : list | dict | str
+    #### `fiducials : list | dict | str`
         The fiducials given in the MRI (surface RAS) coordinate
         system. If a dictionary is provided, it must contain the **keys**
         ``'lpa'``, ``'rpa'``, and ``'nasion'``, with **values** being the
@@ -66,53 +66,53 @@ class CoregistrationUI(HasTraits):
         in a file with the canonical name
         (``{subjects_dir}/{subject}/bem/{subject}-fiducials.fif``)
         and if absent, falls back to ``'estimated'``.
-    head_resolution : bool
+    #### `head_resolution : bool`
         If True, use a high-resolution head surface. Defaults to False.
-    head_opacity : float
+    #### `head_opacity : float`
         The opacity of the head surface. Defaults to 0.8.
-    hpi_coils : bool
+    #### `hpi_coils : bool`
         If True, display the HPI coils. Defaults to True.
-    head_shape_points : bool
+    #### `head_shape_points : bool`
         If True, display the head shape points. Defaults to True.
-    eeg_channels : bool
+    #### `eeg_channels : bool`
         If True, display the EEG channels. Defaults to True.
-    meg_channels : bool
+    #### `meg_channels : bool`
         If True, display the MEG channels. Defaults to False.
-    fnirs_channels : bool
+    #### `fnirs_channels : bool`
         If True, display the fNIRS channels. Defaults to True.
-    orient_glyphs : bool
+    #### `orient_glyphs : bool`
         If True, orient the sensors towards the head surface. Default to False.
-    scale_by_distance : bool
+    #### `scale_by_distance : bool`
         If True, scale the sensors based on their distance to the head surface.
         Defaults to True.
-    mark_inside : bool
+    #### `mark_inside : bool`
         If True, mark the head shape points that are inside the head surface
         with a different color. Defaults to True.
-    sensor_opacity : float
+    #### `sensor_opacity : float`
         The opacity of the sensors between 0 and 1. Defaults to 1.0.
-    trans : path-like
+    #### `trans : path-like`
         The path to the Head<->MRI transform FIF file ("-trans.fif").
-    size : tuple
+    #### `size : tuple`
         The dimensions (width, height) of the rendering view. The default is
         (800, 600).
-    bgcolor : tuple | str
+    #### `bgcolor : tuple | str`
         The background color as a tuple (red, green, blue) of float
         values between 0 and 1 or a valid color name (i.e. 'white'
         or 'w'). Defaults to 'grey'.
-    show : bool
+    #### `show : bool`
         Display the window as soon as it is ready. Defaults to True.
-    block : bool
+    #### `block : bool`
         Whether to halt program execution until the GUI has been closed
         (``True``) or not (``False``, default).
 
-    fullscreen : bool
+    #### `fullscreen : bool`
         Whether to start in fullscreen (``True``) or windowed mode
         (``False``).
         The default is False.
 
         ✨ Added in vesion 1.1
 
-    interaction : 'trackball' | 'terrain'
+    #### `interaction : 'trackball' | 'terrain'`
         How interactions with the scene via an input device (e.g., mouse or
         trackpad) modify the camera position. If ``'terrain'``, one axis is
         fixed, enabling "turntable-style" rotations. If ``'trackball'``,
@@ -123,7 +123,7 @@ class CoregistrationUI(HasTraits):
 
         ✨ Added in vesion 1.0
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -132,7 +132,7 @@ class CoregistrationUI(HasTraits):
     -----
     ### 📊 Attributes
 
-    coreg : mne.coreg.Coregistration
+    #### `coreg : mne.coreg.Coregistration`
         The coregistration instance used by the graphical interface.
     """
 

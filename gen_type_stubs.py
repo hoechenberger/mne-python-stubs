@@ -136,7 +136,7 @@ for stub_path in stub_paths:
                     break
 
             # Make first line bold
-            expanded_docstring[0] = f"### {expanded_docstring[0]}"
+            expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
 
             expanded_docstring = "\n".join(expanded_docstring)
             obj.body[0].value.value = expanded_docstring
@@ -251,6 +251,13 @@ for stub_path in stub_paths:
             repl=f"\\1-----\\n\\1### {replacement}\\n\\n",
             string=unparsed_cleaned,
         )
+
+    # Make the parameter lists nicer
+    unparsed_cleaned = re.sub(
+        pattern=r"\n(\s+)([a-z,_,\s,]+\s:\s.+?)\n",
+        repl=r"\n\1#### `\2`\n",
+        string=unparsed_cleaned,
+    )
 
     del unparsed
 

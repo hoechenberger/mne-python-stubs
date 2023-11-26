@@ -5,33 +5,33 @@ from .base import BaseEstimator as BaseEstimator
 from _typeshed import Incomplete
 
 class TimeDelayingRidge(BaseEstimator):
-    """### Ridge regression of data with time delays.
+    """## 🧠 Ridge regression of data with time delays.
 
     -----
     ### 🛠️ Parameters
 
-    tmin : int | float
+    #### `tmin : int | float`
         The starting lag, in seconds (or samples if ``sfreq`` == 1).
         Negative values correspond to times in the past.
-    tmax : int | float
+    #### `tmax : int | float`
         The ending lag, in seconds (or samples if ``sfreq`` == 1).
         Positive values correspond to times in the future.
         Must be >= tmin.
-    sfreq : float
+    #### `sfreq : float`
         The sampling frequency used to convert times into samples.
-    alpha : float
+    #### `alpha : float`
         The ridge (or laplacian) regularization factor.
-    reg_type : str | list
+    #### `reg_type : str | list`
         Can be ``"ridge"`` (default) or ``"laplacian"``.
         Can also be a 2-element list specifying how to regularize in time
         and across adjacent features.
-    fit_intercept : bool
+    #### `fit_intercept : bool`
         If True (default), the sample mean is removed before fitting.
-    n_jobs : int | str
+    #### `n_jobs : int | str`
         The number of jobs to use. Can be an int (default 1) or ``'cuda'``.
 
         ✨ Added in vesion 0.18
-    edge_correction : bool
+    #### `edge_correction : bool`
         If True (default), correct the autocorrelation coefficients for
         non-zero delays for the fact that fewer samples are available.
         Disabling this speeds up performance at the cost of accuracy
@@ -86,13 +86,13 @@ class TimeDelayingRidge(BaseEstimator):
 
         X : array, shape (n_samples[, n_epochs], n_features)
             The training input samples to estimate the linear coefficients.
-        y : array, shape (n_samples[, n_epochs],  n_outputs)
+        #### `y : array, shape (n_samples[, n_epochs],  n_outputs)`
             The target values.
 
         -----
         ### ⏎ Returns
 
-        self : instance of TimeDelayingRidge
+        #### `self : instance of TimeDelayingRidge`
             Returns the modified instance.
         """
         ...

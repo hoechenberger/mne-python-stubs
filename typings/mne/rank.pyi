@@ -11,7 +11,7 @@ def estimate_rank(
     tol_kind: str = "absolute",
     verbose=None,
 ):
-    """### Estimate the rank of data.
+    """## 🧠 Estimate the rank of data.
 
     This function will normalize the rows of the data (typically
     channels or vertices) such that non-zero singular values
@@ -20,23 +20,23 @@ def estimate_rank(
     -----
     ### 🛠️ Parameters
 
-    data : array
+    #### `data : array`
         Data to estimate the rank of (should be 2-dimensional).
 
-    tol : float | 'auto'
+    #### `tol : float | 'auto'`
         Tolerance for singular values to consider non-zero in
         calculating the rank. The singular values are calculated
         in this method such that independent data are expected to
         have singular value around one. Can be 'auto' to use the
         same thresholding as `scipy.linalg.orth`.
-    return_singular : bool
+    #### `return_singular : bool`
         If True, also return the singular values that were used
         to determine the rank.
-    norm : bool
+    #### `norm : bool`
         If True, data will be scaled by their estimated row-wise norm.
         Else data are assumed to be scaled. Defaults to True.
 
-    tol_kind : str
+    #### `tol_kind : str`
         Can be: "absolute" (default) or "relative". Only used if ``tol`` is a
         float, because when ``tol`` is a string the mode is implicitly relative.
         After applying the chosen scale factors / normalization to the data,
@@ -56,9 +56,9 @@ def estimate_rank(
     -----
     ### ⏎ Returns
 
-    rank : int
+    #### `rank : int`
         Estimated rank of the data.
-    s : array
+    #### `s : array`
         If return_singular is True, the singular values that were
         thresholded to determine the rank are also returned.
     """
@@ -75,7 +75,7 @@ def compute_rank(
     on_rank_mismatch: str = "ignore",
     verbose=None,
 ):
-    """### Compute the rank of data or noise covariance.
+    """## 🧠 Compute the rank of data or noise covariance.
 
     This function will normalize the rows of the data (typically
     channels or vertices) such that non-zero singular values
@@ -84,10 +84,10 @@ def compute_rank(
     -----
     ### 🛠️ Parameters
 
-    inst : instance of Raw, Epochs, or Covariance
+    #### `inst : instance of Raw, Epochs, or Covariance`
         Raw measurements to compute the rank from or the covariance.
 
-    rank : None | 'info' | 'full' | dict
+    #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -131,26 +131,26 @@ def compute_rank(
             magnetometer and EEG ranks would be taken for granted.
 
         The default is ``None``.
-    scalings : dict | None (default None)
+    #### `scalings : dict | None (default None)`
         Defaults to ``dict(mag=1e15, grad=1e13, eeg=1e6)``.
         These defaults will scale different channel types
         to comparable values.
 
-    info : mne.Info | None
+    #### `info : mne.Info | None`
         The `mne.Info` object with information about the sensors and methods of measurement. Only necessary if ``inst`` is a `mne.Covariance`
         object (since this does not provide ``inst.info``).
 
-    tol : float | 'auto'
+    #### `tol : float | 'auto'`
         Tolerance for singular values to consider non-zero in
         calculating the rank. The singular values are calculated
         in this method such that independent data are expected to
         have singular value around one. Can be 'auto' to use the
         same thresholding as `scipy.linalg.orth`.
-    proj : bool
+    #### `proj : bool`
         If True, all projs in ``inst`` and ``info`` will be applied or
         considered when ``rank=None`` or ``rank='info'``.
 
-    tol_kind : str
+    #### `tol_kind : str`
         Can be: "absolute" (default) or "relative". Only used if ``tol`` is a
         float, because when ``tol`` is a string the mode is implicitly relative.
         After applying the chosen scale factors / normalization to the data,
@@ -167,7 +167,7 @@ def compute_rank(
 
         ✨ Added in vesion 0.21.0
 
-    on_rank_mismatch : str
+    #### `on_rank_mismatch : str`
         If an explicit MEG value is passed, what to do when it does not match
         an empirically computed rank (only used for covariances).
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
@@ -175,7 +175,7 @@ def compute_rank(
 
         ✨ Added in vesion 0.23
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -184,7 +184,7 @@ def compute_rank(
     -----
     ### ⏎ Returns
 
-    rank : dict
+    #### `rank : dict`
         Estimated rank of the data for each channel type.
         To get the total rank, you can use ``sum(rank.values())``.
 

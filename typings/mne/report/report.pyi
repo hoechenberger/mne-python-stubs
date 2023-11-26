@@ -66,7 +66,7 @@ class _ContentElement:
     def __init__(self, name, section, dom_id, tags, html) -> None: ...
 
 def open_report(fname, **params):
-    """### Read a saved report or, if it doesn't exist yet, create a new one.
+    """## 🧠 Read a saved report or, if it doesn't exist yet, create a new one.
 
     The returned report can be used as a context manager, in which case any
     changes to the report are saved when exiting the context block.
@@ -74,7 +74,7 @@ def open_report(fname, **params):
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The file containing the report, stored in the HDF5 format. If the file
         does not exist yet, a new report is created that will be saved to the
         specified file.
@@ -87,7 +87,7 @@ def open_report(fname, **params):
     -----
     ### ⏎ Returns
 
-    report : instance of Report
+    #### `report : instance of Report`
         The report.
     """
     ...
@@ -96,26 +96,26 @@ mne_logo_path: Incomplete
 mne_logo: Incomplete
 
 class Report:
-    """### Object for rendering HTML.
+    """## 🧠 Object for rendering HTML.
 
     -----
     ### 🛠️ Parameters
 
-    info_fname : None | str
+    #### `info_fname : None | str`
         Name of the file containing the info dictionary.
 
-    subjects_dir : path-like | None
+    #### `subjects_dir : path-like | None`
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    subject : str | None
+    #### `subject : str | None`
         Subject name.
-    title : str
+    #### `title : str`
         Title of the report.
-    cov_fname : None | str
+    #### `cov_fname : None | str`
         Name of the file containing the noise covariance.
 
-    baseline : None | tuple of length 2
+    #### `baseline : None | tuple of length 2`
         The time interval to consider as "baseline" when applying baseline
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
@@ -134,7 +134,7 @@ class Report:
 
         For `mne.Epochs`, this algorithm is run **on each epoch individually.**
         Defaults to ``None``, i.e. no baseline correction.
-    image_format : 'png' | 'svg' | 'webp' | 'auto'
+    #### `image_format : 'png' | 'svg' | 'webp' | 'auto'`
         Default image format to use (default is ``'auto'``, which will use
         ``'webp'`` if available and ``'png'`` otherwise).
         ``'svg'`` uses vector graphics, so fidelity is higher but can increase
@@ -145,7 +145,7 @@ class Report:
         🎭 Changed in version 1.3
            Added support for ``'webp'`` format, removed support for GIF, and
            set the default to ``'auto'``.
-    raw_psd : bool | dict
+    #### `raw_psd : bool | dict`
         If True, include PSD plots for raw files. Can be False (default) to
         omit, True to plot, or a dict to pass as ``kwargs`` to
         `mne.time_frequency.Spectrum.plot`.
@@ -153,13 +153,13 @@ class Report:
         ✨ Added in vesion 0.17
         🎭 Changed in version 1.4
            kwargs are sent to ``spectrum.plot`` instead of ``raw.plot_psd``.
-    projs : bool
+    #### `projs : bool`
         Whether to include topographic plots of SSP projectors, if present in
         the data. Defaults to ``False``.
 
         ✨ Added in vesion 0.21
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -168,21 +168,21 @@ class Report:
     -----
     ### 📊 Attributes
 
-    info_fname : None | str
+    #### `info_fname : None | str`
         Name of the file containing the info dictionary.
 
-    subjects_dir : path-like | None
+    #### `subjects_dir : path-like | None`
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    subject : str | None
+    #### `subject : str | None`
         Subject name.
-    title : str
+    #### `title : str`
         Title of the report.
-    cov_fname : None | str
+    #### `cov_fname : None | str`
         Name of the file containing the noise covariance.
 
-    baseline : None | tuple of length 2
+    #### `baseline : None | tuple of length 2`
         The time interval to consider as "baseline" when applying baseline
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
@@ -201,11 +201,11 @@ class Report:
 
         For `mne.Epochs`, this algorithm is run **on each epoch individually.**
         Defaults to ``None``, i.e. no baseline correction.
-    image_format : str
+    #### `image_format : str`
         Default image format to use.
 
         ✨ Added in vesion 0.15
-    raw_psd : bool | dict
+    #### `raw_psd : bool | dict`
         If True, include PSD plots for raw files. Can be False (default) to
         omit, True to plot, or a dict to pass as ``kwargs`` to
         `mne.time_frequency.Spectrum.plot`.
@@ -213,26 +213,26 @@ class Report:
         ✨ Added in vesion 0.17
         🎭 Changed in version 1.4
            kwargs are sent to ``spectrum.plot`` instead of ``raw.plot_psd``.
-    projs : bool
+    #### `projs : bool`
         Whether to include topographic plots of SSP projectors, if present in
         the data. Defaults to ``False``.
 
         ✨ Added in vesion 0.21
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
-    html : list of str
+    #### `html : list of str`
         Contains items of html-page.
-    include : list of str
+    #### `include : list of str`
         Dictionary containing elements included in head.
-    fnames : list of str
+    #### `fnames : list of str`
         List of file names rendered.
-    sections : list of str
+    #### `sections : list of str`
         List of sections.
-    lang : str
+    #### `lang : str`
         language setting for the HTML file.
 
     -----
@@ -277,7 +277,7 @@ class Report:
         -----
         ### ⏎ Returns
 
-        n_files : int
+        #### `n_files : int`
             The number of files processed.
         """
         ...
@@ -295,7 +295,7 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        css : str
+        #### `css : str`
             Style definitions to add to the report. The content of this string
             will be embedded between HTML ``<style>`` and ``</style>`` tags.
 
@@ -311,7 +311,7 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        js : str
+        #### `js : str`
             JavaScript code to add to the report. The content of this string
             will be embedded between HTML ``<script>`` and ``</script>`` tags.
 
@@ -338,11 +338,11 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        epochs : path-like | instance of Epochs
+        #### `epochs : path-like | instance of Epochs`
             The epochs to add to the report.
-        title : str
+        #### `title : str`
             The title to add.
-        psd : bool | float
+        #### `psd : bool | float`
             If a float, the duration of data to use for creation of PSD plots,
             in seconds. PSD will be calculated on as many epochs as required to
             cover at least this duration. Epochs will be picked across the
@@ -357,21 +357,21 @@ class Report:
             If ``True``, add PSD plots based on all ``epochs``. If ``False``,
             do not add PSD plots.
 
-        projs : bool | None
+        #### `projs : bool | None`
             Whether to add SSP projector plots if projectors are present in
             the data. If ``None``, use ``projs`` from `mne.Report` creation.
 
-        topomap_kwargs : dict | None
+        #### `topomap_kwargs : dict | None`
             Keyword arguments to pass to the topomap-generating functions.
-        drop_log_ignore : array-like of str
+        #### `drop_log_ignore : array-like of str`
             The drop reasons to ignore when creating the drop log bar plot.
             All epochs for which a drop reason listed here appears in
             ``epochs.drop_log`` will be excluded from the drop log plot.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -401,39 +401,39 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        evokeds : path-like | instance of Evoked | list of Evoked
+        #### `evokeds : path-like | instance of Evoked | list of Evoked`
             The evoked data to add to the report. Multiple `mne.Evoked`
             objects – as returned from `mne.read_evokeds` – can be passed as
             a list.
-        titles : str | list of str | None
+        #### `titles : str | list of str | None`
             The titles corresponding to the evoked data. If ``None``, the
             content of ``evoked.comment`` from each evoked will be used as
             title.
-        noise_cov : path-like | instance of Covariance | None
+        #### `noise_cov : path-like | instance of Covariance | None`
             A noise covariance matrix. If provided, will be used to whiten
             the ``evokeds``. If ``None``, will fall back to the ``cov_fname``
             provided upon report creation.
 
-        projs : bool | None
+        #### `projs : bool | None`
             Whether to add SSP projector plots if projectors are present in
             the data. If ``None``, use ``projs`` from `mne.Report` creation.
-        n_time_points : int | None
+        #### `n_time_points : int | None`
             The number of equidistant time points to render. If ``None``,
             will render each `mne.Evoked` at 21 time points, unless the data
             contains fewer time points, in which case all will be rendered.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        topomap_kwargs : dict | None
+        #### `topomap_kwargs : dict | None`
             Keyword arguments to pass to the topomap-generating functions.
-        n_jobs : int | None
+        #### `n_jobs : int | None`
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -465,19 +465,19 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        raw : path-like | instance of Raw
+        #### `raw : path-like | instance of Raw`
             The data to add to the report.
-        title : str
+        #### `title : str`
             The title corresponding to the ``raw`` object.
-        psd : bool | None
+        #### `psd : bool | None`
             Whether to add PSD plots. Overrides the ``raw_psd`` parameter
             passed when initializing the `mne.Report`. If ``None``, use
             ``raw_psd`` from `mne.Report` creation.
 
-        projs : bool | None
+        #### `projs : bool | None`
             Whether to add SSP projector plots if projectors are present in
             the data. If ``None``, use ``projs`` from `mne.Report` creation.
-        butterfly : bool | int
+        #### `butterfly : bool | int`
             Whether to add butterfly plots of the data. Can be useful to
             spot problematic channels. If ``True``, 10 equally-spaced 1-second
             segments will be plotted. If an integer, specifies the number of
@@ -485,7 +485,7 @@ class Report:
             amount of time if the data contains many sensors. You can disable
             butterfly plots altogether by passing ``False``.
 
-        scalings : 'auto' | dict | None
+        #### `scalings : 'auto' | dict | None`
             Scaling factors for the traces. If a dictionary where any
             value is ``'auto'``, the scaling factor is set to match the 99.5th
             percentile of the respective data. If ``'auto'``, all scalings (for all
@@ -504,16 +504,16 @@ class Report:
                 signals means that the visualized range will be 40 µV (20 µV in the
                 positive direction and 20 µV in the negative direction).
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        topomap_kwargs : dict | None
+        #### `topomap_kwargs : dict | None`
             Keyword arguments to pass to the topomap-generating functions.
 
         -----
@@ -539,32 +539,32 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        stc : path-like | instance of SourceEstimate
+        #### `stc : path-like | instance of SourceEstimate`
             The `mne.SourceEstimate` to add to the report.
-        title : str
+        #### `title : str`
             The title to add.
-        subject : str | None
+        #### `subject : str | None`
             The name of the FreeSurfer subject the STC belongs to. The name is
             not stored with the STC data and therefore needs to be specified.
             If ``None``, will use the value of ``subject`` passed on report
             creation.
-        subjects_dir : path-like | None
+        #### `subjects_dir : path-like | None`
             The FreeSurfer ``SUBJECTS_DIR``.
-        n_time_points : int | None
+        #### `n_time_points : int | None`
             The number of equidistant time points to render. If ``None``,
             will render ``stc`` at 51 time points, unless the data
             contains fewer time points, in which case all will be rendered.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        stc_plot_kwargs : dict
+        #### `stc_plot_kwargs : dict`
             Dictionary of keyword arguments to pass to
             `mne.SourceEstimate.plot`. Only used when plotting in 3D
             mode.
@@ -590,22 +590,22 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        forward : instance of Forward | path-like
+        #### `forward : instance of Forward | path-like`
             The forward solution to add to the report.
-        title : str
+        #### `title : str`
             The title corresponding to forward solution.
-        subject : str | None
+        #### `subject : str | None`
             The name of the FreeSurfer subject ``forward`` belongs to. If
             provided, the sensitivity maps of the forward solution will
             be visualized. If ``None``, will use the value of ``subject``
             passed on report creation. If supplied, also pass ``subjects_dir``.
-        subjects_dir : path-like | None
+        #### `subjects_dir : path-like | None`
             The FreeSurfer ``SUBJECTS_DIR``.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -633,25 +633,25 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        inverse_operator : instance of InverseOperator | path-like
+        #### `inverse_operator : instance of InverseOperator | path-like`
             The inverse operator to add to the report.
-        title : str
+        #### `title : str`
             The title corresponding to the inverse operator object.
-        subject : str | None
+        #### `subject : str | None`
             The name of the FreeSurfer subject ``inverse_op`` belongs to. If
             provided, the source space the inverse solution is based on will
             be visualized. If ``None``, will use the value of ``subject``
             passed on report creation. If supplied, also pass ``subjects_dir``
             and ``trans``.
-        subjects_dir : path-like | None
+        #### `subjects_dir : path-like | None`
             The FreeSurfer ``SUBJECTS_DIR``.
-        trans : path-like | instance of Transform | None
+        #### `trans : path-like | instance of Transform | None`
             The ``head -> MRI`` transformation for ``subject``.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -680,28 +680,28 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        trans : path-like | instance of Transform
+        #### `trans : path-like | instance of Transform`
             The ``head -> MRI`` transformation to render.
-        info : path-like | instance of Info
+        #### `info : path-like | instance of Info`
             The `mne.Info` corresponding to ``trans``.
-        title : str
+        #### `title : str`
             The title to add.
-        subject : str | None
+        #### `subject : str | None`
             The name of the FreeSurfer subject the ``trans```` belong to. The
             name is not stored with the ``trans`` and therefore needs to be
             specified. If ``None``, will use the value of ``subject`` passed on
             report creation.
-        subjects_dir : path-like | None
+        #### `subjects_dir : path-like | None`
             The FreeSurfer ``SUBJECTS_DIR``.
-        alpha : float | None
+        #### `alpha : float | None`
             The level of opacity to apply to the head surface. If a float, must
             be between 0 and 1 (inclusive), where 1 means fully opaque. If
             ``None``, will use the MNE-Python default value.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -721,17 +721,17 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        cov : path-like | instance of Covariance
+        #### `cov : path-like | instance of Covariance`
             The `mne.Covariance` to add to the report.
-        info : path-like | instance of Info
+        #### `info : path-like | instance of Info`
             The `mne.Info` corresponding to ``cov``.
-        title : str
+        #### `title : str`
             The title corresponding to the `mne.Covariance` object.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -759,22 +759,22 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        events : path-like | array, shape (n_events, 3)
+        #### `events : path-like | array, shape (n_events, 3)`
             An MNE-Python events array.
-        title : str
+        #### `title : str`
             The title corresponding to the events.
-        event_id : dict
+        #### `event_id : dict`
             A dictionary mapping event names (keys) to event codes (values).
-        sfreq : float
+        #### `sfreq : float`
             The sampling frequency used while recording.
-        first_samp : int
+        #### `first_samp : int`
             The first sample point in the recording. This corresponds to
             ``raw.first_samp`` on files created with Elekta/Neuromag systems.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -801,23 +801,23 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        info : instance of Info | path-like
+        #### `info : instance of Info | path-like`
             An `mne.Info` structure or the path of a file containing one. This
             is required to create the topographic plots.
-        projs : iterable of mne.Projection | path-like | None
+        #### `projs : iterable of mne.Projection | path-like | None`
             The projection vectors to add to the report. Can be the path to a
             file that will be loaded via `mne.read_proj`. If ``None``, the
             projectors are taken from ``info['projs']``.
-        title : str
+        #### `title : str`
             The title corresponding to the `mne.Projection` object.
 
-        topomap_kwargs : dict | None
+        #### `topomap_kwargs : dict | None`
             Keyword arguments to pass to the topomap-generating functions.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -849,16 +849,16 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        ica : path-like | instance of mne.preprocessing.ICA
+        #### `ica : path-like | instance of mne.preprocessing.ICA`
             The fitted ICA to add.
-        title : str
+        #### `title : str`
             The title to add.
-        inst : path-like | mne.io.Raw | mne.Epochs | None
+        #### `inst : path-like | mne.io.Raw | mne.Epochs | None`
             The data to use for visualization of the effects of ICA cleaning.
             To only plot the ICA component topographies, explicitly pass
             ``None``.
 
-        picks : int | list of int | slice | None
+        #### `picks : int | list of int | slice | None`
             Indices of the independent components (ICs) to visualize.
             If an integer, represents the index of the IC to pick.
             Multiple ICs can be selected using a list of int or a slice.
@@ -866,15 +866,15 @@ class Report:
             IC: ``ICA001``. ``None`` will pick all independent components in the order
             fitted. This only affects the behavior of the component
             topography and properties plots.
-        ecg_evoked, eog_evoked : path-line | mne.Evoked | None
+        #### `ecg_evoked, eog_evoked : path-line | mne.Evoked | None`
             Evoked signal based on ECG and EOG epochs, respectively. If passed,
             will be used to visualize the effects of artifact rejection.
-        ecg_scores, eog_scores : array of float | list of array of float | None
+        #### `ecg_scores, eog_scores : array of float | list of array of float | None`
             The scores produced by `mne.preprocessing.ICA.find_bads_ecg`
             and `mne.preprocessing.ICA.find_bads_eog`, respectively.
             If passed, will be used to visualize the scoring for each ICA
             component.
-        n_jobs : int | None
+        #### `n_jobs : int | None`
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -882,10 +882,10 @@ class Report:
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -907,16 +907,16 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        title : str
+        #### `title : str`
             The title of the element(s) to remove.
 
             ✨ Added in vesion 0.24.0
-        tags : array-like of str | str | None
+        #### `tags : array-like of str | str | None`
              If supplied, restrict the operation to elements with the supplied
              tags.
 
             ✨ Added in vesion 0.24.0
-        remove_all : bool
+        #### `remove_all : bool`
             Controls the behavior if multiple elements match the search
             criteria. If ``False`` (default) only the element last added to the
             report will be removed. If ``True``, all matches will be removed.
@@ -926,7 +926,7 @@ class Report:
         -----
         ### ⏎ Returns
 
-        removed_index : int | tuple of int | None
+        #### `removed_index : int | tuple of int | None`
             The indices of the elements that were removed, or ``None`` if no
             element matched the search criteria. A tuple will always be
             returned if ``remove_all`` was set to ``True`` and at least one
@@ -950,22 +950,22 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        code : str | pathlib.Path
+        #### `code : str | pathlib.Path`
             The code to add to the report as a string, or the path to a file
             as a `pathlib.Path` object.
 
             ### 💡 Note Paths must be passed as `pathlib.Path` object, since
                       strings will be treated as literal code.
-        title : str
+        #### `title : str`
             The title corresponding to the code.
-        language : str
+        #### `language : str`
             The programming language of ``code``. This will be used for syntax
             highlighting. Can be ``'auto'`` to try to auto-detect the language.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -988,13 +988,13 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        title : str
+        #### `title : str`
             The title to assign.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -1022,27 +1022,27 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        fig : matplotlib.figure.Figure | Figure3D | array | array-like of matplotlib.figure.Figure | array-like of Figure3D | array-like of array
+        #### `fig : matplotlib.figure.Figure | Figure3D | array | array-like of matplotlib.figure.Figure | array-like of Figure3D | array-like of array`
             One or more figures to add to the report. All figures must be an
             instance of `matplotlib.figure.Figure`,
             `mne.viz.Figure3D`, or `numpy.ndarray`. If
             multiple figures are passed, they will be added as "slides"
             that can be navigated using buttons and a slider element.
-        title : str
+        #### `title : str`
             The title corresponding to the figure(s).
-        caption : str | array-like of str | None
+        #### `caption : str | array-like of str | None`
             The caption(s) to add to the figure(s).
 
-        image_format : 'png' | 'svg' | 'gif' | None
+        #### `image_format : 'png' | 'svg' | 'gif' | None`
             The image format to be used for the report, can be ``'png'``,
             ``'svg'``, or ``'gif'``.
             None (default) will use the default specified during `mne.Report`
             instantiation.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        section : str | None
+        #### `section : str | None`
             The name of the section (or content block) to add the content to. This
             feature is useful for grouping multiple related content elements
             together under a single, collapsible section. Each content element will
@@ -1052,7 +1052,7 @@ class Report:
 
             ✨ Added in vesion 1.1
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -1079,17 +1079,17 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        image : path-like
+        #### `image : path-like`
             The image to add.
-        title : str
+        #### `title : str`
             Title corresponding to the images.
-        caption : str | None
+        #### `caption : str | None`
             If not ``None``, the caption to add to the image.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        section : str | None
+        #### `section : str | None`
             The name of the section (or content block) to add the content to. This
             feature is useful for grouping multiple related content elements
             together under a single, collapsible section. Each content element will
@@ -1099,7 +1099,7 @@ class Report:
 
             ✨ Added in vesion 1.1
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -1119,15 +1119,15 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        html : str
+        #### `html : str`
             The HTML content to add.
-        title : str
+        #### `title : str`
             The title corresponding to ``html``.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        section : str | None
+        #### `section : str | None`
             The name of the section (or content block) to add the content to. This
             feature is useful for grouping multiple related content elements
             together under a single, collapsible section. Each content element will
@@ -1139,7 +1139,7 @@ class Report:
 
             ✨ Added in vesion 1.3
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -1168,24 +1168,24 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        subject : str
+        #### `subject : str`
             The FreeSurfer subject name.
-        title : str
+        #### `title : str`
             The title corresponding to the BEM image.
 
-        subjects_dir : path-like | None
+        #### `subjects_dir : path-like | None`
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
             variable.
-        decim : int
+        #### `decim : int`
             Use this decimation factor for generating MRI/BEM images
             (since it can be time consuming).
-        width : int
+        #### `width : int`
             The width of the MRI images (in pixels). Larger values will have
             clearer surface lines, but will create larger HTML files.
             Typically a factor of 2 more than the number of MRI voxels along
             each dimension (typically 512, default) is reasonable.
-        n_jobs : int | None
+        #### `n_jobs : int | None`
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -1193,10 +1193,10 @@ class Report:
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
-        tags : array-like of str | str
+        #### `tags : array-like of str | str`
             Tags to add for later interactive filtering. Must not contain spaces.
 
-        replace : bool
+        #### `replace : bool`
             If ``True``, content already present that has the same ``title`` and
             ``section`` will be replaced. Defaults to ``False``, which will cause
             duplicate entries in the table of contents if an entry for ``title``
@@ -1231,10 +1231,10 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        data_path : str
+        #### `data_path : str`
             Path to the folder containing data whose HTML report will be
             created.
-        pattern : None | str | list of str
+        #### `pattern : None | str | list of str`
             Filename pattern(s) to include in the report.
             For example, ``[\\*raw.fif, \\*ave.fif]`` will include `mne.io.Raw`
             as well as `mne.Evoked` files. If ``None``, include all supported
@@ -1242,38 +1242,38 @@ class Report:
 
             🎭 Changed in version 0.23
                Include supported non-FIFF files by default.
-        n_jobs : int | None
+        #### `n_jobs : int | None`
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
-        mri_decim : int
+        #### `mri_decim : int`
             Use this decimation factor for generating MRI/BEM images
             (since it can be time consuming).
-        sort_content : bool
+        #### `sort_content : bool`
             If ``True``, sort the content based on tags in the order:
             raw -> events -> epochs -> evoked -> covariance -> coregistration
             -> bem -> forward-solution -> inverse-operator -> source-estimate.
 
             ✨ Added in vesion 0.24.0
-        on_error : str
+        #### `on_error : str`
             What to do if a file cannot be rendered. Can be 'ignore',
             'warn' (default), or 'raise'.
 
-        image_format : 'png' | 'svg' | 'gif' | None
+        #### `image_format : 'png' | 'svg' | 'gif' | None`
             The image format to be used for the report, can be ``'png'``,
             ``'svg'``, or ``'gif'``.
             None (default) will use the default specified during `mne.Report`
             instantiation.
 
             ✨ Added in vesion 0.15
-        render_bem : bool
+        #### `render_bem : bool`
             If True (default), try to render the BEM.
 
             ✨ Added in vesion 0.16
-        n_time_points_evokeds, n_time_points_stcs : int | None
+        #### `n_time_points_evokeds, n_time_points_stcs : int | None`
             The number of equidistant time points to render for `mne.Evoked`
             and `mne.SourceEstimate` data, respectively. If ``None``,
             will render each `mne.Evoked` at 21 and each `mne.SourceEstimate`
@@ -1281,25 +1281,25 @@ class Report:
             points, in which call all will be rendered.
 
             ✨ Added in vesion 0.24.0
-        raw_butterfly : bool
+        #### `raw_butterfly : bool`
             Whether to render butterfly plots for (decimated) `mne.io.Raw`
             data.
 
             ✨ Added in vesion 0.24.0
 
-        stc_plot_kwargs : dict
+        #### `stc_plot_kwargs : dict`
             Dictionary of keyword arguments to pass to
             `mne.SourceEstimate.plot`. Only used when plotting in 3D
             mode.
 
             ✨ Added in vesion 0.24.0
 
-        topomap_kwargs : dict | None
+        #### `topomap_kwargs : dict | None`
             Keyword arguments to pass to the topomap-generating functions.
 
             ✨ Added in vesion 0.24.0
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -1320,7 +1320,7 @@ class Report:
         -----
         ### 🛠️ Parameters
 
-        fname : path-like | None
+        #### `fname : path-like | None`
             Output filename. If the name ends with ``.h5`` or ``.hdf5``, the
             report is saved in HDF5 format, so it can later be loaded again
             with `open_report`. For any other suffix, the report will be
@@ -1330,14 +1330,14 @@ class Report:
             `Report.parse_folder` **was** used, the report is saved as
             ``report.html`` inside the ``data_path`` supplied to
             `Report.parse_folder`.
-        open_browser : bool
+        #### `open_browser : bool`
             Whether to open the rendered HTML report in the default web browser
             after saving. This is ignored when writing an HDF5 file.
 
-        overwrite : bool
+        #### `overwrite : bool`
             If True (default False), overwrite the destination file if it
             exists.
-        sort_content : bool
+        #### `sort_content : bool`
             If ``True``, sort the content based on tags before saving in the
             order:
             raw -> events -> epochs -> evoked -> covariance -> coregistration
@@ -1345,7 +1345,7 @@ class Report:
 
             ✨ Added in vesion 0.24.0
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -1354,7 +1354,7 @@ class Report:
         -----
         ### ⏎ Returns
 
-        fname : str
+        #### `fname : str`
             The file name to which the report was saved.
         """
         ...
@@ -1371,7 +1371,7 @@ class Report:
         ...
 
 class _ReportScraper:
-    """### Scrape Report outputs.
+    """## 🧠 Scrape Report outputs.
 
     Only works properly if conf.py is configured properly and the file
     is written to the same directory as the example script.

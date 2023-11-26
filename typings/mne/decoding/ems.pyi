@@ -8,7 +8,7 @@ from .mixin import (
 from _typeshed import Incomplete
 
 class EMS(TransformerMixin, EstimatorMixin):
-    """### Transformer to compute event-matched spatial filters.
+    """## 🧠 Transformer to compute event-matched spatial filters.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
     time course. No time
@@ -22,9 +22,9 @@ class EMS(TransformerMixin, EstimatorMixin):
     -----
     ### 📊 Attributes
 
-    filters_ : ndarray, shape (n_channels, n_times)
+    #### `filters_ : ndarray, shape (n_channels, n_times)`
         The set of spatial filters.
-    classes_ : ndarray, shape (n_classes,)
+    #### `classes_ : ndarray, shape (n_classes,)`
         The target classes.
 
     References
@@ -46,13 +46,13 @@ class EMS(TransformerMixin, EstimatorMixin):
 
         X : array, shape (n_epochs, n_channels, n_times)
             The training data.
-        y : array of int, shape (n_epochs)
+        #### `y : array of int, shape (n_epochs)`
             The target classes.
 
         -----
         ### ⏎ Returns
 
-        self : instance of EMS
+        #### `self : instance of EMS`
             Returns self.
         """
         ...
@@ -76,7 +76,7 @@ class EMS(TransformerMixin, EstimatorMixin):
 def compute_ems(
     epochs, conditions=None, picks=None, n_jobs=None, cv=None, verbose=None
 ):
-    """### Compute event-matched spatial filter on epochs.
+    """## 🧠 Compute event-matched spatial filter on epochs.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
     time course. No time
@@ -99,13 +99,13 @@ def compute_ems(
     -----
     ### 🛠️ Parameters
 
-    epochs : instance of mne.Epochs
+    #### `epochs : instance of mne.Epochs`
         The epochs.
-    conditions : list of str | None, default None
+    #### `conditions : list of str | None, default None`
         If a list of strings, strings must match the epochs.event_id's key as
         well as the number of conditions supported by the objective_function.
         If None keys in epochs.event_id are used.
-    picks : str | array-like | slice | None
+    #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -114,17 +114,17 @@ def compute_ems(
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    cv : cross-validation object | str | None, default LeaveOneOut
+    #### `cv : cross-validation object | str | None, default LeaveOneOut`
         The cross-validation scheme.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -133,11 +133,11 @@ def compute_ems(
     -----
     ### ⏎ Returns
 
-    surrogate_trials : ndarray, shape (n_trials // 2, n_times)
+    #### `surrogate_trials : ndarray, shape (n_trials // 2, n_times)`
         The trial surrogates.
-    mean_spatial_filter : ndarray, shape (n_channels, n_times)
+    #### `mean_spatial_filter : ndarray, shape (n_channels, n_times)`
         The set of spatial filters.
-    conditions : ndarray, shape (n_classes,)
+    #### `conditions : ndarray, shape (n_classes,)`
         The conditions used. Values correspond to original event ids.
 
     References

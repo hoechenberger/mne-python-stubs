@@ -20,43 +20,43 @@ def select_source_in_label(
     subjects_dir=None,
     surf: str = "sphere",
 ):
-    """### Select source positions using a label.
+    """## 🧠 Select source positions using a label.
 
     -----
     ### 🛠️ Parameters
 
-    src : list of dict
+    #### `src : list of dict`
         The source space.
-    label : Label
+    #### `label : Label`
         The label.
 
-    random_state : None | int | instance of ~numpy.random.RandomState
+    #### `random_state : None | int | instance of ~numpy.random.RandomState`
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
         (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    location : str
+    #### `location : str`
         The label location to choose. Can be 'random' (default) or 'center'
         to use `mne.Label.center_of_mass` (restricting to vertices
         both in the label and in the source space). Note that for 'center'
         mode the label values are used as weights.
 
         ✨ Added in vesion 0.13
-    subject : str | None
+    #### `subject : str | None`
         The subject the label is defined for.
         Only used with ``location='center'``.
 
         ✨ Added in vesion 0.13
 
-    subjects_dir : path-like | None
+    #### `subjects_dir : path-like | None`
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
 
         ✨ Added in vesion 0.13
-    surf : str
+    #### `surf : str`
         The surface to use for Euclidean distance center of mass
         finding. The default here is "sphere", which finds the center
         of mass on the spherical surface to help avoid potential issues
@@ -67,9 +67,9 @@ def select_source_in_label(
     -----
     ### ⏎ Returns
 
-    lh_vertno : list
+    #### `lh_vertno : list`
         Selected source coefficients on the left hemisphere.
-    rh_vertno : list
+    #### `rh_vertno : list`
         Selected source coefficients on the right hemisphere.
     """
     ...
@@ -86,7 +86,7 @@ def simulate_sparse_stc(
     subjects_dir=None,
     surf: str = "sphere",
 ):
-    """### Generate sparse (n_dipoles) sources time courses from data_fun.
+    """## 🧠 Generate sparse (n_dipoles) sources time courses from data_fun.
 
     This function randomly selects ``n_dipoles`` vertices in the whole
     cortex or one single vertex (randomly in or in the center of) each
@@ -96,46 +96,46 @@ def simulate_sparse_stc(
     -----
     ### 🛠️ Parameters
 
-    src : instance of SourceSpaces
+    #### `src : instance of SourceSpaces`
         The source space.
-    n_dipoles : int
+    #### `n_dipoles : int`
         Number of dipoles to simulate.
-    times : array
+    #### `times : array`
         Time array.
-    data_fun : callable
+    #### `data_fun : callable`
         Function to generate the waveforms. The default is a 100 nAm, 10 Hz
         sinusoid as ``1e-7 * np.sin(20 * pi * t)``. The function should take
         as input the array of time samples in seconds and return an array of
         the same length containing the time courses.
-    labels : None | list of Label
+    #### `labels : None | list of Label`
         The labels. The default is None, otherwise its size must be n_dipoles.
 
-    random_state : None | int | instance of ~numpy.random.RandomState
+    #### `random_state : None | int | instance of ~numpy.random.RandomState`
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
         (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    location : str
+    #### `location : str`
         The label location to choose. Can be ``'random'`` (default) or
         ``'center'`` to use `mne.Label.center_of_mass`. Note that for
         ``'center'`` mode the label values are used as weights.
 
         ✨ Added in vesion 0.13
-    subject : str | None
+    #### `subject : str | None`
         The subject the label is defined for.
         Only used with ``location='center'``.
 
         ✨ Added in vesion 0.13
 
-    subjects_dir : path-like | None
+    #### `subjects_dir : path-like | None`
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
 
         ✨ Added in vesion 0.13
-    surf : str
+    #### `surf : str`
         The surface to use for Euclidean distance center of mass
         finding. The default here is "sphere", which finds the center
         of mass on the spherical surface to help avoid potential issues
@@ -146,7 +146,7 @@ def simulate_sparse_stc(
     -----
     ### ⏎ Returns
 
-    stc : SourceEstimate
+    #### `stc : SourceEstimate`
         The generated source time courses.
 
     -----
@@ -166,7 +166,7 @@ def simulate_sparse_stc(
 def simulate_stc(
     src, labels, stc_data, tmin, tstep, value_fun=None, allow_overlap: bool = False
 ):
-    """### Simulate sources time courses from waveforms and labels.
+    """## 🧠 Simulate sources time courses from waveforms and labels.
 
     This function generates a source estimate with extended sources by
     filling the labels with the waveforms given in stc_data.
@@ -174,21 +174,21 @@ def simulate_stc(
     -----
     ### 🛠️ Parameters
 
-    src : instance of SourceSpaces
+    #### `src : instance of SourceSpaces`
         The source space.
-    labels : list of Label
+    #### `labels : list of Label`
         The labels.
-    stc_data : array, shape (n_labels, n_times)
+    #### `stc_data : array, shape (n_labels, n_times)`
         The waveforms.
-    tmin : float
+    #### `tmin : float`
         The beginning of the timeseries.
-    tstep : float
+    #### `tstep : float`
         The time step (1 / sampling frequency).
-    value_fun : callable | None
+    #### `value_fun : callable | None`
         Function to apply to the label values to obtain the waveform
         scaling for each vertex in the label. If None (default), uniform
         scaling is used.
-    allow_overlap : bool
+    #### `allow_overlap : bool`
         Allow overlapping labels or not. Default value is False.
 
         ✨ Added in vesion 0.18
@@ -196,7 +196,7 @@ def simulate_stc(
     -----
     ### ⏎ Returns
 
-    stc : SourceEstimate
+    #### `stc : SourceEstimate`
         The generated source time courses.
 
     -----
@@ -209,19 +209,19 @@ def simulate_stc(
     ...
 
 class SourceSimulator:
-    """### Class to generate simulated Source Estimates.
+    """## 🧠 Class to generate simulated Source Estimates.
 
     -----
     ### 🛠️ Parameters
 
-    src : instance of SourceSpaces
+    #### `src : instance of SourceSpaces`
         Source space.
-    tstep : float
+    #### `tstep : float`
         Time step between successive samples in data. Default is 0.001 s.
-    duration : float | None
+    #### `duration : float | None`
         Time interval during which the simulation takes place in seconds.
         If None, it is computed using existing events and waveform lengths.
-    first_samp : int
+    #### `first_samp : int`
         First sample from which the simulation takes place, as an integer.
         Comparable to the :term:`first_samp` property of `mne.io.Raw` objects.
         Default is 0.
@@ -229,9 +229,9 @@ class SourceSimulator:
     -----
     ### 📊 Attributes
 
-    duration : float
+    #### `duration : float`
         The duration of the simulation in seconds.
-    n_times : int
+    #### `n_times : int`
         The number of time samples of the simulation.
     """
 
@@ -259,14 +259,14 @@ class SourceSimulator:
         -----
         ### 🛠️ Parameters
 
-        label : instance of Label
+        #### `label : instance of Label`
             The label (as created for example by mne.read_label). If the label
             does not match any sources in the SourceEstimate, a ValueError is
             raised.
-        waveform : array, shape (n_times,) or (n_events, n_times) | list
+        #### `waveform : array, shape (n_times,) or (n_events, n_times) | list`
             The waveform(s) describing the activity on the label vertices.
             If list, it must have the same length as events.
-        events : array of int, shape (n_events, 3)
+        #### `events : array of int, shape (n_events, 3)`
             Events associated to the waveform(s) to specify when the activity
             should occur.
         """
@@ -281,17 +281,17 @@ class SourceSimulator:
         -----
         ### 🛠️ Parameters
 
-        start_sample : int
+        #### `start_sample : int`
             First sample in chunk. Default is the value of the ``first_samp``
             attribute.
-        stop_sample : int | None
+        #### `stop_sample : int | None`
             The final sample of the returned stc. If None, then all samples
             from start_sample onward are returned.
 
         -----
         ### ⏎ Returns
 
-        stim_data : ndarray of int, shape (n_samples,)
+        #### `stim_data : ndarray of int, shape (n_samples,)`
             The stimulation channel data.
         """
         ...
@@ -306,17 +306,17 @@ class SourceSimulator:
         -----
         ### 🛠️ Parameters
 
-        start_sample : int | None
+        #### `start_sample : int | None`
             First sample in chunk. If ``None`` the value of the ``first_samp``
             attribute is used. Defaults to ``None``.
-        stop_sample : int | None
+        #### `stop_sample : int | None`
             The final sample of the returned STC. If ``None``, then all samples
             past ``start_sample`` are returned.
 
         -----
         ### ⏎ Returns
 
-        stc : SourceEstimate object
+        #### `stc : SourceEstimate object`
             The generated source time courses.
         """
         ...

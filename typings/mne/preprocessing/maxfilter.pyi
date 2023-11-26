@@ -28,7 +28,7 @@ def apply_maxfilter(
     overwrite: bool = True,
     verbose=None,
 ):
-    """###     # DEPRECATED apply_maxfilter will be removed in 1.7, use mne.preprocessing.maxwell_filter or the MEGIN command-line utility maxfilter and mne.bem.fit_sphere_to_headshape instead..
+    """## 🧠     # DEPRECATED apply_maxfilter will be removed in 1.7, use mne.preprocessing.maxwell_filter or the MEGIN command-line utility maxfilter and mne.bem.fit_sphere_to_headshape instead..
 
     Apply NeuroMag MaxFilter to raw data.
 
@@ -37,65 +37,65 @@ def apply_maxfilter(
     -----
     ### 🛠️ Parameters
 
-    in_fname : path-like
+    #### `in_fname : path-like`
         Input file name.
-    out_fname : path-like
+    #### `out_fname : path-like`
         Output file name.
-    origin : array-like or str
+    #### `origin : array-like or str`
         Head origin in mm. If None it will be estimated from headshape points.
-    frame : ``'device'`` | ``'head'``
+    #### `frame : ``'device'`` | ``'head'```
         Coordinate frame for head center.
-    bad : str, list (or None)
+    #### `bad : str, list (or None)`
         List of static bad channels. Can be a list with channel names, or a
         string with channels (names or logical channel numbers).
-    autobad : str ('on', 'off', 'n')
+    #### `autobad : str ('on', 'off', 'n')`
         Sets automated bad channel detection on or off.
-    skip : str or a list of float-tuples (or None)
+    #### `skip : str or a list of float-tuples (or None)`
         Skips raw data sequences, time intervals pairs in s,
         e.g.: 0 30 120 150.
-    force : bool
+    #### `force : bool`
         Ignore program warnings.
-    st : bool
+    #### `st : bool`
         Apply the time-domain MaxST extension.
-    st_buflen : float
+    #### `st_buflen : float`
         MaxSt buffer length in s (disabled if st is False).
-    st_corr : float
+    #### `st_corr : float`
         MaxSt subspace correlation limit (disabled if st is False).
-    mv_trans : str (filename or 'default') (or None)
+    #### `mv_trans : str (filename or 'default') (or None)`
         Transforms the data into the coil definitions of in_fname, or into the
         default frame (None: don't use option).
-    mv_comp : bool (or 'inter')
+    #### `mv_comp : bool (or 'inter')`
         Estimates and compensates head movements in continuous raw data.
-    mv_headpos : bool
+    #### `mv_headpos : bool`
         Estimates and stores head position parameters, but does not compensate
         movements (disabled if mv_comp is False).
-    mv_hp : str (or None)
+    #### `mv_hp : str (or None)`
         Stores head position data in an ascii file
         (disabled if mv_comp is False).
-    mv_hpistep : float (or None)
+    #### `mv_hpistep : float (or None)`
         Sets head position update interval in ms (disabled if mv_comp is
         False).
-    mv_hpisubt : str ('amp', 'base', 'off') (or None)
+    #### `mv_hpisubt : str ('amp', 'base', 'off') (or None)`
         Subtracts hpi signals: sine amplitudes, amp + baseline, or switch off
         (disabled if mv_comp is False).
-    mv_hpicons : bool
+    #### `mv_hpicons : bool`
         Check initial consistency isotrak vs hpifit
         (disabled if mv_comp is False).
-    linefreq : int (50, 60) (or None)
+    #### `linefreq : int (50, 60) (or None)`
         Sets the basic line interference frequency (50 or 60 Hz)
         (None: do not use line filter).
-    cal : str
+    #### `cal : str`
         Path to calibration file.
-    ctc : str
+    #### `ctc : str`
         Path to Cross-talk compensation file.
-    mx_args : str
+    #### `mx_args : str`
         Additional command line arguments to pass to MaxFilter.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

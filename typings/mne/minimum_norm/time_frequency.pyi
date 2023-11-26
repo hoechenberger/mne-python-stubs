@@ -32,41 +32,41 @@ def source_band_induced_power(
     *,
     verbose=None,
 ):
-    """### Compute source space induced power in given frequency bands.
+    """## 🧠 Compute source space induced power in given frequency bands.
 
     -----
     ### 🛠️ Parameters
 
-    epochs : instance of Epochs
+    #### `epochs : instance of Epochs`
         The epochs.
-    inverse_operator : instance of InverseOperator
+    #### `inverse_operator : instance of InverseOperator`
         The inverse operator.
-    bands : dict
+    #### `bands : dict`
         Example : bands = dict(alpha=[8, 9]).
-    label : Label | list of Label
+    #### `label : Label | list of Label`
         Restricts the source estimates to a given label or list of labels. If
         labels are provided in a list, power will be averaged over vertices.
     lambda2 : float
         The regularization parameter of the minimum norm.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    nave : int
+    #### `nave : int`
         The number of averages used to scale the noise covariance matrix.
-    n_cycles : float | array of float
+    #### `n_cycles : float | array of float`
         Number of cycles. Fixed number or one per frequency.
-    df : float
+    #### `df : float`
         Delta frequency within bands.
-    use_fft : bool
+    #### `use_fft : bool`
         Do convolutions in time or frequency domain with FFT.
-    decim : int
+    #### `decim : int`
         Temporal decimation factor.
-    baseline : None (default) or tuple, shape (2,)
+    #### `baseline : None (default) or tuple, shape (2,)`
         The time interval to apply baseline correction. If None do not apply
         it. If baseline is (a, b) the interval is between "a (s)" and "b (s)".
         If a is None the beginning of the data is used and if b is None then b
         is set to the end of the interval. If baseline is equal to (None, None)
         all the time interval is used.
-    baseline_mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio'
+    #### `baseline_mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio'`
         Perform baseline correction by
 
         - subtracting the mean of baseline values ('mean')
@@ -81,25 +81,25 @@ def source_band_induced_power(
           dividing by the standard deviation of log baseline values
           ('zlogratio')
 
-    pca : bool
+    #### `pca : bool`
         If True, the true dimension of data is estimated before running
         the time-frequency transforms. It reduces the computation times
         e.g. with a dataset that was maxfiltered (true dim is 64).
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
         ✨ Added in vesion 0.16
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
@@ -108,7 +108,7 @@ def source_band_induced_power(
 
         ✨ Added in vesion 0.20
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -117,7 +117,7 @@ def source_band_induced_power(
     -----
     ### ⏎ Returns
 
-    stcs : dict of SourceEstimate (or VolSourceEstimate)
+    #### `stcs : dict of SourceEstimate (or VolSourceEstimate)`
         The estimated source space induced power estimates in shape
         (n_vertices, n_frequencies, n_samples) if label=None or label=label.
         For lists of one or more labels, the induced power estimate has shape
@@ -149,40 +149,40 @@ def source_induced_power(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Compute induced power and phase lock.
+    """## 🧠 Compute induced power and phase lock.
 
     Computation can optionally be restricted in a label.
 
     -----
     ### 🛠️ Parameters
 
-    epochs : instance of Epochs
+    #### `epochs : instance of Epochs`
         The epochs.
-    inverse_operator : instance of InverseOperator
+    #### `inverse_operator : instance of InverseOperator`
         The inverse operator.
-    freqs : array
+    #### `freqs : array`
         Array of frequencies of interest.
-    label : Label | list of Label
+    #### `label : Label | list of Label`
         Restricts the source estimates to a given label or list of labels. If
         labels are provided in a list, power will be averaged over vertices within each
         label.
     lambda2 : float
         The regularization parameter of the minimum norm.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    nave : int
+    #### `nave : int`
         The number of averages used to scale the noise covariance matrix.
-    n_cycles : float | array of float
+    #### `n_cycles : float | array of float`
         Number of cycles. Fixed number or one per frequency.
-    decim : int
+    #### `decim : int`
         Temporal decimation factor.
-    use_fft : bool
+    #### `use_fft : bool`
         Do convolutions in time or frequency domain with FFT.
-    pick_ori : None | "normal"
+    #### `pick_ori : None | "normal"`
         If "normal", rather than pooling the orientations by taking the norm,
         only the radial component is kept. This is only implemented
         when working with loose orientations.
-    baseline : None (default) or tuple of length 2
+    #### `baseline : None (default) or tuple of length 2`
         The time interval to apply baseline correction.
         If None do not apply it. If baseline is (a, b)
         the interval is between "a (s)" and "b (s)".
@@ -190,7 +190,7 @@ def source_induced_power(
         and if b is None then b is set to the end of the interval.
         If baseline is equal to (None, None) all the time
         interval is used.
-    baseline_mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio'
+    #### `baseline_mode : 'mean' | 'ratio' | 'logratio' | 'percent' | 'zscore' | 'zlogratio'`
         Perform baseline correction by
 
         - subtracting the mean of baseline values ('mean')
@@ -205,29 +205,29 @@ def source_induced_power(
           dividing by the standard deviation of log baseline values
           ('zlogratio')
 
-    pca : bool
+    #### `pca : bool`
         If True, the true dimension of data is estimated before running
         the time-frequency transforms. It reduces the computation times
         e.g. with a dataset that was maxfiltered (true dim is 64).
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
-    return_plv : bool
+    #### `return_plv : bool`
         If True, return the phase-locking value array. Else, only return power.
 
         ✨ Added in vesion 1.6
-    zero_mean : bool
+    #### `zero_mean : bool`
         Make sure the wavelets are zero mean.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
@@ -236,7 +236,7 @@ def source_induced_power(
 
         ✨ Added in vesion 0.20
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -245,11 +245,11 @@ def source_induced_power(
     -----
     ### ⏎ Returns
 
-    power : array
+    #### `power : array`
         The induced power array with shape (n_sources, n_freqs, n_samples) if
         label=None or label=label. For lists of one or more labels, the induced
         power estimate has shape (n_labels, n_frequencies, n_samples).
-    plv : array
+    #### `plv : array`
         The phase-locking value array with shape (n_sources, n_freqs,
         n_samples). Only returned if ``return_plv=True``.
     """
@@ -282,74 +282,74 @@ def compute_source_psd(
     *,
     verbose=None,
 ):
-    """### Compute source power spectral density (PSD).
+    """## 🧠 Compute source power spectral density (PSD).
 
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         The raw data.
-    inverse_operator : instance of InverseOperator
+    #### `inverse_operator : instance of InverseOperator`
         The inverse operator.
     lambda2 : float
         The regularization parameter.
-    method : "MNE" | "dSPM" | "sLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    tmin : float
+    #### `tmin : float`
         The beginning of the time interval of interest (in seconds).
         Use 0. for the beginning of the file.
-    tmax : float | None
+    #### `tmax : float | None`
         The end of the time interval of interest (in seconds). If None
         stop at the end of the file.
-    fmin : float
+    #### `fmin : float`
         The lower frequency of interest.
-    fmax : float
+    #### `fmax : float`
         The upper frequency of interest.
-    n_fft : int
+    #### `n_fft : int`
         Window size for the FFT. Should be a power of 2.
-    overlap : float
+    #### `overlap : float`
         The overlap fraction between windows. Should be between 0 and 1.
         0 means no overlap.
-    pick_ori : None | "normal"
+    #### `pick_ori : None | "normal"`
         If "normal", rather than pooling the orientations by taking the norm,
         only the radial component is kept. This is only implemented
         when working with loose orientations.
-    label : Label
+    #### `label : Label`
         Restricts the source estimates to a given label.
-    nave : int
+    #### `nave : int`
         The number of averages used to scale the noise covariance matrix.
-    pca : bool
+    #### `pca : bool`
         If True, the true dimension of data is estimated before running
         the time-frequency transforms. It reduces the computation times
         e.g. with a dataset that was maxfiltered (true dim is 64).
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
         ✨ Added in vesion 0.16
-    inv_split : int or None
+    #### `inv_split : int or None`
         Split inverse operator into inv_split parts in order to save memory.
 
         ✨ Added in vesion 0.17
-    bandwidth : float | str
+    #### `bandwidth : float | str`
         The bandwidth of the multi taper windowing function in Hz.
         Can also be a string (e.g., 'hann') to use a single window.
 
         For backward compatibility, the default is 'hann'.
 
         ✨ Added in vesion 0.17
-    adaptive : bool
+    #### `adaptive : bool`
         Use adaptive weights to combine the tapered spectra into PSD
         (slow, use n_jobs >> 1 to speed up computation).
 
         ✨ Added in vesion 0.17
-    low_bias : bool
+    #### `low_bias : bool`
         Only use tapers with more than 90% spectral concentration within
         bandwidth.
 
         ✨ Added in vesion 0.17
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -359,7 +359,7 @@ def compute_source_psd(
         It is only used if adaptive=True.
 
         ✨ Added in vesion 0.17
-    return_sensor : bool
+    #### `return_sensor : bool`
         If True, return the sensor PSDs as an EvokedArray.
 
         ✨ Added in vesion 0.17
@@ -368,7 +368,7 @@ def compute_source_psd(
 
         ✨ Added in vesion 0.17
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -377,9 +377,9 @@ def compute_source_psd(
     -----
     ### ⏎ Returns
 
-    stc_psd : instance of SourceEstimate | VolSourceEstimate
+    #### `stc_psd : instance of SourceEstimate | VolSourceEstimate`
         The PSD of each of the sources.
-    sensor_psd : instance of EvokedArray
+    #### `sensor_psd : instance of EvokedArray`
         The PSD of each sensor. Only returned if ``return_sensor`` is True.
 
     -----
@@ -426,52 +426,52 @@ def compute_source_psd_epochs(
     use_cps: bool = True,
     verbose=None,
 ):
-    """### Compute source power spectral density (PSD) from Epochs.
+    """## 🧠 Compute source power spectral density (PSD) from Epochs.
 
     This uses the multi-taper method to compute the PSD for each epoch.
 
     -----
     ### 🛠️ Parameters
 
-    epochs : instance of Epochs
+    #### `epochs : instance of Epochs`
         The raw data.
-    inverse_operator : instance of InverseOperator
+    #### `inverse_operator : instance of InverseOperator`
         The inverse operator.
     lambda2 : float
         The regularization parameter.
-    method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
+    #### `method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"`
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
-    fmin : float
+    #### `fmin : float`
         The lower frequency of interest.
-    fmax : float
+    #### `fmax : float`
         The upper frequency of interest.
-    pick_ori : None | "normal"
+    #### `pick_ori : None | "normal"`
         If "normal", rather than pooling the orientations by taking the norm,
         only the radial component is kept. This is only implemented
         when working with loose orientations.
-    label : Label
+    #### `label : Label`
         Restricts the source estimates to a given label.
-    nave : int
+    #### `nave : int`
         The number of averages used to scale the noise covariance matrix.
-    pca : bool
+    #### `pca : bool`
         If True, the true dimension of data is estimated before running
         the time-frequency transforms. It reduces the computation times
         e.g. with a dataset that was maxfiltered (true dim is 64).
-    inv_split : int or None
+    #### `inv_split : int or None`
         Split inverse operator into inv_split parts in order to save memory.
-    bandwidth : float | str
+    #### `bandwidth : float | str`
         The bandwidth of the multi taper windowing function in Hz.
         Can also be a string (e.g., 'hann') to use a single window.
-    adaptive : bool
+    #### `adaptive : bool`
         Use adaptive weights to combine the tapered spectra into PSD
         (slow, use n_jobs >> 1 to speed up computation).
-    low_bias : bool
+    #### `low_bias : bool`
         Only use tapers with more than 90% spectral concentration within
         bandwidth.
-    return_generator : bool
+    #### `return_generator : bool`
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
-    n_jobs : int | None
+    #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -479,18 +479,18 @@ def compute_source_psd_epochs(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         It is only used if adaptive=True.
-    prepared : bool
+    #### `prepared : bool`
         If True, do not call `prepare_inverse_operator`.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
         ✨ Added in vesion 0.16
-    return_sensor : bool
+    #### `return_sensor : bool`
         If True, also return the sensor PSD for each epoch as an EvokedArray.
 
         ✨ Added in vesion 0.17
 
-    use_cps : bool
+    #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
@@ -499,7 +499,7 @@ def compute_source_psd_epochs(
 
         ✨ Added in vesion 0.20
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -508,7 +508,7 @@ def compute_source_psd_epochs(
     -----
     ### ⏎ Returns
 
-    out : list (or generator object)
+    #### `out : list (or generator object)`
         A list (or generator) for the source space PSD (and optionally the
         sensor PSD) for each epoch.
 

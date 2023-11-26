@@ -5,22 +5,22 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_persyst(fname, preload: bool = False, verbose=None):
-    """### Reader for a Persyst (.lay/.dat) recording.
+    """## 🧠 Reader for a Persyst (.lay/.dat) recording.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         Path to the Persyst header ``.lay`` file.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -29,7 +29,7 @@ def read_raw_persyst(fname, preload: bool = False, verbose=None):
     -----
     ### ⏎ Returns
 
-    raw : instance of RawPersyst
+    #### `raw : instance of RawPersyst`
         A Raw object containing Persyst data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
@@ -50,22 +50,22 @@ def read_raw_persyst(fname, preload: bool = False, verbose=None):
     ...
 
 class RawPersyst(BaseRaw):
-    """### Raw object from a Persyst file.
+    """## 🧠 Raw object from a Persyst file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         Path to the Persyst header (.lay) file.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

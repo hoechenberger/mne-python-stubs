@@ -1,7 +1,7 @@
 from ..utils.check import int_like as int_like
 
 def combine_adjacency(*structure):
-    """### Create a sparse binary adjacency/neighbors matrix.
+    """## 🧠 Create a sparse binary adjacency/neighbors matrix.
 
     -----
     ### 🛠️ Parameters
@@ -21,7 +21,7 @@ def combine_adjacency(*structure):
     -----
     ### ⏎ Returns
 
-    adjacency : scipy.sparse.coo_matrix, shape (n_features, n_features)
+    #### `adjacency : scipy.sparse.coo_matrix, shape (n_features, n_features)`
         The square adjacency matrix, where the shape ``n_features``
         corresponds to the product of the length of all dimensions.
         For example ``len(times) * len(freqs) * len(chans)``.

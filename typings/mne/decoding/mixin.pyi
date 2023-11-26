@@ -1,5 +1,5 @@
 class TransformerMixin:
-    """### Mixin class for all transformers in scikit-learn."""
+    """## 🧠 Mixin class for all transformers in scikit-learn."""
 
     def fit_transform(self, X, y=None, **fit_params):
         """### Fit to data, then transform it.
@@ -12,7 +12,7 @@ class TransformerMixin:
 
         X : array, shape (n_samples, n_features)
             Training set.
-        y : array, shape (n_samples,)
+        #### `y : array, shape (n_samples,)`
             Target values or class labels.
         **fit_params : dict
             Additional fitting parameters passed to the ``fit`` method..
@@ -26,7 +26,7 @@ class TransformerMixin:
         ...
 
 class EstimatorMixin:
-    """### Mixin class for estimators."""
+    """## 🧠 Mixin class for estimators."""
 
     def get_params(self, deep: bool = True) -> None:
         """### Get the estimator params.
@@ -34,7 +34,7 @@ class EstimatorMixin:
         -----
         ### 🛠️ Parameters
 
-        deep : bool
+        #### `deep : bool`
             Deep.
         """
         ...
@@ -50,7 +50,7 @@ class EstimatorMixin:
         -----
         ### ⏎ Returns
 
-        inst : object
+        #### `inst : object`
             The instance.
         """
         ...

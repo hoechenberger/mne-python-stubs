@@ -169,7 +169,7 @@ class _QtLayout(_AbstractLayout): ...
 class _QtDock(_AbstractDock, _QtLayout): ...
 
 class QFloatSlider(QSlider):
-    """### Slider that handles float values."""
+    """## 🧠 Slider that handles float values."""
 
     floatValueChanged: Incomplete
 

@@ -18,16 +18,16 @@ from _typeshed import Incomplete
 als_ras_trans: Incomplete
 
 class Transform(dict):
-    """### A transform.
+    """## 🧠 A transform.
 
     -----
     ### 🛠️ Parameters
 
-    fro : str | int
+    #### `fro : str | int`
         The starting coordinate frame. See notes for valid coordinate frames.
-    to : str | int
+    #### `to : str | int`
         The ending coordinate frame. See notes for valid coordinate frames.
-    trans : array of shape (4, 4) | None
+    #### `trans : array of shape (4, 4) | None`
         The transformation matrix. If None, an identity matrix will be
         used.
 
@@ -45,17 +45,17 @@ class Transform(dict):
 
         Parameter
         ---------
-        other : instance of Transform
+        #### `other : instance of Transform`
             The other transform.
-        rtol : float
+        #### `rtol : float`
             Relative tolerance.
-        atol : float
+        #### `atol : float`
             Absolute tolerance.
 
         -----
         ### ⏎ Returns
 
-        eq : bool
+        #### `eq : bool`
             True if the transforms are equal.
         """
         ...
@@ -64,17 +64,17 @@ class Transform(dict):
 
         Parameter
         ---------
-        other : instance of Transform
+        #### `other : instance of Transform`
             The other transform.
-        rtol : float
+        #### `rtol : float`
             Relative tolerance.
-        atol : float
+        #### `atol : float`
             Absolute tolerance.
 
         -----
         ### ⏎ Returns
 
-        eq : bool
+        #### `eq : bool`
             True if the transforms are not equal.
         """
         ...
@@ -92,14 +92,14 @@ class Transform(dict):
         -----
         ### 🛠️ Parameters
 
-        fname : path-like
+        #### `fname : path-like`
             The name of the file, which should end in ``-trans.fif``.
 
-        overwrite : bool
+        #### `overwrite : bool`
             If True (default False), overwrite the destination file if it
             exists.
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -111,166 +111,166 @@ class Transform(dict):
         ...
 
 def apply_trans(trans, pts, move: bool = True):
-    """### Apply a transform matrix to an array of points.
+    """## 🧠 Apply a transform matrix to an array of points.
 
     -----
     ### 🛠️ Parameters
 
-    trans : array, shape = (4, 4) | instance of Transform
+    #### `trans : array, shape = (4, 4) | instance of Transform`
         Transform matrix.
-    pts : array, shape = (3,) | (n, 3)
+    #### `pts : array, shape = (3,) | (n, 3)`
         Array with coordinates for one or n points.
-    move : bool
+    #### `move : bool`
         If True (default), apply translation.
 
     -----
     ### ⏎ Returns
 
-    transformed_pts : shape = (3,) | (n, 3)
+    #### `transformed_pts : shape = (3,) | (n, 3)`
         Transformed point(s).
     """
     ...
 
 def rotation(x: int = 0, y: int = 0, z: int = 0):
-    """### Create an array with a 4 dimensional rotation matrix.
+    """## 🧠 Create an array with a 4 dimensional rotation matrix.
 
     -----
     ### 🛠️ Parameters
 
-    x, y, z : scalar
+    #### `x, y, z : scalar`
         Rotation around the origin (in rad).
 
     -----
     ### ⏎ Returns
 
-    r : array, shape = (4, 4)
+    #### `r : array, shape = (4, 4)`
         The rotation matrix.
     """
     ...
 
 def rotation3d(x: int = 0, y: int = 0, z: int = 0):
-    """### Create an array with a 3 dimensional rotation matrix.
+    """## 🧠 Create an array with a 3 dimensional rotation matrix.
 
     -----
     ### 🛠️ Parameters
 
-    x, y, z : scalar
+    #### `x, y, z : scalar`
         Rotation around the origin (in rad).
 
     -----
     ### ⏎ Returns
 
-    r : array, shape = (3, 3)
+    #### `r : array, shape = (3, 3)`
         The rotation matrix.
     """
     ...
 
 def rotation3d_align_z_axis(target_z_axis):
-    """### Compute a rotation matrix to align [ 0 0 1] with supplied target z axis.
+    """## 🧠 Compute a rotation matrix to align [ 0 0 1] with supplied target z axis.
 
     -----
     ### 🛠️ Parameters
 
-    target_z_axis : array, shape (1, 3)
+    #### `target_z_axis : array, shape (1, 3)`
         z axis. computed matrix (r) will map [0 0 1] to target_z_axis
 
     -----
     ### ⏎ Returns
 
-    r : array, shape (3, 3)
+    #### `r : array, shape (3, 3)`
         The rotation matrix.
     """
     ...
 
 def rotation_angles(m):
-    """### Find rotation angles from a transformation matrix.
+    """## 🧠 Find rotation angles from a transformation matrix.
 
     -----
     ### 🛠️ Parameters
 
-    m : array, shape >= (3, 3)
+    #### `m : array, shape >= (3, 3)`
         Rotation matrix. Only the top left 3 x 3 partition is accessed.
 
     -----
     ### ⏎ Returns
 
-    x, y, z : float
+    #### `x, y, z : float`
         Rotation around x, y and z axes.
     """
     ...
 
 def scaling(x: int = 1, y: int = 1, z: int = 1):
-    """### Create an array with a scaling matrix.
+    """## 🧠 Create an array with a scaling matrix.
 
     -----
     ### 🛠️ Parameters
 
-    x, y, z : scalar
+    #### `x, y, z : scalar`
         Scaling factors.
 
     -----
     ### ⏎ Returns
 
-    s : array, shape = (4, 4)
+    #### `s : array, shape = (4, 4)`
         The scaling matrix.
     """
     ...
 
 def translation(x: int = 0, y: int = 0, z: int = 0):
-    """### Create an array with a translation matrix.
+    """## 🧠 Create an array with a translation matrix.
 
     -----
     ### 🛠️ Parameters
 
-    x, y, z : scalar
+    #### `x, y, z : scalar`
         Translation parameters.
 
     -----
     ### ⏎ Returns
 
-    m : array, shape = (4, 4)
+    #### `m : array, shape = (4, 4)`
         The translation matrix.
     """
     ...
 
 def combine_transforms(t_first, t_second, fro, to):
-    """### Combine two transforms.
+    """## 🧠 Combine two transforms.
 
     -----
     ### 🛠️ Parameters
 
-    t_first : dict
+    #### `t_first : dict`
         First transform.
-    t_second : dict
+    #### `t_second : dict`
         Second transform.
-    fro : int
+    #### `fro : int`
         From coordinate frame.
-    to : int
+    #### `to : int`
         To coordinate frame.
 
     -----
     ### ⏎ Returns
 
-    trans : dict
+    #### `trans : dict`
         Combined transformation.
     """
     ...
 
 def read_trans(fname, return_all: bool = False, verbose=None):
-    """### Read a ``-trans.fif`` file.
+    """## 🧠 Read a ``-trans.fif`` file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The name of the file.
-    return_all : bool
+    #### `return_all : bool`
         If True, return all transformations in the file.
         False (default) will only return the first.
 
         ✨ Added in vesion 0.15
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -279,7 +279,7 @@ def read_trans(fname, return_all: bool = False, verbose=None):
     -----
     ### ⏎ Returns
 
-    trans : dict | list of dict
+    #### `trans : dict | list of dict`
         The transformation dictionary from the fif file.
 
     -----
@@ -291,21 +291,21 @@ def read_trans(fname, return_all: bool = False, verbose=None):
     ...
 
 def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
-    """### Write a transformation FIF file.
+    """## 🧠 Write a transformation FIF file.
 
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         The name of the file, which should end in ``-trans.fif``.
-    trans : dict
+    #### `trans : dict`
         Trans file data, as returned by `mne.read_trans`.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -319,49 +319,49 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     ...
 
 def invert_transform(trans):
-    """### Invert a transformation between coordinate systems.
+    """## 🧠 Invert a transformation between coordinate systems.
 
     -----
     ### 🛠️ Parameters
 
-    trans : dict
+    #### `trans : dict`
         Transform to invert.
 
     -----
     ### ⏎ Returns
 
-    inv_trans : dict
+    #### `inv_trans : dict`
         Inverse transform.
     """
     ...
 
 def transform_surface_to(surf, dest, trans, copy: bool = False):
-    """### Transform surface to the desired coordinate system.
+    """## 🧠 Transform surface to the desired coordinate system.
 
     -----
     ### 🛠️ Parameters
 
-    surf : dict
+    #### `surf : dict`
         Surface.
-    dest : 'meg' | 'mri' | 'head' | int
+    #### `dest : 'meg' | 'mri' | 'head' | int`
         Destination coordinate system. Can be an integer for using
         FIFF types.
-    trans : dict | list of dict
+    #### `trans : dict | list of dict`
         Transformation to use (or a list of possible transformations to
         check).
-    copy : bool
+    #### `copy : bool`
         If False (default), operate in-place.
 
     -----
     ### ⏎ Returns
 
-    res : dict
+    #### `res : dict`
         Transformed source space.
     """
     ...
 
 def get_ras_to_neuromag_trans(nasion, lpa, rpa):
-    """### Construct a transformation matrix to the MNE head coordinate system.
+    """## 🧠 Construct a transformation matrix to the MNE head coordinate system.
 
     Construct a transformation matrix from an arbitrary RAS coordinate system
     to the MNE head coordinate system, in which the x axis passes through the
@@ -371,23 +371,23 @@ def get_ras_to_neuromag_trans(nasion, lpa, rpa):
     -----
     ### 🛠️ Parameters
 
-    nasion : array_like, shape (3,)
+    #### `nasion : array_like, shape (3,)`
         Nasion point coordinate.
-    lpa : array_like, shape (3,)
+    #### `lpa : array_like, shape (3,)`
         Left peri-auricular point coordinate.
-    rpa : array_like, shape (3,)
+    #### `rpa : array_like, shape (3,)`
         Right peri-auricular point coordinate.
 
     -----
     ### ⏎ Returns
 
-    trans : numpy.array, shape = (4, 4)
+    #### `trans : numpy.array, shape = (4, 4)`
         Transformation matrix to MNE head space.
     """
     ...
 
 class _TPSWarp:
-    """### Transform points using thin-plate spline (TPS) warping.
+    """## 🧠 Transform points using thin-plate spline (TPS) warping.
 
     -----
     ### 📖 Notes
@@ -407,19 +407,19 @@ class _TPSWarp:
         -----
         ### 🛠️ Parameters
 
-        pts : shape (n_transform, 3)
+        #### `pts : shape (n_transform, 3)`
             Source points to warp to the destination.
 
         -----
         ### ⏎ Returns
 
-        dest : shape (n_transform, 3)
+        #### `dest : shape (n_transform, 3)`
             The transformed points.
         """
         ...
 
 class _SphericalSurfaceWarp:
-    """### Warp surfaces via spherical harmonic smoothing and thin-plate splines.
+    """## 🧠 Warp surfaces via spherical harmonic smoothing and thin-plate splines.
 
     -----
     ### 📖 Notes
@@ -460,23 +460,23 @@ class _SphericalSurfaceWarp:
         -----
         ### 🛠️ Parameters
 
-        source : array, shape (n_src, 3)
+        #### `source : array, shape (n_src, 3)`
             The source points.
-        destination : array, shape (n_dest, 3)
+        #### `destination : array, shape (n_dest, 3)`
             The destination points.
-        order : int
+        #### `order : int`
             Order of the spherical harmonic fit.
-        reg : float
+        #### `reg : float`
             Regularization of the TPS warp.
-        center : bool
+        #### `center : bool`
             If True, center the points by fitting a sphere to points
             that are in a reasonable region for head digitization.
-        match : str
+        #### `match : str`
             The uniformly-spaced points to match on the two surfaces.
             Can be "ico#" or "oct#" where "#" is an integer.
             The default is "oct5".
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -485,7 +485,7 @@ class _SphericalSurfaceWarp:
         -----
         ### ⏎ Returns
 
-        inst : instance of SphericalSurfaceWarp
+        #### `inst : instance of SphericalSurfaceWarp`
             The warping object (for chaining).
         """
         ...
@@ -495,13 +495,13 @@ class _SphericalSurfaceWarp:
         -----
         ### 🛠️ Parameters
 
-        source : ndarray, shape (n_pts, 3)
+        #### `source : ndarray, shape (n_pts, 3)`
             Source points to transform. They do not need to be the same
             points that were used to generate the model, although ideally
             they will be inside the convex hull formed by the original
             source points.
 
-        verbose : bool | str | int | None
+        #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -510,24 +510,24 @@ class _SphericalSurfaceWarp:
         -----
         ### ⏎ Returns
 
-        destination : ndarray, shape (n_pts, 3)
+        #### `destination : ndarray, shape (n_pts, 3)`
             The points transformed to the destination space.
         """
         ...
 
 def quat_to_rot(quat):
-    """### Convert a set of quaternions to rotations.
+    """## 🧠 Convert a set of quaternions to rotations.
 
     -----
     ### 🛠️ Parameters
 
-    quat : array, shape (..., 3)
+    #### `quat : array, shape (..., 3)`
         The q1, q2, and q3 (x, y, z) parameters of a unit quaternion.
 
     -----
     ### ⏎ Returns
 
-    rot : array, shape (..., 3, 3)
+    #### `rot : array, shape (..., 3, 3)`
         The corresponding rotation matrices.
 
     -----
@@ -538,18 +538,18 @@ def quat_to_rot(quat):
     ...
 
 def rot_to_quat(rot):
-    """### Convert a set of rotations to quaternions.
+    """## 🧠 Convert a set of rotations to quaternions.
 
     -----
     ### 🛠️ Parameters
 
-    rot : array, shape (..., 3, 3)
+    #### `rot : array, shape (..., 3, 3)`
         The rotation matrices to convert.
 
     -----
     ### ⏎ Returns
 
-    quat : array, shape (..., 3)
+    #### `quat : array, shape (..., 3)`
         The q1, q2, and q3 (x, y, z) parameters of the corresponding
         unit quaternions.
 
@@ -561,15 +561,15 @@ def rot_to_quat(rot):
     ...
 
 def read_ras_mni_t(subject, subjects_dir=None):
-    """### Read a subject's RAS to MNI transform.
+    """## 🧠 Read a subject's RAS to MNI transform.
 
     -----
     ### 🛠️ Parameters
 
-    subject : str
+    #### `subject : str`
         The subject.
 
-    subjects_dir : path-like | None
+    #### `subjects_dir : path-like | None`
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
@@ -577,7 +577,7 @@ def read_ras_mni_t(subject, subjects_dir=None):
     -----
     ### ⏎ Returns
 
-    ras_mni_t : instance of Transform
+    #### `ras_mni_t : instance of Transform`
         The transform from RAS to MNI (in mm).
     """
     ...
@@ -592,19 +592,19 @@ def compute_volume_registration(
     starting_affine=None,
     verbose=None,
 ):
-    """### Align two volumes using an affine and, optionally, SDR.
+    """## 🧠 Align two volumes using an affine and, optionally, SDR.
 
     -----
     ### 🛠️ Parameters
 
 
-    moving : instance of SpatialImage
+    #### `moving : instance of SpatialImage`
         The image to morph ("from" volume).
 
-    static : instance of SpatialImage
+    #### `static : instance of SpatialImage`
         The image to align with ("to" volume).
 
-    pipeline : str | tuple
+    #### `pipeline : str | tuple`
         The volume registration steps to perform (a ``str`` for a single step,
         or ``tuple`` for a set of sequential steps). The following steps can be
         performed, and do so by matching mutual information between the images
@@ -640,7 +640,7 @@ def compute_volume_registration(
         ``'affines'``
             The affine steps (first three) will be performed, i.e., omitting
             the SDR step.
-    zooms : float | tuple | dict | None
+    #### `zooms : float | tuple | dict | None`
         The voxel size of volume for each spatial dimension in mm.
         If None (default), MRIs won't be resliced (slow, but most accurate).
         Can be a tuple to provide separate zooms for each dimension (X/Y/Z),
@@ -648,7 +648,7 @@ def compute_volume_registration(
         (each with values that are float`, tuple, or None) to provide separate
         reslicing/accuracy for the steps.
 
-    niter : dict | tuple | None
+    #### `niter : dict | tuple | None`
         For each phase of the volume registration, ``niter`` is the number of
         iterations per successive stage of optimization. If a tuple is
         provided, it will be used for all steps (except center of mass, which does
@@ -664,12 +664,12 @@ def compute_volume_registration(
                        rigid=(100, 100, 10),
                        affine=(100, 100, 10),
                        sdr=(5, 5, 3))
-    starting_affine : ndarray
+    #### `starting_affine : ndarray`
         The affine to initialize the registration with.
 
         ✨ Added in vesion 1.2
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -679,10 +679,10 @@ def compute_volume_registration(
     ### ⏎ Returns
 
 
-    reg_affine : ndarray of float, shape (4, 4)
+    #### `reg_affine : ndarray of float, shape (4, 4)`
         The affine that registers one volume to another.
 
-    sdr_morph : instance of dipy.align.DiffeomorphicMap
+    #### `sdr_morph : instance of dipy.align.DiffeomorphicMap`
         The class that applies the the symmetric diffeomorphic registration
         (SDR) morph.
 
@@ -706,7 +706,7 @@ def apply_volume_registration(
     cval: float = 0.0,
     verbose=None,
 ):
-    """### Apply volume registration.
+    """## 🧠 Apply volume registration.
 
     Uses registration parameters computed by
     `mne.transforms.compute_volume_registration`.
@@ -715,27 +715,27 @@ def apply_volume_registration(
     ### 🛠️ Parameters
 
 
-    moving : instance of SpatialImage
+    #### `moving : instance of SpatialImage`
         The image to morph ("from" volume).
 
-    static : instance of SpatialImage
+    #### `static : instance of SpatialImage`
         The image to align with ("to" volume).
 
-    reg_affine : ndarray of float, shape (4, 4)
+    #### `reg_affine : ndarray of float, shape (4, 4)`
         The affine that registers one volume to another.
 
-    sdr_morph : instance of dipy.align.DiffeomorphicMap
+    #### `sdr_morph : instance of dipy.align.DiffeomorphicMap`
         The class that applies the the symmetric diffeomorphic registration
         (SDR) morph.
-    interpolation : str
+    #### `interpolation : str`
         Interpolation to be used during the interpolation.
         Can be ``"linear"`` (default) or ``"nearest"``.
-    cval : float | str
+    #### `cval : float | str`
         The constant value to assume exists outside the bounds of the
         ``moving`` image domain. Can be a string percentage like ``'1%'``
         to use the given percentile of image data as the constant value.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -744,7 +744,7 @@ def apply_volume_registration(
     -----
     ### ⏎ Returns
 
-    reg_img : instance of SpatialImage
+    #### `reg_img : instance of SpatialImage`
         The image after affine (and SDR, if provided) registration.
 
     -----
@@ -757,7 +757,7 @@ def apply_volume_registration(
 def apply_volume_registration_points(
     info, trans, moving, static, reg_affine, sdr_morph=None, verbose=None
 ):
-    """### Apply volume registration.
+    """## 🧠 Apply volume registration.
 
     Uses registration parameters computed by
     `mne.transforms.compute_volume_registration`.
@@ -766,28 +766,28 @@ def apply_volume_registration_points(
     ### 🛠️ Parameters
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
 
-    trans : str | dict | instance of Transform
+    #### `trans : str | dict | instance of Transform`
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
         during coregistration. Can also be ``'fsaverage'`` to use the built-in
         fsaverage transformation.
 
-    moving : instance of SpatialImage
+    #### `moving : instance of SpatialImage`
         The image to morph ("from" volume).
 
-    static : instance of SpatialImage
+    #### `static : instance of SpatialImage`
         The image to align with ("to" volume).
 
-    reg_affine : ndarray of float, shape (4, 4)
+    #### `reg_affine : ndarray of float, shape (4, 4)`
         The affine that registers one volume to another.
 
-    sdr_morph : instance of dipy.align.DiffeomorphicMap
+    #### `sdr_morph : instance of dipy.align.DiffeomorphicMap`
         The class that applies the the symmetric diffeomorphic registration
         (SDR) morph.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -797,7 +797,7 @@ def apply_volume_registration_points(
     ### ⏎ Returns
 
 
-    info : mne.Info
+    #### `info : mne.Info`
         The `mne.Info` object with information about the sensors and methods of measurement.
     trans2 : instance of Transform
         The head->mri (surface RAS) transform for the static image.
@@ -810,7 +810,7 @@ def apply_volume_registration_points(
     ...
 
 class _MatchedDisplacementFieldInterpolator:
-    """### Interpolate from matched points using a displacement field in ND.
+    """## 🧠 Interpolate from matched points using a displacement field in ND.
 
     For a demo, see
     https://gist.github.com/larsoner/fbe32d57996848395854d5e59dff1e10

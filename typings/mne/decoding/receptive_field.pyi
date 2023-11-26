@@ -5,7 +5,7 @@ from .time_delaying_ridge import TimeDelayingRidge as TimeDelayingRidge
 from _typeshed import Incomplete
 
 class ReceptiveField(BaseEstimator):
-    """### Fit a receptive field model.
+    """## 🧠 Fit a receptive field model.
 
     This allows you to fit an encoding model (stimulus to brain) or a decoding
     model (brain to stimulus) using time-lagged input features (for example, a
@@ -15,41 +15,41 @@ class ReceptiveField(BaseEstimator):
     -----
     ### 🛠️ Parameters
 
-    tmin : float
+    #### `tmin : float`
         The starting lag, in seconds (or samples if ``sfreq`` == 1).
-    tmax : float
+    #### `tmax : float`
         The ending lag, in seconds (or samples if ``sfreq`` == 1).
         Must be >= tmin.
-    sfreq : float
+    #### `sfreq : float`
         The sampling frequency used to convert times into samples.
-    feature_names : array, shape (n_features,) | None
+    #### `feature_names : array, shape (n_features,) | None`
         Names for input features to the model. If None, feature names will
         be auto-generated from the shape of input data after running `fit`.
-    estimator : instance of sklearn.base.BaseEstimator | float | None
+    #### `estimator : instance of sklearn.base.BaseEstimator | float | None`
         The model used in fitting inputs and outputs. This can be any
         scikit-learn-style model that contains a fit and predict method. If a
         float is passed, it will be interpreted as the ``alpha`` parameter
         to be passed to a Ridge regression model. If `None`, then a Ridge
         regression model with an alpha of 0 will be used.
-    fit_intercept : bool | None
+    #### `fit_intercept : bool | None`
         If True (default), the sample mean is removed before fitting.
         If ``estimator`` is a `sklearn.base.BaseEstimator`,
         this must be None or match ``estimator.fit_intercept``.
-    scoring : ['r2', 'corrcoef']
+    #### `scoring : ['r2', 'corrcoef']`
         Defines how predictions will be scored. Currently must be one of
         'r2' (coefficient of determination) or 'corrcoef' (the correlation
         coefficient).
-    patterns : bool
+    #### `patterns : bool`
         If True, inverse coefficients will be computed upon fitting using the
         covariance matrix of the inputs, and the cross-covariance of the
         inputs/outputs, according to :footcite:`HaufeEtAl2014`. Defaults to
         False.
-    n_jobs : int | str
+    #### `n_jobs : int | str`
         Number of jobs to run in parallel. Can be 'cuda' if CuPy
         is installed properly and ``estimator is None``.
 
         ✨ Added in vesion 0.18
-    edge_correction : bool
+    #### `edge_correction : bool`
         If True (default), correct the autocorrelation coefficients for
         non-zero delays for the fact that fewer samples are available.
         Disabling this speeds up performance at the cost of accuracy
@@ -58,7 +58,7 @@ class ReceptiveField(BaseEstimator):
 
         ✨ Added in vesion 0.18
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -67,16 +67,16 @@ class ReceptiveField(BaseEstimator):
     -----
     ### 📊 Attributes
 
-    coef_ : array, shape ([n_outputs, ]n_features, n_delays)
+    #### `coef_ : array, shape ([n_outputs, ]n_features, n_delays)`
         The coefficients from the model fit, reshaped for easy visualization.
         During `mne.decoding.ReceptiveField.fit`, if ``y`` has one
         dimension (time), the ``n_outputs`` dimension here is omitted.
-    patterns_ : array, shape ([n_outputs, ]n_features, n_delays)
+    #### `patterns_ : array, shape ([n_outputs, ]n_features, n_delays)`
         If fit, the inverted coefficients from the model.
-    delays_ : array, shape (n_delays,), dtype int
+    #### `delays_ : array, shape (n_delays,), dtype int`
         The delays used to fit the model, in indices. To return the delays
         in seconds, use ``self.delays_ / self.sfreq``
-    valid_samples_ : slice
+    #### `valid_samples_ : slice`
         The rows to keep during model fitting after removing rows with
         missing values due to time delaying. This can be used to get an
         output equivalent to using `numpy.convolve` or
@@ -141,13 +141,13 @@ class ReceptiveField(BaseEstimator):
 
         X : array, shape (n_times[, n_epochs], n_features)
             The input features for the model.
-        y : array, shape (n_times[, n_epochs][, n_outputs])
+        #### `y : array, shape (n_times[, n_epochs][, n_outputs])`
             The output features for the model.
 
         -----
         ### ⏎ Returns
 
-        self : instance
+        #### `self : instance`
             The instance so you can chain operations.
         """
         ...
@@ -163,7 +163,7 @@ class ReceptiveField(BaseEstimator):
         -----
         ### ⏎ Returns
 
-        y_pred : array, shape (n_times[, n_epochs][, n_outputs])
+        #### `y_pred : array, shape (n_times[, n_epochs][, n_outputs])`
             The output predictions. "Note that valid samples (those
             unaffected by edge artifacts during the time delaying step) can
             be obtained using ``y_pred[rf.valid_samples_]``.
@@ -181,13 +181,13 @@ class ReceptiveField(BaseEstimator):
 
         X : array, shape (n_times[, n_epochs], n_channels)
             The input features for the model.
-        y : array, shape (n_times[, n_epochs][, n_outputs])
+        #### `y : array, shape (n_times[, n_epochs][, n_outputs])`
             Used for scikit-learn compatibility.
 
         -----
         ### ⏎ Returns
 
-        scores : list of float, shape (n_outputs,)
+        #### `scores : list of float, shape (n_outputs,)`
             The scores estimated by the model for each output (e.g. mean
             R2 of ``predict(X)``).
         """

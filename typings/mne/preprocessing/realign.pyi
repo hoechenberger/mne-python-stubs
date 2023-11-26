@@ -2,7 +2,7 @@ from ..io import BaseRaw as BaseRaw
 from ..utils import logger as logger, warn as warn
 
 def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
-    """### Realign two simultaneous recordings.
+    """## 🧠 Realign two simultaneous recordings.
 
     Due to clock drift, recordings at a given same sample rate made by two
     separate devices simultaneously can become out of sync over time. This
@@ -12,19 +12,19 @@ def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
     -----
     ### 🛠️ Parameters
 
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         The first raw instance.
-    other : instance of Raw
+    #### `other : instance of Raw`
         The second raw instance. It will be resampled to match ``raw``.
-    t_raw : array-like, shape (n_events,)
+    #### `t_raw : array-like, shape (n_events,)`
         The times of shared events in ``raw`` relative to ``raw.times[0]`` (0).
         Typically these could be events on some TTL channel such as::
 
             find_events(raw)[:, 0] / raw.info["sfreq"] - raw.first_time
-    t_other : array-like, shape (n_events,)
+    #### `t_other : array-like, shape (n_events,)`
         The times of shared events in ``other`` relative to ``other.times[0]``.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

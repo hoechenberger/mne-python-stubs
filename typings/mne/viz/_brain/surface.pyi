@@ -7,7 +7,7 @@ from ...utils import get_subjects_dir as get_subjects_dir
 from _typeshed import Incomplete
 
 class _Surface:
-    """### Container for a brain surface.
+    """## 🧠 Container for a brain surface.
 
     It is used for storing vertices, faces and morphometric data
     (curvature) of a hemisphere mesh.
@@ -15,51 +15,51 @@ class _Surface:
     -----
     ### 🛠️ Parameters
 
-    subject : string
+    #### `subject : string`
         Name of subject
-    hemi : {'lh', 'rh'}
+    #### `hemi : {'lh', 'rh'}`
         Which hemisphere to load
-    surf : string
+    #### `surf : string`
         Name of the surface to load (eg. inflated, orig ...).
-    subjects_dir : str | None
+    #### `subjects_dir : str | None`
         If not None, this directory will be used as the subjects directory
         instead of the value set using the SUBJECTS_DIR environment variable.
-    offset : float | None
+    #### `offset : float | None`
         If 0.0, the surface will be offset such that the medial
         wall is aligned with the origin. If None, no offset will
         be applied. If != 0.0, an additional offset will be used.
-    units : str
+    #### `units : str`
         Can be 'm' or 'mm' (default).
-    x_dir : ndarray | None
+    #### `x_dir : ndarray | None`
         The x direction to use for offset alignment.
 
     -----
     ### 📊 Attributes
 
-    bin_curv : numpy.ndarray
+    #### `bin_curv : numpy.ndarray`
         Curvature values stored as non-negative integers.
-    coords : numpy.ndarray
+    #### `coords : numpy.ndarray`
         nvtx x 3 array of vertex (x, y, z) coordinates.
-    curv : numpy.ndarray
+    #### `curv : numpy.ndarray`
         Vector representation of surface morpometry (curvature) values as
         loaded from a file.
-    grey_curv : numpy.ndarray
+    #### `grey_curv : numpy.ndarray`
         Normalized morphometry (curvature) data, used in order to get
         a gray cortex.
-    faces : numpy.ndarray
+    #### `faces : numpy.ndarray`
         nfaces x 3 array of defining mesh triangles.
-    hemi : {'lh', 'rh'}
+    #### `hemi : {'lh', 'rh'}`
         Which hemisphere to load.
-    nn : numpy.ndarray
+    #### `nn : numpy.ndarray`
         Vertex normals for a triangulated surface.
-    offset : float | None
+    #### `offset : float | None`
         If float, align inside edge of each hemisphere to center + offset.
         If None, do not change coordinates (default).
-    subject : string
+    #### `subject : string`
         Name of subject.
-    surf : string
+    #### `surf : string`
         Name of the surface to load (eg. inflated, orig ...).
-    units : str
+    #### `units : str`
         Can be 'm' or 'mm' (default).
     """
 

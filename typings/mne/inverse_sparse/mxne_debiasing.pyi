@@ -7,7 +7,7 @@ from ..utils import (
 def power_iteration_kron(
     A, C, max_iter: int = 1000, tol: float = 0.001, random_state: int = 0
 ):
-    """### Find the largest singular value for the matrix kron(C.T, A).
+    """## 🧠 Find the largest singular value for the matrix kron(C.T, A).
 
     It uses power iterations.
 
@@ -18,10 +18,10 @@ def power_iteration_kron(
         An array
     C : array
         An array
-    max_iter : int
+    #### `max_iter : int`
         Maximum number of iterations
 
-    random_state : None | int | instance of ~numpy.random.RandomState
+    #### `random_state : None | int | instance of ~numpy.random.RandomState`
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
         (see  `numpy.random.RandomState` for details), meaning it will most
@@ -45,7 +45,7 @@ def power_iteration_kron(
 def compute_bias(
     M, G, X, max_iter: int = 1000, tol: float = 1e-06, n_orient: int = 1, verbose=None
 ):
-    """### Compute scaling to correct amplitude bias.
+    """## 🧠 Compute scaling to correct amplitude bias.
 
     It solves the following optimization problem using FISTA:
 
@@ -67,14 +67,14 @@ def compute_bias(
         leadfield matrix.
     X : array
         reconstructed time courses with amplitude bias.
-    max_iter : int
+    #### `max_iter : int`
         Maximum number of iterations.
-    tol : float
+    #### `tol : float`
         The tolerance on convergence.
-    n_orient : int
+    #### `n_orient : int`
         The number of orientations (1 for fixed and 3 otherwise).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

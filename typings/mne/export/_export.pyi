@@ -11,7 +11,7 @@ def export_raw(
     overwrite: bool = False,
     verbose=None,
 ) -> None:
-    """### Export Raw to external formats.
+    """## 🧠 Export Raw to external formats.
 
     Supported formats:
         - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
@@ -26,35 +26,35 @@ def export_raw(
     ### 🛠️ Parameters
 
 
-    fname : str
+    #### `fname : str`
         Name of the output file.
-    raw : instance of Raw
+    #### `raw : instance of Raw`
         The raw instance to export.
 
-    fmt : 'auto' | 'brainvision' | 'edf' | 'eeglab'
+    #### `fmt : 'auto' | 'brainvision' | 'edf' | 'eeglab'`
         Format of the export. Defaults to ``'auto'``, which will infer the format
         from the filename extension. See supported formats above for more
         information.
 
-    physical_range : str | tuple
+    #### `physical_range : str | tuple`
         The physical range of the data. If 'auto' (default), then
         it will infer the physical min and max from the data itself,
         taking the minimum and maximum values per channel type.
         If it is a 2-tuple of minimum and maximum limit, then those
         physical ranges will be used. Only used for exporting EDF files.
 
-    add_ch_type : bool
+    #### `add_ch_type : bool`
         Whether to incorporate the channel type into the signal label (e.g. whether
         to store channel "Fz" as "EEG Fz"). Only used for EDF format. Default is
         ``False``.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
         ✨ Added in vesion 0.24.1
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -97,7 +97,7 @@ def export_raw(
 def export_epochs(
     fname, epochs, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """### Export Epochs to external formats.
+    """## 🧠 Export Epochs to external formats.
 
     Supported formats:
         - EEGLAB (``.set``, uses `eeglabio`)
@@ -110,23 +110,23 @@ def export_epochs(
     ### 🛠️ Parameters
 
 
-    fname : str
+    #### `fname : str`
         Name of the output file.
-    epochs : instance of Epochs
+    #### `epochs : instance of Epochs`
         The epochs to export.
 
-    fmt : 'auto' | 'eeglab'
+    #### `fmt : 'auto' | 'eeglab'`
         Format of the export. Defaults to ``'auto'``, which will infer the format
         from the filename extension. See supported formats above for more
         information.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
         ✨ Added in vesion 0.24.1
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -152,7 +152,7 @@ def export_epochs(
 def export_evokeds(
     fname, evoked, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """### Export evoked dataset to external formats.
+    """## 🧠 Export evoked dataset to external formats.
 
     This function is a wrapper for format-specific export functions. The export
     function is selected based on the inferred file format. For additional
@@ -169,25 +169,25 @@ def export_evokeds(
     ### 🛠️ Parameters
 
 
-    fname : str
+    #### `fname : str`
         Name of the output file.
-    evoked : Evoked instance, or list of Evoked instances
+    #### `evoked : Evoked instance, or list of Evoked instances`
         The evoked dataset, or list of evoked datasets, to export to one file.
         Note that the measurement info from the first evoked instance is used,
         so be sure that information matches.
 
-    fmt : 'auto' | 'mff'
+    #### `fmt : 'auto' | 'mff'`
         Format of the export. Defaults to ``'auto'``, which will infer the format
         from the filename extension. See supported formats above for more
         information.
 
-    overwrite : bool
+    #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
         exists.
 
         ✨ Added in vesion 0.24.1
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword

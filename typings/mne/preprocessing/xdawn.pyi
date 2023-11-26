@@ -11,7 +11,7 @@ from ..utils import logger as logger
 from _typeshed import Incomplete
 
 class _XdawnTransformer(BaseEstimator, TransformerMixin):
-    """### Implementation of the Xdawn Algorithm compatible with scikit-learn.
+    """## 🧠 Implementation of the Xdawn Algorithm compatible with scikit-learn.
 
     Xdawn is a spatial filtering method designed to improve the signal
     to signal + noise ratio (SSNR) of the event related responses. Xdawn was
@@ -25,18 +25,18 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
     -----
     ### 🛠️ Parameters
 
-    n_components : int (default 2)
+    #### `n_components : int (default 2)`
         The number of components to decompose the signals.
-    reg : float | str | None (default None)
+    #### `reg : float | str | None (default None)`
         If not None (same as ``'empirical'``, default), allow
         regularization for covariance estimation.
         If float, shrinkage is used (0 <= shrinkage <= 1).
         For str options, ``reg`` will be passed to ``method`` to
         `mne.compute_covariance`.
-    signal_cov : None | Covariance | array, shape (n_channels, n_channels)
+    #### `signal_cov : None | Covariance | array, shape (n_channels, n_channels)`
         The signal covariance used for whitening of the data.
         if None, the covariance is estimated from the epochs signal.
-    method_params : dict | None
+    #### `method_params : dict | None`
         Parameters to pass to `mne.compute_covariance`.
 
         ✨ Added in vesion 0.16
@@ -44,11 +44,11 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
     -----
     ### 📊 Attributes
 
-    classes_ : array, shape (n_classes)
+    #### `classes_ : array, shape (n_classes)`
         The event indices of the classes.
-    filters_ : array, shape (n_channels, n_channels)
+    #### `filters_ : array, shape (n_channels, n_channels)`
         The Xdawn components used to decompose the data for each event type.
-    patterns_ : array, shape (n_channels, n_channels)
+    #### `patterns_ : array, shape (n_channels, n_channels)`
         The Xdawn patterns used to restore the signals for each event type.
     """
 
@@ -72,13 +72,13 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
 
         X : array, shape (n_epochs, n_channels, n_samples)
             The target data.
-        y : array, shape (n_epochs,) | None
+        #### `y : array, shape (n_epochs,) | None`
             The target labels. If None, Xdawn fit on the average evoked.
 
         -----
         ### ⏎ Returns
 
-        self : Xdawn instance
+        #### `self : Xdawn instance`
             The Xdawn instance.
         """
         ...
@@ -121,7 +121,7 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
         ...
 
 class Xdawn(_XdawnTransformer):
-    """### Implementation of the Xdawn Algorithm.
+    """## 🧠 Implementation of the Xdawn Algorithm.
 
     Xdawn :footcite:`RivetEtAl2009,RivetEtAl2011` is a spatial
     filtering method designed to improve the signal to signal + noise
@@ -133,16 +133,16 @@ class Xdawn(_XdawnTransformer):
     -----
     ### 🛠️ Parameters
 
-    n_components : int, (default 2)
+    #### `n_components : int, (default 2)`
         The number of components to decompose the signals.
-    signal_cov : None | Covariance | ndarray, shape (n_channels, n_channels)
+    #### `signal_cov : None | Covariance | ndarray, shape (n_channels, n_channels)`
         (default None). The signal covariance used for whitening of the data.
         if None, the covariance is estimated from the epochs signal.
-    correct_overlap : 'auto' or bool (default 'auto')
+    #### `correct_overlap : 'auto' or bool (default 'auto')`
         Compute the independent evoked responses per condition, while
         correcting for event overlaps if any. If 'auto', then
         overlapp_correction = True if the events do overlap.
-    reg : float | str | None (default None)
+    #### `reg : float | str | None (default None)`
         If not None (same as ``'empirical'``, default), allow
         regularization for covariance estimation.
         If float, shrinkage is used (0 <= shrinkage <= 1).
@@ -152,18 +152,18 @@ class Xdawn(_XdawnTransformer):
     -----
     ### 📊 Attributes
 
-    filters_ : dict of ndarray
+    #### `filters_ : dict of ndarray`
         If fit, the Xdawn components used to decompose the data for each event
         type, else empty. For each event type, the filters are in the rows of
         the corresponding array.
-    patterns_ : dict of ndarray
+    #### `patterns_ : dict of ndarray`
         If fit, the Xdawn patterns used to restore the signals for each event
         type, else empty.
-    evokeds_ : dict of Evoked
+    #### `evokeds_ : dict of Evoked`
         If fit, the evoked response for each event type.
-    event_id_ : dict
+    #### `event_id_ : dict`
         The event id.
-    correct_overlap_ : bool
+    #### `correct_overlap_ : bool`
         Whether overlap correction was applied.
 
     -----
@@ -201,15 +201,15 @@ class Xdawn(_XdawnTransformer):
         -----
         ### 🛠️ Parameters
 
-        epochs : instance of Epochs
+        #### `epochs : instance of Epochs`
             An instance of Epoch on which Xdawn filters will be fitted.
-        y : ndarray | None (default None)
+        #### `y : ndarray | None (default None)`
             If None, used epochs.events[:, 2].
 
         -----
         ### ⏎ Returns
 
-        self : instance of Xdawn
+        #### `self : instance of Xdawn`
             The Xdawn instance.
         """
         ...
@@ -219,7 +219,7 @@ class Xdawn(_XdawnTransformer):
         -----
         ### 🛠️ Parameters
 
-        inst : Epochs | Evoked | ndarray, shape ([n_epochs, ]n_channels, n_times)
+        #### `inst : Epochs | Evoked | ndarray, shape ([n_epochs, ]n_channels, n_times)`
             Data on which Xdawn filters will be applied.
 
         -----
@@ -240,16 +240,16 @@ class Xdawn(_XdawnTransformer):
         -----
         ### 🛠️ Parameters
 
-        inst : instance of Raw | Epochs | Evoked
+        #### `inst : instance of Raw | Epochs | Evoked`
             The data to be processed.
-        event_id : dict | list of str | None (default None)
+        #### `event_id : dict | list of str | None (default None)`
             The kind of event to apply. if None, a dict of inst will be return
             one for each type of event xdawn has been fitted.
-        include : array_like of int | None (default None)
+        #### `include : array_like of int | None (default None)`
             The indices referring to columns in the ummixing matrix. The
             components to be kept. If None, the first n_components (as defined
             in the Xdawn constructor) will be kept.
-        exclude : array_like of int | None (default None)
+        #### `exclude : array_like of int | None (default None)`
             The indices referring to columns in the ummixing matrix. The
             components to be zeroed out. If None, all the components except the
             first n_components will be exclude.
@@ -257,7 +257,7 @@ class Xdawn(_XdawnTransformer):
         -----
         ### ⏎ Returns
 
-        out : dict
+        #### `out : dict`
             A dict of instance (from the same type as inst input) for each
             event type in event_id.
         """

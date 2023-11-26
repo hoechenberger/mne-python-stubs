@@ -14,7 +14,7 @@ def fix_stim_artifact(
     stim_channel=None,
     picks=None,
 ):
-    """### Eliminate stimulation's artifacts from instance.
+    """## 🧠 Eliminate stimulation's artifacts from instance.
 
     ### 💡 Note This function operates in-place, consider passing
               ``inst.copy()`` if this is not desired.
@@ -22,24 +22,24 @@ def fix_stim_artifact(
     -----
     ### 🛠️ Parameters
 
-    inst : instance of Raw or Epochs or Evoked
+    #### `inst : instance of Raw or Epochs or Evoked`
         The data.
-    events : array, shape (n_events, 3)
+    #### `events : array, shape (n_events, 3)`
         The list of events. Required only when inst is Raw.
-    event_id : int
+    #### `event_id : int`
         The id of the events generating the stimulation artifacts.
         If None, read all events. Required only when inst is Raw.
-    tmin : float
+    #### `tmin : float`
         Start time of the interpolation window in seconds.
-    tmax : float
+    #### `tmax : float`
         End time of the interpolation window in seconds.
-    mode : 'linear' | 'window'
+    #### `mode : 'linear' | 'window'`
         Way to fill the artifacted time interval.
         'linear' does linear interpolation
         'window' applies a (1 - hanning) window.
-    stim_channel : str | None
+    #### `stim_channel : str | None`
         Stim channel to use.
-    picks : str | array-like | slice | None
+    #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -52,7 +52,7 @@ def fix_stim_artifact(
     -----
     ### ⏎ Returns
 
-    inst : instance of Raw or Evoked or Epochs
+    #### `inst : instance of Raw or Evoked or Epochs`
         Instance with modified data.
     """
     ...

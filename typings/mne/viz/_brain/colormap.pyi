@@ -1,19 +1,19 @@
 def create_lut(cmap, n_colors: int = 256, center=None):
-    """### Return a colormap suitable for setting as a LUT."""
+    """## 🧠 Return a colormap suitable for setting as a LUT."""
     ...
 
 def scale_sequential_lut(lut_table, fmin, fmid, fmax):
-    """### Scale a sequential colormap."""
+    """## 🧠 Scale a sequential colormap."""
     ...
 
 def get_fill_colors(cols, n_fill):
-    """### Get the fill colors for the middle of divergent colormaps."""
+    """## 🧠 Get the fill colors for the middle of divergent colormaps."""
     ...
 
 def calculate_lut(
     lut_table, alpha, fmin, fmid, fmax, center=None, transparent: bool = True
 ):
-    """### Transparent color map calculation.
+    """## 🧠 Transparent color map calculation.
 
     A colormap may be sequential or divergent. When the colormap is
     divergent indicate this by providing a value for 'center'. The
@@ -36,21 +36,21 @@ def calculate_lut(
     -----
     ### 🛠️ Parameters
 
-    lim_cmap : Colormap
+    #### `lim_cmap : Colormap`
         Color map obtained from _process_mapdata.
-    alpha : float
+    #### `alpha : float`
         Alpha value to apply globally to the overlay. Has no effect with mpl
         backend.
-    fmin : float
+    #### `fmin : float`
         Min value in colormap.
-    fmid : float
+    #### `fmid : float`
         Intermediate value in colormap.
-    fmax : float
+    #### `fmax : float`
         Max value in colormap.
-    center : float or None
+    #### `center : float or None`
         If not None, center of a divergent colormap, changes the meaning of
         fmin, fmax and fmid.
-    transparent : boolean
+    #### `transparent : boolean`
         if True: use a linear transparency between fmin and fmid and make
         values below fmin fully transparent (symmetrically for divergent
         colormaps)
@@ -58,7 +58,7 @@ def calculate_lut(
     -----
     ### ⏎ Returns
 
-    cmap : matplotlib.ListedColormap
+    #### `cmap : matplotlib.ListedColormap`
         Color map with transparency channel.
     """
     ...

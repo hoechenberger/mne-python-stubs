@@ -3,20 +3,20 @@ from .constants import FIFF as FIFF
 from _typeshed import Incomplete
 
 class Tag:
-    """### Tag in FIF tree structure.
+    """## 🧠 Tag in FIF tree structure.
 
     -----
     ### 🛠️ Parameters
 
-    kind : int
+    #### `kind : int`
         Kind of Tag.
-    type_ : int
+    #### `type_ : int`
         Type of Tag.
-    size : int
+    #### `size : int`
         Size in bytes.
-    int : next
+    #### `int : next`
         Position of next Tag.
-    pos : int
+    #### `pos : int`
         Position of Tag is the original file.
     """
 
@@ -31,23 +31,23 @@ class Tag:
     def __eq__(self, tag): ...
 
 def read_tag_info(fid):
-    """### Read Tag info (or header)."""
+    """## 🧠 Read Tag info (or header)."""
     ...
 
 def read_tag(fid, pos=None, shape=None, rlims=None):
-    """### Read a Tag from a file at a given position.
+    """## 🧠 Read a Tag from a file at a given position.
 
     -----
     ### 🛠️ Parameters
 
-    fid : file
+    #### `fid : file`
         The open FIF file descriptor.
-    pos : int
+    #### `pos : int`
         The position of the Tag in the file.
-    shape : tuple | None
+    #### `shape : tuple | None`
         If tuple, the shape of the stored matrix. Only to be used with
         data stored as a vector (not implemented for matrices yet).
-    rlims : tuple | None
+    #### `rlims : tuple | None`
         If tuple, the first (inclusive) and last (exclusive) rows to retrieve.
         Note that data are assumed to be stored row-major in the file. Only to
         be used with data stored as a vector (not implemented for matrices
@@ -56,32 +56,32 @@ def read_tag(fid, pos=None, shape=None, rlims=None):
     -----
     ### ⏎ Returns
 
-    tag : Tag
+    #### `tag : Tag`
         The Tag read.
     """
     ...
 
 def find_tag(fid, node, findkind):
-    """### Find Tag in an open FIF file descriptor.
+    """## 🧠 Find Tag in an open FIF file descriptor.
 
     -----
     ### 🛠️ Parameters
 
-    fid : file-like
+    #### `fid : file-like`
         Open file.
-    node : dict
+    #### `node : dict`
         Node to search.
-    findkind : int
+    #### `findkind : int`
         Tag kind to find.
 
     -----
     ### ⏎ Returns
 
-    tag : instance of Tag
+    #### `tag : instance of Tag`
         The first tag found.
     """
     ...
 
 def has_tag(node, kind):
-    """### Check if the node contains a Tag of a given kind."""
+    """## 🧠 Check if the node contains a Tag of a given kind."""
     ...

@@ -20,7 +20,7 @@ def gamma_map(
     pick_ori=None,
     verbose=None,
 ):
-    """### Hierarchical Bayes (Gamma-MAP) sparse source localization method.
+    """## 🧠 Hierarchical Bayes (Gamma-MAP) sparse source localization method.
 
     Models each source time course using a zero-mean Gaussian prior with an
     unknown variance (gamma) parameter. During estimation, most gammas are
@@ -35,16 +35,16 @@ def gamma_map(
     -----
     ### 🛠️ Parameters
 
-    evoked : instance of Evoked
+    #### `evoked : instance of Evoked`
         Evoked data to invert.
-    forward : dict
+    #### `forward : dict`
         Forward operator.
-    noise_cov : instance of Covariance
+    #### `noise_cov : instance of Covariance`
         Noise covariance to compute whitener.
-    alpha : float
+    #### `alpha : float`
         Regularization parameter (noise variance).
 
-    loose : float | 'auto' | dict
+    #### `loose : float | 'auto' | dict`
         Value that weights the source variances of the dipole components
         that are parallel (tangential) to the cortical surface. Can be:
 
@@ -58,7 +58,7 @@ def gamma_map(
             Mapping from the key for a given source space type (surface, volume,
             discrete) to the loose value. Useful mostly for mixed source spaces.
 
-    depth : None | float | dict
+    #### `depth : None | float | dict`
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
@@ -68,26 +68,26 @@ def gamma_map(
 
         🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
-    xyz_same_gamma : bool
+    #### `xyz_same_gamma : bool`
         Use same gamma for xyz current components at each source space point.
         Recommended for free-orientation forward solutions.
-    maxit : int
+    #### `maxit : int`
         Maximum number of iterations.
-    tol : float
+    #### `tol : float`
         Tolerance parameter for convergence.
-    update_mode : int
+    #### `update_mode : int`
         Update mode, 1: MacKay update (default), 2: Modified MacKay update.
-    gammas : array, shape=(n_sources,)
+    #### `gammas : array, shape=(n_sources,)`
         Initial values for posterior variances (gammas). If None, a
         variance of 1.0 is used.
-    pca : bool
+    #### `pca : bool`
         If True the rank of the data is reduced to the true dimension.
-    return_residual : bool
+    #### `return_residual : bool`
         If True, the residual is returned as an Evoked instance.
-    return_as_dipoles : bool
+    #### `return_as_dipoles : bool`
         If True, the sources are returned as a list of Dipole instances.
 
-    rank : None | 'info' | 'full' | dict
+    #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -134,7 +134,7 @@ def gamma_map(
 
         ✨ Added in vesion 0.18
 
-    pick_ori : None | "normal" | "vector"
+    #### `pick_ori : None | "normal" | "vector"`
 
         Options:
 
@@ -151,7 +151,7 @@ def gamma_map(
             will be returned in the form of a `mne.VectorSourceEstimate`
             object.
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -160,9 +160,9 @@ def gamma_map(
     -----
     ### ⏎ Returns
 
-    stc : instance of SourceEstimate
+    #### `stc : instance of SourceEstimate`
         Source time courses.
-    residual : instance of Evoked
+    #### `residual : instance of Evoked`
         The residual a.k.a. data not explained by the sources.
         Only returned if return_residual is True.
 

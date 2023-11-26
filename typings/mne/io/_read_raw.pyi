@@ -1,11 +1,11 @@
 from ..utils import fill_doc as fill_doc
 
 def split_name_ext(fname):
-    """### Return name and supported file extension."""
+    """## 🧠 Return name and supported file extension."""
     ...
 
 def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
-    """### Read raw file.
+    """## 🧠 Read raw file.
 
     This function is a convenient wrapper for readers defined in `mne.io`. The
     correct reader is automatically selected based on the detected file format.
@@ -26,17 +26,17 @@ def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
     -----
     ### 🛠️ Parameters
 
-    fname : path-like
+    #### `fname : path-like`
         Name of the file to read.
 
-    preload : bool or str (default False)
+    #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    verbose : bool | str | int | None
+    #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -49,7 +49,7 @@ def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
     -----
     ### ⏎ Returns
 
-    raw : mne.io.Raw
+    #### `raw : mne.io.Raw`
         Raw object.
     """
     ...
