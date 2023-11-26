@@ -195,7 +195,7 @@ def publish(fig, event, *, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -215,7 +215,7 @@ def subscribe(fig, event_name, callback, *, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -239,7 +239,7 @@ def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -267,7 +267,7 @@ def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -284,7 +284,7 @@ def unlink(fig, *, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...

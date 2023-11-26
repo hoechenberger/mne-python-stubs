@@ -31,7 +31,7 @@ def read_proj(fname, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -65,7 +65,7 @@ def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
         .. versionadded:: 1.0
@@ -113,10 +113,10 @@ def compute_proj_epochs(
         ``n_eeg``.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         Number of jobs to use to compute covariance.
     desc_prefix : str | None
@@ -133,7 +133,7 @@ def compute_proj_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -197,7 +197,7 @@ def compute_proj_evoked(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -258,16 +258,16 @@ def compute_proj_raw(
         to select the number of vectors to explain the cumulative variance greater than
         ``n_eeg``.
     reject : dict | None
-        Epoch PTP rejection threshold used if ``duration != None``. See mne.Epochs`.
+        Epoch PTP rejection threshold used if ``duration != None``. See `mne.Epochs`.
     flat : dict | None
         Epoch flatness rejection threshold used if ``duration != None``. See
-        mne.Epochs`.
+        `mne.Epochs`.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         Number of jobs to use to compute covariance.
     meg : str
@@ -281,7 +281,7 @@ def compute_proj_raw(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -329,7 +329,7 @@ def sensitivity_map(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

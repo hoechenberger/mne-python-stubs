@@ -10,7 +10,7 @@ def combine_adjacency(*structure):
 
         - ndarray or scipy.sparse.spmatrix
             A square binary adjacency matrix for the given dimension.
-            For example created by :func:`mne.channels.find_ch_adjacency`.
+            For example created by `mne.channels.find_ch_adjacency`.
         - int
             The number of elements along the given dimension. A lattice
             adjacency will be generated, which is a binary matrix

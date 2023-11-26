@@ -54,7 +54,7 @@ def plot_channel_labels_circle(labels, colors=None, picks=None, **kwargs):
         The channels to consider.
     **kwargs : kwargs
         Keyword arguments for
-        :func:`mne_connectivity.viz.plot_connectivity_circle`.
+        `mne_connectivity.viz.plot_connectivity_circle`.
 
     Returns
     -------

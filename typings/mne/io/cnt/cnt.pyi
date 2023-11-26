@@ -29,15 +29,15 @@ def read_raw_cnt(
         (all channels that are not assigned with keywords ``eog``, ``ecg``,
         ``emg`` and ``misc`` are assigned as EEG channels). If you are not
         sure that the channel locations in the header are correct, it is
-        probably safer to replace them with :meth:`mne.io.Raw.set_montage`.
+        probably safer to replace them with `mne.io.Raw.set_montage`.
         Montages can be created/imported with:
 
-        - Standard montages with :func:`mne.channels.make_standard_montage`
+        - Standard montages with `mne.channels.make_standard_montage`
         - Montages for `Compumedics systems
           <https://compumedicsneuroscan.com>`__ with
-          :func:`mne.channels.read_dig_dat`
+          `mne.channels.read_dig_dat`
         - Other reader functions are listed under *See Also* at
-          :class:`mne.channels.DigMontage`
+          `mne.channels.DigMontage`
 
     Parameters
     ----------
@@ -83,14 +83,14 @@ def read_raw_cnt(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     raw : instance of RawCNT.
         The raw data.
-        See :class:`mne.io.Raw` for documentation of attributes and methods.
+        See `mne.io.Raw` for documentation of attributes and methods.
 
     See Also
     --------
@@ -114,7 +114,7 @@ class RawCNT(BaseRaw):
         x and y coordinates don't fit to a sphere), all the channel locations
         will be distorted. If you are not sure that the channel locations in
         the header are correct, it is probably safer to use a (standard)
-        montage. See :func:`mne.channels.make_standard_montage`
+        montage. See `mne.channels.make_standard_montage`
 
     Parameters
     ----------
@@ -160,14 +160,14 @@ class RawCNT(BaseRaw):
         .. warning:: This defaults to True in 0.18 but will change to False in
                      0.19 (when no stim channel synthesis will be allowed)
                      and be removed in 0.20; migrate code to use
-                     :func:`mne.events_from_annotations` instead.
+                     `mne.events_from_annotations` instead.
 
         .. versionadded:: 0.18
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also

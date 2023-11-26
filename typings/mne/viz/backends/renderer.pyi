@@ -26,7 +26,7 @@ def set_3d_backend(backend_name, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -48,19 +48,19 @@ def set_3d_backend(backend_name, verbose=None):
        +--------------------------------------+-----------+----------+
        | **3D function:**                     | pyvistaqt | notebook |
        +======================================+===========+==========+
-       | :func:`plot_vector_source_estimates` | ✓         | ✓        |
+       | `plot_vector_source_estimates` | ✓         | ✓        |
        +--------------------------------------+-----------+----------+
-       | :func:`plot_source_estimates`        | ✓         | ✓        |
+       | `plot_source_estimates`        | ✓         | ✓        |
        +--------------------------------------+-----------+----------+
-       | :func:`plot_alignment`               | ✓         | ✓        |
+       | `plot_alignment`               | ✓         | ✓        |
        +--------------------------------------+-----------+----------+
-       | :func:`plot_sparse_source_estimates` | ✓         | ✓        |
+       | `plot_sparse_source_estimates` | ✓         | ✓        |
        +--------------------------------------+-----------+----------+
-       | :func:`plot_evoked_field`            | ✓         | ✓        |
+       | `plot_evoked_field`            | ✓         | ✓        |
        +--------------------------------------+-----------+----------+
-       | :func:`snapshot_brain_montage`       | ✓         | ✓        |
+       | `snapshot_brain_montage`       | ✓         | ✓        |
        +--------------------------------------+-----------+----------+
-       | :func:`link_brains`                  | ✓         |          |
+       | `link_brains`                  | ✓         |          |
        +--------------------------------------+-----------+----------+
        +--------------------------------------+-----------+----------+
        | **Feature:**                                                |
@@ -104,7 +104,7 @@ def get_3d_backend():
 def use_3d_backend(backend_name) -> Generator[None, None, None]:
     """Create a 3d visualization context using the designated backend.
 
-    See :func:`mne.viz.set_3d_backend` for more details on the available
+    See `mne.viz.set_3d_backend` for more details on the available
     3d backends and their capabilities.
 
     Parameters

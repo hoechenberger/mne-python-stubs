@@ -59,10 +59,10 @@ def simulate_raw(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Used for simulation.
+        The `mne.Info` object with information about the sensors and methods of measurement. Used for simulation.
 
         .. versionchanged:: 0.18
-           Support for :class:`mne.Info`.
+           Support for `mne.Info`.
     stc : iterable | SourceEstimate | SourceSimulator
         The source estimates to use to simulate data. Each must have the same
         sample rate as the raw data, and the vertices of all stcs in the
@@ -72,8 +72,8 @@ def simulate_raw(
         See Notes for details.
 
         .. versionchanged:: 0.18
-           Support for tuple, iterable of tuple or mne.SourceEstimate`,
-           or mne.simulation.SourceSimulator`.
+           Support for tuple, iterable of tuple or `mne.SourceEstimate`,
+           or `mne.simulation.SourceSimulator`.
     trans : dict | str | None
         Either a transformation filename (usually made using mne_analyze)
         or an info dict (usually opened using read_trans()).
@@ -98,7 +98,7 @@ def simulate_raw(
         ``info['dev_head_t']``) will be used. If tuple, should have the
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
-        :func:`mne.chpi.read_head_pos`.
+        `mne.chpi.read_head_pos`.
         See for example :footcite:`LarsonTaulu2017`.
     mindist : float
         Minimum distance between sources and the inner skull boundary
@@ -110,10 +110,10 @@ def simulate_raw(
         at different head positions.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     use_cps : bool
@@ -138,7 +138,7 @@ def simulate_raw(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -165,7 +165,7 @@ def simulate_raw(
     (starting at 1) stored in the trigger channel (if available) at the
     t=0 point in each repetition of the ``stc``. If ``stc`` is a tuple of
     ``(SourceEstimate, ndarray)`` the array values will be placed in the
-    stim channel aligned with the :class:`mne.SourceEstimate`.
+    stim channel aligned with the `mne.SourceEstimate`.
 
     **Data simulation**
 
@@ -215,7 +215,7 @@ def add_eog(
         ``info['dev_head_t']``) will be used. If tuple, should have the
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
-        :func:`mne.chpi.read_head_pos`.
+        `mne.chpi.read_head_pos`.
 
     interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
@@ -223,16 +223,16 @@ def add_eog(
         at different head positions.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -242,7 +242,7 @@ def add_eog(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -304,7 +304,7 @@ def add_ecg(
         ``info['dev_head_t']``) will be used. If tuple, should have the
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
-        :func:`mne.chpi.read_head_pos`.
+        `mne.chpi.read_head_pos`.
 
     interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
@@ -312,16 +312,16 @@ def add_ecg(
         at different head positions.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -331,7 +331,7 @@ def add_ecg(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -384,7 +384,7 @@ def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None
         ``info['dev_head_t']``) will be used. If tuple, should have the
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
-        :func:`mne.chpi.read_head_pos`.
+        `mne.chpi.read_head_pos`.
 
     interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
@@ -392,16 +392,16 @@ def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None
         at different head positions.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

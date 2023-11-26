@@ -76,7 +76,7 @@ def random_permutation(n_samples, random_state=None):
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -130,11 +130,11 @@ def create_slices(start, stop, step=None, length: int = 1):
 def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = True):
     """Make grand average of a list of Evoked or AverageTFR data.
 
-    For :class:`mne.Evoked` data, the function interpolates bad channels based
+    For `mne.Evoked` data, the function interpolates bad channels based
     on the ``interpolate_bads`` parameter. If ``interpolate_bads`` is True,
     the grand average file will contain good channels and the bad channels
     interpolated from the good MEG/EEG channels.
-    For :class:`mne.time_frequency.AverageTFR` data, the function takes the
+    For `mne.time_frequency.AverageTFR` data, the function takes the
     subset of channels not marked as bad in any of the instances.
 
     The ``grand_average.nave`` attribute will be equal to the number

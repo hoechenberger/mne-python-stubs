@@ -31,7 +31,7 @@ def fetch_dataset(
         What to do after downloading the file. ``"unzip"`` and ``"untar"`` will
         decompress the downloaded file in place; for custom extraction (e.g.,
         only extracting certain files from the archive) pass an instance of
-        :class:`pooch.Unzip` or :class:`pooch.Untar`. If ``None`` (the
+        `pooch.Unzip` or `pooch.Untar`. If ``None`` (the
         default), the files are left as-is.
     path : None | str
         Directory in which to put the dataset. If ``None``, the dataset
@@ -39,7 +39,7 @@ def fetch_dataset(
         ``dataset_params['config_key']`` is defined, and if so, whether that
         config key exists in the MNE-Python config file. If so, the configured
         path is used; if not, the location is set to the value of the
-        ``MNE_DATA`` config key (if it exists), or `/mne_data`` otherwise.
+        ``MNE_DATA`` config key (if it exists), or ``/mne_data`` otherwise.
     force_update : bool
         Force update of the dataset even if a local copy exists.
         Default is False.
@@ -62,10 +62,10 @@ def fetch_dataset(
         Default is ``False``.
     auth : tuple | None
         Optional authentication tuple containing the username and
-        password/token, passed to :class:`pooch.HTTPDownloader` (e.g.,
+        password/token, passed to `pooch.HTTPDownloader` (e.g.,
         ``auth=('foo', 012345)``).
     token : str | None
-        Optional authentication token passed to :class:`pooch.HTTPDownloader`.
+        Optional authentication token passed to `pooch.HTTPDownloader`.
 
     Returns
     -------
@@ -90,7 +90,7 @@ def fetch_dataset(
         save and uncompress (if needed) the file(s)
     - ``hash``: the cryptographic hash type of the file followed by a colon and
         then the hash value (examples: "sha256:19uheid...", "md5:upodh2io...")
-    - ``config_key`` (optional): key passed to :func:`mne.set_config` to store
+    - ``config_key`` (optional): key passed to `mne.set_config` to store
         the on-disk location of the downloaded dataset (e.g.,
         ``"MNE_DATASETS_EEGBCI_PATH"``). This will only work for the provided
         datasets listed :ref:`here <datasets>`; do not use for user-defined
@@ -106,7 +106,7 @@ def fetch_dataset(
          'config_key': 'MNE_DATASETS_SAMPLE_PATH'}
 
     For datasets where a single (possibly compressed) file must be downloaded,
-    pass a single :class:`dict` as ``dataset_params``. For datasets where
+    pass a single `dict` as ``dataset_params``. For datasets where
     multiple files must be downloaded and (optionally) uncompressed separately,
     pass a list of dicts.
     """

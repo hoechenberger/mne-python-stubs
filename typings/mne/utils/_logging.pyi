@@ -33,10 +33,10 @@ def verbose(function: _FuncT) -> _FuncT:
     Notes
     -----
     This decorator is used to set the verbose level during a function or method
-    call, such as :func:`mne.compute_covariance`. The `verbose` keyword
+    call, such as `mne.compute_covariance`. The `verbose` keyword
     argument can be 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL', True (an
     alias for 'INFO'), or False (an alias for 'WARNING'). To set the global
-    verbosity level for all functions, use :func:`mne.set_log_level`.
+    verbosity level for all functions, use `mne.set_log_level`.
 
     This function also serves as a docstring filler.
 
@@ -62,7 +62,7 @@ class use_log_level:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     add_frames : int | None
@@ -206,7 +206,7 @@ def warn(
 def filter_out_warnings(warn_record, category=None, match=None) -> None:
     """Remove particular records from ``warn_record``.
 
-    This helper takes a list of :class:`warnings.WarningMessage` objects,
+    This helper takes a list of `warnings.WarningMessage` objects,
     and remove those matching category and/or text.
 
     Parameters

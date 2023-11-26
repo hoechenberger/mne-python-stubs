@@ -32,16 +32,16 @@ def permutation_t_test(
         is that the mean of the data is less than 0 (lower tailed test).
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -49,7 +49,7 @@ def permutation_t_test(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

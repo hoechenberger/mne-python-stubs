@@ -45,13 +45,13 @@ from ..utils import (
 class Forward(dict):
     """Forward class to represent info from forward solution.
 
-    Like :class:`mne.Info`, this data structure behaves like a dictionary.
+    Like `mne.Info`, this data structure behaves like a dictionary.
     It contains all metadata necessary for a forward solution.
 
     .. warning::
         This class should not be modified or created by users.
         Forward objects should be obtained using
-        :func:`mne.make_forward_solution` or :func:`mne.read_forward_solution`.
+        `mne.make_forward_solution` or `mne.read_forward_solution`.
 
     Attributes
     ----------
@@ -67,7 +67,7 @@ class Forward(dict):
     Notes
     -----
     Forward data is accessible via string keys using standard
-    :class:`python:dict` access (e.g., ``fwd['nsource'] == 4096``):
+    `python:dict` access (e.g., ``fwd['nsource'] == 4096``):
 
         source_ori : int
             The source orientation, either ``FIFF.FIFFV_MNE_FIXED_ORI`` or
@@ -90,10 +90,10 @@ class Forward(dict):
                 The channel names.
         mri_head_t : instance of Transform
             The mri ↔ head transformation that was used.
-        info : instance of :class:mne.Info`
+        info : instance of `mne.Info`
             The measurement information (with contents reduced compared to that
             of the original data).
-        src : instance of :class:mne.SourceSpaces`
+        src : instance of `mne.SourceSpaces`
             The source space used during forward computation. This can differ
             from the original source space as:
 
@@ -139,7 +139,7 @@ class Forward(dict):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -194,7 +194,7 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -212,14 +212,14 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
     free orientation, are always stored on disk as forward solution with free
     orientation in X/Y/Z RAS coordinates. To apply any transformation to the
     forward operator (surface orientation, fixed orientation) please apply
-    :func:`convert_forward_solution` after reading the forward solution with
-    :func:`read_forward_solution`.
+    `convert_forward_solution` after reading the forward solution with
+    `read_forward_solution`.
 
     Forward solutions, which are derived from an original forward solution with
     fixed orientation, are stored on disk as forward solution with fixed
     surface-based orientations. Please note that the transformation to
     surface-based, fixed orientation cannot be reverted after loading the
-    forward solution with :func:`read_forward_solution`.
+    forward solution with `read_forward_solution`.
     """
     ...
 
@@ -253,7 +253,7 @@ def convert_forward_solution(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -283,7 +283,7 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -296,14 +296,14 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
     free orientation, are always stored on disk as forward solution with free
     orientation in X/Y/Z RAS coordinates. Transformations (surface orientation,
     fixed orientation) will be reverted. To reapply any transformation to the
-    forward operator please apply :func:`convert_forward_solution` after
-    reading the forward solution with :func:`read_forward_solution`.
+    forward operator please apply `convert_forward_solution` after
+    reading the forward solution with `read_forward_solution`.
 
     Forward solutions, which are derived from an original forward solution with
     fixed orientation, are stored on disk as forward solution with fixed
     surface-based orientations. Please note that the transformation to
     surface-based, fixed orientation cannot be reverted after loading the
-    forward solution with :func:`read_forward_solution`.
+    forward solution with `read_forward_solution`.
     """
     ...
 
@@ -334,7 +334,7 @@ def write_forward_meas_info(fid, info) -> None:
         The file id
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     """
     ...
 
@@ -363,7 +363,7 @@ def compute_orient_prior(forward, loose: str = "auto", verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -396,7 +396,7 @@ def compute_depth_prior(
         The forward solution.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     exp : float
         Exponent for the depth weighting, must be between 0 and 1.
     limit : float | None
@@ -442,10 +442,10 @@ def compute_depth_prior(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -472,7 +472,7 @@ def compute_depth_prior(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -549,7 +549,7 @@ def apply_forward(
         The source estimate from which the sensor space data is computed.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     start : int, optional
         Index of first time sample (index not time is seconds).
     stop : int, optional
@@ -571,7 +571,7 @@ def apply_forward(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -614,7 +614,7 @@ def apply_forward_raw(
         The source estimate from which the sensor space data is computed.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     start : int, optional
         Index of first time sample (index not time is seconds).
     stop : int, optional
@@ -636,7 +636,7 @@ def apply_forward_raw(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -715,7 +715,7 @@ def average_forward_solutions(fwds, weights=None, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

@@ -54,7 +54,7 @@ def set_browser_backend(backend_name, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -73,11 +73,11 @@ def set_browser_backend(backend_name, verbose=None):
        +--------------------------------------+------------+----+
        | **2D browser function:**             | matplotlib | qt |
        +======================================+============+====+
-       | :func:`plot_raw`                     | ✓          | ✓  |
+       | `plot_raw`                     | ✓          | ✓  |
        +--------------------------------------+------------+----+
-       | :func:`plot_epochs`                  | ✓          | ✓  |
+       | `plot_epochs`                  | ✓          | ✓  |
        +--------------------------------------+------------+----+
-       | :func:`plot_ica_sources`             | ✓          | ✓  |
+       | `plot_ica_sources`             | ✓          | ✓  |
        +--------------------------------------+------------+----+
        +--------------------------------------+------------+----+
        | **Feature:**                                           |
@@ -115,7 +115,7 @@ def get_browser_backend():
 def use_browser_backend(backend_name) -> Generator[Incomplete, None, None]:
     """Create a 2D browser visualization context using the designated backend.
 
-    See :func:`mne.viz.set_browser_backend` for more details on the available
+    See `mne.viz.set_browser_backend` for more details on the available
     2D browser backends and their capabilities.
 
     Parameters

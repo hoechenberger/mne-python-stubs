@@ -86,15 +86,15 @@ def source_band_induced_power(
         e.g. with a dataset that was maxfiltered (true dim is 64).
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
         .. versionadded:: 0.16
 
@@ -110,7 +110,7 @@ def source_band_induced_power(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -208,10 +208,10 @@ def source_induced_power(
         e.g. with a dataset that was maxfiltered (true dim is 64).
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     return_plv : bool
         If True, return the phase-locking value array. Else, only return power.
@@ -220,9 +220,9 @@ def source_induced_power(
     zero_mean : bool
         Make sure the wavelets are zero mean.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
@@ -236,7 +236,7 @@ def source_induced_power(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -318,9 +318,9 @@ def compute_source_psd(
         the time-frequency transforms. It reduces the computation times
         e.g. with a dataset that was maxfiltered (true dim is 64).
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
         .. versionadded:: 0.16
     inv_split : int or None
@@ -346,10 +346,10 @@ def compute_source_psd(
         .. versionadded:: 0.17
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         It is only used if adaptive=True.
 
@@ -366,7 +366,7 @@ def compute_source_psd(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -385,11 +385,11 @@ def compute_source_psd(
     Each window is multiplied by a window before processing, so
     using a non-zero overlap is recommended.
 
-    This function is different from :func:`compute_source_psd_epochs` in that:
+    This function is different from `compute_source_psd_epochs` in that:
 
     1. ``bandwidth='hann'`` by default, skipping multitaper estimation
     2. For convenience it wraps
-       :func:`mne.make_fixed_length_events` and :class:`mne.Epochs`.
+       `mne.make_fixed_length_events` and `mne.Epochs`.
 
     Otherwise the two should produce identical results.
     """
@@ -464,16 +464,16 @@ def compute_source_psd_epochs(
         over the stcs without having to keep them all in memory.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         It is only used if adaptive=True.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
         .. versionadded:: 0.16
     return_sensor : bool
@@ -493,7 +493,7 @@ def compute_source_psd_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

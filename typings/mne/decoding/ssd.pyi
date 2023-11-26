@@ -23,7 +23,7 @@ class SSD(BaseEstimator, TransformerMixin):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Must match the input data.
+        The `mne.Info` object with information about the sensors and methods of measurement. Must match the input data.
     filt_params_signal : dict
         Filtering for the frequencies of interest.
     filt_params_noise : dict
@@ -32,7 +32,7 @@ class SSD(BaseEstimator, TransformerMixin):
         Which covariance estimator to use.
         If not None (same as 'empirical'), allow regularization for covariance
         estimation. If float, shrinkage is used (0 <= shrinkage <= 1). For str
-        options, reg will be passed to method :func:`mne.compute_covariance`.
+        options, reg will be passed to method `mne.compute_covariance`.
     n_components : int | None (default None)
         The number of components to extract from the signal.
         If None, the number of components equal to the rank of the data are
@@ -49,18 +49,18 @@ class SSD(BaseEstimator, TransformerMixin):
     n_fft : int (default None)
        If sort_by_spectral_ratio is set to True, then the SSD sources will be
        sorted according to their spectral ratio which is calculated based on
-       :func:`mne.time_frequency.psd_array_welch`. The n_fft parameter sets the
+       `mne.time_frequency.psd_array_welch`. The n_fft parameter sets the
        length of FFT used.
-       See :func:`mne.time_frequency.psd_array_welch` for more information.
+       See `mne.time_frequency.psd_array_welch` for more information.
     cov_method_params : dict | None (default None)
-        As in :class:`mne.decoding.SPoC`
+        As in `mne.decoding.SPoC`
         The default is None.
     rank : None | dict | ‘info’ | ‘full’
-        As in :class:`mne.decoding.SPoC`
+        As in `mne.decoding.SPoC`
         This controls the rank computation that can be read from the
         measurement info or estimated from the data, which determines the
         maximum possible number of components.
-        See Notes of :func:`mne.compute_rank` for details.
+        See Notes of `mne.compute_rank` for details.
         We recommend to use 'full' when working with epoched data.
 
     Attributes

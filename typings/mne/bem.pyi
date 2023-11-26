@@ -33,8 +33,8 @@ from .viz.misc import plot_bem as plot_bem
 class ConductorModel(dict):
     """BEM or sphere model.
 
-    See :func:mne.make_bem_model` and :func:mne.make_bem_solution` to create a
-    :class:`mne.bem.ConductorModel`.
+    See `mne.make_bem_model` and `mne.make_bem_solution` to create a
+    `mne.bem.ConductorModel`.
     """
 
     def copy(self):
@@ -51,7 +51,7 @@ def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
     Parameters
     ----------
     surfs : list of dict
-        The BEM surfaces to use (from :func:`mne.make_bem_model`).
+        The BEM surfaces to use (from `mne.make_bem_model`).
     solver : str
         Can be ``'mne'`` (default) to use MNE-Python, or ``'openmeeg'`` to use
         the :doc:`OpenMEEG <openmeeg:index>` package.
@@ -61,7 +61,7 @@ def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -92,8 +92,8 @@ def make_bem_model(
 ):
     """Create a BEM model for a subject.
 
-    Use :func:mne.make_bem_solution` to turn the returned surfaces into a
-    :class:mne.bem.ConductorModel` suitable for forward calculation.
+    Use `mne.make_bem_solution` to turn the returned surfaces into a
+    `mne.bem.ConductorModel` suitable for forward calculation.
 
     .. note:: To get a single layer bem corresponding to the --homog flag in
               the command line tool set the ``conductivity`` parameter
@@ -121,14 +121,14 @@ def make_bem_model(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     surfaces : list of dict
-        The BEM surfaces. Use :func:mne.make_bem_solution` to turn these into a
-        :class:mne.bem.ConductorModel` suitable for forward calculation.
+        The BEM surfaces. Use `mne.make_bem_solution` to turn these into a
+        `mne.bem.ConductorModel` suitable for forward calculation.
 
     See Also
     --------
@@ -161,11 +161,11 @@ def make_sphere_model(
     head_radius : float | str | None
         If float, compute spherical shells for EEG using the given radius.
         If ``'auto'``, estimate an appropriate radius from the dig points in the
-        :class:mne.Info` provided by the argument ``info``.
+        `mne.Info` provided by the argument ``info``.
         If None, exclude shells (single layer sphere model).
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Only needed if ``r0`` or ``head_radius`` are ``'auto'``.
+        The `mne.Info` object with information about the sensors and methods of measurement. Only needed if ``r0`` or ``head_radius`` are ``'auto'``.
     relative_radii : array-like
         Relative radii for the spherical shells.
     sigmas : array-like
@@ -174,7 +174,7 @@ def make_sphere_model(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -211,7 +211,7 @@ def fit_sphere_to_headshape(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     dig_kinds : list of str | str
         Kind of digitization points to use in the fitting. These can be any
@@ -227,7 +227,7 @@ def fit_sphere_to_headshape(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -255,7 +255,7 @@ def get_fitting_dig(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     dig_kinds : list of str | str
         Kind of digitization points to use in the fitting. These can be any
@@ -274,7 +274,7 @@ def get_fitting_dig(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -357,7 +357,7 @@ def make_watershed_bem(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -367,7 +367,7 @@ def make_watershed_bem(
     Notes
     -----
     If your BEM meshes do not look correct when viewed in
-    :func:`mne.viz.plot_alignment` or :func:`mne.viz.plot_bem`, consider
+    `mne.viz.plot_alignment` or `mne.viz.plot_bem`, consider
     potential solutions from the :ref:`FAQ <faq_watershed_bem_meshes>`.
 
     .. versionadded:: 0.10
@@ -404,7 +404,7 @@ def read_bem_surfaces(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -430,7 +430,7 @@ def read_bem_solution(fname, *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -464,7 +464,7 @@ def write_bem_surfaces(fname, surfs, overwrite: bool = False, *, verbose=None) -
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -500,7 +500,7 @@ def write_head_bem(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -522,7 +522,7 @@ def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -580,7 +580,7 @@ def convert_flash_mris(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -648,7 +648,7 @@ def make_flash_bem(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -717,7 +717,7 @@ def make_scalp_surfaces(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -744,7 +744,7 @@ def distance_to_bem(pos, bem, trans=None, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

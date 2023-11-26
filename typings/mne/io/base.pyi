@@ -83,7 +83,7 @@ class BaseRaw(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     preload : bool | str | ndarray
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
@@ -113,7 +113,7 @@ class BaseRaw(
         match what is passed here.
     buffer_size_sec : float
         The buffer size in seconds that should be written by default using
-        :meth:`mne.io.Raw.save`.
+        `mne.io.Raw.save`.
     orig_units : dict | None
         Dictionary mapping channel names to their units as specified in
         the header file. Example: {'FC1': 'nV'}.
@@ -123,7 +123,7 @@ class BaseRaw(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -182,7 +182,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -200,7 +200,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -256,7 +256,7 @@ class BaseRaw(
         ...
     @property
     def annotations(self):
-        """:class:mne.Annotations` for marking segments of data."""
+        """`mne.Annotations` for marking segments of data."""
         ...
     @property
     def filenames(self):
@@ -293,7 +293,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -422,7 +422,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -468,9 +468,9 @@ class BaseRaw(
 
         fun : callable
             A function to be applied to the channels. The first argument of
-            fun has to be a timeseries (:class:`numpy.ndarray`). The function must
+            fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  if ``channel_wise=True`` and ``(len(picks), n_times)`` otherwise.
-            The function must return an :class:numpy.ndarray` shaped like its input.
+            The function must return an `numpy.ndarray` shaped like its input.
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -486,10 +486,10 @@ class BaseRaw(
             (default) the data type is not modified.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``. Ignored if ``channel_wise=False`` as the workload
             is split across channels.
 
@@ -502,7 +502,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         **kwargs : dict
@@ -593,12 +593,12 @@ class BaseRaw(
 
         method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-            forward-backward filtering (via :func:scipy.signal.filtfilt`).
+            forward-backward filtering (via `scipy.signal.filtfilt`).
 
         iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
             If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
-            For more information, see :func:`mne.filter.construct_iir_filter`.
+            For more information, see `mne.filter.construct_iir_filter`.
 
         phase : str
             Phase of the filter.
@@ -612,9 +612,9 @@ class BaseRaw(
             When ``method='iir'``, ``phase='zero'`` (default) or
             ``phase='zero-double'`` constructs and applies IIR filter twice, once
             forward, and once backward (making it non-causal) using
-            :func:scipy.signal.filtfilt`.
+            `scipy.signal.filtfilt`.
             If ``phase='forward'``, it constructs and applies forward IIR filter using
-            :func:scipy.signal.lfilter`.
+            `scipy.signal.lfilter`.
 
             .. versionadded:: 0.13
 
@@ -625,8 +625,8 @@ class BaseRaw(
             .. versionadded:: 0.15
 
         fir_design : str
-            Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-            or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+            Can be "firwin" (default) to use `scipy.signal.firwin`,
+            or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
             a time-domain design technique that generally gives improved
             attenuation using fewer samples than "firwin2".
 
@@ -638,14 +638,14 @@ class BaseRaw(
             segments on either side of the given excluded annotated segment
             will be filtered separately (i.e., as independent signals).
             The default (``('edge', 'bad_acq_skip')`` will separately filter
-            any segments that were concatenated by :func:`mne.concatenate_raws`
-            or :meth:`mne.io.Raw.append`, or separated during acquisition.
+            any segments that were concatenated by `mne.concatenate_raws`
+            or `mne.io.Raw.append`, or separated during acquisition.
             To disable, provide an empty list. Only used if ``inst`` is raw.
 
             .. versionadded:: 0.16.
 
         pad : str
-            The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+            The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
@@ -655,7 +655,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -699,7 +699,7 @@ class BaseRaw(
 
         For more information, see the tutorials
         :ref:`disc-filtering` and :ref:`tut-filter-resample` and
-        :func:`mne.filter.create_filter`.
+        `mne.filter.create_filter`.
 
         .. versionadded:: 0.15
         """
@@ -759,7 +759,7 @@ class BaseRaw(
               this should not be used.
 
             When ``method=='spectrum_fit'``, this sets the effective window duration
-            over which fits are computed. See :func:`mne.filter.create_filter`
+            over which fits are computed. See `mne.filter.create_filter`
             for options. Longer window lengths will give more stable frequency
             estimates, but require (potentially much) more processing and are not able
             to adapt as well to non-stationarities.
@@ -778,12 +778,12 @@ class BaseRaw(
 
         method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-            forward-backward filtering (via :func:scipy.signal.filtfilt`).
+            forward-backward filtering (via `scipy.signal.filtfilt`).
 
         iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
             If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
-            For more information, see :func:`mne.filter.construct_iir_filter`.
+            For more information, see `mne.filter.construct_iir_filter`.
         mt_bandwidth : float | None
             The bandwidth of the multitaper windowing function in Hz.
             Only used in 'spectrum_fit' mode.
@@ -805,9 +805,9 @@ class BaseRaw(
             When ``method='iir'``, ``phase='zero'`` (default) or
             ``phase='zero-double'`` constructs and applies IIR filter twice, once
             forward, and once backward (making it non-causal) using
-            :func:scipy.signal.filtfilt`.
+            `scipy.signal.filtfilt`.
             If ``phase='forward'``, it constructs and applies forward IIR filter using
-            :func:scipy.signal.lfilter`.
+            `scipy.signal.lfilter`.
 
             .. versionadded:: 0.13
 
@@ -818,15 +818,15 @@ class BaseRaw(
             .. versionadded:: 0.15
 
         fir_design : str
-            Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-            or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+            Can be "firwin" (default) to use `scipy.signal.firwin`,
+            or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
             a time-domain design technique that generally gives improved
             attenuation using fewer samples than "firwin2".
 
             .. versionadded:: 0.15
 
         pad : str
-            The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+            The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
@@ -842,14 +842,14 @@ class BaseRaw(
             segments on either side of the given excluded annotated segment
             will be filtered separately (i.e., as independent signals).
             The default (``('edge', 'bad_acq_skip')`` will separately filter
-            any segments that were concatenated by :func:`mne.concatenate_raws`
-            or :meth:`mne.io.Raw.append`, or separated during acquisition.
+            any segments that were concatenated by `mne.concatenate_raws`
+            or `mne.io.Raw.append`, or separated during acquisition.
             To disable, provide an empty list. Only used if ``inst`` is raw.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -874,7 +874,7 @@ class BaseRaw(
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
 
-        For details, see :func:`mne.filter.notch_filter`.
+        For details, see `mne.filter.notch_filter`.
         """
         ...
     def resample(
@@ -922,13 +922,13 @@ class BaseRaw(
 
         window : str | tuple
             Frequency-domain window to use in resampling.
-            See :func:`scipy.signal.resample`.
+            See `scipy.signal.resample`.
         stim_picks : list of int | None
             Stim channels. These channels are simply subsampled or
             supersampled (without applying any filtering). This reduces
             resampling artifacts in stim channels, but may lead to missing
             triggers. If None, stim channels are automatically chosen using
-            :func:`mne.pick_types`.
+            `mne.pick_types`.
 
         n_jobs : int | str
             Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
@@ -939,7 +939,7 @@ class BaseRaw(
             modified, but a new array is returned with the raw instead.
 
         pad : str
-            The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+            The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
@@ -950,7 +950,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -983,12 +983,12 @@ class BaseRaw(
 
         Limit the data from the raw file to go between specific times. Note
         that the new ``tmin`` is assumed to be ``t=0`` for all subsequently
-        called functions (e.g., :meth:mne.io.Raw.time_as_index`, or
-        :class:mne.Epochs`). New :term:`first_samp` and :term:`last_samp`
+        called functions (e.g., `mne.io.Raw.time_as_index`, or
+        `mne.Epochs`). New :term:`first_samp` and :term:`last_samp`
         are set accordingly.
 
         Thus function operates in-place on the instance.
-        Use :meth:`mne.io.Raw.copy` if operation on a copy is desired.
+        Use `mne.io.Raw.copy` if operation on a copy is desired.
 
         Parameters
         ----------
@@ -1008,7 +1008,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1029,7 +1029,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1128,7 +1128,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -1158,7 +1158,7 @@ class BaseRaw(
 
         Supported formats:
             - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
-            - EEGLAB (``.set``, uses :mod:`eeglabio`)
+            - EEGLAB (``.set``, uses `eeglabio`)
             - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
         .. warning::
@@ -1197,7 +1197,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -1206,13 +1206,13 @@ class BaseRaw(
 
         Export to external format may not preserve all the information from the
         instance. To save in native MNE format (``.fif``) without information loss,
-        use :meth:`mne.io.Raw.save` instead.
+        use `mne.io.Raw.save` instead.
         Export does not apply projector(s). Unapplied projector(s) will be lost.
         Consider applying projector(s) before exporting with
-        :meth:`mne.io.Raw.apply_proj`.
+        `mne.io.Raw.apply_proj`.
 
         For EEGLAB exports, channel locations are expanded to full EEGLAB format.
-        For more details see :func:`eeglabio.utils.cart_to_eeglab`.
+        For more details see `eeglabio.utils.cart_to_eeglab`.
 
         For EDF exports, only channels measured in Volts are allowed; in MNE-Python
         this means channel types 'eeg', 'ecog', 'seeg', 'emg', 'eog', 'ecg', 'dbs',
@@ -1359,7 +1359,7 @@ class BaseRaw(
         filtorder : int
             Filtering order. 0 will use FIR filtering with MNE defaults.
             Other values will construct an IIR filter of the given order
-            and apply it with :func:scipy.signal.filtfilt` (making the effective
+            and apply it with `scipy.signal.filtfilt` (making the effective
             order twice ``filtorder``). Filtering may produce some edge artifacts
             (at the left and right edges) of the signals during display.
 
@@ -1408,11 +1408,11 @@ class BaseRaw(
             Whitened data channels are scaled by ``scalings['whitened']``,
             and their channel names are shown in italic.
             Can be a string to load a covariance from disk.
-            See also :meth:`mne.Evoked.plot_white` for additional inspection
+            See also `mne.Evoked.plot_white` for additional inspection
             of noise covariance properties when whitening evoked data.
             For data processed with SSS, the effective dependence between
             magnetometers and gradiometers may introduce differences in scaling,
-            consider using :meth:`mne.Evoked.plot_white`.
+            consider using `mne.Evoked.plot_white`.
 
             .. versionadded:: 0.16.0
         event_id : dict | None
@@ -1462,14 +1462,14 @@ class BaseRaw(
             graphics hardware. Only works if using the Qt backend. Default is
             None, which will use False unless the user configuration variable
             ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
-            see :func:`mne.set_config`.
+            see `mne.set_config`.
 
             .. versionadded:: 0.24
 
         theme : str | path-like
             Can be "auto", "light", or "dark" or a path-like to a
             custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-            :mod:`qdarkstyle` and
+            `qdarkstyle` and
             `darkdetect <https://github.com/albertosottile/darkdetect>`__,
             respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
             defaulting to "auto" if it's not found.
@@ -1494,7 +1494,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1530,14 +1530,14 @@ class BaseRaw(
         ``True``. This flag can be toggled by pressing 'd'.
 
         MNE-Python provides two different backends for browsing plots (i.e.,
-        :meth:`raw.plot()<mne.io.Raw.plot>`, :meth:`epochs.plot()<mne.Epochs.plot>`,
-        and :meth:`ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
-        based on :mod:`matplotlib`, and the other is based on
+        `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
+        and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
+        based on `matplotlib`, and the other is based on
         :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
-        context manager :func:`mne.viz.use_browser_backend`, you can set it for the
-        duration of a Python session using :func:`mne.viz.set_browser_backend`, and you
+        context manager `mne.viz.use_browser_backend`, you can set it for the
+        duration of a Python session using `mne.viz.set_browser_backend`, and you
         can set the default for your computer via
-        :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
+        `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
         .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
@@ -1598,7 +1598,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -1608,7 +1608,7 @@ class BaseRaw(
         .. note:: Boundaries of the raw files are annotated bad. If you wish to
                   use the data as continuous recording, you can remove the
                   boundary annotations after concatenation (see
-                  :meth:`mne.Annotations.delete`).
+                  `mne.Annotations.delete`).
 
         Parameters
         ----------
@@ -1725,24 +1725,24 @@ class BaseRaw(
             ``bad`` will be omitted.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
             Additional keyword arguments passed to the spectral estimation
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See :func:mne.time_frequency.psd_array_welch` and
-            :func:mne.time_frequency.psd_array_multitaper` for details.
+            method). See `mne.time_frequency.psd_array_welch` and
+            `mne.time_frequency.psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1791,8 +1791,8 @@ class BaseRaw(
 
         index : 'time' | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
-            integer index (:class:`pandas.RangeIndex`) will be used. If ``'time'``, a
-            ``pandas.Index``, :class:`pandas.DatetimeIndex`, or :class:`pandas.TimedeltaIndex` will be used
+            integer index (`pandas.RangeIndex`) will be used. If ``'time'``, a
+            ``pandas.Index``, `pandas.DatetimeIndex`, or `pandas.TimedeltaIndex` will be used
             (depending on the value of ``time_format``).
             Defaults to ``None``.
 
@@ -1821,7 +1821,7 @@ class BaseRaw(
             Desired time format. If ``None``, no conversion is applied, and time values
             remain as float values in seconds. If ``'ms'``, time values will be rounded
             to the nearest millisecond and converted to integers. If ``'timedelta'``,
-            time values will be converted to :class:`pandas.Timedelta` values. If ``'datetime'``, time values will be converted to :class:`pandas.Timestamp` values, relative to ``raw.info['meas_date']`` and offset by ``raw.first_samp``.
+            time values will be converted to `pandas.Timedelta` values. If ``'datetime'``, time values will be converted to `pandas.Timestamp` values, relative to ``raw.info['meas_date']`` and offset by ``raw.first_samp``.
             Default is ``None``.
 
             .. versionadded:: 0.20
@@ -1829,7 +1829,7 @@ class BaseRaw(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1921,18 +1921,18 @@ class _RawFidWriter:
 def concatenate_raws(
     raws, preload=None, events_list=None, *, on_mismatch: str = "raise", verbose=None
 ):
-    """Concatenate mne.io.Raw` instances as if they were continuous.
+    """Concatenate `mne.io.Raw` instances as if they were continuous.
 
     .. note:: ``raws[0]`` is modified in-place to achieve the concatenation.
               Boundaries of the raw files are annotated bad. If you wish to use
               the data as continuous recording, you can remove the boundary
               annotations after concatenation (see
-              :meth:`mne.Annotations.delete`).
+              `mne.Annotations.delete`).
 
     Parameters
     ----------
     raws : list
-        List of mne.io.Raw` instances to concatenate (in order).
+        List of `mne.io.Raw` instances to concatenate (in order).
 
     preload : bool, str, or None (default None)
         Preload data into memory for data manipulation and faster indexing.
@@ -1955,7 +1955,7 @@ def concatenate_raws(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1973,7 +1973,7 @@ def match_channel_orders(raws, copy: bool = True):
     Parameters
     ----------
     raws : list
-        List of :class:mne.io.Raw` instances to order.
+        List of `mne.io.Raw` instances to order.
 
     copy : bool
         If ``True``, data will be copied. Otherwise data may be modified in place.

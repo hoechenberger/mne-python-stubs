@@ -111,10 +111,10 @@ def psd_array_multitaper(
           taper.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     max_iter : int
@@ -125,7 +125,7 @@ def psd_array_multitaper(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -172,9 +172,9 @@ def tfr_array_multitaper(
 ):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
-    Same computation as mne.time_frequency.tfr_multitaper`, but operates on
-    :class:`NumPy arrays <numpy.ndarray>` instead of mne.Epochs` or
-    mne.Evoked` objects.
+    Same computation as `mne.time_frequency.tfr_multitaper`, but operates on
+    `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` or
+    `mne.Evoked` objects.
 
     Parameters
     ----------
@@ -225,16 +225,16 @@ def tfr_array_multitaper(
           coherence across trials.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -317,13 +317,13 @@ def tfr_array_multitaper(
 
     .. warning::
 
-        In mne.time_frequency.tfr_array_multitaper` and
-        mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
+        In `mne.time_frequency.tfr_array_multitaper` and
+        `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
         product of the temporal window length with the *full* frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
 
-        This is not the case for mne.time_frequency.psd_array_multitaper` where
+        This is not the case for `mne.time_frequency.psd_array_multitaper` where
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 

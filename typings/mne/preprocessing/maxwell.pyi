@@ -30,7 +30,7 @@ def maxwell_filter_prepare_emptyroom(
     """Prepare an empty-room recording for Maxwell filtering.
 
     Empty-room data by default lacks certain properties that are required to
-    ensure running :func:mne.preprocessing.maxwell_filter` will process the
+    ensure running `mne.preprocessing.maxwell_filter` will process the
     empty-room recording the same way as the experimental data. This function
     preconditions an empty-room raw data instance accordingly so it can be used
     for Maxwell filtering. Please see the ``Notes`` section for details.
@@ -64,14 +64,14 @@ def maxwell_filter_prepare_emptyroom(
 
     emit_warning : bool
         Whether to emit warnings when cropping or omitting annotations.
-        Unlike :meth:`raw.set_annotations <mne.io.Raw.set_annotations>`, the
+        Unlike `raw.set_annotations <mne.io.Raw.set_annotations>`, the
         default here is ``False``, as empty-room recordings are often shorter
         than raw.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -131,13 +131,13 @@ def maxwell_filter(
         .. warning:: It is critical to mark bad channels in
                      ``raw.info['bads']`` prior to processing in order to
                      prevent artifact spreading. Manual inspection and use
-                     of :func:find_bad_channels_maxwell` is recommended.
+                     of `find_bad_channels_maxwell` is recommended.
 
     origin : array-like, shape (3,) | str
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using :func:mne.bem.fit_sphere_to_headshape`
+        origin fit using `mne.bem.fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -222,7 +222,7 @@ def maxwell_filter(
         cross-talk cancellation, movement compensation, and so forth
         will not be applied to the data. This is useful, for example, when
         evoked movement compensation will be performed with
-        :func:mne.epochs.average_movements`.
+        `mne.epochs.average_movements`.
 
         .. versionadded:: 0.12
 
@@ -242,8 +242,8 @@ def maxwell_filter(
         segments on either side of the given excluded annotated segment
         will be filtered separately (i.e., as independent signals).
         The default ``('edge', 'bad_acq_skip')`` will separately filter
-        any segments that were concatenated by :func:`mne.concatenate_raws`
-        or :meth:`mne.io.Raw.append`, or separated during acquisition.
+        any segments that were concatenated by `mne.concatenate_raws`
+        or `mne.io.Raw.append`, or separated during acquisition.
         To disable, provide an empty list.
 
         .. versionadded:: 0.17
@@ -257,7 +257,7 @@ def maxwell_filter(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -313,17 +313,17 @@ def maxwell_filter(
        +-----------------------------------------------------------------------------+-----+-----------+
        | Movement compensation (raw)                                                 | ✓   | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
-       | Movement compensation (:func:`epochs <mne.epochs.average_movements>`)       | ✓   |           |
+       | Movement compensation (`epochs <mne.epochs.average_movements>`)       | ✓   |           |
        +-----------------------------------------------------------------------------+-----+-----------+
-       | :func:`cHPI subtraction <mne.chpi.filter_chpi>`                             | ✓   | ✓         |
+       | `cHPI subtraction <mne.chpi.filter_chpi>`                             | ✓   | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
        | Double floating point precision                                             | ✓   |           |
        +-----------------------------------------------------------------------------+-----+-----------+
        | Seamless processing of split (``-1.fif``) and concatenated files            | ✓   |           |
        +-----------------------------------------------------------------------------+-----+-----------+
-       | Automatic bad channel detection (:func:find_bad_channels_maxwell`)        | ✓   | ✓         |
+       | Automatic bad channel detection (`find_bad_channels_maxwell`)        | ✓   | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
-       | Head position estimation (:func:mne.chpi.compute_head_pos`)               | ✓   | ✓         |
+       | Head position estimation (`mne.chpi.compute_head_pos`)               | ✓   | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
        | Certified for clinical use                                                  |     | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
@@ -429,7 +429,7 @@ def find_bad_channels_maxwell(
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using :func:mne.bem.fit_sphere_to_headshape`
+        origin fit using `mne.bem.fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -488,8 +488,8 @@ def find_bad_channels_maxwell(
         segments on either side of the given excluded annotated segment
         will be filtered separately (i.e., as independent signals).
         The default ``('edge', 'bad_acq_skip')`` will separately filter
-        any segments that were concatenated by :func:`mne.concatenate_raws`
-        or :meth:`mne.io.Raw.append`, or separated during acquisition.
+        any segments that were concatenated by `mne.concatenate_raws`
+        or `mne.io.Raw.append`, or separated during acquisition.
         To disable, provide an empty list.
     h_freq : float | None
         The cutoff frequency (in Hz) of the low-pass filter that will be
@@ -506,7 +506,7 @@ def find_bad_channels_maxwell(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -557,7 +557,7 @@ def find_bad_channels_maxwell(
     Notes
     -----
     All arguments after ``raw``, ``limit``, ``duration``, ``min_count``, and
-    ``return_scores`` are the same as :func:maxwell_filter`, except that the
+    ``return_scores`` are the same as `maxwell_filter`, except that the
     following are not allowed in this function because they are unused:
     ``st_duration``, ``st_correlation``, ``destination``, ``st_fixed``, and
     ``st_only``.
@@ -619,13 +619,13 @@ def compute_maxwell_basis(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     origin : array-like, shape (3,) | str
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using :func:mne.bem.fit_sphere_to_headshape`
+        origin fit using `mne.bem.fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -679,7 +679,7 @@ def compute_maxwell_basis(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

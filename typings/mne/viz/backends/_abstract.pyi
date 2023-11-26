@@ -9,7 +9,7 @@ class Figure3D(ABC):
     .. note::
         This class should not be instantiated directly via
         ``mne.viz.Figure3D(...)``. Instead, use
-        :func:`mne.viz.create_3d_figure`.
+        `mne.viz.create_3d_figure`.
 
     See Also
     --------

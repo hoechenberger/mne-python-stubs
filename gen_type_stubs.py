@@ -129,7 +129,7 @@ for stub_path in stub_paths:
                 if line.startswith(".. warning:: DEPRECATED:"):
                     print(
                         f"🦄 Applying special handling for @deprecated {obj_type} "
-                        f"{module_name}.{obj.name}.{obj.name}"
+                        f"{module_name}.{obj.name}"
                     )
                     line = line.replace(".. warning:: DEPRECATED:", "# DEPRECATED")
                     expanded_docstring[line_idx] = (obj.col_offset + 4) * " " + line
@@ -215,7 +215,11 @@ for stub_path in stub_paths:
         .replace("import verbose as verbose,", "import")
         .replace("from ..utils import verbose as verbose", "")
         .replace("from ...utils import verbose as verbose", "")
-        .replace("`~", "")
+        .replace("`~", "`")
+        .replace(":class:", "")
+        .replace(":meth:", "")
+        .replace(":func:", "")
+        .replace(":mod:", "")
     )
     del unparsed
 

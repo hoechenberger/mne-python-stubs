@@ -134,7 +134,7 @@ def read_events(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -157,7 +157,7 @@ def read_events(
     event number) if it is present in a text file.
 
     For more information on ``mask`` and ``mask_type``, see
-    :func:`mne.find_events`.
+    `mne.find_events`.
     """
     ...
 
@@ -186,7 +186,7 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -308,7 +308,7 @@ def find_events(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -504,10 +504,10 @@ def make_fixed_length_events(
         The duration to separate events by (in seconds).
     first_samp : bool
         If True (default), times will have :term:`first_samp` added to them, as
-        in :func:`mne.find_events`. This behavior is not desirable if the
+        in `mne.find_events`. This behavior is not desirable if the
         returned events will be combined with event times that already
         have :term:`first_samp` added to them, e.g. event times that come
-        from :func:`mne.find_events`.
+        from `mne.find_events`.
     overlap : float
         The overlap between events (in seconds).
         Must be ``0 <= overlap < duration``.
@@ -529,7 +529,7 @@ def concatenate_events(events, first_samps, last_samps):
 
     This is useful, for example, if you processed and/or changed
     events in raw files separately before combining them using
-    :func:`mne.concatenate_raws`.
+    `mne.concatenate_raws`.
 
     Parameters
     ----------
@@ -565,7 +565,7 @@ class AcqParserFIF:
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. This is where the DACQ parameters will be taken from.
+        The `mne.Info` object with information about the sensors and methods of measurement. This is where the DACQ parameters will be taken from.
 
     Attributes
     ----------

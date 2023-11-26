@@ -31,12 +31,12 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
         regularization for covariance estimation.
         If float, shrinkage is used (0 <= shrinkage <= 1).
         For str options, ``reg`` will be passed to ``method`` to
-        :func:`mne.compute_covariance`.
+        `mne.compute_covariance`.
     signal_cov : None | Covariance | array, shape (n_channels, n_channels)
         The signal covariance used for whitening of the data.
         if None, the covariance is estimated from the epochs signal.
     method_params : dict | None
-        Parameters to pass to :func:`mne.compute_covariance`.
+        Parameters to pass to `mne.compute_covariance`.
 
         .. versionadded:: 0.16
 
@@ -138,7 +138,7 @@ class Xdawn(_XdawnTransformer):
         regularization for covariance estimation.
         If float, shrinkage is used (0 <= shrinkage <= 1).
         For str options, ``reg`` will be passed as ``method`` to
-        :func:`mne.compute_covariance`.
+        `mne.compute_covariance`.
 
     Attributes
     ----------

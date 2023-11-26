@@ -25,7 +25,7 @@ def oversampled_temporal_projection(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -44,7 +44,7 @@ def oversampled_temporal_projection(
 
     OTP can improve sensor noise levels (especially under visual
     inspection) and repair some bad channels. This noise reduction is known
-    to interact with :func:`tSSS <mne.preprocessing.maxwell_filter>` such
+    to interact with `tSSS <mne.preprocessing.maxwell_filter>` such
     that increasing the ``st_correlation`` value will likely be necessary.
 
     Channels marked as bad will not be used to reconstruct good channels,

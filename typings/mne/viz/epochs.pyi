@@ -66,11 +66,11 @@ def plot_epochs_image(
         Display or not a colorbar.
     order : None | array of int | callable
         If not ``None``, order is used to reorder the epochs along the y-axis
-        of the image. If it is an array of :class:`int`, its length should
+        of the image. If it is an array of `int`, its length should
         match the number of good epochs. If it is a callable it should accept
         two positional parameters (``times`` and ``data``, where
         ``data.shape == (len(good_epochs), len(times))``) and return an
-        :class:`array <numpy.ndarray>` of indices that will sort ``data`` along
+        `array <numpy.ndarray>` of indices that will sort ``data`` along
         its first axis.
     show : bool
         Show figure if True.
@@ -92,16 +92,16 @@ def plot_epochs_image(
         If None, "RdBu_r" is used, unless the data is all positive, in which
         case "Reds" is used.
     fig : Figure | None
-        :class:matplotlib.figure.Figure` instance to draw the image to.
+        `matplotlib.figure.Figure` instance to draw the image to.
         Figure must contain the correct number of axes for drawing the epochs
         image, the evoked response, and a colorbar (depending on values of
         ``evoked`` and ``colorbar``). If ``None`` a new figure is created.
         Defaults to ``None``.
     axes : list of Axes | dict of list of Axes | None
-        List of :class:matplotlib.axes.Axes` objects in which to draw the
+        List of `matplotlib.axes.Axes` objects in which to draw the
         image, evoked response, and colorbar (in that order). Length of list
         must be 1, 2, or 3 (depending on values of ``colorbar`` and ``evoked``
-        parameters). If a :class:`dict`, each entry must be a list of Axes
+        parameters). If a `dict`, each entry must be a list of Axes
         objects with the same constraints as above. If both ``axes`` and
         ``group_by`` are dicts, their keys must match. Providing non-``None``
         values for both ``fig`` and ``axes``  results in an error. Defaults to
@@ -110,16 +110,16 @@ def plot_epochs_image(
         Times (in seconds) at which to draw a line on the corresponding row of
         the image (e.g., a reaction time associated with each epoch). Note that
         ``overlay_times`` should be ordered to correspond with the
-        :class:mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
+        `mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
         ``epochs[0]``, etc).
 
     combine : None | str | callable
-        How to combine information across channels. If a :class:`str`, must be
+        How to combine information across channels. If a `str`, must be
         one of 'mean', 'median', 'std' (standard deviation) or 'gfp' (global
         field power).
         If callable, the callable must accept one positional input (data of
         shape ``(n_epochs, n_channels, n_times)``) and return an
-        :class:`array <numpy.ndarray>` of shape ``(n_epochs, n_times)``. For
+        `array <numpy.ndarray>` of shape ``(n_epochs, n_times)``. For
         example::
 
             combine = lambda data: np.median(data, axis=1)
@@ -132,7 +132,7 @@ def plot_epochs_image(
     group_by : None | dict
         Specifies which channels are aggregated into a single figure, with
         aggregation method determined by the ``combine`` parameter. If not
-        ``None``, one :class:matplotlib.figure.Figure` is made per dict
+        ``None``, one `matplotlib.figure.Figure` is made per dict
         entry; the dict key will be used as the figure title and the dict
         values must be lists of picks (either channel names or integer indices
         of ``epochs.ch_names``). For example::
@@ -145,12 +145,12 @@ def plot_epochs_image(
     evoked : bool
         Draw the ER[P/F] below the image or not.
     ts_args : None | dict
-        Arguments passed to a call to mne.viz.plot_compare_evokeds` to style
+        Arguments passed to a call to `mne.viz.plot_compare_evokeds` to style
         the evoked plot below the image. Defaults to an empty dictionary,
-        meaning mne.viz.plot_compare_evokeds` will be called with default
+        meaning `mne.viz.plot_compare_evokeds` will be called with default
         parameters.
     title : None | str
-        If :class:`str`, will be plotted as figure title. Otherwise, the
+        If `str`, will be plotted as figure title. Otherwise, the
         title will indicate channel(s) or channel type being plotted. Defaults
         to ``None``.
     clear : bool
@@ -167,8 +167,8 @@ def plot_epochs_image(
     -----
     You can control how channels are aggregated into one figure or plotted in
     separate figures through a combination of the ``picks``, ``group_by``, and
-    ``combine`` parameters. If ``group_by`` is a :class:`dict`, the result is
-    one :class:matplotlib.figure.Figure` per dictionary key (for any valid
+    ``combine`` parameters. If ``group_by`` is a `dict`, the result is
+    one `matplotlib.figure.Figure` per dictionary key (for any valid
     values of ``picks`` and ``combine``). If ``group_by`` is ``None``, the
     number and content of the figures generated depends on the values of
     ``picks`` and ``combine``, as summarized in this table:
@@ -315,7 +315,7 @@ def plot_epochs(
         The title of the window. If None, the event names (from
         ``epochs.event_id``) will be displayed. Defaults to None.
     events : bool | array, shape (n_events, 3)
-        Events to show with vertical bars. You can use mne.viz.plot_events`
+        Events to show with vertical bars. You can use `mne.viz.plot_events`
         as a legend for the colors. By default, the coloring scheme is the
         same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
         plot events).
@@ -361,11 +361,11 @@ def plot_epochs(
         Whitened data channels are scaled by ``scalings['whitened']``,
         and their channel names are shown in italic.
         Can be a string to load a covariance from disk.
-        See also :meth:`mne.Evoked.plot_white` for additional inspection
+        See also `mne.Evoked.plot_white` for additional inspection
         of noise covariance properties when whitening evoked data.
         For data processed with SSS, the effective dependence between
         magnetometers and gradiometers may introduce differences in scaling,
-        consider using :meth:`mne.Evoked.plot_white`.
+        consider using `mne.Evoked.plot_white`.
 
         .. versionadded:: 0.16.0
     butterfly : bool
@@ -427,14 +427,14 @@ def plot_epochs(
         graphics hardware. Only works if using the Qt backend. Default is
         None, which will use False unless the user configuration variable
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
-        see :func:`mne.set_config`.
+        see `mne.set_config`.
 
         .. versionadded:: 0.24
 
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
         custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-        :mod:`qdarkstyle` and
+        `qdarkstyle` and
         `darkdetect <https://github.com/albertosottile/darkdetect>`__,
         respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
         defaulting to "auto" if it's not found.
@@ -476,14 +476,14 @@ def plot_epochs(
     view all the options.
 
     MNE-Python provides two different backends for browsing plots (i.e.,
-    :meth:`raw.plot()<mne.io.Raw.plot>`, :meth:`epochs.plot()<mne.Epochs.plot>`,
-    and :meth:`ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
-    based on :mod:`matplotlib`, and the other is based on
+    `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
+    and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
+    based on `matplotlib`, and the other is based on
     :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
-    context manager :func:`mne.viz.use_browser_backend`, you can set it for the
-    duration of a Python session using :func:`mne.viz.set_browser_backend`, and you
+    context manager `mne.viz.use_browser_backend`, you can set it for the
+    duration of a Python session using `mne.viz.set_browser_backend`, and you
     can set the default for your computer via
-    :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
+    `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
     .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
@@ -571,8 +571,8 @@ def plot_epochs_psd(
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     ax : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-        will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
     color : str | tuple
         A matplotlib-compatible color to use. Has no effect when
         spatial_colors=True.
@@ -601,10 +601,10 @@ def plot_epochs_psd(
         Show the figure if ``True``.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     average : bool
         If False, the PSDs of all channels is displayed. No averaging
@@ -621,7 +621,7 @@ def plot_epochs_psd(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -641,7 +641,7 @@ def plot_epochs_psd(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -653,6 +653,6 @@ def plot_epochs_psd(
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-    of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
+    of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
     """
     ...

@@ -30,14 +30,14 @@ def plot_projs_joint(
         all channels, or "data" to pick :term:`data channels`.
         None (default) will pick no channels.
     topomap_kwargs : dict | None
-        Keyword arguments to pass to :func:`mne.viz.plot_projs_topomap`.
+        Keyword arguments to pass to `mne.viz.plot_projs_topomap`.
     show : bool
         Show the figure if ``True``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

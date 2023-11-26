@@ -36,7 +36,7 @@ def plot_cov(
         The covariance matrix.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     exclude : list of str | str
         List of channels to exclude. If empty do not exclude any channel.
         If 'bads', exclude info['bads'].
@@ -53,7 +53,7 @@ def plot_cov(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -70,7 +70,7 @@ def plot_cov(
     Notes
     -----
     For each channel type, the rank is estimated using
-    :func:`mne.compute_rank`.
+    `mne.compute_rank`.
 
     .. versionchanged:: 0.19
        Approximate ranks for each channel type are shown with red dashed lines.
@@ -259,7 +259,7 @@ def plot_events(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -487,7 +487,7 @@ def plot_csd(
         The CSD matrix to plot.
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
         Used to split the figure by channel-type, if provided.
         By default, the CSD matrix is plotted as a whole.
     mode : 'csd' | 'coh'
@@ -519,14 +519,14 @@ def plot_chpi_snr(snr_dict, axes=None):
     Parameters
     ----------
     snr_dict : dict
-        The dictionary returned by mne.chpi.compute_chpi_snr`. Must have keys
+        The dictionary returned by `mne.chpi.compute_chpi_snr`. Must have keys
         ``times``, ``freqs``, ``TYPE_snr``, ``TYPE_power``, and ``TYPE_resid``
         (where ``TYPE`` can be ``mag`` or ``grad`` or both).
     axes : None | list of matplotlib.axes.Axes
         Figure axes in which to draw the SNR, power, and residual plots. The
         number of axes should be 3× the number of MEG sensor types present in
         ``snr_dict``. If ``None`` (the default), a new
-        matplotlib.figure.Figure` is created with the required number of
+        `matplotlib.figure.Figure` is created with the required number of
         axes.
 
     Returns
@@ -538,7 +538,7 @@ def plot_chpi_snr(snr_dict, axes=None):
 
     Notes
     -----
-    If you supply a list of existing matplotlib.axes.Axes`, then the figure
+    If you supply a list of existing `matplotlib.axes.Axes`, then the figure
     legend will not be drawn automatically. If you still want it, running
     ``fig.legend(loc='right', title='cHPI frequencies')`` will recreate it.
 

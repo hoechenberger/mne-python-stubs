@@ -131,7 +131,7 @@ def plot_raw(
     filtorder : int
         Filtering order. 0 will use FIR filtering with MNE defaults.
         Other values will construct an IIR filter of the given order
-        and apply it with :func:scipy.signal.filtfilt` (making the effective
+        and apply it with `scipy.signal.filtfilt` (making the effective
         order twice ``filtorder``). Filtering may produce some edge artifacts
         (at the left and right edges) of the signals during display.
 
@@ -180,11 +180,11 @@ def plot_raw(
         Whitened data channels are scaled by ``scalings['whitened']``,
         and their channel names are shown in italic.
         Can be a string to load a covariance from disk.
-        See also :meth:`mne.Evoked.plot_white` for additional inspection
+        See also `mne.Evoked.plot_white` for additional inspection
         of noise covariance properties when whitening evoked data.
         For data processed with SSS, the effective dependence between
         magnetometers and gradiometers may introduce differences in scaling,
-        consider using :meth:`mne.Evoked.plot_white`.
+        consider using `mne.Evoked.plot_white`.
 
         .. versionadded:: 0.16.0
     event_id : dict | None
@@ -234,14 +234,14 @@ def plot_raw(
         graphics hardware. Only works if using the Qt backend. Default is
         None, which will use False unless the user configuration variable
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
-        see :func:`mne.set_config`.
+        see `mne.set_config`.
 
         .. versionadded:: 0.24
 
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
         custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-        :mod:`qdarkstyle` and
+        `qdarkstyle` and
         `darkdetect <https://github.com/albertosottile/darkdetect>`__,
         respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
         defaulting to "auto" if it's not found.
@@ -266,7 +266,7 @@ def plot_raw(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -302,14 +302,14 @@ def plot_raw(
     ``True``. This flag can be toggled by pressing 'd'.
 
     MNE-Python provides two different backends for browsing plots (i.e.,
-    :meth:`raw.plot()<mne.io.Raw.plot>`, :meth:`epochs.plot()<mne.Epochs.plot>`,
-    and :meth:`ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
-    based on :mod:`matplotlib`, and the other is based on
+    `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
+    and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
+    based on `matplotlib`, and the other is based on
     :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
-    context manager :func:`mne.viz.use_browser_backend`, you can set it for the
-    duration of a Python session using :func:`mne.viz.set_browser_backend`, and you
+    context manager `mne.viz.use_browser_backend`, you can set it for the
+    duration of a Python session using `mne.viz.set_browser_backend`, and you
     can set the default for your computer via
-    :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
+    `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
     .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
@@ -392,8 +392,8 @@ def plot_raw_psd(
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     ax : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-        will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
     color : str | tuple
         A matplotlib-compatible color to use. Has no effect when
         spatial_colors=True.
@@ -422,10 +422,10 @@ def plot_raw_psd(
         Show the figure if ``True``.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     average : bool
         If False, the PSDs of all channels is displayed. No averaging
@@ -442,7 +442,7 @@ def plot_raw_psd(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -453,7 +453,7 @@ def plot_raw_psd(
         .. versionadded:: 0.20
         .. versionchanged:: 1.1 Added ``'eeglab'`` option.
     window : str | float | tuple
-        Windowing function to use. See :func:`scipy.signal.get_window`.
+        Windowing function to use. See `scipy.signal.get_window`.
 
         .. versionadded:: 0.22.0
     exclude : list of str | 'bads'
@@ -466,7 +466,7 @@ def plot_raw_psd(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -478,7 +478,7 @@ def plot_raw_psd(
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-    of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
+    of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
     """
     ...
 
@@ -541,8 +541,8 @@ def plot_raw_psd_topo(
         A matplotlib-compatible color to use for the axis background.
         Defaults to black.
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-        will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single :class:matplotlib.axes.Axes` object).Default is ``None``.
+        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single `matplotlib.axes.Axes` object).Default is ``None``.
     block : bool
         Whether to halt program execution until the figure is closed.
         May not work on all systems / platforms. Defaults to False.
@@ -550,16 +550,16 @@ def plot_raw_psd_topo(
         Show the figure if ``True``.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

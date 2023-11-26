@@ -12,12 +12,12 @@ def fetch_fsaverage(subjects_dir=None, *, verbose=None):
         The path to use as the subjects directory in the MNE-Python
         config file. None will use the existing config variable (i.e.,
         will not change anything), and if it does not exist, will use
-        `/mne_data/MNE-fsaverage-data``.
+        ``/mne_data/MNE-fsaverage-data``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

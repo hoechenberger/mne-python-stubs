@@ -57,7 +57,7 @@ def find_eog_events(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -97,9 +97,9 @@ def create_eog_epochs(
     #. Filter the EOG data channel.
 
     #. Find the peaks of eyeblinks in the EOG data using
-       :func:`mne.preprocessing.find_eog_events`.
+       `mne.preprocessing.find_eog_events`.
 
-    #. Create mne.Epochs` around the eyeblinks.
+    #. Create `mne.Epochs` around the eyeblinks.
 
     Parameters
     ----------
@@ -184,7 +184,7 @@ def create_eog_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

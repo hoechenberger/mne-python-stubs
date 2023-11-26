@@ -97,7 +97,7 @@ class Transform(dict):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -251,7 +251,7 @@ def read_trans(fname, return_all: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -274,7 +274,7 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     fname : path-like
         The name of the file, which should end in ``-trans.fif``.
     trans : dict
-        Trans file data, as returned by mne.read_trans`.
+        Trans file data, as returned by `mne.read_trans`.
 
     overwrite : bool
         If True (default False), overwrite the destination file if it
@@ -283,7 +283,7 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -442,7 +442,7 @@ class _SphericalSurfaceWarp:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -465,7 +465,7 @@ class _SphericalSurfaceWarp:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -605,7 +605,7 @@ def compute_volume_registration(
         provided, it will be used for all steps (except center of mass, which does
         not iterate). It should have length 3 to
         correspond to ``sigmas=[3.0, 1.0, 0.0]`` and ``factors=[4, 2, 1]`` in
-        the pipeline (see :func:`dipy.align.affine_registration
+        the pipeline (see `dipy.align.affine_registration
         <dipy.align._public.affine_registration>` for details).
         If a dictionary is provided, number of iterations can be set for each
         step as a key. Steps not in the dictionary will use the default value.
@@ -623,7 +623,7 @@ def compute_volume_registration(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -639,7 +639,7 @@ def compute_volume_registration(
     Notes
     -----
     This function is heavily inspired by and extends
-    :func:`dipy.align.affine_registration
+    `dipy.align.affine_registration
     <dipy.align._public.affine_registration>`.
 
     .. versionadded:: 0.24
@@ -658,7 +658,7 @@ def apply_volume_registration(
     """Apply volume registration.
 
     Uses registration parameters computed by
-    :func:mne.transforms.compute_volume_registration`.
+    `mne.transforms.compute_volume_registration`.
 
     Parameters
     ----------
@@ -686,7 +686,7 @@ def apply_volume_registration(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -706,13 +706,13 @@ def apply_volume_registration_points(
     """Apply volume registration.
 
     Uses registration parameters computed by
-    :func:mne.transforms.compute_volume_registration`.
+    `mne.transforms.compute_volume_registration`.
 
     Parameters
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     trans : str | dict | instance of Transform
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
@@ -735,14 +735,14 @@ def apply_volume_registration_points(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     trans2 : instance of Transform
         The head->mri (surface RAS) transform for the static image.
 

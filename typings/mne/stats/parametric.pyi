@@ -1,7 +1,7 @@
 def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
     """Perform one-sample t-test.
 
-    This is a modified version of :func:`scipy.stats.ttest_1samp` that avoids
+    This is a modified version of `scipy.stats.ttest_1samp` that avoids
     a (relatively) time-consuming p-value calculation, and can adjust
     for implausibly small variance values :footcite:`RidgwayEtAl2012`.
 
@@ -36,9 +36,9 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
 def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     """Independent samples t-test without p calculation.
 
-    This is a modified version of :func:`scipy.stats.ttest_ind`. It operates
+    This is a modified version of `scipy.stats.ttest_ind`. It operates
     along the first axis. The ``sigma`` parameter provides an optional "hat"
-    adjustment (see :func:`ttest_1samp_no_p` and :footcite:`RidgwayEtAl2012`).
+    adjustment (see `ttest_1samp_no_p` and :footcite:`RidgwayEtAl2012`).
 
     Parameters
     ----------
@@ -47,9 +47,9 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     b : array-like
         The second array.
     equal_var : bool
-        Assume equal variance. See :func:`scipy.stats.ttest_ind`.
+        Assume equal variance. See `scipy.stats.ttest_ind`.
     sigma : float
-        The regularization. See :func:`ttest_1samp_no_p`.
+        The regularization. See `ttest_1samp_no_p`.
 
     Returns
     -------
@@ -69,7 +69,7 @@ def f_oneway(*args):
     the same population mean. The test is applied to samples from two or
     more groups, possibly with differing sizes :footcite:`Lowry2014`.
 
-    This is a modified version of :func:`scipy.stats.f_oneway` that avoids
+    This is a modified version of `scipy.stats.f_oneway` that avoids
     computing the associated p-value.
 
     Parameters
@@ -93,7 +93,7 @@ def f_oneway(*args):
        property is known as homoscedasticity.
 
     If these assumptions are not true for a given set of data, it may still be
-    possible to use the Kruskal-Wallis H-test (:func:`scipy.stats.kruskal`)
+    possible to use the Kruskal-Wallis H-test (`scipy.stats.kruskal`)
     although with some loss of power.
 
     The algorithm is from Heiman :footcite:`Heiman2002`, pp.394-7.

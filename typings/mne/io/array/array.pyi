@@ -10,7 +10,7 @@ class RawArray(BaseRaw):
         The channels' time series. See notes for proper units of measure.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Consider using :func:`mne.create_info` to populate
+        The `mne.Info` object with information about the sensors and methods of measurement. Consider using `mne.create_info` to populate
         this structure. This may be modified in place by the class.
     first_samp : int
         First sample offset used during recording (default 0).
@@ -26,7 +26,7 @@ class RawArray(BaseRaw):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also

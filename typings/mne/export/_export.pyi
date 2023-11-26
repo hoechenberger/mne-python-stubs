@@ -15,7 +15,7 @@ def export_raw(
 
     Supported formats:
         - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
-        - EEGLAB (``.set``, uses :mod:`eeglabio`)
+        - EEGLAB (``.set``, uses `eeglabio`)
         - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
     .. warning::
@@ -56,7 +56,7 @@ def export_raw(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Notes
@@ -65,13 +65,13 @@ def export_raw(
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
-    use :meth:`mne.io.Raw.save` instead.
+    use `mne.io.Raw.save` instead.
     Export does not apply projector(s). Unapplied projector(s) will be lost.
     Consider applying projector(s) before exporting with
-    :meth:`mne.io.Raw.apply_proj`.
+    `mne.io.Raw.apply_proj`.
 
     For EEGLAB exports, channel locations are expanded to full EEGLAB format.
-    For more details see :func:`eeglabio.utils.cart_to_eeglab`.
+    For more details see `eeglabio.utils.cart_to_eeglab`.
 
     For EDF exports, only channels measured in Volts are allowed; in MNE-Python
     this means channel types 'eeg', 'ecog', 'seeg', 'emg', 'eog', 'ecg', 'dbs',
@@ -98,7 +98,7 @@ def export_epochs(
     """Export Epochs to external formats.
 
     Supported formats:
-        - EEGLAB (``.set``, uses :mod:`eeglabio`)
+        - EEGLAB (``.set``, uses `eeglabio`)
 
     .. warning::
         Since we are exporting to external formats, there's no guarantee that all
@@ -126,7 +126,7 @@ def export_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Notes
@@ -135,13 +135,13 @@ def export_epochs(
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
-    use :meth:`mne.Epochs.save` instead.
+    use `mne.Epochs.save` instead.
     Export does not apply projector(s). Unapplied projector(s) will be lost.
     Consider applying projector(s) before exporting with
-    :meth:`mne.Epochs.apply_proj`.
+    `mne.Epochs.apply_proj`.
 
     For EEGLAB exports, channel locations are expanded to full EEGLAB format.
-    For more details see :func:`eeglabio.utils.cart_to_eeglab`.
+    For more details see `eeglabio.utils.cart_to_eeglab`.
     """
     ...
 
@@ -155,7 +155,7 @@ def export_evokeds(
     options, use the format-specific functions.
 
     Supported formats:
-        - MFF (``.mff``, uses :func:`mne.export.export_evokeds_mff`)
+        - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
 
     .. warning::
         Since we are exporting to external formats, there's no guarantee that all
@@ -185,7 +185,7 @@ def export_evokeds(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -199,9 +199,9 @@ def export_evokeds(
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
-    use :meth:`mne.Evoked.save` instead.
+    use `mne.Evoked.save` instead.
     Export does not apply projector(s). Unapplied projector(s) will be lost.
     Consider applying projector(s) before exporting with
-    :meth:`mne.Evoked.apply_proj`.
+    `mne.Evoked.apply_proj`.
     """
     ...

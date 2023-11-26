@@ -68,13 +68,13 @@ def plot_head_positions(
         Show figure if True. Defaults to True.
     destination : str | array-like, shape (3,) | None
         The destination location for the head, assumed to be in head
-        coordinates. See :func:`mne.preprocessing.maxwell_filter` for
+        coordinates. See `mne.preprocessing.maxwell_filter` for
         details.
 
         .. versionadded:: 0.16
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. If provided, will be used to show the destination position when
+        The `mne.Info` object with information about the sensors and methods of measurement. If provided, will be used to show the destination position when
         ``destination is None``, and for showing the MEG sensors.
 
         .. versionadded:: 0.16
@@ -127,10 +127,10 @@ def plot_evoked_field(
         How to print info about the time instant visualized.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     fig : Figure3D | mne.viz.Brain | None
         If None (default), a new figure will be created, otherwise it will
@@ -166,7 +166,7 @@ def plot_evoked_field(
         .. versionadded:: 1.4
 
     interpolation : str | None
-        Interpolation method (:class:`scipy.interpolate.interp1d` parameter).
+        Interpolation method (`scipy.interpolate.interp1d` parameter).
         Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
         ``'quadratic'`` or ``'cubic'``.
 
@@ -191,7 +191,7 @@ def plot_evoked_field(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -233,7 +233,7 @@ def plot_alignment(
     ----------
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. If None (default), no sensor information will be shown.
+        The `mne.Info` object with information about the sensors and methods of measurement. If None (default), no sensor information will be shown.
 
     trans : path-like | dict | instance of Transform | ``"fsaverage"`` | None
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
@@ -319,7 +319,7 @@ def plot_alignment(
     mri_fiducials : bool | str | path-like
         Plot MRI fiducials (default False). If ``True``, look for a file with
         the canonical name (``bem/{subject}-fiducials.fif``). If ``str``,
-        it can be ``'estimated'`` to use :func:`mne.coreg.get_mni_fiducials`,
+        it can be ``'estimated'`` to use `mne.coreg.get_mni_fiducials`,
         otherwise it should provide the full path to the fiducials file.
 
         .. versionadded:: 0.22
@@ -384,7 +384,7 @@ def plot_alignment(
 
         Where the value (``eeg_colors`` above) can be broadcast to an array of colors with
         length that matches the number of channels of that type, i.e., is compatible with
-        :func:`matplotlib.colors.to_rgba_array`. A few examples of this for the case above
+        `matplotlib.colors.to_rgba_array`. A few examples of this for the case above
         are the string ``"k"``, a list of ``n_eeg`` color strings, or an NumPy ndarray of
         shape ``(n_eeg, 3)`` or ``(n_eeg, 4)``.
 
@@ -394,7 +394,7 @@ def plot_alignment(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -538,7 +538,7 @@ def plot_source_estimates(
 
     views : str | list
         View to use. Using multiple views (list) is not supported for mpl
-        backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+        backend. See `Brain.show_view <mne.viz.Brain.show_view>` for
         valid string options.
 
         When plotting a standard SourceEstimate (not volume, mixed, or vector)
@@ -659,25 +659,25 @@ def plot_source_estimates(
         ``dict(time_label_size=10)``).
 
     brain_kwargs : dict | None
-        Additional arguments to the :class:`mne.viz.Brain` constructor (e.g.,
+        Additional arguments to the `mne.viz.Brain` constructor (e.g.,
         ``dict(silhouette=True)``).
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     figure : instance of mne.viz.Brain | matplotlib.figure.Figure
-        An instance of :class:`mne.viz.Brain` or matplotlib figure.
+        An instance of `mne.viz.Brain` or matplotlib figure.
 
     Notes
     -----
     Flatmaps are available by default for ``fsaverage`` but not for other
     subjects reconstructed by FreeSurfer. We recommend using
-    :func:`mne.compute_source_morph` to morph source estimates to ``fsaverage``
+    `mne.compute_source_morph` to morph source estimates to ``fsaverage``
     for flatmap plotting. If you want to construct your own flatmap for a given
     subject, these links might help:
 
@@ -713,7 +713,7 @@ def plot_volume_source_estimates(
         a new subject (see Examples).
 
         .. versionchanged:: 0.18
-           Support for :class:nibabel.spatialimages.SpatialImage`.
+           Support for `nibabel.spatialimages.SpatialImage`.
 
     subject : str | None
         The FreeSurfer subject name.
@@ -781,7 +781,7 @@ def plot_volume_source_estimates(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -809,7 +809,7 @@ def plot_volume_source_estimates(
 
     Examples
     --------
-    Passing a :class:`mne.SourceMorph` as the ``src``
+    Passing a `mne.SourceMorph` as the ``src``
     parameter can be useful for plotting in a different subject's space
     (here, a ``'sample'`` STC in ``'fsaverage'``'s space)::
 
@@ -914,7 +914,7 @@ def plot_vector_source_estimates(
 
     views : str | list
         View to use. Using multiple views (list) is not supported for mpl
-        backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+        backend. See `Brain.show_view <mne.viz.Brain.show_view>` for
         valid string options.
     colorbar : bool
         If True, display colorbar on scene.
@@ -928,7 +928,7 @@ def plot_vector_source_estimates(
             ``lims`` : list | np.ndarray | tuple of float, 3 elements
                 Lower, middle, and upper bound for colormap.
 
-        Unlike :meth:`stc.plot <mne.SourceEstimate.plot>`, it cannot use
+        Unlike `stc.plot <mne.SourceEstimate.plot>`, it cannot use
         ``pos_lims``, as the surface plot must show the magnitude.
     cortex : str or tuple
         Specifies how binarized curvature values are rendered.
@@ -1001,19 +1001,19 @@ def plot_vector_source_estimates(
         ``dict(time_label_size=10)``).
 
     brain_kwargs : dict | None
-        Additional arguments to the :class:`mne.viz.Brain` constructor (e.g.,
+        Additional arguments to the `mne.viz.Brain` constructor (e.g.,
         ``dict(silhouette=True)``).
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     brain : mne.viz.Brain
-        A instance of :class:`mne.viz.Brain`.
+        A instance of `mne.viz.Brain`.
 
     Notes
     -----
@@ -1091,7 +1091,7 @@ def plot_sparse_source_estimates(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     **kwargs : kwargs
         Keyword arguments to pass to renderer.mesh.
@@ -1233,7 +1233,7 @@ def plot_dipole_locations(
 
     head_source : str | list of str
         Head source(s) to use. See the ``source`` option of
-        :func:`mne.get_head_surf` for more information.
+        `mne.get_head_surf` for more information.
         Only used when mode equals ``'outlines'``.
 
         .. versionadded:: 1.1
@@ -1244,14 +1244,14 @@ def plot_dipole_locations(
         .. versionadded:: 1.1
     width : float | None
         Width of the matplotlib quiver arrow, see
-        :meth:`matplotlib:matplotlib.axes.Axes.quiver`. If None (default),
+        `matplotlib:matplotlib.axes.Axes.quiver`. If None (default),
         when mode is ``'outlines'`` 0.015 will be used, and when mode is
         ``'orthoview'`` the matplotlib default is used.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1270,22 +1270,22 @@ def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
 
     Note that this will take the raw values for 3d coordinates of each channel,
     without applying any transforms. If brain images are flipped up/dn upon
-    using matplotlib.pyplot.imshow`, check your matplotlib backend as this
+    using `matplotlib.pyplot.imshow`, check your matplotlib backend as this
     behavior changes.
 
     Parameters
     ----------
     fig : instance of Figure3D
         The figure on which you've plotted electrodes using
-        :func:`mne.viz.plot_alignment`.
+        `mne.viz.plot_alignment`.
     montage : instance of DigMontage or Info | dict
         The digital montage for the electrodes plotted in the scene. If
-        :class:mne.Info`, channel positions will be pulled from the ``loc``
+        `mne.Info`, channel positions will be pulled from the ``loc``
         field of ``chs``. dict should have ch:xyz mappings.
     hide_sensors : bool
         Whether to remove the spheres in the scene before taking a snapshot.
         The sensors will always be shown in the final figure. If you want an
-        image of just the brain, use :class:`mne.viz.Brain` instead.
+        image of just the brain, use `mne.viz.Brain` instead.
 
     Returns
     -------

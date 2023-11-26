@@ -94,14 +94,14 @@ class Evoked(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     ch_names : list of str
         List of channels' names.
     nave : int
@@ -231,9 +231,9 @@ class Evoked(
 
         fun : callable
             A function to be applied to the channels. The first argument of
-            fun has to be a timeseries (:class:`numpy.ndarray`). The function must
+            fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  because it will apply channel-wise.
-            The function must return an :class:numpy.ndarray` shaped like its input.
+            The function must return an `numpy.ndarray` shaped like its input.
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -249,17 +249,17 @@ class Evoked(
             (default) the data type is not modified.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``. Ignored if ``channel_wise=False`` as the workload
             is split across channels.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         **kwargs : dict
@@ -303,7 +303,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -334,7 +334,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -353,7 +353,7 @@ class Evoked(
         """Export Evoked to external formats.
 
         Supported formats:
-            - MFF (``.mff``, uses :func:`mne.export.export_evokeds_mff`)
+            - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
 
         .. warning::
             Since we are exporting to external formats, there's no guarantee that all
@@ -377,7 +377,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -386,10 +386,10 @@ class Evoked(
 
         Export to external format may not preserve all the information from the
         instance. To save in native MNE format (``.fif``) without information loss,
-        use :meth:`mne.Evoked.save` instead.
+        use `mne.Evoked.save` instead.
         Export does not apply projector(s). Unapplied projector(s) will be lost.
         Consider applying projector(s) before exporting with
-        :meth:`mne.Evoked.apply_proj`.
+        `mne.Evoked.apply_proj`.
         """
         ...
     @property
@@ -533,11 +533,11 @@ class Evoked(
             Noise covariance used to whiten the data while plotting.
             Whitened data channel names are shown in italic.
             Can be a string to load a covariance from disk.
-            See also :meth:`mne.Evoked.plot_white` for additional inspection
+            See also `mne.Evoked.plot_white` for additional inspection
             of noise covariance properties when whitening evoked data.
             For data processed with SSS, the effective dependence between
             magnetometers and gradiometers may introduce differences in scaling,
-            consider using :meth:`mne.Evoked.plot_white`.
+            consider using `mne.Evoked.plot_white`.
 
             .. versionadded:: 0.16.0
         time_unit : str
@@ -548,7 +548,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -574,7 +574,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -728,7 +728,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -921,9 +921,9 @@ class Evoked(
                Support for 'reconstruct' was added.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -967,7 +967,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -980,9 +980,9 @@ class Evoked(
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -1022,7 +1022,7 @@ class Evoked(
             Side length of each subplot in inches.
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -1037,10 +1037,10 @@ class Evoked(
                 2 topomaps.
 
         vlim : tuple of length 2 | 'joint'
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
-            min/max of the data (separately for each topomap). Elements of the :class:`tuple` may also be callable functions which take in a :class:`NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
+            min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
             .. versionadded:: 1.2
 
@@ -1064,8 +1064,8 @@ class Evoked(
             If ``None`` and ``scalings=None`` the unit is automatically determined, otherwise the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
         time_unit : str
             The units for the time axis, can be "ms" or "s" (default).
 
@@ -1095,14 +1095,14 @@ class Evoked(
         colorbar scale will only accurately reflect topomaps that are generated in
         the same call as the colorbar. Note also that the colorbar will not be
         resized automatically when ``axes`` are provided; use Matplotlib's
-        :meth:`axes.set_position() <matplotlib.axes.Axes.set_position>` method or
+        `axes.set_position() <matplotlib.axes.Axes.set_position>` method or
         :ref:`gridspec <matplotlib:arranging_axes>` interface to adjust the colorbar
         size yourself.
 
         When ``time=="interactive"``, the figure will publish and subscribe to the
         following UI events:
 
-        * :class:mne.viz.ui_events.TimeChange` whenever a new time is selected.
+        * `mne.viz.ui_events.TimeChange` whenever a new time is selected.
         """
         ...
     def plot_field(
@@ -1135,10 +1135,10 @@ class Evoked(
             How to print info about the time instant visualized.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
         fig : Figure3D | mne.viz.Brain | None
             If None (default), a new figure will be created, otherwise it will
@@ -1174,7 +1174,7 @@ class Evoked(
             .. versionadded:: 1.4
 
         interpolation : str | None
-            Interpolation method (:class:`scipy.interpolate.interp1d` parameter).
+            Interpolation method (`scipy.interpolate.interp1d` parameter).
             Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
             ``'quadratic'`` or ``'cubic'``.
 
@@ -1199,7 +1199,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1255,10 +1255,10 @@ class Evoked(
                 two projectors the returned value will be 66.
             ``'full'``
                 The rank is assumed to be full, i.e. equal to the
-                number of good channels. If a mne.Covariance` is passed, this can
+                number of good channels. If a `mne.Covariance` is passed, this can
                 make sense if it has been (possibly improperly) regularized without
                 taking into account the true data rank.
-            :class:`dict`
+            `dict`
                 Calculate the rank only for a subset of channel types, and explicitly
                 specify the rank for the remaining channel types. This can be
                 extremely useful if you already **know** the rank of (part of) your
@@ -1287,7 +1287,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1305,7 +1305,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1385,7 +1385,7 @@ class Evoked(
         show : bool
             Show figure if ``True``. Defaults to ``True``.
         ts_args : None | dict
-            A dict of ``kwargs`` that are forwarded to :meth:`mne.Evoked.plot` to
+            A dict of ``kwargs`` that are forwarded to `mne.Evoked.plot` to
             style the butterfly plot. If they are not in this dict, the following
             defaults are passed: ``spatial_colors=True``, ``zorder='std'``.
             ``show`` and ``exclude`` are illegal.
@@ -1393,7 +1393,7 @@ class Evoked(
             Defaults to ``None``.
         topomap_args : None | dict
             A dict of ``kwargs`` that are forwarded to
-            :meth:`mne.Evoked.plot_topomap` to style the topomaps.
+            `mne.Evoked.plot_topomap` to style the topomaps.
             If it is not in this dict, ``outlines='head'`` will be passed.
             ``show``, ``times``, ``colorbar`` are illegal.
             If ``None``, no customizable arguments will be passed.
@@ -1467,7 +1467,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1480,9 +1480,9 @@ class Evoked(
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -1509,7 +1509,7 @@ class Evoked(
             maximum absolute value of the data (yielding a colormap with midpoint
             at 0). If only one of ``vmin``, ``vmax`` is ``None``, will use
             ``min(data)`` or ``max(data)``, respectively. If callable, should
-            accept a :class:`NumPy array <numpy.ndarray>` of data and return a
+            accept a `NumPy array <numpy.ndarray>` of data and return a
             float.
 
             .. versionadded:: 1.1.0
@@ -1517,7 +1517,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1712,24 +1712,24 @@ class Evoked(
             include all channels (including "bad" channels, if any).
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
             Additional keyword arguments passed to the spectral estimation
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See :func:mne.time_frequency.psd_array_welch` and
-            :func:mne.time_frequency.psd_array_multitaper` for details.
+            method). See `mne.time_frequency.psd_array_welch` and
+            `mne.time_frequency.psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1805,7 +1805,7 @@ class Evoked(
         method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
             method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for :class:mne.Epochs` or :class:mne.Evoked` data.
+            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
         average : bool
             If False, the PSDs of all channels is displayed. No averaging
             is done and parameters area_mode and area_alpha are ignored. When
@@ -1845,7 +1845,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1864,30 +1864,30 @@ class Evoked(
 
             .. versionadded:: 0.24.0
         ax : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
         show : bool
             Show the figure if ``True``.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
             Additional keyword arguments passed to the spectral estimation
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See :func:mne.time_frequency.psd_array_welch` and
-            :func:mne.time_frequency.psd_array_multitaper` for details.
+            method). See `mne.time_frequency.psd_array_welch` and
+            `mne.time_frequency.psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1898,7 +1898,7 @@ class Evoked(
         -----
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-        of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
+        of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
         """
         ...
     def to_data_frame(
@@ -1932,8 +1932,8 @@ class Evoked(
 
         index : 'time' | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
-            integer index (:class:`pandas.RangeIndex`) will be used. If ``'time'``, a
-            ``pandas.Index`` or :class:`pandas.TimedeltaIndex` will be used
+            integer index (`pandas.RangeIndex`) will be used. If ``'time'``, a
+            ``pandas.Index`` or `pandas.TimedeltaIndex` will be used
             (depending on the value of ``time_format``).
             Defaults to ``None``.
 
@@ -1955,7 +1955,7 @@ class Evoked(
             Desired time format. If ``None``, no conversion is applied, and time values
             remain as float values in seconds. If ``'ms'``, time values will be rounded
             to the nearest millisecond and converted to integers. If ``'timedelta'``,
-            time values will be converted to :class:`pandas.Timedelta` values.
+            time values will be converted to `pandas.Timedelta` values.
             Default is ``None``.
 
             .. versionadded:: 0.20
@@ -1963,7 +1963,7 @@ class Evoked(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1984,7 +1984,7 @@ class EvokedArray(Evoked):
         The channels' evoked response. See notes for proper units of measure.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Consider using :func:`mne.create_info` to populate this
+        The `mne.Info` object with information about the sensors and methods of measurement. Consider using `mne.create_info` to populate this
         structure.
     tmin : float
         Start time before event. Defaults to 0.
@@ -2020,7 +2020,7 @@ class EvokedArray(Evoked):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -2066,14 +2066,14 @@ class EvokedArray(Evoked):
 def combine_evoked(all_evoked, weights):
     """Merge evoked data by weighted addition or subtraction.
 
-    Each mne.Evoked` in ``all_evoked`` should have the same channels and the
+    Each `mne.Evoked` in ``all_evoked`` should have the same channels and the
     same time instants. Subtraction can be performed by passing
     ``weights=[1, -1]``.
 
     .. Warning::
         Other than cases like simple subtraction mentioned above (where all
         weights are -1 or 1), if you provide numeric weights instead of using
-        ``'equal'`` or ``'nave'``, the resulting mne.Evoked` object's
+        ``'equal'`` or ``'nave'``, the resulting `mne.Evoked` object's
         ``.nave`` attribute (which is used to scale noise covariance when
         applying the inverse operator) may not be suitable for inverse imaging.
 
@@ -2085,7 +2085,7 @@ def combine_evoked(all_evoked, weights):
         The weights to apply to the data of each evoked instance, or a string
         describing the weighting strategy to apply: ``'nave'`` computes
         sum-to-one weights proportional to each object's ``nave`` attribute;
-        ``'equal'`` weights each mne.Evoked` by ``1 / len(all_evoked)``.
+        ``'equal'`` weights each `mne.Evoked` by ``1 / len(all_evoked)``.
 
     Returns
     -------
@@ -2138,7 +2138,7 @@ def read_evokeds(
 
         If ``None`` (default), do not apply baseline correction.
 
-        .. note:: Note that if the read  mne.Evoked` objects have already
+        .. note:: Note that if the read  `mne.Evoked` objects have already
                   been baseline-corrected, the data retrieved from disk will
                   **always** be baseline-corrected (in fact, only the
                   baseline-corrected version of the data will be saved, so
@@ -2162,14 +2162,14 @@ def read_evokeds(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     evoked : Evoked or list of Evoked
-        The evoked dataset(s); one mne.Evoked` if ``condition`` is an
-        integer or string; or a list of mne.Evoked` if ``condition`` is
+        The evoked dataset(s); one `mne.Evoked` if ``condition`` is an
+        integer or string; or a list of `mne.Evoked` if ``condition`` is
         ``None`` or a list.
 
     See Also
@@ -2179,7 +2179,7 @@ def read_evokeds(
     Notes
     -----
     .. versionchanged:: 0.23
-        If the read mne.Evoked` objects had been baseline-corrected before
+        If the read `mne.Evoked` objects had been baseline-corrected before
         saving, this will be reflected in their ``baseline`` attribute after
         reading.
     """
@@ -2215,7 +2215,7 @@ def write_evokeds(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
         .. versionadded:: 0.24
@@ -2228,7 +2228,7 @@ def write_evokeds(
     -----
     .. versionchanged:: 0.23
         Information on baseline correction will be stored with each individual
-        mne.Evoked` object, and will be restored when reading the data again
+        `mne.Evoked` object, and will be restored when reading the data again
         via `mne.read_evokeds`.
     """
     ...

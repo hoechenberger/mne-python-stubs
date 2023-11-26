@@ -23,7 +23,7 @@ class CSP(TransformerMixin, BaseEstimator):
         If not None (same as ``'empirical'``, default), allow regularization
         for covariance estimation. If float (between 0 and 1), shrinkage is
         used. For str values, ``reg`` will be passed as ``method`` to
-        :func:`mne.compute_covariance`.
+        `mne.compute_covariance`.
     log : None | bool (default None)
         If ``transform_into`` equals ``'average_power'`` and ``log`` is None or
         True, then apply a log transform to standardize features, else features
@@ -45,7 +45,7 @@ class CSP(TransformerMixin, BaseEstimator):
         :footcite:`Grosse-WentrupBuss2008` and can have a negative impact on
         pattern order.
     cov_method_params : dict | None
-        Parameters to pass to :func:`mne.compute_covariance`.
+        Parameters to pass to `mne.compute_covariance`.
 
         .. versionadded:: 0.16
 
@@ -69,10 +69,10 @@ class CSP(TransformerMixin, BaseEstimator):
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -248,8 +248,8 @@ class CSP(TransformerMixin, BaseEstimator):
         ----------
 
         info : mne.Info
-            The :class:`mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
-            :func:`mne.create_info`.
+            The `mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
+            `mne.create_info`.
         components : float | array of float | None
            The patterns to plot. If ``None``, all components will be shown.
 
@@ -273,9 +273,9 @@ class CSP(TransformerMixin, BaseEstimator):
             If None, defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -319,7 +319,7 @@ class CSP(TransformerMixin, BaseEstimator):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -332,9 +332,9 @@ class CSP(TransformerMixin, BaseEstimator):
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -368,7 +368,7 @@ class CSP(TransformerMixin, BaseEstimator):
             Side length of each subplot in inches.
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -383,7 +383,7 @@ class CSP(TransformerMixin, BaseEstimator):
                 2 topomaps.
 
         vlim : tuple of length 2
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data. Defaults to ``(None, None)``.
@@ -410,8 +410,8 @@ class CSP(TransformerMixin, BaseEstimator):
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
         name_format : str
             String format for topomap values. Defaults to "CSP%01d".
 
@@ -471,8 +471,8 @@ class CSP(TransformerMixin, BaseEstimator):
         ----------
 
         info : mne.Info
-            The :class:`mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
-            :func:`mne.create_info`.
+            The `mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
+            `mne.create_info`.
         components : float | array of float | None
            The patterns to plot. If ``None``, all components will be shown.
 
@@ -496,9 +496,9 @@ class CSP(TransformerMixin, BaseEstimator):
             If None, defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -542,7 +542,7 @@ class CSP(TransformerMixin, BaseEstimator):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -555,9 +555,9 @@ class CSP(TransformerMixin, BaseEstimator):
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -591,7 +591,7 @@ class CSP(TransformerMixin, BaseEstimator):
             Side length of each subplot in inches.
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -606,10 +606,10 @@ class CSP(TransformerMixin, BaseEstimator):
                 2 topomaps.
 
         vlim : tuple of length 2 | 'joint'
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
-            min/max of the data (separately for each topomap). Elements of the :class:`tuple` may also be callable functions which take in a :class:`NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
+            min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
             .. versionadded:: 1.3
 
@@ -633,8 +633,8 @@ class CSP(TransformerMixin, BaseEstimator):
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
         name_format : str
             String format for topomap values. Defaults to "CSP%01d".
 
@@ -677,7 +677,7 @@ class SPoC(CSP):
         regularization for covariance estimation.
         If float, shrinkage is used (0 <= shrinkage <= 1).
         For str options, ``reg`` will be passed to ``method`` to
-        :func:`mne.compute_covariance`.
+        `mne.compute_covariance`.
     log : None | bool (default None)
         If transform_into == 'average_power' and log is None or True, then
         applies a log transform to standardize the features, else the features
@@ -687,7 +687,7 @@ class SPoC(CSP):
         each spatial filter. If 'csp_space' self.transform will return the data
         in CSP space. Defaults to 'average_power'.
     cov_method_params : dict | None
-        Parameters to pass to :func:`mne.compute_covariance`.
+        Parameters to pass to `mne.compute_covariance`.
 
         .. versionadded:: 0.16
 
@@ -711,10 +711,10 @@ class SPoC(CSP):
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your

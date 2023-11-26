@@ -22,7 +22,7 @@ class Scaler(TransformerMixin, BaseEstimator):
     """Standardize channel data.
 
     This class scales data for each channel. It differs from scikit-learn
-    classes (e.g., :class:`sklearn.preprocessing.StandardScaler`) in that
+    classes (e.g., `sklearn.preprocessing.StandardScaler`) in that
     it scales each *channel* by estimating μ and σ using data from all
     time points and epochs, as opposed to standardizing each *feature*
     (i.e., each time point for each channel) by estimating using μ and σ
@@ -32,19 +32,19 @@ class Scaler(TransformerMixin, BaseEstimator):
     ----------
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Only necessary if ``scalings`` is a dict or None.
+        The `mne.Info` object with information about the sensors and methods of measurement. Only necessary if ``scalings`` is a dict or None.
     scalings : dict, str, default None
         Scaling method to be applied to data channel wise.
 
         * if scalings is None (default), scales mag by 1e15, grad by 1e13,
           and eeg by 1e6.
-        * if scalings is :class:`dict`, keys are channel types and values
+        * if scalings is `dict`, keys are channel types and values
           are scale factors.
         * if ``scalings=='median'``,
-          :class:`sklearn.preprocessing.RobustScaler`
+          `sklearn.preprocessing.RobustScaler`
           is used (requires sklearn version 0.17+).
         * if ``scalings=='mean'``,
-          :class:`sklearn.preprocessing.StandardScaler`
+          `sklearn.preprocessing.StandardScaler`
           is used.
 
     with_mean : bool, default True
@@ -263,7 +263,7 @@ class PSDEstimator(TransformerMixin):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -348,7 +348,7 @@ class FilterEstimator(TransformerMixin):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     l_freq : float | None
         For FIR filters, the lower pass-band edge; for IIR filters, the lower
@@ -410,8 +410,8 @@ class FilterEstimator(TransformerMixin):
         is None and method="iir", 4th order Butterworth will be used.
 
     fir_design : str
-        Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-        or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+        Can be "firwin" (default) to use `scipy.signal.firwin`,
+        or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
@@ -420,7 +420,7 @@ class FilterEstimator(TransformerMixin):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -430,7 +430,7 @@ class FilterEstimator(TransformerMixin):
     Notes
     -----
     This is primarily meant for use in conjunction with
-    :class:`mne_realtime.RtEpochs`. In general it is not recommended in a
+    `mne_realtime.RtEpochs`. In general it is not recommended in a
     normal processing pipeline as it may result in edge artifacts. Use with
     caution.
     """
@@ -585,7 +585,7 @@ class TemporalFilter(TransformerMixin):
         - l_freq is not None, h_freq is None: low-pass filter
         - l_freq is None, h_freq is not None: high-pass filter
 
-    See :func:`mne.filter.filter_data`.
+    See `mne.filter.filter_data`.
 
     Parameters
     ----------
@@ -639,8 +639,8 @@ class TemporalFilter(TransformerMixin):
         The window to use in FIR design, can be "hamming", "hann",
         or "blackman".
     fir_design : str
-        Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-        or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+        Can be "firwin" (default) to use `scipy.signal.firwin`,
+        or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
@@ -649,7 +649,7 @@ class TemporalFilter(TransformerMixin):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also

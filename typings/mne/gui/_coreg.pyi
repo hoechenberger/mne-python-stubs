@@ -59,7 +59,7 @@ class CoregistrationUI(HasTraits):
         ``'lpa'``, ``'rpa'``, and ``'nasion'``, with **values** being the
         respective coordinates in meters.
         If a list, it must be a list of ``DigPoint`` instances as returned by the
-        :func:`mne.io.read_fiducials` function.
+        `mne.io.read_fiducials` function.
         If ``'estimated'``, the fiducials are derived from the ``fsaverage``
         template. If ``'auto'`` (default), tries to find the fiducials
         in a file with the canonical name
@@ -125,7 +125,7 @@ class CoregistrationUI(HasTraits):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes

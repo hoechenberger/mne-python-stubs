@@ -19,8 +19,8 @@ def has_dataset(name):
     ----------
     name : str | dict
         The dataset to check. Strings refer to one of the supported datasets
-        listed :ref:`here <datasets>`. A :class:`dict` can be used to check for
-        user-defined datasets (see the Notes section of :func:`fetch_dataset`),
+        listed :ref:`here <datasets>`. A `dict` can be used to check for
+        user-defined datasets (see the Notes section of `fetch_dataset`),
         and must contain keys ``dataset_name``, ``archive_name``, ``url``,
         ``folder_name``, ``hash``.
 
@@ -47,7 +47,7 @@ def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     References
@@ -81,7 +81,7 @@ def fetch_hcp_mmp_parcellation(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Notes

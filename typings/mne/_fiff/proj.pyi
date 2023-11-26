@@ -88,12 +88,12 @@ class Projection(dict):
         ----------
 
         info : mne.Info
-            The :class:`mne.Info` object with information about the sensors and methods of measurement. Used to determine the layout.
+            The `mne.Info` object with information about the sensors and methods of measurement. Used to determine the layout.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -126,7 +126,7 @@ class Projection(dict):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -139,9 +139,9 @@ class Projection(dict):
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -175,7 +175,7 @@ class Projection(dict):
             Side length of each subplot in inches.
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -190,10 +190,10 @@ class Projection(dict):
                 2 topomaps.
 
         vlim : tuple of length 2 | 'joint'
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
-            min/max of the data (separately for each projector). Elements of the :class:`tuple` may also be callable functions which take in a :class:`NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all projectors of the same channel type, using the min/max of the data for that channel type. If vlim is ``'joint'``, ``info`` must not be ``None``. Defaults to ``(None, None)``.
+            min/max of the data (separately for each projector). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all projectors of the same channel type, using the min/max of the data for that channel type. If vlim is ``'joint'``, ``info`` must not be ``None``. Defaults to ``(None, None)``.
 
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
@@ -219,8 +219,8 @@ class Projection(dict):
 
             .. versionadded:: 1.2
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
         show : bool
             Show the figure if ``True``.
 
@@ -278,7 +278,7 @@ class ProjMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -296,7 +296,7 @@ class ProjMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -376,9 +376,9 @@ class ProjMixin:
             ``None`` it will return all channel types present.. If a list of ch_types is provided, it will return multiple figures. Defaults to ``None``.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -411,7 +411,7 @@ class ProjMixin:
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -424,9 +424,9 @@ class ProjMixin:
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -467,7 +467,7 @@ class ProjMixin:
             Only applies when plotting multiple topomaps at a time.
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -482,10 +482,10 @@ class ProjMixin:
                 2 topomaps.
 
         vlim : tuple of length 2 | 'joint'
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
-            min/max of the data (separately for each projector). Elements of the :class:`tuple` may also be callable functions which take in a :class:`NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all projectors of the same channel type, using the min/max of the data for that channel type. If vlim is ``'joint'``, ``info`` must not be ``None``. Defaults to ``(None, None)``.
+            min/max of the data (separately for each projector). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all projectors of the same channel type, using the min/max of the data for that channel type. If vlim is ``'joint'``, ``info`` must not be ``None``. Defaults to ``(None, None)``.
 
         cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
@@ -511,8 +511,8 @@ class ProjMixin:
 
             .. versionadded:: 1.2
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
         show : bool
             Show the figure if ``True``.
 
@@ -560,7 +560,7 @@ def make_projector_info(info, include_active: bool = True):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     include_active : bool
         Also include projectors that are already active.
 
@@ -588,7 +588,7 @@ def activate_proj(projs, copy: bool = True, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -613,7 +613,7 @@ def deactivate_proj(projs, copy: bool = True, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -632,7 +632,7 @@ def make_eeg_average_ref_proj(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     activate : bool
         If True projections are activated.
     ch_type : str
@@ -644,7 +644,7 @@ def make_eeg_average_ref_proj(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -668,7 +668,7 @@ def setup_proj(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Warning: will be modified in-place.
+        The `mne.Info` object with information about the sensors and methods of measurement. Warning: will be modified in-place.
     add_eeg_ref : bool
         If True, an EEG average reference will be added (unless one
         already exists).
@@ -683,7 +683,7 @@ def setup_proj(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

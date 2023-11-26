@@ -28,16 +28,16 @@ def make_dics(
     at a specific frequency range :footcite:`GrossEtAl2001`. It does this by
     constructing a spatial filter for each source point.
     The computation of these filters is very similar to those of the LCMV
-    beamformer (:func:`make_lcmv`), but instead of operating on a covariance
+    beamformer (`make_lcmv`), but instead of operating on a covariance
     matrix, the CSD matrix is used. When applying these filters to a CSD matrix
-    (see :func:`apply_dics_csd`), the source power can be estimated for each
+    (see `apply_dics_csd`), the source power can be estimated for each
     source point.
 
     Parameters
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     forward : instance of Forward
         Forward operator.
     csd : instance of CrossSpectralDensity
@@ -91,10 +91,10 @@ def make_dics(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -129,7 +129,7 @@ def make_dics(
             (Borgiotti-Kaplan beamformer) :footcite:`SekiharaNagarajan2008`,
             which is not rotation invariant when ``pick_ori='vector'``.
             This should be combined with
-            :meth:`stc.project('pca') <mne.VectorSourceEstimate.project>` to follow
+            `stc.project('pca') <mne.VectorSourceEstimate.project>` to follow
             the definition in :footcite:`SekiharaNagarajan2008`.
         - ``'nai'``
             The Neural Activity Index :footcite:`VanVeenEtAl1997` will be computed,
@@ -164,8 +164,8 @@ def make_dics(
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
-        It can also be a :class:`dict` containing keyword arguments to pass to
-        :func:`mne.forward.compute_depth_prior` (see docstring for details and
+        It can also be a `dict` containing keyword arguments to pass to
+        `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
         .. versionchanged:: 0.20
@@ -196,7 +196,7 @@ def make_dics(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -255,9 +255,9 @@ def make_dics(
     The original reference is :footcite:`GrossEtAl2001`. See
     :footcite:`vanVlietEtAl2018` for a tutorial style paper on the topic.
 
-    The DICS beamformer is very similar to the LCMV (:func:`make_lcmv`)
+    The DICS beamformer is very similar to the LCMV (`make_lcmv`)
     beamformer and many of the parameters are shared. However,
-    :func:`make_dics` and :func:`make_lcmv` currently have different defaults
+    `make_dics` and `make_lcmv` currently have different defaults
     for these parameters, which were settled on separately through extensive
     practical use case testing (but not necessarily exhaustive parameter space
     searching), and it remains to be seen how functionally interchangeable they
@@ -268,7 +268,7 @@ def make_dics(
 
         inversion='single', weight_norm=None, depth=1.
 
-    To use the :func:`make_lcmv` defaults, use::
+    To use the `make_lcmv` defaults, use::
 
         inversion='matrix', weight_norm='unit-noise-gain-invariant', depth=None
 
@@ -290,9 +290,9 @@ def apply_dics(evoked, filters, verbose=None):
     .. warning:: The result of this function is meant as an intermediate step
                  for further processing (such as computing connectivity). If
                  you are interested in estimating source time courses, use an
-                 LCMV beamformer (:func:`make_lcmv`, :func:`apply_lcmv`)
+                 LCMV beamformer (`make_lcmv`, `apply_lcmv`)
                  instead. If you are interested in estimating spectral power at
-                 the source level, use :func:`apply_dics_csd`.
+                 the source level, use `apply_dics_csd`.
     .. warning:: This implementation has not been heavily tested so please
                  report any issues or suggestions.
 
@@ -302,12 +302,12 @@ def apply_dics(evoked, filters, verbose=None):
         Evoked data to apply the DICS beamformer weights to.
     filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
-        Filter weights returned from :func:`make_dics`.
+        Filter weights returned from `make_dics`.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -334,9 +334,9 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
     .. warning:: The result of this function is meant as an intermediate step
                  for further processing (such as computing connectivity). If
                  you are interested in estimating source time courses, use an
-                 LCMV beamformer (:func:`make_lcmv`, :func:`apply_lcmv`)
+                 LCMV beamformer (`make_lcmv`, `apply_lcmv`)
                  instead. If you are interested in estimating spectral power at
-                 the source level, use :func:`apply_dics_csd`.
+                 the source level, use `apply_dics_csd`.
     .. warning:: This implementation has not been heavily tested so please
                  report any issue or suggestions.
 
@@ -346,7 +346,7 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
         Single trial epochs.
     filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
-        Filter weights returned from :func:`make_dics`. The DICS filters must
+        Filter weights returned from `make_dics`. The DICS filters must
         have been computed for a single frequency only.
     return_generator : bool
         Return a generator object instead of a list. This allows iterating
@@ -355,7 +355,7 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -385,7 +385,7 @@ def apply_dics_tfr_epochs(
         Single trial time-frequency epochs.
     filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
-        Filter weights returned from :func:`make_dics`.
+        Filter weights returned from `make_dics`.
     return_generator : bool
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
@@ -393,7 +393,7 @@ def apply_dics_tfr_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -436,7 +436,7 @@ def apply_dics_csd(csd, filters, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

@@ -16,14 +16,14 @@ def read_raw_nihon(fname, preload: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     raw : instance of RawNihon
         A Raw object containing Nihon Kohden data.
-        See :class:`mne.io.Raw` for documentation of attributes and methods.
+        See `mne.io.Raw` for documentation of attributes and methods.
 
     See Also
     --------
@@ -44,7 +44,7 @@ class RawNihon(BaseRaw):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also

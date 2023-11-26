@@ -22,8 +22,8 @@ def annotate_amplitude(
     should be annotated with either ``BAD_peak`` or ``BAD_flat`` are returned
     in ``bads`` instead.
     Note that the annotations and the bads are not automatically added to the
-    :class:mne.io.Raw` object; use :meth:mne.io.Raw.set_annotations` and
-    :class:`info['bads'] <mne.Info>` to do so.
+    `mne.io.Raw` object; use `mne.io.Raw.set_annotations` and
+    `info['bads'] <mne.Info>` to do so.
 
     Parameters
     ----------
@@ -43,10 +43,10 @@ def annotate_amplitude(
         If float, the minimum acceptable PTP is applied to all channels.
     bad_percent : float
         The percentage of the time a channel can be above or below thresholds.
-        Below this percentage, :class:mne.Annotations` are created.
+        Below this percentage, `mne.Annotations` are created.
         Above this percentage, the channel involved is return in ``bads``. Note
         the returned ``bads`` are not automatically added to
-        :class:`info['bads'] <mne.Info>`.
+        `info['bads'] <mne.Info>`.
         Defaults to ``5``, i.e. 5%.
     min_duration : float
         The minimum duration (s) required by consecutives samples to be above
@@ -67,7 +67,7 @@ def annotate_amplitude(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -81,7 +81,7 @@ def annotate_amplitude(
     -----
     This function does not use a window to detect small peak-to-peak or large
     peak-to-peak amplitude changes as the ``reject`` and ``flat`` argument from
-    :class:mne.Epochs` does. Instead, it looks at the difference between
+    `mne.Epochs` does. Instead, it looks at the difference between
     consecutive samples.
 
     - When used to detect segments below ``flat``, at least ``min_duration``

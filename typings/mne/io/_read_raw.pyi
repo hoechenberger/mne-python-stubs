@@ -13,15 +13,15 @@ def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
 
     The following readers are currently supported:
 
-    mne.io.read_raw_artemis123`, mne.io.read_raw_bdf`,
-    mne.io.read_raw_boxy`, mne.io.read_raw_brainvision`,
-    mne.io.read_raw_cnt`, mne.io.read_raw_ctf`, mne.io.read_raw_edf`,
-    mne.io.read_raw_eeglab`, mne.io.read_raw_egi`,
-    mne.io.read_raw_eximia`, mne.io.read_raw_fieldtrip`,
-    mne.io.read_raw_fif`,  mne.io.read_raw_gdf`, mne.io.read_raw_kit`,
-    mne.io.read_raw_fil`,
-    mne.io.read_raw_nicolet`, mne.io.read_raw_nirx`,
-    mne.io.read_raw_curry`, and mne.io.read_raw_nedf`.
+    `mne.io.read_raw_artemis123`, `mne.io.read_raw_bdf`,
+    `mne.io.read_raw_boxy`, `mne.io.read_raw_brainvision`,
+    `mne.io.read_raw_cnt`, `mne.io.read_raw_ctf`, `mne.io.read_raw_edf`,
+    `mne.io.read_raw_eeglab`, `mne.io.read_raw_egi`,
+    `mne.io.read_raw_eximia`, `mne.io.read_raw_fieldtrip`,
+    `mne.io.read_raw_fif`,  `mne.io.read_raw_gdf`, `mne.io.read_raw_kit`,
+    `mne.io.read_raw_fil`,
+    `mne.io.read_raw_nicolet`, `mne.io.read_raw_nirx`,
+    `mne.io.read_raw_curry`, and `mne.io.read_raw_nedf`.
 
     Parameters
     ----------
@@ -38,7 +38,7 @@ def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     **kwargs
         Additional keyword arguments to pass to the underlying reader. For

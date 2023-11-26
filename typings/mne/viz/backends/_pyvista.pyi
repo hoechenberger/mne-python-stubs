@@ -15,7 +15,7 @@ class PyVistaFigure(Figure3D):
 
     .. note:: This class should not be instantiated directly via
               ``mne.viz.PyVistaFigure(...)``. Instead, use
-              :func:`mne.viz.create_3d_figure`.
+              `mne.viz.create_3d_figure`.
 
     See Also
     --------

@@ -129,7 +129,7 @@ class Report:
         1. Calculate the mean signal of the baseline period.
         2. Subtract this mean from the **entire** time period.
 
-        For mne.Epochs`, this algorithm is run **on each epoch individually.**
+        For `mne.Epochs`, this algorithm is run **on each epoch individually.**
         Defaults to ``None``, i.e. no baseline correction.
     image_format : 'png' | 'svg' | 'webp' | 'auto'
         Default image format to use (default is ``'auto'``, which will use
@@ -145,7 +145,7 @@ class Report:
     raw_psd : bool | dict
         If True, include PSD plots for raw files. Can be False (default) to
         omit, True to plot, or a dict to pass as ``kwargs`` to
-        :meth:`mne.time_frequency.Spectrum.plot`.
+        `mne.time_frequency.Spectrum.plot`.
 
         .. versionadded:: 0.17
         .. versionchanged:: 1.4
@@ -159,7 +159,7 @@ class Report:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -195,7 +195,7 @@ class Report:
         1. Calculate the mean signal of the baseline period.
         2. Subtract this mean from the **entire** time period.
 
-        For mne.Epochs`, this algorithm is run **on each epoch individually.**
+        For `mne.Epochs`, this algorithm is run **on each epoch individually.**
         Defaults to ``None``, i.e. no baseline correction.
     image_format : str
         Default image format to use.
@@ -204,7 +204,7 @@ class Report:
     raw_psd : bool | dict
         If True, include PSD plots for raw files. Can be False (default) to
         omit, True to plot, or a dict to pass as ``kwargs`` to
-        :meth:`mne.time_frequency.Spectrum.plot`.
+        `mne.time_frequency.Spectrum.plot`.
 
         .. versionadded:: 0.17
         .. versionchanged:: 1.4
@@ -218,7 +218,7 @@ class Report:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     html : list of str
         Contains items of html-page.
@@ -323,7 +323,7 @@ class Report:
         tags=("epochs",),
         replace: bool = False,
     ) -> None:
-        """Add mne.Epochs` to the report.
+        """Add `mne.Epochs` to the report.
 
         Parameters
         ----------
@@ -348,7 +348,7 @@ class Report:
 
         projs : bool | None
             Whether to add SSP projector plots if projectors are present in
-            the data. If ``None``, use ``projs`` from mne.Report` creation.
+            the data. If ``None``, use ``projs`` from `mne.Report` creation.
 
         topomap_kwargs : dict | None
             Keyword arguments to pass to the topomap-generating functions.
@@ -384,12 +384,12 @@ class Report:
         topomap_kwargs=None,
         n_jobs=None,
     ) -> None:
-        """Add mne.Evoked` objects to the report.
+        """Add `mne.Evoked` objects to the report.
 
         Parameters
         ----------
         evokeds : path-like | instance of Evoked | list of Evoked
-            The evoked data to add to the report. Multiple mne.Evoked`
+            The evoked data to add to the report. Multiple `mne.Evoked`
             objects – as returned from `mne.read_evokeds` – can be passed as
             a list.
         titles : str | list of str | None
@@ -403,10 +403,10 @@ class Report:
 
         projs : bool | None
             Whether to add SSP projector plots if projectors are present in
-            the data. If ``None``, use ``projs`` from mne.Report` creation.
+            the data. If ``None``, use ``projs`` from `mne.Report` creation.
         n_time_points : int | None
             The number of equidistant time points to render. If ``None``,
-            will render each mne.Evoked` at 21 time points, unless the data
+            will render each `mne.Evoked` at 21 time points, unless the data
             contains fewer time points, in which case all will be rendered.
 
         tags : array-like of str | str
@@ -422,10 +422,10 @@ class Report:
             Keyword arguments to pass to the topomap-generating functions.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         Notes
@@ -446,7 +446,7 @@ class Report:
         replace: bool = False,
         topomap_kwargs=None,
     ) -> None:
-        """Add mne.io.Raw` objects to the report.
+        """Add `mne.io.Raw` objects to the report.
 
         Parameters
         ----------
@@ -456,12 +456,12 @@ class Report:
             The title corresponding to the ``raw`` object.
         psd : bool | None
             Whether to add PSD plots. Overrides the ``raw_psd`` parameter
-            passed when initializing the mne.Report`. If ``None``, use
-            ``raw_psd`` from mne.Report` creation.
+            passed when initializing the `mne.Report`. If ``None``, use
+            ``raw_psd`` from `mne.Report` creation.
 
         projs : bool | None
             Whether to add SSP projector plots if projectors are present in
-            the data. If ``None``, use ``projs`` from mne.Report` creation.
+            the data. If ``None``, use ``projs`` from `mne.Report` creation.
         butterfly : bool | int
             Whether to add butterfly plots of the data. Can be useful to
             spot problematic channels. If ``True``, 10 equally-spaced 1-second
@@ -518,12 +518,12 @@ class Report:
         replace: bool = False,
         stc_plot_kwargs=None,
     ) -> None:
-        """Add a mne.SourceEstimate` (STC) to the report.
+        """Add a `mne.SourceEstimate` (STC) to the report.
 
         Parameters
         ----------
         stc : path-like | instance of SourceEstimate
-            The mne.SourceEstimate` to add to the report.
+            The `mne.SourceEstimate` to add to the report.
         title : str
             The title to add.
         subject : str | None
@@ -549,7 +549,7 @@ class Report:
 
         stc_plot_kwargs : dict
             Dictionary of keyword arguments to pass to
-            :class:`mne.SourceEstimate.plot`. Only used when plotting in 3D
+            `mne.SourceEstimate.plot`. Only used when plotting in 3D
             mode.
 
         Notes
@@ -660,7 +660,7 @@ class Report:
         trans : path-like | instance of Transform
             The ``head -> MRI`` transformation to render.
         info : path-like | instance of Info
-            The mne.Info` corresponding to ``trans``.
+            The `mne.Info` corresponding to ``trans``.
         title : str
             The title to add.
         subject : str | None
@@ -697,11 +697,11 @@ class Report:
         Parameters
         ----------
         cov : path-like | instance of Covariance
-            The mne.Covariance` to add to the report.
+            The `mne.Covariance` to add to the report.
         info : path-like | instance of Info
-            The mne.Info` corresponding to ``cov``.
+            The `mne.Info` corresponding to ``cov``.
         title : str
-            The title corresponding to the mne.Covariance` object.
+            The title corresponding to the `mne.Covariance` object.
 
         tags : array-like of str | str
             Tags to add for later interactive filtering. Must not contain spaces.
@@ -773,14 +773,14 @@ class Report:
         Parameters
         ----------
         info : instance of Info | path-like
-            An mne.Info` structure or the path of a file containing one. This
+            An `mne.Info` structure or the path of a file containing one. This
             is required to create the topographic plots.
         projs : iterable of mne.Projection | path-like | None
             The projection vectors to add to the report. Can be the path to a
             file that will be loaded via `mne.read_proj`. If ``None``, the
             projectors are taken from ``info['projs']``.
         title : str
-            The title corresponding to the mne.Projection` object.
+            The title corresponding to the `mne.Projection` object.
 
         topomap_kwargs : dict | None
             Keyword arguments to pass to the topomap-generating functions.
@@ -814,7 +814,7 @@ class Report:
         tags=("ica",),
         replace: bool = False,
     ) -> None:
-        """Add (a fitted) mne.preprocessing.ICA` to the report.
+        """Add (a fitted) `mne.preprocessing.ICA` to the report.
 
         Parameters
         ----------
@@ -839,16 +839,16 @@ class Report:
             Evoked signal based on ECG and EOG epochs, respectively. If passed,
             will be used to visualize the effects of artifact rejection.
         ecg_scores, eog_scores : array of float | list of array of float | None
-            The scores produced by :meth:`mne.preprocessing.ICA.find_bads_ecg`
-            and :meth:`mne.preprocessing.ICA.find_bads_eog`, respectively.
+            The scores produced by `mne.preprocessing.ICA.find_bads_ecg`
+            and `mne.preprocessing.ICA.find_bads_eog`, respectively.
             If passed, will be used to visualize the scoring for each ICA
             component.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         tags : array-like of str | str
@@ -985,8 +985,8 @@ class Report:
         ----------
         fig : matplotlib.figure.Figure | Figure3D | array | array-like of matplotlib.figure.Figure | array-like of Figure3D | array-like of array
             One or more figures to add to the report. All figures must be an
-            instance of :class:`matplotlib.figure.Figure`,
-            :class:`mne.viz.Figure3D`, or :class:`numpy.ndarray`. If
+            instance of `matplotlib.figure.Figure`,
+            `mne.viz.Figure3D`, or `numpy.ndarray`. If
             multiple figures are passed, they will be added as "slides"
             that can be navigated using buttons and a slider element.
         title : str
@@ -997,7 +997,7 @@ class Report:
         image_format : 'png' | 'svg' | 'gif' | None
             The image format to be used for the report, can be ``'png'``,
             ``'svg'``, or ``'gif'``.
-            None (default) will use the default specified during mne.Report`
+            None (default) will use the default specified during `mne.Report`
             instantiation.
 
         tags : array-like of str | str
@@ -1142,10 +1142,10 @@ class Report:
             each dimension (typically 512, default) is reasonable.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         tags : array-like of str | str
@@ -1189,18 +1189,18 @@ class Report:
             created.
         pattern : None | str | list of str
             Filename pattern(s) to include in the report.
-            For example, ``[\\*raw.fif, \\*ave.fif]`` will include mne.io.Raw`
-            as well as mne.Evoked` files. If ``None``, include all supported
+            For example, ``[\\*raw.fif, \\*ave.fif]`` will include `mne.io.Raw`
+            as well as `mne.Evoked` files. If ``None``, include all supported
             file formats.
 
             .. versionchanged:: 0.23
                Include supported non-FIFF files by default.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
         mri_decim : int
             Use this decimation factor for generating MRI/BEM images
@@ -1218,7 +1218,7 @@ class Report:
         image_format : 'png' | 'svg' | 'gif' | None
             The image format to be used for the report, can be ``'png'``,
             ``'svg'``, or ``'gif'``.
-            None (default) will use the default specified during mne.Report`
+            None (default) will use the default specified during `mne.Report`
             instantiation.
 
             .. versionadded:: 0.15
@@ -1227,22 +1227,22 @@ class Report:
 
             .. versionadded:: 0.16
         n_time_points_evokeds, n_time_points_stcs : int | None
-            The number of equidistant time points to render for mne.Evoked`
-            and mne.SourceEstimate` data, respectively. If ``None``,
-            will render each mne.Evoked` at 21 and each mne.SourceEstimate`
+            The number of equidistant time points to render for `mne.Evoked`
+            and `mne.SourceEstimate` data, respectively. If ``None``,
+            will render each `mne.Evoked` at 21 and each `mne.SourceEstimate`
             at 51 time points, unless the respective data contains fewer time
             points, in which call all will be rendered.
 
             .. versionadded:: 0.24.0
         raw_butterfly : bool
-            Whether to render butterfly plots for (decimated) mne.io.Raw`
+            Whether to render butterfly plots for (decimated) `mne.io.Raw`
             data.
 
             .. versionadded:: 0.24.0
 
         stc_plot_kwargs : dict
             Dictionary of keyword arguments to pass to
-            :class:`mne.SourceEstimate.plot`. Only used when plotting in 3D
+            `mne.SourceEstimate.plot`. Only used when plotting in 3D
             mode.
 
             .. versionadded:: 0.24.0
@@ -1255,7 +1255,7 @@ class Report:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -1275,13 +1275,13 @@ class Report:
         fname : path-like | None
             Output filename. If the name ends with ``.h5`` or ``.hdf5``, the
             report is saved in HDF5 format, so it can later be loaded again
-            with :func:`open_report`. For any other suffix, the report will be
-            saved in HTML format. If ``None`` and :meth:`Report.parse_folder`
+            with `open_report`. For any other suffix, the report will be
+            saved in HTML format. If ``None`` and `Report.parse_folder`
             was **not** called, the report is saved as ``report.html`` in the
             current working directory. If ``None`` and
-            :meth:`Report.parse_folder` **was** used, the report is saved as
+            `Report.parse_folder` **was** used, the report is saved as
             ``report.html`` inside the ``data_path`` supplied to
-            :meth:`Report.parse_folder`.
+            `Report.parse_folder`.
         open_browser : bool
             Whether to open the rendered HTML report in the default web browser
             after saving. This is ignored when writing an HDF5 file.
@@ -1300,7 +1300,7 @@ class Report:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns

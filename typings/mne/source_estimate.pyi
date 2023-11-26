@@ -118,7 +118,7 @@ class _BaseSourceEstimate(TimeMixin):
 
         labels : Label | BiHemiLabel | list | tuple | str
             If using a surface or mixed source space, this should be the
-            :class:mne.Label`'s for which to extract the time course.
+            `mne.Label`'s for which to extract the time course.
             If working with whole-brain volume source estimates, this must be one of:
 
             - a string path to a FreeSurfer atlas for the subject (e.g., their
@@ -126,7 +126,7 @@ class _BaseSourceEstimate(TimeMixin):
               atlas
             - a two-element list or tuple, the first element being a path to an atlas,
               and the second being a list or dict of ``volume_labels`` to extract
-              (see :func:`mne.setup_volume_source_space` for details).
+              (see `mne.setup_volume_source_space` for details).
 
             .. versionchanged:: 0.21.0
                Support for volume source estimates.
@@ -150,7 +150,7 @@ class _BaseSourceEstimate(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -241,7 +241,7 @@ class _BaseSourceEstimate(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -276,7 +276,7 @@ class _BaseSourceEstimate(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -371,7 +371,7 @@ class _BaseSourceEstimate(TimeMixin):
 
         views : str | list
             View to use. Using multiple views (list) is not supported for mpl
-            backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+            backend. See `Brain.show_view <mne.viz.Brain.show_view>` for
             valid string options.
 
             When plotting a standard SourceEstimate (not volume, mixed, or vector)
@@ -492,25 +492,25 @@ class _BaseSourceEstimate(TimeMixin):
             ``dict(time_label_size=10)``).
 
         brain_kwargs : dict | None
-            Additional arguments to the :class:`mne.viz.Brain` constructor (e.g.,
+            Additional arguments to the `mne.viz.Brain` constructor (e.g.,
             ``dict(silhouette=True)``).
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
         -------
         figure : instance of mne.viz.Brain | matplotlib.figure.Figure
-            An instance of :class:`mne.viz.Brain` or matplotlib figure.
+            An instance of `mne.viz.Brain` or matplotlib figure.
 
         Notes
         -----
         Flatmaps are available by default for ``fsaverage`` but not for other
         subjects reconstructed by FreeSurfer. We recommend using
-        :func:`mne.compute_source_morph` to morph source estimates to ``fsaverage``
+        `mne.compute_source_morph` to morph source estimates to ``fsaverage``
         for flatmap plotting. If you want to construct your own flatmap for a given
         subject, these links might help:
 
@@ -566,19 +566,19 @@ class _BaseSourceEstimate(TimeMixin):
             Can also be "auto" to use a padding that will result in
             a power-of-two size (can be much faster).
         window : str | tuple
-            Window to use in resampling. See :func:`scipy.signal.resample`.
+            Window to use in resampling. See `scipy.signal.resample`.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -741,7 +741,7 @@ class _BaseSourceEstimate(TimeMixin):
         ----------
         func : callable
             The transform to be applied, including parameters (see, e.g.,
-            :func:`functools.partial`). The first parameter of the function is
+            `functools.partial`). The first parameter of the function is
             the input data. The first return value is the transformed data,
             remaining outputs are ignored. The first dimension of the
             transformed data has to be the same as the first dimension of the
@@ -779,7 +779,7 @@ class _BaseSourceEstimate(TimeMixin):
         ----------
         func : callable
             The transform to be applied, including parameters (see, e.g.,
-            :func:`functools.partial`). The first parameter of the function is
+            `functools.partial`). The first parameter of the function is
             the input data. The first two dimensions of the transformed data
             should be (i) vertices and (ii) time.  See Notes for details.
         idx : array | None
@@ -840,8 +840,8 @@ class _BaseSourceEstimate(TimeMixin):
 
         index : 'time' | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
-            integer index (:class:`pandas.RangeIndex`) will be used. If ``'time'``, a
-            ``pandas.Index`` or :class:`pandas.TimedeltaIndex` will be used
+            integer index (`pandas.RangeIndex`) will be used. If ``'time'``, a
+            ``pandas.Index`` or `pandas.TimedeltaIndex` will be used
             (depending on the value of ``time_format``).
             Defaults to ``None``.
 
@@ -859,7 +859,7 @@ class _BaseSourceEstimate(TimeMixin):
             Desired time format. If ``None``, no conversion is applied, and time values
             remain as float values in seconds. If ``'ms'``, time values will be rounded
             to the nearest millisecond and converted to integers. If ``'timedelta'``,
-            time values will be converted to :class:`pandas.Timedelta` values.
+            time values will be converted to `pandas.Timedelta` values.
             Default is ``None``.
 
             .. versionadded:: 0.20
@@ -867,7 +867,7 @@ class _BaseSourceEstimate(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -904,7 +904,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -999,7 +999,7 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1093,7 +1093,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -1144,7 +1144,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -1162,7 +1162,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         ----------
 
         info : mne.Info
-            The :class:`mne.Info` object with information about the sensors and methods of measurement.
+            The `mne.Info` object with information about the sensors and methods of measurement.
         fwd : instance of Forward
             The forward solution used to create the source estimate.
         cov : instance of Covariance
@@ -1172,7 +1172,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1218,7 +1218,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
                   across time, and vice-versa for each point in time in
                   computing the temporal center of mass. This is useful for
                   quantifying spatio-temporal cluster locations, especially
-                  when combined with :func:`mne.vertex_to_mni`.
+                  when combined with `mne.vertex_to_mni`.
 
         Parameters
         ----------
@@ -1296,7 +1296,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             - ``'pca'``
                 SVD will be used to project onto the direction of maximal
                 power for each source.
-            - :class:numpy.ndarray`, shape (n_vertices, 3)
+            - `numpy.ndarray`, shape (n_vertices, 3)
                 Projection directions for each source.
         src : instance of SourceSpaces | None
             The source spaces corresponding to the source estimate.
@@ -1421,7 +1421,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
 
         views : str | list
             View to use. Using multiple views (list) is not supported for mpl
-            backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+            backend. See `Brain.show_view <mne.viz.Brain.show_view>` for
             valid string options.
         colorbar : bool
             If True, display colorbar on scene.
@@ -1435,7 +1435,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
                 ``lims`` : list | np.ndarray | tuple of float, 3 elements
                     Lower, middle, and upper bound for colormap.
 
-            Unlike :meth:`stc.plot <mne.SourceEstimate.plot>`, it cannot use
+            Unlike `stc.plot <mne.SourceEstimate.plot>`, it cannot use
             ``pos_lims``, as the surface plot must show the magnitude.
         cortex : str or tuple
             Specifies how binarized curvature values are rendered.
@@ -1508,19 +1508,19 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             ``dict(time_label_size=10)``).
 
         brain_kwargs : dict | None
-            Additional arguments to the :class:`mne.viz.Brain` constructor (e.g.,
+            Additional arguments to the `mne.viz.Brain` constructor (e.g.,
             ``dict(silhouette=True)``).
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
         -------
         brain : mne.viz.Brain
-            A instance of :class:`mne.viz.Brain`.
+            A instance of `mne.viz.Brain`.
 
         Notes
         -----
@@ -1623,7 +1623,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
         views : str | list
             View to use. Using multiple views (list) is not supported for mpl
-            backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+            backend. See `Brain.show_view <mne.viz.Brain.show_view>` for
             valid string options.
 
             When plotting a standard SourceEstimate (not volume, mixed, or vector)
@@ -1744,25 +1744,25 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             ``dict(time_label_size=10)``).
 
         brain_kwargs : dict | None
-            Additional arguments to the :class:`mne.viz.Brain` constructor (e.g.,
+            Additional arguments to the `mne.viz.Brain` constructor (e.g.,
             ``dict(silhouette=True)``).
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
         -------
         figure : instance of mne.viz.Brain | matplotlib.figure.Figure
-            An instance of :class:`mne.viz.Brain` or matplotlib figure.
+            An instance of `mne.viz.Brain` or matplotlib figure.
 
         Notes
         -----
         Flatmaps are available by default for ``fsaverage`` but not for other
         subjects reconstructed by FreeSurfer. We recommend using
-        :func:`mne.compute_source_morph` to morph source estimates to ``fsaverage``
+        `mne.compute_source_morph` to morph source estimates to ``fsaverage``
         for flatmap plotting. If you want to construct your own flatmap for a given
         subject, these links might help:
 
@@ -1795,7 +1795,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             a new subject (see Examples).
 
             .. versionchanged:: 0.18
-               Support for :class:nibabel.spatialimages.SpatialImage`.
+               Support for `nibabel.spatialimages.SpatialImage`.
 
         subject : str | None
             The FreeSurfer subject name.
@@ -1863,7 +1863,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1891,7 +1891,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
         Examples
         --------
-        Passing a :class:`mne.SourceMorph` as the ``src``
+        Passing a `mne.SourceMorph` as the ``src``
         parameter can be useful for plotting in a different subject's space
         (here, a ``'sample'`` STC in ``'fsaverage'``'s space)::
 
@@ -1919,7 +1919,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
         labels : Label | BiHemiLabel | list | tuple | str
             If using a surface or mixed source space, this should be the
-            :class:mne.Label`'s for which to extract the time course.
+            `mne.Label`'s for which to extract the time course.
             If working with whole-brain volume source estimates, this must be one of:
 
             - a string path to a FreeSurfer atlas for the subject (e.g., their
@@ -1927,7 +1927,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
               atlas
             - a two-element list or tuple, the first element being a path to an atlas,
               and the second being a list or dict of ``volume_labels`` to extract
-              (see :func:`mne.setup_volume_source_space` for details).
+              (see `mne.setup_volume_source_space` for details).
 
             .. versionchanged:: 0.21.0
                Support for volume source estimates.
@@ -1960,7 +1960,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -2034,7 +2034,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -2089,7 +2089,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
             .. versionadded:: 1.0
@@ -2169,7 +2169,7 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -2224,7 +2224,7 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -2255,7 +2255,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -2379,7 +2379,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
 
         views : str | list
             View to use. Using multiple views (list) is not supported for mpl
-            backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+            backend. See `Brain.show_view <mne.viz.Brain.show_view>` for
             valid string options.
         colorbar : bool
             If True, display colorbar on scene.
@@ -2393,7 +2393,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
                 ``lims`` : list | np.ndarray | tuple of float, 3 elements
                     Lower, middle, and upper bound for colormap.
 
-            Unlike :meth:`stc.plot <mne.SourceEstimate.plot>`, it cannot use
+            Unlike `stc.plot <mne.SourceEstimate.plot>`, it cannot use
             ``pos_lims``, as the surface plot must show the magnitude.
         cortex : str or tuple
             Specifies how binarized curvature values are rendered.
@@ -2466,19 +2466,19 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
             ``dict(time_label_size=10)``).
 
         brain_kwargs : dict | None
-            Additional arguments to the :class:`mne.viz.Brain` constructor (e.g.,
+            Additional arguments to the `mne.viz.Brain` constructor (e.g.,
             ``dict(silhouette=True)``).
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
         -------
         brain : mne.viz.Brain
-            A instance of :class:`mne.viz.Brain`.
+            A instance of `mne.viz.Brain`.
 
         Notes
         -----
@@ -2518,7 +2518,7 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -2594,7 +2594,7 @@ class MixedSourceEstimate(_BaseMixedSourceEstimate):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -2649,7 +2649,7 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -2695,7 +2695,7 @@ def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2720,7 +2720,7 @@ def grade_to_tris(grade, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2749,7 +2749,7 @@ def spatio_temporal_tris_adjacency(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2771,7 +2771,7 @@ def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
     src : instance of SourceSpaces
         The source space must have distances between vertices computed, such
         that src['dist'] exists and is useful. This can be obtained
-        with a call to :func:`mne.setup_source_space` with the
+        with a call to `mne.setup_source_space` with the
         ``add_dist=True`` option.
     n_times : int
         Number of time points.
@@ -2782,7 +2782,7 @@ def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2812,7 +2812,7 @@ def spatial_src_adjacency(src, dist=None, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2836,7 +2836,7 @@ def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2854,7 +2854,7 @@ def spatial_dist_adjacency(src, dist, verbose=None):
     src : instance of SourceSpaces
         The source space must have distances between vertices computed, such
         that src['dist'] exists and is useful. This can be obtained
-        with a call to :func:`mne.setup_source_space` with the
+        with a call to `mne.setup_source_space` with the
         ``add_dist=True`` option.
     dist : float
         Maximal geodesic distance (in m) between vertices in the
@@ -2863,7 +2863,7 @@ def spatial_dist_adjacency(src, dist, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2887,7 +2887,7 @@ def spatial_inter_hemi_adjacency(src, dist, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2924,7 +2924,7 @@ def extract_label_time_course(
 
     labels : Label | BiHemiLabel | list | tuple | str
         If using a surface or mixed source space, this should be the
-        :class:mne.Label`'s for which to extract the time course.
+        `mne.Label`'s for which to extract the time course.
         If working with whole-brain volume source estimates, this must be one of:
 
         - a string path to a FreeSurfer atlas for the subject (e.g., their
@@ -2932,7 +2932,7 @@ def extract_label_time_course(
           atlas
         - a two-element list or tuple, the first element being a path to an atlas,
           and the second being a list or dict of ``volume_labels`` to extract
-          (see :func:`mne.setup_volume_source_space` for details).
+          (see `mne.setup_volume_source_space` for details).
 
         .. versionchanged:: 0.21.0
            Support for volume source estimates.
@@ -2967,7 +2967,7 @@ def extract_label_time_course(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -3097,7 +3097,7 @@ def stc_near_sensors(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

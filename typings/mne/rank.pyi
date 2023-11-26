@@ -27,7 +27,7 @@ def estimate_rank(
         calculating the rank. The singular values are calculated
         in this method such that independent data are expected to
         have singular value around one. Can be 'auto' to use the
-        same thresholding as :func:`scipy.linalg.orth`.
+        same thresholding as `scipy.linalg.orth`.
     return_singular : bool
         If True, also return the singular values that were used
         to determine the rank.
@@ -104,10 +104,10 @@ def compute_rank(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -134,7 +134,7 @@ def compute_rank(
         to comparable values.
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Only necessary if ``inst`` is a :class:`mne.Covariance`
+        The `mne.Info` object with information about the sensors and methods of measurement. Only necessary if ``inst`` is a `mne.Covariance`
         object (since this does not provide ``inst.info``).
 
     tol : float | 'auto'
@@ -142,7 +142,7 @@ def compute_rank(
         calculating the rank. The singular values are calculated
         in this method such that independent data are expected to
         have singular value around one. Can be 'auto' to use the
-        same thresholding as :func:`scipy.linalg.orth`.
+        same thresholding as `scipy.linalg.orth`.
     proj : bool
         If True, all projs in ``inst`` and ``info`` will be applied or
         considered when ``rank=None`` or ``rank='info'``.
@@ -175,7 +175,7 @@ def compute_rank(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

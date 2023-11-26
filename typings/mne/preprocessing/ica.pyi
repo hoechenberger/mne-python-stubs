@@ -15,8 +15,8 @@ def get_score_funcs():
 class ICA(ContainsMixin):
     """Data decomposition using Independent Component Analysis (ICA).
 
-    This object estimates independent components from :class:`mne.io.Raw`,
-    :class:`mne.Epochs`, or :class:`mne.Evoked` objects. Components can
+    This object estimates independent components from `mne.io.Raw`,
+    `mne.Epochs`, or `mne.Evoked` objects. Components can
     optionally be removed (for artifact repair) prior to signal reconstruction.
 
     .. warning:: ICA is sensitive to low-frequency drifts and therefore
@@ -29,10 +29,10 @@ class ICA(ContainsMixin):
         Number of principal components (from the pre-whitening PCA step) that
         are passed to the ICA algorithm during fitting:
 
-        - :class:`int`
+        - `int`
             Must be greater than 1 and less than or equal to the number of
             channels.
-        - :class:`float` between 0 and 1 (exclusive)
+        - `float` between 0 and 1 (exclusive)
             Will select the smallest number of components required to explain
             the cumulative variance of the data greater than ``n_components``.
             Consider this hypothetical example: we have 3 components, the first
@@ -48,11 +48,11 @@ class ICA(ContainsMixin):
             rank-deficient data.
 
         Defaults to ``None``. The actual number used when executing the
-        :meth:`ICA.fit` method will be stored in the attribute
+        `ICA.fit` method will be stored in the attribute
         ``n_components_`` (note the trailing underscore).
 
         .. versionchanged:: 0.22
-           For a :class:`python:float`, the number of components will account
+           For a `python:float`, the number of components will account
            for *greater than* the given variance level instead of *less than or
            equal to* it. The default (None) will also take into account the
            rank deficiency of the data.
@@ -64,7 +64,7 @@ class ICA(ContainsMixin):
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -77,13 +77,13 @@ class ICA(ContainsMixin):
     fit_params : dict | None
         Additional parameters passed to the ICA estimator as specified by
         ``method``. Allowed entries are determined by the various algorithm
-        implementations: see :class:sklearn.decomposition.FastICA`,
-        :func:picard.picard`, :func:mne.preprocessing.infomax`.
+        implementations: see `sklearn.decomposition.FastICA`,
+        `picard.picard`, `mne.preprocessing.infomax`.
     max_iter : int | 'auto'
         Maximum number of iterations during fit. If ``'auto'``, it
         will set maximum iterations to ``1000`` for ``'fastica'``
         and to ``500`` for ``'infomax'`` or ``'picard'``. The actual number of
-        iterations it took :meth:`ICA.fit` to complete will be stored in the
+        iterations it took `ICA.fit` to complete will be stored in the
         ``n_iter_`` attribute.
     allow_ref_meg : bool
         Allow ICA on MEG reference channels. Defaults to False.
@@ -93,7 +93,7 @@ class ICA(ContainsMixin):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -116,27 +116,27 @@ class ICA(ContainsMixin):
         If fit, the whitened mixing matrix to go back from ICA space to PCA
         space.
         It is, in combination with the ``pca_components_``, used by
-        :meth:`ICA.apply` and :meth:`ICA.get_components` to re-mix/project
+        `ICA.apply` and `ICA.get_components` to re-mix/project
         a subset of the ICA components into the observed channel space.
         The former method also removes the pre-whitening (z-scaling) and the
         de-meaning.
     unmixing_matrix_ : ndarray, shape ``(n_components_, n_components_)``
         If fit, the whitened matrix to go from PCA space to ICA space.
         Used, in combination with the ``pca_components_``, by the methods
-        :meth:`ICA.get_sources` and :meth:`ICA.apply` to unmix the observed
+        `ICA.get_sources` and `ICA.apply` to unmix the observed
         data.
     exclude : array-like of int
         List or np.array of sources indices to exclude when re-mixing the data
-        in the :meth:`ICA.apply` method, i.e. artifactual ICA components.
+        in the `ICA.apply` method, i.e. artifactual ICA components.
         The components identified manually and by the various automatic
         artifact detection methods should be (manually) appended
         (e.g. ``ica.exclude.extend(eog_inds)``).
-        (There is also an ``exclude`` parameter in the :meth:`ICA.apply`
+        (There is also an ``exclude`` parameter in the `ICA.apply`
         method.) To scrap all marked components, set this attribute to an empty
         list.
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     n_samples_ : int
         The number of samples used on fit.
     labels_ : dict
@@ -154,9 +154,9 @@ class ICA(ContainsMixin):
         default, replacing the current ``max_iter=200``.
 
     .. versionchanged:: 0.23
-        Warn if mne.Epochs` were baseline-corrected.
+        Warn if `mne.Epochs` were baseline-corrected.
 
-    .. note:: If you intend to fit ICA on mne.Epochs`, it is  recommended to
+    .. note:: If you intend to fit ICA on `mne.Epochs`, it is  recommended to
               high-pass filter, but **not** baseline correct the data for good
               ICA performance. A warning will be emitted otherwise.
 
@@ -164,7 +164,7 @@ class ICA(ContainsMixin):
     added to the object during fitting, consistent with standard scikit-learn
     practice.
 
-    ICA :meth:`fit` in MNE proceeds in two steps:
+    ICA `fit` in MNE proceeds in two steps:
 
     1. :term:`Whitening <whitening>` the data by means of a pre-whitening step
        (using ``noise_cov`` if provided, or the standard deviation of each
@@ -173,7 +173,7 @@ class ICA(ContainsMixin):
        algorithm to obtain the unmixing matrix (and by pseudoinversion, the
        mixing matrix).
 
-    ICA :meth:`apply` then:
+    ICA `apply` then:
 
     1. Unmixes the data with the ``unmixing_matrix_``.
     2. Includes ICA components based on ``ica.include`` and ``ica.exclude``.
@@ -182,7 +182,7 @@ class ICA(ContainsMixin):
        components between ``n_components`` and ``n_pca_components``.
 
     ``n_pca_components`` determines how many PCA components will be kept when
-    reconstructing the data when calling :meth:`apply`. This parameter can be
+    reconstructing the data when calling `apply`. This parameter can be
     used for dimensionality reduction of the data, or dealing with low-rank
     data (such as those with projections, or MEG data processed by SSS). It is
     important to remove any numerically-zero-variance components in the data,
@@ -203,8 +203,8 @@ class ICA(ContainsMixin):
     If you are migrating from EEGLAB and intend to reduce dimensionality via
     PCA, similarly to EEGLAB's ``runica(..., 'pca', n)`` functionality,
     pass ``n_components=n`` during initialization and then
-    ``n_pca_components=n`` during :meth:`apply`. The resulting reconstructed
-    data after :meth:`apply` will have rank ``n``.
+    ``n_pca_components=n`` during `apply`. The resulting reconstructed
+    data after `apply` will have rank ``n``.
 
     .. note:: Commonly used for reasons of i) computational efficiency and
               ii) additional noise reduction, it is a matter of current debate
@@ -235,8 +235,8 @@ class ICA(ContainsMixin):
     enhancing reproducibility and stability of results; use Extended Infomax
     via ``method='infomax', fit_params=dict(extended=True)``. Allowed entries
     in ``fit_params`` are determined by the various algorithm implementations:
-    see :class:sklearn.decomposition.FastICA`, :func:picard.picard`,
-    :func:mne.preprocessing.infomax`.
+    see `sklearn.decomposition.FastICA`, `picard.picard`,
+    `mne.preprocessing.infomax`.
 
     .. note:: Picard can be used to solve the same problems as FastICA,
               Infomax, and extended Infomax, but typically converges faster
@@ -327,7 +327,7 @@ class ICA(ContainsMixin):
             the first sample and to the last sample, respectively.
 
             .. note:: These parameters only have an effect if ``inst`` is
-                      mne.io.Raw` data.
+                      `mne.io.Raw` data.
         decim : int | None
             Increment for selecting only each n-th sampling point. If ``None``,
             all samples  between ``start`` and ``stop`` (inclusive) are used.
@@ -338,8 +338,8 @@ class ICA(ContainsMixin):
             removed before fitting the ICA.
 
             .. note:: These parameters only have an effect if ``inst`` is
-                      mne.io.Raw` data. For mne.Epochs`, perform PTP
-                      rejection via :meth:mne.Epochs.drop_bad`.
+                      `mne.io.Raw` data. For `mne.Epochs`, perform PTP
+                      rejection via `mne.Epochs.drop_bad`.
 
             Valid keys are all channel types present in the data. Values must
             be integers or floats.
@@ -357,21 +357,21 @@ class ICA(ContainsMixin):
             Length of data chunks for artifact rejection in seconds.
 
             .. note:: This parameter only has an effect if ``inst`` is
-                      mne.io.Raw` data.
+                      `mne.io.Raw` data.
 
         reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
 
-            Has no effect if ``inst`` is not a :class:`mne.io.Raw` object.
+            Has no effect if ``inst`` is not a `mne.io.Raw` object.
 
             .. versionadded:: 0.14.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -510,7 +510,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -592,7 +592,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -701,7 +701,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -731,8 +731,8 @@ class ICA(ContainsMixin):
         logic here is similar to an EOG/ECG, with reference components
         replacing the EOG/ECG channels. Recommended procedure is to perform ICA
         separately on reference channels, extract them using
-        :meth:mne.preprocessing.ICA.get_sources`, and then append them to the
-        inst using :meth:mne.io.Raw.add_channels`, preferably with the prefix
+        `mne.preprocessing.ICA.get_sources`, and then append them to the
+        inst using `mne.io.Raw.add_channels`, preferably with the prefix
         ``REF_ICA`` so that they can be automatically detected.
 
         With ``'together'``, thresholding is based on adaptative z-scoring.
@@ -801,7 +801,7 @@ class ICA(ContainsMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -815,7 +815,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -905,7 +905,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -979,7 +979,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -990,7 +990,7 @@ class ICA(ContainsMixin):
         Notes
         -----
         .. note:: Applying ICA may introduce a DC shift. If you pass
-                  baseline-corrected mne.Epochs` or mne.Evoked` data,
+                  baseline-corrected `mne.Epochs` or `mne.Evoked` data,
                   the baseline period of the cleaned data may not be of
                   zero mean anymore. If you require baseline-corrected
                   data, apply baseline correction again after cleaning
@@ -1019,7 +1019,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1106,9 +1106,9 @@ class ICA(ContainsMixin):
             the ICA object.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -1139,7 +1139,7 @@ class ICA(ContainsMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1152,9 +1152,9 @@ class ICA(ContainsMixin):
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -1190,7 +1190,7 @@ class ICA(ContainsMixin):
             .. versionadded:: 1.3
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -1205,7 +1205,7 @@ class ICA(ContainsMixin):
                 2 topomaps.
 
         vlim : tuple of length 2
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data. Defaults to ``(None, None)``.
@@ -1249,18 +1249,18 @@ class ICA(ContainsMixin):
         show : bool
             Show the figure if ``True``.
         image_args : dict | None
-            Dictionary of arguments to pass to :func:mne.viz.plot_epochs_image`
+            Dictionary of arguments to pass to `mne.viz.plot_epochs_image`
             in interactive mode. Ignored if ``inst`` is not supplied. If ``None``,
             nothing is passed. Defaults to ``None``.
         psd_args : dict | None
-            Dictionary of arguments to pass to :meth:mne.Epochs.compute_psd` in
+            Dictionary of arguments to pass to `mne.Epochs.compute_psd` in
             interactive  mode. Ignored if ``inst`` is not supplied. If ``None``,
             nothing is passed. Defaults to ``None``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1346,7 +1346,7 @@ class ICA(ContainsMixin):
             Dictionary of arguments to ``plot_epochs_image``. If None, doesn't pass
             any additional arguments. Defaults to None.
         psd_args : dict | None
-            Dictionary of arguments to :meth:mne.Epochs.compute_psd`. If
+            Dictionary of arguments to `mne.Epochs.compute_psd`. If
             ``None``, doesn't pass any additional arguments. Defaults to ``None``.
         figsize : array-like, shape (2,) | None
             Allows to control size of the figure. If None, the figure size
@@ -1365,14 +1365,14 @@ class ICA(ContainsMixin):
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
 
-            Has no effect if ``inst`` is not a :class:`mne.io.Raw` object.
+            Has no effect if ``inst`` is not a `mne.io.Raw` object.
 
             .. versionadded:: 0.21.0
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1425,12 +1425,12 @@ class ICA(ContainsMixin):
             IC: ``ICA001``. ``None`` will pick all independent components in the order
             fitted.
         start, stop : float | int | None
-           If ``inst`` is a mne.io.Raw` or an mne.Evoked` object, the first and
+           If ``inst`` is a `mne.io.Raw` or an `mne.Evoked` object, the first and
            last time point (in seconds) of the data to plot. If ``inst`` is a
-           mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
+           `mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
            translated into ``start=0.`` and ``stop=3.``, respectively. For
-           mne.Evoked`, ``None`` refers to the beginning and end of the evoked
-           signal. If ``inst`` is an mne.Epochs` object, specifies the index of
+           `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
+           signal. If ``inst`` is an `mne.Epochs` object, specifies the index of
            the first and last epoch to show.
         title : str | None
             The window title. If None a default is provided.
@@ -1477,14 +1477,14 @@ class ICA(ContainsMixin):
             graphics hardware. Only works if using the Qt backend. Default is
             None, which will use False unless the user configuration variable
             ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
-            see :func:`mne.set_config`.
+            see `mne.set_config`.
 
             .. versionadded:: 0.24
 
         theme : str | path-like
             Can be "auto", "light", or "dark" or a path-like to a
             custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-            :mod:`qdarkstyle` and
+            `qdarkstyle` and
             `darkdetect <https://github.com/albertosottile/darkdetect>`__,
             respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
             defaulting to "auto" if it's not found.
@@ -1519,14 +1519,14 @@ class ICA(ContainsMixin):
         ``ica.exclude`` on close.
 
         MNE-Python provides two different backends for browsing plots (i.e.,
-        :meth:`raw.plot()<mne.io.Raw.plot>`, :meth:`epochs.plot()<mne.Epochs.plot>`,
-        and :meth:`ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
-        based on :mod:`matplotlib`, and the other is based on
+        `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
+        and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
+        based on `matplotlib`, and the other is based on
         :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
-        context manager :func:`mne.viz.use_browser_backend`, you can set it for the
-        duration of a Python session using :func:`mne.viz.set_browser_backend`, and you
+        context manager `mne.viz.use_browser_backend`, you can set it for the
+        duration of a Python session using `mne.viz.set_browser_backend`, and you
         can set the default for your computer via
-        :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
+        `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
         .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
@@ -1608,9 +1608,9 @@ class ICA(ContainsMixin):
         Parameters
         ----------
         inst : instance of Raw or Evoked
-            The signal to plot. If mne.io.Raw`, the raw data per channel type is displayed
+            The signal to plot. If `mne.io.Raw`, the raw data per channel type is displayed
             before and after cleaning. A second panel with the RMS for MEG sensors and the
-            :term:`GFP` for EEG sensors is displayed. If mne.Evoked`, butterfly traces for
+            :term:`GFP` for EEG sensors is displayed. If `mne.Evoked`, butterfly traces for
             signals before and after cleaning will be superimposed.
         exclude : array-like of int | None (default)
             The components marked for exclusion. If ``None`` (default), the components
@@ -1624,9 +1624,9 @@ class ICA(ContainsMixin):
             channels`. None (default) will pick all channels that were included during fitting.
         start, stop : float | None
            The first and last time point (in seconds) of the data to plot. If
-           ``inst`` is a mne.io.Raw` object, ``start=None`` and ``stop=None``
+           ``inst`` is a `mne.io.Raw` object, ``start=None`` and ``stop=None``
            will be translated into ``start=0.`` and ``stop=3.``, respectively. For
-           mne.Evoked`, ``None`` refers to the beginning and end of the evoked
+           `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
            signal.
 
         title : str | None
@@ -1654,7 +1654,7 @@ class ICA(ContainsMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1699,7 +1699,7 @@ def ica_find_ecg_events(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1739,7 +1739,7 @@ def ica_find_eog_events(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1761,7 +1761,7 @@ def read_ica(fname, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1797,7 +1797,7 @@ def read_ica_eeglab(fname, *, montage_units: str = "auto", verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

@@ -32,7 +32,7 @@ class ReceptiveField(BaseEstimator):
         regression model with an alpha of 0 will be used.
     fit_intercept : bool | None
         If True (default), the sample mean is removed before fitting.
-        If ``estimator`` is a :class:`sklearn.base.BaseEstimator`,
+        If ``estimator`` is a `sklearn.base.BaseEstimator`,
         this must be None or match ``estimator.fit_intercept``.
     scoring : ['r2', 'corrcoef']
         Defines how predictions will be scored. Currently must be one of
@@ -60,14 +60,14 @@ class ReceptiveField(BaseEstimator):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
     ----------
     coef_ : array, shape ([n_outputs, ]n_features, n_delays)
         The coefficients from the model fit, reshaped for easy visualization.
-        During :meth:`mne.decoding.ReceptiveField.fit`, if ``y`` has one
+        During `mne.decoding.ReceptiveField.fit`, if ``y`` has one
         dimension (time), the ``n_outputs`` dimension here is omitted.
     patterns_ : array, shape ([n_outputs, ]n_features, n_delays)
         If fit, the inverted coefficients from the model.
@@ -77,8 +77,8 @@ class ReceptiveField(BaseEstimator):
     valid_samples_ : slice
         The rows to keep during model fitting after removing rows with
         missing values due to time delaying. This can be used to get an
-        output equivalent to using :func:`numpy.convolve` or
-        :func:`numpy.correlate` with ``mode='valid'``.
+        output equivalent to using `numpy.convolve` or
+        `numpy.correlate` with ``mode='valid'``.
 
     See Also
     --------
@@ -166,7 +166,7 @@ class ReceptiveField(BaseEstimator):
 
         This calls ``self.predict``, then masks the output of this
         and ``y` with ``self.valid_samples_``. Finally, it passes
-        this to a :mod:`sklearn.metrics` scorer.
+        this to a `sklearn.metrics` scorer.
 
         Parameters
         ----------

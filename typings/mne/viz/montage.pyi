@@ -32,7 +32,7 @@ def plot_montage(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -52,7 +52,7 @@ def plot_montage(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

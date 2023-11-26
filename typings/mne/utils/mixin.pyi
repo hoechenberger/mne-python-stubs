@@ -51,11 +51,11 @@ class GetEpochsMixin:
         -----
         Epochs can be accessed as ``epochs[...]`` in several ways:
 
-        1. **Integer or slice:** ``epochs[idx]`` will return an mne.Epochs`
+        1. **Integer or slice:** ``epochs[idx]`` will return an `mne.Epochs`
            object with a subset of epochs chosen by index (supports single
            index and Python-style slicing).
 
-        2. **String:** ``epochs['name']`` will return an mne.Epochs` object
+        2. **String:** ``epochs['name']`` will return an `mne.Epochs` object
            comprising only the epochs labeled ``'name'`` (i.e., epochs created
            around events with the label ``'name'``).
 
@@ -75,7 +75,7 @@ class GetEpochsMixin:
            treated the same way when selecting via tag.
 
         3. **List of strings:** ``epochs[['name_1', 'name_2', ... ]]`` will
-           return an mne.Epochs` object comprising epochs that match *any* of
+           return an `mne.Epochs` object comprising epochs that match *any* of
            the provided names (i.e., the list of names is treated as an
            inclusive-or condition). If *none* of the provided names match any
            epoch labels, a ``KeyError`` will be raised.
@@ -87,7 +87,7 @@ class GetEpochsMixin:
            ``'visual/right'``.
 
         4. **Pandas query:** ``epochs['pandas query']`` will return an
-           mne.Epochs` object with a subset of epochs (and matching
+           `mne.Epochs` object with a subset of epochs (and matching
            metadata) selected by the query called with
            ``self.metadata.eval``, e.g.::
 
@@ -96,7 +96,7 @@ class GetEpochsMixin:
            would return all epochs whose associated ``col_a`` metadata was
            greater than two, and whose ``col_b`` metadata was the string 'foo'.
            Query-based indexing only works if Pandas is installed and
-           ``self.metadata`` is a :class:`pandas.DataFrame`.
+           ``self.metadata`` is a `pandas.DataFrame`.
 
            .. versionadded:: 0.16
         """
@@ -137,7 +137,7 @@ class GetEpochsMixin:
             >>>     print(epoch)  # doctest: +SKIP
 
         Where ``epoch`` is given by successive outputs of
-        :meth:`mne.Epochs.next`.
+        `mne.Epochs.next`.
         """
         ...
     def __next__(self, return_event_id: bool = False):
@@ -222,7 +222,7 @@ class ExtendedTimeMixin(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -264,7 +264,7 @@ class ExtendedTimeMixin(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns

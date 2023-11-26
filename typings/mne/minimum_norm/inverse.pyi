@@ -62,7 +62,7 @@ class InverseOperator(dict):
         ...
     @property
     def info(self):
-        """:class:mne.Info` attached to the inverse operator."""
+        """`mne.Info` attached to the inverse operator."""
         ...
 
 def read_inverse_operator(fname, *, verbose=None):
@@ -77,7 +77,7 @@ def read_inverse_operator(fname, *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -113,7 +113,7 @@ def write_inverse_operator(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -160,7 +160,7 @@ def prepare_inverse_operator(
     method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
         Use minimum norm, dSPM (default), sLORETA, or eLORETA.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
         .. versionadded:: 0.16
     copy : bool | str
@@ -173,7 +173,7 @@ def prepare_inverse_operator(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -226,10 +226,10 @@ def apply_inverse(
 
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
-            will be returned in the form of a :class:`mne.VectorSourceEstimate`
+            will be returned in the form of a `mne.VectorSourceEstimate`
             object.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     label : Label | None
         Restricts the source estimates to a given label. If None,
         source estimates will be computed for the entire source space.
@@ -255,7 +255,7 @@ def apply_inverse(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -276,7 +276,7 @@ def apply_inverse(
     -----
     Currently only the ``method='eLORETA'`` has additional options.
     It performs an iterative fit with a convergence criterion, so you can
-    pass a ``method_params`` :class:`dict` with string keys mapping to values
+    pass a ``method_params`` `dict` with string keys mapping to values
     for:
 
         'eps' : float
@@ -373,7 +373,7 @@ def apply_inverse_raw(
 
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
-            will be returned in the form of a :class:`mne.VectorSourceEstimate`
+            will be returned in the form of a `mne.VectorSourceEstimate`
             object.
     buffer_size : int (or None)
         If not None, the computation of the inverse and the combination of the
@@ -384,9 +384,9 @@ def apply_inverse_raw(
         Note that this setting has no effect for fixed-orientation inverse
         operators.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
         .. versionadded:: 0.16
 
@@ -402,7 +402,7 @@ def apply_inverse_raw(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -466,15 +466,15 @@ def apply_inverse_epochs(
 
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
-            will be returned in the form of a :class:`mne.VectorSourceEstimate`
+            will be returned in the form of a `mne.VectorSourceEstimate`
             object.
     return_generator : bool
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
         .. versionadded:: 0.16
 
@@ -490,7 +490,7 @@ def apply_inverse_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -555,15 +555,15 @@ def apply_inverse_tfr_epochs(
 
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
-            will be returned in the form of a :class:`mne.VectorSourceEstimate`
+            will be returned in the form of a `mne.VectorSourceEstimate`
             object.
     return_generator : bool
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     method_params : dict | None
-        Additional options for eLORETA. See Notes of :func:`apply_inverse`.
+        Additional options for eLORETA. See Notes of `apply_inverse`.
 
     use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
@@ -575,7 +575,7 @@ def apply_inverse_tfr_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -616,7 +616,7 @@ def apply_inverse_cov(
         source power.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Used specify the channels to include.
+        The `mne.Info` object with information about the sensors and methods of measurement. Used specify the channels to include.
     inverse_operator : instance of InverseOperator
         Inverse operator.
     nave : int
@@ -638,7 +638,7 @@ def apply_inverse_cov(
             Only the normal to the cortical surface is kept. This is only
             implemented when working with loose orientations.
     prepared : bool
-        If True, do not call :func:`prepare_inverse_operator`.
+        If True, do not call `prepare_inverse_operator`.
     label : Label | None
         Restricts the source estimates to a given label. If None,
         source estimates will be computed for the entire source space.
@@ -652,7 +652,7 @@ def apply_inverse_cov(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -698,15 +698,15 @@ def make_inverse_operator(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
         Specifies the channels to include. Bad channels (in ``info['bads']``)
         are not used.
     forward : instance of Forward
-        Forward operator. See :func:mne.make_forward_solution` to create the operator.
+        Forward operator. See `mne.make_forward_solution` to create the operator.
     noise_cov : instance of Covariance
-        The noise covariance matrix. See :func:mne.compute_raw_covariance` and
-        :func:mne.compute_covariance` to compute the noise covariance matrix on
-        :class:mne.io.Raw` and :class:mne.Epochs` respectively.
+        The noise covariance matrix. See `mne.compute_raw_covariance` and
+        `mne.compute_covariance` to compute the noise covariance matrix on
+        `mne.io.Raw` and `mne.Epochs` respectively.
 
     loose : float | 'auto' | dict
         Value that weights the source variances of the dipole components
@@ -726,8 +726,8 @@ def make_inverse_operator(
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
-        It can also be a :class:`dict` containing keyword arguments to pass to
-        :func:`mne.forward.compute_depth_prior` (see docstring for details and
+        It can also be a `dict` containing keyword arguments to pass to
+        `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
         .. versionchanged:: 0.20
@@ -757,10 +757,10 @@ def make_inverse_operator(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -789,7 +789,7 @@ def make_inverse_operator(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -869,7 +869,7 @@ def estimate_snr(evoked, inv, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

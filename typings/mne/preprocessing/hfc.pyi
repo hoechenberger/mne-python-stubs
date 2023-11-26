@@ -20,7 +20,7 @@ def compute_proj_hfc(
     ----------
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     order : int
         The order of the spherical harmonic basis set to use. Set to 1 to use
         only the homogeneous field component (default), 2 to add gradients, 3
@@ -40,7 +40,7 @@ def compute_proj_hfc(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

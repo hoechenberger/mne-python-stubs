@@ -110,7 +110,7 @@ def extract_chpi_locs_ctf(raw, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -130,7 +130,7 @@ def extract_chpi_locs_ctf(raw, verbose=None):
     - ``HLC003[123]\\\\*`` - rpa
 
     This extracts these positions for use with
-    :func:mne.chpi.compute_head_pos`.
+    `mne.chpi.compute_head_pos`.
 
     .. versionadded:: 0.20
     """
@@ -149,7 +149,7 @@ def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -172,7 +172,7 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
@@ -183,7 +183,7 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -216,13 +216,13 @@ def compute_head_pos(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
-        Typically obtained by :func:mne.chpi.compute_chpi_locs` or
-        :func:mne.chpi.extract_chpi_locs_ctf`.
+        Typically obtained by `mne.chpi.compute_chpi_locs` or
+        `mne.chpi.extract_chpi_locs_ctf`.
     dist_limit : float
         Minimum distance (m) to accept for coil position fitting.
     gof_limit : float
@@ -235,7 +235,7 @@ def compute_head_pos(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -295,7 +295,7 @@ def compute_chpi_snr(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -355,7 +355,7 @@ def compute_chpi_amplitudes(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -388,7 +388,7 @@ def compute_chpi_amplitudes(
     2. The reciprocal of the smallest difference between HPI and line freqs.
           Ensures that neighboring frequencies can be disambiguated.
 
-    The output is meant to be used with :func:mne.chpi.compute_chpi_locs`.
+    The output is meant to be used with `mne.chpi.compute_chpi_locs`.
 
     .. versionadded:: 0.20
     """
@@ -408,12 +408,12 @@ def compute_chpi_locs(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     chpi_amplitudes : dict
         The time-varying cHPI coil amplitudes, with entries
         "times", "proj", and "slopes".
-        Typically obtained by :func:`mne.chpi.compute_chpi_amplitudes`.
+        Typically obtained by `mne.chpi.compute_chpi_amplitudes`.
     t_step_max : float
         Maximum time step to use.
     too_close : str
@@ -427,7 +427,7 @@ def compute_chpi_locs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -448,7 +448,7 @@ def compute_chpi_locs(
     Notes
     -----
     This function is designed to take the output of
-    :func:`mne.chpi.compute_chpi_amplitudes` and:
+    `mne.chpi.compute_chpi_amplitudes` and:
 
     1. Get HPI coil locations (as digitized in ``info['dig']``) in head coords.
     2. If the amplitudes are 98% correlated with last position
@@ -457,7 +457,7 @@ def compute_chpi_locs(
 
     The number of fitted points ``n_pos`` will depend on the velocity of head
     movements as well as ``t_step_max`` (and ``t_step_min`` from
-    :func:`mne.chpi.compute_chpi_amplitudes`).
+    `mne.chpi.compute_chpi_amplitudes`).
 
     .. versionadded:: 0.20
     """
@@ -506,7 +506,7 @@ def filter_chpi(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -542,7 +542,7 @@ def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

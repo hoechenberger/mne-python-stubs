@@ -34,7 +34,7 @@ def export_evokeds_mff(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Notes
@@ -43,10 +43,10 @@ def export_evokeds_mff(
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
-    use :meth:`mne.Evoked.save` instead.
+    use `mne.Evoked.save` instead.
     Export does not apply projector(s). Unapplied projector(s) will be lost.
     Consider applying projector(s) before exporting with
-    :meth:`mne.Evoked.apply_proj`.
+    `mne.Evoked.apply_proj`.
 
     Only EEG channels are written to the output file.
     ``info['device_info']['type']`` must be a valid MFF recording device

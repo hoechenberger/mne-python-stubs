@@ -24,9 +24,9 @@ class Annotations:
     """Annotation object for annotating segments of raw data.
 
     .. note::
-       To convert events to mne.Annotations`, use
-       mne.annotations_from_events`. To convert existing mne.Annotations`
-       to events, use  mne.events_from_annotations`.
+       To convert events to `mne.Annotations`, use
+       `mne.annotations_from_events`. To convert existing `mne.Annotations`
+       to events, use  `mne.events_from_annotations`.
 
     Parameters
     ----------
@@ -71,7 +71,7 @@ class Annotations:
 
     Notes
     -----
-    Annotations are added to instance of :class:`mne.io.Raw` as the attribute
+    Annotations are added to instance of `mne.io.Raw` as the attribute
     :attr:`raw.annotations <mne.io.Raw.annotations>`.
 
     To reject bad epochs using annotations, use
@@ -93,7 +93,7 @@ class Annotations:
 
     Specifying channel names allows the creation of channel-specific
     annotations. Once the annotations are assigned to a raw instance with
-    :meth:`mne.io.Raw.set_annotations`, if channels are renamed by the raw
+    `mne.io.Raw.set_annotations`, if channels are renamed by the raw
     instance, the annotation channels also get renamed. If channels are dropped
     from the raw instance, any channel-specific annotation that has no channels
     left in the raw instance will also be removed.
@@ -187,8 +187,8 @@ class Annotations:
     **Specific annotation**
 
     ``BAD_ACQ_SKIP`` annotation leads to specific reading/writing file
-    behaviours. See :meth:`mne.io.read_raw_fif` and
-    :meth:`Raw.save() <mne.io.Raw.save>` notes for details.
+    behaviours. See `mne.io.read_raw_fif` and
+    `Raw.save() <mne.io.Raw.save>` notes for details.
     """
 
     def __init__(
@@ -332,7 +332,7 @@ class Annotations:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -372,7 +372,7 @@ class Annotations:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -395,7 +395,7 @@ class Annotations:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -420,7 +420,7 @@ class Annotations:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -460,7 +460,7 @@ class EpochAnnotationsMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -476,8 +476,8 @@ class EpochAnnotationsMixin:
         If you have an ``-epo.fif`` file saved to disk created before 1.0,
         annotations can be added correctly only if no decimation or
         resampling was performed. We thus suggest to regenerate your
-        :class:`mne.Epochs` from raw and re-save to disk with 1.0+ if you
-        want to safely work with :class:mne.Annotations` in epochs.
+        `mne.Epochs` from raw and re-save to disk with 1.0+ if you
+        want to safely work with `mne.Annotations` in epochs.
 
         Since this method does not handle offsetting the times based
         on first_samp or measurement dates, the recommended way to add
@@ -498,8 +498,8 @@ class EpochAnnotationsMixin:
         epoch_annots : list
             A list of lists (with length equal to number of epochs) where each
             inner list contains any annotations that overlap the corresponding
-            epoch. Annotations are stored as a :class:`tuple` of onset,
-            duration, description (not as a :class:mne.Annotations` object),
+            epoch. Annotations are stored as a `tuple` of onset,
+            duration, description (not as a `mne.Annotations` object),
             where the onset is now relative to time=0 of the epoch, rather than
             time=0 of the original continuous (raw) data.
         """
@@ -542,7 +542,7 @@ def read_annotations(
 
     This function reads a ``.fif``, ``.fif.gz``, ``.vmrk``, ``.amrk``,
     ``.edf``, ``.txt``, ``.csv``, ``.cnt``, ``.cef``, or ``.set`` file and
-    makes an :class:`mne.Annotations` object.
+    makes an `mne.Annotations` object.
 
     Parameters
     ----------
@@ -629,7 +629,7 @@ def events_from_annotations(
     chunk_duration : float | None
         Chunk duration in seconds. If ``chunk_duration`` is set to None
         (default), generated events correspond to the annotation onsets.
-        If not, :func:`mne.events_from_annotations` returns as many events as
+        If not, `mne.events_from_annotations` returns as many events as
         they fit within the annotation duration spaced according to
         ``chunk_duration``. As a consequence annotations with duration shorter
         than ``chunk_duration`` will not contribute events.
@@ -637,7 +637,7 @@ def events_from_annotations(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -648,7 +648,7 @@ def events_from_annotations(
         samples, with :term:`first_samp` included. The third column contains the
         event id.
     event_id : dict
-        The event_id variable that can be passed to :class:mne.Epochs`.
+        The event_id variable that can be passed to `mne.Epochs`.
 
     See Also
     --------
@@ -657,7 +657,7 @@ def events_from_annotations(
     Notes
     -----
     For data formats that store integer events as strings (e.g., NeuroScan
-    ``.cnt`` files), passing the Python built-in function :class:`int` as the
+    ``.cnt`` files), passing the Python built-in function `int` as the
     ``event_id`` parameter will do what most users probably want in those
     circumstances: return an ``event_id`` dictionary that maps event ``'1'`` to
     integer event code ``1``, ``'2'`` to ``2``, etc.
@@ -692,12 +692,12 @@ def annotations_from_events(
     orig_time : float | str | datetime | tuple of int | None
         Determines the starting time of annotation acquisition. If None
         (default), starting time is determined from beginning of raw data
-        acquisition. For details, see :meth:`mne.Annotations` docstring.
+        acquisition. For details, see `mne.Annotations` docstring.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

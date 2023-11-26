@@ -9,7 +9,7 @@ class Layout:
     """Sensor layouts.
 
     Layouts are typically loaded from a file using
-    :func:mne.channels.read_layout`. Only use this class directly if you're
+    `mne.channels.read_layout`. Only use this class directly if you're
     constructing a new layout.
 
     Parameters
@@ -162,7 +162,7 @@ def make_eeg_layout(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     radius : float
         Viewport radius as a fraction of main figure height. Defaults to 0.5.
     width : float | None
@@ -195,7 +195,7 @@ def make_grid_layout(info, picks=None, n_col=None):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -224,7 +224,7 @@ def find_layout(info, ch_type=None, exclude: str = "bads"):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     ch_type : {'mag', 'grad', 'meg', 'eeg'} | None
         The channel type for selecting single channel layouts.
         Defaults to None. Note, this argument will only be considered for

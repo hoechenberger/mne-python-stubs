@@ -25,7 +25,7 @@ def make_lcmv(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
         Specifies the channels to include. Bad channels (in ``info['bads']``)
         are not used.
     forward : instance of Forward
@@ -43,7 +43,7 @@ def make_lcmv(
             If ``noise_cov`` is ``None`` and ``weight_norm='unit-noise-gain'``,
             the unit noise is assumed to be 1 in SI units, e.g., 1 T for
             magnetometers, 1 V for EEG, so resulting amplitudes will be tiny.
-            Consider using :func:`mne.make_ad_hoc_cov` to provide a
+            Consider using `mne.make_ad_hoc_cov` to provide a
             ``noise_cov`` to set noise values that are more reasonable for
             neural data or using ``weight_norm='nai'`` for weight-normalized
             beamformer output that is scaled by a noise estimate.
@@ -86,10 +86,10 @@ def make_lcmv(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -122,7 +122,7 @@ def make_lcmv(
             (Borgiotti-Kaplan beamformer) :footcite:`SekiharaNagarajan2008`,
             which is not rotation invariant when ``pick_ori='vector'``.
             This should be combined with
-            :meth:`stc.project('pca') <mne.VectorSourceEstimate.project>` to follow
+            `stc.project('pca') <mne.VectorSourceEstimate.project>` to follow
             the definition in :footcite:`SekiharaNagarajan2008`.
         - ``'nai'``
             The Neural Activity Index :footcite:`VanVeenEtAl1997` will be computed,
@@ -157,8 +157,8 @@ def make_lcmv(
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
-        It can also be a :class:`dict` containing keyword arguments to pass to
-        :func:`mne.forward.compute_depth_prior` (see docstring for details and
+        It can also be a `dict` containing keyword arguments to pass to
+        `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
         .. versionchanged:: 0.20
@@ -183,7 +183,7 @@ def make_lcmv(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -247,7 +247,7 @@ def make_lcmv(
 
     To obtain the Sekihara unit-noise-gain vector beamformer, you should use
     ``weight_norm='unit-noise-gain', pick_ori='vector'`` followed by
-    :meth:`vec_stc.project('pca', src) <mne.VectorSourceEstimate.project>`.
+    `vec_stc.project('pca', src) <mne.VectorSourceEstimate.project>`.
 
     .. versionchanged:: 0.21
        The computations were extensively reworked, and the default for
@@ -271,12 +271,12 @@ def apply_lcmv(evoked, filters, *, verbose=None):
         Evoked data to invert.
     filters : instance of Beamformer
         LCMV spatial filter (beamformer weights).
-        Filter weights returned from :func:`make_lcmv`.
+        Filter weights returned from `make_lcmv`.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -306,7 +306,7 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
         Single trial epochs.
     filters : instance of Beamformer
         LCMV spatial filter (beamformer weights)
-        Filter weights returned from :func:`make_lcmv`.
+        Filter weights returned from `make_lcmv`.
     return_generator : bool
          Return a generator object instead of a list. This allows iterating
          over the stcs without having to keep them all in memory.
@@ -314,7 +314,7 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -340,7 +340,7 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
         Raw data to invert.
     filters : instance of Beamformer
         LCMV spatial filter (beamformer weights).
-        Filter weights returned from :func:`make_lcmv`.
+        Filter weights returned from `make_lcmv`.
     start : int
         Index of first time sample (index not time is seconds).
     stop : int
@@ -349,7 +349,7 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -375,12 +375,12 @@ def apply_lcmv_cov(data_cov, filters, verbose=None):
         Data covariance matrix.
     filters : instance of Beamformer
         LCMV spatial filter (beamformer weights).
-        Filter weights returned from :func:`make_lcmv`.
+        Filter weights returned from `make_lcmv`.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

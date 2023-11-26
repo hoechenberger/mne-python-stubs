@@ -29,14 +29,14 @@ def compute_fine_calibration(
     ext_order : int
         Order of external component of spherical expansion.
         Default is 2, which is lower than the default (3) for
-        :func:`mne.preprocessing.maxwell_filter` because it tends to yield
+        `mne.preprocessing.maxwell_filter` because it tends to yield
         more stable parameter estimates.
 
     origin : array-like, shape (3,) | str
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using :func:mne.bem.fit_sphere_to_headshape`
+        origin fit using `mne.bem.fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -52,7 +52,7 @@ def compute_fine_calibration(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

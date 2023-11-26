@@ -16,8 +16,8 @@ def tfr_array_stockwell(
 ):
     """Compute power and intertrial coherence using Stockwell (S) transform.
 
-    Same computation as mne.time_frequency.tfr_stockwell`, but operates on
-    :class:`NumPy arrays <numpy.ndarray>` instead of mne.Epochs` objects.
+    Same computation as `mne.time_frequency.tfr_stockwell`, but operates on
+    `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` objects.
 
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
@@ -46,10 +46,10 @@ def tfr_array_stockwell(
         Return intertrial coherence (ITC) as well as averaged power.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     Returns
@@ -89,8 +89,8 @@ def tfr_stockwell(
 ):
     """Compute Time-Frequency Representation (TFR) using Stockwell Transform.
 
-    Same computation as mne.time_frequency.tfr_array_stockwell`, but operates
-    on mne.Epochs` objects instead of :class:`NumPy arrays <numpy.ndarray>`.
+    Same computation as `mne.time_frequency.tfr_array_stockwell`, but operates
+    on `mne.Epochs` objects instead of `NumPy arrays <numpy.ndarray>`.
 
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
@@ -121,7 +121,7 @@ def tfr_stockwell(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

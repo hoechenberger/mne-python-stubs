@@ -19,7 +19,7 @@ def make_lcmv_resolution_matrix(filters, forward, info):
         Forward Solution with leadfield matrix.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Used to compute LCMV filters.
+        The `mne.Info` object with information about the sensors and methods of measurement. Used to compute LCMV filters.
 
     Returns
     -------

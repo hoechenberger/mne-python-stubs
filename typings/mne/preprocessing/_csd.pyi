@@ -47,7 +47,7 @@ def compute_current_source_density(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -109,14 +109,14 @@ def compute_bridged_electrodes(
     epoch_duration : float
         The time in seconds to divide the raw into fixed-length epochs
         to check for consistent bridging. Only used if ``inst`` is
-        :class:`mne.io.BaseRaw`. The default is 2 seconds.
+        `mne.io.BaseRaw`. The default is 2 seconds.
     bw_method : None
-        ``bw_method`` to pass to :class:`scipy.stats.gaussian_kde`.
+        ``bw_method`` to pass to `scipy.stats.gaussian_kde`.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

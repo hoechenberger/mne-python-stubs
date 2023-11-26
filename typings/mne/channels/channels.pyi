@@ -51,7 +51,7 @@ def equalize_channels(instances, copy: bool = True, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -76,9 +76,9 @@ def unify_bad_channels(insts):
     Parameters
     ----------
     insts : list
-        List of instances (:class:mne.io.Raw`, :class:mne.Epochs`,
-        :class:mne.Evoked`, :class:mne.time_frequency.Spectrum`,
-        :class:mne.time_frequency.EpochsSpectrum`) across which to unify bad channels.
+        List of instances (`mne.io.Raw`, `mne.Epochs`,
+        `mne.Evoked`, `mne.time_frequency.Spectrum`,
+        `mne.time_frequency.EpochsSpectrum`) across which to unify bad channels.
 
     Returns
     -------
@@ -167,7 +167,7 @@ class ReferenceMixin(MontageMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -340,7 +340,7 @@ class UpdateChannelsMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -378,7 +378,7 @@ class UpdateChannelsMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
             .. versionadded:: 1.1
@@ -424,7 +424,7 @@ class UpdateChannelsMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
             .. versionadded:: 0.24.0
@@ -588,7 +588,7 @@ class InterpolationMixin:
 
                 method=dict(meg="MNE", eeg="spline", fnirs="nearest")
 
-            If a :class:`str` is provided, the method will be applied to all channel
+            If a `str` is provided, the method will be applied to all channel
             types supported and available in the instance. The method ``"nan"`` will
             replace the channel data with ``np.nan``.
 
@@ -604,7 +604,7 @@ class InterpolationMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -629,7 +629,7 @@ def rename_channels(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Note: modified in place.
+        The `mne.Info` object with information about the sensors and methods of measurement. Note: modified in place.
 
     mapping : dict | callable
         A dictionary mapping the old channel to a new channel name
@@ -647,7 +647,7 @@ def rename_channels(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -665,7 +665,7 @@ def get_builtin_ch_adjacencies(*, descriptions: bool = False):
     """Get a list of all FieldTrip neighbor definitions shipping with MNE.
 
     The names of the these neighbor definitions can be passed to
-    :func:`read_ch_adjacency`.
+    `read_ch_adjacency`.
 
     Parameters
     ----------
@@ -680,7 +680,7 @@ def get_builtin_ch_adjacencies(*, descriptions: bool = False):
     -------
     neighbor_name : list of str | list of tuple
         If ``descriptions=False``, the names of all builtin FieldTrip neighbor
-        definitions that can be loaded directly via :func:`read_ch_adjacency`.
+        definitions that can be loaded directly via `read_ch_adjacency`.
 
         If ``descriptions=True``, a list of tuples ``(name, description)``.
 
@@ -706,7 +706,7 @@ def read_ch_adjacency(fname, picks=None):
         .. note::
             You can retrieve the names of all
             built-in channel adjacencies via
-            :func:`mne.channels.get_builtin_ch_adjacencies`.
+            `mne.channels.get_builtin_ch_adjacencies`.
     picks : list of int | list of str | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *name* strings (e.g., ``['MEG0111',
@@ -731,11 +731,11 @@ def read_ch_adjacency(fname, picks=None):
     Notes
     -----
     If the neighbor definition you need is not shipped by MNE-Python,
-    you may use :func:`find_ch_adjacency` to compute the
+    you may use `find_ch_adjacency` to compute the
     adjacency matrix based on your 2D sensor locations.
 
     Note that depending on your use case, you may need to additionally use
-    :func:`mne.stats.combine_adjacency` to prepare a final "adjacency"
+    `mne.stats.combine_adjacency` to prepare a final "adjacency"
     to pass to the eventual function.
     """
     ...
@@ -751,7 +751,7 @@ def find_ch_adjacency(info, ch_type):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     ch_type : str | None
         The channel type for computing the adjacency matrix. Currently
         supports ``'mag'``, ``'grad'``, ``'eeg'`` and ``None``.
@@ -779,17 +779,17 @@ def find_ch_adjacency(info, ch_type):
     works for MEG data at the moment. This means that the adjacency matrix
     is always computed for EEG data and never loaded from a template file. If
     you want to load a template for a given montage use
-    :func:`read_ch_adjacency` directly.
+    `read_ch_adjacency` directly.
 
     .. warning::
         If Delaunay triangulation is used to calculate the adjacency matrix it
         may yield partially unexpected results (e.g., include unwanted edges
         between non-adjacent sensors). Therefore, it is recommended to check
         (and, if necessary, manually modify) the result by inspecting it
-        via :func:`mne.viz.plot_ch_adjacency`.
+        via `mne.viz.plot_ch_adjacency`.
 
     Note that depending on your use case, you may need to additionally use
-    :func:`mne.stats.combine_adjacency` to prepare a final "adjacency"
+    `mne.stats.combine_adjacency` to prepare a final "adjacency"
     to pass to the eventual function.
     """
     ...
@@ -801,7 +801,7 @@ def fix_mag_coil_types(info, use_cal: bool = False) -> None:
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Corrections are done in-place.
+        The `mne.Info` object with information about the sensors and methods of measurement. Corrections are done in-place.
     use_cal : bool
         If True, further refine the check for old coil types by checking
         ``info['chs'][ii]['cal']``.
@@ -848,7 +848,7 @@ def make_1020_channel_selections(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. If channel locations are present, the channel lists will
+        The `mne.Info` object with information about the sensors and methods of measurement. If channel locations are present, the channel lists will
         be sorted from posterior to anterior; otherwise, the order specified in
         ``info["ch_names"]`` will be kept.
     midline : str
@@ -893,11 +893,11 @@ def combine_channels(
 
         Note that within a dict entry all channels must have the same type.
     method : str | callable
-        Which method to use to combine channels. If a :class:`str`, must be one
+        Which method to use to combine channels. If a `str`, must be one
         of 'mean', 'median', or 'std' (standard deviation). If callable, the
         callable must accept one positional input (data of shape ``(n_channels,
         n_times)``, or ``(n_epochs, n_channels, n_times)``) and return an
-        :class:`array <numpy.ndarray>` of shape ``(n_times,)``, or ``(n_epochs,
+        `array <numpy.ndarray>` of shape ``(n_times,)``, or ``(n_epochs,
         n_times)``. For example with an instance of Raw or Evoked::
 
             method = lambda data: np.mean(data, axis=0)
@@ -917,7 +917,7 @@ def combine_channels(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -947,14 +947,14 @@ def read_vectorview_selection(name, fname=None, info=None, verbose=None):
         used).
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Used to determine which channel naming convention to use, e.g.
+        The `mne.Info` object with information about the sensors and methods of measurement. Used to determine which channel naming convention to use, e.g.
         ``'MEG 0111'`` (with space) for old Neuromag systems and ``'MEG0111'``
         (without space) for new ones.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

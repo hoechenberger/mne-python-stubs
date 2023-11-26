@@ -36,7 +36,7 @@ class Brain:
 
     .. warning::
        The API for this class is not currently complete. We suggest using
-       :meth:`mne.viz.plot_source_estimates` with the PyVista backend
+       `mne.viz.plot_source_estimates` with the PyVista backend
        enabled to obtain a ``Brain`` instance.
 
     Parameters
@@ -93,7 +93,7 @@ class Brain:
 
     views : str | list
         View to use. Using multiple views (list) is not supported for mpl
-        backend. See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for
+        backend. See `Brain.show_view <mne.viz.Brain.show_view>` for
         valid string options.
     offset : bool | str
         If True, shifts the right- or left-most x coordinate of the left and
@@ -126,7 +126,7 @@ class Brain:
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
         custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-        :mod:`qdarkstyle` and
+        `qdarkstyle` and
         `darkdetect <https://github.com/albertosottile/darkdetect>`__,
         respectively, are required.    If None (default), the config option MNE_3D_OPTION_THEME will be used,
         defaulting to "auto" if it's not found.
@@ -146,10 +146,10 @@ class Brain:
     -----
     The figure will publish and subscribe to the following UI events:
 
-    * :class:mne.viz.ui_events.TimeChange`
-    * :class:mne.viz.ui_events.PlaybackSpeed`
-    * :class:mne.viz.ui_events.ColormapRange`, ``kind="distributed_source_power"``
-    * :class:mne.viz.ui_events.VertexSelect`
+    * `mne.viz.ui_events.TimeChange`
+    * `mne.viz.ui_events.PlaybackSpeed`
+    * `mne.viz.ui_events.ColormapRange`, ``kind="distributed_source_power"``
+    * `mne.viz.ui_events.VertexSelect`
 
     This table shows the capabilities of each Brain backend ("✓" for full
     support, and "-" for partial support):
@@ -160,29 +160,29 @@ class Brain:
        +-------------------------------------+--------------+---------------+
        | 3D function:                        | surfer.Brain | mne.viz.Brain |
        +=====================================+==============+===============+
-       | :meth:`add_annotation`              | ✓            | ✓             |
+       | `add_annotation`              | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_data`                    | ✓            | ✓             |
+       | `add_data`                    | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_dipole`                  |              | ✓             |
+       | `add_dipole`                  |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_foci`                    | ✓            | ✓             |
+       | `add_foci`                    | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_forward`                 |              | ✓             |
+       | `add_forward`                 |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_head`                    |              | ✓             |
+       | `add_head`                    |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_label`                   | ✓            | ✓             |
+       | `add_label`                   | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_sensors`                 |              | ✓             |
+       | `add_sensors`                 |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_skull`                   |              | ✓             |
+       | `add_skull`                   |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_text`                    | ✓            | ✓             |
+       | `add_text`                    | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_volume_labels`           |              | ✓             |
+       | `add_volume_labels`           |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`close`                       | ✓            | ✓             |
+       | `close`                       | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
        | data                                | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
@@ -190,39 +190,39 @@ class Brain:
        +-------------------------------------+--------------+---------------+
        | labels                              | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_data`                 |              | ✓             |
+       | `remove_data`                 |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_dipole`               |              | ✓             |
+       | `remove_dipole`               |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_forward`              |              | ✓             |
+       | `remove_forward`              |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_head`                 |              | ✓             |
+       | `remove_head`                 |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_labels`               | ✓            | ✓             |
+       | `remove_labels`               | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_annotations`          | -            | ✓             |
+       | `remove_annotations`          | -            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_sensors`              |              | ✓             |
+       | `remove_sensors`              |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_skull`                |              | ✓             |
+       | `remove_skull`                |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_text`                 |              | ✓             |
+       | `remove_text`                 |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`remove_volume_labels`        |              | ✓             |
+       | `remove_volume_labels`        |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`save_image`                  | ✓            | ✓             |
+       | `save_image`                  | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`save_movie`                  | ✓            | ✓             |
+       | `save_movie`                  | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`screenshot`                  | ✓            | ✓             |
+       | `screenshot`                  | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`show_view`                   | ✓            | ✓             |
+       | `show_view`                   | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
        | TimeViewer                          | ✓            | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`get_picked_points`           |              | ✓             |
+       | `get_picked_points`           |              | ✓             |
        +-------------------------------------+--------------+---------------+
-       | :meth:`add_data(volume) <add_data>` |              | ✓             |
+       | `add_data(volume) <add_data>` |              | ✓             |
        +-------------------------------------+--------------+---------------+
        | view_layout                         |              | ✓             |
        +-------------------------------------+--------------+---------------+
@@ -442,7 +442,7 @@ class Brain:
         """Display data from a numpy array on the surface or volume.
 
         This provides a similar interface to
-        :meth:`surfer.Brain.add_overlay`, but it displays
+        `surfer.Brain.add_overlay`, but it displays
         it with a single colormap. It offers more flexibility over the
         colormap, and provides a way to display four-dimensional data
         (i.e., a timecourse) or five-dimensional data (i.e., a
@@ -450,7 +450,7 @@ class Brain:
 
         .. note:: ``fmin`` sets the low end of the colormap, and is separate
                   from thresh (this is a different convention from
-                  :meth:`surfer.Brain.add_overlay`).
+                  `surfer.Brain.add_overlay`).
 
         Parameters
         ----------
@@ -566,7 +566,7 @@ class Brain:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -634,7 +634,7 @@ class Brain:
             for ``$SUBJECTS_DIR/$SUBJECT/label/aparc/lh.cuneus.label``
             ``brain.add_label('cuneus', subdir='aparc')``).
         reset_camera : bool
-            Deprecated. Use :meth:`show_view` instead.
+            Deprecated. Use `show_view` instead.
 
         Notes
         -----
@@ -660,7 +660,7 @@ class Brain:
             Alpha level to control opacity. Default 1.
         scale : None | float
             The size of the arrow representing the dipoles in
-            :class:`mne.viz.Brain` units. Default 1.5mm.
+            `mne.viz.Brain` units. Default 1.5mm.
 
         Notes
         -----
@@ -693,7 +693,7 @@ class Brain:
             Alpha level to control opacity. Default 1.
         scales : list | float | None
             The size of the arrow representing the dipole in
-            :class:`mne.viz.Brain` units. Default 5mm.
+            `mne.viz.Brain` units. Default 5mm.
 
         Notes
         -----
@@ -773,7 +773,7 @@ class Brain:
             Freesurfer subject directory.
         labels : list
             Labeled regions of interest to plot. See
-            :func:`mne.get_montage_volume_labels`
+            `mne.get_montage_volume_labels`
             for one way to determine regions of interest. Regions can also be
             chosen from the :term:`FreeSurfer LUT`.
         colors : list | matplotlib-style color | None
@@ -874,7 +874,7 @@ class Brain:
         ----------
 
         info : mne.Info
-            The :class:`mne.Info` object with information about the sensors and methods of measurement.
+            The `mne.Info` object with information about the sensors and methods of measurement.
 
         trans : str | dict | instance of Transform
             If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
@@ -941,7 +941,7 @@ class Brain:
 
             Where the value (``eeg_colors`` above) can be broadcast to an array of colors with
             length that matches the number of channels of that type, i.e., is compatible with
-            :func:`matplotlib.colors.to_rgba_array`. A few examples of this for the case above
+            `matplotlib.colors.to_rgba_array`. A few examples of this for the case above
             are the string ``"k"``, a list of ``n_eeg`` color strings, or an NumPy ndarray of
             shape ``(n_eeg, 3)`` or ``(n_eeg, 4)``.
 
@@ -950,7 +950,7 @@ class Brain:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -1039,7 +1039,7 @@ class Brain:
             hemisphere, i.e. ``annot=(labels, ctab)`` for a single hemisphere
             or ``annot=((lh_labels, lh_ctab), (rh_labels, rh_ctab))`` for both
             hemispheres. ``labels`` and ``ctab`` should be arrays as returned
-            by :func:`nibabel.freesurfer.io.read_annot`.
+            by `nibabel.freesurfer.io.read_annot`.
         borders : bool | int
             Show only label borders. If int, specify the number of steps
             (away from the true border) along the cortical mesh to include
@@ -1130,7 +1130,7 @@ class Brain:
         view : str | None
             The name of the view to show (e.g. "lateral"). Other arguments
             take precedence and modify the camera starting from the ``view``.
-            See :meth:`Brain.show_view <mne.viz.Brain.show_view>` for valid
+            See `Brain.show_view <mne.viz.Brain.show_view>` for valid
             string shortcut options.
 
         roll : float | None
@@ -1175,7 +1175,7 @@ class Brain:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -1287,7 +1287,7 @@ class Brain:
         ----------
 
         interpolation : str | None
-            Interpolation method (:class:`scipy.interpolate.interp1d` parameter).
+            Interpolation method (`scipy.interpolate.interp1d` parameter).
             Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
             ``'quadratic'`` or ``'cubic'``.
         """
@@ -1337,7 +1337,7 @@ class Brain:
     ) -> None:
         """Save a movie (for data with a time axis).
 
-        The movie is created through the :mod:`imageio` module. The format is
+        The movie is created through the `imageio` module. The format is
         determined by the extension, and additional options can be specified
         through keyword arguments that depend on the format, see
         :doc:`imageio's format page <imageio:formats/index>`.
@@ -1351,7 +1351,7 @@ class Brain:
         ----------
         filename : str
             Path at which to save the movie. The extension determines the
-            format (e.g., ``'*.mov'``, ``'*.gif'``, ...; see the :mod:`imageio`
+            format (e.g., ``'*.mov'``, ``'*.gif'``, ...; see the `imageio`
             documentation for available formats).
         time_dilation : float
             Factor by which to stretch time (default 4). For example, an epoch
@@ -1365,7 +1365,7 @@ class Brain:
             Framerate of the movie (frames per second, default 24).
 
         interpolation : str | None
-            Interpolation method (:class:`scipy.interpolate.interp1d` parameter).
+            Interpolation method (`scipy.interpolate.interp1d` parameter).
             Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
             ``'quadratic'`` or ``'cubic'``.
             If None, it uses the current ``brain.interpolation``,
@@ -1383,7 +1383,7 @@ class Brain:
             If True, include time viewer traces. Only used if
             ``time_viewer=True`` and ``separate_canvas=False``.
         **kwargs : dict
-            Specify additional options for :mod:`imageio`.
+            Specify additional options for `imageio`.
         """
         ...
     def get_picked_points(self):

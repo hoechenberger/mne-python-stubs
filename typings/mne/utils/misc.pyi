@@ -46,7 +46,7 @@ def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kw
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     *args, **kwargs : arguments
         Additional arguments to pass to subprocess.Popen.
@@ -70,14 +70,14 @@ def running_subprocess(
     Parameters
     ----------
     command : list of str | str
-        Command to run as subprocess (see :class:`python:subprocess.Popen`).
+        Command to run as subprocess (see `python:subprocess.Popen`).
     after : str
         Can be:
 
-        - "wait" to use :meth:python:subprocess.Popen.wait`
-        - "communicate" to use :meth:python.subprocess.Popen.communicate`
-        - "terminate" to use :meth:python:subprocess.Popen.terminate`
-        - "kill" to use :meth:python:subprocess.Popen.kill`
+        - "wait" to use `python:subprocess.Popen.wait`
+        - "communicate" to use `python.subprocess.Popen.communicate`
+        - "terminate" to use `python:subprocess.Popen.terminate`
+        - "kill" to use `python:subprocess.Popen.kill`
 
     %(verbose)s
     *args, **kwargs : arguments

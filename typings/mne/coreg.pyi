@@ -67,17 +67,17 @@ def coregister_fiducials(info, fiducials, tol: float = 0.01):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     fiducials : path-like | list of dict
         Fiducials in MRI coordinate space (either path to a ``*-fiducials.fif``
-        file or list of fiducials as returned by :func:`read_fiducials`.
+        file or list of fiducials as returned by `read_fiducials`.
 
     Returns
     -------
     trans : Transform
         The device-MRI transform.
 
-    .. note:: The :class:`mne.Info` object fiducials must be in the
+    .. note:: The `mne.Info` object fiducials must be in the
               head coordinate space.
     """
     ...
@@ -106,7 +106,7 @@ def create_default_subject(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Notes
@@ -114,7 +114,7 @@ def create_default_subject(
     When no structural MRI is available for a subject, an average brain can be
     substituted. Freesurfer comes with such an average brain model, and MNE
     comes with some auxiliary files which make coregistration easier.
-    :py:func:`create_default_subject` copies the relevant
+    :py`create_default_subject` copies the relevant
     files from Freesurfer into the current subjects_dir, and also adds the
     auxiliary files provided by MNE.
     """
@@ -135,7 +135,7 @@ def fit_matched_points(
 
     This minimizes the squared distance between two matching sets of points.
 
-    Uses :func:`scipy.optimize.leastsq` to find a transformation involving
+    Uses `scipy.optimize.leastsq` to find a transformation involving
     a combination of rotation, translation, and scaling (in that order).
 
     Parameters
@@ -234,7 +234,7 @@ def scale_bem(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -321,7 +321,7 @@ def scale_mri(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -332,8 +332,8 @@ def scale_mri(
 
     Notes
     -----
-    This function will automatically call :func:`scale_bem`,
-    :func:`scale_labels`, and :func:`scale_source_space` based on expected
+    This function will automatically call `scale_bem`,
+    `scale_labels`, and `scale_source_space` based on expected
     filename patterns in the subject directory.
     """
     ...
@@ -375,7 +375,7 @@ def scale_source_space(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Notes
@@ -409,7 +409,7 @@ class Coregistration:
         ``'lpa'``, ``'rpa'``, and ``'nasion'``, with **values** being the
         respective coordinates in meters.
         If a list, it must be a list of ``DigPoint`` instances as returned by the
-        :func:`mne.io.read_fiducials` function.
+        `mne.io.read_fiducials` function.
         If ``'estimated'``, the fiducials are derived from the ``fsaverage``
         template. If ``'auto'`` (default), tries to find the fiducials
         in a file with the canonical name
@@ -446,7 +446,7 @@ class Coregistration:
     - translation are in m
     - scale are in scale proportion
 
-    If using a scale mode, the :func:mne.scale_mri` should be used
+    If using a scale mode, the `mne.scale_mri` should be used
     to create a surrogate MRI subject with the proper scale factors.
     """
 
@@ -565,7 +565,7 @@ class Coregistration:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -628,7 +628,7 @@ class Coregistration:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -667,7 +667,7 @@ class Coregistration:
         ...
     @property
     def trans(self):
-        """The head->mri :class:mne.transforms.Transform`."""
+        """The head->mri `mne.transforms.Transform`."""
         ...
     def reset(self):
         """Reset all the parameters affecting the coregistration.

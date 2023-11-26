@@ -124,7 +124,7 @@ def construct_iir_filter(
     btype : str
         Type of filter. Should be 'lowpass', 'highpass', or 'bandpass'
         (or analogous string representations known to
-        :func:`scipy.signal.iirfilter`).
+        `scipy.signal.iirfilter`).
     return_copy : bool
         If False, the 'sos', 'b', 'a', and 'padlen' entries in
         ``iir_params`` will be set inplace (if they weren't already).
@@ -143,16 +143,16 @@ def construct_iir_filter(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        :func:scipy.signal.filtfilt`.
+        `scipy.signal.filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        :func:scipy.signal.lfilter`.
+        `scipy.signal.lfilter`.
 
         .. versionadded:: 0.13
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -169,8 +169,8 @@ def construct_iir_filter(
 
     Notes
     -----
-    This function triages calls to :func:`scipy.signal.iirfilter` and
-    :func:`scipy.signal.iirdesign` based on the input arguments (see
+    This function triages calls to `scipy.signal.iirfilter` and
+    `scipy.signal.iirdesign` based on the input arguments (see
     linked functions for more details).
 
     .. versionchanged:: 0.14
@@ -297,12 +297,12 @@ def filter_data(
 
     method : str
         ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-        forward-backward filtering (via :func:scipy.signal.filtfilt`).
+        forward-backward filtering (via `scipy.signal.filtfilt`).
 
     iir_params : dict | None
         Dictionary of parameters to use for IIR filtering.
         If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
-        For more information, see :func:`mne.filter.construct_iir_filter`.
+        For more information, see `mne.filter.construct_iir_filter`.
     copy : bool
         If True, a copy of x, filtered, is returned. Otherwise, it operates
         on x in place.
@@ -319,9 +319,9 @@ def filter_data(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        :func:scipy.signal.filtfilt`.
+        `scipy.signal.filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        :func:scipy.signal.lfilter`.
+        `scipy.signal.lfilter`.
 
         .. versionadded:: 0.13
 
@@ -332,15 +332,15 @@ def filter_data(
         .. versionadded:: 0.15
 
     fir_design : str
-        Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-        or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+        Can be "firwin" (default) to use `scipy.signal.firwin`,
+        or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
         .. versionadded:: 0.15
 
     pad : str
-        The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+        The type of padding to use. Supports all `numpy.pad` ``mode``
         options. Can also be ``"reflect_limited"``, which pads with a
         reflected version of each vector mirrored on the first and last values
         of the vector, followed by zeros.
@@ -353,7 +353,7 @@ def filter_data(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -388,7 +388,7 @@ def filter_data(
 
     For more information, see the tutorials
     :ref:`disc-filtering` and :ref:`tut-filter-resample` and
-    :func:`mne.filter.create_filter`.
+    `mne.filter.create_filter`.
     """
     ...
 
@@ -469,12 +469,12 @@ def create_filter(
 
     method : str
         ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-        forward-backward filtering (via :func:scipy.signal.filtfilt`).
+        forward-backward filtering (via `scipy.signal.filtfilt`).
 
     iir_params : dict | None
         Dictionary of parameters to use for IIR filtering.
         If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
-        For more information, see :func:`mne.filter.construct_iir_filter`.
+        For more information, see `mne.filter.construct_iir_filter`.
 
     phase : str
         Phase of the filter.
@@ -488,9 +488,9 @@ def create_filter(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        :func:scipy.signal.filtfilt`.
+        `scipy.signal.filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        :func:scipy.signal.lfilter`.
+        `scipy.signal.lfilter`.
 
         .. versionadded:: 0.13
 
@@ -501,8 +501,8 @@ def create_filter(
         .. versionadded:: 0.15
 
     fir_design : str
-        Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-        or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+        Can be "firwin" (default) to use `scipy.signal.firwin`,
+        or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
@@ -511,7 +511,7 @@ def create_filter(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -656,7 +656,7 @@ def notch_filter(
           this should not be used.
 
         When ``method=='spectrum_fit'``, this sets the effective window duration
-        over which fits are computed. See :func:`mne.filter.create_filter`
+        over which fits are computed. See `mne.filter.create_filter`
         for options. Longer window lengths will give more stable frequency
         estimates, but require (potentially much) more processing and are not able
         to adapt as well to non-stationarities.
@@ -671,7 +671,7 @@ def notch_filter(
 
     method : str
         ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-        forward-backward filtering (via :func:scipy.signal.filtfilt`).
+        forward-backward filtering (via `scipy.signal.filtfilt`).
         'spectrum_fit' will use multi-taper estimation of sinusoidal
         components. If freqs=None and method='spectrum_fit', significant
         sinusoidal components are detected using an F test, and noted by
@@ -680,7 +680,7 @@ def notch_filter(
     iir_params : dict | None
         Dictionary of parameters to use for IIR filtering.
         If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
-        For more information, see :func:`mne.filter.construct_iir_filter`.
+        For more information, see `mne.filter.construct_iir_filter`.
     mt_bandwidth : float | None
         The bandwidth of the multitaper windowing function in Hz.
         Only used in 'spectrum_fit' mode.
@@ -714,9 +714,9 @@ def notch_filter(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        :func:scipy.signal.filtfilt`.
+        `scipy.signal.filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        :func:scipy.signal.lfilter`.
+        `scipy.signal.lfilter`.
 
         .. versionadded:: 0.13
 
@@ -727,15 +727,15 @@ def notch_filter(
         .. versionadded:: 0.15
 
     fir_design : str
-        Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-        or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+        Can be "firwin" (default) to use `scipy.signal.firwin`,
+        or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
         .. versionadded:: 0.15
 
     pad : str
-        The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+        The type of padding to use. Supports all `numpy.pad` ``mode``
         options. Can also be ``"reflect_limited"``, which pads with a
         reflected version of each vector mirrored on the first and last values
         of the vector, followed by zeros.
@@ -746,7 +746,7 @@ def notch_filter(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -818,14 +818,14 @@ def resample(
 
     window : str | tuple
         Frequency-domain window to use in resampling.
-        See :func:`scipy.signal.resample`.
+        See `scipy.signal.resample`.
 
     n_jobs : int | str
         Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
         is installed properly.
 
     pad : str
-        The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+        The type of padding to use. Supports all `numpy.pad` ``mode``
         options. Can also be ``"reflect_limited"``, which pads with a
         reflected version of each vector mirrored on the first and last values
         of the vector, followed by zeros.
@@ -836,7 +836,7 @@ def resample(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -878,7 +878,7 @@ def detrend(x, order: int = 1, axis: int = -1):
 
     Examples
     --------
-    As in :func:`scipy.signal.detrend`::
+    As in `scipy.signal.detrend`::
 
         >>> randgen = np.random.RandomState(9)
         >>> npoints = int(1e3)
@@ -908,7 +908,7 @@ class FilterMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1022,12 +1022,12 @@ class FilterMixin:
 
         method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-            forward-backward filtering (via :func:scipy.signal.filtfilt`).
+            forward-backward filtering (via `scipy.signal.filtfilt`).
 
         iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
             If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
-            For more information, see :func:`mne.filter.construct_iir_filter`.
+            For more information, see `mne.filter.construct_iir_filter`.
 
         phase : str
             Phase of the filter.
@@ -1041,9 +1041,9 @@ class FilterMixin:
             When ``method='iir'``, ``phase='zero'`` (default) or
             ``phase='zero-double'`` constructs and applies IIR filter twice, once
             forward, and once backward (making it non-causal) using
-            :func:scipy.signal.filtfilt`.
+            `scipy.signal.filtfilt`.
             If ``phase='forward'``, it constructs and applies forward IIR filter using
-            :func:scipy.signal.lfilter`.
+            `scipy.signal.lfilter`.
 
             .. versionadded:: 0.13
 
@@ -1054,8 +1054,8 @@ class FilterMixin:
             .. versionadded:: 0.15
 
         fir_design : str
-            Can be "firwin" (default) to use :func:`scipy.signal.firwin`,
-            or "firwin2" to use :func:`scipy.signal.firwin2`. "firwin" uses
+            Can be "firwin" (default) to use `scipy.signal.firwin`,
+            or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
             a time-domain design technique that generally gives improved
             attenuation using fewer samples than "firwin2".
 
@@ -1067,14 +1067,14 @@ class FilterMixin:
             segments on either side of the given excluded annotated segment
             will be filtered separately (i.e., as independent signals).
             The default (``('edge', 'bad_acq_skip')`` will separately filter
-            any segments that were concatenated by :func:`mne.concatenate_raws`
-            or :meth:`mne.io.Raw.append`, or separated during acquisition.
+            any segments that were concatenated by `mne.concatenate_raws`
+            or `mne.io.Raw.append`, or separated during acquisition.
             To disable, provide an empty list. Only used if ``inst`` is raw.
 
             .. versionadded:: 0.16.
 
         pad : str
-            The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+            The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
@@ -1084,7 +1084,7 @@ class FilterMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1128,7 +1128,7 @@ class FilterMixin:
 
         For more information, see the tutorials
         :ref:`disc-filtering` and :ref:`tut-filter-resample` and
-        :func:`mne.filter.create_filter`.
+        `mne.filter.create_filter`.
 
         .. versionadded:: 0.15
         """
@@ -1162,14 +1162,14 @@ class FilterMixin:
 
         window : str | tuple
             Frequency-domain window to use in resampling.
-            See :func:`scipy.signal.resample`.
+            See `scipy.signal.resample`.
 
         n_jobs : int | str
             Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
             is installed properly.
 
         pad : str
-            The type of padding to use. Supports all :func:`numpy.pad` ``mode``
+            The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
@@ -1181,7 +1181,7 @@ class FilterMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1226,10 +1226,10 @@ class FilterMixin:
             See Notes.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
         n_fft : int | None | str
             Points to use in the FFT for Hilbert transformation. The signal
@@ -1240,7 +1240,7 @@ class FilterMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1320,7 +1320,7 @@ def design_mne_c_filter(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

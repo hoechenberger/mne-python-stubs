@@ -67,7 +67,7 @@ class RawEDF(BaseRaw):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -79,7 +79,7 @@ class RawEDF(BaseRaw):
     Notes
     -----
 
-    :class:`mne.io.Raw` only stores signals with matching sampling frequencies.
+    `mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
     are upsampled to the highest loaded sampling frequency. In this case, using
     preload=True is recommended, as otherwise, edge artifacts appear when
@@ -93,9 +93,9 @@ class RawEDF(BaseRaw):
         >>> events = mne.find_events(...)  # doctest:+SKIP
         >>> events[:, 2] &= (2**16 - 1)  # doctest:+SKIP
 
-    The above operation can be carried out directly in :func:`mne.find_events`
+    The above operation can be carried out directly in `mne.find_events`
     using the ``mask`` and ``mask_type`` parameters (see
-    :func:`mne.find_events` for more details).
+    `mne.find_events` for more details).
 
     It is also possible to retrieve system codes, but no particular effort has
     been made to decode these in MNE. In case it is necessary, for instance to
@@ -113,7 +113,7 @@ class RawEDF(BaseRaw):
 
     TAL channels called 'EDF Annotations' or 'BDF Annotations' are parsed and
     extracted annotations are stored in raw.annotations. Use
-    :func:`mne.events_from_annotations` to obtain events from these
+    `mne.events_from_annotations` to obtain events from these
     annotations.
 
     If channels named 'status' or 'trigger' are present, they are considered as
@@ -178,7 +178,7 @@ class RawGDF(BaseRaw):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -291,14 +291,14 @@ def read_raw_edf(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     raw : instance of RawEDF
         The raw instance.
-        See :class:`mne.io.Raw` for documentation of attributes and methods.
+        See `mne.io.Raw` for documentation of attributes and methods.
 
     See Also
     --------
@@ -310,7 +310,7 @@ def read_raw_edf(
     Notes
     -----
 
-    :class:`mne.io.Raw` only stores signals with matching sampling frequencies.
+    `mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
     are upsampled to the highest loaded sampling frequency. In this case, using
     preload=True is recommended, as otherwise, edge artifacts appear when
@@ -324,7 +324,7 @@ def read_raw_edf(
         >>> events[:, 2] >>= 8  # doctest:+SKIP
 
     TAL channels called 'EDF Annotations' are parsed and extracted annotations
-    are stored in raw.annotations. Use :func:`mne.events_from_annotations` to
+    are stored in raw.annotations. Use `mne.events_from_annotations` to
     obtain events from these annotations.
 
     If channels named 'status' or 'trigger' are present, they are considered as
@@ -431,14 +431,14 @@ def read_raw_bdf(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     raw : instance of RawEDF
         The raw instance.
-        See :class:`mne.io.Raw` for documentation of attributes and methods.
+        See `mne.io.Raw` for documentation of attributes and methods.
 
     See Also
     --------
@@ -448,7 +448,7 @@ def read_raw_bdf(
 
     Notes
     -----
-    :class:`mne.io.Raw` only stores signals with matching sampling frequencies.
+    `mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
     are upsampled to the highest loaded sampling frequency. In this case, using
     preload=True is recommended, as otherwise, edge artifacts appear when
@@ -462,9 +462,9 @@ def read_raw_bdf(
         >>> events = mne.find_events(...)  # doctest:+SKIP
         >>> events[:, 2] &= (2**16 - 1)  # doctest:+SKIP
 
-    The above operation can be carried out directly in :func:`mne.find_events`
+    The above operation can be carried out directly in `mne.find_events`
     using the ``mask`` and ``mask_type`` parameters (see
-    :func:`mne.find_events` for more details).
+    `mne.find_events` for more details).
 
     It is also possible to retrieve system codes, but no particular effort has
     been made to decode these in MNE. In case it is necessary, for instance to
@@ -481,7 +481,7 @@ def read_raw_bdf(
         >>> events[:, 2] >>= 8  # doctest:+SKIP
 
     TAL channels called 'BDF Annotations' are parsed and extracted annotations
-    are stored in raw.annotations. Use :func:`mne.events_from_annotations` to
+    are stored in raw.annotations. Use `mne.events_from_annotations` to
     obtain events from these annotations.
 
     If channels named 'status' or 'trigger' are present, they are considered as
@@ -537,14 +537,14 @@ def read_raw_gdf(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     raw : instance of RawGDF
         The raw instance.
-        See :class:`mne.io.Raw` for documentation of attributes and methods.
+        See `mne.io.Raw` for documentation of attributes and methods.
 
     See Also
     --------

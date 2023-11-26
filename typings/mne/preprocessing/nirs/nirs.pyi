@@ -8,7 +8,7 @@ def source_detector_distances(info, picks=None):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -37,7 +37,7 @@ def short_channels(info, threshold: float = 0.01):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     threshold : float
         The threshold distance for what is considered short in meters.
 

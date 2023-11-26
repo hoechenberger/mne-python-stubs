@@ -19,7 +19,7 @@ def make_compensator(info, from_, to, exclude_comp_chs: bool = False):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     from_ : int
         Compensation in the input data.
     to : int

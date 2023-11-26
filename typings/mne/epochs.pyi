@@ -85,7 +85,7 @@ class BaseEpochs(
     EpochAnnotationsMixin,
     SpectrumMixin,
 ):
-    """Abstract base class for mne.Epochs`-type classes.
+    """Abstract base class for `mne.Epochs`-type classes.
 
     .. note::
         This class should not be instantiated directly via
@@ -96,7 +96,7 @@ class BaseEpochs(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     data : ndarray | None
         If ``None``, data will be read from the Raw object. If ndarray, must be
         of shape (n_epochs, n_channels, n_times).
@@ -143,7 +143,7 @@ class BaseEpochs(
         time point zero.
 
     raw : Raw object
-        An instance of mne.io.Raw`.
+        An instance of `mne.io.Raw`.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -259,11 +259,11 @@ class BaseEpochs(
         The filename (if the epochs are read from disk).
 
     metadata : instance of pandas.DataFrame | None
-        A :class:`pandas.DataFrame` specifying metadata about each epoch.
+        A `pandas.DataFrame` specifying metadata about each epoch.
         If given, ``len(metadata)`` must equal ``len(events)``. The DataFrame
         may only contain values of type (str | int | float | bool).
         If metadata is given, then pandas-style queries may be used to select
-        subsets of data, see :meth:`mne.Epochs.__getitem__`.
+        subsets of data, see `mne.Epochs.__getitem__`.
         When a subset of the epochs is created in this (or any other
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
@@ -287,7 +287,7 @@ class BaseEpochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -300,7 +300,7 @@ class BaseEpochs(
     -----
     The ``BaseEpochs`` class is public to allow for stable type-checking in
     user code (i.e., ``isinstance(my_epochs, BaseEpochs)``) but should not be
-    used as a constructor for Epochs objects (use instead :class:`mne.Epochs`).
+    used as a constructor for Epochs objects (use instead `mne.Epochs`).
     """
 
     event_id: Incomplete
@@ -403,7 +403,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -482,9 +482,9 @@ class BaseEpochs(
 
         by_event_type : bool
             When ``False`` (the default) all epochs are processed together and a single
-            :class:mne.Evoked` object is returned. When ``True``, epochs are first
+            `mne.Evoked` object is returned. When ``True``, epochs are first
             grouped by event type (as specified using the ``event_id`` parameter) and a
-            list is returned containing a separate :class:mne.Evoked` object for each
+            list is returned containing a separate `mne.Evoked` object for each
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
@@ -496,7 +496,7 @@ class BaseEpochs(
         evoked : instance of Evoked | list of Evoked
             The averaged epochs.
             When ``by_event_type=True`` was specified, a list is returned containing a
-            separate :class:mne.Evoked` object for each event type. The list has the
+            separate `mne.Evoked` object for each event type. The list has the
             same order as the event types as specified in the ``event_id``
             dictionary.
 
@@ -538,9 +538,9 @@ class BaseEpochs(
 
         by_event_type : bool
             When ``False`` (the default) all epochs are processed together and a single
-            :class:mne.Evoked` object is returned. When ``True``, epochs are first
+            `mne.Evoked` object is returned. When ``True``, epochs are first
             grouped by event type (as specified using the ``event_id`` parameter) and a
-            list is returned containing a separate :class:mne.Evoked` object for each
+            list is returned containing a separate `mne.Evoked` object for each
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
@@ -552,7 +552,7 @@ class BaseEpochs(
         std_err : instance of Evoked | list of Evoked
             The standard error over epochs.
             When ``by_event_type=True`` was specified, a list is returned containing a
-            separate :class:mne.Evoked` object for each event type. The list has the
+            separate `mne.Evoked` object for each event type. The list has the
             same order as the event types as specified in the ``event_id``
             dictionary.
         """
@@ -633,7 +633,7 @@ class BaseEpochs(
             The title of the window. If None, the event names (from
             ``epochs.event_id``) will be displayed. Defaults to None.
         events : bool | array, shape (n_events, 3)
-            Events to show with vertical bars. You can use mne.viz.plot_events`
+            Events to show with vertical bars. You can use `mne.viz.plot_events`
             as a legend for the colors. By default, the coloring scheme is the
             same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
             plot events).
@@ -679,11 +679,11 @@ class BaseEpochs(
             Whitened data channels are scaled by ``scalings['whitened']``,
             and their channel names are shown in italic.
             Can be a string to load a covariance from disk.
-            See also :meth:`mne.Evoked.plot_white` for additional inspection
+            See also `mne.Evoked.plot_white` for additional inspection
             of noise covariance properties when whitening evoked data.
             For data processed with SSS, the effective dependence between
             magnetometers and gradiometers may introduce differences in scaling,
-            consider using :meth:`mne.Evoked.plot_white`.
+            consider using `mne.Evoked.plot_white`.
 
             .. versionadded:: 0.16.0
         butterfly : bool
@@ -745,14 +745,14 @@ class BaseEpochs(
             graphics hardware. Only works if using the Qt backend. Default is
             None, which will use False unless the user configuration variable
             ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
-            see :func:`mne.set_config`.
+            see `mne.set_config`.
 
             .. versionadded:: 0.24
 
         theme : str | path-like
             Can be "auto", "light", or "dark" or a path-like to a
             custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-            :mod:`qdarkstyle` and
+            `qdarkstyle` and
             `darkdetect <https://github.com/albertosottile/darkdetect>`__,
             respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
             defaulting to "auto" if it's not found.
@@ -794,14 +794,14 @@ class BaseEpochs(
         view all the options.
 
         MNE-Python provides two different backends for browsing plots (i.e.,
-        :meth:`raw.plot()<mne.io.Raw.plot>`, :meth:`epochs.plot()<mne.Epochs.plot>`,
-        and :meth:`ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
-        based on :mod:`matplotlib`, and the other is based on
+        `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
+        and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
+        based on `matplotlib`, and the other is based on
         :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
-        context manager :func:`mne.viz.use_browser_backend`, you can set it for the
-        duration of a Python session using :func:`mne.viz.set_browser_backend`, and you
+        context manager `mne.viz.use_browser_backend`, you can set it for the
+        duration of a Python session using `mne.viz.set_browser_backend`, and you
         can set the default for your computer via
-        :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
+        `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
         .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
@@ -871,7 +871,7 @@ class BaseEpochs(
             The figure face color. Defaults to black.
         fig_background : None | array
             A background image for the figure. This must be a valid input to
-            :func:`matplotlib.pyplot.imshow`. Defaults to ``None``.
+            `matplotlib.pyplot.imshow`. Defaults to ``None``.
         font_color : color
             The color of tick labels in the colorbar. Defaults to white.
         show : bool
@@ -879,7 +879,7 @@ class BaseEpochs(
 
         Returns
         -------
-        fig : instance of :class:`matplotlib.figure.Figure`
+        fig : instance of `matplotlib.figure.Figure`
             Figure distributing one image per channel across sensor topography.
 
         Notes
@@ -897,7 +897,7 @@ class BaseEpochs(
 
         .. warning:: This operation is slow since all epochs have to be read
                      from disk. To avoid reading epochs from disk multiple
-                     times, use :meth:`mne.Epochs.load_data()`.
+                     times, use `mne.Epochs.load_data()`.
 
         .. note:: To constrain the time period used for estimation of signal
                   quality, set ``epochs.reject_tmin`` and
@@ -944,7 +944,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1079,11 +1079,11 @@ class BaseEpochs(
             Display or not a colorbar.
         order : None | array of int | callable
             If not ``None``, order is used to reorder the epochs along the y-axis
-            of the image. If it is an array of :class:`int`, its length should
+            of the image. If it is an array of `int`, its length should
             match the number of good epochs. If it is a callable it should accept
             two positional parameters (``times`` and ``data``, where
             ``data.shape == (len(good_epochs), len(times))``) and return an
-            :class:`array <numpy.ndarray>` of indices that will sort ``data`` along
+            `array <numpy.ndarray>` of indices that will sort ``data`` along
             its first axis.
         show : bool
             Show figure if True.
@@ -1105,16 +1105,16 @@ class BaseEpochs(
             If None, "RdBu_r" is used, unless the data is all positive, in which
             case "Reds" is used.
         fig : Figure | None
-            :class:matplotlib.figure.Figure` instance to draw the image to.
+            `matplotlib.figure.Figure` instance to draw the image to.
             Figure must contain the correct number of axes for drawing the epochs
             image, the evoked response, and a colorbar (depending on values of
             ``evoked`` and ``colorbar``). If ``None`` a new figure is created.
             Defaults to ``None``.
         axes : list of Axes | dict of list of Axes | None
-            List of :class:matplotlib.axes.Axes` objects in which to draw the
+            List of `matplotlib.axes.Axes` objects in which to draw the
             image, evoked response, and colorbar (in that order). Length of list
             must be 1, 2, or 3 (depending on values of ``colorbar`` and ``evoked``
-            parameters). If a :class:`dict`, each entry must be a list of Axes
+            parameters). If a `dict`, each entry must be a list of Axes
             objects with the same constraints as above. If both ``axes`` and
             ``group_by`` are dicts, their keys must match. Providing non-``None``
             values for both ``fig`` and ``axes``  results in an error. Defaults to
@@ -1123,16 +1123,16 @@ class BaseEpochs(
             Times (in seconds) at which to draw a line on the corresponding row of
             the image (e.g., a reaction time associated with each epoch). Note that
             ``overlay_times`` should be ordered to correspond with the
-            :class:mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
+            `mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
             ``epochs[0]``, etc).
 
         combine : None | str | callable
-            How to combine information across channels. If a :class:`str`, must be
+            How to combine information across channels. If a `str`, must be
             one of 'mean', 'median', 'std' (standard deviation) or 'gfp' (global
             field power).
             If callable, the callable must accept one positional input (data of
             shape ``(n_epochs, n_channels, n_times)``) and return an
-            :class:`array <numpy.ndarray>` of shape ``(n_epochs, n_times)``. For
+            `array <numpy.ndarray>` of shape ``(n_epochs, n_times)``. For
             example::
 
                 combine = lambda data: np.median(data, axis=1)
@@ -1145,7 +1145,7 @@ class BaseEpochs(
         group_by : None | dict
             Specifies which channels are aggregated into a single figure, with
             aggregation method determined by the ``combine`` parameter. If not
-            ``None``, one :class:matplotlib.figure.Figure` is made per dict
+            ``None``, one `matplotlib.figure.Figure` is made per dict
             entry; the dict key will be used as the figure title and the dict
             values must be lists of picks (either channel names or integer indices
             of ``epochs.ch_names``). For example::
@@ -1158,12 +1158,12 @@ class BaseEpochs(
         evoked : bool
             Draw the ER[P/F] below the image or not.
         ts_args : None | dict
-            Arguments passed to a call to mne.viz.plot_compare_evokeds` to style
+            Arguments passed to a call to `mne.viz.plot_compare_evokeds` to style
             the evoked plot below the image. Defaults to an empty dictionary,
-            meaning mne.viz.plot_compare_evokeds` will be called with default
+            meaning `mne.viz.plot_compare_evokeds` will be called with default
             parameters.
         title : None | str
-            If :class:`str`, will be plotted as figure title. Otherwise, the
+            If `str`, will be plotted as figure title. Otherwise, the
             title will indicate channel(s) or channel type being plotted. Defaults
             to ``None``.
         clear : bool
@@ -1180,8 +1180,8 @@ class BaseEpochs(
         -----
         You can control how channels are aggregated into one figure or plotted in
         separate figures through a combination of the ``picks``, ``group_by``, and
-        ``combine`` parameters. If ``group_by`` is a :class:`dict`, the result is
-        one :class:matplotlib.figure.Figure` per dictionary key (for any valid
+        ``combine`` parameters. If ``group_by`` is a `dict`, the result is
+        one `matplotlib.figure.Figure` per dictionary key (for any valid
         values of ``picks`` and ``combine``). If ``group_by`` is ``None``, the
         number and content of the figures generated depends on the values of
         ``picks`` and ``combine``, as summarized in this table:
@@ -1216,8 +1216,8 @@ class BaseEpochs(
                   external indices (e.g., behavioral logs). To drop epochs
                   based on external criteria, do not use the ``preload=True``
                   flag when constructing an Epochs object, and call this
-                  method before calling the :meth:`mne.Epochs.drop_bad` or
-                  :meth:`mne.Epochs.load_data` methods.
+                  method before calling the `mne.Epochs.drop_bad` or
+                  `mne.Epochs.load_data` methods.
 
         Parameters
         ----------
@@ -1232,7 +1232,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1266,9 +1266,9 @@ class BaseEpochs(
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
         item : slice | array-like | str | list | None
-            The items to get. See :meth:`mne.Epochs.__getitem__` for
+            The items to get. See `mne.Epochs.__getitem__` for
             a description of valid options. This can be substantially faster
-            for obtaining an ndarray than :meth:mne.Epochs.__getitem__`
+            for obtaining an ndarray than `mne.Epochs.__getitem__`
             for repeated access on large Epochs objects.
             None (default) is an alias for ``slice(None)``.
 
@@ -1320,7 +1320,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1360,9 +1360,9 @@ class BaseEpochs(
 
         fun : callable
             A function to be applied to the channels. The first argument of
-            fun has to be a timeseries (:class:`numpy.ndarray`). The function must
+            fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  if ``channel_wise=True`` and ``(len(picks), n_times)`` otherwise.
-            The function must return an :class:numpy.ndarray` shaped like its input.
+            The function must return an `numpy.ndarray` shaped like its input.
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1378,10 +1378,10 @@ class BaseEpochs(
             (default) the data type is not modified.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``. Ignored if ``channel_wise=False`` as the workload
             is split across channels.
 
@@ -1392,7 +1392,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         **kwargs : dict
@@ -1427,7 +1427,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1509,7 +1509,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -1523,7 +1523,7 @@ class BaseEpochs(
         """Export Epochs to external formats.
 
         Supported formats:
-            - EEGLAB (``.set``, uses :mod:`eeglabio`)
+            - EEGLAB (``.set``, uses `eeglabio`)
 
         .. warning::
             Since we are exporting to external formats, there's no guarantee that all
@@ -1549,7 +1549,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -1558,13 +1558,13 @@ class BaseEpochs(
 
         Export to external format may not preserve all the information from the
         instance. To save in native MNE format (``.fif``) without information loss,
-        use :meth:`mne.Epochs.save` instead.
+        use `mne.Epochs.save` instead.
         Export does not apply projector(s). Unapplied projector(s) will be lost.
         Consider applying projector(s) before exporting with
-        :meth:`mne.Epochs.apply_proj`.
+        `mne.Epochs.apply_proj`.
 
         For EEGLAB exports, channel locations are expanded to full EEGLAB format.
-        For more details see :func:`eeglabio.utils.cart_to_eeglab`.
+        For more details see `eeglabio.utils.cart_to_eeglab`.
         """
         ...
     def equalize_event_counts(self, event_ids=None, method: str = "mintime"):
@@ -1576,7 +1576,7 @@ class BaseEpochs(
         during a recording, they could be compensated for (to some extent) in
         the equalization process. This method thus seeks to reduce any of
         those effects by minimizing the differences in the times of the events
-        within a mne.Epochs` instance. For example, if one event type
+        within a `mne.Epochs` instance. For example, if one event type
         occurred at time points ``[1, 2, 3, 4, 120, 121]`` and the another one
         at ``[3.5, 4.5, 120.5, 121.5]``, this method would remove the events at
         times ``[1, 2]`` for the first event type – and not the events at times
@@ -1588,7 +1588,7 @@ class BaseEpochs(
             The event types to equalize.
 
             If ``None`` (default), equalize the counts of **all** event types
-            present in the mne.Epochs` instance.
+            present in the `mne.Epochs` instance.
 
             If a list, each element can either be a string (event name) or a
             list of strings. In the case where one of the entries is a list of
@@ -1599,7 +1599,7 @@ class BaseEpochs(
             counts to equalize, i.e., passing ``dict(A=1, B=2)`` will have the
             same effect as passing ``['A', 'B']``. This is useful if you intend
             to pass an ``event_id`` dictionary that was used when creating
-            mne.Epochs`.
+            `mne.Epochs`.
 
             In the case where partial matching is used (using ``/`` in
             the event names), the event types will be matched according to the
@@ -1694,24 +1694,24 @@ class BaseEpochs(
             include all channels (including "bad" channels, if any).
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
             Additional keyword arguments passed to the spectral estimation
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See :func:mne.time_frequency.psd_array_welch` and
-            :func:mne.time_frequency.psd_array_multitaper` for details.
+            method). See `mne.time_frequency.psd_array_welch` and
+            `mne.time_frequency.psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1787,7 +1787,7 @@ class BaseEpochs(
         method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
             method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for :class:mne.Epochs` or :class:mne.Evoked` data.
+            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
         average : bool
             If False, the PSDs of all channels is displayed. No averaging
             is done and parameters area_mode and area_alpha are ignored. When
@@ -1827,7 +1827,7 @@ class BaseEpochs(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1846,30 +1846,30 @@ class BaseEpochs(
 
             .. versionadded:: 0.24.0
         ax : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
         show : bool
             Show the figure if ``True``.
         n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
-            to the number of CPU cores. Requires the :mod:`joblib` package.
+            to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
             as ``n_jobs=1`` (sequential execution) unless the call is performed under
-            a :class:`joblib:joblib.parallel_config` context manager that sets another
+            a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         **method_kw
             Additional keyword arguments passed to the spectral estimation
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See :func:mne.time_frequency.psd_array_welch` and
-            :func:mne.time_frequency.psd_array_multitaper` for details.
+            method). See `mne.time_frequency.psd_array_welch` and
+            `mne.time_frequency.psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1880,7 +1880,7 @@ class BaseEpochs(
         -----
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-        of :class:mne.io.Raw`, :class:mne.Epochs`, or :class:mne.Evoked`).
+        of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
         """
         ...
     def to_data_frame(
@@ -1916,9 +1916,9 @@ class BaseEpochs(
 
         index : str | list of str | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
-            integer index (:class:`pandas.RangeIndex`) will be used. If ``'time'``, a
-            ``pandas.Index`` or :class:`pandas.TimedeltaIndex` will be used
-            (depending on the value of ``time_format``). If a list of two or more string values, a :class:`pandas.MultiIndex` will be created.
+            integer index (`pandas.RangeIndex`) will be used. If ``'time'``, a
+            ``pandas.Index`` or `pandas.TimedeltaIndex` will be used
+            (depending on the value of ``time_format``). If a list of two or more string values, a `pandas.MultiIndex` will be created.
             Valid string values are 'time', 'epoch', and 'condition'.
             Defaults to ``None``.
 
@@ -1940,7 +1940,7 @@ class BaseEpochs(
             Desired time format. If ``None``, no conversion is applied, and time values
             remain as float values in seconds. If ``'ms'``, time values will be rounded
             to the nearest millisecond and converted to integers. If ``'timedelta'``,
-            time values will be converted to :class:`pandas.Timedelta` values.
+            time values will be converted to `pandas.Timedelta` values.
             Default is ``None``.
 
             .. versionadded:: 0.20
@@ -1948,7 +1948,7 @@ class BaseEpochs(
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -2005,32 +2005,32 @@ def make_metadata(
     This function mimics the epoching process (it constructs time windows
     around time-locked "events of interest") and collates information about
     any other events that occurred within those time windows. The information
-    is returned as a :class:`pandas.DataFrame`, suitable for use as
-    mne.Epochs` metadata: one row per time-locked event, and columns
+    is returned as a `pandas.DataFrame`, suitable for use as
+    `mne.Epochs` metadata: one row per time-locked event, and columns
     indicating presence or absence and latency of each ancillary event type.
 
     The function will also return a new ``events`` array and ``event_id``
     dictionary that correspond to the generated metadata, which together can then be
-    readily fed into mne.Epochs`.
+    readily fed into `mne.Epochs`.
 
     Parameters
     ----------
     events : array, shape (m, 3)
         The :term:`events array <events>`. By default, the returned metadata
-        :class:pandas.DataFrame` will have as many rows as the events array.
+        `pandas.DataFrame` will have as many rows as the events array.
         To create rows for only a subset of events, pass the ``row_events``
         parameter.
     event_id : dict
         A mapping from event names (keys) to event IDs (values). The event
         names will be incorporated as columns of the returned metadata
-        :class:pandas.DataFrame`.
+        `pandas.DataFrame`.
     tmin, tmax : float | None
         Start and end of the time interval for metadata generation in seconds, relative
         to the time-locked event of the respective time window (the "row events").
 
         .. note::
            If you are planning to attach the generated metadata to
-           mne.Epochs` and intend to include only events that fall inside
+           `mne.Epochs` and intend to include only events that fall inside
            your epochs time interval, pass the same ``tmin`` and ``tmax``
            values here as you use for your epochs.
 
@@ -2052,7 +2052,7 @@ def make_metadata(
     row_events : list of str | str | None
         Event types around which to create the time windows. For each of these
         time-locked events, we will create a **row** in the returned metadata
-        :class:`pandas.DataFrame`. If provided, the string(s) must be keys of
+        `pandas.DataFrame`. If provided, the string(s) must be keys of
         ``event_id``. If ``None`` (default), rows are created for **all** event types
         present in ``event_id``.
     keep_first : str | list of str | None
@@ -2127,7 +2127,7 @@ def make_metadata(
     Notes
     -----
     The time window used for metadata generation need not correspond to the
-    time window used to create the mne.Epochs`, to which the metadata will
+    time window used to create the `mne.Epochs`, to which the metadata will
     be attached; it may well be much shorter or longer, or not overlap at all,
     if desired. This can be useful, for example, to include events that
     occurred before or after an epoch, e.g. during the inter-trial interval.
@@ -2149,7 +2149,7 @@ class Epochs(BaseEpochs):
     ----------
 
     raw : Raw object
-        An instance of mne.io.Raw`.
+        An instance of `mne.io.Raw`.
 
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
@@ -2299,11 +2299,11 @@ class Epochs(BaseEpochs):
         rejected. If ``False``, no rejection based on annotations is performed.
 
     metadata : instance of pandas.DataFrame | None
-        A :class:`pandas.DataFrame` specifying metadata about each epoch.
+        A `pandas.DataFrame` specifying metadata about each epoch.
         If given, ``len(metadata)`` must equal ``len(events)``. The DataFrame
         may only contain values of type (str | int | float | bool).
         If metadata is given, then pandas-style queries may be used to select
-        subsets of data, see :meth:`mne.Epochs.__getitem__`.
+        subsets of data, see `mne.Epochs.__getitem__`.
         When a subset of the epochs is created in this (or any other
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
@@ -2321,14 +2321,14 @@ class Epochs(BaseEpochs):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     event_id : dict
         Names of conditions corresponding to event_ids.
     ch_names : list of string
@@ -2351,9 +2351,9 @@ class Epochs(BaseEpochs):
             If epoch didn't contain enough data names of channels that exceeded
             the amplitude threshold
         - 'EQUALIZED_COUNTS'
-            See :meth:mne.Epochs.equalize_event_counts`
+            See `mne.Epochs.equalize_event_counts`
         - 'USER'
-            For user-defined reasons (see :meth:mne.Epochs.drop`).
+            For user-defined reasons (see `mne.Epochs.drop`).
     filename : str
         The filename of the object.
     times :  ndarray
@@ -2372,10 +2372,10 @@ class Epochs(BaseEpochs):
     decimated, then projectors are (optionally) applied.
 
     For indexing and slicing using ``epochs[...]``, see
-    :meth:`mne.Epochs.__getitem__`.
+    `mne.Epochs.__getitem__`.
 
-    All methods for iteration over objects (using :meth:`mne.Epochs.__iter__`,
-    :meth:`mne.Epochs.iter_evoked` or :meth:`mne.Epochs.next`) use the same
+    All methods for iteration over objects (using `mne.Epochs.__iter__`,
+    `mne.Epochs.iter_evoked` or `mne.Epochs.next`) use the same
     internal state.
 
     If ``event_repeated`` is set to ``'merge'``, the coinciding events
@@ -2388,15 +2388,15 @@ class Epochs(BaseEpochs):
     ``[[0, 0, 1], [0, 0, 2]]``, the "merge" behavior will update both event_id
     and events to be: ``{'aud/vis': 3}`` and ``[[0, 0, 3]]`` respectively.
 
-    There is limited support for :class:mne.Annotations` in the
-    :class:mne.Epochs` class. Currently annotations that are present in the
-    :class:mne.io.Raw` object will be preserved in the resulting
-    :class:mne.Epochs` object, but:
+    There is limited support for `mne.Annotations` in the
+    `mne.Epochs` class. Currently annotations that are present in the
+    `mne.io.Raw` object will be preserved in the resulting
+    `mne.Epochs` object, but:
 
     1. It is not yet possible to add annotations
        to the Epochs object programmatically (via code) or interactively
        (through the plot window)
-    2. Concatenating :class:mne.Epochs` objects
+    2. Concatenating `mne.Epochs` objects
        that contain annotations is not supported, and any annotations will
        be dropped when concatenating.
     3. Annotations will be lost on save.
@@ -2438,7 +2438,7 @@ class EpochsArray(BaseEpochs):
         measure.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Consider using :func:`mne.create_info` to populate this
+        The `mne.Info` object with information about the sensors and methods of measurement. Consider using `mne.create_info` to populate this
         structure.
 
     events : array of int, shape (n_events, 3)
@@ -2549,11 +2549,11 @@ class EpochsArray(BaseEpochs):
            automatically generated irrespective of this parameter.
 
     metadata : instance of pandas.DataFrame | None
-        A :class:`pandas.DataFrame` specifying metadata about each epoch.
+        A `pandas.DataFrame` specifying metadata about each epoch.
         If given, ``len(metadata)`` must equal ``len(events)``. The DataFrame
         may only contain values of type (str | int | float | bool).
         If metadata is given, then pandas-style queries may be used to select
-        subsets of data, see :meth:`mne.Epochs.__getitem__`.
+        subsets of data, see `mne.Epochs.__getitem__`.
         When a subset of the epochs is created in this (or any other
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
@@ -2579,7 +2579,7 @@ class EpochsArray(BaseEpochs):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -2717,7 +2717,7 @@ def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -2769,7 +2769,7 @@ class EpochsFIF(BaseEpochs):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -2796,7 +2796,7 @@ def bootstrap(epochs, random_state=None):
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -2811,15 +2811,15 @@ def bootstrap(epochs, random_state=None):
 def concatenate_epochs(
     epochs_list, add_offset: bool = True, *, on_mismatch: str = "raise", verbose=None
 ):
-    """Concatenate a list of mne.Epochs` into one mne.Epochs` object.
+    """Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
 
-    .. note:: Unlike mne.concatenate_raws`, this function does **not**
+    .. note:: Unlike `mne.concatenate_raws`, this function does **not**
               modify any of the input data.
 
     Parameters
     ----------
     epochs_list : list
-        List of mne.Epochs` instances to concatenate (in that order).
+        List of `mne.Epochs` instances to concatenate (in that order).
     add_offset : bool
         If True, a fixed offset is added to the event times from different
         Epochs sets, such that they are easy to distinguish after the
@@ -2836,7 +2836,7 @@ def concatenate_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
         .. versionadded:: 0.24
@@ -2896,7 +2896,7 @@ def average_movements(
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using :func:mne.bem.fit_sphere_to_headshape`
+        origin fit using `mne.bem.fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -2941,7 +2941,7 @@ def average_movements(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -3037,7 +3037,7 @@ def make_fixed_length_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

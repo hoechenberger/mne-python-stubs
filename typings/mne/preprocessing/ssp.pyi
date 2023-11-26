@@ -46,13 +46,13 @@ def compute_proj_ecg(
 
     #. Filter the ECG data channel.
 
-    #. Find ECG R wave peaks using :func:`mne.preprocessing.find_ecg_events`.
+    #. Find ECG R wave peaks using `mne.preprocessing.find_ecg_events`.
 
     #. Filter the raw data.
 
-    #. Create mne.Epochs` around the R wave peaks, capturing the heartbeats.
+    #. Create `mne.Epochs` around the R wave peaks, capturing the heartbeats.
 
-    #. Optionally average the mne.Epochs` to produce an mne.Evoked` if
+    #. Optionally average the `mne.Epochs` to produce an `mne.Evoked` if
        ``average=True`` was passed (default).
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.
@@ -85,10 +85,10 @@ def compute_proj_ecg(
         Number of taps to use for filtering.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     ch_name : str | None
         Channel to use for ECG detection (Required if no ECG found).
@@ -137,7 +137,7 @@ def compute_proj_ecg(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -201,13 +201,13 @@ def compute_proj_eog(
     #. Filter the EOG data channel.
 
     #. Find the peaks of eyeblinks in the EOG data using
-       :func:`mne.preprocessing.find_eog_events`.
+       `mne.preprocessing.find_eog_events`.
 
     #. Filter the raw data.
 
-    #. Create mne.Epochs` around the eyeblinks.
+    #. Create `mne.Epochs` around the eyeblinks.
 
-    #. Optionally average the mne.Epochs` to produce an mne.Evoked` if
+    #. Optionally average the `mne.Epochs` to produce an `mne.Evoked` if
        ``average=True`` was passed (default).
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.
@@ -240,10 +240,10 @@ def compute_proj_eog(
         Number of taps to use for filtering.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     reject : dict | None
         Epoch rejection configuration (see Epochs).
@@ -288,7 +288,7 @@ def compute_proj_eog(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

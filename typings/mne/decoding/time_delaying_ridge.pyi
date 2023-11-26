@@ -45,7 +45,7 @@ class TimeDelayingRidge(BaseEstimator):
 
     Notes
     -----
-    This class is meant to be used with :class:`mne.decoding.ReceptiveField`
+    This class is meant to be used with `mne.decoding.ReceptiveField`
     by only implicitly doing the time delaying. For reasonable receptive
     field and input signal sizes, it should be more CPU and memory
     efficient by using frequency-domain methods (FFTs) to compute the

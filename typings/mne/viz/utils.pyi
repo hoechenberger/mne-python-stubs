@@ -39,7 +39,7 @@ def plt_show(show: bool = True, fig=None, **kwargs) -> None:
     fig : instance of Figure | None
         If non-None, use fig.show().
     **kwargs : dict
-        Extra arguments for :func:`matplotlib.pyplot.show`.
+        Extra arguments for `matplotlib.pyplot.show`.
     """
     ...
 
@@ -104,7 +104,7 @@ def compare_fiff(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -121,9 +121,9 @@ def figure_nobar(*args, **kwargs):
     Parameters
     ----------
     *args : list
-        Arguments to pass to :func:`matplotlib.pyplot.figure`.
+        Arguments to pass to `matplotlib.pyplot.figure`.
     **kwargs : dict
-        Keyword arguments to pass to :func:`matplotlib.pyplot.figure`.
+        Keyword arguments to pass to `matplotlib.pyplot.figure`.
 
     Returns
     -------
@@ -258,7 +258,7 @@ def plot_sensors(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     kind : str
         Whether to plot the sensors as 3d, topomap or as an interactive
         sensor selection dialog. Available options ``'topomap'``, ``'3d'``,
@@ -281,7 +281,7 @@ def plot_sensors(
     ch_groups : 'position' | list of list | None
         Channel groups for coloring the sensors. If None (default), default
         coloring scheme is used. If 'position', the sensors are divided
-        into 8 regions. See ``order`` kwarg of :func:`mne.viz.plot_raw`. If
+        into 8 regions. See ``order`` kwarg of `mne.viz.plot_raw`. If
         array, the channels are divided by picks given in the array. Also
         accepts a list of lists to allow channel groups of the same or
         different sizes.
@@ -310,7 +310,7 @@ def plot_sensors(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -333,7 +333,7 @@ def plot_sensors(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -351,7 +351,7 @@ def plot_sensors(
     -----
     This function plots the sensor locations from the info structure using
     matplotlib. For drawing the sensors using PyVista see
-    :func:`mne.viz.plot_alignment`.
+    `mne.viz.plot_alignment`.
 
     .. versionadded:: 0.12.0
     """

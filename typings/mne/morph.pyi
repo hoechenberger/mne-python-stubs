@@ -120,7 +120,7 @@ def compute_source_morph(
         If True (default False), compute the sparse matrix representation of
         the volumetric morph (if present). This takes a long time to
         compute, but can make morphs faster when thousands of points are used.
-        See :meth:`mne.SourceMorph.compute_vol_morph_mat` (which can be called
+        See `mne.SourceMorph.compute_vol_morph_mat` (which can be called
         later if desired) for more information.
 
         .. versionadded:: 0.22
@@ -128,13 +128,13 @@ def compute_source_morph(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     morph : instance of SourceMorph
-        The :class:`mne.SourceMorph` object.
+        The `mne.SourceMorph` object.
 
     Notes
     -----
@@ -187,7 +187,7 @@ class SourceMorph:
     kind : str | None
         Kind of source estimate. E.g. ``'volume'`` or ``'surface'``.
     zooms : float | tuple
-        See :func:`mne.compute_source_morph`.
+        See `mne.compute_source_morph`.
     niter_affine : tuple of int
         Number of levels (``len(niter_affine)``) and number of
         iterations per level - for each successive stage of iterative
@@ -198,9 +198,9 @@ class SourceMorph:
         refinement - to perform the Symmetric Diffeomorphic Registration (sdr)
         transform :footcite:`AvantsEtAl2008`.
     spacing : int | list | None
-        See :func:`mne.compute_source_morph`.
+        See `mne.compute_source_morph`.
     smooth : int | str | None
-        See :func:`mne.compute_source_morph`.
+        See `mne.compute_source_morph`.
     xhemi : bool
         Morph across hemisphere.
     morph_mat : scipy.sparse.csr_matrix
@@ -220,13 +220,13 @@ class SourceMorph:
     src_data : dict
         Additional source data necessary to perform morphing.
     vol_morph_mat : scipy.sparse.csr_matrix | None
-        The volumetric morph matrix, if :meth:`compute_vol_morph_mat`
+        The volumetric morph matrix, if `compute_vol_morph_mat`
         was used.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -313,7 +313,7 @@ class SourceMorph:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -331,7 +331,7 @@ class SourceMorph:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -343,13 +343,13 @@ class SourceMorph:
         -----
         For a volumetric morph, this will compute the morph for an identity
         source volume, i.e., with one source vertex active at a time, and store
-        the result as a :class:`sparse <scipy.sparse.csr_matrix>`
+        the result as a `sparse <scipy.sparse.csr_matrix>`
         morphing matrix. This takes a long time (minutes) to compute initially,
-        but drastically speeds up :meth:`apply` for STCs, so it can be
+        but drastically speeds up `apply` for STCs, so it can be
         beneficial when many time points or many morphs (i.e., greater than
         the number of volumetric ``src_from`` vertices) will be performed.
 
-        When calling :meth:`save`, this sparse morphing matrix is saved with
+        When calling `save`, this sparse morphing matrix is saved with
         the instance, so this only needs to be called once. This function does
         nothing if the morph matrix has already been computed, or if there is
         no volume morphing necessary.
@@ -373,7 +373,7 @@ class SourceMorph:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -417,16 +417,16 @@ def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=No
         variable.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

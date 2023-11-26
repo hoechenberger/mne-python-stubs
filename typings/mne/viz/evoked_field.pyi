@@ -28,10 +28,10 @@ class EvokedField:
         How to print info about the time instant visualized.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     fig : instance of Figure3D | None
         If None (default), a new figure will be created, otherwise it will
@@ -63,7 +63,7 @@ class EvokedField:
         .. versionadded:: 1.4
 
     interpolation : str | None
-        Interpolation method (:class:`scipy.interpolate.interp1d` parameter).
+        Interpolation method (`scipy.interpolate.interp1d` parameter).
         Must be one of ``'linear'``, ``'nearest'``, ``'zero'``, ``'slinear'``,
         ``'quadratic'`` or ``'cubic'``.
 
@@ -88,16 +88,16 @@ class EvokedField:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Notes
     -----
     The figure will publish and subscribe to the following UI events:
 
-    * :class:mne.viz.ui_events.TimeChange`
-    * :class:mne.viz.ui_events.Contours`, ``kind="field_strength_meg" | "field_strength_eeg"``
-    * :class:mne.viz.ui_events.ColormapRange`, ``kind="field_strength_meg" | "field_strength_eeg"``
+    * `mne.viz.ui_events.TimeChange`
+    * `mne.viz.ui_events.Contours`, ``kind="field_strength_meg" | "field_strength_eeg"``
+    * `mne.viz.ui_events.ColormapRange`, ``kind="field_strength_meg" | "field_strength_eeg"``
     """
 
     plotter: Incomplete

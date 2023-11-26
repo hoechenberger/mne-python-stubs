@@ -35,7 +35,7 @@ def channel_type(info, idx):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     idx : int
         Index of channel.
 
@@ -81,7 +81,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -164,7 +164,7 @@ def pick_types(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     meg : bool | str
         If True include MEG channels. If string it can be 'mag', 'grad',
@@ -248,7 +248,7 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     sel : list of int | None
         Indices of channels to include. If None, all channels
         are included.
@@ -258,7 +258,7 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -299,7 +299,7 @@ def pick_channels_forward(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -361,7 +361,7 @@ def channel_indices_by_type(info, picks=None):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -416,7 +416,7 @@ def pick_channels_cov(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

@@ -17,7 +17,7 @@ def data_path(
     Parameters
     ----------
     subject : int
-        Subject to download. Must be of :class:`ìnt` in the range from 1
+        Subject to download. Must be of `ìnt` in the range from 1
         to 18 (inclusive).
     path : None | str
         Location of where to look for the LIMO data storing directory.
@@ -35,7 +35,7 @@ def data_path(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -83,7 +83,7 @@ def load_data(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

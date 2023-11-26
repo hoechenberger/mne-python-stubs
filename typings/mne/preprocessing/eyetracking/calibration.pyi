@@ -9,7 +9,7 @@ class Calibration(dict):
 
     .. note::
         When possible, a Calibration instance should be created with a helper function,
-        such as :func:mne.preprocessing.eyetracking.read_eyelink_calibration`.
+        such as `mne.preprocessing.eyetracking.read_eyelink_calibration`.
 
     Parameters
     ----------
@@ -117,7 +117,7 @@ def read_eyelink_calibration(
     Returns
     -------
     calibrations : list
-        A list of :class:mne.preprocessing.eyetracking.Calibration` instances, one for
+        A list of `mne.preprocessing.eyetracking.Calibration` instances, one for
         each eye of every calibration that was performed during the recording session.
     """
     ...

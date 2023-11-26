@@ -74,7 +74,7 @@ class Dipole(TimeMixin):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -87,7 +87,7 @@ class Dipole(TimeMixin):
     -----
     This class is for sequential dipole fits, where the position
     changes as a function of time. For fixed dipole fits, where the
-    position is fixed as a function of time, use :class:`mne.DipoleFixed`.
+    position is fixed as a function of time, use `mne.DipoleFixed`.
     """
 
     pos: Incomplete
@@ -130,7 +130,7 @@ class Dipole(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -158,7 +158,7 @@ class Dipole(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -304,7 +304,7 @@ class Dipole(TimeMixin):
 
         head_source : str | list of str
             Head source(s) to use. See the ``source`` option of
-            :func:`mne.get_head_surf` for more information.
+            `mne.get_head_surf` for more information.
             Only used when mode equals ``'outlines'``.
 
             .. versionadded:: 1.1
@@ -315,14 +315,14 @@ class Dipole(TimeMixin):
             .. versionadded:: 1.1
         width : float | None
             Width of the matplotlib quiver arrow, see
-            :meth:`matplotlib:matplotlib.axes.Axes.quiver`. If None (default),
+            `matplotlib:matplotlib.axes.Axes.quiver`. If None (default),
             when mode is ``'outlines'`` 0.015 will be used, and when mode is
             ``'orthoview'`` the matplotlib default is used.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -357,7 +357,7 @@ class Dipole(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -388,7 +388,7 @@ class Dipole(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -435,7 +435,7 @@ class Dipole(TimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -507,7 +507,7 @@ class DipoleFixed(ExtendedTimeMixin):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     data : array, shape (n_channels, n_times)
         The dipole data.
     times : array, shape (n_times,)
@@ -522,7 +522,7 @@ class DipoleFixed(ExtendedTimeMixin):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -535,7 +535,7 @@ class DipoleFixed(ExtendedTimeMixin):
     -----
     This class is for fixed-position dipole fits, where the position
     (and maybe orientation) is static over time. For sequential dipole fits,
-    where the position can change a function of time, use :class:`mne.Dipole`.
+    where the position can change a function of time, use `mne.Dipole`.
 
     .. versionadded:: 0.12
     """
@@ -580,7 +580,7 @@ class DipoleFixed(ExtendedTimeMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -614,7 +614,7 @@ def read_dipole(fname, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -627,7 +627,7 @@ def read_dipole(fname, verbose=None):
         dipoles may also be specified as a list of Dipole objects.
 
         .. versionchanged:: 1.1
-            Added support for a list of :class:`mne.Dipole` instances.
+            Added support for a list of `mne.Dipole` instances.
 
     See Also
     --------
@@ -676,10 +676,10 @@ def fit_dipole(
         fits could be 4.9 mm from the inner skull.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         It is used in field computation and fitting.
     pos : ndarray, shape (3,) | None
@@ -719,10 +719,10 @@ def fit_dipole(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -753,22 +753,22 @@ def fit_dipole(
         .. versionadded:: 0.24
     tol : float
         Final accuracy of the optimization (see ``rhoend`` argument of
-        :func:`scipy.optimize.fmin_cobyla`).
+        `scipy.optimize.fmin_cobyla`).
 
         .. versionadded:: 0.24
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     dip : instance of Dipole or DipoleFixed
-        The dipole fits. A :class:`mne.DipoleFixed` is returned if
+        The dipole fits. A `mne.DipoleFixed` is returned if
         ``pos`` and ``ori`` are both not None, otherwise a
-        :class:`mne.Dipole` is returned.
+        `mne.Dipole` is returned.
     residual : instance of Evoked
         The M-EEG data channels with the fitted dipolar activity removed.
 

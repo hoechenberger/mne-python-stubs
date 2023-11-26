@@ -47,12 +47,12 @@ def plot_ica_sources(
         IC: ``ICA001``. ``None`` will pick all independent components in the order
         fitted.
     start, stop : float | int | None
-       If ``inst`` is a mne.io.Raw` or an mne.Evoked` object, the first and
+       If ``inst`` is a `mne.io.Raw` or an `mne.Evoked` object, the first and
        last time point (in seconds) of the data to plot. If ``inst`` is a
-       mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
+       `mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
        translated into ``start=0.`` and ``stop=3.``, respectively. For
-       mne.Evoked`, ``None`` refers to the beginning and end of the evoked
-       signal. If ``inst`` is an mne.Epochs` object, specifies the index of
+       `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
+       signal. If ``inst`` is an `mne.Epochs` object, specifies the index of
        the first and last epoch to show.
     title : str | None
         The window title. If None a default is provided.
@@ -99,14 +99,14 @@ def plot_ica_sources(
         graphics hardware. Only works if using the Qt backend. Default is
         None, which will use False unless the user configuration variable
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
-        see :func:`mne.set_config`.
+        see `mne.set_config`.
 
         .. versionadded:: 0.24
 
     theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
         custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-        :mod:`qdarkstyle` and
+        `qdarkstyle` and
         `darkdetect <https://github.com/albertosottile/darkdetect>`__,
         respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
         defaulting to "auto" if it's not found.
@@ -141,14 +141,14 @@ def plot_ica_sources(
     ``ica.exclude`` on close.
 
     MNE-Python provides two different backends for browsing plots (i.e.,
-    :meth:`raw.plot()<mne.io.Raw.plot>`, :meth:`epochs.plot()<mne.Epochs.plot>`,
-    and :meth:`ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
-    based on :mod:`matplotlib`, and the other is based on
+    `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
+    and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
+    based on `matplotlib`, and the other is based on
     :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
-    context manager :func:`mne.viz.use_browser_backend`, you can set it for the
-    duration of a Python session using :func:`mne.viz.set_browser_backend`, and you
+    context manager `mne.viz.use_browser_backend`, you can set it for the
+    duration of a Python session using `mne.viz.set_browser_backend`, and you
     can set the default for your computer via
-    :func:`mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
+    `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
     .. note:: For the PyQtGraph backend to run in IPython with ``block=False``
@@ -231,7 +231,7 @@ def plot_ica_properties(
         Dictionary of arguments to ``plot_epochs_image``. If None, doesn't pass
         any additional arguments. Defaults to None.
     psd_args : dict | None
-        Dictionary of arguments to :meth:mne.Epochs.compute_psd`. If
+        Dictionary of arguments to `mne.Epochs.compute_psd`. If
         ``None``, doesn't pass any additional arguments. Defaults to ``None``.
     figsize : array-like, shape (2,) | None
         Allows to control size of the figure. If None, the figure size
@@ -250,14 +250,14 @@ def plot_ica_properties(
         (default), annotated segments whose description begins with ``'bad'`` are
         omitted. If ``False``, no rejection based on annotations is performed.
 
-        Has no effect if ``inst`` is not a :class:`mne.io.Raw` object.
+        Has no effect if ``inst`` is not a `mne.io.Raw` object.
 
         .. versionadded:: 0.21.0
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -346,9 +346,9 @@ def plot_ica_overlay(
     ica : instance of mne.preprocessing.ICA
         The ICA object.
     inst : instance of Raw or Evoked
-        The signal to plot. If mne.io.Raw`, the raw data per channel type is displayed
+        The signal to plot. If `mne.io.Raw`, the raw data per channel type is displayed
         before and after cleaning. A second panel with the RMS for MEG sensors and the
-        :term:`GFP` for EEG sensors is displayed. If mne.Evoked`, butterfly traces for
+        :term:`GFP` for EEG sensors is displayed. If `mne.Evoked`, butterfly traces for
         signals before and after cleaning will be superimposed.
     exclude : array-like of int | None (default)
         The components marked for exclusion. If ``None`` (default), the components
@@ -362,9 +362,9 @@ def plot_ica_overlay(
         channels`. None (default) will pick all channels that were included during fitting.
     start, stop : float | None
        The first and last time point (in seconds) of the data to plot. If
-       ``inst`` is a mne.io.Raw` object, ``start=None`` and ``stop=None``
+       ``inst`` is a `mne.io.Raw` object, ``start=None`` and ``stop=None``
        will be translated into ``start=0.`` and ``stop=3.``, respectively. For
-       mne.Evoked`, ``None`` refers to the beginning and end of the evoked
+       `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
        signal.
 
     title : str | None
@@ -392,7 +392,7 @@ def plot_ica_overlay(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

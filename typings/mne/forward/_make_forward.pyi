@@ -42,9 +42,9 @@ def make_forward_solution(
     ----------
 
     info : mne.Info | path-like
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. If ``path-like``, it should be a :class:`str` or
-        :class:`pathlib.Path` to a file with measurement information
-        (e.g. :class:`mne.io.Raw`).
+        The `mne.Info` object with information about the sensors and methods of measurement. If ``path-like``, it should be a `str` or
+        `pathlib.Path` to a file with measurement information
+        (e.g. `mne.io.Raw`).
 
     trans : path-like | dict | instance of Transform | ``"fsaverage"`` | None
         If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
@@ -56,12 +56,12 @@ def make_forward_solution(
             Support for ``'fsaverage'`` argument.
     src : path-like | instance of SourceSpaces
         Either a path to a source space file or a loaded or generated
-        :class:mne.SourceSpaces`.
+        `mne.SourceSpaces`.
     bem : path-like | ConductorModel
         Filename of the BEM (e.g., ``"sample-5120-5120-5120-bem-sol.fif"``) to
-        use, or a loaded :class:mne.bem.ConductorModel`. See
-        :func:mne.make_bem_model` and :func:mne.make_bem_solution` to create a
-        :class:`mne.bem.ConductorModel`.
+        use, or a loaded `mne.bem.ConductorModel`. See
+        `mne.make_bem_model` and `mne.make_bem_solution` to create a
+        `mne.bem.ConductorModel`.
     meg : bool
         If True (default), include MEG computations.
     eeg : bool
@@ -74,16 +74,16 @@ def make_forward_solution(
         with reference channels is not currently supported.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -101,11 +101,11 @@ def make_forward_solution(
     here.
 
     To create a fixed-orientation forward solution, use this function
-    followed by :func:`mne.convert_forward_solution`.
+    followed by `mne.convert_forward_solution`.
 
     .. note::
         If the BEM solution was computed with :doc:`OpenMEEG <openmeeg:index>`
-        in :func:`mne.make_bem_solution`, then OpenMEEG will automatically
+        in `mne.make_bem_solution`, then OpenMEEG will automatically
         be used to compute the forward solution.
 
     .. versionchanged:: 1.2
@@ -121,7 +121,7 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
     the sensor information in info to form a forward operator.
 
     The source estimate object (with the forward operator) can be projected to
-    sensor-space using :func:`mne.simulation.simulate_evoked`.
+    sensor-space using `mne.simulation.simulate_evoked`.
 
     .. note:: If the (unique) time points of the dipole object are unevenly
               spaced, the first output will be a list of single-timepoint
@@ -137,7 +137,7 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
         dipoles may also be specified as a list of Dipole objects.
 
         .. versionchanged:: 1.1
-            Added support for a list of :class:`mne.Dipole` instances.
+            Added support for a list of `mne.Dipole` instances.
     bem : str | dict
         The BEM filename (str) or a loaded sphere model (dict).
     info : instance of Info
@@ -148,16 +148,16 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
         is a sphere model.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

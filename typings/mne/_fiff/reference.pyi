@@ -41,7 +41,7 @@ def add_reference_channels(inst, ref_channels, copy: bool = True):
     -----
     .. warning::
         When :ref:`re-referencing <tut-set-eeg-ref>`,
-        make sure to apply the montage using :meth:`mne.io.Raw.set_montage`
+        make sure to apply the montage using `mne.io.Raw.set_montage`
         only after calling this function. Applying a montage will only set
         locations of channels that exist at the time it is applied.
     """
@@ -67,7 +67,7 @@ def set_eeg_reference(
 
     Note that it is also possible to re-reference the signal using a
     Laplacian (LAP) "reference-free" transformation using the
-    :func:`.compute_current_source_density` function.
+    `.compute_current_source_density` function.
 
     Parameters
     ----------
@@ -122,7 +122,7 @@ def set_eeg_reference(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -240,7 +240,7 @@ def set_bipolar_reference(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

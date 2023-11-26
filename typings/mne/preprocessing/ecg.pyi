@@ -55,7 +55,7 @@ def qrs_detector(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -125,7 +125,7 @@ def find_ecg_events(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -172,9 +172,9 @@ def create_ecg_epochs(
 
     #. Filter the ECG data channel.
 
-    #. Find ECG R wave peaks using :func:`mne.preprocessing.find_ecg_events`.
+    #. Find ECG R wave peaks using `mne.preprocessing.find_ecg_events`.
 
-    #. Create mne.Epochs` around the R wave peaks, capturing the heartbeats.
+    #. Create `mne.Epochs` around the R wave peaks, capturing the heartbeats.
 
     .. note:: Filtering is only applied to the ECG channel while finding
                 events. The resulting ``ecg_epochs`` will have no filtering
@@ -299,7 +299,7 @@ def create_ecg_epochs(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -316,7 +316,7 @@ def create_ecg_epochs(
     -----
     If you already have a list of R-peak times, or want to compute R-peaks
     outside MNE-Python using a different algorithm, the recommended approach is
-    to call the :class:mne.Epochs` constructor directly, with your R-peaks
+    to call the `mne.Epochs` constructor directly, with your R-peaks
     formatted as an :term:`events` array (here we also demonstrate the relevant
     default values)::
 

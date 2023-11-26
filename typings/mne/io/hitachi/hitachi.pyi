@@ -26,14 +26,14 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     raw : instance of RawHitachi
         A Raw object containing Hitachi data.
-        See :class:`mne.io.Raw` for documentation of attributes and methods.
+        See `mne.io.Raw` for documentation of attributes and methods.
 
     See Also
     --------
@@ -43,8 +43,8 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
     -----
 
     Hitachi does not encode their channel positions, so you will need to
-    create a suitable mapping using :func:`mne.channels.make_standard_montage`
-    or :func:`mne.channels.make_dig_montage` like (for a 3x5/ETG-7000 example):
+    create a suitable mapping using `mne.channels.make_standard_montage`
+    or `mne.channels.make_dig_montage` like (for a 3x5/ETG-7000 example):
 
     >>> mon = mne.channels.make_standard_montage('standard_1020')
     >>> need = 'S1 D1 S2 D2 S3 D3 S4 D4 S5 D5 S6 D6 S7 D7 S8'.split()
@@ -117,7 +117,7 @@ class RawHitachi(BaseRaw):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -128,8 +128,8 @@ class RawHitachi(BaseRaw):
     -----
 
     Hitachi does not encode their channel positions, so you will need to
-    create a suitable mapping using :func:`mne.channels.make_standard_montage`
-    or :func:`mne.channels.make_dig_montage` like (for a 3x5/ETG-7000 example):
+    create a suitable mapping using `mne.channels.make_standard_montage`
+    or `mne.channels.make_dig_montage` like (for a 3x5/ETG-7000 example):
 
     >>> mon = mne.channels.make_standard_montage('standard_1020')
     >>> need = 'S1 D1 S2 D2 S3 D3 S4 D4 S5 D5 S6 D6 S7 D7 S8'.split()

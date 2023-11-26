@@ -54,7 +54,7 @@ def get_head_surf(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -71,7 +71,7 @@ def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     trans : dict
         The head<->MRI transformation, usually obtained using
         read_trans(). Can be None, in which case the surface will
@@ -80,7 +80,7 @@ def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -144,7 +144,7 @@ def complete_surface_info(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -240,7 +240,7 @@ def read_surface(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -319,7 +319,7 @@ def write_surface(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -352,7 +352,7 @@ def decimate_surface(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -433,7 +433,7 @@ def read_tri(fname_in, swap: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -475,7 +475,7 @@ def dig_mri_distances(
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Must contain the head shape points in ``info['dig']``.
+        The `mne.Info` object with information about the sensors and methods of measurement. Must contain the head shape points in ``info['dig']``.
     trans : str | instance of Transform
         The head<->MRI transform. If str is passed it is the
         path to file on disk.
@@ -511,7 +511,7 @@ def dig_mri_distances(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -542,13 +542,13 @@ def get_montage_volume_labels(
 
     montage : None | str | DigMontage
         A montage containing channel positions. If a string or
-        :class:mne.channels.DigMontage` is
+        `mne.channels.DigMontage` is
         specified, the existing channel information will be updated with the
         channel positions from the montage. Valid strings are the names of the
         built-in montages that ship with MNE-Python; you can list those via
-        :func:`mne.channels.get_builtin_montages`.
+        `mne.channels.get_builtin_montages`.
         If ``None`` (default), the channel positions will be removed from the
-        :class:mne.Info`.
+        `mne.Info`.
 
     subject : str
         The FreeSurfer subject name.

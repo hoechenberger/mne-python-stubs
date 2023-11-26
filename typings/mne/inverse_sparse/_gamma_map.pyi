@@ -61,8 +61,8 @@ def gamma_map(
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
-        It can also be a :class:`dict` containing keyword arguments to pass to
-        :func:`mne.forward.compute_depth_prior` (see docstring for details and
+        It can also be a `dict` containing keyword arguments to pass to
+        `mne.forward.compute_depth_prior` (see docstring for details and
         defaults). This is effectively ignored when ``method='eLORETA'``.
 
         .. versionchanged:: 0.20
@@ -106,10 +106,10 @@ def gamma_map(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -147,13 +147,13 @@ def gamma_map(
 
         - ``"vector"``
             No pooling of the orientations is done, and the vector result
-            will be returned in the form of a :class:`mne.VectorSourceEstimate`
+            will be returned in the form of a `mne.VectorSourceEstimate`
             object.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

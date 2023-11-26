@@ -145,7 +145,7 @@ def sys_info(
     Parameters
     ----------
     fid : file-like | None
-        The file to write to. Will be passed to :func:`print()`. Can be None to
+        The file to write to. Will be passed to `print()`. Can be None to
         use :data:`sys.stdout`.
     show_paths : bool
         If True, print paths for each module.

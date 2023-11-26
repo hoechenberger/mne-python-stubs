@@ -21,8 +21,8 @@ def simulate_evoked(
 
     .. note:: No projections from ``info`` will be present in the
               output ``evoked``. You can use e.g.
-              :func:`evoked.add_proj <mne.Evoked.add_proj>` or
-              :func:`evoked.set_eeg_reference <mne.Evoked.set_eeg_reference>`
+              `evoked.add_proj <mne.Evoked.add_proj>` or
+              `evoked.set_eeg_reference <mne.Evoked.set_eeg_reference>`
               to add them afterward as necessary.
 
     Parameters
@@ -33,7 +33,7 @@ def simulate_evoked(
         The source time courses.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Used to generate the evoked.
+        The `mne.Info` object with information about the sensors and methods of measurement. Used to generate the evoked.
     cov : Covariance object | None
         The noise covariance. If None, no noise is added.
     nave : int
@@ -46,7 +46,7 @@ def simulate_evoked(
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -60,7 +60,7 @@ def simulate_evoked(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -104,7 +104,7 @@ def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  :class:numpy.random.RandomState` for details), meaning it will most
+        (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -112,7 +112,7 @@ def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

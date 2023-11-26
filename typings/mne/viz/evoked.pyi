@@ -146,11 +146,11 @@ def plot_evoked(
         Noise covariance used to whiten the data while plotting.
         Whitened data channel names are shown in italic.
         Can be a string to load a covariance from disk.
-        See also :meth:`mne.Evoked.plot_white` for additional inspection
+        See also `mne.Evoked.plot_white` for additional inspection
         of noise covariance properties when whitening evoked data.
         For data processed with SSS, the effective dependence between
         magnetometers and gradiometers may introduce differences in scaling,
-        consider using :meth:`mne.Evoked.plot_white`.
+        consider using `mne.Evoked.plot_white`.
 
         .. versionadded:: 0.16.0
     time_unit : str
@@ -161,7 +161,7 @@ def plot_evoked(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -187,7 +187,7 @@ def plot_evoked(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -442,7 +442,7 @@ def plot_evoked_image(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -507,10 +507,10 @@ def plot_evoked_white(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -539,7 +539,7 @@ def plot_evoked_white(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -557,7 +557,7 @@ def plot_evoked_white(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -613,7 +613,7 @@ def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -677,7 +677,7 @@ def plot_evoked_joint(
     show : bool
         Show figure if ``True``. Defaults to ``True``.
     ts_args : None | dict
-        A dict of ``kwargs`` that are forwarded to :meth:`mne.Evoked.plot` to
+        A dict of ``kwargs`` that are forwarded to `mne.Evoked.plot` to
         style the butterfly plot. If they are not in this dict, the following
         defaults are passed: ``spatial_colors=True``, ``zorder='std'``.
         ``show`` and ``exclude`` are illegal.
@@ -685,7 +685,7 @@ def plot_evoked_joint(
         Defaults to ``None``.
     topomap_args : None | dict
         A dict of ``kwargs`` that are forwarded to
-        :meth:`mne.Evoked.plot_topomap` to style the topomaps.
+        `mne.Evoked.plot_topomap` to style the topomaps.
         If it is not in this dict, ``outlines='head'`` will be passed.
         ``show``, ``times``, ``colorbar`` are illegal.
         If ``None``, no customizable arguments will be passed.
@@ -764,11 +764,11 @@ def plot_compare_evokeds(
 
     colors : list | dict | None
         Colors to use when plotting the ERP/F lines and confidence bands. If
-        ``cmap`` is not ``None``, ``colors`` must be a :class:`list` or
-        :class:`dict` of :class:`ints <int>` or :class:`floats <float>`
+        ``cmap`` is not ``None``, ``colors`` must be a `list` or
+        `dict` of `ints <int>` or `floats <float>`
         indicating steps or percentiles (respectively) along the colormap. If
         ``cmap`` is ``None``, list elements or dict values of ``colors`` must
-        be :class:`ints <int>` or valid :ref:`matplotlib colors
+        be `ints <int>` or valid :ref:`matplotlib colors
         <matplotlib:colors_def>`; lists are cycled through
         sequentially,
         while dicts must have keys matching the keys or conditions of an
@@ -777,16 +777,16 @@ def plot_compare_evokeds(
         <matplotlib:gallery/color/color_cycle_default>`
         is used. Defaults to ``None``.
     linestyles : list | dict | None
-        Styles to use when plotting the ERP/F lines. If a :class:`list` or
-        :class:`dict`, elements must be valid :doc:`matplotlib linestyles
+        Styles to use when plotting the ERP/F lines. If a `list` or
+        `dict`, elements must be valid :doc:`matplotlib linestyles
         <matplotlib:gallery/lines_bars_and_markers/linestyles>`. Lists are
         cycled through sequentially; dictionaries must have keys matching the
         keys or conditions of an ``evokeds`` dict (see Notes for details). If
         ``None``, all lines will be solid. Defaults to ``None``.
     styles : dict | None
         Dictionary of styles to use when plotting ERP/F lines. Keys must match
-        keys or conditions of ``evokeds``, and values must be a :class:`dict`
-        of legal inputs to :func:`matplotlib.pyplot.plot`. Those values will be
+        keys or conditions of ``evokeds``, and values must be a `dict`
+        of legal inputs to `matplotlib.pyplot.plot`. Those values will be
         passed as parameters to the line plot call of the corresponding
         condition, overriding defaults (e.g.,
         ``styles={"Aud/L": {"linewidth": 3}}`` will set the linewidth for
@@ -797,14 +797,14 @@ def plot_compare_evokeds(
         Colormap from which to draw color values when plotting the ERP/F lines
         and confidence bands. If not ``None``, ints or floats in the ``colors``
         parameter are mapped to steps or percentiles (respectively) along the
-        colormap. If ``cmap`` is a :class:`str`, it will be passed to
+        colormap. If ``cmap`` is a `str`, it will be passed to
         ``matplotlib.colormaps``; if ``cmap`` is a tuple, its first
         element will be used as a string to label the colorbar, and its
         second element will be passed to ``matplotlib.colormaps`` (unless
-        it is already an instance of :class:matplotlib.colors.Colormap`).
+        it is already an instance of `matplotlib.colors.Colormap`).
 
         .. versionchanged:: 0.19
-            Support for passing :class:matplotlib.colors.Colormap` instances.
+            Support for passing `matplotlib.colors.Colormap` instances.
 
     vlines : "auto" | list of float
         A list in seconds at which to plot dashed vertical lines.
@@ -813,7 +813,7 @@ def plot_compare_evokeds(
         no vertical lines are plotted.
     ci : float | bool | callable | None
         Confidence band around each ERP/F time series. If ``False`` or ``None``
-        no confidence band is drawn. If :class:`float`, ``ci`` must be between
+        no confidence band is drawn. If `float`, ``ci`` must be between
         0 and 1, and will set the threshold for a bootstrap
         (single plot)/parametric (when ``axes=='topo'``)  estimation of the
         confidence band; ``True`` is equivalent to setting a threshold of 0.95
@@ -832,7 +832,7 @@ def plot_compare_evokeds(
         ``truncate_yaxis=False``, only the far bound of the x-axis will be
         truncated. Defaults to ``True``.
     ylim : dict | None
-        Y-axis limits for plots (after scaling has been applied). :class:`dict`
+        Y-axis limits for plots (after scaling has been applied). `dict`
         keys should match channel types; valid keys are eeg, mag, grad, misc
         (example: ``ylim=dict(eeg=[-20, 20])``). If ``None``, the y-axis limits
         will be set automatically by matplotlib. Defaults to ``None``.
@@ -841,28 +841,28 @@ def plot_compare_evokeds(
         for ERPs out of tradition). Defaults to ``False``.
     show_sensors : bool | int | str | None
         Whether to display an inset showing sensor locations on a head outline.
-        If :class:`int` or :class:`str`, indicates position of the inset (see
-        :func:`mpl_toolkits.axes_grid1.inset_locator.inset_axes`). If ``None``,
+        If `int` or `str`, indicates position of the inset (see
+        `mpl_toolkits.axes_grid1.inset_locator.inset_axes`). If ``None``,
         treated as ``True`` if there is only one channel in ``picks``. If
         ``True``, location is upper or lower right corner, depending on data
         values. Defaults to ``None``.
     legend : bool | int | str
         Whether to show a legend for the colors/linestyles of the conditions
-        plotted. If :class:`int` or :class:`str`, indicates position of the
-        legend (see :func:`mpl_toolkits.axes_grid1.inset_locator.inset_axes`).
+        plotted. If `int` or `str`, indicates position of the
+        legend (see `mpl_toolkits.axes_grid1.inset_locator.inset_axes`).
         If ``True``, equivalent to ``'upper left'``. Defaults to ``True``.
     split_legend : bool | None
         Whether to separate color and linestyle in the legend. If ``None``,
         a separate linestyle legend will still be shown if ``cmap`` is
         specified. Defaults to ``None``.
     axes : None | Axes instance | list of Axes | 'topo'
-        :class:matplotlib.axes.Axes` object to plot into. If plotting
+        `matplotlib.axes.Axes` object to plot into. If plotting
         multiple channel types (or multiple channels when ``combine=None``),
         ``axes`` should be a list of appropriate length containing
-        :class:matplotlib.axes.Axes` objects. If ``'topo'``, a new
-        :class:matplotlib.figure.Figure` is created with one axis for each
+        `matplotlib.axes.Axes` objects. If ``'topo'``, a new
+        `matplotlib.figure.Figure` is created with one axis for each
         channel, in a topographical layout. If ``None``, a new
-        :class:matplotlib.figure.Figure` is created for each channel type.
+        `matplotlib.figure.Figure` is created for each channel type.
         Defaults to ``None``.
     title : str | None
         Title printed above the plot. If ``None``, a title will be
@@ -872,12 +872,12 @@ def plot_compare_evokeds(
         Whether to show the figure. Defaults to ``True``.
 
     combine : None | str | callable
-        How to combine information across channels. If a :class:`str`, must be
+        How to combine information across channels. If a `str`, must be
         one of 'mean', 'median', 'std' (standard deviation) or 'gfp' (global
         field power).
         If callable, the callable must accept one positional input (data of
         shape ``(n_evokeds, n_channels, n_times)``) and return an
-        :class:`array <numpy.ndarray>` of shape ``(n_epochs, n_times)``. For
+        `array <numpy.ndarray>` of shape ``(n_epochs, n_times)``. For
         example::
 
             combine = lambda data: np.median(data, axis=1)
@@ -890,7 +890,7 @@ def plot_compare_evokeds(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical :class:mne.bem.ConductorModel` to use the origin and
+        of a spherical `mne.bem.ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -913,8 +913,8 @@ def plot_compare_evokeds(
     Notes
     -----
     If the parameters ``styles``, ``colors``, or ``linestyles`` are passed as
-    :class:`dicts <python:dict>`, then ``evokeds`` must also be a
-    :class:`python:dict`, and
+    `dicts <python:dict>`, then ``evokeds`` must also be a
+    `python:dict`, and
     the keys of the plot-style parameters must either match the keys of
     ``evokeds``, or match a ``/``-separated partial key ("condition") of
     ``evokeds``. For example, if evokeds has keys "Aud/L", "Aud/R", "Vis/L",

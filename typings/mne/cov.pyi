@@ -63,7 +63,7 @@ class Covariance(dict):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
@@ -130,7 +130,7 @@ class Covariance(dict):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -180,7 +180,7 @@ class Covariance(dict):
         Parameters
         ----------
         info : mne.Info
-            The :class:`mne.Info` object with information about the sensors and methods of measurement.
+            The `mne.Info` object with information about the sensors and methods of measurement.
         exclude : list of str | str
             List of channels to exclude. If empty do not exclude any channel.
             If 'bads', exclude info['bads'].
@@ -197,7 +197,7 @@ class Covariance(dict):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -214,7 +214,7 @@ class Covariance(dict):
         Notes
         -----
         For each channel type, the rank is estimated using
-        :func:`mne.compute_rank`.
+        `mne.compute_rank`.
 
         .. versionchanged:: 0.19
            Approximate ranks for each channel type are shown with red dashed lines.
@@ -256,7 +256,7 @@ class Covariance(dict):
         ----------
 
         info : mne.Info
-            The :class:`mne.Info` object with information about the sensors and methods of measurement.
+            The `mne.Info` object with information about the sensors and methods of measurement.
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
             The channel type to plot. For ``'grad'``, the gradiometers are
             collected in pairs and the RMS for each pair is plotted. If
@@ -282,9 +282,9 @@ class Covariance(dict):
             plotting.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -328,7 +328,7 @@ class Covariance(dict):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -341,9 +341,9 @@ class Covariance(dict):
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -381,7 +381,7 @@ class Covariance(dict):
             Side length of each subplot in inches.
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -396,7 +396,7 @@ class Covariance(dict):
                 2 topomaps.
 
         vlim : tuple of length 2
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data. Defaults to ``(None, None)``.
@@ -423,15 +423,15 @@ class Covariance(dict):
             If ``None`` and ``scalings=None`` the unit is automatically determined, otherwise the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
-            will be created with the correct number of axes. If :class:matplotlib.axes.Axes` are provided (either as a single instance or a :class:`list` of axes), the number of axes provided must be length 1.Default is ``None``.
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1.Default is ``None``.
         show : bool
             Show the figure if ``True``.
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -463,7 +463,7 @@ class Covariance(dict):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -491,7 +491,7 @@ def read_cov(fname, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -512,7 +512,7 @@ def make_ad_hoc_cov(info, std=None, *, verbose=None):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     std : dict of float | None
         Standard_deviation of the diagonal elements. If dict, keys should be
         ``'grad'`` for gradiometers, ``'mag'`` for magnetometers and ``'eeg'``
@@ -521,7 +521,7 @@ def make_ad_hoc_cov(info, std=None, *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -562,7 +562,7 @@ def compute_raw_covariance(
     data or time intervals before starting the stimulation.
 
     .. note:: To estimate the noise covariance from epoched data, use
-              :func:`mne.compute_covariance` instead.
+              `mne.compute_covariance` instead.
 
     Parameters
     ----------
@@ -605,17 +605,17 @@ def compute_raw_covariance(
         their names or indices are explicitly provided.
     method : str | list | None (default 'empirical')
         The method used for covariance estimation.
-        See :func:`mne.compute_covariance`.
+        See `mne.compute_covariance`.
 
         .. versionadded:: 0.12
     method_params : dict | None (default None)
         Additional parameters to the estimation procedure.
-        See :func:`mne.compute_covariance`.
+        See `mne.compute_covariance`.
 
         .. versionadded:: 0.12
     cv : int | sklearn.model_selection object (default 3)
         The cross validation method. Defaults to 3, which will
-        internally trigger by default :class:`sklearn.model_selection.KFold`
+        internally trigger by default `sklearn.model_selection.KFold`
         with 3 splits.
 
         .. versionadded:: 0.12
@@ -627,10 +627,10 @@ def compute_raw_covariance(
         .. versionadded:: 0.12
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
         .. versionadded:: 0.12
@@ -667,10 +667,10 @@ def compute_raw_covariance(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -700,7 +700,7 @@ def compute_raw_covariance(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -722,11 +722,11 @@ def compute_raw_covariance(
     1. Partition the data into evenly spaced, equal-length epochs.
     2. Load them into memory.
     3. Subtract the mean across all time points and epochs for each channel.
-    4. Process the :class:`Epochs` by :func:`compute_covariance`.
+    4. Process the `Epochs` by `compute_covariance`.
 
     This will produce a slightly different result compared to using
-    :func:`make_fixed_length_events`, :class:`Epochs`, and
-    :func:`compute_covariance` directly, since that would (with the recommended
+    `make_fixed_length_events`, `Epochs`, and
+    `compute_covariance` directly, since that would (with the recommended
     baseline correction) subtract the mean across time *for each epoch*
     (instead of across epochs) for each channel.
     """
@@ -763,7 +763,7 @@ def compute_covariance(
 
     .. note:: To estimate the noise covariance from non-epoched raw data, such
               as an empty-room recording, use
-              :func:`mne.compute_raw_covariance` instead.
+              `mne.compute_raw_covariance` instead.
 
     Parameters
     ----------
@@ -816,7 +816,7 @@ def compute_covariance(
 
     cv : int | sklearn.model_selection object (default 3)
         The cross validation method. Defaults to 3, which will
-        internally trigger by default :class:`sklearn.model_selection.KFold`
+        internally trigger by default `sklearn.model_selection.KFold`
         with 3 splits.
     scalings : dict | None (default None)
         Defaults to ``dict(mag=1e15, grad=1e13, eeg=1e6)``.
@@ -824,10 +824,10 @@ def compute_covariance(
         magnitude.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     return_estimators : bool (default False)
         Whether to return all estimators or the best. Only considered if
@@ -861,10 +861,10 @@ def compute_covariance(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -894,7 +894,7 @@ def compute_covariance(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -913,7 +913,7 @@ def compute_covariance(
     Notes
     -----
     Baseline correction or sufficient high-passing should be used
-    when creating the :class:`Epochs` to ensure that the data are zero mean,
+    when creating the `Epochs` to ensure that the data are zero mean,
     otherwise the computed covariance matrix will be inaccurate.
 
     Valid ``method`` strings are:
@@ -922,7 +922,7 @@ def compute_covariance(
         The empirical or sample covariance (default)
     * ``'diagonal_fixed'``
         A diagonal regularization based on channel types as in
-        :func:`mne.cov.regularize`.
+        `mne.cov.regularize`.
     * ``'shrinkage'``
         Fixed shrinkage.
 
@@ -949,8 +949,8 @@ def compute_covariance(
     the ``'auto'`` mode to avoid redundancy.
 
     For multiple event types, it is also possible to create a
-    single :class:`Epochs` object with events obtained using
-    :func:`mne.merge_events`. However, the resulting covariance matrix
+    single `Epochs` object with events obtained using
+    `mne.merge_events`. However, the resulting covariance matrix
     will only be correct if ``keep_sample_mean is True``.
 
     The covariance can be unstable if the number of samples is small.
@@ -1064,7 +1064,7 @@ def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -1090,7 +1090,7 @@ def prepare_noise_cov(
         The noise covariance to process.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. (Used to get channel types and bad channels).
+        The `mne.Info` object with information about the sensors and methods of measurement. (Used to get channel types and bad channels).
     ch_names : list | None
         The channel names to be considered. Can be None to use
         ``info['ch_names']``.
@@ -1115,10 +1115,10 @@ def prepare_noise_cov(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -1159,7 +1159,7 @@ def prepare_noise_cov(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1200,7 +1200,7 @@ def regularize(
 
     .. note:: This function is kept for reasons of backward-compatibility.
               Please consider explicitly using the ``method`` parameter in
-              :func:`mne.compute_covariance` to directly combine estimation
+              `mne.compute_covariance` to directly combine estimation
               with regularization in a data-driven fashion. See the
               :ref:`FAQ <faq_how_should_i_regularize>` for more information.
 
@@ -1210,7 +1210,7 @@ def regularize(
         The noise covariance matrix.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. (Used to get channel types and bad channels).
+        The `mne.Info` object with information about the sensors and methods of measurement. (Used to get channel types and bad channels).
     mag : float (default 0.1)
         Regularization factor for MEG magnetometers.
     grad : float (default 0.1)
@@ -1264,10 +1264,10 @@ def regularize(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -1295,14 +1295,14 @@ def regularize(
            Support for 'info' mode.
     scalings : dict | None
         Data will be rescaled before rank estimation to improve accuracy.
-        See :func:`mne.compute_covariance`.
+        See `mne.compute_covariance`.
 
         .. versionadded:: 0.17
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1336,8 +1336,8 @@ def compute_whitener(
         The noise covariance.
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Can be None if ``noise_cov`` has already been
-        prepared with :func:`prepare_noise_cov`.
+        The `mne.Info` object with information about the sensors and methods of measurement. Can be None if ``noise_cov`` has already been
+        prepared with `prepare_noise_cov`.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1368,10 +1368,10 @@ def compute_whitener(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -1430,7 +1430,7 @@ def compute_whitener(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -1489,10 +1489,10 @@ def whiten_evoked(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a mne.Covariance` is passed, this can
+            number of good channels. If a `mne.Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
-        :class:`dict`
+        `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
             extremely useful if you already **know** the rank of (part of) your
@@ -1527,7 +1527,7 @@ def whiten_evoked(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

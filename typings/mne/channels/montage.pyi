@@ -30,7 +30,7 @@ class _BuiltinStandardMontage:
 def get_builtin_montages(*, descriptions: bool = False):
     """Get a list of all standard montages shipping with MNE-Python.
 
-    The names of the montages can be passed to :func:`make_standard_montage`.
+    The names of the montages can be passed to `make_standard_montage`.
 
     Parameters
     ----------
@@ -47,7 +47,7 @@ def get_builtin_montages(*, descriptions: bool = False):
     -------
     montages : list of str | list of tuple
         If ``descriptions=False``, the names of all builtin montages that can
-        be used by :func:`make_standard_montage`.
+        be used by `make_standard_montage`.
 
         If ``descriptions=True``, a list of tuples ``(name, description)``.
     """
@@ -175,7 +175,7 @@ class DigMontage:
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -195,7 +195,7 @@ class DigMontage:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -244,7 +244,7 @@ class DigMontage:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -314,7 +314,7 @@ class DigMontage:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -324,7 +324,7 @@ class DigMontage:
         This takes a montage with the ``mri`` coordinate frame,
         corresponding to the FreeSurfer RAS (xyz in the volume) T1w
         image of the specific subject. It will call
-        :func:`mne.coreg.get_mni_fiducials` to estimate LPA, RPA and
+        `mne.coreg.get_mni_fiducials` to estimate LPA, RPA and
         Nasion fiducial points.
 
         Parameters
@@ -341,7 +341,7 @@ class DigMontage:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -377,7 +377,7 @@ class DigMontage:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -405,7 +405,7 @@ class DigMontage:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -736,7 +736,7 @@ def read_polhemus_fastscan(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -790,9 +790,9 @@ def read_custom_montage(fname, head_size=0.095, coord_frame=None):
     in terms of units, coordinate systems. It implies that setting
     a montage using a DigMontage produced by this function may
     be problematic. If you use a standard/template (eg. 10/20,
-    10/10 or 10/05) we recommend you use :func:`make_standard_montage`.
+    10/10 or 10/05) we recommend you use `make_standard_montage`.
     If you can have positions in memory you can also use
-    :func:`make_dig_montage` that takes arrays as input.
+    `make_dig_montage` that takes arrays as input.
     """
     ...
 
@@ -802,7 +802,7 @@ def compute_dev_head_t(montage):
     Parameters
     ----------
     montage : DigMontage
-        The mne.channels.DigMontage` must contain the fiducials in head
+        The `mne.channels.DigMontage` must contain the fiducials in head
         coordinate system and hpi points in both head and
         meg device coordinate system.
 
@@ -833,7 +833,7 @@ def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -853,7 +853,7 @@ def make_standard_montage(kind, head_size: str = "auto"):
 
         .. note::
             You can retrieve the names of all
-            built-in montages via :func:`mne.channels.get_builtin_montages`.
+            built-in montages via `mne.channels.get_builtin_montages`.
     head_size : float | None | str
         The head size (radius, in meters) to use for spherical montages.
         Can be None to not scale the read sizes. ``'auto'`` (default) will
@@ -875,9 +875,9 @@ def make_standard_montage(kind, head_size: str = "auto"):
     Notes
     -----
     Individualized (digitized) electrode positions should be read in using
-    :func:`read_dig_captrak`, :func:`read_dig_dat`, :func:`read_dig_egi`,
-    :func:`read_dig_fif`, :func:`read_dig_polhemus_isotrak`,
-    :func:`read_dig_hpts`, or manually made with :func:`make_dig_montage`.
+    `read_dig_captrak`, `read_dig_dat`, `read_dig_egi`,
+    `read_dig_fif`, `read_dig_polhemus_isotrak`,
+    `read_dig_hpts`, or manually made with `make_dig_montage`.
 
     .. versionadded:: 0.19.0
     """

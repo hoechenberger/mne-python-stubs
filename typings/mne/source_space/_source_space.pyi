@@ -59,8 +59,8 @@ class SourceSpaces(list):
 
     .. warning::
         This class should not be created or modified by the end user. Use
-        :func:`mne.setup_source_space`, :func:`mne.setup_volume_source_space`,
-        or :func:`mne.read_source_spaces` to create :class:`SourceSpaces`.
+        `mne.setup_source_space`, `mne.setup_volume_source_space`,
+        or `mne.read_source_spaces` to create `SourceSpaces`.
 
     Parameters
     ----------
@@ -94,7 +94,7 @@ class SourceSpaces(list):
     surface and volumetric source spaces in a single SourceSpaces object.
 
     Each of those dictionaries can be accessed using standard Python
-    :class:`python:dict` access using the string keys listed below (e.g.,
+    `python:dict` access using the string keys listed below (e.g.,
     ``src[0]['type'] == 'surf'``). The relevant key/value pairs depend on
     the source space type:
 
@@ -129,7 +129,7 @@ class SourceSpaces(list):
 
     **Surface source spaces**
 
-    Surface source spaces created using :func:`mne.setup_source_space` can have
+    Surface source spaces created using `mne.setup_source_space` can have
     the following additional entries (which will be missing, or have values of
     ``None`` or ``0`` for volumetric source spaces):
 
@@ -168,7 +168,7 @@ class SourceSpaces(list):
 
         patch_inds : ndarray, shape (n_src_remaining,)
             The patch indices that have been retained (if relevant, following
-            forward computation. After just :func:`mne.setup_source_space`,
+            forward computation. After just `mne.setup_source_space`,
             this will be ``np.arange(src[0]['nuse'])``. After forward
             computation, some vertices can be excluded, in which case this
             tells you which patches (of the original ``np.arange(nuse)``)
@@ -204,7 +204,7 @@ class SourceSpaces(list):
 
     **Volume source spaces**
 
-    Volume source spaces created using :func:`mne.setup_volume_source_space`
+    Volume source spaces created using `mne.setup_volume_source_space`
     can have the following additional entries (which will be missing, or
     have values of ``None`` or ``0`` for surface source spaces):
 
@@ -217,13 +217,13 @@ class SourceSpaces(list):
             to the high-resolution volume.
         shape : tuple of int
             The shape of the subsampled grid.
-        mri_ras_t : instance of :class:mne.transforms.Transform`
+        mri_ras_t : instance of `mne.transforms.Transform`
             The transformation from MRI surface RAS (``FIFF.FIFFV_COORD_MRI``)
             to MRI scanner RAS (``FIFF.FIFFV_MNE_COORD_RAS``).
-        src_mri_t : instance of :class:mne.transforms.Transform`
+        src_mri_t : instance of `mne.transforms.Transform`
             The transformation from subsampled source space voxel to MRI
             surface RAS.
-        vox_mri_t : instance of :class:mne.transforms.Transform`
+        vox_mri_t : instance of `mne.transforms.Transform`
             The transformation from the original MRI voxel
             (``FIFF.FIFFV_MNE_COORD_MRI_VOXEL``) space to MRI surface RAS.
         mri_volume_name : str
@@ -266,7 +266,7 @@ class SourceSpaces(list):
             ``'inner_skull'``, or ``'outer_skull'``. Can also be a list to plot
             multiple skull surfaces. If a list of dicts, each dict must
             contain the complete surface info (such as you get from
-            :func:`mne.make_bem_model`). True is an alias of 'outer_skull'.
+            `mne.make_bem_model`). True is an alias of 'outer_skull'.
             The subjects bem and bem/flash folders are searched for the 'surf'
             files. Defaults to None, which is False for surface source spaces,
             and True otherwise.
@@ -281,7 +281,7 @@ class SourceSpaces(list):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -323,7 +323,7 @@ class SourceSpaces(list):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
@@ -383,7 +383,7 @@ class SourceSpaces(list):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Notes
@@ -406,7 +406,7 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -472,7 +472,7 @@ def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) ->
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -522,17 +522,17 @@ def setup_source_space(
            Support for ``add_dist='patch'``.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         Ignored if ``add_dist=='patch'``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -598,14 +598,14 @@ def setup_volume_source_space(
         None (the default) uses a head-digitization fit.
     bem : path-like | None | ConductorModel
         Define source space bounds using a BEM file (specifically the inner
-        skull surface) or a :class:mne.bem.ConductorModel` for a 1-layer of 3-layers
-        BEM. See :func:mne.make_bem_model` and :func:mne.make_bem_solution` to
-        create a :class:mne.bem.ConductorModel`. If provided, ``surface`` must be
+        skull surface) or a `mne.bem.ConductorModel` for a 1-layer of 3-layers
+        BEM. See `mne.make_bem_model` and `mne.make_bem_solution` to
+        create a `mne.bem.ConductorModel`. If provided, ``surface`` must be
         None.
     surface : path-like | dict | None
         Define source space bounds using a FreeSurfer surface file. Can
         also be a dictionary with entries ``'rr'`` and ``'tris'``, such as
-        those returned by :func:`mne.read_surface`. If provided, ``bem`` must be None.
+        those returned by `mne.read_surface`. If provided, ``bem`` must be None.
     mindist : float
         Exclude points closer than this distance (mm) to the bounding surface.
     exclude : float
@@ -643,10 +643,10 @@ def setup_volume_source_space(
         .. versionadded:: 0.21
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
         .. versionadded:: 1.6
@@ -654,13 +654,13 @@ def setup_volume_source_space(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
     src : SourceSpaces
-        A :class:`SourceSpaces` object containing one source space for each
+        A `SourceSpaces` object containing one source space for each
         entry of ``volume_labels``, or a single source space if
         ``volume_labels`` was not specified.
 
@@ -716,17 +716,17 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
         information is added.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         Ignored if ``dist_limit==0.``.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -800,7 +800,7 @@ def morph_source_spaces(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -824,7 +824,7 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
         sensors.
 
     info : mne.Info | None
-        The :class:`mne.Info` object with information about the sensors and methods of measurement. Must contain sensor positions to which distances shall
+        The `mne.Info` object with information about the sensors and methods of measurement. Must contain sensor positions to which distances shall
         be computed.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
@@ -844,7 +844,7 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

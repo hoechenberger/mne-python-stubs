@@ -50,13 +50,13 @@ class MontageMixin:
 
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
-            :class:mne.channels.DigMontage` is
+            `mne.channels.DigMontage` is
             specified, the existing channel information will be updated with the
             channel positions from the montage. Valid strings are the names of the
             built-in montages that ship with MNE-Python; you can list those via
-            :func:`mne.channels.get_builtin_montages`.
+            `mne.channels.get_builtin_montages`.
             If ``None`` (default), the channel positions will be removed from the
-            :class:mne.Info`.
+            `mne.Info`.
         """
         ...
     def set_montage(
@@ -74,13 +74,13 @@ class MontageMixin:
 
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
-            :class:mne.channels.DigMontage` is
+            `mne.channels.DigMontage` is
             specified, the existing channel information will be updated with the
             channel positions from the montage. Valid strings are the names of the
             built-in montages that ship with MNE-Python; you can list those via
-            :func:`mne.channels.get_builtin_montages`.
+            `mne.channels.get_builtin_montages`.
             If ``None`` (default), the channel positions will be removed from the
-            :class:mne.Info`.
+            `mne.Info`.
 
         match_case : bool
             If True (default), channel name matching will be case sensitive.
@@ -90,7 +90,7 @@ class MontageMixin:
         match_alias : bool | dict
             Whether to use a lookup table to match unrecognized channel location names
             to their known aliases. If True, uses the mapping in
-            ``mne.io.constants.CHANNEL_LOC_ALIASES``. If a :class:`dict` is passed, it
+            ``mne.io.constants.CHANNEL_LOC_ALIASES``. If a `dict` is passed, it
             will be used instead, and should map from non-standard channel names to
             names in the specified ``montage``. Default is ``False``.
 
@@ -105,7 +105,7 @@ class MontageMixin:
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -131,7 +131,7 @@ class MontageMixin:
             at the time it is applied. This means when
             :ref:`re-referencing <tut-set-eeg-ref>`
             make sure to apply the montage only after calling
-            :func:`mne.add_reference_channels`
+            `mne.add_reference_channels`
         """
         ...
 
@@ -157,7 +157,7 @@ class SetChannelsMixin(MontageMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -202,7 +202,7 @@ class SetChannelsMixin(MontageMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -258,7 +258,7 @@ class SetChannelsMixin(MontageMixin):
         ch_groups : 'position' | array of shape (n_ch_groups, n_picks) | None
             Channel groups for coloring the sensors. If None (default), default
             coloring scheme is used. If 'position', the sensors are divided
-            into 8 regions. See ``order`` kwarg of :func:`mne.viz.plot_raw`. If
+            into 8 regions. See ``order`` kwarg of `mne.viz.plot_raw`. If
             array, the channels are divided by picks given in the array.
 
             .. versionadded:: 0.13.0
@@ -284,7 +284,7 @@ class SetChannelsMixin(MontageMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -298,7 +298,7 @@ class SetChannelsMixin(MontageMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -316,7 +316,7 @@ class SetChannelsMixin(MontageMixin):
         -----
         This function plots the sensor locations from the info structure using
         matplotlib. For drawing the sensors using PyVista see
-        :func:`mne.viz.plot_alignment`.
+        `mne.viz.plot_alignment`.
 
         .. versionadded:: 0.12.0
         """
@@ -343,7 +343,7 @@ class SetChannelsMixin(MontageMixin):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -406,7 +406,7 @@ class SetChannelsMixin(MontageMixin):
         Notes
         -----
         If you want to remove all time references in the file, call
-        :func:`mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
+        `mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
         after calling ``inst.set_meas_date(None)``.
 
         .. versionadded:: 0.20
@@ -492,7 +492,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
 
     .. note::
         This class should not be instantiated directly via
-        ``mne.Info(...)``. Instead, use :func:`mne.create_info` to create
+        ``mne.Info(...)``. Instead, use `mne.create_info` to create
         measurement information from scratch.
 
     .. warning::
@@ -517,7 +517,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     ----------
     acq_pars : str | None
         MEG system acquisition parameters.
-        See :class:`mne.AcqParserFIF` for details.
+        See `mne.AcqParserFIF` for details.
     acq_stim : str | None
         MEG system stimulus parameters.
     bads : list of str
@@ -558,7 +558,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     events : list of dict
         Event list, sometimes extracted from the stim channels by Neuromag
         systems. In general this should not be used and
-        :func:`mne.find_events` should be used for event processing.
+        `mne.find_events` should be used for event processing.
         See Notes for more information.
     experimenter : str | None
         Name of the person that ran the experiment.
@@ -598,7 +598,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         The time (UTC) of the recording.
 
         .. versionchanged:: 0.20
-           This is stored as a :class:python:datetime.datetime` object
+           This is stored as a `python:datetime.datetime` object
            instead of a tuple of seconds/microseconds.
     meas_file : str | None
         Raw measurement file (used for source estimation).
@@ -624,7 +624,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         Name of the project the experiment belongs to.
     projs : list of Projection
         List of SSP operators that operate on the data.
-        See :class:`mne.Projection` for details.
+        See `mne.Projection` for details.
     sfreq : float
         Sampling frequency in Hertz.
     subject_info : dict | None
@@ -947,7 +947,7 @@ def read_fiducials(fname, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -989,7 +989,7 @@ def write_fiducials(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
     """
     ...
@@ -1005,14 +1005,14 @@ def read_info(fname, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     """
     ...
 
@@ -1050,14 +1050,14 @@ def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     meas : dict
         Node in tree that contains the info.
     """
@@ -1072,7 +1072,7 @@ def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None
         Open file descriptor.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     data_type : int
         The data_type in case it is necessary. Should be 4 (FIFFT_FLOAT),
         5 (FIFFT_DOUBLE), or 16 (FIFFT_DAU_PACK16) for
@@ -1095,7 +1095,7 @@ def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
         The name of the file. Should end by ``-info.fif``.
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     data_type : int
         The data_type in case it is necessary. Should be 4 (FIFFT_FLOAT),
         5 (FIFFT_DOUBLE), or 16 (FIFFT_DAU_PACK16) for
@@ -1126,14 +1126,14 @@ def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
     -------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     Notes
     -----
@@ -1162,17 +1162,17 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
     """Anonymize measurement information in place.
 
     .. warning:: If ``info`` is part of an object like
-                 :class:`raw.info <mne.io.Raw>`, you should directly use
-                 the method :meth:`raw.anonymize() <mne.io.Raw.anonymize>`
+                 `raw.info <mne.io.Raw>`, you should directly use
+                 the method `raw.anonymize() <mne.io.Raw.anonymize>`
                  to ensure that all parts of the data are anonymized and
                  stay synchronized (e.g.,
-                 :class:`raw.annotations <mne.Annotations>`).
+                 `raw.annotations <mne.Annotations>`).
 
     Parameters
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
 
     daysback : int | None
         Number of days to subtract from all dates.
@@ -1190,7 +1190,7 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns

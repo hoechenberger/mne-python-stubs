@@ -101,8 +101,8 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
     Examples
     --------
     Let's show a simple example of the relationship between ``n_cycles`` and
-    the FWHM using :func:`mne.time_frequency.fwhm`, as well as the equivalent
-    call using :func:`scipy.signal.morlet2`:
+    the FWHM using `mne.time_frequency.fwhm`, as well as the equivalent
+    call using `scipy.signal.morlet2`:
 
     .. plot::
 
@@ -224,9 +224,9 @@ def tfr_morlet(
 ):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
-    Same computation as mne.time_frequency.tfr_array_morlet`, but
-    operates on mne.Epochs` or mne.Evoked` objects instead of
-    :class:`NumPy arrays <numpy.ndarray>`.
+    Same computation as `mne.time_frequency.tfr_array_morlet`, but
+    operates on `mne.Epochs` or `mne.Evoked` objects instead of
+    `NumPy arrays <numpy.ndarray>`.
 
     Parameters
     ----------
@@ -260,10 +260,10 @@ def tfr_morlet(
             artifacts.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     picks : array-like of int | None, default None
         The indices of the channels to decompose. If None, all available
@@ -293,7 +293,7 @@ def tfr_morlet(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -349,9 +349,9 @@ def tfr_morlet(
     deviation of the wavelet's Gaussian envelope. Note that the length of the
     wavelet must not exceed the length of your signal.
 
-    For more information on the Morlet wavelet, see :func:`mne.time_frequency.morlet`.
+    For more information on the Morlet wavelet, see `mne.time_frequency.morlet`.
 
-    See :func:`mne.time_frequency.morlet` for more information about the
+    See `mne.time_frequency.morlet` for more information about the
     Morlet wavelet.
 
     References
@@ -374,8 +374,8 @@ def tfr_array_morlet(
 ):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
-    Same computation as mne.time_frequency.tfr_morlet`, but operates on
-    :class:`NumPy arrays <numpy.ndarray>` instead of mne.Epochs` objects.
+    Same computation as `mne.time_frequency.tfr_morlet`, but operates on
+    `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` objects.
 
     Parameters
     ----------
@@ -419,10 +419,10 @@ def tfr_array_morlet(
           coherence across trials.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
         The number of epochs to process at the same time. The parallelization
         is implemented across channels. Default 1.
@@ -430,7 +430,7 @@ def tfr_array_morlet(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -491,7 +491,7 @@ def tfr_array_morlet(
     deviation of the wavelet's Gaussian envelope. Note that the length of the
     wavelet must not exceed the length of your signal.
 
-    For more information on the Morlet wavelet, see :func:`mne.time_frequency.morlet`.
+    For more information on the Morlet wavelet, see `mne.time_frequency.morlet`.
 
     .. versionadded:: 0.14.0
 
@@ -517,9 +517,9 @@ def tfr_multitaper(
 ):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
-    Same computation as mne.time_frequency.tfr_array_multitaper`, but
-    operates on mne.Epochs` or mne.Evoked` objects instead of
-    :class:`NumPy arrays <numpy.ndarray>`.
+    Same computation as `mne.time_frequency.tfr_array_multitaper`, but
+    operates on `mne.Epochs` or `mne.Evoked` objects instead of
+    `NumPy arrays <numpy.ndarray>`.
 
     Parameters
     ----------
@@ -560,10 +560,10 @@ def tfr_multitaper(
             artifacts.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
-        to the number of CPU cores. Requires the :mod:`joblib` package.
+        to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
         as ``n_jobs=1`` (sequential execution) unless the call is performed under
-        a :class:`joblib:joblib.parallel_config` context manager that sets another
+        a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
@@ -590,7 +590,7 @@ def tfr_multitaper(
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
@@ -666,13 +666,13 @@ def tfr_multitaper(
 
     .. warning::
 
-        In mne.time_frequency.tfr_array_multitaper` and
-        mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
+        In `mne.time_frequency.tfr_array_multitaper` and
+        `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
         product of the temporal window length with the *full* frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
 
-        This is not the case for mne.time_frequency.psd_array_multitaper` where
+        This is not the case for `mne.time_frequency.psd_array_multitaper` where
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 
@@ -768,7 +768,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -792,7 +792,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         See Also
@@ -832,9 +832,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
 
         index : str | list of str | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
-            integer index (:class:`pandas.RangeIndex`) will be used. If ``'time'``, a
-            ``pandas.Index`` or :class:`pandas.TimedeltaIndex` will be used
-            (depending on the value of ``time_format``). If a list of two or more string values, a :class:`pandas.MultiIndex` will be created.
+            integer index (`pandas.RangeIndex`) will be used. If ``'time'``, a
+            ``pandas.Index`` or `pandas.TimedeltaIndex` will be used
+            (depending on the value of ``time_format``). If a list of two or more string values, a `pandas.MultiIndex` will be created.
             Valid string values are ``'time'``, ``'freq'``, ``'epoch'``, and
             ``'condition'`` for ``EpochsTFR`` and ``'time'`` and ``'freq'``
             for ``AverageTFR``.
@@ -849,7 +849,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             Desired time format. If ``None``, no conversion is applied, and time values
             remain as float values in seconds. If ``'ms'``, time values will be rounded
             to the nearest millisecond and converted to integers. If ``'timedelta'``,
-            time values will be converted to :class:`pandas.Timedelta` values.
+            time values will be converted to `pandas.Timedelta` values.
             Default is ``None``.
 
             .. versionadded:: 0.23
@@ -857,7 +857,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -879,7 +879,7 @@ class AverageTFR(_BaseTFR):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     data : ndarray, shape (n_channels, n_freqs, n_times)
         The data.
     times : ndarray, shape (n_times,)
@@ -896,14 +896,14 @@ class AverageTFR(_BaseTFR):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     ch_names : list
         The names of the channels.
     nave : int
@@ -1109,7 +1109,7 @@ class AverageTFR(_BaseTFR):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1221,13 +1221,13 @@ class AverageTFR(_BaseTFR):
             bad channels are excluded. Defaults to an empty list, i.e., ``[]``.
         topomap_args : None | dict
             A dict of ``kwargs`` that are forwarded to
-            :func:`mne.viz.plot_topomap` to style the topomaps. ``axes`` and
+            `mne.viz.plot_topomap` to style the topomaps. ``axes`` and
             ``show`` are ignored. If ``times`` is not in this dict, automatic
             peak detection is used. Beyond that, if ``None``, no customizable
             arguments will be passed.
             Defaults to ``None``.
         image_args : None | dict
-            A dict of ``kwargs`` that are forwarded to :meth:`AverageTFR.plot`
+            A dict of ``kwargs`` that are forwarded to `AverageTFR.plot`
             to style the image. ``axes`` and ``show`` are ignored. Beyond that,
             if ``None``, no customizable arguments will be passed.
             Defaults to ``None``.
@@ -1235,7 +1235,7 @@ class AverageTFR(_BaseTFR):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1379,7 +1379,7 @@ class AverageTFR(_BaseTFR):
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the :ref:`logging documentation <tut-logging>` and
-            :func:`mne.verbose` for details. Should only be passed as a keyword
+            `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
         Returns
@@ -1455,9 +1455,9 @@ class AverageTFR(_BaseTFR):
             If None no baseline correction is applied.
 
         sensors : bool | str
-            Whether to add markers for sensor locations. If :class:`str`, should be a
+            Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of :meth:matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -1501,7 +1501,7 @@ class AverageTFR(_BaseTFR):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical :class:mne.bem.ConductorModel` to use the origin and
+            of a spherical `mne.bem.ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1514,9 +1514,9 @@ class AverageTFR(_BaseTFR):
 
         image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
-            to use :class:`scipy.interpolate.CloughTocher2DInterpolator`,
-            ``'nearest'`` to use :class:`scipy.spatial.Voronoi` or
-            ``'linear'`` to use :class:`scipy.interpolate.LinearNDInterpolator`.
+            to use `scipy.interpolate.CloughTocher2DInterpolator`,
+            ``'nearest'`` to use `scipy.spatial.Voronoi` or
+            ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
         extrapolate : str
             Options:
@@ -1554,7 +1554,7 @@ class AverageTFR(_BaseTFR):
             Side length of each subplot in inches.
 
         cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
-            Colormap to use. If :class:`tuple`, the first value indicates the colormap
+            Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
             colorbar with left and right mouse button. Left mouse button moves the
@@ -1569,7 +1569,7 @@ class AverageTFR(_BaseTFR):
                 2 topomaps.
 
         vlim : tuple of length 2
-            Colormap limits to use. If a :class:`tuple` of floats, specifies the
+            Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data. Defaults to ``(None, None)``.
@@ -1596,7 +1596,7 @@ class AverageTFR(_BaseTFR):
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | None
-            The axes to plot to. If ``None``, a new :class:matplotlib.figure.Figure`
+            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created. Default is ``None``.
         show : bool
             Show the figure if ``True``.
@@ -1633,7 +1633,7 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     data : ndarray, shape (n_epochs, n_channels, n_freqs, n_times)
         The data.
     times : ndarray, shape (n_times,)
@@ -1663,20 +1663,20 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
 
         .. versionadded:: 0.23
     metadata : instance of pandas.DataFrame | None
-        A :class:`pandas.DataFrame` containing pertinent information for each
-        trial. See :class:`mne.Epochs` for further details.
+        A `pandas.DataFrame` containing pertinent information for each
+        trial. See `mne.Epochs` for further details.
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Attributes
     ----------
 
     info : mne.Info
-        The :class:`mne.Info` object with information about the sensors and methods of measurement.
+        The `mne.Info` object with information about the sensors and methods of measurement.
     ch_names : list
         The names of the channels.
     data : ndarray, shape (n_epochs, n_channels, n_freqs, n_times)
@@ -1709,9 +1709,9 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
             If epoch didn't contain enough data names of channels that
             exceeded the amplitude threshold
         - ``'EQUALIZED_COUNTS'``
-            See :meth:mne.Epochs.equalize_event_counts`
+            See `mne.Epochs.equalize_event_counts`
         - ``'USER'``
-            For user-defined reasons (see :meth:mne.Epochs.drop`).
+            For user-defined reasons (see `mne.Epochs.drop`).
 
     metadata : pandas.DataFrame, shape (n_events, n_cols) | None
         DataFrame containing pertinent information for each trial
@@ -1835,7 +1835,7 @@ def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     See Also
@@ -1862,7 +1862,7 @@ def read_tfrs(fname, condition=None, *, verbose=None):
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the :ref:`logging documentation <tut-logging>` and
-        :func:`mne.verbose` for details. Should only be passed as a keyword
+        `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
     Returns
