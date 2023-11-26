@@ -30,8 +30,9 @@ def plot_cov(
 ):
     """### Plot Covariance data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     cov : instance of Covariance
         The covariance matrix.
 
@@ -56,19 +57,22 @@ def plot_cov(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig_cov : instance of matplotlib.figure.Figure
         The covariance plot.
     fig_svd : instance of matplotlib.figure.Figure | None
         The SVD spectra plot of the covariance.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.compute_rank
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For each channel type, the rank is estimated using
     `mne.compute_rank`.
 
@@ -88,8 +92,9 @@ def plot_source_spectrogram(
 ):
     """### Plot source power in time-freqency grid.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     stcs : list of SourceEstimate
         Source power for consecutive time windows, one SourceEstimate object
         should be provided for each frequency bin.
@@ -107,8 +112,9 @@ def plot_source_spectrogram(
     show : bool
         Show figure if True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         The figure.
     """
@@ -128,8 +134,9 @@ def plot_bem(
 ):
     """### Plot BEM contours on anatomical MRI slices.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -177,17 +184,20 @@ def plot_bem(
         🎭 Changed in version 0.24
            Added support for "always".
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.viz.plot_alignment
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Images are plotted in MRI voxel coordinates.
 
     If ``src`` is not None, for a given slice index, all source points are
@@ -216,8 +226,9 @@ def plot_events(
 ):
     """### Plot :term:`events` to get a visual display of the paradigm.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
@@ -262,13 +273,15 @@ def plot_events(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : matplotlib.figure.Figure
         The figure object containing the plot.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -276,8 +289,9 @@ def plot_events(
 def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
     """### Plot the amplitude traces of a set of dipoles.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     dipoles : list of instance of Dipole
         The dipoles whose amplitudes should be shown.
     colors : list of color | None
@@ -285,13 +299,15 @@ def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
     show : bool
         Show figure if True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : matplotlib.figure.Figure
         The figure object containing the plot.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -299,8 +315,9 @@ def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
 def adjust_axes(axes, remove_spines=("top", "right"), grid: bool = True) -> None:
     """### Adjust some properties of axes.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     axes : list
         List of axes to process.
     remove_spines : list of str
@@ -329,8 +346,9 @@ def plot_filter(
 ):
     """### Plot properties of a filter.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     h : dict or ndarray
         An IIR dict or 1D ndarray of coefficients (for FIR filter).
     sfreq : float
@@ -385,18 +403,21 @@ def plot_filter(
 
         ✨ Added in vesion 1.1.0
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : matplotlib.figure.Figure
         The figure containing the plots.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.filter.create_filter
     plot_ideal_filter
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.14
     """
     ...
@@ -416,8 +437,9 @@ def plot_ideal_filter(
 ):
     """### Plot an ideal filter response.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     freq : array-like
         The ideal response frequencies to plot (must be in ascending order).
     gain : array-like or None
@@ -442,21 +464,25 @@ def plot_ideal_filter(
     show : bool
         Show figure if True (default).
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure.
 
+    -----
     ### 👉 See Also
-    --------
+
     plot_filter
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.14
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     Plot a simple ideal band-pass filter::
 
         >>> from mne.viz import plot_ideal_filter
@@ -481,8 +507,9 @@ def plot_csd(
     A sub-plot is created for each frequency. If an info object is passed to
     the function, different channel types are plotted in different figures.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     csd : instance of CrossSpectralDensity
         The CSD matrix to plot.
 
@@ -506,8 +533,9 @@ def plot_csd(
     show : bool
         Whether to show the figure. Defaults to ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : list of Figure
         The figures created by this function.
     """
@@ -516,8 +544,9 @@ def plot_csd(
 def plot_chpi_snr(snr_dict, axes=None):
     """### Plot time-varying SNR estimates of the HPI coils.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     snr_dict : dict
         The dictionary returned by `mne.chpi.compute_chpi_snr`. Must have keys
         ``times``, ``freqs``, ``TYPE_snr``, ``TYPE_power``, and ``TYPE_resid``
@@ -529,15 +558,17 @@ def plot_chpi_snr(snr_dict, axes=None):
         `matplotlib.figure.Figure` is created with the required number of
         axes.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         A figure with subplots for SNR, power, and residual variance,
         separately for magnetometers and/or gradiometers (depending on what is
         present in ``snr_dict``).
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If you supply a list of existing `matplotlib.axes.Axes`, then the figure
     legend will not be drawn automatically. If you still want it, running
     ``fig.legend(loc='right', title='cHPI frequencies')`` will recreate it.

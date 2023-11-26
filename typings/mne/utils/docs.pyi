@@ -33,13 +33,15 @@ docdict_indented: Incomplete
 def fill_doc(f):
     """### Fill a docstring with docdict entries.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     f : callable
         The function to fill the docstring of. Will be modified in place.
 
+    -----
     ### ⏎ Returns
-    -------
+
     f : callable
         The function, potentially with an updated ``__doc__``.
     """
@@ -54,18 +56,21 @@ def copy_doc(source):
     This is useful when inheriting from a class and overloading a method. This
     decorator can be used to copy the docstring of the original method.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     source : function
         Function to copy the docstring from
 
+    -----
     ### ⏎ Returns
-    -------
+
     wrapper : function
         The decorated function
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> class A:
     ...     def m1():
     ...         '''Docstring for m1'''
@@ -92,28 +97,32 @@ def copy_function_doc_to_method_doc(source):
     function.  This pattern is prevalent in for example the plotting functions
     of MNE.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     source : function
         Function to copy the docstring from.
 
+    -----
     ### ⏎ Returns
-    -------
+
     wrapper : function
         The decorated method.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The parsing performed is very basic and will break easily on docstrings
     that are not formatted exactly according to the ``numpydoc`` standard.
     Always inspect the resulting docstring when using this decorator.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> def plot_function(object, a, b):
     ...     '''Docstring for plotting function.
     ...
-    ...     ### 🛠️ Parameters
+    ...     Parameters
     ...     ----------
     ...     object : instance of object
     ...         The object to plot
@@ -128,7 +137,7 @@ def copy_function_doc_to_method_doc(source):
     ...     @copy_function_doc_to_method_doc(plot_function)
     ...     def plot(self, a, b):
     ...         '''
-    ...         ### 📖 Notes
+    ...         Notes
     ...         -----
     ...         ✨ Added in vesion 0.13.0
     ...         '''
@@ -136,15 +145,17 @@ def copy_function_doc_to_method_doc(source):
     >>> print(A.plot.__doc__)
     Docstring for plotting function.
     <BLANKLINE>
+        -----
         ### 🛠️ Parameters
-        ----------
+
         a : int
             Some parameter
         b : int
             Some parameter
     <BLANKLINE>
-            ### 📖 Notes
             -----
+            ### 📖 Notes
+
             ✨ Added in vesion 0.13.0
     <BLANKLINE>
     """
@@ -156,13 +167,15 @@ def copy_base_doc_to_subclass_doc(subclass):
     The docstring of a parent class method is prepended to the
     docstring of the method of the class wrapped by this decorator.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subclass : wrapped class
         Class to copy the docstring to.
 
+    -----
     ### ⏎ Returns
-    -------
+
     subclass : Derived class
         The decorated class with copied docstrings.
     """
@@ -171,20 +184,23 @@ def copy_base_doc_to_subclass_doc(subclass):
 def linkcode_resolve(domain, info):
     """### Determine the URL corresponding to a Python object.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     domain : str
         Only useful when 'py'.
     info : dict
         With keys "module" and "fullname".
 
+    -----
     ### ⏎ Returns
-    -------
+
     url : str
         The code URL.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This has been adapted to deal with our "verbose" decorator.
 
     Adapted from SciPy (doc/source/conf.py).
@@ -194,8 +210,9 @@ def linkcode_resolve(domain, info):
 def open_docs(kind=None, version=None) -> None:
     """### Launch a new web browser tab with the MNE documentation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     kind : str | None
         Can be "api" (default), "tutorials", or "examples".
         The default can be changed by setting the configuration value
@@ -218,13 +235,15 @@ class _decorator:
     def __call__(self, obj):
         """### Call.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         obj : object
             Object to call.
 
+        -----
         ### ⏎ Returns
-        -------
+
         obj : object
             The modified object.
         """
@@ -238,8 +257,9 @@ class deprecated(_decorator):
     arguments populate properly following our verbose decorator methods based
     on decorator.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     extra : str
         Extra information beyond just saying the class/function/method is
         deprecated. Should be a complete sentence (trailing period will be
@@ -256,8 +276,9 @@ def deprecated_alias(dep_name, func, removed_in=None) -> None:
 class legacy(_decorator):
     """### Mark a function, class, or method as legacy (decorator).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     alt : str
         Description of the alternate, preferred way to achieve a comparable
         result.

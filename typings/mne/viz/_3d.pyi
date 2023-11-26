@@ -51,8 +51,9 @@ def plot_head_positions(
 ):
     """### Plot head positions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     pos : ndarray, shape (n_pos, 10) | list of ndarray
         The head position data. Can also be a list to treat as a
         concatenation of runs.
@@ -88,8 +89,9 @@ def plot_head_positions(
 
         ✨ Added in vesion 0.16
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure.
     """
@@ -114,8 +116,9 @@ def plot_evoked_field(
 ):
     """### Plot MEG/EEG fields on head surface and helmet in 3D.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of mne.Evoked
         The evoked object.
     surf_maps : list
@@ -194,8 +197,9 @@ def plot_evoked_field(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : Figure3D | mne.viz.EvokedField
         Without the time viewer active, the figure is returned. With the time
         viewer active, an object is returned that can be used to control
@@ -229,8 +233,9 @@ def plot_alignment(
 ):
     """### Plot head, sensor, and source space alignment in 3D.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info | None
         The `mne.Info` object with information about the sensors and methods of measurement. If None (default), no sensor information will be shown.
@@ -397,17 +402,20 @@ def plot_alignment(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure3D
         The figure.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.viz.plot_bem
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function serves the purpose of checking the validity of the many
     different steps of source reconstruction:
 
@@ -429,8 +437,9 @@ def link_brains(
 ) -> None:
     """### Plot multiple SourceEstimate objects with PyVista.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     brains : list, tuple or np.ndarray
         The collection of brains to plot.
     time : bool
@@ -479,8 +488,9 @@ def plot_source_estimates(
 ):
     """### Plot SourceEstimate.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     stc : SourceEstimate
         The source estimates to plot.
 
@@ -668,13 +678,15 @@ def plot_source_estimates(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     figure : instance of mne.viz.Brain | matplotlib.figure.Figure
         An instance of `mne.viz.Brain` or matplotlib figure.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Flatmaps are available by default for ``fsaverage`` but not for other
     subjects reconstructed by FreeSurfer. We recommend using
     `mne.compute_source_morph` to morph source estimates to ``fsaverage``
@@ -704,8 +716,9 @@ def plot_volume_source_estimates(
 ):
     """### Plot Nutmeg style volumetric source estimates using nilearn.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     stc : VectorSourceEstimate
         The vector source estimate to plot.
     src : instance of SourceSpaces | instance of SourceMorph
@@ -784,13 +797,15 @@ def plot_volume_source_estimates(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         The figure.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Click on any of the anatomical slices to explore the time series.
     Clicking on any time point will bring up the corresponding anatomical map.
 
@@ -807,8 +822,9 @@ def plot_volume_source_estimates(
        MRI volumes are automatically transformed to MNI space in
        ``'glass_brain'`` mode.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     Passing a `mne.SourceMorph` as the ``src``
     parameter can be useful for plotting in a different subject's space
     (here, a ``'sample'`` STC in ``'fsaverage'``'s space)::
@@ -857,8 +873,9 @@ def plot_vector_source_estimates(
     current moment at the dipole. Additionally, an overlay is plotted on top of
     the cortex with the magnitude of the current.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     stc : VectorSourceEstimate | MixedVectorSourceEstimate
         The vector source estimate to plot.
 
@@ -1010,13 +1027,15 @@ def plot_vector_source_estimates(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     brain : mne.viz.Brain
         A instance of `mne.viz.Brain`.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.15
 
     If the current magnitude overlay is not desired, set ``overlay_alpha=0``
@@ -1049,8 +1068,9 @@ def plot_sparse_source_estimates(
     If the same source is active in multiple source estimates it is
     displayed with a sphere otherwise with a cone in 3D.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : dict
         The source space.
     stcs : instance of SourceEstimate or list of instances of SourceEstimate
@@ -1096,8 +1116,9 @@ def plot_sparse_source_estimates(
     **kwargs : kwargs
         Keyword arguments to pass to renderer.mesh.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surface : instance of Figure3D
         The 3D figure containing the triangular mesh surface.
     """
@@ -1131,8 +1152,9 @@ def plot_dipole_locations(
     If mode is set to 'arrow' or 'sphere', only the location of the first
     time point of each dipole is shown else use the show_all parameter.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     dipoles : list of instances of Dipole | Dipole
         The dipoles to plot.
     trans : dict | None
@@ -1254,13 +1276,15 @@ def plot_dipole_locations(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure3D or matplotlib.figure.Figure
         The PyVista figure or matplotlib Figure.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -1273,8 +1297,9 @@ def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
     using `matplotlib.pyplot.imshow`, check your matplotlib backend as this
     behavior changes.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fig : instance of Figure3D
         The figure on which you've plotted electrodes using
         `mne.viz.plot_alignment`.
@@ -1287,8 +1312,9 @@ def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
         The sensors will always be shown in the final figure. If you want an
         image of just the brain, use `mne.viz.Brain` instead.
 
+    -----
     ### ⏎ Returns
-    -------
+
     xy : array, shape (n_channels, 2)
         The 2d location of each channel on the image of the current scene view.
     im : array, shape (m, n, 3)
@@ -1310,8 +1336,9 @@ def plot_brain_colorbar(
 ):
     """### Plot a colorbar that corresponds to a brain activation map.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ax : instance of Axes
         The Axes to plot into.
 
@@ -1349,13 +1376,15 @@ def plot_brain_colorbar(
     bgcolor : color
         The color behind the colorbar (for alpha blending).
 
+    -----
     ### ⏎ Returns
-    -------
+
     cbar : instance of ColorbarBase
         The colorbar.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.19
     """
     ...
@@ -1376,8 +1405,9 @@ def set_3d_options(
 ) -> None:
     """### Set 3D rendering options.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     antialias : bool | None
         If bool, whether to enable or disable full-screen anti-aliasing.
         False is useful when renderers have problems (such as software
@@ -1402,8 +1432,9 @@ def set_3d_options(
 
         ✨ Added in vesion 1.1
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.21.0
     """
     ...

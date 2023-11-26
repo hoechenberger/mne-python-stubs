@@ -30,8 +30,9 @@ from _typeshed import Incomplete
 def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = False):
     """### Compute Morlet wavelets for the given frequency range.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     sfreq : float
         The sampling Frequency.
     freqs : float | array-like, shape (n_freqs,)
@@ -50,18 +51,21 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
     zero_mean : bool, default False
         Make sure the wavelet has a mean of zero.
 
+    -----
     ### ⏎ Returns
-    -------
+
     Ws : list of ndarray | ndarray
         The wavelets time series. If ``freqs`` was a float, a single
         ndarray is returned instead of a list of ndarray.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.fwhm
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
 
@@ -98,8 +102,9 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
     ----------
     .. footbibliography::
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     Let's show a simple example of the relationship between ``n_cycles`` and
     the FWHM using `mne.time_frequency.fwhm`, as well as the equivalent
     call using `scipy.signal.morlet2`:
@@ -147,21 +152,24 @@ def fwhm(freq, n_cycles):
 
     Uses the formula from :footcite:t:`Cohen2019`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     freq : float
         The oscillation frequency of the wavelet.
     n_cycles : float
         The duration of the wavelet, expressed as the number of oscillation
         cycles.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwhm : float
         The full-width half maximum of the wavelet.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
      ✨ Added in vesion 1.3
 
     References
@@ -173,8 +181,9 @@ def fwhm(freq, n_cycles):
 def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
     """### Compute time-frequency decomposition with continuous wavelet transform.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array, shape (n_signals, n_times)
         The signals.
     Ws : list of array
@@ -196,13 +205,15 @@ def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
             Decimation is done after convolutions and may create aliasing
             artifacts.
 
+    -----
     ### ⏎ Returns
-    -------
+
     tfr : array, shape (n_signals, n_freqs, n_times)
         The time-frequency decompositions.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_morlet : Compute time-frequency decomposition
                                     with Morlet wavelets.
     """
@@ -228,8 +239,9 @@ def tfr_morlet(
     operates on `mne.Epochs` or `mne.Evoked` objects instead of
     `NumPy arrays <numpy.ndarray>`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : Epochs | Evoked
         The epochs or evoked object.
 
@@ -296,24 +308,27 @@ def tfr_morlet(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     power : AverageTFR | EpochsTFR
         The averaged or single-trial power.
     itc : AverageTFR | EpochsTFR
         The inter-trial coherence (ITC). Only returned if return_itc
         is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_array_morlet
     mne.time_frequency.tfr_multitaper
     mne.time_frequency.tfr_array_multitaper
     mne.time_frequency.tfr_stockwell
     mne.time_frequency.tfr_array_stockwell
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
 
@@ -377,8 +392,9 @@ def tfr_array_morlet(
     Same computation as `mne.time_frequency.tfr_morlet`, but operates on
     `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` objects.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epoch_data : array of shape (n_epochs, n_channels, n_times)
         The epochs.
     sfreq : float | int
@@ -433,8 +449,9 @@ def tfr_array_morlet(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     out : array
         Time frequency transform of epoch_data.
 
@@ -446,16 +463,18 @@ def tfr_array_morlet(
         contain the average power and the imaginary values contain the ITC:
         :math:`out = power_{avg} + i * itc`.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_multitaper
     mne.time_frequency.tfr_array_multitaper
     mne.time_frequency.tfr_stockwell
     mne.time_frequency.tfr_array_stockwell
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
 
@@ -521,8 +540,9 @@ def tfr_multitaper(
     operates on `mne.Epochs` or `mne.Evoked` objects instead of
     `NumPy arrays <numpy.ndarray>`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : Epochs | Evoked
         The epochs or evoked object.
 
@@ -593,24 +613,27 @@ def tfr_multitaper(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     power : AverageTFR | EpochsTFR
         The averaged or single-trial power.
     itc : AverageTFR | EpochsTFR
         The inter-trial coherence (ITC). Only returned if return_itc
         is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_array_multitaper
     mne.time_frequency.tfr_stockwell
     mne.time_frequency.tfr_array_stockwell
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_array_morlet
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows
@@ -701,8 +724,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
     ):
         """### Crop data to a given time interval in place.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tmin : float | None
             Start time of selection in seconds.
         tmax : float | None
@@ -722,8 +746,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
 
             ✨ Added in vesion 0.19
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of AverageTFR
             The modified instance.
         """
@@ -731,8 +756,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
     def copy(self):
         """### Return a copy of the instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         copy : instance of EpochsTFR | instance of AverageTFR
             A copy of the instance.
         """
@@ -740,8 +766,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
     def apply_baseline(self, baseline, mode: str = "mean", verbose=None):
         """### Baseline correct the data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         baseline : array-like, shape (2,)
             The time interval to apply rescaling / baseline correction.
             If None do not apply it. If baseline is (a, b)
@@ -771,8 +798,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of AverageTFR
             The modified instance.
         """
@@ -780,8 +808,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
         """### Save TFR object to hdf5 file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The file name, which should end with ``-tfr.h5``.
 
@@ -795,8 +824,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### 👉 See Also
-        --------
+
         read_tfrs, write_tfrs
         """
         ...
@@ -818,8 +848,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
         be used to form the DataFrame's index instead). ``'epoch'``, and
         ``'condition'`` are not supported for ``AverageTFR``.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -860,8 +891,9 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
@@ -875,8 +907,9 @@ class AverageTFR(_BaseTFR):
     Can for example store induced power at sensor level or inter-trial
     coherence.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -899,8 +932,9 @@ class AverageTFR(_BaseTFR):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -961,8 +995,9 @@ class AverageTFR(_BaseTFR):
     ):
         """### Plot TFRs as a two-dimensional image(s).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1112,8 +1147,9 @@ class AverageTFR(_BaseTFR):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         figs : list of instances of matplotlib.figure.Figure
             A list of figures containing the time-frequency power.
         """
@@ -1144,8 +1180,9 @@ class AverageTFR(_BaseTFR):
     ):
         """### Plot TFRs as a two-dimensional image with topomaps.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         timefreqs : None | list of tuple | dict of tuple
             The time-frequency point(s) for which topomaps will be plotted.
             See Notes.
@@ -1238,13 +1275,15 @@ class AverageTFR(_BaseTFR):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : matplotlib.figure.Figure
             The figure containing the topography.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ``timefreqs`` has three different modes: tuples, dicts, and auto.
         For (list of) tuple(s) mode, each tuple defines a pair
         (time, frequency) in s and Hz on the TFR plot. For example, to
@@ -1294,8 +1333,9 @@ class AverageTFR(_BaseTFR):
     ):
         """### Plot TFRs in a topography with images.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1382,8 +1422,9 @@ class AverageTFR(_BaseTFR):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : matplotlib.figure.Figure
             The figure containing the topography.
         """
@@ -1421,8 +1462,9 @@ class AverageTFR(_BaseTFR):
     ):
         """### Plot topographic maps of specific time-frequency intervals of TFR data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tmin, tmax : float | None
             First and last times to include, in seconds. ``None`` uses the first or
             last time present in the data. Default is ``tmin=None, tmax=None`` (all
@@ -1601,8 +1643,9 @@ class AverageTFR(_BaseTFR):
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : matplotlib.figure.Figure
             The figure containing the topography.
         """
@@ -1629,8 +1672,9 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
 
     Can for example store induced power at sensor level.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -1672,8 +1716,9 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -1716,8 +1761,9 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
     metadata : pandas.DataFrame, shape (n_events, n_cols) | None
         DataFrame containing pertinent information for each trial
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.13.0
     """
 
@@ -1754,8 +1800,9 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
     def average(self, method: str = "mean", dim: str = "epochs", copy: bool = False):
         """### Average the data across epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         method : str | callable
             How to combine the data. If "mean"/"median", the mean/median
             are returned. Otherwise, must be a callable which, when passed
@@ -1770,13 +1817,15 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
             or modify in place. Ignored when ``dim='epochs'``
             because a new instance must be returned.
 
+        -----
         ### ⏎ Returns
-        -------
+
         ave : instance of AverageTFR | EpochsTFR
             The averaged data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Passing in ``np.median`` is considered unsafe when there is complex
         data because NumPy doesn't compute the marginal median. Numpy currently
         sorts the complex values by real part and return whatever value is
@@ -1796,8 +1845,9 @@ def combine_tfr(all_tfr, weights: str = "nave"):
     Subtraction can be performed by passing negative weights (e.g., [1, -1]).
     Data must have the same channels and the same time instants.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     all_tfr : list of AverageTFR
         The tfr datasets.
     weights : list of float | str
@@ -1805,13 +1855,15 @@ def combine_tfr(all_tfr, weights: str = "nave"):
         Can also be ``'nave'`` to weight according to tfr.nave,
         or ``'equal'`` to use equal weighting (each weighted as ``1/N``).
 
+    -----
     ### ⏎ Returns
-    -------
+
     tfr : AverageTFR
         The new TFR data.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11.0
     """
     ...
@@ -1819,8 +1871,9 @@ def combine_tfr(all_tfr, weights: str = "nave"):
 def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
     """### Write a TFR dataset to hdf5.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The file name, which should end with ``-tfr.h5``.
     tfr : AverageTFR | list of AverageTFR | EpochsTFR
@@ -1838,12 +1891,14 @@ def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_tfrs
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -1851,8 +1906,9 @@ def write_tfrs(fname, tfr, overwrite: bool = False, *, verbose=None) -> None:
 def read_tfrs(fname, condition=None, *, verbose=None):
     """### Read TFR datasets from hdf5 file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The file name, which should end with -tfr.h5 .
     condition : int or str | list of int or str | None
@@ -1865,18 +1921,21 @@ def read_tfrs(fname, condition=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     tfr : AverageTFR | list of AverageTFR | EpochsTFR
         Depending on ``condition`` either the TFR object or a list of multiple
         TFR objects.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_tfrs
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...

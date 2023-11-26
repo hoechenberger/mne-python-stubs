@@ -7,8 +7,9 @@ def temporal_derivative_distribution_repair(raw, *, verbose=None):
     :footcite:`FishburnEtAl2019`. This approach removes baseline shift
     and spike artifacts without the need for any user-supplied parameters.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
 
@@ -18,13 +19,15 @@ def temporal_derivative_distribution_repair(raw, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of Raw
          Data with TDDR applied.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     TDDR was initially designed to be used on optical density fNIRS data but
     has been enabled to be applied on hemoglobin concentration fNIRS data as
     well in MNE. We recommend applying the algorithm to optical density fNIRS

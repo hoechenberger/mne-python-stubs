@@ -12,8 +12,9 @@ def clean_ecg_eog(
 ) -> None:
     """### Clean ECG from raw fif file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     in_fif_fname : path-like
         Raw fif File
     eog_event_fname : str

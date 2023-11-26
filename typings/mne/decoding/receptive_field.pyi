@@ -12,8 +12,9 @@ class ReceptiveField(BaseEstimator):
     spectro- or spatio-temporal receptive field, or STRF)
     :footcite:`TheunissenEtAl2001,WillmoreSmyth2003,CrosseEtAl2016,HoldgrafEtAl2016`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tmin : float
         The starting lag, in seconds (or samples if ``sfreq`` == 1).
     tmax : float
@@ -63,8 +64,9 @@ class ReceptiveField(BaseEstimator):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     coef_ : array, shape ([n_outputs, ]n_features, n_delays)
         The coefficients from the model fit, reshaped for easy visualization.
         During `mne.decoding.ReceptiveField.fit`, if ``y`` has one
@@ -80,12 +82,14 @@ class ReceptiveField(BaseEstimator):
         output equivalent to using `numpy.convolve` or
         `numpy.correlate` with ``mode='valid'``.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.decoding.TimeDelayingRidge
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For a causal system, the encoding model will have significant
     non-zero values only at positive lags. In other words, lags point
     backward in time relative to the input, so positive lags correspond
@@ -132,15 +136,17 @@ class ReceptiveField(BaseEstimator):
     def fit(self, X, y):
         """### Fit a receptive field model.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_times[, n_epochs], n_features)
             The input features for the model.
         y : array, shape (n_times[, n_epochs][, n_outputs])
             The output features for the model.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance
             The instance so you can chain operations.
         """
@@ -148,13 +154,15 @@ class ReceptiveField(BaseEstimator):
     def predict(self, X):
         """### Generate predictions with a receptive field.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_times[, n_epochs], n_channels)
             The input features for the model.
 
+        -----
         ### ⏎ Returns
-        -------
+
         y_pred : array, shape (n_times[, n_epochs][, n_outputs])
             The output predictions. "Note that valid samples (those
             unaffected by edge artifacts during the time delaying step) can
@@ -168,15 +176,17 @@ class ReceptiveField(BaseEstimator):
         and ``y` with ``self.valid_samples_``. Finally, it passes
         this to a `sklearn.metrics` scorer.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_times[, n_epochs], n_channels)
             The input features for the model.
         y : array, shape (n_times[, n_epochs][, n_outputs])
             Used for scikit-learn compatibility.
 
+        -----
         ### ⏎ Returns
-        -------
+
         scores : list of float, shape (n_outputs,)
             The scores estimated by the model for each output (e.g. mean
             R2 of ``predict(X)``).

@@ -9,8 +9,9 @@ def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
     function uses event times captured by both acquisition devices to resample
     ``other`` to match ``raw``.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The first raw instance.
     other : instance of Raw
@@ -29,8 +30,9 @@ def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function operates inplace. It will:
 
     1. Estimate the zero-order (start offset) and first-order (clock drift)

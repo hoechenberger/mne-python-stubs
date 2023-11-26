@@ -22,8 +22,9 @@ from .utils import check_fname as check_fname, logger as logger
 def read_proj(fname, verbose=None):
     """### Read projections from a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of file containing the projections vectors. It should end with
         ``-proj.fif`` or ``-proj.fif.gz``.
@@ -34,13 +35,15 @@ def read_proj(fname, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     projs : list of Projection
         The list of projection vectors.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_proj
     """
     ...
@@ -48,8 +51,9 @@ def read_proj(fname, verbose=None):
 def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
     """### Write projections to a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of file containing the projections vectors. It should end with
         ``-proj.fif`` or ``-proj.fif.gz``.
@@ -70,8 +74,9 @@ def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
 
         ✨ Added in vesion 1.0
 
+    -----
     ### 👉 See Also
-    --------
+
     read_proj
     """
     ...
@@ -94,8 +99,9 @@ def compute_proj_epochs(
     levels of noise, the produced SSP vectors can then be used to eliminate that
     noise from the data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs containing the artifact.
 
@@ -136,13 +142,15 @@ def compute_proj_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     projs: list of Projection
         List of projection vectors.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_proj_raw, compute_proj_evoked
     """
     ...
@@ -164,8 +172,9 @@ def compute_proj_evoked(
     levels of noise, the produced SSP vectors can then be used to eliminate that
     noise from the data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The Evoked obtained by averaging the artifact.
 
@@ -200,13 +209,15 @@ def compute_proj_evoked(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     projs : list of Projection
         List of projection vectors.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_proj_raw, compute_proj_epochs
     """
     ...
@@ -233,8 +244,9 @@ def compute_proj_raw(
     levels of noise, the produced SSP vectors can then be used to eliminate that
     noise from the data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         A raw object to use the data from.
     start : float
@@ -284,13 +296,15 @@ def compute_proj_raw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     projs: list of Projection
         List of projection vectors.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_proj_epochs, compute_proj_evoked
     """
     ...
@@ -309,8 +323,9 @@ def sensitivity_map(
     Such maps are used to know how much sources are visible by a type
     of sensor, and how much projections shadow some sources.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwd : Forward
         The forward operator.
     projs : list
@@ -332,14 +347,16 @@ def sensitivity_map(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VolSourceEstimate
         The sensitivity map as a SourceEstimate or VolSourceEstimate instance
         for visualization.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     When mode is ``'fixed'`` or ``'free'``, the sensitivity map is normalized
     by its maximum value.
     """

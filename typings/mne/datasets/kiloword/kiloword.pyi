@@ -10,8 +10,9 @@ def data_path(
 
     This is the dataset from :footcite:`DufauEtAl2015`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     path : None | str
         Location of where to look for the kiloword data storing
         location. If None, the environment variable or config parameter
@@ -37,8 +38,9 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : list of Path
         Local path to the given data file. This path is contained inside a list
         of length one, for compatibility.
@@ -52,8 +54,9 @@ def data_path(
 def get_version():
     """### Get version of the local kiloword dataset.
 
+    -----
     ### ⏎ Returns
-    -------
+
     version : str | None
         Version of the kiloword local dataset, or None if the dataset
         does not exist locally."""

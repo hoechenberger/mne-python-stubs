@@ -32,8 +32,9 @@ def gamma_map(
     gamma is used for the three source time courses at each source space point
     (separate gammas can be used in this case by using xyz_same_gamma=False).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         Evoked data to invert.
     forward : dict
@@ -156,8 +157,9 @@ def gamma_map(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : instance of SourceEstimate
         Source time courses.
     residual : instance of Evoked

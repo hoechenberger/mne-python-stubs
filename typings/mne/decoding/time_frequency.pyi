@@ -8,8 +8,9 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
 
     Time-frequency transform of times series along the last axis.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     freqs : array-like of float, shape (n_freqs,)
         The frequencies.
     sfreq : float | int, default 1.0
@@ -57,8 +58,9 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_multitaper
     """
@@ -92,16 +94,18 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
     def fit_transform(self, X, y=None):
         """### Time-frequency transform of times series along the last axis.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples, n_channels, n_times)
             The training data samples. The channel dimension can be zero- or
             1-dimensional.
         y : None
             For scikit-learn compatibility purposes.
 
+        -----
         ### ⏎ Returns
-        -------
+
         Xt : array, shape (n_samples, n_channels, n_freqs, n_times)
             The time-frequency transform of the data, where n_channels can be
             zero- or 1-dimensional.
@@ -110,15 +114,17 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
     def fit(self, X, y=None):
         """### Do nothing (for scikit-learn compatibility purposes).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples, n_channels, n_times)
             The training data.
         y : array | None
             The target values.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : object
             Return self.
         """
@@ -126,14 +132,16 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
     def transform(self, X):
         """### Time-frequency transform of times series along the last axis.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples, n_channels, n_times)
             The training data samples. The channel dimension can be zero- or
             1-dimensional.
 
+        -----
         ### ⏎ Returns
-        -------
+
         Xt : array, shape (n_samples, n_channels, n_freqs, n_times)
             The time-frequency transform of the data, where n_channels can be
             zero- or 1-dimensional.

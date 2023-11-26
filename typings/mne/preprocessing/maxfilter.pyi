@@ -34,8 +34,9 @@ def apply_maxfilter(
 
     Needs Maxfilter license, maxfilter has to be in PATH.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     in_fname : path-like
         Input file name.
     out_fname : path-like
@@ -100,8 +101,9 @@ def apply_maxfilter(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     origin: str
         Head origin in selected coordinate frame.
     """

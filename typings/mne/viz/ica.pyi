@@ -32,8 +32,9 @@ def plot_ica_sources(
     2. plot latent source around event related time windows (Epochs input)
     3. plot time-locking in ICA space (Evoked input)
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ica : instance of mne.preprocessing.ICA
         The ICA solution.
     inst : instance of Raw, Epochs or Evoked
@@ -128,14 +129,16 @@ def plot_ica_sources(
 
         ✨ Added in vesion 1.6
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For raw and epoch instances, it is possible to select components for
     exclusion by clicking on the line. The selected components are added to
     ``ica.exclude`` on close.
@@ -184,8 +187,9 @@ def plot_ica_properties(
     Properties include the topography, epochs image, ERP/ERF, power
     spectrum, and epoch variance.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ica : instance of mne.preprocessing.ICA
         The ICA solution.
     inst : instance of Epochs or Raw
@@ -260,13 +264,15 @@ def plot_ica_properties(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : list
         List of matplotlib figures.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.13
     """
     ...
@@ -287,8 +293,9 @@ def plot_ica_scores(
     Use this function to asses how well your score describes outlier
     sources and how well you were detecting them.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ica : instance of mne.preprocessing.ICA
         The ICA object.
     scores : array-like of float, shape (n_ica_components,) | list of array
@@ -316,8 +323,9 @@ def plot_ica_scores(
     show : bool
         Show figure if True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         The figure object.
     """
@@ -341,8 +349,9 @@ def plot_ica_overlay(
 
     This method helps visualizing signal quality and artifact rejection.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ica : instance of mne.preprocessing.ICA
         The ICA object.
     inst : instance of Raw or Evoked
@@ -395,8 +404,9 @@ def plot_ica_overlay(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         The figure.
     """

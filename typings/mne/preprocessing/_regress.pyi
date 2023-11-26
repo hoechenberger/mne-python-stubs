@@ -21,8 +21,9 @@ def regress_artifact(
 ):
     """### Remove artifacts using regression based on reference channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Epochs | Raw
         The instance to process.
     picks : str | array-like | slice | None
@@ -58,15 +59,17 @@ def regress_artifact(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Epochs | Raw
         The processed data.
     betas : ndarray, shape (n_picks, n_picks_ref)
         The betas used during regression.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     To implement the method outlined in :footcite:`GrattonEtAl1983`,
     remove the evoked response from epochs before estimating the
     regression coefficients, then apply those regression coefficients to the
@@ -92,8 +95,9 @@ class EOGRegression:
     then apply them to continuous data, as described in
     :footcite:`CroftBarry2000`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -114,8 +118,9 @@ class EOGRegression:
         Whether to automatically apply SSP projection vectors before fitting
         and applying the regression. Default is ``True``.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     coef_ : ndarray, shape (n, n)
         The regression coefficients. Only available after fitting.
     info_ : Info
@@ -130,8 +135,9 @@ class EOGRegression:
     proj : bool
         Whether projections will be applied before performing the regression.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
 
     References
@@ -157,19 +163,22 @@ class EOGRegression:
     def fit(self, inst):
         """### Fit EOG regression coefficients.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : Raw | Epochs | Evoked
             The data on which the EOG regression weights should be fitted.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : EOGRegression
             The fitted ``EOGRegression`` object. The regression coefficients
             are available as the ``.coef_`` and ``.intercept_`` attributes.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         If your data contains EEG channels, make sure to apply the desired
         reference (see `mne.set_eeg_reference`) before performing EOG
         regression.
@@ -178,8 +187,9 @@ class EOGRegression:
     def apply(self, inst, copy: bool = True):
         """### Apply the regression coefficients to data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : Raw | Epochs | Evoked
             The data on which to apply the regression.
 
@@ -187,13 +197,15 @@ class EOGRegression:
             If ``True``, data will be copied. Otherwise data may be modified in place.
             Defaults to ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : Raw | Epochs | Evoked
             A version of the data with the artifact channels regressed out.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Only works after ``.fit()`` has been used.
 
         References
@@ -227,8 +239,9 @@ class EOGRegression:
     ):
         """### Plot the regression weights of a fitted EOGRegression model.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
             The channel type to plot. For ``'grad'``, the gradiometers are
             collected in pairs and the RMS for each pair is plotted. If
@@ -376,21 +389,24 @@ class EOGRegression:
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Figure with a topomap subplot for each channel type.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 1.2
         """
         ...
     def save(self, fname, overwrite: bool = False) -> None:
         """### Save the regression model to an HDF5 file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The file to write the regression weights to. Should end in ``.h5``.
 
@@ -403,18 +419,21 @@ class EOGRegression:
 def read_eog_regression(fname):
     """### Read an EOG regression model from an HDF5 file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The file to read the regression model from. Should end in ``.h5``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     model : EOGRegression
         The regression model read from the file.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...

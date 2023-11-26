@@ -6,8 +6,9 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_hitachi(fname, preload: bool = False, verbose=None):
     """### Reader for a Hitachi fNIRS recording.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : list | str
         Path(s) to the Hitachi CSV file(s). This should only be a list for
@@ -29,18 +30,21 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawHitachi
         A Raw object containing Hitachi data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawHitachi.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     Hitachi does not encode their channel positions, so you will need to
     create a suitable mapping using `mne.channels.make_standard_montage`
@@ -97,8 +101,9 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
 class RawHitachi(BaseRaw):
     """### Raw object from a Hitachi fNIRS file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : list | str
         Path(s) to the Hitachi CSV file(s). This should only be a list for
@@ -120,12 +125,14 @@ class RawHitachi(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     Hitachi does not encode their channel positions, so you will need to
     create a suitable mapping using `mne.channels.make_standard_montage`

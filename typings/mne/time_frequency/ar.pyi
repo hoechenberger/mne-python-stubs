@@ -12,8 +12,9 @@ def fit_iir_model_raw(
 
         H(e^{jw}) = \\frac{1}{a[0] + a[1]e^{-jw} + ... + a[n]e^{-jnw}}
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : Raw object
         An instance of Raw.
     order : int
@@ -38,8 +39,9 @@ def fit_iir_model_raw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     b : ndarray
         Numerator filter coefficients.
     a : ndarray

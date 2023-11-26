@@ -10,8 +10,9 @@ def data_path(
 ):
     """### Get path to local copy of mtrf dataset.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     path : None | str
         Location of where to look for the mtrf dataset.
         If None, the environment variable or config parameter
@@ -37,8 +38,9 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : instance of Path
         Path to mtrf dataset directory."""
     ...
@@ -46,8 +48,9 @@ def data_path(
 def get_version():
     """### Get version of the local mtrf dataset.
 
+    -----
     ### ⏎ Returns
-    -------
+
     version : str | None
         Version of the mtrf local dataset, or None if the dataset
         does not exist locally."""

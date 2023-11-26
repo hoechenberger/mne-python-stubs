@@ -8,8 +8,9 @@ def data_path(
 ):
     """### Get path to local copy of fieldtrip_cmc dataset.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     path : None | str
         Location of where to look for the fieldtrip_cmc dataset.
         If None, the environment variable or config parameter
@@ -35,8 +36,9 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : instance of Path
         Path to fieldtrip_cmc dataset directory."""
     ...
@@ -44,8 +46,9 @@ def data_path(
 def get_version():
     """### Get version of the local fieldtrip_cmc dataset.
 
+    -----
     ### ⏎ Returns
-    -------
+
     version : str | None
         Version of the fieldtrip_cmc local dataset, or None if the dataset
         does not exist locally."""

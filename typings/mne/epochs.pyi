@@ -92,8 +92,9 @@ class BaseEpochs(
         ``mne.BaseEpochs(...)``. Instead, use one of the functions listed in
         the See Also section below.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -290,14 +291,16 @@ class BaseEpochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     Epochs
     EpochsArray
     make_fixed_length_epochs
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The ``BaseEpochs`` class is public to allow for stable type-checking in
     user code (i.e., ``isinstance(my_epochs, BaseEpochs)``) but should not be
     used as a constructor for Epochs objects (use instead `mne.Epochs`).
@@ -361,13 +364,15 @@ class BaseEpochs(
     def load_data(self):
         """### Load the data if not already preloaded.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             The epochs object.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function operates in-place.
 
         ✨ Added in vesion 0.10.0
@@ -376,8 +381,9 @@ class BaseEpochs(
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
         """### Baseline correct epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         baseline : None | tuple of length 2
             The time interval to consider as "baseline" when applying baseline
@@ -406,13 +412,15 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             The baseline-corrected Epochs object.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Baseline correction can be done multiple times, but can never be
         reverted once the data has been loaded.
 
@@ -427,8 +435,9 @@ class BaseEpochs(
 
         This method resets the object iteration state to the first epoch.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         copy : bool
             If False copies of data and measurement info will be omitted
             to save time.
@@ -440,14 +449,16 @@ class BaseEpochs(
         Can be used to exclude the evoked response when analyzing induced
         activity, see e.g. [1]_.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         evoked : instance of Evoked | None
             The evoked response to subtract. If None, the evoked response
             is computed from Epochs itself.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Epochs
             The modified instance (instance is also modified inplace).
 
@@ -460,8 +471,9 @@ class BaseEpochs(
     def average(self, picks=None, method: str = "mean", by_event_type: bool = False):
         """### Compute an average over epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -490,8 +502,9 @@ class BaseEpochs(
 
             ✨ Added in vesion 0.24.0
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         evoked : instance of Evoked | list of Evoked
             The averaged epochs.
@@ -500,8 +513,9 @@ class BaseEpochs(
             same order as the event types as specified in the ``event_id``
             dictionary.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Computes an average of all epochs in the instance, even if
         they correspond to different conditions. To average by condition,
         do ``epochs[condition].average()`` for each condition separately.
@@ -524,8 +538,9 @@ class BaseEpochs(
     def standard_error(self, picks=None, by_event_type: bool = False):
         """### Compute standard error over epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -546,8 +561,9 @@ class BaseEpochs(
 
             ✨ Added in vesion 0.24.0
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         std_err : instance of Evoked | list of Evoked
             The standard error over epochs.
@@ -595,8 +611,9 @@ class BaseEpochs(
         the main axes. Calling this function drops all the selected bad epochs as
         well as bad epochs marked beforehand with rejection parameters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -774,14 +791,16 @@ class BaseEpochs(
 
             ✨ Added in vesion 1.6
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
             Browser instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         The arrow keys (up/down/left/right) can be used to navigate between
         channels and epochs and the scaling can be adjusted with - and + (or =)
         keys, but this depends on the backend matplotlib is configured to use
@@ -833,8 +852,9 @@ class BaseEpochs(
     ):
         """### Plot Event Related Potential / Fields image on topographies.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         layout : instance of Layout
             System specific sensor positions.
         sigma : float
@@ -877,13 +897,15 @@ class BaseEpochs(
         show : bool
             Whether to show the figure. Defaults to ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of `matplotlib.figure.Figure`
             Figure distributing one image per channel across sensor topography.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         In an interactive Python session, this plot will be interactive; clicking
         on a channel image will pop open a larger view of the image; this image
         will always have a colorbar even when the topo plot does not (because it
@@ -903,8 +925,9 @@ class BaseEpochs(
                   quality, set ``epochs.reject_tmin`` and
                   ``epochs.reject_tmax``, respectively.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         reject : dict | str | None
             Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
@@ -947,13 +970,15 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             The epochs with bad epochs dropped. Operates in-place.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Dropping bad epochs can be done multiple times with different
         ``reject`` and ``flat`` parameters. However, once an epoch is
         dropped, it is dropped forever, so if more lenient thresholds may
@@ -964,18 +989,21 @@ class BaseEpochs(
     def drop_log_stats(self, ignore=("IGNORED",)):
         """### Compute the channel stats based on a drop_log from Epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ignore : list
             The drop reasons to ignore.
 
+        -----
         ### ⏎ Returns
-        -------
+
         perc : float
             Total percentage of epochs dropped.
 
+        -----
         ### 👉 See Also
-        --------
+
         plot_drop_log
         """
         ...
@@ -991,8 +1019,9 @@ class BaseEpochs(
     ):
         """### Show the channel stats based on a drop_log from Epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         threshold : float
             The percentage threshold to use to decide whether or not to
             plot. Default is zero (always plot).
@@ -1016,8 +1045,9 @@ class BaseEpochs(
         show : bool
             Show figure if True.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             The figure.
         """
@@ -1046,8 +1076,9 @@ class BaseEpochs(
     ):
         """### Plot Event Related Potential / Fields image.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1170,14 +1201,16 @@ class BaseEpochs(
             Whether to clear the axes before plotting (if ``fig`` or ``axes`` are
             provided). Defaults to ``False``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         figs : list of Figure
             One figure per channel, channel type, or group, depending on values of
             ``picks``, ``group_by``, and ``combine``. See Notes.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         You can control how channels are aggregated into one figure or plotted in
         separate figures through a combination of the ``picks``, ``group_by``, and
         ``combine`` parameters. If ``group_by`` is a `dict`, the result is
@@ -1219,8 +1252,9 @@ class BaseEpochs(
                   method before calling the `mne.Epochs.drop_bad` or
                   `mne.Epochs.load_data` methods.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         indices : array of int or bool
             Set epochs to remove by specifying indices to remove or a boolean
             mask to apply (where True values get removed). Events are
@@ -1235,8 +1269,9 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             The epochs with indices dropped. Operates in-place.
         """
@@ -1254,8 +1289,9 @@ class BaseEpochs(
     ):
         """### Get all epochs as a 3D array.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1323,8 +1359,9 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         data : array of shape (n_epochs, n_channels, n_times)
             The epochs data. Will be a copy when ``copy=True`` and will be a view
             when possible when ``copy=False``.
@@ -1355,8 +1392,9 @@ class BaseEpochs(
                   required since the original and the converted data needs
                   to be stored in memory.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         fun : callable
             A function to be applied to the channels. The first argument of
@@ -1398,8 +1436,9 @@ class BaseEpochs(
         **kwargs : dict
             Additional keyword arguments to pass to ``fun``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Epochs
             The epochs object with transformed data.
         """
@@ -1411,8 +1450,9 @@ class BaseEpochs(
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
         """### Crop a time interval from the epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tmin : float | None
             Start time of selection in seconds.
         tmax : float | None
@@ -1430,13 +1470,15 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             The cropped epochs object, modified in-place.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
 
         Unlike Python slices, MNE time intervals by default include **both**
         their end points; ``crop(tmin, tmax)`` returns the interval
@@ -1447,8 +1489,9 @@ class BaseEpochs(
     def copy(self):
         """### Return copy of Epochs instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             A copy of the object.
         """
@@ -1467,8 +1510,9 @@ class BaseEpochs(
     ) -> None:
         """### Save epochs in a fif file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the file, which should end with ``-epo.fif`` or
             ``-epo.fif.gz``.
@@ -1512,8 +1556,9 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Bad epochs will be dropped before saving the epochs to disk.
         """
         ...
@@ -1529,8 +1574,9 @@ class BaseEpochs(
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         fname : str
             Name of the output file.
@@ -1552,8 +1598,9 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24
 
         Export to external format may not preserve all the information from the
@@ -1582,8 +1629,9 @@ class BaseEpochs(
         times ``[1, 2]`` for the first event type – and not the events at times
         ``[120, 121]``.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         event_ids : None | list | dict
             The event types to equalize.
 
@@ -1612,15 +1660,17 @@ class BaseEpochs(
             type of events. If ``'mintime'``, timing differences between each
             event type will be minimized.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             The modified instance. It is modified in-place.
         indices : array of int
             Indices from the original events list that were dropped.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For example (if ``epochs.event_id`` was ``{'Left': 1, 'Right': 2,
         'Nonspatial':3}``:
 
@@ -1658,8 +1708,9 @@ class BaseEpochs(
     ):
         """### Perform spectral analysis on sensor data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
@@ -1713,13 +1764,15 @@ class BaseEpochs(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
+        -----
         ### ⏎ Returns
-        -------
+
         spectrum : instance of EpochsSpectrum
             The spectral representation of each epoch.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 1.2
 
         References
@@ -1763,8 +1816,9 @@ class BaseEpochs(
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
         tmin, tmax : float | None
@@ -1871,13 +1925,15 @@ class BaseEpochs(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure with frequency spectra of the data channels.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
         of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
@@ -1902,8 +1958,9 @@ class BaseEpochs(
         (in which case the columns specified in ``index`` will be used to form
         the DataFrame's index instead).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1951,8 +2008,9 @@ class BaseEpochs(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
@@ -1967,8 +2025,9 @@ class BaseEpochs(
             at the end of the names to emphasize that the data contained in
             them are interpolated.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_type : str
             The destination channel type. It can be 'mag' or 'grad'.
         mode : str
@@ -1976,13 +2035,15 @@ class BaseEpochs(
             Legendre polynomial expansion used. ``'fast'`` should be sufficient
             for most applications.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of mne.EpochsArray
             The transformed epochs object containing only virtual channels.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This method returns a copy and does not modify the data it
         operates on. It also returns an EpochsArray instance.
 
@@ -2013,8 +2074,9 @@ def make_metadata(
     dictionary that correspond to the generated metadata, which together can then be
     readily fed into `mne.Epochs`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     events : array, shape (m, 3)
         The :term:`events array <events>`. By default, the returned metadata
         `pandas.DataFrame` will have as many rows as the events array.
@@ -2095,8 +2157,9 @@ def make_metadata(
         of matching events. The column indicating the **type** of an event
         ``myevent`` will be named ``last_myevent``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     metadata : pandas.DataFrame
         Metadata for each row event, with the following columns:
 
@@ -2124,8 +2187,9 @@ def make_metadata(
         be identical to the input dictionary unless ``row_events`` is supplied,
         in which case it will only contain the events provided there.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The time window used for metadata generation need not correspond to the
     time window used to create the `mne.Epochs`, to which the metadata will
     be attached; it may well be much shorter or longer, or not overlap at all,
@@ -2145,8 +2209,9 @@ def make_metadata(
 class Epochs(BaseEpochs):
     """### Epochs extracted from a Raw instance.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     raw : Raw object
         An instance of `mne.io.Raw`.
@@ -2324,8 +2389,9 @@ class Epochs(BaseEpochs):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -2361,13 +2427,15 @@ class Epochs(BaseEpochs):
         between consecutive time samples is equal to the inverse of the
         sampling frequency.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.epochs.combine_event_ids
     mne.Epochs.equalize_event_counts
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     When accessing data, Epochs are detrended, baseline-corrected, and
     decimated, then projectors are (optionally) applied.
 
@@ -2431,8 +2499,9 @@ class Epochs(BaseEpochs):
 class EpochsArray(BaseEpochs):
     """### Epochs object from numpy array.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array, shape (n_epochs, n_channels, n_times)
         The channels' time series for each epoch. See notes for proper units of
         measure.
@@ -2582,14 +2651,16 @@ class EpochsArray(BaseEpochs):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     create_info
     EvokedArray
     io.RawArray
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Proper units of measure:
 
     * V: eeg, eog, seeg, dbs, emg, ecg, bio, ecog
@@ -2630,8 +2701,9 @@ class EpochsArray(BaseEpochs):
 def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
     """### Collapse event_ids from an epochs instance into a new event_id.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs to operate on.
     old_event_ids : str, or list
@@ -2643,13 +2715,15 @@ def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
     copy : bool
         Whether to return a new instance or modify in place.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of Epochs
         The modified epochs.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This For example (if epochs.event_id was ``{'Left': 1, 'Right': 2}``::
 
         combine_event_ids(epochs, ['Left', 'Right'], {'Directional': 12})
@@ -2662,8 +2736,9 @@ def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
 def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
     """### Equalize the number of trials in multiple Epoch instances.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs_list : list of Epochs instances
         The Epochs instances to equalize trial counts for.
     method : str
@@ -2671,8 +2746,9 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
         list. If 'mintime', timing differences between each event list will be
         minimized.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This tries to make the remaining epochs occurring as close as possible in
     time. This method works based on the idea that if there happened to be some
     time-varying (like on the scale of minutes) noise characteristics during
@@ -2683,8 +2759,9 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
     other one had [3.5, 4.5, 120.5, 121.5], it would remove events at times
     [1, 2] in the first epochs and not [120, 121].
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> equalize_epoch_counts([epochs1, epochs2])  # doctest: +SKIP
     """
     ...
@@ -2692,8 +2769,9 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
 def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
     """### Read epochs from a fif file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : path-like | file-like
         The epochs to load. If a filename, should end with ``-epo.fif`` or
@@ -2720,8 +2798,9 @@ def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of Epochs
         The epochs.
     """
@@ -2744,8 +2823,9 @@ class _RawContainer:
 class EpochsFIF(BaseEpochs):
     """### Epochs read from disk.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : path-like | file-like
         The epochs to load. If a filename, should end with ``-epo.fif`` or
@@ -2772,8 +2852,9 @@ class EpochsFIF(BaseEpochs):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.Epochs
     mne.epochs.combine_event_ids
     mne.Epochs.equalize_event_counts
@@ -2788,8 +2869,9 @@ class EpochsFIF(BaseEpochs):
 def bootstrap(epochs, random_state=None):
     """### Compute epochs selected by bootstrapping.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : Epochs instance
         epochs data to be bootstrapped
 
@@ -2801,8 +2883,9 @@ def bootstrap(epochs, random_state=None):
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : Epochs instance
         The bootstrap samples
     """
@@ -2816,8 +2899,9 @@ def concatenate_epochs(
     ### 💡 Note Unlike `mne.concatenate_raws`, this function does **not**
               modify any of the input data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs_list : list
         List of `mne.Epochs` instances to concatenate (in that order).
     add_offset : bool
@@ -2841,13 +2925,15 @@ def concatenate_epochs(
 
         ✨ Added in vesion 0.24
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of EpochsArray
         The result of the concatenation. All data will be loaded into memory.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -2869,8 +2955,9 @@ def average_movements(
 ):
     """### Average data using Maxwell filtering, transforming using head positions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs to operate on.
 
@@ -2944,18 +3031,21 @@ def average_movements(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked : instance of Evoked
         The averaged epochs.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.preprocessing.maxwell_filter
     mne.chpi.read_head_pos
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The Maxwell filtering version of this algorithm is described in [1]_,
     in section V.B "Virtual signals and movement correction", equations
     40-44. For additional validation, see [2]_.
@@ -2990,8 +3080,9 @@ def make_fixed_length_epochs(
 ):
     """### Divide continuous raw data into equal-sized consecutive epochs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data to divide into segments.
     duration : float
@@ -3040,13 +3131,15 @@ def make_fixed_length_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of Epochs
         Segmented data.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.20
     """
     ...

@@ -5,8 +5,9 @@ from collections.abc import Generator
 class _Interp2:
     """### Interpolate between two points.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     control_points : array, shape (n_changes,)
         The control points (indices) to use.
     values : callable | array, shape (n_changes, ...)
@@ -15,8 +16,9 @@ class _Interp2:
     interp : str
         Can be 'zero', 'linear', 'hann', or 'cos2' (same as hann).
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This will process data using overlapping windows of potentially
     different sizes to achieve a constant output value using different
     2-point interpolation schemes. For example, for linear interpolation,
@@ -48,8 +50,9 @@ class _Interp2:
 class _COLA:
     """### Constant overlap-add processing helper.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     process : callable
         A function that takes a chunk of input data with shape
         ``(n_channels, n_samples)`` and processes it.
@@ -68,8 +71,9 @@ class _COLA:
     tol : float
         The tolerance for COLA checking.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This will process data using overlapping windows to achieve a constant
     output value. For example, for ``n_total=27``, ``n_samples=10``,
     ``n_overlap=5`` and ``window='triang'``::

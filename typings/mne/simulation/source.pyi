@@ -22,8 +22,9 @@ def select_source_in_label(
 ):
     """### Select source positions using a label.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : list of dict
         The source space.
     label : Label
@@ -63,8 +64,9 @@ def select_source_in_label(
 
         ✨ Added in vesion 0.13
 
+    -----
     ### ⏎ Returns
-    -------
+
     lh_vertno : list
         Selected source coefficients on the left hemisphere.
     rh_vertno : list
@@ -91,8 +93,9 @@ def simulate_sparse_stc(
     label if ``labels is not None``. It uses ``data_fun`` to generate
     waveforms for each vertex.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space.
     n_dipoles : int
@@ -140,19 +143,22 @@ def simulate_sparse_stc(
 
         ✨ Added in vesion 0.13
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate
         The generated source time courses.
 
+    -----
     ### 👉 See Also
-    --------
+
     simulate_raw
     simulate_evoked
     simulate_stc
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10.0
     """
     ...
@@ -165,8 +171,9 @@ def simulate_stc(
     This function generates a source estimate with extended sources by
     filling the labels with the waveforms given in stc_data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space.
     labels : list of Label
@@ -186,13 +193,15 @@ def simulate_stc(
 
         ✨ Added in vesion 0.18
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate
         The generated source time courses.
 
+    -----
     ### 👉 See Also
-    --------
+
     simulate_raw
     simulate_evoked
     simulate_sparse_stc
@@ -202,8 +211,9 @@ def simulate_stc(
 class SourceSimulator:
     """### Class to generate simulated Source Estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         Source space.
     tstep : float
@@ -216,8 +226,9 @@ class SourceSimulator:
         Comparable to the :term:`first_samp` property of `mne.io.Raw` objects.
         Default is 0.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     duration : float
         The duration of the simulation in seconds.
     n_times : int
@@ -245,8 +256,9 @@ class SourceSimulator:
         Data should be added in the form of a triplet of
         Label (Where) - Waveform(s) (What) - Event(s) (When)
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         label : instance of Label
             The label (as created for example by mne.read_label). If the label
             does not match any sources in the SourceEstimate, a ValueError is
@@ -266,8 +278,9 @@ class SourceSimulator:
         which should be added through the add_data method. If both start_sample
         and stop_sample are not specified, the entire duration is used.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         start_sample : int
             First sample in chunk. Default is the value of the ``first_samp``
             attribute.
@@ -275,8 +288,9 @@ class SourceSimulator:
             The final sample of the returned stc. If None, then all samples
             from start_sample onward are returned.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stim_data : ndarray of int, shape (n_samples,)
             The stimulation channel data.
         """
@@ -289,8 +303,9 @@ class SourceSimulator:
         start_sample and stop_sample are not specified, the entire duration is
         used.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         start_sample : int | None
             First sample in chunk. If ``None`` the value of the ``first_samp``
             attribute is used. Defaults to ``None``.
@@ -298,8 +313,9 @@ class SourceSimulator:
             The final sample of the returned STC. If ``None``, then all samples
             past ``start_sample`` are returned.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : SourceEstimate object
             The generated source time courses.
         """

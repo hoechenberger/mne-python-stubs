@@ -6,8 +6,9 @@ from threading import Thread
 class ProgressBar:
     """### Generate a command-line progressbar.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     iterable : iterable | int | None
         The iterable to use. Can also be an int for backward compatibility
         (acts like ``max_value``).
@@ -46,8 +47,9 @@ class ProgressBar:
     def update(self, cur_value) -> None:
         """### Update progressbar with current value of process.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         cur_value : number
             Current value of process.  Should be <= max_value (but this is not
             enforced).  The percent of the progressbar will be computed as
@@ -57,8 +59,9 @@ class ProgressBar:
     def update_with_increment_value(self, increment_value) -> None:
         """### Update progressbar with an increment.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         increment_value : int
             Value of the increment of process.  The percent of the progressbar
             will be computed as
@@ -71,13 +74,15 @@ class ProgressBar:
     def subset(self, idx):
         """### Make a joblib-friendly index subset updater.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         idx : ndarray
             List of indices for this subset.
 
+        -----
         ### ⏎ Returns
-        -------
+
         updater : instance of PBSubsetUpdater
             Class with a ``.update(ii)`` method.
         """

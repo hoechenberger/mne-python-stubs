@@ -39,8 +39,9 @@ def read_raw_cnt(
         - Other reader functions are listed under *See Also* at
           `mne.channels.DigMontage`
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the data file.
     eog : list | tuple | ``'auto'`` | ``'header'``
@@ -86,18 +87,21 @@ def read_raw_cnt(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawCNT.
         The raw data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawCNT.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.12
     """
     ...
@@ -116,8 +120,9 @@ class RawCNT(BaseRaw):
         the header are correct, it is probably safer to use a (standard)
         montage. See `mne.channels.make_standard_montage`
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the CNT file.
     eog : list | tuple
@@ -170,8 +175,9 @@ class RawCNT(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

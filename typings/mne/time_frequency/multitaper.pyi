@@ -11,8 +11,9 @@ def dpss_windows(
 
     ### 💡 Note Copied from NiTime.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     N : int
         Sequence length.
     half_nbw : float
@@ -38,14 +39,16 @@ def dpss_windows(
     low_bias : bool
         Keep only tapers with eigenvalues > 0.9.
 
+    -----
     ### ⏎ Returns
-    -------
+
     v, e : tuple,
         The v array contains DPSS windows shaped (Kmax, N).
         e are the eigenvalues.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Tridiagonal form of DPSS calculation from :footcite:`Slepian1978`.
 
     References
@@ -75,8 +78,9 @@ def psd_array_multitaper(
     The power spectral density is computed with DPSS
     tapers :footcite:p:`Slepian1978`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : array, shape=(..., n_times)
         The data to compute PSD from.
     sfreq : float
@@ -128,8 +132,9 @@ def psd_array_multitaper(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     psds : ndarray, shape (..., n_freqs) or (..., n_tapers, n_freqs)
         The power spectral densities. All dimensions up to the last (or the
         last two if ``output='complex'``) will be the same as input.
@@ -139,15 +144,17 @@ def psd_array_multitaper(
         The weights used for averaging across tapers. Only returned if
         ``output='complex'``.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_multitaper
     mne.io.Raw.compute_psd
     mne.Epochs.compute_psd
     mne.Evoked.compute_psd
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.14.0
 
     References
@@ -176,8 +183,9 @@ def tfr_array_multitaper(
     `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` or
     `mne.Evoked` objects.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epoch_data : array of shape (n_epochs, n_channels, n_times)
         The epochs.
     sfreq : float
@@ -237,8 +245,9 @@ def tfr_array_multitaper(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     out : array
         Time frequency transform of ``epoch_data``.
 
@@ -252,16 +261,18 @@ def tfr_array_multitaper(
         contain the average power and the imaginary values contain the
         inter-trial coherence: :math:`out = power_{avg} + i * ITC`.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_multitaper
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_array_morlet
     mne.time_frequency.tfr_stockwell
     mne.time_frequency.tfr_array_stockwell
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows

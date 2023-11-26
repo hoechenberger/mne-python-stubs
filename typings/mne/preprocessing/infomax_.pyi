@@ -27,8 +27,9 @@ def infomax(
 ):
     """### Run (extended) Infomax ICA decomposition on raw data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : np.ndarray, shape (n_samples, n_features)
         The whitened data to unmix.
     weights : np.ndarray, shape (n_features, n_features)
@@ -104,8 +105,9 @@ def infomax(
         Whether to return the number of iterations performed. Defaults to
         False.
 
+    -----
     ### ⏎ Returns
-    -------
+
     unmixing_matrix : np.ndarray, shape (n_features, n_features)
         The linear unmixing operator.
     n_iter : int

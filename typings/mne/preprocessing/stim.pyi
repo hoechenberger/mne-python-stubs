@@ -19,8 +19,9 @@ def fix_stim_artifact(
     ### 💡 Note This function operates in-place, consider passing
               ``inst.copy()`` if this is not desired.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw or Epochs or Evoked
         The data.
     events : array, shape (n_events, 3)
@@ -48,8 +49,9 @@ def fix_stim_artifact(
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Raw or Evoked or Epochs
         Instance with modified data.
     """

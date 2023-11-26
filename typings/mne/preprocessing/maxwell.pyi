@@ -35,8 +35,9 @@ def maxwell_filter_prepare_emptyroom(
     preconditions an empty-room raw data instance accordingly so it can be used
     for Maxwell filtering. Please see the ``Notes`` section for details.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw_er : instance of Raw
         The empty-room recording. It will not be modified.
     raw : instance of Raw
@@ -74,13 +75,15 @@ def maxwell_filter_prepare_emptyroom(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw_er_prepared : instance of Raw
         A copy of the passed empty-room recording, ready for Maxwell filtering.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function will:
 
     * Compile the list of bad channels according to the ``bads`` parameter.
@@ -123,8 +126,9 @@ def maxwell_filter(
 ):
     """### Maxwell filter data using multipole moments.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Data to be filtered.
 
@@ -260,21 +264,24 @@ def maxwell_filter(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw_sss : instance of Raw
         The raw data with Maxwell filtering applied.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.preprocessing.annotate_amplitude
     mne.preprocessing.find_bad_channels_maxwell
     mne.chpi.filter_chpi
     mne.chpi.read_head_pos
     mne.epochs.average_movements
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11
 
     Some of this code was adapted and relicensed (with BSD form) with
@@ -393,8 +400,9 @@ def find_bad_channels_maxwell(
 ):
     """### Find bad channels using Maxwell filtering.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data to process.
     limit : float
@@ -509,8 +517,9 @@ def find_bad_channels_maxwell(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     noisy_chs : list
         List of bad MEG channels that were automatically detected as being
         noisy among the good MEG channels.
@@ -549,13 +558,15 @@ def find_bad_channels_maxwell(
         ### 💡 Note The scores and limits for channels marked as ``bad`` in the
                   input data will be set to ``np.nan``.
 
+    -----
     ### 👉 See Also
-    --------
+
     annotate_amplitude
     maxwell_filter
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     All arguments after ``raw``, ``limit``, ``duration``, ``min_count``, and
     ``return_scores`` are the same as `maxwell_filter`, except that the
     following are not allowed in this function because they are unused:
@@ -615,8 +626,9 @@ def compute_maxwell_basis(
 ):
     """### Compute the SSS basis for a given measurement info structure.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -682,8 +694,9 @@ def compute_maxwell_basis(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     S : ndarray, shape (n_meg, n_moments)
         The basis that can be used to reconstruct the data.
     pS : ndarray, shape (n_moments, n_good_meg)
@@ -693,8 +706,9 @@ def compute_maxwell_basis(
     n_use_in : int
         The number of kept moments that were in the internal space.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This outputs variants of :math:`\\mathbf{S}` and :math:`\\mathbf{S^\\dagger}`
     from equations 27 and 37 of :footcite:`TauluKajola2005` with the coil scale
     for magnetometers already factored in so that the resulting denoising

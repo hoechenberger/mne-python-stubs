@@ -19,8 +19,9 @@ def read_raw_nicolet(
              extension ``.head`` is expected to be found in the same
              directory.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the data file (ending with ``.data`` not ``.head``).
     ch_type : str
@@ -55,13 +56,15 @@ def read_raw_nicolet(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of Raw
         A Raw object containing the data.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
     ...
@@ -69,8 +72,9 @@ def read_raw_nicolet(
 class RawNicolet(BaseRaw):
     """### Raw object from Nicolet file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the Nicolet file.
     ch_type : str
@@ -94,8 +98,9 @@ class RawNicolet(BaseRaw):
     %(preload)s
     %(verbose)s
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

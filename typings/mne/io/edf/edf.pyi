@@ -10,8 +10,9 @@ CH_TYPE_MAPPING: Incomplete
 class RawEDF(BaseRaw):
     """### Raw object from EDF, EDF+ or BDF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the EDF, EDF+ or BDF file.
     eog : list or tuple
@@ -70,14 +71,16 @@ class RawEDF(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     mne.io.read_raw_edf : Recommended way to read EDF/EDF+ files.
     mne.io.read_raw_bdf : Recommended way to read BDF files.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     `mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
@@ -140,8 +143,9 @@ class RawEDF(BaseRaw):
 class RawGDF(BaseRaw):
     """### Raw object from GDF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the GDF file.
     eog : list or tuple
@@ -181,13 +185,15 @@ class RawGDF(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     mne.io.read_raw_gdf : Recommended way to read GDF files.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If channels named 'status' or 'trigger' are present, they are considered as
     STIM channels by default. Use func:`mne.find_events` to parse events
     encoded in such analog stim channels.
@@ -234,8 +240,9 @@ def read_raw_edf(
 ):
     """### Reader function for EDF and EDF+ files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the EDF or EDF+ file.
     eog : list or tuple
@@ -294,21 +301,24 @@ def read_raw_edf(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawEDF
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.read_raw_bdf : Reader function for BDF files.
     mne.io.read_raw_gdf : Reader function for GDF files.
     mne.export.export_raw : Export function for EDF files.
     mne.io.Raw : Documentation of attributes and methods of RawEDF.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     `mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
@@ -374,8 +384,9 @@ def read_raw_bdf(
 ):
     """### Reader function for BDF files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the BDF file.
     eog : list or tuple
@@ -434,20 +445,23 @@ def read_raw_bdf(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawEDF
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.read_raw_edf : Reader function for EDF and EDF+ files.
     mne.io.read_raw_gdf : Reader function for GDF files.
     mne.io.Raw : Documentation of attributes and methods of RawEDF.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     `mne.io.Raw` only stores signals with matching sampling frequencies.
     Therefore, if mixed sampling frequency signals are requested, all signals
     are upsampled to the highest loaded sampling frequency. In this case, using
@@ -502,8 +516,9 @@ def read_raw_gdf(
 ):
     """### Reader function for GDF files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the GDF file.
     eog : list or tuple
@@ -540,20 +555,23 @@ def read_raw_gdf(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawGDF
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.read_raw_edf : Reader function for EDF and EDF+ files.
     mne.io.read_raw_bdf : Reader function for BDF files.
     mne.io.Raw : Documentation of attributes and methods of RawGDF.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If channels named 'status' or 'trigger' are present, they are considered as
     STIM channels by default. Use func:`mne.find_events` to parse events
     encoded in such analog stim channels.

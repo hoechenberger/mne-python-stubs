@@ -38,8 +38,9 @@ def compute_source_morph(
     Symmetric Diffeomorphic Registration for volumic data
     :footcite:`AvantsEtAl2008`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces | instance of SourceEstimate
         The SourceSpaces of subject_from (can be a
         SourceEstimate if only using a surface source space).
@@ -131,13 +132,15 @@ def compute_source_morph(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     morph : instance of SourceMorph
         The `mne.SourceMorph` object.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function can be used to morph surface data between hemispheres by
     setting ``xhemi=True``. The full cross-hemisphere morph matrix maps left
     to right and right to left. A matrix for cross-mapping only one hemisphere
@@ -175,8 +178,9 @@ class SourceMorph:
         ``mne.SourceMorph(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject_from : str | None
         Name of the subject from which to morph as named in the SUBJECTS_DIR.
     subject_to : str | array | list of array
@@ -229,13 +233,15 @@ class SourceMorph:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_source_morph
     read_source_morph
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.17
 
     References
@@ -293,8 +299,9 @@ class SourceMorph:
     ):
         """### Morph source space data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         stc_from : VolSourceEstimate | VolVectorSourceEstimate | SourceEstimate | VectorSourceEstimate
             The source estimate to morph.
         output : str
@@ -316,8 +323,9 @@ class SourceMorph:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc_to : VolSourceEstimate | SourceEstimate | VectorSourceEstimate | Nifti1Image | Nifti2Image
             The morphed source estimates.
         """
@@ -325,8 +333,9 @@ class SourceMorph:
     def compute_vol_morph_mat(self, *, verbose=None):
         """### Compute the sparse matrix representation of the volumetric morph.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
@@ -334,13 +343,15 @@ class SourceMorph:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         morph : instance of SourceMorph
             The instance (modified in-place).
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For a volumetric morph, this will compute the morph for an identity
         source volume, i.e., with one source vertex active at a time, and store
         the result as a `sparse <scipy.sparse.csr_matrix>`
@@ -360,8 +371,9 @@ class SourceMorph:
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
         """### Save the morph for source estimates to a file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The path to the file. ``'-morph.h5'`` will be added if fname does
             not end with ``'.h5'``.
@@ -381,13 +393,15 @@ class SourceMorph:
 def read_source_morph(fname):
     """### Load the morph for source estimates from a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the file containing the morph source estimates.
 
+    -----
     ### ⏎ Returns
-    -------
+
     source_morph : instance of SourceMorph
         The loaded morph.
     """
@@ -396,8 +410,9 @@ def read_source_morph(fname):
 def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=None):
     """### Convert a grade to source space vertices for a given subject.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : str
         Name of the subject.
     grade : int | list
@@ -429,8 +444,9 @@ def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=No
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     vertices : list of array of int
         Vertex numbers for LH and RH.
     """

@@ -21,8 +21,9 @@ def make_lcmv(
 ):
     """### Compute LCMV spatial filter.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -186,8 +187,9 @@ def make_lcmv(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     filters : instance of Beamformer
         Dictionary containing filter weights from LCMV beamformer.
         Contains the following keys:
@@ -241,8 +243,9 @@ def make_lcmv(
                 separately or jointly for all dipoles at each vertex using a
                 matrix inversion.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The original reference is :footcite:`VanVeenEtAl1997`.
 
     To obtain the Sekihara unit-noise-gain vector beamformer, you should use
@@ -265,8 +268,9 @@ def apply_lcmv(evoked, filters, *, verbose=None):
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on evoked data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : Evoked
         Evoked data to invert.
     filters : instance of Beamformer
@@ -279,17 +283,20 @@ def apply_lcmv(evoked, filters, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VolSourceEstimate | VectorSourceEstimate
         Source time courses.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_lcmv, apply_lcmv_raw, apply_lcmv_epochs, apply_lcmv_cov
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.18
     """
     ...
@@ -300,8 +307,9 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on single trial data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : Epochs
         Single trial epochs.
     filters : instance of Beamformer
@@ -317,13 +325,15 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc: list | generator of (SourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_lcmv, apply_lcmv_raw, apply_lcmv, apply_lcmv_cov
     """
     ...
@@ -334,8 +344,9 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on raw data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : mne.io.Raw
         Raw data to invert.
     filters : instance of Beamformer
@@ -352,13 +363,15 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VolSourceEstimate
         Source time courses.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_lcmv, apply_lcmv_epochs, apply_lcmv, apply_lcmv_cov
     """
     ...
@@ -369,8 +382,9 @@ def apply_lcmv_cov(data_cov, filters, verbose=None):
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     to a data covariance matrix to estimate source power.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data_cov : instance of Covariance
         Data covariance matrix.
     filters : instance of Beamformer
@@ -383,13 +397,15 @@ def apply_lcmv_cov(data_cov, filters, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VolSourceEstimate
         Source power.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_lcmv, apply_lcmv, apply_lcmv_epochs, apply_lcmv_raw
     """
     ...

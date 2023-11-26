@@ -19,8 +19,9 @@ class SSD(BaseEstimator, TransformerMixin):
     SSD can either be used as a dimensionality reduction method or a
     ‘denoised’ low rank factorization method :footcite:`HaufeEtAl2014b`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. Must match the input data.
@@ -63,8 +64,9 @@ class SSD(BaseEstimator, TransformerMixin):
         See Notes of `mne.compute_rank` for details.
         We recommend to use 'full' when working with epoched data.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     filters_ : array, shape (n_channels, n_components)
         The spatial filters to be multiplied with the signal.
     patterns_ : array, shape (n_components, n_channels)
@@ -113,8 +115,9 @@ class SSD(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         """### Estimate the SSD decomposition on raw or epoched data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The input data from which to estimate the SSD. Either 2D array
             obtained from continuous data or 3D array obtained from epoched
@@ -122,8 +125,9 @@ class SSD(BaseEstimator, TransformerMixin):
         y : None | array, shape (n_samples,)
             Used for scikit-learn compatibility.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of SSD
             Returns the modified instance.
         """
@@ -131,15 +135,17 @@ class SSD(BaseEstimator, TransformerMixin):
     def transform(self, X):
         """### Estimate epochs sources given the SSD filters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The input data from which to estimate the SSD. Either 2D array
             obtained from continuous data or 3D array obtained from epoched
             data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X_ssd : array, shape ([n_epochs, ]n_components, n_times)
             The processed data.
         """
@@ -150,13 +156,15 @@ class SSD(BaseEstimator, TransformerMixin):
         Spectral ratio measure for best n_components selection
         See :footcite:`NikulinEtAl2011`, Eq. (24).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ssd_sources : array
             Data projected to SSD space.
 
+        -----
         ### ⏎ Returns
-        -------
+
         spec_ratio : array, shape (n_channels)
             Array with the sprectal ratio value for each component.
         sorter_spec : array, shape (n_channels)
@@ -181,15 +189,17 @@ class SSD(BaseEstimator, TransformerMixin):
         ### 💡 Note Unlike in other classes with an apply method,
            only NumPy arrays are supported (not instances of MNE objects).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The input data from which to estimate the SSD. Either 2D array
             obtained from continuous data or 3D array obtained from epoched
             data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : array, shape ([n_epochs, ]n_channels, n_times)
             The processed data.
         """

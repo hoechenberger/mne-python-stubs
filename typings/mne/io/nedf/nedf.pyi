@@ -12,8 +12,9 @@ def read_raw_nedf(filename, preload: bool = False, verbose=None):
 
     NEDF file versions starting from 1.3 are supported.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     filename : path-like
         Path to the ``.nedf`` file.
 
@@ -30,14 +31,16 @@ def read_raw_nedf(filename, preload: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawNedf
         A Raw object containing NEDF data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawNedf.
     """
     ...

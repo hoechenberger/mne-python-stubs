@@ -12,8 +12,9 @@ class _Surface:
     It is used for storing vertices, faces and morphometric data
     (curvature) of a hemisphere mesh.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : string
         Name of subject
     hemi : {'lh', 'rh'}
@@ -32,8 +33,9 @@ class _Surface:
     x_dir : ndarray | None
         The x direction to use for offset alignment.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     bin_curv : numpy.ndarray
         Curvature values stored as non-negative integers.
     coords : numpy.ndarray
@@ -91,12 +93,14 @@ class _Surface:
     def load_geometry(self) -> None:
         """### Load geometry of the surface.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         None
 
+        -----
         ### ⏎ Returns
-        -------
+
         None
         """
         ...

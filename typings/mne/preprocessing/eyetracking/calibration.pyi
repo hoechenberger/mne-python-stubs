@@ -11,8 +11,9 @@ class Calibration(dict):
         When possible, a Calibration instance should be created with a helper function,
         such as `mne.preprocessing.eyetracking.read_eyelink_calibration`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     onset : float
         The onset of the calibration in seconds. If the calibration was
         performed before the recording started, the the onset can be
@@ -66,8 +67,9 @@ class Calibration(dict):
     def copy(self):
         """### Copy the instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         cal : instance of Calibration
             The copied Calibration.
         """
@@ -75,8 +77,9 @@ class Calibration(dict):
     def plot(self, show_offsets: bool = True, axes=None, show: bool = True):
         """### Visualize calibration.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         show_offsets : bool
             Whether to display the offset (in visual degrees) of each calibration
             point or not. Defaults to ``True``.
@@ -86,8 +89,9 @@ class Calibration(dict):
         show : bool
             Whether to show the figure or not. Defaults to ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             The resulting figure object for the calibration plot.
         """
@@ -98,8 +102,9 @@ def read_eyelink_calibration(
 ):
     """### Return info on calibrations collected in an eyelink file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the eyelink file (.asc).
     screen_size : array-like of shape ``(2,)``
@@ -114,8 +119,9 @@ def read_eyelink_calibration(
         was collected with. For example, ``(1920, 1080)`` for a 1920x1080
         resolution display. Defaults to ``None``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     calibrations : list
         A list of `mne.preprocessing.eyetracking.Calibration` instances, one for
         each eye of every calibration that was performed during the recording session.

@@ -25,8 +25,9 @@ def simulate_evoked(
               `evoked.set_eeg_reference <mne.Evoked.set_eeg_reference>`
               to add them afterward as necessary.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwd : instance of Forward
         A forward solution.
     stc : SourceEstimate object
@@ -63,19 +64,22 @@ def simulate_evoked(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked : Evoked object
         The simulated evoked data.
 
+    -----
     ### 👉 See Also
-    --------
+
     simulate_raw
     simulate_stc
     simulate_sparse_stc
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     To make the equivalence between snr and nave, when the snr is given
     instead of nave::
 
@@ -92,8 +96,9 @@ def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
 
     The spatial covariance of the noise is given from the cov matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Evoked, Epochs, or Raw
         Instance to which to add noise.
     cov : instance of Covariance
@@ -115,13 +120,15 @@ def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Evoked, Epochs, or Raw
         The instance, modified to have additional noise.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Only channels in both ``inst.info['ch_names']`` and
     ``cov['names']`` will have noise added to them.
 

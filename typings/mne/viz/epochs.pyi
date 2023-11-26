@@ -31,8 +31,9 @@ def plot_epochs_image(
 ):
     """### Plot Event Related Potential / Fields image.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs.
     picks : str | array-like | slice | None
@@ -157,14 +158,16 @@ def plot_epochs_image(
         Whether to clear the axes before plotting (if ``fig`` or ``axes`` are
         provided). Defaults to ``False``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     figs : list of Figure
         One figure per channel, channel type, or group, depending on values of
         ``picks``, ``group_by``, and ``combine``. See Notes.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     You can control how channels are aggregated into one figure or plotted in
     separate figures through a combination of the ``picks``, ``group_by``, and
     ``combine`` parameters. If ``group_by`` is a `dict`, the result is
@@ -207,8 +210,9 @@ def plot_drop_log(
 ):
     """### Show the channel stats based on a drop_log from Epochs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     drop_log : list of list
         Epoch drop log from Epochs.drop_log.
     threshold : float
@@ -234,8 +238,9 @@ def plot_drop_log(
     show : bool
         Show figure if True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure.
     """
@@ -275,8 +280,9 @@ def plot_epochs(
     the main axes. Calling this function drops all the selected bad epochs as
     well as bad epochs marked beforehand with rejection parameters.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs object.
     picks : str | array-like | slice | None
@@ -456,14 +462,16 @@ def plot_epochs(
 
         ✨ Added in vesion 1.6
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The arrow keys (up/down/left/right) can be used to navigate between
     channels and epochs and the scaling can be adjusted with - and + (or =)
     keys, but this depends on the backend matplotlib is configured to use
@@ -535,8 +543,9 @@ def plot_epochs_psd(
     be interactive, and click-dragging on the spectrum will generate a
     scalp topography plot for the chosen frequency range in a new figure.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs object.
     fmin, fmax : float
@@ -644,13 +653,15 @@ def plot_epochs_psd(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         Figure with frequency spectra of the data channels.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
     of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).

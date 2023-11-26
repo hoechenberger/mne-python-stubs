@@ -10,15 +10,17 @@ from .write import (
 def dir_tree_find(tree, kind):
     """### Find nodes of the given kind from a directory tree structure.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tree : dict
         Directory tree.
     kind : int
         Kind to find.
 
+    -----
     ### ⏎ Returns
-    -------
+
     nodes : list
         List of matching nodes.
     """

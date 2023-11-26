@@ -28,8 +28,9 @@ from _typeshed import Incomplete
 def read_source_estimate(fname, subject=None):
     """### Read a source estimate object.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to (a) source-estimate file(s).
     subject : str | None
@@ -39,13 +40,15 @@ def read_source_estimate(fname, subject=None):
         subjects). Note that due to file specification limitations, the
         subject name isn't saved to or loaded from files written to disk.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate | MixedSourceEstimate
         The source estimate object loaded from file.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
      - for volume source estimates, ``fname`` should provide the path to a
        single file named ``'*-vl.stc``` or ``'*-vol.stc'``
      - for surface source estimates, ``fname`` should either provide the
@@ -78,8 +81,9 @@ class _BaseSourceEstimate(TimeMixin):
     ):
         """### Get location and latency of peak amplitude.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         tmin : float | None
             The minimum point in time to be considered for peak getting.
@@ -97,8 +101,9 @@ class _BaseSourceEstimate(TimeMixin):
             Whether to return the time index (True) instead of the latency
             (False, default).
 
+        -----
         ### ⏎ Returns
-        -------
+
         pos : int
             The vertex exhibiting the maximum response, either ID or index.
         latency : float
@@ -113,8 +118,9 @@ class _BaseSourceEstimate(TimeMixin):
         This function will extract one time course for each label. The way the
         time courses are extracted depends on the mode parameter.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         labels : Label | BiHemiLabel | list | tuple | str
             If using a surface or mixed source space, this should be the
@@ -153,18 +159,21 @@ class _BaseSourceEstimate(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
             Extracted time course for each label and source estimate.
 
+        -----
         ### 👉 See Also
-        --------
+
         extract_label_time_course : Extract time courses for multiple STCs.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
 
         Valid values for ``mode`` are:
 
@@ -207,8 +216,9 @@ class _BaseSourceEstimate(TimeMixin):
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
         """### Baseline correct source estimate data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         baseline : None | tuple of length 2
             The time interval to consider as "baseline" when applying baseline
@@ -244,13 +254,15 @@ class _BaseSourceEstimate(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate
             The baseline-corrected source estimate object.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Baseline correction can be done multiple times.
         """
         ...
@@ -259,8 +271,9 @@ class _BaseSourceEstimate(TimeMixin):
     ) -> None:
         """### Save the full source estimate to an HDF5 file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The file name to write the source estimate to, should end in
             ``'-stc.h5'``.
@@ -315,8 +328,9 @@ class _BaseSourceEstimate(TimeMixin):
     ):
         """### Plot SourceEstimate.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         subject : str | None
             The FreeSurfer subject name.
             If ``None``, ``stc.subject`` will be used.
@@ -501,13 +515,15 @@ class _BaseSourceEstimate(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         figure : instance of mne.viz.Brain | matplotlib.figure.Figure
             An instance of `mne.viz.Brain` or matplotlib figure.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Flatmaps are available by default for ``fsaverage`` but not for other
         subjects reconstructed by FreeSurfer. We recommend using
         `mne.compute_source_morph` to morph source estimates to ``fsaverage``
@@ -525,8 +541,9 @@ class _BaseSourceEstimate(TimeMixin):
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True):
         """### Restrict SourceEstimate to a time interval.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tmin : float | None
             The first time point in seconds. If None the first present is used.
         tmax : float | None
@@ -538,8 +555,9 @@ class _BaseSourceEstimate(TimeMixin):
 
             ✨ Added in vesion 0.19
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate
             The cropped source estimate.
         """
@@ -557,8 +575,9 @@ class _BaseSourceEstimate(TimeMixin):
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         sfreq : float
             New sample rate to use.
         npad : int | str
@@ -581,13 +600,15 @@ class _BaseSourceEstimate(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate
             The resampled source estimate.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For some data, it may be more accurate to use npad=0 to reduce
         artifacts. This is dataset dependent -- check your data!
 
@@ -637,8 +658,9 @@ class _BaseSourceEstimate(TimeMixin):
     def mean(self):
         """### Make a summary stc file with mean over time points.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : SourceEstimate | VectorSourceEstimate
             The modified stc.
         """
@@ -646,8 +668,9 @@ class _BaseSourceEstimate(TimeMixin):
     def sum(self):
         """### Make a summary stc file with sum over time points.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : SourceEstimate | VectorSourceEstimate
             The modified stc.
         """
@@ -679,8 +702,9 @@ class _BaseSourceEstimate(TimeMixin):
     def __abs__(self):
         """### Compute the absolute value of the data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of _BaseSourceEstimate
             A version of the source estimate, where the data attribute is set
             to abs(self.data).
@@ -689,8 +713,9 @@ class _BaseSourceEstimate(TimeMixin):
     def sqrt(self):
         """### Take the square root.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate
             A copy of the SourceEstimate with sqrt(data).
         """
@@ -698,8 +723,9 @@ class _BaseSourceEstimate(TimeMixin):
     def copy(self):
         """### Return copy of source estimate instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate
             A copy of the source estimate.
         """
@@ -711,8 +737,9 @@ class _BaseSourceEstimate(TimeMixin):
         visualization only. No filter is applied to the data before binning,
         making the method inappropriate as a tool for downsampling data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         width : scalar
             Width of the individual bins in seconds.
         tstart : scalar | None
@@ -726,8 +753,9 @@ class _BaseSourceEstimate(TimeMixin):
             Function that is applied to summarize the data. Needs to accept a
             numpy.array as first input and an ``axis`` keyword argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : SourceEstimate | VectorSourceEstimate
             The binned source estimate.
         """
@@ -737,8 +765,9 @@ class _BaseSourceEstimate(TimeMixin):
 
         The transform is applied to each source time course independently.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         func : callable
             The transform to be applied, including parameters (see, e.g.,
             `functools.partial`). The first parameter of the function is
@@ -756,13 +785,15 @@ class _BaseSourceEstimate(TimeMixin):
             Index of the first time point not to include. If None, time points
             up to (and including) the last time point are included.
 
+        -----
         ### ⏎ Returns
-        -------
+
         data_t : ndarray
             The transformed data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Applying transforms can be significantly faster if the
         SourceEstimate object was created using "(kernel, sens_data)", for
         the "data" parameter as the transform is applied in sensor space.
@@ -775,8 +806,9 @@ class _BaseSourceEstimate(TimeMixin):
 
         The transform is applied to each source time course independently.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         func : callable
             The transform to be applied, including parameters (see, e.g.,
             `functools.partial`). The first parameter of the function is
@@ -793,15 +825,17 @@ class _BaseSourceEstimate(TimeMixin):
             If True, return a new instance of SourceEstimate instead of
             modifying the input inplace.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stcs : SourceEstimate | VectorSourceEstimate | list
             The transformed stc or, in the case of transforms which yield
             N-dimensional output (where N > 2), a list of stcs. For a list,
             copy must be True.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Transforms which yield 3D
         output (e.g. time-frequency transforms) are valid, so long as the
         first two dimensions are vertices and time.  In this case, the
@@ -835,8 +869,9 @@ class _BaseSourceEstimate(TimeMixin):
         an additional column "time" is added, unless ``index='time'``
         (in which case time values form the DataFrame's index).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         index : 'time' | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
@@ -870,8 +905,9 @@ class _BaseSourceEstimate(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
@@ -882,8 +918,9 @@ class _BaseSourceEstimate(TimeMixin):
 class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     """### Abstract base class for surface source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array
         The data in source space.
     vertices : list of array, shape (2,)
@@ -907,8 +944,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     subject : str | None
         The subject name.
     times : array of shape (n_times,)
@@ -945,15 +983,17 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         SourceEstimate contains the time course of
         activation of all sources inside the label.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         label : Label | BiHemiLabel
             The label (as created for example by mne.read_label). If the label
             does not match any sources in the SourceEstimate, a ValueError is
             raised.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : SourceEstimate | VectorSourceEstimate
             The source estimate restricted to the given label.
         """
@@ -966,13 +1006,15 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
         This will add rows to stc.data (zero-filled) and modify stc.vertices
         to include all vertices in stc.vertices and the input vertices.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         vertices : list of array
             New vertices to add. Can also contain old values.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : SourceEstimate | VectorSourceEstimate
             The modified stc (note: method operates inplace).
         """
@@ -982,8 +1024,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     ):
         """### Get a source estimate from morphed source to the original subject.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         src_orig : instance of SourceSpaces
             The original source spaces that were morphed to the current
             subject.
@@ -1002,17 +1045,20 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : SourceEstimate | VectorSourceEstimate
             The transformed source estimate.
 
+        -----
         ### 👉 See Also
-        --------
+
         morph_source_spaces
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.10.0
         """
         ...
@@ -1027,8 +1073,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
     ):
         """### Get location and latency of peak amplitude.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         hemi : {'lh', 'rh', None}
             The hemi to be considered. If None, the entire source space is
             considered.
@@ -1049,8 +1096,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
             Whether to return the time index (True) instead of the latency
             (False, default).
 
+        -----
         ### ⏎ Returns
-        -------
+
         pos : int
             The vertex exhibiting the maximum response, either ID or index.
         latency : float | int
@@ -1062,8 +1110,9 @@ class _BaseSurfaceSourceEstimate(_BaseSourceEstimate):
 class SourceEstimate(_BaseSurfaceSourceEstimate):
     """### Container for surface source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
         The data in source space. When it is a single array, the
         left hemisphere is stored in data[:len(vertices[0])] and the right
@@ -1096,8 +1145,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     subject : str | None
         The subject name.
     times : array of shape (n_times,)
@@ -1109,8 +1159,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
+    -----
     ### 👉 See Also
-    --------
+
     VectorSourceEstimate : A container for vector surface source estimates.
     VolSourceEstimate : A container for volume source estimates.
     VolVectorSourceEstimate : A container for volume vector source estimates.
@@ -1123,8 +1174,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
     ) -> None:
         """### Save the source estimates to a file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The stem of the file name. The file names used for surface source
             spaces are obtained by adding ``"-lh.stc"`` and ``"-rh.stc"`` (or
@@ -1158,8 +1210,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         ### ⛔️ Warning This function currently only works properly for fixed
                      orientation.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         info : mne.Info
             The `mne.Info` object with information about the sensors and methods of measurement.
@@ -1175,13 +1228,15 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         snr_stc : instance of SourceEstimate
             The source estimate with the SNR computed.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         We define the SNR in decibels for each source location at each
         time point as:
 
@@ -1220,8 +1275,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
                   quantifying spatio-temporal cluster locations, especially
                   when combined with `mne.vertex_to_mni`.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         subject : str | None
             The subject the stc is defined for.
         hemi : int, or None
@@ -1246,8 +1302,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
             of mass on the spherical surface to help avoid potential issues
             with cortical folding.
 
+        -----
         ### ⏎ Returns
-        -------
+
         vertex : int
             Vertex of the spatial center of mass for the inferred hemisphere,
             with each vertex weighted by the sum of the stc across time. For a
@@ -1259,8 +1316,9 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
             Time of the temporal center of mass (weighted by the sum across
             source vertices).
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.Label.center_of_mass
         mne.vertex_to_mni
 
@@ -1277,8 +1335,9 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
     def magnitude(self):
         """### Compute magnitude of activity without directionality.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate
             The source estimate without directionality information.
         """
@@ -1286,8 +1345,9 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
     def project(self, directions, src=None, use_cps: bool = True):
         """### Project the data for each vertex in a given direction.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         directions : ndarray, shape (n_vertices, 3) | str
             Can be:
 
@@ -1309,15 +1369,17 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             Should be the same value that was used when the forward model
             was computed (typically True).
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate
             The projected source estimate.
         directions : ndarray, shape (n_vertices, 3)
             The directions that were computed (or just used).
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         When using SVD, there is a sign ambiguity for the direction of maximal
         power. When ``src is None``, the direction is chosen that makes the
         resulting time waveform sum positive (i.e., have positive amplitudes).
@@ -1367,8 +1429,9 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
         current moment at the dipole. Additionally, an overlay is plotted on top of
         the cortex with the magnitude of the current.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         subject : str | None
             The FreeSurfer subject name.
             If ``None``, ``stc.subject`` will be used.
@@ -1517,13 +1580,15 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         brain : mne.viz.Brain
             A instance of `mne.viz.Brain`.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.15
 
         If the current magnitude overlay is not desired, set ``overlay_alpha=0``
@@ -1567,8 +1632,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
     ):
         """### Plot SourceEstimate.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         subject : str | None
             The FreeSurfer subject name.
             If ``None``, ``stc.subject`` will be used.
@@ -1753,13 +1819,15 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         figure : instance of mne.viz.Brain | matplotlib.figure.Figure
             An instance of `mne.viz.Brain` or matplotlib figure.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Flatmaps are available by default for ``fsaverage`` but not for other
         subjects reconstructed by FreeSurfer. We recommend using
         `mne.compute_source_morph` to morph source estimates to ``fsaverage``
@@ -1788,8 +1856,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
     ):
         """### Plot Nutmeg style volumetric source estimates using nilearn.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         src : instance of SourceSpaces | instance of SourceMorph
             The source space. Can also be a SourceMorph to morph the STC to
             a new subject (see Examples).
@@ -1866,13 +1935,15 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             The figure.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Click on any of the anatomical slices to explore the time series.
         Clicking on any time point will bring up the corresponding anatomical map.
 
@@ -1889,8 +1960,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
            MRI volumes are automatically transformed to MNI space in
            ``'glass_brain'`` mode.
 
-        Examples
-        --------
+        -----
+        ### 🖥️ Examples
+
         Passing a `mne.SourceMorph` as the ``src``
         parameter can be useful for plotting in a different subject's space
         (here, a ``'sample'`` STC in ``'fsaverage'``'s space)::
@@ -1914,8 +1986,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         This function will extract one time course for each label. The way the
         time courses are extracted depends on the mode parameter.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         labels : Label | BiHemiLabel | list | tuple | str
             If using a surface or mixed source space, this should be the
@@ -1963,18 +2036,21 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
             Extracted time course for each label and source estimate.
 
+        -----
         ### 👉 See Also
-        --------
+
         extract_label_time_course : Extract time courses for multiple STCs.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
 
         Valid values for ``mode`` are:
 
@@ -2020,8 +2096,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         SourceEstimate contains the time course of
         activation of all sources inside the label.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         label : str | int
             The label to use. Can be the name of a label if using a standard
             FreeSurfer atlas, or an integer value to extract from the ``mri``.
@@ -2037,13 +2114,15 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : VolSourceEstimate | VolVectorSourceEstimate
             The source estimate restricted to the given label.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.21.0
         """
         ...
@@ -2060,8 +2139,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
     ) -> None:
         """### Save a volume source estimate in a NIfTI file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the generated nifti file.
         src : list
@@ -2094,13 +2174,15 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
             ✨ Added in vesion 1.0
 
+        -----
         ### ⏎ Returns
-        -------
+
         img : instance Nifti1Image
             The image object.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.9.0
         """
         ...
@@ -2113,8 +2195,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
     ):
         """### Export volume source estimate as a nifti object.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         src : instance of SourceSpaces
             The source spaces (should all be of type volume, or part of a
             mixed source space).
@@ -2130,13 +2213,15 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
         format : str
             Either 'nifti1' (default) or 'nifti2'.
 
+        -----
         ### ⏎ Returns
-        -------
+
         img : instance of Nifti1Image
             The image object.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.9.0
         """
         ...
@@ -2144,8 +2229,9 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 class VolSourceEstimate(_BaseVolSourceEstimate):
     """### Container for volume source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
         The data in source space. The data can either be a single array or
         a tuple with two arrays: "kernel" shape (n_vertices, n_sensors) and
@@ -2172,8 +2258,9 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     subject : str | None
         The subject name.
     times : array of shape (n_times,)
@@ -2187,16 +2274,18 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
+    -----
     ### 👉 See Also
-    --------
+
     SourceEstimate : A container for surface source estimates.
     VectorSourceEstimate : A container for vector surface source estimates.
     VolVectorSourceEstimate : A container for volume vector source estimates.
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
 
@@ -2205,8 +2294,9 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
     ) -> None:
         """### Save the source estimates to a file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The stem of the file name. The stem is extended with ``"-vl.stc"``
             or ``"-vl.w"``.
@@ -2232,8 +2322,9 @@ class VolSourceEstimate(_BaseVolSourceEstimate):
 class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate):
     """### Container for volume source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array of shape (n_dipoles, 3, n_times)
         The data in source space. Each dipole contains three vectors that
         denote the dipole strength in X, Y and Z directions over time.
@@ -2258,8 +2349,9 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     subject : str | None
         The subject name.
     times : array of shape (n_times,)
@@ -2273,16 +2365,18 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
+    -----
     ### 👉 See Also
-    --------
+
     SourceEstimate : A container for surface source estimates.
     VectorSourceEstimate : A container for vector surface source estimates.
     VolSourceEstimate : A container for volume source estimates.
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
 
@@ -2325,8 +2419,9 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
         current moment at the dipole. Additionally, an overlay is plotted on top of
         the cortex with the magnitude of the current.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         subject : str | None
             The FreeSurfer subject name.
             If ``None``, ``stc.subject`` will be used.
@@ -2475,13 +2570,15 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         brain : mne.viz.Brain
             A instance of `mne.viz.Brain`.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.15
 
         If the current magnitude overlay is not desired, set ``overlay_alpha=0``
@@ -2495,8 +2592,9 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
     For each vertex, the magnitude of the current is defined in the X, Y and Z
     directions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array of shape (n_dipoles, 3, n_times)
         The data in source space. Each dipole contains three vectors that
         denote the dipole strength in X, Y and Z directions over time.
@@ -2521,8 +2619,9 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     subject : str | None
         The subject name.
     times : array of shape (n_times,)
@@ -2530,15 +2629,17 @@ class VectorSourceEstimate(_BaseVectorSourceEstimate, _BaseSurfaceSourceEstimate
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
+    -----
     ### 👉 See Also
-    --------
+
     SourceEstimate : A container for surface source estimates.
     VolSourceEstimate : A container for volume source estimates.
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.15
     """
 
@@ -2551,8 +2652,9 @@ class _BaseMixedSourceEstimate(_BaseSourceEstimate):
     def surface(self):
         """### Return the cortical surface source estimate.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of SourceEstimate or VectorSourceEstimate
             The surface source estimate.
         """
@@ -2560,8 +2662,9 @@ class _BaseMixedSourceEstimate(_BaseSourceEstimate):
     def volume(self):
         """### Return the volume surface source estimate.
 
+        -----
         ### ⏎ Returns
-        -------
+
         stc : instance of VolSourceEstimate or VolVectorSourceEstimate
             The volume source estimate.
         """
@@ -2570,8 +2673,9 @@ class _BaseMixedSourceEstimate(_BaseSourceEstimate):
 class MixedSourceEstimate(_BaseMixedSourceEstimate):
     """### Container for mixed surface and volume source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array of shape (n_dipoles, n_times) | tuple, shape (2,)
         The data in source space. The data can either be a single array or
         a tuple with two arrays: "kernel" shape (n_vertices, n_sensors) and
@@ -2597,8 +2701,9 @@ class MixedSourceEstimate(_BaseMixedSourceEstimate):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     subject : str | None
         The subject name.
     times : array of shape (n_times,)
@@ -2611,15 +2716,17 @@ class MixedSourceEstimate(_BaseMixedSourceEstimate):
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
+    -----
     ### 👉 See Also
-    --------
+
     SourceEstimate : A container for surface source estimates.
     VectorSourceEstimate : A container for vector surface source estimates.
     VolSourceEstimate : A container for volume source estimates.
     VolVectorSourceEstimate : A container for Volume vector source estimates.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
 
@@ -2628,8 +2735,9 @@ class MixedSourceEstimate(_BaseMixedSourceEstimate):
 class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstimate):
     """### Container for volume source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array, shape (n_dipoles, 3, n_times)
         The data in source space. Each dipole contains three vectors that
         denote the dipole strength in X, Y and Z directions over time.
@@ -2652,8 +2760,9 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     subject : str | None
         The subject name.
     times : array, shape (n_times,)
@@ -2665,13 +2774,15 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
     shape : tuple
         The shape of the data. A tuple of int (n_dipoles, n_times).
 
+    -----
     ### 👉 See Also
-    --------
+
     MixedSourceEstimate : A container for mixed surface + volume source
                           estimates.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.21.0
     """
 
@@ -2680,8 +2791,9 @@ class MixedVectorSourceEstimate(_BaseVectorSourceEstimate, _BaseMixedSourceEstim
 def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
     """### Compute adjacency for a source space activation over time.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space. It can be a surface source space or a
         volume source space.
@@ -2698,8 +2810,9 @@ def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatio-temporal
         graph structure. If N is the number of vertices in the
@@ -2712,8 +2825,9 @@ def spatio_temporal_src_adjacency(src, n_times, dist=None, verbose=None):
 def grade_to_tris(grade, verbose=None):
     """### Get tris defined for a certain grade.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     grade : int
         Grade of an icosahedral mesh.
 
@@ -2723,8 +2837,9 @@ def grade_to_tris(grade, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     tris : list
         2-element list containing Nx3 arrays of tris, suitable for use in
         spatio_temporal_tris_adjacency.
@@ -2736,8 +2851,9 @@ def spatio_temporal_tris_adjacency(
 ):
     """### Compute adjacency from triangles and time instants.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tris : array
         N x 3 array defining triangles.
     n_times : int
@@ -2752,8 +2868,9 @@ def spatio_temporal_tris_adjacency(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatio-temporal
         graph structure. If N is the number of vertices in the
@@ -2766,8 +2883,9 @@ def spatio_temporal_tris_adjacency(
 def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
     """### Compute adjacency from distances in a source space and time instants.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space must have distances between vertices computed, such
         that src['dist'] exists and is useful. This can be obtained
@@ -2785,8 +2903,9 @@ def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatio-temporal
         graph structure. If N is the number of vertices in the
@@ -2799,8 +2918,9 @@ def spatio_temporal_dist_adjacency(src, n_times, dist, verbose=None):
 def spatial_src_adjacency(src, dist=None, verbose=None):
     """### Compute adjacency for a source space activation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space. It can be a surface source space or a
         volume source space.
@@ -2815,8 +2935,9 @@ def spatial_src_adjacency(src, dist=None, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
     """
@@ -2825,8 +2946,9 @@ def spatial_src_adjacency(src, dist=None, verbose=None):
 def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
     """### Compute adjacency from triangles.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tris : array
         N x 3 array defining triangles.
     remap_vertices : bool
@@ -2839,8 +2961,9 @@ def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
     """
@@ -2849,8 +2972,9 @@ def spatial_tris_adjacency(tris, remap_vertices: bool = False, verbose=None):
 def spatial_dist_adjacency(src, dist, verbose=None):
     """### Compute adjacency from distances in a source space.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space must have distances between vertices computed, such
         that src['dist'] exists and is useful. This can be obtained
@@ -2866,8 +2990,9 @@ def spatial_dist_adjacency(src, dist, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
     """
@@ -2876,8 +3001,9 @@ def spatial_dist_adjacency(src, dist, verbose=None):
 def spatial_inter_hemi_adjacency(src, dist, verbose=None):
     """### Get vertices on each hemisphere that are close to the other hemisphere.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space. Must be surface type.
     dist : float
@@ -2890,8 +3016,9 @@ def spatial_inter_hemi_adjacency(src, dist, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     adjacency : ~scipy.sparse.coo_matrix
         The adjacency matrix describing the spatial graph structure.
         Typically this should be combined (addititively) with another
@@ -2917,8 +3044,9 @@ def extract_label_time_course(
     estimate. The way the time courses are extracted depends on the mode
     parameter (see Notes).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     stcs : SourceEstimate | list (or generator) of SourceEstimate
         The source estimates from which to extract the time course.
 
@@ -2970,14 +3098,16 @@ def extract_label_time_course(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     label_tc : array | list (or generator) of array, shape (n_labels[, n_orient], n_times)
         Extracted time course for each label and source estimate.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     Valid values for ``mode`` are:
 
@@ -3039,8 +3169,9 @@ def stc_near_sensors(
 ):
     """### Create a STC from ECoG, sEEG and DBS sensor data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The evoked data. Must contain ECoG, sEEG or DBS channels.
 
@@ -3100,8 +3231,9 @@ def stc_near_sensors(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : instance of SourceEstimate
         The surface source estimate. If src is None, a surface source
         estimate will be produced, and the number of vertices will equal
@@ -3112,8 +3244,9 @@ def stc_near_sensors(
         vertices will match those of src (i.e., there may be me
         many all-zero values in stc.data).
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For surface projections, this function projects the ECoG sensors to
     the pial surface (if ``project``), then the activation at each pial
     surface vertex is given by the mode:

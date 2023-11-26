@@ -13,8 +13,9 @@ def plot_projs_joint(
 ):
     """### Plot projectors and evoked jointly.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     projs : list of Projection
         The projectors to plot.
     evoked : instance of Evoked
@@ -40,13 +41,15 @@ def plot_projs_joint(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib Figure
         The figure.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function creates a figure with three columns:
 
     1. The left shows the evoked data traces before (black) and after (green)

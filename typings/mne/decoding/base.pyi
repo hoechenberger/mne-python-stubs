@@ -11,28 +11,32 @@ class LinearModel(BaseEstimator):
     corresponding patterns of these linear filters to make them more
     interpretable :footcite:`HaufeEtAl2014`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     model : object | None
         A linear model from scikit-learn with a fit method
         that updates a ``coef_`` attribute.
         If None the model will be LogisticRegression.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     filters_ : ndarray, shape ([n_targets], n_features)
         If fit, the filters used to decompose the data.
     patterns_ : ndarray, shape ([n_targets], n_features)
         If fit, the patterns used to restore M/EEG signals.
 
+    -----
     ### 👉 See Also
-    --------
+
     CSP
     mne.preprocessing.ICA
     mne.preprocessing.Xdawn
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10
 
     References
@@ -54,8 +58,9 @@ class LinearModel(BaseEstimator):
         Save the coefficients in the attribute ``filters_`` and
         computes the attribute ``patterns_``.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples, n_features)
             The training input samples to estimate the linear coefficients.
         y : array, shape (n_samples, [n_targets])
@@ -63,8 +68,9 @@ class LinearModel(BaseEstimator):
         **fit_params : dict of string -> object
             Parameters to pass to the fit method of the estimator.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of LinearModel
             Returns the modified instance.
         """
@@ -78,8 +84,9 @@ def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False)
     This is typically useful to retrieve "spatial filters" or "spatial
     patterns" of decoding models :footcite:`HaufeEtAl2014`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     estimator : object | None
         An estimator from scikit-learn.
     attr : str
@@ -89,8 +96,9 @@ def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False)
         If True, returns the coefficients after inverse transforming them with
         the transformer steps of the estimator.
 
+    -----
     ### ⏎ Returns
-    -------
+
     coef : array
         The coefficients.
 
@@ -114,8 +122,9 @@ def cross_val_multiscore(
 ):
     """### Evaluate a score by cross-validation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     estimator : instance of sklearn.base.BaseEstimator
         The object to use to fit the data.
         Must implement the 'fit' method.
@@ -178,8 +187,9 @@ def cross_val_multiscore(
         - A string, giving an expression as a function of n_jobs,
           as in '2*n_jobs'
 
+    -----
     ### ⏎ Returns
-    -------
+
     scores : array of float, shape (n_splits,) | shape (n_splits, n_scores)
         Array of scores of the estimator for each run of the cross validation.
     """

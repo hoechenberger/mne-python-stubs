@@ -12,8 +12,9 @@ from .write import (
 def read_ctf_comp(fid, node, chs, verbose=None):
     """### Read the CTF software compensation data from the given node.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file
         The file descriptor.
     node : dict
@@ -28,8 +29,9 @@ def read_ctf_comp(fid, node, chs, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     compdata : list
         The compensation data
     """
@@ -38,8 +40,9 @@ def read_ctf_comp(fid, node, chs, verbose=None):
 def write_ctf_comp(fid, comps) -> None:
     """### Write the CTF compensation data into a fif file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file
         The open FIF file descriptor
 

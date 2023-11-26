@@ -17,8 +17,9 @@ def estimate_rank(
     channels or vertices) such that non-zero singular values
     should be close to one.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array
         Data to estimate the rank of (should be 2-dimensional).
 
@@ -52,8 +53,9 @@ def estimate_rank(
 
         ✨ Added in vesion 0.21.0
 
+    -----
     ### ⏎ Returns
-    -------
+
     rank : int
         Estimated rank of the data.
     s : array
@@ -79,8 +81,9 @@ def compute_rank(
     channels or vertices) such that non-zero singular values
     should be close to one.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw, Epochs, or Covariance
         Raw measurements to compute the rank from or the covariance.
 
@@ -178,14 +181,16 @@ def compute_rank(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     rank : dict
         Estimated rank of the data for each channel type.
         To get the total rank, you can use ``sum(rank.values())``.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.18
     """
     ...

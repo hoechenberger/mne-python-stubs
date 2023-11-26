@@ -15,8 +15,9 @@ from _typeshed import Incomplete
 class EvokedField:
     """### Plot MEG/EEG fields on head surface and helmet in 3D.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of mne.Evoked
         The evoked object.
     surf_maps : list
@@ -91,8 +92,9 @@ class EvokedField:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The figure will publish and subscribe to the following UI events:
 
     * `mne.viz.ui_events.TimeChange`
@@ -125,8 +127,9 @@ class EvokedField:
     def set_time(self, time) -> None:
         """### Set the time to display (in seconds).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         time : float
             The time to show, in seconds.
         """
@@ -134,8 +137,9 @@ class EvokedField:
     def set_contours(self, n_contours) -> None:
         """### Adjust the number of contour lines to use when drawing the fieldlines.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         n_contours : int
             The number of contour lines to use.
         """
@@ -143,8 +147,9 @@ class EvokedField:
     def set_vmax(self, vmax, type: str = "meg") -> None:
         """### Change the color range of the density maps.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         vmax : float
             The new maximum value of the color range.
         type : 'meg' | 'eeg'

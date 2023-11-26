@@ -5,8 +5,9 @@ from ...utils import warn as warn
 def optical_density(raw, *, verbose=None):
     """### Convert NIRS raw data to optical density.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
 
@@ -16,8 +17,9 @@ def optical_density(raw, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of Raw
         The modified raw instance.
     """

@@ -71,8 +71,9 @@ def open_report(fname, **params):
     The returned report can be used as a context manager, in which case any
     changes to the report are saved when exiting the context block.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The file containing the report, stored in the HDF5 format. If the file
         does not exist yet, a new report is created that will be saved to the
@@ -83,8 +84,9 @@ def open_report(fname, **params):
         reading an existing report, the parameters are checked with the
         loaded report and an exception is raised when they don't match.
 
+    -----
     ### ⏎ Returns
-    -------
+
     report : instance of Report
         The report.
     """
@@ -96,8 +98,9 @@ mne_logo: Incomplete
 class Report:
     """### Object for rendering HTML.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     info_fname : None | str
         Name of the file containing the info dictionary.
 
@@ -162,8 +165,9 @@ class Report:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     info_fname : None | str
         Name of the file containing the info dictionary.
 
@@ -231,8 +235,9 @@ class Report:
     lang : str
         language setting for the HTML file.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     See `tut-report` for an introduction to using ``mne.Report``.
 
     ✨ Added in vesion 0.8.0
@@ -269,8 +274,9 @@ class Report:
     def __len__(self) -> int:
         """### Return the number of files processed by the report.
 
+        -----
         ### ⏎ Returns
-        -------
+
         n_files : int
             The number of files processed.
         """
@@ -286,28 +292,32 @@ class Report:
     def add_custom_css(self, css) -> None:
         """### Add custom CSS to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         css : str
             Style definitions to add to the report. The content of this string
             will be embedded between HTML ``<style>`` and ``</style>`` tags.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.23
         """
         ...
     def add_custom_js(self, js) -> None:
         """### Add custom JavaScript to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         js : str
             JavaScript code to add to the report. The content of this string
             will be embedded between HTML ``<script>`` and ``</script>`` tags.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.23
         """
         ...
@@ -325,8 +335,9 @@ class Report:
     ) -> None:
         """### Add `mne.Epochs` to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         epochs : path-like | instance of Epochs
             The epochs to add to the report.
         title : str
@@ -366,8 +377,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -386,8 +398,9 @@ class Report:
     ) -> None:
         """### Add `mne.Evoked` objects to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         evokeds : path-like | instance of Evoked | list of Evoked
             The evoked data to add to the report. Multiple `mne.Evoked`
             objects – as returned from `mne.read_evokeds` – can be passed as
@@ -428,8 +441,9 @@ class Report:
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -448,8 +462,9 @@ class Report:
     ) -> None:
         """### Add `mne.io.Raw` objects to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         raw : path-like | instance of Raw
             The data to add to the report.
         title : str
@@ -501,8 +516,9 @@ class Report:
         topomap_kwargs : dict | None
             Keyword arguments to pass to the topomap-generating functions.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -520,8 +536,9 @@ class Report:
     ) -> None:
         """### Add a `mne.SourceEstimate` (STC) to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         stc : path-like | instance of SourceEstimate
             The `mne.SourceEstimate` to add to the report.
         title : str
@@ -552,8 +569,9 @@ class Report:
             `mne.SourceEstimate.plot`. Only used when plotting in 3D
             mode.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -569,8 +587,9 @@ class Report:
     ) -> None:
         """### Add a forward solution.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         forward : instance of Forward | path-like
             The forward solution to add to the report.
         title : str
@@ -592,8 +611,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -610,8 +630,9 @@ class Report:
     ) -> None:
         """### Add an inverse operator.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inverse_operator : instance of InverseOperator | path-like
             The inverse operator to add to the report.
         title : str
@@ -636,8 +657,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -655,8 +677,9 @@ class Report:
     ) -> None:
         """### Add a coregistration visualization to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         trans : path-like | instance of Transform
             The ``head -> MRI`` transformation to render.
         info : path-like | instance of Info
@@ -684,8 +707,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -694,8 +718,9 @@ class Report:
     ) -> None:
         """### Add covariance to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         cov : path-like | instance of Covariance
             The `mne.Covariance` to add to the report.
         info : path-like | instance of Info
@@ -712,8 +737,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -730,8 +756,9 @@ class Report:
     ) -> None:
         """### Add events to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         events : path-like | array, shape (n_events, 3)
             An MNE-Python events array.
         title : str
@@ -753,8 +780,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -770,8 +798,9 @@ class Report:
     ) -> None:
         """### Render (SSP) projection vectors.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         info : instance of Info | path-like
             An `mne.Info` structure or the path of a file containing one. This
             is required to create the topographic plots.
@@ -794,8 +823,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -816,8 +846,9 @@ class Report:
     ) -> None:
         """### Add (a fitted) `mne.preprocessing.ICA` to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ica : path-like | instance of mne.preprocessing.ICA
             The fitted ICA to add.
         title : str
@@ -860,8 +891,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -872,8 +904,9 @@ class Report:
         may be specified as well to narrow down the search to elements that
         have the supplied tags.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         title : str
             The title of the element(s) to remove.
 
@@ -890,8 +923,9 @@ class Report:
 
             ✨ Added in vesion 0.24.0
 
+        -----
         ### ⏎ Returns
-        -------
+
         removed_index : int | tuple of int | None
             The indices of the elements that were removed, or ``None`` if no
             element matched the search criteria. A tuple will always be
@@ -913,8 +947,9 @@ class Report:
     ) -> None:
         """### Add a code snippet (e.g., an analysis script) to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         code : str | pathlib.Path
             The code to add to the report as a string, or the path to a file
             as a `pathlib.Path` object.
@@ -936,8 +971,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -949,8 +985,9 @@ class Report:
         This is a convenience method that captures the output of
         `mne.sys_info` and adds it to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         title : str
             The title to assign.
 
@@ -963,8 +1000,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -981,8 +1019,9 @@ class Report:
     ) -> None:
         """### Add figures to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fig : matplotlib.figure.Figure | Figure3D | array | array-like of matplotlib.figure.Figure | array-like of Figure3D | array-like of array
             One or more figures to add to the report. All figures must be an
             instance of `matplotlib.figure.Figure`,
@@ -1019,8 +1058,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -1036,8 +1076,9 @@ class Report:
     ) -> None:
         """### Add an image (e.g., PNG or JPEG pictures) to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         image : path-like
             The image to add.
         title : str
@@ -1064,8 +1105,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -1074,8 +1116,9 @@ class Report:
     ) -> None:
         """### Add HTML content to the report.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         html : str
             The HTML content to add.
         title : str
@@ -1102,8 +1145,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -1121,8 +1165,9 @@ class Report:
     ) -> None:
         """### Render a visualization of the boundary element model (BEM) surfaces.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         subject : str
             The FreeSurfer subject name.
         title : str
@@ -1157,8 +1202,9 @@ class Report:
             duplicate entries in the table of contents if an entry for ``title``
             already exists.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24.0
         """
         ...
@@ -1182,8 +1228,9 @@ class Report:
     ) -> None:
         """### Render all the files in the folder.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         data_path : str
             Path to the folder containing data whose HTML report will be
             created.
@@ -1270,8 +1317,9 @@ class Report:
     ):
         """### Save the report and optionally open it in browser.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like | None
             Output filename. If the name ends with ``.h5`` or ``.hdf5``, the
             report is saved in HDF5 format, so it can later be loaded again
@@ -1303,8 +1351,9 @@ class Report:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fname : str
             The file name to which the report was saved.
         """

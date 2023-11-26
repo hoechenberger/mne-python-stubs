@@ -22,8 +22,9 @@ def tfr_array_stockwell(
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : ndarray, shape (n_epochs, n_channels, n_times)
         The signal to transform.
     sfreq : float
@@ -52,8 +53,9 @@ def tfr_array_stockwell(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     st_power : ndarray
         The multitaper power of the Stockwell transformed data.
         The last two dimensions are frequency and time.
@@ -62,8 +64,9 @@ def tfr_array_stockwell(
     freqs : ndarray
         The frequencies.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_stockwell
     mne.time_frequency.tfr_multitaper
     mne.time_frequency.tfr_array_multitaper
@@ -95,8 +98,9 @@ def tfr_stockwell(
     See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : Epochs | Evoked
         The epochs or evoked object.
     fmin : None, float
@@ -124,23 +128,26 @@ def tfr_stockwell(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     power : AverageTFR
         The averaged power.
     itc : AverageTFR
         The intertrial coherence. Only returned if return_itc is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.tfr_array_stockwell
     mne.time_frequency.tfr_multitaper
     mne.time_frequency.tfr_array_multitaper
     mne.time_frequency.tfr_morlet
     mne.time_frequency.tfr_array_morlet
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
 
     References

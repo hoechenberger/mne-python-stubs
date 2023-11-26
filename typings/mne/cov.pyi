@@ -39,8 +39,9 @@ class Covariance(dict):
         ``mne.Covariance(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array-like
         The data.
     names : list of str
@@ -66,8 +67,9 @@ class Covariance(dict):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     data : array of shape (n_channels, n_channels)
         The covariance.
     ch_names : list of str
@@ -77,8 +79,9 @@ class Covariance(dict):
     dim : int
         The number of channels ``n_channels``.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_covariance
     compute_raw_covariance
     make_ad_hoc_cov
@@ -116,8 +119,9 @@ class Covariance(dict):
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """### Save covariance matrix in a FIF file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             Output filename.
 
@@ -137,8 +141,9 @@ class Covariance(dict):
     def copy(self):
         """### Copy the Covariance object.
 
+        -----
         ### ⏎ Returns
-        -------
+
         cov : instance of Covariance
             The copied object.
         """
@@ -146,13 +151,15 @@ class Covariance(dict):
     def as_diag(self):
         """### Set covariance to be processed as being diagonal.
 
+        -----
         ### ⏎ Returns
-        -------
+
         cov : dict
             The covariance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function allows creation of inverse operators
         equivalent to using the old "--diagnoise" mne option.
 
@@ -177,8 +184,9 @@ class Covariance(dict):
     ):
         """### Plot Covariance data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         info : mne.Info
             The `mne.Info` object with information about the sensors and methods of measurement.
         exclude : list of str | str
@@ -200,19 +208,22 @@ class Covariance(dict):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig_cov : instance of matplotlib.figure.Figure
             The covariance plot.
         fig_svd : instance of matplotlib.figure.Figure | None
             The SVD spectra plot of the covariance.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.compute_rank
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For each channel type, the rank is estimated using
         `mne.compute_rank`.
 
@@ -252,8 +263,9 @@ class Covariance(dict):
     ):
         """### Plot a topomap of the covariance diagonal.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         info : mne.Info
             The `mne.Info` object with information about the sensors and methods of measurement.
@@ -434,21 +446,24 @@ class Covariance(dict):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             The matplotlib figure.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.21
         """
         ...
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
         """### Pick channels from this covariance matrix.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_names : list of str
             List of channels to keep. All other channels are dropped.
 
@@ -466,13 +481,15 @@ class Covariance(dict):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         cov : instance of Covariance.
             The modified covariance matrix.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Operates in-place.
 
         ✨ Added in vesion 0.20.0
@@ -482,8 +499,9 @@ class Covariance(dict):
 def read_cov(fname, verbose=None):
     """### Read a noise covariance from a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The path-like of file containing the covariance matrix. It should end
         with ``-cov.fif`` or ``-cov.fif.gz``.
@@ -494,13 +512,15 @@ def read_cov(fname, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     cov : Covariance
         The noise covariance matrix.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_cov, compute_covariance, compute_raw_covariance
     """
     ...
@@ -508,8 +528,9 @@ def read_cov(fname, verbose=None):
 def make_ad_hoc_cov(info, std=None, *, verbose=None):
     """### Create an ad hoc noise covariance.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -524,13 +545,15 @@ def make_ad_hoc_cov(info, std=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     cov : instance of Covariance
         The ad hoc diagonal noise covariance for the M/EEG data channels.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The default noise values are 5 fT/cm, 20 fT, and 0.2 µV for gradiometers,
     magnetometers, and EEG channels respectively.
 
@@ -564,8 +587,9 @@ def compute_raw_covariance(
     ### 💡 Note To estimate the noise covariance from epoched data, use
               `mne.compute_covariance` instead.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data.
     tmin : float
@@ -703,20 +727,23 @@ def compute_raw_covariance(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     cov : instance of Covariance | list
         The computed covariance. If method equals 'auto' or is a list of str
         and return_estimators equals True, a list of covariance estimators is
         returned (sorted by log-likelihood, from high to low, i.e. from best
         to worst).
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_covariance : Estimate noise covariance matrix from epoched data.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function will:
 
     1. Partition the data into evenly spaced, equal-length epochs.
@@ -765,8 +792,9 @@ def compute_covariance(
               as an empty-room recording, use
               `mne.compute_raw_covariance` instead.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs, or list of Epochs
         The epochs.
     keep_sample_mean : bool (default True)
@@ -897,21 +925,24 @@ def compute_covariance(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     cov : instance of Covariance | list
         The computed covariance. If method equals ``'auto'`` or is a list of str
         and ``return_estimators=True``, a list of covariance estimators is
         returned (sorted by log-likelihood, from high to low, i.e. from best
         to worst).
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_raw_covariance : Estimate noise covariance from raw data, such as
         empty-room recordings.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Baseline correction or sufficient high-passing should be used
     when creating the `Epochs` to ensure that the data are zero mean,
     otherwise the computed covariance matrix will be inaccurate.
@@ -1047,8 +1078,9 @@ class _ShrunkCovariance(BaseEstimator):
 def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
     """### Write a noise covariance matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file. It should end with ``-cov.fif`` or
         ``-cov.fif.gz``.
@@ -1067,8 +1099,9 @@ def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_cov
     """
     ...
@@ -1084,8 +1117,9 @@ def prepare_noise_cov(
 ):
     """### Prepare noise covariance matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     noise_cov : instance of Covariance
         The noise covariance to process.
 
@@ -1162,8 +1196,9 @@ def prepare_noise_cov(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     cov : instance of Covariance
         A copy of the covariance with the good channels subselected
         and parameters updated.
@@ -1204,8 +1239,9 @@ def regularize(
               with regularization in a data-driven fashion. See the
               `FAQ <faq_how_should_i_regularize>` for more information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     cov : Covariance
         The noise covariance matrix.
 
@@ -1305,13 +1341,15 @@ def regularize(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     reg_cov : Covariance
         The regularized covariance matrix.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.compute_covariance
     """
     ...
@@ -1330,8 +1368,9 @@ def compute_whitener(
 ):
     """### Compute whitening matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     noise_cov : Covariance
         The noise covariance.
 
@@ -1433,8 +1472,9 @@ def compute_whitener(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     W : ndarray, shape (n_channels, n_channels) or (n_nonzero, n_channels)
         The whitening matrix.
     ch_names : list
@@ -1451,8 +1491,9 @@ def whiten_evoked(
 ):
     """### Whiten evoked data using given noise covariance.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The evoked data.
     noise_cov : instance of Covariance
@@ -1530,8 +1571,9 @@ def whiten_evoked(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked_white : instance of Evoked
         The whitened evoked data.
     """

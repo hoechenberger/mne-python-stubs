@@ -36,8 +36,9 @@ class Label:
           is raised.
         * Values of duplicate vertices are summed.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     vertices : array, shape (N,)
         Vertex indices (0 based).
     pos : array, shape (N, 3) | None
@@ -65,8 +66,9 @@ class Label:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     color : None | tuple
         Default label color, represented as RGBA tuple with values between 0
         and 1.
@@ -115,8 +117,9 @@ class Label:
     def __len__(self) -> int:
         """### Return the number of vertices.
 
+        -----
         ### ⏎ Returns
-        -------
+
         n_vertices : int
             The number of vertices.
         """
@@ -130,13 +133,15 @@ class Label:
     def save(self, filename) -> None:
         """### Write to disk as FreeSurfer \\*.label file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         filename : path-like
             Path to label file to produce.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Note that due to file specification limitations, the Label's subject
         and color attributes are not saved to disk.
         """
@@ -144,8 +149,9 @@ class Label:
     def copy(self):
         """### Copy the label instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         label : instance of Label
             The copied label.
         """
@@ -153,8 +159,9 @@ class Label:
     def fill(self, src, name=None):
         """### Fill the surface between sources for a source space label.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         src : SourceSpaces
             Source space in which the label was defined. If a source space is
             provided, the label is expanded to fill in surface vertices that
@@ -165,14 +172,16 @@ class Label:
         name : None | str
             Name for the new Label (default is self.name).
 
+        -----
         ### ⏎ Returns
-        -------
+
         label : Label
             The label covering the same vertices in source space but also
             including intermediate surface vertices.
 
+        -----
         ### 👉 See Also
-        --------
+
         Label.restrict
         Label.smooth
         """
@@ -180,24 +189,28 @@ class Label:
     def restrict(self, src, name=None):
         """### Restrict a label to a source space.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         src : instance of SourceSpaces
             The source spaces to use to restrict the label.
         name : None | str
             Name for the new Label (default is self.name).
 
+        -----
         ### ⏎ Returns
-        -------
+
         label : instance of Label
             The Label restricted to the set of source space vertices.
 
+        -----
         ### 👉 See Also
-        --------
+
         Label.fill
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.20
         """
         ...
@@ -215,8 +228,9 @@ class Label:
         Useful for filling in labels made in a
         decimated source space for display.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
@@ -256,13 +270,15 @@ class Label:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         label : instance of Label
             The smoothed label.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function will set label.pos to be all zeros. If the positions
         on the new surface are required, consider using mne.read_surface
         with ``label.vertices``.
@@ -282,8 +298,9 @@ class Label:
 
         Useful for transforming a label from one subject to another.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         subject_from : str | None
             The name of the subject of the current label. If None, the
             initial subject will be taken from self.subject.
@@ -323,17 +340,20 @@ class Label:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         label : instance of Label
             The morphed label.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.morph_labels : Morph a set of labels.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function will set label.pos to be all zeros. If the positions
         on the new surface are required, consider using `mne.read_surface`
         with ``label.vertices``.
@@ -344,8 +364,9 @@ class Label:
     ):
         """### Split the Label into two or more parts.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         parts : int >= 2 | tuple of str | str
             Number of labels to create (default is 2), or tuple of strings
             specifying label names for new labels (from posterior to anterior),
@@ -367,14 +388,16 @@ class Label:
             ``freesurfer`` to ``True`` in order to replicate label splits from
             FreeSurfer's ``mris_divide_parcellation``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         labels : list of Label, shape (n_parts,)
             The labels, starting from the lowest to the highest end of the
             projection axis.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         If using 'contiguous' split, you must ensure that the label being split
         uses the same triangular resolution as the surface mesh files in
         ``subjects_dir`` Also, some small fringe labels may be returned that
@@ -388,14 +411,16 @@ class Label:
     def get_vertices_used(self, vertices=None):
         """### Get the source space's vertices inside the label.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         vertices : ndarray of int, shape (n_vertices,) | None
             The set of vertices to compare the label to. If None, equals to
             ``np.arange(10242)``. Defaults to None.
 
+        -----
         ### ⏎ Returns
-        -------
+
         label_verts : ndarray of in, shape (n_label_vertices,)
             The vertices of the label corresponding used by the data.
         """
@@ -403,8 +428,9 @@ class Label:
     def get_tris(self, tris, vertices=None):
         """### Get the source space's triangles inside the label.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tris : ndarray of int, shape (n_tris, 3)
             The set of triangles corresponding to the vertices in a
             source space.
@@ -412,8 +438,9 @@ class Label:
             The set of vertices to compare the label to. If None, equals to
             ``np.arange(10242)``. Defaults to None.
 
+        -----
         ### ⏎ Returns
-        -------
+
         label_tris : ndarray of int, shape (n_tris, 3)
             The subset of tris used by the label.
         """
@@ -430,8 +457,9 @@ class Label:
         This function computes the spatial center of mass on the surface
         as in :footcite:`LarsonLee2013`.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
@@ -454,19 +482,22 @@ class Label:
             of mass on the spherical surface to help avoid potential issues
             with cortical folding.
 
+        -----
         ### ⏎ Returns
-        -------
+
         vertex : int
             Vertex of the spatial center of mass for the inferred hemisphere,
             with each vertex weighted by its label value.
 
+        -----
         ### 👉 See Also
-        --------
+
         SourceEstimate.center_of_mass
         vertex_to_mni
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.13
 
         References
@@ -479,8 +510,9 @@ class Label:
     ):
         """### Compute the distance from each vertex to outside the label.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
@@ -500,8 +532,9 @@ class Label:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         dist : ndarray, shape (n_vertices,)
             The distance from each vertex in ``self.vertices`` to exit the
             label.
@@ -509,8 +542,9 @@ class Label:
             For each vertex in the label, the nearest vertex outside the
             label.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Distances are computed along the cortical surface.
 
         ✨ Added in vesion 0.24
@@ -521,8 +555,9 @@ class Label:
     ):
         """### Compute the surface area of a label.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         subject : str | None
             Subject which this label belongs to. Should only be specified if it is not
@@ -542,13 +577,15 @@ class Label:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         area : float
             The area (in m²) of the label.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ..versionadded:: 0.24
         """
         ...
@@ -556,8 +593,9 @@ class Label:
 class BiHemiLabel:
     """### A freesurfer/MNE label with vertices in both hemispheres.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     lh : Label
         Label for the left hemisphere.
     rh : Label
@@ -569,8 +607,9 @@ class BiHemiLabel:
         Note that due to file specification limitations, the color isn't saved
         to or loaded from files written to disk.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     lh : Label
         Label for the left hemisphere.
     rh : Label
@@ -592,8 +631,9 @@ class BiHemiLabel:
     def __len__(self) -> int:
         """### Return the number of vertices.
 
+        -----
         ### ⏎ Returns
-        -------
+
         n_vertices : int
             The number of vertices.
         """
@@ -608,8 +648,9 @@ class BiHemiLabel:
 def read_label(filename, subject=None, color=None, *, verbose=None):
     """### Read FreeSurfer Label file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     filename : str
         Path to label file.
 
@@ -631,8 +672,9 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     label : Label
         Instance of Label object with attributes:
 
@@ -641,8 +683,9 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
             - ``pos``: locations in meters (columns 2 - 4 divided by 1000)
             - ``values``: values at the vertices (column 5)
 
+    -----
     ### 👉 See Also
-    --------
+
     read_labels_from_annot
     write_labels_to_annot
     """
@@ -651,8 +694,9 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
 def write_label(filename, label, verbose=None) -> None:
     """### Write a FreeSurfer label.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     filename : str
         Path to label file to produce.
     label : Label
@@ -664,12 +708,14 @@ def write_label(filename, label, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_labels_to_annot
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Note that due to file specification limitations, the Label's subject and
     color attributes are not saved to disk.
     """
@@ -680,8 +726,9 @@ def split_label(
 ):
     """### Split a Label into two or more parts.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     label : Label | str
         Label which is to be split (Label object or path to a label file).
     parts : int >= 2 | tuple of str
@@ -704,14 +751,16 @@ def split_label(
         ``freesurfer`` to ``True`` in order to replicate label splits from
         FreeSurfer's ``mris_divide_parcellation``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels : list of Label, shape (n_parts,)
         The labels, starting from the lowest to the highest end of the
         projection axis.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Works by finding the label's principal eigen-axis on the spherical surface,
     projecting all label vertex coordinates onto this axis and dividing them at
     regular spatial intervals.
@@ -721,15 +770,17 @@ def split_label(
 def label_sign_flip(label, src):
     """### Compute sign for label averaging.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     label : Label | BiHemiLabel
         A label.
     src : SourceSpaces
         The source space over which the label is defined.
 
+    -----
     ### ⏎ Returns
-    -------
+
     flip : array
         Sign flip vector (contains 1 or -1).
     """
@@ -745,8 +796,9 @@ def stc_to_label(
 ):
     """### Compute a label from the non-zero sources in an stc object.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     stc : SourceEstimate
         The source estimates.
     src : SourceSpaces | str | None
@@ -773,8 +825,9 @@ def stc_to_label(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels : list of Label | list of list of Label
         The generated labels. If connected is False, it returns
         a list of Labels (one per hemisphere). If no Label is available
@@ -804,8 +857,9 @@ def grow_labels(
     label is generated containing all vertices within a maximum geodesic
     distance on the white matter surface from the seed.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -846,15 +900,17 @@ def grow_labels(
         from the array. The first three values will be interpreted as RGB
         colors and the fourth column as the alpha value (commonly 1).
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels : list of Label
         The labels' ``comment`` attribute contains information on the seed
         vertex and extent; the ``values``  attribute contains distance from the
         seed in millimeters.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     "extents" and "hemis" can either be arrays with the same length as
     seeds, which allows using a different extent and hemisphere for
     label, or integers, in which case the same extent and hemisphere is
@@ -876,8 +932,9 @@ def random_parcellation(
     cover the whole surface. Regions are growing around randomly chosen
     seeds.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -904,8 +961,9 @@ def random_parcellation(
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels : list of Label
         Random cortex parcellation.
     """
@@ -926,8 +984,9 @@ def read_labels_from_annot(
 
     Note: Only cortical labels will be returned.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -961,13 +1020,15 @@ def read_labels_from_annot(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels : list of Label
         The labels, sorted by label name (ascending).
 
+    -----
     ### 👉 See Also
-    --------
+
     write_labels_to_annot
     morph_labels
     """
@@ -987,8 +1048,9 @@ def morph_labels(
     obtained with `read_labels_from_annot`) from one subject to
     another.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     labels : list
         The labels to morph.
     subject_to : str
@@ -1010,18 +1072,21 @@ def morph_labels(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels : list
         The morphed labels.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_labels_from_annot
     mne.Label.morph
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This does not use the same algorithm as Freesurfer, so the results
     morphing (e.g., from ``'fsaverage'`` to your subject) might not match
     what Freesurfer produces during ``recon-all``.
@@ -1038,8 +1103,9 @@ def labels_to_stc(
     This function is meant to work like the opposite of
     `extract_label_time_course`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     labels : Label | BiHemiLabel | list | tuple | str
         If using a surface or mixed source space, this should be the
@@ -1079,17 +1145,20 @@ def labels_to_stc(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : instance of SourceEstimate | instance of VolSourceEstimate
         The values-in-labels converted to a STC.
 
+    -----
     ### 👉 See Also
-    --------
+
     extract_label_time_course
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Vertices that appear in more than one label will be averaged.
 
     ✨ Added in vesion 0.18
@@ -1111,8 +1180,9 @@ def write_labels_to_annot(
 ):
     """### Create a FreeSurfer annotation from a list of labels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     labels : list with instances of mne.Label
         The labels to create a parcellation from.
 
@@ -1151,12 +1221,14 @@ def write_labels_to_annot(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_labels_from_annot
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Vertices that are not covered by any of the labels are assigned to a label
     named ``"unknown"``.
     """
@@ -1175,8 +1247,9 @@ def select_sources(
 ):
     """### Select sources from a label.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -1212,13 +1285,15 @@ def select_sources(
     surf : str
         The surface used to simulated the label, defaults to the white surface.
 
+    -----
     ### ⏎ Returns
-    -------
+
     label : instance of Label
         The label that contains the selected sources.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function selects a region of interest on the cortical surface based
     on a label (or a hemisphere). The sources are selected by growing a region
     around a seed which is selected randomly, is the center of the label, or

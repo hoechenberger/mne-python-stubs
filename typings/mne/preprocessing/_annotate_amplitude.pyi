@@ -25,8 +25,9 @@ def annotate_amplitude(
     `mne.io.Raw` object; use `mne.io.Raw.set_annotations` and
     `info['bads'] <mne.Info>` to do so.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
     peak : float | dict | None
@@ -70,15 +71,17 @@ def annotate_amplitude(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     annotations : instance of Annotations
         The annotated bad segments.
     bads : list
         The channels detected as bad.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function does not use a window to detect small peak-to-peak or large
     peak-to-peak amplitude changes as the ``reject`` and ``flat`` argument from
     `mne.Epochs` does. Instead, it looks at the difference between

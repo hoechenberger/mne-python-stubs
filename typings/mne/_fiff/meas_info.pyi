@@ -45,8 +45,9 @@ class MontageMixin:
     def get_montage(self):
         """### Get a DigMontage from instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
@@ -69,8 +70,9 @@ class MontageMixin:
     ):
         """### Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
@@ -108,19 +110,22 @@ class MontageMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Raw | Epochs | Evoked
             The instance, modified in-place.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.channels.make_standard_montage
         mne.channels.make_dig_montage
         mne.channels.read_custom_montage
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ### ⛔️ Warning
             Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
             a montage. Other channel types (e.g., MEG channels) should have
@@ -143,8 +148,9 @@ class SetChannelsMixin(MontageMixin):
     def set_channel_types(self, mapping, *, on_unit_change: str = "warn", verbose=None):
         """### Specify the sensor types of channels.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         mapping : dict
             A dictionary mapping channel names to sensor types, e.g.,
             ``{'EEG061': 'eog'}``.
@@ -160,16 +166,18 @@ class SetChannelsMixin(MontageMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Raw | Epochs | Evoked
             The instance (modified in place).
 
             🎭 Changed in version 0.20
                Return the instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         The following sensor types are accepted:
 
             ecg, eeg, emg, eog, exci, ias, misc, resp, seeg, dbs, stim, syst,
@@ -183,8 +191,9 @@ class SetChannelsMixin(MontageMixin):
     def rename_channels(self, mapping, allow_duplicates: bool = False, *, verbose=None):
         """### Rename channels.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         mapping : dict | callable
             A dictionary mapping the old channel to a new channel name
@@ -205,16 +214,18 @@ class SetChannelsMixin(MontageMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Raw | Epochs | Evoked
             The instance (modified in place).
 
             🎭 Changed in version 0.20
                Return the instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.9.0
         """
         ...
@@ -235,8 +246,9 @@ class SetChannelsMixin(MontageMixin):
     ):
         """### Plot sensor positions.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         kind : str
             Whether to plot the sensors as 3d, topomap or as an interactive
             sensor selection dialog. Available options 'topomap', '3d',
@@ -301,19 +313,22 @@ class SetChannelsMixin(MontageMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure containing the sensor topography.
         selection : list
             A list of selected channels. Only returned if ``kind=='select'``.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.viz.plot_layout
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function plots the sensor locations from the info structure using
         matplotlib. For drawing the sensors using PyVista see
         `mne.viz.plot_alignment`.
@@ -324,8 +339,9 @@ class SetChannelsMixin(MontageMixin):
     def anonymize(self, daysback=None, keep_his: bool = False, verbose=None):
         """### Anonymize measurement information in place.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         daysback : int | None
             Number of days to subtract from all dates.
@@ -346,13 +362,15 @@ class SetChannelsMixin(MontageMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Raw | Epochs | Evoked
             The modified instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
 
         Removes potentially identifying information if it exists in ``info``.
         Specifically for each of the following we use:
@@ -384,8 +402,9 @@ class SetChannelsMixin(MontageMixin):
     def set_meas_date(self, meas_date):
         """### Set the measurement start date.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         meas_date : datetime | float | tuple | None
             The new measurement date.
             If datetime object, it must be timezone-aware and in UTC.
@@ -394,17 +413,20 @@ class SetChannelsMixin(MontageMixin):
             object will be automatically created. If None, will remove
             the time reference.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Raw | Epochs | Evoked
             The modified raw instance. Operates in place.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.io.Raw.anonymize
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         If you want to remove all time references in the file, call
         `mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
         after calling ``inst.set_meas_date(None)``.
@@ -419,19 +441,22 @@ class ContainsMixin:
     def __contains__(self, ch_type) -> bool:
         """### Check channel type membership.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_type : str
             Channel type to check for. Can be e.g. ``'meg'``, ``'eeg'``,
             ``'stim'``, etc.
 
+        -----
         ### ⏎ Returns
-        -------
+
         in : bool
             Whether or not the instance contains the given channel type.
 
-        Examples
-        --------
+        -----
+        ### 🖥️ Examples
+
         Channel type membership can be tested as::
 
             >>> 'meg' in inst  # doctest: +SKIP
@@ -450,8 +475,9 @@ class ContainsMixin:
     ):
         """### Get a list of channel type for each channel.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -466,8 +492,9 @@ class ContainsMixin:
         only_data_chs : bool
             Whether to ignore non-data channels. Default is ``False``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         channel_types : list
             The channel types.
         """
@@ -506,15 +533,17 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         modified by various MNE-Python functions or methods (which have
         safeguards to ensure all fields remain in sync).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     *args : list
         Arguments.
     **kwargs : dict
         Keyword arguments.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     acq_pars : str | None
         MEG system acquisition parameters.
         See `mne.AcqParserFIF` for details.
@@ -645,12 +674,14 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     xplotter_layout : str
         Layout of the Xplotter (Neuromag system only).
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.create_info
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The following parameters have a nested structure.
 
     * ``chs`` list of dict:
@@ -900,8 +931,9 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     def copy(self):
         """### Copy the instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         info : instance of Info
             The copied info.
         """
@@ -929,8 +961,9 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     def save(self, fname) -> None:
         """### Write measurement info in fif file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the file. Should end by ``'-info.fif'``.
         """
@@ -939,8 +972,9 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
 def read_fiducials(fname, verbose=None):
     """### Read fiducials from a fiff file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename to read.
 
@@ -950,8 +984,9 @@ def read_fiducials(fname, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     pts : list of dict
         List of digitizer points (each point in a dict).
     coord_frame : int
@@ -965,8 +1000,9 @@ def write_fiducials(
 ) -> None:
     """### Write fiducials to a fiff file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Destination file name.
     pts : iterator of dict
@@ -997,8 +1033,9 @@ def write_fiducials(
 def read_info(fname, verbose=None):
     """### Read measurement info from a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         File name.
 
@@ -1008,8 +1045,9 @@ def read_info(fname, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -1019,15 +1057,17 @@ def read_info(fname, verbose=None):
 def read_bad_channels(fid, node):
     """### Read bad channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file
         The file descriptor.
     node : dict
         The node of the FIF tree that contains info on the bad channels.
 
+    -----
     ### ⏎ Returns
-    -------
+
     bads : list
         A list of bad channel's names.
     """
@@ -1036,8 +1076,9 @@ def read_bad_channels(fid, node):
 def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
     """### Read the measurement info.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file
         Open file descriptor.
     tree : tree
@@ -1053,8 +1094,9 @@ def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -1066,8 +1108,9 @@ def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
 def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None:
     """### Write measurement info into a file id (from a fif file).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file
         Open file descriptor.
 
@@ -1080,8 +1123,9 @@ def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None
     reset_range : bool
         If True, info['chs'][k]['range'] will be set to unity.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Tags are written in a particular order for compatibility with maxfilter.
     """
     ...
@@ -1089,8 +1133,9 @@ def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None
 def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
     """### Write measurement info in fif file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file. Should end by ``-info.fif``.
 
@@ -1108,8 +1153,9 @@ def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
 def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
     """### Create a basic Info instance suitable for use with create_raw.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ch_names : list of str | int
         Channel names. If an int, a list of channel names will be created
         from ``range(ch_names)``.
@@ -1129,14 +1175,16 @@ def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The info dictionary will be sparsely populated to enable functionality
     within the rest of the package. Advanced functionality such as source
     localization can only be obtained through substantial, proper
@@ -1168,8 +1216,9 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
                  stay synchronized (e.g.,
                  `raw.annotations <mne.Annotations>`).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -1193,13 +1242,15 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     info : instance of Info
         The anonymized measurement information.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     Removes potentially identifying information if it exists in ``info``.
     Specifically for each of the following we use:

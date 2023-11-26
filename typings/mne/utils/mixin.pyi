@@ -10,13 +10,15 @@ class SizeMixin:
     def __eq__(self, other):
         """### Compare self to other.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         other : object
             The object to compare to.
 
+        -----
         ### ⏎ Returns
-        -------
+
         eq : bool
             True if the two objects are equal.
         """
@@ -24,8 +26,9 @@ class SizeMixin:
     def __hash__(self):
         """### Hash the object.
 
+        -----
         ### ⏎ Returns
-        -------
+
         hash : int
             The hash
         """
@@ -37,18 +40,21 @@ class GetEpochsMixin:
     def __getitem__(self, item):
         """### Return an Epochs object with a copied subset of epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         item : slice, array-like, str, or list
             See below for use cases.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : instance of Epochs
             See below for use cases.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Epochs can be accessed as ``epochs[...]`` in several ways:
 
         1. **Integer or slice:** ``epochs[idx]`` will return an `mne.Epochs`
@@ -104,17 +110,20 @@ class GetEpochsMixin:
     def __len__(self) -> int:
         """### Return the number of epochs.
 
+        -----
         ### ⏎ Returns
-        -------
+
         n_epochs : int
             The number of remaining epochs.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function only works if bad epochs have been dropped.
 
-        Examples
-        --------
+        -----
+        ### 🖥️ Examples
+
         This can be used as::
 
             >>> epochs.drop_bad()  # doctest: +SKIP
@@ -129,8 +138,9 @@ class GetEpochsMixin:
 
         This method resets the object iteration state to the first epoch.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This enables the use of this Python pattern::
 
             >>> for epoch in epochs:  # doctest: +SKIP
@@ -143,13 +153,15 @@ class GetEpochsMixin:
     def __next__(self, return_event_id: bool = False):
         """### Iterate over epoch data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         return_event_id : bool
             If True, return both the epoch data and an event_id.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epoch : array of shape (n_channels, n_times)
             The epoch data.
         event_id : int
@@ -173,16 +185,18 @@ class TimeMixin:
     def time_as_index(self, times, use_rounding: bool = False):
         """### Convert time to indices.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         times : list-like | float | int
             List of numbers or a number representing points in time.
         use_rounding : bool
             If True, use rounding (instead of truncation) when converting
             times to indices. This can help avoid non-unique indices.
 
+        -----
         ### ⏎ Returns
-        -------
+
         index : ndarray
             Indices corresponding to the times supplied.
         """
@@ -206,8 +220,9 @@ class ExtendedTimeMixin(TimeMixin):
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
         """### Crop data to a given time interval.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tmin : float | None
             Start time of selection in seconds.
         tmax : float | None
@@ -225,13 +240,15 @@ class ExtendedTimeMixin(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Raw, Epochs, Evoked, AverageTFR, or SourceEstimate
             The cropped time-series object, modified in-place.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
 
         Unlike Python slices, MNE time intervals by default include **both**
         their end points; ``crop(tmin, tmax)`` returns the interval
@@ -242,8 +259,9 @@ class ExtendedTimeMixin(TimeMixin):
     def decimate(self, decim, offset: int = 0, *, verbose=None):
         """### Decimate the time-series data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         decim : int
             Factor by which to subsample the data.
@@ -267,18 +285,21 @@ class ExtendedTimeMixin(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : MNE-object
             The decimated object.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.Epochs.resample
         mne.io.Raw.resample
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
 
         For historical reasons, ``decim`` / "decimation" refers to simply subselecting
         samples from a given signal. This contrasts with the broader signal processing
@@ -310,8 +331,9 @@ class ExtendedTimeMixin(TimeMixin):
     def shift_time(self, tshift, relative: bool = True):
         """### Shift time scale in epoched or evoked data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tshift : float
             The (absolute or relative) time shift in seconds. If ``relative``
             is True, positive tshift increases the time value associated with
@@ -321,13 +343,15 @@ class ExtendedTimeMixin(TimeMixin):
             Otherwise, shift the time values such that the time of the first
             sample equals ``tshift``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         epochs : MNE-object
             The modified instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This method allows you to shift the *time* values associated with each
         data sample by an arbitrary amount. It does *not* resample the signal
         or change the *data* values in any way.

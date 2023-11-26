@@ -46,8 +46,9 @@ def write_string(fid, kind, data) -> None:
 def write_name_list(fid, kind, data) -> None:
     """### Write a colon-separated list of names.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : list of strings
     """
     ...
@@ -79,8 +80,9 @@ def write_complex_double_matrix(fid, kind, mat) -> None:
 def get_machid():
     """### Get (mostly) unique machine ID.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ids : array (length 2, int32)
         The machine identifier used in MNE.
     """
@@ -105,8 +107,9 @@ def end_block(fid, kind) -> None:
 def start_file(fname, id_=None):
     """### Open a fif file for writing and writes the compulsory header tags.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like | fid
         The name of the file to open. It is recommended
         that the name ends with .fif or .fif.gz. Can also be an

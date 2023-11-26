@@ -11,8 +11,9 @@ def resolution_metrics(
 ):
     """### Compute spatial resolution metrics for linear solvers.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     resmat : array, shape (n_orient * n_vertices, n_vertices)
         The resolution matrix.
         If not a square matrix and if the number of rows is a multiple of
@@ -57,13 +58,15 @@ def resolution_metrics(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     resolution_metric : instance of SourceEstimate
         The resolution metric.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For details, see :footcite:`MolinsEtAl2008,HaukEtAl2019`.
 
     ✨ Added in vesion 0.20

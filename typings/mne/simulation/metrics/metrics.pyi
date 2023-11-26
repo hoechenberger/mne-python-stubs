@@ -3,8 +3,9 @@ from ...utils import fill_doc as fill_doc
 def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
     """### Calculate STC similarities across all sources and times.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     stc1 : SourceEstimate
         First source estimate for comparison.
     stc2 : SourceEstimate
@@ -12,13 +13,15 @@ def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
     metric : str
         Metric to calculate, ``'rms'`` or ``'cosine'``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     score : float | array
         Calculated metric.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Metric calculation has multiple options:
 
         * rms: Root mean square of difference between stc data matrices.
@@ -31,8 +34,9 @@ def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
 def cosine_score(stc_true, stc_est, per_sample: bool = True):
     """### Compute cosine similarity between 2 source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -45,15 +49,17 @@ def cosine_score(stc_true, stc_est, per_sample: bool = True):
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...
@@ -73,8 +79,9 @@ def region_localization_error(
     :math:`r_k` denotes the position of the k-th source dipole in space
     and :math:`||\\cdot||` is an Euclidean norm in :math:`\\mathbb{R}^3`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -93,15 +100,17 @@ def region_localization_error(
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Papers :footcite:`MaksymenkoEtAl2017` and :footcite:`BeckerEtAl2017`
     use term Dipole Localization Error (DLE) for the same formula. Paper
     :footcite:`YaoEtAl2005` uses term Error Distance (ED) for the same formula.
@@ -127,8 +136,9 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     The ROC-AUC metric is computed between amplitudes of the source
     estimates, i.e. after taking the absolute values.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -141,15 +151,17 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...
@@ -167,8 +179,9 @@ def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True)
 
     Threshold is used first for data binarization.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -185,15 +198,17 @@ def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True)
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...
@@ -210,8 +225,9 @@ def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool 
 
     Threshold is used first for data binarization.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -228,15 +244,17 @@ def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool 
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...
@@ -252,8 +270,9 @@ def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = T
 
     Threshold is used first for data binarization.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -270,15 +289,17 @@ def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = T
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...
@@ -303,8 +324,9 @@ def peak_position_error(
     Threshold is used on estimated source for focusing the metric to strong
     amplitudes and omitting the low-amplitude values.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -323,15 +345,17 @@ def peak_position_error(
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     These metrics are documented in :footcite:`StenroosHauk2013` and
     :footcite:`LinEtAl2006a`.
 
@@ -362,8 +386,9 @@ def spatial_deviation_error(
     Threshold is used on estimated source for focusing the metric to strong
     amplitudes and omitting the low-amplitude values.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     stc_true : instance of (Vol|Mixed)SourceEstimate
         The source estimates containing correct values.
@@ -382,15 +407,17 @@ def spatial_deviation_error(
         If True the metric is computed for each sample
         separately. If False, the metric is spatio-temporal.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     metric : float | array, shape (n_times,)
         The metric. float if per_sample is False, else
         array with the values computed for each time point.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     These metrics are documented in :footcite:`StenroosHauk2013` and
     :footcite:`LinEtAl2006a`.
 

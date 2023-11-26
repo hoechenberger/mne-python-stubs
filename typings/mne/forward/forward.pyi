@@ -53,19 +53,22 @@ class Forward(dict):
         Forward objects should be obtained using
         `mne.make_forward_solution` or `mne.read_forward_solution`.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     ch_names : list of str
         A convenience wrapper accessible as ``fwd.ch_names`` which wraps
         ``fwd['info']['ch_names']``.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.make_forward_solution
     mne.read_forward_solution
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Forward data is accessible via string keys using standard
     `python:dict` access (e.g., ``fwd['nsource'] == 4096``):
 
@@ -124,8 +127,9 @@ class Forward(dict):
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """### Save the forward solution.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         fname : path-like
             File name to save the forward solution to. It should end with
@@ -148,21 +152,24 @@ class Forward(dict):
     def pick_channels(self, ch_names, ordered: bool = False):
         """### Pick channels from this forward operator.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_names : list of str
             List of channels to include.
         ordered : bool
             If true (default False), treat ``include`` as an ordered list
             rather than a set.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fwd : instance of Forward.
             The modified forward model.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Operates in-place.
 
         ✨ Added in vesion 0.20.0
@@ -172,8 +179,9 @@ class Forward(dict):
 def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbose=None):
     """### Read a forward solution a.k.a. lead field.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The file name, which should end with ``-fwd.fif``, ``-fwd.fif.gz``,
         ``_fwd.fif``, ``_fwd.fif.gz``, ``-fwd.h5``, or ``_fwd.h5``.
@@ -197,17 +205,20 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwd : instance of Forward
         The forward solution.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_forward_solution, make_forward_solution
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Forward solutions, which are derived from an original forward solution with
     free orientation, are always stored on disk as forward solution with free
     orientation in X/Y/Z RAS coordinates. To apply any transformation to the
@@ -234,8 +245,9 @@ def convert_forward_solution(
 ):
     """### Convert forward solution between different source orientations.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwd : Forward
         The forward solution to modify.
     surf_ori : bool, optional (default False)
@@ -256,8 +268,9 @@ def convert_forward_solution(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwd : Forward
         The modified forward solution.
     """
@@ -266,8 +279,9 @@ def convert_forward_solution(
 def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) -> None:
     """### Write forward solution to a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : path-like
         File name to save the forward solution to. It should end with
@@ -286,12 +300,14 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_forward_solution
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Forward solutions, which are derived from an original forward solution with
     free orientation, are always stored on disk as forward solution with free
     orientation in X/Y/Z RAS coordinates. Transformations (surface orientation,
@@ -310,16 +326,18 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
 def is_fixed_orient(forward, orig: bool = False):
     """### Check if the forward operator is fixed orientation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     forward : instance of Forward
         The forward.
     orig : bool
         If True, consider the original source orientation.
         If False (default), consider the current source orientation.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fixed_ori : bool
         Whether or not it is fixed orientation.
     """
@@ -328,8 +346,9 @@ def is_fixed_orient(forward, orig: bool = False):
 def write_forward_meas_info(fid, info) -> None:
     """### Write measurement info stored in forward solution.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file id
         The file id
 
@@ -341,8 +360,9 @@ def write_forward_meas_info(fid, info) -> None:
 def compute_orient_prior(forward, loose: str = "auto", verbose=None):
     """### Compute orientation prior.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     forward : instance of Forward
         Forward operator.
 
@@ -366,13 +386,15 @@ def compute_orient_prior(forward, loose: str = "auto", verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     orient_prior : ndarray, shape (n_sources,)
         Orientation priors.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_depth_prior
     """
     ...
@@ -390,8 +412,9 @@ def compute_depth_prior(
 ):
     """### Compute depth prior for depth weighting.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     forward : instance of Forward
         The forward solution.
 
@@ -475,17 +498,20 @@ def compute_depth_prior(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     depth_prior : ndarray, shape (n_vertices,)
         The depth prior.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_orient_prior
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The defaults used by the minimum norm code and sparse solvers differ.
     In particular, the values for MNE are::
 
@@ -541,8 +567,9 @@ def apply_forward(
     which the original data was acquired. An exception will be raised if the
     forward operator contains channels that are not present in the template.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwd : Forward
         Forward operator to use.
     stc : SourceEstimate
@@ -574,13 +601,15 @@ def apply_forward(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked : Evoked
         Evoked object with computed sensor space data.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_forward_raw: Compute sensor space data and return a Raw object.
     """
     ...
@@ -606,8 +635,9 @@ def apply_forward_raw(
     original data was acquired. An exception will be raised if the forward
     operator contains channels that are not present in the info.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwd : Forward
         Forward operator to use.
     stc : SourceEstimate
@@ -639,13 +669,15 @@ def apply_forward_raw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : Raw object
         Raw object with computed sensor space data.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_forward: Compute sensor space data and return an Evoked object.
     """
     ...
@@ -653,8 +685,9 @@ def apply_forward_raw(
 def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
     """### Restrict forward operator to active sources in a source estimate.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwd : instance of Forward
         Forward operator.
     stc : instance of SourceEstimate
@@ -667,13 +700,15 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
 
         ✨ Added in vesion 0.18
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwd_out : instance of Forward
         Restricted forward operator.
 
+    -----
     ### 👉 See Also
-    --------
+
     restrict_forward_to_label
     """
     ...
@@ -681,20 +716,23 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
 def restrict_forward_to_label(fwd, labels):
     """### Restrict forward operator to labels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwd : Forward
         Forward operator.
     labels : instance of Label | list
         Label object or list of label objects.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwd_out : dict
         Restricted forward operator.
 
+    -----
     ### 👉 See Also
-    --------
+
     restrict_forward_to_stc
     """
     ...
@@ -702,8 +740,9 @@ def restrict_forward_to_label(fwd, labels):
 def average_forward_solutions(fwds, weights=None, verbose=None):
     """### Average forward solutions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fwds : list of Forward
         Forward solutions to average. Each entry (dict) should be a
         forward solution.
@@ -718,8 +757,9 @@ def average_forward_solutions(fwds, weights=None, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwd : Forward
         The averaged forward solution.
     """

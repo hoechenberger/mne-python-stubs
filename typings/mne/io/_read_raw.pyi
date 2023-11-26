@@ -23,8 +23,9 @@ def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
     `mne.io.read_raw_nicolet`, `mne.io.read_raw_nirx`,
     `mne.io.read_raw_curry`, and `mne.io.read_raw_nedf`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Name of the file to read.
 
@@ -45,8 +46,9 @@ def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
         details, see the arguments of the reader for the respective file
         format.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : mne.io.Raw
         Raw object.
     """

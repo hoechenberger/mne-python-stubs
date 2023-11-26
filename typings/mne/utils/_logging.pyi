@@ -15,23 +15,27 @@ class _FrameFilter(logging.Filter):
 def verbose(function: _FuncT) -> _FuncT:
     """### Verbose decorator to allow functions to override log-level.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     function : callable
         Function to be decorated by setting the verbosity level.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dec : callable
         The decorated function.
 
+    -----
     ### 👉 See Also
-    --------
+
     set_log_level
     set_config
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This decorator is used to set the verbose level during a function or method
     call, such as `mne.compute_covariance`. The `verbose` keyword
     argument can be 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL', True (an
@@ -40,8 +44,9 @@ def verbose(function: _FuncT) -> _FuncT:
 
     This function also serves as a docstring filler.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     You can use the ``verbose`` argument to set the verbose level on the fly::
 
         >>> import mne
@@ -56,8 +61,9 @@ def verbose(function: _FuncT) -> _FuncT:
 class use_log_level:
     """### Context manager for logging level.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
@@ -70,16 +76,19 @@ class use_log_level:
         information using formatting. Default (None) does not change the
         formatting. This can add overhead so is meant only for debugging.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.verbose
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     See the `logging documentation <tut-logging>` for details.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> from mne import use_log_level
     >>> from mne.utils import logger
     >>> with use_log_level(False):
@@ -100,8 +109,9 @@ class use_log_level:
 def set_log_level(verbose=None, return_old_level: bool = False, add_frames=None):
     """### Set the logging level.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     verbose : bool, str, int, or None
         The verbosity of messages to print. If a str, it can be either DEBUG,
         INFO, WARNING, ERROR, or CRITICAL. Note that these are for
@@ -117,8 +127,9 @@ def set_log_level(verbose=None, return_old_level: bool = False, add_frames=None)
         information using formatting. Default (None) does not change the
         formatting. This can add overhead so is meant only for debugging.
 
+    -----
     ### ⏎ Returns
-    -------
+
     old_level : int
         The old level. Only returned if ``return_old_level`` is True.
     """
@@ -129,8 +140,9 @@ def set_log_file(
 ) -> None:
     """### Set the log to print to a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like | None
         Filename of the log to print to. If None, stdout is used.
         To suppress log outputs, use set_log_level('WARNING').
@@ -188,8 +200,9 @@ def warn(
     more helpful warning, this function traverses the stack until it
     reaches a frame outside the ``mne`` namespace that caused the error.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     message : str
         Warning message.
     category : instance of Warning
@@ -209,8 +222,9 @@ def filter_out_warnings(warn_record, category=None, match=None) -> None:
     This helper takes a list of `warnings.WarningMessage` objects,
     and remove those matching category and/or text.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     category: WarningMessage type | None
        class of the message to filter out
 
@@ -224,8 +238,9 @@ def wrapped_stdout(
 ) -> Generator[None, None, None]:
     """### Wrap stdout writes to logger.info, with an optional indent prefix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     indent : str
         The indentation to add.
     cull_newlines : bool

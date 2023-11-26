@@ -20,8 +20,9 @@ als_ras_trans: Incomplete
 class Transform(dict):
     """### A transform.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fro : str | int
         The starting coordinate frame. See notes for valid coordinate frames.
     to : str | int
@@ -30,8 +31,9 @@ class Transform(dict):
         The transformation matrix. If None, an identity matrix will be
         used.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Valid coordinate frames are ``'meg'``, ``'mri'``, ``'mri_voxel'``,
     ``'head'``, ``'mri_tal'``, ``'ras'``, ``'fs_tal'``, ``'ctf_head'``,
     ``'ctf_meg'``, ``'unknown'``.
@@ -50,8 +52,9 @@ class Transform(dict):
         atol : float
             Absolute tolerance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         eq : bool
             True if the transforms are equal.
         """
@@ -68,8 +71,9 @@ class Transform(dict):
         atol : float
             Absolute tolerance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         eq : bool
             True if the transforms are not equal.
         """
@@ -85,8 +89,9 @@ class Transform(dict):
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """### Save the transform as -trans.fif file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the file, which should end in ``-trans.fif``.
 
@@ -108,8 +113,9 @@ class Transform(dict):
 def apply_trans(trans, pts, move: bool = True):
     """### Apply a transform matrix to an array of points.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     trans : array, shape = (4, 4) | instance of Transform
         Transform matrix.
     pts : array, shape = (3,) | (n, 3)
@@ -117,8 +123,9 @@ def apply_trans(trans, pts, move: bool = True):
     move : bool
         If True (default), apply translation.
 
+    -----
     ### ⏎ Returns
-    -------
+
     transformed_pts : shape = (3,) | (n, 3)
         Transformed point(s).
     """
@@ -127,13 +134,15 @@ def apply_trans(trans, pts, move: bool = True):
 def rotation(x: int = 0, y: int = 0, z: int = 0):
     """### Create an array with a 4 dimensional rotation matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x, y, z : scalar
         Rotation around the origin (in rad).
 
+    -----
     ### ⏎ Returns
-    -------
+
     r : array, shape = (4, 4)
         The rotation matrix.
     """
@@ -142,13 +151,15 @@ def rotation(x: int = 0, y: int = 0, z: int = 0):
 def rotation3d(x: int = 0, y: int = 0, z: int = 0):
     """### Create an array with a 3 dimensional rotation matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x, y, z : scalar
         Rotation around the origin (in rad).
 
+    -----
     ### ⏎ Returns
-    -------
+
     r : array, shape = (3, 3)
         The rotation matrix.
     """
@@ -157,13 +168,15 @@ def rotation3d(x: int = 0, y: int = 0, z: int = 0):
 def rotation3d_align_z_axis(target_z_axis):
     """### Compute a rotation matrix to align [ 0 0 1] with supplied target z axis.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     target_z_axis : array, shape (1, 3)
         z axis. computed matrix (r) will map [0 0 1] to target_z_axis
 
+    -----
     ### ⏎ Returns
-    -------
+
     r : array, shape (3, 3)
         The rotation matrix.
     """
@@ -172,13 +185,15 @@ def rotation3d_align_z_axis(target_z_axis):
 def rotation_angles(m):
     """### Find rotation angles from a transformation matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     m : array, shape >= (3, 3)
         Rotation matrix. Only the top left 3 x 3 partition is accessed.
 
+    -----
     ### ⏎ Returns
-    -------
+
     x, y, z : float
         Rotation around x, y and z axes.
     """
@@ -187,13 +202,15 @@ def rotation_angles(m):
 def scaling(x: int = 1, y: int = 1, z: int = 1):
     """### Create an array with a scaling matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x, y, z : scalar
         Scaling factors.
 
+    -----
     ### ⏎ Returns
-    -------
+
     s : array, shape = (4, 4)
         The scaling matrix.
     """
@@ -202,13 +219,15 @@ def scaling(x: int = 1, y: int = 1, z: int = 1):
 def translation(x: int = 0, y: int = 0, z: int = 0):
     """### Create an array with a translation matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x, y, z : scalar
         Translation parameters.
 
+    -----
     ### ⏎ Returns
-    -------
+
     m : array, shape = (4, 4)
         The translation matrix.
     """
@@ -217,8 +236,9 @@ def translation(x: int = 0, y: int = 0, z: int = 0):
 def combine_transforms(t_first, t_second, fro, to):
     """### Combine two transforms.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     t_first : dict
         First transform.
     t_second : dict
@@ -228,8 +248,9 @@ def combine_transforms(t_first, t_second, fro, to):
     to : int
         To coordinate frame.
 
+    -----
     ### ⏎ Returns
-    -------
+
     trans : dict
         Combined transformation.
     """
@@ -238,8 +259,9 @@ def combine_transforms(t_first, t_second, fro, to):
 def read_trans(fname, return_all: bool = False, verbose=None):
     """### Read a ``-trans.fif`` file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file.
     return_all : bool
@@ -254,13 +276,15 @@ def read_trans(fname, return_all: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     trans : dict | list of dict
         The transformation dictionary from the fif file.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_trans
     mne.transforms.Transform
     """
@@ -269,8 +293,9 @@ def read_trans(fname, return_all: bool = False, verbose=None):
 def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     """### Write a transformation FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file, which should end in ``-trans.fif``.
     trans : dict
@@ -286,8 +311,9 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_trans
     """
     ...
@@ -295,13 +321,15 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
 def invert_transform(trans):
     """### Invert a transformation between coordinate systems.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     trans : dict
         Transform to invert.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inv_trans : dict
         Inverse transform.
     """
@@ -310,8 +338,9 @@ def invert_transform(trans):
 def transform_surface_to(surf, dest, trans, copy: bool = False):
     """### Transform surface to the desired coordinate system.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     surf : dict
         Surface.
     dest : 'meg' | 'mri' | 'head' | int
@@ -323,8 +352,9 @@ def transform_surface_to(surf, dest, trans, copy: bool = False):
     copy : bool
         If False (default), operate in-place.
 
+    -----
     ### ⏎ Returns
-    -------
+
     res : dict
         Transformed source space.
     """
@@ -338,8 +368,9 @@ def get_ras_to_neuromag_trans(nasion, lpa, rpa):
     two preauricular points, and the y axis passes through the nasion and is
     normal to the x axis. (see mne manual, pg. 97)
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     nasion : array_like, shape (3,)
         Nasion point coordinate.
     lpa : array_like, shape (3,)
@@ -347,8 +378,9 @@ def get_ras_to_neuromag_trans(nasion, lpa, rpa):
     rpa : array_like, shape (3,)
         Right peri-auricular point coordinate.
 
+    -----
     ### ⏎ Returns
-    -------
+
     trans : numpy.array, shape = (4, 4)
         Transformation matrix to MNE head space.
     """
@@ -357,8 +389,9 @@ def get_ras_to_neuromag_trans(nasion, lpa, rpa):
 class _TPSWarp:
     """### Transform points using thin-plate spline (TPS) warping.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Based on the method by :footcite:`Bookstein1989` and
     adapted from code by Wang Lin (wanglin193@hotmail.com>).
 
@@ -371,13 +404,15 @@ class _TPSWarp:
     def transform(self, pts, verbose=None):
         """### Apply the warp.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         pts : shape (n_transform, 3)
             Source points to warp to the destination.
 
+        -----
         ### ⏎ Returns
-        -------
+
         dest : shape (n_transform, 3)
             The transformed points.
         """
@@ -386,8 +421,9 @@ class _TPSWarp:
 class _SphericalSurfaceWarp:
     """### Warp surfaces via spherical harmonic smoothing and thin-plate splines.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This class can be used to warp data from a source subject to
     a destination subject, as described in :footcite:`DarvasEtAl2006`.
 
@@ -421,8 +457,9 @@ class _SphericalSurfaceWarp:
     ):
         """### Fit the warp from source points to destination points.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         source : array, shape (n_src, 3)
             The source points.
         destination : array, shape (n_dest, 3)
@@ -445,8 +482,9 @@ class _SphericalSurfaceWarp:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of SphericalSurfaceWarp
             The warping object (for chaining).
         """
@@ -454,8 +492,9 @@ class _SphericalSurfaceWarp:
     def transform(self, source, verbose=None):
         """### Transform arbitrary source points to the destination.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         source : ndarray, shape (n_pts, 3)
             Source points to transform. They do not need to be the same
             points that were used to generate the model, although ideally
@@ -468,8 +507,9 @@ class _SphericalSurfaceWarp:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         destination : ndarray, shape (n_pts, 3)
             The points transformed to the destination space.
         """
@@ -478,18 +518,21 @@ class _SphericalSurfaceWarp:
 def quat_to_rot(quat):
     """### Convert a set of quaternions to rotations.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     quat : array, shape (..., 3)
         The q1, q2, and q3 (x, y, z) parameters of a unit quaternion.
 
+    -----
     ### ⏎ Returns
-    -------
+
     rot : array, shape (..., 3, 3)
         The corresponding rotation matrices.
 
+    -----
     ### 👉 See Also
-    --------
+
     rot_to_quat
     """
     ...
@@ -497,19 +540,22 @@ def quat_to_rot(quat):
 def rot_to_quat(rot):
     """### Convert a set of rotations to quaternions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     rot : array, shape (..., 3, 3)
         The rotation matrices to convert.
 
+    -----
     ### ⏎ Returns
-    -------
+
     quat : array, shape (..., 3)
         The q1, q2, and q3 (x, y, z) parameters of the corresponding
         unit quaternions.
 
+    -----
     ### 👉 See Also
-    --------
+
     quat_to_rot
     """
     ...
@@ -517,8 +563,9 @@ def rot_to_quat(rot):
 def read_ras_mni_t(subject, subjects_dir=None):
     """### Read a subject's RAS to MNI transform.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : str
         The subject.
 
@@ -527,8 +574,9 @@ def read_ras_mni_t(subject, subjects_dir=None):
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ras_mni_t : instance of Transform
         The transform from RAS to MNI (in mm).
     """
@@ -546,8 +594,9 @@ def compute_volume_registration(
 ):
     """### Align two volumes using an affine and, optionally, SDR.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     moving : instance of SpatialImage
         The image to morph ("from" volume).
@@ -626,8 +675,9 @@ def compute_volume_registration(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     reg_affine : ndarray of float, shape (4, 4)
         The affine that registers one volume to another.
@@ -636,8 +686,9 @@ def compute_volume_registration(
         The class that applies the the symmetric diffeomorphic registration
         (SDR) morph.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function is heavily inspired by and extends
     `dipy.align.affine_registration
     <dipy.align._public.affine_registration>`.
@@ -660,8 +711,9 @@ def apply_volume_registration(
     Uses registration parameters computed by
     `mne.transforms.compute_volume_registration`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     moving : instance of SpatialImage
         The image to morph ("from" volume).
@@ -689,13 +741,15 @@ def apply_volume_registration(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     reg_img : instance of SpatialImage
         The image after affine (and SDR, if provided) registration.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.24
     """
     ...
@@ -708,8 +762,9 @@ def apply_volume_registration_points(
     Uses registration parameters computed by
     `mne.transforms.compute_volume_registration`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -738,16 +793,18 @@ def apply_volume_registration_points(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
     trans2 : instance of Transform
         The head->mri (surface RAS) transform for the static image.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.4.0
     """
     ...

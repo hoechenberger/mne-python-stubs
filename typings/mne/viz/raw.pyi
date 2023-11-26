@@ -43,8 +43,9 @@ def plot_raw(
 ):
     """### Plot raw data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data to plot.
     events : array | None
@@ -269,14 +270,16 @@ def plot_raw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The arrow keys (up/down/left/right) can typically be used to navigate
     between channels and time ranges, but this depends on the backend
     matplotlib is configured to use (e.g., mpl.use('TkAgg') should work). The
@@ -359,8 +362,9 @@ def plot_raw_psd(
     be interactive, and click-dragging on the spectrum will generate a
     scalp topography plot for the chosen frequency range in a new figure.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw object.
     fmin, fmax : float
@@ -469,13 +473,15 @@ def plot_raw_psd(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         Figure with frequency spectra of the data channels.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
     of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
@@ -507,8 +513,9 @@ def plot_raw_psd_topo(
 
     Plot power spectral density, separately for each channel.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of io.Raw
         The raw instance to use.
     tmin, tmax : float | None
@@ -562,8 +569,9 @@ def plot_raw_psd_topo(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         Figure distributing one image per channel across sensor topography.
     """

@@ -8,16 +8,18 @@ from ..utils import check_fname as check_fname, logger as logger, warn as warn
 class Beamformer(dict):
     """### A computed beamformer.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.17
     """
 
     def copy(self):
         """### Copy the beamformer.
 
+        -----
         ### ⏎ Returns
-        -------
+
         beamformer : instance of Beamformer
             A deep copy of the beamformer.
         """
@@ -25,8 +27,9 @@ class Beamformer(dict):
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
         """### Save the beamformer filter.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The filename to use to write the HDF5 data.
             Should end in ``'-lcmv.h5'`` or ``'-dics.h5'``.
@@ -46,13 +49,15 @@ class Beamformer(dict):
 def read_beamformer(fname):
     """### Read a beamformer filter.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename of the HDF5 file.
 
+    -----
     ### ⏎ Returns
-    -------
+
     filter : instance of Beamformer
         The beamformer filter.
     """

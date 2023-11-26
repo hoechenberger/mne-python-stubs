@@ -5,8 +5,9 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_eximia(fname, preload: bool = False, verbose=None):
     """### Reader for an eXimia EEG file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the eXimia ``.nxe`` data file.
 
@@ -23,14 +24,16 @@ def read_raw_eximia(fname, preload: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawEximia
         A Raw object containing eXimia data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawEximia.
     """
     ...
@@ -38,8 +41,9 @@ def read_raw_eximia(fname, preload: bool = False, verbose=None):
 class RawEximia(BaseRaw):
     """### Raw object from an Eximia EEG file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the eXimia data file (.nxe).
 
@@ -56,8 +60,9 @@ class RawEximia(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

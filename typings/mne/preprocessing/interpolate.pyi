@@ -9,8 +9,9 @@ def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
     Once called on a list of instances, the instances can be concatenated
     as they will have the same list of bad channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     insts : list
         The list of instances (Evoked, Epochs or Raw) to consider
         for interpolation. Each instance should have marked channels.
@@ -24,8 +25,9 @@ def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
     copy : bool
         If True then the returned instances will be copies.
 
+    -----
     ### ⏎ Returns
-    -------
+
     insts_bads : list
         The list of instances, with the same channel(s) marked as bad in all of
         them, possibly with some formerly bad channels interpolated.
@@ -41,8 +43,9 @@ def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
     that to aid in interpolation rather than completely discarding the
     data from the two channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Epochs, Evoked, or Raw
         The data object with channels that are to be interpolated.
     bridged_idx : list of tuple
@@ -55,13 +58,15 @@ def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
 
         ✨ Added in vesion 1.2
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Epochs, Evoked, or Raw
         The modified data object.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.preprocessing.compute_bridged_electrodes
     """
     ...

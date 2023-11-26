@@ -4,21 +4,24 @@ from .constants import FIFF as FIFF
 def get_channel_type_constants(include_defaults: bool = False):
     """### Return all known channel types, and associated FIFF constants.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     include_defaults : bool
         Whether to include default values for "unit" and "coil_type" for all
         entries (see Notes). Defaults are generally based on values normally
         present for a VectorView MEG system. Defaults to ``False``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     channel_types : dict
         The keys are channel type strings, and the values are dictionaries of
         FIFF constants for "kind", and possibly "unit" and "coil_type".
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Values which might vary within a channel type across real data
     recordings are excluded unless ``include_defaults=True``. For example,
     "ref_meg" channels may have coil type
@@ -31,16 +34,18 @@ def get_channel_type_constants(include_defaults: bool = False):
 def channel_type(info, idx):
     """### Get channel type.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
     idx : int
         Index of channel.
 
+    -----
     ### ⏎ Returns
-    -------
+
     type : str
         Type of channel. Will be one of::
 
@@ -56,8 +61,9 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
 
     Returns the indices of ``ch_names`` in ``include`` but not in ``exclude``.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ch_names : list of str
         List of channels.
     include : list of str
@@ -84,13 +90,15 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     sel : array of int
         Indices of good channels.
 
+    -----
     ### 👉 See Also
-    --------
+
     pick_channels_regexp, pick_types
     """
     ...
@@ -100,8 +108,9 @@ def pick_channels_regexp(ch_names, regexp):
 
     Returns the indices of the good channels in ch_names.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ch_names : list of str
         List of channels.
 
@@ -109,17 +118,20 @@ def pick_channels_regexp(ch_names, regexp):
         The regular expression. See python standard module for regular
         expressions.
 
+    -----
     ### ⏎ Returns
-    -------
+
     sel : array of int
         Indices of good channels.
 
+    -----
     ### 👉 See Also
-    --------
+
     pick_channels
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> pick_channels_regexp(['MEG 2331', 'MEG 2332', 'MEG 2333'], 'MEG ...1')
     [0]
     >>> pick_channels_regexp(['MEG 2331', 'MEG 2332', 'MEG 2333'], 'MEG *')
@@ -160,8 +172,9 @@ def pick_types(
 ):
     """### Pick channels by type and names.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -234,8 +247,9 @@ def pick_types(
     selection : list of str
         Restrict sensor channels (MEG, EEG, etc.) to this list of channel names.
 
+    -----
     ### ⏎ Returns
-    -------
+
     sel : array of int
         Indices of good channels.
     """
@@ -244,8 +258,9 @@ def pick_types(
 def pick_info(info, sel=(), copy: bool = True, verbose=None):
     """### Restrict an info structure to a selection of channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -261,8 +276,9 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     res : dict
         Info structure restricted to a selection of channels.
     """
@@ -273,8 +289,9 @@ def pick_channels_forward(
 ):
     """### Pick channels from forward operator.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     orig : dict
         A forward solution.
     include : list of str
@@ -302,8 +319,9 @@ def pick_channels_forward(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     res : dict
         Forward solution restricted to selected channels. If include and
         exclude are empty it returns orig without copy.
@@ -323,8 +341,9 @@ def pick_types_forward(
 ):
     """### Pick by channel type and names from a forward operator.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     orig : dict
         A forward solution.
     meg : bool | str
@@ -347,8 +366,9 @@ def pick_types_forward(
         List of channels to exclude. If empty do not exclude any (default).
         If 'bads', exclude channels in orig['info']['bads'].
 
+    -----
     ### ⏎ Returns
-    -------
+
     res : dict
         Forward solution restricted to selected channel types.
     """
@@ -357,8 +377,9 @@ def pick_types_forward(
 def channel_indices_by_type(info, picks=None):
     """### Get indices of channels by type.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -372,8 +393,9 @@ def channel_indices_by_type(info, picks=None):
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
+    -----
     ### ⏎ Returns
-    -------
+
     idx_by_type : dict
         A dictionary that maps each channel type to a (possibly empty) list of
         channel indices.
@@ -391,8 +413,9 @@ def pick_channels_cov(
 ):
     """### Pick channels from covariance matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     orig : Covariance
         A covariance.
     include : list of str, (optional)
@@ -419,8 +442,9 @@ def pick_channels_cov(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     res : dict
         Covariance solution restricted to selected channels.
     """

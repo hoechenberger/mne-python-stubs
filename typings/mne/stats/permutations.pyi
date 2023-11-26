@@ -15,8 +15,9 @@ def permutation_t_test(
     powerful than Bonferroni correction when different variables in the test
     are correlated (see :footcite:`NicholsHolmes2002`).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array, shape (n_samples, n_tests)
         Samples (observations) by number of tests (variables).
     n_permutations : int | 'all'
@@ -52,8 +53,9 @@ def permutation_t_test(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     T_obs : array of shape [n_tests]
         T-statistic observed for all variables.
     p_values : array of shape [n_tests]
@@ -62,8 +64,9 @@ def permutation_t_test(
         T-statistic obtained by permutations and t-max trick for multiple
         comparison.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If ``n_permutations >= 2 ** (n_samples - (tail == 0))``,
     ``n_permutations`` and ``seed`` will be ignored since an exact test
     (full permutation test) will be performed.
@@ -83,8 +86,9 @@ def bootstrap_confidence_interval(
 ):
     """### Get confidence intervals from non-parametric bootstrap.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     arr : ndarray, shape (n_samples, ...)
         The input data on which to calculate the confidence interval.
     ci : float
@@ -96,8 +100,9 @@ def bootstrap_confidence_interval(
     random_state : int | float | array_like | None
         The seed at which to initialize the bootstrap.
 
+    -----
     ### ⏎ Returns
-    -------
+
     cis : ndarray, shape (2, ...)
         Containing the lower boundary of the CI at ``cis[0, ...]`` and the
         upper boundary of the CI at ``cis[1, ...]``.

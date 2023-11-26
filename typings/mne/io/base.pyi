@@ -79,8 +79,9 @@ class BaseRaw(
 ):
     """### Base class for Raw data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -126,12 +127,14 @@ class BaseRaw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This class is public to allow for stable type-checking in user
     code (i.e., ``isinstance(my_raw_object, BaseRaw)``) but should not be used
     as a constructor for `Raw` objects (use instead one of the subclass
@@ -174,8 +177,9 @@ class BaseRaw(
                      only use a single gradient compensation level in
                      final analyses.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         grade : int
             CTF gradient compensation level.
 
@@ -185,8 +189,9 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         raw : instance of Raw
             The modified Raw instance. Works in-place.
         """
@@ -194,8 +199,9 @@ class BaseRaw(
     def load_data(self, verbose=None):
         """### Load raw data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
@@ -203,13 +209,15 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         raw : instance of Raw
             The raw object with data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function will load raw data if it was not already preloaded.
         If data were already preloaded, it will do nothing.
 
@@ -234,8 +242,9 @@ class BaseRaw(
     def time_as_index(self, times, use_rounding: bool = False, origin=None):
         """### Convert time to indices.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         times : list-like | float | int
             List of numbers or a number representing points in time.
         use_rounding : bool
@@ -247,8 +256,9 @@ class BaseRaw(
 
             ✨ Added in vesion 0.17.0
 
+        -----
         ### ⏎ Returns
-        -------
+
         index : ndarray
             Indices relative to :term:`first_samp` corresponding to the times
             supplied.
@@ -274,8 +284,9 @@ class BaseRaw(
 
         This setter checks if they are inside the data range.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         annotations : instance of mne.Annotations | None
             Annotations to set. If None, the annotations is defined
             but empty.
@@ -296,8 +307,9 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Raw
             The raw object with annotations.
         """
@@ -317,20 +329,23 @@ class BaseRaw(
     def __getitem__(self, item):
         """### Get raw data and times.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         item : tuple or array-like
             See below for use cases.
 
+        -----
         ### ⏎ Returns
-        -------
+
         data : ndarray, shape (n_channels, n_times)
             The raw data.
         times : ndarray, shape (n_times,)
             The times associated with the data.
 
-        Examples
-        --------
+        -----
+        ### 🖥️ Examples
+
         Generally raw data is accessed as::
 
             >>> data, times = raw[picks, time_slice]  # doctest: +SKIP
@@ -369,8 +384,9 @@ class BaseRaw(
     ):
         """### Get data in the given range.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -425,16 +441,18 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         data : ndarray, shape (n_channels, n_times)
             Copy of the data in the given range.
         times : ndarray, shape (n_times,)
             Times associated with the data samples. Only returned if
             return_times=True.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.14.0
         """
         ...
@@ -463,8 +481,9 @@ class BaseRaw(
                   required since the original and the converted data needs
                   to be stored in memory.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         fun : callable
             A function to be applied to the channels. The first argument of
@@ -508,8 +527,9 @@ class BaseRaw(
         **kwargs : dict
             Additional keyword arguments to pass to ``fun``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Raw
             The raw object with transformed data.
         """
@@ -534,8 +554,9 @@ class BaseRaw(
     ):
         """### Filter a subset of channels.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         l_freq : float | None
             For FIR filters, the lower pass-band edge; for IIR filters, the lower
@@ -658,13 +679,15 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Epochs, Evoked, or Raw
             The filtered data.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.filter.create_filter
         mne.Evoked.savgol_filter
         mne.io.Raw.notch_filter
@@ -673,8 +696,9 @@ class BaseRaw(
         mne.filter.filter_data
         mne.filter.construct_iir_filter
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
         filter to the channels selected by ``picks``.
         The data are modified inplace.
@@ -725,8 +749,9 @@ class BaseRaw(
     ):
         """### Notch filter a subset of channels.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         freqs : float | array of float | None
             Specific frequencies to filter out from data, e.g.,
             ``np.arange(60, 241, 60)`` in the US or ``np.arange(50, 251, 50)``
@@ -852,18 +877,21 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         raw : instance of Raw
             The raw instance with filtered data.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.filter.notch_filter
         mne.io.Raw.filter
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Applies a zero-phase notch filter to the channels selected by
         "picks". By default the data of the Raw object is modified inplace.
 
@@ -910,8 +938,9 @@ class BaseRaw(
                      data using the 'events' parameter (a resampled copy is
                      returned).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         sfreq : float
             New sample rate to use.
 
@@ -953,20 +982,23 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         raw : instance of Raw
             The resampled version of the raw object.
         events : array, shape (n_events, 3) | None
             If events are jointly resampled, these are returned with the raw.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.io.Raw.filter
         mne.Epochs.resample
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For some data, it may be more accurate to use ``npad=0`` to reduce
         artifacts. This is dataset dependent -- check your data!
 
@@ -990,8 +1022,9 @@ class BaseRaw(
         Thus function operates in-place on the instance.
         Use `mne.io.Raw.copy` if operation on a copy is desired.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         tmin : float
             Start time of the raw data to use in seconds (must be >= 0).
@@ -1011,8 +1044,9 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         raw : instance of Raw
             The cropped raw object, modified in-place.
         """
@@ -1020,8 +1054,9 @@ class BaseRaw(
     def crop_by_annotations(self, annotations=None, *, verbose=None):
         """### Get crops of raw data file for selected annotations.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         annotations : instance of Annotations | None
             The annotations to use for cropping the raw file. If None,
             the annotations from the instance are used.
@@ -1032,8 +1067,9 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         raws : list
             The cropped raw objects.
         """
@@ -1055,8 +1091,9 @@ class BaseRaw(
     ) -> None:
         """### Save raw data to file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             File name of the new dataset. This has to be a new filename
             unless data have been preloaded. Filenames should end with
@@ -1131,8 +1168,9 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         If Raw is a concatenation of several raw files, **be warned** that
         only the measurement information from the first raw file is stored.
         This likely means that certain operations with external tools may not
@@ -1165,8 +1203,9 @@ class BaseRaw(
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         fname : str
             Name of the output file.
@@ -1200,8 +1239,9 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24
 
         Export to external format may not preserve all the information from the
@@ -1273,8 +1313,9 @@ class BaseRaw(
     ):
         """### Plot raw data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         events : array | None
             Events to show with vertical bars.
         duration : float
@@ -1497,14 +1538,16 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
             Browser instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         The arrow keys (up/down/left/right) can typically be used to navigate
         between channels and time ranges, but this depends on the backend
         matplotlib is configured to use (e.g., mpl.use('TkAgg') should work). The
@@ -1562,13 +1605,15 @@ class BaseRaw(
     def __len__(self) -> int:
         """### Return the number of time points.
 
+        -----
         ### ⏎ Returns
-        -------
+
         len : int
             The number of time points.
 
-        Examples
-        --------
+        -----
+        ### 🖥️ Examples
+
         This can be used as::
 
             >>> len(raw)  # doctest: +SKIP
@@ -1584,8 +1629,9 @@ class BaseRaw(
         ``mne_mark_bad_channels``. Each line in the text file will be
         interpreted as a name of a bad channel.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         bad_file : path-like | None
             File name of the text file containing bad channels.
             If ``None`` (default), bad channels are cleared, but this
@@ -1610,8 +1656,9 @@ class BaseRaw(
                   boundary annotations after concatenation (see
                   `mne.Annotations.delete`).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         raws : list, or Raw instance
             List of Raw instances to concatenate to the current instance
             (in order), or a single raw instance to concatenate.
@@ -1636,8 +1683,9 @@ class BaseRaw(
     def copy(self):
         """### Return copy of Raw instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Raw
             A copy of the instance.
         """
@@ -1645,8 +1693,9 @@ class BaseRaw(
     def add_events(self, events, stim_channel=None, replace: bool = False) -> None:
         """### Add events to stim channel.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         events : ndarray, shape (n_events, 3)
             Events to add. The first column specifies the sample number of
             each event, the second column is ignored, and the third column
@@ -1661,8 +1710,9 @@ class BaseRaw(
             If True the old events on the stim channel are removed before
             adding the new ones.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Data must be preloaded in order to add events.
         """
         ...
@@ -1685,8 +1735,9 @@ class BaseRaw(
     ):
         """### Perform spectral analysis on sensor data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
@@ -1744,13 +1795,15 @@ class BaseRaw(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
+        -----
         ### ⏎ Returns
-        -------
+
         spectrum : instance of Spectrum
             The spectral representation of the data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 1.2
 
         References
@@ -1777,8 +1830,9 @@ class BaseRaw(
         additional column "time" is added, unless ``index`` is not ``None``
         (in which case time values form the DataFrame's index).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1832,8 +1886,9 @@ class BaseRaw(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
@@ -1843,8 +1898,9 @@ class BaseRaw(
     def describe(self, data_frame: bool = False):
         """### Describe channels (name, type, descriptive statistics).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         data_frame : bool
             If True, return results in a pandas.DataFrame. If False, only print
             results. Columns 'ch', 'type', and 'unit' indicate channel index,
@@ -1853,8 +1909,9 @@ class BaseRaw(
             'median', 'Q3' (third quartile or 75% percentile), and 'max'
             (maximum).
 
+        -----
         ### ⏎ Returns
-        -------
+
         result : None | pandas.DataFrame
             If data_frame=False, returns None. If data_frame=True, returns
             results in a pandas.DataFrame (requires pandas).
@@ -1929,8 +1986,9 @@ def concatenate_raws(
               annotations after concatenation (see
               `mne.Annotations.delete`).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raws : list
         List of `mne.io.Raw` instances to concatenate (in order).
 
@@ -1958,8 +2016,9 @@ def concatenate_raws(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of Raw
         The result of the concatenation (first Raw instance passed in).
     events : ndarray of int, shape (n_events, 3)
@@ -1970,8 +2029,9 @@ def concatenate_raws(
 def match_channel_orders(raws, copy: bool = True):
     """### Ensure consistent channel order across raws.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raws : list
         List of `mne.io.Raw` instances to order.
 
@@ -1979,8 +2039,9 @@ def match_channel_orders(raws, copy: bool = True):
         If ``True``, data will be copied. Otherwise data may be modified in place.
         Defaults to ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     list of Raw
         List of Raws with matched channel orders.
     """

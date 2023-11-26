@@ -7,8 +7,9 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_persyst(fname, preload: bool = False, verbose=None):
     """### Reader for a Persyst (.lay/.dat) recording.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the Persyst header ``.lay`` file.
 
@@ -25,18 +26,21 @@ def read_raw_persyst(fname, preload: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawPersyst
         A Raw object containing Persyst data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawPersyst.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     It is assumed that the ``.lay`` and ``.dat`` file
     are in the same directory. To get the correct file path to the
     ``.dat`` file, ``read_raw_persyst`` will get the corresponding dat
@@ -48,8 +52,9 @@ def read_raw_persyst(fname, preload: bool = False, verbose=None):
 class RawPersyst(BaseRaw):
     """### Raw object from a Persyst file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the Persyst header (.lay) file.
 
@@ -66,8 +71,9 @@ class RawPersyst(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

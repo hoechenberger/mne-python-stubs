@@ -23,8 +23,9 @@ def fetch_data(
     <https://physionet.org/physiobank/database/sleep-edfx/>`_
     :footcite:`GoldbergerEtAl2000`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subjects : list of int
         The subjects to use. Can be in the range of 0-21 (inclusive).
     path : None | str
@@ -45,17 +46,20 @@ def fetch_data(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     paths : list
         List of local data paths of the given type.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.datasets.sleep_physionet.age.fetch_data
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For example, one could do:
 
         >>> from mne.datasets import sleep_physionet

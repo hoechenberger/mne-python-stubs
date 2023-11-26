@@ -17,8 +17,9 @@ from ..base import BaseRaw as BaseRaw
 class Raw(BaseRaw):
     """### Raw data in FIF format.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like | file-like
         The raw filename to load. For files that have automatically been split,
         the split part will be automatically loaded. Filenames not ending with
@@ -55,8 +56,9 @@ class Raw(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -91,13 +93,15 @@ class Raw(BaseRaw):
     def fix_mag_coil_types(self):
         """### Fix Elekta magnetometer coil types.
 
+        -----
         ### ⏎ Returns
-        -------
+
         raw : instance of Raw
             The raw object. Operates in place.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This function changes magnetometer coil types 3022 (T1: SQ20483N) and
         3023 (T2: SQ20483-A) to 3024 (T3: SQ20950N) in the channel definition
         records in the info structure.
@@ -121,8 +125,9 @@ class Raw(BaseRaw):
     def acqparser(self):
         """### The AcqParserFIF for the measurement info.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.AcqParserFIF
         """
         ...
@@ -136,8 +141,9 @@ def read_raw_fif(
 ):
     """### Reader function for Raw FIF data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like | file-like
         The raw filename to load. For files that have automatically been split,
         the split part will be automatically loaded. Filenames should end
@@ -173,13 +179,15 @@ def read_raw_fif(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of Raw
         A Raw object containing FIF data.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
 
     When reading a FIF file, note that the first N seconds annotated

@@ -14,8 +14,9 @@ def data_path(
     remote LIMO dataset :footcite:`Rousselet2016`. The complete dataset is
     available at datashare.is.ed.ac.uk/.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : int
         Subject to download. Must be of `ìnt` in the range from 1
         to 18 (inclusive).
@@ -38,13 +39,15 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : str
         Local path to the given data file.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For example, one could do:
 
         >>> from mne.datasets import limo
@@ -65,8 +68,9 @@ def load_data(
 ):
     """### Fetch subjects epochs data for the LIMO data set.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : int
         Subject to use. Must be of class ìnt in the range from 1 to 18.
     path : str
@@ -86,8 +90,9 @@ def load_data(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of Epochs
         The epochs.
     """

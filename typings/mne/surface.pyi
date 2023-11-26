@@ -25,8 +25,9 @@ def get_head_surf(
 ):
     """### Load the subject head surface.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : str
         Subject name.
     source : str | list of str
@@ -57,8 +58,9 @@ def get_head_surf(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surf : dict
         The head surface.
     """
@@ -67,8 +69,9 @@ def get_head_surf(
 def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     """### Load the MEG helmet associated with the MEG sensors.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -83,13 +86,15 @@ def get_meg_helmet_surf(info, trans=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surf : dict
         The MEG helmet as a surface.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     A built-in helmet is loaded if possible. If not, a helmet surface
     will be approximated based on the sensor locations.
     """
@@ -102,20 +107,23 @@ def fast_cross_3d(x, y):
     becomes large (>= 500). This is because np.cross() methods become
     less memory efficient at this stage.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : array
         Input array 1, shape (..., 3).
     y : array
         Input array 2, shape (..., 3).
 
+    -----
     ### ⏎ Returns
-    -------
+
     z : array, shape (..., 3)
         Cross product of x and y along the last dimension.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     x and y must broadcast against each other.
     """
     ...
@@ -130,8 +138,9 @@ def complete_surface_info(
 ):
     """### Complete surface information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     surf : dict
         The surface.
     do_neighbor_vert : bool
@@ -147,8 +156,9 @@ def complete_surface_info(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surf : dict
         The transformed surface.
     """
@@ -182,15 +192,17 @@ class _CheckInside:
 def read_curvature(filepath, binary: bool = True):
     """### Load in curvature values from the ?h.curv file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     filepath : path-like
         Input path to the ``.curv`` file.
     binary : bool
         Specify if the output array is to hold binary values. Defaults to True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     curv : array of shape (n_vertices,)
         The curvature values loaded from the user given file.
     """
@@ -205,8 +217,9 @@ def read_surface(
 ):
     """### Load a Freesurfer surface mesh in triangular format.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file containing the surface.
     read_metadata : bool
@@ -243,8 +256,9 @@ def read_surface(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     rr : array, shape=(n_vertices, 3)
         Coordinate points.
     tris : int array, shape=(n_faces, 3)
@@ -255,8 +269,9 @@ def read_surface(
     surf : dict
         The surface parameters. Only returned if ``return_dict`` is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_surface
     read_tri
     """
@@ -277,8 +292,9 @@ def write_surface(
 
     Accepts the same data format as is returned by read_surface().
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         File to write.
     coords : array, shape=(n_vertices, 3)
@@ -322,8 +338,9 @@ def write_surface(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_surface
     read_tri
     """
@@ -334,8 +351,9 @@ def decimate_surface(
 ):
     """### Decimate surface data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     points : ndarray
         The surface to be decimated, a 3 x number of points array.
     triangles : ndarray
@@ -355,15 +373,17 @@ def decimate_surface(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     points : ndarray
         The decimated points.
     triangles : ndarray
         The decimated triangles.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     **"quadric" mode**
 
     This requires VTK. If an odd target number was requested,
@@ -387,13 +407,15 @@ def decimate_surface(
 def mesh_edges(tris):
     """### Return sparse matrix with edges as an adjacency matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tris : array of shape [n_triangles x 3]
         The triangles.
 
+    -----
     ### ⏎ Returns
-    -------
+
     edges : scipy.sparse.spmatrix
         The adjacency matrix.
     """
@@ -405,15 +427,17 @@ def mesh_dist(tris, vert):
     It generates an adjacency matrix where the entries are the distances
     between neighboring vertices.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tris : array (n_tris x 3)
         Mesh triangulation.
     vert : array (n_vert x 3)
         Vertex locations.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dist_matrix : scipy.sparse.csr_matrix
         Sparse matrix with distances between adjacent vertices.
     """
@@ -422,8 +446,9 @@ def mesh_dist(tris, vert):
 def read_tri(fname_in, swap: bool = False, verbose=None):
     """### Read triangle definitions from an ascii file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname_in : path-like
         Path to surface ASCII file (ending with ``'.tri'``).
     swap : bool
@@ -436,21 +461,24 @@ def read_tri(fname_in, swap: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     rr : array, shape=(n_vertices, 3)
         Coordinate points.
     tris : int array, shape=(n_faces, 3)
         Triangulation (each line contains indices for three points which
         together form a face).
 
+    -----
     ### 👉 See Also
-    --------
+
     read_surface
     write_surface
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.13.0
     """
     ...
@@ -471,8 +499,9 @@ def dig_mri_distances(
     Unless outliers are present in the head shape points,
     one can assume an average distance around 2-3 mm.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. Must contain the head shape points in ``info['dig']``.
@@ -514,17 +543,20 @@ def dig_mri_distances(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dists : array, shape (n_points,)
         The distances.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.bem.get_fitting_dig
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.19
     """
     ...
@@ -537,8 +569,9 @@ def get_montage_volume_labels(
     ### 💡 Note This is applicable for channels inside the brain
               (intracranial electrodes).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     montage : None | str | DigMontage
         A montage containing channel positions. If a string or
@@ -565,8 +598,9 @@ def get_montage_volume_labels(
     dist : float
         The distance in mm to use for identifying regions of interest.
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels : dict
         The regions of interest labels within ``dist`` of each channel.
     colors : dict

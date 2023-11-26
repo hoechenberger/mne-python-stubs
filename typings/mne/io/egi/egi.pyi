@@ -18,8 +18,9 @@ def read_raw_egi(
     ### 💡 Note This function attempts to create a synthetic trigger channel.
               See the Notes section below.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the raw file. Files with an extension ``.mff`` are
         automatically considered to be EGI's native MFF format files.
@@ -60,18 +61,21 @@ def read_raw_egi(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawEGI
         A Raw object containing EGI data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawEGI.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The trigger channel names are based on the arbitrary user dependent event
     codes used. However this function will attempt to generate a **synthetic
     trigger channel** named ``STI 014`` in accordance with the general

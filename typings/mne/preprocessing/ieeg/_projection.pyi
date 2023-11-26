@@ -18,8 +18,9 @@ def project_sensors_onto_brain(
 ):
     """### Project sensors onto the brain surface.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -59,14 +60,16 @@ def project_sensors_onto_brain(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This is useful in ECoG analysis for compensating for "brain shift"
     or shrinking of the brain away from the skull due to changes
     in pressure during the craniotomy.

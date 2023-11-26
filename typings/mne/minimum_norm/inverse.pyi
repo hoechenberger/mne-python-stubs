@@ -68,8 +68,9 @@ class InverseOperator(dict):
 def read_inverse_operator(fname, *, verbose=None):
     """### Read the inverse operator decomposition from a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the FIF file, which ends with ``-inv.fif`` or
         ``-inv.fif.gz``.
@@ -80,13 +81,15 @@ def read_inverse_operator(fname, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inv : instance of InverseOperator
         The inverse operator.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_inverse_operator, make_inverse_operator
     """
     ...
@@ -96,8 +99,9 @@ def write_inverse_operator(
 ) -> None:
     """### Write an inverse operator to a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the FIF file, which ends with ``-inv.fif`` or
         ``-inv.fif.gz``.
@@ -116,8 +120,9 @@ def write_inverse_operator(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_inverse_operator
     """
     ...
@@ -125,14 +130,16 @@ def write_inverse_operator(
 def combine_xyz(vec, square: bool = False):
     """### Compute the three Cartesian components of a vector or matrix together.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     vec : 2d array of shape [3 n x p]
         Input [ x1 y1 z1 ... x_n y_n z_n ] where x1 ... z_n
         can be vectors
 
+    -----
     ### ⏎ Returns
-    -------
+
     comb : array
         Output vector [sqrt(x1^2+y1^2+z1^2), ..., sqrt(x_n^2+y_n^2+z_n^2)]
     """
@@ -149,8 +156,9 @@ def prepare_inverse_operator(
 ):
     """### Prepare an inverse operator for actually computing the inverse.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     orig : dict
         The inverse operator structure read from a file.
     nave : int
@@ -176,8 +184,9 @@ def prepare_inverse_operator(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inv : instance of InverseOperator
         Prepared inverse operator.
     """
@@ -198,8 +207,9 @@ def apply_inverse(
 ):
     """### Apply inverse operator to evoked data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : Evoked object
         Evoked data.
     inverse_operator : instance of InverseOperator
@@ -258,22 +268,25 @@ def apply_inverse(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
         The source estimates.
     residual : instance of Evoked
         The residual evoked data, only returned if return_residual is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_inverse_raw : Apply inverse operator to raw object.
     apply_inverse_epochs : Apply inverse operator to epochs object.
     apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
     apply_inverse_cov : Apply inverse operator to covariance object.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Currently only the ``method='eLORETA'`` has additional options.
     It performs an iterative fit with a convergence criterion, so you can
     pass a ``method_params`` `dict` with string keys mapping to values
@@ -336,8 +349,9 @@ def apply_inverse_raw(
 ):
     """### Apply inverse operator to Raw data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : Raw object
         Raw data.
     inverse_operator : dict
@@ -405,13 +419,15 @@ def apply_inverse_raw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
         The source estimates.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_inverse : Apply inverse operator to evoked object.
     apply_inverse_epochs : Apply inverse operator to epochs object.
     apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
@@ -435,8 +451,9 @@ def apply_inverse_epochs(
 ):
     """### Apply inverse operator to Epochs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : Epochs object
         Single trial epochs.
     inverse_operator : dict
@@ -493,13 +510,15 @@ def apply_inverse_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stcs : list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_inverse_raw : Apply inverse operator to raw object.
     apply_inverse : Apply inverse operator to evoked object.
     apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
@@ -523,8 +542,9 @@ def apply_inverse_tfr_epochs(
 ):
     """### Apply inverse operator to EpochsTFR.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs_tfr : EpochsTFR object
         Single trial, phase-amplitude (complex-valued), time-frequency epochs.
     inverse_operator : list of dict | dict
@@ -578,14 +598,16 @@ def apply_inverse_tfr_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stcs : list of list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)
         The source estimates for all frequencies (outside list) and for
         all epochs (inside list).
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_inverse_raw : Apply inverse operator to raw object.
     apply_inverse : Apply inverse operator to evoked object.
     apply_inverse_epochs : Apply inverse operator to epochs object.
@@ -609,8 +631,9 @@ def apply_inverse_cov(
 ):
     """### Apply inverse operator to covariance data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     cov : instance of Covariance
         Covariance data, computed on the time segment for which to compute
         source power.
@@ -655,20 +678,23 @@ def apply_inverse_cov(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VectorSourceEstimate | VolSourceEstimate
         The source estimates.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_inverse : Apply inverse operator to evoked object.
     apply_inverse_raw : Apply inverse operator to raw object.
     apply_inverse_epochs : Apply inverse operator to epochs object.
     apply_inverse_tfr_epochs : Apply inverse operator to epochs tfr object.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.20
 
     This code is based on the original research code from
@@ -694,8 +720,9 @@ def make_inverse_operator(
 ):
     """### Assemble inverse operator.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -792,13 +819,15 @@ def make_inverse_operator(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inv : instance of InverseOperator
         Inverse operator.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For different sets of options (**loose**, **depth**, **fixed**) to work,
     the forward operator must have been loaded using a certain configuration
     (i.e., with **force_fixed** and **surf_ori** set appropriately). For
@@ -844,13 +873,15 @@ def make_inverse_operator(
 def compute_rank_inverse(inv):
     """### Compute the rank of a linear inverse operator (MNE, dSPM, etc.).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inv : instance of InverseOperator
         The inverse operator.
 
+    -----
     ### ⏎ Returns
-    -------
+
     rank : int
         The rank of the inverse operator.
     """
@@ -859,8 +890,9 @@ def compute_rank_inverse(inv):
 def estimate_snr(evoked, inv, verbose=None):
     """### Estimate the SNR as a function of time for evoked data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         Evoked instance.
     inv : instance of InverseOperator
@@ -872,16 +904,18 @@ def estimate_snr(evoked, inv, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     snr : ndarray, shape (n_times,)
         The SNR estimated from the whitened data (i.e., GFP of whitened data).
     snr_est : ndarray, shape (n_times,)
         The SNR estimated using the mismatch between the unregularized
         solution and the regularized solution.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ``snr_est`` is estimated by using different amounts of inverse
     regularization and checking the mismatch between predicted and
     measured whitened data.

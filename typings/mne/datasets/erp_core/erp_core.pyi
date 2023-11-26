@@ -8,8 +8,9 @@ def data_path(
 ):
     """### Get path to local copy of erp_core dataset.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     path : None | str
         Location of where to look for the erp_core dataset.
         If None, the environment variable or config parameter
@@ -35,8 +36,9 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : instance of Path
         Path to erp_core dataset directory."""
     ...
@@ -44,8 +46,9 @@ def data_path(
 def get_version():
     """### Get version of the local erp_core dataset.
 
+    -----
     ### ⏎ Returns
-    -------
+
     version : str | None
         Version of the erp_core local dataset, or None if the dataset
         does not exist locally."""

@@ -11,8 +11,9 @@ def read_raw_ctf(
 ):
     """### Raw object from CTF directory.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     directory : path-like
         Path to the CTF data (ending in ``'.ds'``).
     system_clock : str
@@ -37,18 +38,21 @@ def read_raw_ctf(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawCTF
         The raw data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawCTF.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11
 
     To read in the Polhemus digitization data (for example, from
@@ -61,8 +65,9 @@ def read_raw_ctf(
 class RawCTF(BaseRaw):
     """### Raw object from CTF directory.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     directory : path-like
         Path to the CTF data (ending in ``'.ds'``).
     system_clock : str
@@ -87,8 +92,9 @@ class RawCTF(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

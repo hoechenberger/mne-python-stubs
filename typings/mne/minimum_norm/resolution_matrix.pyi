@@ -20,8 +20,9 @@ def make_inverse_resolution_matrix(
 ):
     """### Compute resolution matrix for linear inverse operator.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     forward : instance of Forward
         Forward Operator.
     inverse_operator : instance of InverseOperator
@@ -37,8 +38,9 @@ def make_inverse_resolution_matrix(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     resmat: array, shape (n_orient_inv * n_dipoles, n_orient_fwd * n_dipoles)
         Resolution matrix (inverse operator times forward operator).
         The result of applying the inverse operator to the forward operator.
@@ -63,8 +65,9 @@ def get_point_spread(
 ):
     """### Get point-spread (PSFs) functions for vertices.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     resmat : array, shape (n_dipoles, n_dipoles)
         Forward Operator.
     src : instance of SourceSpaces | instance of InverseOperator | instance of Forward
@@ -129,8 +132,9 @@ def get_point_spread(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     stcs : instance of SourceEstimate | list of instances of SourceEstimate
         The PSFs or CTFs as STC objects. All PSFs/CTFs will be returned as
@@ -167,8 +171,9 @@ def get_cross_talk(
 ):
     """### Get cross-talk (CTFs) function for vertices.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     resmat : array, shape (n_dipoles, n_dipoles)
         Forward Operator.
     src : instance of SourceSpaces | instance of InverseOperator | instance of Forward
@@ -233,8 +238,9 @@ def get_cross_talk(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     stcs : instance of SourceEstimate | list of instances of SourceEstimate
         The PSFs or CTFs as STC objects. All PSFs/CTFs will be returned as

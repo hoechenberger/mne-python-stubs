@@ -22,8 +22,9 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
     ### 💡 Note _XdawnTransformer does not correct for epochs overlap. To correct
               overlaps see ``Xdawn``.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     n_components : int (default 2)
         The number of components to decompose the signals.
     reg : float | str | None (default None)
@@ -40,8 +41,9 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
 
         ✨ Added in vesion 0.16
 
+    -----
     ### 📊 Attributes
-    ----------
+
     classes_ : array, shape (n_classes)
         The event indices of the classes.
     filters_ : array, shape (n_channels, n_channels)
@@ -65,15 +67,17 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         """### Fit Xdawn spatial filters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_epochs, n_channels, n_samples)
             The target data.
         y : array, shape (n_epochs,) | None
             The target labels. If None, Xdawn fit on the average evoked.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : Xdawn instance
             The Xdawn instance.
         """
@@ -81,13 +85,15 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
     def transform(self, X):
         """### Transform data with spatial filters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_epochs, n_channels, n_samples)
             The target data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : array, shape (n_epochs, n_components * n_classes, n_samples)
             The transformed data.
         """
@@ -100,13 +106,15 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
         the signals from which the dynamics described by the excluded
         components is subtracted.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_epochs, n_components * n_classes, n_times)
             The transformed data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : array, shape (n_epochs, n_channels * n_classes, n_times)
             The inverse transform data.
         """
@@ -122,8 +130,9 @@ class Xdawn(_XdawnTransformer):
     to the non-target response. This implementation is a generalization
     to any type of ERP.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     n_components : int, (default 2)
         The number of components to decompose the signals.
     signal_cov : None | Covariance | ndarray, shape (n_channels, n_channels)
@@ -140,8 +149,9 @@ class Xdawn(_XdawnTransformer):
         For str options, ``reg`` will be passed as ``method`` to
         `mne.compute_covariance`.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     filters_ : dict of ndarray
         If fit, the Xdawn components used to decompose the data for each event
         type, else empty. For each event type, the filters are in the rows of
@@ -156,12 +166,14 @@ class Xdawn(_XdawnTransformer):
     correct_overlap_ : bool
         Whether overlap correction was applied.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.decoding.CSP, mne.decoding.SPoC
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10
 
     References
@@ -186,15 +198,17 @@ class Xdawn(_XdawnTransformer):
     def fit(self, epochs, y=None):
         """### Fit Xdawn from epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         epochs : instance of Epochs
             An instance of Epoch on which Xdawn filters will be fitted.
         y : ndarray | None (default None)
             If None, used epochs.events[:, 2].
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Xdawn
             The Xdawn instance.
         """
@@ -202,13 +216,15 @@ class Xdawn(_XdawnTransformer):
     def transform(self, inst):
         """### Apply Xdawn dim reduction.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : Epochs | Evoked | ndarray, shape ([n_epochs, ]n_channels, n_times)
             Data on which Xdawn filters will be applied.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : ndarray, shape ([n_epochs, ]n_components * n_event_types, n_times)
             Spatially filtered signals.
         """
@@ -221,8 +237,9 @@ class Xdawn(_XdawnTransformer):
         This procedure will reconstruct the signals from which
         the dynamics described by the excluded components is subtracted.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw | Epochs | Evoked
             The data to be processed.
         event_id : dict | list of str | None (default None)
@@ -237,8 +254,9 @@ class Xdawn(_XdawnTransformer):
             components to be zeroed out. If None, all the components except the
             first n_components will be exclude.
 
+        -----
         ### ⏎ Returns
-        -------
+
         out : dict
             A dict of instance (from the same type as inst input) for each
             event type in event_id.

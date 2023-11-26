@@ -4,18 +4,21 @@ from .utils import logger as logger, sum_squared as sum_squared, warn as warn
 def is_power2(num):
     """### Test if number is a power of 2.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     num : int
         Number.
 
+    -----
     ### ⏎ Returns
-    -------
+
     b : bool
         True if is power of 2.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> is_power2(2 ** 3)
     True
     >>> is_power2(5)
@@ -31,18 +34,21 @@ def next_fast_len(target):
     greater than or equal to `target`. (These are also known as 5-smooth
     numbers, regular numbers, or Hamming numbers.)
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     target : int
         Length to start searching from.  Must be a positive integer.
 
+    -----
     ### ⏎ Returns
-    -------
+
     out : int
         The first 5-smooth number greater than or equal to `target`.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Copied from SciPy with minor modifications.
     """
     ...
@@ -50,16 +56,18 @@ def next_fast_len(target):
 def estimate_ringing_samples(system, max_try: int = 100000):
     """### Estimate filter ringing.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     system : tuple | ndarray
         A tuple of (b, a) or ndarray of second-order sections coefficients.
     max_try : int
         Approximate maximum number of samples to try.
         This will be changed to a multiple of 1000.
 
+    -----
     ### ⏎ Returns
-    -------
+
     n : int
         The approximate ringing.
     """
@@ -85,8 +93,9 @@ def construct_iir_filter(
     function) with the filter coefficients ('b' and 'a') and an estimate
     of the padding necessary ('padlen') so IIR filtering can be performed.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     iir_params : dict
         Dictionary of parameters to use for IIR filtering.
 
@@ -155,20 +164,23 @@ def construct_iir_filter(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     iir_params : dict
         Updated iir_params dict, with the entries (set only if they didn't
         exist before) for 'sos' (or 'b', 'a'), and 'padlen' for
         IIR filtering.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.filter.filter_data
     mne.io.Raw.filter
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function triages calls to `scipy.signal.iirfilter` and
     `scipy.signal.iirdesign` based on the input arguments (see
     linked functions for more details).
@@ -178,8 +190,9 @@ def construct_iir_filter(
        ``output='ba'`` by ``output='sos'``) to help ensure filter stability
        and reduce numerical error.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     iir_params can have several forms. Consider constructing a low-pass
     filter at 40 Hz with 1000 Hz sampling rate.
 
@@ -238,8 +251,9 @@ def filter_data(
 ):
     """### Filter a subset of channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : ndarray, shape (..., n_times)
         The data to filter.
     sfreq : float
@@ -356,21 +370,24 @@ def filter_data(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     data : ndarray, shape (..., n_times)
         The filtered data.
 
+    -----
     ### 👉 See Also
-    --------
+
     construct_iir_filter
     create_filter
     mne.io.Raw.filter
     notch_filter
     resample
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
     filter to the channels selected by ``picks``.
 
@@ -417,8 +434,9 @@ def create_filter(
         * ``l_freq is not None and h_freq is None``: high-pass filter
         * ``l_freq is None and h_freq is not None``: low-pass filter
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : ndarray, shape (..., n_times) | None
         The data that will be filtered. This is used for sanity checking
         only. If None, no sanity checking related to the length of the signal
@@ -514,18 +532,21 @@ def create_filter(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     filt : array or dict
         Will be an array of FIR coefficients for method='fir', and dict
         with IIR parameters for method='iir'.
 
+    -----
     ### 👉 See Also
-    --------
+
     filter_data
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ### 💡 Note For FIR filters, the *cutoff frequency*, i.e. the -6 dB point,
               is in the middle of the transition band (when using phase='zero'
               and fir_design='firwin'). For IIR filters, the cutoff frequency
@@ -628,8 +649,9 @@ def notch_filter(
     Applies a zero-phase notch filter to the signal x, operating on the last
     dimension.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : array
         Signal to filter.
     Fs : float
@@ -749,18 +771,21 @@ def notch_filter(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     xf : array
         The x array filtered.
 
+    -----
     ### 👉 See Also
-    --------
+
     filter_data
     resample
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The frequency response is (approximately) given by::
 
         1-|----------         -----------
@@ -800,8 +825,9 @@ def resample(
 
     Operates along the last dimension of the array.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : ndarray
         Signal to resample.
     up : float
@@ -839,13 +865,15 @@ def resample(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     y : array
         The x array resampled.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This uses (hopefully) intelligent edge padding and frequency-domain
     windowing improve scipy.signal.resample's resampling method, which
     we have adapted for our use here. Choices of npad and window have
@@ -862,8 +890,9 @@ def resample(
 def detrend(x, order: int = 1, axis: int = -1):
     """### Detrend the array x.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : n-d array
         Signal to detrend.
     order : int
@@ -871,13 +900,15 @@ def detrend(x, order: int = 1, axis: int = -1):
     axis : int
         Axis of the array to operate on.
 
+    -----
     ### ⏎ Returns
-    -------
+
     y : array
         The x array detrended.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     As in `scipy.signal.detrend`::
 
         >>> randgen = np.random.RandomState(9)
@@ -895,8 +926,9 @@ class FilterMixin:
     def savgol_filter(self, h_freq, verbose=None):
         """### Filter the data using Savitzky-Golay polynomial method.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         h_freq : float
             Approximate high cut-off frequency in Hz. Note that this
             is not an exact cutoff, since Savitzky-Golay filtering
@@ -911,17 +943,20 @@ class FilterMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Epochs or Evoked
             The object with the filtering applied.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.io.Raw.filter
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For Savitzky-Golay low-pass approximation, see:
 
             https://gist.github.com/larsoner/bbac101d50176611136b
@@ -932,8 +967,9 @@ class FilterMixin:
         ----------
         .. footbibliography::
 
-        Examples
-        --------
+        -----
+        ### 🖥️ Examples
+
         >>> import mne
         >>> from os import path as op
         >>> evoked_fname = op.join(mne.datasets.sample.data_path(), 'MEG', 'sample', 'sample_audvis-ave.fif')  # doctest:+SKIP
@@ -963,8 +999,9 @@ class FilterMixin:
     ):
         """### Filter a subset of channels.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         l_freq : float | None
             For FIR filters, the lower pass-band edge; for IIR filters, the lower
@@ -1087,13 +1124,15 @@ class FilterMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Epochs, Evoked, or Raw
             The filtered data.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.filter.create_filter
         mne.Evoked.savgol_filter
         mne.io.Raw.notch_filter
@@ -1102,8 +1141,9 @@ class FilterMixin:
         mne.filter.filter_data
         mne.filter.construct_iir_filter
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
         filter to the channels selected by ``picks``.
         The data are modified inplace.
@@ -1150,8 +1190,9 @@ class FilterMixin:
 
         ### 💡 Note Data must be loaded.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         sfreq : float
             New sample rate to use.
 
@@ -1184,17 +1225,20 @@ class FilterMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of Epochs or Evoked
             The resampled object.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.io.Raw.resample
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For some data, it may be more accurate to use npad=0 to reduce
         artifacts. This is dataset dependent -- check your data!
         """
@@ -1210,8 +1254,9 @@ class FilterMixin:
     ):
         """### Compute analytic signal or envelope for a subset of channels.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1243,13 +1288,15 @@ class FilterMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Raw, Epochs, or Evoked
             The raw object with transformed data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         **Parameters**
 
         If ``envelope=False``, the analytic signal for the channels defined in
@@ -1302,8 +1349,9 @@ def design_mne_c_filter(
 ):
     """### Create a FIR filter like that used by MNE-C.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     sfreq : float
         The sample frequency.
     l_freq : float | None
@@ -1323,13 +1371,15 @@ def design_mne_c_filter(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     h : ndarray, shape (8193,)
         The linear-phase (symmetric) FIR filter coefficients.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function is provided mostly for reference purposes.
 
     MNE-C uses a frequency-domain filter design technique by creating a

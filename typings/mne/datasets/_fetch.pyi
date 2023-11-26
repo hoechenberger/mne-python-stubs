@@ -20,8 +20,9 @@ def fetch_dataset(
 ):
     """### Fetch an MNE-compatible dataset using pooch.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     dataset_params : list of dict | dict
         The dataset name(s) and corresponding parameters to download the
         dataset(s). The dataset parameters that contains the following keys:
@@ -67,21 +68,24 @@ def fetch_dataset(
     token : str | None
         Optional authentication token passed to `pooch.HTTPDownloader`.
 
+    -----
     ### ⏎ Returns
-    -------
+
     data_path : instance of Path
         The path to the fetched dataset.
     version : str
         Only returned if ``return_version`` is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.get_config
     mne.set_config
     mne.datasets.has_dataset
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The ``dataset_params`` argument must contain the following keys:
 
     - ``archive_name``: The name of the (possibly compressed) file to download

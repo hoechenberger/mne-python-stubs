@@ -36,8 +36,9 @@ def coregistration(
 
     or using a python interpreter as shown in `tut-source-alignment`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tabbed : bool
         Combine the data source panel and the coregistration panel into a
         single panel with tabs.
@@ -142,13 +143,15 @@ def coregistration(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     frame : instance of CoregistrationUI
         The coregistration frame.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Many parameters (e.g., ``head_opacity``) take None as a parameter,
     which means that the default will be read from the MNE-Python
     configuration file (which gets saved when exiting).

@@ -16,8 +16,9 @@ def compute_proj_hfc(
     explained as a homogeneous :footcite:`TierneyEtAl2021` or harmonic field
     :footcite:`TierneyEtAl2022`. Useful for arrays of OPMs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info | None
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -43,19 +44,22 @@ def compute_proj_hfc(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     projs : list of Projection
         List of computed projection vectors.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw.add_proj
     mne.io.Raw.apply_proj
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     To apply the projectors to a dataset, use
     ``inst.add_proj(projs).apply_proj()``.
 

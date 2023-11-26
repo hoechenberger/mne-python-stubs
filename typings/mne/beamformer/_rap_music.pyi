@@ -25,8 +25,9 @@ def rap_music(
     ### 💡 Note The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         Evoked data to localize.
     forward : instance of Forward
@@ -44,21 +45,24 @@ def rap_music(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dipoles : list of instance of Dipole
         The dipole fits.
     residual : instance of Evoked
         The residual a.k.a. data not explained by the dipoles.
         Only returned if return_residual is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.fit_dipole
     mne.beamformer.trap_music
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
 
     References
@@ -84,8 +88,9 @@ def trap_music(
     ### 💡 Note The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         Evoked data to localize.
     forward : instance of Forward
@@ -103,21 +108,24 @@ def trap_music(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dipoles : list of instance of Dipole
         The dipole fits.
     residual : instance of Evoked
         The residual a.k.a. data not explained by the dipoles.
         Only returned if return_residual is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.fit_dipole
     mne.beamformer.rap_music
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.4
 
     References

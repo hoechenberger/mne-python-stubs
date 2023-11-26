@@ -40,8 +40,9 @@ class Dipole(TimeMixin):
     or certain inverse solvers. Note that dipole position vectors are given in
     the head coordinate frame.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     times : array, shape (n_dipoles,)
         The time instants at which each dipole was fitted (s).
     pos : array, shape (n_dipoles, 3)
@@ -77,14 +78,16 @@ class Dipole(TimeMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     fit_dipole
     DipoleFixed
     read_dipole
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This class is for sequential dipole fits, where the position
     changes as a function of time. For fixed dipole fits, where the
     position is fixed as a function of time, use `mne.DipoleFixed`.
@@ -116,8 +119,9 @@ class Dipole(TimeMixin):
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
         """### Save dipole in a ``.dip`` or ``.bdip`` file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the ``.dip`` or ``.bdip`` file.
 
@@ -133,8 +137,9 @@ class Dipole(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         🎭 Changed in version 0.20
            Support for writing bdip (Xfit binary) files.
         """
@@ -142,8 +147,9 @@ class Dipole(TimeMixin):
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
         """### Crop data to a given time interval.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tmin : float | None
             Start time of selection in seconds.
         tmax : float | None
@@ -161,8 +167,9 @@ class Dipole(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Dipole
             The cropped instance.
         """
@@ -170,8 +177,9 @@ class Dipole(TimeMixin):
     def copy(self):
         """### Copy the Dipoles object.
 
+        -----
         ### ⏎ Returns
-        -------
+
         dip : instance of Dipole
             The copied dipole instance.
         """
@@ -204,8 +212,9 @@ class Dipole(TimeMixin):
         If mode is set to 'arrow' or 'sphere', only the location of the first
         time point of each dipole is shown else use the show_all parameter.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         trans : dict | None
             The mri to head trans.
             Can be None with mode set to '3d'.
@@ -325,21 +334,24 @@ class Dipole(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure3D or matplotlib.figure.Figure
             The PyVista figure or matplotlib Figure.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.9.0
         """
         ...
     def to_mni(self, subject, trans, subjects_dir=None, verbose=None):
         """### Convert dipole location from head to MNI coordinates.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         subject : str
             The FreeSurfer subject name.
@@ -360,8 +372,9 @@ class Dipole(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         pos_mni : array, shape (n_pos, 3)
             The MNI coordinates (in mm) of pos.
         """
@@ -369,8 +382,9 @@ class Dipole(TimeMixin):
     def to_mri(self, subject, trans, subjects_dir=None, verbose=None):
         """### Convert dipole location from head to MRI surface RAS coordinates.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         subject : str
             The FreeSurfer subject name.
@@ -391,8 +405,9 @@ class Dipole(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         pos_mri : array, shape (n_pos, 3)
             The Freesurfer surface RAS coordinates (in mm) of pos.
         """
@@ -407,8 +422,9 @@ class Dipole(TimeMixin):
     ):
         """### Find an ROI in atlas for the dipole positions.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         trans : path-like | dict | instance of Transform | ``"fsaverage"`` | None
             If str, the path to the head<->MRI transform ``*-trans.fif`` file produced
@@ -438,28 +454,32 @@ class Dipole(TimeMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         labels : list
             List of anatomical region names from anatomical segmentation atlas.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24
         """
         ...
     def plot_amplitudes(self, color: str = "k", show: bool = True):
         """### Plot the dipole amplitudes as a function of time.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         color : matplotlib color
             Color to use for the trace.
         show : bool
             Show figure if True.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : matplotlib.figure.Figure
             The figure object containing the plot.
         """
@@ -467,13 +487,15 @@ class Dipole(TimeMixin):
     def __getitem__(self, item):
         """### Get a time slice.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         item : array-like or slice
             The slice of time points to use.
 
+        -----
         ### ⏎ Returns
-        -------
+
         dip : instance of Dipole
             The sliced dipole.
         """
@@ -481,13 +503,15 @@ class Dipole(TimeMixin):
     def __len__(self) -> int:
         """### Return the number of dipoles.
 
+        -----
         ### ⏎ Returns
-        -------
+
         len : int
             The number of dipoles.
 
-        Examples
-        --------
+        -----
+        ### 🖥️ Examples
+
         This can be used as::
 
             >>> len(dipoles)  # doctest: +SKIP
@@ -503,8 +527,9 @@ class DipoleFixed(ExtendedTimeMixin):
         via ``mne.DipoleFixed(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -525,14 +550,16 @@ class DipoleFixed(ExtendedTimeMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_dipole
     Dipole
     fit_dipole
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This class is for fixed-position dipole fits, where the position
     (and maybe orientation) is static over time. For sequential dipole fits,
     where the position can change a function of time, use `mne.Dipole`.
@@ -553,13 +580,15 @@ class DipoleFixed(ExtendedTimeMixin):
     def copy(self):
         """### Copy the DipoleFixed object.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : instance of DipoleFixed
             The copy.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.16
         """
         ...
@@ -570,8 +599,9 @@ class DipoleFixed(ExtendedTimeMixin):
     def save(self, fname, verbose=None) -> None:
         """### Save dipole in a .fif file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the .fif file. Must end with ``'.fif'`` or
             ``'.fif.gz'`` to make it explicit that the file contains
@@ -587,8 +617,9 @@ class DipoleFixed(ExtendedTimeMixin):
     def plot(self, show: bool = True, time_unit: str = "s"):
         """### Plot dipole data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         show : bool
             Call pyplot.show() at the end or not.
         time_unit : str
@@ -596,8 +627,9 @@ class DipoleFixed(ExtendedTimeMixin):
 
             ✨ Added in vesion 0.16
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             The figure containing the time courses.
         """
@@ -606,8 +638,9 @@ class DipoleFixed(ExtendedTimeMixin):
 def read_dipole(fname, verbose=None):
     """### Read ``.dip`` file from Neuromag/xfit or MNE.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the ``.dip`` or ``.fif`` file.
 
@@ -617,8 +650,9 @@ def read_dipole(fname, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     dipole : instance of Dipole | list of Dipole
         Dipole object containing position, orientation and amplitude of
@@ -629,14 +663,16 @@ def read_dipole(fname, verbose=None):
         🎭 Changed in version 1.1
             Added support for a list of `mne.Dipole` instances.
 
+    -----
     ### 👉 See Also
-    --------
+
     Dipole
     DipoleFixed
     fit_dipole
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     🎭 Changed in version 0.20
        Support for reading bdip (Xfit binary) format.
     """
@@ -658,8 +694,9 @@ def fit_dipole(
 ):
     """### Fit a dipole.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The dataset to fit.
     cov : str | instance of Covariance
@@ -763,8 +800,9 @@ def fit_dipole(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dip : instance of Dipole or DipoleFixed
         The dipole fits. A `mne.DipoleFixed` is returned if
         ``pos`` and ``ori`` are both not None, otherwise a
@@ -772,15 +810,17 @@ def fit_dipole(
     residual : instance of Evoked
         The M-EEG data channels with the fitted dipolar activity removed.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.beamformer.rap_music
     Dipole
     DipoleFixed
     read_dipole
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -788,8 +828,9 @@ def fit_dipole(
 def get_phantom_dipoles(kind: str = "vectorview"):
     """### Get standard phantom dipole locations and orientations.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     kind : str
         Get the information for the given system:
 
@@ -803,19 +844,22 @@ def get_phantom_dipoles(kind: str = "vectorview"):
         🎭 Changed in version 1.6
            Support added for ``'oyama'``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     pos : ndarray, shape (n_dipoles, 3)
         The dipole positions.
     ori : ndarray, shape (n_dipoles, 3)
         The dipole orientations.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.datasets.fetch_phantom
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The Elekta phantoms have a radius of 79.5mm, and HPI coil locations
     in the XY-plane at the axis extrema (e.g., (79.5, 0), (0, -79.5), ...).
 

@@ -33,8 +33,9 @@ def make_dics(
     (see `apply_dics_csd`), the source power can be estimated for each
     source point.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -199,8 +200,9 @@ def make_dics(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     filters : instance of Beamformer
         Dictionary containing filter weights from DICS beamformer.
         Contains the following keys:
@@ -246,12 +248,14 @@ def make_dics(
                 When pick_ori='max-power', this fields contains the estimated
                 direction of maximum power at each source location.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_dics_csd
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The original reference is :footcite:`GrossEtAl2001`. See
     :footcite:`vanVlietEtAl2018` for a tutorial style paper on the topic.
 
@@ -296,8 +300,9 @@ def apply_dics(evoked, filters, verbose=None):
     ### ⛔️ Warning This implementation has not been heavily tested so please
                  report any issues or suggestions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : Evoked
         Evoked data to apply the DICS beamformer weights to.
     filters : instance of Beamformer
@@ -310,15 +315,17 @@ def apply_dics(evoked, filters, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | VolSourceEstimate | list
         Source time courses. If the DICS beamformer has been computed for more
         than one frequency, a list is returned containing for each frequency
         the corresponding time courses.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_dics_epochs
     apply_dics_tfr_epochs
     apply_dics_csd
@@ -340,8 +347,9 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
     ### ⛔️ Warning This implementation has not been heavily tested so please
                  report any issue or suggestions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : Epochs
         Single trial epochs.
     filters : instance of Beamformer
@@ -358,13 +366,15 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc: list | generator of (SourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_dics
     apply_dics_tfr_epochs
     apply_dics_csd
@@ -379,8 +389,9 @@ def apply_dics_tfr_epochs(
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on single trial time-frequency data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs_tfr : EpochsTFR
         Single trial time-frequency epochs.
     filters : instance of Beamformer
@@ -396,14 +407,16 @@ def apply_dics_tfr_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stcs : list of list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)
         The source estimates for all epochs (outside list) and for
         all frequencies (inside list).
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_dics
     apply_dics_epochs
     apply_dics_csd
@@ -423,8 +436,9 @@ def apply_dics_csd(csd, filters, verbose=None):
               positive and so 3D directions cannot be combined meaningfully
               (the direction would be confined to the positive quadrant).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     csd : instance of CrossSpectralDensity
         The data cross-spectral density (CSD) matrices. A source estimate is
         performed for each frequency or frequency-bin defined in the CSD
@@ -439,8 +453,9 @@ def apply_dics_csd(csd, filters, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate
         Source power with frequency instead of time.
     frequencies : list of float
@@ -448,8 +463,9 @@ def apply_dics_csd(csd, filters, verbose=None):
         data CSD object defines frequency-bins instead of exact frequencies,
         the mean of each bin is returned.
 
+    -----
     ### 👉 See Also
-    --------
+
     apply_dics
     apply_dics_epochs
     apply_dics_tfr_epochs

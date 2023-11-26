@@ -8,8 +8,9 @@ def read_evoked_besa(fname, verbose=None):
     When a ``.elp`` sidecar file is present, it will be used to determine
     electrode information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the ``.avr`` or ``.mul`` file.
 
@@ -19,8 +20,9 @@ def read_evoked_besa(fname, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ev : Evoked
         The evoked data in the .avr or .mul file.
     """

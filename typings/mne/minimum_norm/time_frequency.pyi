@@ -34,8 +34,9 @@ def source_band_induced_power(
 ):
     """### Compute source space induced power in given frequency bands.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs.
     inverse_operator : instance of InverseOperator
@@ -113,8 +114,9 @@ def source_band_induced_power(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stcs : dict of SourceEstimate (or VolSourceEstimate)
         The estimated source space induced power estimates in shape
         (n_vertices, n_frequencies, n_samples) if label=None or label=label.
@@ -151,8 +153,9 @@ def source_induced_power(
 
     Computation can optionally be restricted in a label.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs.
     inverse_operator : instance of InverseOperator
@@ -239,8 +242,9 @@ def source_induced_power(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     power : array
         The induced power array with shape (n_sources, n_freqs, n_samples) if
         label=None or label=label. For lists of one or more labels, the induced
@@ -280,8 +284,9 @@ def compute_source_psd(
 ):
     """### Compute source power spectral density (PSD).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
     inverse_operator : instance of InverseOperator
@@ -369,19 +374,22 @@ def compute_source_psd(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc_psd : instance of SourceEstimate | VolSourceEstimate
         The PSD of each of the sources.
     sensor_psd : instance of EvokedArray
         The PSD of each sensor. Only returned if ``return_sensor`` is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_source_psd_epochs
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Each window is multiplied by a window before processing, so
     using a non-zero overlap is recommended.
 
@@ -422,8 +430,9 @@ def compute_source_psd_epochs(
 
     This uses the multi-taper method to compute the PSD for each epoch.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The raw data.
     inverse_operator : instance of InverseOperator
@@ -496,14 +505,16 @@ def compute_source_psd_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     out : list (or generator object)
         A list (or generator) for the source space PSD (and optionally the
         sensor PSD) for each epoch.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_source_psd
     """
     ...

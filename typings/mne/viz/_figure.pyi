@@ -28,8 +28,9 @@ class BrowserBase(ABC, metaclass=abc.ABCMeta):
     def fake_keypress(self, key, fig=None):
         """### Pass a fake keypress to the figure.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         key : str
             The key to fake (e.g., ``'a'``).
         fig : instance of Figure
@@ -43,8 +44,9 @@ def set_browser_backend(backend_name, verbose=None):
     The backend will be set as specified and operations will use
     that backend.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     backend_name : str
         The 2D browser backend to select. See Notes for the capabilities
         of each backend (``'qt'``, ``'matplotlib'``). The ``'qt'`` browser
@@ -57,13 +59,15 @@ def set_browser_backend(backend_name, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     old_backend_name : str | None
         The old backend that was in use.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This table shows the capabilities of each backend ("✓" for full support,
     and "-" for partial support):
 
@@ -104,8 +108,9 @@ def set_browser_backend(backend_name, verbose=None):
 def get_browser_backend():
     """### Return the 2D backend currently used.
 
+    -----
     ### ⏎ Returns
-    -------
+
     backend_used : str | None
         The 2D browser backend currently in use. If no backend is found,
         returns ``None``.
@@ -118,8 +123,9 @@ def use_browser_backend(backend_name) -> Generator[Incomplete, None, None]:
     See `mne.viz.set_browser_backend` for more details on the available
     2D browser backends and their capabilities.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     backend_name : {'qt', 'matplotlib'}
         The 2D browser backend to use in the context.
     """

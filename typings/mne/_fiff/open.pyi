@@ -24,8 +24,9 @@ class _NoCloseRead:
 def fiff_open(fname, preload: bool = False, verbose=None):
     """### Open a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like | fid
         Name of the fif file, or an opened file (will seek back to 0).
     preload : bool
@@ -39,8 +40,9 @@ def fiff_open(fname, preload: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fid : file
         The file descriptor of the open file.
     tree : fif tree
@@ -66,8 +68,9 @@ def show_fiff(
 
     This function is similar to mne_show_fiff.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Filename to evaluate.
     indent : str
@@ -92,8 +95,9 @@ def show_fiff(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     contents : str
         The contents of the file.
     """

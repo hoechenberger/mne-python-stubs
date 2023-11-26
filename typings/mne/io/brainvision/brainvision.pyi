@@ -17,8 +17,9 @@ from _typeshed import Incomplete
 class RawBrainVision(BaseRaw):
     """### Raw object from Brain Vision EEG file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     vhdr_fname : path-like
         Path to the EEG header file.
     eog : list or tuple
@@ -47,13 +48,15 @@ class RawBrainVision(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     impedances : dict
         A dictionary of all electrodes and their impedances.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 
@@ -79,8 +82,9 @@ def read_raw_brainvision(
 ):
     """### Reader for Brain Vision EEG file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     vhdr_fname : path-like
         Path to the EEG header file.
     eog : list or tuple of str
@@ -109,14 +113,16 @@ def read_raw_brainvision(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawBrainVision
         A Raw object containing BrainVision data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawBrainVision.
     """
     ...

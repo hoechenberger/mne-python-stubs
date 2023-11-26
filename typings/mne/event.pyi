@@ -20,8 +20,9 @@ from _typeshed import Incomplete
 def pick_events(events, include=None, exclude=None, step: bool = False):
     """### Select some :term:`events`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
@@ -40,8 +41,9 @@ def pick_events(events, include=None, exclude=None, step: bool = False):
         In this case, the two last columns are considered in inclusion/
         exclusion criteria.
 
+    -----
     ### ⏎ Returns
-    -------
+
     events : array, shape (n_events, 3)
         The list of events.
     """
@@ -57,8 +59,9 @@ def define_target_events(
     analyze evoked responses which were followed by a button press within
     a defined time window.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     events : ndarray
         Array as returned by mne.find_events.
     reference_id : int
@@ -78,8 +81,9 @@ def define_target_events(
         Fill event to be inserted if target is not available within the time
         window specified. If None, the 'null' events will be dropped.
 
+    -----
     ### ⏎ Returns
-    -------
+
     new_events : ndarray
         The new defined events.
     lag : ndarray
@@ -101,8 +105,9 @@ def read_events(
     See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     filename : path-like
         Name of the input file.
         If the extension is ``.fif``, events are read assuming
@@ -137,8 +142,9 @@ def read_events(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
@@ -147,12 +153,14 @@ def read_events(
     event_id : dict
         Dictionary of ``{str: int}`` mappings of event IDs.
 
+    -----
     ### 👉 See Also
-    --------
+
     find_events, write_events
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function will discard the offset line (i.e., first line with zero
     event number) if it is present in a text file.
 
@@ -164,8 +172,9 @@ def read_events(
 def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> None:
     """### Write :term:`events` to file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     filename : path-like
         Name of the output file.
         If the extension is ``.fif``, events are written in
@@ -189,8 +198,9 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_events
     """
     ...
@@ -200,8 +210,9 @@ def find_stim_steps(
 ):
     """### Find all steps in data from a stim channel.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : Raw object
         The raw data.
     pad_start : None | int
@@ -222,16 +233,18 @@ def find_stim_steps(
         etc. are read. If these are not found, it will default to
         'STI101' or 'STI 014', whichever is present.
 
+    -----
     ### ⏎ Returns
-    -------
+
     steps : array, shape = (n_samples, 3)
         For each step in the stim channel the values [sample, v_from, v_to].
         The first column contains the event time in samples (the first sample
         with the new value). The second column contains the stim channel value
         before the step, and the third column contains value after the step.
 
+    -----
     ### 👉 See Also
-    --------
+
     find_events : More sophisticated options for finding events in a Raw file.
     """
     ...
@@ -254,8 +267,9 @@ def find_events(
     See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : Raw object
         The raw data.
     stim_channel : None | str | list of str
@@ -311,29 +325,33 @@ def find_events(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
 
+    -----
     ### 👉 See Also
-    --------
+
     find_stim_steps : Find all the steps in the stim channel.
     read_events : Read events from disk.
     write_events : Write events to disk.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ### ⛔️ Warning If you are working with downsampled data, events computed
                  before decimation are no longer valid. Please recompute
                  your events after decimation, but note this reduces the
                  precision of event timing.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     Consider data with a stim channel that looks like::
 
         [0, 32, 32, 33, 32, 0]
@@ -409,8 +427,9 @@ def find_events(
 def merge_events(events, ids, new_id, replace_events: bool = True):
     """### Merge a set of :term:`events`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     events : array, shape (n_events_in, 3)
         Events.
     ids : array of int
@@ -421,13 +440,15 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
         If True (default), old event ids are replaced. Otherwise,
         new events will be added to the old event list.
 
+    -----
     ### ⏎ Returns
-    -------
+
     new_events : array, shape (n_events_out, 3)
         The new events.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Rather than merging events you can use hierarchical event_id
     in Epochs. For example, here::
 
@@ -435,8 +456,9 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
 
     And the condition 'auditory' would correspond to either 1 or 2.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     Here is quick example of the behavior::
 
         >>> events = [[134, 0, 1], [341, 0, 2], [502, 0, 3]]
@@ -456,8 +478,9 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
 def shift_time_events(events, ids, tshift, sfreq):
     """### Shift a set of :term:`events`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
@@ -471,8 +494,9 @@ def shift_time_events(events, ids, tshift, sfreq):
     sfreq : float
         The sampling frequency of the data.
 
+    -----
     ### ⏎ Returns
-    -------
+
     new_events : array of int, shape (n_new_events, 3)
         The new events.
     """
@@ -489,8 +513,9 @@ def make_fixed_length_events(
 ):
     """### Make a set of :term:`events` separated by a fixed duration.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         A raw object to use the data from.
     id : int
@@ -514,8 +539,9 @@ def make_fixed_length_events(
 
         ✨ Added in vesion 0.18
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
@@ -531,8 +557,9 @@ def concatenate_events(events, first_samps, last_samps):
     events in raw files separately before combining them using
     `mne.concatenate_raws`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     events : list of array
         List of :term:`events` arrays, typically each extracted from a
         corresponding raw file that is being concatenated.
@@ -541,13 +568,15 @@ def concatenate_events(events, first_samps, last_samps):
     last_samps : list or array of int
         Last sample numbers of the raw files concatenated.
 
+    -----
     ### ⏎ Returns
-    -------
+
     events : array
         The concatenated events.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.concatenate_raws
     """
     ...
@@ -561,14 +590,16 @@ class AcqParserFIF:
     according to DACQ settings and modify original averaging settings if
     necessary.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. This is where the DACQ parameters will be taken from.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     categories : list
         List of averaging categories marked active in DACQ.
     events : list
@@ -582,12 +613,14 @@ class AcqParserFIF:
     acq_dict : dict
         All DACQ parameters.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw.acqparser : Access the parser through a Raw attribute.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Any averaging category (also non-active ones) can be accessed by indexing
     as ``acqparserfif['category_name']``.
     """
@@ -602,13 +635,15 @@ class AcqParserFIF:
     def __getitem__(self, item):
         """### Return an averaging category, or list of categories.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         item : str | list of str
             Name of the category (comment field in DACQ).
 
+        -----
         ### ⏎ Returns
-        -------
+
         conds : dict | list of dict
             Each dict should have the following keys:
 
@@ -651,8 +686,9 @@ class AcqParserFIF:
     def __len__(self) -> int:
         """### Return number of averaging categories marked active in DACQ.
 
+        -----
         ### ⏎ Returns
-        -------
+
         n_cat : int
             The number of categories.
         """
@@ -686,8 +722,9 @@ class AcqParserFIF:
         Output is designed to be used with the Epochs class to extract the
         corresponding epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         raw : Raw object
             An instance of Raw.
         condition : None | str | dict | list of dict
@@ -725,8 +762,9 @@ class AcqParserFIF:
             transitions with a resolution of one sample, use
             delayed_lookup=False.
 
+        -----
         ### ⏎ Returns
-        -------
+
         conds_data : dict or list of dict
             Each dict has the following keys:
 
@@ -753,8 +791,9 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
     (i.e., event names containing forward slashes ``/``). Please see the
     Examples section below for a working example.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     event_names : array-like of str | dict
         Either a collection of event names, or the ``event_id`` dictionary
         mapping event names to event codes.
@@ -765,17 +804,20 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
         ``event_names``. If ``'warn'`` or ``'ignore'``, an empty list will be
         returned.
 
+    -----
     ### ⏎ Returns
-    -------
+
     matches : list of str
         All event names that match any of the ``keys`` provided.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.0
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     Assuming the following grouped event names in the data, you could easily
     query for all ``auditory`` and ``left`` event names::
 
@@ -796,22 +838,25 @@ def match_event_names(event_names, keys, *, on_missing: str = "raise"):
 def count_events(events, ids=None):
     """### Count events.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     events : ndarray, shape (N, 3)
         The events array (consisting of N events).
     ids : array-like of int | None
         If ``None``, count all event types present in the input. If array-like
         of int, count only those event types given by ``ids``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     counts : dict
         A dictionary containing the event types as keys with their counts as
         values.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
         >>> events = np.array([[0, 0, 1], [0, 0, 1], [0, 0, 5]])
         >>> count_events(events)
         {1: 2, 5: 1}

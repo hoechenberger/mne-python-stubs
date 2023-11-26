@@ -23,8 +23,9 @@ class UnsupportedKITFormat(ValueError):
 class RawKIT(BaseRaw):
     """### Raw object from KIT SQD file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the SQD file.
 
@@ -85,8 +86,9 @@ class RawKIT(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ``elp`` and ``hsp`` are usually the exported text files (*.txt) from the
     Polhemus FastScan system. ``hsp`` refers to the headshape surface points.
     ``elp`` refers to the points in head-space that corresponds to the HPI
@@ -95,8 +97,9 @@ class RawKIT(BaseRaw):
     If ``mrk``\\, ``hsp`` or ``elp`` are :term:`array_like` inputs, then the
     numbers in xyz coordinates should be in units of meters.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 
@@ -126,8 +129,9 @@ class RawKIT(BaseRaw):
         buffer_size : int
             The size of chunk to by which the data are scanned.
 
+        -----
         ### ⏎ Returns
-        -------
+
         events : array, [samples]
            The event vector (1 x samples).
         """
@@ -136,8 +140,9 @@ class RawKIT(BaseRaw):
 class EpochsKIT(BaseEpochs):
     """### Epochs Array object from KIT SQD file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the sqd file.
     events : array of int, shape (n_events, 3) | path-like
@@ -252,15 +257,17 @@ class EpochsKIT(BaseEpochs):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ``elp`` and ``hsp`` are usually the exported text files (*.txt) from the
     Polhemus FastScan system. hsp refers to the headshape surface points. elp
     refers to the points in head-space that corresponds to the HPI points.
     Currently, '*.elp' and '*.hsp' files are NOT supported.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.Epochs : Documentation of attributes and methods.
     """
 
@@ -288,8 +295,9 @@ class EpochsKIT(BaseEpochs):
 def get_kit_info(rawfile, allow_unknown_format, standardize_names=None, verbose=None):
     """### Extract all the information from the sqd/con file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     rawfile : path-like
         KIT file to be read.
     allow_unknown_format : bool
@@ -307,8 +315,9 @@ def get_kit_info(rawfile, allow_unknown_format, standardize_names=None, verbose=
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -333,8 +342,9 @@ def read_raw_kit(
 ):
     """### Reader function for Ricoh/KIT conversion to FIF.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the SQD file.
 
@@ -395,18 +405,21 @@ def read_raw_kit(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawKIT
         A Raw object containing KIT data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawKIT.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ``elp`` and ``hsp`` are usually the exported text files (\\*.txt) from the
     Polhemus FastScan system. ``hsp`` refers to the headshape surface points.
     ``elp`` refers to the points in head-space that corresponds to the HPI
@@ -430,8 +443,9 @@ def read_epochs_kit(
 ):
     """### Reader function for Ricoh/KIT epochs files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the SQD file.
     events : array of int, shape (n_events, 3) | path-like
@@ -478,13 +492,15 @@ def read_epochs_kit(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of Epochs
         The epochs.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...

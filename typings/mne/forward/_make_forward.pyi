@@ -38,8 +38,9 @@ def make_forward_solution(
 ):
     """### Calculate a forward solution for a subject.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info | path-like
         The `mne.Info` object with information about the sensors and methods of measurement. If ``path-like``, it should be a `str` or
@@ -86,17 +87,20 @@ def make_forward_solution(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwd : instance of Forward
         The forward solution.
 
+    -----
     ### 👉 See Also
-    --------
+
     convert_forward_solution
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The ``--grad`` option from MNE-C (to compute gradients) is not implemented
     here.
 
@@ -127,8 +131,9 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
               spaced, the first output will be a list of single-timepoint
               source estimates.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     dipole : instance of Dipole | list of Dipole
         Dipole object containing position, orientation and amplitude of
@@ -160,8 +165,9 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fwd : instance of Forward
         The forward solution corresponding to the source estimate(s).
     stc : instance of VolSourceEstimate | list of VolSourceEstimate
@@ -169,12 +175,14 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
         time courses. If the time points of the dipole are unevenly spaced,
         a list of single-timepoint source estimates are returned.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.simulation.simulate_evoked
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.12.0
     """
     ...
@@ -182,18 +190,21 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
 def use_coil_def(fname) -> Generator[None, None, None]:
     """### Use a custom coil definition file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename of the coil definition file.
 
+    -----
     ### ⏎ Returns
-    -------
+
     context : contextmanager
         The context for using the coil definition.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This is meant to be used a context manager such as:
 
     >>> with use_coil_def(my_fname):  # doctest:+SKIP

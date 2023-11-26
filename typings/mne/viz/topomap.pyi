@@ -54,8 +54,9 @@ def plot_projs_topomap(
 ):
     """### Plot topographic maps of SSP projections.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     projs : list of Projection
         The projections.
 
@@ -206,13 +207,15 @@ def plot_projs_topomap(
     show : bool
         Show the figure if ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         Figure with a topomap subplot for each projector.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -275,8 +278,9 @@ def plot_topomap(
 ):
     """### Plot a topographic map as image.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array, shape (n_chan,)
         The data values to plot.
     pos : array, shape (n_channels, 2) | instance of Info
@@ -436,8 +440,9 @@ def plot_topomap(
         `matplotlib.widgets.RectangleSelector`). If ``None``
         interactive channel selection is disabled. Defaults to ``None``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     im : matplotlib.image.AxesImage
         The interpolated data.
     cn : matplotlib.contour.ContourSet
@@ -479,8 +484,9 @@ def plot_ica_components(
 ):
     """### Project mixing matrix on interpolated sensor topography.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ica : instance of mne.preprocessing.ICA
         The ICA solution.
 
@@ -670,13 +676,15 @@ def plot_ica_components(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure | list of matplotlib.figure.Figure
         The figure object(s).
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     When run in interactive mode, ``plot_ica_components`` allows to reject
     components by clicking on their title label. The state of each component
     is indicated by its label color (gray: rejected; black: retained). It is
@@ -719,8 +727,9 @@ def plot_tfr_topomap(
 ):
     """### Plot topographic maps of specific time-frequency intervals of TFR data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tfr : AverageTFR
         The AverageTFR object.
     tmin, tmax : float | None
@@ -901,8 +910,9 @@ def plot_tfr_topomap(
     show : bool
         Show the figure if ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : matplotlib.figure.Figure
         The figure containing the topography.
     """
@@ -943,8 +953,9 @@ def plot_evoked_topomap(
 ):
     """### Plot topographic maps of specific time points of evoked data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : Evoked
         The Evoked object.
     times : float | array of float | "auto" | "peaks" | "interactive"
@@ -1150,13 +1161,15 @@ def plot_evoked_topomap(
     show : bool
         Show the figure if ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
        The figure.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     When existing ``axes`` are provided and ``colorbar=True``, note that the
     colorbar scale will only accurately reflect topomaps that are generated in
     the same call as the colorbar. Note also that the colorbar will not be
@@ -1214,8 +1227,9 @@ def plot_epochs_psd_topomap(
 
     Plot the topomap of the power spectral density across epochs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs object.
 
@@ -1434,8 +1448,9 @@ def plot_epochs_psd_topomap(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         Figure showing one scalp topography per frequency band.
     """
@@ -1474,8 +1489,9 @@ def plot_psds_topomap(
 ):
     """### Plot spatial maps of PSDs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     psds : array of float, shape (n_channels, n_freqs)
         Power spectral densities.
     freqs : array of float, shape (n_freqs,)
@@ -1664,8 +1680,9 @@ def plot_psds_topomap(
     show : bool
         Show the figure if ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         Figure with a topomap subplot for each band.
     """
@@ -1674,8 +1691,9 @@ def plot_psds_topomap(
 def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
     """### Plot the sensor positions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     layout : None | Layout
         Layout instance specifying sensor positions.
     picks : list | slice | None
@@ -1686,13 +1704,15 @@ def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
     show : bool
         Show figure if True. Defaults to True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         Figure containing the sensor topography.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.12.0
     """
     ...
@@ -1732,8 +1752,9 @@ def plot_arrowmap(
     ``info_from`` and ``info_to`` parameters to interpolate from
     gradiometer data to magnetometer data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array, shape (n_channels,)
         The data values to plot.
     info_from : instance of Info
@@ -1867,13 +1888,15 @@ def plot_arrowmap(
         ✨ Added in vesion 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : matplotlib.figure.Figure
         The Figure of the plot.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.17
 
     References
@@ -1887,8 +1910,9 @@ def plot_bridged_electrodes(
 ):
     """### Topoplot electrode distance matrix with bridged electrodes connected.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -1906,13 +1930,15 @@ def plot_bridged_electrodes(
     topomap_args : dict | None
         Arguments to pass to `mne.viz.plot_topomap`.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The topoplot figure handle.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.preprocessing.compute_bridged_electrodes
     """
     ...
@@ -1920,8 +1946,9 @@ def plot_bridged_electrodes(
 def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = False):
     """### Plot channel adjacency.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     info : instance of Info
         Info object with channel locations.
     adjacency : array
@@ -1942,20 +1969,23 @@ def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = 
         an activated channel deactivates it. Editing is currently only
         supported for ``kind='2d'``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : Figure
         The `matplotlib.figure.Figure` instance where the channel
         adjacency is plotted.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.channels.get_builtin_ch_adjacencies
     mne.channels.read_ch_adjacency
     mne.channels.find_ch_adjacency
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.1
     """
     ...
@@ -1987,8 +2017,9 @@ def plot_regression_weights(
 ):
     """### Plot the regression weights of a fitted EOGRegression model.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     model : EOGRegression
         The fitted EOGRegression model whose weights will be plotted.
     ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
@@ -2138,13 +2169,15 @@ def plot_regression_weights(
     show : bool
         Show the figure if ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         Figure with a topomap subplot for each channel type.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...

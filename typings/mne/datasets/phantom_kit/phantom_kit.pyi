@@ -8,8 +8,9 @@ def data_path(
 ):
     """### Get path to local copy of phantom_kit dataset.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     path : None | str
         Location of where to look for the phantom_kit dataset.
         If None, the environment variable or config parameter
@@ -35,8 +36,9 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : instance of Path
         Path to phantom_kit dataset directory."""
     ...
@@ -44,8 +46,9 @@ def data_path(
 def get_version():
     """### Get version of the local phantom_kit dataset.
 
+    -----
     ### ⏎ Returns
-    -------
+
     version : str | None
         Version of the phantom_kit local dataset, or None if the dataset
         does not exist locally."""

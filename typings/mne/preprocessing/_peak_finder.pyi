@@ -3,8 +3,9 @@ from ..utils import logger as logger
 def peak_finder(x0, thresh=None, extrema: int = 1, verbose=None):
     """### Noise-tolerant fast peak-finding algorithm.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x0 : 1d array
         A real vector from the maxima will be found (required).
     thresh : float | None
@@ -22,21 +23,24 @@ def peak_finder(x0, thresh=None, extrema: int = 1, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     peak_loc : array
         The indices of the identified peaks in x0.
     peak_mag : array
         The magnitude of the identified peaks.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If repeated values are found the first is identified as the peak.
     Conversion from initial Matlab code from:
     Nathanael C. Yoder (ncyoder@purdue.edu)
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> import numpy as np
     >>> from mne.preprocessing import peak_finder
     >>> t = np.arange(0, 3, 0.01)

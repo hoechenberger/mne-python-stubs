@@ -22,8 +22,9 @@ def export_raw(
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : str
         Name of the output file.
@@ -59,8 +60,9 @@ def export_raw(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.24
 
     Export to external format may not preserve all the information from the
@@ -104,8 +106,9 @@ def export_epochs(
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : str
         Name of the output file.
@@ -129,8 +132,9 @@ def export_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.24
 
     Export to external format may not preserve all the information from the
@@ -161,8 +165,9 @@ def export_evokeds(
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : str
         Name of the output file.
@@ -188,13 +193,15 @@ def export_evokeds(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.write_evokeds
     mne.export.export_evokeds_mff
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.24
 
     Export to external format may not preserve all the information from the

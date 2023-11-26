@@ -13,8 +13,9 @@ def data_path(
     Gets a local copy of the high frequency SEF MEG dataset
     :footcite:`NurminenEtAl2017`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     dataset : 'evoked' | 'raw'
         Whether to get the main dataset (evoked, structural and the rest) or
         the separate dataset containing raw MEG data only.
@@ -37,8 +38,9 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : str
         Local path to the directory where the HF-SEF data is stored.
 

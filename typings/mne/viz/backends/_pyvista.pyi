@@ -17,8 +17,9 @@ class PyVistaFigure(Figure3D):
               ``mne.viz.PyVistaFigure(...)``. Instead, use
               `mne.viz.create_3d_figure`.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.viz.create_3d_figure
     """
 
@@ -27,8 +28,9 @@ class PyVistaFigure(Figure3D):
 class _Projection:
     """### Class storing projection information.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     xy : array
         Result of 2d projection of 3d data.
     pts : None
@@ -49,8 +51,9 @@ class _Projection:
 class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     """### Class managing rendering scene.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     plotter: Plotter
         Main PyVista access point.
     name: str
@@ -98,8 +101,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add a legend to the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         labels : list of tuples
             Each entry must contain two strings, (label, color),
             where ``label`` is the name of the item to add, and
@@ -161,8 +165,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add a mesh in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         x : array, shape (n_vertices,)
            The array containing the X component of the vertices.
         y : array, shape (n_vertices,)
@@ -206,8 +211,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         kwargs : args
             The arguments to pass to triangular_mesh
 
+        -----
         ### ⏎ Returns
-        -------
+
         surface :
             Handle of the mesh in the scene.
         """
@@ -228,8 +234,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add a contour in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         surface : surface object
             The mesh to use as support for contour.
         scalars : ndarray, shape (n_vertices,)
@@ -273,8 +280,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add a surface in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         surface : surface object
             The information describing the surface.
         color : tuple | str
@@ -311,8 +319,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add sphere in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         center : ndarray, shape(n_center, 3)
             The list of centers to use for the sphere(s).
         color : tuple | str
@@ -350,8 +359,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add tube in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         origin : array, shape(n_lines, 3)
             The coordinates of the first end of the tube(s).
         destination : array, shape(n_lines, 3)
@@ -379,8 +389,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         reverse_lut : bool
             If True, reverse the lookup table.
 
+        -----
         ### ⏎ Returns
-        -------
+
         actor :
             The actor in the scene.
         surface :
@@ -418,8 +429,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add quiver3d in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         x : array, shape (n_quivers,)
             The X component of the position of the quiver.
         y : array, shape (n_quivers,)
@@ -471,8 +483,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
         line_width : float
             The width of the 2d arrows.
 
+        -----
         ### ⏎ Returns
-        -------
+
         actor :
             The actor in the scene.
         surface :
@@ -490,8 +503,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add 2d text in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         x : float
             The X component to use as position of the text in the
             window coordinates system (window_width, window_height).
@@ -511,8 +525,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     def text3d(self, x, y, z, text, scale, color: str = "white"):
         """### Add 2d text in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         x : float
             The X component to use as position of the text.
         y : float
@@ -540,8 +555,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ):
         """### Add a scalar bar in the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         source :
             The object of the scene used for the colormap.
         color :
@@ -575,8 +591,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     ) -> None:
         """### Configure the camera of the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         azimuth : float
             The azimuthal angle of the camera.
         elevation : float
@@ -599,8 +616,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     def screenshot(self, mode: str = "rgb", filename=None):
         """### Take a screenshot of the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         mode : str
             Either 'rgb' or 'rgba' for values to return.
             Default is 'rgb'.
@@ -611,8 +629,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     def project(self, xyz, ch_names):
         """### Convert 3d points to a 2d perspective.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         xyz : array, shape(n_points, 3)
             The points to project.
         ch_names : array, shape(_n_points,)
@@ -622,8 +641,9 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     def remove_mesh(self, mesh_data) -> None:
         """### Remove the given mesh from the scene.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         mesh_data : tuple | Surface
             The mesh to remove.
         """

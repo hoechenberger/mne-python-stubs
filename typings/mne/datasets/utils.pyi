@@ -15,8 +15,9 @@ from .config import MNE_DATASETS as MNE_DATASETS
 def has_dataset(name):
     """### Check for presence of a dataset.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     name : str | dict
         The dataset to check. Strings refer to one of the supported datasets
         listed `here <datasets>`. A `dict` can be used to check for
@@ -24,8 +25,9 @@ def has_dataset(name):
         and must contain keys ``dataset_name``, ``archive_name``, ``url``,
         ``folder_name``, ``hash``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     has : bool
         True if the dataset is present.
     """
@@ -38,8 +40,9 @@ def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
     :footcite:'KhanEtAl2018' files for
     FreeSurfer's fsaverage to the specified directory.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subjects_dir : path-like | None
         The subjects directory to use. The file will be placed in
         ``subjects_dir + '/fsaverage/label'``.
@@ -65,8 +68,9 @@ def fetch_hcp_mmp_parcellation(
     :footcite:`GlasserEtAl2016` files for FreeSurfer's fsaverage
     :footcite:`Mills2016` to the specified directory.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subjects_dir : path-like | None
         The subjects directory to use. The file will be placed in
         ``subjects_dir + '/fsaverage/label'``.
@@ -84,8 +88,9 @@ def fetch_hcp_mmp_parcellation(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Use of this parcellation is subject to terms of use on the
     `HCP-MMP webpage <https://balsa.wustl.edu/WN56>`_.
 

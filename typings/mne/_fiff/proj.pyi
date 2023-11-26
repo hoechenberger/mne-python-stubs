@@ -27,8 +27,9 @@ class Projection(dict):
     ### ⛔️ Warning This class is generally not meant to be instantiated
                  directly, use ``compute_proj_*`` functions instead.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : dict
         The data dictionary.
     desc : str
@@ -84,8 +85,9 @@ class Projection(dict):
     ):
         """### Plot topographic maps of SSP projections.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         info : mne.Info
             The `mne.Info` object with information about the sensors and methods of measurement. Used to determine the layout.
@@ -224,13 +226,15 @@ class Projection(dict):
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure distributing one image per channel across sensor topography.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.15.0
         """
         ...
@@ -238,8 +242,9 @@ class Projection(dict):
 class ProjMixin:
     """### Mixin class for Raw, Evoked, Epochs.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This mixin adds a proj attribute as a property to data containers.
     It is True if at least one proj is present and all of them are active.
     The projs might not be applied yet if data are not preloaded. In
@@ -268,8 +273,9 @@ class ProjMixin:
     def add_proj(self, projs, remove_existing: bool = False, verbose=None):
         """### Add SSP projection vectors.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         projs : list
             List with projection vectors.
         remove_existing : bool
@@ -281,8 +287,9 @@ class ProjMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Raw | Epochs | Evoked
             The data container.
         """
@@ -290,8 +297,9 @@ class ProjMixin:
     def apply_proj(self, verbose=None):
         """### Apply the signal space projection (SSP) operators to the data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
@@ -299,13 +307,15 @@ class ProjMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Raw | Epochs | Evoked
             The instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Once the projectors have been applied, they can no longer be
         removed. It is usually not recommended to apply the projectors at
         too early stages, as they are applied automatically later on
@@ -331,14 +341,16 @@ class ProjMixin:
         ### 💡 Note The projection vector can only be removed if it is inactive
                   (has not been applied to the data).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         idx : int | list of int | str
             Index of the projector to remove. Can also be "all" (default)
             to remove all projectors.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Raw | Epochs | Evoked
             The instance.
         """
@@ -368,8 +380,9 @@ class ProjMixin:
     ):
         """### Plot SSP vector.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None | list
             The channel type to plot. For ``'grad'``, the gradiometers are
             collected in pairs and the RMS for each pair is plotted. If
@@ -516,8 +529,9 @@ class ProjMixin:
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure distributing one image per channel across sensor topography.
         """
@@ -526,8 +540,9 @@ class ProjMixin:
 def make_projector(projs, ch_names, bads=(), include_active: bool = True):
     """### Create an SSP operator from SSP projection vectors.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     projs : list
         List of projection vectors.
     ch_names : list of str
@@ -540,8 +555,9 @@ def make_projector(projs, ch_names, bads=(), include_active: bool = True):
     include_active : bool
         Also include projectors that are already active.
 
+    -----
     ### ⏎ Returns
-    -------
+
     proj : array of shape [n_channels, n_channels]
         The projection operator to apply to the data.
     nproj : int
@@ -556,16 +572,18 @@ def make_projector_info(info, include_active: bool = True):
 
     Calls make_projector on good channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
     include_active : bool
         Also include projectors that are already active.
 
+    -----
     ### ⏎ Returns
-    -------
+
     proj : array of shape [n_channels, n_channels]
         The projection operator to apply to the data.
     nproj : int
@@ -578,8 +596,9 @@ def activate_proj(projs, copy: bool = True, verbose=None):
 
     Useful before passing them to make_projector.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     projs : list
         The projectors.
     copy : bool
@@ -591,8 +610,9 @@ def activate_proj(projs, copy: bool = True, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     projs : list
         The projectors.
     """
@@ -603,8 +623,9 @@ def deactivate_proj(projs, copy: bool = True, verbose=None):
 
     Useful before saving raw data without projectors applied.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     projs : list
         The projectors.
     copy : bool
@@ -616,8 +637,9 @@ def deactivate_proj(projs, copy: bool = True, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     projs : list
         The projectors.
     """
@@ -628,8 +650,9 @@ def make_eeg_average_ref_proj(
 ):
     """### Create an EEG average reference SSP projection vector.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -647,8 +670,9 @@ def make_eeg_average_ref_proj(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     proj: instance of Projection
         The SSP/PCA projector.
     """
@@ -664,8 +688,9 @@ def setup_proj(
 ):
     """### Set up projection for Raw and Epochs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. Warning: will be modified in-place.
@@ -686,8 +711,9 @@ def setup_proj(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     projector : array of shape [n_channels, n_channels]
         The projection operator to apply to the data.
     info : mne.Info

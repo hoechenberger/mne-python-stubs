@@ -9,8 +9,9 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
     This function has been tested using the ISS Imagent I and II systems
     and versions 0.40/0.84 of the BOXY recording software.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the BOXY data file.
 
@@ -27,14 +28,16 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawBOXY
         A Raw object containing BOXY data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawBOXY.
     """
     ...
@@ -42,8 +45,9 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
 class RawBOXY(BaseRaw):
     """### Raw object from a BOXY optical imaging file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the BOXY data file.
 
@@ -60,8 +64,9 @@ class RawBOXY(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

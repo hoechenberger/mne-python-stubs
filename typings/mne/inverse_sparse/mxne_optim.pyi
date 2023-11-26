@@ -25,8 +25,9 @@ def dgap_l21(M, G, X, active_set, alpha, n_orient):
 
     See :footcite:`GramfortEtAl2012`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     M : array, shape (n_sensors, n_times)
         The data.
     G : array, shape (n_sensors, n_active)
@@ -40,8 +41,9 @@ def dgap_l21(M, G, X, active_set, alpha, n_orient):
     n_orient : int
         Number of dipoles per locations (typically 1 or 3).
 
+    -----
     ### ⏎ Returns
-    -------
+
     gap : float
         Dual gap.
     p_obj : float
@@ -78,8 +80,9 @@ def mixed_norm_solver(
     See references :footcite:`GramfortEtAl2012,StrohmeierEtAl2016,
     BertrandEtAl2020`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     M : array, shape (n_sensors, n_times)
         The data.
     G : array, shape (n_sensors, n_dipoles)
@@ -118,8 +121,9 @@ def mixed_norm_solver(
         The initial weight matrix used for warm starting the solver. If None,
         the weights are initialized at zero.
 
+    -----
     ### ⏎ Returns
-    -------
+
     X : array, shape (n_active, n_times)
         The source estimates.
     active_set : array, shape (new_active_set_size,)
@@ -155,8 +159,9 @@ def iterative_mixed_norm_solver(
 
     See reference :footcite:`StrohmeierEtAl2016`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     M : array, shape (n_sensors, n_times)
         The data.
     G : array, shape (n_sensors, n_dipoles)
@@ -191,8 +196,9 @@ def iterative_mixed_norm_solver(
         The initial weight used for reweighting the gain matrix. If None, the
         weights are initialized with ones.
 
+    -----
     ### ⏎ Returns
-    -------
+
     X : array, shape (n_active, n_times)
         The source estimates.
     active_set : array
@@ -277,8 +283,9 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
     Y and w_time are non-negative. See
     :footcite:`NdiayeEtAl2016,BurdakovMerkulov2001`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     Y : array, shape (n_coefs,)
         The input data.
     l1_ratio : float between 0 and 1
@@ -293,8 +300,9 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
         to 1 are used.
 
 
+    -----
     ### ⏎ Returns
-    -------
+
     nu : float
         The value of the dual norm evaluated at Y.
 
@@ -307,8 +315,9 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
 def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=None, w_time=None):
     """### Weighted epsilon-inf norm of phi(np.dot(G.T, R)).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     G : array, shape (n_sensors, n_sources)
         Gain matrix a.k.a. lead field.
     R : array, shape (n_sensors, n_times)
@@ -327,8 +336,9 @@ def norm_epsilon_inf(G, R, phi, l1_ratio, n_orient, w_space=None, w_time=None):
         Weights for the L1 term of the epsilon norm. If None, weights are
         all equal to 1.
 
+    -----
     ### ⏎ Returns
-    -------
+
     nu : float
         The maximum value of the epsilon norms over groups of n_orient dipoles
         (consecutive rows of phi(np.dot(G.T, R))).
@@ -353,8 +363,9 @@ def dgap_l21l1(
 
     See :footcite:`GramfortEtAl2012,NdiayeEtAl2016`
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     M : array, shape (n_sensors, n_times)
         The data.
     G : array, shape (n_sensors, n_sources)
@@ -381,8 +392,9 @@ def dgap_l21l1(
     w_time : array, shape (n_positions, n_coefs)
         Array of TF weights.
 
+    -----
     ### ⏎ Returns
-    -------
+
     gap : float
         Dual gap
     p_obj : float
@@ -418,8 +430,9 @@ def tf_mixed_norm_solver(
 
     See :footcite:`GramfortEtAl2013b,GramfortEtAl2011,BekhtiEtAl2016`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     M : array, shape (n_sensors, n_times)
         The data.
     G : array, shape (n_sensors, n_dipoles)
@@ -460,8 +473,9 @@ def tf_mixed_norm_solver(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     X : array, shape (n_active, n_times)
         The source estimates.
     active_set : array
@@ -495,8 +509,9 @@ def iterative_tf_mixed_norm_solver(
 ):
     """### Solve TF L0.5/L1 + L0.5 inverse problem with BCD + active set approach.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     M: array, shape (n_sensors, n_times)
         The data.
     G: array, shape (n_sensors, n_dipoles)
@@ -540,8 +555,9 @@ def iterative_tf_mixed_norm_solver(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     X : array, shape (n_active, n_times)
         The source estimates.
     active_set : array

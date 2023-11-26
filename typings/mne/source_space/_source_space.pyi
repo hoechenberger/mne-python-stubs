@@ -62,30 +62,34 @@ class SourceSpaces(list):
         `mne.setup_source_space`, `mne.setup_volume_source_space`,
         or `mne.read_source_spaces` to create `SourceSpaces`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     source_spaces : list
         A list of dictionaries containing the source space information.
     info : dict | None
         Dictionary with information about the creation of the source space
         file. Has keys ``'working_dir'`` and ``'command_line'``.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     kind : ``'surface'`` | ``'volume'`` | ``'discrete'`` | ``'mixed'``
         The kind of source space.
     info : dict
         Dictionary with information about the creation of the source space
         file. Has keys ``'working_dir'`` and ``'command_line'``.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.setup_source_space : Setup a surface source space.
     mne.setup_volume_source_space : Setup a volume source space.
     mne.read_source_spaces : Read source spaces from a file.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Each element in SourceSpaces (e.g., ``src[0]``) is a dictionary. For
     example, a surface source space will have ``len(src) == 2``, one entry for
     each hemisphere. A volume source space will have ``len(src) == 1`` if it
@@ -252,8 +256,9 @@ class SourceSpaces(list):
     ):
         """### Plot the source space.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         head : bool
             If True, show head surface.
         brain : bool | str
@@ -284,8 +289,9 @@ class SourceSpaces(list):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure3D
             The figure.
         """
@@ -299,8 +305,9 @@ class SourceSpaces(list):
     def copy(self):
         """### Make a copy of the source spaces.
 
+        -----
         ### ⏎ Returns
-        -------
+
         src : instance of SourceSpaces
             The copied source spaces.
         """
@@ -311,8 +318,9 @@ class SourceSpaces(list):
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
         """### Save the source spaces to a fif file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             File to write, which should end with ``-src.fif`` or ``-src.fif.gz``.
 
@@ -341,8 +349,9 @@ class SourceSpaces(list):
     ) -> None:
         """### Export source spaces to nifti or mgz file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             Name of nifti or mgz file to write.
         include_surfaces : bool
@@ -386,8 +395,9 @@ class SourceSpaces(list):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This method requires nibabel.
         """
         ...
@@ -395,8 +405,9 @@ class SourceSpaces(list):
 def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
     """### Read the source spaces from a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file, which should end with ``-src.fif`` or
         ``-src.fif.gz``.
@@ -409,13 +420,15 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     src : SourceSpaces
         The source spaces.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_source_spaces, setup_source_space, setup_volume_source_space
     """
     ...
@@ -423,13 +436,15 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
 def find_source_space_hemi(src):
     """### Return the hemisphere id for a source space.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : dict
         The source space to investigate.
 
+    -----
     ### ⏎ Returns
-    -------
+
     hemi : int
         Deduced hemisphere id.
     """
@@ -438,15 +453,17 @@ def find_source_space_hemi(src):
 def label_src_vertno_sel(label, src):
     """### Find vertex numbers and indices from label.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     label : Label
         Source space label.
     src : dict
         Source space.
 
+    -----
     ### ⏎ Returns
-    -------
+
     vertices : list of length 2
         Vertex numbers for lh and rh.
     src_sel : array of int (len(idx) = len(vertices[0]) + len(vertices[1]))
@@ -457,8 +474,9 @@ def label_src_vertno_sel(label, src):
 def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) -> None:
     """### Write source spaces to a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file, which should end with ``-src.fif`` or
         ``-src.fif.gz``.
@@ -475,8 +493,9 @@ def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) ->
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_source_spaces
     """
     ...
@@ -493,8 +512,9 @@ def setup_source_space(
 ):
     """### Set up bilateral hemisphere surface-based source space with subsampling.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -535,13 +555,15 @@ def setup_source_space(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     src : SourceSpaces
         The source space for each hemisphere.
 
+    -----
     ### 👉 See Also
-    --------
+
     setup_volume_source_space
     """
     ...
@@ -566,8 +588,9 @@ def setup_volume_source_space(
 ):
     """### Set up a volume source space with grid spacing or discrete source space.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : str | None
         Subject to process. If None, the path to the MRI volume must be
         absolute to get a volume source space. If a subject name
@@ -657,19 +680,22 @@ def setup_volume_source_space(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     src : SourceSpaces
         A `SourceSpaces` object containing one source space for each
         entry of ``volume_labels``, or a single source space if
         ``volume_labels`` was not specified.
 
+    -----
     ### 👉 See Also
-    --------
+
     setup_source_space
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Volume source spaces are related to an MRI image such as T1 and allow to
     visualize source estimates overlaid on MRIs and to morph estimates
     to a template brain for group analysis. Discrete source spaces
@@ -705,8 +731,9 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
     points on the surface are within ``dist_limit`` of a point in the
     source space.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source spaces to compute distances for.
     dist_limit : float
@@ -729,15 +756,17 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     src : instance of SourceSpaces
         The original source spaces, with distance information added.
         The distances are stored in src[n]['dist'].
         Note: this function operates in-place.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function can be memory- and CPU-intensive. On a high-end machine
     (2012) running 6 jobs in parallel, an ico-5 (10242 per hemi) source space
     takes about 10 minutes to compute all distances (``dist_limit = np.inf``).
@@ -752,8 +781,9 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
 def get_volume_labels_from_src(src, subject, subjects_dir):
     """### Return a list of Label of segmented volumes included in the src space.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The source space containing the volume regions.
 
@@ -762,8 +792,9 @@ def get_volume_labels_from_src(src, subject, subjects_dir):
     subjects_dir : str
         Freesurfer folder of the subjects.
 
+    -----
     ### ⏎ Returns
-    -------
+
     labels_aseg : list of Label
         List of Label of segmented volumes included in src space.
     """
@@ -783,8 +814,9 @@ def morph_source_spaces(
                  multiple subjects, but there may be consequences in terms
                  of dipole topology.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src_from : instance of SourceSpaces
         Surface source spaces to morph.
     subject_to : str
@@ -803,13 +835,15 @@ def morph_source_spaces(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     src : instance of SourceSpaces
         The morphed source spaces.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10.0
     """
     ...
@@ -817,8 +851,9 @@ def morph_source_spaces(
 def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None):
     """### Compute distances between vertices and sensors.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces
         The object with vertex positions for which to compute distances to
         sensors.
@@ -847,8 +882,9 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     depth : array of shape (n_vertices, n_channels)
         The Euclidean distances of source space vertices with respect to
         sensors.
@@ -858,20 +894,23 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
 def get_decimated_surfaces(src):
     """### Get the decimated surfaces from a source space.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     src : instance of SourceSpaces | path-like
         The source space with decimated surfaces.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surfaces : list of dict
         The decimated surfaces present in the source space. Each dict
         which contains 'rr' and 'tris' keys for vertices positions and
         triangle indices.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.0
     """
     ...

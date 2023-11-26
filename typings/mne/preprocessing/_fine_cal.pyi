@@ -14,8 +14,9 @@ def compute_fine_calibration(
 ):
     """### Compute fine calibration from empty-room data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data to use. Should be from an empty-room recording,
         and all channels should be good.
@@ -55,20 +56,23 @@ def compute_fine_calibration(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     calibration : dict
         Fine calibration data.
     count : int
         The number of good segments used to compute the magnetometer
         parameters.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.preprocessing.maxwell_filter
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This algorithm proceeds in two steps, both optimizing the fit between the
     data and a reconstruction of the data based only on an external multipole
     expansion:
@@ -101,13 +105,15 @@ def read_fine_calibration(fname):
     The fine calibration typically includes improved sensor locations,
     calibration coefficients, and gradiometer imbalance information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename.
 
+    -----
     ### ⏎ Returns
-    -------
+
     calibration : dict
         Fine calibration information. Key-value pairs are:
 
@@ -124,8 +130,9 @@ def read_fine_calibration(fname):
 def write_fine_calibration(fname, calibration) -> None:
     """### Write fine calibration information to a ``.dat`` file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename to write out.
     calibration : dict

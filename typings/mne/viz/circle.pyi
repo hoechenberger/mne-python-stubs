@@ -10,8 +10,9 @@ def circular_layout(
 ):
     """### Create layout arranging nodes on a circle.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     node_names : list of str
         Node names.
     node_order : list of str
@@ -30,8 +31,9 @@ def circular_layout(
     group_sep : float
         Group separation angle in degrees. See "group_boundaries".
 
+    -----
     ### ⏎ Returns
-    -------
+
     node_angles : array, shape=(n_node_names,)
         Node angles in degrees.
     """
@@ -44,8 +46,9 @@ def plot_channel_labels_circle(labels, colors=None, picks=None, **kwargs):
               channel can be assigned an anatomical label as the electrode
               passes through various brain areas.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     labels : dict
         Lists of labels (values) associated with each channel (keys).
     colors : dict
@@ -56,8 +59,9 @@ def plot_channel_labels_circle(labels, colors=None, picks=None, **kwargs):
         Keyword arguments for
         `mne_connectivity.viz.plot_connectivity_circle`.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure handle.
     axes : instance of matplotlib.projections.polar.PolarAxes

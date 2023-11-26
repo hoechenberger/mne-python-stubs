@@ -33,8 +33,9 @@ class CurryParameters(NamedTuple):
 def read_raw_curry(fname, preload: bool = False, verbose=None):
     """### Read raw data from Curry files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to a curry file with extensions ``.dat``, ``.dap``, ``.rs3``,
         ``.cdt``, ``.cdt.dpa``, ``.cdt.cef`` or ``.cef``.
@@ -52,14 +53,16 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawCurry
         A Raw object containing Curry data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawCurry.
     """
     ...
@@ -67,16 +70,18 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
 class RawCurry(BaseRaw):
     """### Raw object from Curry file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to a curry file with extensions ``.dat``, ``.dap``, ``.rs3``,
         ``.cdt``, ``.cdt.dpa``, ``.cdt.cef`` or ``.cef``.
     %(preload)s
     %(verbose)s
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
 
     """

@@ -19,8 +19,9 @@ class EMS(TransformerMixin, EstimatorMixin):
 
     ### 💡 Note EMS only works for binary classification.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     filters_ : ndarray, shape (n_channels, n_times)
         The set of spatial filters.
     classes_ : ndarray, shape (n_classes,)
@@ -40,15 +41,17 @@ class EMS(TransformerMixin, EstimatorMixin):
         .. note : EMS is fitted on data normalized by channel type before the
                   fitting of the spatial filters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_epochs, n_channels, n_times)
             The training data.
         y : array of int, shape (n_epochs)
             The target classes.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of EMS
             Returns self.
         """
@@ -56,13 +59,15 @@ class EMS(TransformerMixin, EstimatorMixin):
     def transform(self, X):
         """### Transform the data by the spatial filters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_epochs, n_channels, n_times)
             The input data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : array, shape (n_epochs, n_times)
             The input data transformed by the spatial filters.
         """
@@ -91,8 +96,9 @@ def compute_ems(
     .. note : Because of the leave-one-out, this function needs an equal
               number of epochs in each of the two conditions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of mne.Epochs
         The epochs.
     conditions : list of str | None, default None
@@ -124,8 +130,9 @@ def compute_ems(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surrogate_trials : ndarray, shape (n_trials // 2, n_times)
         The trial surrogates.
     mean_spatial_filter : ndarray, shape (n_channels, n_times)

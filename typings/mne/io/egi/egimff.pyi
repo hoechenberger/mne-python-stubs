@@ -46,8 +46,9 @@ def read_evokeds_mff(
 ):
     """### Read averaged MFF file as EvokedArray or list of EvokedArray.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         File path to averaged MFF file. Should end in ``.mff``.
     condition : int or str | list of int or str | None
@@ -75,8 +76,9 @@ def read_evokeds_mff(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked : EvokedArray or list of EvokedArray
         The evoked dataset(s); one EvokedArray if condition is int or str,
         or list of EvokedArray if condition is None or list.
@@ -90,12 +92,14 @@ def read_evokeds_mff(
     ValueError
         If no categories.xml file in MFF directory specified by ``fname``.
 
+    -----
     ### 👉 See Also
-    --------
+
     Evoked, EvokedArray, create_info
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.22
     """
     ...

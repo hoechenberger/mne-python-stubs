@@ -14,8 +14,9 @@ def scalp_coupling_index(
     :footcite:`pollonini2014auditory`. This is a measure of the quality of the
     connection between the optode and the scalp.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
 
@@ -51,8 +52,9 @@ def scalp_coupling_index(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     sci : array of float
         Array containing scalp coupling index for each channel.
 

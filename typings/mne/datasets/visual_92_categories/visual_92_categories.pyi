@@ -8,8 +8,9 @@ def data_path(
 ):
     """### Get path to local copy of visual_92_categories dataset.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     path : None | str
         Location of where to look for the visual_92_categories dataset.
         If None, the environment variable or config parameter
@@ -35,8 +36,9 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : instance of Path
         Path to visual_92_categories dataset directory."""
     ...
@@ -44,8 +46,9 @@ def data_path(
 def get_version():
     """### Get version of the local visual_92_categories dataset.
 
+    -----
     ### ⏎ Returns
-    -------
+
     version : str | None
         Version of the visual_92_categories local dataset, or None if the dataset
         does not exist locally."""

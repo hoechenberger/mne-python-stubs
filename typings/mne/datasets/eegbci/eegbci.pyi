@@ -11,8 +11,9 @@ def data_path(
     dataset :footcite:`SchalkEtAl2004`, which is also available at PhysioNet
     :footcite:`GoldbergerEtAl2000`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     url : str
         The dataset to use.
     path : None | path-like
@@ -33,14 +34,16 @@ def data_path(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     path : list of Path
         Local path to the given data file. This path is contained inside a list of
         length one for compatibility.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For example, one could do:
 
         >>> from mne.datasets import eegbci
@@ -70,8 +73,9 @@ def load_data(
     This will fetch data for the EEGBCI dataset :footcite:`SchalkEtAl2004`, which is
     also available at PhysioNet :footcite:`GoldbergerEtAl2000`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : int
         The subject to use. Can be in the range of 1-109 (inclusive).
     runs : int | list of int
@@ -96,13 +100,15 @@ def load_data(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     paths : list
         List of local data paths of the given type.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The run numbers correspond to:
 
     =========  ===================================
@@ -134,8 +140,9 @@ def load_data(
 def standardize(raw) -> None:
     """### Standardize channel positions and names.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data to standardize. Operates in-place.
     """

@@ -5,8 +5,9 @@ from _typeshed import Incomplete
 class Tag:
     """### Tag in FIF tree structure.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     kind : int
         Kind of Tag.
     type_ : int
@@ -36,8 +37,9 @@ def read_tag_info(fid):
 def read_tag(fid, pos=None, shape=None, rlims=None):
     """### Read a Tag from a file at a given position.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file
         The open FIF file descriptor.
     pos : int
@@ -51,8 +53,9 @@ def read_tag(fid, pos=None, shape=None, rlims=None):
         be used with data stored as a vector (not implemented for matrices
         yet).
 
+    -----
     ### ⏎ Returns
-    -------
+
     tag : Tag
         The Tag read.
     """
@@ -61,8 +64,9 @@ def read_tag(fid, pos=None, shape=None, rlims=None):
 def find_tag(fid, node, findkind):
     """### Find Tag in an open FIF file descriptor.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file-like
         Open file.
     node : dict
@@ -70,8 +74,9 @@ def find_tag(fid, node, findkind):
     findkind : int
         Tag kind to find.
 
+    -----
     ### ⏎ Returns
-    -------
+
     tag : instance of Tag
         The first tag found.
     """

@@ -22,8 +22,9 @@ from .mxne_optim import (
 def make_stc_from_dipoles(dipoles, src, verbose=None):
     """### Convert a list of spatio-temporal dipoles into a SourceEstimate.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     dipoles : Dipole | list of instances of Dipole
         The dipoles to convert.
     src : instance of SourceSpaces
@@ -35,8 +36,9 @@ def make_stc_from_dipoles(dipoles, src, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate
         The source estimate.
     """
@@ -72,8 +74,9 @@ def mixed_norm(
     Compute L1/L2 mixed-norm solution :footcite:`GramfortEtAl2012` or L0.5/L2
     :footcite:`StrohmeierEtAl2016` mixed-norm solution on evoked data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked or list of instances of Evoked
         Evoked data to invert.
     forward : dict
@@ -227,16 +230,18 @@ def mixed_norm(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : SourceEstimate | list of SourceEstimate
         Source time courses for each evoked data passed as input.
     residual : instance of Evoked
         The residual a.k.a. data not explained by the sources.
         Only returned if return_residual is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     tf_mixed_norm
 
     References
@@ -276,8 +281,9 @@ def tf_mixed_norm(
     dictionary. Works with evoked data
     :footcite:`GramfortEtAl2013b,GramfortEtAl2011`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         Evoked data to invert.
     forward : dict
@@ -429,16 +435,18 @@ def tf_mixed_norm(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stc : instance of SourceEstimate
         Source time courses.
     residual : instance of Evoked
         The residual a.k.a. data not explained by the sources.
         Only returned if return_residual is True.
 
+    -----
     ### 👉 See Also
-    --------
+
     mixed_norm
 
     References

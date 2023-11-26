@@ -27,8 +27,9 @@ def compute_current_source_density(
     This function can be used to re-reference the signal using a Laplacian
     (LAP) "reference-free" transformation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw, Epochs or Evoked
         The data to be transformed.
     sphere : array-like, shape (4,) | str
@@ -50,13 +51,15 @@ def compute_current_source_density(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst_csd : instance of Raw, Epochs or Evoked
         The transformed data. Output type will match input type.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.20
 
     References
@@ -88,8 +91,9 @@ def compute_bridged_electrodes(
     and the `EEGLAB implementation
     <https://psychophysiology.cpmc.columbia.edu/software/eBridge/index.html>`_.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw, Epochs or Evoked
         The data to compute electrode bridging on.
     lm_cutoff : float
@@ -119,16 +123,18 @@ def compute_bridged_electrodes(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     bridged_idx : list of tuple
         The indices of channels marked as bridged with each bridged
         pair stored as a tuple.
     ed_matrix : ndarray of float, shape (n_epochs, n_channels, n_channels)
         The electrical distance matrix for each pair of EEG electrodes.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.1
 
     References

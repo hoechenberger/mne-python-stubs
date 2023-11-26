@@ -40,8 +40,9 @@ def plot_evoked(
 
     ### 💡 Note If bad channels are not excluded they are shown in red.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The evoked data.
     picks : str | array-like | slice | None
@@ -190,13 +191,15 @@ def plot_evoked(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         Figure containing the butterfly plots.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.viz.plot_evoked_white
     """
     ...
@@ -226,8 +229,9 @@ def plot_evoked_topo(
     Clicking on the plot of an individual sensor opens a new figure showing
     the evoked response for the selected sensor.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : list of Evoked | Evoked
         The evoked response to plot.
     layout : instance of Layout | None
@@ -292,8 +296,9 @@ def plot_evoked_topo(
     show : bool
         Show figure if True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         Images of evoked responses at sensor locations.
     """
@@ -325,8 +330,9 @@ def plot_evoked_image(
 ):
     """### Plot evoked data as images.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The evoked data.
     picks : str | array-like | slice | None
@@ -453,8 +459,9 @@ def plot_evoked_image(
         ✨ Added in vesion 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         Figure containing the images.
     """
@@ -478,8 +485,9 @@ def plot_evoked_white(
     properly whitened (e.g., achieving expected values in line with model
     assumptions, see Notes below).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of mne.Evoked
         The evoked response.
     noise_cov : list | instance of Covariance | path-like
@@ -560,17 +568,20 @@ def plot_evoked_white(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure object containing the plot.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.Evoked.plot
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If baseline signals match the assumption of Gaussian white noise,
     values should be centered at 0, and be within 2 standard deviations
     (±1.96) for 95% of the time points. For the global field power (GFP),
@@ -597,8 +608,9 @@ def plot_evoked_white(
 def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
     """### Plot a data SNR estimate.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The evoked instance. This should probably be baseline-corrected.
     inv : instance of InverseOperator
@@ -616,13 +628,15 @@ def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure object containing the plot.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The bluish green line is the SNR determined by the GFP of the whitened
     evoked data. The orange line is the SNR estimated based on the mismatch
     between the data and the data re-estimated from the regularized inverse.
@@ -648,8 +662,9 @@ def plot_evoked_joint(
               ``topomap_args`` axes have to be used. Be aware that when the
               axes are provided, their position may be slightly modified.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The evoked instance.
     times : float | array of float | "auto" | "peaks"
@@ -691,15 +706,17 @@ def plot_evoked_joint(
         If ``None``, no customizable arguments will be passed.
         Defaults to ``None``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure | list
         The figure object containing the plot. If ``evoked`` has multiple
         channel types, a list of figures, one for each channel type, is
         returned.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.12.0
     """
     ...
@@ -729,8 +746,9 @@ def plot_compare_evokeds(
 ):
     """### Plot evoked time courses for one or more conditions and/or channels.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evokeds : instance of mne.Evoked | list | dict
         If a single Evoked instance, it is plotted as a time series.
         If a list of Evokeds, the contents are plotted with their
@@ -791,7 +809,7 @@ def plot_compare_evokeds(
         condition, overriding defaults (e.g.,
         ``styles={"Aud/L": {"linewidth": 3}}`` will set the linewidth for
         "Aud/L" to 3). As with ``colors`` and ``linestyles``, keys matching
-        conditions in ``/``-separated ``evokeds`` keys are supported (see ### 📖 Notes
+        conditions in ``/``-separated ``evokeds`` keys are supported (see Notes
         for details).
     cmap : None | str | tuple | instance of matplotlib.colors.Colormap
         Colormap from which to draw color values when plotting the ERP/F lines
@@ -905,13 +923,15 @@ def plot_compare_evokeds(
 
         ✨ Added in vesion 1.1
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : list of Figure instances
         A list of the figure(s) generated.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If the parameters ``styles``, ``colors``, or ``linestyles`` are passed as
     `dicts <python:dict>`, then ``evokeds`` must also be a
     `python:dict`, and

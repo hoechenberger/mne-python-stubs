@@ -5,8 +5,9 @@ from typing import NamedTuple
 def get_score_funcs():
     """### Get the score functions.
 
+    -----
     ### ⏎ Returns
-    -------
+
     score_funcs : dict
         The score functions.
     """
@@ -23,8 +24,9 @@ class ICA(ContainsMixin):
                  requires the data to be high-pass filtered prior to fitting.
                  Typically, a cutoff frequency of 1 Hz is recommended.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     n_components : int | float | None
         Number of principal components (from the pre-whitening PCA step) that
         are passed to the ICA algorithm during fitting:
@@ -96,8 +98,9 @@ class ICA(ContainsMixin):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     current_fit : 'unfitted' | 'raw' | 'epochs'
         Which data type was used for the fit.
     ch_names : list-like
@@ -146,8 +149,9 @@ class ICA(ContainsMixin):
     n_iter_ : int
         If fit, the number of iterations required to complete ICA.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     🎭 Changed in version 0.23
         Version 0.23 introduced the ``max_iter='auto'`` settings for maximum
         iterations. With version 0.24 ``'auto'`` will be the new
@@ -307,8 +311,9 @@ class ICA(ContainsMixin):
         if you are interested in EOG or ECG artifacts, EOG and ECG projections
         should be temporally removed before fitting the ICA.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw or Epochs
             The data to be decomposed.
         picks : str | array-like | slice | None
@@ -374,8 +379,9 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of ICA
             Returns the modified instance.
         """
@@ -383,8 +389,9 @@ class ICA(ContainsMixin):
     def get_components(self):
         """### Get ICA topomap for components as numpy arrays.
 
+        -----
         ### ⏎ Returns
-        -------
+
         components : array, shape (n_channels, n_components)
             The ICA components (maps).
         """
@@ -392,8 +399,9 @@ class ICA(ContainsMixin):
     def get_explained_variance_ratio(self, inst, *, components=None, ch_type=None):
         """### Get the proportion of data variance explained by ICA components.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : mne.io.BaseRaw | mne.BaseEpochs | mne.Evoked
             The uncleaned data.
         components : array-like of int | int | None
@@ -405,16 +413,18 @@ class ICA(ContainsMixin):
             The channel type(s) to include in the calculation. If ``None``, all
             available channel types will be used.
 
+        -----
         ### ⏎ Returns
-        -------
+
         dict (str, float)
             The fraction of variance in ``inst`` that can be explained by the
             ICA components, calculated separately for each channel type.
             Dictionary keys are the channel types, and corresponding explained
             variance ratios are the values.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         A value similar to EEGLAB's ``pvaf`` (percent variance accounted for)
         will be calculated for the specified component(s).
 
@@ -436,8 +446,9 @@ class ICA(ContainsMixin):
         2. pass Epochs object to compute trial-based statistics in ICA space
         3. pass Evoked object to investigate time-locking in ICA space
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             Object to compute sources from and to represent sources in.
         add_channels : None | list of str
@@ -450,8 +461,9 @@ class ICA(ContainsMixin):
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, the entire data will be used.
 
+        -----
         ### ⏎ Returns
-        -------
+
         sources : instance of Raw, Epochs or Evoked
             The ICA sources time series.
         """
@@ -470,8 +482,9 @@ class ICA(ContainsMixin):
     ):
         """### Assign score to components based on statistic or metric.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             The object to reconstruct the sources from.
         target : array-like | str | None
@@ -513,8 +526,9 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         scores : ndarray
             Scores for each source as returned from score_func.
         """
@@ -541,8 +555,9 @@ class ICA(ContainsMixin):
         ### 💡 Note If no ECG channel is available, routine attempts to create
                   an artificial ECG based on cross-channel averaging.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             Object to compute sources from.
         ch_name : str
@@ -595,20 +610,23 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         ecg_idx : list of int
             The indices of ECG-related components.
         scores : np.ndarray of float, shape (``n_components_``)
             If method is 'ctps', the normalized Kuiper index scores. If method
             is 'correlation', the correlation scores.
 
+        -----
         ### 👉 See Also
-        --------
+
         find_bads_eog, find_bads_ref, find_bads_muscle
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         The ``threshold``, ``method``, and ``measure`` parameters interact in
         the following ways:
 
@@ -644,8 +662,9 @@ class ICA(ContainsMixin):
     ):
         """### Detect MEG reference related components using correlation.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             Object to compute sources from. Should contain at least one channel
             i.e. component derived from MEG reference channels.
@@ -704,19 +723,22 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         ref_idx : list of int
             The indices of MEG reference related components, sorted by score.
         scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
+        -----
         ### 👉 See Also
-        --------
+
         find_bads_ecg, find_bads_eog, find_bads_muscle
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ICA decomposition on MEG reference channels is used to assess external
         magnetic noise and remove it from the MEG. Two methods are supported:
 
@@ -780,8 +802,9 @@ class ICA(ContainsMixin):
         has been modified to 45 Hz as a default based on the criteria being
         more accurate in practice.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             Object to compute sources from.
         threshold : float | str
@@ -818,19 +841,22 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         muscle_idx : list of int
             The indices of EOG related components, sorted by score.
         scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
+        -----
         ### 👉 See Also
-        --------
+
         find_bads_ecg, find_bads_eog, find_bads_ref
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 1.1
         """
         ...
@@ -855,8 +881,9 @@ class ICA(ContainsMixin):
         components will be masked and the z-score will be recomputed
         until no supra-threshold component remains.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             Object to compute sources from.
         ch_name : str
@@ -908,15 +935,17 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         eog_idx : list of int
             The indices of EOG related components, sorted by score.
         scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
+        -----
         ### 👉 See Also
-        --------
+
         find_bads_ecg, find_bads_ref
         """
         ...
@@ -939,8 +968,9 @@ class ICA(ContainsMixin):
         This procedure will reconstruct M/EEG signals from which
         the dynamics described by the excluded components is subtracted.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             The data to be processed (i.e., cleaned). It will be modified
             in-place.
@@ -982,13 +1012,15 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         out : instance of Raw, Epochs or Evoked
             The processed data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ### 💡 Note Applying ICA may introduce a DC shift. If you pass
                   baseline-corrected `mne.Epochs` or `mne.Evoked` data,
                   the baseline period of the cleaned data may not be of
@@ -1004,8 +1036,9 @@ class ICA(ContainsMixin):
     def save(self, fname, *, overwrite: bool = False, verbose=None):
         """### Store ICA solution into a fiff file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The absolute path of the file name to save the ICA solution into.
             The file name should end with ``-ica.fif`` or ``-ica.fif.gz``.
@@ -1022,21 +1055,24 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         ica : instance of ICA
             The object.
 
+        -----
         ### 👉 See Also
-        --------
+
         read_ica
         """
         ...
     def copy(self):
         """### Copy the ICA object.
 
+        -----
         ### ⏎ Returns
-        -------
+
         ica : instance of ICA
             The copied object.
         """
@@ -1075,8 +1111,9 @@ class ICA(ContainsMixin):
     ):
         """### Project mixing matrix on interpolated sensor topography.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : int | list of int | slice | None
             Indices of the independent components (ICs) to visualize.
             If an integer, represents the index of the IC to pick.
@@ -1263,13 +1300,15 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure | list of matplotlib.figure.Figure
             The figure object(s).
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         When run in interactive mode, ``plot_ica_components`` allows to reject
         components by clicking on their title label. The state of each component
         is indicated by its label color (gray: rejected; black: retained). It is
@@ -1301,8 +1340,9 @@ class ICA(ContainsMixin):
         Properties include the topography, epochs image, ERP/ERF, power
         spectrum, and epoch variance.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Epochs or Raw
             The data to use in plotting properties.
 
@@ -1375,13 +1415,15 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : list
             List of matplotlib figures.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.13
         """
         ...
@@ -1412,8 +1454,9 @@ class ICA(ContainsMixin):
         2. plot latent source around event related time windows (Epochs input)
         3. plot time-locking in ICA space (Evoked input)
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw, Epochs or Evoked
             The object to plot the sources from.
 
@@ -1506,14 +1549,16 @@ class ICA(ContainsMixin):
 
             ✨ Added in vesion 1.6
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
             Browser instance.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         For raw and epoch instances, it is possible to select components for
         exclusion by clicking on the line. The selected components are added to
         ``ica.exclude`` on close.
@@ -1554,8 +1599,9 @@ class ICA(ContainsMixin):
         Use this function to asses how well your score describes outlier
         sources and how well you were detecting them.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         scores : array-like of float, shape (n_ica_components,) | list of array
             Scores based on arbitrary metric to characterize ICA components.
         exclude : array-like of int
@@ -1581,8 +1627,9 @@ class ICA(ContainsMixin):
         show : bool
             Show figure if True.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             The figure object.
         """
@@ -1605,8 +1652,9 @@ class ICA(ContainsMixin):
 
         This method helps visualizing signal quality and artifact rejection.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         inst : instance of Raw or Evoked
             The signal to plot. If `mne.io.Raw`, the raw data per channel type is displayed
             before and after cleaning. A second panel with the RMS for MEG sensors and the
@@ -1657,8 +1705,9 @@ class ICA(ContainsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             The figure.
         """
@@ -1676,8 +1725,9 @@ def ica_find_ecg_events(
 ):
     """### Find ECG peaks from one selected ICA source.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw object to draw sources from.
     ecg_source : ndarray
@@ -1702,8 +1752,9 @@ def ica_find_ecg_events(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ecg_events : array
         Events.
     ch_ECG : string
@@ -1723,8 +1774,9 @@ def ica_find_eog_events(
 ):
     """### Locate EOG artifacts from one selected ICA source.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
     eog_source : ndarray
@@ -1742,8 +1794,9 @@ def ica_find_eog_events(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     eog_events : array
         Events.
     """
@@ -1752,8 +1805,9 @@ def ica_find_eog_events(
 def read_ica(fname, verbose=None):
     """### Restore ICA solution from fif file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Absolute path to fif file containing ICA matrices.
         The file name should end with -ica.fif or -ica.fif.gz.
@@ -1764,8 +1818,9 @@ def read_ica(fname, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ica : instance of ICA
         The ICA estimator.
     """
@@ -1780,8 +1835,9 @@ class _ica_node(NamedTuple):
 def read_ica_eeglab(fname, *, montage_units: str = "auto", verbose=None):
     """### Load ICA information saved in an EEGLAB .set file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Complete path to a ``.set`` EEGLAB file that contains an ICA object.
 
@@ -1800,8 +1856,9 @@ def read_ica_eeglab(fname, *, montage_units: str = "auto", verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ica : instance of ICA
         An ICA object based on the information contained in the input file.
     """

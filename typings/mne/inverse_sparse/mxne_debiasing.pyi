@@ -11,8 +11,9 @@ def power_iteration_kron(
 
     It uses power iterations.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     A : array
         An array
     C : array
@@ -28,13 +29,15 @@ def power_iteration_kron(
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
+    -----
     ### ⏎ Returns
-    -------
+
     L : float
         largest singular value
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     http://en.wikipedia.org/wiki/Power_iteration
     """
     ...
@@ -55,8 +58,9 @@ def compute_bias(
     Problems, SIAM J. Imaging Sci., 2(1), 183-202. (20 pages)
     http://epubs.siam.org/doi/abs/10.1137/080716542
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     M : array
         measurement data.
     G : array
@@ -76,8 +80,9 @@ def compute_bias(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     D : array
         Debiasing weights.
     """

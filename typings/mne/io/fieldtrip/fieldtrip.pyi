@@ -15,8 +15,9 @@ def read_raw_fieldtrip(fname, info, data_name: str = "data"):
                  with MNE functions (without preload). The returned object
                  contains the necessary info field.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path and filename of the ``.mat`` file containing the data.
     info : dict or None
@@ -27,14 +28,16 @@ def read_raw_fieldtrip(fname, info, data_name: str = "data"):
         Name of heading dict/variable name under which the data was originally
         saved in MATLAB.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawArray
         A Raw Object containing the loaded data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawArray.
     """
     ...
@@ -57,8 +60,9 @@ def read_epochs_fieldtrip(
                  with MNE functions (without preload). The returned object
                  contains the necessary info field.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path and filename of the ``.mat`` file containing the data.
     info : dict or None
@@ -71,8 +75,9 @@ def read_epochs_fieldtrip(
     trialinfo_column : int
         Column of the trialinfo matrix to use for the event codes.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of EpochsArray
         An EpochsArray containing the loaded data.
     """
@@ -91,8 +96,9 @@ def read_evoked_fieldtrip(fname, info, comment=None, data_name: str = "data"):
                  with MNE functions (without preload). The returned object
                  contains the necessary info field.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path and filename of the ``.mat`` file containing the data.
     info : dict or None
@@ -105,8 +111,9 @@ def read_evoked_fieldtrip(fname, info, comment=None, data_name: str = "data"):
         Name of heading dict/ variable name under which the data was originally
         saved in MATLAB.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked : instance of EvokedArray
         An EvokedArray containing the loaded data.
     """

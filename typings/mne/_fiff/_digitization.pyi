@@ -13,8 +13,9 @@ class DigPoint(dict):
     This is a simple subclass of the standard dict type designed to provide
     a readable string representation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     kind : int
         The kind of channel,
         e.g. ``FIFFV_POINT_EEG``, ``FIFFV_POINT_CARDINAL``.
@@ -44,8 +45,9 @@ def write_dig(
 ) -> None:
     """### Write digitization data to a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Destination file name.
     pts : iterator of dict

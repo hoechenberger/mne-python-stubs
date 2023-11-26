@@ -11,8 +11,9 @@ def rescale(
 ):
     """### Rescale (baseline correct) data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array
         It can be of any shape. The only constraint is that the last
         dimension should be time.
@@ -56,8 +57,9 @@ def rescale(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     data_scaled: array
         Array of same shape as data after rescaling.
     """

@@ -71,8 +71,9 @@ class Evoked(
 ):
     """### Evoked data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Name of evoked/average FIF file to load.
         If None no data is loaded.
@@ -97,8 +98,9 @@ class Evoked(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -128,8 +130,9 @@ class Evoked(
          This attribute reflects whether the data has been baseline-corrected
          (it will be a ``tuple`` then) or not (it will be ``None``).
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Evoked objects can only contain the average of a single set of conditions.
     """
 
@@ -165,8 +168,9 @@ class Evoked(
     def get_data(self, picks=None, units=None, tmin=None, tmax=None):
         """### Get evoked data as 2D array.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -198,13 +202,15 @@ class Evoked(
         tmax : float | None
             End time of data to get in seconds.
 
+        -----
         ### ⏎ Returns
-        -------
+
         data : ndarray, shape (n_channels, n_times)
             A view on evoked data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.24
         """
         ...
@@ -226,8 +232,9 @@ class Evoked(
                   required since the original and the converted data needs
                   to be stored in memory.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         fun : callable
             A function to be applied to the channels. The first argument of
@@ -265,8 +272,9 @@ class Evoked(
         **kwargs : dict
             Additional keyword arguments to pass to ``fun``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of Evoked
             The evoked object with transformed data.
         """
@@ -276,8 +284,9 @@ class Evoked(
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
         """### Baseline correct evoked data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         baseline : None | tuple of length 2
             The time interval to consider as "baseline" when applying baseline
@@ -306,13 +315,15 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         evoked : instance of Evoked
             The baseline-corrected Evoked object.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Baseline correction can be done multiple times.
 
         ✨ Added in vesion 0.13.0
@@ -321,8 +332,9 @@ class Evoked(
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """### Save evoked data to a file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the file, which should end with ``-ave.fif(.gz)`` or
             ``_ave.fif(.gz)``.
@@ -337,8 +349,9 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         To write multiple conditions into a single file, use
         `mne.write_evokeds`.
 
@@ -359,8 +372,9 @@ class Evoked(
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         fname : str
             Name of the output file.
@@ -380,8 +394,9 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 1.1
 
         Export to external format may not preserve all the information from the
@@ -429,8 +444,9 @@ class Evoked(
 
         ### 💡 Note If bad channels are not excluded they are shown in red.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -577,13 +593,15 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Figure containing the butterfly plots.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.viz.plot_evoked_white
         """
         ...
@@ -613,8 +631,9 @@ class Evoked(
     ):
         """### Plot evoked data as images.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -739,8 +758,9 @@ class Evoked(
             ✨ Added in vesion 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Figure containing the images.
         """
@@ -770,8 +790,9 @@ class Evoked(
         Clicking on the plot of an individual sensor opens a new figure showing
         the evoked response for the selected sensor.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         layout : instance of Layout | None
             Layout instance specifying sensor positions (does not need to
             be specified for Neuromag data). If possible, the correct layout is
@@ -834,13 +855,15 @@ class Evoked(
         show : bool
             Show figure if True.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Images of evoked responses at sensor locations.
 
-            ### 📖 Notes
             -----
+            ### 📖 Notes
+
             ✨ Added in vesion 0.10.0
         """
         ...
@@ -879,8 +902,9 @@ class Evoked(
     ):
         """### Plot topographic maps of specific time points of evoked data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         times : float | array of float | "auto" | "peaks" | "interactive"
             The time point(s) to plot. If "auto", the number of ``axes`` determines
             the amount of time point(s). If ``axes`` is also None, at most 10
@@ -1084,13 +1108,15 @@ class Evoked(
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
            The figure.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         When existing ``axes`` are provided and ``colorbar=True``, note that the
         colorbar scale will only accurately reflect topomaps that are generated in
         the same call as the colorbar. Note also that the colorbar will not be
@@ -1124,8 +1150,9 @@ class Evoked(
     ):
         """### Plot MEG/EEG fields on head surface and helmet in 3D.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         surf_maps : list
             The surface mapping information obtained with make_field_map.
         time : float | None
@@ -1202,8 +1229,9 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : Figure3D | mne.viz.EvokedField
             Without the time viewer active, the figure is returned. With the time
             viewer active, an object is returned that can be used to control
@@ -1228,8 +1256,9 @@ class Evoked(
         properly whitened (e.g., achieving expected values in line with model
         assumptions, see Notes below).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         noise_cov : list | instance of Covariance | path-like
             The noise covariance. Can be a string to load a covariance from disk.
         show : bool
@@ -1308,17 +1337,20 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             The figure object containing the plot.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.Evoked.plot
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         If baseline signals match the assumption of Gaussian white noise,
         values should be centered at 0, and be within 2 standard deviations
         (±1.96) for 95% of the time points. For the global field power (GFP),
@@ -1358,8 +1390,9 @@ class Evoked(
                   ``topomap_args`` axes have to be used. Be aware that when the
                   axes are provided, their position may be slightly modified.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         times : float | array of float | "auto" | "peaks"
             The time point(s) to plot. If ``"auto"``, 5 evenly spaced topographies
             between the first and last time instant will be shown. If ``"peaks"``,
@@ -1399,15 +1432,17 @@ class Evoked(
             If ``None``, no customizable arguments will be passed.
             Defaults to ``None``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure | list
             The figure object containing the plot. If ``evoked`` has multiple
             channel types, a list of figures, one for each channel type, is
             returned.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.12.0
         """
         ...
@@ -1434,8 +1469,9 @@ class Evoked(
         Left and right arrow keys can be used to move backward or forward
         in time.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_type : str | None
             Channel type to plot. Accepted data types: 'mag', 'grad', 'eeg',
             'hbo', 'hbr', 'fnirs_cw_amplitude',
@@ -1520,15 +1556,17 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             The figure.
         anim : instance of matplotlib.animation.FuncAnimation
             Animation of the topomap.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.12.0
         """
         ...
@@ -1540,8 +1578,9 @@ class Evoked(
             at the end of the names to emphasize that the data contained in
             them are interpolated.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_type : str
             The destination channel type. It can be 'mag' or 'grad'.
         mode : str
@@ -1549,13 +1588,15 @@ class Evoked(
             Legendre polynomial expansion used. ``'fast'`` should be sufficient
             for most applications.
 
+        -----
         ### ⏎ Returns
-        -------
+
         evoked : instance of mne.Evoked
             The transformed evoked object containing only virtual channels.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This method returns a copy and does not modify the data it
         operates on. It also returns an EvokedArray instance.
 
@@ -1567,8 +1608,9 @@ class Evoked(
 
         This function operates in-place.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         order : int
             Either 0 or 1, the order of the detrending. 0 is a constant
             (DC) detrend, 1 is a linear detrend.
@@ -1582,8 +1624,9 @@ class Evoked(
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
+        -----
         ### ⏎ Returns
-        -------
+
         evoked : instance of Evoked
             The detrended evoked object.
         """
@@ -1591,8 +1634,9 @@ class Evoked(
     def copy(self):
         """### Copy the instance of evoked.
 
+        -----
         ### ⏎ Returns
-        -------
+
         evoked : instance of Evoked
             A copy of the object.
         """
@@ -1600,8 +1644,9 @@ class Evoked(
     def __neg__(self):
         """### Negate channel responses.
 
+        -----
         ### ⏎ Returns
-        -------
+
         evoked_neg : instance of Evoked
             The Evoked instance with channel data negated and '-'
             prepended to the comment.
@@ -1619,8 +1664,9 @@ class Evoked(
     ):
         """### Get location and latency of peak amplitude.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_type : str | None
             The channel type to use. Defaults to None. If more than one channel
             type is present in the data, this value **must** be provided.
@@ -1644,8 +1690,9 @@ class Evoked(
 
             ✨ Added in vesion 0.16
 
+        -----
         ### ⏎ Returns
-        -------
+
         ch_name : str
             The channel exhibiting the maximum response.
         latency : float | int
@@ -1676,8 +1723,9 @@ class Evoked(
     ):
         """### Perform spectral analysis on sensor data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
@@ -1731,13 +1779,15 @@ class Evoked(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
+        -----
         ### ⏎ Returns
-        -------
+
         spectrum : instance of Spectrum
             The spectral representation of the data.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 1.2
 
         References
@@ -1781,8 +1831,9 @@ class Evoked(
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
         tmin, tmax : float | None
@@ -1889,13 +1940,15 @@ class Evoked(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure with frequency spectra of the data channels.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
         of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
@@ -1918,8 +1971,9 @@ class Evoked(
         an additional column "time" is added, unless ``index='time'``
         (in which case time values form the DataFrame's index).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1966,8 +2020,9 @@ class Evoked(
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
@@ -1978,8 +2033,9 @@ class Evoked(
 class EvokedArray(Evoked):
     """### Evoked object from numpy array.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array of shape (n_channels, n_times)
         The channels' evoked response. See notes for proper units of measure.
 
@@ -2023,12 +2079,14 @@ class EvokedArray(Evoked):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     EpochsArray, io.RawArray, create_info
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Proper units of measure:
 
     * V: eeg, eog, seeg, dbs, emg, ecg, bio, ecog
@@ -2077,8 +2135,9 @@ def combine_evoked(all_evoked, weights):
         ``.nave`` attribute (which is used to scale noise covariance when
         applying the inverse operator) may not be suitable for inverse imaging.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     all_evoked : list of Evoked
         The evoked datasets.
     weights : list of float | 'equal' | 'nave'
@@ -2087,13 +2146,15 @@ def combine_evoked(all_evoked, weights):
         sum-to-one weights proportional to each object's ``nave`` attribute;
         ``'equal'`` weights each `mne.Evoked` by ``1 / len(all_evoked)``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked : Evoked
         The new evoked data.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -2109,8 +2170,9 @@ def read_evokeds(
 ):
     """### Read evoked dataset(s).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename, which should end with ``-ave.fif`` or ``-ave.fif.gz``.
     condition : int or str | list of int or str | None
@@ -2165,19 +2227,22 @@ def read_evokeds(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked : Evoked or list of Evoked
         The evoked dataset(s); one `mne.Evoked` if ``condition`` is an
         integer or string; or a list of `mne.Evoked` if ``condition`` is
         ``None`` or a list.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_evokeds
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     🎭 Changed in version 0.23
         If the read `mne.Evoked` objects had been baseline-corrected before
         saving, this will be reflected in their ``baseline`` attribute after
@@ -2190,8 +2255,9 @@ def write_evokeds(
 ) -> None:
     """### Write an evoked dataset to a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The file name, which should end with ``-ave.fif`` or ``-ave.fif.gz``.
     evoked : Evoked instance, or list of Evoked instances
@@ -2220,12 +2286,14 @@ def write_evokeds(
 
         ✨ Added in vesion 0.24
 
+    -----
     ### 👉 See Also
-    --------
+
     read_evokeds
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     🎭 Changed in version 0.23
         Information on baseline correction will be stored with each individual
         `mne.Evoked` object, and will be restored when reading the data again

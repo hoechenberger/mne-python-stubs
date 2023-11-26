@@ -14,8 +14,9 @@ class CSP(TransformerMixin, BaseEstimator):
     be found in :footcite:`BlankertzEtAl2008`. Multi-class solving is
     implemented from :footcite:`Grosse-WentrupBuss2008`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     n_components : int (default 4)
         The number of components to decompose M/EEG signals. This number should
         be set by cross-validation.
@@ -106,8 +107,9 @@ class CSP(TransformerMixin, BaseEstimator):
 
         ✨ Added in vesion 0.21
 
+    -----
     ### 📊 Attributes
-    ----------
+
     filters_ :  ndarray, shape (n_channels, n_channels)
         If fit, the CSP components used to decompose the data, else None.
     patterns_ : ndarray, shape (n_channels, n_channels)
@@ -117,8 +119,9 @@ class CSP(TransformerMixin, BaseEstimator):
     std_ : ndarray, shape (n_components,)
         If fit, the std squared power for each component.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.preprocessing.Xdawn, SPoC
 
     References
@@ -156,15 +159,17 @@ class CSP(TransformerMixin, BaseEstimator):
     def fit(self, X, y):
         """### Estimate the CSP decomposition on epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : ndarray, shape (n_epochs, n_channels, n_times)
             The data on which to estimate the CSP.
         y : array, shape (n_epochs,)
             The class for each epoch.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of CSP
             Returns the modified instance.
         """
@@ -172,13 +177,15 @@ class CSP(TransformerMixin, BaseEstimator):
     def transform(self, X):
         """### Estimate epochs sources given the CSP filters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_epochs, n_channels, n_times)
             The data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : ndarray
             If self.transform_into == 'average_power' then returns the power of
             CSP features averaged over time and shape (n_epochs, n_sources)
@@ -192,8 +199,9 @@ class CSP(TransformerMixin, BaseEstimator):
         Fits transformer to ``X`` and ``y`` with optional parameters
         ``fit_params``, and returns a transformed version of ``X``.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples, n_features)
             Training set.
         y : array, shape (n_samples,)
@@ -201,8 +209,9 @@ class CSP(TransformerMixin, BaseEstimator):
         **fit_params : dict
             Additional fitting parameters passed to the ``fit`` method..
 
+        -----
         ### ⏎ Returns
-        -------
+
         X_new : array, shape (n_samples, n_features_new)
             Transformed array.
         """
@@ -244,8 +253,9 @@ class CSP(TransformerMixin, BaseEstimator):
         The patterns explain how the measured data was generated from the
         neural sources (a.k.a. the forward model).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         info : mne.Info
             The `mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
@@ -424,8 +434,9 @@ class CSP(TransformerMixin, BaseEstimator):
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
            The figure.
         """
@@ -467,8 +478,9 @@ class CSP(TransformerMixin, BaseEstimator):
         The filters are used to extract discriminant neural sources from
         the measured data (a.k.a. the backward model).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         info : mne.Info
             The `mne.Info` object with information about the sensors and methods of measurement. Used for fitting. If not available, consider using
@@ -647,8 +659,9 @@ class CSP(TransformerMixin, BaseEstimator):
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
            The figure.
         """
@@ -668,8 +681,9 @@ class SPoC(CSP):
     extraction of motor patterns using EMG power or audio patterns using sound
     envelope.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     n_components : int
         The number of components to decompose M/EEG signals.
     reg : float | str | None (default None)
@@ -738,8 +752,9 @@ class SPoC(CSP):
 
         ✨ Added in vesion 0.17
 
+    -----
     ### 📊 Attributes
-    ----------
+
     filters_ : ndarray, shape (n_channels, n_channels)
         If fit, the SPoC spatial filters, else None.
     patterns_ : ndarray, shape (n_channels, n_channels)
@@ -749,8 +764,9 @@ class SPoC(CSP):
     std_ : ndarray, shape (n_components,)
         If fit, the std squared power for each component.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.preprocessing.Xdawn, CSP
 
     References
@@ -777,15 +793,17 @@ class SPoC(CSP):
     def fit(self, X, y):
         """### Estimate the SPoC decomposition on epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : ndarray, shape (n_epochs, n_channels, n_times)
             The data on which to estimate the SPoC.
         y : array, shape (n_epochs,)
             The class for each epoch.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of SPoC
             Returns the modified instance.
         """
@@ -793,13 +811,15 @@ class SPoC(CSP):
     def transform(self, X):
         """### Estimate epochs sources given the SPoC filters.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_epochs, n_channels, n_times)
             The data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : ndarray
             If self.transform_into == 'average_power' then returns the power of
             CSP features averaged over time and shape (n_epochs, n_sources)

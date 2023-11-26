@@ -21,8 +21,9 @@ def parallel_func(
 
     Util function to use joblib only if available
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     func : callable
         A function.
     n_jobs : int | None
@@ -63,8 +64,9 @@ def parallel_func(
         argument. INFO or DEBUG
         will print parallel status, others will not.
 
+    -----
     ### ⏎ Returns
-    -------
+
     parallel: instance of joblib.Parallel or list
         The parallel object.
     my_func: callable

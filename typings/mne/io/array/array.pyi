@@ -4,8 +4,9 @@ from ..base import BaseRaw as BaseRaw
 class RawArray(BaseRaw):
     """### Raw object from numpy array.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array, shape (n_channels, n_times)
         The channels' time series. See notes for proper units of measure.
 
@@ -29,14 +30,16 @@ class RawArray(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.EpochsArray
     mne.EvokedArray
     mne.create_info
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Proper units of measure:
 
     * V: eeg, eog, seeg, dbs, emg, ecg, bio, ecog

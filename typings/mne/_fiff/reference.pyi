@@ -19,8 +19,9 @@ def add_reference_channels(inst, ref_channels, copy: bool = True):
     This is useful when you need to re-reference your data to different
     channels. These added channels will consist of all zeros.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw | Epochs | Evoked
         Instance of Raw or Epochs with EEG channels and reference channel(s).
 
@@ -32,13 +33,15 @@ def add_reference_channels(inst, ref_channels, copy: bool = True):
         Specifies whether the data will be copied (True) or modified in-place
         (False). Defaults to True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Raw | Epochs | Evoked
         Data with added EEG reference channels.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ### ⛔️ Warning
         When `re-referencing <tut-set-eeg-ref>`,
         make sure to apply the montage using `mne.io.Raw.set_montage`
@@ -69,8 +72,9 @@ def set_eeg_reference(
     Laplacian (LAP) "reference-free" transformation using the
     `.compute_current_source_density` function.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw | Epochs | Evoked
         Instance of Raw or Epochs with EEG channels and reference channel(s).
 
@@ -125,8 +129,9 @@ def set_eeg_reference(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Raw | Epochs | Evoked
         Data with EEG channels re-referenced. If ``ref_channels='average'`` and
         ``projection=True`` a projection will be added instead of directly
@@ -135,13 +140,15 @@ def set_eeg_reference(
         Array of reference data subtracted from EEG channels. This will be
         ``None`` if ``projection=True`` or ``ref_channels='REST'``.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.set_bipolar_reference : Convenience function for creating bipolar
                             references.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Some common referencing schemes and the corresponding value for the
     ``ref_channels`` parameter:
 
@@ -209,8 +216,9 @@ def set_bipolar_reference(
     By default, the virtual channels will be annotated with channel-info and
     -location of the anodes and coil types will be set to EEG_BIPOLAR.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw | Epochs | Evoked
         Data containing the unreferenced channels.
     anode : str | list of str
@@ -243,17 +251,20 @@ def set_bipolar_reference(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Raw | Epochs | Evoked
         Data with the specified channels re-referenced.
 
+    -----
     ### 👉 See Also
-    --------
+
     set_eeg_reference : Convenience function for creating an EEG reference.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     1. If the anodes contain any EEG channels, this function removes
        any pre-existing average reference projections.
 

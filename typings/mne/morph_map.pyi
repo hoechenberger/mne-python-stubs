@@ -22,8 +22,9 @@ def read_morph_map(
     available, it will be generated automatically and saved to the
     ``subjects_dir/morph_maps`` directory.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject_from : str
         Name of the original subject as named in the ``SUBJECTS_DIR``.
     subject_to : str
@@ -41,8 +42,9 @@ def read_morph_map(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     left_map, right_map : ~scipy.sparse.csr_matrix
         The morph maps for the 2 hemispheres.
     """

@@ -21,8 +21,9 @@ def find_eog_events(
     ### 💡 Note To control true-positive and true-negative detection rates, you
               may adjust the ``thresh`` parameter.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
     event_id : int
@@ -60,13 +61,15 @@ def find_eog_events(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     eog_events : array
         Events.
 
+    -----
     ### 👉 See Also
-    --------
+
     create_eog_epochs
     compute_proj_eog
     """
@@ -101,8 +104,9 @@ def create_eog_epochs(
 
     #. Create `mne.Epochs` around the eyeblinks.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
 
@@ -187,18 +191,21 @@ def create_eog_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     eog_epochs : instance of Epochs
         Data epoched around EOG events.
 
+    -----
     ### 👉 See Also
-    --------
+
     find_eog_events
     compute_proj_eog
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Filtering is only applied to the EOG channel while finding events.
     The resulting ``eog_epochs`` will have no filtering applied (i.e., have
     the same filter properties as the input ``raw`` instance).

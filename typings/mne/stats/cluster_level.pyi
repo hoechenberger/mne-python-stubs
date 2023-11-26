@@ -22,8 +22,9 @@ def bin_perm_rep(ndim, a: int = 0, b: int = 1):
     (0,1) in ndim dimensions.  The array is shaped as (2**ndim,ndim), and is
     ordered with the last index changing fastest.  For examble, for ndim=3:
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> bin_perm_rep(3)
     array([[0, 0, 0],
            [0, 0, 1],
@@ -64,8 +65,9 @@ def permutation_cluster_test(
     generated with random partitions of the data. For details, see
     :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : list of array, shape (n_observations, p[, q][, r])
         The data to be clustered. Each array in ``X`` should contain the
         observations for one group. The first dimension of each array is the
@@ -195,8 +197,9 @@ def permutation_cluster_test(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     F_obs : array, shape (p[, q][, r])
         Statistic (F by default) observed for all variables.
     clusters : list
@@ -206,8 +209,9 @@ def permutation_cluster_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     For computing a ``threshold`` based on a p-value, use the conversion
     from `scipy.stats.rv_continuous.ppf`::
@@ -245,8 +249,9 @@ def permutation_cluster_1samp_test(
 
     For details, see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array, shape (n_observations, p[, q][, r])
         The data to be clustered. The first dimension should correspond to the
         difference between paired samples (observations) in two conditions.
@@ -372,8 +377,9 @@ def permutation_cluster_1samp_test(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     t_obs : array, shape (p[, q][, r])
         T-statistic observed for all variables.
     clusters : list
@@ -383,8 +389,9 @@ def permutation_cluster_1samp_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     From an array of paired observations, e.g. a difference in signal
     amplitudes or power spectra in two conditions, calculate if the data
     distributions in the two conditions are significantly different.
@@ -452,8 +459,9 @@ def spatio_temporal_cluster_1samp_test(
     (observations × time × frequencies × space). For details, see
     :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array, shape (n_observations, p[, q], n_vertices)
         The data to be clustered. The first dimension should correspond to the
         difference between paired samples (observations) in two conditions.
@@ -574,8 +582,9 @@ def spatio_temporal_cluster_1samp_test(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     t_obs : array, shape (p[, q], n_vertices)
         T-statistic observed for all variables.
     clusters : list
@@ -585,8 +594,9 @@ def spatio_temporal_cluster_1samp_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     For computing a ``threshold`` based on a p-value, use the conversion
     from `scipy.stats.rv_continuous.ppf`::
@@ -631,8 +641,9 @@ def spatio_temporal_cluster_test(
     (observations × time × frequencies × space). For more information,
     see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : list of array, shape (n_observations, p[, q], n_vertices)
         The data to be clustered. Each array in ``X`` should contain the
         observations for one group. The first dimension of each array is the
@@ -754,8 +765,9 @@ def spatio_temporal_cluster_test(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     F_obs : array, shape (p[, q], n_vertices)
         Statistic (F by default) observed for all variables.
     clusters : list
@@ -765,8 +777,9 @@ def spatio_temporal_cluster_test(
     H0 : array, shape (n_permutations,)
         Max cluster level stats observed under permutation.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     For computing a ``threshold`` based on a p-value, use the conversion
     from `scipy.stats.rv_continuous.ppf`::
@@ -795,8 +808,9 @@ def summarize_clusters_stc(
     This helps visualizing results from spatio-temporal-clustering
     permutation tests.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     clu : tuple
         The output from clustering permutation tests.
     p_thresh : float
@@ -818,8 +832,9 @@ def summarize_clusters_stc(
         🎭 Changed in version 0.21
            Added support for SourceSpaces.
 
+    -----
     ### ⏎ Returns
-    -------
+
     out : instance of SourceEstimate
         A summary of the clusters. The first time point in this SourceEstimate
         object is the summation of all the clusters. Subsequent time points

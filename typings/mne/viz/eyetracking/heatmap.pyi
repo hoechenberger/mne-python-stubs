@@ -15,8 +15,9 @@ def plot_gaze(
 ):
     """### Plot a heatmap of eyetracking gaze data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The `mne.Epochs` object containing eyegaze channels.
     width : int
@@ -48,13 +49,15 @@ def plot_gaze(
     show : bool
         Show the figure if ``True``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         The resulting figure object for the heatmap plot.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.6
     """
     ...

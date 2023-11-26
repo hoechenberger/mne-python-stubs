@@ -14,8 +14,9 @@ def set_3d_backend(backend_name, verbose=None):
     The backend will be set as specified and operations will use
     that backend.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     backend_name : str
         The 3d backend to select. See Notes for the capabilities of each
         backend (``'pyvistaqt'`` and ``'notebook'``).
@@ -29,13 +30,15 @@ def set_3d_backend(backend_name, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     old_backend_name : str | None
         The old backend that was in use.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     To use PyVista, set ``backend_name`` to ``pyvistaqt`` but the value
     ``pyvista`` is still supported for backward compatibility.
 
@@ -89,8 +92,9 @@ def set_3d_backend(backend_name, verbose=None):
 def get_3d_backend():
     """### Return the 3D backend currently used.
 
+    -----
     ### ⏎ Returns
-    -------
+
     backend_used : str | None
         The 3d backend currently in use. If no backend is found,
         returns ``None``.
@@ -107,8 +111,9 @@ def use_3d_backend(backend_name) -> Generator[None, None, None]:
     See `mne.viz.set_3d_backend` for more details on the available
     3d backends and their capabilities.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     backend_name : {'pyvistaqt', 'notebook'}
         The 3d backend to use in the context.
     """
@@ -126,8 +131,9 @@ def set_3d_view(
 ) -> None:
     """### Configure the view of the given scene.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     figure : object
         The scene which is modified.
 
@@ -160,8 +166,9 @@ def set_3d_view(
 def set_3d_title(figure, title, size: int = 40) -> None:
     """### Configure the title of the given scene.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     figure : object
         The scene which is modified.
     title : str
@@ -187,8 +194,9 @@ def create_3d_figure(
                  API is not necessarily stable enough for production,
                  it's still actively in development.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     size : tuple
         The dimensions of the 3d figure (width, height).
     bgcolor : tuple
@@ -207,8 +215,9 @@ def create_3d_figure(
 
         ✨ Added in vesion 1.0
 
+    -----
     ### ⏎ Returns
-    -------
+
     figure : instance of Figure3D or ``Renderer``
         The requested empty figure or renderer, depending on ``scene``.
     """
@@ -217,8 +226,9 @@ def create_3d_figure(
 def close_3d_figure(figure) -> None:
     """### Close the given scene.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     figure : object
         The scene which needs to be closed.
     """
@@ -231,8 +241,9 @@ def close_all_3d_figures() -> None:
 def get_brain_class():
     """### Return the proper Brain class based on the current 3d backend.
 
+    -----
     ### ⏎ Returns
-    -------
+
     brain : object
         The Brain class corresponding to the current 3d backend.
     """

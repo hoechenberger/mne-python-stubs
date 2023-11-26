@@ -48,8 +48,9 @@ class ConductorModel(dict):
 def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
     """### Create a BEM solution using the linear collocation approach.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     surfs : list of dict
         The BEM surfaces to use (from `mne.make_bem_model`).
     solver : str
@@ -64,21 +65,24 @@ def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     bem : instance of ConductorModel
         The BEM solution.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_bem_model
     read_bem_surfaces
     write_bem_surfaces
     read_bem_solution
     write_bem_solution
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10.0
     """
     ...
@@ -99,8 +103,9 @@ def make_bem_model(
               the command line tool set the ``conductivity`` parameter
               to a float (e.g. ``0.3``).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -124,21 +129,24 @@ def make_bem_model(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surfaces : list of dict
         The BEM surfaces. Use `mne.make_bem_solution` to turn these into a
         `mne.bem.ConductorModel` suitable for forward calculation.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_bem_solution
     make_sphere_model
     read_bem_surfaces
     write_bem_surfaces
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10.0
     """
     ...
@@ -153,8 +161,9 @@ def make_sphere_model(
 ):
     """### Create a spherical model for forward solution calculation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     r0 : array-like | str
         Head center to use (in head coordinates). If 'auto', the head
         center will be calculated from the digitization points in info.
@@ -177,18 +186,21 @@ def make_sphere_model(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     sphere : instance of ConductorModel
         The resulting spherical conductor model.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_bem_model
     make_bem_solution
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The default model has::
 
         relative_radii = (0.90, 0.92, 0.97, 1.0)
@@ -207,8 +219,9 @@ def fit_sphere_to_headshape(
 ):
     """### Fit a sphere to the headshape points to determine head center.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -230,8 +243,9 @@ def fit_sphere_to_headshape(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     radius : float
         Sphere radius.
     origin_head: ndarray, shape (3,)
@@ -239,8 +253,9 @@ def fit_sphere_to_headshape(
     origin_device: ndarray, shape (3,)
         Head center in device coordinates.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function excludes any points that are low and frontal
     (``z < 0 and y > 0``) to improve the fit.
     """
@@ -251,8 +266,9 @@ def get_fitting_dig(
 ):
     """### Get digitization points suitable for sphere fitting.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -277,13 +293,15 @@ def get_fitting_dig(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dig : array, shape (n_pts, 3)
         The digitization points (in head coordinates) to use for fitting.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This will exclude digitization locations that have ``z < 0 and y > 0``,
     i.e. points on the nose and below the nose on the face.
 
@@ -309,8 +327,9 @@ def make_watershed_bem(
 
     See `bem_watershed_algorithm` for additional information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : str
         Subject name.
 
@@ -360,12 +379,14 @@ def make_watershed_bem(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.viz.plot_bem
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If your BEM meshes do not look correct when viewed in
     `mne.viz.plot_alignment` or `mne.viz.plot_bem`, consider
     potential solutions from the `FAQ <faq_watershed_bem_meshes>`.
@@ -379,8 +400,9 @@ def read_bem_surfaces(
 ):
     """### Read the BEM surfaces from a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file containing the surfaces.
     patch_stats : bool, optional (default False)
@@ -407,14 +429,16 @@ def read_bem_surfaces(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surf: list | dict
         A list of dictionaries that each contain a surface. If ``s_id``
         is not None, only the requested surface will be returned.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_bem_surfaces, write_bem_solution, make_bem_model
     """
     ...
@@ -422,8 +446,9 @@ def read_bem_surfaces(
 def read_bem_solution(fname, *, verbose=None):
     """### Read the BEM solution from a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The file containing the BEM solution.
 
@@ -433,13 +458,15 @@ def read_bem_solution(fname, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     bem : instance of ConductorModel
         The BEM solution.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_bem_surfaces
     write_bem_surfaces
     make_bem_solution
@@ -450,8 +477,9 @@ def read_bem_solution(fname, *, verbose=None):
 def write_bem_surfaces(fname, surfs, overwrite: bool = False, *, verbose=None) -> None:
     """### Write BEM surfaces to a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Filename to write. Can end with ``.h5`` to write using HDF5.
     surfs : dict | list of dict
@@ -474,8 +502,9 @@ def write_head_bem(
 ) -> None:
     """### Write a head surface to a FIF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Filename to write.
     rr : array, shape (n_vertices, 3)
@@ -508,8 +537,9 @@ def write_head_bem(
 def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> None:
     """### Write a BEM model with solution.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename to use. Can end with ``.h5`` to write using HDF5.
     bem : instance of ConductorModel
@@ -525,8 +555,9 @@ def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> 
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_bem_solution
     """
     ...
@@ -549,8 +580,9 @@ def convert_flash_mris(
     convention "mef<angle>_<echo>.mgz", e.g. "mef05_001.mgz"
     or "mef30_001.mgz".
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -583,13 +615,15 @@ def convert_flash_mris(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     flash5_img : path-like
         The path the synthesized flash 5 MRI.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function assumes that the Freesurfer segmentation of the subject
     has been completed. In particular, the T1.mgz and brain.mgz MRI volumes
     should be, as usual, in the subject's mri directory.
@@ -611,8 +645,9 @@ def make_flash_bem(
 
     See `bem_flash_algorithm` for additional information.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -651,12 +686,14 @@ def make_flash_bem(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     convert_flash_mris
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This program assumes that FreeSurfer is installed and sourced properly.
 
     This function extracts the BEM surfaces (outer skull, inner skull, and
@@ -682,8 +719,9 @@ def make_scalp_surfaces(
     allow for a visualization of the alignment between anatomy and channel
     locations.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     subject : str
         The FreeSurfer subject name.
@@ -725,8 +763,9 @@ def make_scalp_surfaces(
 def distance_to_bem(pos, bem, trans=None, verbose=None):
     """### Calculate the distance of positions to inner skull surface.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     pos : array, shape (..., 3)
         Position(s) in m, in head coordinates.
     bem : instance of ConductorModel
@@ -747,14 +786,16 @@ def distance_to_bem(pos, bem, trans=None, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     distances : float | array, shape (...)
         The computed distance(s). A float is returned if pos is
         an array of shape (3,) corresponding to a single position.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.1
     """
     ...

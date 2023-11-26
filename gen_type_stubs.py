@@ -2,6 +2,7 @@
 import ast
 import dataclasses
 import importlib
+import re
 import shutil
 import subprocess
 import sys
@@ -232,12 +233,39 @@ for stub_path in stub_paths:
         .replace(".. note::", "### 💡 Note")
         .replace(".. versionadded::", "✨ Added in vesion")
         .replace(".. versionchanged::", "🎭 Changed in version")
-        .replace("Parameters\n", "### 🛠️ Parameters\n")
-        .replace("Attributes\n", "### 📊 Attributes\n")
-        .replace("Returns\n", "### ⏎ Returns\n")
-        .replace("Notes\n", "### 📖 Notes\n")
-        .replace("See Also\n", "### 👉 See Also\n")
     )
+
+    unparsed_cleaned = re.sub(
+        pattern=r"(\s*)Parameters\n(\1)----------\n",
+        repl=r"\1-----\n\1### 🛠️ Parameters\n\n",
+        string=unparsed_cleaned,
+    )
+    unparsed_cleaned = re.sub(
+        pattern=r"(\s*)Attributes\n(\1)----------\n",
+        repl=r"\1-----\n\1### 📊 Attributes\n\n",
+        string=unparsed_cleaned,
+    )
+    unparsed_cleaned = re.sub(
+        pattern=r"(\s*)Returns\n(\1)-------\n",
+        repl=r"\1-----\n\1### ⏎ Returns\n\n",
+        string=unparsed_cleaned,
+    )
+    unparsed_cleaned = re.sub(
+        pattern=r"(\s*)Notes\n(\1)-----\n",
+        repl=r"\1-----\n\1### 📖 Notes\n\n",
+        string=unparsed_cleaned,
+    )
+    unparsed_cleaned = re.sub(
+        pattern=r"(\s*)See Also\n(\1)--------\n",
+        repl=r"\1-----\n\1### 👉 See Also\n\n",
+        string=unparsed_cleaned,
+    )
+    unparsed_cleaned = re.sub(
+        pattern=r"(\s*)Examples\n(\1)--------\n",
+        repl=r"\1-----\n\1### 🖥️ Examples\n\n",
+        string=unparsed_cleaned,
+    )
+
     del unparsed
 
     # Write modified stub to disk

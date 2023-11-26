@@ -17,8 +17,9 @@ def read_raw_artemis123(
 ):
     """### Read Artemis123 data as raw object.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the data file (extension ``.bin``). The header file with the
         same file name stem and an extension ``.txt`` is expected to be found
@@ -44,13 +45,15 @@ def read_raw_artemis123(
         HPI coils are in info['dig'] hpi coils are assumed to be in canonical
         order of fiducial points (nas, rpa, lpa).
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of Raw
         A Raw object containing the data.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
     ...
@@ -58,15 +61,17 @@ def read_raw_artemis123(
 class RawArtemis123(BaseRaw):
     """### Raw object from Artemis123 file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the Artemis123 data file (ending in ``'.bin'``).
     %(preload)s
     %(verbose)s
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

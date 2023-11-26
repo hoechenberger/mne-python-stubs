@@ -5,8 +5,9 @@ ANONYMIZE_FILE_PREFIX: str
 def mne_anonymize(fif_fname, out_fname, keep_his, daysback, overwrite) -> None:
     """### Call *anonymize_info* on fif file and save.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fif_fname : path-like
         Raw fif File
     out_fname : path-like | None

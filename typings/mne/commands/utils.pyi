@@ -1,15 +1,17 @@
 def load_module(name, path):
     """### Load module from .py/.pyc file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     name : str
         Name of the module.
     path : str
         Path to .py/.pyc file.
 
+    -----
     ### ⏎ Returns
-    -------
+
     mod : module
         Imported module.
 

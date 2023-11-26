@@ -33,8 +33,9 @@ def calculate_lut(
     while center-fmid will map to the fmid of the first half of the
     original colormap and center-fmid to the fmid of the second half.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     lim_cmap : Colormap
         Color map obtained from _process_mapdata.
     alpha : float
@@ -54,8 +55,9 @@ def calculate_lut(
         values below fmin fully transparent (symmetrically for divergent
         colormaps)
 
+    -----
     ### ⏎ Returns
-    -------
+
     cmap : matplotlib.ListedColormap
         Color map with transparency channel.
     """

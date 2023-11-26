@@ -27,8 +27,9 @@ def qrs_detector(
 
     QRS is the main wave on the heart beat.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     sfreq : float
         Sampling rate
     ecg : array
@@ -58,8 +59,9 @@ def qrs_detector(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     events : array
         Indices of ECG peaks.
     """
@@ -80,8 +82,9 @@ def find_ecg_events(
 ):
     """### Find ECG events by localizing the R wave peaks.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
 
@@ -128,8 +131,9 @@ def find_ecg_events(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ecg_events : array
         The events corresponding to the peaks of the R waves.
     ch_ecg : string
@@ -141,8 +145,9 @@ def find_ecg_events(
         The ECG data of the synthesized ECG channel, if any. This will only
         be returned if ``return_ecg=True`` was passed.
 
+    -----
     ### 👉 See Also
-    --------
+
     create_ecg_epochs
     compute_proj_ecg
     """
@@ -181,8 +186,9 @@ def create_ecg_epochs(
                 applied (i.e., have the same filter properties as the input
                 ``raw`` instance).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data.
 
@@ -302,18 +308,21 @@ def create_ecg_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ecg_epochs : instance of Epochs
         Data epoched around ECG R wave peaks.
 
+    -----
     ### 👉 See Also
-    --------
+
     find_ecg_events
     compute_proj_ecg
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     If you already have a list of R-peak times, or want to compute R-peaks
     outside MNE-Python using a different algorithm, the recommended approach is
     to call the `mne.Epochs` constructor directly, with your R-peaks

@@ -13,8 +13,9 @@ def read_raw_fil(
 ):
     """### Raw object from FIL-OPMEG formatted data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     binfile : path-like
         Path to the MEG data binary (ending in ``'_meg.bin'``).
     precision : str, optional
@@ -34,14 +35,16 @@ def read_raw_fil(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawFIL
         The raw data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawFIL.
     """
     ...
@@ -49,8 +52,9 @@ def read_raw_fil(
 class RawFIL(BaseRaw):
     """### Raw object from FIL-OPMEG formatted data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     binfile : path-like
         Path to the MEG data binary (ending in ``'_meg.bin'``).
     precision : str, optional
@@ -64,14 +68,16 @@ class RawFIL(BaseRaw):
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawFIL
         The raw data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawFIL.
     """
 

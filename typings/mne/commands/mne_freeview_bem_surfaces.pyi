@@ -6,8 +6,9 @@ from mne.utils import (
 def freeview_bem_surfaces(subject, subjects_dir, method) -> None:
     """### View 3-Layers BEM model with Freeview.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subject : str
         Subject name
     subjects_dir : path-like

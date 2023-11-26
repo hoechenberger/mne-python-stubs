@@ -28,8 +28,9 @@ def read_raw_eeglab(
 ):
     """### Read an EEGLAB .set file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
         file, it is expected to be in the same folder as the ``.set`` file.
@@ -70,18 +71,21 @@ def read_raw_eeglab(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawEEGLAB
         A Raw object containing EEGLAB .set data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawEEGLAB.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11.0
     """
     ...
@@ -98,8 +102,9 @@ def read_epochs_eeglab(
 ):
     """### Reader function for EEGLAB epochs files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
         file, it is expected to be in the same folder as the ``.set`` file.
@@ -148,17 +153,20 @@ def read_epochs_eeglab(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     epochs : instance of Epochs
         The epochs.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.Epochs : Documentation of attributes and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11.0
     """
     ...
@@ -166,8 +174,9 @@ def read_epochs_eeglab(
 class RawEEGLAB(BaseRaw):
     """### Raw object from EEGLAB .set file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
         file, it is expected to be in the same folder as the ``.set`` file.
@@ -205,12 +214,14 @@ class RawEEGLAB(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11.0
     """
 
@@ -228,8 +239,9 @@ class RawEEGLAB(BaseRaw):
 class EpochsEEGLAB(BaseEpochs):
     """### Epochs from EEGLAB .set file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : path-like
         Path to the ``.set`` file. If the data is stored in a separate ``.fdt``
         file, it is expected to be in the same folder as the ``.set`` file.
@@ -287,12 +299,14 @@ class EpochsEEGLAB(BaseEpochs):
     %(montage_units)s
     %(verbose)s
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.Epochs : Documentation of attributes and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11.0
     """
 

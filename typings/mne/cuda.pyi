@@ -9,13 +9,15 @@ from .utils import (
 def get_cuda_memory(kind: str = "available"):
     """### Get the amount of free memory for CUDA operations.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     kind : str
         Can be ``"available"`` or ``"total"``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     memory : str
         The amount of available or total memory as a human-readable string.
     """
@@ -33,8 +35,9 @@ def init_cuda(ignore_config: bool = False, verbose=None) -> None:
     the first CUDA setup is performed. If this variable is not
     set, this function can be manually executed.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ignore_config : bool
         If True, ignore the config value MNE_USE_CUDA and force init.
 
@@ -49,8 +52,9 @@ def init_cuda(ignore_config: bool = False, verbose=None) -> None:
 def set_cuda_device(device_id, verbose=None) -> None:
     """### Set the CUDA device temporarily for the current session.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     device_id : int
         Numeric ID of the CUDA-capable device you want MNE-Python to use.
 

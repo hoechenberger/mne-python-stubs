@@ -59,8 +59,9 @@ def compute_proj_ecg(
 
     ### 💡 Note Raw data will be loaded if it hasn't been preloaded already.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : mne.io.Raw
         Raw input file.
     raw_event : mne.io.Raw or None
@@ -140,8 +141,9 @@ def compute_proj_ecg(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     projs : list of Projection
         List of computed projection vectors.
@@ -150,13 +152,15 @@ def compute_proj_ecg(
     drop_log : list
         The drop log, if requested.
 
+    -----
     ### 👉 See Also
-    --------
+
     find_ecg_events
     create_ecg_epochs
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Filtering is applied to the ECG channel while finding events using
     ``ecg_l_freq`` and ``ecg_h_freq``, and then to the ``raw`` instance
     using ``l_freq`` and ``h_freq`` before creation of the epochs used to
@@ -214,8 +218,9 @@ def compute_proj_eog(
 
     ### 💡 Note Raw data must be preloaded.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : mne.io.Raw
         Raw input file.
     raw_event : mne.io.Raw or None
@@ -291,8 +296,9 @@ def compute_proj_eog(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     projs : list of Projection
         List of computed projection vectors.
@@ -301,13 +307,15 @@ def compute_proj_eog(
     drop_log : list
         The drop log, if requested.
 
+    -----
     ### 👉 See Also
-    --------
+
     find_eog_events
     create_eog_epochs
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Filtering is applied to the EOG channel while finding events using
     ``eog_l_freq`` and ``eog_h_freq``, and then to the ``raw`` instance
     using ``l_freq`` and ``h_freq`` before creation of the epochs used to

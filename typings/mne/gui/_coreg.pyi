@@ -40,8 +40,9 @@ class _WorkerData:
 class CoregistrationUI(HasTraits):
     """### Class for coregistration assisted by graphical interface.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     info_file : None | str
         The FIFF file with digitizer data for coregistration.
 
@@ -128,8 +129,9 @@ class CoregistrationUI(HasTraits):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     coreg : mne.coreg.Coregistration
         The coregistration instance used by the graphical interface.
     """

@@ -21,8 +21,9 @@ def psd_array_welch(
 
     Welch's method is described in :footcite:t:`Welch1967`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : array, shape=(..., n_times)
         The data to compute PSD from.
     sfreq : float
@@ -79,8 +80,9 @@ def psd_array_welch(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     psds : ndarray, shape (..., n_freqs) or (..., n_freqs, n_segments)
         The power spectral densities. If ``average='mean`` or
         ``average='median'``, the returned array will have the same shape
@@ -91,8 +93,9 @@ def psd_array_welch(
     freqs : ndarray, shape (n_freqs,)
         The frequencies.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.14.0
 
     References

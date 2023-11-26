@@ -4,16 +4,18 @@ def ctps(data, is_raw: bool = True):
     Note. It is assumed that the sources are already
     appropriately filtered
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data: ndarray, shape (n_epochs, n_channels, n_times)
         Any kind of data of dimensions trials, traces, features.
     is_raw : bool
         If True it is assumed that data haven't been transformed to Hilbert
         space and phase angles haven't been normalized. Defaults to True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ks_dynamics : ndarray, shape (n_sources, n_times)
         The kuiper statistics.
     pk_dynamics : ndarray, shape (n_sources, n_times)
@@ -36,15 +38,17 @@ def ctps(data, is_raw: bool = True):
 def kuiper(data, dtype=...):
     """### Kuiper's test of uniform distribution.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : ndarray, shape (n_sources,) | (n_sources, n_times)
            Empirical distribution.
     dtype : str | obj
         The data type to be used.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ks : ndarray
         Kuiper's statistic.
     pk : ndarray

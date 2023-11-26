@@ -10,8 +10,9 @@ def interpolate_blinks(
     This function uses the timing of blink annotations to estimate missing
     data. Operates in place.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The raw data with at least one ``'pupil'`` or ``'eyegaze'`` channel.
     buffer : float | array-like of float, shape ``(2,))``
@@ -29,13 +30,15 @@ def interpolate_blinks(
         over ``'eyegaze'`` channels as well. Defaults to False, because eye position can
         change in unpredictable ways during blinks.
 
+    -----
     ### ⏎ Returns
-    -------
+
     self : instance of Raw
         Returns the modified instance.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.5
     """
     ...

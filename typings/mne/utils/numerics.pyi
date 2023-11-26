@@ -22,8 +22,9 @@ def array_split_idx(ary, indices_or_sections, axis: int = 0, n_per_split: int = 
 def create_chunks(sequence, size):
     """### Generate chunks from a sequence.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     sequence : iterable
         Any iterable object
     size : int
@@ -34,13 +35,15 @@ def create_chunks(sequence, size):
 def sum_squared(X):
     """### Compute norm of an array.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array
         Data whose norm must be found.
 
+    -----
     ### ⏎ Returns
-    -------
+
     value : float
         Sum of squares of the input array X.
     """
@@ -67,8 +70,9 @@ def random_permutation(n_samples, random_state=None):
     a random sequence between 0 and n_samples-1, that is:
     randperm(n_samples) = random_permutation(n_samples, random_state) - 1
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     n_samples : int
         End point of the sequence to be permuted (excluded, i.e., the end point
         is equal to n_samples-1)
@@ -81,8 +85,9 @@ def random_permutation(n_samples, random_state=None):
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
+    -----
     ### ⏎ Returns
-    -------
+
     randperm : ndarray, int
         Randomly permuted sequence between 0 and n-1.
     """
@@ -91,15 +96,17 @@ def random_permutation(n_samples, random_state=None):
 def hashfunc(fname, block_size: int = 1048576, hash_type: str = "md5"):
     """### Calculate the hash for a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : str
         Filename.
     block_size : int
         Block size to use when reading.
 
+    -----
     ### ⏎ Returns
-    -------
+
     hash_ : str
         The hexadecimal digest of the hash.
     """
@@ -108,8 +115,9 @@ def hashfunc(fname, block_size: int = 1048576, hash_type: str = "md5"):
 def create_slices(start, stop, step=None, length: int = 1):
     """### Generate slices of time indexes.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     start : int
         Index where first slice should start.
     stop : int
@@ -120,8 +128,9 @@ def create_slices(start, stop, step=None, length: int = 1):
         Number of time samples separating two slices.
         If step = None, step = length.
 
+    -----
     ### ⏎ Returns
-    -------
+
     slices : list
         List of slice objects.
     """
@@ -143,8 +152,9 @@ def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = Tru
     ### 💡 Note A grand average evoked should not be used for source
               localization.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     all_inst : list of Evoked or AverageTFR
         The evoked datasets.
     interpolate_bads : bool
@@ -156,13 +166,15 @@ def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = Tru
         every channel marked as bad in at least one of the input files will be
         marked as bad, but no interpolation or dropping will be performed.
 
+    -----
     ### ⏎ Returns
-    -------
+
     grand_average : Evoked | AverageTFR
         The grand average data. Same type as input.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.11.0
     """
     ...
@@ -174,16 +186,18 @@ class _HashableNdarray(np.ndarray):
 def object_hash(x, h=None):
     """### Hash a reasonable python object.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : object
         Object to hash. Can be anything comprised of nested versions of:
         {dict, list, tuple, ndarray, str, bytes, float, int, None}.
     h : hashlib HASH object | None
         Optional, object to add the hash to. None creates an MD5 hash.
 
+    -----
     ### ⏎ Returns
-    -------
+
     digest : int
         The digest resulting from the hash.
     """
@@ -192,8 +206,9 @@ def object_hash(x, h=None):
 def object_size(x, memo=None):
     """### Estimate the size of a reasonable python object.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     x : object
         Object to approximate the size of.
         Can be anything comprised of nested versions of:
@@ -201,8 +216,9 @@ def object_size(x, memo=None):
     memo : dict | None
         The memodict.
 
+    -----
     ### ⏎ Returns
-    -------
+
     size : int
         The estimated size in bytes of the object.
     """
@@ -211,8 +227,9 @@ def object_size(x, memo=None):
 def object_diff(a, b, pre: str = "", *, allclose: bool = False):
     """### Compute all differences between two python variables.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     a : object
         Currently supported: class, dict, list, tuple, ndarray,
         int, str, bytes, float, StringIO, BytesIO.
@@ -223,8 +240,9 @@ def object_diff(a, b, pre: str = "", *, allclose: bool = False):
     allclose : bool
         If True (default False), use assert_allclose.
 
+    -----
     ### ⏎ Returns
-    -------
+
     diffs : str
         A string representation of the differences.
     """

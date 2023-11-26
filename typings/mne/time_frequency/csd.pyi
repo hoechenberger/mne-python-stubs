@@ -15,8 +15,9 @@ def pick_channels_csd(
 ):
     """### Pick channels from cross-spectral density matrix.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     csd : instance of CrossSpectralDensity
         The CSD object to select the channels from.
     include : list of str
@@ -43,8 +44,9 @@ def pick_channels_csd(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     res : instance of CrossSpectralDensity
         Cross-spectral density restricted to selected channels.
     """
@@ -60,8 +62,9 @@ class CrossSpectralDensity:
     This object can store multiple CSD matrices: one for each frequency.
     Use ``.get_data(freq)`` to obtain an CSD matrix as an ndarray.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : ndarray, shape ((n_channels**2 + n_channels) // 2, n_frequencies)
         For each frequency, the cross-spectral density matrix in vector format.
     ch_names : list of str
@@ -87,8 +90,9 @@ class CrossSpectralDensity:
         object to compute a DICS beamformer. Defaults to ``None``, which means
         no projectors will be applied.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_fourier
     csd_multitaper
     csd_morlet
@@ -114,8 +118,9 @@ class CrossSpectralDensity:
     def __len__(self) -> int:
         """### Return number of frequencies.
 
+        -----
         ### ⏎ Returns
-        -------
+
         n_freqs : int
             The number of frequencies.
         """
@@ -126,8 +131,9 @@ class CrossSpectralDensity:
         If the exact given frequencies are not available, the nearest
         frequencies will be chosen.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fmin : float | list of float | None
             Lower bound of the frequency range in Hertz. Defaults to the lowest
             frequency available. When a list of frequencies is given, these are
@@ -139,8 +145,9 @@ class CrossSpectralDensity:
             these are used as the upper bounds (inclusive) of frequency bins
             and the sum is taken for each bin.
 
+        -----
         ### ⏎ Returns
-        -------
+
         csd : instance of CrossSpectralDensity
             The CSD matrix, summed across the given frequency range(s).
         """
@@ -148,8 +155,9 @@ class CrossSpectralDensity:
     def mean(self, fmin=None, fmax=None):
         """### Calculate the mean CSD in the given frequency range(s).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fmin : float | list of float | None
             Lower bound of the frequency range in Hertz. Defaults to the lowest
             frequency available. When a list of frequencies is given, these are
@@ -161,8 +169,9 @@ class CrossSpectralDensity:
             these are used as the upper bounds (inclusive) of frequency bins
             and the mean is taken for each bin.
 
+        -----
         ### ⏎ Returns
-        -------
+
         csd : instance of CrossSpectralDensity
             The CSD matrix, averaged across the given frequency range(s).
         """
@@ -170,8 +179,9 @@ class CrossSpectralDensity:
     def pick_frequency(self, freq=None, index=None):
         """### Get a CrossSpectralDensity object with only the given frequency.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         freq : float | None
             Return the CSD matrix for a specific frequency. Only available
             when no averaging across frequencies has been done.
@@ -179,14 +189,16 @@ class CrossSpectralDensity:
             Return the CSD matrix for the frequency or frequency-bin with the
             given index.
 
+        -----
         ### ⏎ Returns
-        -------
+
         csd : instance of CrossSpectralDensity
             A CSD object containing a single CSD matrix that corresponds to the
             requested frequency or frequency-bin.
 
+        -----
         ### 👉 See Also
-        --------
+
         get_data
         """
         ...
@@ -198,8 +210,9 @@ class CrossSpectralDensity:
         defined, use either the ``frequency`` or ``index`` parameter to select
         one.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         frequency : float | None
             Return the CSD matrix for a specific frequency. Only available when
             no averaging across frequencies has been done.
@@ -212,13 +225,15 @@ class CrossSpectralDensity:
 
             ✨ Added in vesion 0.20
 
+        -----
         ### ⏎ Returns
-        -------
+
         csd : ndarray, shape (n_channels, n_channels) | instance of Covariance
             The CSD matrix corresponding to the requested frequency.
 
+        -----
         ### 👉 See Also
-        --------
+
         pick_frequency
         """
         ...
@@ -236,8 +251,9 @@ class CrossSpectralDensity:
         A sub-plot is created for each frequency. If an info object is passed to
         the function, different channel types are plotted in different figures.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         info : mne.Info | None
             The `mne.Info` object with information about the sensors and methods of measurement.
             Used to split the figure by channel-type, if provided.
@@ -258,8 +274,9 @@ class CrossSpectralDensity:
         show : bool
             Whether to show the figure. Defaults to ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : list of Figure
             The figures created by this function.
         """
@@ -267,13 +284,15 @@ class CrossSpectralDensity:
     def __getitem__(self, sel):
         """### Subselect frequencies.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         sel : ndarray
             Array of frequency indices to subselect.
 
+        -----
         ### ⏎ Returns
-        -------
+
         csd : instance of CrossSpectralDensity
             A new CSD instance with the subset of frequencies.
         """
@@ -281,8 +300,9 @@ class CrossSpectralDensity:
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """### Save the CSD to an HDF5 file.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The name of the file to save the CSD to. The extension ``'.h5'``
             will be appended if the given filename doesn't have it already.
@@ -301,16 +321,18 @@ class CrossSpectralDensity:
 
             ✨ Added in vesion 1.0
 
+        -----
         ### 👉 See Also
-        --------
+
         read_csd : For reading CSD objects from a file.
         """
         ...
     def copy(self):
         """### Return copy of the CrossSpectralDensity object.
 
+        -----
         ### ⏎ Returns
-        -------
+
         copy : instance of CrossSpectralDensity
             A copy of the object.
         """
@@ -318,21 +340,24 @@ class CrossSpectralDensity:
     def pick_channels(self, ch_names, ordered: bool = False):
         """### Pick channels from this cross-spectral density matrix.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         ch_names : list of str
             List of channels to keep. All other channels are dropped.
         ordered : bool
             If True (default False), ensure that the order of the channels
             matches the order of ``ch_names``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         csd : instance of CrossSpectralDensity.
             The modified cross-spectral density object.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Operates in-place.
 
         ✨ Added in vesion 0.20.0
@@ -342,19 +367,22 @@ class CrossSpectralDensity:
 def read_csd(fname):
     """### Read a CrossSpectralDensity object from an HDF5 file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The name of the file to read the CSD from. The extension ``'.h5'`` will
         be appended if the given filename doesn't have it already.
 
+    -----
     ### ⏎ Returns
-    -------
+
     csd : instance of CrossSpectralDensity
         The CSD that was stored in the file.
 
+    -----
     ### 👉 See Also
-    --------
+
     CrossSpectralDensity.save : For saving CSD objects.
     """
     ...
@@ -374,8 +402,9 @@ def csd_fourier(
 ):
     """### Estimate cross-spectral density from an array using short-time fourier.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs to compute the CSD for.
     fmin : float
@@ -417,13 +446,15 @@ def csd_fourier(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_array_fourier
     csd_array_morlet
     csd_array_multitaper
@@ -449,8 +480,9 @@ def csd_array_fourier(
 ):
     """### Estimate cross-spectral density from an array using short-time fourier.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array-like, shape (n_epochs, n_channels, n_times)
         The time series data consisting of n_epochs separate observations
         of signals with n_channels time-series of length n_times.
@@ -492,13 +524,15 @@ def csd_array_fourier(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_array_morlet
     csd_array_multitaper
     csd_fourier
@@ -525,8 +559,9 @@ def csd_multitaper(
 ):
     """### Estimate cross-spectral density from epochs using a multitaper method.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs to compute the CSD for.
     fmin : float | None
@@ -575,13 +610,15 @@ def csd_multitaper(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_array_fourier
     csd_array_morlet
     csd_array_multitaper
@@ -611,8 +648,9 @@ def csd_array_multitaper(
 ):
     """### Estimate cross-spectral density from an array using a multitaper method.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array-like, shape (n_epochs, n_channels, n_times)
         The time series data consisting of n_epochs separate observations
         of signals with n_channels time-series of length n_times.
@@ -666,13 +704,15 @@ def csd_array_multitaper(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_array_fourier
     csd_array_morlet
     csd_fourier
@@ -697,8 +737,9 @@ def csd_morlet(
 ):
     """### Estimate cross-spectral density from epochs using Morlet wavelets.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs : instance of Epochs
         The epochs to compute the CSD for.
     frequencies : list of float
@@ -748,13 +789,15 @@ def csd_morlet(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_array_fourier
     csd_array_morlet
     csd_array_multitaper
@@ -781,8 +824,9 @@ def csd_array_morlet(
 ):
     """### Estimate cross-spectral density from an array using Morlet wavelets.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array-like, shape (n_epochs, n_channels, n_times)
         The time series data consisting of n_epochs separate observations
         of signals with n_channels time-series of length n_times.
@@ -832,13 +876,15 @@ def csd_array_morlet(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     csd : instance of CrossSpectralDensity
         The computed cross-spectral density.
 
+    -----
     ### 👉 See Also
-    --------
+
     csd_array_fourier
     csd_array_multitaper
     csd_fourier
@@ -850,8 +896,9 @@ def csd_array_morlet(
 def csd_tfr(epochs_tfr, tmin=None, tmax=None, picks=None, projs=None, verbose=None):
     """### Compute covariance matrices across frequencies for TFR epochs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     epochs_tfr : EpochsTFR
         The time-frequency resolved epochs over which to compute the
         covariance.
@@ -881,8 +928,9 @@ def csd_tfr(epochs_tfr, tmin=None, tmax=None, picks=None, projs=None, verbose=No
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     res : instance of CrossSpectralDensity
         Cross-spectral density restricted to selected channels.
     """

@@ -13,8 +13,9 @@ def set_channel_types_eyetrack(inst, mapping):
     ``'au'``, ``'px'``, ``'deg'``, ``'rad'`` (for eyegaze)
     ``'au'``, ``'mm'``, ``'m'`` (for pupil)
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw, Epochs, or Evoked
         The data instance.
     mapping : dict
@@ -23,13 +24,15 @@ def set_channel_types_eyetrack(inst, mapping):
         ``{'l_x': ('eyegaze', 'deg', 'left', 'x')}`` or
         ``{'r_pupil': ('pupil', 'au', 'right')}``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     inst : instance of Raw | Epochs | Evoked
         The instance, modified in place.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ``inst.set_channel_types()`` to ``'eyegaze'`` or ``'pupil'``
     works as well, but cannot correctly set unit, eye and x/y component.
 

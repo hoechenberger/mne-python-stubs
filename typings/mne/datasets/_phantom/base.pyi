@@ -6,8 +6,9 @@ PHANTOM_MANIFEST_PATH: Incomplete
 def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
     """### Fetch and update a phantom subject.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     kind : str
         The kind of phantom to fetch. Can only be ``'otaniemi'`` (default).
 
@@ -22,17 +23,20 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     subject_dir : str
         The resulting phantom subject directory.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.dipole.get_phantom_dipoles
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function is designed to provide a head surface and T1.mgz for
     the 32-dipole Otaniemi phantom. The VectorView/TRIUX phantom has the same
     basic outside geometry, but different internal dipole positions.

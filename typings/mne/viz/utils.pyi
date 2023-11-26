@@ -32,8 +32,9 @@ def safe_event(fun, *args, **kwargs):
 def plt_show(show: bool = True, fig=None, **kwargs) -> None:
     """### Show a figure while suppressing warnings.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     show : bool
         Show the figure.
     fig : instance of Figure | None
@@ -46,8 +47,9 @@ def plt_show(show: bool = True, fig=None, **kwargs) -> None:
 def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
     """### Return a colormap similar to that used by mne_analyze.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     limits : list (or array) of length 3 or 6
         Bounds for the colormap, which will be mirrored across zero if length
         3, or completely specified (and potentially asymmetric) if length 6.
@@ -56,14 +58,16 @@ def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
         matplotlib.colors.LinearSegmentedColormap. If 'vtk', will
         return an RGBA array of shape (256, 4).
 
+    -----
     ### ⏎ Returns
-    -------
+
     cmap : instance of colormap | array
         A teal->blue->gray->red->yellow colormap. See docstring of the 'format'
         argument for further details.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For this will return a colormap that will display correctly for data
     that are scaled by the plotting function to span [-fmax, fmax].
     """
@@ -81,8 +85,9 @@ def compare_fiff(
 ):
     """### Compare the contents of two fiff files using diff and show_fiff.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname_1 : path-like
         First file to compare.
     fname_2 : path-like
@@ -107,8 +112,9 @@ def compare_fiff(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fname_out : str
         The filename used for storing the diff. Could be useful for
         when a temporary file is used.
@@ -118,15 +124,17 @@ def compare_fiff(
 def figure_nobar(*args, **kwargs):
     """### Make matplotlib figure with no toolbar.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     *args : list
         Arguments to pass to `matplotlib.pyplot.figure`.
     **kwargs : dict
         Keyword arguments to pass to `matplotlib.pyplot.figure`.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         The figure.
     """
@@ -143,15 +151,17 @@ class ClickableImage:
     Upon clicking, the x/y coordinate of the cursor will be stored in
     self.coords, which is a list of (x, y) tuples.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     imdata : ndarray
         The image that you wish to click on for 2-d points.
     **kwargs : dict
         Keyword arguments. Passed to ax.imshow.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
 
@@ -169,8 +179,9 @@ class ClickableImage:
     def onclick(self, event) -> None:
         """### Handle Mouse clicks.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         event : matplotlib.backend_bases.Event
             The matplotlib object that we use to get x/y position.
         """
@@ -178,8 +189,9 @@ class ClickableImage:
     def plot_clicks(self, **kwargs) -> None:
         """### Plot the x/y positions stored in self.coords.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         **kwargs : dict
             Arguments are passed to imshow in displaying the bg image.
         """
@@ -189,13 +201,15 @@ class ClickableImage:
 
         Normalizes by the image you used to generate clicks
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         **kwargs : dict
             Arguments are passed to generate_2d_layout.
 
+        -----
         ### ⏎ Returns
-        -------
+
         layout : instance of Layout
             The layout.
         """
@@ -211,8 +225,9 @@ def add_background_image(fig, im, set_ratios=None):
 
     ### 💡 Note This modifies the figure and/or axes in place.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fig : Figure
         The figure you wish to add a bg image to.
     im : array, shape (M, N, {3, 4})
@@ -223,13 +238,15 @@ def add_background_image(fig, im, set_ratios=None):
         to the value in set_ratios. Defaults to None,
         which does nothing to axes.
 
+    -----
     ### ⏎ Returns
-    -------
+
     ax_im : instance of Axes
         Axes created corresponding to the image you added.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...
@@ -254,8 +271,9 @@ def plot_sensors(
 ):
     """### Plot sensors positions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -336,19 +354,22 @@ def plot_sensors(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of Figure
         Figure containing the sensor topography.
     selection : list
         A list of selected channels. Only returned if ``kind=='select'``.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.viz.plot_layout
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function plots the sensor locations from the info structure using
     matplotlib. For drawing the sensors using PyVista see
     `mne.viz.plot_alignment`.
@@ -406,8 +427,9 @@ class SelectFromCollection:
     highlights selected points by fading other points out (i.e., reducing their
     alpha values).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     ax : instance of Axes
         Axes to interact with.
     collection : instance of matplotlib collection
@@ -419,8 +441,9 @@ class SelectFromCollection:
     linewidth_other : float
         Linewidth to use for non-selected sensors. Default is 1.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This tool selects collection objects based on their *origins*
     (i.e., ``offsets``). Calls all callbacks in self.callbacks when selection
     is ready.
@@ -474,8 +497,9 @@ class SelectFromCollection:
 class DraggableLine:
     """### Custom matplotlib line for moving around by drag and drop.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     line : instance of matplotlib Line2D
         Line to add interactivity to.
     callback : function
@@ -511,19 +535,22 @@ class DraggableLine:
 def centers_to_edges(*arrays):
     """### Convert center points to edges.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     *arrays : list of ndarray
         Each input array should be 1D monotonically increasing,
         and will be cast to float.
 
+    -----
     ### ⏎ Returns
-    -------
+
     arrays : list of ndarray
         Given each input of shape (N,), the output will have shape (N+1,).
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> x = [0., 0.1, 0.2, 0.3]
     >>> y = [20, 30, 40]
     >>> centers_to_edges(x, y)  # doctest: +SKIP
@@ -540,8 +567,9 @@ def concatenate_images(
 ):
     """### Concatenate a list of images.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     images : list of ndarray
         The list of images to concatenate.
     axis : 0 or 1
@@ -556,8 +584,9 @@ def concatenate_images(
     n_channels : int
         Number of color channels. Can be 3 or 4. The default value is 3.
 
+    -----
     ### ⏎ Returns
-    -------
+
     img : ndarray
         The concatenated image.
     """

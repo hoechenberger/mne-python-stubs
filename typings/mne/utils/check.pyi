@@ -5,8 +5,9 @@ from _typeshed import Incomplete
 def check_fname(fname, filetype, endings, endings_err=()) -> None:
     """### Enforce MNE filename conventions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : str
         Name of the file.
     filetype : str
@@ -27,8 +28,9 @@ def check_version(
 ):
     """### Check minimum library version required.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     library : str
         The library name to import. Must have a ``__version__`` property.
     min_version : str
@@ -50,8 +52,9 @@ def check_version(
 
         ✨ Added in vesion 1.0
 
+    -----
     ### ⏎ Returns
-    -------
+
     ok : bool
         True if the library exists with at least the specified version.
     version : str | None

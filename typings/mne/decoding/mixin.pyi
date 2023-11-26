@@ -7,8 +7,9 @@ class TransformerMixin:
         Fits transformer to ``X`` and ``y`` with optional parameters
         ``fit_params``, and returns a transformed version of ``X``.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples, n_features)
             Training set.
         y : array, shape (n_samples,)
@@ -16,8 +17,9 @@ class TransformerMixin:
         **fit_params : dict
             Additional fitting parameters passed to the ``fit`` method..
 
+        -----
         ### ⏎ Returns
-        -------
+
         X_new : array, shape (n_samples, n_features_new)
             Transformed array.
         """
@@ -29,8 +31,9 @@ class EstimatorMixin:
     def get_params(self, deep: bool = True) -> None:
         """### Get the estimator params.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         deep : bool
             Deep.
         """
@@ -38,13 +41,15 @@ class EstimatorMixin:
     def set_params(self, **params):
         """### Set parameters (mimics sklearn API).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         **params : dict
             Extra parameters.
 
+        -----
         ### ⏎ Returns
-        -------
+
         inst : object
             The instance.
         """

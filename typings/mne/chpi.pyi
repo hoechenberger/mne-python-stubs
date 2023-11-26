@@ -32,24 +32,28 @@ from .utils import (
 def read_head_pos(fname):
     """### Read MaxFilter-formatted head position parameters.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename to read. This can be produced by e.g.,
         ``maxfilter -headpos <name>.pos``.
 
+    -----
     ### ⏎ Returns
-    -------
+
     pos : array, shape (N, 10)
         The position and quaternion parameters from cHPI fitting.
 
+    -----
     ### 👉 See Also
-    --------
+
     write_head_pos
     head_pos_to_trans_rot_t
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.12
     """
     ...
@@ -57,20 +61,23 @@ def read_head_pos(fname):
 def write_head_pos(fname, pos) -> None:
     """### Write MaxFilter-formatted head position parameters.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         The filename to write.
     pos : array, shape (N, 10)
         The position and quaternion parameters from cHPI fitting.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_head_pos
     head_pos_to_trans_rot_t
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.12
     """
     ...
@@ -78,13 +85,15 @@ def write_head_pos(fname, pos) -> None:
 def head_pos_to_trans_rot_t(quats):
     """### Convert Maxfilter-formatted head position quaternions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     quats : ndarray, shape (N, 10)
         MaxFilter-formatted position and quaternion parameters.
 
+    -----
     ### ⏎ Returns
-    -------
+
     translation : ndarray, shape (N, 3)
         Translations at each time point.
     rotation : ndarray, shape (N, 3, 3)
@@ -92,8 +101,9 @@ def head_pos_to_trans_rot_t(quats):
     t : ndarray, shape (N,)
         The time points.
 
+    -----
     ### 👉 See Also
-    --------
+
     read_head_pos
     write_head_pos
     """
@@ -102,8 +112,9 @@ def head_pos_to_trans_rot_t(quats):
 def extract_chpi_locs_ctf(raw, verbose=None):
     """### Extract cHPI locations from CTF data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data with CTF cHPI information.
 
@@ -113,15 +124,17 @@ def extract_chpi_locs_ctf(raw, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     CTF continuous head monitoring stores the x,y,z location (m) of each chpi
     coil as separate channels in the dataset:
 
@@ -139,8 +152,9 @@ def extract_chpi_locs_ctf(raw, verbose=None):
 def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
     """### Extract cHPI locations from KIT data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of RawKIT
         Raw data with KIT cHPI information.
     stim_channel : str
@@ -152,15 +166,17 @@ def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.23
     """
     ...
@@ -168,8 +184,9 @@ def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
 def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     """### Retrieve cHPI information from the data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -186,8 +203,9 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     hpi_freqs : array, shape (n_coils,)
         The frequency used for each individual cHPI coil.
     hpi_pick : int | None
@@ -196,8 +214,9 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     hpi_on : array, shape (n_coils,)
         The values coding for the "on" state of each individual cHPI coil.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.24
     """
     ...
@@ -212,8 +231,9 @@ def compute_head_pos(
 ):
     """### Compute time-varying head positions.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -238,20 +258,23 @@ def compute_head_pos(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     quats : ndarray, shape (n_pos, 10)
         The ``[t, q1, q2, q3, x, y, z, gof, err, v]`` for each fit.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_chpi_locs
     extract_chpi_locs_ctf
     read_head_pos
     write_head_pos
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.20
     """
     ...
@@ -267,8 +290,9 @@ def compute_chpi_snr(
 ):
     """### Compute time-varying estimates of cHPI SNR.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data with cHPI information.
     t_step_min : float
@@ -298,20 +322,23 @@ def compute_chpi_snr(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     chpi_snrs : dict
         The time-varying cHPI SNR estimates, with entries "times", "freqs",
         "snr_mag", "power_mag", and "resid_mag" (and/or "snr_grad",
         "power_grad", and "resid_grad", depending on which channel types are
         present in ``raw``).
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.chpi.compute_chpi_locs, mne.chpi.compute_chpi_amplitudes
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.24
     """
     ...
@@ -327,8 +354,9 @@ def compute_chpi_amplitudes(
 ):
     """### Compute time-varying cHPI amplitudes.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data with cHPI information.
     t_step_min : float
@@ -358,19 +386,22 @@ def compute_chpi_amplitudes(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     chpi_amplitudes : dict
         The time-varying cHPI coil amplitudes, with entries
         "times", "proj", and "slopes".
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.chpi.compute_chpi_locs, mne.chpi.compute_chpi_snr
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function will:
 
     1. Get HPI frequencies,  HPI status channel, HPI status bits,
@@ -404,8 +435,9 @@ def compute_chpi_locs(
 ):
     """### Compute locations of each cHPI coils over time.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -430,23 +462,26 @@ def compute_chpi_locs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
 
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_chpi_amplitudes
     compute_head_pos
     read_head_pos
     write_head_pos
     extract_chpi_locs_ctf
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function is designed to take the output of
     `mne.chpi.compute_chpi_amplitudes` and:
 
@@ -477,8 +512,9 @@ def filter_chpi(
     ### 💡 Note This function will only work properly if cHPI was on
               during the recording.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data with cHPI information. Must be preloaded. Operates in-place.
     include_line : bool
@@ -509,13 +545,15 @@ def filter_chpi(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of Raw
         The raw data.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     cHPI signals are in general not stationary, because head movements act
     like amplitude modulators on cHPI signals. Thus it is recommended to
     use this procedure, which uses an iterative fitting method, to
@@ -528,8 +566,9 @@ def filter_chpi(
 def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
     """### Determine how many HPI coils were active for a time point.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data with cHPI information.
 
@@ -545,13 +584,15 @@ def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     n_active : array, shape (n_times)
         The number of active cHPIs for every timepoint in raw.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 1.2
     """
     ...

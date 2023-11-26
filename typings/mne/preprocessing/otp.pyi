@@ -5,8 +5,9 @@ def oversampled_temporal_projection(
 ):
     """### Denoise MEG channels using leave-one-out temporal projection.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Raw data to denoise.
     duration : float | str
@@ -28,13 +29,15 @@ def oversampled_temporal_projection(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw_clean : instance of Raw
         The cleaned data.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This algorithm is computationally expensive, and can be several times
     slower than realtime for conventional M/EEG datasets. It uses a
     leave-one-out procedure with parallel temporal projection to remove

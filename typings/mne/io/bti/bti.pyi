@@ -49,8 +49,9 @@ class _bytes_io_mock_context:
 class RawBTi(BaseRaw):
     """### Raw object from 4D Neuroimaging MagnesWH3600 data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     pdf_fname : path-like
         Path to the processed data file (PDF).
     config_fname : path-like
@@ -125,8 +126,9 @@ def read_raw_bti(
            channels are present in your dataset but 'ECG 01' and 'EOG 01',
            'EOG 02' don't appear in the channel names of the raw object.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     pdf_fname : path-like
         Path to the processed data file (PDF).
     config_fname : path-like
@@ -168,14 +170,16 @@ def read_raw_bti(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawBTi
         A Raw object containing BTI data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawBTi.
     """
     ...

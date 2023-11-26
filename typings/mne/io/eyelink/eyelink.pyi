@@ -12,8 +12,9 @@ def read_raw_eyelink(
 ):
     """### Reader for an Eyelink ``.asc`` file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : path-like
         Path to the eyelink file (``.asc``).
@@ -52,17 +53,20 @@ def read_raw_eyelink(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawEyelink
         A Raw object containing eyetracker data.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attribute and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     It is common for SR Research Eyelink eye trackers to only record data during trials.
     To avoid frequent data discontinuities and to ensure that the data is continuous
     so that it can be aligned with EEG and MEG data (if applicable), this reader will
@@ -74,8 +78,9 @@ def read_raw_eyelink(
 class RawEyelink(BaseRaw):
     """### Raw object from an XXX file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     fname : path-like
         Path to the eyelink file (``.asc``).
@@ -114,8 +119,9 @@ class RawEyelink(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attribute and methods.
     """
 

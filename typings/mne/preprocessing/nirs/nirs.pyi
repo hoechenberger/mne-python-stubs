@@ -4,8 +4,9 @@ from ...utils import fill_doc as fill_doc
 def source_detector_distances(info, picks=None):
     """### Determine the distance between NIRS source and detectors.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -19,8 +20,9 @@ def source_detector_distances(info, picks=None):
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dists : array of float
         Array containing distances in meters.
         Of shape equal to number of channels, or shape of picks if supplied.
@@ -33,16 +35,18 @@ def short_channels(info, threshold: float = 0.01):
     Channels with a source to detector distance of less than
     ``threshold`` are reported as short. The default threshold is 0.01 m.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
     threshold : float
         The threshold distance for what is considered short in meters.
 
+    -----
     ### ⏎ Returns
-    -------
+
     short : array of bool
         Array indicating which channels are short.
         Of shape equal to number of channels.

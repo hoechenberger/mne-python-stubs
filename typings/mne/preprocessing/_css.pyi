@@ -11,8 +11,9 @@ def cortical_signal_suppression(
 ):
     """### Apply cortical signal suppression (CSS) to evoked data.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : instance of Evoked
         The evoked object to use for CSS. Must contain magnetometer,
         gradiometer, and EEG channels.
@@ -42,14 +43,16 @@ def cortical_signal_suppression(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     evoked_subcortical : instance of Evoked
         The evoked object with cortical contributions to the EEG data
         suppressed.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This method removes the common signal subspace between the magnetometer
     data and the gradiometer data from the EEG data. This is done by a temporal
     projection using ``n_proj`` number of projection vectors. For reference,

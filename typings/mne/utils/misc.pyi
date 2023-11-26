@@ -18,8 +18,9 @@ class _FormatDict(dict):
 def pformat(temp, **fmt):
     """### Format a template string partially.
 
-    Examples
-    --------
+    -----
+    ### 🖥️ Examples
+
     >>> pformat("{a}_{b}", a='x')
     'x_{b}'
     """
@@ -33,8 +34,9 @@ def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kw
     By default, this will also add stdout= and stderr=subproces.PIPE
     to the call to Popen to suppress printing to the terminal.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     command : list of str | str
         Command to run as subprocess (see subprocess.Popen documentation).
     return_code : bool
@@ -51,8 +53,9 @@ def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kw
     *args, **kwargs : arguments
         Additional arguments to pass to subprocess.Popen.
 
+    -----
     ### ⏎ Returns
-    -------
+
     stdout : str
         Stdout returned by the process.
     stderr : str
@@ -67,8 +70,9 @@ def running_subprocess(
 ) -> Generator[Incomplete, None, None]:
     """### Context manager to do something with a command running via Popen.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     command : list of str | str
         Command to run as subprocess (see `python:subprocess.Popen`).
     after : str
@@ -83,8 +87,9 @@ def running_subprocess(
     *args, **kwargs : arguments
         Additional arguments to pass to subprocess.Popen.
 
+    -----
     ### ⏎ Returns
-    -------
+
     p : instance of Popen
         The process.
     """
@@ -93,13 +98,15 @@ def running_subprocess(
 def sizeof_fmt(num):
     """### Turn number of bytes into human-readable str.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     num : int
         The number of bytes.
 
+    -----
     ### ⏎ Returns
-    -------
+
     size : str
         The size in human-readable format.
     """
@@ -112,13 +119,15 @@ def repr_html(f):
     notebook will show HTML or plain text depending on the config value
     MNE_REPR_HTML (by default "true", which will render HTML).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     f : function
         The function to decorate.
 
+    -----
     ### ⏎ Returns
-    -------
+
     wrapper : function
         The decorated function.
     """

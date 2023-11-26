@@ -18,8 +18,9 @@ def read_raw_snirf(
               If 2D positions are used the behaviour of MNE functions
               can not be guaranteed.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the SNIRF data file.
     optode_frame : str
@@ -41,14 +42,16 @@ def read_raw_snirf(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawSNIRF
         A Raw object containing fNIRS data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawSNIRF.
     """
     ...
@@ -56,8 +59,9 @@ def read_raw_snirf(
 class RawSNIRF(BaseRaw):
     """### Raw object from a continuous wave SNIRF file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the SNIRF data file.
     optode_frame : str
@@ -79,8 +83,9 @@ class RawSNIRF(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
     """
 

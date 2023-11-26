@@ -11,8 +11,9 @@ def read_raw_nirx(
 ):
     """### Reader for a NIRX fNIRS recording.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the NIRX data folder or header file.
     saturated : str
@@ -46,18 +47,21 @@ def read_raw_nirx(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawNIRX
         A Raw object containing NIRX data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawNIRX.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     This function has only been tested with NIRScout and NIRSport devices,
     and with the NIRStar software version 15 and above and Aurora software
@@ -76,8 +80,9 @@ def read_raw_nirx(
 class RawNIRX(BaseRaw):
     """### Raw object from a NIRX fNIRS file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to the NIRX data folder or header file.
     saturated : str
@@ -111,12 +116,14 @@ class RawNIRX(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     This function has only been tested with NIRScout and NIRSport devices,
     and with the NIRStar software version 15 and above and Aurora software

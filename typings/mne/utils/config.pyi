@@ -8,8 +8,9 @@ def set_cache_dir(cache_dir) -> None:
     which reduces memory requirements and speeds up parallel
     computation.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     cache_dir : str or None
         Directory to use for temporary file storage. None disables
         temporary file storage.
@@ -19,8 +20,9 @@ def set_cache_dir(cache_dir) -> None:
 def set_memmap_min_size(memmap_min_size) -> None:
     """### Set the minimum size for memmaping of arrays for parallel processing.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     memmap_min_size : str or None
         Threshold on the minimum size of arrays that triggers automated memory
         mapping for parallel processing, e.g., '1M' for 1 megabyte.
@@ -31,14 +33,16 @@ def set_memmap_min_size(memmap_min_size) -> None:
 def get_config_path(home_dir=None):
     """### Get path to standard mne-python config file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     home_dir : str | None
         The folder that contains the .mne config folder.
         If None, it is found automatically.
 
+    -----
     ### ⏎ Returns
-    -------
+
     config_path : str
         The path to the mne-python configuration file. On windows, this
         will be '%USERPROFILE%\\.mne\\mne-python.json'. On every other
@@ -55,8 +59,9 @@ def get_config(
 ):
     """### Read MNE-Python preferences from environment or config file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     key : None | str
         The preference key to look for. The os environment is searched first,
         then the mne-python config file is parsed.
@@ -77,13 +82,15 @@ def get_config(
 
         ✨ Added in vesion 0.18
 
+    -----
     ### ⏎ Returns
-    -------
+
     value : dict | str | None
         The preference key value.
 
+    -----
     ### 👉 See Also
-    --------
+
     set_config
     """
     ...
@@ -91,8 +98,9 @@ def get_config(
 def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
     """### Set a MNE-Python preference key in the config file and environment.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     key : str
         The preference key to set.
     value : str |  None
@@ -105,8 +113,9 @@ def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
         If True (default), update :data:`os.environ` in addition to
         updating the MNE-Python config file.
 
+    -----
     ### 👉 See Also
-    --------
+
     get_config
     """
     ...
@@ -114,8 +123,9 @@ def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
 def get_subjects_dir(subjects_dir=None, raise_error: bool = False):
     """### Safely use subjects_dir input to return SUBJECTS_DIR.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subjects_dir : path-like | None
         If a value is provided, return subjects_dir. Otherwise, look for
         SUBJECTS_DIR config and return the result.
@@ -123,8 +133,9 @@ def get_subjects_dir(subjects_dir=None, raise_error: bool = False):
         If True, raise a KeyError if no value for SUBJECTS_DIR can be found
         (instead of returning None).
 
+    -----
     ### ⏎ Returns
-    -------
+
     value : Path | None
         The SUBJECTS_DIR value.
     """
@@ -142,8 +153,9 @@ def sys_info(
 
     This function prints system information useful when triaging bugs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fid : file-like | None
         The file to write to. Will be passed to `print()`. Can be None to
         use :data:`sys.stdout`.

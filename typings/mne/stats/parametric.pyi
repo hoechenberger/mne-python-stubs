@@ -5,8 +5,9 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
     a (relatively) time-consuming p-value calculation, and can adjust
     for implausibly small variance values :footcite:`RidgwayEtAl2012`.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     X : array
         Array to return t-values for.
     sigma : float
@@ -17,13 +18,15 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
         If 'relative', the minimum variance estimate will be sigma * max(var),
         if 'absolute' the minimum variance estimate will be sigma.
 
+    -----
     ### ⏎ Returns
-    -------
+
     t : array
         T-values, potentially adjusted using the hat method.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     To use the "hat" adjustment method :footcite:`RidgwayEtAl2012`, a value
     of ``sigma=1e-3`` may be a reasonable choice.
 
@@ -40,8 +43,9 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     along the first axis. The ``sigma`` parameter provides an optional "hat"
     adjustment (see `ttest_1samp_no_p` and :footcite:`RidgwayEtAl2012`).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     a : array-like
         The first array.
     b : array-like
@@ -51,8 +55,9 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     sigma : float
         The regularization. See `ttest_1samp_no_p`.
 
+    -----
     ### ⏎ Returns
-    -------
+
     t : array
         T values.
 
@@ -72,18 +77,21 @@ def f_oneway(*args):
     This is a modified version of `scipy.stats.f_oneway` that avoids
     computing the associated p-value.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     *args : array_like
         The sample measurements should be given as arguments.
 
+    -----
     ### ⏎ Returns
-    -------
+
     F-value : float
         The computed F-value of the test.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     The ANOVA test has important assumptions that must be satisfied in order
     for the associated p-value to be valid.
 
@@ -109,8 +117,9 @@ def f_threshold_mway_rm(
 ):
     """### Compute F-value thresholds for a two-way ANOVA.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     n_subjects : int
         The number of subjects to be analyzed.
     factor_levels : list-like
@@ -128,19 +137,22 @@ def f_threshold_mway_rm(
     pvalue : float
         The p-value to be thresholded.
 
+    -----
     ### ⏎ Returns
-    -------
+
     F_threshold : list | float
         List of F-values for each effect if the number of effects
         requested > 2, else float.
 
+    -----
     ### 👉 See Also
-    --------
+
     f_oneway
     f_mway_rm
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10
     """
     ...
@@ -154,8 +166,9 @@ def f_mway_rm(
 ):
     """### Compute M-way repeated measures ANOVA for fully balanced designs.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : ndarray
         3D array where the first two dimensions are compliant
         with a subjects X conditions scheme where the first
@@ -189,8 +202,9 @@ def f_mway_rm(
     return_pvals : bool
         If True, return p-values corresponding to F-values.
 
+    -----
     ### ⏎ Returns
-    -------
+
     F_vals : ndarray
         An array of F-statistics with length corresponding to the number
         of effects estimated. The shape depends on the number of effects
@@ -198,13 +212,15 @@ def f_mway_rm(
     p_vals : ndarray
         If not requested via return_pvals, defaults to an empty array.
 
+    -----
     ### 👉 See Also
-    --------
+
     f_oneway
     f_threshold_mway_rm
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.10
     """
     ...

@@ -6,8 +6,9 @@ FSAVERAGE_MANIFEST_PATH: Incomplete
 def fetch_fsaverage(subjects_dir=None, *, verbose=None):
     """### Fetch and update fsaverage.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subjects_dir : str | None
         The path to use as the subjects directory in the MNE-Python
         config file. None will use the existing config variable (i.e.,
@@ -20,14 +21,16 @@ def fetch_fsaverage(subjects_dir=None, *, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fs_dir : str
         The fsaverage directory.
         (essentially ``subjects_dir + '/fsaverage'``).
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This function is designed to provide
 
     1. All modern (Freesurfer 6) fsaverage subject files

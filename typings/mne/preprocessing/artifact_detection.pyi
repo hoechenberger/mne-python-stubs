@@ -32,8 +32,9 @@ def annotate_muscle_zscore(
     See :footcite:`Muthukumaraswamy2013` for background on choosing
     ``filter_freq`` and ``threshold``.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Data to estimate segments with muscle artifacts.
     threshold : float
@@ -64,8 +65,9 @@ def annotate_muscle_zscore(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     annot : mne.Annotations
         Periods with muscle artifacts annotated as BAD_muscle.
     scores_muscle : array
@@ -91,8 +93,9 @@ def annotate_movement(
     translation_velocity_limit and mean_distance_limit. It returns an
     annotation with the bad segments.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Data to compute head position.
     pos : array, shape (N, 10)
@@ -111,15 +114,17 @@ def annotate_movement(
         computed using ``compute_average_dev_head_t``.
         If ``info``, ``raw.info['dev_head_t']`` is used.
 
+    -----
     ### ⏎ Returns
-    -------
+
     annot : mne.Annotations
         Periods with head motion.
     hpi_disp : array
         Head position over time with respect to the mean head pos.
 
+    -----
     ### 👉 See Also
-    --------
+
     compute_average_dev_head_t
     """
     ...
@@ -130,15 +135,17 @@ def compute_average_dev_head_t(raw, pos):
     Segments starting with "BAD" annotations are not included for calculating
     the mean head position.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         Data to compute head position.
     pos : array, shape (N, 10)
         The position and quaternion parameters from cHPI fitting.
 
+    -----
     ### ⏎ Returns
-    -------
+
     dev_head_t : instance of Transform
         New ``dev_head_t`` transformation using the averaged good head positions.
     """
@@ -161,8 +168,9 @@ def annotate_break(
     ``min_break_duration`` seconds long, and then proceeds to creating
     annotations for those break periods.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     raw : instance of Raw
         The continuous data to analyze.
     events : None | array, shape (n_events, 3)
@@ -212,15 +220,17 @@ def annotate_break(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     break_annotations : instance of Annotations
         The break annotations, each with the description ``'BAD_break'``. If
         no breaks could be found given the provided function parameters, an
         empty `mne.Annotations` object will be returned.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.24
     """
     ...

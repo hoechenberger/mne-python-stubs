@@ -27,8 +27,9 @@ def fetch_data(
     See more details in
     `physionet website <https://physionet.org/physiobank/database/sleep-edfx/sleep-cassette/>`_.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     subjects : list of int
         The subjects to use. Can be in the range of 0-82 (inclusive), however
         the following subjects are not available: 39, 68, 69, 78 and 79.
@@ -59,17 +60,20 @@ def fetch_data(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     paths : list
         List of local data paths of the given type.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.datasets.sleep_physionet.temazepam.fetch_data
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     For example, one could do:
 
         >>> from mne.datasets import sleep_physionet

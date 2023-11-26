@@ -7,8 +7,9 @@ from _typeshed import Incomplete
 class TimeDelayingRidge(BaseEstimator):
     """### Ridge regression of data with time delays.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     tmin : int | float
         The starting lag, in seconds (or samples if ``sfreq`` == 1).
         Negative values correspond to times in the past.
@@ -39,12 +40,14 @@ class TimeDelayingRidge(BaseEstimator):
 
         ✨ Added in vesion 0.18
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.decoding.ReceptiveField
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     This class is meant to be used with `mne.decoding.ReceptiveField`
     by only implicitly doing the time delaying. For reasonable receptive
     field and input signal sizes, it should be more CPU and memory
@@ -78,15 +81,17 @@ class TimeDelayingRidge(BaseEstimator):
     def fit(self, X, y):
         """### Estimate the coefficients of the linear model.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples[, n_epochs], n_features)
             The training input samples to estimate the linear coefficients.
         y : array, shape (n_samples[, n_epochs],  n_outputs)
             The target values.
 
+        -----
         ### ⏎ Returns
-        -------
+
         self : instance of TimeDelayingRidge
             Returns the modified instance.
         """
@@ -94,13 +99,15 @@ class TimeDelayingRidge(BaseEstimator):
     def predict(self, X):
         """### Predict the output.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         X : array, shape (n_samples[, n_epochs], n_features)
             The data.
 
+        -----
         ### ⏎ Returns
-        -------
+
         X : ndarray
             The predicted response.
         """

@@ -12,8 +12,9 @@ class Layout:
     `mne.channels.read_layout`. Only use this class directly if you're
     constructing a new layout.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     box : tuple of length 4
         The box dimension (x_min, x_max, y_min, y_max).
     pos : array, shape=(n_channels, 4)
@@ -37,23 +38,26 @@ class Layout:
     def save(self, fname, overwrite: bool = False) -> None:
         """### Save Layout to disk.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             The file name (e.g. ``'my_layout.lout'``).
         overwrite : bool
             If True, overwrites the destination file if it exists.
 
+        -----
         ### 👉 See Also
-        --------
+
         read_layout
         """
         ...
     def plot(self, picks=None, show_axes: bool = False, show: bool = True):
         """### Plot the sensor positions.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : list | slice | None
             Channels to include. Slices and lists of integers will be interpreted as channel indices.
             None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
@@ -62,13 +66,15 @@ class Layout:
         show : bool
             Show figure if True. Defaults to True.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Figure containing the sensor topography.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         ✨ Added in vesion 0.12.0
         """
         ...
@@ -76,8 +82,9 @@ class Layout:
 def read_layout(fname=None, *, scale: bool = True):
     """### Read layout from a file.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like | str
         Either the path to a ``.lout`` or ``.lay`` file or the name of a
         built-in layout. c.f. Notes for a list of the available built-in
@@ -86,17 +93,20 @@ def read_layout(fname=None, *, scale: bool = True):
         Apply useful scaling for out the box plotting using ``layout.pos``.
         Defaults to True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     layout : instance of Layout
         The layout.
 
+    -----
     ### 👉 See Also
-    --------
+
     Layout.save
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     Valid ``fname`` arguments are:
 
     .. table::
@@ -158,8 +168,9 @@ def make_eeg_layout(
 ):
     """### Create .lout file from EEG electrode digitization.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -177,13 +188,15 @@ def make_eeg_layout(
     csd : bool
         Whether the channels contain current-source-density-transformed data.
 
+    -----
     ### ⏎ Returns
-    -------
+
     layout : Layout
         The generated Layout.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_grid_layout, generate_2d_layout
     """
     ...
@@ -191,8 +204,9 @@ def make_eeg_layout(
 def make_grid_layout(info, picks=None, n_col=None):
     """### Generate .lout file for custom data, i.e., ICA sources.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -206,13 +220,15 @@ def make_grid_layout(info, picks=None, n_col=None):
     n_col : int | None
         Number of columns to generate. If None, a square grid will be produced.
 
+    -----
     ### ⏎ Returns
-    -------
+
     layout : Layout
         The generated layout.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_eeg_layout, generate_2d_layout
     """
     ...
@@ -220,8 +236,9 @@ def make_grid_layout(info, picks=None, n_col=None):
 def find_layout(info, ch_type=None, exclude: str = "bads"):
     """### Choose a layout based on the channels in the info 'chs' field.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
 
     info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
@@ -234,8 +251,9 @@ def find_layout(info, ch_type=None, exclude: str = "bads"):
         List of channels to exclude. If empty do not exclude any.
         If 'bads', exclude channels in info['bads'] (default).
 
+    -----
     ### ⏎ Returns
-    -------
+
     layout : Layout instance | None
         None if layout not found.
     """
@@ -259,8 +277,9 @@ def generate_2d_layout(
     normalization extremes will be either the min/max of xy, or
     the width/height of bg_image.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     xy : ndarray, shape (N, 2)
         The xy coordinates of sensor locations.
     w : float
@@ -287,18 +306,21 @@ def generate_2d_layout(
         Whether to normalize the coordinates to run from 0 to 1. Defaults to
         True.
 
+    -----
     ### ⏎ Returns
-    -------
+
     layout : Layout
         A Layout object that can be plotted with plot_topo
         functions and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     make_eeg_layout, make_grid_layout
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     ✨ Added in vesion 0.9.0
     """
     ...

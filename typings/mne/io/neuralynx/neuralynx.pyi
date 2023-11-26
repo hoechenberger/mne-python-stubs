@@ -7,8 +7,9 @@ def read_raw_neuralynx(
 ):
     """### Reader for Neuralynx files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to a folder with Neuralynx .ncs files.
 
@@ -29,14 +30,16 @@ def read_raw_neuralynx(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawNeuralynx
         A Raw object containing Neuralynx data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.io.Raw : Documentation of attributes and methods of RawNeuralynx.
     """
     ...

@@ -8,8 +8,9 @@ def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
     ### 💡 Note This is likely only applicable for channels inside the brain
               (intracranial electrodes).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     montage : instance of mne.channels.DigMontage
         The montage object containing the channels.
 
@@ -32,8 +33,9 @@ def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     montage_warped : mne.channels.DigMontage
         The modified montage object containing the channels.
     """
@@ -55,8 +57,9 @@ def make_montage_volume(
     Monotonicity from the peak is enforced to prevent channels
     bleeding into each other.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     montage : instance of mne.channels.DigMontage
         The montage object containing the channels.
     base_image : path-like | nibabel.spatialimages.SpatialImage
@@ -83,8 +86,9 @@ def make_montage_volume(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     elec_image : nibabel.spatialimages.SpatialImage
         An image in Freesurfer surface RAS space with voxel values
         corresponding to the index of the channel. The background

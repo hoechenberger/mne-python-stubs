@@ -27,8 +27,9 @@ def make_field_map(
 ):
     """### Compute surface maps used for field display in 3D.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     evoked : Evoked | Epochs | Raw
         The measurement file. Need to have info attribute.
 
@@ -83,8 +84,9 @@ def make_field_map(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     surf_maps : list
         The surface maps to be used for field plots. The list contains
         separate ones for MEG and EEG (if both MEG and EEG are present).

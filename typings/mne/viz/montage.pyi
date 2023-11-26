@@ -15,8 +15,9 @@ def plot_montage(
 ):
     """### Plot a montage.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     montage : instance of DigMontage
         The montage to visualize.
     scale_factor : float
@@ -55,8 +56,9 @@ def plot_montage(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     fig : instance of matplotlib.figure.Figure
         The figure object.
     """

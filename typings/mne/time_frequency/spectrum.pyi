@@ -60,8 +60,9 @@ class SpectrumMixin:
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
         tmin, tmax : float | None
@@ -172,13 +173,15 @@ class SpectrumMixin:
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure with frequency spectra of the data channels.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
         of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
@@ -209,8 +212,9 @@ class SpectrumMixin:
 
         Plot power spectral density, separately for each channel.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         tmin, tmax : float | None
             First and last times to include, in seconds. ``None`` uses the first or
             last time present in the data. Default is ``tmin=None, tmax=None`` (all
@@ -270,8 +274,9 @@ class SpectrumMixin:
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details. Defaults to ``dict(n_fft=2048)``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Figure distributing one image per channel across sensor topography.
         """
@@ -316,8 +321,9 @@ class SpectrumMixin:
 
         Plot scalp topography of PSD for chosen frequency bands.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         bands : None | dict | list of tuple
             The frequencies or frequency ranges to plot. If a `dict`, keys will
@@ -526,8 +532,9 @@ class SpectrumMixin:
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure showing one scalp topography per frequency band.
         """
@@ -573,8 +580,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     def copy(self):
         """### Return copy of the Spectrum instance.
 
+        -----
         ### ⏎ Returns
-        -------
+
         spectrum : instance of Spectrum
             A copy of the object.
         """
@@ -589,8 +597,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     ):
         """### Get spectrum data in NumPy array format.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -610,8 +619,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             Whether to return the frequency bin values for the requested
             frequency range. Default is ``False``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         data : array
             The requested data in a NumPy array.
         freqs : array
@@ -646,8 +656,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -727,8 +738,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Figure with spectra plotted in separate subplots for each channel
             type.
@@ -748,8 +760,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     ):
         """### Plot power spectral density, separately for each channel.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         dB : bool
             Whether to plot on a decibel-like scale. If ``True``, plots
             10 × log₁₀(spectral power). Ignored if ``normalize=True``.
@@ -775,8 +788,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of matplotlib.figure.Figure
             Figure distributing one image per channel across sensor topography.
         """
@@ -812,8 +826,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     ):
         """### Plot scalp topography of PSD for chosen frequency bands.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
 
         bands : None | dict | list of tuple
             The frequencies or frequency ranges to plot. If a `dict`, keys will
@@ -988,8 +1003,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         show : bool
             Show the figure if ``True``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         fig : instance of Figure
             Figure showing one scalp topography per frequency band.
         """
@@ -997,8 +1013,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
         """### Save spectrum data to disk (in HDF5 format).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         fname : path-like
             Path of file to save to.
 
@@ -1012,8 +1029,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### 👉 See Also
-        --------
+
         mne.time_frequency.read_spectrum
         """
         ...
@@ -1032,8 +1050,9 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         an additional column "freq" is added, unless ``index='freq'``
         (in which case frequency values form the DataFrame's index).
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
@@ -1065,15 +1084,17 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        -----
         ### ⏎ Returns
-        -------
+
 
         df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
             packages.
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Valid values for ``index`` depend on whether the Spectrum was created
         from continuous data (`mne.io.Raw`, `mne.Evoked`) or
         discontinuous data (`mne.Epochs`). For continuous data, only
@@ -1086,13 +1107,15 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     def units(self, latex: bool = False):
         """### Get the spectrum units for each channel type.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         latex : bool
             Whether to format the unit strings as LaTeX. Default is ``False``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         units : dict
             Mapping from channel type to a string representation of the units
             for that channel type.
@@ -1108,8 +1131,9 @@ class Spectrum(BaseSpectrum):
                  `mne.Evoked.compute_psd`. Direct class instantiation
                  is not supported.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Raw or Evoked
         The data from which to compute the frequency spectrum.
 
@@ -1170,8 +1194,9 @@ class Spectrum(BaseSpectrum):
         method). See `mne.time_frequency.psd_array_welch` and
         `mne.time_frequency.psd_array_multitaper` for details.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     ch_names : list
         The channel names.
     freqs : array
@@ -1184,8 +1209,9 @@ class Spectrum(BaseSpectrum):
         The method used to compute the spectrum (``'welch'`` or
         ``'multitaper'``).
 
+    -----
     ### 👉 See Also
-    --------
+
     EpochsSpectrum
     SpectrumArray
     mne.io.Raw.compute_psd
@@ -1218,18 +1244,21 @@ class Spectrum(BaseSpectrum):
     def __getitem__(self, item):
         """### Get Spectrum data.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         item : int | slice | array-like
             Indexing is similar to a `NumPy array<numpy.ndarray>`; see
             Notes.
 
+        -----
         ### ⏎ Returns
-        -------
+
         %(getitem_spectrum_return)s
 
-        ### 📖 Notes
         -----
+        ### 📖 Notes
+
         Integer-, list-, and slice-based indexing is possible:
 
         - ``spectrum[0]`` gives all frequency bins in the first channel
@@ -1251,8 +1280,9 @@ class Spectrum(BaseSpectrum):
 class SpectrumArray(Spectrum):
     """### Data object for precomputed spectral data (in NumPy array format).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array, shape (n_channels, n_freqs)
         The power spectral density for each channel.
 
@@ -1268,15 +1298,17 @@ class SpectrumArray(Spectrum):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.create_info
     mne.EvokedArray
     mne.io.RawArray
     EpochsSpectrumArray
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     It is assumed that the data passed in represent spectral *power* (not amplitude,
     phase, model coefficients, etc) and downstream methods (such as
@@ -1296,8 +1328,9 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
                  is via the instance method `mne.Epochs.compute_psd`.
                  Direct class instantiation is not supported.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     inst : instance of Epochs
         The data from which to compute the frequency spectrum.
 
@@ -1352,8 +1385,9 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         method). See `mne.time_frequency.psd_array_welch` and
         `mne.time_frequency.psd_array_multitaper` for details.
 
+    -----
     ### 📊 Attributes
-    ----------
+
     ch_names : list
         The channel names.
     freqs : array
@@ -1365,8 +1399,9 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
     method : str
         The method used to compute the spectrum ('welch' or 'multitaper').
 
+    -----
     ### 👉 See Also
-    --------
+
     EpochsSpectrumArray
     Spectrum
     mne.Epochs.compute_psd
@@ -1401,31 +1436,35 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
     def __getitem__(self, item):
         """### Subselect epochs from an EpochsSpectrum.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         item : int | slice | array-like | str
             Access options are the same as for `mne.Epochs` objects,
             see the docstring of `mne.Epochs.__getitem__` for
             explanation.
 
+        -----
         ### ⏎ Returns
-        -------
+
         %(getitem_epochspectrum_return)s
         """
         ...
     def average(self, method: str = "mean"):
         """### Average the spectra across epochs.
 
+        -----
         ### 🛠️ Parameters
-        ----------
+
         method : 'mean' | 'median' | callable
             How to aggregate spectra across epochs. If callable, must take a
             `NumPy array<numpy.ndarray>` of shape
             ``(n_epochs, n_channels, n_freqs)`` and return an array of shape
             ``(n_channels, n_freqs)``. Default is ``'mean'``.
 
+        -----
         ### ⏎ Returns
-        -------
+
         spectrum : instance of Spectrum
             The aggregated spectrum object.
         """
@@ -1434,8 +1473,9 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
 class EpochsSpectrumArray(EpochsSpectrum):
     """### Data object for precomputed epoched spectral data (in NumPy array format).
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     data : array, shape (n_epochs, n_channels, n_freqs)
         The power spectral density for each channel in each epoch.
 
@@ -1466,14 +1506,16 @@ class EpochsSpectrumArray(EpochsSpectrum):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.create_info
     mne.EpochsArray
     SpectrumArray
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
 
     It is assumed that the data passed in represent spectral *power* (not amplitude,
     phase, model coefficients, etc) and downstream methods (such as
@@ -1491,18 +1533,21 @@ class EpochsSpectrumArray(EpochsSpectrum):
 def read_spectrum(fname):
     """### Load a `mne.time_frequency.Spectrum` object from disk.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     fname : path-like
         Path to a spectrum file in HDF5 format.
 
+    -----
     ### ⏎ Returns
-    -------
+
     spectrum : instance of Spectrum
         The loaded Spectrum object.
 
+    -----
     ### 👉 See Also
-    --------
+
     mne.time_frequency.Spectrum.save
     """
     ...

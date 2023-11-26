@@ -20,8 +20,9 @@ def read_raw_nsx(
 ):
     """### Reader function for NSx (Blackrock Microsystems) files.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : str
         Path to the NSx file.
     stim_channel : ``'auto'`` | str | list of str | int | list of int
@@ -51,14 +52,16 @@ def read_raw_nsx(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
+    -----
     ### ⏎ Returns
-    -------
+
     raw : instance of RawEDF
         The raw instance.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     NSx files with id (= NEURALSG), i.e., version 2.1 is currently not
     supported.
 
@@ -71,8 +74,9 @@ def read_raw_nsx(
 class RawNSX(BaseRaw):
     """### Raw object from NSx file from Blackrock Microsystems.
 
+    -----
     ### 🛠️ Parameters
-    ----------
+
     input_fname : str
         Path to the NSx file.
     stim_channel : ``'auto'`` | str | list of str | int | list of int
@@ -102,8 +106,9 @@ class RawNSX(BaseRaw):
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    ### 📖 Notes
     -----
+    ### 📖 Notes
+
     NSx files with id (= NEURALSG), i.e., version 2.1 is currently not
     supported.
 
