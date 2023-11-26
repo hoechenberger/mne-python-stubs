@@ -1204,7 +1204,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         """## 🧠 Compute time-varying SNR in the source space.
 
         This function should only be used with source estimates with units
-        nanoAmperes (i.e., MNE-like solutions, `not` dSPM or sLORETA).
+        nanoAmperes (i.e., MNE-like solutions, *not* dSPM or sLORETA).
         See also :footcite:`GoldenholzEtAl2009`.
 
         ### ⛔️ Warning This function currently only works properly for fixed
@@ -3212,8 +3212,8 @@ def stc_near_sensors(
                      or that you set ``surface='pial'`` here.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good sEEG, ECoG, and DBS channels.

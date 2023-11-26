@@ -38,12 +38,12 @@ def plot_epochs_image(
         The epochs.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` `will be included` if their names or indices are
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
         ``picks`` interacts with ``group_by`` and ``combine`` to determine the
         number of figures generated; see Notes.
@@ -287,12 +287,12 @@ def plot_epochs(
         The epochs object.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` `will be included` if their names or indices are
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
     #### `scalings : 'auto' | dict | None`
@@ -339,7 +339,7 @@ def plot_epochs(
         Color(s) to use for :term:`events`. To show all :term:`events` in the same
         color, pass any matplotlib-compatible color. To color events differently,
         pass a `dict` that maps event names or integer event numbers to colors
-        (must include entries for `all` events, or include a "fallback" entry with
+        (must include entries for *all* events, or include a "fallback" entry with
         key ``-1``). If ``None``, colors are chosen from the current Matplotlib
         color cycle.
         Defaults to ``None``.
@@ -397,8 +397,8 @@ def plot_epochs(
     #### `event_id : bool | dict`
         Determines to label the event markers on the plot. If ``True``, uses
         ``epochs.event_id``. If ``False``, uses integer event codes instead of IDs.
-        If a ``dict`` is passed, uses its `keys` as event labels on the plot for
-        entries whose `values` are integer codes for events being drawn. Ignored if
+        If a ``dict`` is passed, uses its *keys* as event labels on the plot for
+        entries whose *values* are integer codes for events being drawn. Ignored if
         ``events=False``.
 
         ✨ Added in vesion 0.20
@@ -572,12 +572,12 @@ def plot_epochs_psd(
         `Nitime <nitime:users-guide>`). Default is ``'length'``.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` `will be included` if
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     #### `ax : instance of Axes | list of Axes | None`
         The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`

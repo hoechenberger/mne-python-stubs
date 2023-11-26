@@ -104,7 +104,7 @@ def simulate_sparse_stc(
         Time array.
     #### `data_fun : callable`
         Function to generate the waveforms. The default is a 100 nAm, 10 Hz
-        sinusoid as ``1e-7 * np.sin(20 ` pi ` t)``. The function should take
+        sinusoid as ``1e-7 * np.sin(20 * pi * t)``. The function should take
         as input the array of time samples in seconds and return an array of
         the same length containing the time courses.
     #### `labels : None | list of Label`

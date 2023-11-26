@@ -268,7 +268,7 @@ def filter_data(
         cutoff frequency. If None the data are only high-passed.
     #### `picks : list | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as channel indices.
-        None (default) will pick all channels. Note that channels in ``info['bads']`` `will be included` if their indices are explicitly provided.
+        None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
         Currently this is only supported for 2D (n_channels, n_times) and
         3D (n_epochs, n_channels, n_times) arrays.
 
@@ -713,7 +713,7 @@ def notch_filter(
         number of frequencies, so large p-values may be justified.
     #### `picks : list | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as channel indices.
-        None (default) will pick all channels. Note that channels in ``info['bads']`` `will be included` if their indices are explicitly provided.
+        None (default) will pick all channels. Note that channels in ``info['bads']`` *will be included* if their indices are explicitly provided.
         Only supported for 2D (n_channels, n_times) and 3D
         (n_epochs, n_channels, n_times) data.
 
@@ -1012,12 +1012,12 @@ class FilterMixin:
             cutoff frequency. If None the data are only high-passed.
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel `type` strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels. Note that channels
-            in ``info['bads']`` `will be included` if their names or indices are
+            in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
         #### `filter_length : str | int`
@@ -1259,12 +1259,12 @@ class FilterMixin:
 
         #### `picks : str | array-like | slice | None`
             Channels to include. Slices and lists of integers will be interpreted as
-            channel indices. In lists, channel `type` strings (e.g., ``['meg',
-            'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+            channel indices. In lists, channel *type* strings (e.g., ``['meg',
+            'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all data channels (excluding reference
-            MEG channels). Note that channels in ``info['bads']`` `will be included` if
+            MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
         #### `envelope : bool`
             Compute the envelope signal of each channel. Default False.

@@ -247,7 +247,7 @@ for stub_path in stub_paths:
     }
     for orig, replacement in SECTION_HEADER_REPLACE_MAP.items():
         unparsed_cleaned = re.sub(
-            pattern=f"(\\s*){orig}\\n(\\1){'-' * len(orig)}\\n",
+            pattern=f"(\\s*){orig}\\n(\\1){'-' * len(orig)}\\n",  # group captures indentation
             repl=f"\\1-----\\n\\1### {replacement}\\n\\n",
             string=unparsed_cleaned,
         )
@@ -266,8 +266,8 @@ for stub_path in stub_paths:
         string=unparsed_cleaned,
     )
     unparsed_cleaned = re.sub(
-        pattern=r"\s\*([a-z,\s]+)\*\s",  # italic
-        repl=r" `\1` ",
+        pattern=r"\s\*([a-z,\s,^\n,^\,]+)\*([a-z]*\n)",  # italic
+        repl=r" `\1` \2",
         string=unparsed_cleaned,
     )
 

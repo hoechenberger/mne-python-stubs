@@ -76,7 +76,7 @@ def permutation_cluster_test(
         with ``X1.shape = (20, 50, 4)`` and ``X2.shape = (17, 50, 4)``, then
         ``X`` has 2 groups with respectively 20 and 17 observations in each,
         and each data point is of shape ``(50, 4)``. Note: that the
-        `last dimension` of each element of ``X`` should correspond to the
+        *last dimension* of each element of ``X`` should correspond to the
         dimension represented in the ``adjacency`` parameter
         (e.g., spectral data should be provided as
         ``(observations, frequencies, channels/vertices)``).
@@ -819,7 +819,7 @@ def summarize_clusters_stc(
         The time step between samples of the original `STC
         <mne.SourceEstimate>`, in seconds (i.e., ``1 / stc.sfreq``). Defaults
         to ``1``, which will yield a colormap indicating cluster duration
-        measured in `samples` rather than *seconds*.
+        measured in *samples* rather than *seconds*.
     #### `tmin : float | int`
         The time of the first sample.
     #### `subject : str`

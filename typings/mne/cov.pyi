@@ -620,12 +620,12 @@ def compute_raw_covariance(
         If flat is None then no rejection is done.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` `will be included` if
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     #### `method : str | list | None (default 'empirical')`
         The method used for covariance estimation.
@@ -754,7 +754,8 @@ def compute_raw_covariance(
     This will produce a slightly different result compared to using
     `make_fixed_length_events`, `Epochs`, and
     `compute_covariance` directly, since that would (with the recommended
-    baseline correction) subtract the mean across time `for each epoch`     (instead of across epochs) for each channel.
+    baseline correction) subtract the mean across time `for each epoch`
+    (instead of across epochs) for each channel.
     """
     ...
 
@@ -1378,12 +1379,12 @@ def compute_whitener(
         prepared with `prepare_noise_cov`.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels (excluding reference
-        MEG channels). Note that channels in ``info['bads']`` `will be included` if
+        MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
 
     #### `rank : None | 'info' | 'full' | dict`
@@ -1499,12 +1500,12 @@ def whiten_evoked(
         The noise covariance.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` `will be included` if their names or indices are
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     #### `diag : bool (default False)`
         If True, whiten using only the diagonal of the covariance.

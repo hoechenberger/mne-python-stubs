@@ -72,21 +72,22 @@ class GetEpochsMixin:
            epochs labeled ``'audio/left'`` and ``'visual/left'``, but not
            ``'audio_left'``).
 
-           If multiple tags are provided `as a single string` (e.g.,
-           ``epochs['name_1/name_2']``), this selects epochs containing `all`            provided tags. For example, ``epochs['audio/left']`` selects
+           If multiple tags are provided *as a single string* (e.g.,
+           ``epochs['name_1/name_2']``), this selects epochs containing `all`
+           provided tags. For example, ``epochs['audio/left']`` selects
            ``'audio/left'`` and ``'audio/quiet/left'``, but not
            ``'audio/right'``. Note that tag-based selection is insensitive to
            order: tags like ``'audio/left'`` and ``'left/audio'`` will be
            treated the same way when selecting via tag.
 
         3. `List of strings:` ``epochs[['name_1', 'name_2', ... ]]`` will
-           return an `mne.Epochs` object comprising epochs that match `any` of
+           return an `mne.Epochs` object comprising epochs that match *any* of
            the provided names (i.e., the list of names is treated as an
-           inclusive-or condition). If `none` of the provided names match any
+           inclusive-or condition). If *none* of the provided names match any
            epoch labels, a ``KeyError`` will be raised.
 
            If epoch labels are /-separated tags, then providing multiple tags
-           `as separate list entries` will likewise act as an inclusive-or
+           *as separate list entries* will likewise act as an inclusive-or
            filter. For example, ``epochs[['audio', 'left']]`` would select
            ``'audio/left'``, ``'audio/right'``, and ``'visual/left'``, but not
            ``'visual/right'``.
@@ -351,8 +352,8 @@ class ExtendedTimeMixin(TimeMixin):
         -----
         ### 📖 Notes
 
-        This method allows you to shift the `time` values associated with each
-        data sample by an arbitrary amount. It does `not` resample the signal
-        or change the `data` values in any way.
+        This method allows you to shift the *time* values associated with each
+        data sample by an arbitrary amount. It does *not* resample the signal
+        or change the *data* values in any way.
         """
         ...

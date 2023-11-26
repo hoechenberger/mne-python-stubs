@@ -385,12 +385,12 @@ def channel_indices_by_type(info, picks=None):
         The `mne.Info` object with information about the sensors and methods of measurement.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` `will be included` if their names or indices are
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
     -----

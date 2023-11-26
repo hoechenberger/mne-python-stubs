@@ -23,8 +23,9 @@ class Scaler(TransformerMixin, BaseEstimator):
 
     This class scales data for each channel. It differs from scikit-learn
     classes (e.g., `sklearn.preprocessing.StandardScaler`) in that
-    it scales each `channel` by estimating μ and σ using data from all
-    time points and epochs, as opposed to standardizing each `feature`     (i.e., each time point for each channel) by estimating using μ and σ
+    it scales each *channel* by estimating μ and σ using data from all
+    time points and epochs, as opposed to standardizing each `feature`
+    (i.e., each time point for each channel) by estimating using μ and σ
     using data from all epochs.
 
     -----
@@ -387,12 +388,12 @@ class FilterEstimator(TransformerMixin):
         cutoff frequency. If None the data are only high-passed.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick good data channels. Note that channels
-        in ``info['bads']`` `will be included` if their names or indices are
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
     #### `filter_length : str | int`

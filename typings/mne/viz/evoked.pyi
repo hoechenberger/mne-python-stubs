@@ -47,12 +47,12 @@ def plot_evoked(
         The evoked data.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` `will be included` if their names or indices are
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     #### `exclude : list of str | 'bads'`
         Channels names to exclude from being shown. If 'bads', the
@@ -337,12 +337,12 @@ def plot_evoked_image(
         The evoked data.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` `will be included` if their names or indices are
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
         This parameter can also be used to set the order the channels
         are shown in, as the channel image is sorted by the order of picks.
@@ -679,12 +679,12 @@ def plot_evoked_joint(
         axes may be removed during placement of the title axis.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels. Note that channels in
-        ``info['bads']`` `will be included` if their names or indices are
+        ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
     #### `exclude : None | list of str | 'bads'`
         Channels names to exclude from being shown. If ``'bads'``, the
@@ -764,12 +764,12 @@ def plot_compare_evokeds(
         If dict, keys must be of type str.
     #### `picks : str | array-like | slice | None`
         Channels to include. Slices and lists of integers will be interpreted as
-        channel indices. In lists, channel `type` strings (e.g., ``['meg',
-        'eeg']``) will pick channels of those types, channel `name` strings (e.g.,
+        channel indices. In lists, channel *type* strings (e.g., ``['meg',
+        'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all data channels. Note that channels
-        in ``info['bads']`` `will be included` if their names or indices are
+        in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
         * If picks is None or a (collection of) data channel types, the
