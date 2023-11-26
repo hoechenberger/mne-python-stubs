@@ -120,6 +120,10 @@ for stub_path in stub_paths:
         elif expanded_docstring:
             print(f"📝 Expanding docstring for {module_name}.{obj.name}")
 
+            # Special handling for docstring manipulation done through
+            # the @deprecated decorator
+            # We need to correct the indentation (add spaces before
+            # the ".. warning::" directive)
             expanded_docstring = expanded_docstring.split("\n")
             for line_idx, line in enumerate(expanded_docstring):
                 if line.startswith(".. warning:: DEPRECATED:"):
