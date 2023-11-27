@@ -4,7 +4,7 @@ from ..utils import check_random_state as check_random_state, logger as logger
 def permutation_t_test(
     X, n_permutations: int = 10000, tail: int = 0, n_jobs=None, seed=None, verbose=None
 ):
-    """## 🧠 One sample/paired sample permutation test based on a t-statistic.
+    """## One sample/paired sample permutation test based on a t-statistic.
 
     This function can perform the test on one variable or
     simultaneously on multiple variables. When applying the test to multiple
@@ -84,7 +84,7 @@ def bootstrap_confidence_interval(
     stat_fun: str = "mean",
     random_state=None,
 ):
-    """## 🧠 Get confidence intervals from non-parametric bootstrap.
+    """## Get confidence intervals from non-parametric bootstrap.
 
     -----
     ### 🛠️ Parameters

@@ -16,7 +16,7 @@ def find_eog_events(
     thresh=None,
     verbose=None,
 ):
-    """## 🧠 Locate EOG artifacts.
+    """## Locate EOG artifacts.
 
     ### 💡 Note To control true-positive and true-negative detection rates, you
               may adjust the ``thresh`` parameter.
@@ -93,7 +93,7 @@ def create_eog_epochs(
     decim: int = 1,
     verbose=None,
 ):
-    """## 🧠 Conveniently generate epochs around EOG artifact events.
+    """## Conveniently generate epochs around EOG artifact events.
 
     This function will:
 
@@ -170,7 +170,7 @@ def create_eog_epochs(
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        ✨ Added in vesion 0.14.0
+        ✨ Added in version 0.14.0
     #### `thresh : float`
         Threshold to trigger EOG event.
 
@@ -183,7 +183,7 @@ def create_eog_epochs(
                      If the data are not properly filtered, aliasing artifacts
                      may occur.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

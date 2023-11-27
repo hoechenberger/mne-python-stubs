@@ -20,7 +20,7 @@ from .mxne_optim import (
 )
 
 def make_stc_from_dipoles(dipoles, src, verbose=None):
-    """## 🧠 Convert a list of spatio-temporal dipoles into a SourceEstimate.
+    """## Convert a list of spatio-temporal dipoles into a SourceEstimate.
 
     -----
     ### 🛠️ Parameters
@@ -69,7 +69,7 @@ def mixed_norm(
     random_state=None,
     verbose=None,
 ):
-    """## 🧠 Mixed-norm estimate (MxNE) and iterative reweighted MxNE (irMxNE).
+    """## Mixed-norm estimate (MxNE) and iterative reweighted MxNE (irMxNE).
 
     Compute L1/L2 mixed-norm solution :footcite:`GramfortEtAl2012` or L0.5/L2
     :footcite:`StrohmeierEtAl2016` mixed-norm solution on evoked data.
@@ -194,7 +194,7 @@ def mixed_norm(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `pick_ori : None | "normal" | "vector"`
 
@@ -217,12 +217,12 @@ def mixed_norm(
         distributed alphas between alpha_max and 0.1 * alpha_max. If array, the
         grid is directly specified. Ignored if alpha is not "sure".
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
     #### `random_state : int | None`
         The random state used in a random number generator for delta and
         epsilon used for the SURE computation. Defaults to None.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -275,7 +275,7 @@ def tf_mixed_norm(
     n_tfmxne_iter: int = 1,
     verbose=None,
 ):
-    """## 🧠 Time-Frequency Mixed-norm estimate (TF-MxNE).
+    """## Time-Frequency Mixed-norm estimate (TF-MxNE).
 
     Compute L1/L2 + L1 mixed-norm solution on time-frequency
     dictionary. Works with evoked data
@@ -408,7 +408,7 @@ def tf_mixed_norm(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `pick_ori : None | "normal" | "vector"`
 

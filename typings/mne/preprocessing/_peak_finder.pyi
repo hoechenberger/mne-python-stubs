@@ -1,7 +1,7 @@
 from ..utils import logger as logger
 
 def peak_finder(x0, thresh=None, extrema: int = 1, verbose=None):
-    """## 🧠 Noise-tolerant fast peak-finding algorithm.
+    """## Noise-tolerant fast peak-finding algorithm.
 
     -----
     ### 🛠️ Parameters

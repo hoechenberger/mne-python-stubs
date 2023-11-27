@@ -4,7 +4,7 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_hitachi(fname, preload: bool = False, verbose=None):
-    """## 🧠 Reader for a Hitachi fNIRS recording.
+    """## Reader for a Hitachi fNIRS recording.
 
     -----
     ### 🛠️ Parameters
@@ -94,12 +94,12 @@ def read_raw_hitachi(fname, preload: bool = False, verbose=None):
     source-detector pairs in the first row, then between the first and second row,
     then the second row, etc.
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...
 
 class RawHitachi(BaseRaw):
-    """## 🧠 Raw object from a Hitachi fNIRS file.
+    """## Raw object from a Hitachi fNIRS file.
 
     -----
     ### 🛠️ Parameters
@@ -182,7 +182,7 @@ class RawHitachi(BaseRaw):
     source-detector pairs in the first row, then between the first and second row,
     then the second row, etc.
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
 
     def __init__(self, fname, preload: bool = False, *, verbose=None) -> None: ...

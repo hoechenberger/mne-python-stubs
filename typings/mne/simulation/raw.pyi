@@ -50,7 +50,7 @@ def simulate_raw(
     max_iter: int = 10000,
     verbose=None,
 ):
-    """## 🧠 Simulate raw data.
+    """## Simulate raw data.
 
     Head movements can optionally be simulated using the ``head_pos``
     parameter.
@@ -125,16 +125,16 @@ def simulate_raw(
         using ``bem``, ``trans``, and ``src``. If not None,
         ``bem``, ``trans``, and ``src`` are ignored.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     #### `first_samp : int`
         The first_samp property in the output Raw instance.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
     #### `max_iter : int`
         The maximum number of STC iterations to allow.
         This is a sanity parameter to prevent accidental blowups.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -188,7 +188,7 @@ def simulate_raw(
        |         | *time →*                                                      |
        +---------+--------------------------+--------------------------+---------+
 
-    ✨ Added in vesion 0.10.0
+    ✨ Added in version 0.10.0
 
     References
     ----------
@@ -204,7 +204,7 @@ def add_eog(
     random_state=None,
     verbose=None,
 ):
-    """## 🧠 Add blink noise to raw data.
+    """## Add blink noise to raw data.
 
     -----
     ### 🛠️ Parameters
@@ -297,7 +297,7 @@ def add_ecg(
     random_state=None,
     verbose=None,
 ):
-    """## 🧠 Add ECG noise to raw data.
+    """## Add ECG noise to raw data.
 
     -----
     ### 🛠️ Parameters
@@ -376,12 +376,12 @@ def add_ecg(
     seen in experimental data. Noisy versions of the activation will be
     stored in the first EOG channel in the raw instance, if it exists.
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...
 
 def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None):
-    """## 🧠 Add cHPI activations to raw data.
+    """## Add cHPI activations to raw data.
 
     -----
     ### 🛠️ Parameters
@@ -426,7 +426,7 @@ def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...
 

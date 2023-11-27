@@ -32,7 +32,7 @@ def source_band_induced_power(
     *,
     verbose=None,
 ):
-    """## 🧠 Compute source space induced power in given frequency bands.
+    """## Compute source space induced power in given frequency bands.
 
     -----
     ### 🛠️ Parameters
@@ -97,7 +97,7 @@ def source_band_induced_power(
     #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
 
     #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
@@ -106,7 +106,7 @@ def source_band_induced_power(
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -149,7 +149,7 @@ def source_induced_power(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Compute induced power and phase lock.
+    """## Compute induced power and phase lock.
 
     Computation can optionally be restricted in a label.
 
@@ -219,7 +219,7 @@ def source_induced_power(
     #### `return_plv : bool`
         If True, return the phase-locking value array. Else, only return power.
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
     #### `zero_mean : bool`
         Make sure the wavelets are zero mean.
     #### `prepared : bool`
@@ -234,7 +234,7 @@ def source_induced_power(
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -282,7 +282,7 @@ def compute_source_psd(
     *,
     verbose=None,
 ):
-    """## 🧠 Compute source power spectral density (PSD).
+    """## Compute source power spectral density (PSD).
 
     -----
     ### 🛠️ Parameters
@@ -327,28 +327,28 @@ def compute_source_psd(
     #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `inv_split : int or None`
         Split inverse operator into inv_split parts in order to save memory.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     #### `bandwidth : float | str`
         The bandwidth of the multi taper windowing function in Hz.
         Can also be a string (e.g., 'hann') to use a single window.
 
         For backward compatibility, the default is 'hann'.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     #### `adaptive : bool`
         Use adaptive weights to combine the tapered spectra into PSD
         (slow, use n_jobs >> 1 to speed up computation).
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     #### `low_bias : bool`
         Only use tapers with more than 90% spectral concentration within
         bandwidth.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
@@ -358,15 +358,15 @@ def compute_source_psd(
         value for ``n_jobs``.
         It is only used if adaptive=True.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     #### `return_sensor : bool`
         If True, return the sensor PSDs as an EvokedArray.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     dB : bool
         If True (default False), return output it decibels.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -426,7 +426,7 @@ def compute_source_psd_epochs(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Compute source power spectral density (PSD) from Epochs.
+    """## Compute source power spectral density (PSD) from Epochs.
 
     This uses the multi-taper method to compute the PSD for each epoch.
 
@@ -484,11 +484,11 @@ def compute_source_psd_epochs(
     #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `return_sensor : bool`
         If True, also return the sensor PSD for each epoch as an EvokedArray.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
     #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
@@ -497,7 +497,7 @@ def compute_source_psd_epochs(
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

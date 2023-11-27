@@ -5,7 +5,7 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_persyst(fname, preload: bool = False, verbose=None):
-    """## 🧠 Reader for a Persyst (.lay/.dat) recording.
+    """## Reader for a Persyst (.lay/.dat) recording.
 
     -----
     ### 🛠️ Parameters
@@ -50,7 +50,7 @@ def read_raw_persyst(fname, preload: bool = False, verbose=None):
     ...
 
 class RawPersyst(BaseRaw):
-    """## 🧠 Raw object from a Persyst file.
+    """## Raw object from a Persyst file.
 
     -----
     ### 🛠️ Parameters

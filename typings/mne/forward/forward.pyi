@@ -43,7 +43,7 @@ from ..utils import (
 )
 
 class Forward(dict):
-    """## 🧠 Forward class to represent info from forward solution.
+    """## Forward class to represent info from forward solution.
 
     Like `mne.Info`, this data structure behaves like a dictionary.
     It contains all metadata necessary for a forward solution.
@@ -122,10 +122,10 @@ class Forward(dict):
     """
 
     def copy(self):
-        """## 🧠 Copy the Forward instance."""
+        """## Copy the Forward instance."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """## 🧠 Save the forward solution.
+        """## Save the forward solution.
 
         -----
         ### 🛠️ Parameters
@@ -150,7 +150,7 @@ class Forward(dict):
     @property
     def ch_names(self): ...
     def pick_channels(self, ch_names, ordered: bool = False):
-        """## 🧠 Pick channels from this forward operator.
+        """## Pick channels from this forward operator.
 
         -----
         ### 🛠️ Parameters
@@ -172,12 +172,12 @@ class Forward(dict):
 
         Operates in-place.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
         """
         ...
 
 def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbose=None):
-    """## 🧠 Read a forward solution a.k.a. lead field.
+    """## Read a forward solution a.k.a. lead field.
 
     -----
     ### 🛠️ Parameters
@@ -195,7 +195,7 @@ def read_forward_solution(fname, include=(), exclude=(), *, ordered=None, verbos
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
         🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
 
@@ -243,7 +243,7 @@ def convert_forward_solution(
     *,
     verbose=None,
 ):
-    """## 🧠 Convert forward solution between different source orientations.
+    """## Convert forward solution between different source orientations.
 
     -----
     ### 🛠️ Parameters
@@ -277,7 +277,7 @@ def convert_forward_solution(
     ...
 
 def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) -> None:
-    """## 🧠 Write forward solution to a file.
+    """## Write forward solution to a file.
 
     -----
     ### 🛠️ Parameters
@@ -324,7 +324,7 @@ def write_forward_solution(fname, fwd, overwrite: bool = False, verbose=None) ->
     ...
 
 def is_fixed_orient(forward, orig: bool = False):
-    """## 🧠 Check if the forward operator is fixed orientation.
+    """## Check if the forward operator is fixed orientation.
 
     -----
     ### 🛠️ Parameters
@@ -344,7 +344,7 @@ def is_fixed_orient(forward, orig: bool = False):
     ...
 
 def write_forward_meas_info(fid, info) -> None:
-    """## 🧠 Write measurement info stored in forward solution.
+    """## Write measurement info stored in forward solution.
 
     -----
     ### 🛠️ Parameters
@@ -358,7 +358,7 @@ def write_forward_meas_info(fid, info) -> None:
     ...
 
 def compute_orient_prior(forward, loose: str = "auto", verbose=None):
-    """## 🧠 Compute orientation prior.
+    """## Compute orientation prior.
 
     -----
     ### 🛠️ Parameters
@@ -410,7 +410,7 @@ def compute_depth_prior(
     rank=None,
     verbose=None,
 ):
-    """## 🧠 Compute depth prior for depth weighting.
+    """## Compute depth prior for depth weighting.
 
     -----
     ### 🛠️ Parameters
@@ -438,12 +438,12 @@ def compute_depth_prior(
         If 'spectral', use the squared spectral norm of Gk.
         If 'fro', use the squared Frobenius norm of Gk.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
     #### `noise_cov : instance of Covariance | None`
         The noise covariance to use to whiten the gain matrix when
         ``limit_depth_chs='whiten'``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
@@ -490,7 +490,7 @@ def compute_depth_prior(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -538,7 +538,7 @@ def compute_depth_prior(
           depend on both sensor geometry and the data of interest captured
           by the noise covariance (e.g., projections, SNR).
 
-          ✨ Added in vesion 0.18
+          ✨ Added in version 0.18
     * :data:`python:False`
           Use all channels. Not recommended since the depth weighting will be
           biased toward whichever channel type has the largest values in
@@ -556,7 +556,7 @@ def apply_forward(
     on_missing: str = "raise",
     verbose=None,
 ):
-    """## 🧠 Project source space currents to sensor space using a forward operator.
+    """## Project source space currents to sensor space using a forward operator.
 
     The sensor space data is computed for all channels present in fwd. Use
     pick_channels_forward or pick_types_forward to restrict the solution to a
@@ -586,14 +586,14 @@ def apply_forward(
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `on_missing : 'raise' | 'warn' | 'ignore'`
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "raise".
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -624,7 +624,7 @@ def apply_forward_raw(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Project source space currents to sensor space using a forward operator.
+    """## Project source space currents to sensor space using a forward operator.
 
     The sensor space data is computed for all channels present in fwd. Use
     pick_channels_forward or pick_types_forward to restrict the solution to a
@@ -655,13 +655,13 @@ def apply_forward_raw(
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "raise".
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -683,7 +683,7 @@ def apply_forward_raw(
     ...
 
 def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
-    """## 🧠 Restrict forward operator to active sources in a source estimate.
+    """## Restrict forward operator to active sources in a source estimate.
 
     -----
     ### 🛠️ Parameters
@@ -698,7 +698,7 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
         warning, or ``'ignore'`` to ignore when ``stc`` has vertices that are not in ``fwd``.
         Default is "ignore".
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     -----
     ### ⏎ Returns
@@ -714,7 +714,7 @@ def restrict_forward_to_stc(fwd, stc, on_missing: str = "ignore"):
     ...
 
 def restrict_forward_to_label(fwd, labels):
-    """## 🧠 Restrict forward operator to labels.
+    """## Restrict forward operator to labels.
 
     -----
     ### 🛠️ Parameters
@@ -738,7 +738,7 @@ def restrict_forward_to_label(fwd, labels):
     ...
 
 def average_forward_solutions(fwds, weights=None, verbose=None):
-    """## 🧠 Average forward solutions.
+    """## Average forward solutions.
 
     -----
     ### 🛠️ Parameters

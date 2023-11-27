@@ -40,10 +40,10 @@ from _typeshed import Incomplete
 b = bytes
 
 class MontageMixin:
-    """## 🧠 Mixin for Montage getting and setting."""
+    """## Mixin for Montage getting and setting."""
 
     def get_montage(self):
-        """## 🧠 Get a DigMontage from instance.
+        """## Get a DigMontage from instance.
 
         -----
         ### ⏎ Returns
@@ -68,7 +68,7 @@ class MontageMixin:
         on_missing: str = "raise",
         verbose=None,
     ):
-        """## 🧠 Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
+        """## Set EEG/sEEG/ECoG/DBS/fNIRS channel positions and digitization points.
 
         -----
         ### 🛠️ Parameters
@@ -87,7 +87,7 @@ class MontageMixin:
         #### `match_case : bool`
             If True (default), channel name matching will be case sensitive.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `match_alias : bool | dict`
             Whether to use a lookup table to match unrecognized channel location names
@@ -96,13 +96,13 @@ class MontageMixin:
             will be used instead, and should map from non-standard channel names to
             names in the specified ``montage``. Default is ``False``.
 
-            ✨ Added in vesion 0.23
+            ✨ Added in version 0.23
 
         #### `on_missing : 'raise' | 'warn' | 'ignore'`
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when channels have missing coordinates.
 
-            ✨ Added in vesion 0.20.1
+            ✨ Added in version 0.20.1
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -143,10 +143,10 @@ class MontageMixin:
 channel_type_constants: Incomplete
 
 class SetChannelsMixin(MontageMixin):
-    """## 🧠 Mixin class for Raw, Evoked, Epochs."""
+    """## Mixin class for Raw, Evoked, Epochs."""
 
     def set_channel_types(self, mapping, *, on_unit_change: str = "warn", verbose=None):
-        """## 🧠 Specify the sensor types of channels.
+        """## Specify the sensor types of channels.
 
         -----
         ### 🛠️ Parameters
@@ -158,7 +158,7 @@ class SetChannelsMixin(MontageMixin):
             What to do if the measurement unit of a channel is changed
             automatically to match the new sensor type.
 
-            ✨ Added in vesion 1.4
+            ✨ Added in version 1.4
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -185,11 +185,11 @@ class SetChannelsMixin(MontageMixin):
             fnirs_fd_phase, fnirs_od, eyetrack_pos, eyetrack_pupil,
             temperature, gsr
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
         """
         ...
     def rename_channels(self, mapping, allow_duplicates: bool = False, *, verbose=None):
-        """## 🧠 Rename channels.
+        """## Rename channels.
 
         -----
         ### 🛠️ Parameters
@@ -206,7 +206,7 @@ class SetChannelsMixin(MontageMixin):
             If True (default False), allow duplicates, which will automatically
             be renamed with ``-N`` at the end.
 
-            ✨ Added in vesion 0.22.0
+            ✨ Added in version 0.22.0
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -226,7 +226,7 @@ class SetChannelsMixin(MontageMixin):
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
         """
         ...
     def plot_sensors(
@@ -244,7 +244,7 @@ class SetChannelsMixin(MontageMixin):
         *,
         verbose=None,
     ):
-        """## 🧠 Plot sensor positions.
+        """## Plot sensor positions.
 
         -----
         ### 🛠️ Parameters
@@ -273,23 +273,23 @@ class SetChannelsMixin(MontageMixin):
             into 8 regions. See ``order`` kwarg of `mne.viz.plot_raw`. If
             array, the channels are divided by picks given in the array.
 
-            ✨ Added in vesion 0.13.0
+            ✨ Added in version 0.13.0
         #### `to_sphere : bool`
             Whether to project the 3d locations to a sphere. When False, the
             sensor array appears similar as to looking downwards straight above
             the subject's head. Has no effect when kind='3d'. Defaults to True.
 
-            ✨ Added in vesion 0.14.0
+            ✨ Added in version 0.14.0
         #### `axes : instance of Axes | instance of Axes3D | None`
             Axes to draw the sensors to. If ``kind='3d'``, axes must be an
             instance of Axes3D. If None (default), a new axes will be created.
 
-            ✨ Added in vesion 0.13.0
+            ✨ Added in version 0.13.0
         #### `block : bool`
             Whether to halt program execution until the figure is closed.
             Defaults to False.
 
-            ✨ Added in vesion 0.13.0
+            ✨ Added in version 0.13.0
         #### `show : bool`
             Show figure if True. Defaults to True.
         #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
@@ -304,7 +304,7 @@ class SetChannelsMixin(MontageMixin):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `verbose : bool | str | int | None`
@@ -333,11 +333,11 @@ class SetChannelsMixin(MontageMixin):
         matplotlib. For drawing the sensors using PyVista see
         `mne.viz.plot_alignment`.
 
-        ✨ Added in vesion 0.12.0
+        ✨ Added in version 0.12.0
         """
         ...
     def anonymize(self, daysback=None, keep_his: bool = False, verbose=None):
-        """## 🧠 Anonymize measurement information in place.
+        """## Anonymize measurement information in place.
 
         -----
         ### 🛠️ Parameters
@@ -396,11 +396,11 @@ class SetChannelsMixin(MontageMixin):
 
         Operates in place.
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
         """
         ...
     def set_meas_date(self, meas_date):
-        """## 🧠 Set the measurement start date.
+        """## Set the measurement start date.
 
         -----
         ### 🛠️ Parameters
@@ -431,15 +431,15 @@ class SetChannelsMixin(MontageMixin):
         `mne.io.anonymize_info(inst.info) <mne.io.anonymize_info>`
         after calling ``inst.set_meas_date(None)``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         """
         ...
 
 class ContainsMixin:
-    """## 🧠 Mixin class for Raw, Evoked, Epochs and Info."""
+    """## Mixin class for Raw, Evoked, Epochs and Info."""
 
     def __contains__(self, ch_type) -> bool:
-        """## 🧠 Check channel type membership.
+        """## Check channel type membership.
 
         -----
         ### 🛠️ Parameters
@@ -468,12 +468,12 @@ class ContainsMixin:
         ...
     @property
     def compensation_grade(self):
-        """## 🧠 The current gradient compensation grade."""
+        """## The current gradient compensation grade."""
         ...
     def get_channel_types(
         self, picks=None, unique: bool = False, only_data_chs: bool = False
     ):
-        """## 🧠 Get a list of channel type for each channel.
+        """## Get a list of channel type for each channel.
 
         -----
         ### 🛠️ Parameters
@@ -501,7 +501,7 @@ class ContainsMixin:
         ...
 
 class MNEBadsList(list):
-    """## 🧠 Subclass of bads that checks inplace operations."""
+    """## Subclass of bads that checks inplace operations."""
 
     def __init__(self, *, bads, info) -> None: ...
     def extend(self, iterable): ...
@@ -509,7 +509,7 @@ class MNEBadsList(list):
     def __iadd__(self, x): ...
 
 class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
-    """## 🧠 Measurement information.
+    """## Measurement information.
 
     This data structure behaves like a dictionary. It contains all metadata
     that is available for a recording. However, its keys are restricted to
@@ -580,7 +580,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     #### `device_info : dict | None`
         Information about the acquisition device. See Notes for details.
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
     #### `dig : list of dict | None`
         The Polhemus digitization data in head coordinates.
         See Notes for more information.
@@ -598,7 +598,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     #### `helium_info : dict | None`
         Information about the device helium. See Notes for details.
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
     #### `highpass : float`
         Highpass corner frequency in Hertz. Zero indicates a DC recording.
     #### `hpi_meas : list of dict`
@@ -663,11 +663,11 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         Can be used to store temporary objects in an Info instance. It will not
         survive an I/O roundtrip.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
     #### `utc_offset : str`
         "UTC offset of related meas_date (sHH:MM).
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
     #### `working_dir : str`
         Working directory used when the source space was created (used for
         source estimation).
@@ -923,13 +923,13 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
 
     def __init__(self, *args, **kwargs) -> None: ...
     def __setitem__(self, key, val) -> None:
-        """## 🧠 Attribute setter."""
+        """## Attribute setter."""
         ...
     def update(self, other=None, **kwargs) -> None:
-        """## 🧠 Update method using __setitem__()."""
+        """## Update method using __setitem__()."""
         ...
     def copy(self):
-        """## 🧠 Copy the instance.
+        """## Copy the instance.
 
         -----
         ### ⏎ Returns
@@ -939,7 +939,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         """
         ...
     def normalize_proj(self) -> None:
-        """## 🧠 (Re-)Normalize projection vectors after subselection.
+        """## (Re-)Normalize projection vectors after subselection.
 
         Applying projection after sub-selecting a set of channels that
         were originally used to compute the original projection vectors
@@ -954,12 +954,12 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         """
         ...
     def __deepcopy__(self, memodict):
-        """## 🧠 Make a deepcopy."""
+        """## Make a deepcopy."""
         ...
     @property
     def ch_names(self): ...
     def save(self, fname) -> None:
-        """## 🧠 Write measurement info in fif file.
+        """## Write measurement info in fif file.
 
         -----
         ### 🛠️ Parameters
@@ -970,7 +970,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         ...
 
 def read_fiducials(fname, verbose=None):
-    """## 🧠 Read fiducials from a fiff file.
+    """## Read fiducials from a fiff file.
 
     -----
     ### 🛠️ Parameters
@@ -998,7 +998,7 @@ def read_fiducials(fname, verbose=None):
 def write_fiducials(
     fname, pts, coord_frame: str = "unknown", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """## 🧠 Write fiducials to a fiff file.
+    """## Write fiducials to a fiff file.
 
     -----
     ### 🛠️ Parameters
@@ -1020,7 +1020,7 @@ def write_fiducials(
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1031,7 +1031,7 @@ def write_fiducials(
     ...
 
 def read_info(fname, verbose=None):
-    """## 🧠 Read measurement info from a file.
+    """## Read measurement info from a file.
 
     -----
     ### 🛠️ Parameters
@@ -1055,7 +1055,7 @@ def read_info(fname, verbose=None):
     ...
 
 def read_bad_channels(fid, node):
-    """## 🧠 Read bad channels.
+    """## Read bad channels.
 
     -----
     ### 🛠️ Parameters
@@ -1074,7 +1074,7 @@ def read_bad_channels(fid, node):
     ...
 
 def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
-    """## 🧠 Read the measurement info.
+    """## Read the measurement info.
 
     -----
     ### 🛠️ Parameters
@@ -1106,7 +1106,7 @@ def read_meas_info(fid, tree, clean_bads: bool = False, verbose=None):
     ...
 
 def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None:
-    """## 🧠 Write measurement info into a file id (from a fif file).
+    """## Write measurement info into a file id (from a fif file).
 
     -----
     ### 🛠️ Parameters
@@ -1131,7 +1131,7 @@ def write_meas_info(fid, info, data_type=None, reset_range: bool = True) -> None
     ...
 
 def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
-    """## 🧠 Write measurement info in fif file.
+    """## Write measurement info in fif file.
 
     -----
     ### 🛠️ Parameters
@@ -1151,7 +1151,7 @@ def write_info(fname, info, data_type=None, reset_range: bool = True) -> None:
     ...
 
 def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
-    """## 🧠 Create a basic Info instance suitable for use with create_raw.
+    """## Create a basic Info instance suitable for use with create_raw.
 
     -----
     ### 🛠️ Parameters
@@ -1207,7 +1207,7 @@ def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
 RAW_INFO_FIELDS: Incomplete
 
 def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
-    """## 🧠 Anonymize measurement information in place.
+    """## Anonymize measurement information in place.
 
     ### ⛔️ Warning If ``info`` is part of an object like
                  `raw.info <mne.io.Raw>`, you should directly use

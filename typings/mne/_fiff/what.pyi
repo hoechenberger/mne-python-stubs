@@ -1,7 +1,7 @@
 from ..utils import logger as logger
 
 def what(fname):
-    """## 🧠 Try to determine the type of the FIF file.
+    """## Try to determine the type of the FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -18,6 +18,6 @@ def what(fname):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.19
+    ✨ Added in version 0.19
     """
     ...

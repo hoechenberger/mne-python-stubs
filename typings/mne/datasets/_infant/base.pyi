@@ -1,7 +1,7 @@
 from ...utils import get_subjects_dir as get_subjects_dir
 
 def fetch_infant_template(age, subjects_dir=..., *, verbose=...):
-    """## 🧠 Fetch and update an infant MRI template.
+    """## Fetch and update an infant MRI template.
 
     -----
     ### 🛠️ Parameters
@@ -30,7 +30,7 @@ def fetch_infant_template(age, subjects_dir=..., *, verbose=...):
     If you use these templates in your work, please cite
     :footcite:`OReillyEtAl2021` and :footcite:`RichardsEtAl2016`.
 
-    ✨ Added in vesion 0.23
+    ✨ Added in version 0.23
 
     References
     ----------

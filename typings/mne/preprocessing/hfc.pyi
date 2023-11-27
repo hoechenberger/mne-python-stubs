@@ -10,7 +10,7 @@ def compute_proj_hfc(
     accuracy: str = "accurate",
     verbose=None,
 ):
-    """## 🧠 Generate projectors to perform homogeneous/harmonic correction to data.
+    """## Generate projectors to perform homogeneous/harmonic correction to data.
 
     Remove evironmental fields from magentometer data by assuming it is
     explained as a homogeneous :footcite:`TierneyEtAl2021` or harmonic field
@@ -63,7 +63,7 @@ def compute_proj_hfc(
     To apply the projectors to a dataset, use
     ``inst.add_proj(projs).apply_proj()``.
 
-    ✨ Added in vesion 1.4
+    ✨ Added in version 1.4
 
     References
     ----------

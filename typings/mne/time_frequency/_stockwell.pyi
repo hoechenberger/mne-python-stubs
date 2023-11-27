@@ -14,7 +14,7 @@ def tfr_array_stockwell(
     return_itc: bool = False,
     n_jobs=None,
 ):
-    """## 🧠 Compute power and intertrial coherence using Stockwell (S) transform.
+    """## Compute power and intertrial coherence using Stockwell (S) transform.
 
     Same computation as `mne.time_frequency.tfr_stockwell`, but operates on
     `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` objects.
@@ -90,7 +90,7 @@ def tfr_stockwell(
     n_jobs=None,
     verbose=None,
 ):
-    """## 🧠 Compute Time-Frequency Representation (TFR) using Stockwell Transform.
+    """## Compute Time-Frequency Representation (TFR) using Stockwell Transform.
 
     Same computation as `mne.time_frequency.tfr_array_stockwell`, but operates
     on `mne.Epochs` objects instead of `NumPy arrays <numpy.ndarray>`.
@@ -148,7 +148,7 @@ def tfr_stockwell(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
 
     References
     ----------

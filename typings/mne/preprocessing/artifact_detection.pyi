@@ -20,7 +20,7 @@ def annotate_muscle_zscore(
     n_jobs=None,
     verbose=None,
 ):
-    """## 🧠 Create annotations for segments that likely contain muscle artifacts.
+    """## Create annotations for segments that likely contain muscle artifacts.
 
     Detects data segments containing activity in the frequency range given by
     ``filter_freq`` whose envelope magnitude exceeds the specified z-score
@@ -87,7 +87,7 @@ def annotate_movement(
     mean_distance_limit=None,
     use_dev_head_trans: str = "average",
 ):
-    """## 🧠 Detect segments with movement.
+    """## Detect segments with movement.
 
     Detects segments periods further from rotation_velocity_limit,
     translation_velocity_limit and mean_distance_limit. It returns an
@@ -130,7 +130,7 @@ def annotate_movement(
     ...
 
 def compute_average_dev_head_t(raw, pos):
-    """## 🧠 Get new device to head transform based on good segments.
+    """## Get new device to head transform based on good segments.
 
     Segments starting with "BAD" annotations are not included for calculating
     the mean head position.
@@ -161,7 +161,7 @@ def annotate_break(
     *,
     verbose=None,
 ):
-    """## 🧠 Create `mne.Annotations` for breaks in an ongoing recording.
+    """## Create `mne.Annotations` for breaks in an ongoing recording.
 
     This function first searches for segments in the data that are not
     annotated or do not contain any events and are at least
@@ -231,6 +231,6 @@ def annotate_break(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...

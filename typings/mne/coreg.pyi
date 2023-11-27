@@ -61,7 +61,7 @@ fid_fname_general: Incomplete
 src_fname: Incomplete
 
 def coregister_fiducials(info, fiducials, tol: float = 0.01):
-    """## 🧠 Create a head-MRI transform by aligning 3 fiducial points.
+    """## Create a head-MRI transform by aligning 3 fiducial points.
 
     -----
     ### 🛠️ Parameters
@@ -87,7 +87,7 @@ def coregister_fiducials(info, fiducials, tol: float = 0.01):
 def create_default_subject(
     fs_home=None, update: bool = False, subjects_dir=None, verbose=None
 ) -> None:
-    """## 🧠 Create an average brain subject for subjects without structural MRI.
+    """## Create an average brain subject for subjects without structural MRI.
 
     Create a copy of fsaverage from the Freesurfer directory in subjects_dir
     and add auxiliary files from the mne package.
@@ -135,7 +135,7 @@ def fit_matched_points(
     out: str = "trans",
     weights=None,
 ):
-    """## 🧠 Find a transform between matched sets of points.
+    """## Find a transform between matched sets of points.
 
     This minimizes the squared distance between two matching sets of points.
 
@@ -181,7 +181,7 @@ def fit_matched_points(
     ...
 
 def read_mri_cfg(subject, subjects_dir=None):
-    """## 🧠 Read information from the cfg file of a scaled MRI brain.
+    """## Read information from the cfg file of a scaled MRI brain.
 
     -----
     ### 🛠️ Parameters
@@ -209,7 +209,7 @@ def scale_bem(
     on_defects: str = "raise",
     verbose=None,
 ) -> None:
-    """## 🧠 Scale a bem file.
+    """## Scale a bem file.
 
     -----
     ### 🛠️ Parameters
@@ -238,7 +238,7 @@ def scale_bem(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -256,7 +256,7 @@ def scale_labels(
     scale=None,
     subjects_dir=None,
 ) -> None:
-    """## 🧠 Scale labels to match a brain that was previously created by scaling.
+    """## Scale labels to match a brain that was previously created by scaling.
 
     -----
     ### 🛠️ Parameters
@@ -295,7 +295,7 @@ def scale_mri(
     on_defects: str = "raise",
     verbose=None,
 ) -> None:
-    """## 🧠 Create a scaled copy of an MRI subject.
+    """## Create a scaled copy of an MRI subject.
 
     -----
     ### 🛠️ Parameters
@@ -327,7 +327,7 @@ def scale_mri(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -360,7 +360,7 @@ def scale_source_space(
     n_jobs=None,
     verbose=None,
 ) -> None:
-    """## 🧠 Scale a source space for an mri created with scale_mri().
+    """## Scale a source space for an mri created with scale_mri().
 
     -----
     ### 🛠️ Parameters
@@ -403,7 +403,7 @@ def scale_source_space(
     ...
 
 class Coregistration:
-    """## 🧠 Class for MRI<->head coregistration.
+    """## Class for MRI<->head coregistration.
 
     -----
     ### 🛠️ Parameters
@@ -441,7 +441,7 @@ class Coregistration:
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     -----
     ### 📊 Attributes
@@ -479,7 +479,7 @@ class Coregistration:
         on_defects: str = "raise",
     ) -> None: ...
     def set_scale_mode(self, scale_mode):
-        """## 🧠 Select how to fit the scale parameters.
+        """## Select how to fit the scale parameters.
 
         -----
         ### 🛠️ Parameters
@@ -500,7 +500,7 @@ class Coregistration:
         """
         ...
     def set_grow_hair(self, value):
-        """## 🧠 Compensate for hair on the digitizer head shape.
+        """## Compensate for hair on the digitizer head shape.
 
         -----
         ### 🛠️ Parameters
@@ -516,7 +516,7 @@ class Coregistration:
         """
         ...
     def set_rotation(self, rot):
-        """## 🧠 Set the rotation parameter.
+        """## Set the rotation parameter.
 
         -----
         ### 🛠️ Parameters
@@ -532,7 +532,7 @@ class Coregistration:
         """
         ...
     def set_translation(self, tra):
-        """## 🧠 Set the translation parameter.
+        """## Set the translation parameter.
 
         -----
         ### 🛠️ Parameters
@@ -548,7 +548,7 @@ class Coregistration:
         """
         ...
     def set_scale(self, sca):
-        """## 🧠 Set the scale parameter.
+        """## Set the scale parameter.
 
         -----
         ### 🛠️ Parameters
@@ -565,7 +565,7 @@ class Coregistration:
         ...
     @property
     def scale(self):
-        """## 🧠 Get the current scale factor.
+        """## Get the current scale factor.
 
         -----
         ### ⏎ Returns
@@ -581,7 +581,7 @@ class Coregistration:
         rpa_weight: float = 1.0,
         verbose=None,
     ):
-        """## 🧠 Find rotation and translation to fit all 3 fiducials.
+        """## Find rotation and translation to fit all 3 fiducials.
 
         -----
         ### 🛠️ Parameters
@@ -607,7 +607,7 @@ class Coregistration:
         """
         ...
     def set_fid_match(self, match):
-        """## 🧠 Set the strategy for fitting anatomical landmark (fiducial) points.
+        """## Set the strategy for fitting anatomical landmark (fiducial) points.
 
         -----
         ### 🛠️ Parameters
@@ -636,7 +636,7 @@ class Coregistration:
         callback=None,
         verbose=None,
     ):
-        """## 🧠 Find MRI scaling, translation, and rotation to match HSP.
+        """## Find MRI scaling, translation, and rotation to match HSP.
 
         -----
         ### 🛠️ Parameters
@@ -674,7 +674,7 @@ class Coregistration:
         """
         ...
     def omit_head_shape_points(self, distance):
-        """## 🧠 Exclude head shape points that are far away from the MRI head.
+        """## Exclude head shape points that are far away from the MRI head.
 
         -----
         ### 🛠️ Parameters
@@ -691,7 +691,7 @@ class Coregistration:
         """
         ...
     def compute_dig_mri_distances(self):
-        """## 🧠 Compute distance between head shape points and MRI skin surface.
+        """## Compute distance between head shape points and MRI skin surface.
 
         -----
         ### ⏎ Returns
@@ -707,10 +707,10 @@ class Coregistration:
         ...
     @property
     def trans(self):
-        """## 🧠 The head->mri `mne.transforms.Transform`."""
+        """## The head->mri `mne.transforms.Transform`."""
         ...
     def reset(self):
-        """## 🧠 Reset all the parameters affecting the coregistration.
+        """## Reset all the parameters affecting the coregistration.
 
         -----
         ### ⏎ Returns

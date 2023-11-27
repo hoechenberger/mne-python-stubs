@@ -12,7 +12,7 @@ def read_raw_nicolet(
     preload: bool = False,
     verbose=None,
 ):
-    """## 🧠 Read Nicolet data as raw object.
+    """## Read Nicolet data as raw object.
 
     ..note:: This reader takes data files with the extension ``.data`` as an
              input. The header file with the same file name stem and an
@@ -70,7 +70,7 @@ def read_raw_nicolet(
     ...
 
 class RawNicolet(BaseRaw):
-    """## 🧠 Raw object from Nicolet file.
+    """## Raw object from Nicolet file.
 
     -----
     ### 🛠️ Parameters

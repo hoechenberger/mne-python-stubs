@@ -20,7 +20,7 @@ def gamma_map(
     pick_ori=None,
     verbose=None,
 ):
-    """## 🧠 Hierarchical Bayes (Gamma-MAP) sparse source localization method.
+    """## Hierarchical Bayes (Gamma-MAP) sparse source localization method.
 
     Models each source time course using a zero-mean Gaussian prior with an
     unknown variance (gamma) parameter. During estimation, most gammas are
@@ -132,7 +132,7 @@ def gamma_map(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `pick_ori : None | "normal" | "vector"`
 

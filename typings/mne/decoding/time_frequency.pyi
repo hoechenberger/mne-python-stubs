@@ -4,7 +4,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class TimeFrequency(TransformerMixin, BaseEstimator):
-    """## 🧠 Time frequency transformer.
+    """## Time frequency transformer.
 
     Time-frequency transform of times series along the last axis.
 
@@ -89,10 +89,10 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         n_jobs: int = 1,
         verbose=None,
     ) -> None:
-        """## 🧠 Init TimeFrequency transformer."""
+        """## Init TimeFrequency transformer."""
         ...
     def fit_transform(self, X, y=None):
-        """## 🧠 Time-frequency transform of times series along the last axis.
+        """## Time-frequency transform of times series along the last axis.
 
         -----
         ### 🛠️ Parameters
@@ -112,7 +112,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         """
         ...
     def fit(self, X, y=None):
-        """## 🧠 Do nothing (for scikit-learn compatibility purposes).
+        """## Do nothing (for scikit-learn compatibility purposes).
 
         -----
         ### 🛠️ Parameters
@@ -130,7 +130,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         """
         ...
     def transform(self, X):
-        """## 🧠 Time-frequency transform of times series along the last axis.
+        """## Time-frequency transform of times series along the last axis.
 
         -----
         ### 🛠️ Parameters

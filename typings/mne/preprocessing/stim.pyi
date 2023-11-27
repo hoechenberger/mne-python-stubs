@@ -14,7 +14,7 @@ def fix_stim_artifact(
     stim_channel=None,
     picks=None,
 ):
-    """## 🧠 Eliminate stimulation's artifacts from instance.
+    """## Eliminate stimulation's artifacts from instance.
 
     ### 💡 Note This function operates in-place, consider passing
               ``inst.copy()`` if this is not desired.

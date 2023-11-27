@@ -6,7 +6,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of epilepsy_ecog dataset.
+    """## Get path to local copy of epilepsy_ecog dataset.
 
     -----
     ### 🛠️ Parameters
@@ -44,7 +44,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local epilepsy_ecog dataset.
+    """## Get version of the local epilepsy_ecog dataset.
 
     -----
     ### ⏎ Returns

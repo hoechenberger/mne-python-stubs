@@ -8,7 +8,7 @@ from .mixin import TransformerMixin as TransformerMixin
 from _typeshed import Incomplete
 
 class SSD(BaseEstimator, TransformerMixin):
-    """## 🧠
+    """##
     Signal decomposition using the Spatio-Spectral Decomposition (SSD).
 
     SSD seeks to maximize the power at a frequency band of interest while
@@ -105,7 +105,7 @@ class SSD(BaseEstimator, TransformerMixin):
         cov_method_params=None,
         rank=None,
     ) -> None:
-        """## 🧠 Initialize instance."""
+        """## Initialize instance."""
         ...
     eigvals_: Incomplete
     filters_: Incomplete
@@ -113,7 +113,7 @@ class SSD(BaseEstimator, TransformerMixin):
     sorter_spec: Incomplete
 
     def fit(self, X, y=None):
-        """## 🧠 Estimate the SSD decomposition on raw or epoched data.
+        """## Estimate the SSD decomposition on raw or epoched data.
 
         -----
         ### 🛠️ Parameters
@@ -133,7 +133,7 @@ class SSD(BaseEstimator, TransformerMixin):
         """
         ...
     def transform(self, X):
-        """## 🧠 Estimate epochs sources given the SSD filters.
+        """## Estimate epochs sources given the SSD filters.
 
         -----
         ### 🛠️ Parameters
@@ -151,7 +151,7 @@ class SSD(BaseEstimator, TransformerMixin):
         """
         ...
     def get_spectral_ratio(self, ssd_sources):
-        """## 🧠 Get the spectal signal-to-noise ratio for each spatial filter.
+        """## Get the spectal signal-to-noise ratio for each spatial filter.
 
         Spectral ratio measure for best n_components selection
         See :footcite:`NikulinEtAl2011`, Eq. (24).
@@ -176,10 +176,10 @@ class SSD(BaseEstimator, TransformerMixin):
         """
         ...
     def inverse_transform(self) -> None:
-        """## 🧠 Not implemented yet."""
+        """## Not implemented yet."""
         ...
     def apply(self, X):
-        """## 🧠 Remove selected components from the signal.
+        """## Remove selected components from the signal.
 
         This procedure will reconstruct M/EEG signals from which the dynamics
         described by the excluded components is subtracted

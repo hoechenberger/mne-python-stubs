@@ -20,24 +20,24 @@ ANNOTATION_FIG_W: float
 ANNOTATION_FIG_CHECKBOX_COLUMN_W: float
 
 class MNEFigure(Figure):
-    """## 🧠 Base class for 2D figures & dialogs; wraps matplotlib.figure.Figure."""
+    """## Base class for 2D figures & dialogs; wraps matplotlib.figure.Figure."""
 
     mne: Incomplete
 
     def __init__(self, **kwargs) -> None: ...
 
 class MNEAnnotationFigure(MNEFigure):
-    """## 🧠 Interactive dialog figure for annotations."""
+    """## Interactive dialog figure for annotations."""
 
     ...
 
 class MNESelectionFigure(MNEFigure):
-    """## 🧠 Interactive dialog figure for channel selections."""
+    """## Interactive dialog figure for channel selections."""
 
     ...
 
 class MNEBrowseFigure(BrowserBase, MNEFigure):
-    """## 🧠 Interactive figure with scrollbars, for data browsing."""
+    """## Interactive figure with scrollbars, for data browsing."""
 
     backend_name: str
 
@@ -46,7 +46,7 @@ class MNEBrowseFigure(BrowserBase, MNEFigure):
     ) -> None: ...
 
 class MNELineFigure(MNEFigure):
-    """## 🧠 Interactive figure for non-scrolling line plots."""
+    """## Interactive figure for non-scrolling line plots."""
 
     def __init__(
         self, inst, n_axes, figsize, *, layout: str = "constrained", **kwargs

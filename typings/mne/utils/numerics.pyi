@@ -12,15 +12,15 @@ from _typeshed import Incomplete
 from collections.abc import Generator
 
 def split_list(v, n, idx: bool = False) -> Generator[Incomplete, None, None]:
-    """## 🧠 Split list in n (approx) equal pieces, possibly giving indices."""
+    """## Split list in n (approx) equal pieces, possibly giving indices."""
     ...
 
 def array_split_idx(ary, indices_or_sections, axis: int = 0, n_per_split: int = 1):
-    """## 🧠 Do what numpy.array_split does, but add indices."""
+    """## Do what numpy.array_split does, but add indices."""
     ...
 
 def create_chunks(sequence, size):
-    """## 🧠 Generate chunks from a sequence.
+    """## Generate chunks from a sequence.
 
     -----
     ### 🛠️ Parameters
@@ -33,7 +33,7 @@ def create_chunks(sequence, size):
     ...
 
 def sum_squared(X):
-    """## 🧠 Compute norm of an array.
+    """## Compute norm of an array.
 
     -----
     ### 🛠️ Parameters
@@ -50,11 +50,11 @@ def sum_squared(X):
     ...
 
 def compute_corr(x, y):
-    """## 🧠 Compute pearson correlations between a vector and a matrix."""
+    """## Compute pearson correlations between a vector and a matrix."""
     ...
 
 def random_permutation(n_samples, random_state=None):
-    """## 🧠 Emulate the randperm matlab function.
+    """## Emulate the randperm matlab function.
 
     It returns a vector containing a random permutation of the
     integers between 0 and n_samples-1. It returns the same random numbers
@@ -94,7 +94,7 @@ def random_permutation(n_samples, random_state=None):
     ...
 
 def hashfunc(fname, block_size: int = 1048576, hash_type: str = "md5"):
-    """## 🧠 Calculate the hash for a file.
+    """## Calculate the hash for a file.
 
     -----
     ### 🛠️ Parameters
@@ -113,7 +113,7 @@ def hashfunc(fname, block_size: int = 1048576, hash_type: str = "md5"):
     ...
 
 def create_slices(start, stop, step=None, length: int = 1):
-    """## 🧠 Generate slices of time indexes.
+    """## Generate slices of time indexes.
 
     -----
     ### 🛠️ Parameters
@@ -137,7 +137,7 @@ def create_slices(start, stop, step=None, length: int = 1):
     ...
 
 def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = True):
-    """## 🧠 Make grand average of a list of Evoked or AverageTFR data.
+    """## Make grand average of a list of Evoked or AverageTFR data.
 
     For `mne.Evoked` data, the function interpolates bad channels based
     on the ``interpolate_bads`` parameter. If ``interpolate_bads`` is True,
@@ -175,7 +175,7 @@ def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = Tru
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.11.0
+    ✨ Added in version 0.11.0
     """
     ...
 
@@ -184,7 +184,7 @@ class _HashableNdarray(np.ndarray):
     def __eq__(self, other): ...
 
 def object_hash(x, h=None):
-    """## 🧠 Hash a reasonable python object.
+    """## Hash a reasonable python object.
 
     -----
     ### 🛠️ Parameters
@@ -204,7 +204,7 @@ def object_hash(x, h=None):
     ...
 
 def object_size(x, memo=None):
-    """## 🧠 Estimate the size of a reasonable python object.
+    """## Estimate the size of a reasonable python object.
 
     -----
     ### 🛠️ Parameters
@@ -225,7 +225,7 @@ def object_size(x, memo=None):
     ...
 
 def object_diff(a, b, pre: str = "", *, allclose: bool = False):
-    """## 🧠 Compute all differences between two python variables.
+    """## Compute all differences between two python variables.
 
     -----
     ### 🛠️ Parameters
@@ -249,7 +249,7 @@ def object_diff(a, b, pre: str = "", *, allclose: bool = False):
     ...
 
 class _PCA:
-    """## 🧠 Principal component analysis (PCA)."""
+    """## Principal component analysis (PCA)."""
 
     n_components: Incomplete
     whiten: Incomplete
@@ -258,7 +258,7 @@ class _PCA:
     def fit_transform(self, X, y=None): ...
 
 class _ReuseCycle:
-    """## 🧠 Cycle over a variable, preferring to reuse earlier indices.
+    """## Cycle over a variable, preferring to reuse earlier indices.
 
     Requires the values in ``x`` to be hashable and unique. This holds
     nicely for matplotlib's color cycle, which gives HTML hex color strings.

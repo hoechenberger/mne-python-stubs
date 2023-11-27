@@ -12,7 +12,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of testing dataset.
+    """## Get path to local copy of testing dataset.
 
     -----
     ### 🛠️ Parameters
@@ -50,7 +50,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local testing dataset.
+    """## Get version of the local testing dataset.
 
     -----
     ### ⏎ Returns
@@ -61,5 +61,5 @@ def get_version():
     ...
 
 def requires_testing_data(func):
-    """## 🧠 Skip testing data test."""
+    """## Skip testing data test."""
     ...

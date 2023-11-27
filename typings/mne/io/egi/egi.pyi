@@ -13,7 +13,7 @@ def read_raw_egi(
     channel_naming: str = "E%d",
     verbose=None,
 ):
-    """## 🧠 Read EGI simple binary as raw object.
+    """## Read EGI simple binary as raw object.
 
     ### 💡 Note This function attempts to create a synthetic trigger channel.
               See the Notes section below.
@@ -47,13 +47,13 @@ def read_raw_egi(
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-        ✨ Added in vesion 0.11
+        ✨ Added in version 0.11
     #### `channel_naming : str`
         Channel naming convention for the data channels. Defaults to ``'E%d'``
         (resulting in channel names ``'E1'``, ``'E2'``, ``'E3'``...). The
         effective default prior to 0.14.0 was ``'EEG %03d'``.
 
-         ✨ Added in vesion 0.14.0
+         ✨ Added in version 0.14.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -92,7 +92,7 @@ def read_raw_egi(
     ...
 
 class RawEGI(BaseRaw):
-    """## 🧠 Raw object from EGI simple binary file."""
+    """## Raw object from EGI simple binary file."""
 
     event_id: Incomplete
 

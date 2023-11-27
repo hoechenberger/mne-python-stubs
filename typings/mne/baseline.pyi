@@ -9,7 +9,7 @@ def rescale(
     picks=None,
     verbose=None,
 ):
-    """## 🧠 Rescale (baseline correct) data.
+    """## Rescale (baseline correct) data.
 
     -----
     ### 🛠️ Parameters

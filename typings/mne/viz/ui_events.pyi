@@ -6,7 +6,7 @@ from matplotlib.colors import Colormap
 from typing import List, Optional, Union
 
 class UIEvent:
-    """## 🧠 Abstract base class for all events.
+    """## Abstract base class for all events.
 
     -----
     ### 📊 Attributes
@@ -22,11 +22,11 @@ class UIEvent:
 
     @property
     def name(self):
-        """## 🧠 The name of the event, which is the class name in snake case."""
+        """## The name of the event, which is the class name in snake case."""
         ...
 
 class FigureClosing(UIEvent):
-    """## 🧠 Indicates that the user has requested to close a figure.
+    """## Indicates that the user has requested to close a figure.
 
     -----
     ### 📊 Attributes
@@ -191,7 +191,7 @@ class Contours(UIEvent):
     def __init__(self, kind, contours) -> None: ...
 
 def publish(fig, event, *, verbose=None) -> None:
-    """## 🧠 Publish an event to all subscribers of the figure's channel.
+    """## Publish an event to all subscribers of the figure's channel.
 
     The figure's event channel and all linked event channels are searched for
     subscribers to the given event. Each subscriber had provided a callback
@@ -214,7 +214,7 @@ def publish(fig, event, *, verbose=None) -> None:
     ...
 
 def subscribe(fig, event_name, callback, *, verbose=None) -> None:
-    """## 🧠 Subscribe to an event on a figure's event channel.
+    """## Subscribe to an event on a figure's event channel.
 
     -----
     ### 🛠️ Parameters
@@ -235,7 +235,7 @@ def subscribe(fig, event_name, callback, *, verbose=None) -> None:
     ...
 
 def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
-    """## 🧠 Unsubscribe from an event on a figure's event channel.
+    """## Unsubscribe from an event on a figure's event channel.
 
     -----
     ### 🛠️ Parameters
@@ -260,7 +260,7 @@ def unsubscribe(fig, event_names, callback=None, *, verbose=None) -> None:
     ...
 
 def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
-    """## 🧠 Link the event channels of two figures together.
+    """## Link the event channels of two figures together.
 
     When event channels are linked, any events that are published on one
     channel are simultaneously published on the other channel. Links are
@@ -289,7 +289,7 @@ def link(*figs, include_events=None, exclude_events=None, verbose=None) -> None:
     ...
 
 def unlink(fig, *, verbose=None) -> None:
-    """## 🧠 Remove all links involving the event channel of the given figure.
+    """## Remove all links involving the event channel of the given figure.
 
     -----
     ### 🛠️ Parameters
@@ -307,7 +307,7 @@ def unlink(fig, *, verbose=None) -> None:
     ...
 
 def disable_ui_events(fig) -> Generator[None, None, None]:
-    """## 🧠 Temporarily disable generation of UI events. Use as context manager.
+    """## Temporarily disable generation of UI events. Use as context manager.
 
     -----
     ### 🛠️ Parameters

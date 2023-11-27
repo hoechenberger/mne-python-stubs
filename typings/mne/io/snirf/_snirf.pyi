@@ -9,7 +9,7 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_snirf(
     fname, optode_frame: str = "unknown", preload: bool = False, verbose=None
 ):
-    """## 🧠 Reader for a continuous wave SNIRF data.
+    """## Reader for a continuous wave SNIRF data.
 
     ### 💡 Note This reader supports the .snirf file type only,
               not the .jnirs version.
@@ -57,7 +57,7 @@ def read_raw_snirf(
     ...
 
 class RawSNIRF(BaseRaw):
-    """## 🧠 Raw object from a continuous wave SNIRF file.
+    """## Raw object from a continuous wave SNIRF file.
 
     -----
     ### 🛠️ Parameters

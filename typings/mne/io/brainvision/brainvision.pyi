@@ -15,7 +15,7 @@ from ..base import BaseRaw as BaseRaw
 from _typeshed import Incomplete
 
 class RawBrainVision(BaseRaw):
-    """## 🧠 Raw object from Brain Vision EEG file.
+    """## Raw object from Brain Vision EEG file.
 
     -----
     ### 🛠️ Parameters
@@ -80,7 +80,7 @@ def read_raw_brainvision(
     preload: bool = False,
     verbose=None,
 ):
-    """## 🧠 Reader for Brain Vision EEG file.
+    """## Reader for Brain Vision EEG file.
 
     -----
     ### 🛠️ Parameters
@@ -128,8 +128,8 @@ def read_raw_brainvision(
     ...
 
 class _BVEventParser(_DefaultEventParser):
-    """## 🧠 Parse standard brainvision events, accounting for non-standard ones."""
+    """## Parse standard brainvision events, accounting for non-standard ones."""
 
     def __call__(self, description):
-        """## 🧠 Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
+        """## Parse BrainVision event codes (like `Stimulus/S 11`) to ints."""
         ...

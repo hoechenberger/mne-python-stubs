@@ -19,7 +19,7 @@ def regress_artifact(
     copy: bool = True,
     verbose=None,
 ):
-    """## 🧠 Remove artifacts using regression based on reference channels.
+    """## Remove artifacts using regression based on reference channels.
 
     -----
     ### 🛠️ Parameters
@@ -40,7 +40,7 @@ def regress_artifact(
         based on types (e.g., exclude="bads" when picks="meg").
         Specify ``'bads'`` (the default) to exclude all channels marked as bad.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
     #### `picks_artifact : array-like | str`
         Channel picks to use as predictor/explanatory variables capturing
         the artifact of interest (default is "eog").
@@ -87,7 +87,7 @@ def regress_artifact(
     ...
 
 class EOGRegression:
-    """## 🧠 Remove EOG artifact signals from other channels by regression.
+    """## Remove EOG artifact signals from other channels by regression.
 
     Employs linear regression to remove signals captured by some channels,
     typically EOG, as described in :footcite:`GrattonEtAl1983`. You can also
@@ -138,7 +138,7 @@ class EOGRegression:
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
 
     References
     ----------
@@ -161,7 +161,7 @@ class EOGRegression:
     info_: Incomplete
 
     def fit(self, inst):
-        """## 🧠 Fit EOG regression coefficients.
+        """## Fit EOG regression coefficients.
 
         -----
         ### 🛠️ Parameters
@@ -185,7 +185,7 @@ class EOGRegression:
         """
         ...
     def apply(self, inst, copy: bool = True):
-        """## 🧠 Apply the regression coefficients to data.
+        """## Apply the regression coefficients to data.
 
         -----
         ### 🛠️ Parameters
@@ -237,7 +237,7 @@ class EOGRegression:
         title=None,
         show: bool = True,
     ):
-        """## 🧠 Plot the regression weights of a fitted EOGRegression model.
+        """## Plot the regression weights of a fitted EOGRegression model.
 
         -----
         ### 🛠️ Parameters
@@ -302,7 +302,7 @@ class EOGRegression:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `image_interp : str`
@@ -338,7 +338,7 @@ class EOGRegression:
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `res : int`
             The resolution of the topomap image (number of pixels along each side).
@@ -398,11 +398,11 @@ class EOGRegression:
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
         """
         ...
     def save(self, fname, overwrite: bool = False) -> None:
-        """## 🧠 Save the regression model to an HDF5 file.
+        """## Save the regression model to an HDF5 file.
 
         -----
         ### 🛠️ Parameters
@@ -417,7 +417,7 @@ class EOGRegression:
         ...
 
 def read_eog_regression(fname):
-    """## 🧠 Read an EOG regression model from an HDF5 file.
+    """## Read an EOG regression model from an HDF5 file.
 
     -----
     ### 🛠️ Parameters
@@ -434,6 +434,6 @@ def read_eog_regression(fname):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...

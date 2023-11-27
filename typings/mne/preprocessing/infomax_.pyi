@@ -25,7 +25,7 @@ def infomax(
     verbose=None,
     return_n_iter: bool = False,
 ):
-    """## 🧠 Run (extended) Infomax ICA decomposition on raw data.
+    """## Run (extended) Infomax ICA decomposition on raw data.
 
     -----
     ### 🛠️ Parameters

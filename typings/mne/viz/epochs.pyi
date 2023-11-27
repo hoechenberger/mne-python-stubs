@@ -29,7 +29,7 @@ def plot_epochs_image(
     title=None,
     clear: bool = False,
 ):
-    """## 🧠 Plot Event Related Potential / Fields image.
+    """## Plot Event Related Potential / Fields image.
 
     -----
     ### 🛠️ Parameters
@@ -208,7 +208,7 @@ def plot_drop_log(
     ignore=("IGNORED",),
     show: bool = True,
 ):
-    """## 🧠 Show the channel stats based on a drop_log from Epochs.
+    """## Show the channel stats based on a drop_log from Epochs.
 
     -----
     ### 🛠️ Parameters
@@ -273,7 +273,7 @@ def plot_epochs(
     overview_mode=None,
     splash: bool = True,
 ):
-    """## 🧠 Visualize epochs.
+    """## Visualize epochs.
 
     Bad epochs can be marked with a left click on top of the epoch. Bad
     channels can be selected by clicking the channel name on the left side of
@@ -329,7 +329,7 @@ def plot_epochs(
         ### ⛔️ Warning  If the epochs have been resampled, the events no longer
             align with the data.
 
-        ✨ Added in vesion 0.14.0
+        ✨ Added in version 0.14.0
 
         🎭 Changed in version 1.6
             Passing ``events=None`` was disallowed.
@@ -346,7 +346,7 @@ def plot_epochs(
     #### `order : array of str | None`
         Order in which to plot channel types.
 
-        ✨ Added in vesion 0.18.0
+        ✨ Added in version 0.18.0
     #### `show : bool`
         Show figure if True. Defaults to True.
     #### `block : bool`
@@ -361,7 +361,7 @@ def plot_epochs(
         larger than ``info['lowpass']`` (e.g., a 40 Hz lowpass will result in
         at least a 120 Hz displayed sample rate).
 
-        ✨ Added in vesion 0.15.0
+        ✨ Added in version 0.15.0
     #### `noise_cov : instance of Covariance | str | None`
         Noise covariance used to whiten the data while plotting.
         Whitened data channels are scaled by ``scalings['whitened']``,
@@ -373,25 +373,25 @@ def plot_epochs(
         magnetometers and gradiometers may introduce differences in scaling,
         consider using `mne.Evoked.plot_white`.
 
-        ✨ Added in vesion 0.16.0
+        ✨ Added in version 0.16.0
     #### `butterfly : bool`
         Whether to directly call the butterfly view.
 
-        ✨ Added in vesion 0.18.0
+        ✨ Added in version 0.18.0
 
     #### `show_scrollbars : bool`
         Whether to show scrollbars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
-        ✨ Added in vesion 0.19.0
+        ✨ Added in version 0.19.0
 
     #### `show_scalebars : bool`
         Whether to show scale bars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`s` while the plot window is focused.
         Default is ``True``.
 
-        ✨ Added in vesion 0.24.0
+        ✨ Added in version 0.24.0
     #### `epoch_colors : list of (n_epochs) list (of n_channels) | None`
         Colors to use for individual epochs. If None, use default colors.
     #### `event_id : bool | dict`
@@ -401,7 +401,7 @@ def plot_epochs(
         entries whose *values* are integer codes for events being drawn. Ignored if
         ``events=False``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `group_by : str`
         How to group channels. ``'type'`` groups by channel type,
@@ -423,7 +423,7 @@ def plot_epochs(
         the precomputed data, and precomputes only if enough RAM is available.
         This is only used with the Qt backend.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
         🎭 Changed in version 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
@@ -435,7 +435,7 @@ def plot_epochs(
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
         see `mne.set_config`.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `theme : str | path-like`
         Can be "auto", "light", or "dark" or a path-like to a
@@ -446,7 +446,7 @@ def plot_epochs(
         defaulting to "auto" if it's not found.
         Only supported by the ``'qt'`` backend.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `overview_mode : str | None`
         Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -454,13 +454,13 @@ def plot_epochs(
         ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
         if it's not found.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `splash : bool`
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
 
     -----
     ### ⏎ Returns
@@ -500,7 +500,7 @@ def plot_epochs(
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
 
-    ✨ Added in vesion 0.10.0
+    ✨ Added in version 0.10.0
     """
     ...
 
@@ -532,7 +532,7 @@ def plot_epochs_psd(
     exclude: str = "bads",
     verbose=None,
 ):
-    """## 🧠 ### ⛔️ Warning LEGACY: New code should use Epochs.compute_psd().plot().
+    """## ### ⛔️ Warning LEGACY: New code should use Epochs.compute_psd().plot().
 
     Plot power or amplitude spectra.
 
@@ -638,14 +638,14 @@ def plot_epochs_psd(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     #### `exclude : list of str | 'bads'`
         Channels names to exclude from being shown. If 'bads', the bad channels
         are excluded. Pass an empty list to plot all channels (including
         channels marked "bad", if any).
 
-        ✨ Added in vesion 0.24.0
+        ✨ Added in version 0.24.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

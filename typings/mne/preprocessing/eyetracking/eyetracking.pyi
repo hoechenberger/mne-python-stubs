@@ -1,7 +1,7 @@
 from ..._fiff.constants import FIFF as FIFF
 
 def set_channel_types_eyetrack(inst, mapping):
-    """## 🧠 Define sensor type for eyetrack channels.
+    """## Define sensor type for eyetrack channels.
 
     This function can set all eye tracking specific information:
     channel type, unit, eye (and x/y component; only for gaze channels)

@@ -9,7 +9,7 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_nirx(
     fname, saturated: str = "annotate", preload: bool = False, verbose=None
 ):
-    """## 🧠 Reader for a NIRX fNIRS recording.
+    """## Reader for a NIRX fNIRS recording.
 
     -----
     ### 🛠️ Parameters
@@ -32,7 +32,7 @@ def read_raw_nirx(
         This argument will only be used if there is no .nosatflags file
         (only if a NIRSport device is used and saturation occurred).
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
@@ -78,7 +78,7 @@ def read_raw_nirx(
     ...
 
 class RawNIRX(BaseRaw):
-    """## 🧠 Raw object from a NIRX fNIRS file.
+    """## Raw object from a NIRX fNIRS file.
 
     -----
     ### 🛠️ Parameters
@@ -101,7 +101,7 @@ class RawNIRX(BaseRaw):
         This argument will only be used if there is no .nosatflags file
         (only if a NIRSport device is used and saturation occurred).
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.

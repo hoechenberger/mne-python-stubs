@@ -3,7 +3,7 @@ from ._logging import logger as logger, warn as warn
 from _typeshed import Incomplete
 
 def check_fname(fname, filetype, endings, endings_err=()) -> None:
-    """## 🧠 Enforce MNE filename conventions.
+    """## Enforce MNE filename conventions.
 
     -----
     ### 🛠️ Parameters
@@ -26,7 +26,7 @@ def check_version(
     strip: bool = True,
     return_version: bool = False,
 ):
-    """## 🧠 Check minimum library version required.
+    """## Check minimum library version required.
 
     -----
     ### 🛠️ Parameters
@@ -45,12 +45,12 @@ def check_version(
         backward compatibility with the behavior of ``LooseVersion``, and
         diverges from how modern parsing in ``packaging.version.parse`` works.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
     #### `return_version : bool`
         If True (default False), also return the version (can be None if the
         library is missing).
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     -----
     ### ⏎ Returns
@@ -63,7 +63,7 @@ def check_version(
     ...
 
 def check_random_state(seed):
-    """## 🧠 Turn seed into a numpy.random.mtrand.RandomState instance.
+    """## Turn seed into a numpy.random.mtrand.RandomState instance.
 
     If seed is None, return the RandomState singleton used by np.random.mtrand.
     If seed is an int, return a new RandomState instance seeded with seed.

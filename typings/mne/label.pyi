@@ -27,7 +27,7 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Label:
-    """## 🧠 A FreeSurfer/MNE label with vertices restricted to one hemisphere.
+    """## A FreeSurfer/MNE label with vertices restricted to one hemisphere.
 
     Labels can be combined with the ``+`` operator:
 
@@ -115,7 +115,7 @@ class Label:
         verbose=None,
     ) -> None: ...
     def __len__(self) -> int:
-        """## 🧠 Return the number of vertices.
+        """## Return the number of vertices.
 
         -----
         ### ⏎ Returns
@@ -125,13 +125,13 @@ class Label:
         """
         ...
     def __add__(self, other):
-        """## 🧠 Add Labels."""
+        """## Add Labels."""
         ...
     def __sub__(self, other):
-        """## 🧠 Subtract Labels."""
+        """## Subtract Labels."""
         ...
     def save(self, filename) -> None:
-        """## 🧠 Write to disk as FreeSurfer \\*.label file.
+        """## Write to disk as FreeSurfer \\*.label file.
 
         -----
         ### 🛠️ Parameters
@@ -147,7 +147,7 @@ class Label:
         """
         ...
     def copy(self):
-        """## 🧠 Copy the label instance.
+        """## Copy the label instance.
 
         -----
         ### ⏎ Returns
@@ -157,7 +157,7 @@ class Label:
         """
         ...
     def fill(self, src, name=None):
-        """## 🧠 Fill the surface between sources for a source space label.
+        """## Fill the surface between sources for a source space label.
 
         -----
         ### 🛠️ Parameters
@@ -187,7 +187,7 @@ class Label:
         """
         ...
     def restrict(self, src, name=None):
-        """## 🧠 Restrict a label to a source space.
+        """## Restrict a label to a source space.
 
         -----
         ### 🛠️ Parameters
@@ -211,7 +211,7 @@ class Label:
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         """
         ...
     def smooth(
@@ -223,7 +223,7 @@ class Label:
         n_jobs=None,
         verbose=None,
     ):
-        """## 🧠 Smooth the label.
+        """## Smooth the label.
 
         Useful for filling in labels made in a
         decimated source space for display.
@@ -294,7 +294,7 @@ class Label:
         n_jobs=None,
         verbose=None,
     ):
-        """## 🧠 Morph the label.
+        """## Morph the label.
 
         Useful for transforming a label from one subject to another.
 
@@ -362,7 +362,7 @@ class Label:
     def split(
         self, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
     ):
-        """## 🧠 Split the Label into two or more parts.
+        """## Split the Label into two or more parts.
 
         -----
         ### 🛠️ Parameters
@@ -409,7 +409,7 @@ class Label:
         """
         ...
     def get_vertices_used(self, vertices=None):
-        """## 🧠 Get the source space's vertices inside the label.
+        """## Get the source space's vertices inside the label.
 
         -----
         ### 🛠️ Parameters
@@ -426,7 +426,7 @@ class Label:
         """
         ...
     def get_tris(self, tris, vertices=None):
-        """## 🧠 Get the source space's triangles inside the label.
+        """## Get the source space's triangles inside the label.
 
         -----
         ### 🛠️ Parameters
@@ -452,7 +452,7 @@ class Label:
         subjects_dir=None,
         surf: str = "sphere",
     ):
-        """## 🧠 Compute the center of mass of the label.
+        """## Compute the center of mass of the label.
 
         This function computes the spatial center of mass on the surface
         as in :footcite:`LarsonLee2013`.
@@ -498,7 +498,7 @@ class Label:
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.13
+        ✨ Added in version 0.13
 
         References
         ----------
@@ -508,7 +508,7 @@ class Label:
     def distances_to_outside(
         self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
-        """## 🧠 Compute the distance from each vertex to outside the label.
+        """## Compute the distance from each vertex to outside the label.
 
         -----
         ### 🛠️ Parameters
@@ -547,13 +547,13 @@ class Label:
 
         Distances are computed along the cortical surface.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
         """
         ...
     def compute_area(
         self, subject=None, subjects_dir=None, surface: str = "white", *, verbose=None
     ):
-        """## 🧠 Compute the surface area of a label.
+        """## Compute the surface area of a label.
 
         -----
         ### 🛠️ Parameters
@@ -591,7 +591,7 @@ class Label:
         ...
 
 class BiHemiLabel:
-    """## 🧠 A freesurfer/MNE label with vertices in both hemispheres.
+    """## A freesurfer/MNE label with vertices in both hemispheres.
 
     -----
     ### 🛠️ Parameters
@@ -629,7 +629,7 @@ class BiHemiLabel:
 
     def __init__(self, lh, rh, name=None, color=None) -> None: ...
     def __len__(self) -> int:
-        """## 🧠 Return the number of vertices.
+        """## Return the number of vertices.
 
         -----
         ### ⏎ Returns
@@ -639,14 +639,14 @@ class BiHemiLabel:
         """
         ...
     def __add__(self, other):
-        """## 🧠 Add labels."""
+        """## Add labels."""
         ...
     def __sub__(self, other):
-        """## 🧠 Subtract labels."""
+        """## Subtract labels."""
         ...
 
 def read_label(filename, subject=None, color=None, *, verbose=None):
-    """## 🧠 Read FreeSurfer Label file.
+    """## Read FreeSurfer Label file.
 
     -----
     ### 🛠️ Parameters
@@ -692,7 +692,7 @@ def read_label(filename, subject=None, color=None, *, verbose=None):
     ...
 
 def write_label(filename, label, verbose=None) -> None:
-    """## 🧠 Write a FreeSurfer label.
+    """## Write a FreeSurfer label.
 
     -----
     ### 🛠️ Parameters
@@ -724,7 +724,7 @@ def write_label(filename, label, verbose=None) -> None:
 def split_label(
     label, parts: int = 2, subject=None, subjects_dir=None, freesurfer: bool = False
 ):
-    """## 🧠 Split a Label into two or more parts.
+    """## Split a Label into two or more parts.
 
     -----
     ### 🛠️ Parameters
@@ -768,7 +768,7 @@ def split_label(
     ...
 
 def label_sign_flip(label, src):
-    """## 🧠 Compute sign for label averaging.
+    """## Compute sign for label averaging.
 
     -----
     ### 🛠️ Parameters
@@ -794,7 +794,7 @@ def stc_to_label(
     subjects_dir=None,
     verbose=None,
 ):
-    """## 🧠 Compute a label from the non-zero sources in an stc object.
+    """## Compute a label from the non-zero sources in an stc object.
 
     -----
     ### 🛠️ Parameters
@@ -850,7 +850,7 @@ def grow_labels(
     surface: str = "white",
     colors=None,
 ):
-    """## 🧠 Generate circular labels in source space with region growing.
+    """## Generate circular labels in source space with region growing.
 
     This function generates a number of labels in source space by growing
     regions starting from the vertices defined in "seeds". For each seed, a
@@ -926,7 +926,7 @@ def random_parcellation(
     surface: str = "white",
     random_state=None,
 ):
-    """## 🧠 Generate random cortex parcellation by growing labels.
+    """## Generate random cortex parcellation by growing labels.
 
     This function generates a number of labels which don't intersect and
     cover the whole surface. Regions are growing around randomly chosen
@@ -980,7 +980,7 @@ def read_labels_from_annot(
     sort: bool = True,
     verbose=None,
 ):
-    """## 🧠 Read labels from a FreeSurfer annotation file.
+    """## Read labels from a FreeSurfer annotation file.
 
     Note: Only cortical labels will be returned.
 
@@ -1012,7 +1012,7 @@ def read_labels_from_annot(
     #### `sort : bool`
         If true, labels will be sorted by name before being returned.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1042,7 +1042,7 @@ def morph_labels(
     surf_name: str = "white",
     verbose=None,
 ):
-    """## 🧠 Morph a set of labels.
+    """## Morph a set of labels.
 
     This is useful when morphing a set of non-overlapping labels (such as those
     obtained with `read_labels_from_annot`) from one subject to
@@ -1091,14 +1091,14 @@ def morph_labels(
     morphing (e.g., from ``'fsaverage'`` to your subject) might not match
     what Freesurfer produces during ``recon-all``.
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...
 
 def labels_to_stc(
     labels, values, tmin: int = 0, tstep: int = 1, subject=None, src=None, verbose=None
 ):
-    """## 🧠 Convert a set of labels and values to a STC.
+    """## Convert a set of labels and values to a STC.
 
     This function is meant to work like the opposite of
     `extract_label_time_course`.
@@ -1137,7 +1137,7 @@ def labels_to_stc(
         the label vertices will determine the output STC vertices.
         Required if using a volumetric source space.
 
-        ✨ Added in vesion 0.22
+        ✨ Added in version 0.22
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1161,7 +1161,7 @@ def labels_to_stc(
 
     Vertices that appear in more than one label will be averaged.
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...
 
@@ -1178,7 +1178,7 @@ def write_labels_to_annot(
     table_name="MNE-Python Colortable",
     verbose=None,
 ):
-    """## 🧠 Create a FreeSurfer annotation from a list of labels.
+    """## Create a FreeSurfer annotation from a list of labels.
 
     -----
     ### 🛠️ Parameters
@@ -1209,11 +1209,11 @@ def write_labels_to_annot(
     #### `sort : bool`
         If True (default), labels will be sorted by name before writing.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
     #### `table_name : str`
         The table name to use for the colortable.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1245,7 +1245,7 @@ def select_sources(
     random_state=None,
     surf: str = "white",
 ):
-    """## 🧠 Select sources from a label.
+    """## Select sources from a label.
 
     -----
     ### 🛠️ Parameters
@@ -1303,6 +1303,6 @@ def select_sources(
     The selected sources are returned in the form of a new Label object. The
     values of the label contain the distance from the seed in millimeters.
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...

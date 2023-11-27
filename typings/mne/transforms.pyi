@@ -18,7 +18,7 @@ from _typeshed import Incomplete
 als_ras_trans: Incomplete
 
 class Transform(dict):
-    """## 🧠 A transform.
+    """## A transform.
 
     -----
     ### 🛠️ Parameters
@@ -41,7 +41,7 @@ class Transform(dict):
 
     def __init__(self, fro, to, trans=None) -> None: ...
     def __eq__(self, other, rtol: float = 0.0, atol: float = 0.0):
-        """## 🧠 Check for equality.
+        """## Check for equality.
 
         Parameter
         ---------
@@ -60,7 +60,7 @@ class Transform(dict):
         """
         ...
     def __ne__(self, other, rtol: float = 0.0, atol: float = 0.0):
-        """## 🧠 Check for inequality.
+        """## Check for inequality.
 
         Parameter
         ---------
@@ -80,14 +80,14 @@ class Transform(dict):
         ...
     @property
     def from_str(self):
-        """## 🧠 The "from" frame as a string."""
+        """## The "from" frame as a string."""
         ...
     @property
     def to_str(self):
-        """## 🧠 The "to" frame as a string."""
+        """## The "to" frame as a string."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """## 🧠 Save the transform as -trans.fif file.
+        """## Save the transform as -trans.fif file.
 
         -----
         ### 🛠️ Parameters
@@ -107,11 +107,11 @@ class Transform(dict):
         """
         ...
     def copy(self):
-        """## 🧠 Make a copy of the transform."""
+        """## Make a copy of the transform."""
         ...
 
 def apply_trans(trans, pts, move: bool = True):
-    """## 🧠 Apply a transform matrix to an array of points.
+    """## Apply a transform matrix to an array of points.
 
     -----
     ### 🛠️ Parameters
@@ -132,7 +132,7 @@ def apply_trans(trans, pts, move: bool = True):
     ...
 
 def rotation(x: int = 0, y: int = 0, z: int = 0):
-    """## 🧠 Create an array with a 4 dimensional rotation matrix.
+    """## Create an array with a 4 dimensional rotation matrix.
 
     -----
     ### 🛠️ Parameters
@@ -149,7 +149,7 @@ def rotation(x: int = 0, y: int = 0, z: int = 0):
     ...
 
 def rotation3d(x: int = 0, y: int = 0, z: int = 0):
-    """## 🧠 Create an array with a 3 dimensional rotation matrix.
+    """## Create an array with a 3 dimensional rotation matrix.
 
     -----
     ### 🛠️ Parameters
@@ -166,7 +166,7 @@ def rotation3d(x: int = 0, y: int = 0, z: int = 0):
     ...
 
 def rotation3d_align_z_axis(target_z_axis):
-    """## 🧠 Compute a rotation matrix to align [ 0 0 1] with supplied target z axis.
+    """## Compute a rotation matrix to align [ 0 0 1] with supplied target z axis.
 
     -----
     ### 🛠️ Parameters
@@ -183,7 +183,7 @@ def rotation3d_align_z_axis(target_z_axis):
     ...
 
 def rotation_angles(m):
-    """## 🧠 Find rotation angles from a transformation matrix.
+    """## Find rotation angles from a transformation matrix.
 
     -----
     ### 🛠️ Parameters
@@ -200,7 +200,7 @@ def rotation_angles(m):
     ...
 
 def scaling(x: int = 1, y: int = 1, z: int = 1):
-    """## 🧠 Create an array with a scaling matrix.
+    """## Create an array with a scaling matrix.
 
     -----
     ### 🛠️ Parameters
@@ -217,7 +217,7 @@ def scaling(x: int = 1, y: int = 1, z: int = 1):
     ...
 
 def translation(x: int = 0, y: int = 0, z: int = 0):
-    """## 🧠 Create an array with a translation matrix.
+    """## Create an array with a translation matrix.
 
     -----
     ### 🛠️ Parameters
@@ -234,7 +234,7 @@ def translation(x: int = 0, y: int = 0, z: int = 0):
     ...
 
 def combine_transforms(t_first, t_second, fro, to):
-    """## 🧠 Combine two transforms.
+    """## Combine two transforms.
 
     -----
     ### 🛠️ Parameters
@@ -257,7 +257,7 @@ def combine_transforms(t_first, t_second, fro, to):
     ...
 
 def read_trans(fname, return_all: bool = False, verbose=None):
-    """## 🧠 Read a ``-trans.fif`` file.
+    """## Read a ``-trans.fif`` file.
 
     -----
     ### 🛠️ Parameters
@@ -268,7 +268,7 @@ def read_trans(fname, return_all: bool = False, verbose=None):
         If True, return all transformations in the file.
         False (default) will only return the first.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -291,7 +291,7 @@ def read_trans(fname, return_all: bool = False, verbose=None):
     ...
 
 def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
-    """## 🧠 Write a transformation FIF file.
+    """## Write a transformation FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -319,7 +319,7 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     ...
 
 def invert_transform(trans):
-    """## 🧠 Invert a transformation between coordinate systems.
+    """## Invert a transformation between coordinate systems.
 
     -----
     ### 🛠️ Parameters
@@ -336,7 +336,7 @@ def invert_transform(trans):
     ...
 
 def transform_surface_to(surf, dest, trans, copy: bool = False):
-    """## 🧠 Transform surface to the desired coordinate system.
+    """## Transform surface to the desired coordinate system.
 
     -----
     ### 🛠️ Parameters
@@ -361,7 +361,7 @@ def transform_surface_to(surf, dest, trans, copy: bool = False):
     ...
 
 def get_ras_to_neuromag_trans(nasion, lpa, rpa):
-    """## 🧠 Construct a transformation matrix to the MNE head coordinate system.
+    """## Construct a transformation matrix to the MNE head coordinate system.
 
     Construct a transformation matrix from an arbitrary RAS coordinate system
     to the MNE head coordinate system, in which the x axis passes through the
@@ -387,7 +387,7 @@ def get_ras_to_neuromag_trans(nasion, lpa, rpa):
     ...
 
 class _TPSWarp:
-    """## 🧠 Transform points using thin-plate spline (TPS) warping.
+    """## Transform points using thin-plate spline (TPS) warping.
 
     -----
     ### 📖 Notes
@@ -402,7 +402,7 @@ class _TPSWarp:
 
     def fit(self, source, destination, reg: float = 0.001): ...
     def transform(self, pts, verbose=None):
-        """## 🧠 Apply the warp.
+        """## Apply the warp.
 
         -----
         ### 🛠️ Parameters
@@ -419,7 +419,7 @@ class _TPSWarp:
         ...
 
 class _SphericalSurfaceWarp:
-    """## 🧠 Warp surfaces via spherical harmonic smoothing and thin-plate splines.
+    """## Warp surfaces via spherical harmonic smoothing and thin-plate splines.
 
     -----
     ### 📖 Notes
@@ -438,7 +438,7 @@ class _SphericalSurfaceWarp:
         4. Warp points from the source subject (which should be inside the
            original surface) to the destination subject.
 
-    ✨ Added in vesion 0.14
+    ✨ Added in version 0.14
 
     References
     ----------
@@ -455,7 +455,7 @@ class _SphericalSurfaceWarp:
         match: str = "oct5",
         verbose=None,
     ):
-        """## 🧠 Fit the warp from source points to destination points.
+        """## Fit the warp from source points to destination points.
 
         -----
         ### 🛠️ Parameters
@@ -490,7 +490,7 @@ class _SphericalSurfaceWarp:
         """
         ...
     def transform(self, source, verbose=None):
-        """## 🧠 Transform arbitrary source points to the destination.
+        """## Transform arbitrary source points to the destination.
 
         -----
         ### 🛠️ Parameters
@@ -516,7 +516,7 @@ class _SphericalSurfaceWarp:
         ...
 
 def quat_to_rot(quat):
-    """## 🧠 Convert a set of quaternions to rotations.
+    """## Convert a set of quaternions to rotations.
 
     -----
     ### 🛠️ Parameters
@@ -538,7 +538,7 @@ def quat_to_rot(quat):
     ...
 
 def rot_to_quat(rot):
-    """## 🧠 Convert a set of rotations to quaternions.
+    """## Convert a set of rotations to quaternions.
 
     -----
     ### 🛠️ Parameters
@@ -561,7 +561,7 @@ def rot_to_quat(rot):
     ...
 
 def read_ras_mni_t(subject, subjects_dir=None):
-    """## 🧠 Read a subject's RAS to MNI transform.
+    """## Read a subject's RAS to MNI transform.
 
     -----
     ### 🛠️ Parameters
@@ -592,7 +592,7 @@ def compute_volume_registration(
     starting_affine=None,
     verbose=None,
 ):
-    """## 🧠 Align two volumes using an affine and, optionally, SDR.
+    """## Align two volumes using an affine and, optionally, SDR.
 
     -----
     ### 🛠️ Parameters
@@ -667,7 +667,7 @@ def compute_volume_registration(
     #### `starting_affine : ndarray`
         The affine to initialize the registration with.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -693,7 +693,7 @@ def compute_volume_registration(
     `dipy.align.affine_registration
     <dipy.align._public.affine_registration>`.
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...
 
@@ -706,7 +706,7 @@ def apply_volume_registration(
     cval: float = 0.0,
     verbose=None,
 ):
-    """## 🧠 Apply volume registration.
+    """## Apply volume registration.
 
     Uses registration parameters computed by
     `mne.transforms.compute_volume_registration`.
@@ -750,14 +750,14 @@ def apply_volume_registration(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...
 
 def apply_volume_registration_points(
     info, trans, moving, static, reg_affine, sdr_morph=None, verbose=None
 ):
-    """## 🧠 Apply volume registration.
+    """## Apply volume registration.
 
     Uses registration parameters computed by
     `mne.transforms.compute_volume_registration`.
@@ -805,12 +805,12 @@ def apply_volume_registration_points(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.4.0
+    ✨ Added in version 1.4.0
     """
     ...
 
 class _MatchedDisplacementFieldInterpolator:
-    """## 🧠 Interpolate from matched points using a displacement field in ND.
+    """## Interpolate from matched points using a displacement field in ND.
 
     For a demo, see
     https://gist.github.com/larsoner/fbe32d57996848395854d5e59dff1e10

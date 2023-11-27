@@ -11,7 +11,7 @@ def plot_projs_joint(
     show: bool = True,
     verbose=None,
 ):
-    """## 🧠 Plot projectors and evoked jointly.
+    """## Plot projectors and evoked jointly.
 
     -----
     ### 🛠️ Parameters
@@ -67,6 +67,6 @@ def plot_projs_joint(
           This is useful for visualizing the "ground truth" of the time
           course, e.g. the measured EOG or ECG channel time courses.
 
-    ✨ Added in vesion 1.1
+    ✨ Added in version 1.1
     """
     ...

@@ -1,5 +1,5 @@
 def load_module(name, path):
-    """## 🧠 Load module from .py/.pyc file.
+    """## Load module from .py/.pyc file.
 
     -----
     ### 🛠️ Parameters
@@ -19,9 +19,9 @@ def load_module(name, path):
     ...
 
 def get_optparser(cmdpath, usage=None, prog_prefix: str = "mne", version=None):
-    """## 🧠 Create OptionParser with cmd specific settings (e.g., prog value)."""
+    """## Create OptionParser with cmd specific settings (e.g., prog value)."""
     ...
 
 def main() -> None:
-    """## 🧠 Entrypoint for mne <command> usage."""
+    """## Entrypoint for mne <command> usage."""
     ...

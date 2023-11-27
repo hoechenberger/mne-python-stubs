@@ -4,7 +4,7 @@ from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_boxy(fname, preload: bool = False, verbose=None):
-    """## 🧠 Reader for an optical imaging recording.
+    """## Reader for an optical imaging recording.
 
     This function has been tested using the ISS Imagent I and II systems
     and versions 0.40/0.84 of the BOXY recording software.
@@ -43,7 +43,7 @@ def read_raw_boxy(fname, preload: bool = False, verbose=None):
     ...
 
 class RawBOXY(BaseRaw):
-    """## 🧠 Raw object from a BOXY optical imaging file.
+    """## Raw object from a BOXY optical imaging file.
 
     -----
     ### 🛠️ Parameters

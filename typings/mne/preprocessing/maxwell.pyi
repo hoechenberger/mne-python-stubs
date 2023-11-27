@@ -27,7 +27,7 @@ def maxwell_filter_prepare_emptyroom(
     emit_warning: bool = False,
     verbose=None,
 ):
-    """## 🧠 Prepare an empty-room recording for Maxwell filtering.
+    """## Prepare an empty-room recording for Maxwell filtering.
 
     Empty-room data by default lacks certain properties that are required to
     ensure running `mne.preprocessing.maxwell_filter` will process the
@@ -98,7 +98,7 @@ def maxwell_filter_prepare_emptyroom(
     * Adjust annotations according to the ``annotations`` parameter.
     * Adjust the measurement date according to the ``meas_date`` parameter.
 
-    ✨ Added in vesion 1.1
+    ✨ Added in version 1.1
     """
     ...
 
@@ -124,7 +124,7 @@ def maxwell_filter(
     extended_proj=(),
     verbose=None,
 ):
-    """## 🧠 Maxwell filter data using multipole moments.
+    """## Maxwell filter data using multipole moments.
 
     -----
     ### 🛠️ Parameters
@@ -208,14 +208,14 @@ def maxwell_filter(
         The array should be of shape (N, 10), holding the position
         parameters as returned by e.g. ``read_head_pos``.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
 
     #### `st_fixed : bool`
         If True (default), do tSSS using the median head position during the
         ``st_duration`` window. This is the default behavior of MaxFilter
         and has been most extensively tested.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `st_only : bool`
         If True, only tSSS (temporal) projection of MEG data will be
         performed on the output data. The non-tSSS parameters (e.g.,
@@ -228,7 +228,7 @@ def maxwell_filter(
         evoked movement compensation will be performed with
         `mne.epochs.average_movements`.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
 
     #### `mag_scale : float | str`
         The magenetometer scale-factor used to bring the magnetometers
@@ -238,7 +238,7 @@ def maxwell_filter(
         between the gradiometer pickup loops (e.g., 0.0168 m yields
         59.5 for VectorView).
 
-        ✨ Added in vesion 0.13
+        ✨ Added in version 0.13
 
     #### `skip_by_annotation : str | list of str`
         If a string (or list of str), any annotation segment that begins
@@ -250,13 +250,13 @@ def maxwell_filter(
         or `mne.io.Raw.append`, or separated during acquisition.
         To disable, provide an empty list.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
     #### `extended_proj : list`
         The empty-room projection vectors used to extend the external
         SSS basis (i.e., use eSSS).
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -282,7 +282,7 @@ def maxwell_filter(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.11
+    ✨ Added in version 0.11
 
     Some of this code was adapted and relicensed (with BSD form) with
     permission from Jussi Nurminen. These algorithms are based on work
@@ -398,7 +398,7 @@ def find_bad_channels_maxwell(
     extended_proj=(),
     verbose=None,
 ):
-    """## 🧠 Find bad channels using Maxwell filtering.
+    """## Find bad channels using Maxwell filtering.
 
     -----
     ### 🛠️ Parameters
@@ -431,7 +431,7 @@ def find_bad_channels_maxwell(
                      report any problems and enhancement proposals to the
                      developers.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `origin : array-like, shape (3,) | str`
         Origin of internal and external multipolar moment space in meters.
@@ -509,7 +509,7 @@ def find_bad_channels_maxwell(
         The empty-room projection vectors used to extend the external
         SSS basis (i.e., use eSSS).
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -606,7 +606,7 @@ def find_bad_channels_maxwell(
     particularly susceptible to being different between the two
     implementations.
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
     """
     ...
 
@@ -624,7 +624,7 @@ def compute_maxwell_basis(
     extended_proj=(),
     verbose=None,
 ):
-    """## 🧠 Compute the SSS basis for a given measurement info structure.
+    """## Compute the SSS basis for a given measurement info structure.
 
     -----
     ### 🛠️ Parameters
@@ -686,7 +686,7 @@ def compute_maxwell_basis(
         The empty-room projection vectors used to extend the external
         SSS basis (i.e., use eSSS).
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -717,7 +717,7 @@ def compute_maxwell_basis(
 
         phi_in = S[:, :n_use_in] @ pS[:n_use_in] @ data_meg_good
 
-    ✨ Added in vesion 0.23
+    ✨ Added in version 0.23
 
     References
     ----------

@@ -3,7 +3,7 @@ from ...transforms import Transform as Transform, apply_trans as apply_trans
 from ...utils import warn as warn
 
 def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
-    """## 🧠 Warp a montage to a template with image volumes using SDR.
+    """## Warp a montage to a template with image volumes using SDR.
 
     ### 💡 Note This is likely only applicable for channels inside the brain
               (intracranial electrodes).
@@ -50,7 +50,7 @@ def make_montage_volume(
     use_min: bool = False,
     verbose=None,
 ):
-    """## 🧠 Make a volume from intracranial electrode contact locations.
+    """## Make a volume from intracranial electrode contact locations.
 
     Find areas of the input volume with intensity greater than
     a threshold surrounding local extrema near the channel location.

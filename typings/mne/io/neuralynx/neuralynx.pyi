@@ -5,7 +5,7 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_neuralynx(
     fname, *, preload: bool = False, exclude_fname_patterns=None, verbose=None
 ):
-    """## 🧠 Reader for Neuralynx files.
+    """## Reader for Neuralynx files.
 
     -----
     ### 🛠️ Parameters
@@ -45,7 +45,7 @@ def read_raw_neuralynx(
     ...
 
 class RawNeuralynx(BaseRaw):
-    """## 🧠 RawNeuralynx class."""
+    """## RawNeuralynx class."""
 
     def __init__(
         self,

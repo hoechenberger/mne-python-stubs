@@ -17,7 +17,7 @@ def rap_music(
     *,
     verbose=None,
 ):
-    """## 🧠 RAP-MUSIC source localization method.
+    """## RAP-MUSIC source localization method.
 
     Compute Recursively Applied and Projected MUltiple SIgnal Classification
     (RAP-MUSIC) :footcite:`MosherLeahy1999,MosherLeahy1996` on evoked data.
@@ -63,7 +63,7 @@ def rap_music(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
 
     References
     ----------
@@ -80,7 +80,7 @@ def trap_music(
     *,
     verbose=None,
 ):
-    """## 🧠 TRAP-MUSIC source localization method.
+    """## TRAP-MUSIC source localization method.
 
     Compute Truncated Recursively Applied and Projected MUltiple SIgnal Classification
     (TRAP-MUSIC) :footcite:`Makela2018` on evoked data.
@@ -126,7 +126,7 @@ def trap_music(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.4
+    ✨ Added in version 1.4
 
     References
     ----------

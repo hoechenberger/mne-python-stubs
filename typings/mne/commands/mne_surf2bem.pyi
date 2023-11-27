@@ -1,3 +1,3 @@
 def run() -> None:
-    """## 🧠 Run command."""
+    """## Run command."""
     ...

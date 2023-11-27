@@ -17,7 +17,7 @@ def parallel_func(
     max_jobs=None,
     verbose=None,
 ):
-    """## 🧠 Return parallel instance with delayed function.
+    """## Return parallel instance with delayed function.
 
     Util function to use joblib only if available
 
@@ -50,7 +50,7 @@ def parallel_func(
         If str, can be ``"processes"`` or ``"threads"``.
         See `joblib.Parallel`.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
     #### `max_jobs : int | None`
         The upper limit of jobs to use. This is useful when you know ahead
         of a the maximum number of calls into `joblib.Parallel` that

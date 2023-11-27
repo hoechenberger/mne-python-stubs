@@ -8,7 +8,7 @@ from _typeshed import Incomplete
 CH_TYPE_MAPPING: Incomplete
 
 class RawEDF(BaseRaw):
-    """## 🧠 Raw object from EDF, EDF+ or BDF file.
+    """## Raw object from EDF, EDF+ or BDF file.
 
     -----
     ### 🛠️ Parameters
@@ -41,12 +41,12 @@ class RawEDF(BaseRaw):
         modified. If False, do not infer types and assume all channels are of
         type 'EEG'.
 
-        ✨ Added in vesion 0.24.1
+        ✨ Added in version 0.24.1
     #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
@@ -141,7 +141,7 @@ class RawEDF(BaseRaw):
     ) -> None: ...
 
 class RawGDF(BaseRaw):
-    """## 🧠 Raw object from GDF file.
+    """## Raw object from GDF file.
 
     -----
     ### 🛠️ Parameters
@@ -165,12 +165,12 @@ class RawGDF(BaseRaw):
         Channel names to exclude. This can help when reading data with
         different sampling rates to avoid unnecessary resampling.
 
-        ✨ Added in vesion 0.24.1
+        ✨ Added in version 0.24.1
     #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
@@ -238,7 +238,7 @@ def read_raw_edf(
     *,
     verbose=None,
 ):
-    """## 🧠 Reader function for EDF and EDF+ files.
+    """## Reader function for EDF and EDF+ files.
 
     -----
     ### 🛠️ Parameters
@@ -271,12 +271,12 @@ def read_raw_edf(
         modified. If False, do not infer types and assume all channels are of
         type 'EEG'.
 
-        ✨ Added in vesion 0.24.1
+        ✨ Added in version 0.24.1
     #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
@@ -382,7 +382,7 @@ def read_raw_bdf(
     *,
     verbose=None,
 ):
-    """## 🧠 Reader function for BDF files.
+    """## Reader function for BDF files.
 
     -----
     ### 🛠️ Parameters
@@ -415,12 +415,12 @@ def read_raw_bdf(
         modified. If False, do not infer types and assume all channels are of
         type 'EEG'.
 
-        ✨ Added in vesion 0.24.1
+        ✨ Added in version 0.24.1
     #### `include : list of str | str`
         Channel names to be included. A str is interpreted as a regular
         expression. 'exclude' must be empty if include is assigned.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
@@ -514,7 +514,7 @@ def read_raw_gdf(
     preload: bool = False,
     verbose=None,
 ):
-    """## 🧠 Reader function for GDF files.
+    """## Reader function for GDF files.
 
     -----
     ### 🛠️ Parameters

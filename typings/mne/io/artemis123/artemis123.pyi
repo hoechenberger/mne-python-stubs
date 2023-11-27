@@ -15,7 +15,7 @@ def read_raw_artemis123(
     pos_fname=None,
     add_head_trans: bool = True,
 ):
-    """## 🧠 Read Artemis123 data as raw object.
+    """## Read Artemis123 data as raw object.
 
     -----
     ### 🛠️ Parameters
@@ -59,7 +59,7 @@ def read_raw_artemis123(
     ...
 
 class RawArtemis123(BaseRaw):
-    """## 🧠 Raw object from Artemis123 file.
+    """## Raw object from Artemis123 file.
 
     -----
     ### 🛠️ Parameters

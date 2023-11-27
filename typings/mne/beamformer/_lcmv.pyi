@@ -19,7 +19,7 @@ def make_lcmv(
     inversion: str = "matrix",
     verbose=None,
 ):
-    """## 🧠 Compute LCMV spatial filter.
+    """## Compute LCMV spatial filter.
 
     -----
     ### 🛠️ Parameters
@@ -165,7 +165,7 @@ def make_lcmv(
         🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `inversion : 'single' | 'matrix'`
         This determines how the beamformer deals with source spaces in "free"
@@ -179,7 +179,7 @@ def make_lcmv(
         precise. See section 5 of :footcite:`vanVlietEtAl2018`.
         Defaults to ``'matrix'``.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -263,7 +263,7 @@ def make_lcmv(
     ...
 
 def apply_lcmv(evoked, filters, *, verbose=None):
-    """## 🧠 Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """## Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on evoked data.
@@ -297,12 +297,12 @@ def apply_lcmv(evoked, filters, *, verbose=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...
 
 def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbose=None):
-    """## 🧠 Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """## Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on single trial data.
@@ -339,7 +339,7 @@ def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbos
     ...
 
 def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
-    """## 🧠 Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """## Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on raw data.
@@ -377,7 +377,7 @@ def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
     ...
 
 def apply_lcmv_cov(data_cov, filters, verbose=None):
-    """## 🧠 Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
+    """## Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     to a data covariance matrix to estimate source power.

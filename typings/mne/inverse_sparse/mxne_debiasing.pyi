@@ -7,7 +7,7 @@ from ..utils import (
 def power_iteration_kron(
     A, C, max_iter: int = 1000, tol: float = 0.001, random_state: int = 0
 ):
-    """## 🧠 Find the largest singular value for the matrix kron(C.T, A).
+    """## Find the largest singular value for the matrix kron(C.T, A).
 
     It uses power iterations.
 
@@ -45,7 +45,7 @@ def power_iteration_kron(
 def compute_bias(
     M, G, X, max_iter: int = 1000, tol: float = 1e-06, n_orient: int = 1, verbose=None
 ):
-    """## 🧠 Compute scaling to correct amplitude bias.
+    """## Compute scaling to correct amplitude bias.
 
     It solves the following optimization problem using FISTA:
 

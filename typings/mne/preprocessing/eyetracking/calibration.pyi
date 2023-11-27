@@ -2,7 +2,7 @@ from ...utils import fill_doc as fill_doc, logger as logger
 from ...viz.utils import plt_show as plt_show
 
 class Calibration(dict):
-    """## 🧠 Eye-tracking calibration info.
+    """## Eye-tracking calibration info.
 
     This data structure behaves like a dictionary. It contains information regarding a
     calibration that was conducted during an eye-tracking recording.
@@ -65,7 +65,7 @@ class Calibration(dict):
         screen_resolution=None,
     ) -> None: ...
     def copy(self):
-        """## 🧠 Copy the instance.
+        """## Copy the instance.
 
         -----
         ### ⏎ Returns
@@ -75,7 +75,7 @@ class Calibration(dict):
         """
         ...
     def plot(self, show_offsets: bool = True, axes=None, show: bool = True):
-        """## 🧠 Visualize calibration.
+        """## Visualize calibration.
 
         -----
         ### 🛠️ Parameters
@@ -100,7 +100,7 @@ class Calibration(dict):
 def read_eyelink_calibration(
     fname, screen_size=None, screen_distance=None, screen_resolution=None
 ):
-    """## 🧠 Return info on calibrations collected in an eyelink file.
+    """## Return info on calibrations collected in an eyelink file.
 
     -----
     ### 🛠️ Parameters

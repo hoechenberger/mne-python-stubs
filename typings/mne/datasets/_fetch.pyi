@@ -18,7 +18,7 @@ def fetch_dataset(
     auth=None,
     token=None,
 ):
-    """## 🧠 Fetch an MNE-compatible dataset using pooch.
+    """## Fetch an MNE-compatible dataset using pooch.
 
     -----
     ### 🛠️ Parameters

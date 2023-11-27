@@ -2,7 +2,7 @@ from .parallel import parallel_func as parallel_func
 from .utils import logger as logger, sum_squared as sum_squared, warn as warn
 
 def is_power2(num):
-    """## 🧠 Test if number is a power of 2.
+    """## Test if number is a power of 2.
 
     -----
     ### 🛠️ Parameters
@@ -27,7 +27,7 @@ def is_power2(num):
     ...
 
 def next_fast_len(target):
-    """## 🧠 Find the next fast size of input data to `fft`, for zero-padding, etc.
+    """## Find the next fast size of input data to `fft`, for zero-padding, etc.
 
     SciPy's FFTPACK has efficient functions for radix {2, 3, 4, 5}, so this
     returns the next composite of the prime factors 2, 3, and 5 which is
@@ -54,7 +54,7 @@ def next_fast_len(target):
     ...
 
 def estimate_ringing_samples(system, max_try: int = 100000):
-    """## 🧠 Estimate filter ringing.
+    """## Estimate filter ringing.
 
     -----
     ### 🛠️ Parameters
@@ -84,7 +84,7 @@ def construct_iir_filter(
     phase: str = "zero",
     verbose=None,
 ):
-    """## 🧠 Use IIR parameters to get filtering coefficients.
+    """## Use IIR parameters to get filtering coefficients.
 
     This function works like a wrapper for iirdesign and iirfilter in
     scipy.signal to make filter coefficients for IIR filtering. It also
@@ -102,7 +102,7 @@ def construct_iir_filter(
             * If ``iir_params['sos']`` exists, it will be used as
               second-order sections to perform IIR filtering.
 
-              ✨ Added in vesion 0.13
+              ✨ Added in version 0.13
 
             * Otherwise, if ``iir_params['b']`` and ``iir_params['a']``
               exist, these will be used as coefficients to perform IIR
@@ -156,7 +156,7 @@ def construct_iir_filter(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        ✨ Added in vesion 0.13
+        ✨ Added in version 0.13
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -249,7 +249,7 @@ def filter_data(
     *,
     verbose=None,
 ):
-    """## 🧠 Filter a subset of channels.
+    """## Filter a subset of channels.
 
     -----
     ### 🛠️ Parameters
@@ -337,13 +337,13 @@ def filter_data(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        ✨ Added in vesion 0.13
+        ✨ Added in version 0.13
 
     #### `fir_window : str`
         The window to use in FIR design, can be "hamming" (default),
         "hann" (default in 0.13), or "blackman".
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `fir_design : str`
         Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -351,7 +351,7 @@ def filter_data(
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `pad : str`
         The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -362,7 +362,7 @@ def filter_data(
         Only used for ``method='fir'``.
         The default is ``'reflect_limited'``.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -424,7 +424,7 @@ def create_filter(
     fir_design: str = "firwin",
     verbose=None,
 ):
-    """## 🧠 Create a FIR or IIR filter.
+    """## Create a FIR or IIR filter.
 
     ``l_freq`` and ``h_freq`` are the frequencies below which and above
     which, respectively, to filter out of the data. Thus the uses are:
@@ -510,13 +510,13 @@ def create_filter(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        ✨ Added in vesion 0.13
+        ✨ Added in version 0.13
 
     #### `fir_window : str`
         The window to use in FIR design, can be "hamming" (default),
         "hann" (default in 0.13), or "blackman".
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `fir_design : str`
         Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -524,7 +524,7 @@ def create_filter(
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -619,7 +619,7 @@ def create_filter(
 
     Where ``Fstop = Fp - trans_bandwidth``.
 
-    ✨ Added in vesion 0.14
+    ✨ Added in version 0.14
     """
     ...
 
@@ -644,7 +644,7 @@ def notch_filter(
     *,
     verbose=None,
 ):
-    """## 🧠 Notch filter for the signal x.
+    """## Notch filter for the signal x.
 
     Applies a zero-phase notch filter to the signal x, operating on the last
     dimension.
@@ -740,13 +740,13 @@ def notch_filter(
         If ``phase='forward'``, it constructs and applies forward IIR filter using
         `scipy.signal.lfilter`.
 
-        ✨ Added in vesion 0.13
+        ✨ Added in version 0.13
 
     #### `fir_window : str`
         The window to use in FIR design, can be "hamming" (default),
         "hann" (default in 0.13), or "blackman".
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `fir_design : str`
         Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -754,7 +754,7 @@ def notch_filter(
         a time-domain design technique that generally gives improved
         attenuation using fewer samples than "firwin2".
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `pad : str`
         The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -821,7 +821,7 @@ def resample(
     *,
     verbose=None,
 ):
-    """## 🧠 Resample an array.
+    """## Resample an array.
 
     Operates along the last dimension of the array.
 
@@ -857,7 +857,7 @@ def resample(
         of the vector, followed by zeros.
         The default is ``'reflect_limited'``.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -888,7 +888,7 @@ def resample(
     ...
 
 def detrend(x, order: int = 1, axis: int = -1):
-    """## 🧠 Detrend the array x.
+    """## Detrend the array x.
 
     -----
     ### 🛠️ Parameters
@@ -921,10 +921,10 @@ def detrend(x, order: int = 1, axis: int = -1):
     ...
 
 class FilterMixin:
-    """## 🧠 Object for Epoch/Evoked filtering."""
+    """## Object for Epoch/Evoked filtering."""
 
     def savgol_filter(self, h_freq, verbose=None):
-        """## 🧠 Filter the data using Savitzky-Golay polynomial method.
+        """## Filter the data using Savitzky-Golay polynomial method.
 
         -----
         ### 🛠️ Parameters
@@ -961,7 +961,7 @@ class FilterMixin:
 
             https://gist.github.com/larsoner/bbac101d50176611136b
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
 
         References
         ----------
@@ -997,7 +997,7 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """## 🧠 Filter a subset of channels.
+        """## Filter a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -1082,13 +1082,13 @@ class FilterMixin:
             If ``phase='forward'``, it constructs and applies forward IIR filter using
             `scipy.signal.lfilter`.
 
-            ✨ Added in vesion 0.13
+            ✨ Added in version 0.13
 
         #### `fir_window : str`
             The window to use in FIR design, can be "hamming" (default),
             "hann" (default in 0.13), or "blackman".
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `fir_design : str`
             Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -1096,7 +1096,7 @@ class FilterMixin:
             a time-domain design technique that generally gives improved
             attenuation using fewer samples than "firwin2".
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `skip_by_annotation : str | list of str`
             If a string (or list of str), any annotation segment that begins
@@ -1108,7 +1108,7 @@ class FilterMixin:
             or `mne.io.Raw.append`, or separated during acquisition.
             To disable, provide an empty list. Only used if ``inst`` is raw.
 
-            ✨ Added in vesion 0.16.
+            ✨ Added in version 0.16.
 
         #### `pad : str`
             The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -1170,7 +1170,7 @@ class FilterMixin:
         `disc-filtering` and `tut-filter-resample` and
         `mne.filter.create_filter`.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
         """
         ...
     def resample(
@@ -1183,7 +1183,7 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """## 🧠 Resample data.
+        """## Resample data.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
@@ -1217,7 +1217,7 @@ class FilterMixin:
             The default is ``'edge'``, which pads with the edge values of each
             vector.
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1252,7 +1252,7 @@ class FilterMixin:
         *,
         verbose=None,
     ):
-        """## 🧠 Compute analytic signal or envelope for a subset of channels.
+        """## Compute analytic signal or envelope for a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -1347,7 +1347,7 @@ def design_mne_c_filter(
     h_trans_bandwidth: float = 5.0,
     verbose=None,
 ):
-    """## 🧠 Create a FIR filter like that used by MNE-C.
+    """## Create a FIR filter like that used by MNE-C.
 
     -----
     ### 🛠️ Parameters

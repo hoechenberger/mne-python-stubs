@@ -4,7 +4,7 @@ from mne.utils import (
 )
 
 def freeview_bem_surfaces(subject, subjects_dir, method) -> None:
-    """## 🧠 View 3-Layers BEM model with Freeview.
+    """## View 3-Layers BEM model with Freeview.
 
     -----
     ### 🛠️ Parameters
@@ -19,5 +19,5 @@ def freeview_bem_surfaces(subject, subjects_dir, method) -> None:
     ...
 
 def run() -> None:
-    """## 🧠 Run command."""
+    """## Run command."""
     ...

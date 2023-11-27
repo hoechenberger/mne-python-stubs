@@ -17,7 +17,7 @@ def psd_array_welch(
     output: str = "power",
     verbose=None,
 ):
-    """## 🧠 Compute power spectral density (PSD) using Welch's method.
+    """## Compute power spectral density (PSD) using Welch's method.
 
     Welch's method is described in :footcite:t:`Welch1967`.
 
@@ -54,11 +54,11 @@ def psd_array_welch(
         its bias relative to the mean. If ``None``, returns the unaggregated
         segments.
 
-        ✨ Added in vesion 0.19.0
+        ✨ Added in version 0.19.0
     #### `window : str | float | tuple`
         Windowing function to use. See `scipy.signal.get_window`.
 
-        ✨ Added in vesion 0.22.0
+        ✨ Added in version 0.22.0
 
     #### `remove_dc : bool`
         If ``True``, the mean is subtracted from each segment before computing
@@ -72,7 +72,7 @@ def psd_array_welch(
         * ``'complex'`` : the complex fourier coefficients are returned per
           window.
 
-        ✨ Added in vesion 1.4.0
+        ✨ Added in version 1.4.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -96,7 +96,7 @@ def psd_array_welch(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.14.0
+    ✨ Added in version 0.14.0
 
     References
     ----------

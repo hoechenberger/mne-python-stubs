@@ -22,7 +22,7 @@ def make_dics(
     inversion: str = "matrix",
     verbose=None,
 ):
-    """## 🧠 Compute a Dynamic Imaging of Coherent Sources (DICS) spatial filter.
+    """## Compute a Dynamic Imaging of Coherent Sources (DICS) spatial filter.
 
     This is a beamformer filter that can be used to estimate the source power
     at a specific frequency range :footcite:`GrossEtAl2001`. It does this by
@@ -55,7 +55,7 @@ def make_dics(
         mix sensor types, e.g. gradiometers with magnetometers or EEG with
         MEG.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
     #### `label : Label | None`
         Restricts the solution to a given label.
 
@@ -117,7 +117,7 @@ def make_dics(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
     #### `weight_norm : str | None`
         Can be:
@@ -286,7 +286,7 @@ def make_dics(
     ...
 
 def apply_dics(evoked, filters, verbose=None):
-    """## 🧠 Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on evoked data.
@@ -333,7 +333,7 @@ def apply_dics(evoked, filters, verbose=None):
     ...
 
 def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=None):
-    """## 🧠 Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on single trial data.
@@ -384,7 +384,7 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
 def apply_dics_tfr_epochs(
     epochs_tfr, filters, return_generator: bool = False, verbose=None
 ):
-    """## 🧠 Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on single trial time-frequency data.
@@ -424,7 +424,7 @@ def apply_dics_tfr_epochs(
     ...
 
 def apply_dics_csd(csd, filters, verbose=None):
-    """## 🧠 Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply a previously computed DICS beamformer to a cross-spectral density
     (CSD) object to estimate source power in time and frequency windows

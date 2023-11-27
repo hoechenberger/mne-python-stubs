@@ -10,7 +10,7 @@ def read_raw_eyelink(
     overlap_threshold: float = 0.05,
     verbose=None,
 ):
-    """## 🧠 Reader for an Eyelink ``.asc`` file.
+    """## Reader for an Eyelink ``.asc`` file.
 
     -----
     ### 🛠️ Parameters
@@ -76,7 +76,7 @@ def read_raw_eyelink(
     ...
 
 class RawEyelink(BaseRaw):
-    """## 🧠 Raw object from an XXX file.
+    """## Raw object from an XXX file.
 
     -----
     ### 🛠️ Parameters

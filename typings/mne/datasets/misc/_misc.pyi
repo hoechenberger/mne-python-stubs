@@ -8,7 +8,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of misc dataset.
+    """## Get path to local copy of misc dataset.
 
     -----
     ### 🛠️ Parameters

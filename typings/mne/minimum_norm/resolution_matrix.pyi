@@ -18,7 +18,7 @@ def make_inverse_resolution_matrix(
     lambda2=0.1111111111111111,
     verbose=None,
 ):
-    """## 🧠 Compute resolution matrix for linear inverse operator.
+    """## Compute resolution matrix for linear inverse operator.
 
     -----
     ### 🛠️ Parameters
@@ -63,7 +63,7 @@ def get_point_spread(
     vector: bool = False,
     verbose=None,
 ):
-    """## 🧠 Get point-spread (PSFs) functions for vertices.
+    """## Get point-spread (PSFs) functions for vertices.
 
     -----
     ### 🛠️ Parameters
@@ -124,7 +124,7 @@ def get_point_spread(
         Only allowed to be True if corresponding dimension of resolution matrix
         is 3 * n_dipoles. Defaults to False.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -169,7 +169,7 @@ def get_cross_talk(
     vector: bool = False,
     verbose=None,
 ):
-    """## 🧠 Get cross-talk (CTFs) function for vertices.
+    """## Get cross-talk (CTFs) function for vertices.
 
     -----
     ### 🛠️ Parameters
@@ -230,7 +230,7 @@ def get_cross_talk(
         Only allowed to be True if corresponding dimension of resolution matrix
         is 3 * n_dipoles. Defaults to False.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

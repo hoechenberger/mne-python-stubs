@@ -28,7 +28,7 @@ class _BuiltinStandardMontage:
     def __init__(self, name, description) -> None: ...
 
 def get_builtin_montages(*, descriptions: bool = False):
-    """## 🧠 Get a list of all standard montages shipping with MNE-Python.
+    """## Get a list of all standard montages shipping with MNE-Python.
 
     The names of the montages can be passed to `make_standard_montage`.
 
@@ -42,7 +42,7 @@ def get_builtin_montages(*, descriptions: bool = False):
         the montage description. If ``False`` (default), only the names are
         returned.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     -----
     ### ⏎ Returns
@@ -64,7 +64,7 @@ def make_dig_montage(
     hpi=None,
     coord_frame: str = "unknown",
 ):
-    """## 🧠 Make montage from arrays.
+    """## Make montage from arrays.
 
     -----
     ### 🛠️ Parameters
@@ -119,7 +119,7 @@ def make_dig_montage(
     ...
 
 class DigMontage:
-    """## 🧠 Montage for digitized electrode and headshape position data.
+    """## Montage for digitized electrode and headshape position data.
 
     ### ⛔️ Warning Montages are typically created using one of the helper
                  functions in the ``See Also`` section below instead of
@@ -148,7 +148,7 @@ class DigMontage:
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
 
     dig: Incomplete
@@ -166,7 +166,7 @@ class DigMontage:
         axes=None,
         verbose=None,
     ):
-        """## 🧠 Plot a montage.
+        """## Plot a montage.
 
         -----
         ### 🛠️ Parameters
@@ -192,14 +192,14 @@ class DigMontage:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `axes : instance of Axes | instance of Axes3D | None`
             Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
             of Axes3D. If None (default), a new axes will be created.
 
-            ✨ Added in vesion 1.4
+            ✨ Added in version 1.4
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -215,7 +215,7 @@ class DigMontage:
         """
         ...
     def rename_channels(self, mapping, allow_duplicates: bool = False) -> None:
-        """## 🧠 Rename the channels.
+        """## Rename the channels.
 
         -----
         ### 🛠️ Parameters
@@ -232,7 +232,7 @@ class DigMontage:
             If True (default False), allow duplicates, which will automatically
             be renamed with ``-N`` at the end.
 
-            ✨ Added in vesion 0.22.0
+            ✨ Added in version 0.22.0
 
         -----
         ### ⏎ Returns
@@ -242,7 +242,7 @@ class DigMontage:
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """## 🧠 Save digitization points to FIF.
+        """## Save digitization points to FIF.
 
         -----
         ### 🛠️ Parameters
@@ -262,7 +262,7 @@ class DigMontage:
         """
         ...
     def __iadd__(self, other):
-        """## 🧠 Add two DigMontages in place.
+        """## Add two DigMontages in place.
 
         -----
         ### 📖 Notes
@@ -273,7 +273,7 @@ class DigMontage:
         """
         ...
     def copy(self):
-        """## 🧠 Copy the DigMontage object.
+        """## Copy the DigMontage object.
 
         -----
         ### ⏎ Returns
@@ -283,10 +283,10 @@ class DigMontage:
         """
         ...
     def __add__(self, other):
-        """## 🧠 Add two DigMontages."""
+        """## Add two DigMontages."""
         ...
     def __eq__(self, other):
-        """## 🧠 Compare different DigMontage objects for equality.
+        """## Compare different DigMontage objects for equality.
 
         -----
         ### ⏎ Returns
@@ -295,7 +295,7 @@ class DigMontage:
         """
         ...
     def get_positions(self):
-        """## 🧠 Get all channel and fiducial positions.
+        """## Get all channel and fiducial positions.
 
         -----
         ### ⏎ Returns
@@ -321,7 +321,7 @@ class DigMontage:
         """
         ...
     def apply_trans(self, trans, verbose=None) -> None:
-        """## 🧠 Apply a transformation matrix to the montage.
+        """## Apply a transformation matrix to the montage.
 
         -----
         ### 🛠️ Parameters
@@ -337,7 +337,7 @@ class DigMontage:
         """
         ...
     def add_estimated_fiducials(self, subject, subjects_dir=None, verbose=None):
-        """## 🧠 Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
+        """## Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
 
         This takes a montage with the ``mri`` coordinate frame,
         corresponding to the FreeSurfer RAS (xyz in the volume) T1w
@@ -386,7 +386,7 @@ class DigMontage:
         """
         ...
     def add_mni_fiducials(self, subjects_dir=None, verbose=None):
-        """## 🧠 Add fiducials to a montage in MNI space.
+        """## Add fiducials to a montage in MNI space.
 
         -----
         ### 🛠️ Parameters
@@ -422,7 +422,7 @@ class DigMontage:
         """
         ...
     def remove_fiducials(self, verbose=None):
-        """## 🧠 Remove the fiducial points from a montage.
+        """## Remove the fiducial points from a montage.
 
         -----
         ### 🛠️ Parameters
@@ -455,7 +455,7 @@ class DigMontage:
 VALID_SCALES: Incomplete
 
 def transform_to_head(montage):
-    """## 🧠 Transform a DigMontage object into head coordinate.
+    """## Transform a DigMontage object into head coordinate.
 
     -----
     ### 🛠️ Parameters
@@ -489,7 +489,7 @@ def transform_to_head(montage):
     ...
 
 def read_dig_dat(fname):
-    """## 🧠 Read electrode positions from a ``*.dat`` file.
+    """## Read electrode positions from a ``*.dat`` file.
 
     ### ⛔️ Warning
         This function was implemented based on ``*.dat`` files available from
@@ -530,7 +530,7 @@ def read_dig_dat(fname):
     ...
 
 def read_dig_fif(fname):
-    """## 🧠 Read digitized points from a .fif file.
+    """## Read digitized points from a .fif file.
 
     Note that electrode names are not present in the .fif file so
     they are here defined with the convention from VectorView
@@ -563,7 +563,7 @@ def read_dig_fif(fname):
     ...
 
 def read_dig_hpts(fname, unit: str = "mm"):
-    """## 🧠 Read historical ``.hpts`` MNE-C files.
+    """## Read historical ``.hpts`` MNE-C files.
 
     -----
     ### 🛠️ Parameters
@@ -637,7 +637,7 @@ def read_dig_hpts(fname, unit: str = "mm"):
     ...
 
 def read_dig_egi(fname):
-    """## 🧠 Read electrode locations from EGI system.
+    """## Read electrode locations from EGI system.
 
     -----
     ### 🛠️ Parameters
@@ -666,7 +666,7 @@ def read_dig_egi(fname):
     ...
 
 def read_dig_captrak(fname):
-    """## 🧠 Read electrode locations from CapTrak Brain Products system.
+    """## Read electrode locations from CapTrak Brain Products system.
 
     -----
     ### 🛠️ Parameters
@@ -696,7 +696,7 @@ def read_dig_captrak(fname):
     ...
 
 def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
-    """## 🧠 Read Localite .csv file.
+    """## Read Localite .csv file.
 
     -----
     ### 🛠️ Parameters
@@ -731,7 +731,7 @@ def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
     ...
 
 def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
-    """## 🧠 Read Polhemus digitizer data from a file.
+    """## Read Polhemus digitizer data from a file.
 
     -----
     ### 🛠️ Parameters
@@ -771,7 +771,7 @@ def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
 def read_polhemus_fastscan(
     fname, unit: str = "mm", on_header_missing: str = "raise", *, verbose=None
 ):
-    """## 🧠 Read Polhemus FastSCAN digitizer data from a ``.txt`` file.
+    """## Read Polhemus FastSCAN digitizer data from a ``.txt`` file.
 
     -----
     ### 🛠️ Parameters
@@ -786,7 +786,7 @@ def read_polhemus_fastscan(
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when the FastSCAN header is missing.
 
-        ✨ Added in vesion 0.22
+        ✨ Added in version 0.22
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -809,7 +809,7 @@ def read_polhemus_fastscan(
     ...
 
 def read_custom_montage(fname, head_size=0.095, coord_frame=None):
-    """## 🧠 Read a montage from a file.
+    """## Read a montage from a file.
 
     -----
     ### 🛠️ Parameters
@@ -829,7 +829,7 @@ def read_custom_montage(fname, head_size=0.095, coord_frame=None):
         for native digitizer space. Defaults to None, which is ``"unknown"``
         for most readers but ``"head"`` for EEGLAB.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     -----
     ### ⏎ Returns
@@ -858,7 +858,7 @@ def read_custom_montage(fname, head_size=0.095, coord_frame=None):
     ...
 
 def compute_dev_head_t(montage):
-    """## 🧠 Compute device to head transform from a DigMontage.
+    """## Compute device to head transform from a DigMontage.
 
     -----
     ### 🛠️ Parameters
@@ -877,7 +877,7 @@ def compute_dev_head_t(montage):
     ...
 
 def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
-    """## 🧠 Compute the native-to-head transformation for a montage.
+    """## Compute the native-to-head transformation for a montage.
 
     This uses the fiducials in the native space to transform to compute the
     transform to the head coordinate frame.
@@ -892,7 +892,7 @@ def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when some necessary fiducial points are missing.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -909,7 +909,7 @@ def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
     ...
 
 def make_standard_montage(kind, head_size: str = "auto"):
-    """## 🧠 Read a generic (built-in) standard montage that ships with MNE-Python.
+    """## Read a generic (built-in) standard montage that ships with MNE-Python.
 
     -----
     ### 🛠️ Parameters
@@ -948,6 +948,6 @@ def make_standard_montage(kind, head_size: str = "auto"):
     `read_dig_fif`, `read_dig_polhemus_isotrak`,
     `read_dig_hpts`, or manually made with `make_dig_montage`.
 
-    ✨ Added in vesion 0.19.0
+    ✨ Added in version 0.19.0
     """
     ...

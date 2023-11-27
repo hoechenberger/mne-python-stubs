@@ -11,7 +11,7 @@ def export_raw(
     overwrite: bool = False,
     verbose=None,
 ) -> None:
-    """## 🧠 Export Raw to external formats.
+    """## Export Raw to external formats.
 
     Supported formats:
         - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
@@ -52,7 +52,7 @@ def export_raw(
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 0.24.1
+        ✨ Added in version 0.24.1
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -63,7 +63,7 @@ def export_raw(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
@@ -97,7 +97,7 @@ def export_raw(
 def export_epochs(
     fname, epochs, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """## 🧠 Export Epochs to external formats.
+    """## Export Epochs to external formats.
 
     Supported formats:
         - EEGLAB (``.set``, uses `eeglabio`)
@@ -124,7 +124,7 @@ def export_epochs(
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 0.24.1
+        ✨ Added in version 0.24.1
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -135,7 +135,7 @@ def export_epochs(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,
@@ -152,7 +152,7 @@ def export_epochs(
 def export_evokeds(
     fname, evoked, fmt: str = "auto", *, overwrite: bool = False, verbose=None
 ) -> None:
-    """## 🧠 Export evoked dataset to external formats.
+    """## Export evoked dataset to external formats.
 
     This function is a wrapper for format-specific export functions. The export
     function is selected based on the inferred file format. For additional
@@ -185,7 +185,7 @@ def export_evokeds(
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 0.24.1
+        ✨ Added in version 0.24.1
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -202,7 +202,7 @@ def export_evokeds(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
 
     Export to external format may not preserve all the information from the
     instance. To save in native MNE format (``.fif``) without information loss,

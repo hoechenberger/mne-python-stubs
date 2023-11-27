@@ -40,7 +40,7 @@ def compute_proj_ecg(
     meg: str = "separate",
     verbose=None,
 ):
-    """## 🧠 Compute SSP (signal-space projection) vectors for ECG artifacts.
+    """## Compute SSP (signal-space projection) vectors for ECG artifacts.
 
     This function will:
 
@@ -126,14 +126,14 @@ def compute_proj_ecg(
     #### `return_drop_log : bool`
         If True, return the drop log.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
     #### `meg : str`
         Can be ``'separate'`` (default) or ``'combined'`` to compute projectors
         for magnetometers and gradiometers separately or jointly.
         If ``'combined'``, ``n_mag == n_grad`` is required and the number of
         projectors computed for MEG will be ``n_mag``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -198,7 +198,7 @@ def compute_proj_eog(
     meg: str = "separate",
     verbose=None,
 ):
-    """## 🧠 Compute SSP (signal-space projection) vectors for EOG artifacts.
+    """## Compute SSP (signal-space projection) vectors for EOG artifacts.
 
     This function will:
 
@@ -281,14 +281,14 @@ def compute_proj_eog(
     #### `return_drop_log : bool`
         If True, return the drop log.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
     #### `meg : str`
         Can be 'separate' (default) or 'combined' to compute projectors
         for magnetometers and gradiometers separately or jointly.
         If 'combined', ``n_mag == n_grad`` is required and the number of
         projectors computed for MEG will be ``n_mag``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

@@ -10,7 +10,7 @@ def clean_ecg_eog(
     in_path: str = ".",
     quiet: bool = False,
 ) -> None:
-    """## 🧠 Clean ECG from raw fif file.
+    """## Clean ECG from raw fif file.
 
     -----
     ### 🛠️ Parameters
@@ -31,5 +31,5 @@ def clean_ecg_eog(
     ...
 
 def run() -> None:
-    """## 🧠 Run command."""
+    """## Run command."""
     ...

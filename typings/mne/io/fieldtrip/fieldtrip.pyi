@@ -3,7 +3,7 @@ from ...evoked import EvokedArray as EvokedArray
 from ..array.array import RawArray as RawArray
 
 def read_raw_fieldtrip(fname, info, data_name: str = "data"):
-    """## 🧠 Load continuous (raw) data from a FieldTrip preprocessing structure.
+    """## Load continuous (raw) data from a FieldTrip preprocessing structure.
 
     This function expects to find single trial raw data (FT_DATATYPE_RAW) in
     the structure data_name is pointing at.
@@ -45,7 +45,7 @@ def read_raw_fieldtrip(fname, info, data_name: str = "data"):
 def read_epochs_fieldtrip(
     fname, info, data_name: str = "data", trialinfo_column: int = 0
 ):
-    """## 🧠 Load epoched data from a FieldTrip preprocessing structure.
+    """## Load epoched data from a FieldTrip preprocessing structure.
 
     This function expects to find epoched data in the structure data_name is
     pointing at.
@@ -84,7 +84,7 @@ def read_epochs_fieldtrip(
     ...
 
 def read_evoked_fieldtrip(fname, info, comment=None, data_name: str = "data"):
-    """## 🧠 Load evoked data from a FieldTrip timelocked structure.
+    """## Load evoked data from a FieldTrip timelocked structure.
 
     This function expects to find timelocked data in the structure data_name is
     pointing at.

@@ -1,11 +1,11 @@
 from ..utils import fill_doc as fill_doc
 
 def split_name_ext(fname):
-    """## 🧠 Return name and supported file extension."""
+    """## Return name and supported file extension."""
     ...
 
 def read_raw(fname, *, preload: bool = False, verbose=None, **kwargs):
-    """## 🧠 Read raw file.
+    """## Read raw file.
 
     This function is a convenient wrapper for readers defined in `mne.io`. The
     correct reader is automatically selected based on the detected file format.

@@ -28,7 +28,7 @@ from dataclasses import dataclass
 from typing import Union
 
 def equalize_channels(instances, copy: bool = True, verbose=None):
-    """## 🧠 Equalize channel picks and ordering across multiple MNE-Python objects.
+    """## Equalize channel picks and ordering across multiple MNE-Python objects.
 
     First, all channels that are not common to each object are dropped. Then,
     using the first object in the list as a template, the channels of each
@@ -47,7 +47,7 @@ def equalize_channels(instances, copy: bool = True, verbose=None):
         when this parameter is set to ``True``. When set to ``False`` (the
         default) the dropping and re-ordering of channels happens in-place.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -70,7 +70,7 @@ def equalize_channels(instances, copy: bool = True, verbose=None):
     ...
 
 def unify_bad_channels(insts):
-    """## 🧠 Unify bad channels across a list of instances.
+    """## Unify bad channels across a list of instances.
 
     All instances must be of the same type and have matching channel names and channel
     order. The ``.info["bads"]`` of each instance will be set to the union of
@@ -102,12 +102,12 @@ def unify_bad_channels(insts):
 
     This function modifies the instances in-place.
 
-    ✨ Added in vesion 1.6
+    ✨ Added in version 1.6
     """
     ...
 
 class ReferenceMixin(MontageMixin):
-    """## 🧠 Mixin class for Raw, Evoked, Epochs."""
+    """## Mixin class for Raw, Evoked, Epochs."""
 
     def set_eeg_reference(
         self,
@@ -119,7 +119,7 @@ class ReferenceMixin(MontageMixin):
         joint: bool = False,
         verbose=None,
     ):
-        """## 🧠 Specify which reference to use for EEG data.
+        """## Specify which reference to use for EEG data.
 
         Use this function to explicitly specify the desired reference for EEG.
         This can be either an existing electrode or a new virtual channel.
@@ -156,21 +156,21 @@ class ReferenceMixin(MontageMixin):
             ``'dbs'``. If ``'auto'``, the first channel type of eeg, ecog, seeg or dbs
             that is found (in that order) will be selected.
 
-            ✨ Added in vesion 0.19
+            ✨ Added in version 0.19
             🎭 Changed in version 1.2
                ``list-of-str`` is now supported with ``projection=True``.
 
         #### `forward : instance of Forward | None`
             Forward solution to use. Only used with ``ref_channels='REST'``.
 
-            ✨ Added in vesion 0.21
+            ✨ Added in version 0.21
 
         #### `joint : bool`
             How to handle list-of-str ``ch_type``. If False (default), one projector
             is created per channel type. If True, one projector is created across
             all channel types. This is only used when ``projection=True``.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -230,7 +230,7 @@ class ReferenceMixin(MontageMixin):
         4. For an average or REST reference, bad EEG channels are automatically
            excluded if they are properly set in ``info['bads']``.
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
 
         References
         ----------
@@ -239,7 +239,7 @@ class ReferenceMixin(MontageMixin):
         ...
 
 class UpdateChannelsMixin:
-    """## 🧠 Mixin class for Raw, Evoked, Epochs, Spectrum, AverageTFR."""
+    """## Mixin class for Raw, Evoked, Epochs, Spectrum, AverageTFR."""
 
     def pick_types(
         self,
@@ -273,7 +273,7 @@ class UpdateChannelsMixin:
         selection=None,
         verbose=None,
     ):
-        """## 🧠 ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
+        """## ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
 
         Pick some channels by type and names.
 
@@ -369,11 +369,11 @@ class UpdateChannelsMixin:
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
         """
         ...
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
-        """## 🧠 ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
+        """## ### ⛔️ Warning LEGACY: New code should use inst.pick(...).
 
         Pick some channels.
 
@@ -387,7 +387,7 @@ class UpdateChannelsMixin:
             If True (default False), ensure that the order of the channels in
             the modified instance matches the order of ``ch_names``.
 
-            ✨ Added in vesion 0.20.0
+            ✨ Added in version 0.20.0
             🎭 Changed in version 1.5
                 The default changed from False in 1.4 to True in 1.5.
 
@@ -397,7 +397,7 @@ class UpdateChannelsMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-            ✨ Added in vesion 1.1
+            ✨ Added in version 1.1
 
         -----
         ### ⏎ Returns
@@ -419,11 +419,11 @@ class UpdateChannelsMixin:
         does not matter. The original order of the channels is preserved.
         You can use ``reorder_channels`` to set channel order if necessary.
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
         """
         ...
     def pick(self, picks, exclude=(), *, verbose=None):
-        """## 🧠 Pick a subset of channels.
+        """## Pick a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -447,7 +447,7 @@ class UpdateChannelsMixin:
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
 
         -----
         ### ⏎ Returns
@@ -457,7 +457,7 @@ class UpdateChannelsMixin:
         """
         ...
     def reorder_channels(self, ch_names):
-        """## 🧠 Reorder channels.
+        """## Reorder channels.
 
         -----
         ### 🛠️ Parameters
@@ -484,11 +484,11 @@ class UpdateChannelsMixin:
         Channel names must be unique. Channels that are not in ``ch_names``
         are dropped.
 
-        ✨ Added in vesion 0.16.0
+        ✨ Added in version 0.16.0
         """
         ...
     def drop_channels(self, ch_names, on_missing: str = "raise"):
-        """## 🧠 Drop channel(s).
+        """## Drop channel(s).
 
         -----
         ### 🛠️ Parameters
@@ -500,7 +500,7 @@ class UpdateChannelsMixin:
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
 
-            ✨ Added in vesion 0.23.0
+            ✨ Added in version 0.23.0
 
         -----
         ### ⏎ Returns
@@ -518,14 +518,14 @@ class UpdateChannelsMixin:
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
         """
         ...
     info: Incomplete
     picks: Incomplete
 
     def add_channels(self, add_list, force_update_info: bool = False):
-        """## 🧠 Append new channels to the instance.
+        """## Append new channels to the instance.
 
         -----
         ### 🛠️ Parameters
@@ -538,7 +538,7 @@ class UpdateChannelsMixin:
             values in ``self``. This should generally only be used when adding
             stim channels for which important metadata won't be overwritten.
 
-            ✨ Added in vesion 0.12
+            ✨ Added in version 0.12
 
         -----
         ### ⏎ Returns
@@ -559,7 +559,7 @@ class UpdateChannelsMixin:
         """
         ...
     def add_reference_channels(self, ref_channels):
-        """## 🧠 Add reference channels to data that consists of all zeros.
+        """## Add reference channels to data that consists of all zeros.
 
         Adds reference channels to data that were not included during
         recording. This is useful when you need to re-reference your data
@@ -583,7 +583,7 @@ class UpdateChannelsMixin:
         ...
 
 class InterpolationMixin:
-    """## 🧠 Mixin class for Raw, Evoked, Epochs."""
+    """## Mixin class for Raw, Evoked, Epochs."""
 
     def interpolate_bads(
         self,
@@ -594,7 +594,7 @@ class InterpolationMixin:
         exclude=(),
         verbose=None,
     ):
-        """## 🧠 Interpolate bad MEG and EEG channels.
+        """## Interpolate bad MEG and EEG channels.
 
         Operates in place.
 
@@ -612,7 +612,7 @@ class InterpolationMixin:
             Can be ``'auto'`` (default), which means a head-digitization-based
             origin fit.
 
-            ✨ Added in vesion 0.17
+            ✨ Added in version 0.17
         #### `method : dict | str | None`
             Method to use for each channel type.
 
@@ -632,7 +632,7 @@ class InterpolationMixin:
                 Be careful when using ``method="nan"``; the default value
                 ``reset_bads=True`` may not be what you want.
 
-            ✨ Added in vesion 0.21
+            ✨ Added in version 0.21
         #### `exclude : list | tuple`
             The channels to exclude from interpolation. If excluded a bad
             channel will stay in bads.
@@ -654,14 +654,14 @@ class InterpolationMixin:
 
         The ``"MNE"`` method uses minimum-norm projection to a sphere and back.
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
         """
         ...
 
 def rename_channels(
     info, mapping, allow_duplicates: bool = False, *, verbose=None
 ) -> None:
-    """## 🧠 Rename channels.
+    """## Rename channels.
 
     -----
     ### 🛠️ Parameters
@@ -681,7 +681,7 @@ def rename_channels(
         If True (default False), allow duplicates, which will automatically
         be renamed with ``-N`` at the end.
 
-        ✨ Added in vesion 0.22.0
+        ✨ Added in version 0.22.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -701,7 +701,7 @@ class _BuiltinChannelAdjacency:
     def __init__(self, name, description, fname, source_url) -> None: ...
 
 def get_builtin_ch_adjacencies(*, descriptions: bool = False):
-    """## 🧠 Get a list of all FieldTrip neighbor definitions shipping with MNE.
+    """## Get a list of all FieldTrip neighbor definitions shipping with MNE.
 
     The names of the these neighbor definitions can be passed to
     `read_ch_adjacency`.
@@ -728,12 +728,12 @@ def get_builtin_ch_adjacencies(*, descriptions: bool = False):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.1
+    ✨ Added in version 1.1
     """
     ...
 
 def read_ch_adjacency(fname, picks=None):
-    """## 🧠 Read a channel adjacency ("neighbors") file that ships with MNE.
+    """## Read a channel adjacency ("neighbors") file that ships with MNE.
 
     More information on these neighbor definitions can be found on the related
     `FieldTrip documentation pages
@@ -787,7 +787,7 @@ def read_ch_adjacency(fname, picks=None):
     ...
 
 def find_ch_adjacency(info, ch_type):
-    """## 🧠 Find the adjacency matrix for the given channels.
+    """## Find the adjacency matrix for the given channels.
 
     This function tries to infer the appropriate adjacency matrix template
     for the given channels. If a template is not found, the adjacency matrix
@@ -823,7 +823,7 @@ def find_ch_adjacency(info, ch_type):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.15
+    ✨ Added in version 0.15
 
     Automatic detection of an appropriate adjacency matrix template only
     works for MEG data at the moment. This means that the adjacency matrix
@@ -845,7 +845,7 @@ def find_ch_adjacency(info, ch_type):
     ...
 
 def fix_mag_coil_types(info, use_cal: bool = False) -> None:
-    """## 🧠 Fix magnetometer coil types.
+    """## Fix magnetometer coil types.
 
     -----
     ### 🛠️ Parameters
@@ -883,7 +883,7 @@ def fix_mag_coil_types(info, use_cal: bool = False) -> None:
 def make_1020_channel_selections(
     info, midline: str = "z", *, return_ch_names: bool = False
 ):
-    """## 🧠 Map hemisphere names to corresponding EEG channel names or indices.
+    """## Map hemisphere names to corresponding EEG channel names or indices.
 
     This function uses a simple heuristic to separate channel names into three
     Region of Interest-based selections: ``Left``, ``Midline`` and ``Right``.
@@ -910,7 +910,7 @@ def make_1020_channel_selections(
     #### `return_ch_names : bool`
         Whether to return channel names instead of channel indices.
 
-        ✨ Added in vesion 1.4.0
+        ✨ Added in version 1.4.0
 
     -----
     ### ⏎ Returns
@@ -930,7 +930,7 @@ def combine_channels(
     drop_bad: bool = False,
     verbose=None,
 ):
-    """## 🧠 Combine channels based on specified channel grouping.
+    """## Combine channels based on specified channel grouping.
 
     -----
     ### 🛠️ Parameters
@@ -986,7 +986,7 @@ def combine_channels(
     ...
 
 def read_vectorview_selection(name, fname=None, info=None, verbose=None):
-    """## 🧠 Read Neuromag Vector View channel selection from a file.
+    """## Read Neuromag Vector View channel selection from a file.
 
     -----
     ### 🛠️ Parameters

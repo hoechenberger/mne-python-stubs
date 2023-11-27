@@ -1,5 +1,5 @@
 def eigh(a, overwrite_a: bool = False, check_finite: bool = True):
-    """## 🧠 Efficient wrapper for eigh.
+    """## Efficient wrapper for eigh.
 
     -----
     ### 🛠️ Parameters
@@ -24,7 +24,7 @@ def eigh(a, overwrite_a: bool = False, check_finite: bool = True):
     ...
 
 def sqrtm_sym(A, rcond: float = 1e-07, inv: bool = False):
-    """## 🧠 Compute the sqrt of a positive, semi-definite matrix (or its inverse).
+    """## Compute the sqrt of a positive, semi-definite matrix (or its inverse).
 
     -----
     ### 🛠️ Parameters

@@ -33,7 +33,7 @@ dtypes: Incomplete
 DTYPES: Incomplete
 
 class _bytes_io_mock_context:
-    """## 🧠 Make a context for BytesIO."""
+    """## Make a context for BytesIO."""
 
     target: Incomplete
 
@@ -47,7 +47,7 @@ class _bytes_io_mock_context:
     ) -> None: ...
 
 class RawBTi(BaseRaw):
-    """## 🧠 Raw object from 4D Neuroimaging MagnesWH3600 data.
+    """## Raw object from 4D Neuroimaging MagnesWH3600 data.
 
     -----
     ### 🛠️ Parameters
@@ -79,7 +79,7 @@ class RawBTi(BaseRaw):
         as regular EEG channels.
     %(preload)s
 
-        ✨ Added in vesion 0.11
+        ✨ Added in version 0.11
 
     %(verbose)s
     """
@@ -114,7 +114,7 @@ def read_raw_bti(
     preload: bool = False,
     verbose=None,
 ):
-    """## 🧠 Raw object from 4D Neuroimaging MagnesWH3600 data.
+    """## Raw object from 4D Neuroimaging MagnesWH3600 data.
 
     ### 💡 Note
         1. Currently direct inclusion of reference channel weights
@@ -162,7 +162,7 @@ def read_raw_bti(
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-        ✨ Added in vesion 0.11
+        ✨ Added in version 0.11
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

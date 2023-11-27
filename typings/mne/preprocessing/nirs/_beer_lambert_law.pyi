@@ -4,7 +4,7 @@ from ...utils import warn as warn
 from ..nirs import source_detector_distances as source_detector_distances
 
 def beer_lambert_law(raw, ppf: float = 6.0):
-    """## 🧠 Convert NIRS optical density data to haemoglobin concentration.
+    """## Convert NIRS optical density data to haemoglobin concentration.
 
     -----
     ### 🛠️ Parameters

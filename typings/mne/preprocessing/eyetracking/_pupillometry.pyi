@@ -5,7 +5,7 @@ from ...utils import logger as logger, warn as warn
 def interpolate_blinks(
     raw, buffer: float = 0.05, match: str = "BAD_blink", interpolate_gaze: bool = False
 ):
-    """## 🧠 Interpolate eyetracking signals during blinks.
+    """## Interpolate eyetracking signals during blinks.
 
     This function uses the timing of blink annotations to estimate missing
     data. Operates in place.
@@ -39,6 +39,6 @@ def interpolate_blinks(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.5
+    ✨ Added in version 1.5
     """
     ...

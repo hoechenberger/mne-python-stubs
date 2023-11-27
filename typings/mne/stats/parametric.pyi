@@ -1,5 +1,5 @@
 def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
-    """## 🧠 Perform one-sample t-test.
+    """## Perform one-sample t-test.
 
     This is a modified version of `scipy.stats.ttest_1samp` that avoids
     a (relatively) time-consuming p-value calculation, and can adjust
@@ -37,7 +37,7 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
     ...
 
 def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
-    """## 🧠 Independent samples t-test without p calculation.
+    """## Independent samples t-test without p calculation.
 
     This is a modified version of `scipy.stats.ttest_ind`. It operates
     along the first axis. The ``sigma`` parameter provides an optional "hat"
@@ -68,7 +68,7 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
     ...
 
 def f_oneway(*args):
-    """## 🧠 Perform a 1-way ANOVA.
+    """## Perform a 1-way ANOVA.
 
     The one-way ANOVA tests the null hypothesis that 2 or more groups have
     the same population mean. The test is applied to samples from two or
@@ -115,7 +115,7 @@ def f_oneway(*args):
 def f_threshold_mway_rm(
     n_subjects, factor_levels, effects: str = "A*B", pvalue: float = 0.05
 ):
-    """## 🧠 Compute F-value thresholds for a two-way ANOVA.
+    """## Compute F-value thresholds for a two-way ANOVA.
 
     -----
     ### 🛠️ Parameters
@@ -153,7 +153,7 @@ def f_threshold_mway_rm(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.10
+    ✨ Added in version 0.10
     """
     ...
 
@@ -164,7 +164,7 @@ def f_mway_rm(
     correction: bool = False,
     return_pvals: bool = True,
 ):
-    """## 🧠 Compute M-way repeated measures ANOVA for fully balanced designs.
+    """## Compute M-way repeated measures ANOVA for fully balanced designs.
 
     -----
     ### 🛠️ Parameters
@@ -221,6 +221,6 @@ def f_mway_rm(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.10
+    ✨ Added in version 0.10
     """
     ...

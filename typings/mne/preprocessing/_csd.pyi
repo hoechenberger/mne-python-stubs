@@ -19,7 +19,7 @@ def compute_current_source_density(
     *,
     verbose=None,
 ):
-    """## 🧠 Get the current source density (CSD) transformation.
+    """## Get the current source density (CSD) transformation.
 
     Transformation based on spherical spline surface Laplacian
     :footcite:`PerrinEtAl1987,PerrinEtAl1989,Cohen2014,KayserTenke2015`.
@@ -60,7 +60,7 @@ def compute_current_source_density(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
 
     References
     ----------
@@ -78,7 +78,7 @@ def compute_bridged_electrodes(
     bw_method=None,
     verbose=None,
 ):
-    """## 🧠 Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
+    """## Compute bridged EEG electrodes using the intrinsic Hjorth algorithm.
 
     First, an electrical distance matrix is computed by taking the pairwise
     variance between electrodes. Local minimums in this matrix below
@@ -135,7 +135,7 @@ def compute_bridged_electrodes(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.1
+    ✨ Added in version 1.1
 
     References
     ----------

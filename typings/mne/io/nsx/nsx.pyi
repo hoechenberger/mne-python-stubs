@@ -18,7 +18,7 @@ def read_raw_nsx(
     *,
     verbose=None,
 ):
-    """## 🧠 Reader function for NSx (Blackrock Microsystems) files.
+    """## Reader function for NSx (Blackrock Microsystems) files.
 
     -----
     ### 🛠️ Parameters
@@ -72,7 +72,7 @@ def read_raw_nsx(
     ...
 
 class RawNSX(BaseRaw):
-    """## 🧠 Raw object from NSx file from Blackrock Microsystems.
+    """## Raw object from NSx file from Blackrock Microsystems.
 
     -----
     ### 🛠️ Parameters

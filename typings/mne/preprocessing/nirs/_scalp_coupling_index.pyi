@@ -8,7 +8,7 @@ def scalp_coupling_index(
     h_trans_bandwidth: float = 0.3,
     verbose: bool = False,
 ):
-    """## 🧠 Calculate scalp coupling index.
+    """## Calculate scalp coupling index.
 
     This function calculates the scalp coupling index
     :footcite:`pollonini2014auditory`. This is a measure of the quality of the

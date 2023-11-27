@@ -4,7 +4,7 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_nihon(fname, preload: bool = False, verbose=None):
-    """## 🧠 Reader for an Nihon Kohden EEG file.
+    """## Reader for an Nihon Kohden EEG file.
 
     -----
     ### 🛠️ Parameters
@@ -35,7 +35,7 @@ def read_raw_nihon(fname, preload: bool = False, verbose=None):
     ...
 
 class RawNihon(BaseRaw):
-    """## 🧠 Raw object from a Nihon Kohden EEG file.
+    """## Raw object from a Nihon Kohden EEG file.
 
     -----
     ### 🛠️ Parameters

@@ -4,7 +4,7 @@ from ..utils import warn as warn
 from _typeshed import Incomplete
 
 class LinearModel(BaseEstimator):
-    """## 🧠 Compute and store patterns from linear models.
+    """## Compute and store patterns from linear models.
 
     The linear model coefficients (filters) are used to extract discriminant
     neural sources from the measured data. This class computes the
@@ -37,7 +37,7 @@ class LinearModel(BaseEstimator):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.10
+    ✨ Added in version 0.10
 
     References
     ----------
@@ -48,12 +48,12 @@ class LinearModel(BaseEstimator):
 
     def __init__(self, model=None) -> None: ...
     def __getattr__(self, attr):
-        """## 🧠 Wrap to model for some attributes."""
+        """## Wrap to model for some attributes."""
         ...
     patterns_: Incomplete
 
     def fit(self, X, y, **fit_params):
-        """## 🧠 Estimate the coefficients of the linear model.
+        """## Estimate the coefficients of the linear model.
 
         Save the coefficients in the attribute ``filters_`` and
         computes the attribute ``patterns_``.
@@ -79,7 +79,7 @@ class LinearModel(BaseEstimator):
     def filters_(self): ...
 
 def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False):
-    """## 🧠 Retrieve the coefficients of an estimator ending with a Linear Model.
+    """## Retrieve the coefficients of an estimator ending with a Linear Model.
 
     This is typically useful to retrieve "spatial filters" or "spatial
     patterns" of decoding models :footcite:`HaufeEtAl2014`.
@@ -120,7 +120,7 @@ def cross_val_multiscore(
     fit_params=None,
     pre_dispatch: str = "2*n_jobs",
 ):
-    """## 🧠 Evaluate a score by cross-validation.
+    """## Evaluate a score by cross-validation.
 
     -----
     ### 🛠️ Parameters

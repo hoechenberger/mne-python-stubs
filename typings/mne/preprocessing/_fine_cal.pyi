@@ -12,7 +12,7 @@ def compute_fine_calibration(
     calibration=None,
     verbose=None,
 ):
-    """## 🧠 Compute fine calibration from empty-room data.
+    """## Compute fine calibration from empty-room data.
 
     -----
     ### 🛠️ Parameters
@@ -95,12 +95,12 @@ def compute_fine_calibration(
     there were some minimal usable ``count`` number of segments (default 5)
     that were included in the estimate.
 
-    ✨ Added in vesion 0.21
+    ✨ Added in version 0.21
     """
     ...
 
 def read_fine_calibration(fname):
-    """## 🧠 Read fine calibration information from a ``.dat`` file.
+    """## Read fine calibration information from a ``.dat`` file.
 
     The fine calibration typically includes improved sensor locations,
     calibration coefficients, and gradiometer imbalance information.
@@ -128,7 +128,7 @@ def read_fine_calibration(fname):
     ...
 
 def write_fine_calibration(fname, calibration) -> None:
-    """## 🧠 Write fine calibration information to a ``.dat`` file.
+    """## Write fine calibration information to a ``.dat`` file.
 
     -----
     ### 🛠️ Parameters

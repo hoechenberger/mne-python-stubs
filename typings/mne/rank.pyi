@@ -11,7 +11,7 @@ def estimate_rank(
     tol_kind: str = "absolute",
     verbose=None,
 ):
-    """## 🧠 Estimate the rank of data.
+    """## Estimate the rank of data.
 
     This function will normalize the rows of the data (typically
     channels or vertices) such that non-zero singular values
@@ -51,7 +51,7 @@ def estimate_rank(
             This mode can fail if you have one or more large components in the
             data (e.g., artifacts).
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     -----
     ### ⏎ Returns
@@ -75,7 +75,7 @@ def compute_rank(
     on_rank_mismatch: str = "ignore",
     verbose=None,
 ):
-    """## 🧠 Compute the rank of data or noise covariance.
+    """## Compute the rank of data or noise covariance.
 
     This function will normalize the rows of the data (typically
     channels or vertices) such that non-zero singular values
@@ -165,7 +165,7 @@ def compute_rank(
             This mode can fail if you have one or more large components in the
             data (e.g., artifacts).
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `on_rank_mismatch : str`
         If an explicit MEG value is passed, what to do when it does not match
@@ -173,7 +173,7 @@ def compute_rank(
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
 
-        ✨ Added in vesion 0.23
+        ✨ Added in version 0.23
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -191,6 +191,6 @@ def compute_rank(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...

@@ -9,7 +9,7 @@ def read_raw_ctf(
     clean_names: bool = False,
     verbose=None,
 ):
-    """## 🧠 Raw object from CTF directory.
+    """## Raw object from CTF directory.
 
     -----
     ### 🛠️ Parameters
@@ -53,7 +53,7 @@ def read_raw_ctf(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.11
+    ✨ Added in version 0.11
 
     To read in the Polhemus digitization data (for example, from
     a .pos file), include the file in the CTF directory. The
@@ -63,7 +63,7 @@ def read_raw_ctf(
     ...
 
 class RawCTF(BaseRaw):
-    """## 🧠 Raw object from CTF directory.
+    """## Raw object from CTF directory.
 
     -----
     ### 🛠️ Parameters

@@ -16,7 +16,7 @@ from ..utils import (
 from .parametric import f_oneway as f_oneway, ttest_1samp_no_p as ttest_1samp_no_p
 
 def bin_perm_rep(ndim, a: int = 0, b: int = 1):
-    """## 🧠 Ndim permutations with repetitions of (a,b).
+    """## Ndim permutations with repetitions of (a,b).
 
     Returns an array with all the possible permutations with repetitions of
     (0,1) in ndim dimensions.  The array is shaped as (2**ndim,ndim), and is
@@ -55,7 +55,7 @@ def permutation_cluster_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """## 🧠 Cluster-level statistical permutation test.
+    """## Cluster-level statistical permutation test.
 
     For a list of `NumPy arrays <numpy.ndarray>` of data,
     calculate some statistics corrected for multiple comparisons using
@@ -245,7 +245,7 @@ def permutation_cluster_1samp_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """## 🧠 Non-parametric cluster-level paired t-test.
+    """## Non-parametric cluster-level paired t-test.
 
     For details, see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
 
@@ -450,7 +450,7 @@ def spatio_temporal_cluster_1samp_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """## 🧠 Non-parametric cluster-level paired t-test for spatio-temporal data.
+    """## Non-parametric cluster-level paired t-test for spatio-temporal data.
 
     This function provides a convenient wrapper for
     `mne.stats.permutation_cluster_1samp_test`, for use with data
@@ -632,7 +632,7 @@ def spatio_temporal_cluster_test(
     buffer_size: int = 1000,
     verbose=None,
 ):
-    """## 🧠 Non-parametric cluster-level test for spatio-temporal data.
+    """## Non-parametric cluster-level test for spatio-temporal data.
 
     This function provides a convenient wrapper for
     `mne.stats.permutation_cluster_test`, for use with data
@@ -803,7 +803,7 @@ def summarize_clusters_stc(
     subject: str = "fsaverage",
     vertices=None,
 ):
-    """## 🧠 Assemble summary SourceEstimate from spatiotemporal cluster results.
+    """## Assemble summary SourceEstimate from spatiotemporal cluster results.
 
     This helps visualizing results from spatio-temporal-clustering
     permutation tests.

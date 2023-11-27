@@ -1,7 +1,7 @@
 from _typeshed import Incomplete
 
 def run() -> None:
-    """## 🧠 Run command."""
+    """## Run command."""
     ...
 
 is_main: Incomplete

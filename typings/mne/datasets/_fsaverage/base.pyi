@@ -4,7 +4,7 @@ from _typeshed import Incomplete
 FSAVERAGE_MANIFEST_PATH: Incomplete
 
 def fetch_fsaverage(subjects_dir=None, *, verbose=None):
-    """## 🧠 Fetch and update fsaverage.
+    """## Fetch and update fsaverage.
 
     -----
     ### 🛠️ Parameters
@@ -43,6 +43,6 @@ def fetch_fsaverage(subjects_dir=None, *, verbose=None):
     the zip file is downloaded and files are updated. No files will
     be overwritten.
 
-    ✨ Added in vesion 0.18
+    ✨ Added in version 0.18
     """
     ...

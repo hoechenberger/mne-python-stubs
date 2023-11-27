@@ -26,7 +26,7 @@ def read_raw_eeglab(
     montage_units: str = "auto",
     verbose=None,
 ):
-    """## 🧠 Read an EEGLAB .set file.
+    """## Read an EEGLAB .set file.
 
     -----
     ### 🛠️ Parameters
@@ -60,7 +60,7 @@ def read_raw_eeglab(
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
         🎭 Changed in version 1.6
            Support for ``'auto'`` was added and is the new default.
@@ -86,7 +86,7 @@ def read_raw_eeglab(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.11.0
+    ✨ Added in version 0.11.0
     """
     ...
 
@@ -100,7 +100,7 @@ def read_epochs_eeglab(
     montage_units: str = "auto",
     verbose=None,
 ):
-    """## 🧠 Reader function for EEGLAB epochs files.
+    """## Reader function for EEGLAB epochs files.
 
     -----
     ### 🛠️ Parameters
@@ -142,7 +142,7 @@ def read_epochs_eeglab(
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
         🎭 Changed in version 1.6
            Support for ``'auto'`` was added and is the new default.
@@ -167,12 +167,12 @@ def read_epochs_eeglab(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.11.0
+    ✨ Added in version 0.11.0
     """
     ...
 
 class RawEEGLAB(BaseRaw):
-    """## 🧠 Raw object from EEGLAB .set file.
+    """## Raw object from EEGLAB .set file.
 
     -----
     ### 🛠️ Parameters
@@ -206,7 +206,7 @@ class RawEEGLAB(BaseRaw):
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -222,7 +222,7 @@ class RawEEGLAB(BaseRaw):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.11.0
+    ✨ Added in version 0.11.0
     """
 
     def __init__(
@@ -237,7 +237,7 @@ class RawEEGLAB(BaseRaw):
     ) -> None: ...
 
 class EpochsEEGLAB(BaseEpochs):
-    """## 🧠 Epochs from EEGLAB .set file.
+    """## Epochs from EEGLAB .set file.
 
     -----
     ### 🛠️ Parameters
@@ -307,7 +307,7 @@ class EpochsEEGLAB(BaseEpochs):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.11.0
+    ✨ Added in version 0.11.0
     """
 
     def __init__(

@@ -8,7 +8,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of the high frequency SEF dataset.
+    """## Get path to local copy of the high frequency SEF dataset.
 
     Gets a local copy of the high frequency SEF MEG dataset
     :footcite:`NurminenEtAl2017`.

@@ -6,7 +6,7 @@ from ..viz.topomap import plot_layout as plot_layout
 from _typeshed import Incomplete
 
 class Layout:
-    """## 🧠 Sensor layouts.
+    """## Sensor layouts.
 
     Layouts are typically loaded from a file using
     `mne.channels.read_layout`. Only use this class directly if you're
@@ -36,7 +36,7 @@ class Layout:
 
     def __init__(self, box, pos, names, ids, kind) -> None: ...
     def save(self, fname, overwrite: bool = False) -> None:
-        """## 🧠 Save Layout to disk.
+        """## Save Layout to disk.
 
         -----
         ### 🛠️ Parameters
@@ -53,7 +53,7 @@ class Layout:
         """
         ...
     def plot(self, picks=None, show_axes: bool = False, show: bool = True):
-        """## 🧠 Plot the sensor positions.
+        """## Plot the sensor positions.
 
         -----
         ### 🛠️ Parameters
@@ -75,12 +75,12 @@ class Layout:
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.12.0
+        ✨ Added in version 0.12.0
         """
         ...
 
 def read_layout(fname=None, *, scale: bool = True):
-    """## 🧠 Read layout from a file.
+    """## Read layout from a file.
 
     -----
     ### 🛠️ Parameters
@@ -166,7 +166,7 @@ def make_eeg_layout(
     exclude: str = "bads",
     csd: bool = False,
 ):
-    """## 🧠 Create .lout file from EEG electrode digitization.
+    """## Create .lout file from EEG electrode digitization.
 
     -----
     ### 🛠️ Parameters
@@ -202,7 +202,7 @@ def make_eeg_layout(
     ...
 
 def make_grid_layout(info, picks=None, n_col=None):
-    """## 🧠 Generate .lout file for custom data, i.e., ICA sources.
+    """## Generate .lout file for custom data, i.e., ICA sources.
 
     -----
     ### 🛠️ Parameters
@@ -234,7 +234,7 @@ def make_grid_layout(info, picks=None, n_col=None):
     ...
 
 def find_layout(info, ch_type=None, exclude: str = "bads"):
-    """## 🧠 Choose a layout based on the channels in the info 'chs' field.
+    """## Choose a layout based on the channels in the info 'chs' field.
 
     -----
     ### 🛠️ Parameters
@@ -270,7 +270,7 @@ def generate_2d_layout(
     bg_image=None,
     normalize: bool = True,
 ):
-    """## 🧠 Generate a custom 2D layout from xy points.
+    """## Generate a custom 2D layout from xy points.
 
     Generates a 2-D layout for plotting with plot_topo methods and
     functions. XY points will be normalized between 0 and 1, where
@@ -321,6 +321,6 @@ def generate_2d_layout(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...

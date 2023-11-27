@@ -31,7 +31,7 @@ class CurryParameters(NamedTuple):
     chanidx_in_file: Incomplete
 
 def read_raw_curry(fname, preload: bool = False, verbose=None):
-    """## 🧠 Read raw data from Curry files.
+    """## Read raw data from Curry files.
 
     -----
     ### 🛠️ Parameters
@@ -68,7 +68,7 @@ def read_raw_curry(fname, preload: bool = False, verbose=None):
     ...
 
 class RawCurry(BaseRaw):
-    """## 🧠 Raw object from Curry file.
+    """## Raw object from Curry file.
 
     -----
     ### 🛠️ Parameters

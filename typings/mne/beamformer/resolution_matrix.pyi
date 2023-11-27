@@ -8,7 +8,7 @@ from ..utils import fill_doc as fill_doc, logger as logger
 from ._lcmv import apply_lcmv as apply_lcmv
 
 def make_lcmv_resolution_matrix(filters, forward, info):
-    """## 🧠 Compute resolution matrix for LCMV beamformer.
+    """## Compute resolution matrix for LCMV beamformer.
 
     -----
     ### 🛠️ Parameters

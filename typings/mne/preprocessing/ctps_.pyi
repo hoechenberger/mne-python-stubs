@@ -1,5 +1,5 @@
 def ctps(data, is_raw: bool = True):
-    """## 🧠 Compute cross-trial-phase-statistics [1].
+    """## Compute cross-trial-phase-statistics [1].
 
     Note. It is assumed that the sources are already
     appropriately filtered
@@ -36,7 +36,7 @@ def ctps(data, is_raw: bool = True):
     ...
 
 def kuiper(data, dtype=...):
-    """## 🧠 Kuiper's test of uniform distribution.
+    """## Kuiper's test of uniform distribution.
 
     -----
     ### 🛠️ Parameters

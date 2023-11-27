@@ -8,7 +8,7 @@ from .mixin import (
 from _typeshed import Incomplete
 
 class EMS(TransformerMixin, EstimatorMixin):
-    """## 🧠 Transformer to compute event-matched spatial filters.
+    """## Transformer to compute event-matched spatial filters.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
     time course. No time
@@ -36,7 +36,7 @@ class EMS(TransformerMixin, EstimatorMixin):
     filters_: Incomplete
 
     def fit(self, X, y):
-        """## 🧠 Fit the spatial filters.
+        """## Fit the spatial filters.
 
         .. note : EMS is fitted on data normalized by channel type before the
                   fitting of the spatial filters.
@@ -57,7 +57,7 @@ class EMS(TransformerMixin, EstimatorMixin):
         """
         ...
     def transform(self, X):
-        """## 🧠 Transform the data by the spatial filters.
+        """## Transform the data by the spatial filters.
 
         -----
         ### 🛠️ Parameters
@@ -76,7 +76,7 @@ class EMS(TransformerMixin, EstimatorMixin):
 def compute_ems(
     epochs, conditions=None, picks=None, n_jobs=None, cv=None, verbose=None
 ):
-    """## 🧠 Compute event-matched spatial filter on epochs.
+    """## Compute event-matched spatial filter on epochs.
 
     This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
     time course. No time

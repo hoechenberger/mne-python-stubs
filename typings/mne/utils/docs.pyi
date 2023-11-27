@@ -31,7 +31,7 @@ t_test: Incomplete
 docdict_indented: Incomplete
 
 def fill_doc(f):
-    """## 🧠 Fill a docstring with docdict entries.
+    """## Fill a docstring with docdict entries.
 
     -----
     ### 🛠️ Parameters
@@ -48,7 +48,7 @@ def fill_doc(f):
     ...
 
 def copy_doc(source):
-    """## 🧠 Copy the docstring from another function (decorator).
+    """## Copy the docstring from another function (decorator).
 
     The docstring of the source function is prepepended to the docstring of the
     function wrapped by this decorator.
@@ -86,7 +86,7 @@ def copy_doc(source):
     ...
 
 def copy_function_doc_to_method_doc(source):
-    """## 🧠 Use the docstring from a function as docstring for a method.
+    """## Use the docstring from a function as docstring for a method.
 
     The docstring of the source function is prepepended to the docstring of the
     function wrapped by this decorator. Additionally, the first parameter
@@ -139,7 +139,7 @@ def copy_function_doc_to_method_doc(source):
     ...         '''
     ...         Notes
     ...         -----
-    ...         ✨ Added in vesion 0.13.0
+    ...         ✨ Added in version 0.13.0
     ...         '''
     ...         plot_function(self, a, b)
     >>> print(A.plot.__doc__)
@@ -156,13 +156,13 @@ def copy_function_doc_to_method_doc(source):
             -----
             ### 📖 Notes
 
-            ✨ Added in vesion 0.13.0
+            ✨ Added in version 0.13.0
     <BLANKLINE>
     """
     ...
 
 def copy_base_doc_to_subclass_doc(subclass):
-    """## 🧠 Use the docstring from a parent class methods in derived class.
+    """## Use the docstring from a parent class methods in derived class.
 
     The docstring of a parent class method is prepended to the
     docstring of the method of the class wrapped by this decorator.
@@ -182,7 +182,7 @@ def copy_base_doc_to_subclass_doc(subclass):
     ...
 
 def linkcode_resolve(domain, info):
-    """## 🧠 Determine the URL corresponding to a Python object.
+    """## Determine the URL corresponding to a Python object.
 
     -----
     ### 🛠️ Parameters
@@ -208,7 +208,7 @@ def linkcode_resolve(domain, info):
     ...
 
 def open_docs(kind=None, version=None) -> None:
-    """## 🧠 Launch a new web browser tab with the MNE documentation.
+    """## Launch a new web browser tab with the MNE documentation.
 
     -----
     ### 🛠️ Parameters
@@ -225,7 +225,7 @@ def open_docs(kind=None, version=None) -> None:
     ...
 
 class _decorator:
-    """## 🧠 Inject code or modify the docstring of a class, method, or function."""
+    """## Inject code or modify the docstring of a class, method, or function."""
 
     kind: Incomplete
     extra: Incomplete
@@ -233,7 +233,7 @@ class _decorator:
 
     def __init__(self, extra) -> None: ...
     def __call__(self, obj):
-        """## 🧠 Call.
+        """## Call.
 
         -----
         ### 🛠️ Parameters
@@ -250,7 +250,7 @@ class _decorator:
         ...
 
 class deprecated(_decorator):
-    """## 🧠 Mark a function, class, or method as deprecated (decorator).
+    """## Mark a function, class, or method as deprecated (decorator).
 
     Originally adapted from sklearn and
     http://wiki.python.org/moin/PythonDecoratorLibrary, then modified to make
@@ -270,11 +270,11 @@ class deprecated(_decorator):
     ...
 
 def deprecated_alias(dep_name, func, removed_in=None) -> None:
-    """## 🧠 Inject a deprecated alias into the namespace."""
+    """## Inject a deprecated alias into the namespace."""
     ...
 
 class legacy(_decorator):
-    """## 🧠 Mark a function, class, or method as legacy (decorator).
+    """## Mark a function, class, or method as legacy (decorator).
 
     -----
     ### 🛠️ Parameters

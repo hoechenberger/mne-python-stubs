@@ -85,7 +85,7 @@ class BaseEpochs(
     EpochAnnotationsMixin,
     SpectrumMixin,
 ):
-    """## 🧠 Abstract base class for `mne.Epochs`-type classes.
+    """## Abstract base class for `mne.Epochs`-type classes.
 
     ### 💡 Note
         This class should not be instantiated directly via
@@ -251,7 +251,7 @@ class BaseEpochs(
         Iterable of indices of selected epochs. If ``None``, will be
         automatically generated, corresponding to all non-zero events.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
 
     #### `drop_log : tuple | None`
         Tuple of tuple of strings indicating which epochs have been marked to
@@ -269,7 +269,7 @@ class BaseEpochs(
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
 
     #### `event_repeated : str`
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
@@ -277,7 +277,7 @@ class BaseEpochs(
         first in the :term:`events`, or ``'merge'`` to combine the coinciding
         events (=duplicates) into a new event (see Notes for details).
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
 
     #### `raw_sfreq : float`
         The original Raw object sampling rate. If None, then it is set to
@@ -352,7 +352,7 @@ class BaseEpochs(
         verbose=None,
     ) -> None: ...
     def reset_drop_log_selection(self) -> None:
-        """## 🧠 Reset the drop_log and selection entries.
+        """## Reset the drop_log and selection entries.
 
         This method will simplify ``self.drop_log`` and ``self.selection``
         so that they are meaningless (tuple of empty tuples and increasing
@@ -362,7 +362,7 @@ class BaseEpochs(
         """
         ...
     def load_data(self):
-        """## 🧠 Load the data if not already preloaded.
+        """## Load the data if not already preloaded.
 
         -----
         ### ⏎ Returns
@@ -375,11 +375,11 @@ class BaseEpochs(
 
         This function operates in-place.
 
-        ✨ Added in vesion 0.10.0
+        ✨ Added in version 0.10.0
         """
         ...
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
-        """## 🧠 Baseline correct epochs.
+        """## Baseline correct epochs.
 
         -----
         ### 🛠️ Parameters
@@ -424,11 +424,11 @@ class BaseEpochs(
         Baseline correction can be done multiple times, but can never be
         reverted once the data has been loaded.
 
-        ✨ Added in vesion 0.10.0
+        ✨ Added in version 0.10.0
         """
         ...
     def iter_evoked(self, copy: bool = False) -> Generator[Incomplete, None, None]:
-        """## 🧠 Iterate over epochs as a sequence of Evoked objects.
+        """## Iterate over epochs as a sequence of Evoked objects.
 
         The Evoked objects yielded will each contain a single epoch (i.e., no
         averaging is performed).
@@ -444,7 +444,7 @@ class BaseEpochs(
         """
         ...
     def subtract_evoked(self, evoked=None):
-        """## 🧠 Subtract an evoked response from each epoch.
+        """## Subtract an evoked response from each epoch.
 
         Can be used to exclude the evoked response when analyzing induced
         activity, see e.g. [1]_.
@@ -469,7 +469,7 @@ class BaseEpochs(
         """
         ...
     def average(self, picks=None, method: str = "mean", by_event_type: bool = False):
-        """## 🧠 Compute an average over epochs.
+        """## Compute an average over epochs.
 
         -----
         ### 🛠️ Parameters
@@ -500,7 +500,7 @@ class BaseEpochs(
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
 
         -----
         ### ⏎ Returns
@@ -536,7 +536,7 @@ class BaseEpochs(
         """
         ...
     def standard_error(self, picks=None, by_event_type: bool = False):
-        """## 🧠 Compute standard error over epochs.
+        """## Compute standard error over epochs.
 
         -----
         ### 🛠️ Parameters
@@ -559,7 +559,7 @@ class BaseEpochs(
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
 
         -----
         ### ⏎ Returns
@@ -575,7 +575,7 @@ class BaseEpochs(
         ...
     @property
     def ch_names(self):
-        """## 🧠 Channel names."""
+        """## Channel names."""
         ...
     def plot(
         self,
@@ -604,7 +604,7 @@ class BaseEpochs(
         overview_mode=None,
         splash: bool = True,
     ):
-        """## 🧠 Visualize epochs.
+        """## Visualize epochs.
 
         Bad epochs can be marked with a left click on top of the epoch. Bad
         channels can be selected by clicking the channel name on the left side of
@@ -658,7 +658,7 @@ class BaseEpochs(
             ### ⛔️ Warning  If the epochs have been resampled, the events no longer
                 align with the data.
 
-            ✨ Added in vesion 0.14.0
+            ✨ Added in version 0.14.0
 
             🎭 Changed in version 1.6
                 Passing ``events=None`` was disallowed.
@@ -675,7 +675,7 @@ class BaseEpochs(
         #### `order : array of str | None`
             Order in which to plot channel types.
 
-            ✨ Added in vesion 0.18.0
+            ✨ Added in version 0.18.0
         #### `show : bool`
             Show figure if True. Defaults to True.
         #### `block : bool`
@@ -690,7 +690,7 @@ class BaseEpochs(
             larger than ``info['lowpass']`` (e.g., a 40 Hz lowpass will result in
             at least a 120 Hz displayed sample rate).
 
-            ✨ Added in vesion 0.15.0
+            ✨ Added in version 0.15.0
         #### `noise_cov : instance of Covariance | str | None`
             Noise covariance used to whiten the data while plotting.
             Whitened data channels are scaled by ``scalings['whitened']``,
@@ -702,25 +702,25 @@ class BaseEpochs(
             magnetometers and gradiometers may introduce differences in scaling,
             consider using `mne.Evoked.plot_white`.
 
-            ✨ Added in vesion 0.16.0
+            ✨ Added in version 0.16.0
         #### `butterfly : bool`
             Whether to directly call the butterfly view.
 
-            ✨ Added in vesion 0.18.0
+            ✨ Added in version 0.18.0
 
         #### `show_scrollbars : bool`
             Whether to show scrollbars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
-            ✨ Added in vesion 0.19.0
+            ✨ Added in version 0.19.0
 
         #### `show_scalebars : bool`
             Whether to show scale bars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`s` while the plot window is focused.
             Default is ``True``.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
         #### `epoch_colors : list of (n_epochs) list (of n_channels) | None`
             Colors to use for individual epochs. If None, use default colors.
         #### `event_id : bool | dict`
@@ -730,7 +730,7 @@ class BaseEpochs(
             entries whose *values* are integer codes for events being drawn. Ignored if
             ``events=False``.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `group_by : str`
             How to group channels. ``'type'`` groups by channel type,
@@ -752,7 +752,7 @@ class BaseEpochs(
             the precomputed data, and precomputes only if enough RAM is available.
             This is only used with the Qt backend.
 
-            ✨ Added in vesion 0.24
+            ✨ Added in version 0.24
             🎭 Changed in version 1.0
                Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
@@ -764,7 +764,7 @@ class BaseEpochs(
             ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
             see `mne.set_config`.
 
-            ✨ Added in vesion 0.24
+            ✨ Added in version 0.24
 
         #### `theme : str | path-like`
             Can be "auto", "light", or "dark" or a path-like to a
@@ -775,7 +775,7 @@ class BaseEpochs(
             defaulting to "auto" if it's not found.
             Only supported by the ``'qt'`` backend.
 
-            ✨ Added in vesion 1.0
+            ✨ Added in version 1.0
 
         #### `overview_mode : str | None`
             Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -783,13 +783,13 @@ class BaseEpochs(
             ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
             if it's not found.
 
-            ✨ Added in vesion 1.1
+            ✨ Added in version 1.1
 
         #### `splash : bool`
             If True (default), a splash screen is shown during the application startup. Only
             applicable to the ``qt`` backend.
 
-            ✨ Added in vesion 1.6
+            ✨ Added in version 1.6
 
         -----
         ### ⏎ Returns
@@ -829,7 +829,7 @@ class BaseEpochs(
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
 
-        ✨ Added in vesion 0.10.0
+        ✨ Added in version 0.10.0
         """
         ...
     def plot_topo_image(
@@ -850,7 +850,7 @@ class BaseEpochs(
         font_color: str = "w",
         show: bool = True,
     ):
-        """## 🧠 Plot Event Related Potential / Fields image on topographies.
+        """## Plot Event Related Potential / Fields image on topographies.
 
         -----
         ### 🛠️ Parameters
@@ -913,7 +913,7 @@ class BaseEpochs(
         """
         ...
     def drop_bad(self, reject: str = "existing", flat: str = "existing", verbose=None):
-        """## 🧠 Drop bad epochs without retaining the epochs data.
+        """## Drop bad epochs without retaining the epochs data.
 
         Should be used before slicing operations.
 
@@ -987,7 +987,7 @@ class BaseEpochs(
         """
         ...
     def drop_log_stats(self, ignore=("IGNORED",)):
-        """## 🧠 Compute the channel stats based on a drop_log from Epochs.
+        """## Compute the channel stats based on a drop_log from Epochs.
 
         -----
         ### 🛠️ Parameters
@@ -1017,7 +1017,7 @@ class BaseEpochs(
         ignore=("IGNORED",),
         show: bool = True,
     ):
-        """## 🧠 Show the channel stats based on a drop_log from Epochs.
+        """## Show the channel stats based on a drop_log from Epochs.
 
         -----
         ### 🛠️ Parameters
@@ -1074,7 +1074,7 @@ class BaseEpochs(
         title=None,
         clear: bool = False,
     ):
-        """## 🧠 Plot Event Related Potential / Fields image.
+        """## Plot Event Related Potential / Fields image.
 
         -----
         ### 🛠️ Parameters
@@ -1241,7 +1241,7 @@ class BaseEpochs(
         """
         ...
     def drop(self, indices, reason: str = "USER", verbose=None):
-        """## 🧠 Drop epochs based on indices or boolean mask.
+        """## Drop epochs based on indices or boolean mask.
 
         ### 💡 Note The indices refer to the current set of undropped epochs
                   rather than the complete set of dropped and undropped epochs.
@@ -1287,7 +1287,7 @@ class BaseEpochs(
         copy=None,
         verbose=None,
     ):
-        """## 🧠 Get all epochs as a 3D array.
+        """## Get all epochs as a 3D array.
 
         -----
         ### 🛠️ Parameters
@@ -1308,7 +1308,7 @@ class BaseEpochs(
             for repeated access on large Epochs objects.
             None (default) is an alias for ``slice(None)``.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `units : str | dict | None`
             Specify the unit(s) that the data should be returned in. If
@@ -1327,15 +1327,15 @@ class BaseEpochs(
             accordingly, but all other channel types will remain in their
             channel-type-specific default unit.
 
-            ✨ Added in vesion 0.24
+            ✨ Added in version 0.24
         #### `tmin : int | float | None`
             Start time of data to get in seconds.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
         #### `tmax : int | float | None`
             End time of data to get in seconds.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
         #### `copy : bool`
             Whether to return a copy of the object's data, or (if possible) a view.
             See `the NumPy docs <numpy:basics.copies-and-views>` for an
@@ -1351,7 +1351,7 @@ class BaseEpochs(
             🎭 Changed in version 1.7
                The default changed from ``False`` to ``True``.
 
-            ✨ Added in vesion 1.6
+            ✨ Added in version 1.6
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1377,7 +1377,7 @@ class BaseEpochs(
         verbose=None,
         **kwargs,
     ):
-        """## 🧠 Apply a function to a subset of channels.
+        """## Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The epochs object's data is modified in-place. If the function returns a different
@@ -1445,10 +1445,10 @@ class BaseEpochs(
         ...
     @property
     def filename(self):
-        """## 🧠 The filename."""
+        """## The filename."""
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """## 🧠 Crop a time interval from the epochs.
+        """## Crop a time interval from the epochs.
 
         -----
         ### 🛠️ Parameters
@@ -1462,7 +1462,7 @@ class BaseEpochs(
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
-            ✨ Added in vesion 0.19
+            ✨ Added in version 0.19
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1487,7 +1487,7 @@ class BaseEpochs(
         """
         ...
     def copy(self):
-        """## 🧠 Return copy of Epochs instance.
+        """## Return copy of Epochs instance.
 
         -----
         ### ⏎ Returns
@@ -1497,7 +1497,7 @@ class BaseEpochs(
         """
         ...
     def __deepcopy__(self, memodict):
-        """## 🧠 Make a deepcopy."""
+        """## Make a deepcopy."""
         ...
     def save(
         self,
@@ -1508,7 +1508,7 @@ class BaseEpochs(
         split_naming: str = "neuromag",
         verbose=None,
     ) -> None:
-        """## 🧠 Save epochs in a fif file.
+        """## Save epochs in a fif file.
 
         -----
         ### 🛠️ Parameters
@@ -1523,7 +1523,7 @@ class BaseEpochs(
             also possible to pass a human-readable string, e.g., 100MB.
             Note: Due to FIFF file limitations, the maximum split size is 2GB.
 
-            ✨ Added in vesion 0.10.0
+            ✨ Added in version 0.10.0
         #### `fmt : str`
             Format to save data. Valid options are 'double' or
             'single' for 64- or 32-bit float, or for 128- or
@@ -1531,7 +1531,7 @@ class BaseEpochs(
             double precision. Choosing single-precision, the saved data
             will slightly differ due to the reduction in precision.
 
-            ✨ Added in vesion 0.17
+            ✨ Added in version 0.17
 
         #### `overwrite : bool`
             If True (default False), overwrite the destination file if it
@@ -1540,7 +1540,7 @@ class BaseEpochs(
             data must be preloaded upon reading. This defaults to True in 0.18
             but will change to False in 0.19.
 
-            ✨ Added in vesion 0.18
+            ✨ Added in version 0.18
 
         #### `split_naming : 'neuromag' | 'bids'`
             When splitting files, append a filename partition with the appropriate
@@ -1548,7 +1548,7 @@ class BaseEpochs(
             ``fname.fif``, ``fname-1.fif``, ``fname-2.fif`` etc.; while for ``'bids'``,
             it will be named ``fname_split-01.fif``, ``fname_split-02.fif``, etc.
 
-            ✨ Added in vesion 0.24
+            ✨ Added in version 0.24
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1565,7 +1565,7 @@ class BaseEpochs(
     def export(
         self, fname, fmt: str = "auto", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """## 🧠 Export Epochs to external formats.
+        """## Export Epochs to external formats.
 
         Supported formats:
             - EEGLAB (``.set``, uses `eeglabio`)
@@ -1590,7 +1590,7 @@ class BaseEpochs(
             If True (default False), overwrite the destination file if it
             exists.
 
-            ✨ Added in vesion 0.24.1
+            ✨ Added in version 0.24.1
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1601,7 +1601,7 @@ class BaseEpochs(
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
         Export to external format may not preserve all the information from the
         instance. To save in native MNE format (``.fif``) without information loss,
@@ -1615,7 +1615,7 @@ class BaseEpochs(
         """
         ...
     def equalize_event_counts(self, event_ids=None, method: str = "mintime"):
-        """## 🧠 Equalize the number of trials in each condition.
+        """## Equalize the number of trials in each condition.
 
         It tries to make the remaining epochs occurring as close as possible in
         time. This method works based on the idea that if there happened to be
@@ -1706,7 +1706,7 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """## 🧠 Perform spectral analysis on sensor data.
+        """## Perform spectral analysis on sensor data.
 
         -----
         ### 🛠️ Parameters
@@ -1773,7 +1773,7 @@ class BaseEpochs(
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
         References
         ----------
@@ -1807,7 +1807,7 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """## 🧠 Plot power or amplitude spectra.
+        """## Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -1889,16 +1889,16 @@ class BaseEpochs(
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-            ✨ Added in vesion 0.22.0
+            ✨ Added in version 0.22.0
         #### `exclude : list of str | 'bads'`
             Channels names to exclude from being shown. If 'bads', the bad
             channels are excluded. Pass an empty list to plot all channels
             (including channels marked "bad", if any).
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
         #### `ax : instance of Axes | list of Axes | None`
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
@@ -1950,7 +1950,7 @@ class BaseEpochs(
         *,
         verbose=None,
     ):
-        """## 🧠 Export data in tabular structure as a pandas DataFrame.
+        """## Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         additional columns "time", "epoch" (epoch number), and "condition"
@@ -2000,7 +2000,7 @@ class BaseEpochs(
             time values will be converted to `pandas.Timedelta` values.
             Default is ``None``.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -2018,7 +2018,7 @@ class BaseEpochs(
         """
         ...
     def as_type(self, ch_type: str = "grad", mode: str = "fast"):
-        """## 🧠 Compute virtual epochs using interpolated fields.
+        """## Compute virtual epochs using interpolated fields.
 
         ### ⛔️ Warning Using virtual epochs to compute inverse can yield
             unexpected results. The virtual channels have ``'_v'`` appended
@@ -2047,7 +2047,7 @@ class BaseEpochs(
         This method returns a copy and does not modify the data it
         operates on. It also returns an EpochsArray instance.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
         """
         ...
 
@@ -2061,7 +2061,7 @@ def make_metadata(
     keep_first=None,
     keep_last=None,
 ):
-    """## 🧠 Automatically generate metadata for use with `mne.Epochs` from events.
+    """## Automatically generate metadata for use with `mne.Epochs` from events.
 
     This function mimics the epoching process (it constructs time windows
     around time-locked "events of interest") and collates information about
@@ -2198,7 +2198,7 @@ def make_metadata(
     If either ``tmin``, ``tmax``, or both are ``None``, the time window will
     typically vary, too.
 
-    ✨ Added in vesion 0.23
+    ✨ Added in version 0.23
 
     References
     ----------
@@ -2207,7 +2207,7 @@ def make_metadata(
     ...
 
 class Epochs(BaseEpochs):
-    """## 🧠 Epochs extracted from a Raw instance.
+    """## Epochs extracted from a Raw instance.
 
     -----
     ### 🛠️ Parameters
@@ -2373,7 +2373,7 @@ class Epochs(BaseEpochs):
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
 
     #### `event_repeated : str`
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
@@ -2381,7 +2381,7 @@ class Epochs(BaseEpochs):
         first in the :term:`events`, or ``'merge'`` to combine the coinciding
         events (=duplicates) into a new event (see Notes for details).
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -2497,7 +2497,7 @@ class Epochs(BaseEpochs):
     ) -> None: ...
 
 class EpochsArray(BaseEpochs):
-    """## 🧠 Epochs object from numpy array.
+    """## Epochs object from numpy array.
 
     -----
     ### 🛠️ Parameters
@@ -2627,7 +2627,7 @@ class EpochsArray(BaseEpochs):
         supported) manner, the metadata object is subsetted accordingly, and
         the row indices will be modified to match ``epochs.selection``.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
 
     #### `selection : iterable | None`
         Iterable of indices of selected epochs. If ``None``, will be
@@ -2637,13 +2637,13 @@ class EpochsArray(BaseEpochs):
         Tuple of tuple of strings indicating which epochs have been marked to
         be ignored.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `raw_sfreq : float`
         The original Raw object sampling rate. If None, then it is set to
         ``info['sfreq']``.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -2699,7 +2699,7 @@ class EpochsArray(BaseEpochs):
     ) -> None: ...
 
 def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
-    """## 🧠 Collapse event_ids from an epochs instance into a new event_id.
+    """## Collapse event_ids from an epochs instance into a new event_id.
 
     -----
     ### 🛠️ Parameters
@@ -2734,7 +2734,7 @@ def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
     ...
 
 def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
-    """## 🧠 Equalize the number of trials in multiple Epoch instances.
+    """## Equalize the number of trials in multiple Epoch instances.
 
     -----
     ### 🛠️ Parameters
@@ -2767,7 +2767,7 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
     ...
 
 def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
-    """## 🧠 Read epochs from a fif file.
+    """## Read epochs from a fif file.
 
     -----
     ### 🛠️ Parameters
@@ -2807,7 +2807,7 @@ def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
     ...
 
 class _RawContainer:
-    """## 🧠 Helper for a raw data container."""
+    """## Helper for a raw data container."""
 
     fid: Incomplete
     data_tag: Incomplete
@@ -2821,7 +2821,7 @@ class _RawContainer:
     def __del__(self) -> None: ...
 
 class EpochsFIF(BaseEpochs):
-    """## 🧠 Epochs read from disk.
+    """## Epochs read from disk.
 
     -----
     ### 🛠️ Parameters
@@ -2867,7 +2867,7 @@ class EpochsFIF(BaseEpochs):
     ) -> None: ...
 
 def bootstrap(epochs, random_state=None):
-    """## 🧠 Compute epochs selected by bootstrapping.
+    """## Compute epochs selected by bootstrapping.
 
     -----
     ### 🛠️ Parameters
@@ -2894,7 +2894,7 @@ def bootstrap(epochs, random_state=None):
 def concatenate_epochs(
     epochs_list, add_offset: bool = True, *, on_mismatch: str = "raise", verbose=None
 ):
-    """## 🧠 Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
+    """## Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
 
     ### 💡 Note Unlike `mne.concatenate_raws`, this function does `not`
               modify any of the input data.
@@ -2915,7 +2915,7 @@ def concatenate_epochs(
         warning, or ``'ignore'`` to ignore when the device-to-head transformation differs between
         instances.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -2923,7 +2923,7 @@ def concatenate_epochs(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     -----
     ### ⏎ Returns
@@ -2934,7 +2934,7 @@ def concatenate_epochs(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
@@ -2953,7 +2953,7 @@ def average_movements(
     mag_scale: float = 100.0,
     verbose=None,
 ):
-    """## 🧠 Average data using Maxwell filtering, transforming using head positions.
+    """## Average data using Maxwell filtering, transforming using head positions.
 
     -----
     ### 🛠️ Parameters
@@ -3023,7 +3023,7 @@ def average_movements(
         between the gradiometer pickup loops (e.g., 0.0168 m yields
         59.5 for VectorView).
 
-        ✨ Added in vesion 0.13
+        ✨ Added in version 0.13
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -3055,7 +3055,7 @@ def average_movements(
     Fine calibration and cross-talk cancellation, however, could be added
     to this algorithm based on user demand.
 
-    ✨ Added in vesion 0.11
+    ✨ Added in version 0.11
 
     References
     ----------
@@ -3078,7 +3078,7 @@ def make_fixed_length_epochs(
     id: int = 1,
     verbose=None,
 ):
-    """## 🧠 Divide continuous raw data into equal-sized consecutive epochs.
+    """## Divide continuous raw data into equal-sized consecutive epochs.
 
     -----
     ### 🛠️ Parameters
@@ -3100,7 +3100,7 @@ def make_fixed_length_epochs(
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `proj : bool | 'delayed'`
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
@@ -3114,16 +3114,16 @@ def make_fixed_length_epochs(
         If proj is False no projections will be applied which is the
         recommended value if SSPs are not used for cleaning the data.
 
-        ✨ Added in vesion 0.22.0
+        ✨ Added in version 0.22.0
     #### `overlap : float`
         The overlap between epochs, in seconds. Must be
         ``0 <= overlap < duration``. Default is 0, i.e., no overlap.
 
-        ✨ Added in vesion 0.23.0
+        ✨ Added in version 0.23.0
     #### `id : int`
         The id to use (default 1).
 
-        ✨ Added in vesion 0.24.0
+        ✨ Added in version 0.24.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -3140,6 +3140,6 @@ def make_fixed_length_epochs(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
     """
     ...

@@ -4,7 +4,7 @@ from _typeshed import Incomplete
 from abc import ABC, abstractmethod
 
 class Figure3D(ABC):
-    """## 🧠 Class that refers to a 3D figure.
+    """## Class that refers to a 3D figure.
 
     ### 💡 Note
         This class should not be instantiated directly via
@@ -19,7 +19,7 @@ class Figure3D(ABC):
 
     @property
     def plotter(self):
-        """## 🧠 The native 3D plotting widget.
+        """## The native 3D plotting widget.
 
         -----
         ### ⏎ Returns
@@ -42,22 +42,22 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         shape=(1, 1),
         splash: bool = False,
     ):
-        """## 🧠 Set up the scene."""
+        """## Set up the scene."""
         ...
     @classmethod
     @abc.abstractmethod
     def subplot(self, x, y):
-        """## 🧠 Set the active subplot."""
+        """## Set the active subplot."""
         ...
     @classmethod
     @abc.abstractmethod
     def scene(self):
-        """## 🧠 Return scene handle."""
+        """## Return scene handle."""
         ...
     @classmethod
     @abc.abstractmethod
     def set_interaction(self, interaction):
-        """## 🧠 Set interaction mode."""
+        """## Set interaction mode."""
         ...
     @classmethod
     @abc.abstractmethod
@@ -69,7 +69,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         face: str = "triangle",
         loc: str = "upper left",
     ):
-        """## 🧠 Add a legend to the scene.
+        """## Add a legend to the scene.
 
         -----
         ### 🛠️ Parameters
@@ -117,7 +117,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         polygon_offset=None,
         **kwargs,
     ):
-        """## 🧠 Add a mesh in the scene.
+        """## Add a mesh in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -188,7 +188,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         kind: str = "line",
         color=None,
     ):
-        """## 🧠 Add a contour in the scene.
+        """## Add a contour in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -236,7 +236,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         backface_culling: bool = False,
         polygon_offset=None,
     ):
-        """## 🧠 Add a surface in the scene.
+        """## Add a surface in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -277,7 +277,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         backface_culling: bool = False,
         radius=None,
     ):
-        """## 🧠 Add sphere in the scene.
+        """## Add sphere in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -318,7 +318,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         normalized_colormap: bool = False,
         reverse_lut: bool = False,
     ):
-        """## 🧠 Add tube in the scene.
+        """## Add tube in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -386,7 +386,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         line_width: float = 2.0,
         name=None,
     ):
-        """## 🧠 Add quiver3d in the scene.
+        """## Add quiver3d in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -454,7 +454,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def text2d(self, x_window, y_window, text, size: int = 14, color: str = "white"):
-        """## 🧠 Add 2d text in the scene.
+        """## Add 2d text in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -478,7 +478,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def text3d(self, x, y, z, text, width, color: str = "white"):
-        """## 🧠 Add 2d text in the scene.
+        """## Add 2d text in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -504,7 +504,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     def scalarbar(
         self, source, color: str = "white", title=None, n_labels: int = 4, bgcolor=None
     ):
-        """## 🧠 Add a scalar bar in the scene.
+        """## Add a scalar bar in the scene.
 
         -----
         ### 🛠️ Parameters
@@ -524,12 +524,12 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def show(self):
-        """## 🧠 Render the scene."""
+        """## Render the scene."""
         ...
     @classmethod
     @abc.abstractmethod
     def close(self):
-        """## 🧠 Close the scene."""
+        """## Close the scene."""
         ...
     @classmethod
     @abc.abstractmethod
@@ -543,7 +543,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         *,
         reset_camera=None,
     ):
-        """## 🧠 Configure the camera of the scene.
+        """## Configure the camera of the scene.
 
         -----
         ### 🛠️ Parameters
@@ -565,12 +565,12 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def reset_camera(self):
-        """## 🧠 Reset the camera properties."""
+        """## Reset the camera properties."""
         ...
     @classmethod
     @abc.abstractmethod
     def screenshot(self, mode: str = "rgb", filename=None):
-        """## 🧠 Take a screenshot of the scene.
+        """## Take a screenshot of the scene.
 
         -----
         ### 🛠️ Parameters
@@ -585,7 +585,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def project(self, xyz, ch_names):
-        """## 🧠 Convert 3d points to a 2d perspective.
+        """## Convert 3d points to a 2d perspective.
 
         -----
         ### 🛠️ Parameters
@@ -599,7 +599,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
     @classmethod
     @abc.abstractmethod
     def remove_mesh(self, mesh_data):
-        """## 🧠 Remove the given mesh from the scene.
+        """## Remove the given mesh from the scene.
 
         -----
         ### 🛠️ Parameters
@@ -715,21 +715,21 @@ class _AbstractAppWindow(ABC, metaclass=abc.ABCMeta):
 
 class _AbstractCanvas(ABC, metaclass=abc.ABCMeta):
     def __init__(self, width=None, height=None, dpi=None) -> None:
-        """## 🧠 Initialize the matplotlib Canvas."""
+        """## Initialize the matplotlib Canvas."""
         ...
     def show(self) -> None:
-        """## 🧠 Show the canvas."""
+        """## Show the canvas."""
         ...
     def close(self) -> None:
-        """## 🧠 Close the canvas."""
+        """## Close the canvas."""
         ...
     def update(self) -> None:
-        """## 🧠 Update the canvas."""
+        """## Update the canvas."""
         ...
     manager: Incomplete
 
     def clear(self) -> None:
-        """## 🧠 Clear internal variables."""
+        """## Clear internal variables."""
         ...
 
 class _AbstractToolBar(ABC, metaclass=abc.ABCMeta): ...
@@ -793,51 +793,51 @@ class _AbstractMplCanvas(ABC):
     manager: Incomplete
 
     def __init__(self, width, height, dpi) -> None:
-        """## 🧠 Initialize the MplCanvas."""
+        """## Initialize the MplCanvas."""
         ...
     def plot(self, x, y, label, update: bool = True, **kwargs):
-        """## 🧠 Plot a curve."""
+        """## Plot a curve."""
         ...
     def plot_time_line(self, x, label, update: bool = True, **kwargs):
-        """## 🧠 Plot the vertical line."""
+        """## Plot the vertical line."""
         ...
     def update_plot(self) -> None:
-        """## 🧠 Update the plot."""
+        """## Update the plot."""
         ...
     def set_color(self, bg_color, fg_color) -> None:
-        """## 🧠 Set the widget colors."""
+        """## Set the widget colors."""
         ...
     def show(self) -> None:
-        """## 🧠 Show the canvas."""
+        """## Show the canvas."""
         ...
     def close(self) -> None:
-        """## 🧠 Close the canvas."""
+        """## Close the canvas."""
         ...
     canvas: Incomplete
 
     def clear(self) -> None:
-        """## 🧠 Clear internal variables."""
+        """## Clear internal variables."""
         ...
     def on_resize(self, event) -> None:
-        """## 🧠 Handle resize events."""
+        """## Handle resize events."""
         ...
 
 class _AbstractBrainMplCanvas(_AbstractMplCanvas):
     brain: Incomplete
 
     def __init__(self, brain, width, height, dpi) -> None:
-        """## 🧠 Initialize the MplCanvas."""
+        """## Initialize the MplCanvas."""
         ...
     def update_plot(self) -> None:
-        """## 🧠 Update the plot."""
+        """## Update the plot."""
         ...
     def on_button_press(self, event) -> None:
-        """## 🧠 Handle button presses."""
+        """## Handle button presses."""
         ...
     on_motion_notify = on_button_press
 
     def clear(self) -> None:
-        """## 🧠 Clear internal variables."""
+        """## Clear internal variables."""
         ...
 
 class _AbstractWindow(ABC, metaclass=abc.ABCMeta): ...

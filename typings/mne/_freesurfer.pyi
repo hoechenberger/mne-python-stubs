@@ -11,7 +11,7 @@ from .transforms import (
 from .utils import get_subjects_dir as get_subjects_dir, logger as logger
 
 def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_ids=None):
-    """## 🧠 Return a list of names and colors of segmented volumes.
+    """## Return a list of names and colors of segmented volumes.
 
     -----
     ### 🛠️ Parameters
@@ -25,7 +25,7 @@ def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_id
         A lookup table providing a mapping from region names (str) to ID values
         (int). Can be None to use the standard Freesurfer LUT.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     -----
     ### ⏎ Returns
@@ -47,7 +47,7 @@ def get_volume_labels_from_aseg(mgz_fname, return_colors: bool = False, atlas_id
        The label names are now sorted in the same order as their corresponding
        values in the MRI file.
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
@@ -61,7 +61,7 @@ def head_to_mri(
     unscale: bool = False,
     verbose=None,
 ):
-    """## 🧠 Convert pos from head coordinate system to MRI ones.
+    """## Convert pos from head coordinate system to MRI ones.
 
     -----
     ### 🛠️ Parameters
@@ -83,13 +83,13 @@ def head_to_mri(
         FreeSurfer surface RAS or ``'ras'`` (default in 1.2) to use MRI RAS
         (scanner RAS).
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
     #### `unscale : bool`
         For surrogate MRIs (e.g., scaled using ``mne coreg``), if True
         (default False), use the MRI scaling parameters to obtain points in
         the original/surrogate subject's MRI space.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -111,7 +111,7 @@ def head_to_mri(
     ...
 
 def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
-    """## 🧠 Convert the array of vertices for a hemisphere to MNI coordinates.
+    """## Convert the array of vertices for a hemisphere to MNI coordinates.
 
     -----
     ### 🛠️ Parameters
@@ -141,7 +141,7 @@ def vertex_to_mni(vertices, hemis, subject, subjects_dir=None, verbose=None):
     ...
 
 def head_to_mni(pos, subject, mri_head_t, subjects_dir=None, verbose=None):
-    """## 🧠 Convert pos from head coordinate system to MNI ones.
+    """## Convert pos from head coordinate system to MNI ones.
 
     -----
     ### 🛠️ Parameters
@@ -179,7 +179,7 @@ def head_to_mni(pos, subject, mri_head_t, subjects_dir=None, verbose=None):
     ...
 
 def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
-    """## 🧠 Estimate fiducials for a subject.
+    """## Estimate fiducials for a subject.
 
     -----
     ### 🛠️ Parameters
@@ -224,7 +224,7 @@ def get_mni_fiducials(subject, subjects_dir=None, verbose=None):
     ...
 
 def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
-    """## 🧠 Estimate the head->mri transform from fsaverage fiducials.
+    """## Estimate the head->mri transform from fsaverage fiducials.
 
     A subject's fiducials can be estimated given a Freesurfer ``recon-all``
     by transforming ``fsaverage`` fiducials using the inverse Talairach
@@ -260,7 +260,7 @@ def estimate_head_mri_t(subject, subjects_dir=None, verbose=None):
     ...
 
 def read_lta(fname, verbose=None):
-    """## 🧠 Read a Freesurfer linear transform array file.
+    """## Read a Freesurfer linear transform array file.
 
     -----
     ### 🛠️ Parameters
@@ -283,7 +283,7 @@ def read_lta(fname, verbose=None):
     ...
 
 def read_talxfm(subject, subjects_dir=None, verbose=None):
-    """## 🧠 Compute MRI-to-MNI transform from FreeSurfer talairach.xfm file.
+    """## Compute MRI-to-MNI transform from FreeSurfer talairach.xfm file.
 
     -----
     ### 🛠️ Parameters
@@ -312,7 +312,7 @@ def read_talxfm(subject, subjects_dir=None, verbose=None):
     ...
 
 def read_freesurfer_lut(fname=None):
-    """## 🧠 Read a Freesurfer-formatted LUT.
+    """## Read a Freesurfer-formatted LUT.
 
     -----
     ### 🛠️ Parameters

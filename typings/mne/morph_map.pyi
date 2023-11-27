@@ -16,7 +16,7 @@ from .utils import get_subjects_dir as get_subjects_dir, logger as logger, warn 
 def read_morph_map(
     subject_from, subject_to, subjects_dir=None, xhemi: bool = False, verbose=None
 ):
-    """## 🧠 Read morph map.
+    """## Read morph map.
 
     Morph maps can be generated with mne_make_morph_maps. If one isn't
     available, it will be generated automatically and saved to the

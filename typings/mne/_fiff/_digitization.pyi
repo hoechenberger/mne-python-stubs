@@ -8,7 +8,7 @@ from .write import (
 )
 
 class DigPoint(dict):
-    """## 🧠 Container for a digitization point.
+    """## Container for a digitization point.
 
     This is a simple subclass of the standard dict type designed to provide
     a readable string representation.
@@ -30,10 +30,10 @@ class DigPoint(dict):
     """
 
     def __deepcopy__(self, memodict):
-        """## 🧠 Make a deepcopy."""
+        """## Make a deepcopy."""
         ...
     def __eq__(self, other):
-        """## 🧠 Compare two DigPoints.
+        """## Compare two DigPoints.
 
         Two digpoints are equal if they are the same kind, share the same
         coordinate frame and position.
@@ -43,7 +43,7 @@ class DigPoint(dict):
 def write_dig(
     fname, pts, coord_frame=None, *, overwrite: bool = False, verbose=None
 ) -> None:
-    """## 🧠 Write digitization data to a FIF file.
+    """## Write digitization data to a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -62,7 +62,7 @@ def write_dig(
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -70,6 +70,6 @@ def write_dig(
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
     """
     ...

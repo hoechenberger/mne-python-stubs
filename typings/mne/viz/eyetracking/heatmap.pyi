@@ -13,7 +13,7 @@ def plot_gaze(
     axes=None,
     show: bool = True,
 ):
-    """## 🧠 Plot a heatmap of eyetracking gaze data.
+    """## Plot a heatmap of eyetracking gaze data.
 
     -----
     ### 🛠️ Parameters
@@ -58,6 +58,6 @@ def plot_gaze(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.6
+    ✨ Added in version 1.6
     """
     ...
