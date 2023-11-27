@@ -10,6 +10,15 @@ like Pylance in VS Code.
 pip install https://github.com/hoechenberger/mne-python-stubs/archive/refs/heads/main.zip
 ```
 
+## Development
+
+Clone this repository and `cd` into it.
+
+```shell
+pip install ".[dev]"
+```
+Running `python gen_type_stubs.py` re-generates the type stubs.
+
 ## Notes
 
 * The name of this repository is `mne-python-stubs`,
