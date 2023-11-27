@@ -139,12 +139,13 @@ for stub_path in stub_paths:
                         f"🦄 Applying special handling for @deprecated {obj_type} "
                         f"{module_name}.{obj.name}"
                     )
-                    line = line.replace(".. warning:: DEPRECATED:", "# DEPRECATED")
+                    line = line.replace(".. warning:: DEPRECATED:", "## ☠️ DEPRECATED")
                     expanded_docstring[line_idx] = (obj.col_offset + 4) * " " + line
                     break
 
             # Make first line bold
-            expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
+            if not expanded_docstring[0].lstrip().startswith("## ☠️ DEPRECATED"):
+                expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
 
             expanded_docstring = "\n".join(expanded_docstring)
             obj.body[0].value.value = expanded_docstring
@@ -193,7 +194,7 @@ for stub_path in stub_paths:
                                 f"{module_name}.{obj.name}.{method.name}"
                             )
                             line = line.replace(
-                                ".. warning:: DEPRECATED:", "# DEPRECATED"
+                                ".. warning:: DEPRECATED:", "## ☠️ DEPRECATED"
                             )
                             expanded_docstring[line_idx] = (
                                 method.col_offset + 4
@@ -201,7 +202,12 @@ for stub_path in stub_paths:
                             break
 
                     # Make first line bold
-                    expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
+                    if (
+                        not expanded_docstring[0]
+                        .lstrip()
+                        .startswith("## ☠️ DEPRECATED")
+                    ):
+                        expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
 
                     expanded_docstring = "\n".join(expanded_docstring)
                     method.body[0].value.value = expanded_docstring
