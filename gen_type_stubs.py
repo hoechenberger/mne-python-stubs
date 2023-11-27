@@ -145,7 +145,7 @@ for stub_path in stub_paths:
 
             # Make first line bold
             if not expanded_docstring[0].lstrip().startswith("## ☠️ DEPRECATED"):
-                expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
+                expanded_docstring[0] = f"## {expanded_docstring[0]}"
 
             expanded_docstring = "\n".join(expanded_docstring)
             obj.body[0].value.value = expanded_docstring
@@ -207,7 +207,7 @@ for stub_path in stub_paths:
                         .lstrip()
                         .startswith("## ☠️ DEPRECATED")
                     ):
-                        expanded_docstring[0] = f"## 🧠 {expanded_docstring[0]}"
+                        expanded_docstring[0] = f"## {expanded_docstring[0]}"
 
                     expanded_docstring = "\n".join(expanded_docstring)
                     method.body[0].value.value = expanded_docstring
