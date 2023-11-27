@@ -246,7 +246,7 @@ for stub_path in stub_paths:
         .replace(".. warning::", "### ⛔️ Warning")
         .replace(".. Warning::", "### ⛔️ Warning")
         .replace(".. note::", "### 💡 Note")
-        .replace(".. versionadded::", "✨ Added in vesion")
+        .replace(".. versionadded::", "✨ Added in version")
         .replace(".. versionchanged::", "🎭 Changed in version")
     )
 
