@@ -86,8 +86,8 @@ def set_eeg_reference(
         - ``'REST'`` to use the Reference Electrode Standardization Technique
           infinity reference :footcite:`Yao2001`.
         - An empty list, in which case MNE will not attempt any re-referencing of
-          #### `the data
-    copy : bool`
+          the data
+    #### `copy : bool`
         Specifies whether the data will be copied (True) or modified in-place
         (False). Defaults to True.
 

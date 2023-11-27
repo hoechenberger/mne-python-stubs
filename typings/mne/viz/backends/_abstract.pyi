@@ -148,8 +148,8 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         #### `vmax : float | None`
             vmax is used to scale the colormap.
             If None, the max of the data will be used
-        #### `colormap :
-            The colormap to use.`
+        colormap :
+            The colormap to use.
         interpolate_before_map :
             Enabling makes for a smoother scalars display. Default is True.
             When False, OpenGL will interpolate the mapped colors which can
@@ -168,8 +168,8 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         -----
         ### ⏎ Returns
 
-        #### `surface :
-            Handle of the mesh in the scene.`
+        surface :
+            Handle of the mesh in the scene.
         """
         ...
     @classmethod
@@ -209,14 +209,14 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         #### `vmax : float | None`
             vmax is used to scale the colormap.
             If None, the max of the data will be used
-        #### `colormap :
-            The colormap to use.`
-        normalized_colormap : bool
+        colormap :
+            The colormap to use.
+        #### `normalized_colormap : bool`
             Specify if the values of the colormap are between 0 and 1.
         #### `kind : 'line' | 'tube'`
             The type of the primitives to use to display the contours.
-        #### `color :
-            The color of the mesh as a tuple (red, green, blue) of float`
+        color :
+            The color of the mesh as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
         """
@@ -255,9 +255,9 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         #### `vmax : float | None`
             vmax is used to scale the colormap.
             If None, the max of the data will be used
-        #### `colormap :
-            The colormap to use.`
-        scalars : ndarray, shape (n_vertices,)
+        colormap :
+            The colormap to use.
+        #### `scalars : ndarray, shape (n_vertices,)`
             The scalar valued associated to the vertices.
         #### `backface_culling : bool`
             If True, enable backface culling on the surface.
@@ -341,9 +341,9 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         #### `vmax : float | None`
             vmax is used to scale the colormap.
             If None, the max of the data will be used
-        #### `colormap :
-            The colormap to use.`
-        opacity : float
+        colormap :
+            The colormap to use.
+        #### `opacity : float`
             The opacity of the tube(s).
         #### `backface_culling : bool`
             If True, enable backface culling on the tube(s).
@@ -353,8 +353,8 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         -----
         ### ⏎ Returns
 
-        #### `actor :
-            The actor in the scene.`
+        actor :
+            The actor in the scene.
         surface :
             Handle of the tube in the scene.
         """
@@ -431,9 +431,9 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             The optional scalar data to use.
         #### `backface_culling : bool`
             If True, enable backface culling on the quiver.
-        #### `colormap :
-            The colormap to use.`
-        vmin : float | None
+        colormap :
+            The colormap to use.
+        #### `vmin : float | None`
             vmin is used to scale the colormap.
             If None, the min of the data will be used
         #### `vmax : float | None`
@@ -445,8 +445,8 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         -----
         ### ⏎ Returns
 
-        #### `actor :
-            The actor in the scene.`
+        actor :
+            The actor in the scene.
         surface :
             Handle of the quiver in the scene.
         """
@@ -509,16 +509,16 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         -----
         ### 🛠️ Parameters
 
-        #### `source :
-            The object of the scene used for the colormap.`
+        source :
+            The object of the scene used for the colormap.
         color :
             The color of the label text.
         #### `title : str | None`
             The title of the scalar bar.
         #### `n_labels : int | None`
             The number of labels to display on the scalar bar.
-        #### `bgcolor :
-            The color of the background when there is transparency.`
+        bgcolor :
+            The color of the background when there is transparency.
         """
         ...
     @classmethod

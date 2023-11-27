@@ -226,9 +226,9 @@ def filter_out_warnings(warn_record, category=None, match=None) -> None:
     ### 🛠️ Parameters
 
     category: WarningMessage type | None
-       #### `class of the message to filter out
+       class of the message to filter out
 
-    match : str | None`
+    #### `match : str | None`
         text or regex that matches the error message to filter out
     """
     ...

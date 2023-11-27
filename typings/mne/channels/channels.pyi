@@ -138,9 +138,9 @@ class ReferenceMixin(MontageMixin):
             - ``'REST'`` to use the Reference Electrode Standardization Technique
               infinity reference :footcite:`Yao2001`.
             - An empty list, in which case MNE will not attempt any re-referencing of
-              #### `the data
+              the data
 
-        projection : bool`
+        #### `projection : bool`
             If ``ref_channels='average'`` this argument specifies if the
             average reference should be computed as a projection (True) or not
             (False; default). If ``projection=True``, the average reference is
