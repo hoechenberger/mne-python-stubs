@@ -48,7 +48,7 @@ from .check import (
     _check_compensation_grade as _check_compensation_grade,
     _check_depth as _check_depth,
     _check_dict_keys as _check_dict_keys,
-    _check_edfio_installed as _check_edfio_installed,
+    _check_edflib_installed as _check_edflib_installed,
     _check_eeglabio_installed as _check_eeglabio_installed,
     _check_event_id as _check_event_id,
     _check_fname as _check_fname,
