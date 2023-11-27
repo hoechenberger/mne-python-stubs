@@ -8,6 +8,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+import mne
 from mypy import stubgen
 
 # Module exclusion patterns
@@ -18,17 +19,22 @@ MODULE_PY_EXCLUDE_PATTERNS = [
     "**/tests/**",  # don't include any tests
 ]
 
-mne_base_path = Path("../mne-python")
-stubs_out_dir = Path("./typings")
+MNE_INSTALL_DIR = Path(mne.__path__[0])
+SITE_PACKAGES_DIR = MNE_INSTALL_DIR.parent
 
-if stubs_out_dir.exists():
-    print(f"🪣  Found existing output directory, deleting: {stubs_out_dir}")
-    shutil.rmtree(stubs_out_dir)
+print(f"🔍 Found MNE-Python {mne.__version__} installation in {MNE_INSTALL_DIR}")
+
+STUBS_OUT_DIR = Path(__file__).parent / "typings"
+if STUBS_OUT_DIR.exists():
+    print(f"🪣  Found existing output directory, deleting: {STUBS_OUT_DIR}")
+    shutil.rmtree(STUBS_OUT_DIR)
+
+print(f"💡  Will store the type stubs in: {STUBS_OUT_DIR}")
 
 # Generate list of module paths we want to process
 # We first glob all modules, then drop all that were selected for exclusion
 
-module_py_paths = list((mne_base_path / "mne").rglob("*.py"))
+module_py_paths = list(MNE_INSTALL_DIR.rglob("*.py"))
 module_py_paths_excludes = []
 for module_py_path in module_py_paths:
     for exclude_pattern in MODULE_PY_EXCLUDE_PATTERNS:
@@ -40,7 +46,7 @@ del module_py_path
 # Additionally to the exclusion patterns specified above, we also
 # exclude all __init__.py files for which a .pyi type stub already exists
 # for lazy loading. But we keep the remaining __init__.py files
-init_pyi_paths = list((mne_base_path / "mne").rglob("__init__.pyi"))
+init_pyi_paths = list(MNE_INSTALL_DIR.rglob("__init__.pyi"))
 for init_pyi_path in init_pyi_paths:
     if init_pyi_path.with_suffix(".py") in module_py_paths:
         module_py_paths_excludes.append(init_pyi_path.with_suffix(".py"))
@@ -55,7 +61,7 @@ print("⏳ Generating type stubs …")
 stubgen.main(
     [
         "--include-docstring",
-        f"--output={stubs_out_dir}",
+        f"--output={STUBS_OUT_DIR}",
         *[str(p) for p in module_py_paths + init_pyi_paths],
     ]
 )
@@ -67,10 +73,12 @@ stubgen.main(
 #     typings/mne/decoding.pyi -> typings/mne/decoding/__init__.pyi
 # etc.
 for init_pyi_path in init_pyi_paths:
-    source_path = stubs_out_dir / Path(
-        str(init_pyi_path).replace(f"{mne_base_path}/", "")
+    source_path = STUBS_OUT_DIR / Path(
+        str(init_pyi_path).replace(f"{SITE_PACKAGES_DIR}/", "")
     ).parent.with_suffix(".pyi")
-    target_path = stubs_out_dir / str(init_pyi_path).replace(f"{mne_base_path}/", "")
+    target_path = STUBS_OUT_DIR / str(init_pyi_path).replace(
+        f"{SITE_PACKAGES_DIR}/", ""
+    )
     print(f"📦 Moving {source_path} -> {target_path}")
     source_path.rename(target_path)
 
@@ -78,13 +86,13 @@ for init_pyi_path in init_pyi_paths:
 # Iterate over all top-level objects and replace the docstrings in the stub files with
 # the expanded docstrings (generated through importing the respective .py modules)
 
-stub_paths = list(stubs_out_dir.rglob("*.pyi"))
+stub_paths = list(STUBS_OUT_DIR.rglob("*.pyi"))
 
 for stub_path in stub_paths:
     module_ast = ast.parse(stub_path.read_text(encoding="utf-8"))
     module_name = (
         str(stub_path.with_suffix(""))
-        .replace(f"{stubs_out_dir}/", "")
+        .replace(f"{STUBS_OUT_DIR}/", "")
         .replace("/", ".")
     )
     module_imported = importlib.import_module(module_name)
@@ -279,7 +287,7 @@ for stub_path in stub_paths:
 
 # %%
 print("💾 Writing py.typed file")
-(stubs_out_dir / "mne" / "py.typed").write_text("partial\n", encoding="utf-8")
+(STUBS_OUT_DIR / "mne" / "py.typed").write_text("partial\n", encoding="utf-8")
 
 print("📊 Adding parameter default values to stub files")
 if (
@@ -291,14 +299,18 @@ if (
 print("😵 Running Ruff on stub files")
 if (
     subprocess.run(
-        ["ruff", "--ignore=F811,F821", "--fix", f"{stubs_out_dir}/mne"]
+        ["ruff", "--ignore=F811,F821", "--fix", f"{STUBS_OUT_DIR}/mne"]
     ).returncode
     != 0
 ):
     sys.exit(1)
 
 print("⚫️ Running Black on stub files")
-if subprocess.run(["black", "--quiet", f"{stubs_out_dir}/mne"]).returncode != 0:
+if subprocess.run(["black", "--quiet", f"{STUBS_OUT_DIR}/mne"]).returncode != 0:
     sys.exit(1)
 
+print(
+    f"✨ Created stubs for MNE-Python {mne.__version__} (from {MNE_INSTALL_DIR}) in "
+    f"{STUBS_OUT_DIR.resolve()}"
+)
 print("\n💚 Done! Happy typing!")
