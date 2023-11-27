@@ -16,7 +16,7 @@ def export_raw(
     Supported formats:
         - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
         - EEGLAB (``.set``, uses `eeglabio`)
-        - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
+        - EDF (``.edf``, uses `EDFlib-Python <https://gitlab.com/Teuniz/EDFlib-Python>`_)
 
     ### ⛔️ Warning
         Since we are exporting to external formats, there's no guarantee that all
