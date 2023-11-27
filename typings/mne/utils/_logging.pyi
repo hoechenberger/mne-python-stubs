@@ -13,7 +13,7 @@ class _FrameFilter(logging.Filter):
     def filter(self, record): ...
 
 def verbose(function: _FuncT) -> _FuncT:
-    """## 🧠 Verbose decorator to allow functions to override log-level.
+    """## Verbose decorator to allow functions to override log-level.
 
     -----
     ### 🛠️ Parameters
@@ -59,7 +59,7 @@ def verbose(function: _FuncT) -> _FuncT:
     ...
 
 class use_log_level:
-    """## 🧠 Context manager for logging level.
+    """## Context manager for logging level.
 
     -----
     ### 🛠️ Parameters
@@ -107,7 +107,7 @@ class use_log_level:
     def __exit__(self, *args) -> None: ...
 
 def set_log_level(verbose=None, return_old_level: bool = False, add_frames=None):
-    """## 🧠 Set the logging level.
+    """## Set the logging level.
 
     -----
     ### 🛠️ Parameters
@@ -138,7 +138,7 @@ def set_log_level(verbose=None, return_old_level: bool = False, add_frames=None)
 def set_log_file(
     fname=None, output_format: str = "%(message)s", overwrite=None
 ) -> None:
-    """## 🧠 Set the log to print to a file.
+    """## Set the log to print to a file.
 
     -----
     ### 🛠️ Parameters
@@ -161,14 +161,14 @@ def set_log_file(
     ...
 
 class ClosingStringIO(StringIO):
-    """## 🧠 StringIO that closes after getvalue()."""
+    """## StringIO that closes after getvalue()."""
 
     def getvalue(self, close: bool = True):
-        """## 🧠 Get the value."""
+        """## Get the value."""
         ...
 
 class catch_logging:
-    """## 🧠 Store logging.
+    """## Store logging.
 
     This will remove all other logging handlers, and return the handler to
     stdout when complete.
@@ -181,7 +181,7 @@ class catch_logging:
     def __exit__(self, *args) -> None: ...
 
 class WrapStdOut:
-    """## 🧠 Dynamically wrap to sys.stdout.
+    """## Dynamically wrap to sys.stdout.
 
     This makes packages that monkey-patch sys.stdout (e.g.doctest,
     sphinx-gallery) work properly.
@@ -192,7 +192,7 @@ class WrapStdOut:
 def warn(
     message, category=..., module: str = "mne", ignore_namespaces=("mne",)
 ) -> None:
-    """## 🧠 Emit a warning with trace outside the mne namespace.
+    """## Emit a warning with trace outside the mne namespace.
 
     This function takes arguments like warnings.warn, and sends messages
     using both ``warnings.warn`` and ``logger.warn``. Warnings can be
@@ -212,12 +212,12 @@ def warn(
     #### `ignore_namespaces : list of str`
         Namespaces to ignore when traversing the stack.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
     """
     ...
 
 def filter_out_warnings(warn_record, category=None, match=None) -> None:
-    """## 🧠 Remove particular records from ``warn_record``.
+    """## Remove particular records from ``warn_record``.
 
     This helper takes a list of `warnings.WarningMessage` objects,
     and remove those matching category and/or text.
@@ -236,7 +236,7 @@ def filter_out_warnings(warn_record, category=None, match=None) -> None:
 def wrapped_stdout(
     indent: str = "", cull_newlines: bool = False
 ) -> Generator[None, None, None]:
-    """## 🧠 Wrap stdout writes to logger.info, with an optional indent prefix.
+    """## Wrap stdout writes to logger.info, with an optional indent prefix.
 
     -----
     ### 🛠️ Parameters

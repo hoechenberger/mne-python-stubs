@@ -1,7 +1,7 @@
 from ...utils import fill_doc as fill_doc
 
 def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
-    """## 🧠 Calculate STC similarities across all sources and times.
+    """## Calculate STC similarities across all sources and times.
 
     -----
     ### 🛠️ Parameters
@@ -27,12 +27,12 @@ def source_estimate_quantification(stc1, stc2, metric: str = "rms"):
         * rms: Root mean square of difference between stc data matrices.
         * cosine: Normalized correlation of all elements in stc data matrices.
 
-    ✨ Added in vesion 0.10.0
+    ✨ Added in version 0.10.0
     """
     ...
 
 def cosine_score(stc_true, stc_est, per_sample: bool = True):
-    """## 🧠 Compute cosine similarity between 2 source estimates.
+    """## Compute cosine similarity between 2 source estimates.
 
     -----
     ### 🛠️ Parameters
@@ -60,14 +60,14 @@ def cosine_score(stc_true, stc_est, per_sample: bool = True):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...
 
 def region_localization_error(
     stc_true, stc_est, src, threshold: str = "90%", per_sample: bool = True
 ):
-    """## 🧠 Compute region localization error (RLE) between 2 source estimates.
+    """## Compute region localization error (RLE) between 2 source estimates.
 
     .. math::
 
@@ -118,7 +118,7 @@ def region_localization_error(
     of using term DLE but for different metric :footcite:`MolinsEtAl2008`, we
     use term Region Localization Error (RLE).
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
 
     References
     ----------
@@ -127,7 +127,7 @@ def region_localization_error(
     ...
 
 def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
-    """## 🧠 Compute ROC AUC between 2 source estimates.
+    """## Compute ROC AUC between 2 source estimates.
 
     ROC stands for receiver operating curve and AUC is Area under the curve.
     When computing this metric the stc_true must be thresholded
@@ -162,12 +162,12 @@ def roc_auc_score(stc_true, stc_est, per_sample: bool = True):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...
 
 def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
-    """## 🧠 Compute the F1 score, also known as balanced F-score or F-measure.
+    """## Compute the F1 score, also known as balanced F-score or F-measure.
 
     The F1 score can be interpreted as a weighted average of the precision
     and recall, where an F1 score reaches its best value at 1 and worst score
@@ -209,12 +209,12 @@ def f1_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True)
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...
 
 def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
-    """## 🧠 Compute the precision.
+    """## Compute the precision.
 
     The precision is the ratio ``tp / (tp + fp)`` where ``tp`` is the number of
     true positives and ``fp`` the number of false positives. The precision is
@@ -255,12 +255,12 @@ def precision_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool 
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...
 
 def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = True):
-    """## 🧠 Compute the recall.
+    """## Compute the recall.
 
     The recall is the ratio ``tp / (tp + fn)`` where ``tp`` is the number of
     true positives and ``fn`` the number of false negatives. The recall is
@@ -300,14 +300,14 @@ def recall_score(stc_true, stc_est, threshold: str = "90%", per_sample: bool = T
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...
 
 def peak_position_error(
     stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
 ):
-    """## 🧠 Compute the peak position error.
+    """## Compute the peak position error.
 
     The peak position error measures the distance between the center-of-mass
     of the estimated and the true source.
@@ -359,7 +359,7 @@ def peak_position_error(
     These metrics are documented in :footcite:`StenroosHauk2013` and
     :footcite:`LinEtAl2006a`.
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
 
     References
     ----------
@@ -370,7 +370,7 @@ def peak_position_error(
 def spatial_deviation_error(
     stc_true, stc_est, src, threshold: str = "50%", per_sample: bool = True
 ):
-    """## 🧠 Compute the spatial deviation.
+    """## Compute the spatial deviation.
 
     The spatial deviation characterizes the spread of the estimate source
     around the true source.
@@ -421,7 +421,7 @@ def spatial_deviation_error(
     These metrics are documented in :footcite:`StenroosHauk2013` and
     :footcite:`LinEtAl2006a`.
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
 
     References
     ----------

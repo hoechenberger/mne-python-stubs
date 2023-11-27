@@ -51,7 +51,7 @@ from ..viz import plot_alignment as plot_alignment
 from _typeshed import Incomplete
 
 class SourceSpaces(list):
-    """## 🧠 Represent a list of source space.
+    """## Represent a list of source space.
 
     This class acts like a list of dictionaries containing the source
     space information, one entry in the list per source space type. See
@@ -254,7 +254,7 @@ class SourceSpaces(list):
         trans=None,
         verbose=None,
     ):
-        """## 🧠 Plot the source space.
+        """## Plot the source space.
 
         -----
         ### 🛠️ Parameters
@@ -297,13 +297,13 @@ class SourceSpaces(list):
         """
         ...
     def __getitem__(self, *args, **kwargs):
-        """## 🧠 Get an item."""
+        """## Get an item."""
         ...
     def __add__(self, other):
-        """## 🧠 Combine source spaces."""
+        """## Combine source spaces."""
         ...
     def copy(self):
-        """## 🧠 Make a copy of the source spaces.
+        """## Make a copy of the source spaces.
 
         -----
         ### ⏎ Returns
@@ -313,10 +313,10 @@ class SourceSpaces(list):
         """
         ...
     def __deepcopy__(self, memodict):
-        """## 🧠 Make a deepcopy."""
+        """## Make a deepcopy."""
         ...
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
-        """## 🧠 Save the source spaces to a fif file.
+        """## Save the source spaces to a fif file.
 
         -----
         ### 🛠️ Parameters
@@ -347,7 +347,7 @@ class SourceSpaces(list):
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """## 🧠 Export source spaces to nifti or mgz file.
+        """## Export source spaces to nifti or mgz file.
 
         -----
         ### 🛠️ Parameters
@@ -387,7 +387,7 @@ class SourceSpaces(list):
             If True (default False), overwrite the destination file if it
             exists.
 
-            ✨ Added in vesion 0.19
+            ✨ Added in version 0.19
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -403,7 +403,7 @@ class SourceSpaces(list):
         ...
 
 def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
-    """## 🧠 Read the source spaces from a FIF file.
+    """## Read the source spaces from a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -434,7 +434,7 @@ def read_source_spaces(fname, patch_stats: bool = False, verbose=None):
     ...
 
 def find_source_space_hemi(src):
-    """## 🧠 Return the hemisphere id for a source space.
+    """## Return the hemisphere id for a source space.
 
     -----
     ### 🛠️ Parameters
@@ -451,7 +451,7 @@ def find_source_space_hemi(src):
     ...
 
 def label_src_vertno_sel(label, src):
-    """## 🧠 Find vertex numbers and indices from label.
+    """## Find vertex numbers and indices from label.
 
     -----
     ### 🛠️ Parameters
@@ -472,7 +472,7 @@ def label_src_vertno_sel(label, src):
     ...
 
 def write_source_spaces(fname, src, *, overwrite: bool = False, verbose=None) -> None:
-    """## 🧠 Write source spaces to a file.
+    """## Write source spaces to a file.
 
     -----
     ### 🛠️ Parameters
@@ -510,7 +510,7 @@ def setup_source_space(
     *,
     verbose=None,
 ):
-    """## 🧠 Set up bilateral hemisphere surface-based source space with subsampling.
+    """## Set up bilateral hemisphere surface-based source space with subsampling.
 
     -----
     ### 🛠️ Parameters
@@ -586,7 +586,7 @@ def setup_volume_source_space(
     n_jobs=None,
     verbose=None,
 ):
-    """## 🧠 Set up a volume source space with grid spacing or discrete source space.
+    """## Set up a volume source space with grid spacing or discrete source space.
 
     -----
     ### 🛠️ Parameters
@@ -655,7 +655,7 @@ def setup_volume_source_space(
     #### `sphere_units : str`
         Defaults to ``"m"``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
     #### `single_volume : bool`
         If True, multiple values of ``volume_label`` will be merged into a
         a single source space instead of occupying multiple source spaces
@@ -663,7 +663,7 @@ def setup_volume_source_space(
         ``len(volume_label)``. This can help conserve memory and disk space
         when many labels are used.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
     #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
@@ -672,7 +672,7 @@ def setup_volume_source_space(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -724,7 +724,7 @@ def setup_volume_source_space(
     ...
 
 def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None):
-    """## 🧠 Compute inter-source distances along the cortical surface.
+    """## Compute inter-source distances along the cortical surface.
 
     This function will also try to add patch info for the source space.
     It will only occur if the ``dist_limit`` is sufficiently high that all
@@ -779,7 +779,7 @@ def add_source_space_distances(src, dist_limit=..., n_jobs=None, *, verbose=None
     ...
 
 def get_volume_labels_from_src(src, subject, subjects_dir):
-    """## 🧠 Return a list of Label of segmented volumes included in the src space.
+    """## Return a list of Label of segmented volumes included in the src space.
 
     -----
     ### 🛠️ Parameters
@@ -808,7 +808,7 @@ def morph_source_spaces(
     subjects_dir=None,
     verbose=None,
 ):
-    """## 🧠 Morph an existing source space to a different subject.
+    """## Morph an existing source space to a different subject.
 
     ### ⛔️ Warning This can be used in place of morphing source estimates for
                  multiple subjects, but there may be consequences in terms
@@ -844,12 +844,12 @@ def morph_source_spaces(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.10.0
+    ✨ Added in version 0.10.0
     """
     ...
 
 def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None):
-    """## 🧠 Compute distances between vertices and sensors.
+    """## Compute distances between vertices and sensors.
 
     -----
     ### 🛠️ Parameters
@@ -892,7 +892,7 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
     ...
 
 def get_decimated_surfaces(src):
-    """## 🧠 Get the decimated surfaces from a source space.
+    """## Get the decimated surfaces from a source space.
 
     -----
     ### 🛠️ Parameters
@@ -911,6 +911,6 @@ def get_decimated_surfaces(src):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.0
+    ✨ Added in version 1.0
     """
     ...

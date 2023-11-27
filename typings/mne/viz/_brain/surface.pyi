@@ -7,7 +7,7 @@ from ...utils import get_subjects_dir as get_subjects_dir
 from _typeshed import Incomplete
 
 class _Surface:
-    """## 🧠 Container for a brain surface.
+    """## Container for a brain surface.
 
     It is used for storing vertices, faces and morphometric data
     (curvature) of a hemisphere mesh.
@@ -91,7 +91,7 @@ class _Surface:
     orig_faces: Incomplete
 
     def load_geometry(self) -> None:
-        """## 🧠 Load geometry of the surface.
+        """## Load geometry of the surface.
 
         -----
         ### 🛠️ Parameters
@@ -105,7 +105,7 @@ class _Surface:
         """
         ...
     def __len__(self) -> int:
-        """## 🧠 Return number of vertices."""
+        """## Return number of vertices."""
         ...
     @property
     def x(self): ...
@@ -114,5 +114,5 @@ class _Surface:
     @property
     def z(self): ...
     def load_curvature(self) -> None:
-        """## 🧠 Load in curvature values from the ?h.curv file."""
+        """## Load in curvature values from the ?h.curv file."""
         ...

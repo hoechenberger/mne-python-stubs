@@ -6,7 +6,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of visual_92_categories dataset.
+    """## Get path to local copy of visual_92_categories dataset.
 
     -----
     ### 🛠️ Parameters
@@ -44,7 +44,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local visual_92_categories dataset.
+    """## Get version of the local visual_92_categories dataset.
 
     -----
     ### ⏎ Returns

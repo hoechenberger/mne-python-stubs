@@ -4,7 +4,7 @@ from ..utils import logger as logger, warn as warn
 def dpss_windows(
     N, half_nbw, Kmax, *, sym: bool = True, norm=None, low_bias: bool = True
 ):
-    """## 🧠 Compute Discrete Prolate Spheroidal Sequences.
+    """## Compute Discrete Prolate Spheroidal Sequences.
 
     Will give of orders [0,Kmax-1] for a given frequency-spacing multiple
     NW and sequence length N.
@@ -26,7 +26,7 @@ def dpss_windows(
         a periodic window (``False``, for spectral analysis). Default is
         ``True``.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
     #### `norm : 2 | ``'approximate'`` | ``'subsample'`` | None`
         Window normalization method. If ``'approximate'`` or ``'subsample'``,
         windows are normalized by the maximum, and a correction scale-factor
@@ -35,7 +35,7 @@ def dpss_windows(
         ("subsample"). ``2`` uses the L2 norm. ``None`` (the default) uses
         ``"approximate"`` when ``Kmax=None`` and ``2`` otherwise.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
     #### `low_bias : bool`
         Keep only tapers with eigenvalues > 0.9.
 
@@ -73,7 +73,7 @@ def psd_array_multitaper(
     max_iter: int = 150,
     verbose=None,
 ):
-    """## 🧠 Compute power spectral density (PSD) using a multi-taper method.
+    """## Compute power spectral density (PSD) using a multi-taper method.
 
     The power spectral density is computed with DPSS
     tapers :footcite:p:`Slepian1978`.
@@ -155,7 +155,7 @@ def psd_array_multitaper(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.14.0
+    ✨ Added in version 0.14.0
 
     References
     ----------
@@ -177,7 +177,7 @@ def tfr_array_multitaper(
     *,
     verbose=None,
 ):
-    """## 🧠 Compute Time-Frequency Representation (TFR) using DPSS tapers.
+    """## Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
     Same computation as `mne.time_frequency.tfr_multitaper`, but operates on
     `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` or
@@ -338,6 +338,6 @@ def tfr_array_multitaper(
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 
-    ✨ Added in vesion 0.14.0
+    ✨ Added in version 0.14.0
     """
     ...

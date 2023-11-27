@@ -23,7 +23,7 @@ def get_head_surf(
     on_defects: str = "raise",
     verbose=None,
 ):
-    """## 🧠 Load the subject head surface.
+    """## Load the subject head surface.
 
     -----
     ### 🛠️ Parameters
@@ -50,7 +50,7 @@ def get_head_surf(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -67,7 +67,7 @@ def get_head_surf(
     ...
 
 def get_meg_helmet_surf(info, trans=None, *, verbose=None):
-    """## 🧠 Load the MEG helmet associated with the MEG sensors.
+    """## Load the MEG helmet associated with the MEG sensors.
 
     -----
     ### 🛠️ Parameters
@@ -101,7 +101,7 @@ def get_meg_helmet_surf(info, trans=None, *, verbose=None):
     ...
 
 def fast_cross_3d(x, y):
-    """## 🧠 Compute cross product between list of 3D vectors.
+    """## Compute cross product between list of 3D vectors.
 
     Much faster than np.cross() when the number of cross products
     becomes large (>= 500). This is because np.cross() methods become
@@ -136,7 +136,7 @@ def complete_surface_info(
     *,
     verbose=None,
 ):
-    """## 🧠 Complete surface information.
+    """## Complete surface information.
 
     -----
     ### 🛠️ Parameters
@@ -165,13 +165,13 @@ def complete_surface_info(
     ...
 
 class _CDist:
-    """## 🧠 Wrapper for cdist that uses a Tree-like pattern."""
+    """## Wrapper for cdist that uses a Tree-like pattern."""
 
     def __init__(self, xhs) -> None: ...
     def query(self, rr): ...
 
 class _DistanceQuery:
-    """## 🧠 Wrapper for fast distance queries."""
+    """## Wrapper for fast distance queries."""
 
     query: Incomplete
     data: Incomplete
@@ -181,7 +181,7 @@ class _DistanceQuery:
     ) -> None: ...
 
 class _CheckInside:
-    """## 🧠 Efficiently check if points are inside a surface."""
+    """## Efficiently check if points are inside a surface."""
 
     mode: Incomplete
     surf: Incomplete
@@ -190,7 +190,7 @@ class _CheckInside:
     def __call__(self, rr, n_jobs=None, verbose=None): ...
 
 def read_curvature(filepath, binary: bool = True):
-    """## 🧠 Load in curvature values from the ?h.curv file.
+    """## Load in curvature values from the ?h.curv file.
 
     -----
     ### 🛠️ Parameters
@@ -215,7 +215,7 @@ def read_surface(
     file_format: str = "auto",
     verbose=None,
 ):
-    """## 🧠 Load a Freesurfer surface mesh in triangular format.
+    """## Load a Freesurfer surface mesh in triangular format.
 
     -----
     ### 🛠️ Parameters
@@ -238,7 +238,7 @@ def read_surface(
             * 'zras' : array of float, shape (3,)
             * 'cras' : array of float, shape (3,)
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
 
     #### `return_dict : bool`
         If True, a dictionary with surface parameters is returned.
@@ -248,7 +248,7 @@ def read_surface(
         importing in other software), or 'auto' to attempt to infer from the
         file name. Defaults to 'auto'.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -288,7 +288,7 @@ def write_surface(
     *,
     verbose=None,
 ) -> None:
-    """## 🧠 Write a triangular Freesurfer surface mesh.
+    """## Write a triangular Freesurfer surface mesh.
 
     Accepts the same data format as is returned by read_surface().
 
@@ -319,14 +319,14 @@ def write_surface(
             * 'zras' : array of float, shape (3,)
             * 'cras' : array of float, shape (3,)
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
     #### `file_format : 'auto' | 'freesurfer' | 'obj'`
         File format to use. Can be 'freesurfer' to write a FreeSurfer surface
         file, or 'obj' to write a Wavefront .obj file (common format for
         importing in other software), or 'auto' to attempt to infer from the
         file name. Defaults to 'auto'.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `overwrite : bool`
         If True (default False), overwrite the destination file if it
@@ -349,7 +349,7 @@ def write_surface(
 def decimate_surface(
     points, triangles, n_triangles, method: str = "quadric", *, verbose=None
 ):
-    """## 🧠 Decimate surface data.
+    """## Decimate surface data.
 
     -----
     ### 🛠️ Parameters
@@ -365,7 +365,7 @@ def decimate_surface(
         sphere using Freesurfer and downsample to an icosahedral or
         octahedral mesh.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -405,7 +405,7 @@ def decimate_surface(
     ...
 
 def mesh_edges(tris):
-    """## 🧠 Return sparse matrix with edges as an adjacency matrix.
+    """## Return sparse matrix with edges as an adjacency matrix.
 
     -----
     ### 🛠️ Parameters
@@ -422,7 +422,7 @@ def mesh_edges(tris):
     ...
 
 def mesh_dist(tris, vert):
-    """## 🧠 Compute adjacency matrix weighted by distances.
+    """## Compute adjacency matrix weighted by distances.
 
     It generates an adjacency matrix where the entries are the distances
     between neighboring vertices.
@@ -444,7 +444,7 @@ def mesh_dist(tris, vert):
     ...
 
 def read_tri(fname_in, swap: bool = False, verbose=None):
-    """## 🧠 Read triangle definitions from an ascii file.
+    """## Read triangle definitions from an ascii file.
 
     -----
     ### 🛠️ Parameters
@@ -479,7 +479,7 @@ def read_tri(fname_in, swap: bool = False, verbose=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.13.0
+    ✨ Added in version 0.13.0
     """
     ...
 
@@ -493,7 +493,7 @@ def dig_mri_distances(
     on_defects: str = "raise",
     verbose=None,
 ):
-    """## 🧠 Compute distances between head shape points and the scalp surface.
+    """## Compute distances between head shape points and the scalp surface.
 
     This function is useful to check that coregistration is correct.
     Unless outliers are present in the head shape points,
@@ -535,7 +535,7 @@ def dig_mri_distances(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -557,14 +557,14 @@ def dig_mri_distances(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.19
+    ✨ Added in version 0.19
     """
     ...
 
 def get_montage_volume_labels(
     montage, subject, subjects_dir=None, aseg: str = "aparc+aseg", dist: int = 2
 ):
-    """## 🧠 Get regions of interest near channels from a Freesurfer parcellation.
+    """## Get regions of interest near channels from a Freesurfer parcellation.
 
     ### 💡 Note This is applicable for channels inside the brain
               (intracranial electrodes).

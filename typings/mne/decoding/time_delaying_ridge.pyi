@@ -5,7 +5,7 @@ from .base import BaseEstimator as BaseEstimator
 from _typeshed import Incomplete
 
 class TimeDelayingRidge(BaseEstimator):
-    """## 🧠 Ridge regression of data with time delays.
+    """## Ridge regression of data with time delays.
 
     -----
     ### 🛠️ Parameters
@@ -30,7 +30,7 @@ class TimeDelayingRidge(BaseEstimator):
     #### `n_jobs : int | str`
         The number of jobs to use. Can be an int (default 1) or ``'cuda'``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
     #### `edge_correction : bool`
         If True (default), correct the autocorrelation coefficients for
         non-zero delays for the fact that fewer samples are available.
@@ -38,7 +38,7 @@ class TimeDelayingRidge(BaseEstimator):
         depending on the relationship between epoch length and model
         duration. Only used if ``estimator`` is float or None.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     -----
     ### 👉 See Also
@@ -79,7 +79,7 @@ class TimeDelayingRidge(BaseEstimator):
     intercept_: Incomplete
 
     def fit(self, X, y):
-        """## 🧠 Estimate the coefficients of the linear model.
+        """## Estimate the coefficients of the linear model.
 
         -----
         ### 🛠️ Parameters
@@ -97,7 +97,7 @@ class TimeDelayingRidge(BaseEstimator):
         """
         ...
     def predict(self, X):
-        """## 🧠 Predict the output.
+        """## Predict the output.
 
         -----
         ### 🛠️ Parameters

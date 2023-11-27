@@ -19,7 +19,7 @@ from .write import (
 )
 
 class Projection(dict):
-    """## 🧠 Dictionary-like object holding a projection vector.
+    """## Dictionary-like object holding a projection vector.
 
     Projection vectors are stored in a list in ``inst.info["projs"]``. Each projection
     vector has 5 keys: ``active``, ``data``, ``desc``, ``explained_var``, ``kind``.
@@ -52,13 +52,13 @@ class Projection(dict):
         explained_var=None,
     ) -> None: ...
     def __deepcopy__(self, memodict):
-        """## 🧠 Make a deepcopy."""
+        """## Make a deepcopy."""
         ...
     def __eq__(self, other):
-        """## 🧠 Equality == method."""
+        """## Equality == method."""
         ...
     def __ne__(self, other):
-        """## 🧠 Different != method."""
+        """## Different != method."""
         ...
     def plot_topomap(
         self,
@@ -83,7 +83,7 @@ class Projection(dict):
         axes=None,
         show: bool = True,
     ):
-        """## 🧠 Plot topographic maps of SSP projections.
+        """## Plot topographic maps of SSP projections.
 
         -----
         ### 🛠️ Parameters
@@ -105,7 +105,7 @@ class Projection(dict):
             ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
             non-masked sensor names will be shown.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `contours : int | array-like`
             The number of contour lines to draw. If ``0``, no contours will be drawn.
@@ -136,7 +136,7 @@ class Projection(dict):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `image_interp : str`
@@ -162,13 +162,13 @@ class Projection(dict):
                 but it can extend beyond the head when sensors are plotted outside
                 the head circle.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `border : float | 'mean'`
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `res : int`
             The resolution of the topomap image (number of pixels along each side).
@@ -204,7 +204,7 @@ class Projection(dict):
             for more details on colormap normalization, and
             `the ERDs example<cnorm-example>` for an example of its use.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `colorbar : bool`
             Plot a colorbar in the rightmost column of the figure.
@@ -212,14 +212,14 @@ class Projection(dict):
             Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `units : str | None`
             The units to use for the colorbar label. Ignored if ``colorbar=False``.
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
         #### `axes : instance of Axes | list of Axes | None`
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
@@ -235,12 +235,12 @@ class Projection(dict):
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.15.0
+        ✨ Added in version 0.15.0
         """
         ...
 
 class ProjMixin:
-    """## 🧠 Mixin class for Raw, Evoked, Epochs.
+    """## Mixin class for Raw, Evoked, Epochs.
 
     -----
     ### 📖 Notes
@@ -268,10 +268,10 @@ class ProjMixin:
 
     @property
     def proj(self):
-        """## 🧠 Whether or not projections are active."""
+        """## Whether or not projections are active."""
         ...
     def add_proj(self, projs, remove_existing: bool = False, verbose=None):
-        """## 🧠 Add SSP projection vectors.
+        """## Add SSP projection vectors.
 
         -----
         ### 🛠️ Parameters
@@ -295,7 +295,7 @@ class ProjMixin:
         """
         ...
     def apply_proj(self, verbose=None):
-        """## 🧠 Apply the signal space projection (SSP) operators to the data.
+        """## Apply the signal space projection (SSP) operators to the data.
 
         -----
         ### 🛠️ Parameters
@@ -336,7 +336,7 @@ class ProjMixin:
         """
         ...
     def del_proj(self, idx: str = "all"):
-        """## 🧠 Remove SSP projection vector.
+        """## Remove SSP projection vector.
 
         ### 💡 Note The projection vector can only be removed if it is inactive
                   (has not been applied to the data).
@@ -378,7 +378,7 @@ class ProjMixin:
         axes=None,
         show: bool = True,
     ):
-        """## 🧠 Plot SSP vector.
+        """## Plot SSP vector.
 
         -----
         ### 🛠️ Parameters
@@ -401,7 +401,7 @@ class ProjMixin:
             ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
             non-masked sensor names will be shown.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `contours : int | array-like`
             The number of contour lines to draw. If ``0``, no contours will be drawn.
@@ -432,7 +432,7 @@ class ProjMixin:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `image_interp : str`
@@ -458,7 +458,7 @@ class ProjMixin:
                 but it can extend beyond the head when sensors are plotted outside
                 the head circle.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
             🎭 Changed in version 0.21
 
@@ -470,7 +470,7 @@ class ProjMixin:
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `res : int`
             The resolution of the topomap image (number of pixels along each side).
@@ -507,7 +507,7 @@ class ProjMixin:
             for more details on colormap normalization, and
             `the ERDs example<cnorm-example>` for an example of its use.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `colorbar : bool`
             Plot a colorbar in the rightmost column of the figure.
@@ -515,14 +515,14 @@ class ProjMixin:
             Formatting string for colorbar tick labels. See `formatspec` for
             details.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `units : str | None`
             The units to use for the colorbar label. Ignored if ``colorbar=False``.
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
         #### `axes : instance of Axes | list of Axes | None`
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
@@ -538,7 +538,7 @@ class ProjMixin:
         ...
 
 def make_projector(projs, ch_names, bads=(), include_active: bool = True):
-    """## 🧠 Create an SSP operator from SSP projection vectors.
+    """## Create an SSP operator from SSP projection vectors.
 
     -----
     ### 🛠️ Parameters
@@ -568,7 +568,7 @@ def make_projector(projs, ch_names, bads=(), include_active: bool = True):
     ...
 
 def make_projector_info(info, include_active: bool = True):
-    """## 🧠 Make an SSP operator using the measurement info.
+    """## Make an SSP operator using the measurement info.
 
     Calls make_projector on good channels.
 
@@ -592,7 +592,7 @@ def make_projector_info(info, include_active: bool = True):
     ...
 
 def activate_proj(projs, copy: bool = True, verbose=None):
-    """## 🧠 Set all projections to active.
+    """## Set all projections to active.
 
     Useful before passing them to make_projector.
 
@@ -619,7 +619,7 @@ def activate_proj(projs, copy: bool = True, verbose=None):
     ...
 
 def deactivate_proj(projs, copy: bool = True, verbose=None):
-    """## 🧠 Set all projections to inactive.
+    """## Set all projections to inactive.
 
     Useful before saving raw data without projectors applied.
 
@@ -648,7 +648,7 @@ def deactivate_proj(projs, copy: bool = True, verbose=None):
 def make_eeg_average_ref_proj(
     info, activate: bool = True, *, ch_type: str = "eeg", verbose=None
 ):
-    """## 🧠 Create an EEG average reference SSP projection vector.
+    """## Create an EEG average reference SSP projection vector.
 
     -----
     ### 🛠️ Parameters
@@ -662,7 +662,7 @@ def make_eeg_average_ref_proj(
         The channel type to use for reference projection.
         Valid types are ``'eeg'``, ``'ecog'``, ``'seeg'`` and ``'dbs'``.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -686,7 +686,7 @@ def setup_proj(
     eeg_ref_ch_type: str = "eeg",
     verbose=None,
 ):
-    """## 🧠 Set up projection for Raw and Epochs.
+    """## Set up projection for Raw and Epochs.
 
     -----
     ### 🛠️ Parameters
@@ -703,7 +703,7 @@ def setup_proj(
         The channel type to use for reference projection.
         Valid types are 'eeg', 'ecog', 'seeg' and 'dbs'.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

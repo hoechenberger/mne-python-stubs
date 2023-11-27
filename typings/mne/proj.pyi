@@ -20,7 +20,7 @@ from .parallel import parallel_func as parallel_func
 from .utils import check_fname as check_fname, logger as logger
 
 def read_proj(fname, verbose=None):
-    """## 🧠 Read projections from a FIF file.
+    """## Read projections from a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -49,7 +49,7 @@ def read_proj(fname, verbose=None):
     ...
 
 def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
-    """## 🧠 Write projections to a FIF file.
+    """## Write projections to a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -64,7 +64,7 @@ def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -72,7 +72,7 @@ def write_proj(fname, projs, *, overwrite: bool = False, verbose=None) -> None:
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     -----
     ### 👉 See Also
@@ -91,7 +91,7 @@ def compute_proj_epochs(
     meg: str = "separate",
     verbose=None,
 ):
-    """## 🧠 Compute SSP (signal-space projection) vectors on epoched data.
+    """## Compute SSP (signal-space projection) vectors on epoched data.
 
     This function aims to find those SSP vectors that
     will project out the ``n`` most prominent signals from the data for each
@@ -134,7 +134,7 @@ def compute_proj_epochs(
         If ``'combined'``, ``n_mag == n_grad`` is required and the number of
         projectors computed for MEG will be ``n_mag``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -164,7 +164,7 @@ def compute_proj_evoked(
     meg: str = "separate",
     verbose=None,
 ):
-    """## 🧠 Compute SSP (signal-space projection) vectors on evoked data.
+    """## Compute SSP (signal-space projection) vectors on evoked data.
 
     This function aims to find those SSP vectors that
     will project out the ``n`` most prominent signals from the data for each
@@ -194,14 +194,14 @@ def compute_proj_evoked(
         The description prefix to use. If None, one will be created based on
         tmin and tmax.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
     #### `meg : str`
         Can be ``'separate'`` (default) or ``'combined'`` to compute projectors
         for magnetometers and gradiometers separately or jointly.
         If ``'combined'``, ``n_mag == n_grad`` is required and the number of
         projectors computed for MEG will be ``n_mag``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -236,7 +236,7 @@ def compute_proj_raw(
     meg: str = "separate",
     verbose=None,
 ):
-    """## 🧠 Compute SSP (signal-space projection) vectors on continuous data.
+    """## Compute SSP (signal-space projection) vectors on continuous data.
 
     This function aims to find those SSP vectors that
     will project out the ``n`` most prominent signals from the data for each
@@ -288,7 +288,7 @@ def compute_proj_raw(
         If ``'combined'``, ``n_mag == n_grad`` is required and the number of
         projectors computed for MEG will be ``n_mag``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -318,7 +318,7 @@ def sensitivity_map(
     *,
     verbose=None,
 ):
-    """## 🧠 Compute sensitivity map.
+    """## Compute sensitivity map.
 
     Such maps are used to know how much sources are visible by a type
     of sensor, and how much projections shadow some sources.

@@ -9,14 +9,14 @@ MNE_BROWSER_BACKEND: Incomplete
 backend: Incomplete
 
 class BrowserParams:
-    """## 🧠 Container object for 2D browser parameters."""
+    """## Container object for 2D browser parameters."""
 
     close_key: str
 
     def __init__(self, **kwargs) -> None: ...
 
 class BrowserBase(ABC, metaclass=abc.ABCMeta):
-    """## 🧠 A base class containing for the 2D browser.
+    """## A base class containing for the 2D browser.
 
     This class contains all backend-independent attributes and methods.
     """
@@ -26,7 +26,7 @@ class BrowserBase(ABC, metaclass=abc.ABCMeta):
 
     def __init__(self, **kwargs) -> None: ...
     def fake_keypress(self, key, fig=None):
-        """## 🧠 Pass a fake keypress to the figure.
+        """## Pass a fake keypress to the figure.
 
         -----
         ### 🛠️ Parameters
@@ -39,7 +39,7 @@ class BrowserBase(ABC, metaclass=abc.ABCMeta):
         ...
 
 def set_browser_backend(backend_name, verbose=None):
-    """## 🧠 Set the 2D browser backend for MNE.
+    """## Set the 2D browser backend for MNE.
 
     The backend will be set as specified and operations will use
     that backend.
@@ -101,12 +101,12 @@ def set_browser_backend(backend_name, verbose=None):
        | Overview-Bar (with Z-Score-Mode)     |            | ✓  |
        +--------------------------------------+------------+----+
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...
 
 def get_browser_backend():
-    """## 🧠 Return the 2D backend currently used.
+    """## Return the 2D backend currently used.
 
     -----
     ### ⏎ Returns
@@ -118,7 +118,7 @@ def get_browser_backend():
     ...
 
 def use_browser_backend(backend_name) -> Generator[Incomplete, None, None]:
-    """## 🧠 Create a 2D browser visualization context using the designated backend.
+    """## Create a 2D browser visualization context using the designated backend.
 
     See `mne.viz.set_browser_backend` for more details on the available
     2D browser backends and their capabilities.

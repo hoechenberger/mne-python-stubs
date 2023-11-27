@@ -9,7 +9,7 @@ MNE_3D_BACKEND_TESTING: bool
 backend: Incomplete
 
 def set_3d_backend(backend_name, verbose=None):
-    """## 🧠 Set the 3D backend for MNE.
+    """## Set the 3D backend for MNE.
 
     The backend will be set as specified and operations will use
     that backend.
@@ -90,7 +90,7 @@ def set_3d_backend(backend_name, verbose=None):
     ...
 
 def get_3d_backend():
-    """## 🧠 Return the 3D backend currently used.
+    """## Return the 3D backend currently used.
 
     -----
     ### ⏎ Returns
@@ -106,7 +106,7 @@ def get_3d_backend():
     ...
 
 def use_3d_backend(backend_name) -> Generator[None, None, None]:
-    """## 🧠 Create a 3d visualization context using the designated backend.
+    """## Create a 3d visualization context using the designated backend.
 
     See `mne.viz.set_3d_backend` for more details on the available
     3d backends and their capabilities.
@@ -129,7 +129,7 @@ def set_3d_view(
     *,
     reset_camera=None,
 ) -> None:
-    """## 🧠 Configure the view of the given scene.
+    """## Configure the view of the given scene.
 
     -----
     ### 🛠️ Parameters
@@ -164,7 +164,7 @@ def set_3d_view(
     ...
 
 def set_3d_title(figure, title, size: int = 40) -> None:
-    """## 🧠 Configure the title of the given scene.
+    """## Configure the title of the given scene.
 
     -----
     ### 🛠️ Parameters
@@ -187,7 +187,7 @@ def create_3d_figure(
     scene: bool = True,
     show: bool = False,
 ):
-    """## 🧠 Return an empty figure based on the current 3d backend.
+    """## Return an empty figure based on the current 3d backend.
 
     ### ⛔️ Warning Proceed with caution when the renderer object is
                  returned (with ``scene=False``) because the _Renderer
@@ -213,7 +213,7 @@ def create_3d_figure(
     #### `show : bool`
         If True, show the renderer immediately.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     -----
     ### ⏎ Returns
@@ -224,7 +224,7 @@ def create_3d_figure(
     ...
 
 def close_3d_figure(figure) -> None:
-    """## 🧠 Close the given scene.
+    """## Close the given scene.
 
     -----
     ### 🛠️ Parameters
@@ -235,11 +235,11 @@ def close_3d_figure(figure) -> None:
     ...
 
 def close_all_3d_figures() -> None:
-    """## 🧠 Close all the scenes of the current 3d backend."""
+    """## Close all the scenes of the current 3d backend."""
     ...
 
 def get_brain_class():
-    """## 🧠 Return the proper Brain class based on the current 3d backend.
+    """## Return the proper Brain class based on the current 3d backend.
 
     -----
     ### ⏎ Returns
@@ -250,6 +250,6 @@ def get_brain_class():
     ...
 
 class _TimeInteraction:
-    """## 🧠 Mixin enabling time interaction controls."""
+    """## Mixin enabling time interaction controls."""
 
     ...

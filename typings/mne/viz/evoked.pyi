@@ -33,7 +33,7 @@ def plot_evoked(
     highlight=None,
     verbose=None,
 ):
-    """## 🧠 Plot evoked data using butterfly plots.
+    """## Plot evoked data using butterfly plots.
 
     Left click to a line shows the channel name. Selecting an area by clicking
     and holding left mouse button plots a topographic map of the painted area.
@@ -133,7 +133,7 @@ def plot_evoked(
         dimensionality as the evoked raw data; and return a list of
         unique integers corresponding to the number of channels.
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
 
     #### `selectable : bool`
         Whether to use interactive features. If True (default), it is possible
@@ -141,7 +141,7 @@ def plot_evoked(
         are disabled. Disabling interactive features reduces memory consumption
         and is useful when using ``axes`` parameter to draw multiaxes figures.
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
 
     #### `noise_cov : instance of Covariance | str | None`
         Noise covariance used to whiten the data while plotting.
@@ -153,11 +153,11 @@ def plot_evoked(
         magnetometers and gradiometers may introduce differences in scaling,
         consider using `mne.Evoked.plot_white`.
 
-        ✨ Added in vesion 0.16.0
+        ✨ Added in version 0.16.0
     #### `time_unit : str`
         The units for the time axis, can be "s" (default) or "ms".
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
@@ -170,7 +170,7 @@ def plot_evoked(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     #### `highlight : array-like of float, shape(2,) | array-like of float, shape (n, 2) | None`
         Segments of the data to highlight by means of a light-yellow
@@ -183,7 +183,7 @@ def plot_evoked(
         of the passed object would be ``(3, 2)``. If ``None``, no highlighting
         is applied.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -224,7 +224,7 @@ def plot_evoked_topo(
     exclude: str = "bads",
     show: bool = True,
 ):
-    """## 🧠 Plot 2D topography of evoked responses.
+    """## Plot 2D topography of evoked responses.
 
     Clicking on the plot of an individual sensor opens a new figure showing
     the evoked response for the selected sensor.
@@ -283,13 +283,13 @@ def plot_evoked_topo(
     #### `background_color : color`
         Background color. Typically 'k' (black) or 'w' (white; default).
 
-        ✨ Added in vesion 0.15.0
+        ✨ Added in version 0.15.0
     #### `noise_cov : instance of Covariance | str | None`
         Noise covariance used to whiten the data while plotting.
         Whitened data channel names are shown in italic.
         Can be a string to load a covariance from disk.
 
-        ✨ Added in vesion 0.16.0
+        ✨ Added in version 0.16.0
     #### `exclude : list of str | 'bads'`
         Channels names to exclude from the plot. If 'bads', the
         bad channels are excluded. By default, exclude is set to 'bads'.
@@ -328,7 +328,7 @@ def plot_evoked_image(
     group_by=None,
     sphere=None,
 ):
-    """## 🧠 Plot evoked data as images.
+    """## Plot evoked data as images.
 
     -----
     ### 🛠️ Parameters
@@ -393,14 +393,14 @@ def plot_evoked_image(
     #### `colorbar : bool`
         If True, plot a colorbar. Defaults to True.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `mask : ndarray | None`
         An array of booleans of the same shape as the data. Entries of the
         data that correspond to ``False`` in the mask are masked (see
         ``do_mask`` below). Useful for, e.g., masking for statistical
         significance.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `mask_style : None | 'both' | 'contour' | 'mask'`
         If ``mask`` is not None: if 'contour', a contour line is drawn around
         the masked areas (``True`` in ``mask``). If 'mask', entries not
@@ -409,7 +409,7 @@ def plot_evoked_image(
         If ``None``, defaults to 'both' if ``mask`` is not None, and is ignored
         otherwise.
 
-         ✨ Added in vesion 0.16
+         ✨ Added in version 0.16
     #### `mask_cmap : matplotlib colormap | (colormap, bool) | 'interactive'`
         The colormap chosen for masked parts of the image (see below), if
         ``mask`` is not ``None``. If None, ``cmap`` is reused. Defaults to
@@ -420,11 +420,11 @@ def plot_evoked_image(
         I.e., if 0, masked-out segments are not visible at all.
         Defaults to .25.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `time_unit : str`
         The units for the time axis, can be "ms" or "s" (default).
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `show_names : bool | 'auto' | 'all'`
         Determines if channel names should be plotted on the y axis. If False,
         no names are shown. If True, ticks are set automatically by matplotlib
@@ -456,7 +456,7 @@ def plot_evoked_image(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     -----
@@ -477,7 +477,7 @@ def plot_evoked_white(
     axes=None,
     verbose=None,
 ):
-    """## 🧠 Plot whitened evoked response.
+    """## Plot whitened evoked response.
 
     Plots the whitened evoked response and the whitened GFP as described in
     :footcite:`EngemannGramfort2015`. This function is especially useful for
@@ -542,7 +542,7 @@ def plot_evoked_white(
     #### `time_unit : str`
         The units for the time axis, can be "ms" or "s" (default).
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
@@ -555,12 +555,12 @@ def plot_evoked_white(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     #### `axes : list | None`
         List of axes to plot into.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -606,7 +606,7 @@ def plot_evoked_white(
     ...
 
 def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
-    """## 🧠 Plot a data SNR estimate.
+    """## Plot a data SNR estimate.
 
     -----
     ### 🛠️ Parameters
@@ -620,7 +620,7 @@ def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
     #### `axes : instance of Axes | None`
         The axes to plot into.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -641,7 +641,7 @@ def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
     evoked data. The orange line is the SNR estimated based on the mismatch
     between the data and the data re-estimated from the regularized inverse.
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
@@ -655,7 +655,7 @@ def plot_evoked_joint(
     ts_args=None,
     topomap_args=None,
 ):
-    """## 🧠 Plot evoked data as butterfly plot and add topomaps for time points.
+    """## Plot evoked data as butterfly plot and add topomaps for time points.
 
     ### 💡 Note Axes to plot in can be passed by the user through ``ts_args`` or
               ``topomap_args``. In that case both ``ts_args`` and
@@ -717,7 +717,7 @@ def plot_evoked_joint(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.12.0
+    ✨ Added in version 0.12.0
     """
     ...
 
@@ -744,7 +744,7 @@ def plot_compare_evokeds(
     sphere=None,
     time_unit: str = "s",
 ):
-    """## 🧠 Plot evoked time courses for one or more conditions and/or channels.
+    """## Plot evoked time courses for one or more conditions and/or channels.
 
     -----
     ### 🛠️ Parameters
@@ -916,12 +916,12 @@ def plot_compare_evokeds(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     #### `time_unit : str`
         The units for the time axis, can be "s" (default) or "ms".
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     -----
     ### ⏎ Returns

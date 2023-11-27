@@ -28,7 +28,7 @@ from .viz import (
 from _typeshed import Incomplete
 
 class Dipole(TimeMixin):
-    """## 🧠 Dipole class for sequential dipole fits.
+    """## Dipole class for sequential dipole fits.
 
     ### 💡 Note
         This class should usually not be instantiated directly via
@@ -62,15 +62,15 @@ class Dipole(TimeMixin):
         (currents). The current confidence limit in the depth direction is
         assumed to be zero (although it can be non-zero when a BEM is used).
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
     khi2 : array, shape (n_dipoles,)
         The χ^2 values for the fits.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
     #### `nfree : array, shape (n_dipoles,)`
         The number of free parameters for each fit.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -117,7 +117,7 @@ class Dipole(TimeMixin):
         verbose=None,
     ) -> None: ...
     def save(self, fname, overwrite: bool = False, *, verbose=None) -> None:
-        """## 🧠 Save dipole in a ``.dip`` or ``.bdip`` file.
+        """## Save dipole in a ``.dip`` or ``.bdip`` file.
 
         -----
         ### 🛠️ Parameters
@@ -129,7 +129,7 @@ class Dipole(TimeMixin):
             If True (default False), overwrite the destination file if it
             exists.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -145,7 +145,7 @@ class Dipole(TimeMixin):
         """
         ...
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """## 🧠 Crop data to a given time interval.
+        """## Crop data to a given time interval.
 
         -----
         ### 🛠️ Parameters
@@ -159,7 +159,7 @@ class Dipole(TimeMixin):
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
-            ✨ Added in vesion 0.19
+            ✨ Added in version 0.19
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -175,7 +175,7 @@ class Dipole(TimeMixin):
         """
         ...
     def copy(self):
-        """## 🧠 Copy the Dipoles object.
+        """## Copy the Dipoles object.
 
         -----
         ### ⏎ Returns
@@ -207,7 +207,7 @@ class Dipole(TimeMixin):
         width=None,
         verbose=None,
     ):
-        """## 🧠 Plot dipole locations.
+        """## Plot dipole locations.
 
         If mode is set to 'arrow' or 'sphere', only the location of the first
         time point of each dipole is shown else use the show_all parameter.
@@ -247,7 +247,7 @@ class Dipole(TimeMixin):
             Coordinate frame to use: 'head' or 'mri'. Can also be 'mri_rotated'
             when mode equals ``'outlines'``. Defaults to 'mri'.
 
-            ✨ Added in vesion 0.14.0
+            ✨ Added in version 0.14.0
             🎭 Changed in version 1.1
                Added support for ``'mri_rotated'``.
         #### `idx : int | 'gof' | 'amplitude'`
@@ -257,7 +257,7 @@ class Dipole(TimeMixin):
             through using up/down arrow keys or mouse scroll. Defaults to 'gof'.
             Only used if mode equals 'orthoview'.
 
-            ✨ Added in vesion 0.14.0
+            ✨ Added in version 0.14.0
         #### `show_all : bool`
             Whether to always plot all the dipoles. If ``True`` (default), the
             active dipole is plotted as a red dot and its location determines the
@@ -265,19 +265,19 @@ class Dipole(TimeMixin):
             dots. If ``False``, only the active dipole is plotted.
             Only used if ``mode='orthoview'``.
 
-            ✨ Added in vesion 0.14.0
+            ✨ Added in version 0.14.0
         #### `ax : instance of matplotlib Axes3D | list of matplotlib Axes | None`
             Axes to plot into. If None (default), axes will be created.
             If mode equals ``'orthoview'``, must be a single ``Axes3D``.
             If mode equals ``'outlines'``, must be a list of three ``Axes``.
 
-            ✨ Added in vesion 0.14.0
+            ✨ Added in version 0.14.0
         #### `block : bool`
             Whether to halt program execution until the figure is closed. Defaults
             to False.
             Only used if mode equals 'orthoview'.
 
-            ✨ Added in vesion 0.14.0
+            ✨ Added in version 0.14.0
         #### `show : bool`
             Show figure if True. Defaults to True.
             Only used if mode equals 'orthoview'.
@@ -297,31 +297,31 @@ class Dipole(TimeMixin):
             The highlight color. Only used in orthoview mode with
             ``show_all=True``.
 
-            ✨ Added in vesion 0.19.0
+            ✨ Added in version 0.19.0
         #### `fig : instance of Figure3D | None`
             3D figure in which to plot the alignment.
             If ``None``, creates a new 600x600 pixel figure with black background.
             Only used when mode is ``'arrow'`` or ``'sphere'``.
 
-            ✨ Added in vesion 0.19.0
+            ✨ Added in version 0.19.0
         #### `title : str | None`
             The title of the figure if ``mode='orthoview'`` (ignored for all other
             modes). If ``None``, dipole number and its properties (amplitude,
             orientation etc.) will be shown. Defaults to ``None``.
 
-            ✨ Added in vesion 0.21.0
+            ✨ Added in version 0.21.0
 
         #### `head_source : str | list of str`
             Head source(s) to use. See the ``source`` option of
             `mne.get_head_surf` for more information.
             Only used when mode equals ``'outlines'``.
 
-            ✨ Added in vesion 1.1
+            ✨ Added in version 1.1
         #### `surf : str | None`
             Brain surface to show outlines for, can be ``'white'``, ``'pial'``, or
             ``None``. Only used when mode is ``'outlines'``.
 
-            ✨ Added in vesion 1.1
+            ✨ Added in version 1.1
         #### `width : float | None`
             Width of the matplotlib quiver arrow, see
             `matplotlib:matplotlib.axes.Axes.quiver`. If None (default),
@@ -343,11 +343,11 @@ class Dipole(TimeMixin):
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
         """
         ...
     def to_mni(self, subject, trans, subjects_dir=None, verbose=None):
-        """## 🧠 Convert dipole location from head to MNI coordinates.
+        """## Convert dipole location from head to MNI coordinates.
 
         -----
         ### 🛠️ Parameters
@@ -380,7 +380,7 @@ class Dipole(TimeMixin):
         """
         ...
     def to_mri(self, subject, trans, subjects_dir=None, verbose=None):
-        """## 🧠 Convert dipole location from head to MRI surface RAS coordinates.
+        """## Convert dipole location from head to MRI surface RAS coordinates.
 
         -----
         ### 🛠️ Parameters
@@ -420,7 +420,7 @@ class Dipole(TimeMixin):
         subjects_dir=None,
         verbose=None,
     ):
-        """## 🧠 Find an ROI in atlas for the dipole positions.
+        """## Find an ROI in atlas for the dipole positions.
 
         -----
         ### 🛠️ Parameters
@@ -463,11 +463,11 @@ class Dipole(TimeMixin):
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
         """
         ...
     def plot_amplitudes(self, color: str = "k", show: bool = True):
-        """## 🧠 Plot the dipole amplitudes as a function of time.
+        """## Plot the dipole amplitudes as a function of time.
 
         -----
         ### 🛠️ Parameters
@@ -485,7 +485,7 @@ class Dipole(TimeMixin):
         """
         ...
     def __getitem__(self, item):
-        """## 🧠 Get a time slice.
+        """## Get a time slice.
 
         -----
         ### 🛠️ Parameters
@@ -501,7 +501,7 @@ class Dipole(TimeMixin):
         """
         ...
     def __len__(self) -> int:
-        """## 🧠 Return the number of dipoles.
+        """## Return the number of dipoles.
 
         -----
         ### ⏎ Returns
@@ -520,7 +520,7 @@ class Dipole(TimeMixin):
         ...
 
 class DipoleFixed(ExtendedTimeMixin):
-    """## 🧠 Dipole class for fixed-position dipole fits.
+    """## Dipole class for fixed-position dipole fits.
 
     ### 💡 Note
         This class should usually not be instantiated directly
@@ -564,7 +564,7 @@ class DipoleFixed(ExtendedTimeMixin):
     (and maybe orientation) is static over time. For sequential dipole fits,
     where the position can change a function of time, use `mne.Dipole`.
 
-    ✨ Added in vesion 0.12
+    ✨ Added in version 0.12
     """
 
     info: Incomplete
@@ -578,7 +578,7 @@ class DipoleFixed(ExtendedTimeMixin):
         self, info, data, times, nave, aspect_kind, comment: str = "", *, verbose=None
     ) -> None: ...
     def copy(self):
-        """## 🧠 Copy the DipoleFixed object.
+        """## Copy the DipoleFixed object.
 
         -----
         ### ⏎ Returns
@@ -589,15 +589,15 @@ class DipoleFixed(ExtendedTimeMixin):
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
         """
         ...
     @property
     def ch_names(self):
-        """## 🧠 Channel names."""
+        """## Channel names."""
         ...
     def save(self, fname, verbose=None) -> None:
-        """## 🧠 Save dipole in a .fif file.
+        """## Save dipole in a .fif file.
 
         -----
         ### 🛠️ Parameters
@@ -615,7 +615,7 @@ class DipoleFixed(ExtendedTimeMixin):
         """
         ...
     def plot(self, show: bool = True, time_unit: str = "s"):
-        """## 🧠 Plot dipole data.
+        """## Plot dipole data.
 
         -----
         ### 🛠️ Parameters
@@ -625,7 +625,7 @@ class DipoleFixed(ExtendedTimeMixin):
         #### `time_unit : str`
             The units for the time axis, can be "ms" or "s" (default).
 
-            ✨ Added in vesion 0.16
+            ✨ Added in version 0.16
 
         -----
         ### ⏎ Returns
@@ -636,7 +636,7 @@ class DipoleFixed(ExtendedTimeMixin):
         ...
 
 def read_dipole(fname, verbose=None):
-    """## 🧠 Read ``.dip`` file from Neuromag/xfit or MNE.
+    """## Read ``.dip`` file from Neuromag/xfit or MNE.
 
     -----
     ### 🛠️ Parameters
@@ -692,7 +692,7 @@ def fit_dipole(
     tol: float = 5e-05,
     verbose=None,
 ):
-    """## 🧠 Fit a dipole.
+    """## Fit a dipole.
 
     -----
     ### 🛠️ Parameters
@@ -725,7 +725,7 @@ def fit_dipole(
         is performed. If a position (in head coords) is given as an array,
         the position is fixed during fitting.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `ori : ndarray, shape (3,) | None`
         Orientation of the dipole to use. If None (default), the
         orientation is free to change as a function of time. If an
@@ -734,7 +734,7 @@ def fit_dipole(
         goodness of fit of the dipole at the given position and orientation
         for each time instant.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
 
     #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
@@ -781,18 +781,18 @@ def fit_dipole(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
     #### `accuracy : str`
         Can be ``"normal"`` (default) or ``"accurate"``, which gives the most
         accurate coil definition but is typically not necessary for real-world
         data.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
     #### `tol : float`
         Final accuracy of the optimization (see ``rhoend`` argument of
         `scipy.optimize.fmin_cobyla`).
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -821,12 +821,12 @@ def fit_dipole(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
 def get_phantom_dipoles(kind: str = "vectorview"):
-    """## 🧠 Get standard phantom dipole locations and orientations.
+    """## Get standard phantom dipole locations and orientations.
 
     -----
     ### 🛠️ Parameters

@@ -1,7 +1,7 @@
 from ..utils import logger as logger
 
 def stft(x, wsize, tstep=None, verbose=None):
-    """## 🧠 STFT Short-Term Fourier Transform using a sine window.
+    """## STFT Short-Term Fourier Transform using a sine window.
 
     The transformation is designed to be a tight frame that can be
     perfectly inverted. It only returns the positive frequencies.
@@ -39,7 +39,7 @@ def stft(x, wsize, tstep=None, verbose=None):
     ...
 
 def istft(X, tstep=None, Tx=None):
-    """## 🧠 ISTFT Inverse Short-Term Fourier Transform using a sine window.
+    """## ISTFT Inverse Short-Term Fourier Transform using a sine window.
 
     -----
     ### 🛠️ Parameters
@@ -66,7 +66,7 @@ def istft(X, tstep=None, Tx=None):
     ...
 
 def stftfreq(wsize, sfreq=None):
-    """## 🧠 Compute frequencies of stft transformation.
+    """## Compute frequencies of stft transformation.
 
     -----
     ### 🛠️ Parameters
@@ -92,7 +92,7 @@ def stftfreq(wsize, sfreq=None):
     ...
 
 def stft_norm2(X):
-    """## 🧠 Compute L2 norm of STFT transform.
+    """## Compute L2 norm of STFT transform.
 
     It takes into account that stft only return positive frequencies.
     As we use tight frame this quantity is conserved by the stft.
@@ -112,7 +112,7 @@ def stft_norm2(X):
     ...
 
 def stft_norm1(X):
-    """## 🧠 Compute L1 norm of STFT transform.
+    """## Compute L1 norm of STFT transform.
 
     It takes into account that stft only return positive frequencies.
 

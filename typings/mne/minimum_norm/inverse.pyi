@@ -51,22 +51,22 @@ from _typeshed import Incomplete
 INVERSE_METHODS: Incomplete
 
 class InverseOperator(dict):
-    """## 🧠 InverseOperator class to represent info from inverse operator."""
+    """## InverseOperator class to represent info from inverse operator."""
 
     def copy(self):
-        """## 🧠 Return a copy of the InverseOperator."""
+        """## Return a copy of the InverseOperator."""
         ...
     @property
     def ch_names(self):
-        """## 🧠 Name of channels attached to the inverse operator."""
+        """## Name of channels attached to the inverse operator."""
         ...
     @property
     def info(self):
-        """## 🧠 `mne.Info` attached to the inverse operator."""
+        """## `mne.Info` attached to the inverse operator."""
         ...
 
 def read_inverse_operator(fname, *, verbose=None):
-    """## 🧠 Read the inverse operator decomposition from a FIF file.
+    """## Read the inverse operator decomposition from a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -97,7 +97,7 @@ def read_inverse_operator(fname, *, verbose=None):
 def write_inverse_operator(
     fname, inv, *, overwrite: bool = False, verbose=None
 ) -> None:
-    """## 🧠 Write an inverse operator to a FIF file.
+    """## Write an inverse operator to a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -112,7 +112,7 @@ def write_inverse_operator(
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -128,7 +128,7 @@ def write_inverse_operator(
     ...
 
 def combine_xyz(vec, square: bool = False):
-    """## 🧠 Compute the three Cartesian components of a vector or matrix together.
+    """## Compute the three Cartesian components of a vector or matrix together.
 
     -----
     ### 🛠️ Parameters
@@ -154,7 +154,7 @@ def prepare_inverse_operator(
     copy: bool = True,
     verbose=None,
 ):
-    """## 🧠 Prepare an inverse operator for actually computing the inverse.
+    """## Prepare an inverse operator for actually computing the inverse.
 
     -----
     ### 🛠️ Parameters
@@ -170,13 +170,13 @@ def prepare_inverse_operator(
     #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `copy : bool | str`
         If True (default), copy the inverse. False will not copy.
         Can be "non-src" to avoid copying the source space, which typically
         is not modified and can be large in memory.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -205,7 +205,7 @@ def apply_inverse(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Apply inverse operator to evoked data.
+    """## Apply inverse operator to evoked data.
 
     -----
     ### 🛠️ Parameters
@@ -246,12 +246,12 @@ def apply_inverse(
     #### `method_params : dict | None`
         Additional options for eLORETA. See Notes for details.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `return_residual : bool`
         If True (default False), return the residual evoked data.
         Cannot be used with ``method=='eLORETA'``.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
     #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
@@ -260,7 +260,7 @@ def apply_inverse(
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -347,7 +347,7 @@ def apply_inverse_raw(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Apply inverse operator to Raw data.
+    """## Apply inverse operator to Raw data.
 
     -----
     ### 🛠️ Parameters
@@ -402,7 +402,7 @@ def apply_inverse_raw(
     #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
 
     #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
@@ -411,7 +411,7 @@ def apply_inverse_raw(
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -449,7 +449,7 @@ def apply_inverse_epochs(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Apply inverse operator to Epochs.
+    """## Apply inverse operator to Epochs.
 
     -----
     ### 🛠️ Parameters
@@ -493,7 +493,7 @@ def apply_inverse_epochs(
     #### `method_params : dict | None`
         Additional options for eLORETA. See Notes of `apply_inverse`.
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
 
     #### `use_cps : bool`
         Whether to use cortical patch statistics to define normal orientations for
@@ -502,7 +502,7 @@ def apply_inverse_epochs(
         Only used when the inverse is free orientation (``loose=1.``),
         not in surface orientation, and ``pick_ori='normal'``.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -540,7 +540,7 @@ def apply_inverse_tfr_epochs(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Apply inverse operator to EpochsTFR.
+    """## Apply inverse operator to EpochsTFR.
 
     -----
     ### 🛠️ Parameters
@@ -629,7 +629,7 @@ def apply_inverse_cov(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Apply inverse operator to covariance data.
+    """## Apply inverse operator to covariance data.
 
     -----
     ### 🛠️ Parameters
@@ -695,7 +695,7 @@ def apply_inverse_cov(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
 
     This code is based on the original research code from
     :footcite:`Sabbagh2020` and has been useful to correct for individual field
@@ -718,7 +718,7 @@ def make_inverse_operator(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Assemble inverse operator.
+    """## Assemble inverse operator.
 
     -----
     ### 🛠️ Parameters
@@ -871,7 +871,7 @@ def make_inverse_operator(
     ...
 
 def compute_rank_inverse(inv):
-    """## 🧠 Compute the rank of a linear inverse operator (MNE, dSPM, etc.).
+    """## Compute the rank of a linear inverse operator (MNE, dSPM, etc.).
 
     -----
     ### 🛠️ Parameters
@@ -888,7 +888,7 @@ def compute_rank_inverse(inv):
     ...
 
 def estimate_snr(evoked, inv, verbose=None):
-    """## 🧠 Estimate the SNR as a function of time for evoked data.
+    """## Estimate the SNR as a function of time for evoked data.
 
     -----
     ### 🛠️ Parameters
@@ -958,6 +958,6 @@ def estimate_snr(evoked, inv, verbose=None):
     biggest regularization that achieves a :math:`\\chi^2`-test significance
     of 0.001.
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...

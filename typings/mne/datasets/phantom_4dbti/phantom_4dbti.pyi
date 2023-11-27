@@ -6,7 +6,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of phantom_4dbti dataset.
+    """## Get path to local copy of phantom_4dbti dataset.
 
     -----
     ### 🛠️ Parameters
@@ -44,7 +44,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local phantom_4dbti dataset.
+    """## Get version of the local phantom_4dbti dataset.
 
     -----
     ### ⏎ Returns

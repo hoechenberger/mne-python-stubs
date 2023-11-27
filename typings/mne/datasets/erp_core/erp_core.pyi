@@ -6,7 +6,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of erp_core dataset.
+    """## Get path to local copy of erp_core dataset.
 
     -----
     ### 🛠️ Parameters
@@ -44,7 +44,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local erp_core dataset.
+    """## Get version of the local erp_core dataset.
 
     -----
     ### ⏎ Returns

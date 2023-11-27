@@ -5,7 +5,7 @@ EEGMI_URL: str
 def data_path(
     url, path=None, force_update: bool = False, update_path=None, *, verbose=None
 ):
-    """## 🧠 Get path to local copy of EEGMMI dataset URL.
+    """## Get path to local copy of EEGMMI dataset URL.
 
     This is a low-level function useful for getting a local copy of a remote EEGBCI
     dataset :footcite:`SchalkEtAl2004`, which is also available at PhysioNet
@@ -68,7 +68,7 @@ def load_data(
     base_url="https://physionet.org/files/eegmmidb/1.0.0/",
     verbose=None,
 ):
-    """## 🧠 Get paths to local copies of EEGBCI dataset files.
+    """## Get paths to local copies of EEGBCI dataset files.
 
     This will fetch data for the EEGBCI dataset :footcite:`SchalkEtAl2004`, which is
     also available at PhysioNet :footcite:`GoldbergerEtAl2000`.
@@ -138,7 +138,7 @@ def load_data(
     ...
 
 def standardize(raw) -> None:
-    """## 🧠 Standardize channel positions and names.
+    """## Standardize channel positions and names.
 
     -----
     ### 🛠️ Parameters

@@ -77,7 +77,7 @@ class BaseRaw(
     FilterMixin,
     SpectrumMixin,
 ):
-    """## 🧠 Base class for Raw data.
+    """## Base class for Raw data.
 
     -----
     ### 🛠️ Parameters
@@ -119,7 +119,7 @@ class BaseRaw(
         Dictionary mapping channel names to their units as specified in
         the header file. Example: {'FC1': 'nV'}.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -167,7 +167,7 @@ class BaseRaw(
         verbose=None,
     ) -> None: ...
     def apply_gradient_compensation(self, grade, verbose=None):
-        """## 🧠 Apply CTF gradient compensation.
+        """## Apply CTF gradient compensation.
 
         ### ⛔️ Warning The compensation matrices are stored with single
                      precision, so repeatedly switching between different
@@ -197,7 +197,7 @@ class BaseRaw(
         """
         ...
     def load_data(self, verbose=None):
-        """## 🧠 Load raw data.
+        """## Load raw data.
 
         -----
         ### 🛠️ Parameters
@@ -221,26 +221,26 @@ class BaseRaw(
         This function will load raw data if it was not already preloaded.
         If data were already preloaded, it will do nothing.
 
-        ✨ Added in vesion 0.10.0
+        ✨ Added in version 0.10.0
         """
         ...
     @property
     def first_samp(self):
-        """## 🧠 The first data sample.
+        """## The first data sample.
 
         See :term:`first_samp`.
         """
         ...
     @property
     def first_time(self):
-        """## 🧠 The first time point (including first_samp but not meas_date)."""
+        """## The first time point (including first_samp but not meas_date)."""
         ...
     @property
     def last_samp(self):
-        """## 🧠 The last data sample."""
+        """## The last data sample."""
         ...
     def time_as_index(self, times, use_rounding: bool = False, origin=None):
-        """## 🧠 Convert time to indices.
+        """## Convert time to indices.
 
         -----
         ### 🛠️ Parameters
@@ -254,7 +254,7 @@ class BaseRaw(
             Time reference for times. If None, ``times`` are assumed to be
             relative to :term:`first_samp`.
 
-            ✨ Added in vesion 0.17.0
+            ✨ Added in version 0.17.0
 
         -----
         ### ⏎ Returns
@@ -266,11 +266,11 @@ class BaseRaw(
         ...
     @property
     def annotations(self):
-        """## 🧠 `mne.Annotations` for marking segments of data."""
+        """## `mne.Annotations` for marking segments of data."""
         ...
     @property
     def filenames(self):
-        """## 🧠 The filenames used."""
+        """## The filenames used."""
         ...
     def set_annotations(
         self,
@@ -280,7 +280,7 @@ class BaseRaw(
         *,
         verbose=None,
     ):
-        """## 🧠 Setter for annotations.
+        """## Setter for annotations.
 
         This setter checks if they are inside the data range.
 
@@ -299,7 +299,7 @@ class BaseRaw(
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
 
-            ✨ Added in vesion 0.23.0
+            ✨ Added in version 0.23.0
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -316,7 +316,7 @@ class BaseRaw(
         ...
     def __del__(self) -> None: ...
     def __enter__(self):
-        """## 🧠 Entering with block."""
+        """## Entering with block."""
         ...
     def __exit__(
         self,
@@ -324,10 +324,10 @@ class BaseRaw(
         exception_val: BaseException | None,
         trace: types.TracebackType | None,
     ):
-        """## 🧠 Exit with block."""
+        """## Exit with block."""
         ...
     def __getitem__(self, item):
-        """## 🧠 Get raw data and times.
+        """## Get raw data and times.
 
         -----
         ### 🛠️ Parameters
@@ -367,7 +367,7 @@ class BaseRaw(
         """
         ...
     def __setitem__(self, item, value) -> None:
-        """## 🧠 Set raw data content."""
+        """## Set raw data content."""
         ...
     def get_data(
         self,
@@ -382,7 +382,7 @@ class BaseRaw(
         tmax=None,
         verbose=None,
     ):
-        """## 🧠 Get data in the given range.
+        """## Get data in the given range.
 
         -----
         ### 🛠️ Parameters
@@ -428,12 +428,12 @@ class BaseRaw(
             Start time of data to get in seconds. The ``tmin`` parameter is
             ignored if the ``start`` parameter is bigger than 0.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
         #### `tmax : int | float | None`
             End time of data to get in seconds. The ``tmax`` parameter is
             ignored if the ``stop`` parameter is defined.
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -453,7 +453,7 @@ class BaseRaw(
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.14.0
+        ✨ Added in version 0.14.0
         """
         ...
     def apply_function(
@@ -466,7 +466,7 @@ class BaseRaw(
         verbose=None,
         **kwargs,
     ):
-        """## 🧠 Apply a function to a subset of channels.
+        """## Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The raw object's data is modified in-place. If the function returns a different
@@ -516,7 +516,7 @@ class BaseRaw(
             Whether to apply the function to each channel individually. If ``False``,
             the function will be applied to all channels at once. Default ``True``.
 
-            ✨ Added in vesion 0.18
+            ✨ Added in version 0.18
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -552,7 +552,7 @@ class BaseRaw(
         pad: str = "reflect_limited",
         verbose=None,
     ):
-        """## 🧠 Filter a subset of channels.
+        """## Filter a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -637,13 +637,13 @@ class BaseRaw(
             If ``phase='forward'``, it constructs and applies forward IIR filter using
             `scipy.signal.lfilter`.
 
-            ✨ Added in vesion 0.13
+            ✨ Added in version 0.13
 
         #### `fir_window : str`
             The window to use in FIR design, can be "hamming" (default),
             "hann" (default in 0.13), or "blackman".
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `fir_design : str`
             Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -651,7 +651,7 @@ class BaseRaw(
             a time-domain design technique that generally gives improved
             attenuation using fewer samples than "firwin2".
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `skip_by_annotation : str | list of str`
             If a string (or list of str), any annotation segment that begins
@@ -663,7 +663,7 @@ class BaseRaw(
             or `mne.io.Raw.append`, or separated during acquisition.
             To disable, provide an empty list. Only used if ``inst`` is raw.
 
-            ✨ Added in vesion 0.16.
+            ✨ Added in version 0.16.
 
         #### `pad : str`
             The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -725,7 +725,7 @@ class BaseRaw(
         `disc-filtering` and `tut-filter-resample` and
         `mne.filter.create_filter`.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
         """
         ...
     def notch_filter(
@@ -747,7 +747,7 @@ class BaseRaw(
         skip_by_annotation=("edge", "bad_acq_skip"),
         verbose=None,
     ):
-        """## 🧠 Notch filter a subset of channels.
+        """## Notch filter a subset of channels.
 
         -----
         ### 🛠️ Parameters
@@ -834,13 +834,13 @@ class BaseRaw(
             If ``phase='forward'``, it constructs and applies forward IIR filter using
             `scipy.signal.lfilter`.
 
-            ✨ Added in vesion 0.13
+            ✨ Added in version 0.13
 
         #### `fir_window : str`
             The window to use in FIR design, can be "hamming" (default),
             "hann" (default in 0.13), or "blackman".
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `fir_design : str`
             Can be "firwin" (default) to use `scipy.signal.firwin`,
@@ -848,7 +848,7 @@ class BaseRaw(
             a time-domain design technique that generally gives improved
             attenuation using fewer samples than "firwin2".
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `pad : str`
             The type of padding to use. Supports all `numpy.pad` ``mode``
@@ -859,7 +859,7 @@ class BaseRaw(
             Only used for ``method='fir'``.
             The default is ``'reflect_limited'``.
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `skip_by_annotation : str | list of str`
             If a string (or list of str), any annotation segment that begins
@@ -916,7 +916,7 @@ class BaseRaw(
         pad: str = "reflect_limited",
         verbose=None,
     ):
-        """## 🧠 Resample all channels.
+        """## Resample all channels.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
@@ -974,7 +974,7 @@ class BaseRaw(
             of the vector, followed by zeros.
             The default is ``'reflect_limited'``.
 
-            ✨ Added in vesion 0.15
+            ✨ Added in version 0.15
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1011,7 +1011,7 @@ class BaseRaw(
     def crop(
         self, tmin: float = 0.0, tmax=None, include_tmax: bool = True, *, verbose=None
     ):
-        """## 🧠 Crop raw data file.
+        """## Crop raw data file.
 
         Limit the data from the raw file to go between specific times. Note
         that the new ``tmin`` is assumed to be ``t=0`` for all subsequently
@@ -1036,7 +1036,7 @@ class BaseRaw(
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
-            ✨ Added in vesion 0.19
+            ✨ Added in version 0.19
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1052,7 +1052,7 @@ class BaseRaw(
         """
         ...
     def crop_by_annotations(self, annotations=None, *, verbose=None):
-        """## 🧠 Get crops of raw data file for selected annotations.
+        """## Get crops of raw data file for selected annotations.
 
         -----
         ### 🛠️ Parameters
@@ -1089,7 +1089,7 @@ class BaseRaw(
         split_naming: str = "neuromag",
         verbose=None,
     ) -> None:
-        """## 🧠 Save raw data to file.
+        """## Save raw data to file.
 
         -----
         ### 🛠️ Parameters
@@ -1160,7 +1160,7 @@ class BaseRaw(
             ``fname.fif``, ``fname-1.fif``, ``fname-2.fif`` etc.; while for ``'bids'``,
             it will be named ``fname_split-01.fif``, ``fname_split-02.fif``, etc.
 
-            ✨ Added in vesion 0.17
+            ✨ Added in version 0.17
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1192,7 +1192,7 @@ class BaseRaw(
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """## 🧠 Export Raw to external formats.
+        """## Export Raw to external formats.
 
         Supported formats:
             - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
@@ -1231,7 +1231,7 @@ class BaseRaw(
             If True (default False), overwrite the destination file if it
             exists.
 
-            ✨ Added in vesion 0.24.1
+            ✨ Added in version 0.24.1
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1242,7 +1242,7 @@ class BaseRaw(
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
         Export to external format may not preserve all the information from the
         instance. To save in native MNE format (``.fif``) without information loss,
@@ -1311,7 +1311,7 @@ class BaseRaw(
         splash: bool = True,
         verbose=None,
     ):
-        """## 🧠 Plot raw data.
+        """## Plot raw data.
 
         -----
         ### 🛠️ Parameters
@@ -1455,26 +1455,26 @@ class BaseRaw(
             magnetometers and gradiometers may introduce differences in scaling,
             consider using `mne.Evoked.plot_white`.
 
-            ✨ Added in vesion 0.16.0
+            ✨ Added in version 0.16.0
         #### `event_id : dict | None`
             Event IDs used to show at event markers (default None shows
             the event numbers).
 
-            ✨ Added in vesion 0.16.0
+            ✨ Added in version 0.16.0
 
         #### `show_scrollbars : bool`
             Whether to show scrollbars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
-            ✨ Added in vesion 0.19.0
+            ✨ Added in version 0.19.0
 
         #### `show_scalebars : bool`
             Whether to show scale bars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`s` while the plot window is focused.
             Default is ``True``.
 
-            ✨ Added in vesion 0.20.0
+            ✨ Added in version 0.20.0
 
         #### `time_format : 'float' | 'clock'`
             Style of time labels on the horizontal axis. If ``'float'``, labels will be
@@ -1482,7 +1482,7 @@ class BaseRaw(
             labels will show "clock time" (hours/minutes/seconds) inferred from
             ``raw.info['meas_date']``. Default is ``'float'``.
 
-            ✨ Added in vesion 0.24
+            ✨ Added in version 0.24
 
         #### `precompute : bool | str`
             Whether to load all data (not just the visible portion) into RAM and
@@ -1493,7 +1493,7 @@ class BaseRaw(
             the precomputed data, and precomputes only if enough RAM is available.
             This is only used with the Qt backend.
 
-            ✨ Added in vesion 0.24
+            ✨ Added in version 0.24
             🎭 Changed in version 1.0
                Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
@@ -1505,7 +1505,7 @@ class BaseRaw(
             ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
             see `mne.set_config`.
 
-            ✨ Added in vesion 0.24
+            ✨ Added in version 0.24
 
         #### `theme : str | path-like`
             Can be "auto", "light", or "dark" or a path-like to a
@@ -1516,7 +1516,7 @@ class BaseRaw(
             defaulting to "auto" if it's not found.
             Only supported by the ``'qt'`` backend.
 
-            ✨ Added in vesion 1.0
+            ✨ Added in version 1.0
 
         #### `overview_mode : str | None`
             Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -1524,13 +1524,13 @@ class BaseRaw(
             ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
             if it's not found.
 
-            ✨ Added in vesion 1.1
+            ✨ Added in version 1.1
 
         #### `splash : bool`
             If True (default), a splash screen is shown during the application startup. Only
             applicable to the ``qt`` backend.
 
-            ✨ Added in vesion 1.6
+            ✨ Added in version 1.6
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1592,18 +1592,18 @@ class BaseRaw(
         ...
     @property
     def ch_names(self):
-        """## 🧠 Channel names."""
+        """## Channel names."""
         ...
     @property
     def times(self):
-        """## 🧠 Time points."""
+        """## Time points."""
         ...
     @property
     def n_times(self):
-        """## 🧠 Number of time points."""
+        """## Number of time points."""
         ...
     def __len__(self) -> int:
-        """## 🧠 Return the number of time points.
+        """## Return the number of time points.
 
         -----
         ### ⏎ Returns
@@ -1623,7 +1623,7 @@ class BaseRaw(
     def load_bad_channels(
         self, bad_file=None, force: bool = False, verbose=None
     ) -> None:
-        """## 🧠 Mark channels as bad from a text file.
+        """## Mark channels as bad from a text file.
 
         This function operates mostly in the style of the C function
         ``mne_mark_bad_channels``. Each line in the text file will be
@@ -1649,7 +1649,7 @@ class BaseRaw(
         """
         ...
     def append(self, raws, preload=None) -> None:
-        """## 🧠 Concatenate raw instances as if they were continuous.
+        """## Concatenate raw instances as if they were continuous.
 
         ### 💡 Note Boundaries of the raw files are annotated bad. If you wish to
                   use the data as continuous recording, you can remove the
@@ -1674,14 +1674,14 @@ class BaseRaw(
         """
         ...
     def close(self) -> None:
-        """## 🧠 Clean up the object.
+        """## Clean up the object.
 
         Does nothing for objects that close their file descriptors.
         Things like Raw will override this method.
         """
         ...
     def copy(self):
-        """## 🧠 Return copy of Raw instance.
+        """## Return copy of Raw instance.
 
         -----
         ### ⏎ Returns
@@ -1691,7 +1691,7 @@ class BaseRaw(
         """
         ...
     def add_events(self, events, stim_channel=None, replace: bool = False) -> None:
-        """## 🧠 Add events to stim channel.
+        """## Add events to stim channel.
 
         -----
         ### 🛠️ Parameters
@@ -1733,7 +1733,7 @@ class BaseRaw(
         verbose=None,
         **method_kw,
     ):
-        """## 🧠 Perform spectral analysis on sensor data.
+        """## Perform spectral analysis on sensor data.
 
         -----
         ### 🛠️ Parameters
@@ -1804,7 +1804,7 @@ class BaseRaw(
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
         References
         ----------
@@ -1824,7 +1824,7 @@ class BaseRaw(
         *,
         verbose=None,
     ):
-        """## 🧠 Export data in tabular structure as a pandas DataFrame.
+        """## Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default, an
         additional column "time" is added, unless ``index`` is not ``None``
@@ -1878,7 +1878,7 @@ class BaseRaw(
             time values will be converted to `pandas.Timedelta` values. If ``'datetime'``, time values will be converted to `pandas.Timestamp` values, relative to ``raw.info['meas_date']`` and offset by ``raw.first_samp``.
             Default is ``None``.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -1896,7 +1896,7 @@ class BaseRaw(
         """
         ...
     def describe(self, data_frame: bool = False):
-        """## 🧠 Describe channels (name, type, descriptive statistics).
+        """## Describe channels (name, type, descriptive statistics).
 
         -----
         ### 🛠️ Parameters
@@ -1919,12 +1919,12 @@ class BaseRaw(
         ...
 
 class _ReadSegmentFileProtector:
-    """## 🧠 Ensure only _filenames, _raw_extras, and _read_segment_file are used."""
+    """## Ensure only _filenames, _raw_extras, and _read_segment_file are used."""
 
     def __init__(self, raw) -> None: ...
 
 class _RawShell:
-    """## 🧠 Create a temporary raw object."""
+    """## Create a temporary raw object."""
 
     first_samp: Incomplete
     last_samp: Incomplete
@@ -1978,7 +1978,7 @@ class _RawFidWriter:
 def concatenate_raws(
     raws, preload=None, events_list=None, *, on_mismatch: str = "raise", verbose=None
 ):
-    """## 🧠 Concatenate `mne.io.Raw` instances as if they were continuous.
+    """## Concatenate `mne.io.Raw` instances as if they were continuous.
 
     ### 💡 Note ``raws[0]`` is modified in-place to achieve the concatenation.
               Boundaries of the raw files are annotated bad. If you wish to use
@@ -2008,7 +2008,7 @@ def concatenate_raws(
         warning, or ``'ignore'`` to ignore when the device-to-head transformation differs between
         instances.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -2027,7 +2027,7 @@ def concatenate_raws(
     ...
 
 def match_channel_orders(raws, copy: bool = True):
-    """## 🧠 Ensure consistent channel order across raws.
+    """## Ensure consistent channel order across raws.
 
     -----
     ### 🛠️ Parameters

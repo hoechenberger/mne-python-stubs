@@ -13,7 +13,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of brainstorm (bst_raw) dataset.
+    """## Get path to local copy of brainstorm (bst_raw) dataset.
 
     -----
     ### 🛠️ Parameters
@@ -53,7 +53,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local brainstorm dataset.
+    """## Get version of the local brainstorm dataset.
 
     -----
     ### ⏎ Returns
@@ -64,9 +64,9 @@ def get_version():
     ...
 
 def description() -> None:
-    """## 🧠 Get description of brainstorm (bst_raw) dataset."""
+    """## Get description of brainstorm (bst_raw) dataset."""
     ...
 
 def requires_bstraw_data(func):
-    """## 🧠 Skip testing data test."""
+    """## Skip testing data test."""
     ...

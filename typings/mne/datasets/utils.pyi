@@ -13,7 +13,7 @@ from ..utils.docs import docdict as docdict
 from .config import MNE_DATASETS as MNE_DATASETS
 
 def has_dataset(name):
-    """## 🧠 Check for presence of a dataset.
+    """## Check for presence of a dataset.
 
     -----
     ### 🛠️ Parameters
@@ -34,7 +34,7 @@ def has_dataset(name):
     ...
 
 def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
-    """## 🧠 Fetch the modified subdivided aparc parcellation.
+    """## Fetch the modified subdivided aparc parcellation.
 
     This will download and install the subdivided aparc parcellation
     :footcite:'KhanEtAl2018' files for
@@ -62,7 +62,7 @@ def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
 def fetch_hcp_mmp_parcellation(
     subjects_dir=None, combine: bool = True, *, accept: bool = False, verbose=None
 ) -> None:
-    """## 🧠 Fetch the HCP-MMP parcellation.
+    """## Fetch the HCP-MMP parcellation.
 
     This will download and install the HCP-MMP parcellation
     :footcite:`GlasserEtAl2016` files for FreeSurfer's fsaverage

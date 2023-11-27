@@ -4,7 +4,7 @@ from ..evoked import Evoked as Evoked, EvokedArray as EvokedArray
 from ..io import BaseRaw as BaseRaw, RawArray as RawArray
 
 def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
-    """## 🧠 Interpolate or mark bads consistently for a list of instances.
+    """## Interpolate or mark bads consistently for a list of instances.
 
     Once called on a list of instances, the instances can be concatenated
     as they will have the same list of bad channels.
@@ -35,7 +35,7 @@ def equalize_bads(insts, interp_thresh: float = 1.0, copy: bool = True):
     ...
 
 def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
-    """## 🧠 Interpolate bridged electrode pairs.
+    """## Interpolate bridged electrode pairs.
 
     Because bridged electrodes contain brain signal, it's just that the
     signal is spatially smeared between the two electrodes, we can
@@ -56,7 +56,7 @@ def interpolate_bridged_electrodes(inst, bridged_idx, bad_limit: int = 4):
         (included) and interpolated. Above this number, an error will be
         raised.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     -----
     ### ⏎ Returns

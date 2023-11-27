@@ -9,7 +9,7 @@ def resolution_metrics(
     threshold: float = 0.5,
     verbose=None,
 ):
-    """## 🧠 Compute spatial resolution metrics for linear solvers.
+    """## Compute spatial resolution metrics for linear solvers.
 
     -----
     ### 🛠️ Parameters
@@ -69,7 +69,7 @@ def resolution_metrics(
 
     For details, see :footcite:`MolinsEtAl2008,HaukEtAl2019`.
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
 
     References
     ----------

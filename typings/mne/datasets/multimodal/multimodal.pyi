@@ -6,7 +6,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of multimodal dataset.
+    """## Get path to local copy of multimodal dataset.
 
     -----
     ### 🛠️ Parameters
@@ -44,7 +44,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local multimodal dataset.
+    """## Get version of the local multimodal dataset.
 
     -----
     ### ⏎ Returns

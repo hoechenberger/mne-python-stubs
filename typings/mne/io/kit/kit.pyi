@@ -14,14 +14,14 @@ UINT32: str
 INT32: str
 
 class UnsupportedKITFormat(ValueError):
-    """## 🧠 Our reader is not guaranteed to work with old files."""
+    """## Our reader is not guaranteed to work with old files."""
 
     sqd_version: Incomplete
 
     def __init__(self, sqd_version, *args, **kwargs) -> None: ...
 
 class RawKIT(BaseRaw):
-    """## 🧠 Raw object from KIT SQD file.
+    """## Raw object from KIT SQD file.
 
     -----
     ### 🛠️ Parameters
@@ -122,7 +122,7 @@ class RawKIT(BaseRaw):
         verbose=None,
     ) -> None: ...
     def read_stim_ch(self, buffer_size: float = 100000.0):
-        """## 🧠 Read events from data.
+        """## Read events from data.
 
         Parameter
         ---------
@@ -138,7 +138,7 @@ class RawKIT(BaseRaw):
         ...
 
 class EpochsKIT(BaseEpochs):
-    """## 🧠 Epochs Array object from KIT SQD file.
+    """## Epochs Array object from KIT SQD file.
 
     -----
     ### 🛠️ Parameters
@@ -293,7 +293,7 @@ class EpochsKIT(BaseEpochs):
     ) -> None: ...
 
 def get_kit_info(rawfile, allow_unknown_format, standardize_names=None, verbose=None):
-    """## 🧠 Extract all the information from the sqd/con file.
+    """## Extract all the information from the sqd/con file.
 
     -----
     ### 🛠️ Parameters
@@ -340,7 +340,7 @@ def read_raw_kit(
     standardize_names: bool = False,
     verbose=None,
 ):
-    """## 🧠 Reader function for Ricoh/KIT conversion to FIF.
+    """## Reader function for Ricoh/KIT conversion to FIF.
 
     -----
     ### 🛠️ Parameters
@@ -441,7 +441,7 @@ def read_epochs_kit(
     standardize_names: bool = False,
     verbose=None,
 ):
-    """## 🧠 Reader function for Ricoh/KIT epochs files.
+    """## Reader function for Ricoh/KIT epochs files.
 
     -----
     ### 🛠️ Parameters
@@ -501,6 +501,6 @@ def read_epochs_kit(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...

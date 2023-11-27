@@ -13,7 +13,7 @@ from .proj import (
 )
 
 def add_reference_channels(inst, ref_channels, copy: bool = True):
-    """## 🧠 Add reference channels to data that consists of all zeros.
+    """## Add reference channels to data that consists of all zeros.
 
     Adds reference channels to data that were not included during recording.
     This is useful when you need to re-reference your data to different
@@ -61,7 +61,7 @@ def set_eeg_reference(
     joint: bool = False,
     verbose=None,
 ):
-    """## 🧠 Specify which reference to use for EEG data.
+    """## Specify which reference to use for EEG data.
 
     Use this function to explicitly specify the desired reference for EEG.
     This can be either an existing electrode or a new virtual channel.
@@ -107,21 +107,21 @@ def set_eeg_reference(
         ``'dbs'``. If ``'auto'``, the first channel type of eeg, ecog, seeg or dbs
         that is found (in that order) will be selected.
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
         🎭 Changed in version 1.2
            ``list-of-str`` is now supported with ``projection=True``.
 
     #### `forward : instance of Forward | None`
         Forward solution to use. Only used with ``ref_channels='REST'``.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `joint : bool`
         How to handle list-of-str ``ch_type``. If False (default), one projector
         is created per channel type. If True, one projector is created across
         all channel types. This is only used when ``projection=True``.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -184,7 +184,7 @@ def set_eeg_reference(
     4. For an average or REST reference, bad EEG channels are automatically
        excluded if they are properly set in ``info['bads']``.
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
 
     References
     ----------
@@ -203,7 +203,7 @@ def set_bipolar_reference(
     on_bad: str = "warn",
     verbose=None,
 ):
-    """## 🧠 Re-reference selected channels using a bipolar referencing scheme.
+    """## Re-reference selected channels using a bipolar referencing scheme.
 
     A bipolar reference takes the difference between two channels (the anode
     minus the cathode) and adds it as a new virtual channel. The original
@@ -273,6 +273,6 @@ def set_bipolar_reference(
 
     3. The data must be preloaded.
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...

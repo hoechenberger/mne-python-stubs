@@ -3,7 +3,7 @@ from .._fiff.pick import pick_info as pick_info
 def fit_iir_model_raw(
     raw, order: int = 2, picks=None, tmin=None, tmax=None, verbose=None
 ):
-    """## 🧠 Fit an AR model to raw data and creates the corresponding IIR filter.
+    """## Fit an AR model to raw data and creates the corresponding IIR filter.
 
     The computed filter is fitted to data from all of the picked channels,
     with frequency response given by the standard IIR formula:

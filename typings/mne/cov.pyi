@@ -32,7 +32,7 @@ from .utils import (
 from _typeshed import Incomplete
 
 class Covariance(dict):
-    """## 🧠 Noise covariance matrix.
+    """## Noise covariance matrix.
 
     ### 💡 Note
         This class should not be instantiated directly via
@@ -102,22 +102,22 @@ class Covariance(dict):
         *,
         verbose=None,
     ) -> None:
-        """## 🧠 Init of covariance."""
+        """## Init of covariance."""
         ...
     @property
     def data(self):
-        """## 🧠 Numpy array of Noise covariance matrix."""
+        """## Numpy array of Noise covariance matrix."""
         ...
     @property
     def ch_names(self):
-        """## 🧠 Channel names."""
+        """## Channel names."""
         ...
     @property
     def nfree(self):
-        """## 🧠 Number of degrees of freedom."""
+        """## Number of degrees of freedom."""
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """## 🧠 Save covariance matrix in a FIF file.
+        """## Save covariance matrix in a FIF file.
 
         -----
         ### 🛠️ Parameters
@@ -129,7 +129,7 @@ class Covariance(dict):
             If True (default False), overwrite the destination file if it
             exists.
 
-            ✨ Added in vesion 1.0
+            ✨ Added in version 1.0
 
         #### `verbose : bool | str | int | None`
             Control verbosity of the logging output. If ``None``, use the default
@@ -139,7 +139,7 @@ class Covariance(dict):
         """
         ...
     def copy(self):
-        """## 🧠 Copy the Covariance object.
+        """## Copy the Covariance object.
 
         -----
         ### ⏎ Returns
@@ -149,7 +149,7 @@ class Covariance(dict):
         """
         ...
     def as_diag(self):
-        """## 🧠 Set covariance to be processed as being diagonal.
+        """## Set covariance to be processed as being diagonal.
 
         -----
         ### ⏎ Returns
@@ -167,10 +167,10 @@ class Covariance(dict):
         """
         ...
     def __add__(self, cov):
-        """## 🧠 Add Covariance taking into account number of degrees of freedom."""
+        """## Add Covariance taking into account number of degrees of freedom."""
         ...
     def __iadd__(self, cov):
-        """## 🧠 Add Covariance taking into account number of degrees of freedom."""
+        """## Add Covariance taking into account number of degrees of freedom."""
         ...
     def plot(
         self,
@@ -182,7 +182,7 @@ class Covariance(dict):
         show: bool = True,
         verbose=None,
     ):
-        """## 🧠 Plot Covariance data.
+        """## Plot Covariance data.
 
         -----
         ### 🛠️ Parameters
@@ -261,7 +261,7 @@ class Covariance(dict):
         show: bool = True,
         verbose=None,
     ):
-        """## 🧠 Plot a topomap of the covariance diagonal.
+        """## Plot a topomap of the covariance diagonal.
 
         -----
         ### 🛠️ Parameters
@@ -274,7 +274,7 @@ class Covariance(dict):
             collected in pairs and the RMS for each pair is plotted. If
             ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
 
-            ✨ Added in vesion 0.21
+            ✨ Added in version 0.21
 
         #### `scalings : dict | float | None`
             The scalings of the channel types to be applied for plotting.
@@ -348,7 +348,7 @@ class Covariance(dict):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `image_interp : str`
@@ -384,7 +384,7 @@ class Covariance(dict):
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
 
         #### `res : int`
             The resolution of the topomap image (number of pixels along each side).
@@ -413,7 +413,7 @@ class Covariance(dict):
             ``None`` for either entry will set the corresponding boundary at the
             min/max of the data. Defaults to ``(None, None)``.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `cnorm : matplotlib.colors.Normalize | None`
             How to normalize the colormap. If ``None``, standard linear normalization
@@ -422,7 +422,7 @@ class Covariance(dict):
             for more details on colormap normalization, and
             `the ERDs example<cnorm-example>` for an example of its use.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `colorbar : bool`
             Plot a colorbar in the rightmost column of the figure.
@@ -455,11 +455,11 @@ class Covariance(dict):
         -----
         ### 📖 Notes
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
         """
         ...
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
-        """## 🧠 Pick channels from this covariance matrix.
+        """## Pick channels from this covariance matrix.
 
         -----
         ### 🛠️ Parameters
@@ -471,7 +471,7 @@ class Covariance(dict):
             If True (default False), ensure that the order of the channels in
             the modified instance matches the order of ``ch_names``.
 
-            ✨ Added in vesion 0.20.0
+            ✨ Added in version 0.20.0
             🎭 Changed in version 1.5
                 The default changed from False in 1.4 to True in 1.5.
 
@@ -492,12 +492,12 @@ class Covariance(dict):
 
         Operates in-place.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
         """
         ...
 
 def read_cov(fname, verbose=None):
-    """## 🧠 Read a noise covariance from a FIF file.
+    """## Read a noise covariance from a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -526,7 +526,7 @@ def read_cov(fname, verbose=None):
     ...
 
 def make_ad_hoc_cov(info, std=None, *, verbose=None):
-    """## 🧠 Create an ad hoc noise covariance.
+    """## Create an ad hoc noise covariance.
 
     -----
     ### 🛠️ Parameters
@@ -557,7 +557,7 @@ def make_ad_hoc_cov(info, std=None, *, verbose=None):
     The default noise values are 5 fT/cm, 20 fT, and 0.2 µV for gradiometers,
     magnetometers, and EEG channels respectively.
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
@@ -579,7 +579,7 @@ def compute_raw_covariance(
     rank=None,
     verbose=None,
 ):
-    """## 🧠 Estimate noise covariance matrix from a continuous segment of raw data.
+    """## Estimate noise covariance matrix from a continuous segment of raw data.
 
     It is typically useful to estimate a noise covariance from empty room
     data or time intervals before starting the stimulation.
@@ -631,24 +631,24 @@ def compute_raw_covariance(
         The method used for covariance estimation.
         See `mne.compute_covariance`.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `method_params : dict | None (default None)`
         Additional parameters to the estimation procedure.
         See `mne.compute_covariance`.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `cv : int | sklearn.model_selection object (default 3)`
         The cross validation method. Defaults to 3, which will
         internally trigger by default `sklearn.model_selection.KFold`
         with 3 splits.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `scalings : dict | None (default None)`
         Defaults to ``dict(mag=1e15, grad=1e13, eeg=1e6)``.
         These defaults will scale magnetometers and gradiometers
         at the same unit.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
@@ -657,19 +657,19 @@ def compute_raw_covariance(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `return_estimators : bool (default False)`
         Whether to return all estimators or the best. Only considered if
         method equals 'auto' or is a list of str. Defaults to False.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
 
     #### `reject_by_annotation : bool`
         Whether to reject based on annotations. If ``True`` (default), epochs
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        ✨ Added in vesion 0.14
+        ✨ Added in version 0.14
 
     #### `rank : None | 'info' | 'full' | dict`
         This controls the rank computation that can be read from the
@@ -716,9 +716,9 @@ def compute_raw_covariance(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
            Support for 'info' mode.
 
     #### `verbose : bool | str | int | None`
@@ -775,7 +775,7 @@ def compute_covariance(
     rank=None,
     verbose=None,
 ):
-    """## 🧠 Estimate noise covariance matrix from epochs.
+    """## Estimate noise covariance matrix from epochs.
 
     The noise covariance is typically estimated on pre-stimulus periods
     when the stimulus onset is defined from events.
@@ -828,7 +828,7 @@ def compute_covariance(
         The ``'auto'`` mode is not recommended if there are many
         segments of data, since computation can take a long time.
 
-        ✨ Added in vesion 0.9.0
+        ✨ Added in version 0.9.0
     #### `method_params : dict | None (default None)`
         Additional parameters to the estimation procedure. Only considered if
         method is not None. Keys must correspond to the value(s) of ``method``.
@@ -914,9 +914,9 @@ def compute_covariance(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
            Support for 'info' mode.
 
     #### `verbose : bool | str | int | None`
@@ -957,7 +957,7 @@ def compute_covariance(
     * ``'shrinkage'``
         Fixed shrinkage.
 
-      ✨ Added in vesion 0.16
+      ✨ Added in version 0.16
     * ``'ledoit_wolf'``
         The Ledoit-Wolf estimator, which uses an
         empirical formula for the optimal shrinkage value :footcite:`LedoitWolf2004`.
@@ -965,7 +965,7 @@ def compute_covariance(
         The OAS estimator :footcite:`ChenEtAl2010`, which uses a different
         empricial formula for the optimal shrinkage value.
 
-      ✨ Added in vesion 0.16
+      ✨ Added in version 0.16
     * ``'shrunk'``
         Like 'ledoit_wolf', but with cross-validation for optimal alpha.
     * ``'pca'``
@@ -1001,7 +1001,7 @@ def compute_covariance(
     ...
 
 class _RegCovariance(BaseEstimator):
-    """## 🧠 Aux class."""
+    """## Aux class."""
 
     info: Incomplete
     grad: Incomplete
@@ -1043,17 +1043,17 @@ class _RegCovariance(BaseEstimator):
     covariance_: Incomplete
 
     def fit(self, X):
-        """## 🧠 Fit covariance model with classical diagonal regularization."""
+        """## Fit covariance model with classical diagonal regularization."""
         ...
     def score(self, X_test, y=None):
-        """## 🧠 Delegate call to modified EmpiricalCovariance instance."""
+        """## Delegate call to modified EmpiricalCovariance instance."""
         ...
     def get_precision(self):
-        """## 🧠 Delegate call to modified EmpiricalCovariance instance."""
+        """## Delegate call to modified EmpiricalCovariance instance."""
         ...
 
 class _ShrunkCovariance(BaseEstimator):
-    """## 🧠 Aux class."""
+    """## Aux class."""
 
     store_precision: Incomplete
     assume_centered: Incomplete
@@ -1066,17 +1066,17 @@ class _ShrunkCovariance(BaseEstimator):
     zero_cross_cov_: Incomplete
 
     def fit(self, X):
-        """## 🧠 Fit covariance model with oracle shrinkage regularization."""
+        """## Fit covariance model with oracle shrinkage regularization."""
         ...
     def score(self, X_test, y=None):
-        """## 🧠 Delegate to modified EmpiricalCovariance instance."""
+        """## Delegate to modified EmpiricalCovariance instance."""
         ...
     def get_precision(self):
-        """## 🧠 Delegate to modified EmpiricalCovariance instance."""
+        """## Delegate to modified EmpiricalCovariance instance."""
         ...
 
 def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
-    """## 🧠 Write a noise covariance matrix.
+    """## Write a noise covariance matrix.
 
     -----
     ### 🛠️ Parameters
@@ -1091,7 +1091,7 @@ def write_cov(fname, cov, *, overwrite: bool = False, verbose=None) -> None:
         If True (default False), overwrite the destination file if it
         exists.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1115,7 +1115,7 @@ def prepare_noise_cov(
     on_rank_mismatch: str = "ignore",
     verbose=None,
 ):
-    """## 🧠 Prepare noise covariance matrix.
+    """## Prepare noise covariance matrix.
 
     -----
     ### 🛠️ Parameters
@@ -1174,7 +1174,7 @@ def prepare_noise_cov(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
            Support for 'info' mode.
     #### `scalings : dict | None`
         Data will be rescaled before rank estimation to improve accuracy.
@@ -1188,7 +1188,7 @@ def prepare_noise_cov(
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
 
-        ✨ Added in vesion 0.23
+        ✨ Added in version 0.23
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1227,7 +1227,7 @@ def regularize(
     scalings=None,
     verbose=None,
 ):
-    """## 🧠 Regularize noise covariance matrix.
+    """## Regularize noise covariance matrix.
 
     This method works by adding a constant to the diagonal for each
     channel type separately. Special care is taken to keep the
@@ -1325,15 +1325,15 @@ def regularize(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
            Support for 'info' mode.
     #### `scalings : dict | None`
         Data will be rescaled before rank estimation to improve accuracy.
         See `mne.compute_covariance`.
 
-        ✨ Added in vesion 0.17
+        ✨ Added in version 0.17
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1366,7 +1366,7 @@ def compute_whitener(
     on_rank_mismatch: str = "warn",
     verbose=None,
 ):
-    """## 🧠 Compute whitening matrix.
+    """## Compute whitening matrix.
 
     -----
     ### 🛠️ Parameters
@@ -1432,7 +1432,7 @@ def compute_whitener(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
            Support for 'info' mode.
     #### `scalings : dict | None`
         The rescaling method to be applied. See documentation of
@@ -1440,7 +1440,7 @@ def compute_whitener(
     #### `return_rank : bool`
         If True, return the rank used to compute the whitener.
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
     #### `pca : bool | str`
         Space to project the data into. Options:
 
@@ -1454,7 +1454,7 @@ def compute_whitener(
             Whitener will be shape (n_channels, n_channels), potentially rank
             deficient, and rotated back to the space of the original data.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
     #### `return_colorer : bool`
         If True, return the colorer as well.
 
@@ -1464,7 +1464,7 @@ def compute_whitener(
         Can be 'raise' to raise an error, 'warn' (default) to emit a warning, or
         'ignore' to ignore.
 
-        ✨ Added in vesion 0.23
+        ✨ Added in version 0.23
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -1489,7 +1489,7 @@ def compute_whitener(
 def whiten_evoked(
     evoked, noise_cov, picks=None, diag=None, rank=None, scalings=None, verbose=None
 ):
-    """## 🧠 Whiten evoked data using given noise covariance.
+    """## Whiten evoked data using given noise covariance.
 
     -----
     ### 🛠️ Parameters
@@ -1555,7 +1555,7 @@ def whiten_evoked(
 
         The default is ``None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
            Support for 'info' mode.
     #### `scalings : dict | None (default None)`
         To achieve reliable rank estimation on multiple sensors,

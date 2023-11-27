@@ -10,7 +10,7 @@ from .write import (
 )
 
 def read_ctf_comp(fid, node, chs, verbose=None):
-    """## 🧠 Read the CTF software compensation data from the given node.
+    """## Read the CTF software compensation data from the given node.
 
     -----
     ### 🛠️ Parameters
@@ -38,7 +38,7 @@ def read_ctf_comp(fid, node, chs, verbose=None):
     ...
 
 def write_ctf_comp(fid, comps) -> None:
-    """## 🧠 Write the CTF compensation data into a fif file.
+    """## Write the CTF compensation data into a fif file.
 
     -----
     ### 🛠️ Parameters

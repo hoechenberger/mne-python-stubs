@@ -17,7 +17,7 @@ def iter_topography(
     layout_scale=None,
     legend: bool = False,
 ):
-    """## 🧠 Create iterator over channel positions.
+    """## Create iterator over channel positions.
 
     This function returns a generator that unpacks into
     a series of matplotlib axis objects and data / channel
@@ -86,7 +86,7 @@ def plot_topo_image_epochs(
     font_color: str = "w",
     show: bool = True,
 ):
-    """## 🧠 Plot Event Related Potential / Fields image on topographies.
+    """## Plot Event Related Potential / Fields image on topographies.
 
     -----
     ### 🛠️ Parameters

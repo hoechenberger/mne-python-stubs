@@ -12,7 +12,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of spm dataset.
+    """## Get path to local copy of spm dataset.
 
     -----
     ### 🛠️ Parameters
@@ -50,7 +50,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local spm dataset.
+    """## Get version of the local spm dataset.
 
     -----
     ### ⏎ Returns
@@ -61,5 +61,5 @@ def get_version():
     ...
 
 def requires_spm_data(func):
-    """## 🧠 Skip testing data test."""
+    """## Skip testing data test."""
     ...

@@ -41,7 +41,7 @@ def plot_raw(
     splash: bool = True,
     verbose=None,
 ):
-    """## 🧠 Plot raw data.
+    """## Plot raw data.
 
     -----
     ### 🛠️ Parameters
@@ -187,26 +187,26 @@ def plot_raw(
         magnetometers and gradiometers may introduce differences in scaling,
         consider using `mne.Evoked.plot_white`.
 
-        ✨ Added in vesion 0.16.0
+        ✨ Added in version 0.16.0
     #### `event_id : dict | None`
         Event IDs used to show at event markers (default None shows
         the event numbers).
 
-        ✨ Added in vesion 0.16.0
+        ✨ Added in version 0.16.0
 
     #### `show_scrollbars : bool`
         Whether to show scrollbars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
-        ✨ Added in vesion 0.19.0
+        ✨ Added in version 0.19.0
 
     #### `show_scalebars : bool`
         Whether to show scale bars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`s` while the plot window is focused.
         Default is ``True``.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
 
     #### `time_format : 'float' | 'clock'`
         Style of time labels on the horizontal axis. If ``'float'``, labels will be
@@ -214,7 +214,7 @@ def plot_raw(
         labels will show "clock time" (hours/minutes/seconds) inferred from
         ``raw.info['meas_date']``. Default is ``'float'``.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `precompute : bool | str`
         Whether to load all data (not just the visible portion) into RAM and
@@ -225,7 +225,7 @@ def plot_raw(
         the precomputed data, and precomputes only if enough RAM is available.
         This is only used with the Qt backend.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
         🎭 Changed in version 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
@@ -237,7 +237,7 @@ def plot_raw(
         ``MNE_BROWSER_USE_OPENGL`` is set to ``'true'``,
         see `mne.set_config`.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
 
     #### `theme : str | path-like`
         Can be "auto", "light", or "dark" or a path-like to a
@@ -248,7 +248,7 @@ def plot_raw(
         defaulting to "auto" if it's not found.
         Only supported by the ``'qt'`` backend.
 
-        ✨ Added in vesion 1.0
+        ✨ Added in version 1.0
 
     #### `overview_mode : str | None`
         Can be "channels", "empty", or "hidden" to set the overview bar mode
@@ -256,13 +256,13 @@ def plot_raw(
         ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
         if it's not found.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `splash : bool`
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -351,7 +351,7 @@ def plot_raw_psd(
     exclude: str = "bads",
     verbose=None,
 ):
-    """## 🧠 ### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot().
+    """## ### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot().
 
     Plot power or amplitude spectra.
 
@@ -454,18 +454,18 @@ def plot_raw_psd(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     #### `window : str | float | tuple`
         Windowing function to use. See `scipy.signal.get_window`.
 
-        ✨ Added in vesion 0.22.0
+        ✨ Added in version 0.22.0
     #### `exclude : list of str | 'bads'`
         Channels names to exclude from being shown. If 'bads', the bad channels
         are excluded. Pass an empty list to plot all channels (including
         channels marked "bad", if any).
 
-        ✨ Added in vesion 0.24.0
+        ✨ Added in version 0.24.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -509,7 +509,7 @@ def plot_raw_psd_topo(
     n_jobs=None,
     verbose=None,
 ):
-    """## 🧠 ### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot_topo().
+    """## ### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot_topo().
 
     Plot power spectral density, separately for each channel.
 

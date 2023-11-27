@@ -15,7 +15,7 @@ from ...utils import (
 from ..base import BaseRaw as BaseRaw
 
 class Raw(BaseRaw):
-    """## 🧠 Raw data in FIF format.
+    """## Raw data in FIF format.
 
     -----
     ### 🛠️ Parameters
@@ -48,7 +48,7 @@ class Raw(BaseRaw):
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when split file is missing.
 
-        ✨ Added in vesion 0.22
+        ✨ Added in version 0.22
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -91,7 +91,7 @@ class Raw(BaseRaw):
         verbose=None,
     ) -> None: ...
     def fix_mag_coil_types(self):
-        """## 🧠 Fix Elekta magnetometer coil types.
+        """## Fix Elekta magnetometer coil types.
 
         -----
         ### ⏎ Returns
@@ -123,7 +123,7 @@ class Raw(BaseRaw):
         ...
     @property
     def acqparser(self):
-        """## 🧠 The AcqParserFIF for the measurement info.
+        """## The AcqParserFIF for the measurement info.
 
         -----
         ### 👉 See Also
@@ -139,7 +139,7 @@ def read_raw_fif(
     on_split_missing: str = "raise",
     verbose=None,
 ):
-    """## 🧠 Reader function for Raw FIF data.
+    """## Reader function for Raw FIF data.
 
     -----
     ### 🛠️ Parameters
@@ -171,7 +171,7 @@ def read_raw_fif(
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when split file is missing.
 
-        ✨ Added in vesion 0.22
+        ✨ Added in version 0.22
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -188,7 +188,7 @@ def read_raw_fif(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
 
     When reading a FIF file, note that the first N seconds annotated
     ``BAD_ACQ_SKIP`` are `skipped`. They are removed from ``raw.times`` and

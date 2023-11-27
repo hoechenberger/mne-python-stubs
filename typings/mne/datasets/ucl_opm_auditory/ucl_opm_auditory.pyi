@@ -6,7 +6,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of ucl_opm_auditory dataset.
+    """## Get path to local copy of ucl_opm_auditory dataset.
 
     -----
     ### 🛠️ Parameters
@@ -44,7 +44,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local ucl_opm_auditory dataset.
+    """## Get version of the local ucl_opm_auditory dataset.
 
     -----
     ### ⏎ Returns

@@ -18,7 +18,7 @@ def read_raw_cnt(
     preload: bool = False,
     verbose=None,
 ):
-    """## 🧠 Read CNT data as raw object.
+    """## Read CNT data as raw object.
 
     .. Note::
         2d spatial coordinates (x, y) for EEG channels are read from the file
@@ -72,7 +72,7 @@ def read_raw_cnt(
         if either contain a bad channel make channel bad.
         Defaults to ``'auto'``.
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
 
     #### `preload : bool or str (default False)`
         Preload data into memory for data manipulation and faster indexing.
@@ -102,12 +102,12 @@ def read_raw_cnt(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.12
+    ✨ Added in version 0.12
     """
     ...
 
 class RawCNT(BaseRaw):
-    """## 🧠 Raw object from Neuroscan CNT file.
+    """## Raw object from Neuroscan CNT file.
 
     .. Note::
         The channel positions are read from the file header. Channels that are
@@ -167,7 +167,7 @@ class RawCNT(BaseRaw):
                      and be removed in 0.20; migrate code to use
                      `mne.events_from_annotations` instead.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

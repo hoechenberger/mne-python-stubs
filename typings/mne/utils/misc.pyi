@@ -3,7 +3,7 @@ from _typeshed import Incomplete
 from collections.abc import Generator
 
 class _DefaultEventParser:
-    """## 🧠 Parse none standard events."""
+    """## Parse none standard events."""
 
     event_ids: Incomplete
 
@@ -11,12 +11,12 @@ class _DefaultEventParser:
     def __call__(self, description, offset: int = 1): ...
 
 class _FormatDict(dict):
-    """## 🧠 Help pformat() work properly."""
+    """## Help pformat() work properly."""
 
     def __missing__(self, key): ...
 
 def pformat(temp, **fmt):
-    """## 🧠 Format a template string partially.
+    """## Format a template string partially.
 
     -----
     ### 🖥️ Examples
@@ -27,7 +27,7 @@ def pformat(temp, **fmt):
     ...
 
 def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kwargs):
-    """## 🧠 Run command using subprocess.Popen.
+    """## Run command using subprocess.Popen.
 
     Run command and wait for command to complete. If the return code was zero
     then return, otherwise raise CalledProcessError.
@@ -43,7 +43,7 @@ def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kw
         If True, return the return code instead of raising an error if it's
         non-zero.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -68,7 +68,7 @@ def run_subprocess(command, return_code: bool = False, verbose=None, *args, **kw
 def running_subprocess(
     command, after: str = "wait", verbose=None, *args, **kwargs
 ) -> Generator[Incomplete, None, None]:
-    """## 🧠 Context manager to do something with a command running via Popen.
+    """## Context manager to do something with a command running via Popen.
 
     -----
     ### 🛠️ Parameters
@@ -96,7 +96,7 @@ def running_subprocess(
     ...
 
 def sizeof_fmt(num):
-    """## 🧠 Turn number of bytes into human-readable str.
+    """## Turn number of bytes into human-readable str.
 
     -----
     ### 🛠️ Parameters
@@ -113,7 +113,7 @@ def sizeof_fmt(num):
     ...
 
 def repr_html(f):
-    """## 🧠 Decorate _repr_html_ methods.
+    """## Decorate _repr_html_ methods.
 
     If a _repr_html_ method is decorated with this decorator, the repr in a
     notebook will show HTML or plain text depending on the config value

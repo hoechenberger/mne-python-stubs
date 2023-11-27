@@ -2,7 +2,7 @@ from ..io import BaseRaw as BaseRaw
 from ..utils import logger as logger, warn as warn
 
 def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
-    """## 🧠 Realign two simultaneous recordings.
+    """## Realign two simultaneous recordings.
 
     Due to clock drift, recordings at a given same sample rate made by two
     separate devices simultaneously can become out of sync over time. This
@@ -48,6 +48,6 @@ def realign_raw(raw, other, t_raw, t_other, verbose=None) -> None:
     sample rate, but it can also operate on recordings made at different
     sample rates to resample and deal with clock drift simultaneously.
 
-    ✨ Added in vesion 0.22
+    ✨ Added in version 0.22
     """
     ...

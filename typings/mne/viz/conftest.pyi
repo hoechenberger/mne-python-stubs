@@ -16,9 +16,9 @@ from mne.preprocessing.nirs import (
 fname_nirx: Incomplete
 
 def fnirs_evoked():
-    """## 🧠 Create an fnirs evoked structure."""
+    """## Create an fnirs evoked structure."""
     ...
 
 def fnirs_epochs():
-    """## 🧠 Create an fnirs epoch structure."""
+    """## Create an fnirs epoch structure."""
     ...

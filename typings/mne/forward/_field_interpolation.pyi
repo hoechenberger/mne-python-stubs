@@ -25,7 +25,7 @@ def make_field_map(
     head_source=("bem", "head"),
     verbose=None,
 ):
-    """## 🧠 Compute surface maps used for field display in 3D.
+    """## Compute surface maps used for field display in 3D.
 
     -----
     ### 🛠️ Parameters
@@ -63,7 +63,7 @@ def make_field_map(
         Can be ``'auto'``, which means a head-digitization-based origin
         fit. Default is ``(0., 0., 0.04)``.
 
-        ✨ Added in vesion 0.11
+        ✨ Added in version 0.11
     #### `n_jobs : int | None`
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
@@ -76,7 +76,7 @@ def make_field_map(
         Head source(s) to use. See the ``source`` option of
         `mne.get_head_surf` for more information.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

@@ -2,7 +2,7 @@ from ._logging import logger as logger, warn as warn
 from .docs import fill_doc as fill_doc
 
 def set_cache_dir(cache_dir) -> None:
-    """## 🧠 Set the directory to be used for temporary file storage.
+    """## Set the directory to be used for temporary file storage.
 
     This directory is used by joblib to store memmapped arrays,
     which reduces memory requirements and speeds up parallel
@@ -18,7 +18,7 @@ def set_cache_dir(cache_dir) -> None:
     ...
 
 def set_memmap_min_size(memmap_min_size) -> None:
-    """## 🧠 Set the minimum size for memmaping of arrays for parallel processing.
+    """## Set the minimum size for memmaping of arrays for parallel processing.
 
     -----
     ### 🛠️ Parameters
@@ -31,7 +31,7 @@ def set_memmap_min_size(memmap_min_size) -> None:
     ...
 
 def get_config_path(home_dir=None):
-    """## 🧠 Get path to standard mne-python config file.
+    """## Get path to standard mne-python config file.
 
     -----
     ### 🛠️ Parameters
@@ -57,7 +57,7 @@ def get_config(
     home_dir=None,
     use_env: bool = True,
 ):
-    """## 🧠 Read MNE-Python preferences from environment or config file.
+    """## Read MNE-Python preferences from environment or config file.
 
     -----
     ### 🛠️ Parameters
@@ -80,7 +80,7 @@ def get_config(
         If True, consider env vars, if available.
         If False, only use MNE-Python configuration file values.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     -----
     ### ⏎ Returns
@@ -96,7 +96,7 @@ def get_config(
     ...
 
 def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
-    """## 🧠 Set a MNE-Python preference key in the config file and environment.
+    """## Set a MNE-Python preference key in the config file and environment.
 
     -----
     ### 🛠️ Parameters
@@ -121,7 +121,7 @@ def set_config(key, value, home_dir=None, set_env: bool = True) -> None:
     ...
 
 def get_subjects_dir(subjects_dir=None, raise_error: bool = False):
-    """## 🧠 Safely use subjects_dir input to return SUBJECTS_DIR.
+    """## Safely use subjects_dir input to return SUBJECTS_DIR.
 
     -----
     ### 🛠️ Parameters
@@ -149,7 +149,7 @@ def sys_info(
     unicode: bool = True,
     check_version: bool = True,
 ) -> None:
-    """## 🧠 Print system information.
+    """## Print system information.
 
     This function prints system information useful when triaging bugs.
 
@@ -167,12 +167,12 @@ def sys_info(
     #### `unicode : bool`
         Include Unicode symbols in output.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
     #### `check_version : bool | float`
         If True (default), attempt to check that the version of MNE-Python is up to date
         with the latest release on GitHub. Can be a float to give a different timeout
         (in sec) from the default (2 sec).
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
     """
     ...

@@ -11,7 +11,7 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_fil(
     binfile, precision: str = "single", preload: bool = False, *, verbose=None
 ):
-    """## 🧠 Raw object from FIL-OPMEG formatted data.
+    """## Raw object from FIL-OPMEG formatted data.
 
     -----
     ### 🛠️ Parameters
@@ -50,7 +50,7 @@ def read_raw_fil(
     ...
 
 class RawFIL(BaseRaw):
-    """## 🧠 Raw object from FIL-OPMEG formatted data.
+    """## Raw object from FIL-OPMEG formatted data.
 
     -----
     ### 🛠️ Parameters

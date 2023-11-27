@@ -26,11 +26,11 @@ from .ui_events import (
 from _typeshed import Incomplete
 
 def safe_event(fun, *args, **kwargs):
-    """## 🧠 Protect against Qt exiting on event-handling errors."""
+    """## Protect against Qt exiting on event-handling errors."""
     ...
 
 def plt_show(show: bool = True, fig=None, **kwargs) -> None:
-    """## 🧠 Show a figure while suppressing warnings.
+    """## Show a figure while suppressing warnings.
 
     -----
     ### 🛠️ Parameters
@@ -45,7 +45,7 @@ def plt_show(show: bool = True, fig=None, **kwargs) -> None:
     ...
 
 def mne_analyze_colormap(limits=[5, 10, 15], format: str = "vtk"):
-    """## 🧠 Return a colormap similar to that used by mne_analyze.
+    """## Return a colormap similar to that used by mne_analyze.
 
     -----
     ### 🛠️ Parameters
@@ -83,7 +83,7 @@ def compare_fiff(
     max_str: int = 30,
     verbose=None,
 ):
-    """## 🧠 Compare the contents of two fiff files using diff and show_fiff.
+    """## Compare the contents of two fiff files using diff and show_fiff.
 
     -----
     ### 🛠️ Parameters
@@ -122,7 +122,7 @@ def compare_fiff(
     ...
 
 def figure_nobar(*args, **kwargs):
-    """## 🧠 Make matplotlib figure with no toolbar.
+    """## Make matplotlib figure with no toolbar.
 
     -----
     ### 🛠️ Parameters
@@ -141,7 +141,7 @@ def figure_nobar(*args, **kwargs):
     ...
 
 class ClickableImage:
-    """## 🧠 Display an image so you can click on it and store x/y positions.
+    """## Display an image so you can click on it and store x/y positions.
 
     Takes as input an image array (can be any array that works with imshow,
     but will work best with images.  Displays the image and lets you
@@ -162,7 +162,7 @@ class ClickableImage:
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
 
     coords: Incomplete
@@ -174,10 +174,10 @@ class ClickableImage:
     im: Incomplete
 
     def __init__(self, imdata, **kwargs) -> None:
-        """## 🧠 Display the image for clicking."""
+        """## Display the image for clicking."""
         ...
     def onclick(self, event) -> None:
-        """## 🧠 Handle Mouse clicks.
+        """## Handle Mouse clicks.
 
         -----
         ### 🛠️ Parameters
@@ -187,7 +187,7 @@ class ClickableImage:
         """
         ...
     def plot_clicks(self, **kwargs) -> None:
-        """## 🧠 Plot the x/y positions stored in self.coords.
+        """## Plot the x/y positions stored in self.coords.
 
         -----
         ### 🛠️ Parameters
@@ -197,7 +197,7 @@ class ClickableImage:
         """
         ...
     def to_layout(self, **kwargs):
-        """## 🧠 Turn coordinates into an MNE Layout object.
+        """## Turn coordinates into an MNE Layout object.
 
         Normalizes by the image you used to generate clicks
 
@@ -216,7 +216,7 @@ class ClickableImage:
         ...
 
 def add_background_image(fig, im, set_ratios=None):
-    """## 🧠 Add a background image to a plot.
+    """## Add a background image to a plot.
 
     Adds the image specified in ``im`` to the
     figure ``fig``. This is generally meant to
@@ -247,7 +247,7 @@ def add_background_image(fig, im, set_ratios=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
@@ -269,7 +269,7 @@ def plot_sensors(
     cmap=None,
     verbose=None,
 ):
-    """## 🧠 Plot sensors positions.
+    """## Plot sensors positions.
 
     -----
     ### 🛠️ Parameters
@@ -304,24 +304,24 @@ def plot_sensors(
         accepts a list of lists to allow channel groups of the same or
         different sizes.
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
     #### `to_sphere : bool`
         Whether to project the 3d locations to a sphere. When False, the
         sensor array appears similar as to looking downwards straight above the
         subject's head. Has no effect when ``kind='3d'``. Defaults to True.
 
-        ✨ Added in vesion 0.14.0
+        ✨ Added in version 0.14.0
 
     #### `axes : instance of Axes | instance of Axes3D | None`
         Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
         of Axes3D. If None (default), a new axes will be created.
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
     #### `block : bool`
         Whether to halt program execution until the figure is closed. Defaults
         to False.
 
-        ✨ Added in vesion 0.13.0
+        ✨ Added in version 0.13.0
     #### `show : bool`
         Show figure if True. Defaults to True.
     #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
@@ -336,7 +336,7 @@ def plot_sensors(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
     #### `pointsize : float | None`
         The size of the points. If None (default), will bet set to ``75`` if
@@ -374,12 +374,12 @@ def plot_sensors(
     matplotlib. For drawing the sensors using PyVista see
     `mne.viz.plot_alignment`.
 
-    ✨ Added in vesion 0.12.0
+    ✨ Added in version 0.12.0
     """
     ...
 
 class DraggableColorbar:
-    """## 🧠 Enable interactive colorbar.
+    """## Enable interactive colorbar.
 
     See http://www.ster.kuleuven.be/~pieterd/python/html/plotting/interactive_colorbar.html
     """
@@ -402,26 +402,26 @@ class DraggableColorbar:
     scroll: Incomplete
 
     def connect(self) -> None:
-        """## 🧠 Connect to all the events we need."""
+        """## Connect to all the events we need."""
         ...
     def on_press(self, event) -> None:
-        """## 🧠 Handle button press."""
+        """## Handle button press."""
         ...
     def key_press(self, event) -> None:
-        """## 🧠 Handle key press."""
+        """## Handle key press."""
         ...
     def on_motion(self, event) -> None:
-        """## 🧠 Handle mouse movements."""
+        """## Handle mouse movements."""
         ...
     def on_release(self, event) -> None:
-        """## 🧠 Handle release."""
+        """## Handle release."""
         ...
     def on_scroll(self, event) -> None:
-        """## 🧠 Handle scroll."""
+        """## Handle scroll."""
         ...
 
 class SelectFromCollection:
-    """## 🧠 Select channels from a matplotlib collection using ``LassoSelector``.
+    """## Select channels from a matplotlib collection using ``LassoSelector``.
 
     Selected channels are saved in the ``selection`` attribute. This tool
     highlights selected points by fading other points out (i.e., reducing their
@@ -476,26 +476,26 @@ class SelectFromCollection:
         linewidth_selected: int = 1,
     ) -> None: ...
     def on_select(self, verts) -> None:
-        """## 🧠 Select a subset from the collection."""
+        """## Select a subset from the collection."""
         ...
     def select_one(self, ind) -> None:
-        """## 🧠 Select or deselect one sensor."""
+        """## Select or deselect one sensor."""
         ...
     def notify(self) -> None:
-        """## 🧠 Notify listeners that a selection has been made."""
+        """## Notify listeners that a selection has been made."""
         ...
     def select_many(self, inds) -> None:
-        """## 🧠 Select many sensors using indices (for predefined selections)."""
+        """## Select many sensors using indices (for predefined selections)."""
         ...
     def style_sensors(self, inds) -> None:
-        """## 🧠 Style selected sensors as "active"."""
+        """## Style selected sensors as "active"."""
         ...
     def disconnect(self) -> None:
-        """## 🧠 Disconnect the lasso selector."""
+        """## Disconnect the lasso selector."""
         ...
 
 class DraggableLine:
-    """## 🧠 Custom matplotlib line for moving around by drag and drop.
+    """## Custom matplotlib line for moving around by drag and drop.
 
     -----
     ### 🛠️ Parameters
@@ -517,23 +517,23 @@ class DraggableLine:
 
     def __init__(self, line, modify_callback, drag_callback) -> None: ...
     def set_x(self, x) -> None:
-        """## 🧠 Repoisition the line."""
+        """## Repoisition the line."""
         ...
     def on_press(self, event) -> None:
-        """## 🧠 Store button press if on top of the line."""
+        """## Store button press if on top of the line."""
         ...
     def on_motion(self, event) -> None:
-        """## 🧠 Move the line on drag."""
+        """## Move the line on drag."""
         ...
     def on_release(self, event) -> None:
-        """## 🧠 Handle release."""
+        """## Handle release."""
         ...
     def remove(self) -> None:
-        """## 🧠 Remove the line."""
+        """## Remove the line."""
         ...
 
 def centers_to_edges(*arrays):
-    """## 🧠 Convert center points to edges.
+    """## Convert center points to edges.
 
     -----
     ### 🛠️ Parameters
@@ -565,7 +565,7 @@ def concatenate_images(
     centered: bool = True,
     n_channels: int = 3,
 ):
-    """## 🧠 Concatenate a list of images.
+    """## Concatenate a list of images.
 
     -----
     ### 🛠️ Parameters

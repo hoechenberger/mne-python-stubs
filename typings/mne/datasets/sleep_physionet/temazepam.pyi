@@ -12,7 +12,7 @@ def fetch_data(
     *,
     verbose=None,
 ):
-    """## 🧠 Get paths to local copies of PhysioNet Polysomnography dataset files.
+    """## Get paths to local copies of PhysioNet Polysomnography dataset files.
 
     This will fetch data from the publicly available subjects from PhysioNet's
     study of Temazepam effects on sleep :footcite:`KempEtAl2000`. This

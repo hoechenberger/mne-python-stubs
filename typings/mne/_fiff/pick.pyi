@@ -2,7 +2,7 @@ from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 from .constants import FIFF as FIFF
 
 def get_channel_type_constants(include_defaults: bool = False):
-    """## 🧠 Return all known channel types, and associated FIFF constants.
+    """## Return all known channel types, and associated FIFF constants.
 
     -----
     ### 🛠️ Parameters
@@ -32,7 +32,7 @@ def get_channel_type_constants(include_defaults: bool = False):
     ...
 
 def channel_type(info, idx):
-    """## 🧠 Get channel type.
+    """## Get channel type.
 
     -----
     ### 🛠️ Parameters
@@ -57,7 +57,7 @@ def channel_type(info, idx):
     ...
 
 def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
-    """## 🧠 Pick channels by names.
+    """## Pick channels by names.
 
     Returns the indices of ``ch_names`` in ``include`` but not in ``exclude``.
 
@@ -80,7 +80,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
         🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
 
@@ -104,7 +104,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     ...
 
 def pick_channels_regexp(ch_names, regexp):
-    """## 🧠 Pick channels using regular expression.
+    """## Pick channels using regular expression.
 
     Returns the indices of the good channels in ch_names.
 
@@ -170,7 +170,7 @@ def pick_types(
     exclude: str = "bads",
     selection=None,
 ):
-    """## 🧠 Pick channels by type and names.
+    """## Pick channels by type and names.
 
     -----
     ### 🛠️ Parameters
@@ -256,7 +256,7 @@ def pick_types(
     ...
 
 def pick_info(info, sel=(), copy: bool = True, verbose=None):
-    """## 🧠 Restrict an info structure to a selection of channels.
+    """## Restrict an info structure to a selection of channels.
 
     -----
     ### 🛠️ Parameters
@@ -287,7 +287,7 @@ def pick_info(info, sel=(), copy: bool = True, verbose=None):
 def pick_channels_forward(
     orig, include=[], exclude=[], ordered=None, copy: bool = True, *, verbose=None
 ):
-    """## 🧠 Pick channels from forward operator.
+    """## Pick channels from forward operator.
 
     -----
     ### 🛠️ Parameters
@@ -305,13 +305,13 @@ def pick_channels_forward(
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
         🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
     #### `copy : bool`
         If True (default), make a copy.
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -339,7 +339,7 @@ def pick_types_forward(
     include=[],
     exclude=[],
 ):
-    """## 🧠 Pick by channel type and names from a forward operator.
+    """## Pick by channel type and names from a forward operator.
 
     -----
     ### 🛠️ Parameters
@@ -375,7 +375,7 @@ def pick_types_forward(
     ...
 
 def channel_indices_by_type(info, picks=None):
-    """## 🧠 Get indices of channels by type.
+    """## Get indices of channels by type.
 
     -----
     ### 🛠️ Parameters
@@ -411,7 +411,7 @@ def pick_channels_cov(
     *,
     verbose=None,
 ):
-    """## 🧠 Pick channels from covariance matrix.
+    """## Pick channels from covariance matrix.
 
     -----
     ### 🛠️ Parameters
@@ -427,14 +427,14 @@ def pick_channels_cov(
         If True (default False), ensure that the order of the channels in
         the modified instance matches the order of ``ch_names``.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
         🎭 Changed in version 1.5
             The default changed from False in 1.4 to True in 1.5.
     #### `copy : bool`
         If True (the default), return a copy of the covariance matrix with the
         modified channels. If False, channels are modified in-place.
 
-        ✨ Added in vesion 0.20.0
+        ✨ Added in version 0.20.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

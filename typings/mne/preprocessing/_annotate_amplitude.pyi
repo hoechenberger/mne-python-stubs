@@ -13,7 +13,7 @@ def annotate_amplitude(
     *,
     verbose=None,
 ):
-    """## 🧠 Annotate raw data based on peak-to-peak amplitude.
+    """## Annotate raw data based on peak-to-peak amplitude.
 
     Creates annotations ``BAD_peak`` or ``BAD_flat`` for spans of data where
     consecutive samples exceed the threshold in ``peak`` or fall below the
@@ -105,6 +105,6 @@ def annotate_amplitude(
     loads data one channel type at a time (across all time points), which is
     typically not an efficient way to read raw data from disk.
 
-    ✨ Added in vesion 1.0
+    ✨ Added in version 1.0
     """
     ...

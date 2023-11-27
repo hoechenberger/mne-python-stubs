@@ -17,7 +17,7 @@ def simulate_evoked(
     use_cps: bool = True,
     verbose=None,
 ):
-    """## 🧠 Generate noisy evoked data.
+    """## Generate noisy evoked data.
 
     ### 💡 Note No projections from ``info`` will be present in the
               output ``evoked``. You can use e.g.
@@ -40,7 +40,7 @@ def simulate_evoked(
     #### `nave : int`
         Number of averaged epochs (defaults to 30).
 
-        ✨ Added in vesion 0.15.0
+        ✨ Added in version 0.15.0
     #### `iir_filter : None | array`
         IIR filter coefficients (denominator) e.g. [1, -1, 0.2].
 
@@ -56,7 +56,7 @@ def simulate_evoked(
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
 
-        ✨ Added in vesion 0.15
+        ✨ Added in version 0.15
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -87,12 +87,12 @@ def simulate_evoked(
 
     where actual_snr is the snr to the generated noise before scaling.
 
-    ✨ Added in vesion 0.10.0
+    ✨ Added in version 0.10.0
     """
     ...
 
 def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
-    """## 🧠 Create noise as a multivariate Gaussian.
+    """## Create noise as a multivariate Gaussian.
 
     The spatial covariance of the noise is given from the cov matrix.
 
@@ -134,6 +134,6 @@ def add_noise(inst, cov, iir_filter=None, random_state=None, verbose=None):
 
     This function operates inplace on ``inst``.
 
-    ✨ Added in vesion 0.18.0
+    ✨ Added in version 0.18.0
     """
     ...

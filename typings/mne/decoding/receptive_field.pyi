@@ -5,7 +5,7 @@ from .time_delaying_ridge import TimeDelayingRidge as TimeDelayingRidge
 from _typeshed import Incomplete
 
 class ReceptiveField(BaseEstimator):
-    """## 🧠 Fit a receptive field model.
+    """## Fit a receptive field model.
 
     This allows you to fit an encoding model (stimulus to brain) or a decoding
     model (brain to stimulus) using time-lagged input features (for example, a
@@ -48,7 +48,7 @@ class ReceptiveField(BaseEstimator):
         Number of jobs to run in parallel. Can be 'cuda' if CuPy
         is installed properly and ``estimator is None``.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
     #### `edge_correction : bool`
         If True (default), correct the autocorrelation coefficients for
         non-zero delays for the fact that fewer samples are available.
@@ -56,7 +56,7 @@ class ReceptiveField(BaseEstimator):
         depending on the relationship between epoch length and model
         duration. Only used if ``estimator`` is float or None.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -134,7 +134,7 @@ class ReceptiveField(BaseEstimator):
     patterns_: Incomplete
 
     def fit(self, X, y):
-        """## 🧠 Fit a receptive field model.
+        """## Fit a receptive field model.
 
         -----
         ### 🛠️ Parameters
@@ -152,7 +152,7 @@ class ReceptiveField(BaseEstimator):
         """
         ...
     def predict(self, X):
-        """## 🧠 Generate predictions with a receptive field.
+        """## Generate predictions with a receptive field.
 
         -----
         ### 🛠️ Parameters
@@ -170,7 +170,7 @@ class ReceptiveField(BaseEstimator):
         """
         ...
     def score(self, X, y):
-        """## 🧠 Score predictions generated with a receptive field.
+        """## Score predictions generated with a receptive field.
 
         This calls ``self.predict``, then masks the output of this
         and ``y` with ``self.valid_samples_``. Finally, it passes

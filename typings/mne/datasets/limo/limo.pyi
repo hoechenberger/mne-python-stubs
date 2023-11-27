@@ -8,7 +8,7 @@ root_url: str
 def data_path(
     subject, path=None, force_update: bool = False, update_path=None, *, verbose=None
 ):
-    """## 🧠 Get path to local copy of LIMO dataset URL.
+    """## Get path to local copy of LIMO dataset URL.
 
     This is a low-level function useful for getting a local copy of the
     remote LIMO dataset :footcite:`Rousselet2016`. The complete dataset is
@@ -66,7 +66,7 @@ def data_path(
 def load_data(
     subject, path=None, force_update: bool = False, update_path=None, verbose=None
 ):
-    """## 🧠 Fetch subjects epochs data for the LIMO data set.
+    """## Fetch subjects epochs data for the LIMO data set.
 
     -----
     ### 🛠️ Parameters

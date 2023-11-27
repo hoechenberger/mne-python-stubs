@@ -12,7 +12,7 @@ from _typeshed import Incomplete
 REFERENCE_NAMES: Incomplete
 
 class _FixedOffset(datetime.tzinfo):
-    """## 🧠 Fixed offset in minutes east from UTC.
+    """## Fixed offset in minutes east from UTC.
 
     Adapted from the official Python documentation.
     """
@@ -23,7 +23,7 @@ class _FixedOffset(datetime.tzinfo):
     def dst(self, dt): ...
 
 class RawMff(BaseRaw):
-    """## 🧠 RawMff class."""
+    """## RawMff class."""
 
     event_id: Incomplete
 
@@ -38,13 +38,13 @@ class RawMff(BaseRaw):
         channel_naming: str = "E%d",
         verbose=None,
     ) -> None:
-        """## 🧠 Init the RawMff class."""
+        """## Init the RawMff class."""
         ...
 
 def read_evokeds_mff(
     fname, condition=None, channel_naming: str = "E%d", baseline=None, verbose=None
 ):
-    """## 🧠 Read averaged MFF file as EvokedArray or list of EvokedArray.
+    """## Read averaged MFF file as EvokedArray or list of EvokedArray.
 
     -----
     ### 🛠️ Parameters
@@ -100,6 +100,6 @@ def read_evokeds_mff(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.22
+    ✨ Added in version 0.22
     """
     ...

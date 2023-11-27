@@ -3,12 +3,12 @@ from ...utils import warn as warn
 from ..base import BaseRaw as BaseRaw
 
 class RawNedf(BaseRaw):
-    """## 🧠 Raw object from NeuroElectrics nedf file."""
+    """## Raw object from NeuroElectrics nedf file."""
 
     def __init__(self, filename, preload: bool = False, verbose=None) -> None: ...
 
 def read_raw_nedf(filename, preload: bool = False, verbose=None):
-    """## 🧠 Read NeuroElectrics .nedf files.
+    """## Read NeuroElectrics .nedf files.
 
     NEDF file versions starting from 1.3 are supported.
 

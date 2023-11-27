@@ -2,7 +2,7 @@ from ...utils import fill_doc as fill_doc, logger as logger
 from ..base import BaseRaw as BaseRaw
 
 class RawArray(BaseRaw):
-    """## 🧠 Raw object from numpy array.
+    """## Raw object from numpy array.
 
     -----
     ### 🛠️ Parameters
@@ -16,13 +16,13 @@ class RawArray(BaseRaw):
     #### `first_samp : int`
         First sample offset used during recording (default 0).
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
     #### `copy : {'data', 'info', 'both', 'auto', None}`
         Determines what gets copied on instantiation. "auto" (default)
         will copy info, and copy "data" only if necessary to get to
         double floating point precision.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

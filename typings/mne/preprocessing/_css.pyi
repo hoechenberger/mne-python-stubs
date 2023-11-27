@@ -9,7 +9,7 @@ def cortical_signal_suppression(
     *,
     verbose=None,
 ):
-    """## 🧠 Apply cortical signal suppression (CSS) to evoked data.
+    """## Apply cortical signal suppression (CSS) to evoked data.
 
     -----
     ### 🛠️ Parameters

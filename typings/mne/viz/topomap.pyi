@@ -52,7 +52,7 @@ def plot_projs_topomap(
     axes=None,
     show: bool = True,
 ):
-    """## 🧠 Plot topographic maps of SSP projections.
+    """## Plot topographic maps of SSP projections.
 
     -----
     ### 🛠️ Parameters
@@ -80,7 +80,7 @@ def plot_projs_topomap(
         ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
         non-masked sensor names will be shown.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `contours : int | array-like`
         The number of contour lines to draw. If ``0``, no contours will be drawn.
@@ -111,7 +111,7 @@ def plot_projs_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -137,7 +137,7 @@ def plot_projs_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
         🎭 Changed in version 0.21
 
@@ -149,7 +149,7 @@ def plot_projs_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -185,7 +185,7 @@ def plot_projs_topomap(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `colorbar : bool`
         Plot a colorbar in the rightmost column of the figure.
@@ -193,14 +193,14 @@ def plot_projs_topomap(
         Formatting string for colorbar tick labels. See `formatspec` for
         details.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `units : str | None`
         The units to use for the colorbar label. Ignored if ``colorbar=False``.
         If ``None`` the label will be "AU" indicating arbitrary units.
         Default is ``None``.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
     #### `axes : instance of Axes | list of Axes | None`
         The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
         will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
@@ -216,12 +216,12 @@ def plot_projs_topomap(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
 class _GridData:
-    """## 🧠 Unstructured (x,y) data interpolator.
+    """## Unstructured (x,y) data interpolator.
 
     This class allows optimized interpolation by computing parameters
     for a fixed set of true points, and allowing the values at those points
@@ -240,16 +240,16 @@ class _GridData:
     interpolator: Incomplete
 
     def set_values(self, v):
-        """## 🧠 Set the values at interpolation points."""
+        """## Set the values at interpolation points."""
         ...
     Xi: Incomplete
     Yi: Incomplete
 
     def set_locations(self, Xi, Yi):
-        """## 🧠 Set locations for easier (delayed) calling."""
+        """## Set locations for easier (delayed) calling."""
         ...
     def __call__(self, *args):
-        """## 🧠 Evaluate the interpolator."""
+        """## Evaluate the interpolator."""
         ...
 
 def plot_topomap(
@@ -276,7 +276,7 @@ def plot_topomap(
     show: bool = True,
     onselect=None,
 ):
-    """## 🧠 Plot a topographic map as image.
+    """## Plot a topographic map as image.
 
     -----
     ### 🛠️ Parameters
@@ -294,7 +294,7 @@ def plot_topomap(
         collected in pairs and the RMS for each pair is plotted. If
         ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `sensors : bool | str`
         Whether to add markers for sensor locations. If `str`, should be a
@@ -348,7 +348,7 @@ def plot_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -374,7 +374,7 @@ def plot_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
         🎭 Changed in version 0.21
 
@@ -386,7 +386,7 @@ def plot_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -415,7 +415,7 @@ def plot_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `cnorm : matplotlib.colors.Normalize | None`
         How to normalize the colormap. If ``None``, standard linear normalization
@@ -424,7 +424,7 @@ def plot_topomap(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 0.24
+        ✨ Added in version 0.24
     #### `axes : instance of Axes | None`
         The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
         will be created. Default is ``None``.
@@ -482,7 +482,7 @@ def plot_ica_components(
     psd_args=None,
     verbose=None,
 ):
-    """## 🧠 Project mixing matrix on interpolated sensor topography.
+    """## Project mixing matrix on interpolated sensor topography.
 
     -----
     ### 🛠️ Parameters
@@ -560,7 +560,7 @@ def plot_ica_components(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -586,13 +586,13 @@ def plot_ica_components(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `border : float | 'mean'`
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -600,7 +600,7 @@ def plot_ica_components(
     #### `size : float`
         Side length of each subplot in inches.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None`
         Colormap to use. If `tuple`, the first value indicates the colormap
@@ -623,7 +623,7 @@ def plot_ica_components(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `cnorm : matplotlib.colors.Normalize | None`
         How to normalize the colormap. If ``None``, standard linear normalization
@@ -632,7 +632,7 @@ def plot_ica_components(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
 
     #### `colorbar : bool`
         Plot a colorbar in the rightmost column of the figure.
@@ -658,7 +658,7 @@ def plot_ica_components(
         components in a grid and return multiple figures as needed. Default is
         ``nrows='auto', ncols='auto'``.
 
-        ✨ Added in vesion 1.3
+        ✨ Added in version 1.3
     #### `show : bool`
         Show the figure if ``True``.
     #### `image_args : dict | None`
@@ -725,7 +725,7 @@ def plot_tfr_topomap(
     axes=None,
     show: bool = True,
 ):
-    """## 🧠 Plot topographic maps of specific time-frequency intervals of TFR data.
+    """## Plot topographic maps of specific time-frequency intervals of TFR data.
 
     -----
     ### 🛠️ Parameters
@@ -818,7 +818,7 @@ def plot_tfr_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -854,7 +854,7 @@ def plot_tfr_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -883,7 +883,7 @@ def plot_tfr_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `cnorm : matplotlib.colors.Normalize | None`
         How to normalize the colormap. If ``None``, standard linear normalization
@@ -892,7 +892,7 @@ def plot_tfr_topomap(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `colorbar : bool`
         Plot a colorbar in the rightmost column of the figure.
@@ -951,7 +951,7 @@ def plot_evoked_topomap(
     ncols: str = "auto",
     show: bool = True,
 ):
-    """## 🧠 Plot topographic maps of specific time points of evoked data.
+    """## Plot topographic maps of specific time points of evoked data.
 
     -----
     ### 🛠️ Parameters
@@ -1052,7 +1052,7 @@ def plot_evoked_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -1078,7 +1078,7 @@ def plot_evoked_topomap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
         🎭 Changed in version 0.21
 
@@ -1090,7 +1090,7 @@ def plot_evoked_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -1119,7 +1119,7 @@ def plot_evoked_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `cnorm : matplotlib.colors.Normalize | None`
         How to normalize the colormap. If ``None``, standard linear normalization
@@ -1128,7 +1128,7 @@ def plot_evoked_topomap(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `colorbar : bool`
         Plot a colorbar in the rightmost column of the figure.
@@ -1146,7 +1146,7 @@ def plot_evoked_topomap(
     #### `time_unit : str`
         The units for the time axis, can be "ms" or "s" (default).
 
-        ✨ Added in vesion 0.16
+        ✨ Added in version 0.16
     #### `time_format : str | None`
         String format for topomap values. Defaults (None) to "%01d ms" if
         ``time_unit='ms'``, "%0.3f s" if ``time_unit='s'``, and
@@ -1157,7 +1157,7 @@ def plot_evoked_topomap(
         or ``ncols`` is ``'auto'``, the necessary number will be inferred. Defaults
         to ``nrows=1, ncols='auto'``. Ignored when times == 'interactive'.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
     #### `show : bool`
         Show the figure if ``True``.
 
@@ -1223,7 +1223,7 @@ def plot_epochs_psd_topomap(
     n_jobs=None,
     verbose=None,
 ):
-    """## 🧠 ### ⛔️ Warning LEGACY: New code should use Epochs.compute_psd().plot_topomap().
+    """## ### ⛔️ Warning LEGACY: New code should use Epochs.compute_psd().plot_topomap().
 
     Plot the topomap of the power spectral density across epochs.
 
@@ -1341,7 +1341,7 @@ def plot_epochs_psd_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -1377,7 +1377,7 @@ def plot_epochs_psd_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -1406,7 +1406,7 @@ def plot_epochs_psd_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `cnorm : matplotlib.colors.Normalize | None`
         How to normalize the colormap. If ``None``, standard linear normalization
@@ -1415,7 +1415,7 @@ def plot_epochs_psd_topomap(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `colorbar : bool`
         Plot a colorbar in the rightmost column of the figure.
@@ -1487,7 +1487,7 @@ def plot_psds_topomap(
     axes=None,
     show: bool = True,
 ):
-    """## 🧠 Plot spatial maps of PSDs.
+    """## Plot spatial maps of PSDs.
 
     -----
     ### 🛠️ Parameters
@@ -1588,7 +1588,7 @@ def plot_psds_topomap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -1624,7 +1624,7 @@ def plot_psds_topomap(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -1653,7 +1653,7 @@ def plot_psds_topomap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data (separately for each topomap). Elements of the `tuple` may also be callable functions which take in a `NumPy array <numpy.ndarray>` and return a scalar. If ``vlim='joint'``, will compute the colormap limits jointly across all topomaps of the same channel type, using the min/max of the data for that channel type. Defaults to ``(None, None)``.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `cnorm : matplotlib.colors.Normalize | None`
         How to normalize the colormap. If ``None``, standard linear normalization
@@ -1662,7 +1662,7 @@ def plot_psds_topomap(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `colorbar : bool`
         Plot a colorbar in the rightmost column of the figure.
@@ -1689,7 +1689,7 @@ def plot_psds_topomap(
     ...
 
 def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
-    """## 🧠 Plot the sensor positions.
+    """## Plot the sensor positions.
 
     -----
     ### 🛠️ Parameters
@@ -1713,7 +1713,7 @@ def plot_layout(layout, picks=None, show_axes: bool = False, show: bool = True):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.12.0
+    ✨ Added in version 0.12.0
     """
     ...
 
@@ -1739,7 +1739,7 @@ def plot_arrowmap(
     extrapolate="auto",
     sphere=None,
 ):
-    """## 🧠 Plot arrow map.
+    """## Plot arrow map.
 
     Compute arrowmaps, based upon the Hosaka-Cohen transformation
     :footcite:`CohenHosaka1976`, these arrows represents an estimation of the
@@ -1771,7 +1771,7 @@ def plot_arrowmap(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `cnorm : matplotlib.colors.Normalize | None`
         How to normalize the colormap. If ``None``, standard linear normalization
@@ -1780,7 +1780,7 @@ def plot_arrowmap(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `cmap : matplotlib colormap | None`
         Colormap to use. If None, 'Reds' is used for all positive data,
@@ -1866,7 +1866,7 @@ def plot_arrowmap(
             but it can extend beyond the head when sensors are plotted outside
             the head circle.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
         🎭 Changed in version 0.21
 
@@ -1885,7 +1885,7 @@ def plot_arrowmap(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     -----
@@ -1897,7 +1897,7 @@ def plot_arrowmap(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.17
+    ✨ Added in version 0.17
 
     References
     ----------
@@ -1908,7 +1908,7 @@ def plot_arrowmap(
 def plot_bridged_electrodes(
     info, bridged_idx, ed_matrix, title=None, topomap_args=None
 ):
-    """## 🧠 Topoplot electrode distance matrix with bridged electrodes connected.
+    """## Topoplot electrode distance matrix with bridged electrodes connected.
 
     -----
     ### 🛠️ Parameters
@@ -1944,7 +1944,7 @@ def plot_bridged_electrodes(
     ...
 
 def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = False):
-    """## 🧠 Plot channel adjacency.
+    """## Plot channel adjacency.
 
     -----
     ### 🛠️ Parameters
@@ -1986,7 +1986,7 @@ def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = 
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.1
+    ✨ Added in version 1.1
     """
     ...
 
@@ -2015,7 +2015,7 @@ def plot_regression_weights(
     title=None,
     show: bool = True,
 ):
-    """## 🧠 Plot the regression weights of a fitted EOGRegression model.
+    """## Plot the regression weights of a fitted EOGRegression model.
 
     -----
     ### 🛠️ Parameters
@@ -2082,7 +2082,7 @@ def plot_regression_weights(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `image_interp : str`
@@ -2118,7 +2118,7 @@ def plot_regression_weights(
         Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
         then each extrapolated point has the average value of its neighbours.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `res : int`
         The resolution of the topomap image (number of pixels along each side).
@@ -2178,6 +2178,6 @@ def plot_regression_weights(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...

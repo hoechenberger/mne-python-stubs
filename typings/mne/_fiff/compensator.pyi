@@ -2,15 +2,15 @@ from ..utils import fill_doc as fill_doc
 from .constants import FIFF as FIFF
 
 def get_current_comp(info):
-    """## 🧠 Get the current compensation in effect in the data."""
+    """## Get the current compensation in effect in the data."""
     ...
 
 def set_current_comp(info, comp) -> None:
-    """## 🧠 Set the current compensation in effect in the data."""
+    """## Set the current compensation in effect in the data."""
     ...
 
 def make_compensator(info, from_, to, exclude_comp_chs: bool = False):
-    """## 🧠 Return compensation matrix eg. for CTF system.
+    """## Return compensation matrix eg. for CTF system.
 
     Create a compensation matrix to bring the data from one compensation
     state to another.

@@ -5,7 +5,7 @@ from ..source_estimate import SourceEstimate as SourceEstimate
 from ..utils import fill_doc as fill_doc, logger as logger, warn as warn
 
 def linear_regression(inst, design_matrix, names=None):
-    """## 🧠 Fit Ordinary Least Squares (OLS) regression.
+    """## Fit Ordinary Least Squares (OLS) regression.
 
     -----
     ### 🛠️ Parameters
@@ -61,7 +61,7 @@ def linear_regression_raw(
     picks=None,
     solver: str = "cholesky",
 ):
-    """## 🧠 Estimate regression-based evoked potentials/fields by linear modeling.
+    """## Estimate regression-based evoked potentials/fields by linear modeling.
 
     This models the full M/EEG time course, including correction for
     overlapping potentials and allowing for continuous/scalar predictors.

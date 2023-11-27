@@ -16,7 +16,7 @@ INT32: str
 FLOAT64: str
 
 def read_mrk(fname):
-    """## 🧠 Marker Point Extraction in MEG space directly from sqd.
+    """## Marker Point Extraction in MEG space directly from sqd.
 
     -----
     ### 🛠️ Parameters
@@ -34,7 +34,7 @@ def read_mrk(fname):
     ...
 
 def read_sns(fname):
-    """## 🧠 Sensor coordinate extraction in MEG space.
+    """## Sensor coordinate extraction in MEG space.
 
     -----
     ### 🛠️ Parameters

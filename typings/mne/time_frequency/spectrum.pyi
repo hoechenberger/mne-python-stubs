@@ -19,7 +19,7 @@ from .psd import psd_array_welch as psd_array_welch
 from _typeshed import Incomplete
 
 class SpectrumMixin:
-    """## 🧠 Mixin providing spectral plotting methods to sensor-space containers."""
+    """## Mixin providing spectral plotting methods to sensor-space containers."""
 
     def plot_psd(
         self,
@@ -49,7 +49,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """## 🧠 ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot().
+        """## ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot().
 
         Plot power or amplitude spectra.
 
@@ -137,16 +137,16 @@ class SpectrumMixin:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-            ✨ Added in vesion 0.22.0
+            ✨ Added in version 0.22.0
         #### `exclude : list of str | 'bads'`
             Channels names to exclude from being shown. If 'bads', the bad
             channels are excluded. Pass an empty list to plot all channels
             (including channels marked "bad", if any).
 
-            ✨ Added in vesion 0.24.0
+            ✨ Added in version 0.24.0
         #### `ax : instance of Axes | list of Axes | None`
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
@@ -208,7 +208,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """## 🧠 ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topo().
+        """## ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topo().
 
         Plot power spectral density, separately for each channel.
 
@@ -317,7 +317,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """## 🧠 ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topomap().
+        """## ### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topomap().
 
         Plot scalp topography of PSD for chosen frequency bands.
 
@@ -428,7 +428,7 @@ class SpectrumMixin:
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `image_interp : str`
@@ -492,7 +492,7 @@ class SpectrumMixin:
             for more details on colormap normalization, and
             `the ERDs example<cnorm-example>` for an example of its use.
 
-            ✨ Added in vesion 1.2
+            ✨ Added in version 1.2
 
         #### `colorbar : bool`
             Plot a colorbar in the rightmost column of the figure.
@@ -541,7 +541,7 @@ class SpectrumMixin:
         ...
 
 class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
-    """## 🧠 Base class for Spectrum and EpochsSpectrum."""
+    """## Base class for Spectrum and EpochsSpectrum."""
 
     inst: Incomplete
     info: Incomplete
@@ -565,7 +565,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         **method_kw,
     ) -> None: ...
     def __eq__(self, other):
-        """## 🧠 Test equivalence of two Spectrum instances."""
+        """## Test equivalence of two Spectrum instances."""
         ...
     @property
     def ch_names(self): ...
@@ -578,7 +578,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
     @property
     def shape(self): ...
     def copy(self):
-        """## 🧠 Return copy of the Spectrum instance.
+        """## Return copy of the Spectrum instance.
 
         -----
         ### ⏎ Returns
@@ -595,7 +595,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         fmax=...,
         return_freqs: bool = False,
     ):
-        """## 🧠 Get spectrum data in NumPy array format.
+        """## Get spectrum data in NumPy array format.
 
         -----
         ### 🛠️ Parameters
@@ -647,7 +647,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         axes=None,
         show: bool = True,
     ):
-        """## 🧠 Plot power or amplitude spectra.
+        """## Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -722,7 +722,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
         #### `exclude : list of str | 'bads'`
             Channel names to exclude from being drawn. If ``'bads'``, channels
@@ -758,7 +758,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         block: bool = False,
         show: bool = True,
     ):
-        """## 🧠 Plot power spectral density, separately for each channel.
+        """## Plot power spectral density, separately for each channel.
 
         -----
         ### 🛠️ Parameters
@@ -824,7 +824,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         axes=None,
         show: bool = True,
     ):
-        """## 🧠 Plot scalp topography of PSD for chosen frequency bands.
+        """## Plot scalp topography of PSD for chosen frequency bands.
 
         -----
         ### 🛠️ Parameters
@@ -921,7 +921,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             default) is equivalent to ``'auto'`` when enough extra digitization points
             are available, and (0, 0, 0, 0.095) otherwise.
 
-            ✨ Added in vesion 0.20
+            ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
         #### `image_interp : str`
@@ -1011,7 +1011,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         """
         ...
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """## 🧠 Save spectrum data to disk (in HDF5 format).
+        """## Save spectrum data to disk (in HDF5 format).
 
         -----
         ### 🛠️ Parameters
@@ -1044,7 +1044,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         *,
         verbose=None,
     ):
-        """## 🧠 Export data in tabular structure as a pandas DataFrame.
+        """## Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         an additional column "freq" is added, unless ``index='freq'``
@@ -1105,7 +1105,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         """
         ...
     def units(self, latex: bool = False):
-        """## 🧠 Get the spectrum units for each channel type.
+        """## Get the spectrum units for each channel type.
 
         -----
         ### 🛠️ Parameters
@@ -1123,7 +1123,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         ...
 
 class Spectrum(BaseSpectrum):
-    """## 🧠 Data object for spectral representations of continuous data.
+    """## Data object for spectral representations of continuous data.
 
     ### ⛔️ Warning The preferred means of creating Spectrum objects from
                  continuous or averaged data is via the instance methods
@@ -1242,7 +1242,7 @@ class Spectrum(BaseSpectrum):
         **method_kw,
     ) -> None: ...
     def __getitem__(self, item):
-        """## 🧠 Get Spectrum data.
+        """## Get Spectrum data.
 
         -----
         ### 🛠️ Parameters
@@ -1278,7 +1278,7 @@ class Spectrum(BaseSpectrum):
         ...
 
 class SpectrumArray(Spectrum):
-    """## 🧠 Data object for precomputed spectral data (in NumPy array format).
+    """## Data object for precomputed spectral data (in NumPy array format).
 
     -----
     ### 🛠️ Parameters
@@ -1316,13 +1316,13 @@ class SpectrumArray(Spectrum):
     something other than power, at the very least axis labels will be inaccurate (and
     other things may also not work or be incorrect).
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
     """
 
     def __init__(self, data, info, freqs, *, verbose=None) -> None: ...
 
 class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
-    """## 🧠 Data object for spectral representations of epoched data.
+    """## Data object for spectral representations of epoched data.
 
     ### ⛔️ Warning The preferred means of creating Spectrum objects from Epochs
                  is via the instance method `mne.Epochs.compute_psd`.
@@ -1434,7 +1434,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         **method_kw,
     ) -> None: ...
     def __getitem__(self, item):
-        """## 🧠 Subselect epochs from an EpochsSpectrum.
+        """## Subselect epochs from an EpochsSpectrum.
 
         -----
         ### 🛠️ Parameters
@@ -1451,7 +1451,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         """
         ...
     def average(self, method: str = "mean"):
-        """## 🧠 Average the spectra across epochs.
+        """## Average the spectra across epochs.
 
         -----
         ### 🛠️ Parameters
@@ -1471,7 +1471,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         ...
 
 class EpochsSpectrumArray(EpochsSpectrum):
-    """## 🧠 Data object for precomputed epoched spectral data (in NumPy array format).
+    """## Data object for precomputed epoched spectral data (in NumPy array format).
 
     -----
     ### 🛠️ Parameters
@@ -1523,7 +1523,7 @@ class EpochsSpectrumArray(EpochsSpectrum):
     something other than power, at the very least axis labels will be inaccurate (and
     other things may also not work or be incorrect).
 
-        ✨ Added in vesion 1.6
+        ✨ Added in version 1.6
     """
 
     def __init__(
@@ -1531,7 +1531,7 @@ class EpochsSpectrumArray(EpochsSpectrum):
     ) -> None: ...
 
 def read_spectrum(fname):
-    """## 🧠 Load a `mne.time_frequency.Spectrum` object from disk.
+    """## Load a `mne.time_frequency.Spectrum` object from disk.
 
     -----
     ### 🛠️ Parameters

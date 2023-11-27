@@ -28,7 +28,7 @@ def plot_cov(
     show: bool = True,
     verbose=None,
 ):
-    """## 🧠 Plot Covariance data.
+    """## Plot Covariance data.
 
     -----
     ### 🛠️ Parameters
@@ -90,7 +90,7 @@ def plot_source_spectrogram(
     colorbar: bool = False,
     show: bool = True,
 ):
-    """## 🧠 Plot source power in time-freqency grid.
+    """## Plot source power in time-freqency grid.
 
     -----
     ### 🛠️ Parameters
@@ -132,7 +132,7 @@ def plot_bem(
     mri: str = "T1.mgz",
     show_orientation: bool = True,
 ):
-    """## 🧠 Plot BEM contours on anatomical MRI slices.
+    """## Plot BEM contours on anatomical MRI slices.
 
     -----
     ### 🛠️ Parameters
@@ -168,19 +168,19 @@ def plot_bem(
     #### `show_indices : bool`
         Show slice indices if True.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
     #### `mri : str`
         The name of the MRI to use. Can be a standard FreeSurfer MRI such as
         ``'T1.mgz'``, or a full path to a custom MRI file.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
     #### `show_orientation : bool | str`
         Show the orientation (L/R, P/A, I/S) of the data slices.
         True (default) will only show it on the outside most edges of the
         figure, False will never show labels, and "always" will label each
         plot.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
         🎭 Changed in version 0.24
            Added support for "always".
 
@@ -224,7 +224,7 @@ def plot_events(
     on_missing: str = "raise",
     verbose=None,
 ):
-    """## 🧠 Plot :term:`events` to get a visual display of the paradigm.
+    """## Plot :term:`events` to get a visual display of the paradigm.
 
     -----
     ### 🛠️ Parameters
@@ -265,7 +265,7 @@ def plot_events(
         ``event_id`` they will be ignored and a warning emitted; consider
         using ``verbose='error'`` in this case.
 
-        ✨ Added in vesion 0.21
+        ✨ Added in version 0.21
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -282,12 +282,12 @@ def plot_events(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
 def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
-    """## 🧠 Plot the amplitude traces of a set of dipoles.
+    """## Plot the amplitude traces of a set of dipoles.
 
     -----
     ### 🛠️ Parameters
@@ -308,12 +308,12 @@ def plot_dipole_amplitudes(dipoles, colors=None, show: bool = True):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
 def adjust_axes(axes, remove_spines=("top", "right"), grid: bool = True) -> None:
-    """## 🧠 Adjust some properties of axes.
+    """## Adjust some properties of axes.
 
     -----
     ### 🛠️ Parameters
@@ -344,7 +344,7 @@ def plot_filter(
     *,
     dlim=None,
 ):
-    """## 🧠 Plot properties of a filter.
+    """## Plot properties of a filter.
 
     -----
     ### 🛠️ Parameters
@@ -383,25 +383,25 @@ def plot_filter(
           by filtering backward and forward, and the frequency response
           by squaring it.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
     #### `plot : list | tuple | str`
         A list of the requested plots from ``time``, ``magnitude`` and
         ``delay``. Default is to plot all three filter properties
         ('time', 'magnitude', 'delay').
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
     #### `axes : instance of Axes | list | None`
         The axes to plot to. If list, the list must be a list of Axes of
         the same length as the number of requested plot types. If instance of
         Axes, there must be only one filter property plotted.
         Defaults to ``None``.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
     #### `dlim : None | tuple`
         The y-axis delay limits (s) to use (default:
         ``(-tmax / 2., tmax / 2.)``).
 
-        ✨ Added in vesion 1.1.0
+        ✨ Added in version 1.1.0
 
     -----
     ### ⏎ Returns
@@ -418,7 +418,7 @@ def plot_filter(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.14
+    ✨ Added in version 0.14
     """
     ...
 
@@ -435,7 +435,7 @@ def plot_ideal_filter(
     linestyle: str = "--",
     show: bool = True,
 ):
-    """## 🧠 Plot an ideal filter response.
+    """## Plot an ideal filter response.
 
     -----
     ### 🛠️ Parameters
@@ -478,7 +478,7 @@ def plot_ideal_filter(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.14
+    ✨ Added in version 0.14
 
     -----
     ### 🖥️ Examples
@@ -502,7 +502,7 @@ def plot_csd(
     n_cols=None,
     show: bool = True,
 ):
-    """## 🧠 Plot CSD matrices.
+    """## Plot CSD matrices.
 
     A sub-plot is created for each frequency. If an info object is passed to
     the function, different channel types are plotted in different figures.
@@ -542,7 +542,7 @@ def plot_csd(
     ...
 
 def plot_chpi_snr(snr_dict, axes=None):
-    """## 🧠 Plot time-varying SNR estimates of the HPI coils.
+    """## Plot time-varying SNR estimates of the HPI coils.
 
     -----
     ### 🛠️ Parameters
@@ -573,6 +573,6 @@ def plot_chpi_snr(snr_dict, axes=None):
     legend will not be drawn automatically. If you still want it, running
     ``fig.legend(loc='right', title='cHPI frequencies')`` will recreate it.
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...

@@ -23,7 +23,7 @@ def qrs_detector(
     filter_length: str = "10s",
     verbose=None,
 ):
-    """## 🧠 Detect QRS component in ECG channels.
+    """## Detect QRS component in ECG channels.
 
     QRS is the main wave on the heart beat.
 
@@ -80,7 +80,7 @@ def find_ecg_events(
     reject_by_annotation: bool = True,
     verbose=None,
 ):
-    """## 🧠 Find ECG events by localizing the R wave peaks.
+    """## Find ECG events by localizing the R wave peaks.
 
     -----
     ### 🛠️ Parameters
@@ -123,7 +123,7 @@ def find_ecg_events(
         (default), annotated segments whose description begins with ``'bad'`` are
         omitted. If ``False``, no rejection based on annotations is performed.
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -171,7 +171,7 @@ def create_ecg_epochs(
     decim: int = 1,
     verbose=None,
 ):
-    """## 🧠 Conveniently generate epochs around ECG artifact events.
+    """## Conveniently generate epochs around ECG artifact events.
 
     This function will:
 
@@ -289,7 +289,7 @@ def create_ecg_epochs(
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-        ✨ Added in vesion 0.14.0
+        ✨ Added in version 0.14.0
 
     #### `decim : int`
         Factor by which to subsample the data.
@@ -300,7 +300,7 @@ def create_ecg_epochs(
                      If the data are not properly filtered, aliasing artifacts
                      may occur.
 
-        ✨ Added in vesion 0.21.0
+        ✨ Added in version 0.21.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

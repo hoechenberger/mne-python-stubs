@@ -6,7 +6,7 @@ def data_path(
     *,
     verbose=None,
 ):
-    """## 🧠 Get path to local copy of the kiloword dataset.
+    """## Get path to local copy of the kiloword dataset.
 
     This is the dataset from :footcite:`DufauEtAl2015`.
 
@@ -52,7 +52,7 @@ def data_path(
     ...
 
 def get_version():
-    """## 🧠 Get version of the local kiloword dataset.
+    """## Get version of the local kiloword dataset.
 
     -----
     ### ⏎ Returns

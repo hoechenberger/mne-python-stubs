@@ -3,7 +3,7 @@ from ...utils import fill_doc as fill_doc, logger as logger, warn as warn
 from ..base import BaseRaw as BaseRaw
 
 def read_raw_eximia(fname, preload: bool = False, verbose=None):
-    """## 🧠 Reader for an eXimia EEG file.
+    """## Reader for an eXimia EEG file.
 
     -----
     ### 🛠️ Parameters
@@ -39,7 +39,7 @@ def read_raw_eximia(fname, preload: bool = False, verbose=None):
     ...
 
 class RawEximia(BaseRaw):
-    """## 🧠 Raw object from an Eximia EEG file.
+    """## Raw object from an Eximia EEG file.
 
     -----
     ### 🛠️ Parameters

@@ -7,7 +7,7 @@ from .utils import (
 )
 
 def get_cuda_memory(kind: str = "available"):
-    """## 🧠 Get the amount of free memory for CUDA operations.
+    """## Get the amount of free memory for CUDA operations.
 
     -----
     ### 🛠️ Parameters
@@ -24,7 +24,7 @@ def get_cuda_memory(kind: str = "available"):
     ...
 
 def init_cuda(ignore_config: bool = False, verbose=None) -> None:
-    """## 🧠 Initialize CUDA functionality.
+    """## Initialize CUDA functionality.
 
     This function attempts to load the necessary interfaces
     (hardware connectivity) to run CUDA-based filtering. This
@@ -50,7 +50,7 @@ def init_cuda(ignore_config: bool = False, verbose=None) -> None:
     ...
 
 def set_cuda_device(device_id, verbose=None) -> None:
-    """## 🧠 Set the CUDA device temporarily for the current session.
+    """## Set the CUDA device temporarily for the current session.
 
     -----
     ### 🛠️ Parameters

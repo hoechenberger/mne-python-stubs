@@ -31,22 +31,22 @@ from .utils import (
 from .viz.misc import plot_bem as plot_bem
 
 class ConductorModel(dict):
-    """## 🧠 BEM or sphere model.
+    """## BEM or sphere model.
 
     See `mne.make_bem_model` and `mne.make_bem_solution` to create a
     `mne.bem.ConductorModel`.
     """
 
     def copy(self):
-        """## 🧠 Return copy of ConductorModel instance."""
+        """## Return copy of ConductorModel instance."""
         ...
     @property
     def radius(self):
-        """## 🧠 Sphere radius if an EEG sphere model."""
+        """## Sphere radius if an EEG sphere model."""
         ...
 
 def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
-    """## 🧠 Create a BEM solution using the linear collocation approach.
+    """## Create a BEM solution using the linear collocation approach.
 
     -----
     ### 🛠️ Parameters
@@ -57,7 +57,7 @@ def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
         Can be ``'mne'`` (default) to use MNE-Python, or ``'openmeeg'`` to use
         the :doc:`OpenMEEG <openmeeg:index>` package.
 
-        ✨ Added in vesion 1.2
+        ✨ Added in version 1.2
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -83,7 +83,7 @@ def make_bem_solution(surfs, *, solver: str = "mne", verbose=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.10.0
+    ✨ Added in version 0.10.0
     """
     ...
 
@@ -94,7 +94,7 @@ def make_bem_model(
     subjects_dir=None,
     verbose=None,
 ):
-    """## 🧠 Create a BEM model for a subject.
+    """## Create a BEM model for a subject.
 
     Use `mne.make_bem_solution` to turn the returned surfaces into a
     `mne.bem.ConductorModel` suitable for forward calculation.
@@ -147,7 +147,7 @@ def make_bem_model(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.10.0
+    ✨ Added in version 0.10.0
     """
     ...
 
@@ -159,7 +159,7 @@ def make_sphere_model(
     sigmas=(0.33, 1.0, 0.004, 0.33),
     verbose=None,
 ):
-    """## 🧠 Create a spherical model for forward solution calculation.
+    """## Create a spherical model for forward solution calculation.
 
     -----
     ### 🛠️ Parameters
@@ -210,14 +210,14 @@ def make_sphere_model(
     conductivities σ in ``S/m``) for the brain, CSF, skull, and scalp,
     respectively.
 
-    ✨ Added in vesion 0.9.0
+    ✨ Added in version 0.9.0
     """
     ...
 
 def fit_sphere_to_headshape(
     info, dig_kinds: str = "auto", units: str = "m", verbose=None
 ):
-    """## 🧠 Fit a sphere to the headshape points to determine head center.
+    """## Fit a sphere to the headshape points to determine head center.
 
     -----
     ### 🛠️ Parameters
@@ -235,7 +235,7 @@ def fit_sphere_to_headshape(
     #### `units : str`
         Can be ``"m"`` (default) or ``"mm"``.
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -264,7 +264,7 @@ def fit_sphere_to_headshape(
 def get_fitting_dig(
     info, dig_kinds: str = "auto", exclude_frontal: bool = True, verbose=None
 ):
-    """## 🧠 Get digitization points suitable for sphere fitting.
+    """## Get digitization points suitable for sphere fitting.
 
     -----
     ### 🛠️ Parameters
@@ -285,7 +285,7 @@ def get_fitting_dig(
         (below the nasion) and positive Y values (in front of the LPA/RPA).
         Default is True.
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -305,7 +305,7 @@ def get_fitting_dig(
     This will exclude digitization locations that have ``z < 0 and y > 0``,
     i.e. points on the nose and below the nose on the face.
 
-    ✨ Added in vesion 0.14
+    ✨ Added in version 0.14
     """
     ...
 
@@ -323,7 +323,7 @@ def make_watershed_bem(
     brainmask: str = "ws.mgz",
     verbose=None,
 ) -> None:
-    """## 🧠 Create BEM surfaces using the FreeSurfer watershed algorithm.
+    """## Create BEM surfaces using the FreeSurfer watershed algorithm.
 
     See `bem_watershed_algorithm` for additional information.
 
@@ -352,26 +352,26 @@ def make_watershed_bem(
     #### `show : bool`
         Show surfaces to visually inspect all three BEM surfaces (recommended).
 
-        ✨ Added in vesion 0.12
+        ✨ Added in version 0.12
 
     #### `copy : bool`
         If True (default), use copies instead of symlinks for surfaces
         (if they do not already exist).
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
         🎭 Changed in version 1.1 Use copies instead of symlinks.
     T1 : bool | None
         If True, pass the ``-T1`` flag.
         By default (None), this takes the same value as ``gcaatlas``.
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
     #### `brainmask : str`
         The filename for the brainmask output file relative to the
         ``$SUBJECTS_DIR/$SUBJECT/bem/watershed/`` directory.
         Can be for example ``"../../mri/brainmask.mgz"`` to overwrite
         the brainmask obtained via ``recon-all -autorecon1``.
 
-        ✨ Added in vesion 0.19
+        ✨ Added in version 0.19
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -391,14 +391,14 @@ def make_watershed_bem(
     `mne.viz.plot_alignment` or `mne.viz.plot_bem`, consider
     potential solutions from the `FAQ <faq_watershed_bem_meshes>`.
 
-    ✨ Added in vesion 0.10
+    ✨ Added in version 0.10
     """
     ...
 
 def read_bem_surfaces(
     fname, patch_stats: bool = False, s_id=None, on_defects: str = "raise", verbose=None
 ):
-    """## 🧠 Read the BEM surfaces from a FIF file.
+    """## Read the BEM surfaces from a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -421,7 +421,7 @@ def read_bem_surfaces(
         computations (e.g., `mne.make_bem_model` and `mne.make_bem_solution`)
         fail irrespective of this parameter.
 
-        ✨ Added in vesion 0.23
+        ✨ Added in version 0.23
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -444,7 +444,7 @@ def read_bem_surfaces(
     ...
 
 def read_bem_solution(fname, *, verbose=None):
-    """## 🧠 Read the BEM solution from a file.
+    """## Read the BEM solution from a file.
 
     -----
     ### 🛠️ Parameters
@@ -475,7 +475,7 @@ def read_bem_solution(fname, *, verbose=None):
     ...
 
 def write_bem_surfaces(fname, surfs, overwrite: bool = False, *, verbose=None) -> None:
-    """## 🧠 Write BEM surfaces to a FIF file.
+    """## Write BEM surfaces to a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -500,7 +500,7 @@ def write_bem_surfaces(fname, surfs, overwrite: bool = False, *, verbose=None) -
 def write_head_bem(
     fname, rr, tris, on_defects: str = "raise", overwrite: bool = False, *, verbose=None
 ) -> None:
-    """## 🧠 Write a head surface to a FIF file.
+    """## Write a head surface to a FIF file.
 
     -----
     ### 🛠️ Parameters
@@ -535,7 +535,7 @@ def write_head_bem(
     ...
 
 def write_bem_solution(fname, bem, overwrite: bool = False, *, verbose=None) -> None:
-    """## 🧠 Write a BEM model with solution.
+    """## Write a BEM model with solution.
 
     -----
     ### 🛠️ Parameters
@@ -570,7 +570,7 @@ def convert_flash_mris(
     flash5: bool = True,
     verbose=None,
 ):
-    """## 🧠 Synthesize the flash 5 files for use with make_flash_bem.
+    """## Synthesize the flash 5 files for use with make_flash_bem.
 
     This function aims to produce a synthesized flash 5 MRI from
     multiecho flash (MEF) MRI data. This function can use MEF data
@@ -641,7 +641,7 @@ def make_flash_bem(
     register: bool = True,
     verbose=None,
 ) -> None:
-    """## 🧠 Create 3-Layer BEM model from prepared flash MRI images.
+    """## Create 3-Layer BEM model from prepared flash MRI images.
 
     See `bem_flash_algorithm` for additional information.
 
@@ -664,7 +664,7 @@ def make_flash_bem(
         If True (default), use copies instead of symlinks for surfaces
         (if they do not already exist).
 
-        ✨ Added in vesion 0.18
+        ✨ Added in version 0.18
         🎭 Changed in version 1.1 Use copies instead of symlinks.
     flash5_img : None | path-like | Nifti1Image
         The path to the synthesized flash 5 MRI image or the image itself. If
@@ -673,12 +673,12 @@ def make_flash_bem(
         reconstruction. If not present the image is copied or written to the
         default location.
 
-        ✨ Added in vesion 1.1.0
+        ✨ Added in version 1.1.0
     #### `register : bool`
         Register the flash 5 image with T1.mgz file. If False, we assume
         that the images are already coregistered.
 
-        ✨ Added in vesion 1.1.0
+        ✨ Added in version 1.1.0
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -713,7 +713,7 @@ def make_scalp_surfaces(
     mri: str = "T1.mgz",
     verbose=None,
 ):
-    """## 🧠 Create surfaces of the scalp and neck.
+    """## Create surfaces of the scalp and neck.
 
     The scalp surfaces are required for using the MNE coregistration GUI, and
     allow for a visualization of the alignment between anatomy and channel
@@ -746,11 +746,11 @@ def make_scalp_surfaces(
         The threshold to use with the MRI in the call to ``mkheadsurf``.
         The default is ``20``.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
     #### `mri : str`
         The MRI to use. Should exist in ``$SUBJECTS_DIR/$SUBJECT/mri``.
 
-        ✨ Added in vesion 1.1
+        ✨ Added in version 1.1
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -761,7 +761,7 @@ def make_scalp_surfaces(
     ...
 
 def distance_to_bem(pos, bem, trans=None, verbose=None):
-    """## 🧠 Calculate the distance of positions to inner skull surface.
+    """## Calculate the distance of positions to inner skull surface.
 
     -----
     ### 🛠️ Parameters
@@ -796,6 +796,6 @@ def distance_to_bem(pos, bem, trans=None, verbose=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.1
+    ✨ Added in version 1.1
     """
     ...

@@ -36,7 +36,7 @@ def make_forward_solution(
     n_jobs=None,
     verbose=None,
 ):
-    """## 🧠 Calculate a forward solution for a subject.
+    """## Calculate a forward solution for a subject.
 
     -----
     ### 🛠️ Parameters
@@ -118,7 +118,7 @@ def make_forward_solution(
     ...
 
 def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=None):
-    """## 🧠 Convert dipole object to source estimate and calculate forward operator.
+    """## Convert dipole object to source estimate and calculate forward operator.
 
     The instance of Dipole is converted to a discrete source space,
     which is then combined with a BEM or a sphere model and
@@ -183,12 +183,12 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.12.0
+    ✨ Added in version 0.12.0
     """
     ...
 
 def use_coil_def(fname) -> Generator[None, None, None]:
-    """## 🧠 Use a custom coil definition file.
+    """## Use a custom coil definition file.
 
     -----
     ### 🛠️ Parameters

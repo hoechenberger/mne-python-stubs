@@ -16,7 +16,7 @@ def project_sensors_onto_brain(
     copy: bool = True,
     verbose=None,
 ):
-    """## 🧠 Project sensors onto the brain surface.
+    """## Project sensors onto the brain surface.
 
     -----
     ### 🛠️ Parameters

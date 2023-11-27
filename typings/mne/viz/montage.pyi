@@ -13,7 +13,7 @@ def plot_montage(
     axes=None,
     verbose=None,
 ):
-    """## 🧠 Plot a montage.
+    """## Plot a montage.
 
     -----
     ### 🛠️ Parameters
@@ -41,14 +41,14 @@ def plot_montage(
         default) is equivalent to ``'auto'`` when enough extra digitization points
         are available, and (0, 0, 0, 0.095) otherwise.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
     #### `axes : instance of Axes | instance of Axes3D | None`
         Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
         of Axes3D. If None (default), a new axes will be created.
 
-        ✨ Added in vesion 1.4
+        ✨ Added in version 1.4
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default

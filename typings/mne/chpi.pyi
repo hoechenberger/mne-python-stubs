@@ -30,7 +30,7 @@ from .utils import (
 )
 
 def read_head_pos(fname):
-    """## 🧠 Read MaxFilter-formatted head position parameters.
+    """## Read MaxFilter-formatted head position parameters.
 
     -----
     ### 🛠️ Parameters
@@ -54,12 +54,12 @@ def read_head_pos(fname):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.12
+    ✨ Added in version 0.12
     """
     ...
 
 def write_head_pos(fname, pos) -> None:
-    """## 🧠 Write MaxFilter-formatted head position parameters.
+    """## Write MaxFilter-formatted head position parameters.
 
     -----
     ### 🛠️ Parameters
@@ -78,12 +78,12 @@ def write_head_pos(fname, pos) -> None:
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.12
+    ✨ Added in version 0.12
     """
     ...
 
 def head_pos_to_trans_rot_t(quats):
-    """## 🧠 Convert Maxfilter-formatted head position quaternions.
+    """## Convert Maxfilter-formatted head position quaternions.
 
     -----
     ### 🛠️ Parameters
@@ -110,7 +110,7 @@ def head_pos_to_trans_rot_t(quats):
     ...
 
 def extract_chpi_locs_ctf(raw, verbose=None):
-    """## 🧠 Extract cHPI locations from CTF data.
+    """## Extract cHPI locations from CTF data.
 
     -----
     ### 🛠️ Parameters
@@ -145,12 +145,12 @@ def extract_chpi_locs_ctf(raw, verbose=None):
     This extracts these positions for use with
     `mne.chpi.compute_head_pos`.
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
     """
     ...
 
 def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
-    """## 🧠 Extract cHPI locations from KIT data.
+    """## Extract cHPI locations from KIT data.
 
     -----
     ### 🛠️ Parameters
@@ -177,12 +177,12 @@ def extract_chpi_locs_kit(raw, stim_channel: str = "MISC 064", *, verbose=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.23
+    ✨ Added in version 0.23
     """
     ...
 
 def get_chpi_info(info, on_missing: str = "raise", verbose=None):
-    """## 🧠 Retrieve cHPI information from the data.
+    """## Retrieve cHPI information from the data.
 
     -----
     ### 🛠️ Parameters
@@ -217,7 +217,7 @@ def get_chpi_info(info, on_missing: str = "raise", verbose=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...
 
@@ -229,7 +229,7 @@ def compute_head_pos(
     adjust_dig: bool = False,
     verbose=None,
 ):
-    """## 🧠 Compute time-varying head positions.
+    """## Compute time-varying head positions.
 
     -----
     ### 🛠️ Parameters
@@ -275,7 +275,7 @@ def compute_head_pos(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
     """
     ...
 
@@ -288,7 +288,7 @@ def compute_chpi_snr(
     tmax=None,
     verbose=None,
 ):
-    """## 🧠 Compute time-varying estimates of cHPI SNR.
+    """## Compute time-varying estimates of cHPI SNR.
 
     -----
     ### 🛠️ Parameters
@@ -339,7 +339,7 @@ def compute_chpi_snr(
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...
 
@@ -352,7 +352,7 @@ def compute_chpi_amplitudes(
     tmax=None,
     verbose=None,
 ):
-    """## 🧠 Compute time-varying cHPI amplitudes.
+    """## Compute time-varying cHPI amplitudes.
 
     -----
     ### 🛠️ Parameters
@@ -421,7 +421,7 @@ def compute_chpi_amplitudes(
 
     The output is meant to be used with `mne.chpi.compute_chpi_locs`.
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
     """
     ...
 
@@ -433,7 +433,7 @@ def compute_chpi_locs(
     adjust_dig: bool = False,
     verbose=None,
 ):
-    """## 🧠 Compute locations of each cHPI coils over time.
+    """## Compute locations of each cHPI coils over time.
 
     -----
     ### 🛠️ Parameters
@@ -494,7 +494,7 @@ def compute_chpi_locs(
     movements as well as ``t_step_max`` (and ``t_step_min`` from
     `mne.chpi.compute_chpi_amplitudes`).
 
-    ✨ Added in vesion 0.20
+    ✨ Added in version 0.20
     """
     ...
 
@@ -507,7 +507,7 @@ def filter_chpi(
     allow_line_only: bool = False,
     verbose=None,
 ):
-    """## 🧠 Remove cHPI and line noise from data.
+    """## Remove cHPI and line noise from data.
 
     ### 💡 Note This function will only work properly if cHPI was on
               during the recording.
@@ -537,7 +537,7 @@ def filter_chpi(
         If True, allow filtering line noise only. The default is False,
         which only allows the function to run when cHPI information is present.
 
-        ✨ Added in vesion 0.20
+        ✨ Added in version 0.20
 
     #### `verbose : bool | str | int | None`
         Control verbosity of the logging output. If ``None``, use the default
@@ -559,12 +559,12 @@ def filter_chpi(
     use this procedure, which uses an iterative fitting method, to
     remove cHPI signals, as opposed to notch filtering.
 
-    ✨ Added in vesion 0.12
+    ✨ Added in version 0.12
     """
     ...
 
 def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
-    """## 🧠 Determine how many HPI coils were active for a time point.
+    """## Determine how many HPI coils were active for a time point.
 
     -----
     ### 🛠️ Parameters
@@ -593,6 +593,6 @@ def get_active_chpi(raw, *, on_missing: str = "raise", verbose=None):
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 1.2
+    ✨ Added in version 1.2
     """
     ...

@@ -2,11 +2,11 @@ import numpy as np
 from _typeshed import Incomplete
 
 def rng_uniform(rng):
-    """## 🧠 Get the unform/randint from the rng."""
+    """## Get the unform/randint from the rng."""
     ...
 
 class BaseEstimator:
-    """## 🧠 Base class for all estimators in scikit-learn.
+    """## Base class for all estimators in scikit-learn.
 
     -----
     ### 📖 Notes
@@ -17,7 +17,7 @@ class BaseEstimator:
     """
 
     def get_params(self, deep: bool = True):
-        """## 🧠 Get parameters for this estimator.
+        """## Get parameters for this estimator.
 
         -----
         ### 🛠️ Parameters
@@ -34,7 +34,7 @@ class BaseEstimator:
         """
         ...
     def set_params(self, **params):
-        """## 🧠 Set the parameters of this estimator.
+        """## Set the parameters of this estimator.
 
         The method works on simple estimators as well as on nested objects
         (such as pipelines). The latter have parameters of the form
@@ -56,7 +56,7 @@ class BaseEstimator:
         ...
 
 def empirical_covariance(X, assume_centered: bool = False):
-    """## 🧠 Compute the Maximum likelihood covariance estimator.
+    """## Compute the Maximum likelihood covariance estimator.
 
     -----
     ### 🛠️ Parameters
@@ -79,7 +79,7 @@ def empirical_covariance(X, assume_centered: bool = False):
     ...
 
 class EmpiricalCovariance(BaseEstimator):
-    """## 🧠 Maximum likelihood covariance estimator.
+    """## Maximum likelihood covariance estimator.
 
     Read more in the `User Guide <covariance>`.
 
@@ -113,7 +113,7 @@ class EmpiricalCovariance(BaseEstimator):
         self, store_precision: bool = True, assume_centered: bool = False
     ) -> None: ...
     def get_precision(self):
-        """## 🧠 Getter for the precision matrix.
+        """## Getter for the precision matrix.
 
         -----
         ### ⏎ Returns
@@ -126,7 +126,7 @@ class EmpiricalCovariance(BaseEstimator):
     location_: Incomplete
 
     def fit(self, X, y=None):
-        """## 🧠 Fit the Maximum Likelihood Estimator covariance model.
+        """## Fit the Maximum Likelihood Estimator covariance model.
 
         -----
         ### 🛠️ Parameters
@@ -145,7 +145,7 @@ class EmpiricalCovariance(BaseEstimator):
         """
         ...
     def score(self, X_test, y=None):
-        """## 🧠 Compute the log-likelihood of a Gaussian dataset.
+        """## Compute the log-likelihood of a Gaussian dataset.
 
         Uses ``self.covariance_`` as an estimator of its covariance matrix.
 
@@ -175,7 +175,7 @@ class EmpiricalCovariance(BaseEstimator):
         scaling: bool = True,
         squared: bool = True,
     ):
-        """## 🧠 Compute the Mean Squared Error between two covariance estimators.
+        """## Compute the Mean Squared Error between two covariance estimators.
 
         -----
         ### 🛠️ Parameters
@@ -203,7 +203,7 @@ class EmpiricalCovariance(BaseEstimator):
         """
         ...
     def mahalanobis(self, observations):
-        """## 🧠 Compute the squared Mahalanobis distances of given observations.
+        """## Compute the squared Mahalanobis distances of given observations.
 
         -----
         ### 🛠️ Parameters
@@ -222,7 +222,7 @@ class EmpiricalCovariance(BaseEstimator):
         ...
 
 def log_likelihood(emp_cov, precision):
-    """## 🧠 Compute the sample mean of the log_likelihood under a covariance model.
+    """## Compute the sample mean of the log_likelihood under a covariance model.
 
     computes the empirical expected log-likelihood (accounting for the
     normalization terms and scaling), allowing for universal comparison (beyond
@@ -246,7 +246,7 @@ def log_likelihood(emp_cov, precision):
 
 def svd_flip(u, v, u_based_decision: bool = True): ...
 def stable_cumsum(arr, axis=None, rtol: float = 1e-05, atol: float = 1e-08):
-    """## 🧠 Use high precision for cumsum and check that final value matches sum.
+    """## Use high precision for cumsum and check that final value matches sum.
 
     -----
     ### 🛠️ Parameters
@@ -278,9 +278,9 @@ prange = range
 bincount = np.bincount
 
 def pinvh(a, rtol=None):
-    """## 🧠 Compute a pseudo-inverse of a Hermitian matrix."""
+    """## Compute a pseudo-inverse of a Hermitian matrix."""
     ...
 
 def pinv(a, rtol=None):
-    """## 🧠 Compute a pseudo-inverse of a matrix."""
+    """## Compute a pseudo-inverse of a matrix."""
     ...

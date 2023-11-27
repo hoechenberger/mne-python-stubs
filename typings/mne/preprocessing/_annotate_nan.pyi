@@ -1,7 +1,7 @@
 from ..annotations import Annotations as Annotations
 
 def annotate_nan(raw, *, verbose=None):
-    """## 🧠 Detect segments with NaN and return a new Annotations instance.
+    """## Detect segments with NaN and return a new Annotations instance.
 
     -----
     ### 🛠️ Parameters

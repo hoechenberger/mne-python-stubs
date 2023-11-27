@@ -6,16 +6,16 @@ from ..time_frequency.csd import CrossSpectralDensity as CrossSpectralDensity
 from ..utils import check_fname as check_fname, logger as logger, warn as warn
 
 class Beamformer(dict):
-    """## 🧠 A computed beamformer.
+    """## A computed beamformer.
 
     -----
     ### 📖 Notes
 
-    ✨ Added in vesion 0.17
+    ✨ Added in version 0.17
     """
 
     def copy(self):
-        """## 🧠 Copy the beamformer.
+        """## Copy the beamformer.
 
         -----
         ### ⏎ Returns
@@ -25,7 +25,7 @@ class Beamformer(dict):
         """
         ...
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
-        """## 🧠 Save the beamformer filter.
+        """## Save the beamformer filter.
 
         -----
         ### 🛠️ Parameters
@@ -47,7 +47,7 @@ class Beamformer(dict):
         ...
 
 def read_beamformer(fname):
-    """## 🧠 Read a beamformer filter.
+    """## Read a beamformer filter.
 
     -----
     ### 🛠️ Parameters

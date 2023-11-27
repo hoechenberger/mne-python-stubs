@@ -1,7 +1,7 @@
 from ...io import BaseRaw as BaseRaw
 
 def temporal_derivative_distribution_repair(raw, *, verbose=None):
-    """## 🧠 Apply temporal derivative distribution repair to data.
+    """## Apply temporal derivative distribution repair to data.
 
     Applies temporal derivative distribution repair (TDDR) to data
     :footcite:`FishburnEtAl2019`. This approach removes baseline shift

@@ -4,7 +4,7 @@ from _typeshed import Incomplete
 PHANTOM_MANIFEST_PATH: Incomplete
 
 def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
-    """## 🧠 Fetch and update a phantom subject.
+    """## Fetch and update a phantom subject.
 
     -----
     ### 🛠️ Parameters
@@ -45,6 +45,6 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
     to the "head" coordinate frame, so an identity head<->MRI :term:`trans`
     is appropriate.
 
-    ✨ Added in vesion 0.24
+    ✨ Added in version 0.24
     """
     ...
