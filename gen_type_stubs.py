@@ -26,7 +26,7 @@ print(f"🔍 Found MNE-Python {mne.__version__} installation in {MNE_INSTALL_DIR
 
 STUBS_OUT_DIR = Path(__file__).parent / "typings"
 if STUBS_OUT_DIR.exists():
-    print(f"🪣 Found existing output directory, deleting: {STUBS_OUT_DIR}")
+    print(f"🪣  Found existing output directory, deleting: {STUBS_OUT_DIR}")
     shutil.rmtree(STUBS_OUT_DIR)
 
 print(f"💡 Will store the type stubs in: {STUBS_OUT_DIR}")
