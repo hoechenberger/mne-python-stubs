@@ -29,7 +29,7 @@ if STUBS_OUT_DIR.exists():
     print(f"🪣  Found existing output directory, deleting: {STUBS_OUT_DIR}")
     shutil.rmtree(STUBS_OUT_DIR)
 
-print(f"💡  Will store the type stubs in: {STUBS_OUT_DIR}")
+print(f"💡 Will store the type stubs in: {STUBS_OUT_DIR}")
 
 # Generate list of module paths we want to process
 # We first glob all modules, then drop all that were selected for exclusion
