@@ -6,39 +6,37 @@ from ..time_frequency.csd import CrossSpectralDensity as CrossSpectralDensity
 from ..utils import check_fname as check_fname, logger as logger, warn as warn
 
 class Beamformer(dict):
-    """## A computed beamformer.
+    """A computed beamformer.
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.17
     """
 
     def copy(self):
-        """## Copy the beamformer.
+        """Copy the beamformer.
 
-        -----
-        ### ⏎ Returns
-
-        #### `beamformer : instance of Beamformer`
+        Returns
+        -------
+        beamformer : instance of Beamformer
             A deep copy of the beamformer.
         """
         ...
+
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
-        """## Save the beamformer filter.
+        """Save the beamformer filter.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `fname : path-like`
+        Parameters
+        ----------
+        fname : path-like
             The filename to use to write the HDF5 data.
             Should end in ``'-lcmv.h5'`` or ``'-dics.h5'``.
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -47,18 +45,16 @@ class Beamformer(dict):
         ...
 
 def read_beamformer(fname):
-    """## Read a beamformer filter.
+    """Read a beamformer filter.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         The filename of the HDF5 file.
 
-    -----
-    ### ⏎ Returns
-
-    #### `filter : instance of Beamformer`
+    Returns
+    -------
+    filter : instance of Beamformer
         The beamformer filter.
     """
     ...

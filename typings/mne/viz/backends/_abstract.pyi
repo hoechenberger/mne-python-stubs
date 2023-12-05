@@ -4,27 +4,25 @@ from _typeshed import Incomplete
 from abc import ABC, abstractmethod
 
 class Figure3D(ABC):
-    """## Class that refers to a 3D figure.
+    """Class that refers to a 3D figure.
 
-    ### 💡 Note
+    💡 Note
         This class should not be instantiated directly via
         ``mne.viz.Figure3D(...)``. Instead, use
         `mne.viz.create_3d_figure`.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.viz.create_3d_figure
     """
 
     @property
     def plotter(self):
-        """## The native 3D plotting widget.
+        """The native 3D plotting widget.
 
-        -----
-        ### ⏎ Returns
-
-        #### `plotter : instance of pyvista.Plotter`
+        Returns
+        -------
+        plotter : instance of pyvista.Plotter
             The plotter. Useful for interacting with the native 3D library.
         """
         ...
@@ -42,23 +40,27 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         shape=(1, 1),
         splash: bool = False,
     ):
-        """## Set up the scene."""
+        """Set up the scene."""
         ...
+
     @classmethod
     @abc.abstractmethod
     def subplot(self, x, y):
-        """## Set the active subplot."""
+        """Set the active subplot."""
         ...
+
     @classmethod
     @abc.abstractmethod
     def scene(self):
-        """## Return scene handle."""
+        """Return scene handle."""
         ...
+
     @classmethod
     @abc.abstractmethod
     def set_interaction(self, interaction):
-        """## Set interaction mode."""
+        """Set interaction mode."""
         ...
+
     @classmethod
     @abc.abstractmethod
     def legend(
@@ -69,23 +71,22 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         face: str = "triangle",
         loc: str = "upper left",
     ):
-        """## Add a legend to the scene.
+        """Add a legend to the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `labels : list of tuples`
+        Parameters
+        ----------
+        labels : list of tuples
             Each entry must contain two strings, (label, color),
             where ``label`` is the name of the item to add, and
             ``color`` is the color of the label to add.
-        #### `border : bool`
+        border : bool
             Controls if there will be a border around the legend.
             The default is False.
-        #### `size : float`
+        size : float
             The size of the entire figure window.
-        #### `loc : str`
+        loc : str
             The location of the legend.
-        #### `face : str`
+        face : str
             Face shape of legend face.  One of the following:
 
             * None: ``None``
@@ -95,6 +96,7 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
             * Rectangle: ``"r"`` or ``'rectangle'``
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def mesh(
@@ -117,61 +119,60 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         polygon_offset=None,
         **kwargs,
     ):
-        """## Add a mesh in the scene.
+        """Add a mesh in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `x : array, shape (n_vertices,)`
+        Parameters
+        ----------
+        x : array, shape (n_vertices,)
            The array containing the X component of the vertices.
-        #### `y : array, shape (n_vertices,)`
+        y : array, shape (n_vertices,)
            The array containing the Y component of the vertices.
-        #### `z : array, shape (n_vertices,)`
+        z : array, shape (n_vertices,)
            The array containing the Z component of the vertices.
-        #### `triangles : array, shape (n_polygons, 3)`
+        triangles : array, shape (n_polygons, 3)
            The array containing the indices of the polygons.
-        #### `color : tuple | str`
+        color : tuple | str
             The color of the mesh as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
-        #### `opacity : float`
+        opacity : float
             The opacity of the mesh.
-        #### `shading : bool`
+        shading : bool
             If True, enable the mesh shading.
-        #### `backface_culling : bool`
+        backface_culling : bool
             If True, enable backface culling on the mesh.
-        #### `scalars : ndarray, shape (n_vertices,)`
+        scalars : ndarray, shape (n_vertices,)
             The scalar valued associated to the vertices.
-        #### `vmin : float | None`
+        vmin : float | None
             vmin is used to scale the colormap.
-            If None, the min of the data will be used
-        #### `vmax : float | None`
+            If None, the min of the data will be used.
+        vmax : float | None
             vmax is used to scale the colormap.
-            If None, the max of the data will be used
-        colormap :
+            If None, the max of the data will be used.
+        colormap : str | np.ndarray | matplotlib.colors.Colormap | None
             The colormap to use.
         interpolate_before_map :
             Enabling makes for a smoother scalars display. Default is True.
             When False, OpenGL will interpolate the mapped colors which can
             result is showing colors that are not present in the color map.
-        #### `representation : str`
+        representation : str
             The representation of the mesh: either 'surface' or 'wireframe'.
-        #### `line_width : int`
+        line_width : int
             The width of the lines when representation='wireframe'.
-        #### `normals : array, shape (n_vertices, 3)`
+        normals : array, shape (n_vertices, 3)
             The array containing the normal of each vertex.
-        #### `polygon_offset : float`
+        polygon_offset : float
             If not None, the factor used to resolve coincident topology.
-        #### `kwargs : args`
+        kwargs : args
             The arguments to pass to triangular_mesh
 
-        -----
-        ### ⏎ Returns
-
+        Returns
+        -------
         surface :
             Handle of the mesh in the scene.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def contour(
@@ -188,39 +189,39 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         kind: str = "line",
         color=None,
     ):
-        """## Add a contour in the scene.
+        """Add a contour in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `surface : surface object`
+        Parameters
+        ----------
+        surface : surface object
             The mesh to use as support for contour.
-        #### `scalars : ndarray, shape (n_vertices,)`
+        scalars : ndarray, shape (n_vertices,)
             The scalar valued associated to the vertices.
-        #### `contours : int | list`
+        contours : int | list
              Specifying a list of values will only give the requested contours.
-        #### `width : float`
+        width : float
             The width of the lines or radius of the tubes.
-        #### `opacity : float`
+        opacity : float
             The opacity of the contour.
-        #### `vmin : float | None`
+        vmin : float | None
             vmin is used to scale the colormap.
-            If None, the min of the data will be used
-        #### `vmax : float | None`
+            If None, the min of the data will be used.
+        vmax : float | None
             vmax is used to scale the colormap.
-            If None, the max of the data will be used
-        colormap :
+            If None, the max of the data will be used.
+        colormap : str | np.ndarray | matplotlib.colors.Colormap | None
             The colormap to use.
-        #### `normalized_colormap : bool`
+        normalized_colormap : bool
             Specify if the values of the colormap are between 0 and 1.
-        #### `kind : 'line' | 'tube'`
+        kind : 'line' | 'tube'
             The type of the primitives to use to display the contours.
-        color :
+        color : tuple | str
             The color of the mesh as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def surface(
@@ -236,35 +237,35 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         backface_culling: bool = False,
         polygon_offset=None,
     ):
-        """## Add a surface in the scene.
+        """Add a surface in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `surface : surface object`
+        Parameters
+        ----------
+        surface : surface object
             The information describing the surface.
-        #### `color : tuple | str`
+        color : tuple | str
             The color of the surface as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
-        #### `opacity : float`
+        opacity : float
             The opacity of the surface.
-        #### `vmin : float | None`
+        vmin : float | None
             vmin is used to scale the colormap.
-            If None, the min of the data will be used
-        #### `vmax : float | None`
+            If None, the min of the data will be used.
+        vmax : float | None
             vmax is used to scale the colormap.
-            If None, the max of the data will be used
-        colormap :
+            If None, the max of the data will be used.
+        colormap : str | np.ndarray | matplotlib.colors.Colormap | None
             The colormap to use.
-        #### `scalars : ndarray, shape (n_vertices,)`
+        scalars : ndarray, shape (n_vertices,)
             The scalar valued associated to the vertices.
-        #### `backface_culling : bool`
+        backface_culling : bool
             If True, enable backface culling on the surface.
-        #### `polygon_offset : float`
+        polygon_offset : float
             If not None, the factor used to resolve coincident topology.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def sphere(
@@ -277,32 +278,32 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         backface_culling: bool = False,
         radius=None,
     ):
-        """## Add sphere in the scene.
+        """Add sphere in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `center : ndarray, shape(n_center, 3)`
+        Parameters
+        ----------
+        center : ndarray, shape(n_center, 3)
             The list of centers to use for the sphere(s).
-        #### `color : tuple | str`
+        color : tuple | str
             The color of the sphere as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
-        #### `scale : float`
+        scale : float
             The scaling applied to the spheres. The given value specifies
             the maximum size in drawing units.
-        #### `opacity : float`
+        opacity : float
             The opacity of the sphere(s).
-        #### `resolution : int`
+        resolution : int
             The resolution of the sphere created. This is the number
             of divisions along theta and phi.
-        #### `backface_culling : bool`
+        backface_culling : bool
             If True, enable backface culling on the sphere(s).
-        #### `radius : float | None`
+        radius : float | None
             Replace the glyph scaling by a fixed radius value for each
             sphere.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def tube(
@@ -318,47 +319,46 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         normalized_colormap: bool = False,
         reverse_lut: bool = False,
     ):
-        """## Add tube in the scene.
+        """Add tube in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `origin : array, shape(n_lines, 3)`
+        Parameters
+        ----------
+        origin : array, shape(n_lines, 3)
             The coordinates of the first end of the tube(s).
-        #### `destination : array, shape(n_lines, 3)`
+        destination : array, shape(n_lines, 3)
             The coordinates of the other end of the tube(s).
-        #### `radius : float`
+        radius : float
             The radius of the tube(s).
-        #### `color : tuple | str`
+        color : tuple | str
             The color of the tube as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
-        #### `scalars : array, shape (n_quivers,) | None`
+        scalars : array, shape (n_quivers,) | None
             The optional scalar data to use.
-        #### `vmin : float | None`
+        vmin : float | None
             vmin is used to scale the colormap.
-            If None, the min of the data will be used
-        #### `vmax : float | None`
+            If None, the min of the data will be used.
+        vmax : float | None
             vmax is used to scale the colormap.
-            If None, the max of the data will be used
-        colormap :
+            If None, the max of the data will be used.
+        colormap : str | np.ndarray | matplotlib.colors.Colormap | None
             The colormap to use.
-        #### `opacity : float`
+        opacity : float
             The opacity of the tube(s).
-        #### `backface_culling : bool`
+        backface_culling : bool
             If True, enable backface culling on the tube(s).
-        #### `reverse_lut : bool`
+        reverse_lut : bool
             If True, reverse the lookup table.
 
-        -----
-        ### ⏎ Returns
-
+        Returns
+        -------
         actor :
             The actor in the scene.
         surface :
             Handle of the tube in the scene.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def quiver3d(
@@ -386,225 +386,211 @@ class _AbstractRenderer(ABC, metaclass=abc.ABCMeta):
         line_width: float = 2.0,
         name=None,
     ):
-        """## Add quiver3d in the scene.
+        """Add quiver3d in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `x : array, shape (n_quivers,)`
+        Parameters
+        ----------
+        x : array, shape (n_quivers,)
             The X component of the position of the quiver.
-        #### `y : array, shape (n_quivers,)`
+        y : array, shape (n_quivers,)
             The Y component of the position of the quiver.
-        #### `z : array, shape (n_quivers,)`
+        z : array, shape (n_quivers,)
             The Z component of the position of the quiver.
-        #### `u : array, shape (n_quivers,)`
+        u : array, shape (n_quivers,)
             The last X component of the quiver.
-        #### `v : array, shape (n_quivers,)`
+        v : array, shape (n_quivers,)
             The last Y component of the quiver.
-        #### `w : array, shape (n_quivers,)`
+        w : array, shape (n_quivers,)
             The last Z component of the quiver.
-        #### `color : tuple | str`
+        color : tuple | str
             The color of the quiver as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
-        #### `scale : float`
+        scale : float
             The scaling applied to the glyphs. The size of the glyph
             is by default calculated from the inter-glyph spacing.
             The given value specifies the maximum glyph size in drawing units.
-        #### `mode : 'arrow', 'cone' or 'cylinder'`
+        mode : 'arrow', 'cone' or 'cylinder'
             The type of the quiver.
-        #### `resolution : int`
+        resolution : int
             The resolution of the glyph created. Depending on the type of
             glyph, it represents the number of divisions in its geometric
             representation.
-        #### `glyph_height : float`
+        glyph_height : float
             The height of the glyph used with the quiver.
-        #### `glyph_center : tuple`
+        glyph_center : tuple
             The center of the glyph used with the quiver: (x, y, z).
-        #### `glyph_resolution : float`
+        glyph_resolution : float
             The resolution of the glyph used with the quiver.
-        #### `opacity : float`
+        opacity : float
             The opacity of the quiver.
-        #### `scale_mode : 'vector', 'scalar' or 'none'`
+        scale_mode : 'vector', 'scalar' or 'none'
             The scaling mode for the glyph.
-        #### `scalars : array, shape (n_quivers,) | None`
+        scalars : array, shape (n_quivers,) | None
             The optional scalar data to use.
-        #### `backface_culling : bool`
+        backface_culling : bool
             If True, enable backface culling on the quiver.
-        colormap :
+        colormap : str | np.ndarray | matplotlib.colors.Colormap | None
             The colormap to use.
-        #### `vmin : float | None`
+        vmin : float | None
             vmin is used to scale the colormap.
             If None, the min of the data will be used
-        #### `vmax : float | None`
+        vmax : float | None
             vmax is used to scale the colormap.
             If None, the max of the data will be used
-        #### `line_width : float`
+        line_width : float
             The width of the 2d arrows.
 
-        -----
-        ### ⏎ Returns
-
+        Returns
+        -------
         actor :
             The actor in the scene.
         surface :
             Handle of the quiver in the scene.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def text2d(self, x_window, y_window, text, size: int = 14, color: str = "white"):
-        """## Add 2d text in the scene.
+        """Add 2d text in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `x : float`
+        Parameters
+        ----------
+        x : float
             The X component to use as position of the text in the
             window coordinates system (window_width, window_height).
-        #### `y : float`
+        y : float
             The Y component to use as position of the text in the
             window coordinates system (window_width, window_height).
-        #### `text : str`
+        text : str
             The content of the text.
-        #### `size : int`
+        size : int
             The size of the font.
-        #### `color : tuple | str`
+        color : tuple | str
             The color of the text as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def text3d(self, x, y, z, text, width, color: str = "white"):
-        """## Add 2d text in the scene.
+        """Add 2d text in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `x : float`
+        Parameters
+        ----------
+        x : float
             The X component to use as position of the text.
-        #### `y : float`
+        y : float
             The Y component to use as position of the text.
-        #### `z : float`
+        z : float
             The Z component to use as position of the text.
-        #### `text : str`
+        text : str
             The content of the text.
-        #### `width : float`
+        width : float
             The width of the text.
-        #### `color : tuple | str`
+        color : tuple | str
             The color of the text as a tuple (red, green, blue) of float
             values between 0 and 1 or a valid color name (i.e. 'white'
             or 'w').
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def scalarbar(
         self, source, color: str = "white", title=None, n_labels: int = 4, bgcolor=None
     ):
-        """## Add a scalar bar in the scene.
+        """Add a scalar bar in the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        source :
+        Parameters
+        ----------
+        source
             The object of the scene used for the colormap.
-        color :
+        color : tuple | str
             The color of the label text.
-        #### `title : str | None`
+        title : str | None
             The title of the scalar bar.
-        #### `n_labels : int | None`
+        n_labels : int | None
             The number of labels to display on the scalar bar.
-        bgcolor :
+        bgcolor : tuple | str
             The color of the background when there is transparency.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def show(self):
-        """## Render the scene."""
+        """Render the scene."""
         ...
+
     @classmethod
     @abc.abstractmethod
     def close(self):
-        """## Close the scene."""
+        """Close the scene."""
         ...
+
     @classmethod
     @abc.abstractmethod
     def set_camera(
-        self,
-        azimuth=None,
-        elevation=None,
-        distance=None,
-        focalpoint=None,
-        roll=None,
-        *,
-        reset_camera=None,
+        self, azimuth=None, elevation=None, distance=None, focalpoint=None, roll=None
     ):
-        """## Configure the camera of the scene.
+        """Configure the camera of the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `azimuth : float`
+        Parameters
+        ----------
+        azimuth : float
             The azimuthal angle of the camera.
-        #### `elevation : float`
+        elevation : float
             The zenith angle of the camera.
-        #### `distance : float`
+        distance : float
             The distance to the focal point.
-        #### `focalpoint : tuple`
+        focalpoint : tuple
             The focal point of the camera: (x, y, z).
-        #### `roll : float`
+        roll : float
             The rotation of the camera along its axis.
-        #### `reset_camera : bool`
-           Deprecated, used ``distance="auto"`` instead.
         """
         ...
-    @classmethod
-    @abc.abstractmethod
-    def reset_camera(self):
-        """## Reset the camera properties."""
-        ...
+
     @classmethod
     @abc.abstractmethod
     def screenshot(self, mode: str = "rgb", filename=None):
-        """## Take a screenshot of the scene.
+        """Take a screenshot of the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `mode : str`
+        Parameters
+        ----------
+        mode : str
             Either 'rgb' or 'rgba' for values to return.
             Default is 'rgb'.
-        #### `filename : str | None`
+        filename : str | None
             If not None, save the figure to the disk.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def project(self, xyz, ch_names):
-        """## Convert 3d points to a 2d perspective.
+        """Convert 3d points to a 2d perspective.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `xyz : array, shape(n_points, 3)`
+        Parameters
+        ----------
+        xyz : array, shape(n_points, 3)
             The points to project.
-        #### `ch_names : array, shape(_n_points,)`
+        ch_names : array, shape(_n_points,)
             Names of the channels.
         """
         ...
+
     @classmethod
     @abc.abstractmethod
     def remove_mesh(self, mesh_data):
-        """## Remove the given mesh from the scene.
+        """Remove the given mesh from the scene.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `mesh_data : tuple | Surface`
+        Parameters
+        ----------
+        mesh_data : tuple | Surface
             The mesh to remove.
         """
         ...
@@ -715,21 +701,24 @@ class _AbstractAppWindow(ABC, metaclass=abc.ABCMeta):
 
 class _AbstractCanvas(ABC, metaclass=abc.ABCMeta):
     def __init__(self, width=None, height=None, dpi=None) -> None:
-        """## Initialize the matplotlib Canvas."""
+        """Initialize the matplotlib Canvas."""
         ...
+
     def show(self) -> None:
-        """## Show the canvas."""
+        """Show the canvas."""
         ...
+
     def close(self) -> None:
-        """## Close the canvas."""
+        """Close the canvas."""
         ...
+
     def update(self) -> None:
-        """## Update the canvas."""
+        """Update the canvas."""
         ...
     manager: Incomplete
 
     def clear(self) -> None:
-        """## Clear internal variables."""
+        """Clear internal variables."""
         ...
 
 class _AbstractToolBar(ABC, metaclass=abc.ABCMeta): ...
@@ -793,51 +782,60 @@ class _AbstractMplCanvas(ABC):
     manager: Incomplete
 
     def __init__(self, width, height, dpi) -> None:
-        """## Initialize the MplCanvas."""
+        """Initialize the MplCanvas."""
         ...
+
     def plot(self, x, y, label, update: bool = True, **kwargs):
-        """## Plot a curve."""
+        """Plot a curve."""
         ...
+
     def plot_time_line(self, x, label, update: bool = True, **kwargs):
-        """## Plot the vertical line."""
+        """Plot the vertical line."""
         ...
+
     def update_plot(self) -> None:
-        """## Update the plot."""
+        """Update the plot."""
         ...
+
     def set_color(self, bg_color, fg_color) -> None:
-        """## Set the widget colors."""
+        """Set the widget colors."""
         ...
+
     def show(self) -> None:
-        """## Show the canvas."""
+        """Show the canvas."""
         ...
+
     def close(self) -> None:
-        """## Close the canvas."""
+        """Close the canvas."""
         ...
     canvas: Incomplete
 
     def clear(self) -> None:
-        """## Clear internal variables."""
+        """Clear internal variables."""
         ...
+
     def on_resize(self, event) -> None:
-        """## Handle resize events."""
+        """Handle resize events."""
         ...
 
 class _AbstractBrainMplCanvas(_AbstractMplCanvas):
     brain: Incomplete
 
     def __init__(self, brain, width, height, dpi) -> None:
-        """## Initialize the MplCanvas."""
+        """Initialize the MplCanvas."""
         ...
+
     def update_plot(self) -> None:
-        """## Update the plot."""
+        """Update the plot."""
         ...
+
     def on_button_press(self, event) -> None:
-        """## Handle button presses."""
+        """Handle button presses."""
         ...
     on_motion_notify = on_button_press
 
     def clear(self) -> None:
-        """## Clear internal variables."""
+        """Clear internal variables."""
         ...
 
 class _AbstractWindow(ABC, metaclass=abc.ABCMeta): ...

@@ -19,28 +19,27 @@ def make_lcmv(
     inversion: str = "matrix",
     verbose=None,
 ):
-    """## Compute LCMV spatial filter.
+    """Compute LCMV spatial filter.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `info : mne.Info`
+    info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
         Specifies the channels to include. Bad channels (in ``info['bads']``)
         are not used.
-    #### `forward : instance of Forward`
+    forward : instance of Forward
         Forward operator.
-    #### `data_cov : instance of Covariance`
+    data_cov : instance of Covariance
         The data covariance.
-    #### `reg : float`
+    reg : float
         The regularization for the whitened data covariance.
-    #### `noise_cov : instance of Covariance`
+    noise_cov : instance of Covariance
         The noise covariance. If provided, whitening will be done. Providing a
         noise covariance is mandatory if you mix sensor types, e.g.
         gradiometers with magnetometers or EEG with MEG.
 
-        ### 💡 Note
+        💡 Note
             If ``noise_cov`` is ``None`` and ``weight_norm='unit-noise-gain'``,
             the unit noise is assumed to be 1 in SI units, e.g., 1 T for
             magnetometers, 1 V for EEG, so resulting amplitudes will be tiny.
@@ -48,10 +47,10 @@ def make_lcmv(
             ``noise_cov`` to set noise values that are more reasonable for
             neural data or using ``weight_norm='nai'`` for weight-normalized
             beamformer output that is scaled by a noise estimate.
-    #### `label : instance of Label`
+    label : instance of Label
         Restricts the LCMV solution to a given label.
 
-    #### `pick_ori : None | str`
+    pick_ori : None | str
         For forward solutions with fixed orientation, None (default) must be
         used and a scalar beamformer is computed. For free-orientation forward
         solutions, a vector beamformer is computed and:
@@ -67,7 +66,7 @@ def make_lcmv(
         - ``'vector'``
             Keeps the currents for each direction separate
 
-    #### `rank : None | 'info' | 'full' | dict`
+    rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -93,18 +92,18 @@ def make_lcmv(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already `know` the rank of (part of) your
+            extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose `keys` correspond to
+            This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose `values` are integers representing the
+            ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            `not` specified in the dictionary will be estimated empirically.
+            **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -112,7 +111,7 @@ def make_lcmv(
 
         The default is ``'info'``.
 
-    #### `weight_norm : str | None`
+    weight_norm : str | None
         Can be:
 
         - ``None``
@@ -144,7 +143,7 @@ def make_lcmv(
 
         Defaults to ``'unit-noise-gain-invariant'``.
 
-    #### `reduce_rank : bool`
+    reduce_rank : bool
         If True, the rank of the denominator of the beamformer formula (i.e.,
         during pseudo-inversion) will be reduced by one for each spatial location.
         Setting ``reduce_rank=True`` is typically necessary if you use a single
@@ -154,7 +153,7 @@ def make_lcmv(
             Support for reducing rank in all modes (previously only supported
             ``pick='max_power'`` with weight normalization).
 
-    #### `depth : None | float | dict`
+    depth : None | float | dict
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
@@ -167,7 +166,7 @@ def make_lcmv(
 
         ✨ Added in version 0.18
 
-    #### `inversion : 'single' | 'matrix'`
+    inversion : 'single' | 'matrix'
         This determines how the beamformer deals with source spaces in "free"
         orientation. Such source spaces define three orthogonal dipoles at each
         source point. When ``inversion='single'``, each dipole is considered
@@ -181,16 +180,15 @@ def make_lcmv(
 
         ✨ Added in version 0.21
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `filters : instance of Beamformer`
+    Returns
+    -------
+    filters : instance of Beamformer
         Dictionary containing filter weights from LCMV beamformer.
         Contains the following keys:
 
@@ -243,9 +241,8 @@ def make_lcmv(
                 separately or jointly for all dipoles at each vertex using a
                 matrix inversion.
 
+    Notes
     -----
-    ### 📖 Notes
-
     The original reference is :footcite:`VanVeenEtAl1997`.
 
     To obtain the Sekihara unit-noise-gain vector beamformer, you should use
@@ -263,149 +260,136 @@ def make_lcmv(
     ...
 
 def apply_lcmv(evoked, filters, *, verbose=None):
-    """## Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on evoked data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : Evoked`
+    Parameters
+    ----------
+    evoked : Evoked
         Evoked data to invert.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         LCMV spatial filter (beamformer weights).
         Filter weights returned from `make_lcmv`.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `stc : SourceEstimate | VolSourceEstimate | VectorSourceEstimate`
+    Returns
+    -------
+    stc : SourceEstimate | VolSourceEstimate | VectorSourceEstimate
         Source time courses.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     make_lcmv, apply_lcmv_raw, apply_lcmv_epochs, apply_lcmv_cov
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.18
     """
     ...
 
 def apply_lcmv_epochs(epochs, filters, *, return_generator: bool = False, verbose=None):
-    """## Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on single trial data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs : Epochs`
+    Parameters
+    ----------
+    epochs : Epochs
         Single trial epochs.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         LCMV spatial filter (beamformer weights)
         Filter weights returned from `make_lcmv`.
-    #### `return_generator : bool`
+    return_generator : bool
          Return a generator object instead of a list. This allows iterating
          over the stcs without having to keep them all in memory.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
+    Returns
+    -------
     stc: list | generator of (SourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     make_lcmv, apply_lcmv_raw, apply_lcmv, apply_lcmv_cov
     """
     ...
 
 def apply_lcmv_raw(raw, filters, start=None, stop=None, *, verbose=None):
-    """## Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
+    """Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     on raw data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : mne.io.Raw`
+    Parameters
+    ----------
+    raw : mne.io.Raw
         Raw data to invert.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         LCMV spatial filter (beamformer weights).
         Filter weights returned from `make_lcmv`.
-    #### `start : int`
+    start : int
         Index of first time sample (index not time is seconds).
-    #### `stop : int`
+    stop : int
         Index of first time sample not to include (index not time is seconds).
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `stc : SourceEstimate | VolSourceEstimate`
+    Returns
+    -------
+    stc : SourceEstimate | VolSourceEstimate
         Source time courses.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     make_lcmv, apply_lcmv_epochs, apply_lcmv, apply_lcmv_cov
     """
     ...
 
 def apply_lcmv_cov(data_cov, filters, verbose=None):
-    """## Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
+    """Apply Linearly Constrained  Minimum Variance (LCMV) beamformer weights.
 
     Apply Linearly Constrained Minimum Variance (LCMV) beamformer weights
     to a data covariance matrix to estimate source power.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `data_cov : instance of Covariance`
+    Parameters
+    ----------
+    data_cov : instance of Covariance
         Data covariance matrix.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         LCMV spatial filter (beamformer weights).
         Filter weights returned from `make_lcmv`.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `stc : SourceEstimate | VolSourceEstimate`
+    Returns
+    -------
+    stc : SourceEstimate | VolSourceEstimate
         Source power.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     make_lcmv, apply_lcmv, apply_lcmv_epochs, apply_lcmv_raw
     """
     ...

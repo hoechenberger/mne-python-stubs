@@ -9,24 +9,23 @@ def resolution_metrics(
     threshold: float = 0.5,
     verbose=None,
 ):
-    """## Compute spatial resolution metrics for linear solvers.
+    """Compute spatial resolution metrics for linear solvers.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `resmat : array, shape (n_orient * n_vertices, n_vertices)`
+    Parameters
+    ----------
+    resmat : array, shape (n_orient * n_vertices, n_vertices)
         The resolution matrix.
         If not a square matrix and if the number of rows is a multiple of
         number of columns (e.g. free or loose orientations), then the Euclidean
         length per source location is computed (e.g. if inverse operator with
         free orientations was applied to forward solution with fixed
         orientations).
-    #### `src : instance of SourceSpaces`
+    src : instance of SourceSpaces
         Source space object from forward or inverse operator.
-    #### `function : 'psf' | 'ctf'`
+    function : 'psf' | 'ctf'
         Whether to compute metrics for columns (point-spread functions, PSFs)
         or rows (cross-talk functions, CTFs) of the resolution matrix.
-    #### `metric : str`
+    metric : str
         The resolution metric to compute. Allowed options are:
 
         Localization-based metrics:
@@ -48,25 +47,23 @@ def resolution_metrics(
           per location and maximum peak across locations.
         - ``'sum_amp'`` Ratio between sums of absolute amplitudes.
 
-    #### `threshold : float`
+    threshold : float
         Amplitude fraction threshold for spatial extent metric 'maxrad_ext'.
         Defaults to 0.5.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `resolution_metric : instance of SourceEstimate`
+    Returns
+    -------
+    resolution_metric : instance of SourceEstimate
         The resolution metric.
 
+    Notes
     -----
-    ### 📖 Notes
-
     For details, see :footcite:`MolinsEtAl2008,HaukEtAl2019`.
 
     ✨ Added in version 0.20

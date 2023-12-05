@@ -18,74 +18,70 @@ def fetch_dataset(
     auth=None,
     token=None,
 ):
-    """## Fetch an MNE-compatible dataset using pooch.
+    """Fetch an MNE-compatible dataset using pooch.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `dataset_params : list of dict | dict`
+    Parameters
+    ----------
+    dataset_params : list of dict | dict
         The dataset name(s) and corresponding parameters to download the
         dataset(s). The dataset parameters that contains the following keys:
         ``archive_name``, ``url``, ``folder_name``, ``hash``,
         ``config_key`` (optional). See Notes.
-    #### `processor : None | "unzip" | "untar" | instance of pooch.Unzip | instance of pooch.Untar`
+    processor : None | "unzip" | "untar" | instance of pooch.Unzip | instance of pooch.Untar
         What to do after downloading the file. ``"unzip"`` and ``"untar"`` will
         decompress the downloaded file in place; for custom extraction (e.g.,
         only extracting certain files from the archive) pass an instance of
-        `pooch.Unzip` or `pooch.Untar`. If ``None`` (the
+        ``pooch.Unzip`` or ``pooch.Untar``. If ``None`` (the
         default), the files are left as-is.
-    #### `path : None | str`
+    path : None | str
         Directory in which to put the dataset. If ``None``, the dataset
         location is determined by first checking whether
         ``dataset_params['config_key']`` is defined, and if so, whether that
         config key exists in the MNE-Python config file. If so, the configured
         path is used; if not, the location is set to the value of the
         ``MNE_DATA`` config key (if it exists), or ``/mne_data`` otherwise.
-    #### `force_update : bool`
+    force_update : bool
         Force update of the dataset even if a local copy exists.
         Default is False.
-    #### `update_path : bool | None`
+    update_path : bool | None
         If True (default), set the mne-python config to the given
         path. If None, the user is prompted.
-    #### `download : bool`
+    download : bool
         If False and the dataset has not been downloaded yet, it will not be
         downloaded and the path will be returned as ``''`` (empty string). This
         is mostly used for testing purposes and can be safely ignored by most
         users.
-    #### `check_version : bool`
+    check_version : bool
         Whether to check the version of the dataset or not. Each version
         of the dataset is stored in the root with a ``version.txt`` file.
-    #### `return_version : bool`
+    return_version : bool
         Whether or not to return the version of the dataset or not.
         Defaults to False.
-    #### `accept : bool`
+    accept : bool
         Some MNE-supplied datasets require acceptance of an additional license.
         Default is ``False``.
-    #### `auth : tuple | None`
+    auth : tuple | None
         Optional authentication tuple containing the username and
-        password/token, passed to `pooch.HTTPDownloader` (e.g.,
+        password/token, passed to ``pooch.HTTPDownloader`` (e.g.,
         ``auth=('foo', 012345)``).
-    #### `token : str | None`
-        Optional authentication token passed to `pooch.HTTPDownloader`.
+    token : str | None
+        Optional authentication token passed to ``pooch.HTTPDownloader``.
 
-    -----
-    ### ⏎ Returns
-
-    #### `data_path : instance of Path`
+    Returns
+    -------
+    data_path : instance of Path
         The path to the fetched dataset.
-    #### `version : str`
+    version : str
         Only returned if ``return_version`` is True.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.get_config
     mne.set_config
     mne.datasets.has_dataset
 
+    Notes
     -----
-    ### 📖 Notes
-
     The ``dataset_params`` argument must contain the following keys:
 
     - ``archive_name``: The name of the (possibly compressed) file to download

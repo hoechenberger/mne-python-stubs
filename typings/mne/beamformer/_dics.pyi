@@ -22,7 +22,7 @@ def make_dics(
     inversion: str = "matrix",
     verbose=None,
 ):
-    """## Compute a Dynamic Imaging of Coherent Sources (DICS) spatial filter.
+    """Compute a Dynamic Imaging of Coherent Sources (DICS) spatial filter.
 
     This is a beamformer filter that can be used to estimate the source power
     at a specific frequency range :footcite:`GrossEtAl2001`. It does this by
@@ -33,22 +33,21 @@ def make_dics(
     (see `apply_dics_csd`), the source power can be estimated for each
     source point.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `info : mne.Info`
+    info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
-    #### `forward : instance of Forward`
+    forward : instance of Forward
         Forward operator.
-    #### `csd : instance of CrossSpectralDensity`
+    csd : instance of CrossSpectralDensity
         The data cross-spectral density (CSD) matrices. A source estimate is
         performed for each frequency or frequency-bin defined in the CSD
         object.
-    #### `reg : float`
+    reg : float
         The regularization to apply to the cross-spectral density before
         computing the inverse.
-    #### `noise_csd : instance of CrossSpectralDensity | None`
+    noise_csd : instance of CrossSpectralDensity | None
         Noise cross-spectral density (CSD) matrices. If provided, whitening
         will be done. The noise CSDs need to have been computed for the same
         frequencies as the data CSDs. Providing noise CSDs is mandatory if you
@@ -56,10 +55,10 @@ def make_dics(
         MEG.
 
         ✨ Added in version 0.20
-    #### `label : Label | None`
+    label : Label | None
         Restricts the solution to a given label.
 
-    #### `pick_ori : None | str`
+    pick_ori : None | str
         For forward solutions with fixed orientation, None (default) must be
         used and a scalar beamformer is computed. For free-orientation forward
         solutions, a vector beamformer is computed and:
@@ -72,7 +71,7 @@ def make_dics(
         - ``'max-power'``
             Filters are computed for the orientation that maximizes power.
 
-    #### `rank : None | 'info' | 'full' | dict`
+    rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -98,18 +97,18 @@ def make_dics(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already `know` the rank of (part of) your
+            extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose `keys` correspond to
+            This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose `values` are integers representing the
+            ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            `not` specified in the dictionary will be estimated empirically.
+            **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
@@ -119,7 +118,7 @@ def make_dics(
 
         ✨ Added in version 0.17
 
-    #### `weight_norm : str | None`
+    weight_norm : str | None
         Can be:
 
         - ``None``
@@ -151,7 +150,7 @@ def make_dics(
 
         Defaults to ``None``, in which case no normalization is performed.
 
-    #### `reduce_rank : bool`
+    reduce_rank : bool
         If True, the rank of the denominator of the beamformer formula (i.e.,
         during pseudo-inversion) will be reduced by one for each spatial location.
         Setting ``reduce_rank=True`` is typically necessary if you use a single
@@ -161,7 +160,7 @@ def make_dics(
             Support for reducing rank in all modes (previously only supported
             ``pick='max_power'`` with weight normalization).
 
-    #### `depth : None | float | dict`
+    depth : None | float | dict
         How to weight (or normalize) the forward using a depth prior.
         If float (default 0.8), it acts as the depth weighting exponent (``exp``)
         to use None is equivalent to 0, meaning no depth weighting is performed.
@@ -171,7 +170,7 @@ def make_dics(
 
         🎭 Changed in version 0.20
            Depth bias ignored for ``method='eLORETA'``.
-    #### `real_filter : bool`
+    real_filter : bool
         If ``True``, take only the real part of the cross-spectral-density
         matrices to compute real filters.
 
@@ -179,7 +178,7 @@ def make_dics(
             Version 0.23 an earlier used ``real_filter=False`` as the default,
             as of version 0.24 ``True`` is the default.
 
-    #### `inversion : 'single' | 'matrix'`
+    inversion : 'single' | 'matrix'
         This determines how the beamformer deals with source spaces in "free"
         orientation. Such source spaces define three orthogonal dipoles at each
         source point. When ``inversion='single'``, each dipole is considered
@@ -194,16 +193,15 @@ def make_dics(
         🎭 Changed in version 0.21
            Default changed to ``'matrix'``.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `filters : instance of Beamformer`
+    Returns
+    -------
+    filters : instance of Beamformer
         Dictionary containing filter weights from DICS beamformer.
         Contains the following keys:
 
@@ -248,14 +246,12 @@ def make_dics(
                 When pick_ori='max-power', this fields contains the estimated
                 direction of maximum power at each source location.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     apply_dics_csd
 
+    Notes
     -----
-    ### 📖 Notes
-
     The original reference is :footcite:`GrossEtAl2001`. See
     :footcite:`vanVlietEtAl2018` for a tutorial style paper on the topic.
 
@@ -286,7 +282,7 @@ def make_dics(
     ...
 
 def apply_dics(evoked, filters, verbose=None):
-    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on evoked data.
@@ -300,32 +296,29 @@ def apply_dics(evoked, filters, verbose=None):
     ### ⛔️ Warning This implementation has not been heavily tested so please
                  report any issues or suggestions.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : Evoked`
+    Parameters
+    ----------
+    evoked : Evoked
         Evoked data to apply the DICS beamformer weights to.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
         Filter weights returned from `make_dics`.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `stc : SourceEstimate | VolSourceEstimate | list`
+    Returns
+    -------
+    stc : SourceEstimate | VolSourceEstimate | list
         Source time courses. If the DICS beamformer has been computed for more
         than one frequency, a list is returned containing for each frequency
         the corresponding time courses.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     apply_dics_epochs
     apply_dics_tfr_epochs
     apply_dics_csd
@@ -333,7 +326,7 @@ def apply_dics(evoked, filters, verbose=None):
     ...
 
 def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=None):
-    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on single trial data.
@@ -347,34 +340,31 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
     ### ⛔️ Warning This implementation has not been heavily tested so please
                  report any issue or suggestions.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs : Epochs`
+    Parameters
+    ----------
+    epochs : Epochs
         Single trial epochs.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
         Filter weights returned from `make_dics`. The DICS filters must
         have been computed for a single frequency only.
-    #### `return_generator : bool`
+    return_generator : bool
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
+    Returns
+    -------
     stc: list | generator of (SourceEstimate | VolSourceEstimate)
         The source estimates for all epochs.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     apply_dics
     apply_dics_tfr_epochs
     apply_dics_csd
@@ -384,39 +374,36 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
 def apply_dics_tfr_epochs(
     epochs_tfr, filters, return_generator: bool = False, verbose=None
 ):
-    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on single trial time-frequency data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs_tfr : EpochsTFR`
+    Parameters
+    ----------
+    epochs_tfr : EpochsTFR
         Single trial time-frequency epochs.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
         Filter weights returned from `make_dics`.
-    #### `return_generator : bool`
+    return_generator : bool
         Return a generator object instead of a list. This allows iterating
         over the stcs without having to keep them all in memory.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `stcs : list of list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)`
+    Returns
+    -------
+    stcs : list of list of (SourceEstimate | VectorSourceEstimate | VolSourceEstimate)
         The source estimates for all epochs (outside list) and for
         all frequencies (inside list).
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     apply_dics
     apply_dics_epochs
     apply_dics_csd
@@ -424,48 +411,45 @@ def apply_dics_tfr_epochs(
     ...
 
 def apply_dics_csd(csd, filters, verbose=None):
-    """## Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
+    """Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights.
 
     Apply a previously computed DICS beamformer to a cross-spectral density
     (CSD) object to estimate source power in time and frequency windows
     specified in the CSD object :footcite:`GrossEtAl2001`.
 
-    ### 💡 Note Only power can computed from the cross-spectral density, not
+    💡 Note Only power can computed from the cross-spectral density, not
               complex phase-amplitude, so vector DICS filters will be
               converted to scalar source estimates since power is strictly
               positive and so 3D directions cannot be combined meaningfully
               (the direction would be confined to the positive quadrant).
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `csd : instance of CrossSpectralDensity`
+    Parameters
+    ----------
+    csd : instance of CrossSpectralDensity
         The data cross-spectral density (CSD) matrices. A source estimate is
         performed for each frequency or frequency-bin defined in the CSD
         object.
-    #### `filters : instance of Beamformer`
+    filters : instance of Beamformer
         DICS spatial filter (beamformer weights)
         Filter weights returned from `make_dics`.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `stc : SourceEstimate`
+    Returns
+    -------
+    stc : SourceEstimate
         Source power with frequency instead of time.
-    #### `frequencies : list of float`
+    frequencies : list of float
         The frequencies for which the source power has been computed. If the
         data CSD object defines frequency-bins instead of exact frequencies,
         the mean of each bin is returned.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     apply_dics
     apply_dics_epochs
     apply_dics_tfr_epochs

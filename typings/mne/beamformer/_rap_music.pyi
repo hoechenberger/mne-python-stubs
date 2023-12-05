@@ -17,52 +17,48 @@ def rap_music(
     *,
     verbose=None,
 ):
-    """## RAP-MUSIC source localization method.
+    """RAP-MUSIC source localization method.
 
     Compute Recursively Applied and Projected MUltiple SIgnal Classification
     (RAP-MUSIC) :footcite:`MosherLeahy1999,MosherLeahy1996` on evoked data.
 
-    ### 💡 Note The goodness of fit (GOF) of all the returned dipoles is the
+    💡 Note The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : instance of Evoked`
+    Parameters
+    ----------
+    evoked : instance of Evoked
         Evoked data to localize.
-    #### `forward : instance of Forward`
+    forward : instance of Forward
         Forward operator.
-    #### `noise_cov : instance of Covariance`
+    noise_cov : instance of Covariance
         The noise covariance.
-    #### `n_dipoles : int`
+    n_dipoles : int
         The number of dipoles to look for. The default value is 5.
-    #### `return_residual : bool`
+    return_residual : bool
         If True, the residual is returned as an Evoked instance.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `dipoles : list of instance of Dipole`
+    Returns
+    -------
+    dipoles : list of instance of Dipole
         The dipole fits.
-    #### `residual : instance of Evoked`
+    residual : instance of Evoked
         The residual a.k.a. data not explained by the dipoles.
         Only returned if return_residual is True.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.fit_dipole
     mne.beamformer.trap_music
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.9.0
 
     References
@@ -80,52 +76,48 @@ def trap_music(
     *,
     verbose=None,
 ):
-    """## TRAP-MUSIC source localization method.
+    """TRAP-MUSIC source localization method.
 
     Compute Truncated Recursively Applied and Projected MUltiple SIgnal Classification
     (TRAP-MUSIC) :footcite:`Makela2018` on evoked data.
 
-    ### 💡 Note The goodness of fit (GOF) of all the returned dipoles is the
+    💡 Note The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : instance of Evoked`
+    Parameters
+    ----------
+    evoked : instance of Evoked
         Evoked data to localize.
-    #### `forward : instance of Forward`
+    forward : instance of Forward
         Forward operator.
-    #### `noise_cov : instance of Covariance`
+    noise_cov : instance of Covariance
         The noise covariance.
-    #### `n_dipoles : int`
+    n_dipoles : int
         The number of dipoles to look for. The default value is 5.
-    #### `return_residual : bool`
+    return_residual : bool
         If True, the residual is returned as an Evoked instance.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `dipoles : list of instance of Dipole`
+    Returns
+    -------
+    dipoles : list of instance of Dipole
         The dipole fits.
-    #### `residual : instance of Evoked`
+    residual : instance of Evoked
         The residual a.k.a. data not explained by the dipoles.
         Only returned if return_residual is True.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.fit_dipole
     mne.beamformer.rap_music
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 1.4
 
     References

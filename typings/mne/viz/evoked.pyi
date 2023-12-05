@@ -33,19 +33,18 @@ def plot_evoked(
     highlight=None,
     verbose=None,
 ):
-    """## Plot evoked data using butterfly plots.
+    """Plot evoked data using butterfly plots.
 
     Left click to a line shows the channel name. Selecting an area by clicking
     and holding left mouse button plots a topographic map of the painted area.
 
-    ### 💡 Note If bad channels are not excluded they are shown in red.
+    💡 Note If bad channels are not excluded they are shown in red.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : instance of Evoked`
+    Parameters
+    ----------
+    evoked : instance of Evoked
         The evoked data.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -54,22 +53,22 @@ def plot_evoked(
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    #### `exclude : list of str | 'bads'`
+    exclude : list of str | 'bads'
         Channels names to exclude from being shown. If 'bads', the
         bad channels are excluded.
-    #### `unit : bool`
+    unit : bool
         Scale plot with channel (SI) unit.
-    #### `show : bool`
+    show : bool
         Show figure if True.
-    #### `ylim : dict | None`
+    ylim : dict | None
         Y limits for plots (after scaling has been applied). e.g.
         ylim = dict(eeg=[-20, 20])
         Valid keys are eeg, mag, grad, misc. If None, the ylim parameter
         for each channel equals the pyplot default.
-    #### `xlim : 'tight' | tuple | None`
+    xlim : 'tight' | tuple | None
         X limits for plots.
 
-    #### `proj : bool | 'interactive' | 'reconstruct'`
+    proj : bool | 'interactive' | 'reconstruct'
         If true SSP projections are applied before display. If 'interactive',
         a check box for reversible selection of SSP projection vectors will
         be shown. If 'reconstruct', projection vectors will be applied and then
@@ -78,22 +77,22 @@ def plot_evoked(
 
         🎭 Changed in version 0.21
            Support for 'reconstruct' was added.
-    #### `hline : list of float | None`
+    hline : list of float | None
         The values at which to show an horizontal line.
-    #### `units : dict | None`
+    units : dict | None
         The units of the channel types used for axes labels. If None,
         defaults to ``dict(eeg='µV', grad='fT/cm', mag='fT')``.
-    #### `scalings : dict | None`
+    scalings : dict | None
         The scalings of the channel types to be applied for plotting. If None,
         defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
-    #### `titles : dict | None`
+    titles : dict | None
         The titles associated with the channels. If None, defaults to
         ``dict(eeg='EEG', grad='Gradiometers', mag='Magnetometers')``.
-    #### `axes : instance of Axes | list | None`
+    axes : instance of Axes | list | None
         The axes to plot to. If list, the list must be a list of Axes of
         the same length as the number of channel types. If instance of
         Axes, there must be only one channel type plotted.
-    #### `gfp : bool | 'only'`
+    gfp : bool | 'only'
         Plot the global field power (GFP) or the root mean square (RMS) of the
         data. For MEG data, this will plot the RMS. For EEG, it plots GFP,
         i.e. the standard deviation of the signal across channels. The GFP is
@@ -111,9 +110,9 @@ def plot_evoked(
 
         🎭 Changed in version 0.23
            Plot GFP for EEG instead of RMS. Label RMS traces correctly as such.
-    #### `window_title : str | None`
+    window_title : str | None
         The title to put at the top of the figure.
-    #### `spatial_colors : bool | 'auto'`
+    spatial_colors : bool | 'auto'
         If True, the lines are color coded by mapping physical sensor
         coordinates into color values. Spatially similar channels will have
         similar colors. Bad channels will be dotted. If False, the good
@@ -121,7 +120,7 @@ def plot_evoked(
         True if channel locations are present, and False if channel locations
         are missing or if the data contains only a single channel. Defaults to
         ``'auto'``.
-    #### `zorder : str | callable`
+    zorder : str | callable
         Which channels to put in the front or back. Only matters if
         ``spatial_colors`` is used.
         If str, must be ``std`` or ``unsorted`` (defaults to ``unsorted``). If
@@ -135,7 +134,7 @@ def plot_evoked(
 
         ✨ Added in version 0.13.0
 
-    #### `selectable : bool`
+    selectable : bool
         Whether to use interactive features. If True (default), it is possible
         to paint an area to draw topomaps. When False, the interactive features
         are disabled. Disabling interactive features reduces memory consumption
@@ -143,7 +142,7 @@ def plot_evoked(
 
         ✨ Added in version 0.13.0
 
-    #### `noise_cov : instance of Covariance | str | None`
+    noise_cov : instance of Covariance | str | None
         Noise covariance used to whiten the data while plotting.
         Whitened data channel names are shown in italic.
         Can be a string to load a covariance from disk.
@@ -154,11 +153,11 @@ def plot_evoked(
         consider using `mne.Evoked.plot_white`.
 
         ✨ Added in version 0.16.0
-    #### `time_unit : str`
+    time_unit : str
         The units for the time axis, can be "s" (default) or "ms".
 
         ✨ Added in version 0.16
-    #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -172,7 +171,7 @@ def plot_evoked(
 
         ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
-    #### `highlight : array-like of float, shape(2,) | array-like of float, shape (n, 2) | None`
+    highlight : array-like of float, shape(2,) | array-like of float, shape (n, 2) | None
         Segments of the data to highlight by means of a light-yellow
         background color. Can be used to put visual emphasis on certain
         time periods. The time periods must be specified as ``array-like``
@@ -185,21 +184,19 @@ def plot_evoked(
 
         ✨ Added in version 1.1
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of matplotlib.figure.Figure`
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
         Figure containing the butterfly plots.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.viz.plot_evoked_white
     """
     ...
@@ -224,53 +221,52 @@ def plot_evoked_topo(
     exclude: str = "bads",
     show: bool = True,
 ):
-    """## Plot 2D topography of evoked responses.
+    """Plot 2D topography of evoked responses.
 
     Clicking on the plot of an individual sensor opens a new figure showing
     the evoked response for the selected sensor.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : list of Evoked | Evoked`
+    Parameters
+    ----------
+    evoked : list of Evoked | Evoked
         The evoked response to plot.
-    #### `layout : instance of Layout | None`
+    layout : instance of Layout | None
         Layout instance specifying sensor positions (does not need to
         be specified for Neuromag data). If possible, the correct layout is
         inferred from the data.
-    #### `layout_scale : float`
+    layout_scale : float
         Scaling factor for adjusting the relative size of the layout
         on the canvas.
-    #### `color : list of color | color | None`
+    color : list of color | color | None
         Everything matplotlib accepts to specify colors. If not list-like,
         the color specified will be repeated. If None, colors are
         automatically drawn.
-    #### `border : str`
+    border : str
         Matplotlib borders style to be used for each sensor plot.
-    #### `ylim : dict | None`
+    ylim : dict | None
         Y limits for plots (after scaling has been applied). The value
         determines the upper and lower subplot limits. e.g.
         ylim = dict(eeg=[-20, 20]). Valid keys are eeg, mag, grad, misc.
         If None, the ylim parameter for each channel type is determined by
         the minimum and maximum peak.
-    #### `scalings : dict | None`
+    scalings : dict | None
         The scalings of the channel types to be applied for plotting. If None,`
         defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
-    #### `title : str`
+    title : str
         Title of the figure.
-    #### `proj : bool | 'interactive'`
+    proj : bool | 'interactive'
         If true SSP projections are applied before display. If 'interactive',
         a check box for reversible selection of SSP projection vectors will
         be shown.
-    #### `vline : list of float | None`
+    vline : list of float | None
         The values at which to show a vertical line.
-    #### `fig_background : None | ndarray`
+    fig_background : None | ndarray
         A background image for the figure. This must work with a call to
         plt.imshow. Defaults to None.
-    #### `merge_grads : bool`
+    merge_grads : bool
         Whether to use RMS value of gradiometer pairs. Only works for Neuromag
         data. Defaults to False.
-    #### `legend : bool | int | str | tuple`
+    legend : bool | int | str | tuple
         If True, create a legend based on evoked.comment. If False, disable the
         legend. Otherwise, the legend is created and the parameter value is
         passed as the location parameter to the matplotlib legend call. It can
@@ -278,28 +274,27 @@ def plot_evoked_topo(
         a string (e.g. 'upper right'), or a tuple (x, y coordinates of the
         lower left corner of the legend in the axes coordinate system).
         See matplotlib documentation for more details.
-    #### `axes : instance of matplotlib Axes | None`
+    axes : instance of matplotlib Axes | None
         Axes to plot into. If None, axes will be created.
-    #### `background_color : color`
+    background_color : color
         Background color. Typically 'k' (black) or 'w' (white; default).
 
         ✨ Added in version 0.15.0
-    #### `noise_cov : instance of Covariance | str | None`
+    noise_cov : instance of Covariance | str | None
         Noise covariance used to whiten the data while plotting.
         Whitened data channel names are shown in italic.
         Can be a string to load a covariance from disk.
 
         ✨ Added in version 0.16.0
-    #### `exclude : list of str | 'bads'`
+    exclude : list of str | 'bads'
         Channels names to exclude from the plot. If 'bads', the
         bad channels are excluded. By default, exclude is set to 'bads'.
-    #### `show : bool`
+    show : bool
         Show figure if True.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of matplotlib.figure.Figure`
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
         Images of evoked responses at sensor locations.
     """
     ...
@@ -328,14 +323,13 @@ def plot_evoked_image(
     group_by=None,
     sphere=None,
 ):
-    """## Plot evoked data as images.
+    """Plot evoked data as images.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : instance of Evoked`
+    Parameters
+    ----------
+    evoked : instance of Evoked
         The evoked data.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -346,34 +340,34 @@ def plot_evoked_image(
         explicitly provided.
         This parameter can also be used to set the order the channels
         are shown in, as the channel image is sorted by the order of picks.
-    #### `exclude : list of str | 'bads'`
+    exclude : list of str | 'bads'
         Channels names to exclude from being shown. If 'bads', the
         bad channels are excluded.
-    #### `unit : bool`
+    unit : bool
         Scale plot with channel (SI) unit.
-    #### `show : bool`
+    show : bool
         Show figure if True.
-    #### `clim : dict | None`
+    clim : dict | None
         Color limits for plots (after scaling has been applied). e.g.
         ``clim = dict(eeg=[-20, 20])``.
         Valid keys are eeg, mag, grad, misc. If None, the clim parameter
         for each channel equals the pyplot default.
-    #### `xlim : 'tight' | tuple | None`
+    xlim : 'tight' | tuple | None
         X limits for plots.
-    #### `proj : bool | 'interactive'`
+    proj : bool | 'interactive'
         If true SSP projections are applied before display. If 'interactive',
         a check box for reversible selection of SSP projection vectors will
         be shown.
-    #### `units : dict | None`
+    units : dict | None
         The units of the channel types used for axes labels. If None,
         defaults to ``dict(eeg='µV', grad='fT/cm', mag='fT')``.
-    #### `scalings : dict | None`
+    scalings : dict | None
         The scalings of the channel types to be applied for plotting. If None,`
         defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
-    #### `titles : dict | None`
+    titles : dict | None
         The titles associated with the channels. If None, defaults to
         ``dict(eeg='EEG', grad='Gradiometers', mag='Magnetometers')``.
-    #### `axes : instance of Axes | list | dict | None`
+    axes : instance of Axes | list | dict | None
         The axes to plot to. If list, the list must be a list of Axes of
         the same length as the number of channel types. If instance of
         Axes, there must be only one channel type plotted.
@@ -381,7 +375,7 @@ def plot_evoked_image(
         of lists of axes, with the keys matching those of ``group_by``. In that
         case, the provided axes will be used for the corresponding groups.
         Defaults to ``None``.
-    #### `cmap : matplotlib colormap | (colormap, bool) | 'interactive'`
+    cmap : matplotlib colormap | (colormap, bool) | 'interactive'
         Colormap. If tuple, the first value indicates the colormap to use and
         the second value is a boolean defining interactivity. In interactive
         mode the colors are adjustable by clicking and dragging the colorbar
@@ -390,18 +384,18 @@ def plot_evoked_image(
         resets the scale. Up and down arrows can be used to change the
         colormap. If 'interactive', translates to ``('RdBu_r', True)``.
         Defaults to ``'RdBu_r'``.
-    #### `colorbar : bool`
+    colorbar : bool
         If True, plot a colorbar. Defaults to True.
 
         ✨ Added in version 0.16
-    #### `mask : ndarray | None`
+    mask : ndarray | None
         An array of booleans of the same shape as the data. Entries of the
         data that correspond to ``False`` in the mask are masked (see
         ``do_mask`` below). Useful for, e.g., masking for statistical
         significance.
 
         ✨ Added in version 0.16
-    #### `mask_style : None | 'both' | 'contour' | 'mask'`
+    mask_style : None | 'both' | 'contour' | 'mask'
         If ``mask`` is not None: if 'contour', a contour line is drawn around
         the masked areas (``True`` in ``mask``). If 'mask', entries not
         ``True`` in ``mask`` are shown transparently. If 'both', both a contour
@@ -410,29 +404,29 @@ def plot_evoked_image(
         otherwise.
 
          ✨ Added in version 0.16
-    #### `mask_cmap : matplotlib colormap | (colormap, bool) | 'interactive'`
+    mask_cmap : matplotlib colormap | (colormap, bool) | 'interactive'
         The colormap chosen for masked parts of the image (see below), if
         ``mask`` is not ``None``. If None, ``cmap`` is reused. Defaults to
         ``Greys``. Not interactive. Otherwise, as ``cmap``.
-    #### `mask_alpha : float`
+    mask_alpha : float
         A float between 0 and 1. If ``mask`` is not None, this sets the
         alpha level (degree of transparency) for the masked-out segments.
         I.e., if 0, masked-out segments are not visible at all.
         Defaults to .25.
 
         ✨ Added in version 0.16
-    #### `time_unit : str`
+    time_unit : str
         The units for the time axis, can be "ms" or "s" (default).
 
         ✨ Added in version 0.16
-    #### `show_names : bool | 'auto' | 'all'`
+    show_names : bool | 'auto' | 'all'
         Determines if channel names should be plotted on the y axis. If False,
         no names are shown. If True, ticks are set automatically by matplotlib
         and the corresponding channel names are shown. If "all", all channel
         names are shown. If "auto", is set to False if ``picks`` is ``None``,
         to ``True`` if ``picks`` contains 25 or more entries, or to "all"
         if ``picks`` contains fewer than 25 entries.
-    #### `group_by : None | dict`
+    group_by : None | dict
         If a dict, the values must be picks, and ``axes`` must also be a dict
         with matching keys, or None. If ``axes`` is None, one figure and one
         axis will be created for each entry in ``group_by``.Then, for each
@@ -444,7 +438,7 @@ def plot_evoked_image(
             group_by=dict(Left_ROI=[1, 2, 3, 4], Right_ROI=[5, 6, 7, 8])
 
         If None, all picked channels are plotted to the same axis.
-    #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -459,10 +453,9 @@ def plot_evoked_image(
         ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of matplotlib.figure.Figure`
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
         Figure containing the images.
     """
     ...
@@ -477,7 +470,7 @@ def plot_evoked_white(
     axes=None,
     verbose=None,
 ):
-    """## Plot whitened evoked response.
+    """Plot whitened evoked response.
 
     Plots the whitened evoked response and the whitened GFP as described in
     :footcite:`EngemannGramfort2015`. This function is especially useful for
@@ -485,17 +478,16 @@ def plot_evoked_white(
     properly whitened (e.g., achieving expected values in line with model
     assumptions, see Notes below).
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : instance of mne.Evoked`
+    Parameters
+    ----------
+    evoked : instance of mne.Evoked
         The evoked response.
-    #### `noise_cov : list | instance of Covariance | path-like`
+    noise_cov : list | instance of Covariance | path-like
         The noise covariance. Can be a string to load a covariance from disk.
-    #### `show : bool`
+    show : bool
         Show figure if True.
 
-    #### `rank : None | 'info' | 'full' | dict`
+    rank : None | 'info' | 'full' | dict
         This controls the rank computation that can be read from the
         measurement info or estimated from the data. When a noise covariance
         is used for whitening, this should reflect the rank of that covariance,
@@ -521,29 +513,29 @@ def plot_evoked_white(
         `dict`
             Calculate the rank only for a subset of channel types, and explicitly
             specify the rank for the remaining channel types. This can be
-            extremely useful if you already `know` the rank of (part of) your
+            extremely useful if you already **know** the rank of (part of) your
             data, for instance in case you have calculated it earlier.
 
-            This parameter must be a dictionary whose `keys` correspond to
+            This parameter must be a dictionary whose **keys** correspond to
             channel types in the data (e.g. ``'meg'``, ``'mag'``, ``'grad'``,
-            ``'eeg'``), and whose `values` are integers representing the
+            ``'eeg'``), and whose **values** are integers representing the
             respective ranks. For example, ``{'mag': 90, 'eeg': 45}`` will assume
             a rank of ``90`` and ``45`` for magnetometer data and EEG data,
             respectively.
 
             The ranks for all channel types present in the data, but
-            `not` specified in the dictionary will be estimated empirically.
+            **not** specified in the dictionary will be estimated empirically.
             That is, if you passed a dataset containing magnetometer, gradiometer,
             and EEG data together with the dictionary from the previous example,
             only the gradiometer rank would be determined, while the specified
             magnetometer and EEG ranks would be taken for granted.
 
         The default is ``None``.
-    #### `time_unit : str`
+    time_unit : str
         The units for the time axis, can be "ms" or "s" (default).
 
         ✨ Added in version 0.16
-    #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -557,31 +549,28 @@ def plot_evoked_white(
 
         ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
-    #### `axes : list | None`
+    axes : list | None
         List of axes to plot into.
 
         ✨ Added in version 0.21.0
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of matplotlib.figure.Figure`
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
         The figure object containing the plot.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.Evoked.plot
 
+    Notes
     -----
-    ### 📖 Notes
-
     If baseline signals match the assumption of Gaussian white noise,
     values should be centered at 0, and be within 2 standard deviations
     (±1.96) for 95% of the time points. For the global field power (GFP),
@@ -606,37 +595,34 @@ def plot_evoked_white(
     ...
 
 def plot_snr_estimate(evoked, inv, show: bool = True, axes=None, verbose=None):
-    """## Plot a data SNR estimate.
+    """Plot a data SNR estimate.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : instance of Evoked`
+    Parameters
+    ----------
+    evoked : instance of Evoked
         The evoked instance. This should probably be baseline-corrected.
-    #### `inv : instance of InverseOperator`
+    inv : instance of InverseOperator
         The minimum-norm inverse operator.
-    #### `show : bool`
+    show : bool
         Show figure if True.
-    #### `axes : instance of Axes | None`
+    axes : instance of Axes | None
         The axes to plot into.
 
         ✨ Added in version 0.21.0
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of matplotlib.figure.Figure`
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
         The figure object containing the plot.
 
+    Notes
     -----
-    ### 📖 Notes
-
     The bluish green line is the SNR determined by the GFP of the whitened
     evoked data. The orange line is the SNR estimated based on the mismatch
     between the data and the data re-estimated from the regularized inverse.
@@ -655,29 +641,28 @@ def plot_evoked_joint(
     ts_args=None,
     topomap_args=None,
 ):
-    """## Plot evoked data as butterfly plot and add topomaps for time points.
+    """Plot evoked data as butterfly plot and add topomaps for time points.
 
-    ### 💡 Note Axes to plot in can be passed by the user through ``ts_args`` or
+    💡 Note Axes to plot in can be passed by the user through ``ts_args`` or
               ``topomap_args``. In that case both ``ts_args`` and
               ``topomap_args`` axes have to be used. Be aware that when the
               axes are provided, their position may be slightly modified.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evoked : instance of Evoked`
+    Parameters
+    ----------
+    evoked : instance of Evoked
         The evoked instance.
-    #### `times : float | array of float | "auto" | "peaks"`
+    times : float | array of float | "auto" | "peaks"
         The time point(s) to plot. If ``"auto"``, 5 evenly spaced topographies
         between the first and last time instant will be shown. If ``"peaks"``,
         finds time points automatically by checking for 3 local maxima in
         Global Field Power. Defaults to ``"peaks"``.
-    #### `title : str | None`
+    title : str | None
         The title. If ``None``, suppress printing channel type title. If an
         empty string, a default title is created. Defaults to ''. If custom
         axes are passed make sure to set ``title=None``, otherwise some of your
         axes may be removed during placement of the title axis.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -686,19 +671,19 @@ def plot_evoked_joint(
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    #### `exclude : None | list of str | 'bads'`
+    exclude : None | list of str | 'bads'
         Channels names to exclude from being shown. If ``'bads'``, the
         bad channels are excluded. Defaults to ``None``.
-    #### `show : bool`
+    show : bool
         Show figure if ``True``. Defaults to ``True``.
-    #### `ts_args : None | dict`
+    ts_args : None | dict
         A dict of ``kwargs`` that are forwarded to `mne.Evoked.plot` to
         style the butterfly plot. If they are not in this dict, the following
         defaults are passed: ``spatial_colors=True``, ``zorder='std'``.
         ``show`` and ``exclude`` are illegal.
         If ``None``, no customizable arguments will be passed.
         Defaults to ``None``.
-    #### `topomap_args : None | dict`
+    topomap_args : None | dict
         A dict of ``kwargs`` that are forwarded to
         `mne.Evoked.plot_topomap` to style the topomaps.
         If it is not in this dict, ``outlines='head'`` will be passed.
@@ -706,17 +691,15 @@ def plot_evoked_joint(
         If ``None``, no customizable arguments will be passed.
         Defaults to ``None``.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of matplotlib.figure.Figure | list`
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure | list
         The figure object containing the plot. If ``evoked`` has multiple
         channel types, a list of figures, one for each channel type, is
         returned.
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.12.0
     """
     ...
@@ -744,12 +727,11 @@ def plot_compare_evokeds(
     sphere=None,
     time_unit: str = "s",
 ):
-    """## Plot evoked time courses for one or more conditions and/or channels.
+    """Plot evoked time courses for one or more conditions and/or channels.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `evokeds : instance of mne.Evoked | list | dict`
+    Parameters
+    ----------
+    evokeds : instance of mne.Evoked | list | dict
         If a single Evoked instance, it is plotted as a time series.
         If a list of Evokeds, the contents are plotted with their
         ``.comment`` attributes used as condition labels. If no comment is set,
@@ -762,7 +744,7 @@ def plot_compare_evokeds(
         area. All instances must have the same shape - channel numbers, time
         points etc.
         If dict, keys must be of type str.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -780,7 +762,7 @@ def plot_compare_evokeds(
         * If the selected channels are gradiometers, the signal from
           corresponding (gradiometer) pairs will be combined.
 
-    #### `colors : list | dict | None`
+    colors : list | dict | None
         Colors to use when plotting the ERP/F lines and confidence bands. If
         ``cmap`` is not ``None``, ``colors`` must be a `list` or
         `dict` of `ints <int>` or `floats <float>`
@@ -794,14 +776,14 @@ def plot_compare_evokeds(
         :doc:`matplotlib color cycle
         <matplotlib:gallery/color/color_cycle_default>`
         is used. Defaults to ``None``.
-    #### `linestyles : list | dict | None`
+    linestyles : list | dict | None
         Styles to use when plotting the ERP/F lines. If a `list` or
         `dict`, elements must be valid :doc:`matplotlib linestyles
         <matplotlib:gallery/lines_bars_and_markers/linestyles>`. Lists are
         cycled through sequentially; dictionaries must have keys matching the
         keys or conditions of an ``evokeds`` dict (see Notes for details). If
         ``None``, all lines will be solid. Defaults to ``None``.
-    #### `styles : dict | None`
+    styles : dict | None
         Dictionary of styles to use when plotting ERP/F lines. Keys must match
         keys or conditions of ``evokeds``, and values must be a `dict`
         of legal inputs to `matplotlib.pyplot.plot`. Those values will be
@@ -811,7 +793,7 @@ def plot_compare_evokeds(
         "Aud/L" to 3). As with ``colors`` and ``linestyles``, keys matching
         conditions in ``/``-separated ``evokeds`` keys are supported (see Notes
         for details).
-    #### `cmap : None | str | tuple | instance of matplotlib.colors.Colormap`
+    cmap : None | str | tuple | instance of matplotlib.colors.Colormap
         Colormap from which to draw color values when plotting the ERP/F lines
         and confidence bands. If not ``None``, ints or floats in the ``colors``
         parameter are mapped to steps or percentiles (respectively) along the
@@ -824,12 +806,12 @@ def plot_compare_evokeds(
         🎭 Changed in version 0.19
             Support for passing `matplotlib.colors.Colormap` instances.
 
-    #### `vlines : "auto" | list of float`
+    vlines : "auto" | list of float
         A list in seconds at which to plot dashed vertical lines.
         If "auto" and the supplied data includes 0, it is set to [0.]
         and a vertical bar is plotted at time 0. If an empty list is passed,
         no vertical lines are plotted.
-    #### `ci : float | bool | callable | None`
+    ci : float | bool | callable | None
         Confidence band around each ERP/F time series. If ``False`` or ``None``
         no confidence band is drawn. If `float`, ``ci`` must be between
         0 and 1, and will set the threshold for a bootstrap
@@ -838,42 +820,42 @@ def plot_compare_evokeds(
         (i.e., the 95% confidence band is drawn). If a callable, it must take
         a single array (n_observations × n_times) as input and return upper and
         lower confidence margins (2 × n_times). Defaults to ``True``.
-    #### `truncate_yaxis : bool | 'auto'`
+    truncate_yaxis : bool | 'auto'
         Whether to shorten the y-axis spine. If 'auto', the spine is truncated
         at the minimum and maximum ticks. If ``True``, it is truncated at the
         multiple of 0.25 nearest to half the maximum absolute value of the
         data. If ``truncate_xaxis=False``, only the far bound of the y-axis
         will be truncated. Defaults to 'auto'.
-    #### `truncate_xaxis : bool`
+    truncate_xaxis : bool
         Whether to shorten the x-axis spine. If ``True``, the spine is
         truncated at the minimum and maximum ticks. If
         ``truncate_yaxis=False``, only the far bound of the x-axis will be
         truncated. Defaults to ``True``.
-    #### `ylim : dict | None`
+    ylim : dict | None
         Y-axis limits for plots (after scaling has been applied). `dict`
         keys should match channel types; valid keys are eeg, mag, grad, misc
         (example: ``ylim=dict(eeg=[-20, 20])``). If ``None``, the y-axis limits
         will be set automatically by matplotlib. Defaults to ``None``.
-    #### `invert_y : bool`
+    invert_y : bool
         Whether to plot negative values upward (as is sometimes done
         for ERPs out of tradition). Defaults to ``False``.
-    #### `show_sensors : bool | int | str | None`
+    show_sensors : bool | int | str | None
         Whether to display an inset showing sensor locations on a head outline.
         If `int` or `str`, indicates position of the inset (see
         `mpl_toolkits.axes_grid1.inset_locator.inset_axes`). If ``None``,
         treated as ``True`` if there is only one channel in ``picks``. If
         ``True``, location is upper or lower right corner, depending on data
         values. Defaults to ``None``.
-    #### `legend : bool | int | str`
+    legend : bool | int | str
         Whether to show a legend for the colors/linestyles of the conditions
         plotted. If `int` or `str`, indicates position of the
         legend (see `mpl_toolkits.axes_grid1.inset_locator.inset_axes`).
         If ``True``, equivalent to ``'upper left'``. Defaults to ``True``.
-    #### `split_legend : bool | None`
+    split_legend : bool | None
         Whether to separate color and linestyle in the legend. If ``None``,
         a separate linestyle legend will still be shown if ``cmap`` is
         specified. Defaults to ``None``.
-    #### `axes : None | Axes instance | list of Axes | 'topo'`
+    axes : None | Axes instance | list of Axes | 'topo'
         `matplotlib.axes.Axes` object to plot into. If plotting
         multiple channel types (or multiple channels when ``combine=None``),
         ``axes`` should be a list of appropriate length containing
@@ -882,14 +864,14 @@ def plot_compare_evokeds(
         channel, in a topographical layout. If ``None``, a new
         `matplotlib.figure.Figure` is created for each channel type.
         Defaults to ``None``.
-    #### `title : str | None`
+    title : str | None
         Title printed above the plot. If ``None``, a title will be
         automatically generated based on channel name(s) or type(s) and the
         value of the ``combine`` parameter. Defaults to ``None``.
-    #### `show : bool`
+    show : bool
         Whether to show the figure. Defaults to ``True``.
 
-    #### `combine : None | str | callable`
+    combine : None | str | callable
         How to combine information across channels. If a `str`, must be
         one of 'mean', 'median', 'std' (standard deviation) or 'gfp' (global
         field power).
@@ -904,7 +886,7 @@ def plot_compare_evokeds(
         unless ``picks`` is a single channel (not channel type) or
         ``axes='topo'``, in which cases no combining is performed. Defaults to
         ``None``.
-    #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -918,20 +900,18 @@ def plot_compare_evokeds(
 
         ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
-    #### `time_unit : str`
+    time_unit : str
         The units for the time axis, can be "s" (default) or "ms".
 
         ✨ Added in version 1.1
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : list of Figure instances`
+    Returns
+    -------
+    fig : list of Figure instances
         A list of the figure(s) generated.
 
+    Notes
     -----
-    ### 📖 Notes
-
     If the parameters ``styles``, ``colors``, or ``linestyles`` are passed as
     `dicts <python:dict>`, then ``evokeds`` must also be a
     `python:dict`, and

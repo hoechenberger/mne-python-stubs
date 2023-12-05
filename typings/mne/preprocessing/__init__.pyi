@@ -46,7 +46,6 @@ from .interpolate import (
     equalize_bads as equalize_bads,
     interpolate_bridged_electrodes as interpolate_bridged_electrodes,
 )
-from .maxfilter import apply_maxfilter as apply_maxfilter
 from .maxwell import (
     compute_maxwell_basis as compute_maxwell_basis,
     find_bad_channels_maxwell as find_bad_channels_maxwell,

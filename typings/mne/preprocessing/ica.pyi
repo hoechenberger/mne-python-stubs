@@ -3,18 +3,17 @@ from _typeshed import Incomplete
 from typing import NamedTuple
 
 def get_score_funcs():
-    """## Get the score functions.
+    """Get the score functions.
 
-    -----
-    ### ⏎ Returns
-
-    #### `score_funcs : dict`
+    Returns
+    -------
+    score_funcs : dict
         The score functions.
     """
     ...
 
 class ICA(ContainsMixin):
-    """## Data decomposition using Independent Component Analysis (ICA).
+    """Data decomposition using Independent Component Analysis (ICA).
 
     This object estimates independent components from `mne.io.Raw`,
     `mne.Epochs`, or `mne.Evoked` objects. Components can
@@ -24,10 +23,9 @@ class ICA(ContainsMixin):
                  requires the data to be high-pass filtered prior to fitting.
                  Typically, a cutoff frequency of 1 Hz is recommended.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `n_components : int | float | None`
+    Parameters
+    ----------
+    n_components : int | float | None
         Number of principal components (from the pre-whitening PCA step) that
         are passed to the ICA algorithm during fitting:
 
@@ -58,64 +56,63 @@ class ICA(ContainsMixin):
            for *greater than* the given variance level instead of *less than or
            equal to* it. The default (None) will also take into account the
            rank deficiency of the data.
-    #### `noise_cov : None | instance of Covariance`
+    noise_cov : None | instance of Covariance
         Noise covariance used for pre-whitening. If None (default), channels
         are scaled to unit variance ("z-standardized") as a group by channel
         type prior to the whitening by PCA.
 
-    #### `random_state : None | int | instance of ~numpy.random.RandomState`
+    random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
         (see  `numpy.random.RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
-    #### `method : 'fastica' | 'infomax' | 'picard'`
+    method : 'fastica' | 'infomax' | 'picard'
         The ICA method to use in the fit method. Use the ``fit_params`` argument
         to set additional parameters. Specifically, if you want Extended
         Infomax, set ``method='infomax'`` and ``fit_params=dict(extended=True)``
         (this also works for ``method='picard'``). Defaults to ``'fastica'``.
         For reference, see :footcite:`Hyvarinen1999,BellSejnowski1995,LeeEtAl1999,AblinEtAl2018`.
-    #### `fit_params : dict | None`
+    fit_params : dict | None
         Additional parameters passed to the ICA estimator as specified by
         ``method``. Allowed entries are determined by the various algorithm
         implementations: see `sklearn.decomposition.FastICA`,
         `picard.picard`, `mne.preprocessing.infomax`.
-    #### `max_iter : int | 'auto'`
+    max_iter : int | 'auto'
         Maximum number of iterations during fit. If ``'auto'``, it
         will set maximum iterations to ``1000`` for ``'fastica'``
         and to ``500`` for ``'infomax'`` or ``'picard'``. The actual number of
         iterations it took `ICA.fit` to complete will be stored in the
         ``n_iter_`` attribute.
-    #### `allow_ref_meg : bool`
+    allow_ref_meg : bool
         Allow ICA on MEG reference channels. Defaults to False.
 
         ✨ Added in version 0.18
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 📊 Attributes
-
-    #### `current_fit : 'unfitted' | 'raw' | 'epochs'`
+    Attributes
+    ----------
+    current_fit : 'unfitted' | 'raw' | 'epochs'
         Which data type was used for the fit.
-    #### `ch_names : list-like`
+    ch_names : list-like
         Channel names resulting from initial picking.
-    #### `n_components_ : int`
+    n_components_ : int
         If fit, the actual number of PCA components used for ICA decomposition.
-    #### `pre_whitener_ : ndarray, shape (n_channels, 1) or (n_channels, n_channels)`
+    pre_whitener_ : ndarray, shape (n_channels, 1) or (n_channels, n_channels)
         If fit, array used to pre-whiten the data prior to PCA.
-    #### `pca_components_ : ndarray, shape ``(n_channels, n_channels)```
+    pca_components_ : ndarray, shape ``(n_channels, n_channels)``
         If fit, the PCA components.
-    #### `pca_mean_ : ndarray, shape (n_channels,)`
+    pca_mean_ : ndarray, shape (n_channels,)
         If fit, the mean vector used to center the data before doing the PCA.
-    #### `pca_explained_variance_ : ndarray, shape ``(n_channels,)```
+    pca_explained_variance_ : ndarray, shape ``(n_channels,)``
         If fit, the variance explained by each PCA component.
-    #### `mixing_matrix_ : ndarray, shape ``(n_components_, n_components_)```
+    mixing_matrix_ : ndarray, shape ``(n_components_, n_components_)``
         If fit, the whitened mixing matrix to go back from ICA space to PCA
         space.
         It is, in combination with the ``pca_components_``, used by
@@ -123,12 +120,12 @@ class ICA(ContainsMixin):
         a subset of the ICA components into the observed channel space.
         The former method also removes the pre-whitening (z-scaling) and the
         de-meaning.
-    #### `unmixing_matrix_ : ndarray, shape ``(n_components_, n_components_)```
+    unmixing_matrix_ : ndarray, shape ``(n_components_, n_components_)``
         If fit, the whitened matrix to go from PCA space to ICA space.
         Used, in combination with the ``pca_components_``, by the methods
         `ICA.get_sources` and `ICA.apply` to unmix the observed
         data.
-    #### `exclude : array-like of int`
+    exclude : array-like of int
         List or np.array of sources indices to exclude when re-mixing the data
         in the `ICA.apply` method, i.e. artifactual ICA components.
         The components identified manually and by the various automatic
@@ -138,20 +135,19 @@ class ICA(ContainsMixin):
         method.) To scrap all marked components, set this attribute to an empty
         list.
 
-    #### `info : mne.Info | None`
+    info : mne.Info | None
         The `mne.Info` object with information about the sensors and methods of measurement.
-    #### `n_samples_ : int`
+    n_samples_ : int
         The number of samples used on fit.
-    #### `labels_ : dict`
+    labels_ : dict
         A dictionary of independent component indices, grouped by types of
         independent components. This attribute is set by some of the artifact
         detection functions.
-    #### `n_iter_ : int`
+    n_iter_ : int
         If fit, the number of iterations required to complete ICA.
 
+    Notes
     -----
-    ### 📖 Notes
-
     🎭 Changed in version 0.23
         Version 0.23 introduced the ``max_iter='auto'`` settings for maximum
         iterations. With version 0.24 ``'auto'`` will be the new
@@ -160,8 +156,8 @@ class ICA(ContainsMixin):
     🎭 Changed in version 0.23
         Warn if `mne.Epochs` were baseline-corrected.
 
-    ### 💡 Note If you intend to fit ICA on `mne.Epochs`, it is  recommended to
-              high-pass filter, but `not` baseline correct the data for good
+    💡 Note If you intend to fit ICA on `mne.Epochs`, it is  recommended to
+              high-pass filter, but **not** baseline correct the data for good
               ICA performance. A warning will be emitted otherwise.
 
     A trailing ``_`` in an attribute name signifies that the attribute was
@@ -210,7 +206,7 @@ class ICA(ContainsMixin):
     ``n_pca_components=n`` during `apply`. The resulting reconstructed
     data after `apply` will have rank ``n``.
 
-    ### 💡 Note Commonly used for reasons of i) computational efficiency and
+    💡 Note Commonly used for reasons of i) computational efficiency and
               ii) additional noise reduction, it is a matter of current debate
               whether pre-ICA dimensionality reduction could decrease the
               reliability and stability of the ICA, at least for EEG data and
@@ -242,7 +238,7 @@ class ICA(ContainsMixin):
     see `sklearn.decomposition.FastICA`, `picard.picard`,
     `mne.preprocessing.infomax`.
 
-    ### 💡 Note Picard can be used to solve the same problems as FastICA,
+    💡 Note Picard can be used to solve the same problems as FastICA,
               Infomax, and extended Infomax, but typically converges faster
               than either of those methods. To make use of Picard's speed while
               still obtaining the same solution as with other algorithms, you
@@ -304,19 +300,18 @@ class ICA(ContainsMixin):
         reject_by_annotation: bool = True,
         verbose=None,
     ):
-        """## Run the ICA decomposition on raw data.
+        """Run the ICA decomposition on raw data.
 
         Caveat! If supplying a noise covariance keep track of the projections
         available in the cov, the raw or the epochs object. For example,
         if you are interested in EOG or ECG artifacts, EOG and ECG projections
         should be temporally removed before fitting the ICA.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw or Epochs`
+        Parameters
+        ----------
+        inst : instance of Raw or Epochs
             The data to be decomposed.
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -326,23 +321,23 @@ class ICA(ContainsMixin):
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
             This selection remains throughout the initialized ICA solution.
-        #### `start, stop : int | float | None`
+        start, stop : int | float | None
             First and last sample to include. If float, data will be
             interpreted as time in seconds. If ``None``, data will be used from
             the first sample and to the last sample, respectively.
 
-            ### 💡 Note These parameters only have an effect if ``inst`` is
+            💡 Note These parameters only have an effect if ``inst`` is
                       `mne.io.Raw` data.
-        #### `decim : int | None`
+        decim : int | None
             Increment for selecting only each n-th sampling point. If ``None``,
             all samples  between ``start`` and ``stop`` (inclusive) are used.
-        #### `reject, flat : dict | None`
+        reject, flat : dict | None
             Rejection parameters based on peak-to-peak amplitude (PTP)
             in the continuous data. Signal periods exceeding the thresholds
             in ``reject`` or less than the thresholds in ``flat`` will be
             removed before fitting the ICA.
 
-            ### 💡 Note These parameters only have an effect if ``inst`` is
+            💡 Note These parameters only have an effect if ``inst`` is
                       `mne.io.Raw` data. For `mne.Epochs`, perform PTP
                       rejection via `mne.Epochs.drop_bad`.
 
@@ -358,13 +353,13 @@ class ICA(ContainsMixin):
                     eog=250e-6 # V (EOG channels)
                 )
                 flat = None  # no rejection based on flatness
-        #### `tstep : float`
+        tstep : float
             Length of data chunks for artifact rejection in seconds.
 
-            ### 💡 Note This parameter only has an effect if ``inst`` is
+            💡 Note This parameter only has an effect if ``inst`` is
                       `mne.io.Raw` data.
 
-        #### `reject_by_annotation : bool`
+        reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
@@ -373,58 +368,55 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.14.0
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `self : instance of ICA`
+        Returns
+        -------
+        self : instance of ICA
             Returns the modified instance.
         """
         ...
+
     def get_components(self):
-        """## Get ICA topomap for components as numpy arrays.
+        """Get ICA topomap for components as numpy arrays.
 
-        -----
-        ### ⏎ Returns
-
-        #### `components : array, shape (n_channels, n_components)`
+        Returns
+        -------
+        components : array, shape (n_channels, n_components)
             The ICA components (maps).
         """
         ...
+
     def get_explained_variance_ratio(self, inst, *, components=None, ch_type=None):
-        """## Get the proportion of data variance explained by ICA components.
+        """Get the proportion of data variance explained by ICA components.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : mne.io.BaseRaw | mne.BaseEpochs | mne.Evoked`
+        Parameters
+        ----------
+        inst : mne.io.BaseRaw | mne.BaseEpochs | mne.Evoked
             The uncleaned data.
-        #### `components : array-like of int | int | None`
+        components : array-like of int | int | None
             The component(s) for which to do the calculation. If more than one
             component is specified, explained variance will be calculated
             jointly across all supplied components. If ``None`` (default), uses
             all available components.
-        #### `ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | array-like of str | None`
+        ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | array-like of str | None
             The channel type(s) to include in the calculation. If ``None``, all
             available channel types will be used.
 
-        -----
-        ### ⏎ Returns
-
+        Returns
+        -------
         dict (str, float)
             The fraction of variance in ``inst`` that can be explained by the
             ICA components, calculated separately for each channel type.
             Dictionary keys are the channel types, and corresponding explained
             variance ratios are the values.
 
+        Notes
         -----
-        ### 📖 Notes
-
         A value similar to EEGLAB's ``pvaf`` (percent variance accounted for)
         will be calculated for the specified component(s).
 
@@ -436,8 +428,9 @@ class ICA(ContainsMixin):
         ✨ Added in version 1.2
         """
         ...
+
     def get_sources(self, inst, add_channels=None, start=None, stop=None):
-        """## Estimate sources given the unmixing matrix.
+        """Estimate sources given the unmixing matrix.
 
         This method will return the sources in the container format passed.
         Typical usecases:
@@ -446,28 +439,27 @@ class ICA(ContainsMixin):
         2. pass Epochs object to compute trial-based statistics in ICA space
         3. pass Evoked object to investigate time-locking in ICA space
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             Object to compute sources from and to represent sources in.
-        #### `add_channels : None | list of str`
+        add_channels : None | list of str
             Additional channels  to be added. Useful to e.g. compare sources
             with some reference. Defaults to None.
-        #### `start : int | float | None`
+        start : int | float | None
             First sample to include. If float, data will be interpreted as
             time in seconds. If None, the entire data will be used.
-        #### `stop : int | float | None`
+        stop : int | float | None
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, the entire data will be used.
 
-        -----
-        ### ⏎ Returns
-
-        #### `sources : instance of Raw, Epochs or Evoked`
+        Returns
+        -------
+        sources : instance of Raw, Epochs or Evoked
             The ICA sources time series.
         """
         ...
+
     def score_sources(
         self,
         inst,
@@ -480,20 +472,19 @@ class ICA(ContainsMixin):
         reject_by_annotation: bool = True,
         verbose=None,
     ):
-        """## Assign score to components based on statistic or metric.
+        """Assign score to components based on statistic or metric.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             The object to reconstruct the sources from.
-        #### `target : array-like | str | None`
+        target : array-like | str | None
             Signal to which the sources shall be compared. It has to be of
             the same shape as the sources. If str, a routine will try to find
             a matching channel name. If None, a score
             function expecting only one input-array argument must be used,
             for instance, scipy.stats.skew (default).
-        #### `score_func : callable | str`
+        score_func : callable | str
             Callable taking as arguments either two input arrays
             (e.g. Pearson correlation) or one input
             array (e. g. skewness) and returns a float. For convenience the
@@ -502,37 +493,37 @@ class ICA(ContainsMixin):
             functions from scipy.stats taking compatible input arguments are
             supported. These function have been modified to support iteration
             over the rows of a 2D array.
-        #### `start : int | float | None`
+        start : int | float | None
             First sample to include. If float, data will be interpreted as
             time in seconds. If None, data will be used from the first sample.
-        #### `stop : int | float | None`
+        stop : int | float | None
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, data will be used to the last sample.
-        #### `l_freq : float`
+        l_freq : float
             Low pass frequency.
-        #### `h_freq : float`
+        h_freq : float
             High pass frequency.
 
-        #### `reject_by_annotation : bool`
+        reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
 
             ✨ Added in version 0.14.0
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `scores : ndarray`
+        Returns
+        -------
+        scores : ndarray
             Scores for each source as returned from score_func.
         """
         ...
+
     def find_bads_ecg(
         self,
         inst,
@@ -547,52 +538,51 @@ class ICA(ContainsMixin):
         measure: str = "zscore",
         verbose=None,
     ):
-        """## Detect ECG related components.
+        """Detect ECG related components.
 
         Cross-trial phase statistics :footcite:`DammersEtAl2008` or Pearson
         correlation can be used for detection.
 
-        ### 💡 Note If no ECG channel is available, routine attempts to create
+        💡 Note If no ECG channel is available, routine attempts to create
                   an artificial ECG based on cross-channel averaging.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             Object to compute sources from.
-        #### `ch_name : str`
+        ch_name : str
             The name of the channel to use for ECG peak detection.
             The argument is mandatory if the dataset contains no ECG
             channels.
-        #### `threshold : float | 'auto'`
+        threshold : float | 'auto'
             Value above which a feature is classified as outlier. See Notes.
 
             🎭 Changed in version 0.21
-        #### `start : int | float | None`
+        start : int | float | None
             First sample to include. If float, data will be interpreted as
             time in seconds. If None, data will be used from the first sample.
             When working with Epochs or Evoked objects, must be float or None.
-        #### `stop : int | float | None`
+        stop : int | float | None
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, data will be used to the last sample.
             When working with Epochs or Evoked objects, must be float or None.
-        #### `l_freq : float`
+        l_freq : float
             Low pass frequency.
-        #### `h_freq : float`
+        h_freq : float
             High pass frequency.
-        #### `method : 'ctps' | 'correlation'`
+        method : 'ctps' | 'correlation'
             The method used for detection. If ``'ctps'``, cross-trial phase
             statistics :footcite:`DammersEtAl2008` are used to detect
             ECG-related components. See Notes.
 
-        #### `reject_by_annotation : bool`
+        reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
 
             ✨ Added in version 0.14.0
 
-        #### `measure : 'zscore' | 'correlation'`
+        measure : 'zscore' | 'correlation'
             Which method to use for finding outliers among the components:
 
             - ``'zscore'`` (default) is the iterative z-scoring method. This method
@@ -604,29 +594,26 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.21
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `ecg_idx : list of int`
+        Returns
+        -------
+        ecg_idx : list of int
             The indices of ECG-related components.
-        #### `scores : np.ndarray of float, shape (``n_components_``)`
+        scores : np.ndarray of float, shape (``n_components_``)
             If method is 'ctps', the normalized Kuiper index scores. If method
             is 'correlation', the correlation scores.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         find_bads_eog, find_bads_ref, find_bads_muscle
 
+        Notes
         -----
-        ### 📖 Notes
-
         The ``threshold``, ``method``, and ``measure`` parameters interact in
         the following ways:
 
@@ -646,6 +633,7 @@ class ICA(ContainsMixin):
         .. footbibliography::
         """
         ...
+
     def find_bads_ref(
         self,
         inst,
@@ -660,18 +648,17 @@ class ICA(ContainsMixin):
         measure: str = "zscore",
         verbose=None,
     ):
-        """## Detect MEG reference related components using correlation.
+        """Detect MEG reference related components using correlation.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             Object to compute sources from. Should contain at least one channel
             i.e. component derived from MEG reference channels.
-        #### `ch_name : list of str`
+        ch_name : list of str
             Which MEG reference components to use. If None, then all channels
             that begin with REF_ICA.
-        #### `threshold : float | str`
+        threshold : float | str
             Value above which a feature is classified as outlier.
 
             - If ``measure`` is ``'zscore'``, defines the threshold on the
@@ -684,28 +671,28 @@ class ICA(ContainsMixin):
              ### ⛔️ Warning
                  If ``method`` is ``'together'``, the iterative z-score method
                  is always used.
-        #### `start : int | float | None`
+        start : int | float | None
             First sample to include. If float, data will be interpreted as
             time in seconds. If None, data will be used from the first sample.
-        #### `stop : int | float | None`
+        stop : int | float | None
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, data will be used to the last sample.
-        #### `l_freq : float`
+        l_freq : float
             Low pass frequency.
-        #### `h_freq : float`
+        h_freq : float
             High pass frequency.
 
-        #### `reject_by_annotation : bool`
+        reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
-        #### `method : 'together' | 'separate'`
+        method : 'together' | 'separate'
             Method to use to identify reference channel related components.
             Defaults to ``'together'``. See notes.
 
             ✨ Added in version 0.21
 
-        #### `measure : 'zscore' | 'correlation'`
+        measure : 'zscore' | 'correlation'
             Which method to use for finding outliers among the components:
 
             - ``'zscore'`` (default) is the iterative z-scoring method. This method
@@ -717,28 +704,25 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.21
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `ref_idx : list of int`
+        Returns
+        -------
+        ref_idx : list of int
             The indices of MEG reference related components, sorted by score.
-        #### `scores : np.ndarray of float, shape (``n_components_``) | list of array`
+        scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         find_bads_ecg, find_bads_eog, find_bads_muscle
 
+        Notes
         -----
-        ### 📖 Notes
-
         ICA decomposition on MEG reference channels is used to assess external
         magnetic noise and remove it from the MEG. Two methods are supported:
 
@@ -776,6 +760,7 @@ class ICA(ContainsMixin):
         .. footbibliography::
         """
         ...
+
     def find_bads_muscle(
         self,
         inst,
@@ -787,7 +772,7 @@ class ICA(ContainsMixin):
         sphere=None,
         verbose=None,
     ):
-        """## Detect muscle related components.
+        """Detect muscle related components.
 
         Detection is based on :footcite:`DharmapraniEtAl2016` which uses
         data from a subject who has been temporarily paralyzed
@@ -802,25 +787,24 @@ class ICA(ContainsMixin):
         has been modified to 45 Hz as a default based on the criteria being
         more accurate in practice.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             Object to compute sources from.
-        #### `threshold : float | str`
+        threshold : float | str
             Value above which a component should be marked as muscle-related,
             relative to a typical muscle component.
-        #### `start : int | float | None`
+        start : int | float | None
             First sample to include. If float, data will be interpreted as
             time in seconds. If None, data will be used from the first sample.
-        #### `stop : int | float | None`
+        stop : int | float | None
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, data will be used to the last sample.
-        #### `l_freq : float`
+        l_freq : float
             Low frequency for muscle-related power.
-        #### `h_freq : float`
+        h_freq : float
             High frequency for msucle related power.
-        #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -835,31 +819,29 @@ class ICA(ContainsMixin):
             ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `muscle_idx : list of int`
+        Returns
+        -------
+        muscle_idx : list of int
             The indices of EOG related components, sorted by score.
-        #### `scores : np.ndarray of float, shape (``n_components_``) | list of array`
+        scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         find_bads_ecg, find_bads_eog, find_bads_ref
 
+        Notes
         -----
-        ### 📖 Notes
-
         ✨ Added in version 1.1
         """
         ...
+
     def find_bads_eog(
         self,
         inst,
@@ -873,7 +855,7 @@ class ICA(ContainsMixin):
         measure: str = "zscore",
         verbose=None,
     ):
-        """## Detect EOG related components using correlation.
+        """Detect EOG related components using correlation.
 
         Detection is based on Pearson correlation between the
         filtered data and the filtered EOG channel.
@@ -881,16 +863,15 @@ class ICA(ContainsMixin):
         components will be masked and the z-score will be recomputed
         until no supra-threshold component remains.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             Object to compute sources from.
-        #### `ch_name : str`
+        ch_name : str
             The name of the channel to use for EOG peak detection.
             The argument is mandatory if the dataset contains no EOG
             channels.
-        #### `threshold : float | str`
+        threshold : float | str
             Value above which a feature is classified as outlier.
 
             - If ``measure`` is ``'zscore'``, defines the threshold on the
@@ -899,25 +880,25 @@ class ICA(ContainsMixin):
               threshold on the correlation between 0 and 1.
             - If ``'auto'``, defaults to 3.0 if ``measure`` is ``'zscore'`` and
               0.9 if ``measure`` is ``'correlation'``.
-        #### `start : int | float | None`
+        start : int | float | None
             First sample to include. If float, data will be interpreted as
             time in seconds. If None, data will be used from the first sample.
-        #### `stop : int | float | None`
+        stop : int | float | None
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, data will be used to the last sample.
-        #### `l_freq : float`
+        l_freq : float
             Low pass frequency.
-        #### `h_freq : float`
+        h_freq : float
             High pass frequency.
 
-        #### `reject_by_annotation : bool`
+        reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
 
             ✨ Added in version 0.14.0
 
-        #### `measure : 'zscore' | 'correlation'`
+        measure : 'zscore' | 'correlation'
             Which method to use for finding outliers among the components:
 
             - ``'zscore'`` (default) is the iterative z-scoring method. This method
@@ -929,26 +910,25 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.21
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `eog_idx : list of int`
+        Returns
+        -------
+        eog_idx : list of int
             The indices of EOG related components, sorted by score.
-        #### `scores : np.ndarray of float, shape (``n_components_``) | list of array`
+        scores : np.ndarray of float, shape (``n_components_``) | list of array
             The correlation scores.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         find_bads_ecg, find_bads_ref
         """
         ...
+
     def apply(
         self,
         inst,
@@ -961,44 +941,43 @@ class ICA(ContainsMixin):
         on_baseline: str = "warn",
         verbose=None,
     ):
-        """## Remove selected components from the signal.
+        """Remove selected components from the signal.
 
         Given the unmixing matrix, transform the data,
         zero out all excluded components, and inverse-transform the data.
         This procedure will reconstruct M/EEG signals from which
         the dynamics described by the excluded components is subtracted.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             The data to be processed (i.e., cleaned). It will be modified
             in-place.
-        #### `include : array_like of int`
+        include : array_like of int
             The indices referring to columns in the ummixing matrix. The
             components to be kept. If ``None`` (default), all components
             will be included (minus those defined in ``ica.exclude``
             and the ``exclude`` parameter, see below).
-        #### `exclude : array_like of int`
+        exclude : array_like of int
             The indices referring to columns in the ummixing matrix. The
             components to be zeroed out. If ``None`` (default) or an
             empty list, only components from ``ica.exclude`` will be
             excluded. Else, the union of ``exclude`` and ``ica.exclude``
             will be excluded.
 
-        #### `n_pca_components : int | float | None`
+        n_pca_components : int | float | None
             The number of PCA components to be kept, either absolute (int)
             or fraction of the explained variance (float). If None (default),
             the ``ica.n_pca_components`` from initialization will be used in 0.22;
             in 0.23 all components will be used.
-        #### `start : int | float | None`
+        start : int | float | None
             First sample to include. If float, data will be interpreted as
             time in seconds. If None, data will be used from the first sample.
-        #### `stop : int | float | None`
+        stop : int | float | None
             Last sample to not include. If float, data will be interpreted as
             time in seconds. If None, data will be used to the last sample.
 
-        #### `on_baseline : str`
+        on_baseline : str
             How to handle baseline-corrected epochs or evoked data.
             Can be ``'raise'`` to raise an error, ``'warn'`` (default) to emit a
             warning, ``'ignore'`` to ignore, or "reapply" to reapply the baseline
@@ -1006,22 +985,20 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 1.2
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `out : instance of Raw, Epochs or Evoked`
+        Returns
+        -------
+        out : instance of Raw, Epochs or Evoked
             The processed data.
 
+        Notes
         -----
-        ### 📖 Notes
-
-        ### 💡 Note Applying ICA may introduce a DC shift. If you pass
+        💡 Note Applying ICA may introduce a DC shift. If you pass
                   baseline-corrected `mne.Epochs` or `mne.Evoked` data,
                   the baseline period of the cleaned data may not be of
                   zero mean anymore. If you require baseline-corrected
@@ -1033,50 +1010,49 @@ class ICA(ContainsMixin):
             Warn if instance was baseline-corrected.
         """
         ...
+
     def save(self, fname, *, overwrite: bool = False, verbose=None):
-        """## Store ICA solution into a fiff file.
+        """Store ICA solution into a fiff file.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `fname : path-like`
+        Parameters
+        ----------
+        fname : path-like
             The absolute path of the file name to save the ICA solution into.
             The file name should end with ``-ica.fif`` or ``-ica.fif.gz``.
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
             ✨ Added in version 1.0
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `ica : instance of ICA`
+        Returns
+        -------
+        ica : instance of ICA
             The object.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         read_ica
         """
         ...
+
     def copy(self):
-        """## Copy the ICA object.
+        """Copy the ICA object.
 
-        -----
-        ### ⏎ Returns
-
-        #### `ica : instance of ICA`
+        Returns
+        -------
+        ica : instance of ICA
             The copied object.
         """
         ...
+
     def plot_components(
         self,
         picks=None,
@@ -1109,53 +1085,52 @@ class ICA(ContainsMixin):
         psd_args=None,
         verbose=None,
     ):
-        """## Project mixing matrix on interpolated sensor topography.
+        """Project mixing matrix on interpolated sensor topography.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : int | list of int | slice | None`
+        Parameters
+        ----------
+        picks : int | list of int | slice | None
             Indices of the independent components (ICs) to visualize.
             If an integer, represents the index of the IC to pick.
             Multiple ICs can be selected using a list of int or a slice.
             The indices are 0-indexed, so ``picks=1`` will pick the second
             IC: ``ICA001``. ``None`` will pick all independent components in the order
             fitted.
-        #### `ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None`
+        ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
             The channel type to plot. For ``'grad'``, the gradiometers are
             collected in pairs and the RMS for each pair is plotted. If
             ``None`` the first available channel type from order shown above is used. Defaults to ``None``.
-        #### `inst : Raw | Epochs | None`
+        inst : Raw | Epochs | None
             To be able to see component properties after clicking on component
             topomap you need to pass relevant data - instances of Raw or Epochs
             (for example the data that ICA was trained on). This takes effect
             only when running matplotlib in interactive mode.
-        #### `plot_std : bool | float`
+        plot_std : bool | float
             Whether to plot standard deviation in ERP/ERF and spectrum plots.
             Defaults to True, which plots one standard deviation above/below.
             If set to float allows to control how many standard deviations are
             plotted. For example 2.5 will plot 2.5 standard deviation above/below.
-        #### `reject : ``'auto'`` | dict | None`
+        reject : ``'auto'`` | dict | None
             Allows to specify rejection parameters used to drop epochs
             (or segments if continuous signal is passed as inst).
             If None, no rejection is applied. The default is 'auto',
             which applies the rejection parameters used when fitting
             the ICA object.
 
-        #### `sensors : bool | str`
+        sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
             Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
             default), black circles will be used.
 
-        #### `show_names : bool | callable`
+        show_names : bool | callable
             If ``True``, show channel names next to each sensor marker. If callable,
             channel names will be formatted using the callable; e.g., to
             delete the prefix 'MEG ' from all channel names, pass the function
             ``lambda x: x.replace('MEG ', '')``. If ``mask`` is not ``None``, only
             non-masked sensor names will be shown.
 
-        #### `contours : int | array-like`
+        contours : int | array-like
             The number of contour lines to draw. If ``0``, no contours will be drawn.
             If a positive integer, that number of contour levels are chosen using the
             matplotlib tick locator (may sometimes be inaccurate, use array for
@@ -1164,7 +1139,7 @@ class ICA(ContainsMixin):
             gradiometers. If ``colorbar=True``, the colorbar will have ticks
             corresponding to the contour levels. Default is ``6``.
 
-        #### `outlines : 'head' | dict | None`
+        outlines : 'head' | dict | None
             The outlines to be drawn. If 'head', the default head scheme will be
             drawn. If dict, each key refers to a tuple of x and y positions, the values
             in 'mask_pos' will serve as image mask.
@@ -1172,7 +1147,7 @@ class ICA(ContainsMixin):
             masking options, either directly or as a function that returns patches
             (required for multi-axis plots). If None, nothing will be drawn.
             Defaults to 'head'.
-        #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -1187,13 +1162,13 @@ class ICA(ContainsMixin):
             ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-        #### `image_interp : str`
+        image_interp : str
             The image interpolation to be used. Options are ``'cubic'`` (default)
             to use `scipy.interpolate.CloughTocher2DInterpolator`,
             ``'nearest'`` to use `scipy.spatial.Voronoi` or
             ``'linear'`` to use `scipy.interpolate.LinearNDInterpolator`.
 
-        #### `extrapolate : str`
+        extrapolate : str
             Options:
 
             - ``'box'``
@@ -1212,21 +1187,21 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 1.3
 
-        #### `border : float | 'mean'`
+        border : float | 'mean'
             Value to extrapolate to on the topomap borders. If ``'mean'`` (default),
             then each extrapolated point has the average value of its neighbours.
 
             ✨ Added in version 1.3
 
-        #### `res : int`
+        res : int
             The resolution of the topomap image (number of pixels along each side).
 
-        #### `size : float`
+        size : float
             Side length of each subplot in inches.
 
             ✨ Added in version 1.3
 
-        #### `cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None`
+        cmap : matplotlib colormap | (colormap, bool) | 'interactive' | None
             Colormap to use. If `tuple`, the first value indicates the colormap
             to use and the second value is a boolean defining interactivity. In
             interactive mode the colors are adjustable by clicking and dragging the
@@ -1241,7 +1216,7 @@ class ICA(ContainsMixin):
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
-        #### `vlim : tuple of length 2`
+        vlim : tuple of length 2
             Colormap limits to use. If a `tuple` of floats, specifies the
             lower and upper bounds of the colormap (in that order); providing
             ``None`` for either entry will set the corresponding boundary at the
@@ -1249,7 +1224,7 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 1.3
 
-        #### `cnorm : matplotlib.colors.Normalize | None`
+        cnorm : matplotlib.colors.Normalize | None
             How to normalize the colormap. If ``None``, standard linear normalization
             is performed. If not ``None``, ``vmin`` and ``vmax`` will be ignored.
             See `Matplotlib docs <matplotlib:colormapnorms>`
@@ -1258,22 +1233,22 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 1.3
 
-        #### `colorbar : bool`
+        colorbar : bool
             Plot a colorbar in the rightmost column of the figure.
-        #### `cbar_fmt : str`
+        cbar_fmt : str
             Formatting string for colorbar tick labels. See `formatspec` for
             details.
-        #### `axes : Axes | array of Axes | None`
+        axes : Axes | array of Axes | None
             The subplot(s) to plot to. Either a single Axes or an iterable of Axes
             if more than one subplot is needed. The number of subplots must match
             the number of selected components. If None, new figures will be created
             with the number of subplots per figure controlled by ``nrows`` and
             ``ncols``.
-        #### `title : str | None`
+        title : str | None
             The title of the generated figure. If ``None`` (default) and
             ``axes=None``, a default title of "ICA Components" will be used.
 
-        #### `nrows, ncols : int | 'auto'`
+        nrows, ncols : int | 'auto'
             The number of rows and columns of topographies to plot. If both ``nrows``
             and ``ncols`` are ``'auto'``, will plot up to 20 components in a 5×4 grid,
             and return multiple figures if more than 20 components are requested.
@@ -1283,32 +1258,30 @@ class ICA(ContainsMixin):
             ``nrows='auto', ncols='auto'``.
 
             ✨ Added in version 1.3
-        #### `show : bool`
+        show : bool
             Show the figure if ``True``.
-        #### `image_args : dict | None`
+        image_args : dict | None
             Dictionary of arguments to pass to `mne.viz.plot_epochs_image`
             in interactive mode. Ignored if ``inst`` is not supplied. If ``None``,
             nothing is passed. Defaults to ``None``.
-        #### `psd_args : dict | None`
+        psd_args : dict | None
             Dictionary of arguments to pass to `mne.Epochs.compute_psd` in
             interactive  mode. Ignored if ``inst`` is not supplied. If ``None``,
             nothing is passed. Defaults to ``None``.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : instance of matplotlib.figure.Figure | list of matplotlib.figure.Figure`
+        Returns
+        -------
+        fig : instance of matplotlib.figure.Figure | list of matplotlib.figure.Figure
             The figure object(s).
 
+        Notes
         -----
-        ### 📖 Notes
-
         When run in interactive mode, ``plot_ica_components`` allows to reject
         components by clicking on their title label. The state of each component
         is indicated by its label color (gray: rejected; black: retained). It is
@@ -1317,6 +1290,7 @@ class ICA(ContainsMixin):
         supplied).
         """
         ...
+
     def plot_properties(
         self,
         inst,
@@ -1335,33 +1309,32 @@ class ICA(ContainsMixin):
         *,
         verbose=None,
     ):
-        """## Display component properties.
+        """Display component properties.
 
         Properties include the topography, epochs image, ERP/ERF, power
         spectrum, and epoch variance.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Epochs or Raw`
+        Parameters
+        ----------
+        inst : instance of Epochs or Raw
             The data to use in plotting properties.
 
-            ### 💡 Note
+            💡 Note
                You can interactively cycle through topographic maps for different
                channel types by pressing :kbd:`T`.
-        #### `picks : int | list of int | slice | None`
+        picks : int | list of int | slice | None
             Indices of the independent components (ICs) to visualize.
             If an integer, represents the index of the IC to pick.
             Multiple ICs can be selected using a list of int or a slice.
             The indices are 0-indexed, so ``picks=1`` will pick the second
             IC: ``ICA001``. ``None`` will pick the first 5 components.
-        #### `axes : list of Axes | None`
+        axes : list of Axes | None
             List of five matplotlib axes to use in plotting: [topomap_axis,
             image_axis, erp_axis, spectrum_axis, variance_axis]. If None a new
             figure with relevant axes is created. Defaults to None.
         dB : bool
             Whether to plot spectrum in dB. Defaults to True.
-        #### `plot_std : bool | float`
+        plot_std : bool | float
             Whether to plot standard deviation/confidence intervals in ERP/ERF and
             spectrum plots.
             Defaults to True, which plots one standard deviation above/below for
@@ -1371,36 +1344,36 @@ class ICA(ContainsMixin):
             For the ERP/ERF, by default, plot the 95 percent parametric confidence
             interval is calculated. To change this, use ``ci`` in ``ts_args`` in
             ``image_args`` (see below).
-        #### `log_scale : bool`
+        log_scale : bool
             Whether to use a logarithmic frequency axis to plot the spectrum.
             Defaults to ``False``.
 
-            ### 💡 Note
+            💡 Note
                You can interactively toggle this setting by pressing :kbd:`L`.
 
             ✨ Added in version 1.1
-        #### `topomap_args : dict | None`
+        topomap_args : dict | None
             Dictionary of arguments to ``plot_topomap``. If None, doesn't pass any
             additional arguments. Defaults to None.
-        #### `image_args : dict | None`
+        image_args : dict | None
             Dictionary of arguments to ``plot_epochs_image``. If None, doesn't pass
             any additional arguments. Defaults to None.
-        #### `psd_args : dict | None`
+        psd_args : dict | None
             Dictionary of arguments to `mne.Epochs.compute_psd`. If
             ``None``, doesn't pass any additional arguments. Defaults to ``None``.
-        #### `figsize : array-like, shape (2,) | None`
+        figsize : array-like, shape (2,) | None
             Allows to control size of the figure. If None, the figure size
             defaults to [7., 6.].
-        #### `show : bool`
+        show : bool
             Show figure if True.
-        #### `reject : 'auto' | dict | None`
+        reject : 'auto' | dict | None
             Allows to specify rejection parameters used to drop epochs
             (or segments if continuous signal is passed as inst).
             If None, no rejection is applied. The default is 'auto',
             which applies the rejection parameters used when fitting
             the ICA object.
 
-        #### `reject_by_annotation : bool`
+        reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
             (default), annotated segments whose description begins with ``'bad'`` are
             omitted. If ``False``, no rejection based on annotations is performed.
@@ -1409,24 +1382,23 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.21.0
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : list`
+        Returns
+        -------
+        fig : list
             List of matplotlib figures.
 
+        Notes
         -----
-        ### 📖 Notes
-
         ✨ Added in version 0.13
         """
         ...
+
     def plot_sources(
         self,
         inst,
@@ -1446,7 +1418,7 @@ class ICA(ContainsMixin):
         overview_mode=None,
         splash: bool = True,
     ):
-        """## Plot estimated latent sources given the unmixing matrix.
+        """Plot estimated latent sources given the unmixing matrix.
 
         Typical usecases:
 
@@ -1454,20 +1426,19 @@ class ICA(ContainsMixin):
         2. plot latent source around event related time windows (Epochs input)
         3. plot time-locking in ICA space (Evoked input)
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw, Epochs or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw, Epochs or Evoked
             The object to plot the sources from.
 
-        #### `picks : int | list of int | slice | None`
+        picks : int | list of int | slice | None
             Indices of the independent components (ICs) to visualize.
             If an integer, represents the index of the IC to pick.
             Multiple ICs can be selected using a list of int or a slice.
             The indices are 0-indexed, so ``picks=1`` will pick the second
             IC: ``ICA001``. ``None`` will pick all independent components in the order
             fitted.
-        #### `start, stop : float | int | None`
+        start, stop : float | int | None
            If ``inst`` is a `mne.io.Raw` or an `mne.Evoked` object, the first and
            last time point (in seconds) of the data to plot. If ``inst`` is a
            `mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
@@ -1475,25 +1446,25 @@ class ICA(ContainsMixin):
            `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
            signal. If ``inst`` is an `mne.Epochs` object, specifies the index of
            the first and last epoch to show.
-        #### `title : str | None`
+        title : str | None
             The window title. If None a default is provided.
-        #### `show : bool`
+        show : bool
             Show figure if True.
-        #### `block : bool`
+        block : bool
             Whether to halt program execution until the figure is closed.
             Useful for interactive selection of components in raw and epoch
             plotter. For evoked, this parameter has no effect. Defaults to False.
-        #### `show_first_samp : bool`
+        show_first_samp : bool
             If True, show time axis relative to the ``raw.first_samp``.
 
-        #### `show_scrollbars : bool`
+        show_scrollbars : bool
             Whether to show scrollbars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
             ✨ Added in version 0.19.0
 
-        #### `time_format : 'float' | 'clock'`
+        time_format : 'float' | 'clock'
             Style of time labels on the horizontal axis. If ``'float'``, labels will be
             number of seconds from the start of the recording. If ``'clock'``,
             labels will show "clock time" (hours/minutes/seconds) inferred from
@@ -1501,7 +1472,7 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.24
 
-        #### `precompute : bool | str`
+        precompute : bool | str
             Whether to load all data (not just the visible portion) into RAM and
             apply preprocessing (e.g., projectors) to the full data array in a separate
             processor thread, instead of window-by-window during scrolling. The default
@@ -1514,7 +1485,7 @@ class ICA(ContainsMixin):
             🎭 Changed in version 1.0
                Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
-        #### `use_opengl : bool | None`
+        use_opengl : bool | None
             Whether to use OpenGL when rendering the plot (requires ``pyopengl``).
             May increase performance, but effect is dependent on system CPU and
             graphics hardware. Only works if using the Qt backend. Default is
@@ -1524,10 +1495,10 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.24
 
-        #### `theme : str | path-like`
+        theme : str | path-like
             Can be "auto", "light", or "dark" or a path-like to a
             custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-            `qdarkstyle` and
+            `qdarkstyle <https://github.com/ColinDuquesnoy/QDarkStyleSheet>`__ and
             `darkdetect <https://github.com/albertosottile/darkdetect>`__,
             respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
             defaulting to "auto" if it's not found.
@@ -1535,7 +1506,7 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 1.0
 
-        #### `overview_mode : str | None`
+        overview_mode : str | None
             Can be "channels", "empty", or "hidden" to set the overview bar mode
             for the ``'qt'`` backend. If None (default), the config option
             ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
@@ -1543,22 +1514,20 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 1.1
 
-        #### `splash : bool`
+        splash : bool
             If True (default), a splash screen is shown during the application startup. Only
             applicable to the ``qt`` backend.
 
             ✨ Added in version 1.6
 
-        -----
-        ### ⏎ Returns
+        Returns
+        -------
 
-
-        #### `fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser`
+        fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
             Browser instance.
 
+        Notes
         -----
-        ### 📖 Notes
-
         For raw and epoch instances, it is possible to select components for
         exclusion by clicking on the line. The selected components are added to
         ``ica.exclude`` on close.
@@ -1574,15 +1543,16 @@ class ICA(ContainsMixin):
         `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
-        ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+        💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
                   you must run the magic command ``%gui qt5`` first.
-        ### 💡 Note To report issues with the PyQtGraph backend, please use the
+        💡 Note To report issues with the PyQtGraph backend, please use the
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
 
         ✨ Added in version 0.10.0
         """
         ...
+
     def plot_scores(
         self,
         scores,
@@ -1594,46 +1564,45 @@ class ICA(ContainsMixin):
         n_cols=None,
         show: bool = True,
     ):
-        """## Plot scores related to detected components.
+        """Plot scores related to detected components.
 
         Use this function to asses how well your score describes outlier
         sources and how well you were detecting them.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `scores : array-like of float, shape (n_ica_components,) | list of array`
+        Parameters
+        ----------
+        scores : array-like of float, shape (n_ica_components,) | list of array
             Scores based on arbitrary metric to characterize ICA components.
-        #### `exclude : array-like of int`
+        exclude : array-like of int
             The components marked for exclusion. If None (default), ICA.exclude
             will be used.
-        #### `labels : str | list | 'ecg' | 'eog' | None`
+        labels : str | list | 'ecg' | 'eog' | None
             The labels to consider for the axes tests. Defaults to None.
             If list, should match the outer shape of ``scores``.
             If 'ecg' or 'eog', the ``labels_`` attributes will be looked up.
             Note that '/' is used internally for sublabels specifying ECG and
             EOG channels.
-        #### `axhline : float`
+        axhline : float
             Draw horizontal line to e.g. visualize rejection threshold.
-        #### `title : str`
+        title : str
             The figure title.
-        #### `figsize : tuple of int | None`
+        figsize : tuple of int | None
             The figure size. If None it gets set automatically.
-        #### `n_cols : int | None`
+        n_cols : int | None
             Scores are plotted in a grid. This parameter controls how
             many to plot side by side before starting a new row. By
             default, a number will be chosen to make the grid as square as
             possible.
-        #### `show : bool`
+        show : bool
             Show figure if True.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : instance of Figure`
+        Returns
+        -------
+        fig : instance of Figure
             The figure object.
         """
         ...
+
     def plot_overlay(
         self,
         inst,
@@ -1648,42 +1617,41 @@ class ICA(ContainsMixin):
         on_baseline: str = "warn",
         verbose=None,
     ):
-        """## Overlay of raw and cleaned signals given the unmixing matrix.
+        """Overlay of raw and cleaned signals given the unmixing matrix.
 
         This method helps visualizing signal quality and artifact rejection.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `inst : instance of Raw or Evoked`
+        Parameters
+        ----------
+        inst : instance of Raw or Evoked
             The signal to plot. If `mne.io.Raw`, the raw data per channel type is displayed
             before and after cleaning. A second panel with the RMS for MEG sensors and the
             :term:`GFP` for EEG sensors is displayed. If `mne.Evoked`, butterfly traces for
             signals before and after cleaning will be superimposed.
-        #### `exclude : array-like of int | None (default)`
+        exclude : array-like of int | None (default)
             The components marked for exclusion. If ``None`` (default), the components
             listed in ``ICA.exclude`` will be used.
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
             string values "all" to pick all channels, or "data" to pick :term:`data
             channels`. None (default) will pick all channels that were included during fitting.
-        #### `start, stop : float | None`
+        start, stop : float | None
            The first and last time point (in seconds) of the data to plot. If
            ``inst`` is a `mne.io.Raw` object, ``start=None`` and ``stop=None``
            will be translated into ``start=0.`` and ``stop=3.``, respectively. For
            `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
            signal.
 
-        #### `title : str | None`
+        title : str | None
             The title of the generated figure. If ``None`` (default), no title is
             displayed.
-        #### `show : bool`
+        show : bool
             Show the figure if ``True``.
 
-        #### `n_pca_components : int | float | None`
+        n_pca_components : int | float | None
             The number of PCA components to be kept, either absolute (int)
             or fraction of the explained variance (float). If None (default),
             the ``ica.n_pca_components`` from initialization will be used in 0.22;
@@ -1691,7 +1659,7 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 0.22
 
-        #### `on_baseline : str`
+        on_baseline : str
             How to handle baseline-corrected epochs or evoked data.
             Can be ``'raise'`` to raise an error, ``'warn'`` (default) to emit a
             warning, ``'ignore'`` to ignore, or "reapply" to reapply the baseline
@@ -1699,16 +1667,15 @@ class ICA(ContainsMixin):
 
             ✨ Added in version 1.2
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : instance of Figure`
+        Returns
+        -------
+        fig : instance of Figure
             The figure.
         """
         ...
@@ -1723,43 +1690,41 @@ def ica_find_ecg_events(
     qrs_threshold: str = "auto",
     verbose=None,
 ):
-    """## Find ECG peaks from one selected ICA source.
+    """Find ECG peaks from one selected ICA source.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         Raw object to draw sources from.
-    #### `ecg_source : ndarray`
+    ecg_source : ndarray
         ICA source resembling ECG to find peaks from.
-    #### `event_id : int`
+    event_id : int
         The index to assign to found events.
-    #### `tstart : float`
+    tstart : float
         Start detection after tstart seconds. Useful when beginning
         of run is noisy.
-    #### `l_freq : float`
+    l_freq : float
         Low pass frequency.
-    #### `h_freq : float`
+    h_freq : float
         High pass frequency.
-    #### `qrs_threshold : float | str`
+    qrs_threshold : float | str
         Between 0 and 1. qrs detection threshold. Can also be "auto" to
         automatically choose the threshold that generates a reasonable
         number of heartbeats (40-160 beats / min).
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `ecg_events : array`
+    Returns
+    -------
+    ecg_events : array
         Events.
     ch_ECG : string
         Name of channel used.
-    #### `average_pulse : float.`
+    average_pulse : float.
         Estimated average pulse.
     """
     ...
@@ -1772,56 +1737,52 @@ def ica_find_eog_events(
     h_freq: int = 10,
     verbose=None,
 ):
-    """## Locate EOG artifacts from one selected ICA source.
+    """Locate EOG artifacts from one selected ICA source.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         The raw data.
-    #### `eog_source : ndarray`
+    eog_source : ndarray
         ICA source resembling EOG to find peaks from.
-    #### `event_id : int`
+    event_id : int
         The index to assign to found events.
-    #### `l_freq : float`
+    l_freq : float
         Low cut-off frequency in Hz.
-    #### `h_freq : float`
+    h_freq : float
         High cut-off frequency in Hz.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `eog_events : array`
+    Returns
+    -------
+    eog_events : array
         Events.
     """
     ...
 
 def read_ica(fname, verbose=None):
-    """## Restore ICA solution from fif file.
+    """Restore ICA solution from fif file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         Absolute path to fif file containing ICA matrices.
         The file name should end with -ica.fif or -ica.fif.gz.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `ica : instance of ICA`
+    Returns
+    -------
+    ica : instance of ICA
         The ICA estimator.
     """
     ...
@@ -1833,15 +1794,14 @@ class _ica_node(NamedTuple):
     criterion: Incomplete
 
 def read_ica_eeglab(fname, *, montage_units: str = "auto", verbose=None):
-    """## Load ICA information saved in an EEGLAB .set file.
+    """Load ICA information saved in an EEGLAB .set file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         Complete path to a ``.set`` EEGLAB file that contains an ICA object.
 
-    #### `montage_units : str`
+    montage_units : str
         Units that channel positions are represented in. Defaults to "mm"
         (millimeters), but can be any prefix + "m" combination (including just
         "m" for meters).
@@ -1850,16 +1810,15 @@ def read_ica_eeglab(fname, *, montage_units: str = "auto", verbose=None):
 
         ✨ Added in version 1.6
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `ica : instance of ICA`
+    Returns
+    -------
+    ica : instance of ICA
         An ICA object based on the information contained in the input file.
     """
     ...

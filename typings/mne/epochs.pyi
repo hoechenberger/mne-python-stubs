@@ -85,31 +85,30 @@ class BaseEpochs(
     EpochAnnotationsMixin,
     SpectrumMixin,
 ):
-    """## Abstract base class for `mne.Epochs`-type classes.
+    """Abstract base class for `mne.Epochs`-type classes.
 
-    ### 💡 Note
+    💡 Note
         This class should not be instantiated directly via
         ``mne.BaseEpochs(...)``. Instead, use one of the functions listed in
         the See Also section below.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `info : mne.Info`
+    info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
-    #### `data : ndarray | None`
+    data : ndarray | None
         If ``None``, data will be read from the Raw object. If ndarray, must be
         of shape (n_epochs, n_channels, n_times).
 
-    #### `events : array of int, shape (n_events, 3)`
+    events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
-    #### `event_id : int | list of int | dict | None`
+    event_id : int | list of int | dict | None
         The id of the :term:`events` to consider. If dict, the keys can later be
         used to access associated :term:`events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
@@ -117,35 +116,35 @@ class BaseEpochs(
         are used. If None, all :term:`events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
-    #### `tmin, tmax : float`
+    tmin, tmax : float
         Start and end time of the epochs in seconds, relative to the time-locked
         event. The closest or matching samples corresponding to the start and end
         time are included. Defaults to ``-0.2`` and ``0.5``, respectively.
 
-    #### `baseline : None | tuple of length 2`
+    baseline : None | tuple of length 2
         The time interval to consider as "baseline" when applying baseline
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
-        is ``None``, it is set to the `end` of the interval.
+        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
+        is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied `to each epoch and channel individually` in the
+        Correction is applied **to each epoch and channel individually** in the
         following way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the `entire` epoch.
+        2. Subtract this mean from the **entire** epoch.
 
         Defaults to ``(None, 0)``, i.e. beginning of the the data until
         time point zero.
 
-    #### `raw : Raw object`
+    raw : Raw object
         An instance of `mne.io.Raw`.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -155,15 +154,15 @@ class BaseEpochs(
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
-    #### `reject : dict | None`
-        Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
+    reject : dict | None
+        Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
         i.e. the absolute difference between the lowest and the highest signal
         value. In each individual epoch, the PTP is calculated for every channel.
         If the PTP of any one channel exceeds the rejection threshold, the
         respective epoch will be dropped.
 
         The dictionary keys correspond to the different channel types; valid
-        `keys` can be any channel type present in the object.
+        **keys** can be any channel type present in the object.
 
         Example::
 
@@ -173,27 +172,27 @@ class BaseEpochs(
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        ### 💡 Note Since rejection is based on a signal `difference`
+        💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        ### 💡 Note To constrain the time period used for estimation of signal
+        💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
 
-    #### `flat : dict | None`
-        Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
-        Valid `keys` can be any channel type present in the object. The
-        `values` are floats that set the minimum acceptable PTP. If the PTP
+    flat : dict | None
+        Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
+        Valid **keys** can be any channel type present in the object. The
+        **values** are floats that set the minimum acceptable PTP. If the PTP
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        ### 💡 Note To constrain the time period used for estimation of signal
+        💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
-    #### `decim : int`
+    decim : int
         Factor by which to subsample the data.
 
         ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
@@ -202,16 +201,16 @@ class BaseEpochs(
                      If the data are not properly filtered, aliasing artifacts
                      may occur.
 
-    #### `reject_tmin, reject_tmax : float | None`
+    reject_tmin, reject_tmax : float | None
         Start and end of the time window used to reject epochs based on
         peak-to-peak (PTP) amplitudes as specified via ``reject`` and ``flat``.
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        ### 💡 Note This parameter controls the time period used in conjunction with
+        💡 Note This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
-    #### `detrend : int | None`
+    detrend : int | None
         If 0 or 1, the data channels (MEG and EEG) will be detrended when
         loaded. 0 is a constant (DC) detrend, 1 is a linear detrend. None
         is no detrending. Note that detrending is performed before baseline
@@ -220,7 +219,7 @@ class BaseEpochs(
         shift, or set baseline correction to use the entire time interval
         (will yield equivalent results but be slower).
 
-    #### `proj : bool | 'delayed'`
+    proj : bool | 'delayed'
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
         None the single epochs will be projected before the rejection
         decision, but used in unprojected state if they are kept.
@@ -232,34 +231,34 @@ class BaseEpochs(
         If proj is False no projections will be applied which is the
         recommended value if SSPs are not used for cleaning the data.
 
-    #### `on_missing : 'raise' | 'warn' | 'ignore'`
+    on_missing : 'raise' | 'warn' | 'ignore'
         What to do if one or several event ids are not found in the recording.
         Valid keys are 'raise' | 'warn' | 'ignore'
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        ### 💡 Note
+        💡 Note
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
-    #### `preload_at_end : bool`
+    preload_at_end : bool
 
         Load all epochs from disk when creating the object
         or wait before accessing each epoch (more memory
         efficient but can be slower).
 
-    #### `selection : iterable | None`
+    selection : iterable | None
         Iterable of indices of selected epochs. If ``None``, will be
         automatically generated, corresponding to all non-zero events.
 
         ✨ Added in version 0.16
 
-    #### `drop_log : tuple | None`
+    drop_log : tuple | None
         Tuple of tuple of strings indicating which epochs have been marked to
         be ignored.
-    #### `filename : str | None`
+    filename : str | None
         The filename (if the epochs are read from disk).
 
-    #### `metadata : instance of pandas.DataFrame | None`
+    metadata : instance of pandas.DataFrame | None
         A `pandas.DataFrame` specifying metadata about each epoch.
         If given, ``len(metadata)`` must equal ``len(events)``. The DataFrame
         may only contain values of type (str | int | float | bool).
@@ -271,7 +270,7 @@ class BaseEpochs(
 
         ✨ Added in version 0.16
 
-    #### `event_repeated : str`
+    event_repeated : str
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
         (default), to raise an error, 'drop' to only retain the row occurring
         first in the :term:`events`, or ``'merge'`` to combine the coinciding
@@ -279,28 +278,26 @@ class BaseEpochs(
 
         ✨ Added in version 0.19
 
-    #### `raw_sfreq : float`
+    raw_sfreq : float
         The original Raw object sampling rate. If None, then it is set to
         ``info['sfreq']``.
-    #### `annotations : instance of mne.Annotations | None`
+    annotations : instance of mne.Annotations | None
         Annotations to set.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     Epochs
     EpochsArray
     make_fixed_length_epochs
 
+    Notes
     -----
-    ### 📖 Notes
-
     The ``BaseEpochs`` class is public to allow for stable type-checking in
     user code (i.e., ``isinstance(my_epochs, BaseEpochs)``) but should not be
     used as a constructor for Epochs objects (use instead `mne.Epochs`).
@@ -352,7 +349,7 @@ class BaseEpochs(
         verbose=None,
     ) -> None: ...
     def reset_drop_log_selection(self) -> None:
-        """## Reset the drop_log and selection entries.
+        """Reset the drop_log and selection entries.
 
         This method will simplify ``self.drop_log`` and ``self.selection``
         so that they are meaningless (tuple of empty tuples and increasing
@@ -361,105 +358,101 @@ class BaseEpochs(
         which can become problematic when saving.
         """
         ...
+
     def load_data(self):
-        """## Load the data if not already preloaded.
+        """Load the data if not already preloaded.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of Epochs`
+        Returns
+        -------
+        epochs : instance of Epochs
             The epochs object.
 
+        Notes
         -----
-        ### 📖 Notes
-
         This function operates in-place.
 
         ✨ Added in version 0.10.0
         """
         ...
+
     def apply_baseline(self, baseline=(None, 0), *, verbose=None):
-        """## Baseline correct epochs.
+        """Baseline correct epochs.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `baseline : None | tuple of length 2`
+        baseline : None | tuple of length 2
             The time interval to consider as "baseline" when applying baseline
             correction. If ``None``, do not apply baseline correction.
             If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
             (in seconds), including the endpoints.
-            If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
-            is ``None``, it is set to the `end` of the interval.
+            If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
+            is ``None``, it is set to the **end** of the interval.
             If ``(None, None)``, the entire time interval is used.
 
-            ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+            💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
-            Correction is applied `to each epoch and channel individually` in the
+            Correction is applied **to each epoch and channel individually** in the
             following way:
 
             1. Calculate the mean signal of the baseline period.
-            2. Subtract this mean from the `entire` epoch.
+            2. Subtract this mean from the **entire** epoch.
 
             Defaults to ``(None, 0)``, i.e. beginning of the the data until
             time point zero.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of Epochs`
+        Returns
+        -------
+        epochs : instance of Epochs
             The baseline-corrected Epochs object.
 
+        Notes
         -----
-        ### 📖 Notes
-
         Baseline correction can be done multiple times, but can never be
         reverted once the data has been loaded.
 
         ✨ Added in version 0.10.0
         """
         ...
+
     def iter_evoked(self, copy: bool = False) -> Generator[Incomplete, None, None]:
-        """## Iterate over epochs as a sequence of Evoked objects.
+        """Iterate over epochs as a sequence of Evoked objects.
 
         The Evoked objects yielded will each contain a single epoch (i.e., no
         averaging is performed).
 
         This method resets the object iteration state to the first epoch.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `copy : bool`
+        Parameters
+        ----------
+        copy : bool
             If False copies of data and measurement info will be omitted
             to save time.
         """
         ...
+
     def subtract_evoked(self, evoked=None):
-        """## Subtract an evoked response from each epoch.
+        """Subtract an evoked response from each epoch.
 
         Can be used to exclude the evoked response when analyzing induced
         activity, see e.g. [1]_.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `evoked : instance of Evoked | None`
+        Parameters
+        ----------
+        evoked : instance of Evoked | None
             The evoked response to subtract. If None, the evoked response
             is computed from Epochs itself.
 
-        -----
-        ### ⏎ Returns
-
-        #### `self : instance of Epochs`
+        Returns
+        -------
+        self : instance of Epochs
             The modified instance (instance is also modified inplace).
 
         References
@@ -468,13 +461,13 @@ class BaseEpochs(
                MEG/EEG", NeuroImage, vol. 31, no. 4, pp. 1580-1591, July 2006.
         """
         ...
+
     def average(self, picks=None, method: str = "mean", by_event_type: bool = False):
-        """## Compute an average over epochs.
+        """Compute an average over epochs.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -483,7 +476,7 @@ class BaseEpochs(
             channels`. None (default) will pick all data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
-        #### `method : str | callable`
+        method : str | callable
             How to combine the data. If "mean"/"median", the mean/median
             are returned.
             Otherwise, must be a callable which, when passed an array of shape
@@ -492,7 +485,7 @@ class BaseEpochs(
             Note that due to file type limitations, the kind for all
             these will be "average".
 
-        #### `by_event_type : bool`
+        by_event_type : bool
             When ``False`` (the default) all epochs are processed together and a single
             `mne.Evoked` object is returned. When ``True``, epochs are first
             grouped by event type (as specified using the ``event_id`` parameter) and a
@@ -502,20 +495,18 @@ class BaseEpochs(
 
             ✨ Added in version 0.24.0
 
-        -----
-        ### ⏎ Returns
+        Returns
+        -------
 
-
-        #### `evoked : instance of Evoked | list of Evoked`
+        evoked : instance of Evoked | list of Evoked
             The averaged epochs.
             When ``by_event_type=True`` was specified, a list is returned containing a
             separate `mne.Evoked` object for each event type. The list has the
             same order as the event types as specified in the ``event_id``
             dictionary.
 
+        Notes
         -----
-        ### 📖 Notes
-
         Computes an average of all epochs in the instance, even if
         they correspond to different conditions. To average by condition,
         do ``epochs[condition].average()`` for each condition separately.
@@ -535,13 +526,13 @@ class BaseEpochs(
         This would compute the trimmed mean.
         """
         ...
+
     def standard_error(self, picks=None, by_event_type: bool = False):
-        """## Compute standard error over epochs.
+        """Compute standard error over epochs.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -551,7 +542,7 @@ class BaseEpochs(
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
-        #### `by_event_type : bool`
+        by_event_type : bool
             When ``False`` (the default) all epochs are processed together and a single
             `mne.Evoked` object is returned. When ``True``, epochs are first
             grouped by event type (as specified using the ``event_id`` parameter) and a
@@ -561,11 +552,10 @@ class BaseEpochs(
 
             ✨ Added in version 0.24.0
 
-        -----
-        ### ⏎ Returns
+        Returns
+        -------
 
-
-        #### `std_err : instance of Evoked | list of Evoked`
+        std_err : instance of Evoked | list of Evoked
             The standard error over epochs.
             When ``by_event_type=True`` was specified, a list is returned containing a
             separate `mne.Evoked` object for each event type. The list has the
@@ -573,10 +563,12 @@ class BaseEpochs(
             dictionary.
         """
         ...
+
     @property
     def ch_names(self):
-        """## Channel names."""
+        """Channel names."""
         ...
+
     def plot(
         self,
         picks=None,
@@ -604,17 +596,16 @@ class BaseEpochs(
         overview_mode=None,
         splash: bool = True,
     ):
-        """## Visualize epochs.
+        """Visualize epochs.
 
         Bad epochs can be marked with a left click on top of the epoch. Bad
         channels can be selected by clicking the channel name on the left side of
         the main axes. Calling this function drops all the selected bad epochs as
         well as bad epochs marked beforehand with rejection parameters.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -624,7 +615,7 @@ class BaseEpochs(
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
-        #### `scalings : 'auto' | dict | None`
+        scalings : 'auto' | dict | None
             Scaling factors for the traces. If a dictionary where any
             value is ``'auto'``, the scaling factor is set to match the 99.5th
             percentile of the respective data. If ``'auto'``, all scalings (for all
@@ -636,20 +627,20 @@ class BaseEpochs(
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            ### 💡 Note
+            💡 Note
                 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
                 signals means that the visualized range will be 40 µV (20 µV in the
                 positive direction and 20 µV in the negative direction).
-        #### `n_epochs : int`
+        n_epochs : int
             The number of epochs per view. Defaults to 20.
-        #### `n_channels : int`
+        n_channels : int
             The number of channels per view. Defaults to 20.
-        #### `title : str | None`
+        title : str | None
             The title of the window. If None, the event names (from
             ``epochs.event_id``) will be displayed. Defaults to None.
-        #### `events : bool | array, shape (n_events, 3)`
+        events : bool | array, shape (n_events, 3)
             Events to show with vertical bars. You can use `mne.viz.plot_events`
             as a legend for the colors. By default, the coloring scheme is the
             same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
@@ -664,7 +655,7 @@ class BaseEpochs(
                 Passing ``events=None`` was disallowed.
                 The new equivalent is ``events=False``.
 
-        #### `event_color : color object | dict | None`
+        event_color : color object | dict | None
             Color(s) to use for :term:`events`. To show all :term:`events` in the same
             color, pass any matplotlib-compatible color. To color events differently,
             pass a `dict` that maps event names or integer event numbers to colors
@@ -672,17 +663,17 @@ class BaseEpochs(
             key ``-1``). If ``None``, colors are chosen from the current Matplotlib
             color cycle.
             Defaults to ``None``.
-        #### `order : array of str | None`
+        order : array of str | None
             Order in which to plot channel types.
 
             ✨ Added in version 0.18.0
-        #### `show : bool`
+        show : bool
             Show figure if True. Defaults to True.
-        #### `block : bool`
+        block : bool
             Whether to halt program execution until the figure is closed.
             Useful for rejecting bad trials on the fly by clicking on an epoch.
             Defaults to False.
-        #### `decim : int | 'auto'`
+        decim : int | 'auto'
             Amount to decimate the data during display for speed purposes.
             You should only decimate if the data are sufficiently low-passed,
             otherwise aliasing can occur. The 'auto' mode (default) uses
@@ -691,7 +682,7 @@ class BaseEpochs(
             at least a 120 Hz displayed sample rate).
 
             ✨ Added in version 0.15.0
-        #### `noise_cov : instance of Covariance | str | None`
+        noise_cov : instance of Covariance | str | None
             Noise covariance used to whiten the data while plotting.
             Whitened data channels are scaled by ``scalings['whitened']``,
             and their channel names are shown in italic.
@@ -703,27 +694,27 @@ class BaseEpochs(
             consider using `mne.Evoked.plot_white`.
 
             ✨ Added in version 0.16.0
-        #### `butterfly : bool`
+        butterfly : bool
             Whether to directly call the butterfly view.
 
             ✨ Added in version 0.18.0
 
-        #### `show_scrollbars : bool`
+        show_scrollbars : bool
             Whether to show scrollbars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
             ✨ Added in version 0.19.0
 
-        #### `show_scalebars : bool`
+        show_scalebars : bool
             Whether to show scale bars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`s` while the plot window is focused.
             Default is ``True``.
 
             ✨ Added in version 0.24.0
-        #### `epoch_colors : list of (n_epochs) list (of n_channels) | None`
+        epoch_colors : list of (n_epochs) list (of n_channels) | None
             Colors to use for individual epochs. If None, use default colors.
-        #### `event_id : bool | dict`
+        event_id : bool | dict
             Determines to label the event markers on the plot. If ``True``, uses
             ``epochs.event_id``. If ``False``, uses integer event codes instead of IDs.
             If a ``dict`` is passed, uses its *keys* as event labels on the plot for
@@ -732,7 +723,7 @@ class BaseEpochs(
 
             ✨ Added in version 0.20
 
-        #### `group_by : str`
+        group_by : str
             How to group channels. ``'type'`` groups by channel type,
             ``'original'`` plots in the order of ch_names, ``'selection'`` uses
             Elekta's channel groupings (only works for Neuromag data),
@@ -743,7 +734,7 @@ class BaseEpochs(
             and ``'position'`` use regional grouping. ``'type'`` and ``'original'``
             modes are ignored when ``order`` is not ``None``. Defaults to ``'type'``.
 
-        #### `precompute : bool | str`
+        precompute : bool | str
             Whether to load all data (not just the visible portion) into RAM and
             apply preprocessing (e.g., projectors) to the full data array in a separate
             processor thread, instead of window-by-window during scrolling. The default
@@ -756,7 +747,7 @@ class BaseEpochs(
             🎭 Changed in version 1.0
                Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
-        #### `use_opengl : bool | None`
+        use_opengl : bool | None
             Whether to use OpenGL when rendering the plot (requires ``pyopengl``).
             May increase performance, but effect is dependent on system CPU and
             graphics hardware. Only works if using the Qt backend. Default is
@@ -766,10 +757,10 @@ class BaseEpochs(
 
             ✨ Added in version 0.24
 
-        #### `theme : str | path-like`
+        theme : str | path-like
             Can be "auto", "light", or "dark" or a path-like to a
             custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-            `qdarkstyle` and
+            `qdarkstyle <https://github.com/ColinDuquesnoy/QDarkStyleSheet>`__ and
             `darkdetect <https://github.com/albertosottile/darkdetect>`__,
             respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
             defaulting to "auto" if it's not found.
@@ -777,7 +768,7 @@ class BaseEpochs(
 
             ✨ Added in version 1.0
 
-        #### `overview_mode : str | None`
+        overview_mode : str | None
             Can be "channels", "empty", or "hidden" to set the overview bar mode
             for the ``'qt'`` backend. If None (default), the config option
             ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
@@ -785,22 +776,20 @@ class BaseEpochs(
 
             ✨ Added in version 1.1
 
-        #### `splash : bool`
+        splash : bool
             If True (default), a splash screen is shown during the application startup. Only
             applicable to the ``qt`` backend.
 
             ✨ Added in version 1.6
 
-        -----
-        ### ⏎ Returns
+        Returns
+        -------
 
-
-        #### `fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser`
+        fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
             Browser instance.
 
+        Notes
         -----
-        ### 📖 Notes
-
         The arrow keys (up/down/left/right) can be used to navigate between
         channels and epochs and the scaling can be adjusted with - and + (or =)
         keys, but this depends on the backend matplotlib is configured to use
@@ -823,15 +812,16 @@ class BaseEpochs(
         `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
-        ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+        💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
                   you must run the magic command ``%gui qt5`` first.
-        ### 💡 Note To report issues with the PyQtGraph backend, please use the
+        💡 Note To report issues with the PyQtGraph backend, please use the
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
 
         ✨ Added in version 0.10.0
         """
         ...
+
     def plot_topo_image(
         self,
         layout=None,
@@ -850,70 +840,68 @@ class BaseEpochs(
         font_color: str = "w",
         show: bool = True,
     ):
-        """## Plot Event Related Potential / Fields image on topographies.
+        """Plot Event Related Potential / Fields image on topographies.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `layout : instance of Layout`
+        Parameters
+        ----------
+        layout : instance of Layout
             System specific sensor positions.
-        #### `sigma : float`
+        sigma : float
             The standard deviation of the Gaussian smoothing to apply along
             the epoch axis to apply in the image. If 0., no smoothing is applied.
-        #### `vmin : float`
+        vmin : float
             The min value in the image. The unit is µV for EEG channels,
             fT for magnetometers and fT/cm for gradiometers.
-        #### `vmax : float`
+        vmax : float
             The max value in the image. The unit is µV for EEG channels,
             fT for magnetometers and fT/cm for gradiometers.
-        #### `colorbar : bool | None`
+        colorbar : bool | None
             Whether to display a colorbar or not. If ``None`` a colorbar will be
             shown only if all channels are of the same type. Defaults to ``None``.
-        #### `order : None | array of int | callable`
+        order : None | array of int | callable
             If not None, order is used to reorder the epochs on the y-axis
             of the image. If it's an array of int it should be of length
             the number of good epochs. If it's a callable the arguments
             passed are the times vector and the data as 2d array
             (data.shape[1] == len(times)).
-        #### `cmap : colormap`
+        cmap : colormap
             Colors to be mapped to the values.
-        #### `layout_scale : float`
+        layout_scale : float
             Scaling factor for adjusting the relative size of the layout
             on the canvas.
-        #### `title : str`
+        title : str
             Title of the figure.
-        #### `scalings : dict | None`
+        scalings : dict | None
             The scalings of the channel types to be applied for plotting. If
             ``None``, defaults to ``dict(eeg=1e6, grad=1e13, mag=1e15)``.
-        #### `border : str`
+        border : str
             Matplotlib borders style to be used for each sensor plot.
-        #### `fig_facecolor : color`
+        fig_facecolor : color
             The figure face color. Defaults to black.
-        #### `fig_background : None | array`
+        fig_background : None | array
             A background image for the figure. This must be a valid input to
             `matplotlib.pyplot.imshow`. Defaults to ``None``.
-        #### `font_color : color`
+        font_color : color
             The color of tick labels in the colorbar. Defaults to white.
-        #### `show : bool`
+        show : bool
             Whether to show the figure. Defaults to ``True``.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : instance of `matplotlib.figure.Figure``
+        Returns
+        -------
+        fig : instance of `matplotlib.figure.Figure`
             Figure distributing one image per channel across sensor topography.
 
+        Notes
         -----
-        ### 📖 Notes
-
         In an interactive Python session, this plot will be interactive; clicking
         on a channel image will pop open a larger view of the image; this image
         will always have a colorbar even when the topo plot does not (because it
         shows multiple sensor types).
         """
         ...
+
     def drop_bad(self, reject: str = "existing", flat: str = "existing", verbose=None):
-        """## Drop bad epochs without retaining the epochs data.
+        """Drop bad epochs without retaining the epochs data.
 
         Should be used before slicing operations.
 
@@ -921,23 +909,22 @@ class BaseEpochs(
                      from disk. To avoid reading epochs from disk multiple
                      times, use `mne.Epochs.load_data()`.
 
-        ### 💡 Note To constrain the time period used for estimation of signal
+        💡 Note To constrain the time period used for estimation of signal
                   quality, set ``epochs.reject_tmin`` and
                   ``epochs.reject_tmax``, respectively.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `reject : dict | str | None`
-            Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
+        reject : dict | str | None
+            Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
             i.e. the absolute difference between the lowest and the highest signal
             value. In each individual epoch, the PTP is calculated for every channel.
             If the PTP of any one channel exceeds the rejection threshold, the
             respective epoch will be dropped.
 
             The dictionary keys correspond to the different channel types; valid
-            `keys` can be any channel type present in the object.
+            **keys** can be any channel type present in the object.
 
             Example::
 
@@ -947,7 +934,7 @@ class BaseEpochs(
                               eog=250e-6      # unit: V (EOG channels)
                               )
 
-            ### 💡 Note Since rejection is based on a signal `difference`
+            💡 Note Since rejection is based on a signal **difference**
                       calculated for each channel separately, applying baseline
                       correction does not affect the rejection procedure, as the
                       difference will be preserved.
@@ -955,30 +942,28 @@ class BaseEpochs(
             If ``reject`` is ``None``, no rejection is performed. If ``'existing'``
             (default), then the rejection parameters set at instantiation are used.
 
-        #### `flat : dict | str | None`
-            Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
-            Valid `keys` can be any channel type present in the object. The
-            `values` are floats that set the minimum acceptable PTP. If the PTP
+        flat : dict | str | None
+            Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
+            Valid **keys** can be any channel type present in the object. The
+            **values** are floats that set the minimum acceptable PTP. If the PTP
             is smaller than this threshold, the epoch will be dropped. If ``None``
             then no rejection is performed based on flatness of the signal.
             If ``'existing'``, then the flat parameters set during epoch creation are
             used.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of Epochs`
+        Returns
+        -------
+        epochs : instance of Epochs
             The epochs with bad epochs dropped. Operates in-place.
 
+        Notes
         -----
-        ### 📖 Notes
-
         Dropping bad epochs can be done multiple times with different
         ``reject`` and ``flat`` parameters. However, once an epoch is
         dropped, it is dropped forever, so if more lenient thresholds may
@@ -986,27 +971,26 @@ class BaseEpochs(
         used.
         """
         ...
+
     def drop_log_stats(self, ignore=("IGNORED",)):
-        """## Compute the channel stats based on a drop_log from Epochs.
+        """Compute the channel stats based on a drop_log from Epochs.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `ignore : list`
+        Parameters
+        ----------
+        ignore : list
             The drop reasons to ignore.
 
-        -----
-        ### ⏎ Returns
-
-        #### `perc : float`
+        Returns
+        -------
+        perc : float
             Total percentage of epochs dropped.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         plot_drop_log
         """
         ...
+
     def plot_drop_log(
         self,
         threshold: int = 0,
@@ -1017,17 +1001,16 @@ class BaseEpochs(
         ignore=("IGNORED",),
         show: bool = True,
     ):
-        """## Show the channel stats based on a drop_log from Epochs.
+        """Show the channel stats based on a drop_log from Epochs.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `threshold : float`
+        Parameters
+        ----------
+        threshold : float
             The percentage threshold to use to decide whether or not to
             plot. Default is zero (always plot).
-        #### `n_max_plot : int`
+        n_max_plot : int
             Maximum number of channels to show stats for.
-        #### `subject : str | None`
+        subject : str | None
             The subject name to use in the title of the plot. If ``None``, do not
             display a subject name.
 
@@ -1036,22 +1019,22 @@ class BaseEpochs(
 
             🎭 Changed in version 1.0
                Defaults to ``None``.
-        #### `color : tuple | str`
+        color : tuple | str
             Color to use for the bars.
-        #### `width : float`
+        width : float
             Width of the bars.
-        #### `ignore : list`
+        ignore : list
             The drop reasons to ignore.
-        #### `show : bool`
+        show : bool
             Show figure if True.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : instance of matplotlib.figure.Figure`
+        Returns
+        -------
+        fig : instance of matplotlib.figure.Figure
             The figure.
         """
         ...
+
     def plot_image(
         self,
         picks=None,
@@ -1074,12 +1057,11 @@ class BaseEpochs(
         title=None,
         clear: bool = False,
     ):
-        """## Plot Event Related Potential / Fields image.
+        """Plot Event Related Potential / Fields image.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1090,25 +1072,25 @@ class BaseEpochs(
             explicitly provided.
             ``picks`` interacts with ``group_by`` and ``combine`` to determine the
             number of figures generated; see Notes.
-        #### `sigma : float`
+        sigma : float
             The standard deviation of a Gaussian smoothing window applied along
             the epochs axis of the image. If 0, no smoothing is applied.
             Defaults to 0.
-        #### `vmin : None | float | callable`
+        vmin : None | float | callable
             The min value in the image (and the ER[P/F]). The unit is µV for
             EEG channels, fT for magnetometers and fT/cm for gradiometers.
             If vmin is None and multiple plots are returned, the limit is
             equalized within channel types.
             Hint: to specify the lower limit of the data, use
             ``vmin=lambda data: data.min()``.
-        #### `vmax : None | float | callable`
+        vmax : None | float | callable
             The max value in the image (and the ER[P/F]). The unit is µV for
             EEG channels, fT for magnetometers and fT/cm for gradiometers.
             If vmin is None and multiple plots are returned, the limit is
             equalized within channel types.
-        #### `colorbar : bool`
+        colorbar : bool
             Display or not a colorbar.
-        #### `order : None | array of int | callable`
+        order : None | array of int | callable
             If not ``None``, order is used to reorder the epochs along the y-axis
             of the image. If it is an array of `int`, its length should
             match the number of good epochs. If it is a callable it should accept
@@ -1116,16 +1098,16 @@ class BaseEpochs(
             ``data.shape == (len(good_epochs), len(times))``) and return an
             `array <numpy.ndarray>` of indices that will sort ``data`` along
             its first axis.
-        #### `show : bool`
+        show : bool
             Show figure if True.
-        #### `units : dict | None`
+        units : dict | None
             The units of the channel types used for axes labels. If None,
             defaults to ``units=dict(eeg='µV', grad='fT/cm', mag='fT')``.
-        #### `scalings : dict | None`
+        scalings : dict | None
             The scalings of the channel types to be applied for plotting.
             If None, defaults to ``scalings=dict(eeg=1e6, grad=1e13, mag=1e15,
             eog=1e6)``.
-        #### `cmap : None | colormap | (colormap, bool) | 'interactive'`
+        cmap : None | colormap | (colormap, bool) | 'interactive'
             Colormap. If tuple, the first value indicates the colormap to use and
             the second value is a boolean defining interactivity. In interactive
             mode the colors are adjustable by clicking and dragging the colorbar
@@ -1135,13 +1117,13 @@ class BaseEpochs(
             colormap. If 'interactive', translates to ('RdBu_r', True).
             If None, "RdBu_r" is used, unless the data is all positive, in which
             case "Reds" is used.
-        #### `fig : Figure | None`
+        fig : Figure | None
             `matplotlib.figure.Figure` instance to draw the image to.
             Figure must contain the correct number of axes for drawing the epochs
             image, the evoked response, and a colorbar (depending on values of
             ``evoked`` and ``colorbar``). If ``None`` a new figure is created.
             Defaults to ``None``.
-        #### `axes : list of Axes | dict of list of Axes | None`
+        axes : list of Axes | dict of list of Axes | None
             List of `matplotlib.axes.Axes` objects in which to draw the
             image, evoked response, and colorbar (in that order). Length of list
             must be 1, 2, or 3 (depending on values of ``colorbar`` and ``evoked``
@@ -1150,14 +1132,14 @@ class BaseEpochs(
             ``group_by`` are dicts, their keys must match. Providing non-``None``
             values for both ``fig`` and ``axes``  results in an error. Defaults to
             ``None``.
-        #### `overlay_times : array_like, shape (n_epochs,) | None`
+        overlay_times : array_like, shape (n_epochs,) | None
             Times (in seconds) at which to draw a line on the corresponding row of
             the image (e.g., a reaction time associated with each epoch). Note that
             ``overlay_times`` should be ordered to correspond with the
             `mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
             ``epochs[0]``, etc).
 
-        #### `combine : None | str | callable`
+        combine : None | str | callable
             How to combine information across channels. If a `str`, must be
             one of 'mean', 'median', 'std' (standard deviation) or 'gfp' (global
             field power).
@@ -1173,7 +1155,7 @@ class BaseEpochs(
             specific channels (not channel types), in which case no combining is
             performed and each channel gets its own figure. See Notes for further
             details. Defaults to ``None``.
-        #### `group_by : None | dict`
+        group_by : None | dict
             Specifies which channels are aggregated into a single figure, with
             aggregation method determined by the ``combine`` parameter. If not
             ``None``, one `matplotlib.figure.Figure` is made per dict
@@ -1186,31 +1168,29 @@ class BaseEpochs(
             Note that within a dict entry all channels must have the same type.
             ``group_by`` interacts with ``picks`` and ``combine`` to determine the
             number of figures generated; see Notes. Defaults to ``None``.
-        #### `evoked : bool`
+        evoked : bool
             Draw the ER[P/F] below the image or not.
-        #### `ts_args : None | dict`
+        ts_args : None | dict
             Arguments passed to a call to `mne.viz.plot_compare_evokeds` to style
             the evoked plot below the image. Defaults to an empty dictionary,
             meaning `mne.viz.plot_compare_evokeds` will be called with default
             parameters.
-        #### `title : None | str`
+        title : None | str
             If `str`, will be plotted as figure title. Otherwise, the
             title will indicate channel(s) or channel type being plotted. Defaults
             to ``None``.
-        #### `clear : bool`
+        clear : bool
             Whether to clear the axes before plotting (if ``fig`` or ``axes`` are
             provided). Defaults to ``False``.
 
-        -----
-        ### ⏎ Returns
-
-        #### `figs : list of Figure`
+        Returns
+        -------
+        figs : list of Figure
             One figure per channel, channel type, or group, depending on values of
             ``picks``, ``group_by``, and ``combine``. See Notes.
 
+        Notes
         -----
-        ### 📖 Notes
-
         You can control how channels are aggregated into one figure or plotted in
         separate figures through a combination of the ``picks``, ``group_by``, and
         ``combine`` parameters. If ``group_by`` is a `dict`, the result is
@@ -1240,10 +1220,11 @@ class BaseEpochs(
         +----------+----------------------------+------------+-------------------+
         """
         ...
-    def drop(self, indices, reason: str = "USER", verbose=None):
-        """## Drop epochs based on indices or boolean mask.
 
-        ### 💡 Note The indices refer to the current set of undropped epochs
+    def drop(self, indices, reason: str = "USER", verbose=None):
+        """Drop epochs based on indices or boolean mask.
+
+        💡 Note The indices refer to the current set of undropped epochs
                   rather than the complete set of dropped and undropped epochs.
                   They are therefore not necessarily consistent with any
                   external indices (e.g., behavioral logs). To drop epochs
@@ -1252,30 +1233,29 @@ class BaseEpochs(
                   method before calling the `mne.Epochs.drop_bad` or
                   `mne.Epochs.load_data` methods.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `indices : array of int or bool`
+        Parameters
+        ----------
+        indices : array of int or bool
             Set epochs to remove by specifying indices to remove or a boolean
             mask to apply (where True values get removed). Events are
             correspondingly modified.
-        #### `reason : str`
+        reason : str
             Reason for dropping the epochs ('ECG', 'timeout', 'blink' etc).
             Default: 'USER'.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of Epochs`
+        Returns
+        -------
+        epochs : instance of Epochs
             The epochs with indices dropped. Operates in-place.
         """
         ...
+
     def get_data(
         self,
         picks=None,
@@ -1287,12 +1267,11 @@ class BaseEpochs(
         copy=None,
         verbose=None,
     ):
-        """## Get all epochs as a 3D array.
+        """Get all epochs as a 3D array.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1301,7 +1280,7 @@ class BaseEpochs(
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
-        #### `item : slice | array-like | str | list | None`
+        item : slice | array-like | str | list | None
             The items to get. See `mne.Epochs.__getitem__` for
             a description of valid options. This can be substantially faster
             for obtaining an ndarray than `mne.Epochs.__getitem__`
@@ -1310,7 +1289,7 @@ class BaseEpochs(
 
             ✨ Added in version 0.20
 
-        #### `units : str | dict | None`
+        units : str | dict | None
             Specify the unit(s) that the data should be returned in. If
             ``None`` (default), the data is returned in the
             channel-type-specific default units, which are SI units (see
@@ -1328,15 +1307,15 @@ class BaseEpochs(
             channel-type-specific default unit.
 
             ✨ Added in version 0.24
-        #### `tmin : int | float | None`
+        tmin : int | float | None
             Start time of data to get in seconds.
 
             ✨ Added in version 0.24.0
-        #### `tmax : int | float | None`
+        tmax : int | float | None
             End time of data to get in seconds.
 
             ✨ Added in version 0.24.0
-        #### `copy : bool`
+        copy : bool
             Whether to return a copy of the object's data, or (if possible) a view.
             See `the NumPy docs <numpy:basics.copies-and-views>` for an
             explanation. Default is ``False`` in 1.6 but will change to ``True`` in 1.7,
@@ -1353,20 +1332,20 @@ class BaseEpochs(
 
             ✨ Added in version 1.6
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `data : array of shape (n_epochs, n_channels, n_times)`
+        Returns
+        -------
+        data : array of shape (n_epochs, n_channels, n_times)
             The epochs data. Will be a copy when ``copy=True`` and will be a view
             when possible when ``copy=False``.
         """
         ...
+
     def apply_function(
         self,
         fun,
@@ -1377,31 +1356,30 @@ class BaseEpochs(
         verbose=None,
         **kwargs,
     ):
-        """## Apply a function to a subset of channels.
+        """Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The epochs object's data is modified in-place. If the function returns a different
         data type (e.g. :py:obj:`numpy.complex128`) it must be specified
-        using the ``dtype`` parameter, which causes the data type of `all` the data
+        using the ``dtype`` parameter, which causes the data type of **all** the data
         to change (even if the function is only applied to channels in ``picks``). The object has to have the data loaded e.g. with ``preload=True`` or ``self.load_data()``.
 
-        ### 💡 Note If ``n_jobs`` > 1, more memory is required as
+        💡 Note If ``n_jobs`` > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
-        ### 💡 Note If the data type changes (``dtype != None``), more memory is
+        💡 Note If the data type changes (``dtype != None``), more memory is
                   required since the original and the converted data needs
                   to be stored in memory.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `fun : callable`
+        fun : callable
             A function to be applied to the channels. The first argument of
             fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  if ``channel_wise=True`` and ``(len(picks), n_times)`` otherwise.
             The function must return an `numpy.ndarray` shaped like its input.
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1411,10 +1389,10 @@ class BaseEpochs(
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
 
-        #### `dtype : numpy.dtype`
+        dtype : numpy.dtype
             Data type to use after applying the function. If None
             (default) the data type is not modified.
-        #### `n_jobs : int | None`
+        n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -1423,11 +1401,11 @@ class BaseEpochs(
             value for ``n_jobs``. Ignored if ``channel_wise=False`` as the workload
             is split across channels.
 
-        #### `channel_wise : bool`
+        channel_wise : bool
             Whether to apply the function to each channel in each epoch individually. If ``False``,
             the function will be applied to all epochs and channels at once. Default ``True``.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -1436,69 +1414,69 @@ class BaseEpochs(
         **kwargs : dict
             Additional keyword arguments to pass to ``fun``.
 
-        -----
-        ### ⏎ Returns
-
-        #### `self : instance of Epochs`
+        Returns
+        -------
+        self : instance of Epochs
             The epochs object with transformed data.
         """
         ...
+
     @property
     def filename(self):
-        """## The filename."""
+        """The filename."""
         ...
+
     def crop(self, tmin=None, tmax=None, include_tmax: bool = True, verbose=None):
-        """## Crop a time interval from the epochs.
+        """Crop a time interval from the epochs.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `tmin : float | None`
+        Parameters
+        ----------
+        tmin : float | None
             Start time of selection in seconds.
-        #### `tmax : float | None`
+        tmax : float | None
             End time of selection in seconds.
 
-        #### `include_tmax : bool`
+        include_tmax : bool
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
             ✨ Added in version 0.19
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of Epochs`
+        Returns
+        -------
+        epochs : instance of Epochs
             The cropped epochs object, modified in-place.
 
+        Notes
         -----
-        ### 📖 Notes
 
-
-        Unlike Python slices, MNE time intervals by default include `both`
+        Unlike Python slices, MNE time intervals by default include **both**
         their end points; ``crop(tmin, tmax)`` returns the interval
         ``tmin <= t <= tmax``. Pass ``include_tmax=False`` to specify the half-open
         interval ``tmin <= t < tmax`` instead.
         """
         ...
+
     def copy(self):
-        """## Return copy of Epochs instance.
+        """Return copy of Epochs instance.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of Epochs`
+        Returns
+        -------
+        epochs : instance of Epochs
             A copy of the object.
         """
         ...
+
     def __deepcopy__(self, memodict):
-        """## Make a deepcopy."""
+        """Make a deepcopy."""
         ...
+
     def save(
         self,
         fname,
@@ -1508,15 +1486,14 @@ class BaseEpochs(
         split_naming: str = "neuromag",
         verbose=None,
     ) -> None:
-        """## Save epochs in a fif file.
+        """Save epochs in a fif file.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `fname : path-like`
+        Parameters
+        ----------
+        fname : path-like
             The name of the file, which should end with ``-epo.fif`` or
             ``-epo.fif.gz``.
-        #### `split_size : str | int`
+        split_size : str | int
             Large raw files are automatically split into multiple pieces. This
             parameter specifies the maximum size of each piece. If the
             parameter is an integer, it specifies the size in Bytes. It is
@@ -1524,7 +1501,7 @@ class BaseEpochs(
             Note: Due to FIFF file limitations, the maximum split size is 2GB.
 
             ✨ Added in version 0.10.0
-        #### `fmt : str`
+        fmt : str
             Format to save data. Valid options are 'double' or
             'single' for 64- or 32-bit float, or for 128- or
             64-bit complex numbers respectively. Note: Data are processed with
@@ -1533,7 +1510,7 @@ class BaseEpochs(
 
             ✨ Added in version 0.17
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
             To overwrite original file (the same one that was loaded),
@@ -1542,7 +1519,7 @@ class BaseEpochs(
 
             ✨ Added in version 0.18
 
-        #### `split_naming : 'neuromag' | 'bids'`
+        split_naming : 'neuromag' | 'bids'
             When splitting files, append a filename partition with the appropriate
             naming schema: for ``'neuromag'``, a split file ``fname.fif`` will be named
             ``fname.fif``, ``fname-1.fif``, ``fname-2.fif`` etc.; while for ``'bids'``,
@@ -1550,22 +1527,22 @@ class BaseEpochs(
 
             ✨ Added in version 0.24
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        Notes
         -----
-        ### 📖 Notes
-
         Bad epochs will be dropped before saving the epochs to disk.
         """
         ...
+
     def export(
         self, fname, fmt: str = "auto", *, overwrite: bool = False, verbose=None
     ) -> None:
-        """## Export Epochs to external formats.
+        """Export Epochs to external formats.
 
         Supported formats:
             - EEGLAB (``.set``, uses `eeglabio`)
@@ -1574,33 +1551,31 @@ class BaseEpochs(
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `fname : str`
+        fname : str
             Name of the output file.
 
-        #### `fmt : 'auto' | 'eeglab'`
+        fmt : 'auto' | 'eeglab'
             Format of the export. Defaults to ``'auto'``, which will infer the format
             from the filename extension. See supported formats above for more
             information.
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
             ✨ Added in version 0.24.1
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        Notes
         -----
-        ### 📖 Notes
-
         ✨ Added in version 0.24
 
         Export to external format may not preserve all the information from the
@@ -1614,8 +1589,9 @@ class BaseEpochs(
         For more details see `eeglabio.utils.cart_to_eeglab`.
         """
         ...
+
     def equalize_event_counts(self, event_ids=None, method: str = "mintime"):
-        """## Equalize the number of trials in each condition.
+        """Equalize the number of trials in each condition.
 
         It tries to make the remaining epochs occurring as close as possible in
         time. This method works based on the idea that if there happened to be
@@ -1629,13 +1605,12 @@ class BaseEpochs(
         times ``[1, 2]`` for the first event type – and not the events at times
         ``[120, 121]``.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `event_ids : None | list | dict`
+        Parameters
+        ----------
+        event_ids : None | list | dict
             The event types to equalize.
 
-            If ``None`` (default), equalize the counts of `all` event types
+            If ``None`` (default), equalize the counts of **all** event types
             present in the `mne.Epochs` instance.
 
             If a list, each element can either be a string (event name) or a
@@ -1655,22 +1630,20 @@ class BaseEpochs(
             matched by the provided tags had been supplied instead.
             The ``event_ids`` must identify non-overlapping subsets of the
             epochs.
-        #### `method : str`
+        method : str
             If ``'truncate'``, events will be truncated from the end of each
             type of events. If ``'mintime'``, timing differences between each
             event type will be minimized.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of Epochs`
+        Returns
+        -------
+        epochs : instance of Epochs
             The modified instance. It is modified in-place.
-        #### `indices : array of int`
+        indices : array of int
             Indices from the original events list that were dropped.
 
+        Notes
         -----
-        ### 📖 Notes
-
         For example (if ``epochs.event_id`` was ``{'Left': 1, 'Right': 2,
         'Nonspatial':3}``:
 
@@ -1690,6 +1663,7 @@ class BaseEpochs(
             event names were specified explicitly.
         """
         ...
+
     def compute_psd(
         self,
         method: str = "multitaper",
@@ -1706,24 +1680,23 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """## Perform spectral analysis on sensor data.
+        """Perform spectral analysis on sensor data.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `method : ``'welch'`` | ``'multitaper'```
+        method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
             method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
             tapers :footcite:p:`Slepian1978`.
             Default is ``'multitaper'``.
-        #### `fmin, fmax : float`
+        fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
-        #### `tmin, tmax : float | None`
+        tmin, tmax : float | None
             First and last times to include, in seconds. ``None`` uses the first or
             last time present in the data. Default is ``tmin=None, tmax=None`` (all
             times).
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1732,18 +1705,18 @@ class BaseEpochs(
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
-        #### `proj : bool`
+        proj : bool
             Whether to apply SSP projection vectors before spectral estimation.
             Default is ``False``.
 
-        #### `remove_dc : bool`
+        remove_dc : bool
             If ``True``, the mean is subtracted from each segment before computing
             its spectrum.
-        #### `exclude : list of str | 'bads'`
+        exclude : list of str | 'bads'
             Channel names to exclude. If ``'bads'``, channels
             in ``info['bads']`` are excluded; pass an empty list to
             include all channels (including "bad" channels, if any).
-        #### `n_jobs : int | None`
+        n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -1751,7 +1724,7 @@ class BaseEpochs(
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -1764,15 +1737,13 @@ class BaseEpochs(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
-        -----
-        ### ⏎ Returns
-
-        #### `spectrum : instance of EpochsSpectrum`
+        Returns
+        -------
+        spectrum : instance of EpochsSpectrum
             The spectral representation of each epoch.
 
+        Notes
         -----
-        ### 📖 Notes
-
         ✨ Added in version 1.2
 
         References
@@ -1780,6 +1751,7 @@ class BaseEpochs(
         .. footbibliography::
         """
         ...
+
     def plot_psd(
         self,
         fmin: int = 0,
@@ -1807,7 +1779,7 @@ class BaseEpochs(
         verbose=None,
         **method_kw,
     ):
-        """## Plot power or amplitude spectra.
+        """Plot power or amplitude spectra.
 
         Separate plots are drawn for each channel type. When the data have been
         processed with a bandpass, lowpass or highpass filter, dashed lines (╎)
@@ -1816,16 +1788,15 @@ class BaseEpochs(
         be interactive, and click-dragging on the spectrum will generate a
         scalp topography plot for the chosen frequency range in a new figure.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `fmin, fmax : float`
+        Parameters
+        ----------
+        fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
-        #### `tmin, tmax : float | None`
+        tmin, tmax : float | None
             First and last times to include, in seconds. ``None`` uses the first or
             last time present in the data. Default is ``tmin=None, tmax=None`` (all
             times).
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1834,15 +1805,15 @@ class BaseEpochs(
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
-        #### `proj : bool`
+        proj : bool
             Whether to apply SSP projection vectors before spectral estimation.
             Default is ``False``.
 
-        #### `method : ``'welch'`` | ``'multitaper'`` | ``'auto'```
+        method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
             method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
             tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
-        #### `average : bool`
+        average : bool
             If False, the PSDs of all channels is displayed. No averaging
             is done and parameters area_mode and area_alpha are ignored. When
             False, it is possible to paint an area (hold left mouse button and
@@ -1855,29 +1826,29 @@ class BaseEpochs(
             (amplitude/sqrt(Hz)), if ``dB=False`` and ``estimate='amplitude'`` or
             ``estimate='auto'``. Plot ASD, in units (amplitude/sqrt(Hz) (dB)), if
             ``dB=True`` and ``estimate='amplitude'``.
-        #### `estimate : str, {'auto', 'power', 'amplitude'}`
+        estimate : str, {'auto', 'power', 'amplitude'}
             Can be "power" for power spectral density (PSD), "amplitude" for
             amplitude spectrum density (ASD), or "auto" (default), which uses
             "power" when dB is True and "amplitude" otherwise.
-        #### `xscale : 'linear' | 'log'`
+        xscale : 'linear' | 'log'
             Scale of the frequency axis. Default is ``'linear'``.
-        #### `area_mode : str | None`
+        area_mode : str | None
             Mode for plotting area. If 'std', the mean +/- 1 STD (across channels)
             will be plotted. If 'range', the min and max (across channels) will be
             plotted. Bad channels will be excluded from these calculations.
             If None, no area will be plotted. If average=False, no area is plotted.
-        #### `area_alpha : float`
+        area_alpha : float
             Alpha for the area.
-        #### `color : str | tuple`
+        color : str | tuple
             A matplotlib-compatible color to use. Has no effect when
             spatial_colors=True.
-        #### `line_alpha : float | None`
+        line_alpha : float | None
             Alpha for the PSD line. Can be None (default) to use 1.0 when
             ``average=True`` and 0.1 when ``average=False``.
-        #### `spatial_colors : bool`
+        spatial_colors : bool
             Whether to color spectrum lines by channel location. Ignored if
             ``average=True``.
-        #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -1893,18 +1864,18 @@ class BaseEpochs(
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
             ✨ Added in version 0.22.0
-        #### `exclude : list of str | 'bads'`
+        exclude : list of str | 'bads'
             Channels names to exclude from being shown. If 'bads', the bad
             channels are excluded. Pass an empty list to plot all channels
             (including channels marked "bad", if any).
 
             ✨ Added in version 0.24.0
-        #### `ax : instance of Axes | list of Axes | None`
+        ax : instance of Axes | list of Axes | None
             The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
             will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
-        #### `show : bool`
+        show : bool
             Show the figure if ``True``.
-        #### `n_jobs : int | None`
+        n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -1912,7 +1883,7 @@ class BaseEpochs(
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -1925,20 +1896,19 @@ class BaseEpochs(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : instance of Figure`
+        Returns
+        -------
+        fig : instance of Figure
             Figure with frequency spectra of the data channels.
 
+        Notes
         -----
-        ### 📖 Notes
-
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
         of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
         """
         ...
+
     def to_data_frame(
         self,
         picks=None,
@@ -1950,7 +1920,7 @@ class BaseEpochs(
         *,
         verbose=None,
     ):
-        """## Export data in tabular structure as a pandas DataFrame.
+        """Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default,
         additional columns "time", "epoch" (epoch number), and "condition"
@@ -1958,10 +1928,9 @@ class BaseEpochs(
         (in which case the columns specified in ``index`` will be used to form
         the DataFrame's index instead).
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1971,7 +1940,7 @@ class BaseEpochs(
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
-        #### `index : str | list of str | None`
+        index : str | list of str | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
             integer index (`pandas.RangeIndex`) will be used. If ``'time'``, a
             ``pandas.Index`` or `pandas.TimedeltaIndex` will be used
@@ -1979,21 +1948,21 @@ class BaseEpochs(
             Valid string values are 'time', 'epoch', and 'condition'.
             Defaults to ``None``.
 
-        #### `scalings : dict | None`
+        scalings : dict | None
             Scaling factor applied to the channels picked. If ``None``, defaults to
             ``dict(eeg=1e6, mag=1e15, grad=1e13)`` — i.e., converts EEG to µV,
             magnetometers to fT, and gradiometers to fT/cm.
 
-        #### `copy : bool`
+        copy : bool
             If ``True``, data will be copied. Otherwise data may be modified in place.
             Defaults to ``True``.
 
-        #### `long_format : bool`
+        long_format : bool
             If True, the DataFrame is returned in long format where each row is one
             observation of the signal at a unique combination of time point, channel, epoch number, and condition.
             For convenience, a ``ch_type`` column is added to facilitate subsetting the resulting DataFrame. Defaults to ``False``.
 
-        #### `time_format : str | None`
+        time_format : str | None
             Desired time format. If ``None``, no conversion is applied, and time values
             remain as float values in seconds. If ``'ms'``, time values will be rounded
             to the nearest millisecond and converted to integers. If ``'timedelta'``,
@@ -2002,48 +1971,45 @@ class BaseEpochs(
 
             ✨ Added in version 0.20
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
+        Returns
+        -------
 
-
-        #### `df : instance of pandas.DataFrame`
+        df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
             packages.
         """
         ...
+
     def as_type(self, ch_type: str = "grad", mode: str = "fast"):
-        """## Compute virtual epochs using interpolated fields.
+        """Compute virtual epochs using interpolated fields.
 
         ### ⛔️ Warning Using virtual epochs to compute inverse can yield
             unexpected results. The virtual channels have ``'_v'`` appended
             at the end of the names to emphasize that the data contained in
             them are interpolated.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `ch_type : str`
+        Parameters
+        ----------
+        ch_type : str
             The destination channel type. It can be 'mag' or 'grad'.
-        #### `mode : str`
+        mode : str
             Either ``'accurate'`` or ``'fast'``, determines the quality of the
             Legendre polynomial expansion used. ``'fast'`` should be sufficient
             for most applications.
 
-        -----
-        ### ⏎ Returns
-
-        #### `epochs : instance of mne.EpochsArray`
+        Returns
+        -------
+        epochs : instance of mne.EpochsArray
             The transformed epochs object containing only virtual channels.
 
+        Notes
         -----
-        ### 📖 Notes
-
         This method returns a copy and does not modify the data it
         operates on. It also returns an EpochsArray instance.
 
@@ -2061,7 +2027,7 @@ def make_metadata(
     keep_first=None,
     keep_last=None,
 ):
-    """## Automatically generate metadata for use with `mne.Epochs` from events.
+    """Automatically generate metadata for use with `mne.Epochs` from events.
 
     This function mimics the epoching process (it constructs time windows
     around time-locked "events of interest") and collates information about
@@ -2074,23 +2040,22 @@ def make_metadata(
     dictionary that correspond to the generated metadata, which together can then be
     readily fed into `mne.Epochs`.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `events : array, shape (m, 3)`
+    Parameters
+    ----------
+    events : array, shape (m, 3)
         The :term:`events array <events>`. By default, the returned metadata
         `pandas.DataFrame` will have as many rows as the events array.
         To create rows for only a subset of events, pass the ``row_events``
         parameter.
-    #### `event_id : dict`
+    event_id : dict
         A mapping from event names (keys) to event IDs (values). The event
         names will be incorporated as columns of the returned metadata
         `pandas.DataFrame`.
-    #### `tmin, tmax : float | None`
+    tmin, tmax : float | None
         Start and end of the time interval for metadata generation in seconds, relative
         to the time-locked event of the respective time window (the "row events").
 
-        ### 💡 Note
+        💡 Note
            If you are planning to attach the generated metadata to
            `mne.Epochs` and intend to include only events that fall inside
            your epochs time interval, pass the same ``tmin`` and ``tmax``
@@ -2101,30 +2066,30 @@ def make_metadata(
         greatly, but each trial starts with a known event (e.g., a visual cue or
         fixation).
 
-        ### 💡 Note
+        💡 Note
            If ``tmin=None``, the first time window for metadata generation starts with
            the first row event. If ``tmax=None``, the last time window for metadata
            generation ends with the last event in ``events``.
 
         🎭 Changed in version 1.6.0
            Added support for ``None``.
-    #### `sfreq : float`
+    sfreq : float
         The sampling frequency of the data from which the events array was
         extracted.
-    #### `row_events : list of str | str | None`
+    row_events : list of str | str | None
         Event types around which to create the time windows. For each of these
-        time-locked events, we will create a `row` in the returned metadata
+        time-locked events, we will create a **row** in the returned metadata
         `pandas.DataFrame`. If provided, the string(s) must be keys of
-        ``event_id``. If ``None`` (default), rows are created for `all` event types
+        ``event_id``. If ``None`` (default), rows are created for **all** event types
         present in ``event_id``.
-    #### `keep_first : str | list of str | None`
+    keep_first : str | list of str | None
         Specify subsets of :term:`hierarchical event descriptors` (HEDs,
         inspired by :footcite:`BigdelyShamloEtAl2013`) matching events of which
-        the `first occurrence` within each time window shall be stored in
+        the **first occurrence** within each time window shall be stored in
         addition to the original events.
 
-        ### 💡 Note
-           There is currently no way to retain `all` occurrences of a
+        💡 Note
+           There is currently no way to retain **all** occurrences of a
            repeated event. The ``keep_first`` parameter can be used to specify
            subsets of HEDs, effectively creating a new event type that is the
            union of all events types described by the matching HED pattern.
@@ -2134,33 +2099,32 @@ def make_metadata(
         ``response/left`` and ``response/right``; and in trials with both
         responses occurring, you want to keep only the first response. In this
         case, you can pass ``keep_first='response'``. This will add two new
-        columns to the metadata: ``response``, indicating at what `time` the
+        columns to the metadata: ``response``, indicating at what **time** the
         event  occurred, relative to the time-locked event; and
-        ``first_response``, stating which `type` (``'left'`` or ``'right'``)
+        ``first_response``, stating which **type** (``'left'`` or ``'right'``)
         of event occurred.
         To match specific subsets of HEDs describing different sets of events,
         pass a list of these subsets, e.g.
         ``keep_first=['response', 'stimulus']``. If ``None`` (default), no
         event aggregation will take place and no new columns will be created.
 
-        ### 💡 Note
+        💡 Note
            By default, this function will always retain  the first instance
            of any event in each time window. For example, if a time window
            contains two ``'response'`` events, the generated ``response``
            column will automatically refer to the first of the two events. In
-           this specific case, it is therefore `not` necessary to make use of
+           this specific case, it is therefore **not** necessary to make use of
            the ``keep_first`` parameter – unless you need to differentiate
            between two types of responses, like in the example above.
 
-    #### `keep_last : list of str | None`
-        Same as ``keep_first``, but for keeping only the `last`  occurrence
-        of matching events. The column indicating the `type` of an event
+    keep_last : list of str | None
+        Same as ``keep_first``, but for keeping only the **last**  occurrence
+        of matching events. The column indicating the **type** of an event
         ``myevent`` will be named ``last_myevent``.
 
-    -----
-    ### ⏎ Returns
-
-    #### `metadata : pandas.DataFrame`
+    Returns
+    -------
+    metadata : pandas.DataFrame
         Metadata for each row event, with the following columns:
 
         - ``event_name``, with strings indicating the name of the time-locked
@@ -2179,17 +2143,16 @@ def make_metadata(
           types, respetively; the values will be strings indicating which event
           types were matched by the provided HED patterns
 
-    #### `events : array, shape (n, 3)`
+    events : array, shape (n, 3)
         The events corresponding to the generated metadata, i.e. one
         time-locked event per row.
-    #### `event_id : dict`
+    event_id : dict
         The event dictionary corresponding to the new events array. This will
         be identical to the input dictionary unless ``row_events`` is supplied,
         in which case it will only contain the events provided there.
 
+    Notes
     -----
-    ### 📖 Notes
-
     The time window used for metadata generation need not correspond to the
     time window used to create the `mne.Epochs`, to which the metadata will
     be attached; it may well be much shorter or longer, or not overlap at all,
@@ -2207,23 +2170,22 @@ def make_metadata(
     ...
 
 class Epochs(BaseEpochs):
-    """## Epochs extracted from a Raw instance.
+    """Epochs extracted from a Raw instance.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `raw : Raw object`
+    raw : Raw object
         An instance of `mne.io.Raw`.
 
-    #### `events : array of int, shape (n_events, 3)`
+    events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
-    #### `event_id : int | list of int | dict | None`
+    event_id : int | list of int | dict | None
         The id of the :term:`events` to consider. If dict, the keys can later be
         used to access associated :term:`events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
@@ -2231,32 +2193,32 @@ class Epochs(BaseEpochs):
         are used. If None, all :term:`events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
-    #### `tmin, tmax : float`
+    tmin, tmax : float
         Start and end time of the epochs in seconds, relative to the time-locked
         event. The closest or matching samples corresponding to the start and end
         time are included. Defaults to ``-0.2`` and ``0.5``, respectively.
 
-    #### `baseline : None | tuple of length 2`
+    baseline : None | tuple of length 2
         The time interval to consider as "baseline" when applying baseline
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
-        is ``None``, it is set to the `end` of the interval.
+        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
+        is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied `to each epoch and channel individually` in the
+        Correction is applied **to each epoch and channel individually** in the
         following way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the `entire` epoch.
+        2. Subtract this mean from the **entire** epoch.
 
         Defaults to ``(None, 0)``, i.e. beginning of the the data until
         time point zero.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -2265,21 +2227,21 @@ class Epochs(BaseEpochs):
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    #### `preload : bool`
+    preload : bool
 
         Load all epochs from disk when creating the object
         or wait before accessing each epoch (more memory
         efficient but can be slower).
 
-    #### `reject : dict | None`
-        Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
+    reject : dict | None
+        Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
         i.e. the absolute difference between the lowest and the highest signal
         value. In each individual epoch, the PTP is calculated for every channel.
         If the PTP of any one channel exceeds the rejection threshold, the
         respective epoch will be dropped.
 
         The dictionary keys correspond to the different channel types; valid
-        `keys` can be any channel type present in the object.
+        **keys** can be any channel type present in the object.
 
         Example::
 
@@ -2289,27 +2251,27 @@ class Epochs(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        ### 💡 Note Since rejection is based on a signal `difference`
+        💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        ### 💡 Note To constrain the time period used for estimation of signal
+        💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
 
-    #### `flat : dict | None`
-        Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
-        Valid `keys` can be any channel type present in the object. The
-        `values` are floats that set the minimum acceptable PTP. If the PTP
+    flat : dict | None
+        Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
+        Valid **keys** can be any channel type present in the object. The
+        **values** are floats that set the minimum acceptable PTP. If the PTP
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        ### 💡 Note To constrain the time period used for estimation of signal
+        💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
-    #### `proj : bool | 'delayed'`
+    proj : bool | 'delayed'
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
         None the single epochs will be projected before the rejection
         decision, but used in unprojected state if they are kept.
@@ -2321,7 +2283,7 @@ class Epochs(BaseEpochs):
         If proj is False no projections will be applied which is the
         recommended value if SSPs are not used for cleaning the data.
 
-    #### `decim : int`
+    decim : int
         Factor by which to subsample the data.
 
         ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
@@ -2330,16 +2292,16 @@ class Epochs(BaseEpochs):
                      If the data are not properly filtered, aliasing artifacts
                      may occur.
 
-    #### `reject_tmin, reject_tmax : float | None`
+    reject_tmin, reject_tmax : float | None
         Start and end of the time window used to reject epochs based on
         peak-to-peak (PTP) amplitudes as specified via ``reject`` and ``flat``.
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        ### 💡 Note This parameter controls the time period used in conjunction with
+        💡 Note This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
-    #### `detrend : int | None`
+    detrend : int | None
         If 0 or 1, the data channels (MEG and EEG) will be detrended when
         loaded. 0 is a constant (DC) detrend, 1 is a linear detrend. None
         is no detrending. Note that detrending is performed before baseline
@@ -2348,22 +2310,22 @@ class Epochs(BaseEpochs):
         shift, or set baseline correction to use the entire time interval
         (will yield equivalent results but be slower).
 
-    #### `on_missing : 'raise' | 'warn' | 'ignore'`
+    on_missing : 'raise' | 'warn' | 'ignore'
         What to do if one or several event ids are not found in the recording.
         Valid keys are 'raise' | 'warn' | 'ignore'
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        ### 💡 Note
+        💡 Note
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
-    #### `reject_by_annotation : bool`
+    reject_by_annotation : bool
         Whether to reject based on annotations. If ``True`` (default), epochs
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
-    #### `metadata : instance of pandas.DataFrame | None`
+    metadata : instance of pandas.DataFrame | None
         A `pandas.DataFrame` specifying metadata about each epoch.
         If given, ``len(metadata)`` must equal ``len(events)``. The DataFrame
         may only contain values of type (str | int | float | bool).
@@ -2375,7 +2337,7 @@ class Epochs(BaseEpochs):
 
         ✨ Added in version 0.16
 
-    #### `event_repeated : str`
+    event_repeated : str
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
         (default), to raise an error, 'drop' to only retain the row occurring
         first in the :term:`events`, or ``'merge'`` to combine the coinciding
@@ -2383,29 +2345,28 @@ class Epochs(BaseEpochs):
 
         ✨ Added in version 0.19
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 📊 Attributes
+    Attributes
+    ----------
 
-
-    #### `info : mne.Info`
+    info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
-    #### `event_id : dict`
+    event_id : dict
         Names of conditions corresponding to event_ids.
-    #### `ch_names : list of string`
+    ch_names : list of string
         List of channel names.
-    #### `selection : array`
+    selection : array
         List of indices of selected events (not dropped or ignored etc.). For
         example, if the original event array had 4 events and the second event
         has been dropped, this attribute would be np.array([0, 2, 3]).
-    #### `preload : bool`
+    preload : bool
         Indicates whether epochs are in memory.
-    #### `drop_log : tuple of tuple`
+    drop_log : tuple of tuple
         A tuple of the same length as the event array used to initialize the
         Epochs object. If the i-th original event is still part of the
         selection, drop_log[i] will be an empty tuple; otherwise it will be
@@ -2420,22 +2381,20 @@ class Epochs(BaseEpochs):
             See `mne.Epochs.equalize_event_counts`
         - 'USER'
             For user-defined reasons (see `mne.Epochs.drop`).
-    #### `filename : str`
+    filename : str
         The filename of the object.
-    #### `times :  ndarray`
+    times :  ndarray
         Time vector in seconds. Goes from ``tmin`` to ``tmax``. Time interval
         between consecutive time samples is equal to the inverse of the
         sampling frequency.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.epochs.combine_event_ids
     mne.Epochs.equalize_event_counts
 
+    Notes
     -----
-    ### 📖 Notes
-
     When accessing data, Epochs are detrended, baseline-corrected, and
     decimated, then projectors are (optionally) applied.
 
@@ -2497,30 +2456,29 @@ class Epochs(BaseEpochs):
     ) -> None: ...
 
 class EpochsArray(BaseEpochs):
-    """## Epochs object from numpy array.
+    """Epochs object from numpy array.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `data : array, shape (n_epochs, n_channels, n_times)`
+    Parameters
+    ----------
+    data : array, shape (n_epochs, n_channels, n_times)
         The channels' time series for each epoch. See notes for proper units of
         measure.
 
-    #### `info : mne.Info`
+    info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. Consider using `mne.create_info` to populate this
         structure.
 
-    #### `events : array of int, shape (n_events, 3)`
+    events : array of int, shape (n_events, 3)
         The array of :term:`events`. The first column contains the event time in
         samples, with :term:`first_samp` included. The third column contains the
         event id.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
-    #### `tmin : float`
+    tmin : float
         Start time before event. If nothing provided, defaults to 0.
 
-    #### `event_id : int | list of int | dict | None`
+    event_id : int | list of int | dict | None
         The id of the :term:`events` to consider. If dict, the keys can later be
         used to access associated :term:`events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
@@ -2528,15 +2486,15 @@ class EpochsArray(BaseEpochs):
         are used. If None, all :term:`events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
-    #### `reject : dict | None`
-        Reject epochs based on `maximum` peak-to-peak signal amplitude (PTP),
+    reject : dict | None
+        Reject epochs based on **maximum** peak-to-peak signal amplitude (PTP),
         i.e. the absolute difference between the lowest and the highest signal
         value. In each individual epoch, the PTP is calculated for every channel.
         If the PTP of any one channel exceeds the rejection threshold, the
         respective epoch will be dropped.
 
         The dictionary keys correspond to the different channel types; valid
-        `keys` can be any channel type present in the object.
+        **keys** can be any channel type present in the object.
 
         Example::
 
@@ -2546,56 +2504,56 @@ class EpochsArray(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        ### 💡 Note Since rejection is based on a signal `difference`
+        💡 Note Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        ### 💡 Note To constrain the time period used for estimation of signal
+        💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
 
-    #### `flat : dict | None`
-        Reject epochs based on `minimum` peak-to-peak signal amplitude (PTP).
-        Valid `keys` can be any channel type present in the object. The
-        `values` are floats that set the minimum acceptable PTP. If the PTP
+    flat : dict | None
+        Reject epochs based on **minimum** peak-to-peak signal amplitude (PTP).
+        Valid **keys** can be any channel type present in the object. The
+        **values** are floats that set the minimum acceptable PTP. If the PTP
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        ### 💡 Note To constrain the time period used for estimation of signal
+        💡 Note To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
-    #### `reject_tmin, reject_tmax : float | None`
+    reject_tmin, reject_tmax : float | None
         Start and end of the time window used to reject epochs based on
         peak-to-peak (PTP) amplitudes as specified via ``reject`` and ``flat``.
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        ### 💡 Note This parameter controls the time period used in conjunction with
+        💡 Note This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
-    #### `baseline : None | tuple of length 2`
+    baseline : None | tuple of length 2
         The time interval to consider as "baseline" when applying baseline
         correction. If ``None``, do not apply baseline correction.
         If a tuple ``(a, b)``, the interval is between ``a`` and ``b``
         (in seconds), including the endpoints.
-        If ``a`` is ``None``, the `beginning` of the data is used; and if ``b``
-        is ``None``, it is set to the `end` of the interval.
+        If ``a`` is ``None``, the **beginning** of the data is used; and if ``b``
+        is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        ### 💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
-        Correction is applied `to each epoch and channel individually` in the
+        Correction is applied **to each epoch and channel individually** in the
         following way:
 
         1. Calculate the mean signal of the baseline period.
-        2. Subtract this mean from the `entire` epoch.
+        2. Subtract this mean from the **entire** epoch.
 
         Defaults to ``None``, i.e. no baseline correction.
 
-    #### `proj : bool | 'delayed'`
+    proj : bool | 'delayed'
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
         None the single epochs will be projected before the rejection
         decision, but used in unprojected state if they are kept.
@@ -2607,17 +2565,17 @@ class EpochsArray(BaseEpochs):
         If proj is False no projections will be applied which is the
         recommended value if SSPs are not used for cleaning the data.
 
-    #### `on_missing : 'raise' | 'warn' | 'ignore'`
+    on_missing : 'raise' | 'warn' | 'ignore'
         What to do if one or several event ids are not found in the recording.
         Valid keys are 'raise' | 'warn' | 'ignore'
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        ### 💡 Note
+        💡 Note
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
-    #### `metadata : instance of pandas.DataFrame | None`
+    metadata : instance of pandas.DataFrame | None
         A `pandas.DataFrame` specifying metadata about each epoch.
         If given, ``len(metadata)`` must equal ``len(events)``. The DataFrame
         may only contain values of type (str | int | float | bool).
@@ -2629,38 +2587,36 @@ class EpochsArray(BaseEpochs):
 
         ✨ Added in version 0.16
 
-    #### `selection : iterable | None`
+    selection : iterable | None
         Iterable of indices of selected epochs. If ``None``, will be
         automatically generated, corresponding to all non-zero events.
 
-    #### `drop_log : tuple | None`
+    drop_log : tuple | None
         Tuple of tuple of strings indicating which epochs have been marked to
         be ignored.
 
         ✨ Added in version 1.3
 
-    #### `raw_sfreq : float`
+    raw_sfreq : float
         The original Raw object sampling rate. If None, then it is set to
         ``info['sfreq']``.
 
         ✨ Added in version 1.3
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     create_info
     EvokedArray
     io.RawArray
 
+    Notes
     -----
-    ### 📖 Notes
-
     Proper units of measure:
 
     * V: eeg, eog, seeg, dbs, emg, ecg, bio, ecog
@@ -2699,31 +2655,28 @@ class EpochsArray(BaseEpochs):
     ) -> None: ...
 
 def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
-    """## Collapse event_ids from an epochs instance into a new event_id.
+    """Collapse event_ids from an epochs instance into a new event_id.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs : instance of Epochs`
+    Parameters
+    ----------
+    epochs : instance of Epochs
         The epochs to operate on.
-    #### `old_event_ids : str, or list`
+    old_event_ids : str, or list
         Conditions to collapse together.
-    #### `new_event_id : dict, or int`
+    new_event_id : dict, or int
         A one-element dict (or a single integer) for the new
         condition. Note that for safety, this cannot be any
         existing id (in epochs.event_id.values()).
-    #### `copy : bool`
+    copy : bool
         Whether to return a new instance or modify in place.
 
-    -----
-    ### ⏎ Returns
-
-    #### `epochs : instance of Epochs`
+    Returns
+    -------
+    epochs : instance of Epochs
         The modified epochs.
 
+    Notes
     -----
-    ### 📖 Notes
-
     This For example (if epochs.event_id was ``{'Left': 1, 'Right': 2}``::
 
         combine_event_ids(epochs, ['Left', 'Right'], {'Directional': 12})
@@ -2734,21 +2687,19 @@ def combine_event_ids(epochs, old_event_ids, new_event_id, copy: bool = True):
     ...
 
 def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
-    """## Equalize the number of trials in multiple Epoch instances.
+    """Equalize the number of trials in multiple Epoch instances.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs_list : list of Epochs instances`
+    Parameters
+    ----------
+    epochs_list : list of Epochs instances
         The Epochs instances to equalize trial counts for.
-    #### `method : str`
+    method : str
         If 'truncate', events will be truncated from the end of each event
         list. If 'mintime', timing differences between each event list will be
         minimized.
 
+    Notes
     -----
-    ### 📖 Notes
-
     This tries to make the remaining epochs occurring as close as possible in
     time. This method works based on the idea that if there happened to be some
     time-varying (like on the scale of minutes) noise characteristics during
@@ -2759,25 +2710,23 @@ def equalize_epoch_counts(epochs_list, method: str = "mintime") -> None:
     other one had [3.5, 4.5, 120.5, 121.5], it would remove events at times
     [1, 2] in the first epochs and not [120, 121].
 
-    -----
-    ### 🖥️ Examples
-
+    Examples
+    --------
     >>> equalize_epoch_counts([epochs1, epochs2])  # doctest: +SKIP
     """
     ...
 
 def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
-    """## Read epochs from a fif file.
+    """Read epochs from a fif file.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `fname : path-like | file-like`
+    fname : path-like | file-like
         The epochs to load. If a filename, should end with ``-epo.fif`` or
         ``-epo.fif.gz``. If a file-like object, preloading must be used.
 
-    #### `proj : bool | 'delayed'`
+    proj : bool | 'delayed'
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
         None the single epochs will be projected before the rejection
         decision, but used in unprojected state if they are kept.
@@ -2788,26 +2737,25 @@ def read_epochs(fname, proj: bool = True, preload: bool = True, verbose=None):
         detrending and temporal decimation will be postponed.
         If proj is False no projections will be applied which is the
         recommended value if SSPs are not used for cleaning the data.
-    #### `preload : bool`
+    preload : bool
         If True, read all epochs from disk immediately. If ``False``, epochs
         will be read on demand.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `epochs : instance of Epochs`
+    Returns
+    -------
+    epochs : instance of Epochs
         The epochs.
     """
     ...
 
 class _RawContainer:
-    """## Helper for a raw data container."""
+    """Helper for a raw data container."""
 
     fid: Incomplete
     data_tag: Incomplete
@@ -2821,17 +2769,16 @@ class _RawContainer:
     def __del__(self) -> None: ...
 
 class EpochsFIF(BaseEpochs):
-    """## Epochs read from disk.
+    """Epochs read from disk.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `fname : path-like | file-like`
+    fname : path-like | file-like
         The epochs to load. If a filename, should end with ``-epo.fif`` or
         ``-epo.fif.gz``. If a file-like object, preloading must be used.
 
-    #### `proj : bool | 'delayed'`
+    proj : bool | 'delayed'
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
         None the single epochs will be projected before the rejection
         decision, but used in unprojected state if they are kept.
@@ -2842,19 +2789,18 @@ class EpochsFIF(BaseEpochs):
         detrending and temporal decimation will be postponed.
         If proj is False no projections will be applied which is the
         recommended value if SSPs are not used for cleaning the data.
-    #### `preload : bool`
+    preload : bool
         If True, read all epochs from disk immediately. If False, epochs will
         be read on demand.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.Epochs
     mne.epochs.combine_event_ids
     mne.Epochs.equalize_event_counts
@@ -2867,15 +2813,14 @@ class EpochsFIF(BaseEpochs):
     ) -> None: ...
 
 def bootstrap(epochs, random_state=None):
-    """## Compute epochs selected by bootstrapping.
+    """Compute epochs selected by bootstrapping.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs : Epochs instance`
+    Parameters
+    ----------
+    epochs : Epochs instance
         epochs data to be bootstrapped
 
-    #### `random_state : None | int | instance of ~numpy.random.RandomState`
+    random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
         (see  `numpy.random.RandomState` for details), meaning it will most
@@ -2883,10 +2828,9 @@ def bootstrap(epochs, random_state=None):
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
 
-    -----
-    ### ⏎ Returns
-
-    #### `epochs : Epochs instance`
+    Returns
+    -------
+    epochs : Epochs instance
         The bootstrap samples
     """
     ...
@@ -2894,30 +2838,29 @@ def bootstrap(epochs, random_state=None):
 def concatenate_epochs(
     epochs_list, add_offset: bool = True, *, on_mismatch: str = "raise", verbose=None
 ):
-    """## Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
+    """Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
 
-    ### 💡 Note Unlike `mne.concatenate_raws`, this function does `not`
+    💡 Note Unlike `mne.concatenate_raws`, this function does **not**
               modify any of the input data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs_list : list`
+    Parameters
+    ----------
+    epochs_list : list
         List of `mne.Epochs` instances to concatenate (in that order).
-    #### `add_offset : bool`
+    add_offset : bool
         If True, a fixed offset is added to the event times from different
         Epochs sets, such that they are easy to distinguish after the
         concatenation.
         If False, the event times are unaltered during the concatenation.
 
-    #### `on_mismatch : 'raise' | 'warn' | 'ignore'`
+    on_mismatch : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when the device-to-head transformation differs between
         instances.
 
         ✨ Added in version 0.24
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
@@ -2925,15 +2868,13 @@ def concatenate_epochs(
 
         ✨ Added in version 0.24
 
-    -----
-    ### ⏎ Returns
-
-    #### `epochs : instance of EpochsArray`
+    Returns
+    -------
+    epochs : instance of EpochsArray
         The result of the concatenation. All data will be loaded into memory.
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.9.0
     """
     ...
@@ -2953,23 +2894,22 @@ def average_movements(
     mag_scale: float = 100.0,
     verbose=None,
 ):
-    """## Average data using Maxwell filtering, transforming using head positions.
+    """Average data using Maxwell filtering, transforming using head positions.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `epochs : instance of Epochs`
+    Parameters
+    ----------
+    epochs : instance of Epochs
         The epochs to operate on.
 
-    #### `head_pos : array | None`
+    head_pos : array | None
         If array, movement compensation will be performed.
         The array should be of shape (N, 10), holding the position
         parameters as returned by e.g. ``read_head_pos``.
-    #### `orig_sfreq : float | None`
+    orig_sfreq : float | None
         The original sample frequency of the data (that matches the
         event sample numbers in ``epochs.events``). Can be ``None``
         if data have not been decimated or resampled.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -2979,7 +2919,7 @@ def average_movements(
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
 
-    #### `origin : array-like, shape (3,) | str`
+    origin : array-like, shape (3,) | str
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
@@ -2988,18 +2928,18 @@ def average_movements(
         to having too few digitization points),
         consider separately calling the fitting function with different
         options or specifying the origin manually.
-    #### `weight_all : bool`
+    weight_all : bool
         If True, all channels are weighted by the SSS basis weights.
         If False, only MEG channels are weighted, other channels
         receive uniform weight per epoch.
 
-    #### `int_order : int`
+    int_order : int
         Order of internal component of spherical expansion.
 
-    #### `ext_order : int`
+    ext_order : int
         Order of external component of spherical expansion.
 
-    #### `destination : path-like | array-like, shape (3,) | None`
+    destination : path-like | array-like, shape (3,) | None
         The destination location for the head. Can be ``None``, which
         will not change the head position, or a path to a FIF file
         containing a MEG device<->head transformation, or a 3-element array
@@ -3008,14 +2948,14 @@ def average_movements(
         as ``--trans default`` would in MaxFilter™ (i.e., to the default
         head location).
 
-    #### `ignore_ref : bool`
+    ignore_ref : bool
         If True, do not include reference channels in compensation. This
         option should be True for KIT files, since Maxwell filtering
         with reference channels is not currently supported.
-    #### `return_mapping : bool`
+    return_mapping : bool
         If True, return the mapping matrix.
 
-    #### `mag_scale : float | str`
+    mag_scale : float | str
         The magenetometer scale-factor used to bring the magnetometers
         to approximately the same order of magnitude as the gradiometers
         (default 100.), as they have different units (T vs T/m).
@@ -3025,27 +2965,24 @@ def average_movements(
 
         ✨ Added in version 0.13
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `evoked : instance of Evoked`
+    Returns
+    -------
+    evoked : instance of Evoked
         The averaged epochs.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.preprocessing.maxwell_filter
     mne.chpi.read_head_pos
 
+    Notes
     -----
-    ### 📖 Notes
-
     The Maxwell filtering version of this algorithm is described in [1]_,
     in section V.B "Virtual signals and movement correction", equations
     40-44. For additional validation, see [2]_.
@@ -3078,31 +3015,30 @@ def make_fixed_length_epochs(
     id: int = 1,
     verbose=None,
 ):
-    """## Divide continuous raw data into equal-sized consecutive epochs.
+    """Divide continuous raw data into equal-sized consecutive epochs.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         Raw data to divide into segments.
-    #### `duration : float`
+    duration : float
         Duration of each epoch in seconds. Defaults to 1.
 
-    #### `preload : bool or str (default False)`
+    preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    #### `reject_by_annotation : bool`
+    reject_by_annotation : bool
         Whether to reject based on annotations. If ``True`` (default), epochs
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
         ✨ Added in version 0.21.0
 
-    #### `proj : bool | 'delayed'`
+    proj : bool | 'delayed'
         Apply SSP projection vectors. If proj is 'delayed' and reject is not
         None the single epochs will be projected before the rejection
         decision, but used in unprojected state if they are kept.
@@ -3115,31 +3051,29 @@ def make_fixed_length_epochs(
         recommended value if SSPs are not used for cleaning the data.
 
         ✨ Added in version 0.22.0
-    #### `overlap : float`
+    overlap : float
         The overlap between epochs, in seconds. Must be
         ``0 <= overlap < duration``. Default is 0, i.e., no overlap.
 
         ✨ Added in version 0.23.0
-    #### `id : int`
+    id : int
         The id to use (default 1).
 
         ✨ Added in version 0.24.0
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `epochs : instance of Epochs`
+    Returns
+    -------
+    epochs : instance of Epochs
         Segmented data.
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.20
     """
     ...

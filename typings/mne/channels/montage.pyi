@@ -28,14 +28,13 @@ class _BuiltinStandardMontage:
     def __init__(self, name, description) -> None: ...
 
 def get_builtin_montages(*, descriptions: bool = False):
-    """## Get a list of all standard montages shipping with MNE-Python.
+    """Get a list of all standard montages shipping with MNE-Python.
 
     The names of the montages can be passed to `make_standard_montage`.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `descriptions : bool`
+    Parameters
+    ----------
+    descriptions : bool
         Whether to return not only the montage names, but also their
         corresponding descriptions. If ``True``, a list of tuples is returned,
         where the first tuple element is the montage name and the second is
@@ -44,10 +43,9 @@ def get_builtin_montages(*, descriptions: bool = False):
 
         ✨ Added in version 1.1
 
-    -----
-    ### ⏎ Returns
-
-    #### `montages : list of str | list of tuple`
+    Returns
+    -------
+    montages : list of str | list of tuple
         If ``descriptions=False``, the names of all builtin montages that can
         be used by `make_standard_montage`.
 
@@ -64,51 +62,48 @@ def make_dig_montage(
     hpi=None,
     coord_frame: str = "unknown",
 ):
-    """## Make montage from arrays.
+    """Make montage from arrays.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `ch_pos : dict | None`
+    Parameters
+    ----------
+    ch_pos : dict | None
         Dictionary of channel positions. Keys are channel names and values
         are 3D coordinates - array of shape (3,) - in native digitizer space
         in m.
-    #### `nasion : None | array, shape (3,)`
+    nasion : None | array, shape (3,)
         The position of the nasion fiducial point.
         This point is assumed to be in the native digitizer space in m.
-    #### `lpa : None | array, shape (3,)`
+    lpa : None | array, shape (3,)
         The position of the left periauricular fiducial point.
         This point is assumed to be in the native digitizer space in m.
-    #### `rpa : None | array, shape (3,)`
+    rpa : None | array, shape (3,)
         The position of the right periauricular fiducial point.
         This point is assumed to be in the native digitizer space in m.
-    #### `hsp : None | array, shape (n_points, 3)`
+    hsp : None | array, shape (n_points, 3)
         This corresponds to an array of positions of the headshape points in
         3d. These points are assumed to be in the native digitizer space in m.
-    #### `hpi : None | array, shape (n_hpi, 3)`
+    hpi : None | array, shape (n_hpi, 3)
         This corresponds to an array of HPI points in the native digitizer
         space. They only necessary if computation of a ``compute_dev_head_t``
         is True.
-    #### `coord_frame : str`
+    coord_frame : str
         The coordinate frame of the points. Usually this is ``'unknown'``
         for native digitizer space.
         Other valid values are: ``'head'``, ``'meg'``, ``'mri'``,
         ``'mri_voxel'``, ``'mni_tal'``, ``'ras'``, ``'fs_tal'``,
         ``'ctf_head'``, and ``'ctf_meg'``.
 
-        ### 💡 Note
+        💡 Note
             For custom montages without fiducials, this parameter must be set
             to ``'head'``.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     DigMontage
     read_dig_captrak
     read_dig_egi
@@ -119,23 +114,21 @@ def make_dig_montage(
     ...
 
 class DigMontage:
-    """## Montage for digitized electrode and headshape position data.
+    """Montage for digitized electrode and headshape position data.
 
     ### ⛔️ Warning Montages are typically created using one of the helper
                  functions in the ``See Also`` section below instead of
                  instantiating this class directly.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `dig : list of dict`
+    Parameters
+    ----------
+    dig : list of dict
         The object containing all the dig points.
-    #### `ch_names : list of str`
+    ch_names : list of str
         The names of the EEG channels.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     read_dig_captrak
     read_dig_dat
     read_dig_egi
@@ -145,9 +138,8 @@ class DigMontage:
     read_dig_polhemus_isotrak
     make_dig_montage
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.9.0
     """
 
@@ -166,21 +158,20 @@ class DigMontage:
         axes=None,
         verbose=None,
     ):
-        """## Plot a montage.
+        """Plot a montage.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `scale_factor : float`
+        Parameters
+        ----------
+        scale_factor : float
             Determines the size of the points.
-        #### `show_names : bool | list`
+        show_names : bool | list
             Whether to display all channel names. If a list, only the channel
             names in the list are shown. Defaults to True.
-        #### `kind : str`
+        kind : str
             Whether to plot the montage as '3d' or 'topomap' (default).
-        #### `show : bool`
+        show : bool
             Show figure if True.
-        #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+        sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -195,112 +186,111 @@ class DigMontage:
             ✨ Added in version 0.20
             🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-        #### `axes : instance of Axes | instance of Axes3D | None`
+        axes : instance of Axes | instance of Axes3D | None
             Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
             of Axes3D. If None (default), a new axes will be created.
 
             ✨ Added in version 1.4
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `fig : instance of matplotlib.figure.Figure`
+        Returns
+        -------
+        fig : instance of matplotlib.figure.Figure
             The figure object.
         """
         ...
+
     def rename_channels(self, mapping, allow_duplicates: bool = False) -> None:
-        """## Rename the channels.
+        """Rename the channels.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `mapping : dict | callable`
+        mapping : dict | callable
             A dictionary mapping the old channel to a new channel name
             e.g. ``{'EEG061' : 'EEG161'}``. Can also be a callable function
             that takes and returns a string.
 
             🎭 Changed in version 0.10.0
                Support for a callable function.
-        #### `allow_duplicates : bool`
+        allow_duplicates : bool
             If True (default False), allow duplicates, which will automatically
             be renamed with ``-N`` at the end.
 
             ✨ Added in version 0.22.0
 
-        -----
-        ### ⏎ Returns
-
-        #### `inst : instance of DigMontage`
+        Returns
+        -------
+        inst : instance of DigMontage
             The instance. Operates in-place.
         """
         ...
+
     def save(self, fname, *, overwrite: bool = False, verbose=None) -> None:
-        """## Save digitization points to FIF.
+        """Save digitization points to FIF.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `fname : path-like`
+        Parameters
+        ----------
+        fname : path-like
             The filename to use. Should end in .fif or .fif.gz.
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
+
     def __iadd__(self, other):
-        """## Add two DigMontages in place.
+        """Add two DigMontages in place.
 
+        Notes
         -----
-        ### 📖 Notes
-
         Two DigMontages can only be added if there are no duplicated ch_names
         and if fiducials are present they should share the same coordinate
         system and location values.
         """
         ...
+
     def copy(self):
-        """## Copy the DigMontage object.
+        """Copy the DigMontage object.
 
-        -----
-        ### ⏎ Returns
-
-        #### `dig : instance of DigMontage`
+        Returns
+        -------
+        dig : instance of DigMontage
             The copied DigMontage instance.
         """
         ...
+
     def __add__(self, other):
-        """## Add two DigMontages."""
+        """Add two DigMontages."""
         ...
+
     def __eq__(self, other):
-        """## Compare different DigMontage objects for equality.
+        """Compare different DigMontage objects for equality.
 
-        -----
-        ### ⏎ Returns
-
+        Returns
+        -------
         Boolean output from comparison of .dig
         """
         ...
+
     def get_positions(self):
-        """## Get all channel and fiducial positions.
+        """Get all channel and fiducial positions.
 
-        -----
-        ### ⏎ Returns
-
-        #### `positions : dict`
+        Returns
+        -------
+        positions : dict
             A dictionary of the positions for channels (``ch_pos``),
             coordinate frame (``coord_frame``), nasion (``nasion``),
             left preauricular point (``lpa``),
@@ -320,24 +310,25 @@ class DigMontage:
                 }
         """
         ...
+
     def apply_trans(self, trans, verbose=None) -> None:
-        """## Apply a transformation matrix to the montage.
+        """Apply a transformation matrix to the montage.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `trans : instance of mne.transforms.Transform`
+        Parameters
+        ----------
+        trans : instance of mne.transforms.Transform
             The transformation matrix to be applied.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
+
     def add_estimated_fiducials(self, subject, subjects_dir=None, verbose=None):
-        """## Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
+        """Estimate fiducials based on FreeSurfer ``fsaverage`` subject.
 
         This takes a montage with the ``mri`` coordinate frame,
         corresponding to the FreeSurfer RAS (xyz in the volume) T1w
@@ -345,38 +336,34 @@ class DigMontage:
         `mne.coreg.get_mni_fiducials` to estimate LPA, RPA and
         Nasion fiducial points.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `subject : str`
+        subject : str
             The FreeSurfer subject name.
 
-        #### `subjects_dir : path-like | None`
+        subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
             variable.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `inst : instance of DigMontage`
+        Returns
+        -------
+        inst : instance of DigMontage
             The instance, modified in-place.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         `tut-source-alignment`
 
+        Notes
         -----
-        ### 📖 Notes
-
         Since MNE uses the FIF data structure, it relies on the ``head``
         coordinate frame. Any coordinate frame can be transformed
         to ``head`` if the fiducials (i.e. LPA, RPA and Nasion) are
@@ -385,33 +372,31 @@ class DigMontage:
         to get the head <-> MRI transform.
         """
         ...
+
     def add_mni_fiducials(self, subjects_dir=None, verbose=None):
-        """## Add fiducials to a montage in MNI space.
+        """Add fiducials to a montage in MNI space.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `subjects_dir : path-like | None`
+        subjects_dir : path-like | None
             The path to the directory containing the FreeSurfer subjects
             reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
             variable.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `inst : instance of DigMontage`
+        Returns
+        -------
+        inst : instance of DigMontage
             The instance, modified in-place.
 
+        Notes
         -----
-        ### 📖 Notes
-
         ``fsaverage`` is in MNI space and so its fiducials can be
         added to a montage in "mni_tal". MNI is an ACPC-aligned
         coordinate system (the posterior commissure is the origin)
@@ -421,28 +406,26 @@ class DigMontage:
         between LPA and RPA).
         """
         ...
+
     def remove_fiducials(self, verbose=None):
-        """## Remove the fiducial points from a montage.
+        """Remove the fiducial points from a montage.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `inst : instance of DigMontage`
+        Returns
+        -------
+        inst : instance of DigMontage
             The instance, modified in-place.
 
+        Notes
         -----
-        ### 📖 Notes
-
         MNE will transform a montage to the internal "head" coordinate
         frame if the fiducials are present. Under most circumstances, this
         is ideal as it standardizes the coordinate frame for things like
@@ -455,24 +438,21 @@ class DigMontage:
 VALID_SCALES: Incomplete
 
 def transform_to_head(montage):
-    """## Transform a DigMontage object into head coordinate.
+    """Transform a DigMontage object into head coordinate.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `montage : instance of DigMontage`
+    Parameters
+    ----------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage after transforming the points to head
         coordinate system.
 
+    Notes
     -----
-    ### 📖 Notes
-
     This function requires that the LPA, RPA and Nasion fiducial
     points are available. If they are not, they will be added based by
     projecting the fiducials onto a sphere with radius equal to the average
@@ -489,7 +469,7 @@ def transform_to_head(montage):
     ...
 
 def read_dig_dat(fname):
-    """## Read electrode positions from a ``*.dat`` file.
+    """Read electrode positions from a ``*.dat`` file.
 
     ### ⛔️ Warning
         This function was implemented based on ``*.dat`` files available from
@@ -497,21 +477,18 @@ def read_dig_dat(fname):
         as expected with novel files. If it does not read your files correctly
         please contact the MNE-Python developers.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         File from which to read electrode locations.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : DigMontage`
+    Returns
+    -------
+    montage : DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     read_dig_captrak
     read_dig_dat
     read_dig_egi
@@ -521,36 +498,32 @@ def read_dig_dat(fname):
     read_dig_polhemus_isotrak
     make_dig_montage
 
+    Notes
     -----
-    ### 📖 Notes
-
     ``*.dat`` files are plain text files and can be inspected and amended with
     a plain text editor.
     """
     ...
 
 def read_dig_fif(fname):
-    """## Read digitized points from a .fif file.
+    """Read digitized points from a .fif file.
 
     Note that electrode names are not present in the .fif file so
     they are here defined with the convention from VectorView
     systems (EEG001, EEG002, etc.)
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         FIF file from which to read digitization locations.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     DigMontage
     read_dig_dat
     read_dig_egi
@@ -563,25 +536,22 @@ def read_dig_fif(fname):
     ...
 
 def read_dig_hpts(fname, unit: str = "mm"):
-    """## Read historical ``.hpts`` MNE-C files.
+    """Read historical ``.hpts`` MNE-C files.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         The filepath of .hpts file.
-    #### `unit : ``'m'`` | ``'cm'`` | ``'mm'```
+    unit : ``'m'`` | ``'cm'`` | ``'mm'``
         Unit of the positions. Defaults to ``'mm'``.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     DigMontage
     read_dig_captrak
     read_dig_dat
@@ -591,9 +561,8 @@ def read_dig_hpts(fname, unit: str = "mm"):
     read_dig_polhemus_isotrak
     make_dig_montage
 
+    Notes
     -----
-    ### 📖 Notes
-
     The hpts format digitzer data file may contain comment lines starting
     with the pound sign (#) and data lines of the form::
 
@@ -637,23 +606,20 @@ def read_dig_hpts(fname, unit: str = "mm"):
     ...
 
 def read_dig_egi(fname):
-    """## Read electrode locations from EGI system.
+    """Read electrode locations from EGI system.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         EGI MFF XML coordinates file from which to read digitization locations.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     DigMontage
     read_dig_captrak
     read_dig_dat
@@ -666,24 +632,21 @@ def read_dig_egi(fname):
     ...
 
 def read_dig_captrak(fname):
-    """## Read electrode locations from CapTrak Brain Products system.
+    """Read electrode locations from CapTrak Brain Products system.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         BrainVision CapTrak coordinates file from which to read EEG electrode
         locations. This is typically in XML format with the .bvct extension.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     DigMontage
     read_dig_dat
     read_dig_egi
@@ -696,29 +659,26 @@ def read_dig_captrak(fname):
     ...
 
 def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
-    """## Read Localite .csv file.
+    """Read Localite .csv file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         File name.
-    #### `nasion : str | None`
+    nasion : str | None
         Name of nasion fiducial point.
-    #### `lpa : str | None`
+    lpa : str | None
         Name of left preauricular fiducial point.
-    #### `rpa : str | None`
+    rpa : str | None
         Name of right preauricular fiducial point.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     DigMontage
     read_dig_captrak
     read_dig_dat
@@ -731,32 +691,29 @@ def read_dig_localite(fname, nasion=None, lpa=None, rpa=None):
     ...
 
 def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
-    """## Read Polhemus digitizer data from a file.
+    """Read Polhemus digitizer data from a file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         The filepath of Polhemus ISOTrak formatted file.
         File extension is expected to be ``'.hsp'``, ``'.elp'`` or ``'.eeg'``.
-    #### `ch_names : None | list of str`
+    ch_names : None | list of str
         The names of the points. This will make the points
         considered as EEG channels. If None, channels will be assumed
         to be HPI if the extension is ``'.elp'``, and extra headshape
         points otherwise.
-    #### `unit : ``'m'`` | ``'cm'`` | ``'mm'```
+    unit : ``'m'`` | ``'cm'`` | ``'mm'``
         Unit of the digitizer file. Polhemus ISOTrak systems data is usually
         exported in meters. Defaults to ``'m'``.
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     DigMontage
     make_dig_montage
     read_polhemus_fastscan
@@ -771,81 +728,74 @@ def read_dig_polhemus_isotrak(fname, ch_names=None, unit: str = "m"):
 def read_polhemus_fastscan(
     fname, unit: str = "mm", on_header_missing: str = "raise", *, verbose=None
 ):
-    """## Read Polhemus FastSCAN digitizer data from a ``.txt`` file.
+    """Read Polhemus FastSCAN digitizer data from a ``.txt`` file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         The path of ``.txt`` Polhemus FastSCAN file.
-    #### `unit : ``'m'`` | ``'cm'`` | ``'mm'```
+    unit : ``'m'`` | ``'cm'`` | ``'mm'``
         Unit of the digitizer file. Polhemus FastSCAN systems data is usually
         exported in millimeters. Defaults to ``'mm'``.
 
-    #### `on_header_missing : str`
+    on_header_missing : str
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when the FastSCAN header is missing.
 
         ✨ Added in version 0.22
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `points : array, shape (n_points, 3)`
+    Returns
+    -------
+    points : array, shape (n_points, 3)
         The digitization points in digitizer coordinates.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     read_dig_polhemus_isotrak
     make_dig_montage
     """
     ...
 
 def read_custom_montage(fname, head_size=0.095, coord_frame=None):
-    """## Read a montage from a file.
+    """Read a montage from a file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         File extension is expected to be:
         ``'.loc'`` or ``'.locs'`` or ``'.eloc'`` (for EEGLAB files),
         ``'.sfp'`` (BESA/EGI files), ``'.csd'``,
         ``'.elc'``, ``'.txt'``, ``'.csd'``, ``'.elp'`` (BESA spherical),
         ``'.bvef'`` (BrainVision files),
         ``'.csv'``, ``'.tsv'``, ``'.xyz'`` (XYZ coordinates).
-    #### `head_size : float | None`
+    head_size : float | None
         The size of the head (radius, in [m]). If ``None``, returns the values
         read from the montage file with no modification. Defaults to 0.095m.
-    #### `coord_frame : str | None`
+    coord_frame : str | None
         The coordinate frame of the points. Usually this is ``"unknown"``
         for native digitizer space. Defaults to None, which is ``"unknown"``
         for most readers but ``"head"`` for EEGLAB.
 
         ✨ Added in version 0.20
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     make_dig_montage
     make_standard_montage
 
+    Notes
     -----
-    ### 📖 Notes
-
     The function is a helper to read electrode positions you may have
     in various formats. Most of these format are weakly specified
     in terms of units, coordinate systems. It implies that setting
@@ -858,91 +808,83 @@ def read_custom_montage(fname, head_size=0.095, coord_frame=None):
     ...
 
 def compute_dev_head_t(montage):
-    """## Compute device to head transform from a DigMontage.
+    """Compute device to head transform from a DigMontage.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `montage : DigMontage`
+    Parameters
+    ----------
+    montage : DigMontage
         The `mne.channels.DigMontage` must contain the fiducials in head
         coordinate system and hpi points in both head and
         meg device coordinate system.
 
-    -----
-    ### ⏎ Returns
-
-    #### `dev_head_t : Transform`
+    Returns
+    -------
+    dev_head_t : Transform
         A Device-to-Head transformation matrix.
     """
     ...
 
 def compute_native_head_t(montage, *, on_missing: str = "warn", verbose=None):
-    """## Compute the native-to-head transformation for a montage.
+    """Compute the native-to-head transformation for a montage.
 
     This uses the fiducials in the native space to transform to compute the
     transform to the head coordinate frame.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `montage : instance of DigMontage`
+    Parameters
+    ----------
+    montage : instance of DigMontage
         The montage.
 
-    #### `on_missing : 'raise' | 'warn' | 'ignore'`
+    on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when some necessary fiducial points are missing.
 
         ✨ Added in version 1.2
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `native_head_t : instance of Transform`
+    Returns
+    -------
+    native_head_t : instance of Transform
         A native-to-head transformation matrix.
     """
     ...
 
 def make_standard_montage(kind, head_size: str = "auto"):
-    """## Read a generic (built-in) standard montage that ships with MNE-Python.
+    """Read a generic (built-in) standard montage that ships with MNE-Python.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `kind : str`
+    Parameters
+    ----------
+    kind : str
         The name of the montage to use.
 
-        ### 💡 Note
+        💡 Note
             You can retrieve the names of all
             built-in montages via `mne.channels.get_builtin_montages`.
-    #### `head_size : float | None | str`
+    head_size : float | None | str
         The head size (radius, in meters) to use for spherical montages.
         Can be None to not scale the read sizes. ``'auto'`` (default) will
         use 95mm for all montages except the ``'standard*'``, ``'mgh*'``, and
         ``'artinis*'``, which are already in fsaverage's MRI coordinates
         (same as MNI).
 
-    -----
-    ### ⏎ Returns
-
-    #### `montage : instance of DigMontage`
+    Returns
+    -------
+    montage : instance of DigMontage
         The montage.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     get_builtin_montages
     make_dig_montage
     read_custom_montage
 
+    Notes
     -----
-    ### 📖 Notes
-
     Individualized (digitized) electrode positions should be read in using
     `read_dig_captrak`, `read_dig_dat`, `read_dig_egi`,
     `read_dig_fif`, `read_dig_polhemus_isotrak`,

@@ -10,26 +10,25 @@ def clean_ecg_eog(
     in_path: str = ".",
     quiet: bool = False,
 ) -> None:
-    """## Clean ECG from raw fif file.
+    """Clean ECG from raw fif file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `in_fif_fname : path-like`
+    Parameters
+    ----------
+    in_fif_fname : path-like
         Raw fif File
-    #### `eog_event_fname : str`
+    eog_event_fname : str
         name of EOG event file required.
-    #### `eog : bool`
+    eog : bool
         Reject or not EOG artifacts.
-    #### `ecg : bool`
+    ecg : bool
         Reject or not ECG artifacts.
-    #### `ecg_event_fname : str`
+    ecg_event_fname : str
         name of ECG event file required.
-    #### `in_path : str`
+    in_path : str
         Path where all the files are.
     """
     ...
 
 def run() -> None:
-    """## Run command."""
+    """Run command."""
     ...

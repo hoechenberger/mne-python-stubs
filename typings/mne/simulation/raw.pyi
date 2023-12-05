@@ -50,21 +50,20 @@ def simulate_raw(
     max_iter: int = 10000,
     verbose=None,
 ):
-    """## Simulate raw data.
+    """Simulate raw data.
 
     Head movements can optionally be simulated using the ``head_pos``
     parameter.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `info : mne.Info`
+    info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement. Used for simulation.
 
         🎭 Changed in version 0.18
            Support for `mne.Info`.
-    #### `stc : iterable | SourceEstimate | SourceSimulator`
+    stc : iterable | SourceEstimate | SourceSimulator
         The source estimates to use to simulate data. Each must have the same
         sample rate as the raw data, and the vertices of all stcs in the
         iterable must match. Each entry in the iterable can also be a tuple of
@@ -75,23 +74,23 @@ def simulate_raw(
         🎭 Changed in version 0.18
            Support for tuple, iterable of tuple or `mne.SourceEstimate`,
            or `mne.simulation.SourceSimulator`.
-    #### `trans : dict | str | None`
+    trans : dict | str | None
         Either a transformation filename (usually made using mne_analyze)
         or an info dict (usually opened using read_trans()).
         If string, an ending of ``.fif`` or ``.fif.gz`` will be assumed to
         be in FIF format, any other ending will be assumed to be a text
         file with a 4x4 transformation matrix (like the ``--trans`` MNE-C
         option). If trans is None, an identity transform will be used.
-    #### `src : path-like | instance of SourceSpaces | None`
+    src : path-like | instance of SourceSpaces | None
         Source space corresponding to the stc. If string, should be a source
         space filename. Can also be an instance of loaded or generated
         SourceSpaces. Can be None if ``forward`` is provided.
-    #### `bem : path-like | dict | None`
+    bem : path-like | dict | None
         BEM solution  corresponding to the stc. If string, should be a BEM
         solution filename (e.g., "sample-5120-5120-5120-bem-sol.fif").
         Can be None if ``forward`` is provided.
 
-    #### `head_pos : None | path-like | dict | tuple | array`
+    head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
         be the time points and entries should be 4x4 ``dev_head_t``
@@ -101,15 +100,15 @@ def simulate_raw(
         If array, should be of the form returned by
         `mne.chpi.read_head_pos`.
         See for example :footcite:`LarsonTaulu2017`.
-    #### `mindist : float`
+    mindist : float
         Minimum distance between sources and the inner skull boundary
         to use during forward calculation.
 
-    #### `interp : str`
+    interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
         at different head positions.
-    #### `n_jobs : int | None`
+    n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -117,40 +116,38 @@ def simulate_raw(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    #### `use_cps : bool`
+    use_cps : bool
         Whether to use cortical patch statistics to define normal orientations for
         surfaces (default True).
-    #### `forward : instance of Forward | None`
+    forward : instance of Forward | None
         The forward operator to use. If None (default) it will be computed
         using ``bem``, ``trans``, and ``src``. If not None,
         ``bem``, ``trans``, and ``src`` are ignored.
 
         ✨ Added in version 0.17
-    #### `first_samp : int`
+    first_samp : int
         The first_samp property in the output Raw instance.
 
         ✨ Added in version 0.18
-    #### `max_iter : int`
+    max_iter : int
         The maximum number of STC iterations to allow.
         This is a sanity parameter to prevent accidental blowups.
 
         ✨ Added in version 0.18
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `raw : instance of Raw`
+    Returns
+    -------
+    raw : instance of Raw
         The simulated raw file.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.chpi.read_head_pos
     add_chpi
     add_noise
@@ -160,10 +157,9 @@ def simulate_raw(
     simulate_stc
     simulate_sparse_stc
 
+    Notes
     -----
-    ### 📖 Notes
-
-    `Stim channel encoding`
+    **Stim channel encoding**
 
     By default, the stimulus channel will have the head position number
     (starting at 1) stored in the trigger channel (if available) at the
@@ -171,7 +167,7 @@ def simulate_raw(
     ``(SourceEstimate, ndarray)`` the array values will be placed in the
     stim channel aligned with the `mne.SourceEstimate`.
 
-    `Data simulation`
+    **Data simulation**
 
     In the most advanced case where ``stc`` is an iterable of tuples the output
     will be concatenated in time as:
@@ -204,15 +200,14 @@ def add_eog(
     random_state=None,
     verbose=None,
 ):
-    """## Add blink noise to raw data.
+    """Add blink noise to raw data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         The raw instance to modify.
 
-    #### `head_pos : None | path-like | dict | tuple | array`
+    head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
         be the time points and entries should be 4x4 ``dev_head_t``
@@ -222,11 +217,11 @@ def add_eog(
         If array, should be of the form returned by
         `mne.chpi.read_head_pos`.
 
-    #### `interp : str`
+    interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
         at different head positions.
-    #### `n_jobs : int | None`
+    n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -234,7 +229,7 @@ def add_eog(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    #### `random_state : None | int | instance of ~numpy.random.RandomState`
+    random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
         (see  `numpy.random.RandomState` for details), meaning it will most
@@ -244,29 +239,26 @@ def add_eog(
         The random generator state used for blink, ECG, and sensor noise
         randomization.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `raw : instance of Raw`
+    Returns
+    -------
+    raw : instance of Raw
         The instance, modified in place.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     add_chpi
     add_ecg
     add_noise
     simulate_raw
 
+    Notes
     -----
-    ### 📖 Notes
-
     The blink artifacts are generated by:
 
     1. Random activation times are drawn from an inhomogeneous poisson
@@ -297,15 +289,14 @@ def add_ecg(
     random_state=None,
     verbose=None,
 ):
-    """## Add ECG noise to raw data.
+    """Add ECG noise to raw data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         The raw instance to modify.
 
-    #### `head_pos : None | path-like | dict | tuple | array`
+    head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
         be the time points and entries should be 4x4 ``dev_head_t``
@@ -315,11 +306,11 @@ def add_ecg(
         If array, should be of the form returned by
         `mne.chpi.read_head_pos`.
 
-    #### `interp : str`
+    interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
         at different head positions.
-    #### `n_jobs : int | None`
+    n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -327,7 +318,7 @@ def add_ecg(
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    #### `random_state : None | int | instance of ~numpy.random.RandomState`
+    random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
         (see  `numpy.random.RandomState` for details), meaning it will most
@@ -337,29 +328,26 @@ def add_ecg(
         The random generator state used for blink, ECG, and sensor noise
         randomization.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `raw : instance of Raw`
+    Returns
+    -------
+    raw : instance of Raw
         The instance, modified in place.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     add_chpi
     add_eog
     add_noise
     simulate_raw
 
+    Notes
     -----
-    ### 📖 Notes
-
     The ECG artifacts are generated by:
 
     1. Random inter-beat intervals are drawn from a uniform distribution
@@ -381,15 +369,14 @@ def add_ecg(
     ...
 
 def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None):
-    """## Add cHPI activations to raw data.
+    """Add cHPI activations to raw data.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         The raw instance to be modified.
 
-    #### `head_pos : None | path-like | dict | tuple | array`
+    head_pos : None | path-like | dict | tuple | array
         Path to the position estimates file. Should be in the format of
         the files produced by MaxFilter. If dict, keys should
         be the time points and entries should be 4x4 ``dev_head_t``
@@ -399,11 +386,11 @@ def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None
         If array, should be of the form returned by
         `mne.chpi.read_head_pos`.
 
-    #### `interp : str`
+    interp : str
         Either ``'hann'``, ``'cos2'`` (default), ``'linear'``, or ``'zero'``, the type of
         forward-solution interpolation to use between forward solutions
         at different head positions.
-    #### `n_jobs : int | None`
+    n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -411,21 +398,19 @@ def add_chpi(raw, head_pos=None, interp: str = "cos2", n_jobs=None, verbose=None
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `raw : instance of Raw`
+    Returns
+    -------
+    raw : instance of Raw
         The instance, modified in place.
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.18
     """
     ...

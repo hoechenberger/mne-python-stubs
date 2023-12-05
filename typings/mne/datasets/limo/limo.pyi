@@ -8,46 +8,43 @@ root_url: str
 def data_path(
     subject, path=None, force_update: bool = False, update_path=None, *, verbose=None
 ):
-    """## Get path to local copy of LIMO dataset URL.
+    """Get path to local copy of LIMO dataset URL.
 
     This is a low-level function useful for getting a local copy of the
     remote LIMO dataset :footcite:`Rousselet2016`. The complete dataset is
     available at datashare.is.ed.ac.uk/.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `subject : int`
+    Parameters
+    ----------
+    subject : int
         Subject to download. Must be of `ìnt` in the range from 1
         to 18 (inclusive).
-    #### `path : None | str`
+    path : None | str
         Location of where to look for the LIMO data storing directory.
         If None, the environment variable or config parameter
         ``MNE_DATASETS_LIMO_PATH`` is used. If it doesn't exist, the
         "~/mne_data" directory is used. If the LIMO dataset
         is not found under the given path, the data
         will be automatically downloaded to the specified folder.
-    #### `force_update : bool`
+    force_update : bool
         Force update of the dataset even if a local copy exists.
-    #### `update_path : bool | None`
+    update_path : bool | None
         If True, set the MNE_DATASETS_LIMO_PATH in mne-python
         config to the given path. If None, the user is prompted.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `path : str`
+    Returns
+    -------
+    path : str
         Local path to the given data file.
 
+    Notes
     -----
-    ### 📖 Notes
-
     For example, one could do:
 
         >>> from mne.datasets import limo
@@ -66,34 +63,32 @@ def data_path(
 def load_data(
     subject, path=None, force_update: bool = False, update_path=None, verbose=None
 ):
-    """## Fetch subjects epochs data for the LIMO data set.
+    """Fetch subjects epochs data for the LIMO data set.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `subject : int`
+    Parameters
+    ----------
+    subject : int
         Subject to use. Must be of class ìnt in the range from 1 to 18.
-    #### `path : str`
+    path : str
         Location of where to look for the LIMO data.
         If None, the environment variable or config parameter
         ``MNE_DATASETS_LIMO_PATH`` is used. If it doesn't exist, the
         "~/mne_data" directory is used.
-    #### `force_update : bool`
+    force_update : bool
         Force update of the dataset even if a local copy exists.
-    #### `update_path : bool | None`
+    update_path : bool | None
         If True, set the MNE_DATASETS_LIMO_PATH in mne-python
         config to the given path. If None, the user is prompted.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `epochs : instance of Epochs`
+    Returns
+    -------
+    epochs : instance of Epochs
         The epochs.
     """
     ...

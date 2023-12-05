@@ -24,7 +24,7 @@ def plot_ica_sources(
     overview_mode=None,
     splash: bool = True,
 ):
-    """## Plot estimated latent sources given the unmixing matrix.
+    """Plot estimated latent sources given the unmixing matrix.
 
     Typical usecases:
 
@@ -32,22 +32,21 @@ def plot_ica_sources(
     2. plot latent source around event related time windows (Epochs input)
     3. plot time-locking in ICA space (Evoked input)
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `ica : instance of mne.preprocessing.ICA`
+    Parameters
+    ----------
+    ica : instance of mne.preprocessing.ICA
         The ICA solution.
-    #### `inst : instance of Raw, Epochs or Evoked`
+    inst : instance of Raw, Epochs or Evoked
         The object to plot the sources from.
 
-    #### `picks : int | list of int | slice | None`
+    picks : int | list of int | slice | None
         Indices of the independent components (ICs) to visualize.
         If an integer, represents the index of the IC to pick.
         Multiple ICs can be selected using a list of int or a slice.
         The indices are 0-indexed, so ``picks=1`` will pick the second
         IC: ``ICA001``. ``None`` will pick all independent components in the order
         fitted.
-    #### `start, stop : float | int | None`
+    start, stop : float | int | None
        If ``inst`` is a `mne.io.Raw` or an `mne.Evoked` object, the first and
        last time point (in seconds) of the data to plot. If ``inst`` is a
        `mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
@@ -55,25 +54,25 @@ def plot_ica_sources(
        `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
        signal. If ``inst`` is an `mne.Epochs` object, specifies the index of
        the first and last epoch to show.
-    #### `title : str | None`
+    title : str | None
         The window title. If None a default is provided.
-    #### `show : bool`
+    show : bool
         Show figure if True.
-    #### `block : bool`
+    block : bool
         Whether to halt program execution until the figure is closed.
         Useful for interactive selection of components in raw and epoch
         plotter. For evoked, this parameter has no effect. Defaults to False.
-    #### `show_first_samp : bool`
+    show_first_samp : bool
         If True, show time axis relative to the ``raw.first_samp``.
 
-    #### `show_scrollbars : bool`
+    show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
         after initialization by pressing :kbd:`z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
         ✨ Added in version 0.19.0
 
-    #### `time_format : 'float' | 'clock'`
+    time_format : 'float' | 'clock'
         Style of time labels on the horizontal axis. If ``'float'``, labels will be
         number of seconds from the start of the recording. If ``'clock'``,
         labels will show "clock time" (hours/minutes/seconds) inferred from
@@ -81,7 +80,7 @@ def plot_ica_sources(
 
         ✨ Added in version 0.24
 
-    #### `precompute : bool | str`
+    precompute : bool | str
         Whether to load all data (not just the visible portion) into RAM and
         apply preprocessing (e.g., projectors) to the full data array in a separate
         processor thread, instead of window-by-window during scrolling. The default
@@ -94,7 +93,7 @@ def plot_ica_sources(
         🎭 Changed in version 1.0
            Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
-    #### `use_opengl : bool | None`
+    use_opengl : bool | None
         Whether to use OpenGL when rendering the plot (requires ``pyopengl``).
         May increase performance, but effect is dependent on system CPU and
         graphics hardware. Only works if using the Qt backend. Default is
@@ -104,10 +103,10 @@ def plot_ica_sources(
 
         ✨ Added in version 0.24
 
-    #### `theme : str | path-like`
+    theme : str | path-like
         Can be "auto", "light", or "dark" or a path-like to a
         custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-        `qdarkstyle` and
+        `qdarkstyle <https://github.com/ColinDuquesnoy/QDarkStyleSheet>`__ and
         `darkdetect <https://github.com/albertosottile/darkdetect>`__,
         respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
         defaulting to "auto" if it's not found.
@@ -115,7 +114,7 @@ def plot_ica_sources(
 
         ✨ Added in version 1.0
 
-    #### `overview_mode : str | None`
+    overview_mode : str | None
         Can be "channels", "empty", or "hidden" to set the overview bar mode
         for the ``'qt'`` backend. If None (default), the config option
         ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
@@ -123,22 +122,20 @@ def plot_ica_sources(
 
         ✨ Added in version 1.1
 
-    #### `splash : bool`
+    splash : bool
         If True (default), a splash screen is shown during the application startup. Only
         applicable to the ``qt`` backend.
 
         ✨ Added in version 1.6
 
-    -----
-    ### ⏎ Returns
+    Returns
+    -------
 
-
-    #### `fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser`
+    fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
         Browser instance.
 
+    Notes
     -----
-    ### 📖 Notes
-
     For raw and epoch instances, it is possible to select components for
     exclusion by clicking on the line. The selected components are added to
     ``ica.exclude`` on close.
@@ -154,9 +151,9 @@ def plot_ica_sources(
     `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
-    ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+    💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
-    ### 💡 Note To report issues with the PyQtGraph backend, please use the
+    💡 Note To report issues with the PyQtGraph backend, please use the
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
 
@@ -182,35 +179,34 @@ def plot_ica_properties(
     *,
     verbose=None,
 ):
-    """## Display component properties.
+    """Display component properties.
 
     Properties include the topography, epochs image, ERP/ERF, power
     spectrum, and epoch variance.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `ica : instance of mne.preprocessing.ICA`
+    Parameters
+    ----------
+    ica : instance of mne.preprocessing.ICA
         The ICA solution.
-    #### `inst : instance of Epochs or Raw`
+    inst : instance of Epochs or Raw
         The data to use in plotting properties.
 
-        ### 💡 Note
+        💡 Note
            You can interactively cycle through topographic maps for different
            channel types by pressing :kbd:`T`.
-    #### `picks : int | list of int | slice | None`
+    picks : int | list of int | slice | None
         Indices of the independent components (ICs) to visualize.
         If an integer, represents the index of the IC to pick.
         Multiple ICs can be selected using a list of int or a slice.
         The indices are 0-indexed, so ``picks=1`` will pick the second
         IC: ``ICA001``. ``None`` will pick the first 5 components.
-    #### `axes : list of Axes | None`
+    axes : list of Axes | None
         List of five matplotlib axes to use in plotting: [topomap_axis,
         image_axis, erp_axis, spectrum_axis, variance_axis]. If None a new
         figure with relevant axes is created. Defaults to None.
     dB : bool
         Whether to plot spectrum in dB. Defaults to True.
-    #### `plot_std : bool | float`
+    plot_std : bool | float
         Whether to plot standard deviation/confidence intervals in ERP/ERF and
         spectrum plots.
         Defaults to True, which plots one standard deviation above/below for
@@ -220,36 +216,36 @@ def plot_ica_properties(
         For the ERP/ERF, by default, plot the 95 percent parametric confidence
         interval is calculated. To change this, use ``ci`` in ``ts_args`` in
         ``image_args`` (see below).
-    #### `log_scale : bool`
+    log_scale : bool
         Whether to use a logarithmic frequency axis to plot the spectrum.
         Defaults to ``False``.
 
-        ### 💡 Note
+        💡 Note
            You can interactively toggle this setting by pressing :kbd:`L`.
 
         ✨ Added in version 1.1
-    #### `topomap_args : dict | None`
+    topomap_args : dict | None
         Dictionary of arguments to ``plot_topomap``. If None, doesn't pass any
         additional arguments. Defaults to None.
-    #### `image_args : dict | None`
+    image_args : dict | None
         Dictionary of arguments to ``plot_epochs_image``. If None, doesn't pass
         any additional arguments. Defaults to None.
-    #### `psd_args : dict | None`
+    psd_args : dict | None
         Dictionary of arguments to `mne.Epochs.compute_psd`. If
         ``None``, doesn't pass any additional arguments. Defaults to ``None``.
-    #### `figsize : array-like, shape (2,) | None`
+    figsize : array-like, shape (2,) | None
         Allows to control size of the figure. If None, the figure size
         defaults to [7., 6.].
-    #### `show : bool`
+    show : bool
         Show figure if True.
-    #### `reject : 'auto' | dict | None`
+    reject : 'auto' | dict | None
         Allows to specify rejection parameters used to drop epochs
         (or segments if continuous signal is passed as inst).
         If None, no rejection is applied. The default is 'auto',
         which applies the rejection parameters used when fitting
         the ICA object.
 
-    #### `reject_by_annotation : bool`
+    reject_by_annotation : bool
         Whether to omit bad segments from the data before fitting. If ``True``
         (default), annotated segments whose description begins with ``'bad'`` are
         omitted. If ``False``, no rejection based on annotations is performed.
@@ -258,21 +254,19 @@ def plot_ica_properties(
 
         ✨ Added in version 0.21.0
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : list`
+    Returns
+    -------
+    fig : list
         List of matplotlib figures.
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.13
     """
     ...
@@ -288,45 +282,43 @@ def plot_ica_scores(
     n_cols=None,
     show: bool = True,
 ):
-    """## Plot scores related to detected components.
+    """Plot scores related to detected components.
 
     Use this function to asses how well your score describes outlier
     sources and how well you were detecting them.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `ica : instance of mne.preprocessing.ICA`
+    Parameters
+    ----------
+    ica : instance of mne.preprocessing.ICA
         The ICA object.
-    #### `scores : array-like of float, shape (n_ica_components,) | list of array`
+    scores : array-like of float, shape (n_ica_components,) | list of array
         Scores based on arbitrary metric to characterize ICA components.
-    #### `exclude : array-like of int`
+    exclude : array-like of int
         The components marked for exclusion. If None (default), ICA.exclude
         will be used.
-    #### `labels : str | list | 'ecg' | 'eog' | None`
+    labels : str | list | 'ecg' | 'eog' | None
         The labels to consider for the axes tests. Defaults to None.
         If list, should match the outer shape of ``scores``.
         If 'ecg' or 'eog', the ``labels_`` attributes will be looked up.
         Note that '/' is used internally for sublabels specifying ECG and
         EOG channels.
-    #### `axhline : float`
+    axhline : float
         Draw horizontal line to e.g. visualize rejection threshold.
-    #### `title : str`
+    title : str
         The figure title.
-    #### `figsize : tuple of int | None`
+    figsize : tuple of int | None
         The figure size. If None it gets set automatically.
-    #### `n_cols : int | None`
+    n_cols : int | None
         Scores are plotted in a grid. This parameter controls how
         many to plot side by side before starting a new row. By
         default, a number will be chosen to make the grid as square as
         possible.
-    #### `show : bool`
+    show : bool
         Show figure if True.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of Figure`
+    Returns
+    -------
+    fig : instance of Figure
         The figure object.
     """
     ...
@@ -345,44 +337,43 @@ def plot_ica_overlay(
     on_baseline: str = "warn",
     verbose=None,
 ):
-    """## Overlay of raw and cleaned signals given the unmixing matrix.
+    """Overlay of raw and cleaned signals given the unmixing matrix.
 
     This method helps visualizing signal quality and artifact rejection.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `ica : instance of mne.preprocessing.ICA`
+    Parameters
+    ----------
+    ica : instance of mne.preprocessing.ICA
         The ICA object.
-    #### `inst : instance of Raw or Evoked`
+    inst : instance of Raw or Evoked
         The signal to plot. If `mne.io.Raw`, the raw data per channel type is displayed
         before and after cleaning. A second panel with the RMS for MEG sensors and the
         :term:`GFP` for EEG sensors is displayed. If `mne.Evoked`, butterfly traces for
         signals before and after cleaning will be superimposed.
-    #### `exclude : array-like of int | None (default)`
+    exclude : array-like of int | None (default)
         The components marked for exclusion. If ``None`` (default), the components
         listed in ``ICA.exclude`` will be used.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
         string values "all" to pick all channels, or "data" to pick :term:`data
         channels`. None (default) will pick all channels that were included during fitting.
-    #### `start, stop : float | None`
+    start, stop : float | None
        The first and last time point (in seconds) of the data to plot. If
        ``inst`` is a `mne.io.Raw` object, ``start=None`` and ``stop=None``
        will be translated into ``start=0.`` and ``stop=3.``, respectively. For
        `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
        signal.
 
-    #### `title : str | None`
+    title : str | None
         The title of the generated figure. If ``None`` (default), no title is
         displayed.
-    #### `show : bool`
+    show : bool
         Show the figure if ``True``.
 
-    #### `n_pca_components : int | float | None`
+    n_pca_components : int | float | None
         The number of PCA components to be kept, either absolute (int)
         or fraction of the explained variance (float). If None (default),
         the ``ica.n_pca_components`` from initialization will be used in 0.22;
@@ -390,7 +381,7 @@ def plot_ica_overlay(
 
         ✨ Added in version 0.22
 
-    #### `on_baseline : str`
+    on_baseline : str
         How to handle baseline-corrected epochs or evoked data.
         Can be ``'raise'`` to raise an error, ``'warn'`` (default) to emit a
         warning, ``'ignore'`` to ignore, or "reapply" to reapply the baseline
@@ -398,16 +389,15 @@ def plot_ica_overlay(
 
         ✨ Added in version 1.2
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of Figure`
+    Returns
+    -------
+    fig : instance of Figure
         The figure.
     """
     ...

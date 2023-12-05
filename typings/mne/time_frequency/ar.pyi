@@ -3,7 +3,7 @@ from .._fiff.pick import pick_info as pick_info
 def fit_iir_model_raw(
     raw, order: int = 2, picks=None, tmin=None, tmax=None, verbose=None
 ):
-    """## Fit an AR model to raw data and creates the corresponding IIR filter.
+    """Fit an AR model to raw data and creates the corresponding IIR filter.
 
     The computed filter is fitted to data from all of the picked channels,
     with frequency response given by the standard IIR formula:
@@ -12,14 +12,13 @@ def fit_iir_model_raw(
 
         H(e^{jw}) = \\frac{1}{a[0] + a[1]e^{-jw} + ... + a[n]e^{-jnw}}
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : Raw object`
+    Parameters
+    ----------
+    raw : Raw object
         An instance of Raw.
-    #### `order : int`
+    order : int
         Order of the FIR filter.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -28,23 +27,22 @@ def fit_iir_model_raw(
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    #### `tmin : float`
+    tmin : float
         The beginning of time interval in seconds.
-    #### `tmax : float`
+    tmax : float
         The end of time interval in seconds.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `b : ndarray`
+    Returns
+    -------
+    b : ndarray
         Numerator filter coefficients.
-    #### `a : ndarray`
+    a : ndarray
         Denominator filter coefficients.
     """
     ...

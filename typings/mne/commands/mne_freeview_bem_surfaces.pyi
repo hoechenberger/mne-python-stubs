@@ -4,20 +4,19 @@ from mne.utils import (
 )
 
 def freeview_bem_surfaces(subject, subjects_dir, method) -> None:
-    """## View 3-Layers BEM model with Freeview.
+    """View 3-Layers BEM model with Freeview.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `subject : str`
+    Parameters
+    ----------
+    subject : str
         Subject name
-    #### `subjects_dir : path-like`
+    subjects_dir : path-like
         Directory containing subjects data (Freesurfer SUBJECTS_DIR)
-    #### `method : str`
+    method : str
         Can be ``'flash'`` or ``'watershed'``.
     """
     ...
 
 def run() -> None:
-    """## Run command."""
+    """Run command."""
     ...

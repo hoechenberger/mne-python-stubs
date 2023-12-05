@@ -17,7 +17,12 @@ Clone this repository and `cd` into it.
 ```shell
 pip install ".[dev]"
 ```
-Running `python gen_type_stubs.py` re-generates the type stubs.
+
+Running `python gen_type_stubs_mne.py` re-generates the type stubs for inclusion in
+MNE-Python.
+
+Running `python gen_type_stubs_vscode.py` re-generates the type stubs with special
+markup for VS Code users.
 
 ## Notes
 

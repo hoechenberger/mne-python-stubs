@@ -8,28 +8,26 @@ from .write import (
 )
 
 def dir_tree_find(tree, kind):
-    """## Find nodes of the given kind from a directory tree structure.
+    """Find nodes of the given kind from a directory tree structure.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `tree : dict`
+    Parameters
+    ----------
+    tree : dict
         Directory tree.
-    #### `kind : int`
+    kind : int
         Kind to find.
 
-    -----
-    ### ⏎ Returns
-
-    #### `nodes : list`
+    Returns
+    -------
+    nodes : list
         List of matching nodes.
     """
     ...
 
 def make_dir_tree(fid, directory, start: int = 0, indent: int = 0, verbose=None):
-    """## Create the directory tree structure."""
+    """Create the directory tree structure."""
     ...
 
 def copy_tree(fidin, in_id, nodes, fidout) -> None:
-    """## Copy directory subtrees from fidin to fidout."""
+    """Copy directory subtrees from fidin to fidout."""
     ...

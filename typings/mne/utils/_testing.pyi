@@ -5,7 +5,7 @@ from .numerics import object_diff as object_diff
 from _typeshed import Incomplete
 
 class _TempDir(str):
-    """## Create and auto-destroy temp dir.
+    """Create and auto-destroy temp dir.
 
     This is designed to be used with testing modules. Instances should be
     defined inside test functions. Instances defined at module level can not
@@ -21,28 +21,28 @@ class _TempDir(str):
     def __del__(self) -> None: ...
 
 def requires_mne(func):
-    """## Decorate a function as requiring MNE."""
+    """Decorate a function as requiring MNE."""
     ...
 
 def requires_mne_mark():
-    """## Mark pytest tests that require MNE-C."""
+    """Mark pytest tests that require MNE-C."""
     ...
 
 def requires_openmeeg_mark():
-    """## Mark pytest tests that require OpenMEEG."""
+    """Mark pytest tests that require OpenMEEG."""
     ...
 
 def requires_freesurfer(arg):
-    """## Require Freesurfer."""
+    """Require Freesurfer."""
     ...
 
 def requires_good_network(func): ...
 def run_command_if_main() -> None:
-    """## Run a given command if it's __main__."""
+    """Run a given command if it's __main__."""
     ...
 
 class ArgvSetter:
-    """## Temporarily set sys.argv."""
+    """Temporarily set sys.argv."""
 
     argv: Incomplete
     stdout: Incomplete
@@ -59,7 +59,7 @@ class ArgvSetter:
     def __exit__(self, *args) -> None: ...
 
 class SilenceStdout:
-    """## Silence stdout."""
+    """Silence stdout."""
 
     close: Incomplete
 
@@ -70,23 +70,23 @@ class SilenceStdout:
     def __exit__(self, *args) -> None: ...
 
 def has_mne_c():
-    """## Check for MNE-C."""
+    """Check for MNE-C."""
     ...
 
 def has_freesurfer():
-    """## Check for Freesurfer."""
+    """Check for Freesurfer."""
     ...
 
 def buggy_mkl_svd(function):
-    """## Decorate tests that make calls to SVD and intermittently fail."""
+    """Decorate tests that make calls to SVD and intermittently fail."""
     ...
 
 def assert_and_remove_boundary_annot(annotations, n: int = 1) -> None:
-    """## Assert that there are boundary annotations and remove them."""
+    """Assert that there are boundary annotations and remove them."""
     ...
 
 def assert_object_equal(a, b) -> None:
-    """## Assert two objects are equal."""
+    """Assert two objects are equal."""
     ...
 
 def assert_meg_snr(
@@ -97,7 +97,7 @@ def assert_meg_snr(
     chpi_med_tol: float = 500.0,
     msg=None,
 ) -> None:
-    """## Assert channel SNR of a certain level.
+    """Assert channel SNR of a certain level.
 
     Mostly useful for operations like Maxwell filtering that modify
     MEG channels while leaving EEG and others intact.
@@ -105,13 +105,13 @@ def assert_meg_snr(
     ...
 
 def assert_snr(actual, desired, tol) -> None:
-    """## Assert actual and desired arrays are within some SNR tolerance."""
+    """Assert actual and desired arrays are within some SNR tolerance."""
     ...
 
 def assert_stcs_equal(stc1, stc2) -> None:
-    """## Check that two STC are equal."""
+    """Check that two STC are equal."""
     ...
 
 def assert_dig_allclose(info_py, info_bin, limit=None) -> None:
-    """## Assert dig allclose."""
+    """Assert dig allclose."""
     ...

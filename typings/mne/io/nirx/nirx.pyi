@@ -9,14 +9,13 @@ from ..base import BaseRaw as BaseRaw
 def read_raw_nirx(
     fname, saturated: str = "annotate", preload: bool = False, verbose=None
 ):
-    """## Reader for a NIRX fNIRS recording.
+    """Reader for a NIRX fNIRS recording.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         Path to the NIRX data folder or header file.
-    #### `saturated : str`
+    saturated : str
         Replace saturated segments of data with NaNs, can be:
 
         ``"ignore"``
@@ -34,34 +33,31 @@ def read_raw_nirx(
 
         ✨ Added in version 0.24
 
-    #### `preload : bool or str (default False)`
+    preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `raw : instance of RawNIRX`
+    Returns
+    -------
+    raw : instance of RawNIRX
         A Raw object containing NIRX data.
         See `mne.io.Raw` for documentation of attributes and methods.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.io.Raw : Documentation of attributes and methods of RawNIRX.
 
+    Notes
     -----
-    ### 📖 Notes
-
 
     This function has only been tested with NIRScout and NIRSport devices,
     and with the NIRStar software version 15 and above and Aurora software
@@ -78,14 +74,13 @@ def read_raw_nirx(
     ...
 
 class RawNIRX(BaseRaw):
-    """## Raw object from a NIRX fNIRS file.
+    """Raw object from a NIRX fNIRS file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         Path to the NIRX data folder or header file.
-    #### `saturated : str`
+    saturated : str
         Replace saturated segments of data with NaNs, can be:
 
         ``"ignore"``
@@ -103,27 +98,25 @@ class RawNIRX(BaseRaw):
 
         ✨ Added in version 0.24
 
-    #### `preload : bool or str (default False)`
+    preload : bool or str (default False)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
         file name of a memory-mapped file which is used to store the data
         on the hard drive (slower, requires less memory).
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.io.Raw : Documentation of attributes and methods.
 
+    Notes
     -----
-    ### 📖 Notes
-
 
     This function has only been tested with NIRScout and NIRSport devices,
     and with the NIRStar software version 15 and above and Aurora software

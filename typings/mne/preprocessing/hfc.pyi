@@ -10,56 +10,52 @@ def compute_proj_hfc(
     accuracy: str = "accurate",
     verbose=None,
 ):
-    """## Generate projectors to perform homogeneous/harmonic correction to data.
+    """Generate projectors to perform homogeneous/harmonic correction to data.
 
     Remove evironmental fields from magentometer data by assuming it is
     explained as a homogeneous :footcite:`TierneyEtAl2021` or harmonic field
     :footcite:`TierneyEtAl2022`. Useful for arrays of OPMs.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `info : mne.Info | None`
+    info : mne.Info | None
         The `mne.Info` object with information about the sensors and methods of measurement.
-    #### `order : int`
+    order : int
         The order of the spherical harmonic basis set to use. Set to 1 to use
         only the homogeneous field component (default), 2 to add gradients, 3
         to add quadrature terms etc.
-    #### `picks : str | array_like | slice | None`
+    picks : str | array_like | slice | None
         Channels to include. Default of ``'meg'`` (same as None) will select
         all non-reference MEG channels. Use ``('meg', 'ref_meg')`` to include
         reference sensors as well.
-    #### `exclude : list | 'bads'`
+    exclude : list | 'bads'
         List of channels to exclude from HFC, only used when picking
         based on types (e.g., exclude="bads" when picks="meg").
         Specify ``'bads'`` (the default) to exclude all channels marked as bad.
-    #### `accuracy : str`
+    accuracy : str
         Can be ``"point"``, ``"normal"`` or ``"accurate"`` (default), defines
         which level of coil definition accuracy is used to generate model.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
+    Returns
+    -------
 
-
-    #### `projs : list of Projection`
+    projs : list of Projection
         List of computed projection vectors.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.io.Raw.add_proj
     mne.io.Raw.apply_proj
 
+    Notes
     -----
-    ### 📖 Notes
-
     To apply the projectors to a dataset, use
     ``inst.add_proj(projs).apply_proj()``.
 

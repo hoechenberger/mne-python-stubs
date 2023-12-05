@@ -16,36 +16,34 @@ from .utils import get_subjects_dir as get_subjects_dir, logger as logger, warn 
 def read_morph_map(
     subject_from, subject_to, subjects_dir=None, xhemi: bool = False, verbose=None
 ):
-    """## Read morph map.
+    """Read morph map.
 
     Morph maps can be generated with mne_make_morph_maps. If one isn't
     available, it will be generated automatically and saved to the
     ``subjects_dir/morph_maps`` directory.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `subject_from : str`
+    Parameters
+    ----------
+    subject_from : str
         Name of the original subject as named in the ``SUBJECTS_DIR``.
-    #### `subject_to : str`
+    subject_to : str
         Name of the subject on which to morph as named in the ``SUBJECTS_DIR``.
-    #### `subjects_dir : path-like`
+    subjects_dir : path-like
         Path to ``SUBJECTS_DIR`` is not set in the environment.
-    #### `xhemi : bool`
+    xhemi : bool
         Morph across hemisphere. Currently only implemented for
         ``subject_to == subject_from``. See notes of
         `mne.compute_source_morph`.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `left_map, right_map : ~scipy.sparse.csr_matrix`
+    Returns
+    -------
+    left_map, right_map : ~scipy.sparse.csr_matrix
         The morph maps for the 2 hemispheres.
     """
     ...

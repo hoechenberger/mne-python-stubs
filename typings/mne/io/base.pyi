@@ -77,15 +77,14 @@ class BaseRaw(
     FilterMixin,
     SpectrumMixin,
 ):
-    """## Base class for Raw data.
+    """Base class for Raw data.
 
-    -----
-    ### 🛠️ Parameters
+    Parameters
+    ----------
 
-
-    #### `info : mne.Info`
+    info : mne.Info
         The `mne.Info` object with information about the sensors and methods of measurement.
-    #### `preload : bool | str | ndarray`
+    preload : bool | str | ndarray
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
@@ -93,48 +92,46 @@ class BaseRaw(
         on the hard drive (slower, requires less memory). If preload is an
         ndarray, the data are taken from that array. If False, data are not
         read until save.
-    #### `first_samps : iterable`
+    first_samps : iterable
         Iterable of the first sample number from each raw file. For unsplit raw
         files this should be a length-one list or tuple.
-    #### `last_samps : iterable | None`
+    last_samps : iterable | None
         Iterable of the last sample number from each raw file. For unsplit raw
         files this should be a length-one list or tuple. If None, then preload
         must be an ndarray.
-    #### `filenames : tuple`
+    filenames : tuple
         Tuple of length one (for unsplit raw files) or length > 1 (for split
         raw files).
-    #### `raw_extras : list of dict`
+    raw_extras : list of dict
         The data necessary for on-demand reads for the given reader format.
         Should be the same length as ``filenames``. Will have the entry
         ``raw_extras['orig_nchan']`` added to it for convenience.
-    #### `orig_format : str`
+    orig_format : str
         The data format of the original raw file (e.g., ``'double'``).
-    #### `dtype : dtype | None`
+    dtype : dtype | None
         The dtype of the raw data. If preload is an ndarray, its dtype must
         match what is passed here.
-    #### `buffer_size_sec : float`
+    buffer_size_sec : float
         The buffer size in seconds that should be written by default using
         `mne.io.Raw.save`.
-    #### `orig_units : dict | None`
+    orig_units : dict | None
         Dictionary mapping channel names to their units as specified in
         the header file. Example: {'FC1': 'nV'}.
 
         ✨ Added in version 0.17
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.io.Raw : Documentation of attributes and methods.
 
+    Notes
     -----
-    ### 📖 Notes
-
     This class is public to allow for stable type-checking in user
     code (i.e., ``isinstance(my_raw_object, BaseRaw)``) but should not be used
     as a constructor for `Raw` objects (use instead one of the subclass
@@ -167,7 +164,7 @@ class BaseRaw(
         verbose=None,
     ) -> None: ...
     def apply_gradient_compensation(self, grade, verbose=None):
-        """## Apply CTF gradient compensation.
+        """Apply CTF gradient compensation.
 
         ### ⛔️ Warning The compensation matrices are stored with single
                      precision, so repeatedly switching between different
@@ -177,101 +174,102 @@ class BaseRaw(
                      only use a single gradient compensation level in
                      final analyses.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `grade : int`
+        Parameters
+        ----------
+        grade : int
             CTF gradient compensation level.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `raw : instance of Raw`
+        Returns
+        -------
+        raw : instance of Raw
             The modified Raw instance. Works in-place.
         """
         ...
+
     def load_data(self, verbose=None):
-        """## Load raw data.
+        """Load raw data.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `raw : instance of Raw`
+        Returns
+        -------
+        raw : instance of Raw
             The raw object with data.
 
+        Notes
         -----
-        ### 📖 Notes
-
         This function will load raw data if it was not already preloaded.
         If data were already preloaded, it will do nothing.
 
         ✨ Added in version 0.10.0
         """
         ...
+
     @property
     def first_samp(self):
-        """## The first data sample.
+        """The first data sample.
 
         See :term:`first_samp`.
         """
         ...
+
     @property
     def first_time(self):
-        """## The first time point (including first_samp but not meas_date)."""
+        """The first time point (including first_samp but not meas_date)."""
         ...
+
     @property
     def last_samp(self):
-        """## The last data sample."""
+        """The last data sample."""
         ...
+
     def time_as_index(self, times, use_rounding: bool = False, origin=None):
-        """## Convert time to indices.
+        """Convert time to indices.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `times : list-like | float | int`
+        Parameters
+        ----------
+        times : list-like | float | int
             List of numbers or a number representing points in time.
-        #### `use_rounding : bool`
+        use_rounding : bool
             If True, use rounding (instead of truncation) when converting
             times to indices. This can help avoid non-unique indices.
-        #### `origin : datetime | float | int | None`
+        origin : datetime | float | int | None
             Time reference for times. If None, ``times`` are assumed to be
             relative to :term:`first_samp`.
 
             ✨ Added in version 0.17.0
 
-        -----
-        ### ⏎ Returns
-
-        #### `index : ndarray`
+        Returns
+        -------
+        index : ndarray
             Indices relative to :term:`first_samp` corresponding to the times
             supplied.
         """
         ...
+
     @property
     def annotations(self):
-        """## `mne.Annotations` for marking segments of data."""
+        """`mne.Annotations` for marking segments of data."""
         ...
+
     @property
     def filenames(self):
-        """## The filenames used."""
+        """The filenames used."""
         ...
+
     def set_annotations(
         self,
         annotations,
@@ -280,72 +278,70 @@ class BaseRaw(
         *,
         verbose=None,
     ):
-        """## Setter for annotations.
+        """Setter for annotations.
 
         This setter checks if they are inside the data range.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `annotations : instance of mne.Annotations | None`
+        Parameters
+        ----------
+        annotations : instance of mne.Annotations | None
             Annotations to set. If None, the annotations is defined
             but empty.
 
-        #### `emit_warning : bool`
+        emit_warning : bool
             Whether to emit warnings when cropping or omitting annotations.
             The default is True.
 
-        #### `on_missing : 'raise' | 'warn' | 'ignore'`
+        on_missing : 'raise' | 'warn' | 'ignore'
             Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
             warning, or ``'ignore'`` to ignore when entries in ch_names are not present in the raw instance.
 
             ✨ Added in version 0.23.0
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `self : instance of Raw`
+        Returns
+        -------
+        self : instance of Raw
             The raw object with annotations.
         """
         ...
+
     def __del__(self) -> None: ...
     def __enter__(self):
-        """## Entering with block."""
+        """Entering with block."""
         ...
+
     def __exit__(
         self,
         exception_type: type[BaseException] | None,
         exception_val: BaseException | None,
         trace: types.TracebackType | None,
     ):
-        """## Exit with block."""
+        """Exit with block."""
         ...
+
     def __getitem__(self, item):
-        """## Get raw data and times.
+        """Get raw data and times.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `item : tuple or array-like`
+        Parameters
+        ----------
+        item : tuple or array-like
             See below for use cases.
 
-        -----
-        ### ⏎ Returns
-
-        #### `data : ndarray, shape (n_channels, n_times)`
+        Returns
+        -------
+        data : ndarray, shape (n_channels, n_times)
             The raw data.
-        #### `times : ndarray, shape (n_times,)`
+        times : ndarray, shape (n_times,)
             The times associated with the data.
 
-        -----
-        ### 🖥️ Examples
-
+        Examples
+        --------
         Generally raw data is accessed as::
 
             >>> data, times = raw[picks, time_slice]  # doctest: +SKIP
@@ -366,9 +362,11 @@ class BaseRaw(
 
         """
         ...
+
     def __setitem__(self, item, value) -> None:
-        """## Set raw data content."""
+        """Set raw data content."""
         ...
+
     def get_data(
         self,
         picks=None,
@@ -382,12 +380,11 @@ class BaseRaw(
         tmax=None,
         verbose=None,
     ):
-        """## Get data in the given range.
+        """Get data in the given range.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -396,19 +393,19 @@ class BaseRaw(
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
-        #### `start : int`
+        start : int
             The first sample to include. Defaults to 0.
-        #### `stop : int | None`
+        stop : int | None
             End sample (first not to include). If None (default), the end of
             the data is  used.
-        #### `reject_by_annotation : None | 'omit' | 'NaN'`
+        reject_by_annotation : None | 'omit' | 'NaN'
             Whether to reject by annotation. If None (default), no rejection is
             done. If 'omit', segments annotated with description starting with
             'bad' are omitted. If 'NaN', the bad samples are filled with NaNs.
-        #### `return_times : bool`
+        return_times : bool
             Whether to return times as well. Defaults to False.
 
-        #### `units : str | dict | None`
+        units : str | dict | None
             Specify the unit(s) that the data should be returned in. If
             ``None`` (default), the data is returned in the
             channel-type-specific default units, which are SI units (see
@@ -424,38 +421,37 @@ class BaseRaw(
             ``dict(grad='fT/cm', mag='fT')`` will scale the corresponding types
             accordingly, but all other channel types will remain in their
             channel-type-specific default unit.
-        #### `tmin : int | float | None`
+        tmin : int | float | None
             Start time of data to get in seconds. The ``tmin`` parameter is
             ignored if the ``start`` parameter is bigger than 0.
 
             ✨ Added in version 0.24.0
-        #### `tmax : int | float | None`
+        tmax : int | float | None
             End time of data to get in seconds. The ``tmax`` parameter is
             ignored if the ``stop`` parameter is defined.
 
             ✨ Added in version 0.24.0
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `data : ndarray, shape (n_channels, n_times)`
+        Returns
+        -------
+        data : ndarray, shape (n_channels, n_times)
             Copy of the data in the given range.
-        #### `times : ndarray, shape (n_times,)`
+        times : ndarray, shape (n_times,)
             Times associated with the data samples. Only returned if
             return_times=True.
 
+        Notes
         -----
-        ### 📖 Notes
-
         ✨ Added in version 0.14.0
         """
         ...
+
     def apply_function(
         self,
         fun,
@@ -466,31 +462,30 @@ class BaseRaw(
         verbose=None,
         **kwargs,
     ):
-        """## Apply a function to a subset of channels.
+        """Apply a function to a subset of channels.
 
         The function ``fun`` is applied to the channels defined in ``picks``.
         The raw object's data is modified in-place. If the function returns a different
         data type (e.g. :py:obj:`numpy.complex128`) it must be specified
-        using the ``dtype`` parameter, which causes the data type of `all` the data
+        using the ``dtype`` parameter, which causes the data type of **all** the data
         to change (even if the function is only applied to channels in ``picks``). The object has to have the data loaded e.g. with ``preload=True`` or ``self.load_data()``.
 
-        ### 💡 Note If ``n_jobs`` > 1, more memory is required as
+        💡 Note If ``n_jobs`` > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
-        ### 💡 Note If the data type changes (``dtype != None``), more memory is
+        💡 Note If the data type changes (``dtype != None``), more memory is
                   required since the original and the converted data needs
                   to be stored in memory.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `fun : callable`
+        fun : callable
             A function to be applied to the channels. The first argument of
             fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  if ``channel_wise=True`` and ``(len(picks), n_times)`` otherwise.
             The function must return an `numpy.ndarray` shaped like its input.
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -500,10 +495,10 @@ class BaseRaw(
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
 
-        #### `dtype : numpy.dtype`
+        dtype : numpy.dtype
             Data type to use after applying the function. If None
             (default) the data type is not modified.
-        #### `n_jobs : int | None`
+        n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -512,13 +507,13 @@ class BaseRaw(
             value for ``n_jobs``. Ignored if ``channel_wise=False`` as the workload
             is split across channels.
 
-        #### `channel_wise : bool`
+        channel_wise : bool
             Whether to apply the function to each channel individually. If ``False``,
             the function will be applied to all channels at once. Default ``True``.
 
             ✨ Added in version 0.18
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -527,13 +522,13 @@ class BaseRaw(
         **kwargs : dict
             Additional keyword arguments to pass to ``fun``.
 
-        -----
-        ### ⏎ Returns
-
-        #### `self : instance of Raw`
+        Returns
+        -------
+        self : instance of Raw
             The raw object with transformed data.
         """
         ...
+
     def filter(
         self,
         l_freq,
@@ -552,20 +547,19 @@ class BaseRaw(
         pad: str = "reflect_limited",
         verbose=None,
     ):
-        """## Filter a subset of channels.
+        """Filter a subset of channels.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `l_freq : float | None`
+        l_freq : float | None
             For FIR filters, the lower pass-band edge; for IIR filters, the lower
             cutoff frequency. If None the data are only low-passed.
 
-        #### `h_freq : float | None`
+        h_freq : float | None
             For FIR filters, the upper pass-band edge; for IIR filters, the upper
             cutoff frequency. If None the data are only high-passed.
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -575,22 +569,22 @@ class BaseRaw(
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
-        #### `filter_length : str | int`
+        filter_length : str | int
             Length of the FIR filter to use (if applicable):
 
-            * `'auto' (default)`: The filter length is chosen based
+            * **'auto' (default)**: The filter length is chosen based
               on the size of the transition regions (6.6 times the reciprocal
               of the shortest transition band for fir_window='hamming'
               and fir_design="firwin2", and half that for "firwin").
-            * `str`: A human-readable time in
+            * **str**: A human-readable time in
               units of "s" or "ms" (e.g., "10s" or "5500ms") will be
               converted to that number of samples if ``phase="zero"``, or
               the shortest power-of-two length at least that duration for
               ``phase="zero-double"``.
-            * `int`: Specified length in samples. For fir_design="firwin",
+            * **int**: Specified length in samples. For fir_design="firwin",
               this should not be used.
 
-        #### `l_trans_bandwidth : float | str`
+        l_trans_bandwidth : float | str
             Width of the transition band at the low cut-off frequency in Hz
             (high pass or cutoff 1 in bandpass). Can be "auto"
             (default) to use a multiple of ``l_freq``::
@@ -599,7 +593,7 @@ class BaseRaw(
 
             Only used for ``method='fir'``.
 
-        #### `h_trans_bandwidth : float | str`
+        h_trans_bandwidth : float | str
             Width of the transition band at the high cut-off frequency in Hz
             (low pass or cutoff 2 in bandpass). Can be "auto"
             (default in 0.14) to use a multiple of ``h_freq``::
@@ -608,20 +602,20 @@ class BaseRaw(
 
             Only used for ``method='fir'``.
 
-        #### `n_jobs : int | str`
+        n_jobs : int | str
             Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
             is installed properly and ``method='fir'``.
 
-        #### `method : str`
+        method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
             forward-backward filtering (via `scipy.signal.filtfilt`).
 
-        #### `iir_params : dict | None`
+        iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
             If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
             For more information, see `mne.filter.construct_iir_filter`.
 
-        #### `phase : str`
+        phase : str
             Phase of the filter.
             When ``method='fir'``, symmetric linear-phase FIR filters are constructed,
             and if ``phase='zero'`` (default), the delay of this filter is compensated
@@ -639,13 +633,13 @@ class BaseRaw(
 
             ✨ Added in version 0.13
 
-        #### `fir_window : str`
+        fir_window : str
             The window to use in FIR design, can be "hamming" (default),
             "hann" (default in 0.13), or "blackman".
 
             ✨ Added in version 0.15
 
-        #### `fir_design : str`
+        fir_design : str
             Can be "firwin" (default) to use `scipy.signal.firwin`,
             or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
             a time-domain design technique that generally gives improved
@@ -653,7 +647,7 @@ class BaseRaw(
 
             ✨ Added in version 0.15
 
-        #### `skip_by_annotation : str | list of str`
+        skip_by_annotation : str | list of str
             If a string (or list of str), any annotation segment that begins
             with the given string will not be included in filtering, and
             segments on either side of the given excluded annotated segment
@@ -665,7 +659,7 @@ class BaseRaw(
 
             ✨ Added in version 0.16.
 
-        #### `pad : str`
+        pad : str
             The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
@@ -673,21 +667,19 @@ class BaseRaw(
 
             Only used for ``method='fir'``.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `inst : instance of Epochs, Evoked, or Raw`
+        Returns
+        -------
+        inst : instance of Epochs, Evoked, or Raw
             The filtered data.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         mne.filter.create_filter
         mne.Evoked.savgol_filter
         mne.io.Raw.notch_filter
@@ -696,9 +688,8 @@ class BaseRaw(
         mne.filter.filter_data
         mne.filter.construct_iir_filter
 
+        Notes
         -----
-        ### 📖 Notes
-
         Applies a zero-phase low-pass, high-pass, band-pass, or band-stop
         filter to the channels selected by ``picks``.
         The data are modified inplace.
@@ -717,7 +708,7 @@ class BaseRaw(
         ``self.info['lowpass']`` and ``self.info['highpass']`` are only
         updated with picks=None.
 
-        ### 💡 Note If n_jobs > 1, more memory is required as
+        💡 Note If n_jobs > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
 
@@ -728,6 +719,7 @@ class BaseRaw(
         ✨ Added in version 0.15
         """
         ...
+
     def notch_filter(
         self,
         freqs,
@@ -747,18 +739,17 @@ class BaseRaw(
         skip_by_annotation=("edge", "bad_acq_skip"),
         verbose=None,
     ):
-        """## Notch filter a subset of channels.
+        """Notch filter a subset of channels.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `freqs : float | array of float | None`
+        Parameters
+        ----------
+        freqs : float | array of float | None
             Specific frequencies to filter out from data, e.g.,
             ``np.arange(60, 241, 60)`` in the US or ``np.arange(50, 251, 50)``
             in Europe. ``None`` can only be used with the mode
             ``'spectrum_fit'``, where an F test is used to find sinusoidal
             components.
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -768,19 +759,19 @@ class BaseRaw(
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
-        #### `filter_length : str | int`
+        filter_length : str | int
             Length of the FIR filter to use (if applicable):
 
-            * `'auto' (default)`: The filter length is chosen based
+            * **'auto' (default)**: The filter length is chosen based
               on the size of the transition regions (6.6 times the reciprocal
               of the shortest transition band for fir_window='hamming'
               and fir_design="firwin2", and half that for "firwin").
-            * `str`: A human-readable time in
+            * **str**: A human-readable time in
               units of "s" or "ms" (e.g., "10s" or "5500ms") will be
               converted to that number of samples if ``phase="zero"``, or
               the shortest power-of-two length at least that duration for
               ``phase="zero-double"``.
-            * `int`: Specified length in samples. For fir_design="firwin",
+            * **int**: Specified length in samples. For fir_design="firwin",
               this should not be used.
 
             When ``method=='spectrum_fit'``, this sets the effective window duration
@@ -790,35 +781,35 @@ class BaseRaw(
             to adapt as well to non-stationarities.
 
             The default in 0.21 is None, but this will change to ``'10s'`` in 0.22.
-        #### `notch_widths : float | array of float | None`
+        notch_widths : float | array of float | None
             Width of each stop band (centred at each freq in freqs) in Hz.
             If None, ``freqs / 200`` is used.
-        #### `trans_bandwidth : float`
+        trans_bandwidth : float
             Width of the transition band in Hz.
             Only used for ``method='fir'`` and ``method='iir'``.
 
-        #### `n_jobs : int | str`
+        n_jobs : int | str
             Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
             is installed properly and ``method='fir'``.
 
-        #### `method : str`
+        method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
             forward-backward filtering (via `scipy.signal.filtfilt`).
 
-        #### `iir_params : dict | None`
+        iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
             If ``iir_params=None`` and ``method="iir"``, 4th order Butterworth will be used.
             For more information, see `mne.filter.construct_iir_filter`.
-        #### `mt_bandwidth : float | None`
+        mt_bandwidth : float | None
             The bandwidth of the multitaper windowing function in Hz.
             Only used in 'spectrum_fit' mode.
-        #### `p_value : float`
+        p_value : float
             P-value to use in F-test thresholding to determine significant
             sinusoidal components to remove when ``method='spectrum_fit'`` and
             ``freqs=None``. Note that this will be Bonferroni corrected for the
             number of frequencies, so large p-values may be justified.
 
-        #### `phase : str`
+        phase : str
             Phase of the filter.
             When ``method='fir'``, symmetric linear-phase FIR filters are constructed,
             and if ``phase='zero'`` (default), the delay of this filter is compensated
@@ -836,13 +827,13 @@ class BaseRaw(
 
             ✨ Added in version 0.13
 
-        #### `fir_window : str`
+        fir_window : str
             The window to use in FIR design, can be "hamming" (default),
             "hann" (default in 0.13), or "blackman".
 
             ✨ Added in version 0.15
 
-        #### `fir_design : str`
+        fir_design : str
             Can be "firwin" (default) to use `scipy.signal.firwin`,
             or "firwin2" to use `scipy.signal.firwin2`. "firwin" uses
             a time-domain design technique that generally gives improved
@@ -850,7 +841,7 @@ class BaseRaw(
 
             ✨ Added in version 0.15
 
-        #### `pad : str`
+        pad : str
             The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
@@ -861,7 +852,7 @@ class BaseRaw(
 
             ✨ Added in version 0.15
 
-        #### `skip_by_annotation : str | list of str`
+        skip_by_annotation : str | list of str
             If a string (or list of str), any annotation segment that begins
             with the given string will not be included in filtering, and
             segments on either side of the given excluded annotated segment
@@ -871,40 +862,38 @@ class BaseRaw(
             or `mne.io.Raw.append`, or separated during acquisition.
             To disable, provide an empty list. Only used if ``inst`` is raw.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `raw : instance of Raw`
+        Returns
+        -------
+        raw : instance of Raw
             The raw instance with filtered data.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         mne.filter.notch_filter
         mne.io.Raw.filter
 
+        Notes
         -----
-        ### 📖 Notes
-
         Applies a zero-phase notch filter to the channels selected by
         "picks". By default the data of the Raw object is modified inplace.
 
         The Raw object has to have the data loaded e.g. with ``preload=True``
         or ``self.load_data()``.
 
-        ### 💡 Note If n_jobs > 1, more memory is required as
+        💡 Note If n_jobs > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
 
         For details, see `mne.filter.notch_filter`.
         """
         ...
+
     def resample(
         self,
         sfreq,
@@ -916,7 +905,7 @@ class BaseRaw(
         pad: str = "reflect_limited",
         verbose=None,
     ):
-        """## Resample all channels.
+        """Resample all channels.
 
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
@@ -938,36 +927,35 @@ class BaseRaw(
                      data using the 'events' parameter (a resampled copy is
                      returned).
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `sfreq : float`
+        Parameters
+        ----------
+        sfreq : float
             New sample rate to use.
 
-        #### `npad : int | str`
+        npad : int | str
             Amount to pad the start and end of the data.
             Can also be ``"auto"`` to use a padding that will result in
             a power-of-two size (can be much faster).
 
-        #### `window : str | tuple`
+        window : str | tuple
             Frequency-domain window to use in resampling.
             See `scipy.signal.resample`.
-        #### `stim_picks : list of int | None`
+        stim_picks : list of int | None
             Stim channels. These channels are simply subsampled or
             supersampled (without applying any filtering). This reduces
             resampling artifacts in stim channels, but may lead to missing
             triggers. If None, stim channels are automatically chosen using
             `mne.pick_types`.
 
-        #### `n_jobs : int | str`
+        n_jobs : int | str
             Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
             is installed properly.
-        #### `events : 2D array, shape (n_events, 3) | None`
+        events : 2D array, shape (n_events, 3) | None
             An optional event matrix. When specified, the onsets of the events
             are resampled jointly with the data. NB: The input events are not
             modified, but a new array is returned with the raw instead.
 
-        #### `pad : str`
+        pad : str
             The type of padding to use. Supports all `numpy.pad` ``mode``
             options. Can also be ``"reflect_limited"``, which pads with a
             reflected version of each vector mirrored on the first and last values
@@ -976,29 +964,26 @@ class BaseRaw(
 
             ✨ Added in version 0.15
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `raw : instance of Raw`
+        Returns
+        -------
+        raw : instance of Raw
             The resampled version of the raw object.
-        #### `events : array, shape (n_events, 3) | None`
+        events : array, shape (n_events, 3) | None
             If events are jointly resampled, these are returned with the raw.
 
-        -----
-        ### 👉 See Also
-
+        See Also
+        --------
         mne.io.Raw.filter
         mne.Epochs.resample
 
+        Notes
         -----
-        ### 📖 Notes
-
         For some data, it may be more accurate to use ``npad=0`` to reduce
         artifacts. This is dataset dependent -- check your data!
 
@@ -1008,10 +993,11 @@ class BaseRaw(
         resulting raw object will have the data loaded into memory.
         """
         ...
+
     def crop(
         self, tmin: float = 0.0, tmax=None, include_tmax: bool = True, *, verbose=None
     ):
-        """## Crop raw data file.
+        """Crop raw data file.
 
         Limit the data from the raw file to go between specific times. Note
         that the new ``tmin`` is assumed to be ``t=0`` for all subsequently
@@ -1022,58 +1008,56 @@ class BaseRaw(
         Thus function operates in-place on the instance.
         Use `mne.io.Raw.copy` if operation on a copy is desired.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `tmin : float`
+        tmin : float
             Start time of the raw data to use in seconds (must be >= 0).
 
-        #### `tmax : float`
+        tmax : float
             End time of the raw data to use in seconds (cannot exceed data duration).
 
-        #### `include_tmax : bool`
+        include_tmax : bool
             If True (default), include tmax. If False, exclude tmax (similar to how
             Python indexing typically works).
 
             ✨ Added in version 0.19
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `raw : instance of Raw`
+        Returns
+        -------
+        raw : instance of Raw
             The cropped raw object, modified in-place.
         """
         ...
+
     def crop_by_annotations(self, annotations=None, *, verbose=None):
-        """## Get crops of raw data file for selected annotations.
+        """Get crops of raw data file for selected annotations.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `annotations : instance of Annotations | None`
+        Parameters
+        ----------
+        annotations : instance of Annotations | None
             The annotations to use for cropping the raw file. If None,
             the annotations from the instance are used.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `raws : list`
+        Returns
+        -------
+        raws : list
             The cropped raw objects.
         """
         ...
+
     def save(
         self,
         fname,
@@ -1089,12 +1073,11 @@ class BaseRaw(
         split_naming: str = "neuromag",
         verbose=None,
     ) -> None:
-        """## Save raw data to file.
+        """Save raw data to file.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `fname : path-like`
+        Parameters
+        ----------
+        fname : path-like
             File name of the new dataset. This has to be a new filename
             unless data have been preloaded. Filenames should end with
             ``raw.fif`` (common raw data), ``raw_sss.fif``
@@ -1103,7 +1086,7 @@ class BaseRaw(
             ``_meg.fif`` (common MEG data), ``_eeg.fif`` (common EEG data),
             or ``_ieeg.fif`` (common intracranial EEG data). You may also
             append an additional ``.gz`` suffix to enable gzip compression.
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1113,26 +1096,26 @@ class BaseRaw(
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
-        #### `tmin : float`
+        tmin : float
             Start time of the raw data to use in seconds (must be >= 0).
 
-        #### `tmax : float`
+        tmax : float
             End time of the raw data to use in seconds (cannot exceed data duration).
-        #### `buffer_size_sec : float | None`
+        buffer_size_sec : float | None
             Size of data chunks in seconds. If None (default), the buffer
             size of the original file is used.
-        #### `drop_small_buffer : bool`
+        drop_small_buffer : bool
             Drop or not the last buffer. It is required by maxfilter (SSS)
             that only accepts raw files with buffers of the same size.
-        #### `proj : bool`
+        proj : bool
             If True the data is saved with the projections applied (active).
 
-            ### 💡 Note If ``apply_proj()`` was used to apply the projections,
+            💡 Note If ``apply_proj()`` was used to apply the projections,
                       the projectons will be active even if ``proj`` is False.
-        #### `fmt : 'single' | 'double' | 'int' | 'short'`
+        fmt : 'single' | 'double' | 'int' | 'short'
             Format to use to save raw data. Valid options are 'double',
             'single', 'int', and 'short' for 64- or 32-bit float, or 32- or
-            16-bit integers, respectively. It is `strongly` recommended to
+            16-bit integers, respectively. It is **strongly** recommended to
             use 'single', as this is backward-compatible, and is standard for
             maintaining precision. Note that using 'short' or 'int' may result
             in loss of precision, complex data cannot be saved as 'short',
@@ -1140,21 +1123,21 @@ class BaseRaw(
             can be loaded with the MNE command-line tools. See raw.orig_format
             to determine the format the original data were stored in.
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
             To overwrite original file (the same one that was loaded),
             data must be preloaded upon reading.
-        #### `split_size : str | int`
+        split_size : str | int
             Large raw files are automatically split into multiple pieces. This
             parameter specifies the maximum size of each piece. If the
             parameter is an integer, it specifies the size in Bytes. It is
             also possible to pass a human-readable string, e.g., 100MB.
 
-            ### 💡 Note Due to FIFF file limitations, the maximum split
+            💡 Note Due to FIFF file limitations, the maximum split
                       size is 2GB.
 
-        #### `split_naming : 'neuromag' | 'bids'`
+        split_naming : 'neuromag' | 'bids'
             When splitting files, append a filename partition with the appropriate
             naming schema: for ``'neuromag'``, a split file ``fname.fif`` will be named
             ``fname.fif``, ``fname-1.fif``, ``fname-2.fif`` etc.; while for ``'bids'``,
@@ -1162,16 +1145,15 @@ class BaseRaw(
 
             ✨ Added in version 0.17
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        Notes
         -----
-        ### 📖 Notes
-
-        If Raw is a concatenation of several raw files, `be warned` that
+        If Raw is a concatenation of several raw files, **be warned** that
         only the measurement information from the first raw file is stored.
         This likely means that certain operations with external tools may not
         work properly on a saved concatenated file (e.g., probably some
@@ -1182,6 +1164,7 @@ class BaseRaw(
         memory. Whatever values, they will be loaded as 0s when reading file.
         """
         ...
+
     def export(
         self,
         fname,
@@ -1192,56 +1175,54 @@ class BaseRaw(
         overwrite: bool = False,
         verbose=None,
     ) -> None:
-        """## Export Raw to external formats.
+        """Export Raw to external formats.
 
         Supported formats:
             - BrainVision (``.vhdr``, ``.vmrk``, ``.eeg``, uses `pybv <https://github.com/bids-standard/pybv>`_)
             - EEGLAB (``.set``, uses `eeglabio`)
-            - EDF (``.edf``, uses `EDFlib-Python <https://gitlab.com/Teuniz/EDFlib-Python>`_)
+            - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
         ### ⛔️ Warning
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `fname : str`
+        fname : str
             Name of the output file.
 
-        #### `fmt : 'auto' | 'brainvision' | 'edf' | 'eeglab'`
+        fmt : 'auto' | 'brainvision' | 'edf' | 'eeglab'
             Format of the export. Defaults to ``'auto'``, which will infer the format
             from the filename extension. See supported formats above for more
             information.
 
-        #### `physical_range : str | tuple`
+        physical_range : str | tuple
             The physical range of the data. If 'auto' (default), then
             it will infer the physical min and max from the data itself,
             taking the minimum and maximum values per channel type.
             If it is a 2-tuple of minimum and maximum limit, then those
             physical ranges will be used. Only used for exporting EDF files.
 
-        #### `add_ch_type : bool`
+        add_ch_type : bool
             Whether to incorporate the channel type into the signal label (e.g. whether
             to store channel "Fz" as "EEG Fz"). Only used for EDF format. Default is
             ``False``.
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
             ✨ Added in version 0.24.1
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
+        Notes
         -----
-        ### 📖 Notes
-
         ✨ Added in version 0.24
 
         Export to external format may not preserve all the information from the
@@ -1272,6 +1253,7 @@ class BaseRaw(
         <mne.io.Raw.set_montage>`.
         """
         ...
+
     def plot(
         self,
         events=None,
@@ -1311,37 +1293,36 @@ class BaseRaw(
         splash: bool = True,
         verbose=None,
     ):
-        """## Plot raw data.
+        """Plot raw data.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `events : array | None`
+        Parameters
+        ----------
+        events : array | None
             Events to show with vertical bars.
-        #### `duration : float`
+        duration : float
             Time window (s) to plot. The lesser of this value and the duration
             of the raw file will be used.
-        #### `start : float`
+        start : float
             Initial time to show (can be changed dynamically once plotted). If
             show_first_samp is True, then it is taken relative to
             ``raw.first_samp``.
-        #### `n_channels : int`
+        n_channels : int
             Number of channels to plot at once. Defaults to 20. The lesser of
             ``n_channels`` and ``len(raw.ch_names)`` will be shown.
             Has no effect if ``order`` is 'position', 'selection' or 'butterfly'.
-        #### `bgcolor : color object`
+        bgcolor : color object
             Color of the background.
-        #### `color : dict | color object | None`
+        color : dict | color object | None
             Color for the data traces. If None, defaults to::
 
                 dict(mag='darkblue', grad='b', eeg='k', eog='k', ecg='m',
                      emg='k', ref_meg='steelblue', misc='k', stim='k',
                      resp='k', chpi='k')
 
-        #### `bad_color : color object`
+        bad_color : color object
             Color to make bad channels.
 
-        #### `event_color : color object | dict | None`
+        event_color : color object | dict | None
             Color(s) to use for :term:`events`. To show all :term:`events` in the same
             color, pass any matplotlib-compatible color. To color events differently,
             pass a `dict` that maps event names or integer event numbers to colors
@@ -1350,7 +1331,7 @@ class BaseRaw(
             color cycle.
             Defaults to ``'cyan'``.
 
-        #### `scalings : 'auto' | dict | None`
+        scalings : 'auto' | dict | None
             Scaling factors for the traces. If a dictionary where any
             value is ``'auto'``, the scaling factor is set to match the 99.5th
             percentile of the respective data. If ``'auto'``, all scalings (for all
@@ -1362,28 +1343,28 @@ class BaseRaw(
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            ### 💡 Note
+            💡 Note
                 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
                 signals means that the visualized range will be 40 µV (20 µV in the
                 positive direction and 20 µV in the negative direction).
-        #### `remove_dc : bool`
+        remove_dc : bool
             If True remove DC component when plotting data.
-        #### `order : array of int | None`
+        order : array of int | None
             Order in which to plot data. If the array is shorter than the number of
             channels, only the given channels are plotted. If None (default), all
             channels are plotted. If ``group_by`` is ``'position'`` or
             ``'selection'``, the ``order`` parameter is used only for selecting the
             channels to be plotted.
-        #### `show_options : bool`
+        show_options : bool
             If True, a dialog for options related to projection is shown.
-        #### `title : str | None`
+        title : str | None
             The title of the window. If None, and either the filename of the
             raw object or '<unknown>' will be displayed as title.
-        #### `show : bool`
+        show : bool
             Show figure if True.
-        #### `block : bool`
+        block : bool
             Whether to halt program execution until the figure is closed.
             Useful for setting bad channels on the fly by clicking on a line.
             May not work on all systems / platforms.
@@ -1391,13 +1372,13 @@ class BaseRaw(
             be ``True`` or a Qt-eventloop needs to be started somewhere
             else in the script (e.g. if you want to implement the browser
             inside another Qt-Application).
-        #### `highpass : float | None`
+        highpass : float | None
             Highpass to apply when displaying data.
-        #### `lowpass : float | None`
+        lowpass : float | None
             Lowpass to apply when displaying data.
             If highpass > lowpass, a bandstop rather than bandpass filter
             will be applied.
-        #### `filtorder : int`
+        filtorder : int
             Filtering order. 0 will use FIR filtering with MNE defaults.
             Other values will construct an IIR filter of the given order
             and apply it with `scipy.signal.filtfilt` (making the effective
@@ -1406,7 +1387,7 @@ class BaseRaw(
 
             🎭 Changed in version 0.18
                Support for ``filtorder=0`` to use FIR filtering.
-        #### `clipping : str | float | None`
+        clipping : str | float | None
             If None, channels are allowed to exceed their designated bounds in
             the plot. If "clamp", then values are clamped to the appropriate
             range for display, creating step-like artifacts. If "transparent",
@@ -1417,15 +1398,15 @@ class BaseRaw(
 
             🎭 Changed in version 0.21
                Support for float, and default changed from None to 1.5.
-        #### `show_first_samp : bool`
+        show_first_samp : bool
             If True, show time axis relative to the ``raw.first_samp``.
-        #### `proj : bool`
+        proj : bool
             Whether to apply projectors prior to plotting (default is ``True``).
             Individual projectors can be enabled/disabled interactively (see
             Notes). This argument only affects the plot; use ``raw.apply_proj()``
             to modify the data stored in the Raw object.
 
-        #### `group_by : str`
+        group_by : str
             How to group channels. ``'type'`` groups by channel type,
             ``'original'`` plots in the order of ch_names, ``'selection'`` uses
             Elekta's channel groupings (only works for Neuromag data),
@@ -1435,16 +1416,16 @@ class BaseRaw(
             and ``'original'`` group the channels by type, whereas ``'selection'``
             and ``'position'`` use regional grouping. ``'type'`` and ``'original'``
             modes are ignored when ``order`` is not ``None``. Defaults to ``'type'``.
-        #### `butterfly : bool`
+        butterfly : bool
             Whether to start in butterfly mode. Defaults to False.
-        #### `decim : int | 'auto'`
+        decim : int | 'auto'
             Amount to decimate the data during display for speed purposes.
             You should only decimate if the data are sufficiently low-passed,
             otherwise aliasing can occur. The 'auto' mode (default) uses
             the decimation that results in a sampling rate least three times
             larger than ``min(info['lowpass'], lowpass)`` (e.g., a 40 Hz lowpass
             will result in at least a 120 Hz displayed sample rate).
-        #### `noise_cov : instance of Covariance | str | None`
+        noise_cov : instance of Covariance | str | None
             Noise covariance used to whiten the data while plotting.
             Whitened data channels are scaled by ``scalings['whitened']``,
             and their channel names are shown in italic.
@@ -1456,27 +1437,27 @@ class BaseRaw(
             consider using `mne.Evoked.plot_white`.
 
             ✨ Added in version 0.16.0
-        #### `event_id : dict | None`
+        event_id : dict | None
             Event IDs used to show at event markers (default None shows
             the event numbers).
 
             ✨ Added in version 0.16.0
 
-        #### `show_scrollbars : bool`
+        show_scrollbars : bool
             Whether to show scrollbars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
             ✨ Added in version 0.19.0
 
-        #### `show_scalebars : bool`
+        show_scalebars : bool
             Whether to show scale bars when the plot is initialized. Can be toggled
             after initialization by pressing :kbd:`s` while the plot window is focused.
             Default is ``True``.
 
             ✨ Added in version 0.20.0
 
-        #### `time_format : 'float' | 'clock'`
+        time_format : 'float' | 'clock'
             Style of time labels on the horizontal axis. If ``'float'``, labels will be
             number of seconds from the start of the recording. If ``'clock'``,
             labels will show "clock time" (hours/minutes/seconds) inferred from
@@ -1484,7 +1465,7 @@ class BaseRaw(
 
             ✨ Added in version 0.24
 
-        #### `precompute : bool | str`
+        precompute : bool | str
             Whether to load all data (not just the visible portion) into RAM and
             apply preprocessing (e.g., projectors) to the full data array in a separate
             processor thread, instead of window-by-window during scrolling. The default
@@ -1497,7 +1478,7 @@ class BaseRaw(
             🎭 Changed in version 1.0
                Support for the MNE_BROWSER_PRECOMPUTE config variable.
 
-        #### `use_opengl : bool | None`
+        use_opengl : bool | None
             Whether to use OpenGL when rendering the plot (requires ``pyopengl``).
             May increase performance, but effect is dependent on system CPU and
             graphics hardware. Only works if using the Qt backend. Default is
@@ -1507,10 +1488,10 @@ class BaseRaw(
 
             ✨ Added in version 0.24
 
-        #### `theme : str | path-like`
+        theme : str | path-like
             Can be "auto", "light", or "dark" or a path-like to a
             custom stylesheet. For Dark-Mode and automatic Dark-Mode-Detection,
-            `qdarkstyle` and
+            `qdarkstyle <https://github.com/ColinDuquesnoy/QDarkStyleSheet>`__ and
             `darkdetect <https://github.com/albertosottile/darkdetect>`__,
             respectively, are required.    If None (default), the config option MNE_BROWSER_THEME will be used,
             defaulting to "auto" if it's not found.
@@ -1518,7 +1499,7 @@ class BaseRaw(
 
             ✨ Added in version 1.0
 
-        #### `overview_mode : str | None`
+        overview_mode : str | None
             Can be "channels", "empty", or "hidden" to set the overview bar mode
             for the ``'qt'`` backend. If None (default), the config option
             ``MNE_BROWSER_OVERVIEW_MODE`` will be used, defaulting to "channels"
@@ -1526,28 +1507,26 @@ class BaseRaw(
 
             ✨ Added in version 1.1
 
-        #### `splash : bool`
+        splash : bool
             If True (default), a splash screen is shown during the application startup. Only
             applicable to the ``qt`` backend.
 
             ✨ Added in version 1.6
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
+        Returns
+        -------
 
-
-        #### `fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser`
+        fig : matplotlib.figure.Figure | mne_qt_browser.figure.MNEQtBrowser
             Browser instance.
 
+        Notes
         -----
-        ### 📖 Notes
-
         The arrow keys (up/down/left/right) can typically be used to navigate
         between channels and time ranges, but this depends on the backend
         matplotlib is configured to use (e.g., mpl.use('TkAgg') should work). The
@@ -1583,87 +1562,89 @@ class BaseRaw(
         `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
-        ### 💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+        💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
                   you must run the magic command ``%gui qt5`` first.
-        ### 💡 Note To report issues with the PyQtGraph backend, please use the
+        💡 Note To report issues with the PyQtGraph backend, please use the
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
         """
         ...
+
     @property
     def ch_names(self):
-        """## Channel names."""
+        """Channel names."""
         ...
+
     @property
     def times(self):
-        """## Time points."""
+        """Time points."""
         ...
+
     @property
     def n_times(self):
-        """## Number of time points."""
+        """Number of time points."""
         ...
+
     def __len__(self) -> int:
-        """## Return the number of time points.
+        """Return the number of time points.
 
-        -----
-        ### ⏎ Returns
-
-        #### `len : int`
+        Returns
+        -------
+        len : int
             The number of time points.
 
-        -----
-        ### 🖥️ Examples
-
+        Examples
+        --------
         This can be used as::
 
             >>> len(raw)  # doctest: +SKIP
             1000
         """
         ...
+
     def load_bad_channels(
         self, bad_file=None, force: bool = False, verbose=None
     ) -> None:
-        """## Mark channels as bad from a text file.
+        """Mark channels as bad from a text file.
 
         This function operates mostly in the style of the C function
         ``mne_mark_bad_channels``. Each line in the text file will be
         interpreted as a name of a bad channel.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `bad_file : path-like | None`
+        Parameters
+        ----------
+        bad_file : path-like | None
             File name of the text file containing bad channels.
             If ``None`` (default), bad channels are cleared, but this
             is more easily done directly with ``raw.info['bads'] = []``.
-        #### `force : bool`
+        force : bool
             Whether or not to force bad channel marking (of those
             that exist) if channels are not found, instead of
             raising an error. Defaults to ``False``.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
         """
         ...
-    def append(self, raws, preload=None) -> None:
-        """## Concatenate raw instances as if they were continuous.
 
-        ### 💡 Note Boundaries of the raw files are annotated bad. If you wish to
+    def append(self, raws, preload=None) -> None:
+        """Concatenate raw instances as if they were continuous.
+
+        💡 Note Boundaries of the raw files are annotated bad. If you wish to
                   use the data as continuous recording, you can remove the
                   boundary annotations after concatenation (see
                   `mne.Annotations.delete`).
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `raws : list, or Raw instance`
+        Parameters
+        ----------
+        raws : list, or Raw instance
             List of Raw instances to concatenate to the current instance
             (in order), or a single raw instance to concatenate.
 
-        #### `preload : bool, str, or None (default None)`
+        preload : bool, str, or None (default None)
             Preload data into memory for data manipulation and faster indexing.
             If True, the data will be preloaded into memory (fast, requires
             large amount of memory). If preload is a string, preload is the
@@ -1673,49 +1654,50 @@ class BaseRaw(
             of the instances passed in.
         """
         ...
+
     def close(self) -> None:
-        """## Clean up the object.
+        """Clean up the object.
 
         Does nothing for objects that close their file descriptors.
         Things like Raw will override this method.
         """
         ...
+
     def copy(self):
-        """## Return copy of Raw instance.
+        """Return copy of Raw instance.
 
-        -----
-        ### ⏎ Returns
-
-        #### `inst : instance of Raw`
+        Returns
+        -------
+        inst : instance of Raw
             A copy of the instance.
         """
         ...
+
     def add_events(self, events, stim_channel=None, replace: bool = False) -> None:
-        """## Add events to stim channel.
+        """Add events to stim channel.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `events : ndarray, shape (n_events, 3)`
+        Parameters
+        ----------
+        events : ndarray, shape (n_events, 3)
             Events to add. The first column specifies the sample number of
             each event, the second column is ignored, and the third column
             provides the event value. If events already exist in the Raw
             instance at the given sample numbers, the event values will be
             added together.
-        #### `stim_channel : str | None`
+        stim_channel : str | None
             Name of the stim channel to add to. If None, the config variable
             'MNE_STIM_CHANNEL' is used. If this is not found, it will default
             to ``'STI 014'``.
-        #### `replace : bool`
+        replace : bool
             If True the old events on the stim channel are removed before
             adding the new ones.
 
+        Notes
         -----
-        ### 📖 Notes
-
         Data must be preloaded in order to add events.
         """
         ...
+
     def compute_psd(
         self,
         method: str = "welch",
@@ -1733,24 +1715,23 @@ class BaseRaw(
         verbose=None,
         **method_kw,
     ):
-        """## Perform spectral analysis on sensor data.
+        """Perform spectral analysis on sensor data.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `method : ``'welch'`` | ``'multitaper'```
+        method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
             method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
             tapers :footcite:p:`Slepian1978`.
             Default is ``'welch'``.
-        #### `fmin, fmax : float`
+        fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
-        #### `tmin, tmax : float | None`
+        tmin, tmax : float | None
             First and last times to include, in seconds. ``None`` uses the first or
             last time present in the data. Default is ``tmin=None, tmax=None`` (all
             times).
-        #### `picks : str | array-like | slice | None`
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1759,22 +1740,22 @@ class BaseRaw(
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
-        #### `exclude : list of str | 'bads'`
+        exclude : list of str | 'bads'
             Channel names to exclude. If ``'bads'``, channels
             in ``info['bads']`` are excluded; pass an empty list to
             include all channels (including "bad" channels, if any).
-        #### `proj : bool`
+        proj : bool
             Whether to apply SSP projection vectors before spectral estimation.
             Default is ``False``.
 
-        #### `remove_dc : bool`
+        remove_dc : bool
             If ``True``, the mean is subtracted from each segment before computing
             its spectrum.
-        #### `reject_by_annotation : bool`
+        reject_by_annotation : bool
             Whether to omit bad spans of data before spectral estimation. If
             ``True``, spans with annotations whose description begins with
             ``bad`` will be omitted.
-        #### `n_jobs : int | None`
+        n_jobs : int | None
             The number of jobs to run in parallel. If ``-1``, it is set
             to the number of CPU cores. Requires the `joblib` package.
             ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -1782,7 +1763,7 @@ class BaseRaw(
             a `joblib:joblib.parallel_config` context manager that sets another
             value for ``n_jobs``.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -1795,15 +1776,13 @@ class BaseRaw(
             method). See `mne.time_frequency.psd_array_welch` and
             `mne.time_frequency.psd_array_multitaper` for details.
 
-        -----
-        ### ⏎ Returns
-
-        #### `spectrum : instance of Spectrum`
+        Returns
+        -------
+        spectrum : instance of Spectrum
             The spectral representation of the data.
 
+        Notes
         -----
-        ### 📖 Notes
-
         ✨ Added in version 1.2
 
         References
@@ -1811,6 +1790,7 @@ class BaseRaw(
         .. footbibliography::
         """
         ...
+
     def to_data_frame(
         self,
         picks=None,
@@ -1824,16 +1804,15 @@ class BaseRaw(
         *,
         verbose=None,
     ):
-        """## Export data in tabular structure as a pandas DataFrame.
+        """Export data in tabular structure as a pandas DataFrame.
 
         Channels are converted to columns in the DataFrame. By default, an
         additional column "time" is added, unless ``index`` is not ``None``
         (in which case time values form the DataFrame's index).
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `picks : str | array-like | slice | None`
+        Parameters
+        ----------
+        picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -1843,35 +1822,35 @@ class BaseRaw(
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
-        #### `index : 'time' | None`
+        index : 'time' | None
             Kind of index to use for the DataFrame. If ``None``, a sequential
             integer index (`pandas.RangeIndex`) will be used. If ``'time'``, a
             ``pandas.Index``, `pandas.DatetimeIndex`, or `pandas.TimedeltaIndex` will be used
             (depending on the value of ``time_format``).
             Defaults to ``None``.
 
-        #### `scalings : dict | None`
+        scalings : dict | None
             Scaling factor applied to the channels picked. If ``None``, defaults to
             ``dict(eeg=1e6, mag=1e15, grad=1e13)`` — i.e., converts EEG to µV,
             magnetometers to fT, and gradiometers to fT/cm.
 
-        #### `copy : bool`
+        copy : bool
             If ``True``, data will be copied. Otherwise data may be modified in place.
             Defaults to ``True``.
-        #### `start : int | None`
+        start : int | None
             Starting sample index for creating the DataFrame from a temporal
             span of the Raw object. ``None`` (the default) uses the first
             sample.
-        #### `stop : int | None`
+        stop : int | None
             Ending sample index for creating the DataFrame from a temporal span
             of the Raw object. ``None`` (the default) uses the last sample.
 
-        #### `long_format : bool`
+        long_format : bool
             If True, the DataFrame is returned in long format where each row is one
             observation of the signal at a unique combination of time point and channel.
             For convenience, a ``ch_type`` column is added to facilitate subsetting the resulting DataFrame. Defaults to ``False``.
 
-        #### `time_format : str | None`
+        time_format : str | None
             Desired time format. If ``None``, no conversion is applied, and time values
             remain as float values in seconds. If ``'ms'``, time values will be rounded
             to the nearest millisecond and converted to integers. If ``'timedelta'``,
@@ -1880,28 +1859,27 @@ class BaseRaw(
 
             ✨ Added in version 0.20
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
+        Returns
+        -------
 
-
-        #### `df : instance of pandas.DataFrame`
+        df : instance of pandas.DataFrame
             A dataframe suitable for usage with other statistical/plotting/analysis
             packages.
         """
         ...
+
     def describe(self, data_frame: bool = False):
-        """## Describe channels (name, type, descriptive statistics).
+        """Describe channels (name, type, descriptive statistics).
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `data_frame : bool`
+        Parameters
+        ----------
+        data_frame : bool
             If True, return results in a pandas.DataFrame. If False, only print
             results. Columns 'ch', 'type', and 'unit' indicate channel index,
             channel type, and unit of the remaining five columns. These columns
@@ -1909,22 +1887,21 @@ class BaseRaw(
             'median', 'Q3' (third quartile or 75% percentile), and 'max'
             (maximum).
 
-        -----
-        ### ⏎ Returns
-
-        #### `result : None | pandas.DataFrame`
+        Returns
+        -------
+        result : None | pandas.DataFrame
             If data_frame=False, returns None. If data_frame=True, returns
             results in a pandas.DataFrame (requires pandas).
         """
         ...
 
 class _ReadSegmentFileProtector:
-    """## Ensure only _filenames, _raw_extras, and _read_segment_file are used."""
+    """Ensure only _filenames, _raw_extras, and _read_segment_file are used."""
 
     def __init__(self, raw) -> None: ...
 
 class _RawShell:
-    """## Create a temporary raw object."""
+    """Create a temporary raw object."""
 
     first_samp: Incomplete
     last_samp: Incomplete
@@ -1978,21 +1955,20 @@ class _RawFidWriter:
 def concatenate_raws(
     raws, preload=None, events_list=None, *, on_mismatch: str = "raise", verbose=None
 ):
-    """## Concatenate `mne.io.Raw` instances as if they were continuous.
+    """Concatenate `mne.io.Raw` instances as if they were continuous.
 
-    ### 💡 Note ``raws[0]`` is modified in-place to achieve the concatenation.
+    💡 Note ``raws[0]`` is modified in-place to achieve the concatenation.
               Boundaries of the raw files are annotated bad. If you wish to use
               the data as continuous recording, you can remove the boundary
               annotations after concatenation (see
               `mne.Annotations.delete`).
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raws : list`
+    Parameters
+    ----------
+    raws : list
         List of `mne.io.Raw` instances to concatenate (in order).
 
-    #### `preload : bool, str, or None (default None)`
+    preload : bool, str, or None (default None)
         Preload data into memory for data manipulation and faster indexing.
         If True, the data will be preloaded into memory (fast, requires
         large amount of memory). If preload is a string, preload is the
@@ -2000,48 +1976,45 @@ def concatenate_raws(
         on the hard drive (slower, requires less memory). If preload is
         None, preload=True or False is inferred using the preload status
         of the instances passed in.
-    #### `events_list : None | list`
+    events_list : None | list
         The events to concatenate. Defaults to ``None``.
 
-    #### `on_mismatch : 'raise' | 'warn' | 'ignore'`
+    on_mismatch : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when the device-to-head transformation differs between
         instances.
 
         ✨ Added in version 0.24
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `raw : instance of Raw`
+    Returns
+    -------
+    raw : instance of Raw
         The result of the concatenation (first Raw instance passed in).
-    #### `events : ndarray of int, shape (n_events, 3)`
+    events : ndarray of int, shape (n_events, 3)
         The events. Only returned if ``event_list`` is not None.
     """
     ...
 
 def match_channel_orders(raws, copy: bool = True):
-    """## Ensure consistent channel order across raws.
+    """Ensure consistent channel order across raws.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raws : list`
+    Parameters
+    ----------
+    raws : list
         List of `mne.io.Raw` instances to order.
 
-    #### `copy : bool`
+    copy : bool
         If ``True``, data will be copied. Otherwise data may be modified in place.
         Defaults to ``True``.
 
-    -----
-    ### ⏎ Returns
-
+    Returns
+    -------
     list of Raw
         List of Raws with matched channel orders.
     """

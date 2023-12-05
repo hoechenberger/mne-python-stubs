@@ -13,23 +13,22 @@ def plot_montage(
     axes=None,
     verbose=None,
 ):
-    """## Plot a montage.
+    """Plot a montage.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `montage : instance of DigMontage`
+    Parameters
+    ----------
+    montage : instance of DigMontage
         The montage to visualize.
-    #### `scale_factor : float`
+    scale_factor : float
         Determines the size of the points.
-    #### `show_names : bool | list`
+    show_names : bool | list
         Whether to display all channel names. If a list, only the channel
         names in the list are shown. Defaults to True.
-    #### `kind : str`
+    kind : str
         Whether to plot the montage as '3d' or 'topomap' (default).
-    #### `show : bool`
+    show : bool
         Show figure if True.
-    #### `sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'`
+    sphere : float | array-like | instance of ConductorModel | None  | 'auto' | 'eeglab'
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
@@ -44,22 +43,21 @@ def plot_montage(
         ✨ Added in version 0.20
         🎭 Changed in version 1.1 Added ``'eeglab'`` option.
 
-    #### `axes : instance of Axes | instance of Axes3D | None`
+    axes : instance of Axes | instance of Axes3D | None
         Axes to draw the sensors to. If ``kind='3d'``, axes must be an instance
         of Axes3D. If None (default), a new axes will be created.
 
         ✨ Added in version 1.4
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `fig : instance of matplotlib.figure.Figure`
+    Returns
+    -------
+    fig : instance of matplotlib.figure.Figure
         The figure object.
     """
     ...

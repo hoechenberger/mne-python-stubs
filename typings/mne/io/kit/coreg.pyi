@@ -16,36 +16,32 @@ INT32: str
 FLOAT64: str
 
 def read_mrk(fname):
-    """## Marker Point Extraction in MEG space directly from sqd.
+    """Marker Point Extraction in MEG space directly from sqd.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         Absolute path to Marker file.
         File formats allowed: \\*.sqd, \\*.mrk, \\*.txt.
 
-    -----
-    ### ⏎ Returns
-
-    #### `mrk_points : ndarray, shape (n_points, 3)`
+    Returns
+    -------
+    mrk_points : ndarray, shape (n_points, 3)
         Marker points in MEG space [m].
     """
     ...
 
 def read_sns(fname):
-    """## Sensor coordinate extraction in MEG space.
+    """Sensor coordinate extraction in MEG space.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         Absolute path to sensor definition file.
 
-    -----
-    ### ⏎ Returns
-
-    #### `locs : numpy.array, shape = (n_points, 3)`
+    Returns
+    -------
+    locs : numpy.array, shape = (n_points, 3)
         Sensor coil location.
     """
     ...

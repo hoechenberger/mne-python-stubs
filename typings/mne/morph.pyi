@@ -31,23 +31,22 @@ def compute_source_morph(
     precompute: bool = False,
     verbose=None,
 ):
-    """## Create a SourceMorph from one subject to another.
+    """Create a SourceMorph from one subject to another.
 
     Method is based on spherical morphing by FreeSurfer for surface
     cortical estimates :footcite:`GreveEtAl2013` and
     Symmetric Diffeomorphic Registration for volumic data
     :footcite:`AvantsEtAl2008`.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `src : instance of SourceSpaces | instance of SourceEstimate`
+    Parameters
+    ----------
+    src : instance of SourceSpaces | instance of SourceEstimate
         The SourceSpaces of subject_from (can be a
         SourceEstimate if only using a surface source space).
-    #### `subject_from : str | None`
+    subject_from : str | None
         Name of the original subject as named in the SUBJECTS_DIR.
         If None (default), then ``src[0]['subject_his_id]'`` will be used.
-    #### `subject_to : str | None`
+    subject_to : str | None
         Name of the subject to which to morph as named in the SUBJECTS_DIR.
         Default is ``'fsaverage'``. If None, ``src_to[0]['subject_his_id']``
         will be used.
@@ -55,11 +54,11 @@ def compute_source_morph(
         🎭 Changed in version 0.20
            Support for subject_to=None.
 
-    #### `subjects_dir : path-like | None`
+    subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    #### `zooms : float | tuple | str | None`
+    zooms : float | tuple | str | None
         The voxel size of volume for each spatial dimension in mm.
         If spacing is None, MRIs won't be resliced, and both volumes
         must have the same number of spatial dimensions.
@@ -68,17 +67,17 @@ def compute_source_morph(
 
         🎭 Changed in version 0.20
            Support for 'auto' mode.
-    #### `niter_affine : tuple of int`
+    niter_affine : tuple of int
         Number of levels (``len(niter_affine)``) and number of
         iterations per level - for each successive stage of iterative
         refinement - to perform the affine transform.
         Default is niter_affine=(100, 100, 10).
-    #### `niter_sdr : tuple of int`
+    niter_sdr : tuple of int
         Number of levels (``len(niter_sdr)``) and number of
         iterations per level - for each successive stage of iterative
         refinement - to perform the Symmetric Diffeomorphic Registration (sdr)
         transform. Default is niter_sdr=(5, 5, 3).
-    #### `spacing : int | list | None`
+    spacing : int | list | None
         The resolution of the icosahedral mesh (typically 5).
         If None, all vertices will be used (potentially filling the
         surface). If a list, then values will be morphed to the set of
@@ -87,7 +86,7 @@ def compute_source_morph(
 
         🎭 Changed in version 0.21
            src_to, if provided, takes precedence.
-    #### `smooth : int | str | None`
+    smooth : int | str | None
         Number of iterations for the smoothing of the surface data.
         If None, smooth is automatically defined to fill the surface
         with non-zero values. Can also be ``'nearest'`` to use the nearest
@@ -95,17 +94,17 @@ def compute_source_morph(
 
         🎭 Changed in version 0.20
            Added support for 'nearest'.
-    #### `warn : bool`
+    warn : bool
         If True, warn if not all vertices were used. The default is warn=True.
-    #### `xhemi : bool`
+    xhemi : bool
         Morph across hemisphere. Currently only implemented for
         ``subject_to == subject_from``. See notes below.
         The default is xhemi=False.
-    #### `sparse : bool`
+    sparse : bool
         Morph as a sparse source estimate. Works only with (Vector)
         SourceEstimate. If True the only parameters used are subject_to and
         subject_from, and spacing has to be None. Default is sparse=False.
-    #### `src_to : instance of SourceSpaces | None`
+    src_to : instance of SourceSpaces | None
         The destination source space.
 
         - For surface-based morphing, this is the preferred over ``spacing``
@@ -117,7 +116,7 @@ def compute_source_morph(
         - For mixed (surface + volume) morphing, this is required.
 
         ✨ Added in version 0.20
-    #### `precompute : bool`
+    precompute : bool
         If True (default False), compute the sparse matrix representation of
         the volumetric morph (if present). This takes a long time to
         compute, but can make morphs faster when thousands of points are used.
@@ -126,21 +125,19 @@ def compute_source_morph(
 
         ✨ Added in version 0.22
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `morph : instance of SourceMorph`
+    Returns
+    -------
+    morph : instance of SourceMorph
         The `mne.SourceMorph` object.
 
+    Notes
     -----
-    ### 📖 Notes
-
     This function can be used to morph surface data between hemispheres by
     setting ``xhemi=True``. The full cross-hemisphere morph matrix maps left
     to right and right to left. A matrix for cross-mapping only one hemisphere
@@ -171,77 +168,74 @@ def compute_source_morph(
     ...
 
 class SourceMorph:
-    """## Morph source space data from one subject to another.
+    """Morph source space data from one subject to another.
 
-    ### 💡 Note
+    💡 Note
         This class should not be instantiated directly via
         ``mne.SourceMorph(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `subject_from : str | None`
+    Parameters
+    ----------
+    subject_from : str | None
         Name of the subject from which to morph as named in the SUBJECTS_DIR.
-    #### `subject_to : str | array | list of array`
+    subject_to : str | array | list of array
         Name of the subject on which to morph as named in the SUBJECTS_DIR.
         The default is 'fsaverage'. If morphing a volume source space,
         subject_to can be the path to a MRI volume. Can also be a list of
         two arrays if morphing to hemisphere surfaces.
-    #### `kind : str | None`
+    kind : str | None
         Kind of source estimate. E.g. ``'volume'`` or ``'surface'``.
-    #### `zooms : float | tuple`
+    zooms : float | tuple
         See `mne.compute_source_morph`.
-    #### `niter_affine : tuple of int`
+    niter_affine : tuple of int
         Number of levels (``len(niter_affine)``) and number of
         iterations per level - for each successive stage of iterative
         refinement - to perform the affine transform.
-    #### `niter_sdr : tuple of int`
+    niter_sdr : tuple of int
         Number of levels (``len(niter_sdr)``) and number of
         iterations per level - for each successive stage of iterative
         refinement - to perform the Symmetric Diffeomorphic Registration (sdr)
         transform :footcite:`AvantsEtAl2008`.
-    #### `spacing : int | list | None`
+    spacing : int | list | None
         See `mne.compute_source_morph`.
-    #### `smooth : int | str | None`
+    smooth : int | str | None
         See `mne.compute_source_morph`.
-    #### `xhemi : bool`
+    xhemi : bool
         Morph across hemisphere.
-    #### `morph_mat : scipy.sparse.csr_matrix`
+    morph_mat : scipy.sparse.csr_matrix
         The sparse surface morphing matrix for spherical surface
         based morphing :footcite:`GreveEtAl2013`.
-    #### `vertices_to : list of ndarray`
+    vertices_to : list of ndarray
         The destination surface vertices.
-    #### `shape : tuple`
+    shape : tuple
         The volume MRI shape.
-    #### `affine : ndarray`
+    affine : ndarray
         The volume MRI affine.
-    #### `pre_affine : instance of dipy.align.AffineMap`
+    pre_affine : instance of dipy.align.AffineMap
         The transformation that is applied before the before ``sdr_morph``.
-    #### `sdr_morph : instance of dipy.align.DiffeomorphicMap`
+    sdr_morph : instance of dipy.align.DiffeomorphicMap
         The class that applies the the symmetric diffeomorphic registration
         (SDR) morph.
-    #### `src_data : dict`
+    src_data : dict
         Additional source data necessary to perform morphing.
-    #### `vol_morph_mat : scipy.sparse.csr_matrix | None`
+    vol_morph_mat : scipy.sparse.csr_matrix | None
         The volumetric morph matrix, if `compute_vol_morph_mat`
         was used.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     compute_source_morph
     read_source_morph
 
+    Notes
     -----
-    ### 📖 Notes
-
     ✨ Added in version 0.17
 
     References
@@ -297,61 +291,57 @@ class SourceMorph:
         mri_space=None,
         verbose=None,
     ):
-        """## Morph source space data.
+        """Morph source space data.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `stc_from : VolSourceEstimate | VolVectorSourceEstimate | SourceEstimate | VectorSourceEstimate`
+        Parameters
+        ----------
+        stc_from : VolSourceEstimate | VolVectorSourceEstimate | SourceEstimate | VectorSourceEstimate
             The source estimate to morph.
-        #### `output : str`
+        output : str
             Can be ``'stc'`` (default) or possibly ``'nifti1'``, or
             ``'nifti2'`` when working with a volume source space defined on a
             regular grid.
-        #### `mri_resolution : bool | tuple | int | float`
+        mri_resolution : bool | tuple | int | float
             If True the image is saved in MRI resolution. Default False.
 
             .. warning: If you have many time points the file produced can be
                         huge. The default is ``mri_resolution=False``.
-        #### `mri_space : bool | None`
+        mri_space : bool | None
             Whether the image to world registration should be in mri space. The
             default (None) is mri_space=mri_resolution.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `stc_to : VolSourceEstimate | SourceEstimate | VectorSourceEstimate | Nifti1Image | Nifti2Image`
+        Returns
+        -------
+        stc_to : VolSourceEstimate | SourceEstimate | VectorSourceEstimate | Nifti1Image | Nifti2Image
             The morphed source estimates.
         """
         ...
+
     def compute_vol_morph_mat(self, *, verbose=None):
-        """## Compute the sparse matrix representation of the volumetric morph.
+        """Compute the sparse matrix representation of the volumetric morph.
 
-        -----
-        ### 🛠️ Parameters
+        Parameters
+        ----------
 
-
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
             argument.
 
-        -----
-        ### ⏎ Returns
-
-        #### `morph : instance of SourceMorph`
+        Returns
+        -------
+        morph : instance of SourceMorph
             The instance (modified in-place).
 
+        Notes
         -----
-        ### 📖 Notes
-
         For a volumetric morph, this will compute the morph for an identity
         source volume, i.e., with one source vertex active at a time, and store
         the result as a `sparse <scipy.sparse.csr_matrix>`
@@ -368,21 +358,21 @@ class SourceMorph:
         ✨ Added in version 0.22
         """
         ...
+
     def save(self, fname, overwrite: bool = False, verbose=None) -> None:
-        """## Save the morph for source estimates to a file.
+        """Save the morph for source estimates to a file.
 
-        -----
-        ### 🛠️ Parameters
-
-        #### `fname : path-like`
+        Parameters
+        ----------
+        fname : path-like
             The path to the file. ``'-morph.h5'`` will be added if fname does
             not end with ``'.h5'``.
 
-        #### `overwrite : bool`
+        overwrite : bool
             If True (default False), overwrite the destination file if it
             exists.
 
-        #### `verbose : bool | str | int | None`
+        verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default
             verbosity level. See the `logging documentation <tut-logging>` and
             `mne.verbose` for details. Should only be passed as a keyword
@@ -391,31 +381,28 @@ class SourceMorph:
         ...
 
 def read_source_morph(fname):
-    """## Load the morph for source estimates from a file.
+    """Load the morph for source estimates from a file.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `fname : path-like`
+    Parameters
+    ----------
+    fname : path-like
         Path to the file containing the morph source estimates.
 
-    -----
-    ### ⏎ Returns
-
-    #### `source_morph : instance of SourceMorph`
+    Returns
+    -------
+    source_morph : instance of SourceMorph
         The loaded morph.
     """
     ...
 
 def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=None):
-    """## Convert a grade to source space vertices for a given subject.
+    """Convert a grade to source space vertices for a given subject.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `subject : str`
+    Parameters
+    ----------
+    subject : str
         Name of the subject.
-    #### `grade : int | list`
+    grade : int | list
         Resolution of the icosahedral mesh (typically 5). If None, all
         vertices will be used (potentially filling the surface). If a list,
         then values will be morphed to the set of vertices specified in
@@ -426,11 +413,11 @@ def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=No
         and 'grade=5', this set of vertices will automatically be used
         (instead of computed) for speed, since this is a common morph.
 
-    #### `subjects_dir : path-like | None`
+    subjects_dir : path-like | None
         The path to the directory containing the FreeSurfer subjects
         reconstructions. If ``None``, defaults to the ``SUBJECTS_DIR`` environment
         variable.
-    #### `n_jobs : int | None`
+    n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.
         ``None`` (default) is a marker for 'unset' that will be interpreted
@@ -438,16 +425,15 @@ def grade_to_vertices(subject, grade, subjects_dir=None, n_jobs=None, verbose=No
         a `joblib:joblib.parallel_config` context manager that sets another
         value for ``n_jobs``.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `vertices : list of array of int`
+    Returns
+    -------
+    vertices : list of array of int
         Vertex numbers for LH and RH.
     """
     ...

@@ -14,7 +14,7 @@ def fetch_data(
     *,
     verbose=None,
 ):
-    """## Get paths to local copies of PhysioNet Polysomnography dataset files.
+    """Get paths to local copies of PhysioNet Polysomnography dataset files.
 
     This will fetch data from the publicly available subjects from PhysioNet's
     study of age effects on sleep in healthy subjects
@@ -27,53 +27,49 @@ def fetch_data(
     See more details in
     `physionet website <https://physionet.org/physiobank/database/sleep-edfx/sleep-cassette/>`_.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `subjects : list of int`
+    Parameters
+    ----------
+    subjects : list of int
         The subjects to use. Can be in the range of 0-82 (inclusive), however
         the following subjects are not available: 39, 68, 69, 78 and 79.
-    #### `recording : list of int`
+    recording : list of int
         The night recording indices. Valid values are : [1], [2], or [1, 2].
         The following recordings are not available: recording 1 for subject 36
         and 52, and recording 2 for subject 13.
-    #### `path : None | str`
+    path : None | str
         Location of where to look for the PhysioNet data storing location.
         If None, the environment variable or config parameter
         ``PHYSIONET_SLEEP_PATH`` is used. If it doesn't exist, the "~/mne_data"
         directory is used. If the Polysomnography dataset is not found under
         the given path, the data will be automatically downloaded to the
         specified folder.
-    #### `force_update : bool`
+    force_update : bool
         Force update of the dataset even if a local copy exists.
-    #### `base_url : str`
+    base_url : str
         The URL root.
-    #### `on_missing : 'raise' | 'warn' | 'ignore'`
+    on_missing : 'raise' | 'warn' | 'ignore'
         What to do if one or several recordings are not available. Valid keys
         are 'raise' | 'warn' | 'ignore'. Default is 'error'. If on_missing
         is 'warn' it will proceed but warn, if 'ignore' it will proceed
         silently.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `paths : list`
+    Returns
+    -------
+    paths : list
         List of local data paths of the given type.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     mne.datasets.sleep_physionet.temazepam.fetch_data
 
+    Notes
     -----
-    ### 📖 Notes
-
     For example, one could do:
 
         >>> from mne.datasets import sleep_physionet

@@ -16,26 +16,25 @@ def find_eog_events(
     thresh=None,
     verbose=None,
 ):
-    """## Locate EOG artifacts.
+    """Locate EOG artifacts.
 
-    ### 💡 Note To control true-positive and true-negative detection rates, you
+    💡 Note To control true-positive and true-negative detection rates, you
               may adjust the ``thresh`` parameter.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         The raw data.
-    #### `event_id : int`
+    event_id : int
         The index to assign to found events.
-    #### `l_freq : float`
+    l_freq : float
         Low cut-off frequency to apply to the EOG channel in Hz.
-    #### `h_freq : float`
+    h_freq : float
         High cut-off frequency to apply to the EOG channel in Hz.
-    #### `filter_length : str | int | None`
+    filter_length : str | int | None
         Number of taps to use for filtering.
 
-    #### `ch_name : str | list of str | None`
+    ch_name : str | list of str | None
         The name of the channel(s) to use for EOG peak detection. If a string,
         can be an arbitrary channel. This doesn't have to be a channel of
         ``eog`` type; it could, for example, also be an ordinary EEG channel
@@ -44,32 +43,30 @@ def find_eog_events(
         Multiple channel names can be passed as a list of strings.
 
         If ``None`` (default), use the channel(s) in ``raw`` with type ``eog``.
-    #### `tstart : float`
+    tstart : float
         Start detection after tstart seconds.
-    #### `reject_by_annotation : bool`
+    reject_by_annotation : bool
         Whether to omit data that is annotated as bad.
-    #### `thresh : float | None`
+    thresh : float | None
         Threshold to trigger the detection of an EOG event. This controls the
         thresholding of the underlying peak-finding algorithm. Larger values
         mean that fewer peaks (i.e., fewer EOG events) will be detected.
         If ``None``, use the default of ``(max(eog) - min(eog)) / 4``,
         with ``eog`` being the filtered EOG signal.
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `eog_events : array`
+    Returns
+    -------
+    eog_events : array
         Events.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     create_eog_epochs
     compute_proj_eog
     """
@@ -93,7 +90,7 @@ def create_eog_epochs(
     decim: int = 1,
     verbose=None,
 ):
-    """## Conveniently generate epochs around EOG artifact events.
+    """Conveniently generate epochs around EOG artifact events.
 
     This function will:
 
@@ -104,13 +101,12 @@ def create_eog_epochs(
 
     #. Create `mne.Epochs` around the eyeblinks.
 
-    -----
-    ### 🛠️ Parameters
-
-    #### `raw : instance of Raw`
+    Parameters
+    ----------
+    raw : instance of Raw
         The raw data.
 
-    #### `ch_name : str | list of str | None`
+    ch_name : str | list of str | None
         The name of the channel(s) to use for EOG peak detection. If a string,
         can be an arbitrary channel. This doesn't have to be a channel of
         ``eog`` type; it could, for example, also be an ordinary EEG channel
@@ -119,9 +115,9 @@ def create_eog_epochs(
         Multiple channel names can be passed as a list of strings.
 
         If ``None`` (default), use the channel(s) in ``raw`` with type ``eog``.
-    #### `event_id : int`
+    event_id : int
         The index to assign to found events.
-    #### `picks : str | array-like | slice | None`
+    picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
@@ -130,15 +126,15 @@ def create_eog_epochs(
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
-    #### `tmin : float`
+    tmin : float
         Start time before event.
-    #### `tmax : float`
+    tmax : float
         End time after event.
-    #### `l_freq : float`
+    l_freq : float
         Low pass frequency to apply to the EOG channel while finding events.
-    #### `h_freq : float`
+    h_freq : float
         High pass frequency to apply to the EOG channel while finding events.
-    #### `reject : dict | None`
+    reject : dict | None
         Rejection parameters based on peak-to-peak amplitude.
         Valid keys are 'grad' | 'mag' | 'eeg' | 'eog' | 'ecg'.
         If reject is None then no rejection is done. Example::
@@ -149,12 +145,12 @@ def create_eog_epochs(
                           eog=250e-6 # V (EOG channels)
                           )
 
-    #### `flat : dict | None`
+    flat : dict | None
         Rejection parameters based on flatness of signal.
         Valid keys are 'grad' | 'mag' | 'eeg' | 'eog' | 'ecg', and values
         are floats that set the minimum acceptable peak-to-peak amplitude.
         If flat is None then no rejection is done.
-    #### `baseline : tuple or list of length 2, or None`
+    baseline : tuple or list of length 2, or None
         The time interval to apply rescaling / baseline correction.
         If None do not apply it. If baseline is (a, b)
         the interval is between "a (s)" and "b (s)".
@@ -162,19 +158,19 @@ def create_eog_epochs(
         and if b is None then b is set to the end of the interval.
         If baseline is equal to (None, None) all the time
         interval is used. If None, no correction is applied.
-    #### `preload : bool`
+    preload : bool
         Preload epochs or not.
 
-    #### `reject_by_annotation : bool`
+    reject_by_annotation : bool
         Whether to reject based on annotations. If ``True`` (default), epochs
         overlapping with segments whose description begins with ``'bad'`` are
         rejected. If ``False``, no rejection based on annotations is performed.
 
         ✨ Added in version 0.14.0
-    #### `thresh : float`
+    thresh : float
         Threshold to trigger EOG event.
 
-    #### `decim : int`
+    decim : int
         Factor by which to subsample the data.
 
         ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
@@ -185,27 +181,24 @@ def create_eog_epochs(
 
         ✨ Added in version 0.21.0
 
-    #### `verbose : bool | str | int | None`
+    verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
         verbosity level. See the `logging documentation <tut-logging>` and
         `mne.verbose` for details. Should only be passed as a keyword
         argument.
 
-    -----
-    ### ⏎ Returns
-
-    #### `eog_epochs : instance of Epochs`
+    Returns
+    -------
+    eog_epochs : instance of Epochs
         Data epoched around EOG events.
 
-    -----
-    ### 👉 See Also
-
+    See Also
+    --------
     find_eog_events
     compute_proj_eog
 
+    Notes
     -----
-    ### 📖 Notes
-
     Filtering is only applied to the EOG channel while finding events.
     The resulting ``eog_epochs`` will have no filtering applied (i.e., have
     the same filter properties as the input ``raw`` instance).
