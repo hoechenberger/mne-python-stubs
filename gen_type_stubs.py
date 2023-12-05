@@ -302,7 +302,7 @@ if (
 ):
     sys.exit(1)
 
-print("😵 Running Ruff on stub files")
+print("😵 Running Ruff linter on stub files")
 if (
     subprocess.run(
         ["ruff", "--ignore=F811,F821", "--fix", f"{STUBS_OUT_DIR}/mne"]
@@ -311,8 +311,8 @@ if (
 ):
     sys.exit(1)
 
-print("⚫️ Running Black on stub files")
-if subprocess.run(["black", "--quiet", f"{STUBS_OUT_DIR}/mne"]).returncode != 0:
+print("⚫️ Running Ruff formatter on stub files")
+if subprocess.run(["ruff", "format", f"{STUBS_OUT_DIR}/mne"]).returncode != 0:
     sys.exit(1)
 
 print(
