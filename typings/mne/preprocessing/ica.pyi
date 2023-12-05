@@ -19,7 +19,7 @@ class ICA(ContainsMixin):
     `mne.Epochs`, or `mne.Evoked` objects. Components can
     optionally be removed (for artifact repair) prior to signal reconstruction.
 
-    ### ⛔️ Warning ICA is sensitive to low-frequency drifts and therefore
+    ⛔️ ICA is sensitive to low-frequency drifts and therefore
                  requires the data to be high-pass filtered prior to fitting.
                  Typically, a cutoff frequency of 1 Hz is recommended.
 
@@ -156,7 +156,7 @@ class ICA(ContainsMixin):
     🎭 Changed in version 0.23
         Warn if `mne.Epochs` were baseline-corrected.
 
-    💡 Note If you intend to fit ICA on `mne.Epochs`, it is  recommended to
+    💡 If you intend to fit ICA on `mne.Epochs`, it is  recommended to
               high-pass filter, but **not** baseline correct the data for good
               ICA performance. A warning will be emitted otherwise.
 
@@ -206,7 +206,7 @@ class ICA(ContainsMixin):
     ``n_pca_components=n`` during `apply`. The resulting reconstructed
     data after `apply` will have rank ``n``.
 
-    💡 Note Commonly used for reasons of i) computational efficiency and
+    💡 Commonly used for reasons of i) computational efficiency and
               ii) additional noise reduction, it is a matter of current debate
               whether pre-ICA dimensionality reduction could decrease the
               reliability and stability of the ICA, at least for EEG data and
@@ -238,7 +238,7 @@ class ICA(ContainsMixin):
     see `sklearn.decomposition.FastICA`, `picard.picard`,
     `mne.preprocessing.infomax`.
 
-    💡 Note Picard can be used to solve the same problems as FastICA,
+    💡 Picard can be used to solve the same problems as FastICA,
               Infomax, and extended Infomax, but typically converges faster
               than either of those methods. To make use of Picard's speed while
               still obtaining the same solution as with other algorithms, you
@@ -326,7 +326,7 @@ class ICA(ContainsMixin):
             interpreted as time in seconds. If ``None``, data will be used from
             the first sample and to the last sample, respectively.
 
-            💡 Note These parameters only have an effect if ``inst`` is
+            💡 These parameters only have an effect if ``inst`` is
                       `mne.io.Raw` data.
         decim : int | None
             Increment for selecting only each n-th sampling point. If ``None``,
@@ -337,7 +337,7 @@ class ICA(ContainsMixin):
             in ``reject`` or less than the thresholds in ``flat`` will be
             removed before fitting the ICA.
 
-            💡 Note These parameters only have an effect if ``inst`` is
+            💡 These parameters only have an effect if ``inst`` is
                       `mne.io.Raw` data. For `mne.Epochs`, perform PTP
                       rejection via `mne.Epochs.drop_bad`.
 
@@ -356,7 +356,7 @@ class ICA(ContainsMixin):
         tstep : float
             Length of data chunks for artifact rejection in seconds.
 
-            💡 Note This parameter only has an effect if ``inst`` is
+            💡 This parameter only has an effect if ``inst`` is
                       `mne.io.Raw` data.
 
         reject_by_annotation : bool
@@ -543,7 +543,7 @@ class ICA(ContainsMixin):
         Cross-trial phase statistics :footcite:`DammersEtAl2008` or Pearson
         correlation can be used for detection.
 
-        💡 Note If no ECG channel is available, routine attempts to create
+        💡 If no ECG channel is available, routine attempts to create
                   an artificial ECG based on cross-channel averaging.
 
         Parameters
@@ -668,7 +668,7 @@ class ICA(ContainsMixin):
             - If ``'auto'``, defaults to 3.0 if ``measure`` is ``'zscore'`` and
               0.9 if ``measure`` is ``'correlation'``.
 
-             ### ⛔️ Warning
+             ⛔️
                  If ``method`` is ``'together'``, the iterative z-score method
                  is always used.
         start : int | float | None
@@ -998,7 +998,7 @@ class ICA(ContainsMixin):
 
         Notes
         -----
-        💡 Note Applying ICA may introduce a DC shift. If you pass
+        💡 Applying ICA may introduce a DC shift. If you pass
                   baseline-corrected `mne.Epochs` or `mne.Evoked` data,
                   the baseline period of the cleaned data may not be of
                   zero mean anymore. If you require baseline-corrected
@@ -1212,7 +1212,7 @@ class ICA(ContainsMixin):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -1319,7 +1319,7 @@ class ICA(ContainsMixin):
         inst : instance of Epochs or Raw
             The data to use in plotting properties.
 
-            💡 Note
+            💡
                You can interactively cycle through topographic maps for different
                channel types by pressing :kbd:`T`.
         picks : int | list of int | slice | None
@@ -1348,7 +1348,7 @@ class ICA(ContainsMixin):
             Whether to use a logarithmic frequency axis to plot the spectrum.
             Defaults to ``False``.
 
-            💡 Note
+            💡
                You can interactively toggle this setting by pressing :kbd:`L`.
 
             ✨ Added in version 1.1
@@ -1543,9 +1543,9 @@ class ICA(ContainsMixin):
         `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
-        💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+        💡 For the PyQtGraph backend to run in IPython with ``block=False``
                   you must run the magic command ``%gui qt5`` first.
-        💡 Note To report issues with the PyQtGraph backend, please use the
+        💡 To report issues with the PyQtGraph backend, please use the
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
 

@@ -122,12 +122,12 @@ class MontageMixin:
 
         Notes
         -----
-        ### ⛔️ Warning
+        ⛔️
             Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
             a montage. Other channel types (e.g., MEG channels) should have
             their positions defined properly using their data reading
             functions.
-        ### ⛔️ Warning
+        ⛔️
             Applying a montage will only set locations of channels that exist
             at the time it is applied. This means when
             `re-referencing <tut-set-eeg-ref>`
@@ -341,7 +341,7 @@ class SetChannelsMixin(MontageMixin):
             If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
             Defaults to ``False``.
 
-            ### ⛔️ Warning This could mean that ``info`` is not fully
+            ⛔️ This could mean that ``info`` is not fully
                          anonymized. Use with caution.
 
         verbose : bool | str | int | None
@@ -497,12 +497,12 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     `FIF format specification <https://github.com/mne-tools/fiff-constants>`__,
     so new entries should not be manually added.
 
-    💡 Note
+    💡
         This class should not be instantiated directly via
         ``mne.Info(...)``. Instead, use `mne.create_info` to create
         measurement information from scratch.
 
-    ### ⛔️ Warning
+    ⛔️
         The only entries that should be manually changed by the user are:
         ``info['bads']``, ``info['description']``, ``info['device_info']``
         ``info['dev_head_t']``, ``info['experimenter']``,
@@ -1173,7 +1173,7 @@ RAW_INFO_FIELDS: Incomplete
 def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
     """Anonymize measurement information in place.
 
-    ### ⛔️ Warning If ``info`` is part of an object like
+    ⛔️ If ``info`` is part of an object like
                  `raw.info <mne.io.Raw>`, you should directly use
                  the method `raw.anonymize() <mne.io.Raw.anonymize>`
                  to ensure that all parts of the data are anonymized and
@@ -1196,7 +1196,7 @@ def anonymize_info(info, daysback=None, keep_his: bool = False, verbose=None):
         If ``True``, ``his_id`` of ``subject_info`` will **not** be overwritten.
         Defaults to ``False``.
 
-        ### ⛔️ Warning This could mean that ``info`` is not fully
+        ⛔️ This could mean that ``info`` is not fully
                      anonymized. Use with caution.
 
     verbose : bool | str | int | None

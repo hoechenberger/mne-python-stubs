@@ -257,7 +257,7 @@ class ExtendedTimeMixin(TimeMixin):
         decim : int
             Factor by which to subsample the data.
 
-            ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
+            ⛔️ Low-pass filtering is not performed, this simply selects
                          every Nth sample (where N is the value passed to
                          ``decim``), i.e., it compresses the signal (see Notes).
                          If the data are not properly filtered, aliasing artifacts

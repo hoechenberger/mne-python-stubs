@@ -115,7 +115,7 @@ def read_raw_bti(
 ):
     """Raw object from 4D Neuroimaging MagnesWH3600 data.
 
-    💡 Note
+    💡
         1. Currently direct inclusion of reference channel weights
            is not supported. Please use ``mne_create_comp_data`` to include
            the weights or use the low level functions from this module to

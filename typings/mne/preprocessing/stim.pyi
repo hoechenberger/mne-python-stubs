@@ -16,7 +16,7 @@ def fix_stim_artifact(
 ):
     """Eliminate stimulation's artifacts from instance.
 
-    💡 Note This function operates in-place, consider passing
+    💡 This function operates in-place, consider passing
               ``inst.copy()`` if this is not desired.
 
     Parameters

@@ -23,7 +23,7 @@ from _typeshed import Incomplete
 class Annotations:
     """Annotation object for annotating segments of raw data.
 
-    💡 Note
+    💡
        To convert events to `mne.Annotations`, use
        `mne.annotations_from_events`. To convert existing `mne.Annotations`
        to events, use  `mne.events_from_annotations`.
@@ -176,7 +176,7 @@ class Annotations:
              e                        +------+
          orig_time                 onset[0]'
 
-    ### ⛔️ Warning
+    ⛔️
        This means that when ``raw.info['meas_date'] is None``, doing
        ``raw.set_annotations(raw.annotations)`` will not alter ``raw`` if and
        only if ``raw.first_samp == 0``. When it's non-zero,

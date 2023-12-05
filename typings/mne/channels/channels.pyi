@@ -262,7 +262,7 @@ class UpdateChannelsMixin:
         selection=None,
         verbose=None,
     ):
-        """### ⛔️ Warning LEGACY: New code should use inst.pick(...).
+        """⛔️ LEGACY: New code should use inst.pick(...).
 
         Pick some channels by type and names.
 
@@ -359,7 +359,7 @@ class UpdateChannelsMixin:
         ...
 
     def pick_channels(self, ch_names, ordered=None, *, verbose=None):
-        """### ⛔️ Warning LEGACY: New code should use inst.pick(...).
+        """⛔️ LEGACY: New code should use inst.pick(...).
 
         Pick some channels.
 
@@ -597,7 +597,7 @@ class InterpolationMixin:
             types supported and available in the instance. The method ``"nan"`` will
             replace the channel data with ``np.nan``.
 
-            ### ⛔️ Warning
+            ⛔️
                 Be careful when using ``method="nan"``; the default value
                 ``reset_bads=True`` may not be what you want.
 
@@ -707,7 +707,7 @@ def read_ch_adjacency(fname, picks=None):
         The path to the file to load, or the name of a channel adjacency
         matrix that ships with MNE-Python.
 
-        💡 Note
+        💡
             You can retrieve the names of all
             built-in channel adjacencies via
             `mne.channels.get_builtin_ch_adjacencies`.
@@ -785,7 +785,7 @@ def find_ch_adjacency(info, ch_type):
     you want to load a template for a given montage use
     `read_ch_adjacency` directly.
 
-    ### ⛔️ Warning
+    ⛔️
         If Delaunay triangulation is used to calculate the adjacency matrix it
         may yield partially unexpected results (e.g., include unwanted edges
         between non-adjacent sensors). Therefore, it is recommended to check
@@ -826,7 +826,7 @@ def fix_mag_coil_types(info, use_cal: bool = False) -> None:
     software coil type 3024 is fully supported. Therefore, it is now safe
     to upgrade the data files to use the true coil type.
 
-    💡 Note The effect of the difference between the coil sizes on the
+    💡 The effect of the difference between the coil sizes on the
               current estimates computed by the MNE software is very small.
               Therefore the use of ``fix_mag_coil_types`` is not mandatory.
     """

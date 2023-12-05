@@ -167,7 +167,7 @@ class EpochsKIT(BaseEpochs):
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -195,12 +195,12 @@ class EpochsKIT(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        💡 Note Since rejection is based on a signal **difference**
+        💡 Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -212,7 +212,7 @@ class EpochsKIT(BaseEpochs):
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     reject_tmin, reject_tmax : float | None
@@ -221,7 +221,7 @@ class EpochsKIT(BaseEpochs):
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        💡 Note This parameter controls the time period used in conjunction with
+        💡 This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     mrk : path-like | array of shape (5, 3) | list | None

@@ -63,7 +63,7 @@ def pick_channels(ch_names, include, exclude=[], ordered=None, *, verbose=None):
     include : list of str
         List of channels to include (if empty include all available).
 
-        💡 Note This is to be treated as a set. The order of this list
+        💡 This is to be treated as a set. The order of this list
            is not used or maintained in ``sel``.
 
     exclude : list of str

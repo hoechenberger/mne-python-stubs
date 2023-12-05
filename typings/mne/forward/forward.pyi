@@ -48,7 +48,7 @@ class Forward(dict):
     Like `mne.Info`, this data structure behaves like a dictionary.
     It contains all metadata necessary for a forward solution.
 
-    ### ⛔️ Warning
+    ⛔️
         This class should not be modified or created by users.
         Forward objects should be obtained using
         `mne.make_forward_solution` or `mne.read_forward_solution`.

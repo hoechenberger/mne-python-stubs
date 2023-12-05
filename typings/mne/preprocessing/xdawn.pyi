@@ -19,7 +19,7 @@ class _XdawnTransformer(BaseEstimator, TransformerMixin):
     response with respect to the non-target response. This implementation is a
     generalization to any type of event related response.
 
-    💡 Note _XdawnTransformer does not correct for epochs overlap. To correct
+    💡 _XdawnTransformer does not correct for epochs overlap. To correct
               overlaps see ``Xdawn``.
 
     Parameters

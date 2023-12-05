@@ -166,7 +166,7 @@ def plot_projs_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -401,7 +401,7 @@ def plot_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -607,7 +607,7 @@ def plot_ica_components(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -864,7 +864,7 @@ def plot_tfr_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1098,7 +1098,7 @@ def plot_evoked_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1210,7 +1210,7 @@ def plot_epochs_psd_topomap(
     n_jobs=None,
     verbose=None,
 ):
-    """### ⛔️ Warning LEGACY: New code should use Epochs.compute_psd().plot_topomap().
+    """⛔️ LEGACY: New code should use Epochs.compute_psd().plot_topomap().
 
     Plot the topomap of the power spectral density across epochs.
 
@@ -1231,7 +1231,7 @@ def plot_epochs_psd_topomap(
                      'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                      'Gamma (30-45 Hz)': (30, 45)}
 
-        💡 Note
+        💡
            For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
            also accepted, where the last element of the tuple is the subplot title
            and the other entries are frequency values (a single value or band
@@ -1382,7 +1382,7 @@ def plot_epochs_psd_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1496,7 +1496,7 @@ def plot_psds_topomap(
                      'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                      'Gamma (30-45 Hz)': (30, 45)}
 
-        💡 Note
+        💡
            For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
            also accepted, where the last element of the tuple is the subplot title
            and the other entries are frequency values (a single value or band
@@ -1627,7 +1627,7 @@ def plot_psds_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -2106,7 +2106,7 @@ def plot_regression_weights(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+        ⛔️  Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 

@@ -121,7 +121,7 @@ class Report:
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied in the following way **to each channel:**
@@ -187,7 +187,7 @@ class Report:
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied in the following way **to each channel:**
@@ -342,7 +342,7 @@ class Report:
             cover at least this duration. Epochs will be picked across the
             entire time range in equally-spaced distance.
 
-            💡 Note
+            💡
               In rare edge cases, we may not be able to create a grid of
               equally-spaced epochs that cover the entire requested time range.
               In these situations, a warning will be emitted, informing you
@@ -489,7 +489,7 @@ class Report:
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            💡 Note
+            💡
                 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -936,7 +936,7 @@ class Report:
             The code to add to the report as a string, or the path to a file
             as a `pathlib.Path` object.
 
-            💡 Note Paths must be passed as `pathlib.Path` object, since
+            💡 Paths must be passed as `pathlib.Path` object, since
                       strings will be treated as literal code.
         title : str
             The title corresponding to the code.

@@ -8,7 +8,7 @@ def read_raw_fieldtrip(fname, info, data_name: str = "data"):
     This function expects to find single trial raw data (FT_DATATYPE_RAW) in
     the structure data_name is pointing at.
 
-    ### ⛔️ Warning FieldTrip does not normally store the original information
+    ⛔️ FieldTrip does not normally store the original information
                  concerning channel location, orientation, type etc. It is
                  therefore **highly recommended** to provide the info field.
                  This can be obtained by reading the original raw data file
@@ -47,10 +47,10 @@ def read_epochs_fieldtrip(
     This function expects to find epoched data in the structure data_name is
     pointing at.
 
-    ### ⛔️ Warning Only epochs with the same amount of channels and samples are
+    ⛔️ Only epochs with the same amount of channels and samples are
                  supported!
 
-    ### ⛔️ Warning FieldTrip does not normally store the original information
+    ⛔️ FieldTrip does not normally store the original information
                  concerning channel location, orientation, type etc. It is
                  therefore **highly recommended** to provide the info field.
                  This can be obtained by reading the original raw data file
@@ -84,7 +84,7 @@ def read_evoked_fieldtrip(fname, info, comment=None, data_name: str = "data"):
     This function expects to find timelocked data in the structure data_name is
     pointing at.
 
-    ### ⛔️ Warning FieldTrip does not normally store the original information
+    ⛔️ FieldTrip does not normally store the original information
                  concerning channel location, orientation, type etc. It is
                  therefore **highly recommended** to provide the info field.
                  This can be obtained by reading the original raw data file

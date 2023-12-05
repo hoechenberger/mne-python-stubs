@@ -221,7 +221,7 @@ class _BaseSourceEstimate(TimeMixin):
             is ``None``, it is set to the **end** of the interval.
             If ``(None, None)``, the entire time interval is used.
 
-            💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+            💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
             Correction is applied **to each source individually** in the following
@@ -230,7 +230,7 @@ class _BaseSourceEstimate(TimeMixin):
             1. Calculate the mean signal of the baseline period.
             2. Subtract this mean from the **entire** source estimate data.
 
-            💡 Note Baseline correction is appropriate when signal and noise are
+            💡 Baseline correction is appropriate when signal and noise are
                       approximately additive, and the noise level can be estimated from
                       the baseline interval. This can be the case for non-normalized
                       source activities (e.g. signed and unsigned MNE), but it is not
@@ -402,7 +402,7 @@ class _BaseSourceEstimate(TimeMixin):
                     will be mirrored directly across zero during colormap
                     construction to obtain negative control points.
 
-            💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
+            💡 Only one of ``lims`` or ``pos_lims`` should be provided.
                       Only sequential colormaps should be used with ``lims``, and
                       only divergent colormaps should be used with ``pos_lims``.
         cortex : str | tuple
@@ -1192,7 +1192,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         nanoAmperes (i.e., MNE-like solutions, *not* dSPM or sLORETA).
         See also :footcite:`GoldenholzEtAl2009`.
 
-        ### ⛔️ Warning This function currently only works properly for fixed
+        ⛔️ This function currently only works properly for fixed
                      orientation.
 
         Parameters
@@ -1250,7 +1250,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         This function computes the spatial center of mass on the surface
         as well as the temporal center of mass as in :footcite:`LarsonLee2013`.
 
-        💡 Note All activity must occur in a single hemisphere, otherwise
+        💡 All activity must occur in a single hemisphere, otherwise
                   an error is raised. The "mass" of each point in space for
                   computing the spatial center of mass is computed by summing
                   across time, and vice-versa for each point in time in
@@ -1690,7 +1690,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
                     will be mirrored directly across zero during colormap
                     construction to obtain negative control points.
 
-            💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
+            💡 Only one of ``lims`` or ``pos_lims`` should be provided.
                       Only sequential colormaps should be used with ``lims``, and
                       only divergent colormaps should be used with ``pos_lims``.
         cortex : str | tuple
@@ -1875,7 +1875,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
                     will be mirrored directly across zero during colormap
                     construction to obtain negative control points.
 
-            💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
+            💡 Only one of ``lims`` or ``pos_lims`` should be provided.
                       Only sequential colormaps should be used with ``lims``, and
                       only divergent colormaps should be used with ``pos_lims``.
 
@@ -3122,7 +3122,7 @@ def stc_near_sensors(
     src : instance of SourceSpaces
         The source space.
 
-        ### ⛔️ Warning If a surface source space is used, make sure that
+        ⛔️ If a surface source space is used, make sure that
                      ``surface='pial'`` was used during construction,
                      or that you set ``surface='pial'`` here.
     picks : str | array-like | slice | None

@@ -17,7 +17,7 @@ class EMS(TransformerMixin, EstimatorMixin):
     gives the similarity between the filter at each time point and the
     data vector (sensors) at that time point.
 
-    💡 Note EMS only works for binary classification.
+    💡 EMS only works for binary classification.
 
     Attributes
     ----------

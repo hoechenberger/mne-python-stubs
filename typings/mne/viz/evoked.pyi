@@ -38,7 +38,7 @@ def plot_evoked(
     Left click to a line shows the channel name. Selecting an area by clicking
     and holding left mouse button plots a topographic map of the painted area.
 
-    💡 Note If bad channels are not excluded they are shown in red.
+    💡 If bad channels are not excluded they are shown in red.
 
     Parameters
     ----------
@@ -643,7 +643,7 @@ def plot_evoked_joint(
 ):
     """Plot evoked data as butterfly plot and add topomaps for time points.
 
-    💡 Note Axes to plot in can be passed by the user through ``ts_args`` or
+    💡 Axes to plot in can be passed by the user through ``ts_args`` or
               ``topomap_args``. In that case both ``ts_args`` and
               ``topomap_args`` axes have to be used. Be aware that when the
               axes are provided, their position may be slightly modified.

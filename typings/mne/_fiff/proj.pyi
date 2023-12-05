@@ -24,7 +24,7 @@ class Projection(dict):
     Projection vectors are stored in a list in ``inst.info["projs"]``. Each projection
     vector has 5 keys: ``active``, ``data``, ``desc``, ``explained_var``, ``kind``.
 
-    ### ⛔️ Warning This class is generally not meant to be instantiated
+    ⛔️ This class is generally not meant to be instantiated
                  directly, use ``compute_proj_*`` functions instead.
 
     Parameters
@@ -188,7 +188,7 @@ class Projection(dict):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -334,7 +334,7 @@ class ProjMixin:
     def del_proj(self, idx: str = "all"):
         """Remove SSP projection vector.
 
-        💡 Note The projection vector can only be removed if it is inactive
+        💡 The projection vector can only be removed if it is inactive
                   (has not been applied to the data).
 
         Parameters
@@ -484,7 +484,7 @@ class ProjMixin:
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 

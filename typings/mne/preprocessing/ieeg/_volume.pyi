@@ -5,7 +5,7 @@ from ...utils import warn as warn
 def warp_montage(montage, moving, static, reg_affine, sdr_morph, verbose=None):
     """Warp a montage to a template with image volumes using SDR.
 
-    💡 Note This is likely only applicable for channels inside the brain
+    💡 This is likely only applicable for channels inside the brain
               (intracranial electrodes).
 
     Parameters

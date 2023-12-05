@@ -39,7 +39,7 @@ def add_reference_channels(inst, ref_channels, copy: bool = True):
 
     Notes
     -----
-    ### ⛔️ Warning
+    ⛔️
         When `re-referencing <tut-set-eeg-ref>`,
         make sure to apply the montage using `mne.io.Raw.set_montage`
         only after calling this function. Applying a montage will only set

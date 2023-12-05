@@ -474,7 +474,7 @@ def filter_chpi(
 ):
     """Remove cHPI and line noise from data.
 
-    💡 Note This function will only work properly if cHPI was on
+    💡 This function will only work properly if cHPI was on
               during the recording.
 
     Parameters

@@ -170,7 +170,7 @@ def compute_source_morph(
 class SourceMorph:
     """Morph source space data from one subject to another.
 
-    💡 Note
+    💡
         This class should not be instantiated directly via
         ``mne.SourceMorph(...)``. Instead, use one of the functions
         listed in the See Also section below.

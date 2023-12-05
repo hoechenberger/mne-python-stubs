@@ -38,7 +38,7 @@ def infomax(
         This quantity indicates the relative size of the change in weights.
         Defaults to ``0.01 / log(n_features ** 2)``.
 
-        💡 Note Smaller learning rates will slow down the ICA procedure.
+        💡 Smaller learning rates will slow down the ICA procedure.
 
     block : int
         The block size of randomly chosen data segments.

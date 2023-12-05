@@ -96,7 +96,7 @@ def make_bem_model(
     Use `mne.make_bem_solution` to turn the returned surfaces into a
     `mne.bem.ConductorModel` suitable for forward calculation.
 
-    💡 Note To get a single layer bem corresponding to the --homog flag in
+    💡 To get a single layer bem corresponding to the --homog flag in
               the command line tool set the ``conductivity`` parameter
               to a float (e.g. ``0.3``).
 

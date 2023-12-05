@@ -19,7 +19,7 @@ def simulate_evoked(
 ):
     """Generate noisy evoked data.
 
-    💡 Note No projections from ``info`` will be present in the
+    💡 No projections from ``info`` will be present in the
               output ``evoked``. You can use e.g.
               `evoked.add_proj <mne.Evoked.add_proj>` or
               `evoked.set_eeg_reference <mne.Evoked.set_eeg_reference>`

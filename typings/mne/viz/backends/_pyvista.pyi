@@ -9,7 +9,7 @@ from pyvistaqt import BackgroundPlotter
 class PyVistaFigure(Figure3D):
     """PyVista-based 3D Figure.
 
-    💡 Note This class should not be instantiated directly via
+    💡 This class should not be instantiated directly via
               ``mne.viz.PyVistaFigure(...)``. Instead, use
               `mne.viz.create_3d_figure`.
 

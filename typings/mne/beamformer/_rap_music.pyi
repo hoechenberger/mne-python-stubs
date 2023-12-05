@@ -22,7 +22,7 @@ def rap_music(
     Compute Recursively Applied and Projected MUltiple SIgnal Classification
     (RAP-MUSIC) :footcite:`MosherLeahy1999,MosherLeahy1996` on evoked data.
 
-    💡 Note The goodness of fit (GOF) of all the returned dipoles is the
+    💡 The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
     Parameters
@@ -81,7 +81,7 @@ def trap_music(
     Compute Truncated Recursively Applied and Projected MUltiple SIgnal Classification
     (TRAP-MUSIC) :footcite:`Makela2018` on evoked data.
 
-    💡 Note The goodness of fit (GOF) of all the returned dipoles is the
+    💡 The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
 
     Parameters

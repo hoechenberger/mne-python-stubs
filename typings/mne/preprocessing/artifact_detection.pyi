@@ -175,7 +175,7 @@ def annotate_break(
         between two consecutive events (if ``events`` is an array) to consider
         this period a "break". Defaults to 15 seconds.
 
-        💡 Note This value defines the minimum duration of a break period in
+        💡 This value defines the minimum duration of a break period in
                   the data, **not** the minimum duration of the generated
                   annotations! See also ``t_start_after_previous`` and
                   ``t_stop_before_next`` for details.
@@ -191,7 +191,7 @@ def annotate_break(
         seconds before the second stimulus, yielding an annotated break of
         ``30 - 5 - 3 = 22`` seconds. Both default to 5 seconds.
 
-        💡 Note The beginning and the end of the recording will be annotated
+        💡 The beginning and the end of the recording will be annotated
                   as breaks, too, if the period from recording start until the
                   first annotation or event (or from last annotation or event
                   until recording end) is at least ``min_break_duration``

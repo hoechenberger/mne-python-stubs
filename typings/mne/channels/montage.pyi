@@ -93,7 +93,7 @@ def make_dig_montage(
         ``'mri_voxel'``, ``'mni_tal'``, ``'ras'``, ``'fs_tal'``,
         ``'ctf_head'``, and ``'ctf_meg'``.
 
-        💡 Note
+        💡
             For custom montages without fiducials, this parameter must be set
             to ``'head'``.
 
@@ -116,7 +116,7 @@ def make_dig_montage(
 class DigMontage:
     """Montage for digitized electrode and headshape position data.
 
-    ### ⛔️ Warning Montages are typically created using one of the helper
+    ⛔️ Montages are typically created using one of the helper
                  functions in the ``See Also`` section below instead of
                  instantiating this class directly.
 
@@ -471,7 +471,7 @@ def transform_to_head(montage):
 def read_dig_dat(fname):
     """Read electrode positions from a ``*.dat`` file.
 
-    ### ⛔️ Warning
+    ⛔️
         This function was implemented based on ``*.dat`` files available from
         `Compumedics <https://compumedicsneuroscan.com>`__ and might not work
         as expected with novel files. If it does not read your files correctly
@@ -862,7 +862,7 @@ def make_standard_montage(kind, head_size: str = "auto"):
     kind : str
         The name of the montage to use.
 
-        💡 Note
+        💡
             You can retrieve the names of all
             built-in montages via `mne.channels.get_builtin_montages`.
     head_size : float | None | str

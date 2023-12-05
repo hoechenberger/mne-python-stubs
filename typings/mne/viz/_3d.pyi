@@ -271,7 +271,7 @@ def plot_alignment(
         Defaults to 'auto', which will look for a head surface and plot
         it if found.
 
-        💡 Note For single layer BEMs it is recommended to use ``'brain'``.
+        💡 For single layer BEMs it is recommended to use ``'brain'``.
     coord_frame : 'auto' | 'head' | 'meg' | 'mri'
         The coordinate frame to use. If ``'auto'`` (default), chooses ``'mri'``
         if ``trans`` was passed, and ``'head'`` otherwise.
@@ -565,7 +565,7 @@ def plot_source_estimates(
                 will be mirrored directly across zero during colormap
                 construction to obtain negative control points.
 
-        💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
+        💡 Only one of ``lims`` or ``pos_lims`` should be provided.
                   Only sequential colormaps should be used with ``lims``, and
                   only divergent colormaps should be used with ``pos_lims``.
     cortex : str | tuple
@@ -752,7 +752,7 @@ def plot_volume_source_estimates(
                 will be mirrored directly across zero during colormap
                 construction to obtain negative control points.
 
-        💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
+        💡 Only one of ``lims`` or ``pos_lims`` should be provided.
                   Only sequential colormaps should be used with ``lims``, and
                   only divergent colormaps should be used with ``pos_lims``.
 
@@ -1328,7 +1328,7 @@ def plot_brain_colorbar(
                 will be mirrored directly across zero during colormap
                 construction to obtain negative control points.
 
-        💡 Note Only one of ``lims`` or ``pos_lims`` should be provided.
+        💡 Only one of ``lims`` or ``pos_lims`` should be provided.
                   Only sequential colormaps should be used with ``lims``, and
                   only divergent colormaps should be used with ``pos_lims``.
 

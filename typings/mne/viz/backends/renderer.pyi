@@ -173,7 +173,7 @@ def create_3d_figure(
 ):
     """Return an empty figure based on the current 3d backend.
 
-    ### ⛔️ Warning Proceed with caution when the renderer object is
+    ⛔️ Proceed with caution when the renderer object is
                  returned (with ``scene=False``) because the _Renderer
                  API is not necessarily stable enough for production,
                  it's still actively in development.

@@ -56,7 +56,7 @@ class SourceSpaces(list):
     space information, one entry in the list per source space type. See
     Notes for details.
 
-    ### ⛔️ Warning
+    ⛔️
         This class should not be created or modified by the end user. Use
         `mne.setup_source_space`, `mne.setup_volume_source_space`,
         or `mne.read_source_spaces` to create `SourceSpaces`.
@@ -585,7 +585,7 @@ def setup_volume_source_space(
         space locations (in meters) and normals, respectively, creating a
         discrete source space.
 
-        💡 Note For a discrete source space (``pos`` is a dict),
+        💡 For a discrete source space (``pos`` is a dict),
                   ``mri`` must be None.
     mri : str | None
         The filename of an MRI volume (mgh or mgz) to create the
@@ -784,7 +784,7 @@ def morph_source_spaces(
 ):
     """Morph an existing source space to a different subject.
 
-    ### ⛔️ Warning This can be used in place of morphing source estimates for
+    ⛔️ This can be used in place of morphing source estimates for
                  multiple subjects, but there may be consequences in terms
                  of dipole topology.
 

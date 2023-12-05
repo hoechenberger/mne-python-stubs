@@ -57,7 +57,7 @@ def compute_proj_ecg(
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.
 
-    💡 Note Raw data will be loaded if it hasn't been preloaded already.
+    💡 Raw data will be loaded if it hasn't been preloaded already.
 
     Parameters
     ----------
@@ -212,7 +212,7 @@ def compute_proj_eog(
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.
 
-    💡 Note Raw data must be preloaded.
+    💡 Raw data must be preloaded.
 
     Parameters
     ----------

@@ -34,7 +34,7 @@ class TimeFrequency(TransformerMixin, BaseEstimator):
         If `int`, returns tfr[..., ::decim].
         If `slice`, returns tfr[..., decim].
 
-        💡 Note Decimation may create aliasing artifacts, yet decimation
+        💡 Decimation may create aliasing artifacts, yet decimation
                   is done after the convolutions.
 
     output : str, default 'complex'

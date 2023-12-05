@@ -30,7 +30,7 @@ from _typeshed import Incomplete
 class Dipole(TimeMixin):
     """Dipole class for sequential dipole fits.
 
-    💡 Note
+    💡
         This class should usually not be instantiated directly via
         ``mne.Dipole(...)``. Instead, use one of the functions
         listed in the See Also section below.
@@ -507,7 +507,7 @@ class Dipole(TimeMixin):
 class DipoleFixed(ExtendedTimeMixin):
     """Dipole class for fixed-position dipole fits.
 
-    💡 Note
+    💡
         This class should usually not be instantiated directly
         via ``mne.DipoleFixed(...)``. Instead, use one of the functions
         listed in the See Also section below.

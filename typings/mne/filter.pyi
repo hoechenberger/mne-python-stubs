@@ -382,7 +382,7 @@ def filter_data(
         * ``l_freq is not None and h_freq is None``: high-pass filter
         * ``l_freq is None and h_freq is not None``: low-pass filter
 
-    💡 Note If n_jobs > 1, more memory is required as
+    💡 If n_jobs > 1, more memory is required as
               ``len(picks) * n_times`` additional time points need to
               be temporarily stored in memory.
 
@@ -526,7 +526,7 @@ def create_filter(
 
     Notes
     -----
-    💡 Note For FIR filters, the *cutoff frequency*, i.e. the -6 dB point,
+    💡 For FIR filters, the *cutoff frequency*, i.e. the -6 dB point,
               is in the middle of the transition band (when using phase='zero'
               and fir_design='firwin'). For IIR filters, the cutoff frequency
               is given by ``l_freq`` or ``h_freq`` directly, and
@@ -1123,7 +1123,7 @@ class FilterMixin:
         ``self.info['lowpass']`` and ``self.info['highpass']`` are only
         updated with picks=None.
 
-        💡 Note If n_jobs > 1, more memory is required as
+        💡 If n_jobs > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
 
@@ -1150,7 +1150,7 @@ class FilterMixin:
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
 
-        💡 Note Data must be loaded.
+        💡 Data must be loaded.
 
         Parameters
         ----------

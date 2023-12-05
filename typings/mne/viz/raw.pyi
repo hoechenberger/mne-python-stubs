@@ -93,7 +93,7 @@ def plot_raw(
                  emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                  resp=1, chpi=1e-4, whitened=1e2)
 
-        💡 Note
+        💡
             A particular scaling value ``s`` corresponds to half of the visualized
             signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
             ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -312,9 +312,9 @@ def plot_raw(
     `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
-    💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+    💡 For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
-    💡 Note To report issues with the PyQtGraph backend, please use the
+    💡 To report issues with the PyQtGraph backend, please use the
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
     """
@@ -348,7 +348,7 @@ def plot_raw_psd(
     exclude: str = "bads",
     verbose=None,
 ):
-    """### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot().
+    """⛔️ LEGACY: New code should use Raw.compute_psd().plot().
 
     Plot power or amplitude spectra.
 
@@ -503,7 +503,7 @@ def plot_raw_psd_topo(
     n_jobs=None,
     verbose=None,
 ):
-    """### ⛔️ Warning LEGACY: New code should use Raw.compute_psd().plot_topo().
+    """⛔️ LEGACY: New code should use Raw.compute_psd().plot_topo().
 
     Plot power spectral density, separately for each channel.
 

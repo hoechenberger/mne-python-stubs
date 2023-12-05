@@ -87,7 +87,7 @@ class BaseEpochs(
 ):
     """Abstract base class for `mne.Epochs`-type classes.
 
-    💡 Note
+    💡
         This class should not be instantiated directly via
         ``mne.BaseEpochs(...)``. Instead, use one of the functions listed in
         the See Also section below.
@@ -130,7 +130,7 @@ class BaseEpochs(
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -172,12 +172,12 @@ class BaseEpochs(
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        💡 Note Since rejection is based on a signal **difference**
+        💡 Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -189,13 +189,13 @@ class BaseEpochs(
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     decim : int
         Factor by which to subsample the data.
 
-        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
+        ⛔️ Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts
@@ -207,7 +207,7 @@ class BaseEpochs(
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        💡 Note This parameter controls the time period used in conjunction with
+        💡 This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     detrend : int | None
@@ -237,7 +237,7 @@ class BaseEpochs(
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        💡 Note
+        💡
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
     preload_at_end : bool
@@ -390,7 +390,7 @@ class BaseEpochs(
             is ``None``, it is set to the **end** of the interval.
             If ``(None, None)``, the entire time interval is used.
 
-            💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+            💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
             Correction is applied **to each epoch and channel individually** in the
@@ -627,7 +627,7 @@ class BaseEpochs(
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            💡 Note
+            💡
                 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -646,7 +646,7 @@ class BaseEpochs(
             same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
             plot events).
 
-            ### ⛔️ Warning  If the epochs have been resampled, the events no longer
+            ⛔️  If the epochs have been resampled, the events no longer
                 align with the data.
 
             ✨ Added in version 0.14.0
@@ -812,9 +812,9 @@ class BaseEpochs(
         `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
-        💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+        💡 For the PyQtGraph backend to run in IPython with ``block=False``
                   you must run the magic command ``%gui qt5`` first.
-        💡 Note To report issues with the PyQtGraph backend, please use the
+        💡 To report issues with the PyQtGraph backend, please use the
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
 
@@ -905,11 +905,11 @@ class BaseEpochs(
 
         Should be used before slicing operations.
 
-        ### ⛔️ Warning This operation is slow since all epochs have to be read
+        ⛔️ This operation is slow since all epochs have to be read
                      from disk. To avoid reading epochs from disk multiple
                      times, use `mne.Epochs.load_data()`.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, set ``epochs.reject_tmin`` and
                   ``epochs.reject_tmax``, respectively.
 
@@ -934,7 +934,7 @@ class BaseEpochs(
                               eog=250e-6      # unit: V (EOG channels)
                               )
 
-            💡 Note Since rejection is based on a signal **difference**
+            💡 Since rejection is based on a signal **difference**
                       calculated for each channel separately, applying baseline
                       correction does not affect the rejection procedure, as the
                       difference will be preserved.
@@ -1224,7 +1224,7 @@ class BaseEpochs(
     def drop(self, indices, reason: str = "USER", verbose=None):
         """Drop epochs based on indices or boolean mask.
 
-        💡 Note The indices refer to the current set of undropped epochs
+        💡 The indices refer to the current set of undropped epochs
                   rather than the complete set of dropped and undropped epochs.
                   They are therefore not necessarily consistent with any
                   external indices (e.g., behavioral logs). To drop epochs
@@ -1323,7 +1323,7 @@ class BaseEpochs(
             when ``item is None``, ``picks is None``, ``units is None``, and data are
             preloaded.
 
-            ### ⛔️ Warning
+            ⛔️
                Using ``copy=False`` and then modifying the returned ``data`` will in
                turn modify the Epochs object. Use with caution!
 
@@ -1364,10 +1364,10 @@ class BaseEpochs(
         using the ``dtype`` parameter, which causes the data type of **all** the data
         to change (even if the function is only applied to channels in ``picks``). The object has to have the data loaded e.g. with ``preload=True`` or ``self.load_data()``.
 
-        💡 Note If ``n_jobs`` > 1, more memory is required as
+        💡 If ``n_jobs`` > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
-        💡 Note If the data type changes (``dtype != None``), more memory is
+        💡 If the data type changes (``dtype != None``), more memory is
                   required since the original and the converted data needs
                   to be stored in memory.
 
@@ -1547,7 +1547,7 @@ class BaseEpochs(
         Supported formats:
             - EEGLAB (``.set``, uses `eeglabio`)
 
-        ### ⛔️ Warning
+        ⛔️
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
@@ -1989,7 +1989,7 @@ class BaseEpochs(
     def as_type(self, ch_type: str = "grad", mode: str = "fast"):
         """Compute virtual epochs using interpolated fields.
 
-        ### ⛔️ Warning Using virtual epochs to compute inverse can yield
+        ⛔️ Using virtual epochs to compute inverse can yield
             unexpected results. The virtual channels have ``'_v'`` appended
             at the end of the names to emphasize that the data contained in
             them are interpolated.
@@ -2055,7 +2055,7 @@ def make_metadata(
         Start and end of the time interval for metadata generation in seconds, relative
         to the time-locked event of the respective time window (the "row events").
 
-        💡 Note
+        💡
            If you are planning to attach the generated metadata to
            `mne.Epochs` and intend to include only events that fall inside
            your epochs time interval, pass the same ``tmin`` and ``tmax``
@@ -2066,7 +2066,7 @@ def make_metadata(
         greatly, but each trial starts with a known event (e.g., a visual cue or
         fixation).
 
-        💡 Note
+        💡
            If ``tmin=None``, the first time window for metadata generation starts with
            the first row event. If ``tmax=None``, the last time window for metadata
            generation ends with the last event in ``events``.
@@ -2088,7 +2088,7 @@ def make_metadata(
         the **first occurrence** within each time window shall be stored in
         addition to the original events.
 
-        💡 Note
+        💡
            There is currently no way to retain **all** occurrences of a
            repeated event. The ``keep_first`` parameter can be used to specify
            subsets of HEDs, effectively creating a new event type that is the
@@ -2108,7 +2108,7 @@ def make_metadata(
         ``keep_first=['response', 'stimulus']``. If ``None`` (default), no
         event aggregation will take place and no new columns will be created.
 
-        💡 Note
+        💡
            By default, this function will always retain  the first instance
            of any event in each time window. For example, if a time window
            contains two ``'response'`` events, the generated ``response``
@@ -2207,7 +2207,7 @@ class Epochs(BaseEpochs):
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -2251,12 +2251,12 @@ class Epochs(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        💡 Note Since rejection is based on a signal **difference**
+        💡 Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -2268,7 +2268,7 @@ class Epochs(BaseEpochs):
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     proj : bool | 'delayed'
@@ -2286,7 +2286,7 @@ class Epochs(BaseEpochs):
     decim : int
         Factor by which to subsample the data.
 
-        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
+        ⛔️ Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts
@@ -2298,7 +2298,7 @@ class Epochs(BaseEpochs):
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        💡 Note This parameter controls the time period used in conjunction with
+        💡 This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     detrend : int | None
@@ -2316,7 +2316,7 @@ class Epochs(BaseEpochs):
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        💡 Note
+        💡
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
@@ -2504,12 +2504,12 @@ class EpochsArray(BaseEpochs):
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        💡 Note Since rejection is based on a signal **difference**
+        💡 Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -2521,7 +2521,7 @@ class EpochsArray(BaseEpochs):
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     reject_tmin, reject_tmax : float | None
@@ -2530,7 +2530,7 @@ class EpochsArray(BaseEpochs):
         The default ``None`` corresponds to the first and last time points of the
         epochs, respectively.
 
-        💡 Note This parameter controls the time period used in conjunction with
+        💡 This parameter controls the time period used in conjunction with
                   both, ``reject`` and ``flat``.
 
     baseline : None | tuple of length 2
@@ -2542,7 +2542,7 @@ class EpochsArray(BaseEpochs):
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -2571,7 +2571,7 @@ class EpochsArray(BaseEpochs):
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        💡 Note
+        💡
            If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
@@ -2840,7 +2840,7 @@ def concatenate_epochs(
 ):
     """Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
 
-    💡 Note Unlike `mne.concatenate_raws`, this function does **not**
+    💡 Unlike `mne.concatenate_raws`, this function does **not**
               modify any of the input data.
 
     Parameters

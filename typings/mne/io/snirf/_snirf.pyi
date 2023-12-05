@@ -11,7 +11,7 @@ def read_raw_snirf(
 ):
     """Reader for a continuous wave SNIRF data.
 
-    💡 Note This reader supports the .snirf file type only,
+    💡 This reader supports the .snirf file type only,
               not the .jnirs version.
               Files with either 3D or 2D locations can be read.
               However, we strongly recommend using 3D positions.

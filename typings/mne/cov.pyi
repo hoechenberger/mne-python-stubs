@@ -34,7 +34,7 @@ from _typeshed import Incomplete
 class Covariance(dict):
     """Noise covariance matrix.
 
-    💡 Note
+    💡
         This class should not be instantiated directly via
         ``mne.Covariance(...)``. Instead, use one of the functions
         listed in the See Also section below.
@@ -401,7 +401,7 @@ class Covariance(dict):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -572,7 +572,7 @@ def compute_raw_covariance(
     It is typically useful to estimate a noise covariance from empty room
     data or time intervals before starting the stimulation.
 
-    💡 Note To estimate the noise covariance from epoched data, use
+    💡 To estimate the noise covariance from epoched data, use
               `mne.compute_covariance` instead.
 
     Parameters
@@ -772,7 +772,7 @@ def compute_covariance(
         2. an Epochs object is created for multiple events and passed
            to this function.
 
-    💡 Note To estimate the noise covariance from non-epoched raw data, such
+    💡 To estimate the noise covariance from non-epoched raw data, such
               as an empty-room recording, use
               `mne.compute_raw_covariance` instead.
 
@@ -1213,7 +1213,7 @@ def regularize(
     channel type separately. Special care is taken to keep the
     rank of the data constant.
 
-    💡 Note This function is kept for reasons of backward-compatibility.
+    💡 This function is kept for reasons of backward-compatibility.
               Please consider explicitly using the ``method`` parameter in
               `mne.compute_covariance` to directly combine estimation
               with regularization in a data-driven fashion. See the

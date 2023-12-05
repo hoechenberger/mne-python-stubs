@@ -9,7 +9,7 @@ def dpss_windows(
     Will give of orders [0,Kmax-1] for a given frequency-spacing multiple
     NW and sequence length N.
 
-    💡 Note Copied from NiTime.
+    💡 Copied from NiTime.
 
     Parameters
     ----------
@@ -211,7 +211,7 @@ def tfr_array_multitaper(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡 Note
+        💡
             Decimation is done after convolutions and may create aliasing
             artifacts.
     output : str, default 'complex'
@@ -315,7 +315,7 @@ def tfr_array_multitaper(
     is unique about multitaper methods — namely their ability to improve accuracy /
     reduce noise in the power estimates by using several (orthogonal) tapers.
 
-    ### ⛔️ Warning
+    ⛔️
 
         In `mne.time_frequency.tfr_array_multitaper` and
         `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the

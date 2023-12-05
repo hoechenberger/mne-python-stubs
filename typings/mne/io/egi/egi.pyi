@@ -15,7 +15,7 @@ def read_raw_egi(
 ):
     """Read EGI simple binary as raw object.
 
-    💡 Note This function attempts to create a synthetic trigger channel.
+    💡 This function attempts to create a synthetic trigger channel.
               See the Notes section below.
 
     Parameters

@@ -112,7 +112,7 @@ class Raw(BaseRaw):
         software coil type 3024 is fully supported. Therefore, it is now safe
         to upgrade the data files to use the true coil type.
 
-        💡 Note The effect of the difference between the coil sizes on the
+        💡 The effect of the difference between the coil sizes on the
                   current estimates computed by the MNE software is very small.
                   Therefore the use of mne_fix_mag_coil_types is not mandatory.
         """

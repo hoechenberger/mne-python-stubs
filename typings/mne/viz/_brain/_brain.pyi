@@ -34,7 +34,7 @@ from _typeshed import Incomplete
 class Brain:
     """Class for visualizing a brain.
 
-    ### ⛔️ Warning
+    ⛔️
        The API for this class is not currently complete. We suggest using
        `mne.viz.plot_source_estimates` with the PyVista backend
        enabled to obtain a ``Brain`` instance.
@@ -460,7 +460,7 @@ class Brain:
         (i.e., a timecourse) or five-dimensional data (i.e., a
         vector-valued timecourse).
 
-        💡 Note ``fmin`` sets the low end of the colormap, and is separate
+        💡 ``fmin`` sets the low end of the colormap, and is separate
                   from thresh (this is a different convention from
                   `surfer.Brain.add_overlay`).
 
@@ -1385,7 +1385,7 @@ class Brain:
         through keyword arguments that depend on the format, see
         :doc:`imageio's format page <imageio:formats/index>`.
 
-        ### ⛔️ Warning
+        ⛔️
             This method assumes that time is specified in seconds when adding
             data. If time is specified in milliseconds this will result in
             movies 1000 times longer than expected.

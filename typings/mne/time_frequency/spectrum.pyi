@@ -49,7 +49,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """### ⛔️ Warning LEGACY: New code should use .compute_psd().plot().
+        """⛔️ LEGACY: New code should use .compute_psd().plot().
 
         Plot power or amplitude spectra.
 
@@ -206,7 +206,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topo().
+        """⛔️ LEGACY: New code should use .compute_psd().plot_topo().
 
         Plot power spectral density, separately for each channel.
 
@@ -314,7 +314,7 @@ class SpectrumMixin:
         verbose=None,
         **method_kw,
     ):
-        """### ⛔️ Warning LEGACY: New code should use .compute_psd().plot_topomap().
+        """⛔️ LEGACY: New code should use .compute_psd().plot_topomap().
 
         Plot scalp topography of PSD for chosen frequency bands.
 
@@ -333,7 +333,7 @@ class SpectrumMixin:
                          'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                          'Gamma (30-45 Hz)': (30, 45)}
 
-            💡 Note
+            💡
                For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
                also accepted, where the last element of the tuple is the subplot title
                and the other entries are frequency values (a single value or band
@@ -471,7 +471,7 @@ class SpectrumMixin:
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -834,7 +834,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
                          'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                          'Gamma (30-45 Hz)': (30, 45)}
 
-            💡 Note
+            💡
                For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
                also accepted, where the last element of the tuple is the subplot title
                and the other entries are frequency values (a single value or band
@@ -960,7 +960,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -1112,7 +1112,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
 class Spectrum(BaseSpectrum):
     """Data object for spectral representations of continuous data.
 
-    ### ⛔️ Warning The preferred means of creating Spectrum objects from
+    ⛔️ The preferred means of creating Spectrum objects from
                  continuous or averaged data is via the instance methods
                  `mne.io.Raw.compute_psd` or
                  `mne.Evoked.compute_psd`. Direct class instantiation
@@ -1248,7 +1248,7 @@ class Spectrum(BaseSpectrum):
           the first and third channels
         - ``spectrum[(4, 7)]`` is the same as ``spectrum[4, 7]``.
 
-        💡 Note
+        💡
 
            Unlike `mne.io.Raw` objects (which returns a tuple of the
            requested data values and the corresponding times), accessing
@@ -1302,7 +1302,7 @@ class SpectrumArray(Spectrum):
 class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
     """Data object for spectral representations of epoched data.
 
-    ### ⛔️ Warning The preferred means of creating Spectrum objects from Epochs
+    ⛔️ The preferred means of creating Spectrum objects from Epochs
                  is via the instance method `mne.Epochs.compute_psd`.
                  Direct class instantiation is not supported.
 

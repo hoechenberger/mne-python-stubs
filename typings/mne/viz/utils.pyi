@@ -212,7 +212,7 @@ def add_background_image(fig, im, set_ratios=None):
     be done with topo plots, though it could work
     for any plot.
 
-    💡 Note This modifies the figure and/or axes in place.
+    💡 This modifies the figure and/or axes in place.
 
     Parameters
     ----------

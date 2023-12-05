@@ -225,10 +225,10 @@ class Evoked(
         using the ``dtype`` parameter, which causes the data type of **all** the data
         to change (even if the function is only applied to channels in ``picks``).
 
-        💡 Note If ``n_jobs`` > 1, more memory is required as
+        💡 If ``n_jobs`` > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
-        💡 Note If the data type changes (``dtype != None``), more memory is
+        💡 If the data type changes (``dtype != None``), more memory is
                   required since the original and the converted data needs
                   to be stored in memory.
 
@@ -294,7 +294,7 @@ class Evoked(
             is ``None``, it is set to the **end** of the interval.
             If ``(None, None)``, the entire time interval is used.
 
-            💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+            💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                         timepoints ``t`` such that ``a <= t <= b``.
 
             Correction is applied **to each channel individually** in the following
@@ -363,7 +363,7 @@ class Evoked(
         Supported formats:
             - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
 
-        ### ⛔️ Warning
+        ⛔️
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
@@ -437,7 +437,7 @@ class Evoked(
         Left click to a line shows the channel name. Selecting an area by clicking
         and holding left mouse button plots a topographic map of the painted area.
 
-        💡 Note If bad channels are not excluded they are shown in red.
+        💡 If bad channels are not excluded they are shown in red.
 
         Parameters
         ----------
@@ -1045,7 +1045,7 @@ class Evoked(
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -1369,7 +1369,7 @@ class Evoked(
     ):
         """Plot evoked data as butterfly plot and add topomaps for time points.
 
-        💡 Note Axes to plot in can be passed by the user through ``ts_args`` or
+        💡 Axes to plot in can be passed by the user through ``ts_args`` or
                   ``topomap_args``. In that case both ``ts_args`` and
                   ``topomap_args`` axes have to be used. Be aware that when the
                   axes are provided, their position may be slightly modified.
@@ -1553,7 +1553,7 @@ class Evoked(
     def as_type(self, ch_type: str = "grad", mode: str = "fast"):
         """Compute virtual evoked using interpolated fields.
 
-        ### ⛔️ Warning Using virtual evoked to compute inverse can yield
+        ⛔️ Using virtual evoked to compute inverse can yield
             unexpected results. The virtual channels have ``'_v'`` appended
             at the end of the names to emphasize that the data contained in
             them are interpolated.
@@ -2029,7 +2029,7 @@ class EvokedArray(Evoked):
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each channel individually** in the following
@@ -2095,7 +2095,7 @@ def combine_evoked(all_evoked, weights):
     same time instants. Subtraction can be performed by passing
     ``weights=[1, -1]``.
 
-    ### ⛔️ Warning
+    ⛔️
         Other than cases like simple subtraction mentioned above (where all
         weights are -1 or 1), if you provide numeric weights instead of using
         ``'equal'`` or ``'nave'``, the resulting `mne.Evoked` object's
@@ -2152,7 +2152,7 @@ def read_evokeds(
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each channel individually** in the following
@@ -2163,7 +2163,7 @@ def read_evokeds(
 
         If ``None`` (default), do not apply baseline correction.
 
-        💡 Note Note that if the read  `mne.Evoked` objects have already
+        💡 Note that if the read  `mne.Evoked` objects have already
                   been baseline-corrected, the data retrieved from disk will
                   **always** be baseline-corrected (in fact, only the
                   baseline-corrected version of the data will be saved, so

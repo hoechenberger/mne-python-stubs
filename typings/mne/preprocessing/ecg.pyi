@@ -176,7 +176,7 @@ def create_ecg_epochs(
 
     #. Create `mne.Epochs` around the R wave peaks, capturing the heartbeats.
 
-    💡 Note Filtering is only applied to the ECG channel while finding
+    💡 Filtering is only applied to the ECG channel while finding
                 events. The resulting ``ecg_epochs`` will have no filtering
                 applied (i.e., have the same filter properties as the input
                 ``raw`` instance).
@@ -232,12 +232,12 @@ def create_ecg_epochs(
                           eog=250e-6      # unit: V (EOG channels)
                           )
 
-        💡 Note Since rejection is based on a signal **difference**
+        💡 Since rejection is based on a signal **difference**
                   calculated for each channel separately, applying baseline
                   correction does not affect the rejection procedure, as the
                   difference will be preserved.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
         If ``reject`` is ``None`` (default), no rejection is performed.
@@ -249,7 +249,7 @@ def create_ecg_epochs(
         is smaller than this threshold, the epoch will be dropped. If ``None``
         then no rejection is performed based on flatness of the signal.
 
-        💡 Note To constrain the time period used for estimation of signal
+        💡 To constrain the time period used for estimation of signal
                   quality, pass the ``reject_tmin`` and ``reject_tmax`` parameters.
 
     baseline : None | tuple of length 2
@@ -261,7 +261,7 @@ def create_ecg_epochs(
         is ``None``, it is set to the **end** of the interval.
         If ``(None, None)``, the entire time interval is used.
 
-        💡 Note The baseline ``(a, b)`` includes both endpoints, i.e. all
+        💡 The baseline ``(a, b)`` includes both endpoints, i.e. all
                     timepoints ``t`` such that ``a <= t <= b``.
 
         Correction is applied **to each epoch and channel individually** in the
@@ -288,7 +288,7 @@ def create_ecg_epochs(
     decim : int
         Factor by which to subsample the data.
 
-        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
+        ⛔️ Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts

@@ -534,7 +534,7 @@ def get_montage_volume_labels(
 ):
     """Get regions of interest near channels from a Freesurfer parcellation.
 
-    💡 Note This is applicable for channels inside the brain
+    💡 This is applicable for channels inside the brain
               (intracranial electrodes).
 
     Parameters

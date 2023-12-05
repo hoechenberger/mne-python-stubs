@@ -166,7 +166,7 @@ class BaseRaw(
     def apply_gradient_compensation(self, grade, verbose=None):
         """Apply CTF gradient compensation.
 
-        ### ⛔️ Warning The compensation matrices are stored with single
+        ⛔️ The compensation matrices are stored with single
                      precision, so repeatedly switching between different
                      of compensation (e.g., 0->1->3->2) can increase
                      numerical noise, especially if data are saved to
@@ -470,10 +470,10 @@ class BaseRaw(
         using the ``dtype`` parameter, which causes the data type of **all** the data
         to change (even if the function is only applied to channels in ``picks``). The object has to have the data loaded e.g. with ``preload=True`` or ``self.load_data()``.
 
-        💡 Note If ``n_jobs`` > 1, more memory is required as
+        💡 If ``n_jobs`` > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
-        💡 Note If the data type changes (``dtype != None``), more memory is
+        💡 If the data type changes (``dtype != None``), more memory is
                   required since the original and the converted data needs
                   to be stored in memory.
 
@@ -708,7 +708,7 @@ class BaseRaw(
         ``self.info['lowpass']`` and ``self.info['highpass']`` are only
         updated with picks=None.
 
-        💡 Note If n_jobs > 1, more memory is required as
+        💡 If n_jobs > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
 
@@ -886,7 +886,7 @@ class BaseRaw(
         The Raw object has to have the data loaded e.g. with ``preload=True``
         or ``self.load_data()``.
 
-        💡 Note If n_jobs > 1, more memory is required as
+        💡 If n_jobs > 1, more memory is required as
                   ``len(picks) * n_times`` additional time points need to
                   be temporarily stored in memory.
 
@@ -910,7 +910,7 @@ class BaseRaw(
         If appropriate, an anti-aliasing filter is applied before resampling.
         See `resampling-and-decimating` for more information.
 
-        ### ⛔️ Warning The intended purpose of this function is primarily to
+        ⛔️ The intended purpose of this function is primarily to
                      speed up computations (e.g., projection calculation) when
                      precise timing of events is not required, as downsampling
                      raw data effectively jitters trigger timings. It is
@@ -1110,7 +1110,7 @@ class BaseRaw(
         proj : bool
             If True the data is saved with the projections applied (active).
 
-            💡 Note If ``apply_proj()`` was used to apply the projections,
+            💡 If ``apply_proj()`` was used to apply the projections,
                       the projectons will be active even if ``proj`` is False.
         fmt : 'single' | 'double' | 'int' | 'short'
             Format to use to save raw data. Valid options are 'double',
@@ -1134,7 +1134,7 @@ class BaseRaw(
             parameter is an integer, it specifies the size in Bytes. It is
             also possible to pass a human-readable string, e.g., 100MB.
 
-            💡 Note Due to FIFF file limitations, the maximum split
+            💡 Due to FIFF file limitations, the maximum split
                       size is 2GB.
 
         split_naming : 'neuromag' | 'bids'
@@ -1182,7 +1182,7 @@ class BaseRaw(
             - EEGLAB (``.set``, uses `eeglabio`)
             - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
-        ### ⛔️ Warning
+        ⛔️
             Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
@@ -1343,7 +1343,7 @@ class BaseRaw(
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            💡 Note
+            💡
                 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
@@ -1562,9 +1562,9 @@ class BaseRaw(
         `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
         (or ``'qt'``).
 
-        💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+        💡 For the PyQtGraph backend to run in IPython with ``block=False``
                   you must run the magic command ``%gui qt5`` first.
-        💡 Note To report issues with the PyQtGraph backend, please use the
+        💡 To report issues with the PyQtGraph backend, please use the
                   `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
                   of ``mne-qt-browser``.
         """
@@ -1633,7 +1633,7 @@ class BaseRaw(
     def append(self, raws, preload=None) -> None:
         """Concatenate raw instances as if they were continuous.
 
-        💡 Note Boundaries of the raw files are annotated bad. If you wish to
+        💡 Boundaries of the raw files are annotated bad. If you wish to
                   use the data as continuous recording, you can remove the
                   boundary annotations after concatenation (see
                   `mne.Annotations.delete`).
@@ -1957,7 +1957,7 @@ def concatenate_raws(
 ):
     """Concatenate `mne.io.Raw` instances as if they were continuous.
 
-    💡 Note ``raws[0]`` is modified in-place to achieve the concatenation.
+    💡 ``raws[0]`` is modified in-place to achieve the concatenation.
               Boundaries of the raw files are annotated bad. If you wish to use
               the data as continuous recording, you can remove the boundary
               annotations after concatenation (see

@@ -182,7 +182,7 @@ class SSD(BaseEstimator, TransformerMixin):
         (denoised by low-rank factorization).
         See :footcite:`HaufeEtAl2014b` for more information.
 
-        💡 Note Unlike in other classes with an apply method,
+        💡 Unlike in other classes with an apply method,
            only NumPy arrays are supported (not instances of MNE objects).
 
         Parameters

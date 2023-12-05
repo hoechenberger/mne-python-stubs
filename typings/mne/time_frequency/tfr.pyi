@@ -192,7 +192,7 @@ def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡 Note
+        💡
             Decimation is done after convolutions and may create aliasing
             artifacts.
 
@@ -255,7 +255,7 @@ def tfr_morlet(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡 Note
+        💡
             Decimation is done after convolutions and may create aliasing
             artifacts.
     n_jobs : int | None
@@ -278,7 +278,7 @@ def tfr_morlet(
         epoch. If ``True`` return an `AverageTFR` containing the average of all
         TFRs across epochs.
 
-        💡 Note
+        💡
             Using ``average=True`` is functionally equivalent to using
             ``average=False`` followed by ``EpochsTFR.average()``, but is
             more memory efficient.
@@ -405,7 +405,7 @@ def tfr_array_morlet(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡 Note
+        💡
             Decimation is done after convolutions and may create aliasing
             artifacts.
     output : str, default ``'complex'``
@@ -555,7 +555,7 @@ def tfr_multitaper(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡 Note
+        💡
             Decimation is done after convolutions and may create aliasing
             artifacts.
     n_jobs : int | None
@@ -580,7 +580,7 @@ def tfr_multitaper(
         epoch. If ``True`` return an `AverageTFR` containing the average of all
         TFRs across epochs.
 
-        💡 Note
+        💡
             Using ``average=True`` is functionally equivalent to using
             ``average=False`` followed by ``EpochsTFR.average()``, but is
             more memory efficient.
@@ -664,7 +664,7 @@ def tfr_multitaper(
     is unique about multitaper methods — namely their ability to improve accuracy /
     reduce noise in the power estimates by using several (orthogonal) tapers.
 
-    ### ⛔️ Warning
+    ⛔️
 
         In `mne.time_frequency.tfr_array_multitaper` and
         `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
@@ -1028,7 +1028,7 @@ class AverageTFR(_BaseTFR):
             'interactive', translates to ('RdBu_r', True). Defaults to
             'RdBu_r'.
 
-            ### ⛔️ Warning Interactive mode works smoothly only for a small
+            ⛔️ Interactive mode works smoothly only for a small
                 amount of images.
 
         dB : bool
@@ -1571,7 +1571,7 @@ class AverageTFR(_BaseTFR):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ### ⛔️ Warning  Interactive mode works smoothly only for a small amount
+            ⛔️  Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 

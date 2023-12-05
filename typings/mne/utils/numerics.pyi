@@ -140,7 +140,7 @@ def grand_average(all_inst, interpolate_bads: bool = True, drop_bads: bool = Tru
     The ``grand_average.nave`` attribute will be equal to the number
     of evoked datasets used to calculate the grand average.
 
-    💡 Note A grand average evoked should not be used for source
+    💡 A grand average evoked should not be used for source
               localization.
 
     Parameters

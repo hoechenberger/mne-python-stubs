@@ -157,7 +157,7 @@ class RawCNT(BaseRaw):
         Add a stim channel from the events. Defaults to None to trigger a
         future warning.
 
-        ### ⛔️ Warning This defaults to True in 0.18 but will change to False in
+        ⛔️ This defaults to True in 0.18 but will change to False in
                      0.19 (when no stim channel synthesis will be allowed)
                      and be removed in 0.20; migrate code to use
                      `mne.events_from_annotations` instead.

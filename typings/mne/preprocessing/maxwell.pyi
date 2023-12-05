@@ -51,7 +51,7 @@ def maxwell_filter_prepare_emptyroom(
         comparison to the experimental recording. If ``'keep'``, don't alter
         the existing list of bad channels.
 
-        💡 Note
+        💡
            Non-MEG channels are silently dropped from the list of bads.
     annotations : 'from_raw' | 'union' | 'keep'
         Whether to copy the annotations over from ``raw`` (default),
@@ -128,7 +128,7 @@ def maxwell_filter(
     raw : instance of Raw
         Data to be filtered.
 
-        ### ⛔️ Warning It is critical to mark bad channels in
+        ⛔️ It is critical to mark bad channels in
                      ``raw.info['bads']`` prior to processing in order to
                      prevent artifact spreading. Manual inspection and use
                      of `find_bad_channels_maxwell` is recommended.
@@ -283,7 +283,7 @@ def maxwell_filter(
     It will likely use multiple CPU cores, see the `FAQ <faq_cpu>`
     for more information.
 
-    ### ⛔️ Warning Maxwell filtering in MNE is not designed or certified
+    ⛔️ Maxwell filtering in MNE is not designed or certified
                  for clinical use.
 
     Compared to the MEGIN MaxFilter™ software, the MNE Maxwell filtering
@@ -343,7 +343,7 @@ def maxwell_filter(
     * Coil integration has not been optimized using Abramowitz/Stegun
       definitions.
 
-    💡 Note Various Maxwell filtering algorithm components are covered by
+    💡 Various Maxwell filtering algorithm components are covered by
               patents owned by MEGIN. These patents include, but may not be
               limited to:
 
@@ -404,7 +404,7 @@ def find_bad_channels_maxwell(
         the original and Maxwell-filtered data. See the ``Notes`` section for
         details.
 
-        💡 Note This setting only concerns *noisy* channel detection.
+        💡 This setting only concerns *noisy* channel detection.
                   The limit for *flat* channel detection currently cannot be
                   controlled by the user. Flat channel detection is always run
                   before noisy channel detection.
@@ -418,7 +418,7 @@ def find_bad_channels_maxwell(
         If ``True``, return a dictionary with scoring information for each
         evaluated segment of the data. Default is ``False``.
 
-        ### ⛔️ Warning This feature is experimental and may change in a future
+        ⛔️ This feature is experimental and may change in a future
                      version of MNE-Python without prior notice. Please
                      report any problems and enhancement proposals to the
                      developers.
@@ -546,7 +546,7 @@ def find_bad_channels_maxwell(
             The score thresholds (in standard scores) above which a segment was
             classified as "noisy".
 
-        💡 Note The scores and limits for channels marked as ``bad`` in the
+        💡 The scores and limits for channels marked as ``bad`` in the
                   input data will be set to ``np.nan``.
 
     See Also

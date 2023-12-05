@@ -40,7 +40,7 @@ def circular_layout(
 def plot_channel_labels_circle(labels, colors=None, picks=None, **kwargs):
     """Plot labels for each channel in a circle plot.
 
-    💡 Note This primarily makes sense for sEEG channels where each
+    💡 This primarily makes sense for sEEG channels where each
               channel can be assigned an anatomical label as the electrode
               passes through various brain areas.
 

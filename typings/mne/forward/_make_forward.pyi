@@ -103,7 +103,7 @@ def make_forward_solution(
     To create a fixed-orientation forward solution, use this function
     followed by `mne.convert_forward_solution`.
 
-    💡 Note
+    💡
         If the BEM solution was computed with `OpenMEEG <https://openmeeg.github.io>`__
         in `mne.make_bem_solution`, then OpenMEEG will automatically
         be used to compute the forward solution.
@@ -123,7 +123,7 @@ def make_forward_dipole(dipole, bem, info, trans=None, n_jobs=None, *, verbose=N
     The source estimate object (with the forward operator) can be projected to
     sensor-space using `mne.simulation.simulate_evoked`.
 
-    💡 Note If the (unique) time points of the dipole object are unevenly
+    💡 If the (unique) time points of the dipole object are unevenly
               spaced, the first output will be a list of single-timepoint
               source estimates.
 

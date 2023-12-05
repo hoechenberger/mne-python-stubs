@@ -6,7 +6,7 @@ def export_evokeds_mff(
 ) -> None:
     """Export evoked dataset to MFF.
 
-    ### ⛔️ Warning
+    ⛔️
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 

@@ -18,7 +18,7 @@ def find_eog_events(
 ):
     """Locate EOG artifacts.
 
-    💡 Note To control true-positive and true-negative detection rates, you
+    💡 To control true-positive and true-negative detection rates, you
               may adjust the ``thresh`` parameter.
 
     Parameters
@@ -173,7 +173,7 @@ def create_eog_epochs(
     decim : int
         Factor by which to subsample the data.
 
-        ### ⛔️ Warning Low-pass filtering is not performed, this simply selects
+        ⛔️ Low-pass filtering is not performed, this simply selects
                      every Nth sample (where N is the value passed to
                      ``decim``), i.e., it compresses the signal (see Notes).
                      If the data are not properly filtered, aliasing artifacts

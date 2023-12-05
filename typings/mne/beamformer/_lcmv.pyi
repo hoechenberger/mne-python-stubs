@@ -39,7 +39,7 @@ def make_lcmv(
         noise covariance is mandatory if you mix sensor types, e.g.
         gradiometers with magnetometers or EEG with MEG.
 
-        💡 Note
+        💡
             If ``noise_cov`` is ``None`` and ``weight_norm='unit-noise-gain'``,
             the unit noise is assumed to be 1 in SI units, e.g., 1 T for
             magnetometers, 1 V for EEG, so resulting amplitudes will be tiny.

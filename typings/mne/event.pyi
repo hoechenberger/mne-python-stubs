@@ -327,7 +327,7 @@ def find_events(
 
     Notes
     -----
-    ### ⛔️ Warning If you are working with downsampled data, events computed
+    ⛔️ If you are working with downsampled data, events computed
                  before decimation are no longer valid. Please recompute
                  your events after decimation, but note this reduces the
                  precision of event timing.

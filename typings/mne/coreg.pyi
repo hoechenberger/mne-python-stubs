@@ -77,7 +77,7 @@ def coregister_fiducials(info, fiducials, tol: float = 0.01):
     trans : Transform
         The device-MRI transform.
 
-    💡 Note The `mne.Info` object fiducials must be in the
+    💡 The `mne.Info` object fiducials must be in the
               head coordinate space.
     """
     ...

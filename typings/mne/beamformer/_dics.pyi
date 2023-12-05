@@ -287,13 +287,13 @@ def apply_dics(evoked, filters, verbose=None):
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on evoked data.
 
-    ### ⛔️ Warning The result of this function is meant as an intermediate step
+    ⛔️ The result of this function is meant as an intermediate step
                  for further processing (such as computing connectivity). If
                  you are interested in estimating source time courses, use an
                  LCMV beamformer (`make_lcmv`, `apply_lcmv`)
                  instead. If you are interested in estimating spectral power at
                  the source level, use `apply_dics_csd`.
-    ### ⛔️ Warning This implementation has not been heavily tested so please
+    ⛔️ This implementation has not been heavily tested so please
                  report any issues or suggestions.
 
     Parameters
@@ -331,13 +331,13 @@ def apply_dics_epochs(epochs, filters, return_generator: bool = False, verbose=N
     Apply Dynamic Imaging of Coherent Sources (DICS) beamformer weights
     on single trial data.
 
-    ### ⛔️ Warning The result of this function is meant as an intermediate step
+    ⛔️ The result of this function is meant as an intermediate step
                  for further processing (such as computing connectivity). If
                  you are interested in estimating source time courses, use an
                  LCMV beamformer (`make_lcmv`, `apply_lcmv`)
                  instead. If you are interested in estimating spectral power at
                  the source level, use `apply_dics_csd`.
-    ### ⛔️ Warning This implementation has not been heavily tested so please
+    ⛔️ This implementation has not been heavily tested so please
                  report any issue or suggestions.
 
     Parameters
@@ -417,7 +417,7 @@ def apply_dics_csd(csd, filters, verbose=None):
     (CSD) object to estimate source power in time and frequency windows
     specified in the CSD object :footcite:`GrossEtAl2001`.
 
-    💡 Note Only power can computed from the cross-spectral density, not
+    💡 Only power can computed from the cross-spectral density, not
               complex phase-amplitude, so vector DICS filters will be
               converted to scalar source estimates since power is strictly
               positive and so 3D directions cannot be combined meaningfully

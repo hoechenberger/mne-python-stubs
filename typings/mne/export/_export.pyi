@@ -18,7 +18,7 @@ def export_raw(
         - EEGLAB (``.set``, uses `eeglabio`)
         - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
-    ### ⛔️ Warning
+    ⛔️
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
@@ -100,7 +100,7 @@ def export_epochs(
     Supported formats:
         - EEGLAB (``.set``, uses `eeglabio`)
 
-    ### ⛔️ Warning
+    ⛔️
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
@@ -157,7 +157,7 @@ def export_evokeds(
     Supported formats:
         - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
 
-    ### ⛔️ Warning
+    ⛔️
         Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 

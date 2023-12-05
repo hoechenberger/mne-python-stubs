@@ -151,9 +151,9 @@ def plot_ica_sources(
     `mne.set_config('MNE_BROWSER_BACKEND', 'matplotlib')<mne.set_config>`
     (or ``'qt'``).
 
-    💡 Note For the PyQtGraph backend to run in IPython with ``block=False``
+    💡 For the PyQtGraph backend to run in IPython with ``block=False``
               you must run the magic command ``%gui qt5`` first.
-    💡 Note To report issues with the PyQtGraph backend, please use the
+    💡 To report issues with the PyQtGraph backend, please use the
               `issues <https://github.com/mne-tools/mne-qt-browser/issues>`_
               of ``mne-qt-browser``.
 
@@ -191,7 +191,7 @@ def plot_ica_properties(
     inst : instance of Epochs or Raw
         The data to use in plotting properties.
 
-        💡 Note
+        💡
            You can interactively cycle through topographic maps for different
            channel types by pressing :kbd:`T`.
     picks : int | list of int | slice | None
@@ -220,7 +220,7 @@ def plot_ica_properties(
         Whether to use a logarithmic frequency axis to plot the spectrum.
         Defaults to ``False``.
 
-        💡 Note
+        💡
            You can interactively toggle this setting by pressing :kbd:`L`.
 
         ✨ Added in version 1.1
