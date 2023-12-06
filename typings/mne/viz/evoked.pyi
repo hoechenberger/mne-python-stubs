@@ -49,7 +49,7 @@ def plot_evoked(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -161,7 +161,7 @@ def plot_evoked(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -334,7 +334,7 @@ def plot_evoked_image(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -442,7 +442,7 @@ def plot_evoked_image(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -473,7 +473,7 @@ def plot_evoked_white(
     """Plot whitened evoked response.
 
     Plots the whitened evoked response and the whitened GFP as described in
-    :footcite:`EngemannGramfort2015`. This function is especially useful for
+    `EngemannGramfort2015`. This function is especially useful for
     investigating noise covariance properties to determine if data are
     properly whitened (e.g., achieving expected values in line with model
     assumptions, see Notes below).
@@ -507,7 +507,7 @@ def plot_evoked_white(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -539,7 +539,7 @@ def plot_evoked_white(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -667,7 +667,7 @@ def plot_evoked_joint(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -749,7 +749,7 @@ def plot_compare_evokeds(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -773,12 +773,12 @@ def plot_compare_evokeds(
         sequentially,
         while dicts must have keys matching the keys or conditions of an
         ``evokeds`` dict (see Notes for details). If ``None``, the current
-        :doc:`matplotlib color cycle
+        `matplotlib color cycle
         <matplotlib:gallery/color/color_cycle_default>`
         is used. Defaults to ``None``.
     linestyles : list | dict | None
         Styles to use when plotting the ERP/F lines. If a `list` or
-        `dict`, elements must be valid :doc:`matplotlib linestyles
+        `dict`, elements must be valid `matplotlib linestyles
         <matplotlib:gallery/lines_bars_and_markers/linestyles>`. Lists are
         cycled through sequentially; dictionaries must have keys matching the
         keys or conditions of an ``evokeds`` dict (see Notes for details). If
@@ -801,10 +801,10 @@ def plot_compare_evokeds(
         ``matplotlib.colormaps``; if ``cmap`` is a tuple, its first
         element will be used as a string to label the colorbar, and its
         second element will be passed to ``matplotlib.colormaps`` (unless
-        it is already an instance of `matplotlib.colors.Colormap`).
+        it is already an instance of `Colormap`).
 
         🎭 Changed in version 0.19
-            Support for passing `matplotlib.colors.Colormap` instances.
+            Support for passing `Colormap` instances.
 
     vlines : "auto" | list of float
         A list in seconds at which to plot dashed vertical lines.
@@ -856,13 +856,13 @@ def plot_compare_evokeds(
         a separate linestyle legend will still be shown if ``cmap`` is
         specified. Defaults to ``None``.
     axes : None | Axes instance | list of Axes | 'topo'
-        `matplotlib.axes.Axes` object to plot into. If plotting
+        `Axes` object to plot into. If plotting
         multiple channel types (or multiple channels when ``combine=None``),
         ``axes`` should be a list of appropriate length containing
-        `matplotlib.axes.Axes` objects. If ``'topo'``, a new
-        `matplotlib.figure.Figure` is created with one axis for each
+        `Axes` objects. If ``'topo'``, a new
+        `Figure` is created with one axis for each
         channel, in a topographical layout. If ``None``, a new
-        `matplotlib.figure.Figure` is created for each channel type.
+        `Figure` is created for each channel type.
         Defaults to ``None``.
     title : str | None
         Title printed above the plot. If ``None``, a title will be
@@ -890,7 +890,7 @@ def plot_compare_evokeds(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,

@@ -8,7 +8,7 @@ def data_path(
 ):
     """Get path to local copy of the kiloword dataset.
 
-    This is the dataset from :footcite:`DufauEtAl2015`.
+    This is the dataset from `DufauEtAl2015`.
 
     Parameters
     ----------

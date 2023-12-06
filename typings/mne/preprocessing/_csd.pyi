@@ -22,7 +22,7 @@ def compute_current_source_density(
     """Get the current source density (CSD) transformation.
 
     Transformation based on spherical spline surface Laplacian
-    :footcite:`PerrinEtAl1987,PerrinEtAl1989,Cohen2014,KayserTenke2015`.
+    `PerrinEtAl1987,PerrinEtAl1989,Cohen2014,KayserTenke2015`.
 
     This function can be used to re-reference the signal using a Laplacian
     (LAP) "reference-free" transformation.
@@ -84,7 +84,7 @@ def compute_bridged_electrodes(
     distance is below ``lm_cutoff`` on more than the ``epoch_threshold``
     proportion of epochs.
 
-    Based on :footcite:`TenkeKayser2001,GreischarEtAl2004,DelormeMakeig2004`
+    Based on `TenkeKayser2001,GreischarEtAl2004,DelormeMakeig2004`
     and the `EEGLAB implementation
     <https://psychophysiology.cpmc.columbia.edu/software/eBridge/index.html>`_.
 
@@ -97,7 +97,7 @@ def compute_bridged_electrodes(
         search for a local minimum (lm) indicative of bridging.
         EEGLAB defaults to 5 :math:`{\\mu}V^2`. MNE defaults to
         16 :math:`{\\mu}V^2` to be conservative based on the distributions in
-        :footcite:t:`GreischarEtAl2004`.
+        t:`GreischarEtAl2004`.
     epoch_threshold : float
         The proportion of epochs with electrical distance less than
         ``lm_cutoff`` in order to consider the channel bridged.

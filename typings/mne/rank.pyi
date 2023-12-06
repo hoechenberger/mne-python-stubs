@@ -104,7 +104,7 @@ def compute_rank(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`

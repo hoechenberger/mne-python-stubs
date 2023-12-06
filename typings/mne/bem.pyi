@@ -33,7 +33,7 @@ from .viz.misc import plot_bem as plot_bem
 class ConductorModel(dict):
     """BEM or sphere model.
 
-    See `mne.make_bem_model` and `mne.make_bem_solution` to create a
+    See `make_bem_model` and `make_bem_solution` to create a
     `mne.bem.ConductorModel`.
     """
 
@@ -93,8 +93,8 @@ def make_bem_model(
 ):
     """Create a BEM model for a subject.
 
-    Use `mne.make_bem_solution` to turn the returned surfaces into a
-    `mne.bem.ConductorModel` suitable for forward calculation.
+    Use `make_bem_solution` to turn the returned surfaces into a
+    `ConductorModel` suitable for forward calculation.
 
     💡 To get a single layer bem corresponding to the --homog flag in
               the command line tool set the ``conductivity`` parameter
@@ -128,8 +128,8 @@ def make_bem_model(
     Returns
     -------
     surfaces : list of dict
-        The BEM surfaces. Use `mne.make_bem_solution` to turn these into a
-        `mne.bem.ConductorModel` suitable for forward calculation.
+        The BEM surfaces. Use `make_bem_solution` to turn these into a
+        `ConductorModel` suitable for forward calculation.
 
     See Also
     --------
@@ -162,7 +162,7 @@ def make_sphere_model(
     head_radius : float | str | None
         If float, compute spherical shells for EEG using the given radius.
         If ``'auto'``, estimate an appropriate radius from the dig points in the
-        `mne.Info` provided by the argument ``info``.
+        `Info` provided by the argument ``info``.
         If None, exclude shells (single layer sphere model).
 
     info : mne.Info | None

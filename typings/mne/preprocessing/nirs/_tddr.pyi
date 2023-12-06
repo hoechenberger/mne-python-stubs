@@ -4,7 +4,7 @@ def temporal_derivative_distribution_repair(raw, *, verbose=None):
     """Apply temporal derivative distribution repair to data.
 
     Applies temporal derivative distribution repair (TDDR) to data
-    :footcite:`FishburnEtAl2019`. This approach removes baseline shift
+    `FishburnEtAl2019`. This approach removes baseline shift
     and spike artifacts without the need for any user-supplied parameters.
 
     Parameters

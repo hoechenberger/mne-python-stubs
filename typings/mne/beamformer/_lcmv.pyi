@@ -39,8 +39,7 @@ def make_lcmv(
         noise covariance is mandatory if you mix sensor types, e.g.
         gradiometers with magnetometers or EEG with MEG.
 
-        💡
-            If ``noise_cov`` is ``None`` and ``weight_norm='unit-noise-gain'``,
+        💡 If ``noise_cov`` is ``None`` and ``weight_norm='unit-noise-gain'``,
             the unit noise is assumed to be 1 in SI units, e.g., 1 T for
             magnetometers, 1 V for EEG, so resulting amplitudes will be tiny.
             Consider using `mne.make_ad_hoc_cov` to provide a
@@ -86,7 +85,7 @@ def make_lcmv(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -115,17 +114,17 @@ def make_lcmv(
         Can be:
 
         - ``None``
-            The unit-gain LCMV beamformer :footcite:`SekiharaNagarajan2008` will be
+            The unit-gain LCMV beamformer `SekiharaNagarajan2008` will be
             computed.
         - ``'unit-noise-gain'``
             The unit-noise gain minimum variance beamformer will be computed
-            (Borgiotti-Kaplan beamformer) :footcite:`SekiharaNagarajan2008`,
+            (Borgiotti-Kaplan beamformer) `SekiharaNagarajan2008`,
             which is not rotation invariant when ``pick_ori='vector'``.
             This should be combined with
             `stc.project('pca') <mne.VectorSourceEstimate.project>` to follow
-            the definition in :footcite:`SekiharaNagarajan2008`.
+            the definition in `SekiharaNagarajan2008`.
         - ``'nai'``
-            The Neural Activity Index :footcite:`VanVeenEtAl1997` will be computed,
+            The Neural Activity Index `VanVeenEtAl1997` will be computed,
             which simply scales all values from ``'unit-noise-gain'`` by a fixed
             value.
         - ``'unit-noise-gain-invariant'``
@@ -135,7 +134,7 @@ def make_lcmv(
 
             1. Is rotation invariant (``'unit-noise-gain'`` is not);
             2. Satisfies the first requirement from
-               :footcite:`SekiharaNagarajan2008` that ``w @ w.conj().T == I``,
+               `SekiharaNagarajan2008` that ``w @ w.conj().T == I``,
                whereas ``'unit-noise-gain'`` has non-zero off-diagonals; but
             3. Does not satisfy the second requirement that ``w @ G.T = θI``,
                which arguably does not make sense for a rotation-invariant
@@ -175,7 +174,7 @@ def make_lcmv(
         three dipoles at a source vertex are considered as a group and the
         spatial filters are computed jointly using a matrix inversion. While
         ``inversion='single'`` is more stable, ``inversion='matrix'`` is more
-        precise. See section 5 of :footcite:`vanVlietEtAl2018`.
+        precise. See section 5 of `vanVlietEtAl2018`.
         Defaults to ``'matrix'``.
 
         ✨ Added in version 0.21
@@ -243,7 +242,7 @@ def make_lcmv(
 
     Notes
     -----
-    The original reference is :footcite:`VanVeenEtAl1997`.
+    The original reference is `VanVeenEtAl1997`.
 
     To obtain the Sekihara unit-noise-gain vector beamformer, you should use
     ``weight_norm='unit-noise-gain', pick_ori='vector'`` followed by

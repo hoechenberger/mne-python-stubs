@@ -9,7 +9,7 @@ class LinearModel(BaseEstimator):
     The linear model coefficients (filters) are used to extract discriminant
     neural sources from the measured data. This class computes the
     corresponding patterns of these linear filters to make them more
-    interpretable :footcite:`HaufeEtAl2014`.
+    interpretable `HaufeEtAl2014`.
 
     Parameters
     ----------
@@ -77,7 +77,7 @@ def get_coef(estimator, attr: str = "filters_", inverse_transform: bool = False)
     """Retrieve the coefficients of an estimator ending with a Linear Model.
 
     This is typically useful to retrieve "spatial filters" or "spatial
-    patterns" of decoding models :footcite:`HaufeEtAl2014`.
+    patterns" of decoding models `HaufeEtAl2014`.
 
     Parameters
     ----------

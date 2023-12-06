@@ -129,7 +129,7 @@ class Report:
         1. Calculate the mean signal of the baseline period.
         2. Subtract this mean from the **entire** time period.
 
-        For `mne.Epochs`, this algorithm is run **on each epoch individually.**
+        For `Epochs`, this algorithm is run **on each epoch individually.**
         Defaults to ``None``, i.e. no baseline correction.
     image_format : 'png' | 'svg' | 'webp' | 'auto'
         Default image format to use (default is ``'auto'``, which will use
@@ -195,7 +195,7 @@ class Report:
         1. Calculate the mean signal of the baseline period.
         2. Subtract this mean from the **entire** time period.
 
-        For `mne.Epochs`, this algorithm is run **on each epoch individually.**
+        For `Epochs`, this algorithm is run **on each epoch individually.**
         Defaults to ``None``, i.e. no baseline correction.
     image_format : str
         Default image format to use.
@@ -328,7 +328,7 @@ class Report:
         tags=("epochs",),
         replace: bool = False,
     ) -> None:
-        """Add `mne.Epochs` to the report.
+        """Add `Epochs` to the report.
 
         Parameters
         ----------
@@ -342,8 +342,7 @@ class Report:
             cover at least this duration. Epochs will be picked across the
             entire time range in equally-spaced distance.
 
-            💡
-              In rare edge cases, we may not be able to create a grid of
+            💡 In rare edge cases, we may not be able to create a grid of
               equally-spaced epochs that cover the entire requested time range.
               In these situations, a warning will be emitted, informing you
               about the duration that's actually being used.
@@ -353,7 +352,7 @@ class Report:
 
         projs : bool | None
             Whether to add SSP projector plots if projectors are present in
-            the data. If ``None``, use ``projs`` from `mne.Report` creation.
+            the data. If ``None``, use ``projs`` from `Report` creation.
 
         topomap_kwargs : dict | None
             Keyword arguments to pass to the topomap-generating functions.
@@ -390,12 +389,12 @@ class Report:
         topomap_kwargs=None,
         n_jobs=None,
     ) -> None:
-        """Add `mne.Evoked` objects to the report.
+        """Add `Evoked` objects to the report.
 
         Parameters
         ----------
         evokeds : path-like | instance of Evoked | list of Evoked
-            The evoked data to add to the report. Multiple `mne.Evoked`
+            The evoked data to add to the report. Multiple `Evoked`
             objects – as returned from `mne.read_evokeds` – can be passed as
             a list.
         titles : str | list of str | None
@@ -409,10 +408,10 @@ class Report:
 
         projs : bool | None
             Whether to add SSP projector plots if projectors are present in
-            the data. If ``None``, use ``projs`` from `mne.Report` creation.
+            the data. If ``None``, use ``projs`` from `Report` creation.
         n_time_points : int | None
             The number of equidistant time points to render. If ``None``,
-            will render each `mne.Evoked` at 21 time points, unless the data
+            will render each `Evoked` at 21 time points, unless the data
             contains fewer time points, in which case all will be rendered.
 
         tags : array-like of str | str
@@ -453,7 +452,7 @@ class Report:
         replace: bool = False,
         topomap_kwargs=None,
     ) -> None:
-        """Add `mne.io.Raw` objects to the report.
+        """Add `Raw` objects to the report.
 
         Parameters
         ----------
@@ -463,12 +462,12 @@ class Report:
             The title corresponding to the ``raw`` object.
         psd : bool | None
             Whether to add PSD plots. Overrides the ``raw_psd`` parameter
-            passed when initializing the `mne.Report`. If ``None``, use
-            ``raw_psd`` from `mne.Report` creation.
+            passed when initializing the `Report`. If ``None``, use
+            ``raw_psd`` from `Report` creation.
 
         projs : bool | None
             Whether to add SSP projector plots if projectors are present in
-            the data. If ``None``, use ``projs`` from `mne.Report` creation.
+            the data. If ``None``, use ``projs`` from `Report` creation.
         butterfly : bool | int
             Whether to add butterfly plots of the data. Can be useful to
             spot problematic channels. If ``True``, 10 equally-spaced 1-second
@@ -489,8 +488,7 @@ class Report:
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            💡
-                A particular scaling value ``s`` corresponds to half of the visualized
+            💡 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
                 signals means that the visualized range will be 40 µV (20 µV in the
@@ -526,12 +524,12 @@ class Report:
         replace: bool = False,
         stc_plot_kwargs=None,
     ) -> None:
-        """Add a `mne.SourceEstimate` (STC) to the report.
+        """Add a `SourceEstimate` (STC) to the report.
 
         Parameters
         ----------
         stc : path-like | instance of SourceEstimate
-            The `mne.SourceEstimate` to add to the report.
+            The `SourceEstimate` to add to the report.
         title : str
             The title to add.
         subject : str | None
@@ -671,7 +669,7 @@ class Report:
         trans : path-like | instance of Transform
             The ``head -> MRI`` transformation to render.
         info : path-like | instance of Info
-            The `mne.Info` corresponding to ``trans``.
+            The `Info` corresponding to ``trans``.
         title : str
             The title to add.
         subject : str | None
@@ -709,11 +707,11 @@ class Report:
         Parameters
         ----------
         cov : path-like | instance of Covariance
-            The `mne.Covariance` to add to the report.
+            The `Covariance` to add to the report.
         info : path-like | instance of Info
-            The `mne.Info` corresponding to ``cov``.
+            The `Info` corresponding to ``cov``.
         title : str
-            The title corresponding to the `mne.Covariance` object.
+            The title corresponding to the `Covariance` object.
 
         tags : array-like of str | str
             Tags to add for later interactive filtering. Must not contain spaces.
@@ -787,14 +785,14 @@ class Report:
         Parameters
         ----------
         info : instance of Info | path-like
-            An `mne.Info` structure or the path of a file containing one. This
+            An `Info` structure or the path of a file containing one. This
             is required to create the topographic plots.
         projs : iterable of mne.Projection | path-like | None
             The projection vectors to add to the report. Can be the path to a
             file that will be loaded via `mne.read_proj`. If ``None``, the
             projectors are taken from ``info['projs']``.
         title : str
-            The title corresponding to the `mne.Projection` object.
+            The title corresponding to the `Projection` object.
 
         topomap_kwargs : dict | None
             Keyword arguments to pass to the topomap-generating functions.
@@ -829,7 +827,7 @@ class Report:
         tags=("ica",),
         replace: bool = False,
     ) -> None:
-        """Add (a fitted) `mne.preprocessing.ICA` to the report.
+        """Add (a fitted) `ICA` to the report.
 
         Parameters
         ----------
@@ -1016,7 +1014,7 @@ class Report:
         image_format : 'png' | 'svg' | 'gif' | None
             The image format to be used for the report, can be ``'png'``,
             ``'svg'``, or ``'gif'``.
-            None (default) will use the default specified during `mne.Report`
+            None (default) will use the default specified during `Report`
             instantiation.
 
         tags : array-like of str | str
@@ -1212,8 +1210,8 @@ class Report:
             created.
         pattern : None | str | list of str
             Filename pattern(s) to include in the report.
-            For example, ``[\\*raw.fif, \\*ave.fif]`` will include `mne.io.Raw`
-            as well as `mne.Evoked` files. If ``None``, include all supported
+            For example, ``[\\*raw.fif, \\*ave.fif]`` will include `Raw`
+            as well as `Evoked` files. If ``None``, include all supported
             file formats.
 
             🎭 Changed in version 0.23
@@ -1241,7 +1239,7 @@ class Report:
         image_format : 'png' | 'svg' | 'gif' | None
             The image format to be used for the report, can be ``'png'``,
             ``'svg'``, or ``'gif'``.
-            None (default) will use the default specified during `mne.Report`
+            None (default) will use the default specified during `Report`
             instantiation.
 
             ✨ Added in version 0.15
@@ -1250,15 +1248,15 @@ class Report:
 
             ✨ Added in version 0.16
         n_time_points_evokeds, n_time_points_stcs : int | None
-            The number of equidistant time points to render for `mne.Evoked`
-            and `mne.SourceEstimate` data, respectively. If ``None``,
-            will render each `mne.Evoked` at 21 and each `mne.SourceEstimate`
+            The number of equidistant time points to render for `Evoked`
+            and `SourceEstimate` data, respectively. If ``None``,
+            will render each `Evoked` at 21 and each `SourceEstimate`
             at 51 time points, unless the respective data contains fewer time
             points, in which call all will be rendered.
 
             ✨ Added in version 0.24.0
         raw_butterfly : bool
-            Whether to render butterfly plots for (decimated) `mne.io.Raw`
+            Whether to render butterfly plots for (decimated) `Raw`
             data.
 
             ✨ Added in version 0.24.0

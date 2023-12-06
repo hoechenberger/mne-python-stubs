@@ -88,7 +88,7 @@ def plot_topo_image_epochs(
 
     Parameters
     ----------
-    epochs : instance of `mne.Epochs`
+    epochs : instance of `Epochs`
         The epochs.
     layout : instance of Layout
         System specific sensor positions.

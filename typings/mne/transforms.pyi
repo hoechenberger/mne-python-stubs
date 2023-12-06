@@ -279,7 +279,7 @@ def write_trans(fname, trans, *, overwrite: bool = False, verbose=None) -> None:
     fname : path-like
         The name of the file, which should end in ``-trans.fif``.
     trans : dict
-        Trans file data, as returned by `mne.read_trans`.
+        Trans file data, as returned by `read_trans`.
 
     overwrite : bool
         If True (default False), overwrite the destination file if it
@@ -364,7 +364,7 @@ class _TPSWarp:
 
     Notes
     -----
-    Based on the method by :footcite:`Bookstein1989` and
+    Based on the method by `Bookstein1989` and
     adapted from code by Wang Lin (wanglin193@hotmail.com>).
 
     References
@@ -394,7 +394,7 @@ class _SphericalSurfaceWarp:
     Notes
     -----
     This class can be used to warp data from a source subject to
-    a destination subject, as described in :footcite:`DarvasEtAl2006`.
+    a destination subject, as described in `DarvasEtAl2006`.
 
     The procedure is:
 
@@ -578,7 +578,7 @@ def compute_volume_registration(
             scaling, and shear.
 
         ``'sdr'``
-            Symmetric diffeomorphic registration :footcite:`AvantsEtAl2008`, a
+            Symmetric diffeomorphic registration `AvantsEtAl2008`, a
             non-linear similarity-matching algorithm.
 
         The following string shortcuts can also be used:
@@ -664,7 +664,7 @@ def apply_volume_registration(
     """Apply volume registration.
 
     Uses registration parameters computed by
-    `mne.transforms.compute_volume_registration`.
+    `compute_volume_registration`.
 
     Parameters
     ----------
@@ -712,7 +712,7 @@ def apply_volume_registration_points(
     """Apply volume registration.
 
     Uses registration parameters computed by
-    `mne.transforms.compute_volume_registration`.
+    `compute_volume_registration`.
 
     Parameters
     ----------

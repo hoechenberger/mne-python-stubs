@@ -30,7 +30,7 @@ def maxwell_filter_prepare_emptyroom(
     """Prepare an empty-room recording for Maxwell filtering.
 
     Empty-room data by default lacks certain properties that are required to
-    ensure running `mne.preprocessing.maxwell_filter` will process the
+    ensure running `maxwell_filter` will process the
     empty-room recording the same way as the experimental data. This function
     preconditions an empty-room raw data instance accordingly so it can be used
     for Maxwell filtering. Please see the ``Notes`` section for details.
@@ -51,8 +51,7 @@ def maxwell_filter_prepare_emptyroom(
         comparison to the experimental recording. If ``'keep'``, don't alter
         the existing list of bad channels.
 
-        💡
-           Non-MEG channels are silently dropped from the list of bads.
+        💡 Non-MEG channels are silently dropped from the list of bads.
     annotations : 'from_raw' | 'union' | 'keep'
         Whether to copy the annotations over from ``raw`` (default),
         use the union of the annotations, or to keep them unchanged.
@@ -131,13 +130,13 @@ def maxwell_filter(
         ⛔️ It is critical to mark bad channels in
                      ``raw.info['bads']`` prior to processing in order to
                      prevent artifact spreading. Manual inspection and use
-                     of `find_bad_channels_maxwell` is recommended.
+                     of `~find_bad_channels_maxwell` is recommended.
 
     origin : array-like, shape (3,) | str
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using `mne.bem.fit_sphere_to_headshape`
+        origin fit using `fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -222,7 +221,7 @@ def maxwell_filter(
         cross-talk cancellation, movement compensation, and so forth
         will not be applied to the data. This is useful, for example, when
         evoked movement compensation will be performed with
-        `mne.epochs.average_movements`.
+        `average_movements`.
 
         ✨ Added in version 0.12
 
@@ -279,7 +278,7 @@ def maxwell_filter(
 
     Some of this code was adapted and relicensed (with BSD form) with
     permission from Jussi Nurminen. These algorithms are based on work
-    from :footcite:`TauluKajola2005` and :footcite:`TauluSimola2006`.
+    from `TauluKajola2005` and `TauluSimola2006`.
     It will likely use multiple CPU cores, see the `FAQ <faq_cpu>`
     for more information.
 
@@ -321,16 +320,16 @@ def maxwell_filter(
        +-----------------------------------------------------------------------------+-----+-----------+
        | Seamless processing of split (``-1.fif``) and concatenated files            | ✓   |           |
        +-----------------------------------------------------------------------------+-----+-----------+
-       | Automatic bad channel detection (`find_bad_channels_maxwell`)        | ✓   | ✓         |
+       | Automatic bad channel detection (`~find_bad_channels_maxwell`)        | ✓   | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
-       | Head position estimation (`mne.chpi.compute_head_pos`)               | ✓   | ✓         |
+       | Head position estimation (`compute_head_pos`)               | ✓   | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
        | Certified for clinical use                                                  |     | ✓         |
        +-----------------------------------------------------------------------------+-----+-----------+
        | Extended external basis (eSSS)                                              | ✓   |           |
        +-----------------------------------------------------------------------------+-----+-----------+
 
-    Epoch-based movement compensation is described in :footcite:`TauluKajola2005`.
+    Epoch-based movement compensation is described in `TauluKajola2005`.
 
     Use of Maxwell filtering routines with non-Neuromag systems is currently
     **experimental**. Worse results for non-Neuromag systems are expected due
@@ -429,7 +428,7 @@ def find_bad_channels_maxwell(
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using `mne.bem.fit_sphere_to_headshape`
+        origin fit using `fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -557,7 +556,7 @@ def find_bad_channels_maxwell(
     Notes
     -----
     All arguments after ``raw``, ``limit``, ``duration``, ``min_count``, and
-    ``return_scores`` are the same as `maxwell_filter`, except that the
+    ``return_scores`` are the same as `~maxwell_filter`, except that the
     following are not allowed in this function because they are unused:
     ``st_duration``, ``st_correlation``, ``destination``, ``st_fixed``, and
     ``st_only``.
@@ -625,7 +624,7 @@ def compute_maxwell_basis(
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using `mne.bem.fit_sphere_to_headshape`
+        origin fit using `fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different
@@ -696,7 +695,7 @@ def compute_maxwell_basis(
     Notes
     -----
     This outputs variants of :math:`\\mathbf{S}` and :math:`\\mathbf{S^\\dagger}`
-    from equations 27 and 37 of :footcite:`TauluKajola2005` with the coil scale
+    from equations 27 and 37 of `TauluKajola2005` with the coil scale
     for magnetometers already factored in so that the resulting denoising
     transform of the data to obtain :math:`\\hat{\\phi}_{in}` from equation
     38 would be::

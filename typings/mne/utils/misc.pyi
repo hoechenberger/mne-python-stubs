@@ -74,10 +74,10 @@ def running_subprocess(
     after : str
         Can be:
 
-        - "wait" to use `python:subprocess.Popen.wait`
-        - "communicate" to use `python.subprocess.Popen.communicate`
-        - "terminate" to use `python:subprocess.Popen.terminate`
-        - "kill" to use `python:subprocess.Popen.kill`
+        - "wait" to use `~python:subprocess.Popen.wait`
+        - "communicate" to use `communicate`
+        - "terminate" to use `~python:subprocess.Popen.terminate`
+        - "kill" to use `~python:subprocess.Popen.kill`
 
     %(verbose)s
     *args, **kwargs : arguments

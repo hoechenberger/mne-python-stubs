@@ -633,7 +633,7 @@ def plot_source_estimates(
             space resolution, which is often something like 7 or 5 mm,
             without resampling.
         - ``'blending'`` : str
-            Can be "mip" (default) for :term:`maximum intensity projection` or
+            Can be "mip" (default) for `maximum intensity projection` or
             "composite" for composite blending using alpha values.
         - ``'alpha'`` : float | None
             Alpha for the volumetric rendering. Defaults are 0.4 for vector source
@@ -713,7 +713,7 @@ def plot_volume_source_estimates(
         a new subject (see Examples).
 
         🎭 Changed in version 0.18
-           Support for `nibabel.spatialimages.SpatialImage`.
+           Support for `SpatialImage`.
 
     subject : str | None
         The FreeSurfer subject name.
@@ -975,7 +975,7 @@ def plot_vector_source_estimates(
             space resolution, which is often something like 7 or 5 mm,
             without resampling.
         - ``'blending'`` : str
-            Can be "mip" (default) for :term:`maximum intensity projection` or
+            Can be "mip" (default) for `maximum intensity projection` or
             "composite" for composite blending using alpha values.
         - ``'alpha'`` : float | None
             Alpha for the volumetric rendering. Defaults are 0.4 for vector source
@@ -1270,7 +1270,7 @@ def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
 
     Note that this will take the raw values for 3d coordinates of each channel,
     without applying any transforms. If brain images are flipped up/dn upon
-    using `matplotlib.pyplot.imshow`, check your matplotlib backend as this
+    using `imshow`, check your matplotlib backend as this
     behavior changes.
 
     Parameters
@@ -1280,7 +1280,7 @@ def snapshot_brain_montage(fig, montage, hide_sensors: bool = True):
         `mne.viz.plot_alignment`.
     montage : instance of DigMontage or Info | dict
         The digital montage for the electrodes plotted in the scene. If
-        `mne.Info`, channel positions will be pulled from the ``loc``
+        `Info`, channel positions will be pulled from the ``loc``
         field of ``chs``. dict should have ch:xyz mappings.
     hide_sensors : bool
         Whether to remove the spheres in the scene before taking a snapshot.

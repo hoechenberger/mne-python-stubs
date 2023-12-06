@@ -23,10 +23,9 @@ from _typeshed import Incomplete
 class Annotations:
     """Annotation object for annotating segments of raw data.
 
-    💡
-       To convert events to `mne.Annotations`, use
-       `mne.annotations_from_events`. To convert existing `mne.Annotations`
-       to events, use  `mne.events_from_annotations`.
+    💡 To convert events to `Annotations`, use
+       `annotations_from_events`. To convert existing `Annotations`
+       to events, use  `events_from_annotations`.
 
     Parameters
     ----------
@@ -72,7 +71,7 @@ class Annotations:
     Notes
     -----
     Annotations are added to instance of `mne.io.Raw` as the attribute
-    :attr:`raw.annotations <mne.io.Raw.annotations>`.
+    `raw.annotations <mne.io.Raw.annotations>`.
 
     To reject bad epochs using annotations, use
     annotation description starting with 'bad' keyword. The epochs with
@@ -176,8 +175,7 @@ class Annotations:
              e                        +------+
          orig_time                 onset[0]'
 
-    ⛔️
-       This means that when ``raw.info['meas_date'] is None``, doing
+    ⛔️ This means that when ``raw.info['meas_date'] is None``, doing
        ``raw.set_annotations(raw.annotations)`` will not alter ``raw`` if and
        only if ``raw.first_samp == 0``. When it's non-zero,
        ``raw.set_annotations`` will assume that the "new" annotations refer to
@@ -349,9 +347,9 @@ class Annotations:
         Notes
         -----
         The format of the information stored in the saved annotation objects
-        depends on the chosen file format. :file:`.csv` files store the onset
+        depends on the chosen file format. `.csv` files store the onset
         as timestamps (e.g., ``2002-12-03 19:01:56.676071``),
-        whereas :file:`.txt` files store onset as seconds since start of the
+        whereas `.txt` files store onset as seconds since start of the
         recording (e.g., ``45.95597082905339``).
         """
         ...
@@ -491,7 +489,7 @@ class EpochAnnotationsMixin:
         annotations can be added correctly only if no decimation or
         resampling was performed. We thus suggest to regenerate your
         `mne.Epochs` from raw and re-save to disk with 1.0+ if you
-        want to safely work with `mne.Annotations` in epochs.
+        want to safely work with `Annotations` in epochs.
 
         Since this method does not handle offsetting the times based
         on first_samp or measurement dates, the recommended way to add
@@ -514,7 +512,7 @@ class EpochAnnotationsMixin:
             A list of lists (with length equal to number of epochs) where each
             inner list contains any annotations that overlap the corresponding
             epoch. Annotations are stored as a `tuple` of onset,
-            duration, description (not as a `mne.Annotations` object),
+            duration, description (not as a `Annotations` object),
             where the onset is now relative to time=0 of the epoch, rather than
             time=0 of the original continuous (raw) data.
         """
@@ -607,7 +605,7 @@ def events_from_annotations(
     chunk_duration=None,
     verbose=None,
 ):
-    """Get :term:`events` and ``event_id`` from an Annotations object.
+    """Get `events` and ``event_id`` from an Annotations object.
 
     Parameters
     ----------
@@ -659,11 +657,11 @@ def events_from_annotations(
     -------
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
     event_id : dict
-        The event_id variable that can be passed to `mne.Epochs`.
+        The event_id variable that can be passed to `Epochs`.
 
     See Also
     --------
@@ -702,7 +700,7 @@ def annotations_from_events(
           string description or None to ignore it.
         - **None**: Use integer event codes as descriptions.
     first_samp : int
-        The first data sample (default=0). See :attr:`mne.io.Raw.first_samp`
+        The first data sample (default=0). See `mne.io.Raw.first_samp`
         docstring.
     orig_time : float | str | datetime | tuple of int | None
         Determines the starting time of annotation acquisition. If None

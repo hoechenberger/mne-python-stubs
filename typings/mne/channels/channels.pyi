@@ -76,9 +76,9 @@ def unify_bad_channels(insts):
     Parameters
     ----------
     insts : list
-        List of instances (`mne.io.Raw`, `mne.Epochs`,
-        `mne.Evoked`, `mne.time_frequency.Spectrum`,
-        `mne.time_frequency.EpochsSpectrum`) across which to unify bad channels.
+        List of instances (`Raw`, `Epochs`,
+        `Evoked`, `Spectrum`,
+        `EpochsSpectrum`) across which to unify bad channels.
 
     Returns
     -------
@@ -128,7 +128,7 @@ class ReferenceMixin(MontageMixin):
             - The name(s) of the channel(s) used to construct the reference.
             - ``'average'`` to apply an average reference (default)
             - ``'REST'`` to use the Reference Electrode Standardization Technique
-              infinity reference :footcite:`Yao2001`.
+              infinity reference `Yao2001`.
             - An empty list, in which case MNE will not attempt any re-referencing of
               the data
 
@@ -415,7 +415,7 @@ class UpdateChannelsMixin:
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -597,8 +597,7 @@ class InterpolationMixin:
             types supported and available in the instance. The method ``"nan"`` will
             replace the channel data with ``np.nan``.
 
-            ⛔️
-                Be careful when using ``method="nan"``; the default value
+            ⛔️ Be careful when using ``method="nan"``; the default value
                 ``reset_bads=True`` may not be what you want.
 
             ✨ Added in version 0.21
@@ -707,8 +706,7 @@ def read_ch_adjacency(fname, picks=None):
         The path to the file to load, or the name of a channel adjacency
         matrix that ships with MNE-Python.
 
-        💡
-            You can retrieve the names of all
+        💡 You can retrieve the names of all
             built-in channel adjacencies via
             `mne.channels.get_builtin_ch_adjacencies`.
     picks : list of int | list of str | slice | None
@@ -785,8 +783,7 @@ def find_ch_adjacency(info, ch_type):
     you want to load a template for a given montage use
     `read_ch_adjacency` directly.
 
-    ⛔️
-        If Delaunay triangulation is used to calculate the adjacency matrix it
+    ⛔️ If Delaunay triangulation is used to calculate the adjacency matrix it
         may yield partially unexpected results (e.g., include unwanted edges
         between non-adjacent sensors). Therefore, it is recommended to check
         (and, if necessary, manually modify) the result by inspecting it

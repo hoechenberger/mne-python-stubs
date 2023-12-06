@@ -95,9 +95,9 @@ class EvokedField:
     -----
     The figure will publish and subscribe to the following UI events:
 
-    * `mne.viz.ui_events.TimeChange`
-    * `mne.viz.ui_events.Contours`, ``kind="field_strength_meg" | "field_strength_eeg"``
-    * `mne.viz.ui_events.ColormapRange`, ``kind="field_strength_meg" | "field_strength_eeg"``
+    * `TimeChange`
+    * `Contours`, ``kind="field_strength_meg" | "field_strength_eeg"``
+    * `ColormapRange`, ``kind="field_strength_meg" | "field_strength_eeg"``
     """
 
     plotter: Incomplete

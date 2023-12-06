@@ -72,8 +72,8 @@ def simulate_raw(
         See Notes for details.
 
         🎭 Changed in version 0.18
-           Support for tuple, iterable of tuple or `mne.SourceEstimate`,
-           or `mne.simulation.SourceSimulator`.
+           Support for tuple, iterable of tuple or `SourceEstimate`,
+           or `SourceSimulator`.
     trans : dict | str | None
         Either a transformation filename (usually made using mne_analyze)
         or an info dict (usually opened using read_trans()).
@@ -99,7 +99,7 @@ def simulate_raw(
         same format as data returned by ``head_pos_to_trans_rot_t``.
         If array, should be of the form returned by
         `mne.chpi.read_head_pos`.
-        See for example :footcite:`LarsonTaulu2017`.
+        See for example `LarsonTaulu2017`.
     mindist : float
         Minimum distance between sources and the inner skull boundary
         to use during forward calculation.
@@ -232,7 +232,7 @@ def add_eog(
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -264,7 +264,7 @@ def add_eog(
     1. Random activation times are drawn from an inhomogeneous poisson
        process whose blink rate oscillates between 4.5 blinks/minute
        and 17 blinks/minute based on the low (reading) and high (resting)
-       blink rates from :footcite:`BentivoglioEtAl1997`.
+       blink rates from `BentivoglioEtAl1997`.
     2. The activation kernel is a 250 ms Hanning window.
     3. Two activated dipoles are located in the z=0 plane (in head
        coordinates) at ±30 degrees away from the y axis (nasion).
@@ -321,7 +321,7 @@ def add_ecg(
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.

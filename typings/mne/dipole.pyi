@@ -30,8 +30,7 @@ from _typeshed import Incomplete
 class Dipole(TimeMixin):
     """Dipole class for sequential dipole fits.
 
-    💡
-        This class should usually not be instantiated directly via
+    💡 This class should usually not be instantiated directly via
         ``mne.Dipole(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
@@ -507,8 +506,7 @@ class Dipole(TimeMixin):
 class DipoleFixed(ExtendedTimeMixin):
     """Dipole class for fixed-position dipole fits.
 
-    💡
-        This class should usually not be instantiated directly
+    💡 This class should usually not be instantiated directly
         via ``mne.DipoleFixed(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
@@ -731,7 +729,7 @@ def fit_dipole(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -810,7 +808,7 @@ def get_phantom_dipoles(kind: str = "vectorview"):
             ``otaniemi``
               The older Neuromag phantom used at Otaniemi.
             ``oyama``
-              The phantom from :footcite:`OyamaEtAl2015`.
+              The phantom from `OyamaEtAl2015`.
 
         🎭 Changed in version 1.6
            Support added for ``'oyama'``.

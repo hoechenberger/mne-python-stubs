@@ -1,7 +1,7 @@
 def fdr_correction(pvals, alpha: float = 0.05, method: str = "indep"):
     """P-value correction with False Discovery Rate (FDR).
 
-    Correction for multiple comparison using FDR :footcite:`GenoveseEtAl2002`.
+    Correction for multiple comparison using FDR `GenoveseEtAl2002`.
 
     This covers Benjamini/Hochberg for independent or positively correlated and
     Benjamini/Yekutieli for general or negatively correlated tests.

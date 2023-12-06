@@ -222,7 +222,7 @@ class BaseRaw(
     def first_samp(self):
         """The first data sample.
 
-        See :term:`first_samp`.
+        See `first_samp`.
         """
         ...
 
@@ -248,21 +248,21 @@ class BaseRaw(
             times to indices. This can help avoid non-unique indices.
         origin : datetime | float | int | None
             Time reference for times. If None, ``times`` are assumed to be
-            relative to :term:`first_samp`.
+            relative to `first_samp`.
 
             ✨ Added in version 0.17.0
 
         Returns
         -------
         index : ndarray
-            Indices relative to :term:`first_samp` corresponding to the times
+            Indices relative to `first_samp` corresponding to the times
             supplied.
         """
         ...
 
     @property
     def annotations(self):
-        """`mne.Annotations` for marking segments of data."""
+        """`Annotations` for marking segments of data."""
         ...
 
     @property
@@ -389,7 +389,7 @@ class BaseRaw(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -409,7 +409,7 @@ class BaseRaw(
             Specify the unit(s) that the data should be returned in. If
             ``None`` (default), the data is returned in the
             channel-type-specific default units, which are SI units (see
-            `units` and :term:`data channels`). If a string, must be a
+            `units` and `data channels`). If a string, must be a
             sub-multiple of SI units that will be used to scale the data from
             all channels of the type associated with that unit. This only works
             if the data contains one channel type that has a unit (unitless
@@ -484,13 +484,13 @@ class BaseRaw(
             A function to be applied to the channels. The first argument of
             fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  if ``channel_wise=True`` and ``(len(picks), n_times)`` otherwise.
-            The function must return an `numpy.ndarray` shaped like its input.
+            The function must return an `ndarray` shaped like its input.
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -564,7 +564,7 @@ class BaseRaw(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -608,7 +608,7 @@ class BaseRaw(
 
         method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-            forward-backward filtering (via `scipy.signal.filtfilt`).
+            forward-backward filtering (via `filtfilt`).
 
         iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
@@ -627,9 +627,9 @@ class BaseRaw(
             When ``method='iir'``, ``phase='zero'`` (default) or
             ``phase='zero-double'`` constructs and applies IIR filter twice, once
             forward, and once backward (making it non-causal) using
-            `scipy.signal.filtfilt`.
+            `filtfilt`.
             If ``phase='forward'``, it constructs and applies forward IIR filter using
-            `scipy.signal.lfilter`.
+            `lfilter`.
 
             ✨ Added in version 0.13
 
@@ -754,7 +754,7 @@ class BaseRaw(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -794,7 +794,7 @@ class BaseRaw(
 
         method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-            forward-backward filtering (via `scipy.signal.filtfilt`).
+            forward-backward filtering (via `filtfilt`).
 
         iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
@@ -821,9 +821,9 @@ class BaseRaw(
             When ``method='iir'``, ``phase='zero'`` (default) or
             ``phase='zero-double'`` constructs and applies IIR filter twice, once
             forward, and once backward (making it non-causal) using
-            `scipy.signal.filtfilt`.
+            `filtfilt`.
             If ``phase='forward'``, it constructs and applies forward IIR filter using
-            `scipy.signal.lfilter`.
+            `lfilter`.
 
             ✨ Added in version 0.13
 
@@ -1001,8 +1001,8 @@ class BaseRaw(
 
         Limit the data from the raw file to go between specific times. Note
         that the new ``tmin`` is assumed to be ``t=0`` for all subsequently
-        called functions (e.g., `mne.io.Raw.time_as_index`, or
-        `mne.Epochs`). New :term:`first_samp` and :term:`last_samp`
+        called functions (e.g., `time_as_index`, or
+        `Epochs`). New `first_samp` and `last_samp`
         are set accordingly.
 
         Thus function operates in-place on the instance.
@@ -1091,7 +1091,7 @@ class BaseRaw(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1182,8 +1182,7 @@ class BaseRaw(
             - EEGLAB (``.set``, uses `eeglabio`)
             - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
-        ⛔️
-            Since we are exporting to external formats, there's no guarantee that all
+        ⛔️ Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
         Parameters
@@ -1245,11 +1244,11 @@ class BaseRaw(
         If ``add_ch_type`` is True, then channel types are written based on what
         they are currently set in MNE-Python. One should double check that all
         their channels are set correctly. You can call
-        :attr:`raw.set_channel_types <mne.io.Raw.set_channel_types>` to set
+        `raw.set_channel_types <mne.io.Raw.set_channel_types>` to set
         channel types.
 
         In addition, EDF does not support storing a montage. You will need
-        to store the montage separately and call :attr:`raw.set_montage()
+        to store the montage separately and call `raw.set_montage()
         <mne.io.Raw.set_montage>`.
         """
         ...
@@ -1323,7 +1322,7 @@ class BaseRaw(
             Color to make bad channels.
 
         event_color : color object | dict | None
-            Color(s) to use for :term:`events`. To show all :term:`events` in the same
+            Color(s) to use for `events`. To show all `events` in the same
             color, pass any matplotlib-compatible color. To color events differently,
             pass a `dict` that maps event names or integer event numbers to colors
             (must include entries for *all* events, or include a "fallback" entry with
@@ -1343,8 +1342,7 @@ class BaseRaw(
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            💡
-                A particular scaling value ``s`` corresponds to half of the visualized
+            💡 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
                 signals means that the visualized range will be 40 µV (20 µV in the
@@ -1381,7 +1379,7 @@ class BaseRaw(
         filtorder : int
             Filtering order. 0 will use FIR filtering with MNE defaults.
             Other values will construct an IIR filter of the given order
-            and apply it with `scipy.signal.filtfilt` (making the effective
+            and apply it with `filtfilt` (making the effective
             order twice ``filtorder``). Filtering may produce some edge artifacts
             (at the left and right edges) of the signals during display.
 
@@ -1445,14 +1443,14 @@ class BaseRaw(
 
         show_scrollbars : bool
             Whether to show scrollbars when the plot is initialized. Can be toggled
-            after initialization by pressing :kbd:`z` ("zen mode") while the plot
+            after initialization by pressing `z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
             ✨ Added in version 0.19.0
 
         show_scalebars : bool
             Whether to show scale bars when the plot is initialized. Can be toggled
-            after initialization by pressing :kbd:`s` while the plot window is focused.
+            after initialization by pressing `s` while the plot window is focused.
             Default is ``True``.
 
             ✨ Added in version 0.20.0
@@ -1555,7 +1553,7 @@ class BaseRaw(
         `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
         and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
         based on `matplotlib`, and the other is based on
-        :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
+        `PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
         context manager `mne.viz.use_browser_backend`, you can set it for the
         duration of a Python session using `mne.viz.set_browser_backend`, and you
         can set the default for your computer via
@@ -1722,8 +1720,8 @@ class BaseRaw(
 
         method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`.
             Default is ``'welch'``.
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
@@ -1736,7 +1734,7 @@ class BaseRaw(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -1773,8 +1771,8 @@ class BaseRaw(
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1817,7 +1815,7 @@ class BaseRaw(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1955,7 +1953,7 @@ class _RawFidWriter:
 def concatenate_raws(
     raws, preload=None, events_list=None, *, on_mismatch: str = "raise", verbose=None
 ):
-    """Concatenate `mne.io.Raw` instances as if they were continuous.
+    """Concatenate `Raw` instances as if they were continuous.
 
     💡 ``raws[0]`` is modified in-place to achieve the concatenation.
               Boundaries of the raw files are annotated bad. If you wish to use
@@ -1966,7 +1964,7 @@ def concatenate_raws(
     Parameters
     ----------
     raws : list
-        List of `mne.io.Raw` instances to concatenate (in order).
+        List of `Raw` instances to concatenate (in order).
 
     preload : bool, str, or None (default None)
         Preload data into memory for data manipulation and faster indexing.
@@ -2007,7 +2005,7 @@ def match_channel_orders(raws, copy: bool = True):
     Parameters
     ----------
     raws : list
-        List of `mne.io.Raw` instances to order.
+        List of `Raw` instances to order.
 
     copy : bool
         If ``True``, data will be copied. Otherwise data may be modified in place.

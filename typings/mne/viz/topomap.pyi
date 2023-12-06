@@ -68,7 +68,7 @@ def plot_projs_topomap(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
 
     show_names : bool | callable
@@ -101,7 +101,7 @@ def plot_projs_topomap(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -166,7 +166,7 @@ def plot_projs_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -200,8 +200,8 @@ def plot_projs_topomap(
 
         ✨ Added in version 1.2
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of projectors.Default is ``None``.
     show : bool
         Show the figure if ``True``.
 
@@ -282,9 +282,9 @@ def plot_topomap(
     pos : array, shape (n_channels, 2) | instance of Info
         Location information for the channels. If an array, should provide the x
         and y coordinates for plotting the channels in 2D.
-        If an `mne.Info` object it must contain only one channel type
+        If an `Info` object it must contain only one channel type
         and exactly ``len(data)`` channels; the x/y coordinates will
-        be inferred from the montage in the `mne.Info` object.
+        be inferred from the montage in the `Info` object.
     ch_type : 'mag' | 'grad' | 'planar1' | 'planar2' | 'eeg' | None
         The channel type to plot. For ``'grad'``, the gradiometers are
         collected in pairs and the RMS for each pair is plotted. If
@@ -295,7 +295,7 @@ def plot_topomap(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
     names : None | list
         Labels for the sensors. If a `list`, labels should correspond
@@ -336,7 +336,7 @@ def plot_topomap(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -401,7 +401,7 @@ def plot_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -422,18 +422,18 @@ def plot_topomap(
 
         ✨ Added in version 0.24
     axes : instance of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+        The axes to plot to. If ``None``, a new `Figure`
         will be created. Default is ``None``.
 
         🎭 Changed in version 1.2
-           If ``axes=None``, a new `matplotlib.figure.Figure` is
+           If ``axes=None``, a new `Figure` is
            created instead of plotting into the current axes.
     show : bool
         Show the figure if ``True``.
     onselect : callable | None
         A function to be called when the user selects a set of channels by
         click-dragging (uses a matplotlib
-        `matplotlib.widgets.RectangleSelector`). If ``None``
+        `RectangleSelector`). If ``None``
         interactive channel selection is disabled. Defaults to ``None``.
 
     Returns
@@ -515,7 +515,7 @@ def plot_ica_components(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
 
     show_names : bool | callable
@@ -546,7 +546,7 @@ def plot_ica_components(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -607,7 +607,7 @@ def plot_ica_components(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -656,11 +656,11 @@ def plot_ica_components(
     show : bool
         Show the figure if ``True``.
     image_args : dict | None
-        Dictionary of arguments to pass to `mne.viz.plot_epochs_image`
+        Dictionary of arguments to pass to `plot_epochs_image`
         in interactive mode. Ignored if ``inst`` is not supplied. If ``None``,
         nothing is passed. Defaults to ``None``.
     psd_args : dict | None
-        Dictionary of arguments to pass to `mne.Epochs.compute_psd` in
+        Dictionary of arguments to pass to `compute_psd` in
         interactive  mode. Ignored if ``inst`` is not supplied. If ``None``,
         nothing is passed. Defaults to ``None``.
 
@@ -757,7 +757,7 @@ def plot_tfr_topomap(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
 
     show_names : bool | callable
@@ -801,7 +801,7 @@ def plot_tfr_topomap(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -864,7 +864,7 @@ def plot_tfr_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -896,7 +896,7 @@ def plot_tfr_topomap(
         If ``None`` the label will be "AU" indicating arbitrary units.
         Default is ``None``.
     axes : instance of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+        The axes to plot to. If ``None``, a new `Figure`
         will be created. Default is ``None``.
     show : bool
         Show the figure if ``True``.
@@ -989,7 +989,7 @@ def plot_evoked_topomap(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
 
     show_names : bool | callable
@@ -1033,7 +1033,7 @@ def plot_evoked_topomap(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1098,7 +1098,7 @@ def plot_evoked_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1130,8 +1130,8 @@ def plot_evoked_topomap(
         If ``None`` and ``scalings=None`` the unit is automatically determined, otherwise the label will be "AU" indicating arbitrary units.
         Default is ``None``.
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
     time_unit : str
         The units for the time axis, can be "ms" or "s" (default).
 
@@ -1168,7 +1168,7 @@ def plot_evoked_topomap(
     When ``time=="interactive"``, the figure will publish and subscribe to the
     following UI events:
 
-    * `mne.viz.ui_events.TimeChange` whenever a new time is selected.
+    * `TimeChange` whenever a new time is selected.
     """
     ...
 
@@ -1231,8 +1231,7 @@ def plot_epochs_psd_topomap(
                      'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                      'Gamma (30-45 Hz)': (30, 45)}
 
-        💡
-           For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
+        💡 For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
            also accepted, where the last element of the tuple is the subplot title
            and the other entries are frequency values (a single value or band
            edges). New code should use `dict` or ``None``.
@@ -1278,7 +1277,7 @@ def plot_epochs_psd_topomap(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
     names : None | list
         Labels for the sensors. If a `list`, labels should correspond
@@ -1319,7 +1318,7 @@ def plot_epochs_psd_topomap(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1382,7 +1381,7 @@ def plot_epochs_psd_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1416,8 +1415,8 @@ def plot_epochs_psd_topomap(
         If ``None`` the label will be "AU" indicating arbitrary units.
         Default is ``None``.
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
     show : bool
         Show the figure if ``True``.
     n_jobs : int | None
@@ -1496,8 +1495,7 @@ def plot_psds_topomap(
                      'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                      'Gamma (30-45 Hz)': (30, 45)}
 
-        💡
-           For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
+        💡 For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
            also accepted, where the last element of the tuple is the subplot title
            and the other entries are frequency values (a single value or band
            edges). New code should use `dict` or ``None``.
@@ -1523,7 +1521,7 @@ def plot_psds_topomap(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
     names : None | list
         Labels for the sensors. If a `list`, labels should correspond
@@ -1564,7 +1562,7 @@ def plot_psds_topomap(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1627,7 +1625,7 @@ def plot_psds_topomap(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -1659,8 +1657,8 @@ def plot_psds_topomap(
         Measurement unit to be displayed with the colorbar. If ``None``, no
         unit is displayed (only "power" or "dB" as appropriate).
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
     show : bool
         Show the figure if ``True``.
 
@@ -1722,7 +1720,7 @@ def plot_arrowmap(
     """Plot arrow map.
 
     Compute arrowmaps, based upon the Hosaka-Cohen transformation
-    :footcite:`CohenHosaka1976`, these arrows represents an estimation of the
+    `CohenHosaka1976`, these arrows represents an estimation of the
     current flow underneath the MEG sensors. They are a poor man's MNE.
 
     Since planar gradiometers takes gradients along latitude and longitude,
@@ -1768,13 +1766,13 @@ def plot_arrowmap(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
 
     res : int
         The resolution of the topomap image (number of pixels along each side).
     axes : instance of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+        The axes to plot to. If ``None``, a new `Figure`
         will be created. Default is ``None``.
 
     show_names : bool | callable
@@ -1856,7 +1854,7 @@ def plot_arrowmap(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1945,7 +1943,7 @@ def plot_ch_adjacency(info, adjacency, ch_names, kind: str = "2d", edit: bool = 
     Returns
     -------
     fig : Figure
-        The `matplotlib.figure.Figure` instance where the channel
+        The `Figure` instance where the channel
         adjacency is plotted.
 
     See Also
@@ -1999,7 +1997,7 @@ def plot_regression_weights(
     sensors : bool | str
         Whether to add markers for sensor locations. If `str`, should be a
         valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-        Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+        Notes section of `plot`). If ``True`` (the
         default), black circles will be used.
 
     show_names : bool | callable
@@ -2043,7 +2041,7 @@ def plot_regression_weights(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -2106,7 +2104,7 @@ def plot_regression_weights(
         all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
         ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-        ⛔️  Interactive mode works smoothly only for a small amount
+        ⛔️ Interactive mode works smoothly only for a small amount
             of topomaps. Interactive mode is disabled by default for more than
             2 topomaps.
 
@@ -2123,8 +2121,8 @@ def plot_regression_weights(
         for more details on colormap normalization, and
         `the ERDs example<cnorm-example>` for an example of its use.
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
 
     colorbar : bool
         Plot a colorbar in the rightmost column of the figure.

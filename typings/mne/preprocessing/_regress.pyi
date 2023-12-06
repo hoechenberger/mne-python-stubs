@@ -30,7 +30,7 @@ def regress_artifact(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -67,7 +67,7 @@ def regress_artifact(
 
     Notes
     -----
-    To implement the method outlined in :footcite:`GrattonEtAl1983`,
+    To implement the method outlined in `GrattonEtAl1983`,
     remove the evoked response from epochs before estimating the
     regression coefficients, then apply those regression coefficients to the
     original data in two calls like (here for a single-condition ``epochs``
@@ -87,10 +87,10 @@ class EOGRegression:
     """Remove EOG artifact signals from other channels by regression.
 
     Employs linear regression to remove signals captured by some channels,
-    typically EOG, as described in :footcite:`GrattonEtAl1983`. You can also
+    typically EOG, as described in `GrattonEtAl1983`. You can also
     choose to fit the regression coefficients on evoked blink/saccade data and
     then apply them to continuous data, as described in
-    :footcite:`CroftBarry2000`.
+    `CroftBarry2000`.
 
     Parameters
     ----------
@@ -99,7 +99,7 @@ class EOGRegression:
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -239,7 +239,7 @@ class EOGRegression:
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -283,7 +283,7 @@ class EOGRegression:
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -346,7 +346,7 @@ class EOGRegression:
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -363,8 +363,8 @@ class EOGRegression:
             for more details on colormap normalization, and
             `the ERDs example<cnorm-example>` for an example of its use.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
 
         colorbar : bool
             Plot a colorbar in the rightmost column of the figure.

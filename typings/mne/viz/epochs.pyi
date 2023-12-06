@@ -40,7 +40,7 @@ def plot_epochs_image(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -92,13 +92,13 @@ def plot_epochs_image(
         If None, "RdBu_r" is used, unless the data is all positive, in which
         case "Reds" is used.
     fig : Figure | None
-        `matplotlib.figure.Figure` instance to draw the image to.
+        `Figure` instance to draw the image to.
         Figure must contain the correct number of axes for drawing the epochs
         image, the evoked response, and a colorbar (depending on values of
         ``evoked`` and ``colorbar``). If ``None`` a new figure is created.
         Defaults to ``None``.
     axes : list of Axes | dict of list of Axes | None
-        List of `matplotlib.axes.Axes` objects in which to draw the
+        List of `Axes` objects in which to draw the
         image, evoked response, and colorbar (in that order). Length of list
         must be 1, 2, or 3 (depending on values of ``colorbar`` and ``evoked``
         parameters). If a `dict`, each entry must be a list of Axes
@@ -110,7 +110,7 @@ def plot_epochs_image(
         Times (in seconds) at which to draw a line on the corresponding row of
         the image (e.g., a reaction time associated with each epoch). Note that
         ``overlay_times`` should be ordered to correspond with the
-        `mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
+        `Epochs` object (i.e., ``overlay_times[0]`` corresponds to
         ``epochs[0]``, etc).
 
     combine : None | str | callable
@@ -132,7 +132,7 @@ def plot_epochs_image(
     group_by : None | dict
         Specifies which channels are aggregated into a single figure, with
         aggregation method determined by the ``combine`` parameter. If not
-        ``None``, one `matplotlib.figure.Figure` is made per dict
+        ``None``, one `Figure` is made per dict
         entry; the dict key will be used as the figure title and the dict
         values must be lists of picks (either channel names or integer indices
         of ``epochs.ch_names``). For example::
@@ -145,9 +145,9 @@ def plot_epochs_image(
     evoked : bool
         Draw the ER[P/F] below the image or not.
     ts_args : None | dict
-        Arguments passed to a call to `mne.viz.plot_compare_evokeds` to style
+        Arguments passed to a call to `plot_compare_evokeds` to style
         the evoked plot below the image. Defaults to an empty dictionary,
-        meaning `mne.viz.plot_compare_evokeds` will be called with default
+        meaning `plot_compare_evokeds` will be called with default
         parameters.
     title : None | str
         If `str`, will be plotted as figure title. Otherwise, the
@@ -168,7 +168,7 @@ def plot_epochs_image(
     You can control how channels are aggregated into one figure or plotted in
     separate figures through a combination of the ``picks``, ``group_by``, and
     ``combine`` parameters. If ``group_by`` is a `dict`, the result is
-    one `matplotlib.figure.Figure` per dictionary key (for any valid
+    one `Figure` per dictionary key (for any valid
     values of ``picks`` and ``combine``). If ``group_by`` is ``None``, the
     number and content of the figures generated depends on the values of
     ``picks`` and ``combine``, as summarized in this table:
@@ -284,7 +284,7 @@ def plot_epochs(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -301,8 +301,7 @@ def plot_epochs(
                  emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                  resp=1, chpi=1e-4, whitened=1e2)
 
-        💡
-            A particular scaling value ``s`` corresponds to half of the visualized
+        💡 A particular scaling value ``s`` corresponds to half of the visualized
             signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
             ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
             signals means that the visualized range will be 40 µV (20 µV in the
@@ -315,12 +314,12 @@ def plot_epochs(
         The title of the window. If None, the event names (from
         ``epochs.event_id``) will be displayed. Defaults to None.
     events : bool | array, shape (n_events, 3)
-        Events to show with vertical bars. You can use `mne.viz.plot_events`
+        Events to show with vertical bars. You can use `plot_events`
         as a legend for the colors. By default, the coloring scheme is the
         same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
         plot events).
 
-        ⛔️  If the epochs have been resampled, the events no longer
+        ⛔️ If the epochs have been resampled, the events no longer
             align with the data.
 
         ✨ Added in version 0.14.0
@@ -330,7 +329,7 @@ def plot_epochs(
             The new equivalent is ``events=False``.
 
     event_color : color object | dict | None
-        Color(s) to use for :term:`events`. To show all :term:`events` in the same
+        Color(s) to use for `events`. To show all `events` in the same
         color, pass any matplotlib-compatible color. To color events differently,
         pass a `dict` that maps event names or integer event numbers to colors
         (must include entries for *all* events, or include a "fallback" entry with
@@ -375,14 +374,14 @@ def plot_epochs(
 
     show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
-        after initialization by pressing :kbd:`z` ("zen mode") while the plot
+        after initialization by pressing `z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
         ✨ Added in version 0.19.0
 
     show_scalebars : bool
         Whether to show scale bars when the plot is initialized. Can be toggled
-        after initialization by pressing :kbd:`s` while the plot window is focused.
+        after initialization by pressing `s` while the plot window is focused.
         Default is ``True``.
 
         ✨ Added in version 0.24.0
@@ -479,7 +478,7 @@ def plot_epochs(
     `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
     and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
     based on `matplotlib`, and the other is based on
-    :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
+    `PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
     context manager `mne.viz.use_browser_backend`, you can set it for the
     duration of a Python session using `mne.viz.set_browser_backend`, and you
     can set the default for your computer via
@@ -566,13 +565,13 @@ def plot_epochs_psd(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels (excluding reference
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     ax : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
     color : str | tuple
         A matplotlib-compatible color to use. Has no effect when
         spatial_colors=True.
@@ -621,7 +620,7 @@ def plot_epochs_psd(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -653,6 +652,6 @@ def plot_epochs_psd(
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-    of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
+    of `Raw`, `Epochs`, or `Evoked`).
     """
     ...

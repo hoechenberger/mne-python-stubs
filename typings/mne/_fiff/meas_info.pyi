@@ -50,13 +50,13 @@ class MontageMixin:
 
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
-            `mne.channels.DigMontage` is
+            `DigMontage` is
             specified, the existing channel information will be updated with the
             channel positions from the montage. Valid strings are the names of the
             built-in montages that ship with MNE-Python; you can list those via
             `mne.channels.get_builtin_montages`.
             If ``None`` (default), the channel positions will be removed from the
-            `mne.Info`.
+            `Info`.
         """
         ...
 
@@ -75,13 +75,13 @@ class MontageMixin:
 
         montage : None | str | DigMontage
             A montage containing channel positions. If a string or
-            `mne.channels.DigMontage` is
+            `DigMontage` is
             specified, the existing channel information will be updated with the
             channel positions from the montage. Valid strings are the names of the
             built-in montages that ship with MNE-Python; you can list those via
             `mne.channels.get_builtin_montages`.
             If ``None`` (default), the channel positions will be removed from the
-            `mne.Info`.
+            `Info`.
 
         match_case : bool
             If True (default), channel name matching will be case sensitive.
@@ -122,13 +122,11 @@ class MontageMixin:
 
         Notes
         -----
-        ⛔️
-            Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
+        ⛔️ Only EEG/sEEG/ECoG/DBS/fNIRS channels can have their positions set using
             a montage. Other channel types (e.g., MEG channels) should have
             their positions defined properly using their data reading
             functions.
-        ⛔️
-            Applying a montage will only set locations of channels that exist
+        ⛔️ Applying a montage will only set locations of channels that exist
             at the time it is applied. This means when
             `re-referencing <tut-set-eeg-ref>`
             make sure to apply the montage only after calling
@@ -287,7 +285,7 @@ class SetChannelsMixin(MontageMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -464,7 +462,7 @@ class ContainsMixin:
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -497,13 +495,11 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
     `FIF format specification <https://github.com/mne-tools/fiff-constants>`__,
     so new entries should not be manually added.
 
-    💡
-        This class should not be instantiated directly via
+    💡 This class should not be instantiated directly via
         ``mne.Info(...)``. Instead, use `mne.create_info` to create
         measurement information from scratch.
 
-    ⛔️
-        The only entries that should be manually changed by the user are:
+    ⛔️ The only entries that should be manually changed by the user are:
         ``info['bads']``, ``info['description']``, ``info['device_info']``
         ``info['dev_head_t']``, ``info['experimenter']``,
         ``info['helium_info']``, ``info['line_freq']``, ``info['temp']``,
@@ -605,7 +601,7 @@ class Info(dict, SetChannelsMixin, MontageMixin, ContainsMixin):
         The time (UTC) of the recording.
 
         🎭 Changed in version 0.20
-           This is stored as a `python:datetime.datetime` object
+           This is stored as a `~python:datetime.datetime` object
            instead of a tuple of seconds/microseconds.
     meas_file : str | None
         Raw measurement file (used for source estimation).
@@ -1129,7 +1125,7 @@ def create_info(ch_names, sfreq, ch_types: str = "misc", verbose=None):
         Sample rate of the data.
     ch_types : list of str | str
         Channel types, default is ``'misc'`` which is not a
-        :term:`data channel <data channels>`.
+        `data channel <data channels>`.
         Currently supported fields are 'ecg', 'bio', 'stim', 'eog', 'misc',
         'seeg', 'dbs', 'ecog', 'mag', 'eeg', 'ref_meg', 'grad', 'emg', 'hbr'
         'eyetrack' or 'hbo'.

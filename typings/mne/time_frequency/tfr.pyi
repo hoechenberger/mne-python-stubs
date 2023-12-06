@@ -63,14 +63,14 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
     Notes
     -----
 
-    The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
+    The Morlet wavelets follow the formulation in t:`Tallon-BaudryEtAl1997`.
 
     Convolution of a signal with a Morlet wavelet will impose temporal smoothing
     that is determined by the duration of the wavelet. In MNE-Python, the duration
     of the wavelet is determined by the ``sigma`` parameter, which gives the
     standard deviation of the wavelet's Gaussian envelope (our wavelets extend to
     ±5 standard deviations to ensure values very close to zero at the endpoints).
-    Some authors (e.g., :footcite:t:`Cohen2019`) recommend specifying and reporting
+    Some authors (e.g., t:`Cohen2019`) recommend specifying and reporting
     wavelet duration in terms of the full-width half-maximum (FWHM) of the
     wavelet's Gaussian envelope. The FWHM is related to ``sigma`` by the following
     identity: :math:`\\mathrm{FWHM} = \\sigma \\times 2 \\sqrt{2 \\ln{2}}` (or the
@@ -84,7 +84,7 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
 
         \\mathrm{FWHM} = \\frac{\\mathtt{n\\_cycles} \\times \\sqrt{2 \\ln{2}}}{\\pi \\times f}
 
-    (cf. eq. 4 in :footcite:`Cohen2019`). To create wavelets with a chosen FWHM,
+    (cf. eq. 4 in `Cohen2019`). To create wavelets with a chosen FWHM,
     one can compute::
 
         n_cycles = desired_fwhm * np.pi * np.array(freqs) / np.sqrt(2 * np.log(2))
@@ -145,7 +145,7 @@ def morlet(sfreq, freqs, n_cycles: float = 7.0, sigma=None, zero_mean: bool = Fa
 def fwhm(freq, n_cycles):
     """Compute the full-width half maximum of a Morlet wavelet.
 
-    Uses the formula from :footcite:t:`Cohen2019`.
+    Uses the formula from t:`Cohen2019`.
 
     Parameters
     ----------
@@ -192,8 +192,7 @@ def cwt(X, Ws, use_fft: bool = True, mode: str = "same", decim: int = 1):
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡
-            Decimation is done after convolutions and may create aliasing
+        💡 Decimation is done after convolutions and may create aliasing
             artifacts.
 
     Returns
@@ -224,8 +223,8 @@ def tfr_morlet(
 ):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
-    Same computation as `mne.time_frequency.tfr_array_morlet`, but
-    operates on `mne.Epochs` or `mne.Evoked` objects instead of
+    Same computation as `tfr_array_morlet`, but
+    operates on `Epochs` or `Evoked` objects instead of
     `NumPy arrays <numpy.ndarray>`.
 
     Parameters
@@ -255,8 +254,7 @@ def tfr_morlet(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡
-            Decimation is done after convolutions and may create aliasing
+        💡 Decimation is done after convolutions and may create aliasing
             artifacts.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
@@ -278,8 +276,7 @@ def tfr_morlet(
         epoch. If ``True`` return an `AverageTFR` containing the average of all
         TFRs across epochs.
 
-        💡
-            Using ``average=True`` is functionally equivalent to using
+        💡 Using ``average=True`` is functionally equivalent to using
             ``average=False`` followed by ``EpochsTFR.average()``, but is
             more memory efficient.
 
@@ -315,7 +312,7 @@ def tfr_morlet(
     Notes
     -----
 
-    The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
+    The Morlet wavelets follow the formulation in t:`Tallon-BaudryEtAl1997`.
 
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows
@@ -374,8 +371,8 @@ def tfr_array_morlet(
 ):
     """Compute Time-Frequency Representation (TFR) using Morlet wavelets.
 
-    Same computation as `mne.time_frequency.tfr_morlet`, but operates on
-    `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` objects.
+    Same computation as `tfr_morlet`, but operates on
+    `NumPy arrays <numpy.ndarray>` instead of `Epochs` objects.
 
     Parameters
     ----------
@@ -405,8 +402,7 @@ def tfr_array_morlet(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡
-            Decimation is done after convolutions and may create aliasing
+        💡 Decimation is done after convolutions and may create aliasing
             artifacts.
     output : str, default ``'complex'``
 
@@ -457,7 +453,7 @@ def tfr_array_morlet(
     Notes
     -----
 
-    The Morlet wavelets follow the formulation in :footcite:t:`Tallon-BaudryEtAl1997`.
+    The Morlet wavelets follow the formulation in t:`Tallon-BaudryEtAl1997`.
 
     In spectrotemporal analysis (as with traditional fourier methods),
     the temporal and spectral resolution are interrelated: longer temporal windows
@@ -517,8 +513,8 @@ def tfr_multitaper(
 ):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
-    Same computation as `mne.time_frequency.tfr_array_multitaper`, but
-    operates on `mne.Epochs` or `mne.Evoked` objects instead of
+    Same computation as `tfr_array_multitaper`, but
+    operates on `Epochs` or `Evoked` objects instead of
     `NumPy arrays <numpy.ndarray>`.
 
     Parameters
@@ -555,8 +551,7 @@ def tfr_multitaper(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡
-            Decimation is done after convolutions and may create aliasing
+        💡 Decimation is done after convolutions and may create aliasing
             artifacts.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
@@ -570,7 +565,7 @@ def tfr_multitaper(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -580,8 +575,7 @@ def tfr_multitaper(
         epoch. If ``True`` return an `AverageTFR` containing the average of all
         TFRs across epochs.
 
-        💡
-            Using ``average=True`` is functionally equivalent to using
+        💡 Using ``average=True`` is functionally equivalent to using
             ``average=False`` followed by ``EpochsTFR.average()``, but is
             more memory efficient.
 
@@ -664,15 +658,13 @@ def tfr_multitaper(
     is unique about multitaper methods — namely their ability to improve accuracy /
     reduce noise in the power estimates by using several (orthogonal) tapers.
 
-    ⛔️
-
-        In `mne.time_frequency.tfr_array_multitaper` and
-        `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
+    ⛔️ In `tfr_array_multitaper` and
+        `tfr_multitaper`, ``time_bandwidth`` defines the
         product of the temporal window length with the *full* frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
 
-        This is not the case for `mne.time_frequency.psd_array_multitaper` where
+        This is not the case for `psd_array_multitaper` where
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 
@@ -829,7 +821,7 @@ class _BaseTFR(ContainsMixin, UpdateChannelsMixin, SizeMixin, ExtendedTimeMixin)
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -972,7 +964,7 @@ class AverageTFR(_BaseTFR):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1159,7 +1151,7 @@ class AverageTFR(_BaseTFR):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1307,7 +1299,7 @@ class AverageTFR(_BaseTFR):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1464,7 +1456,7 @@ class AverageTFR(_BaseTFR):
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -1508,7 +1500,7 @@ class AverageTFR(_BaseTFR):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1571,7 +1563,7 @@ class AverageTFR(_BaseTFR):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -1603,7 +1595,7 @@ class AverageTFR(_BaseTFR):
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+            The axes to plot to. If ``None``, a new `Figure`
             will be created. Default is ``None``.
         show : bool
             Show the figure if ``True``.
@@ -1721,9 +1713,9 @@ class EpochsTFR(_BaseTFR, GetEpochsMixin):
             If epoch didn't contain enough data names of channels that
             exceeded the amplitude threshold
         - ``'EQUALIZED_COUNTS'``
-            See `mne.Epochs.equalize_event_counts`
+            See `equalize_event_counts`
         - ``'USER'``
-            For user-defined reasons (see `mne.Epochs.drop`).
+            For user-defined reasons (see `drop`).
 
     metadata : pandas.DataFrame, shape (n_events, n_cols) | None
         DataFrame containing pertinent information for each trial

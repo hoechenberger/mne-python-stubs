@@ -10,7 +10,7 @@ class ReceptiveField(BaseEstimator):
     This allows you to fit an encoding model (stimulus to brain) or a decoding
     model (brain to stimulus) using time-lagged input features (for example, a
     spectro- or spatio-temporal receptive field, or STRF)
-    :footcite:`TheunissenEtAl2001,WillmoreSmyth2003,CrosseEtAl2016,HoldgrafEtAl2016`.
+    `TheunissenEtAl2001,WillmoreSmyth2003,CrosseEtAl2016,HoldgrafEtAl2016`.
 
     Parameters
     ----------
@@ -41,7 +41,7 @@ class ReceptiveField(BaseEstimator):
     patterns : bool
         If True, inverse coefficients will be computed upon fitting using the
         covariance matrix of the inputs, and the cross-covariance of the
-        inputs/outputs, according to :footcite:`HaufeEtAl2014`. Defaults to
+        inputs/outputs, according to `HaufeEtAl2014`. Defaults to
         False.
     n_jobs : int | str
         Number of jobs to run in parallel. Can be 'cuda' if CuPy

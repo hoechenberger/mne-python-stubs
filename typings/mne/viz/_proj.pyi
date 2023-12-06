@@ -27,7 +27,7 @@ def plot_projs_joint(
         pick channels of those types, channel *name* strings (e.g., ``['MEG0111', 'MEG2623']``
         will pick the given channels.
         Can also be the string values "all" to pick
-        all channels, or "data" to pick :term:`data channels`.
+        all channels, or "data" to pick `data channels`.
         None (default) will pick no channels.
     topomap_kwargs : dict | None
         Keyword arguments to pass to `mne.viz.plot_projs_topomap`.

@@ -10,9 +10,9 @@ class CSP(TransformerMixin, BaseEstimator):
 
     This class can be used as a supervised decomposition to estimate spatial
     filters for feature extraction. CSP in the context of EEG was first
-    described in :footcite:`KolesEtAl1990`; a comprehensive tutorial on CSP can
-    be found in :footcite:`BlankertzEtAl2008`. Multi-class solving is
-    implemented from :footcite:`Grosse-WentrupBuss2008`.
+    described in `KolesEtAl1990`; a comprehensive tutorial on CSP can
+    be found in `BlankertzEtAl2008`. Multi-class solving is
+    implemented from `Grosse-WentrupBuss2008`.
 
     Parameters
     ----------
@@ -39,10 +39,10 @@ class CSP(TransformerMixin, BaseEstimator):
         will return the data in CSP space.
     norm_trace : bool (default False)
         Normalize class covariance by its trace. Trace normalization is a step
-        of the original CSP algorithm :footcite:`KolesEtAl1990` to eliminate
+        of the original CSP algorithm `KolesEtAl1990` to eliminate
         magnitude variations in the EEG between individuals. It is not applied
-        in more recent work :footcite:`BlankertzEtAl2008`,
-        :footcite:`Grosse-WentrupBuss2008` and can have a negative impact on
+        in more recent work `BlankertzEtAl2008`,
+        `Grosse-WentrupBuss2008` and can have a negative impact on
         pattern order.
     cov_method_params : dict | None
         Parameters to pass to `mne.compute_covariance`.
@@ -69,7 +69,7 @@ class CSP(TransformerMixin, BaseEstimator):
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -99,10 +99,10 @@ class CSP(TransformerMixin, BaseEstimator):
         If ``'mutual_info'`` order components by decreasing mutual information
         (in the two-class case this uses a simplification which orders
         components by decreasing absolute deviation of the eigenvalues from 0.5
-        :footcite:`BarachantEtAl2010`). For the two-class case, ``'alternate'``
+        `BarachantEtAl2010`). For the two-class case, ``'alternate'``
         orders components by starting with the largest eigenvalue, followed by
         the smallest, the second-to-largest, the second-to-smallest, and so on
-        :footcite:`BlankertzEtAl2008`.
+        `BlankertzEtAl2008`.
 
         ✨ Added in version 0.21
 
@@ -278,7 +278,7 @@ class CSP(TransformerMixin, BaseEstimator):
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -322,7 +322,7 @@ class CSP(TransformerMixin, BaseEstimator):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -381,7 +381,7 @@ class CSP(TransformerMixin, BaseEstimator):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -413,8 +413,8 @@ class CSP(TransformerMixin, BaseEstimator):
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
         name_format : str
             String format for topomap values. Defaults to "CSP%01d".
 
@@ -502,7 +502,7 @@ class CSP(TransformerMixin, BaseEstimator):
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -546,7 +546,7 @@ class CSP(TransformerMixin, BaseEstimator):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -605,7 +605,7 @@ class CSP(TransformerMixin, BaseEstimator):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -637,8 +637,8 @@ class CSP(TransformerMixin, BaseEstimator):
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
         name_format : str
             String format for topomap values. Defaults to "CSP%01d".
 
@@ -661,7 +661,7 @@ class CSP(TransformerMixin, BaseEstimator):
 class SPoC(CSP):
     """Implementation of the SPoC spatial filtering.
 
-    Source Power Comodulation (SPoC) :footcite:`DahneEtAl2014` allows to
+    Source Power Comodulation (SPoC) `DahneEtAl2014` allows to
     extract spatial filters and
     patterns by using a target (continuous) variable in the decomposition
     process in order to give preference to components whose power correlates
@@ -715,7 +715,7 @@ class SPoC(CSP):
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`

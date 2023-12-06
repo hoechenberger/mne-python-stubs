@@ -73,7 +73,7 @@ def plot_raw(
         Color to make bad channels.
 
     event_color : color object | dict | None
-        Color(s) to use for :term:`events`. To show all :term:`events` in the same
+        Color(s) to use for `events`. To show all `events` in the same
         color, pass any matplotlib-compatible color. To color events differently,
         pass a `dict` that maps event names or integer event numbers to colors
         (must include entries for *all* events, or include a "fallback" entry with
@@ -93,8 +93,7 @@ def plot_raw(
                  emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                  resp=1, chpi=1e-4, whitened=1e2)
 
-        💡
-            A particular scaling value ``s`` corresponds to half of the visualized
+        💡 A particular scaling value ``s`` corresponds to half of the visualized
             signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
             ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
             signals means that the visualized range will be 40 µV (20 µV in the
@@ -131,7 +130,7 @@ def plot_raw(
     filtorder : int
         Filtering order. 0 will use FIR filtering with MNE defaults.
         Other values will construct an IIR filter of the given order
-        and apply it with `scipy.signal.filtfilt` (making the effective
+        and apply it with `filtfilt` (making the effective
         order twice ``filtorder``). Filtering may produce some edge artifacts
         (at the left and right edges) of the signals during display.
 
@@ -195,14 +194,14 @@ def plot_raw(
 
     show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
-        after initialization by pressing :kbd:`z` ("zen mode") while the plot
+        after initialization by pressing `z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
         ✨ Added in version 0.19.0
 
     show_scalebars : bool
         Whether to show scale bars when the plot is initialized. Can be toggled
-        after initialization by pressing :kbd:`s` while the plot window is focused.
+        after initialization by pressing `s` while the plot window is focused.
         Default is ``True``.
 
         ✨ Added in version 0.20.0
@@ -305,7 +304,7 @@ def plot_raw(
     `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
     and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
     based on `matplotlib`, and the other is based on
-    :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
+    `PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
     context manager `mne.viz.use_browser_backend`, you can set it for the
     duration of a Python session using `mne.viz.set_browser_backend`, and you
     can set the default for your computer via
@@ -387,13 +386,13 @@ def plot_raw_psd(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels (excluding reference
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
     ax : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
     color : str | tuple
         A matplotlib-compatible color to use. Has no effect when
         spatial_colors=True.
@@ -442,7 +441,7 @@ def plot_raw_psd(
         The sphere parameters to use for the head outline. Can be array-like of
         shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
         to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-        of a spherical `mne.bem.ConductorModel` to use the origin and
+        of a spherical `ConductorModel` to use the origin and
         radius from that object. If ``'auto'`` the sphere is fit to digitization
         points. If ``'eeglab'`` the head circle is defined by EEG electrodes
         ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -478,7 +477,7 @@ def plot_raw_psd(
     -----
     This function exists to support legacy code; for new code the preferred
     idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-    of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
+    of `Raw`, `Epochs`, or `Evoked`).
     """
     ...
 
@@ -541,8 +540,8 @@ def plot_raw_psd_topo(
         A matplotlib-compatible color to use for the axis background.
         Defaults to black.
     axes : instance of Axes | list of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-        will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single `matplotlib.axes.Axes` object).Default is ``None``.
+        The axes to plot to. If ``None``, a new `Figure`
+        will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single `Axes` object).Default is ``None``.
     block : bool
         Whether to halt program execution until the figure is closed.
         May not work on all systems / platforms. Defaults to False.

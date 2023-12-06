@@ -29,7 +29,7 @@ def annotate_muscle_zscore(
     resulting z-score time series at 4 Hz. Only operates on a single channel
     type, if ``ch_type`` is ``None`` it will select the first type in the list
     ``mag``, ``grad``, ``eeg``.
-    See :footcite:`Muthukumaraswamy2013` for background on choosing
+    See `Muthukumaraswamy2013` for background on choosing
     ``filter_freq`` and ``threshold``.
 
     Parameters
@@ -154,7 +154,7 @@ def annotate_break(
     *,
     verbose=None,
 ):
-    """Create `mne.Annotations` for breaks in an ongoing recording.
+    """Create `Annotations` for breaks in an ongoing recording.
 
     This function first searches for segments in the data that are not
     annotated or do not contain any events and are at least
@@ -217,7 +217,7 @@ def annotate_break(
     break_annotations : instance of Annotations
         The break annotations, each with the description ``'BAD_break'``. If
         no breaks could be found given the provided function parameters, an
-        empty `mne.Annotations` object will be returned.
+        empty `Annotations` object will be returned.
 
     Notes
     -----

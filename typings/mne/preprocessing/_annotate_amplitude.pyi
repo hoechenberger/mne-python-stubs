@@ -22,7 +22,7 @@ def annotate_amplitude(
     should be annotated with either ``BAD_peak`` or ``BAD_flat`` are returned
     in ``bads`` instead.
     Note that the annotations and the bads are not automatically added to the
-    `mne.io.Raw` object; use `mne.io.Raw.set_annotations` and
+    `Raw` object; use `set_annotations` and
     `info['bads'] <mne.Info>` to do so.
 
     Parameters
@@ -43,7 +43,7 @@ def annotate_amplitude(
         If float, the minimum acceptable PTP is applied to all channels.
     bad_percent : float
         The percentage of the time a channel can be above or below thresholds.
-        Below this percentage, `mne.Annotations` are created.
+        Below this percentage, `Annotations` are created.
         Above this percentage, the channel involved is return in ``bads``. Note
         the returned ``bads`` are not automatically added to
         `info['bads'] <mne.Info>`.
@@ -59,7 +59,7 @@ def annotate_amplitude(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -81,7 +81,7 @@ def annotate_amplitude(
     -----
     This function does not use a window to detect small peak-to-peak or large
     peak-to-peak amplitude changes as the ``reject`` and ``flat`` argument from
-    `mne.Epochs` does. Instead, it looks at the difference between
+    `Epochs` does. Instead, it looks at the difference between
     consecutive samples.
 
     - When used to detect segments below ``flat``, at least ``min_duration``

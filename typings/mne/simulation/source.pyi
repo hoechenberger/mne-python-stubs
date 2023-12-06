@@ -32,7 +32,7 @@ def select_source_in_label(
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -110,7 +110,7 @@ def simulate_sparse_stc(
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -213,7 +213,7 @@ class SourceSimulator:
         If None, it is computed using existing events and waveform lengths.
     first_samp : int
         First sample from which the simulation takes place, as an integer.
-        Comparable to the :term:`first_samp` property of `mne.io.Raw` objects.
+        Comparable to the `first_samp` property of `Raw` objects.
         Default is 0.
 
     Attributes

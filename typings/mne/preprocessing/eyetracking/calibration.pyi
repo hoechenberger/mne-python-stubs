@@ -7,9 +7,8 @@ class Calibration(dict):
     This data structure behaves like a dictionary. It contains information regarding a
     calibration that was conducted during an eye-tracking recording.
 
-    💡
-        When possible, a Calibration instance should be created with a helper function,
-        such as `mne.preprocessing.eyetracking.read_eyelink_calibration`.
+    💡 When possible, a Calibration instance should be created with a helper function,
+        such as `read_eyelink_calibration`.
 
     Parameters
     ----------
@@ -118,7 +117,7 @@ def read_eyelink_calibration(
     Returns
     -------
     calibrations : list
-        A list of `mne.preprocessing.eyetracking.Calibration` instances, one for
+        A list of `Calibration` instances, one for
         each eye of every calibration that was performed during the recording session.
     """
     ...

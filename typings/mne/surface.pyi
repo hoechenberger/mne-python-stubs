@@ -542,13 +542,13 @@ def get_montage_volume_labels(
 
     montage : None | str | DigMontage
         A montage containing channel positions. If a string or
-        `mne.channels.DigMontage` is
+        `DigMontage` is
         specified, the existing channel information will be updated with the
         channel positions from the montage. Valid strings are the names of the
         built-in montages that ship with MNE-Python; you can list those via
         `mne.channels.get_builtin_montages`.
         If ``None`` (default), the channel positions will be removed from the
-        `mne.Info`.
+        `Info`.
 
     subject : str
         The FreeSurfer subject name.

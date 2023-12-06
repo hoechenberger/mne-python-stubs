@@ -93,8 +93,7 @@ def make_dig_montage(
         ``'mri_voxel'``, ``'mni_tal'``, ``'ras'``, ``'fs_tal'``,
         ``'ctf_head'``, and ``'ctf_meg'``.
 
-        💡
-            For custom montages without fiducials, this parameter must be set
+        💡 For custom montages without fiducials, this parameter must be set
             to ``'head'``.
 
     Returns
@@ -175,7 +174,7 @@ class DigMontage:
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -471,8 +470,7 @@ def transform_to_head(montage):
 def read_dig_dat(fname):
     """Read electrode positions from a ``*.dat`` file.
 
-    ⛔️
-        This function was implemented based on ``*.dat`` files available from
+    ⛔️ This function was implemented based on ``*.dat`` files available from
         `Compumedics <https://compumedicsneuroscan.com>`__ and might not work
         as expected with novel files. If it does not read your files correctly
         please contact the MNE-Python developers.
@@ -813,7 +811,7 @@ def compute_dev_head_t(montage):
     Parameters
     ----------
     montage : DigMontage
-        The `mne.channels.DigMontage` must contain the fiducials in head
+        The `DigMontage` must contain the fiducials in head
         coordinate system and hpi points in both head and
         meg device coordinate system.
 
@@ -862,8 +860,7 @@ def make_standard_montage(kind, head_size: str = "auto"):
     kind : str
         The name of the montage to use.
 
-        💡
-            You can retrieve the names of all
+        💡 You can retrieve the names of all
             built-in montages via `mne.channels.get_builtin_montages`.
     head_size : float | None | str
         The head size (radius, in meters) to use for spherical montages.

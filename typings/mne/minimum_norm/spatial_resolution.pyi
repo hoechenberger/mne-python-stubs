@@ -38,7 +38,7 @@ def resolution_metrics(
         Spatial-extent-based metrics:
 
         - ``'sd_ext'`` Spatial deviation
-          (e.g. :footcite:`MolinsEtAl2008,HaukEtAl2019`).
+          (e.g. `MolinsEtAl2008,HaukEtAl2019`).
         - ``'maxrad_ext'`` Maximum radius to 50% of max amplitude.
 
         Amplitude-based metrics:
@@ -64,7 +64,7 @@ def resolution_metrics(
 
     Notes
     -----
-    For details, see :footcite:`MolinsEtAl2008,HaukEtAl2019`.
+    For details, see `MolinsEtAl2008,HaukEtAl2019`.
 
     ✨ Added in version 0.20
 

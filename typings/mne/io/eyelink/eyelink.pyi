@@ -19,14 +19,14 @@ def read_raw_eyelink(
         Path to the eyelink file (``.asc``).
 
     create_annotations : bool | list (default True)
-        Whether to create `mne.Annotations` from occular events
+        Whether to create `Annotations` from occular events
         (blinks, fixations, saccades) and experiment messages. If a list, must
         contain one or more of ``['fixations', 'saccades',' blinks', messages']``.
-        If True, creates `mne.Annotations` for both occular events and
+        If True, creates `Annotations` for both occular events and
         experiment messages.
 
     apply_offsets : bool (default False)
-        Adjusts the onset time of the `mne.Annotations` created from Eyelink
+        Adjusts the onset time of the `Annotations` created from Eyelink
         experiment messages, if offset values exist in the ASCII file. If False, any
         offset-like values will be prepended to the annotation description.
 
@@ -81,14 +81,14 @@ class RawEyelink(BaseRaw):
         Path to the eyelink file (``.asc``).
 
     create_annotations : bool | list (default True)
-        Whether to create `mne.Annotations` from occular events
+        Whether to create `Annotations` from occular events
         (blinks, fixations, saccades) and experiment messages. If a list, must
         contain one or more of ``['fixations', 'saccades',' blinks', messages']``.
-        If True, creates `mne.Annotations` for both occular events and
+        If True, creates `Annotations` for both occular events and
         experiment messages.
 
     apply_offsets : bool (default False)
-        Adjusts the onset time of the `mne.Annotations` created from Eyelink
+        Adjusts the onset time of the `Annotations` created from Eyelink
         experiment messages, if offset values exist in the ASCII file. If False, any
         offset-like values will be prepended to the annotation description.
 

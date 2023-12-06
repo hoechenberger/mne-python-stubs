@@ -258,10 +258,10 @@ def compute_proj_raw(
         to select the number of vectors to explain the cumulative variance greater than
         ``n_eeg``.
     reject : dict | None
-        Epoch PTP rejection threshold used if ``duration != None``. See `mne.Epochs`.
+        Epoch PTP rejection threshold used if ``duration != None``. See `Epochs`.
     flat : dict | None
         Epoch flatness rejection threshold used if ``duration != None``. See
-        `mne.Epochs`.
+        `Epochs`.
     n_jobs : int | None
         The number of jobs to run in parallel. If ``-1``, it is set
         to the number of CPU cores. Requires the `joblib` package.

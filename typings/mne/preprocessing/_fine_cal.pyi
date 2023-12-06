@@ -36,7 +36,7 @@ def compute_fine_calibration(
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using `mne.bem.fit_sphere_to_headshape`
+        origin fit using `fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different

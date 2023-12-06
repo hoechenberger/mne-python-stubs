@@ -47,12 +47,12 @@ def plot_ica_sources(
         IC: ``ICA001``. ``None`` will pick all independent components in the order
         fitted.
     start, stop : float | int | None
-       If ``inst`` is a `mne.io.Raw` or an `mne.Evoked` object, the first and
+       If ``inst`` is a `Raw` or an `Evoked` object, the first and
        last time point (in seconds) of the data to plot. If ``inst`` is a
-       `mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
+       `Raw` object, ``start=None`` and ``stop=None`` will be
        translated into ``start=0.`` and ``stop=3.``, respectively. For
-       `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
-       signal. If ``inst`` is an `mne.Epochs` object, specifies the index of
+       `Evoked`, ``None`` refers to the beginning and end of the evoked
+       signal. If ``inst`` is an `Epochs` object, specifies the index of
        the first and last epoch to show.
     title : str | None
         The window title. If None a default is provided.
@@ -67,7 +67,7 @@ def plot_ica_sources(
 
     show_scrollbars : bool
         Whether to show scrollbars when the plot is initialized. Can be toggled
-        after initialization by pressing :kbd:`z` ("zen mode") while the plot
+        after initialization by pressing `z` ("zen mode") while the plot
         window is focused. Default is ``True``.
 
         ✨ Added in version 0.19.0
@@ -144,7 +144,7 @@ def plot_ica_sources(
     `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
     and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
     based on `matplotlib`, and the other is based on
-    :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
+    `PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
     context manager `mne.viz.use_browser_backend`, you can set it for the
     duration of a Python session using `mne.viz.set_browser_backend`, and you
     can set the default for your computer via
@@ -191,9 +191,8 @@ def plot_ica_properties(
     inst : instance of Epochs or Raw
         The data to use in plotting properties.
 
-        💡
-           You can interactively cycle through topographic maps for different
-           channel types by pressing :kbd:`T`.
+        💡 You can interactively cycle through topographic maps for different
+           channel types by pressing `T`.
     picks : int | list of int | slice | None
         Indices of the independent components (ICs) to visualize.
         If an integer, represents the index of the IC to pick.
@@ -220,8 +219,7 @@ def plot_ica_properties(
         Whether to use a logarithmic frequency axis to plot the spectrum.
         Defaults to ``False``.
 
-        💡
-           You can interactively toggle this setting by pressing :kbd:`L`.
+        💡 You can interactively toggle this setting by pressing `L`.
 
         ✨ Added in version 1.1
     topomap_args : dict | None
@@ -231,7 +229,7 @@ def plot_ica_properties(
         Dictionary of arguments to ``plot_epochs_image``. If None, doesn't pass
         any additional arguments. Defaults to None.
     psd_args : dict | None
-        Dictionary of arguments to `mne.Epochs.compute_psd`. If
+        Dictionary of arguments to `compute_psd`. If
         ``None``, doesn't pass any additional arguments. Defaults to ``None``.
     figsize : array-like, shape (2,) | None
         Allows to control size of the figure. If None, the figure size
@@ -346,9 +344,9 @@ def plot_ica_overlay(
     ica : instance of mne.preprocessing.ICA
         The ICA object.
     inst : instance of Raw or Evoked
-        The signal to plot. If `mne.io.Raw`, the raw data per channel type is displayed
+        The signal to plot. If `Raw`, the raw data per channel type is displayed
         before and after cleaning. A second panel with the RMS for MEG sensors and the
-        :term:`GFP` for EEG sensors is displayed. If `mne.Evoked`, butterfly traces for
+        `GFP` for EEG sensors is displayed. If `Evoked`, butterfly traces for
         signals before and after cleaning will be superimposed.
     exclude : array-like of int | None (default)
         The components marked for exclusion. If ``None`` (default), the components
@@ -358,13 +356,13 @@ def plot_ica_overlay(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all channels that were included during fitting.
     start, stop : float | None
        The first and last time point (in seconds) of the data to plot. If
-       ``inst`` is a `mne.io.Raw` object, ``start=None`` and ``stop=None``
+       ``inst`` is a `Raw` object, ``start=None`` and ``stop=None``
        will be translated into ``start=0.`` and ``stop=3.``, respectively. For
-       `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
+       `Evoked`, ``None`` refers to the beginning and end of the evoked
        signal.
 
     title : str | None

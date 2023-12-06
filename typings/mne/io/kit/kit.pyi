@@ -92,7 +92,7 @@ class RawKIT(BaseRaw):
     ``elp`` refers to the points in head-space that corresponds to the HPI
     points.
 
-    If ``mrk``\\, ``hsp`` or ``elp`` are :term:`array_like` inputs, then the
+    If ``mrk``\\, ``hsp`` or ``elp`` are `array_like` inputs, then the
     numbers in xyz coordinates should be in units of meters.
 
     See Also
@@ -141,19 +141,19 @@ class EpochsKIT(BaseEpochs):
     input_fname : path-like
         Path to the sqd file.
     events : array of int, shape (n_events, 3) | path-like
-        The array of :term:`events`. The first column contains the event time
-        in samples, with :term:`first_samp` included. The third column contains
+        The array of `events`. The first column contains the event time
+        in samples, with `first_samp` included. The third column contains
         the event id. If a path, must yield a ``.txt`` file containing the
         events.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
     event_id : int | list of int | dict | None
-        The id of the :term:`events` to consider. If dict, the keys can later be
-        used to access associated :term:`events`. Example:
+        The id of the `events` to consider. If dict, the keys can later be
+        used to access associated `events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
-        string. If a list, all :term:`events` with the IDs specified in the list
-        are used. If None, all :term:`events` will be used and a dict is created
+        string. If a list, all `events` with the IDs specified in the list
+        are used. If None, all `events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
     tmin : float
         Start time before event.
@@ -412,7 +412,7 @@ def read_raw_kit(
     ``elp`` refers to the points in head-space that corresponds to the HPI
     points.
 
-    If ``mrk``\\, ``hsp`` or ``elp`` are :term:`array_like` inputs, then the
+    If ``mrk``\\, ``hsp`` or ``elp`` are `array_like` inputs, then the
     numbers in xyz coordinates should be in units of meters.
     """
     ...
@@ -435,19 +435,19 @@ def read_epochs_kit(
     input_fname : path-like
         Path to the SQD file.
     events : array of int, shape (n_events, 3) | path-like
-        The array of :term:`events`. The first column contains the event time
-        in samples, with :term:`first_samp` included. The third column contains
+        The array of `events`. The first column contains the event time
+        in samples, with `first_samp` included. The third column contains
         the event id. If a path, must yield a ``.txt`` file containing the
         events.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
     event_id : int | list of int | dict | None
-        The id of the :term:`events` to consider. If dict, the keys can later be
-        used to access associated :term:`events`. Example:
+        The id of the `events` to consider. If dict, the keys can later be
+        used to access associated `events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
-        string. If a list, all :term:`events` with the IDs specified in the list
-        are used. If None, all :term:`events` will be used and a dict is created
+        string. If a list, all `events` with the IDs specified in the list
+        are used. If None, all `events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
     mrk : path-like | array of shape (5, 3) | list | None

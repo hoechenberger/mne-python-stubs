@@ -73,7 +73,7 @@ class SpectrumMixin:
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -87,8 +87,8 @@ class SpectrumMixin:
 
         method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `Epochs` or `Evoked` data.
         average : bool
             If False, the PSDs of all channels is displayed. No averaging
             is done and parameters area_mode and area_alpha are ignored. When
@@ -128,7 +128,7 @@ class SpectrumMixin:
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -147,8 +147,8 @@ class SpectrumMixin:
 
             ✨ Added in version 0.24.0
         ax : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
         show : bool
             Show the figure if ``True``.
         n_jobs : int | None
@@ -169,8 +169,8 @@ class SpectrumMixin:
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details.
 
         Returns
         -------
@@ -181,7 +181,7 @@ class SpectrumMixin:
         -----
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-        of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
+        of `Raw`, `Epochs`, or `Evoked`).
         """
         ...
 
@@ -224,8 +224,8 @@ class SpectrumMixin:
 
         method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `Epochs` or `Evoked` data.
         dB : bool
             Whether to plot on a decibel-like scale. If ``True``, plots
             10 × log₁₀(spectral power). Ignored if ``normalize=True``.
@@ -243,8 +243,8 @@ class SpectrumMixin:
             A matplotlib-compatible color to use for the axis background.
             Defaults to black.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single `matplotlib.axes.Axes` object).Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single `Axes` object).Default is ``None``.
         block : bool
             Whether to halt program execution until the figure is closed.
             May not work on all systems / platforms. Defaults to ``False``.
@@ -268,8 +268,8 @@ class SpectrumMixin:
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details. Defaults to ``dict(n_fft=2048)``.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details. Defaults to ``dict(n_fft=2048)``.
 
         Returns
         -------
@@ -333,8 +333,7 @@ class SpectrumMixin:
                          'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                          'Gamma (30-45 Hz)': (30, 45)}
 
-            💡
-               For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
+            💡 For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
                also accepted, where the last element of the tuple is the subplot title
                and the other entries are frequency values (a single value or band
                edges). New code should use `dict` or ``None``.
@@ -355,8 +354,8 @@ class SpectrumMixin:
 
         method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `Epochs` or `Evoked` data.
 
         normalize : bool
             If True, each band will be divided by the total power. Defaults to
@@ -372,7 +371,7 @@ class SpectrumMixin:
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -416,7 +415,7 @@ class SpectrumMixin:
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -471,7 +470,7 @@ class SpectrumMixin:
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -503,8 +502,8 @@ class SpectrumMixin:
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
         show : bool
             Show the figure if ``True``.
         n_jobs : int | None
@@ -525,8 +524,8 @@ class SpectrumMixin:
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details.
 
         Returns
         -------
@@ -600,7 +599,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -658,14 +657,14 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
 
             🎭 Changed in version 1.5
                 In version 1.5, the default behavior changed so that all
-                :term:`data channels` (not just "good" data channels) are shown
+                `data channels` (not just "good" data channels) are shown
                 by default.
         average : bool
             Whether to average across channels before plotting. If ``True``,
@@ -708,7 +707,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -727,8 +726,8 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
                 In version 1.5, the default behavior changed from
                 ``exclude='bads'`` to ``exclude=()``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
         show : bool
             Show the figure if ``True``.
 
@@ -773,8 +772,8 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             A matplotlib-compatible color to use for the axis background.
             Defaults to black.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single `matplotlib.axes.Axes` object).Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1 (for efficiency, subplots for each channel are simulated within a single `Axes` object).Default is ``None``.
         block : bool
             Whether to halt program execution until the figure is closed.
             May not work on all systems / platforms. Defaults to ``False``.
@@ -834,8 +833,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
                          'Alpha (8-12 Hz)': (8, 12), 'Beta (12-30 Hz)': (12, 30),
                          'Gamma (30-45 Hz)': (30, 45)}
 
-            💡
-               For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
+            💡 For backwards compatibility, `tuples<tuple>` of length 2 or 3 are
                also accepted, where the last element of the tuple is the subplot title
                and the other entries are frequency values (a single value or band
                edges). New code should use `dict` or ``None``.
@@ -861,7 +859,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -905,7 +903,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -960,7 +958,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -990,8 +988,8 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             If ``None`` the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
         show : bool
             Show the figure if ``True``.
 
@@ -1048,7 +1046,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1084,8 +1082,8 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         Notes
         -----
         Valid values for ``index`` depend on whether the Spectrum was created
-        from continuous data (`mne.io.Raw`, `mne.Evoked`) or
-        discontinuous data (`mne.Epochs`). For continuous data, only
+        from continuous data (`Raw`, `Evoked`) or
+        discontinuous data (`Epochs`). For continuous data, only
         ``None`` or ``'freq'`` is supported. For discontinuous data, additional
         valid values are ``'epoch'`` and ``'condition'``, or a `list`
         comprising some of the valid string values (e.g.,
@@ -1125,10 +1123,10 @@ class Spectrum(BaseSpectrum):
 
     method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
         Spectral estimation method. ``'welch'`` uses Welch's
-        method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-        tapers :footcite:p:`Slepian1978`.
+        method p:`Welch1967`, ``'multitaper'`` uses DPSS
+        tapers p:`Slepian1978`.
         ``'auto'`` (default) uses Welch's method for continuous data
-        and multitaper for `mne.Evoked` data.
+        and multitaper for `Evoked` data.
     fmin, fmax : float
         The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
     tmin, tmax : float | None
@@ -1140,7 +1138,7 @@ class Spectrum(BaseSpectrum):
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels (excluding reference
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
@@ -1177,8 +1175,8 @@ class Spectrum(BaseSpectrum):
         function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
         for Welch method, or
         ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-        method). See `mne.time_frequency.psd_array_welch` and
-        `mne.time_frequency.psd_array_multitaper` for details.
+        method). See `psd_array_welch` and
+        `psd_array_multitaper` for details.
 
     Attributes
     ----------
@@ -1248,11 +1246,9 @@ class Spectrum(BaseSpectrum):
           the first and third channels
         - ``spectrum[(4, 7)]`` is the same as ``spectrum[4, 7]``.
 
-        💡
-
-           Unlike `mne.io.Raw` objects (which returns a tuple of the
+        💡 Unlike `Raw` objects (which returns a tuple of the
            requested data values and the corresponding times), accessing
-           `mne.time_frequency.Spectrum` values via subscript does
+           `Spectrum` values via subscript does
            **not** return the corresponding frequency bin values. If you need
            them, use ``spectrum.freqs[freq_indices]``.
         """
@@ -1290,7 +1286,7 @@ class SpectrumArray(Spectrum):
 
     It is assumed that the data passed in represent spectral *power* (not amplitude,
     phase, model coefficients, etc) and downstream methods (such as
-    `mne.time_frequency.SpectrumArray.plot`) assume power data. If you pass in
+    `plot`) assume power data. If you pass in
     something other than power, at the very least axis labels will be inaccurate (and
     other things may also not work or be incorrect).
 
@@ -1313,8 +1309,8 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
 
     method : ``'welch'`` | ``'multitaper'``
         Spectral estimation method. ``'welch'`` uses Welch's
-        method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-        tapers :footcite:p:`Slepian1978`.
+        method p:`Welch1967`, ``'multitaper'`` uses DPSS
+        tapers p:`Slepian1978`.
     fmin, fmax : float
         The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
     tmin, tmax : float | None
@@ -1326,7 +1322,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels (excluding reference
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
@@ -1359,8 +1355,8 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
         for Welch method, or
         ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-        method). See `mne.time_frequency.psd_array_welch` and
-        `mne.time_frequency.psd_array_multitaper` for details.
+        method). See `psd_array_welch` and
+        `psd_array_multitaper` for details.
 
     Attributes
     ----------
@@ -1414,7 +1410,7 @@ class EpochsSpectrum(BaseSpectrum, GetEpochsMixin):
         Parameters
         ----------
         item : int | slice | array-like | str
-            Access options are the same as for `mne.Epochs` objects,
+            Access options are the same as for `Epochs` objects,
             see the docstring of `mne.Epochs.__getitem__` for
             explanation.
 
@@ -1457,18 +1453,18 @@ class EpochsSpectrumArray(EpochsSpectrum):
         The frequencies of interest in Hz.
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
     event_id : int | list of int | dict | None
-        The id of the :term:`events` to consider. If dict, the keys can later be
-        used to access associated :term:`events`. Example:
+        The id of the `events` to consider. If dict, the keys can later be
+        used to access associated `events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
-        string. If a list, all :term:`events` with the IDs specified in the list
-        are used. If None, all :term:`events` will be used and a dict is created
+        string. If a list, all `events` with the IDs specified in the list
+        are used. If None, all `events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
     verbose : bool | str | int | None
@@ -1488,7 +1484,7 @@ class EpochsSpectrumArray(EpochsSpectrum):
 
     It is assumed that the data passed in represent spectral *power* (not amplitude,
     phase, model coefficients, etc) and downstream methods (such as
-    `mne.time_frequency.SpectrumArray.plot`) assume power data. If you pass in
+    `plot`) assume power data. If you pass in
     something other than power, at the very least axis labels will be inaccurate (and
     other things may also not work or be incorrect).
 

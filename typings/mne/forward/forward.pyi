@@ -48,8 +48,7 @@ class Forward(dict):
     Like `mne.Info`, this data structure behaves like a dictionary.
     It contains all metadata necessary for a forward solution.
 
-    ⛔️
-        This class should not be modified or created by users.
+    ⛔️ This class should not be modified or created by users.
         Forward objects should be obtained using
         `mne.make_forward_solution` or `mne.read_forward_solution`.
 
@@ -90,10 +89,10 @@ class Forward(dict):
                 The channel names.
         mri_head_t : instance of Transform
             The mri ↔ head transformation that was used.
-        info : instance of `mne.Info`
+        info : instance of `Info`
             The measurement information (with contents reduced compared to that
             of the original data).
-        src : instance of `mne.SourceSpaces`
+        src : instance of `SourceSpaces`
             The source space used during forward computation. This can differ
             from the original source space as:
 
@@ -444,7 +443,7 @@ def compute_depth_prior(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`

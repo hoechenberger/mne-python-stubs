@@ -41,7 +41,7 @@ def project_sensors_onto_brain(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick only ``ecog`` channels.
     n_neighbors : int
         The number of neighbors to use to compute the normal vectors

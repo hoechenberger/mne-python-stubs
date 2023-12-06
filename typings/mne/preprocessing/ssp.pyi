@@ -50,9 +50,9 @@ def compute_proj_ecg(
 
     #. Filter the raw data.
 
-    #. Create `mne.Epochs` around the R wave peaks, capturing the heartbeats.
+    #. Create `Epochs` around the R wave peaks, capturing the heartbeats.
 
-    #. Optionally average the `mne.Epochs` to produce an `mne.Evoked` if
+    #. Optionally average the `Epochs` to produce an `Evoked` if
        ``average=True`` was passed (default).
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.
@@ -205,9 +205,9 @@ def compute_proj_eog(
 
     #. Filter the raw data.
 
-    #. Create `mne.Epochs` around the eyeblinks.
+    #. Create `Epochs` around the eyeblinks.
 
-    #. Optionally average the `mne.Epochs` to produce an `mne.Evoked` if
+    #. Optionally average the `Epochs` to produce an `Evoked` if
        ``average=True`` was passed (default).
 
     #. Calculate SSP projection vectors on that data to capture the artifacts.

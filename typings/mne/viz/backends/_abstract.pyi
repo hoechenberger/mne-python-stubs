@@ -6,8 +6,7 @@ from abc import ABC, abstractmethod
 class Figure3D(ABC):
     """Class that refers to a 3D figure.
 
-    💡
-        This class should not be instantiated directly via
+    💡 This class should not be instantiated directly via
         ``mne.viz.Figure3D(...)``. Instead, use
         `mne.viz.create_3d_figure`.
 

@@ -34,8 +34,7 @@ from _typeshed import Incomplete
 class Covariance(dict):
     """Noise covariance matrix.
 
-    💡
-        This class should not be instantiated directly via
+    💡 This class should not be instantiated directly via
         ``mne.Covariance(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
@@ -294,7 +293,7 @@ class Covariance(dict):
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -338,7 +337,7 @@ class Covariance(dict):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -401,7 +400,7 @@ class Covariance(dict):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -433,8 +432,8 @@ class Covariance(dict):
             If ``None`` and ``scalings=None`` the unit is automatically determined, otherwise the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1.Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must be length 1.Default is ``None``.
         show : bool
             Show the figure if ``True``.
 
@@ -610,7 +609,7 @@ def compute_raw_covariance(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels (excluding reference
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
@@ -678,7 +677,7 @@ def compute_raw_covariance(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -800,7 +799,7 @@ def compute_covariance(
         perform estimates using multiple methods.
         If 'auto' or a list of methods, the best estimator will be determined
         based on log-likelihood and cross-validation on unseen data as
-        described in :footcite:`EngemannGramfort2015`. Valid methods are
+        described in `EngemannGramfort2015`. Valid methods are
         'empirical', 'diagonal_fixed', 'shrunk', 'oas', 'ledoit_wolf',
         'factor_analysis', 'shrinkage', and 'pca' (see Notes). If ``'auto'``,
         it expands to::
@@ -872,7 +871,7 @@ def compute_covariance(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -940,18 +939,18 @@ def compute_covariance(
       ✨ Added in version 0.16
     * ``'ledoit_wolf'``
         The Ledoit-Wolf estimator, which uses an
-        empirical formula for the optimal shrinkage value :footcite:`LedoitWolf2004`.
+        empirical formula for the optimal shrinkage value `LedoitWolf2004`.
     * ``'oas'``
-        The OAS estimator :footcite:`ChenEtAl2010`, which uses a different
+        The OAS estimator `ChenEtAl2010`, which uses a different
         empricial formula for the optimal shrinkage value.
 
       ✨ Added in version 0.16
     * ``'shrunk'``
         Like 'ledoit_wolf', but with cross-validation for optimal alpha.
     * ``'pca'``
-        Probabilistic PCA with low rank :footcite:`TippingBishop1999`.
+        Probabilistic PCA with low rank `TippingBishop1999`.
     * ``'factor_analysis'``
-        Factor analysis with low rank :footcite:`Barber2012`.
+        Factor analysis with low rank `Barber2012`.
 
     ``'ledoit_wolf'`` and ``'pca'`` are similar to ``'shrunk'`` and
     ``'factor_analysis'``, respectively, except that they use
@@ -969,7 +968,7 @@ def compute_covariance(
     The ``method`` parameter allows to regularize the covariance in an
     automated way. It also allows to select between different alternative
     estimation algorithms which themselves achieve regularization.
-    Details are described in :footcite:t:`EngemannGramfort2015`.
+    Details are described in t:`EngemannGramfort2015`.
 
     For more information on the advanced estimation methods, see
     `the sklearn manual <sklearn:covariance>`.
@@ -1130,7 +1129,7 @@ def prepare_noise_cov(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -1279,7 +1278,7 @@ def regularize(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -1358,7 +1357,7 @@ def compute_whitener(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels (excluding reference
         MEG channels). Note that channels in ``info['bads']`` *will be included* if
         their names or indices are explicitly provided.
@@ -1383,7 +1382,7 @@ def compute_whitener(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -1477,7 +1476,7 @@ def whiten_evoked(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -1504,7 +1503,7 @@ def whiten_evoked(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`

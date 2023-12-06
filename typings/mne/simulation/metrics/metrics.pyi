@@ -102,11 +102,11 @@ def region_localization_error(
 
     Notes
     -----
-    Papers :footcite:`MaksymenkoEtAl2017` and :footcite:`BeckerEtAl2017`
+    Papers `MaksymenkoEtAl2017` and `BeckerEtAl2017`
     use term Dipole Localization Error (DLE) for the same formula. Paper
-    :footcite:`YaoEtAl2005` uses term Error Distance (ED) for the same formula.
+    `YaoEtAl2005` uses term Error Distance (ED) for the same formula.
     To unify the terminology and to avoid confusion with other cases
-    of using term DLE but for different metric :footcite:`MolinsEtAl2008`, we
+    of using term DLE but for different metric `MolinsEtAl2008`, we
     use term Region Localization Error (RLE).
 
     ✨ Added in version 1.2
@@ -332,8 +332,8 @@ def peak_position_error(
 
     Notes
     -----
-    These metrics are documented in :footcite:`StenroosHauk2013` and
-    :footcite:`LinEtAl2006a`.
+    These metrics are documented in `StenroosHauk2013` and
+    `LinEtAl2006a`.
 
     ✨ Added in version 1.2
 
@@ -391,8 +391,8 @@ def spatial_deviation_error(
 
     Notes
     -----
-    These metrics are documented in :footcite:`StenroosHauk2013` and
-    :footcite:`LinEtAl2006a`.
+    These metrics are documented in `StenroosHauk2013` and
+    `LinEtAl2006a`.
 
     ✨ Added in version 1.2
 

@@ -174,7 +174,7 @@ def create_ecg_epochs(
 
     #. Find ECG R wave peaks using `mne.preprocessing.find_ecg_events`.
 
-    #. Create `mne.Epochs` around the R wave peaks, capturing the heartbeats.
+    #. Create `Epochs` around the R wave peaks, capturing the heartbeats.
 
     💡 Filtering is only applied to the ECG channel while finding
                 events. The resulting ``ecg_epochs`` will have no filtering
@@ -200,7 +200,7 @@ def create_ecg_epochs(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -316,8 +316,8 @@ def create_ecg_epochs(
     -----
     If you already have a list of R-peak times, or want to compute R-peaks
     outside MNE-Python using a different algorithm, the recommended approach is
-    to call the `mne.Epochs` constructor directly, with your R-peaks
-    formatted as an :term:`events` array (here we also demonstrate the relevant
+    to call the `Epochs` constructor directly, with your R-peaks
+    formatted as an `events` array (here we also demonstrate the relevant
     default values)::
 
         mne.Epochs(raw, r_peak_events_array, tmin=-0.5, tmax=0.5,

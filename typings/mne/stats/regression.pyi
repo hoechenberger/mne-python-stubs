@@ -66,7 +66,7 @@ def linear_regression_raw(
     Internally, this constructs a predictor matrix X of size
     n_samples * (n_conds * window length), solving the linear system
     ``Y = bX`` and returning ``b`` as evoked-like time series split by
-    condition. See :footcite:`SmithKutas2015`.
+    condition. See `SmithKutas2015`.
 
     Parameters
     ----------
@@ -131,7 +131,7 @@ def linear_regression_raw(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.

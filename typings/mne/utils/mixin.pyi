@@ -52,11 +52,11 @@ class GetEpochsMixin:
         -----
         Epochs can be accessed as ``epochs[...]`` in several ways:
 
-        1. **Integer or slice:** ``epochs[idx]`` will return an `mne.Epochs`
+        1. **Integer or slice:** ``epochs[idx]`` will return an `Epochs`
            object with a subset of epochs chosen by index (supports single
            index and Python-style slicing).
 
-        2. **String:** ``epochs['name']`` will return an `mne.Epochs` object
+        2. **String:** ``epochs['name']`` will return an `Epochs` object
            comprising only the epochs labeled ``'name'`` (i.e., epochs created
            around events with the label ``'name'``).
 
@@ -76,7 +76,7 @@ class GetEpochsMixin:
            treated the same way when selecting via tag.
 
         3. **List of strings:** ``epochs[['name_1', 'name_2', ... ]]`` will
-           return an `mne.Epochs` object comprising epochs that match *any* of
+           return an `Epochs` object comprising epochs that match *any* of
            the provided names (i.e., the list of names is treated as an
            inclusive-or condition). If *none* of the provided names match any
            epoch labels, a ``KeyError`` will be raised.
@@ -88,7 +88,7 @@ class GetEpochsMixin:
            ``'visual/right'``.
 
         4. **Pandas query:** ``epochs['pandas query']`` will return an
-           `mne.Epochs` object with a subset of epochs (and matching
+           `Epochs` object with a subset of epochs (and matching
            metadata) selected by the query called with
            ``self.metadata.eval``, e.g.::
 
@@ -292,8 +292,8 @@ class ExtendedTimeMixin(TimeMixin):
         For historical reasons, ``decim`` / "decimation" refers to simply subselecting
         samples from a given signal. This contrasts with the broader signal processing
         literature, where decimation is defined as (quoting
-        :footcite:`OppenheimEtAl1999`, p. 172; which cites
-        :footcite:`CrochiereRabiner1983`):
+        `OppenheimEtAl1999`, p. 172; which cites
+        `CrochiereRabiner1983`):
 
             "... a general system for downsampling by a factor of M is the one shown
             in Figure 4.23. Such a system is called a decimator, and downsampling

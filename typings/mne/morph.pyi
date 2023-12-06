@@ -34,9 +34,9 @@ def compute_source_morph(
     """Create a SourceMorph from one subject to another.
 
     Method is based on spherical morphing by FreeSurfer for surface
-    cortical estimates :footcite:`GreveEtAl2013` and
+    cortical estimates `GreveEtAl2013` and
     Symmetric Diffeomorphic Registration for volumic data
-    :footcite:`AvantsEtAl2008`.
+    `AvantsEtAl2008`.
 
     Parameters
     ----------
@@ -154,7 +154,7 @@ def compute_source_morph(
     obtained as described `here
     <https://surfer.nmr.mgh.harvard.edu/fswiki/Xhemi>`_. For statistical
     comparisons between hemispheres, use of the symmetric ``fsaverage_sym``
-    model is recommended to minimize bias :footcite:`GreveEtAl2013`.
+    model is recommended to minimize bias `GreveEtAl2013`.
 
     ✨ Added in version 0.17.0
 
@@ -170,8 +170,7 @@ def compute_source_morph(
 class SourceMorph:
     """Morph source space data from one subject to another.
 
-    💡
-        This class should not be instantiated directly via
+    💡 This class should not be instantiated directly via
         ``mne.SourceMorph(...)``. Instead, use one of the functions
         listed in the See Also section below.
 
@@ -196,7 +195,7 @@ class SourceMorph:
         Number of levels (``len(niter_sdr)``) and number of
         iterations per level - for each successive stage of iterative
         refinement - to perform the Symmetric Diffeomorphic Registration (sdr)
-        transform :footcite:`AvantsEtAl2008`.
+        transform `AvantsEtAl2008`.
     spacing : int | list | None
         See `mne.compute_source_morph`.
     smooth : int | str | None
@@ -205,7 +204,7 @@ class SourceMorph:
         Morph across hemisphere.
     morph_mat : scipy.sparse.csr_matrix
         The sparse surface morphing matrix for spherical surface
-        based morphing :footcite:`GreveEtAl2013`.
+        based morphing `GreveEtAl2013`.
     vertices_to : list of ndarray
         The destination surface vertices.
     shape : tuple

@@ -18,14 +18,14 @@ from .utils import (
 from _typeshed import Incomplete
 
 def pick_events(events, include=None, exclude=None, step: bool = False):
-    """Select some :term:`events`.
+    """Select some `events`.
 
     Parameters
     ----------
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
     include : int | list | None
         A event id to include or a list of them.
@@ -96,7 +96,7 @@ def read_events(
     return_event_id: bool = False,
     verbose=None,
 ):
-    """Read :term:`events` from fif or text file.
+    """Read `events` from fif or text file.
 
     See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
@@ -141,8 +141,8 @@ def read_events(
     -------
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
     event_id : dict
         Dictionary of ``{str: int}`` mappings of event IDs.
@@ -162,7 +162,7 @@ def read_events(
     ...
 
 def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> None:
-    """Write :term:`events` to file.
+    """Write `events` to file.
 
     Parameters
     ----------
@@ -175,8 +175,8 @@ def write_events(filename, events, *, overwrite: bool = False, verbose=None) -> 
         the ``"time"`` column (used to be the second column).
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
 
     overwrite : bool
@@ -249,7 +249,7 @@ def find_events(
     initial_event: bool = False,
     verbose=None,
 ):
-    """Find :term:`events` from raw file.
+    """Find `events` from raw file.
 
     See `tut-events-vs-annotations` and `tut-event-arrays`
     for more information about events.
@@ -315,8 +315,8 @@ def find_events(
     -------
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
 
     See Also
@@ -407,7 +407,7 @@ def find_events(
     ...
 
 def merge_events(events, ids, new_id, replace_events: bool = True):
-    """Merge a set of :term:`events`.
+    """Merge a set of `events`.
 
     Parameters
     ----------
@@ -454,14 +454,14 @@ def merge_events(events, ids, new_id, replace_events: bool = True):
     ...
 
 def shift_time_events(events, ids, tshift, sfreq):
-    """Shift a set of :term:`events`.
+    """Shift a set of `events`.
 
     Parameters
     ----------
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
     ids : ndarray of int | None
         The ids of events to shift.
@@ -487,7 +487,7 @@ def make_fixed_length_events(
     first_samp: bool = True,
     overlap: float = 0.0,
 ):
-    """Make a set of :term:`events` separated by a fixed duration.
+    """Make a set of `events` separated by a fixed duration.
 
     Parameters
     ----------
@@ -503,10 +503,10 @@ def make_fixed_length_events(
     duration : float
         The duration to separate events by (in seconds).
     first_samp : bool
-        If True (default), times will have :term:`first_samp` added to them, as
+        If True (default), times will have `first_samp` added to them, as
         in `mne.find_events`. This behavior is not desirable if the
         returned events will be combined with event times that already
-        have :term:`first_samp` added to them, e.g. event times that come
+        have `first_samp` added to them, e.g. event times that come
         from `mne.find_events`.
     overlap : float
         The overlap between events (in seconds).
@@ -518,8 +518,8 @@ def make_fixed_length_events(
     -------
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
     """
     ...
@@ -534,7 +534,7 @@ def concatenate_events(events, first_samps, last_samps):
     Parameters
     ----------
     events : list of array
-        List of :term:`events` arrays, typically each extracted from a
+        List of `events` arrays, typically each extracted from a
         corresponding raw file that is being concatenated.
     first_samps : list or array of int
         First sample numbers of the raw files concatenated.

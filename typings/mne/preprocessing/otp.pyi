@@ -17,7 +17,7 @@ def oversampled_temporal_projection(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -40,7 +40,7 @@ def oversampled_temporal_projection(
     leave-one-out procedure with parallel temporal projection to remove
     individual sensor noise under the assumption that sampled fields
     (e.g., MEG and EEG) are oversampled by the sensor array
-    :footcite:`LarsonTaulu2018`.
+    `LarsonTaulu2018`.
 
     OTP can improve sensor noise levels (especially under visual
     inspection) and repair some bad channels. This noise reduction is known

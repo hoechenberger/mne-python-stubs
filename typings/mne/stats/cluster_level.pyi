@@ -62,7 +62,7 @@ def permutation_cluster_test(
     should contain the data for one group of observations (e.g., 2D arrays for
     time series, 3D arrays for time-frequency power values). Permutations are
     generated with random partitions of the data. For details, see
-    :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
+    p:`MarisOostenveld2007,Sassenhagen2019`.
 
     Parameters
     ----------
@@ -88,7 +88,7 @@ def permutation_cluster_test(
         observations (only valid when using an F-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and `SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -134,7 +134,7 @@ def permutation_cluster_test(
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -243,7 +243,7 @@ def permutation_cluster_1samp_test(
 ):
     """Non-parametric cluster-level paired t-test.
 
-    For details, see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
+    For details, see p:`MarisOostenveld2007,Sassenhagen2019`.
 
     Parameters
     ----------
@@ -264,7 +264,7 @@ def permutation_cluster_1samp_test(
         observations (only valid when using a t-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and `SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -311,7 +311,7 @@ def permutation_cluster_1samp_test(
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -390,7 +390,7 @@ def permutation_cluster_1samp_test(
     distributions in the two conditions are significantly different.
     The procedure uses a cluster analysis with permutation test
     for calculating corrected p-values. Randomized data are generated with
-    random sign flips. See :footcite:`MarisOostenveld2007` for more
+    random sign flips. See `MarisOostenveld2007` for more
     information.
 
     Because a 1-sample t-test on the difference in observations is
@@ -450,7 +450,7 @@ def spatio_temporal_cluster_1samp_test(
     organized in the form (observations × time × space),
     (observations × frequencies × space), or optionally
     (observations × time × frequencies × space). For details, see
-    :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
+    p:`MarisOostenveld2007,Sassenhagen2019`.
 
     Parameters
     ----------
@@ -469,7 +469,7 @@ def spatio_temporal_cluster_1samp_test(
         observations (only valid when using a t-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and `SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -516,7 +516,7 @@ def spatio_temporal_cluster_1samp_test(
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -629,7 +629,7 @@ def spatio_temporal_cluster_test(
     organized in the form (observations × time × space),
     (observations × time × space), or optionally
     (observations × time × frequencies × space). For more information,
-    see :footcite:p:`MarisOostenveld2007,Sassenhagen2019`.
+    see p:`MarisOostenveld2007,Sassenhagen2019`.
 
     Parameters
     ----------
@@ -650,7 +650,7 @@ def spatio_temporal_cluster_test(
         observations (only valid when using an F-statistic). If ``threshold`` is a
         `dict` (with keys ``'start'`` and ``'step'``) then threshold-free
         cluster enhancement (TFCE) will be used (see the
-        `TFCE example <tfce_example>` and :footcite:`SmithNichols2009`).
+        `TFCE example <tfce_example>` and `SmithNichols2009`).
         See Notes for an example on how to compute a threshold based on
         a particular p-value for one-tailed or two-tailed tests.
 
@@ -696,7 +696,7 @@ def spatio_temporal_cluster_test(
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.

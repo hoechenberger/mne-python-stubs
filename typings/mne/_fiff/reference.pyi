@@ -39,8 +39,7 @@ def add_reference_channels(inst, ref_channels, copy: bool = True):
 
     Notes
     -----
-    ⛔️
-        When `re-referencing <tut-set-eeg-ref>`,
+    ⛔️ When `re-referencing <tut-set-eeg-ref>`,
         make sure to apply the montage using `mne.io.Raw.set_montage`
         only after calling this function. Applying a montage will only set
         locations of channels that exist at the time it is applied.
@@ -80,7 +79,7 @@ def set_eeg_reference(
         - The name(s) of the channel(s) used to construct the reference.
         - ``'average'`` to apply an average reference (default)
         - ``'REST'`` to use the Reference Electrode Standardization Technique
-          infinity reference :footcite:`Yao2001`.
+          infinity reference `Yao2001`.
         - An empty list, in which case MNE will not attempt any re-referencing of
           the data
     copy : bool

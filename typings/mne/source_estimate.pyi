@@ -119,7 +119,7 @@ class _BaseSourceEstimate(TimeMixin):
 
         labels : Label | BiHemiLabel | list | tuple | str
             If using a surface or mixed source space, this should be the
-            `mne.Label`'s for which to extract the time course.
+            `Label`'s for which to extract the time course.
             If working with whole-brain volume source estimates, this must be one of:
 
             - a string path to a FreeSurfer atlas for the subject (e.g., their
@@ -470,7 +470,7 @@ class _BaseSourceEstimate(TimeMixin):
                 space resolution, which is often something like 7 or 5 mm,
                 without resampling.
             - ``'blending'`` : str
-                Can be "mip" (default) for :term:`maximum intensity projection` or
+                Can be "mip" (default) for `maximum intensity projection` or
                 "composite" for composite blending using alpha values.
             - ``'alpha'`` : float | None
                 Alpha for the volumetric rendering. Defaults are 0.4 for vector source
@@ -1190,7 +1190,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
 
         This function should only be used with source estimates with units
         nanoAmperes (i.e., MNE-like solutions, *not* dSPM or sLORETA).
-        See also :footcite:`GoldenholzEtAl2009`.
+        See also `GoldenholzEtAl2009`.
 
         ⛔️ This function currently only works properly for fixed
                      orientation.
@@ -1248,7 +1248,7 @@ class SourceEstimate(_BaseSurfaceSourceEstimate):
         """Compute the center of mass of activity.
 
         This function computes the spatial center of mass on the surface
-        as well as the temporal center of mass as in :footcite:`LarsonLee2013`.
+        as well as the temporal center of mass as in `LarsonLee2013`.
 
         💡 All activity must occur in a single hemisphere, otherwise
                   an error is raised. The "mass" of each point in space for
@@ -1335,7 +1335,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
             - ``'pca'``
                 SVD will be used to project onto the direction of maximal
                 power for each source.
-            - `numpy.ndarray`, shape (n_vertices, 3)
+            - `ndarray`, shape (n_vertices, 3)
                 Projection directions for each source.
         src : instance of SourceSpaces | None
             The source spaces corresponding to the source estimate.
@@ -1522,7 +1522,7 @@ class _BaseVectorSourceEstimate(_BaseSourceEstimate):
                 space resolution, which is often something like 7 or 5 mm,
                 without resampling.
             - ``'blending'`` : str
-                Can be "mip" (default) for :term:`maximum intensity projection` or
+                Can be "mip" (default) for `maximum intensity projection` or
                 "composite" for composite blending using alpha values.
             - ``'alpha'`` : float | None
                 Alpha for the volumetric rendering. Defaults are 0.4 for vector source
@@ -1758,7 +1758,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
                 space resolution, which is often something like 7 or 5 mm,
                 without resampling.
             - ``'blending'`` : str
-                Can be "mip" (default) for :term:`maximum intensity projection` or
+                Can be "mip" (default) for `maximum intensity projection` or
                 "composite" for composite blending using alpha values.
             - ``'alpha'`` : float | None
                 Alpha for the volumetric rendering. Defaults are 0.4 for vector source
@@ -1836,7 +1836,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
             a new subject (see Examples).
 
             🎭 Changed in version 0.18
-               Support for `nibabel.spatialimages.SpatialImage`.
+               Support for `SpatialImage`.
 
         subject : str | None
             The FreeSurfer subject name.
@@ -1961,7 +1961,7 @@ class _BaseVolSourceEstimate(_BaseSourceEstimate):
 
         labels : Label | BiHemiLabel | list | tuple | str
             If using a surface or mixed source space, this should be the
-            `mne.Label`'s for which to extract the time course.
+            `Label`'s for which to extract the time course.
             If working with whole-brain volume source estimates, this must be one of:
 
             - a string path to a FreeSurfer atlas for the subject (e.g., their
@@ -2485,7 +2485,7 @@ class VolVectorSourceEstimate(_BaseVolSourceEstimate, _BaseVectorSourceEstimate)
                 space resolution, which is often something like 7 or 5 mm,
                 without resampling.
             - ``'blending'`` : str
-                Can be "mip" (default) for :term:`maximum intensity projection` or
+                Can be "mip" (default) for `maximum intensity projection` or
                 "composite" for composite blending using alpha values.
             - ``'alpha'`` : float | None
                 Alpha for the volumetric rendering. Defaults are 0.4 for vector source
@@ -2970,7 +2970,7 @@ def extract_label_time_course(
 
     labels : Label | BiHemiLabel | list | tuple | str
         If using a surface or mixed source space, this should be the
-        `mne.Label`'s for which to extract the time course.
+        `Label`'s for which to extract the time course.
         If working with whole-brain volume source estimates, this must be one of:
 
         - a string path to a FreeSurfer atlas for the subject (e.g., their
@@ -3130,7 +3130,7 @@ def stc_near_sensors(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good sEEG, ECoG, and DBS channels.
 
         ✨ Added in version 0.24

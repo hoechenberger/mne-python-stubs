@@ -25,7 +25,7 @@ def gamma_map(
     Models each source time course using a zero-mean Gaussian prior with an
     unknown variance (gamma) parameter. During estimation, most gammas are
     driven to zero, resulting in a sparse source estimate, as in
-    :footcite:`WipfEtAl2007` and :footcite:`WipfNagarajan2009`.
+    `WipfEtAl2007` and `WipfNagarajan2009`.
 
     For fixed-orientation forward operators, a separate gamma is used for each
     source time course, while for free-orientation forward operators, the same
@@ -106,7 +106,7 @@ def gamma_map(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`

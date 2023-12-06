@@ -19,7 +19,7 @@ def psd_array_welch(
 ):
     """Compute power spectral density (PSD) using Welch's method.
 
-    Welch's method is described in :footcite:t:`Welch1967`.
+    Welch's method is described in t:`Welch1967`.
 
     Parameters
     ----------

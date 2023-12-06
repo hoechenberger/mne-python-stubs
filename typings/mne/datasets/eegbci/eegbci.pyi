@@ -8,8 +8,8 @@ def data_path(
     """Get path to local copy of EEGMMI dataset URL.
 
     This is a low-level function useful for getting a local copy of a remote EEGBCI
-    dataset :footcite:`SchalkEtAl2004`, which is also available at PhysioNet
-    :footcite:`GoldbergerEtAl2000`.
+    dataset `SchalkEtAl2004`, which is also available at PhysioNet
+    `GoldbergerEtAl2000`.
 
     Parameters
     ----------
@@ -18,7 +18,7 @@ def data_path(
     path : None | path-like
         Location of where to look for the EEGBCI data. If ``None``, the environment
         variable or config parameter ``MNE_DATASETS_EEGBCI_PATH`` is used. If neither
-        exists, the ``/mne_data`` directory is used. If the EEGBCI dataset is not found
+        exists, the ``~/mne_data`` directory is used. If the EEGBCI dataset is not found
         under the given path, the data will be automatically downloaded to the specified
         folder.
     force_update : bool
@@ -47,7 +47,7 @@ def data_path(
         >>> url = "http://www.physionet.org/physiobank/database/eegmmidb/"
         >>> eegbci.data_path(url, "~/datasets") # doctest:+SKIP
 
-    This would download the given EEGBCI data file to the ``/datasets`` folder and
+    This would download the given EEGBCI data file to the ``~/datasets`` folder and
     prompt the user to store this path in the config (if it does not already exist).
 
     References
@@ -67,8 +67,8 @@ def load_data(
 ):
     """Get paths to local copies of EEGBCI dataset files.
 
-    This will fetch data for the EEGBCI dataset :footcite:`SchalkEtAl2004`, which is
-    also available at PhysioNet :footcite:`GoldbergerEtAl2000`.
+    This will fetch data for the EEGBCI dataset `SchalkEtAl2004`, which is
+    also available at PhysioNet `GoldbergerEtAl2000`.
 
     Parameters
     ----------
@@ -79,7 +79,7 @@ def load_data(
     path : None | path-like
         Location of where to look for the EEGBCI data. If ``None``, the environment
         variable or config parameter ``MNE_DATASETS_EEGBCI_PATH`` is used. If neither
-        exists, the ``/mne_data`` directory is used. If the EEGBCI dataset is not found
+        exists, the ``~/mne_data`` directory is used. If the EEGBCI dataset is not found
         under the given path, the data will be automatically downloaded to the specified
         folder.
     force_update : bool

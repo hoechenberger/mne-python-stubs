@@ -143,9 +143,9 @@ def construct_iir_filter(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        `scipy.signal.filtfilt`.
+        `filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        `scipy.signal.lfilter`.
+        `lfilter`.
 
         ✨ Added in version 0.13
 
@@ -297,7 +297,7 @@ def filter_data(
 
     method : str
         ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-        forward-backward filtering (via `scipy.signal.filtfilt`).
+        forward-backward filtering (via `filtfilt`).
 
     iir_params : dict | None
         Dictionary of parameters to use for IIR filtering.
@@ -319,9 +319,9 @@ def filter_data(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        `scipy.signal.filtfilt`.
+        `filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        `scipy.signal.lfilter`.
+        `lfilter`.
 
         ✨ Added in version 0.13
 
@@ -469,7 +469,7 @@ def create_filter(
 
     method : str
         ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-        forward-backward filtering (via `scipy.signal.filtfilt`).
+        forward-backward filtering (via `filtfilt`).
 
     iir_params : dict | None
         Dictionary of parameters to use for IIR filtering.
@@ -488,9 +488,9 @@ def create_filter(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        `scipy.signal.filtfilt`.
+        `filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        `scipy.signal.lfilter`.
+        `lfilter`.
 
         ✨ Added in version 0.13
 
@@ -671,7 +671,7 @@ def notch_filter(
 
     method : str
         ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-        forward-backward filtering (via `scipy.signal.filtfilt`).
+        forward-backward filtering (via `filtfilt`).
         'spectrum_fit' will use multi-taper estimation of sinusoidal
         components. If freqs=None and method='spectrum_fit', significant
         sinusoidal components are detected using an F test, and noted by
@@ -714,9 +714,9 @@ def notch_filter(
         When ``method='iir'``, ``phase='zero'`` (default) or
         ``phase='zero-double'`` constructs and applies IIR filter twice, once
         forward, and once backward (making it non-causal) using
-        `scipy.signal.filtfilt`.
+        `filtfilt`.
         If ``phase='forward'``, it constructs and applies forward IIR filter using
-        `scipy.signal.lfilter`.
+        `lfilter`.
 
         ✨ Added in version 0.13
 
@@ -900,7 +900,7 @@ class FilterMixin:
         h_freq : float
             Approximate high cut-off frequency in Hz. Note that this
             is not an exact cutoff, since Savitzky-Golay filtering
-            :footcite:`SavitzkyGolay1964` is done using polynomial fits
+            `SavitzkyGolay1964` is done using polynomial fits
             instead of FIR/IIR filtering. This parameter is thus used to
             determine the length of the window over which a 5th-order
             polynomial smoothing is used.
@@ -979,7 +979,7 @@ class FilterMixin:
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1023,7 +1023,7 @@ class FilterMixin:
 
         method : str
             ``'fir'`` will use overlap-add FIR filtering, ``'iir'`` will use IIR
-            forward-backward filtering (via `scipy.signal.filtfilt`).
+            forward-backward filtering (via `filtfilt`).
 
         iir_params : dict | None
             Dictionary of parameters to use for IIR filtering.
@@ -1042,9 +1042,9 @@ class FilterMixin:
             When ``method='iir'``, ``phase='zero'`` (default) or
             ``phase='zero-double'`` constructs and applies IIR filter twice, once
             forward, and once backward (making it non-causal) using
-            `scipy.signal.filtfilt`.
+            `filtfilt`.
             If ``phase='forward'``, it constructs and applies forward IIR filter using
-            `scipy.signal.lfilter`.
+            `lfilter`.
 
             ✨ Added in version 0.13
 
@@ -1220,7 +1220,7 @@ class FilterMixin:
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.

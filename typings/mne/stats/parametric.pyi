@@ -3,7 +3,7 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
 
     This is a modified version of `scipy.stats.ttest_1samp` that avoids
     a (relatively) time-consuming p-value calculation, and can adjust
-    for implausibly small variance values :footcite:`RidgwayEtAl2012`.
+    for implausibly small variance values `RidgwayEtAl2012`.
 
     Parameters
     ----------
@@ -24,7 +24,7 @@ def ttest_1samp_no_p(X, sigma: int = 0, method: str = "relative"):
 
     Notes
     -----
-    To use the "hat" adjustment method :footcite:`RidgwayEtAl2012`, a value
+    To use the "hat" adjustment method `RidgwayEtAl2012`, a value
     of ``sigma=1e-3`` may be a reasonable choice.
 
     References
@@ -38,7 +38,7 @@ def ttest_ind_no_p(a, b, equal_var: bool = True, sigma: float = 0.0):
 
     This is a modified version of `scipy.stats.ttest_ind`. It operates
     along the first axis. The ``sigma`` parameter provides an optional "hat"
-    adjustment (see `ttest_1samp_no_p` and :footcite:`RidgwayEtAl2012`).
+    adjustment (see `ttest_1samp_no_p` and `RidgwayEtAl2012`).
 
     Parameters
     ----------
@@ -67,7 +67,7 @@ def f_oneway(*args):
 
     The one-way ANOVA tests the null hypothesis that 2 or more groups have
     the same population mean. The test is applied to samples from two or
-    more groups, possibly with differing sizes :footcite:`Lowry2014`.
+    more groups, possibly with differing sizes `Lowry2014`.
 
     This is a modified version of `scipy.stats.f_oneway` that avoids
     computing the associated p-value.
@@ -96,7 +96,7 @@ def f_oneway(*args):
     possible to use the Kruskal-Wallis H-test (`scipy.stats.kruskal`)
     although with some loss of power.
 
-    The algorithm is from Heiman :footcite:`Heiman2002`, pp.394-7.
+    The algorithm is from Heiman `Heiman2002`, pp.394-7.
 
     References
     ----------

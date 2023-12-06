@@ -446,7 +446,7 @@ class Coregistration:
     - translation are in m
     - scale are in scale proportion
 
-    If using a scale mode, the `mne.scale_mri` should be used
+    If using a scale mode, the `scale_mri` should be used
     to create a surrogate MRI subject with the proper scale factors.
     """
 
@@ -678,7 +678,7 @@ class Coregistration:
 
     @property
     def trans(self):
-        """The head->mri `mne.transforms.Transform`."""
+        """The head->mri `Transform`."""
         ...
 
     def reset(self):

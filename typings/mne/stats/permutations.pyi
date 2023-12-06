@@ -13,7 +13,7 @@ def permutation_t_test(
     adjusts p-values in a way that controls the family-wise error rate.
     However, the permutation method will be more
     powerful than Bonferroni correction when different variables in the test
-    are correlated (see :footcite:`NicholsHolmes2002`).
+    are correlated (see `NicholsHolmes2002`).
 
     Parameters
     ----------
@@ -41,7 +41,7 @@ def permutation_t_test(
     seed : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.

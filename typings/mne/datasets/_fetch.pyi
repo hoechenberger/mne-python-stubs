@@ -39,7 +39,7 @@ def fetch_dataset(
         ``dataset_params['config_key']`` is defined, and if so, whether that
         config key exists in the MNE-Python config file. If so, the configured
         path is used; if not, the location is set to the value of the
-        ``MNE_DATA`` config key (if it exists), or ``/mne_data`` otherwise.
+        ``MNE_DATA`` config key (if it exists), or ``~/mne_data`` otherwise.
     force_update : bool
         Force update of the dataset even if a local copy exists.
         Default is False.

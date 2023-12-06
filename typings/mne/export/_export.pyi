@@ -18,8 +18,7 @@ def export_raw(
         - EEGLAB (``.set``, uses `eeglabio`)
         - EDF (``.edf``, uses `edfio <https://github.com/the-siesta-group/edfio>`_)
 
-    ⛔️
-        Since we are exporting to external formats, there's no guarantee that all
+    ⛔️ Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
     Parameters
@@ -83,11 +82,11 @@ def export_raw(
     If ``add_ch_type`` is True, then channel types are written based on what
     they are currently set in MNE-Python. One should double check that all
     their channels are set correctly. You can call
-    :attr:`raw.set_channel_types <mne.io.Raw.set_channel_types>` to set
+    `raw.set_channel_types <mne.io.Raw.set_channel_types>` to set
     channel types.
 
     In addition, EDF does not support storing a montage. You will need
-    to store the montage separately and call :attr:`raw.set_montage()
+    to store the montage separately and call `raw.set_montage()
     <mne.io.Raw.set_montage>`.
     """
     ...
@@ -100,8 +99,7 @@ def export_epochs(
     Supported formats:
         - EEGLAB (``.set``, uses `eeglabio`)
 
-    ⛔️
-        Since we are exporting to external formats, there's no guarantee that all
+    ⛔️ Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
     Parameters
@@ -157,8 +155,7 @@ def export_evokeds(
     Supported formats:
         - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
 
-    ⛔️
-        Since we are exporting to external formats, there's no guarantee that all
+    ⛔️ Since we are exporting to external formats, there's no guarantee that all
         the info will be preserved in the external format. See Notes for details.
 
     Parameters

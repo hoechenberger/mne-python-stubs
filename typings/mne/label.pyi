@@ -440,7 +440,7 @@ class Label:
         """Compute the center of mass of the label.
 
         This function computes the spatial center of mass on the surface
-        as in :footcite:`LarsonLee2013`.
+        as in `LarsonLee2013`.
 
         Parameters
         ----------
@@ -915,7 +915,7 @@ def random_parcellation(
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -1059,7 +1059,7 @@ def labels_to_stc(
 
     labels : Label | BiHemiLabel | list | tuple | str
         If using a surface or mixed source space, this should be the
-        `mne.Label`'s for which to extract the time course.
+        `Label`'s for which to extract the time course.
         If working with whole-brain volume source estimates, this must be one of:
 
         - a string path to a FreeSurfer atlas for the subject (e.g., their
@@ -1221,7 +1221,7 @@ def select_sources(
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.

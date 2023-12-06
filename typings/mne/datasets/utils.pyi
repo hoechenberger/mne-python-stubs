@@ -35,7 +35,7 @@ def fetch_aparc_sub_parcellation(subjects_dir=None, verbose=None) -> None:
     """Fetch the modified subdivided aparc parcellation.
 
     This will download and install the subdivided aparc parcellation
-    :footcite:'KhanEtAl2018' files for
+    'KhanEtAl2018' files for
     FreeSurfer's fsaverage to the specified directory.
 
     Parameters
@@ -62,8 +62,8 @@ def fetch_hcp_mmp_parcellation(
     """Fetch the HCP-MMP parcellation.
 
     This will download and install the HCP-MMP parcellation
-    :footcite:`GlasserEtAl2016` files for FreeSurfer's fsaverage
-    :footcite:`Mills2016` to the specified directory.
+    `GlasserEtAl2016` files for FreeSurfer's fsaverage
+    `Mills2016` to the specified directory.
 
     Parameters
     ----------
@@ -73,7 +73,7 @@ def fetch_hcp_mmp_parcellation(
     combine : bool
         If True, also produce the combined/reduced set of 23 labels per
         hemisphere as ``HCPMMP1_combined.annot``
-        :footcite:`GlasserEtAl2016supp`.
+        `GlasserEtAl2016supp`.
 
     accept : bool
         If True (default False), accept the license terms of this dataset.

@@ -23,7 +23,7 @@ def norm_l21(A, n_orient, copy: bool = True):
 def dgap_l21(M, G, X, active_set, alpha, n_orient):
     """Duality gap for the mixed norm inverse problem.
 
-    See :footcite:`GramfortEtAl2012`.
+    See `GramfortEtAl2012`.
 
     Parameters
     ----------
@@ -75,7 +75,7 @@ def mixed_norm_solver(
 ):
     """Solve L1/L2 mixed-norm inverse problem with active set strategy.
 
-    See references :footcite:`GramfortEtAl2012,StrohmeierEtAl2016,
+    See references `GramfortEtAl2012,StrohmeierEtAl2016,
     BertrandEtAl2020`.
 
     Parameters
@@ -153,7 +153,7 @@ def iterative_mixed_norm_solver(
 ):
     """Solve L0.5/L2 mixed-norm inverse problem with active set strategy.
 
-    See reference :footcite:`StrohmeierEtAl2016`.
+    See reference `StrohmeierEtAl2016`.
 
     Parameters
     ----------
@@ -275,7 +275,7 @@ def norm_epsilon(Y, l1_ratio, phi, w_space: float = 1.0, w_time=None):
     corresponding to the positive frequencies (see `stft_norm2()`): some
     entries will be counted twice. It is also assumed that all entries of both
     Y and w_time are non-negative. See
-    :footcite:`NdiayeEtAl2016,BurdakovMerkulov2001`.
+    `NdiayeEtAl2016,BurdakovMerkulov2001`.
 
     Parameters
     ----------
@@ -351,7 +351,7 @@ def dgap_l21l1(
 ):
     """Duality gap for the time-frequency mixed norm inverse problem.
 
-    See :footcite:`GramfortEtAl2012,NdiayeEtAl2016`
+    See `GramfortEtAl2012,NdiayeEtAl2016`
 
     Parameters
     ----------
@@ -416,7 +416,7 @@ def tf_mixed_norm_solver(
 ):
     """Solve TF L21+L1 inverse solver with BCD and active set approach.
 
-    See :footcite:`GramfortEtAl2013b,GramfortEtAl2011,BekhtiEtAl2016`.
+    See `GramfortEtAl2013b,GramfortEtAl2011,BekhtiEtAl2016`.
 
     Parameters
     ----------

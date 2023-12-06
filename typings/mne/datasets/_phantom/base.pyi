@@ -38,7 +38,7 @@ def fetch_phantom(kind, subjects_dir=None, *, verbose=None):
     basic outside geometry, but different internal dipole positions.
 
     Unlike most FreeSurfer subjects, the Otaniemi phantom scan was aligned
-    to the "head" coordinate frame, so an identity head<->MRI :term:`trans`
+    to the "head" coordinate frame, so an identity head<->MRI `trans`
     is appropriate.
 
     ✨ Added in version 0.24

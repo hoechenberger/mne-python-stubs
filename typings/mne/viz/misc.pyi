@@ -214,14 +214,14 @@ def plot_events(
     on_missing: str = "raise",
     verbose=None,
 ):
-    """Plot :term:`events` to get a visual display of the paradigm.
+    """Plot `events` to get a visual display of the paradigm.
 
     Parameters
     ----------
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
     sfreq : float | None
         The sample frequency. If None, data will be displayed in samples (not
@@ -250,7 +250,7 @@ def plot_events(
     on_missing : 'raise' | 'warn' | 'ignore'
         Can be ``'raise'`` (default) to raise an error, ``'warn'`` to emit a
         warning, or ``'ignore'`` to ignore when event numbers from ``event_id`` are missing from
-        :term:`events`. When numbers from :term:`events` are missing from
+        `events`. When numbers from `events` are missing from
         ``event_id`` they will be ignored and a warning emitted; consider
         using ``verbose='error'`` in this case.
 
@@ -519,14 +519,14 @@ def plot_chpi_snr(snr_dict, axes=None):
     Parameters
     ----------
     snr_dict : dict
-        The dictionary returned by `mne.chpi.compute_chpi_snr`. Must have keys
+        The dictionary returned by `compute_chpi_snr`. Must have keys
         ``times``, ``freqs``, ``TYPE_snr``, ``TYPE_power``, and ``TYPE_resid``
         (where ``TYPE`` can be ``mag`` or ``grad`` or both).
     axes : None | list of matplotlib.axes.Axes
         Figure axes in which to draw the SNR, power, and residual plots. The
         number of axes should be 3× the number of MEG sensor types present in
         ``snr_dict``. If ``None`` (the default), a new
-        `matplotlib.figure.Figure` is created with the required number of
+        `Figure` is created with the required number of
         axes.
 
     Returns
@@ -538,7 +538,7 @@ def plot_chpi_snr(snr_dict, axes=None):
 
     Notes
     -----
-    If you supply a list of existing `matplotlib.axes.Axes`, then the figure
+    If you supply a list of existing `Axes`, then the figure
     legend will not be drawn automatically. If you still want it, running
     ``fig.legend(loc='right', title='cHPI frequencies')`` will recreate it.
 

@@ -25,7 +25,7 @@ def make_dics(
     """Compute a Dynamic Imaging of Coherent Sources (DICS) spatial filter.
 
     This is a beamformer filter that can be used to estimate the source power
-    at a specific frequency range :footcite:`GrossEtAl2001`. It does this by
+    at a specific frequency range `GrossEtAl2001`. It does this by
     constructing a spatial filter for each source point.
     The computation of these filters is very similar to those of the LCMV
     beamformer (`make_lcmv`), but instead of operating on a covariance
@@ -91,7 +91,7 @@ def make_dics(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -122,17 +122,17 @@ def make_dics(
         Can be:
 
         - ``None``
-            The unit-gain LCMV beamformer :footcite:`SekiharaNagarajan2008` will be
+            The unit-gain LCMV beamformer `SekiharaNagarajan2008` will be
             computed.
         - ``'unit-noise-gain'``
             The unit-noise gain minimum variance beamformer will be computed
-            (Borgiotti-Kaplan beamformer) :footcite:`SekiharaNagarajan2008`,
+            (Borgiotti-Kaplan beamformer) `SekiharaNagarajan2008`,
             which is not rotation invariant when ``pick_ori='vector'``.
             This should be combined with
             `stc.project('pca') <mne.VectorSourceEstimate.project>` to follow
-            the definition in :footcite:`SekiharaNagarajan2008`.
+            the definition in `SekiharaNagarajan2008`.
         - ``'nai'``
-            The Neural Activity Index :footcite:`VanVeenEtAl1997` will be computed,
+            The Neural Activity Index `VanVeenEtAl1997` will be computed,
             which simply scales all values from ``'unit-noise-gain'`` by a fixed
             value.
         - ``'unit-noise-gain-invariant'``
@@ -142,7 +142,7 @@ def make_dics(
 
             1. Is rotation invariant (``'unit-noise-gain'`` is not);
             2. Satisfies the first requirement from
-               :footcite:`SekiharaNagarajan2008` that ``w @ w.conj().T == I``,
+               `SekiharaNagarajan2008` that ``w @ w.conj().T == I``,
                whereas ``'unit-noise-gain'`` has non-zero off-diagonals; but
             3. Does not satisfy the second requirement that ``w @ G.T = θI``,
                which arguably does not make sense for a rotation-invariant
@@ -187,7 +187,7 @@ def make_dics(
         three dipoles at a source vertex are considered as a group and the
         spatial filters are computed jointly using a matrix inversion. While
         ``inversion='single'`` is more stable, ``inversion='matrix'`` is more
-        precise. See section 5 of :footcite:`vanVlietEtAl2018`.
+        precise. See section 5 of `vanVlietEtAl2018`.
         Defaults to ``'matrix'``.
 
         🎭 Changed in version 0.21
@@ -252,8 +252,8 @@ def make_dics(
 
     Notes
     -----
-    The original reference is :footcite:`GrossEtAl2001`. See
-    :footcite:`vanVlietEtAl2018` for a tutorial style paper on the topic.
+    The original reference is `GrossEtAl2001`. See
+    `vanVlietEtAl2018` for a tutorial style paper on the topic.
 
     The DICS beamformer is very similar to the LCMV (`make_lcmv`)
     beamformer and many of the parameters are shared. However,
@@ -264,7 +264,7 @@ def make_dics(
     could be.
 
     The default setting reproduce the DICS beamformer as described in
-    :footcite:`vanVlietEtAl2018`::
+    `vanVlietEtAl2018`::
 
         inversion='single', weight_norm=None, depth=1.
 
@@ -273,7 +273,7 @@ def make_dics(
         inversion='matrix', weight_norm='unit-noise-gain-invariant', depth=None
 
     For more information about ``real_filter``, see the
-    supplemental information from :footcite:`HippEtAl2011`.
+    supplemental information from `HippEtAl2011`.
 
     References
     ----------
@@ -415,7 +415,7 @@ def apply_dics_csd(csd, filters, verbose=None):
 
     Apply a previously computed DICS beamformer to a cross-spectral density
     (CSD) object to estimate source power in time and frequency windows
-    specified in the CSD object :footcite:`GrossEtAl2001`.
+    specified in the CSD object `GrossEtAl2001`.
 
     💡 Only power can computed from the cross-spectral density, not
               complex phase-amplitude, so vector DICS filters will be

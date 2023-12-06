@@ -15,13 +15,13 @@ def fetch_data(
     """Get paths to local copies of PhysioNet Polysomnography dataset files.
 
     This will fetch data from the publicly available subjects from PhysioNet's
-    study of Temazepam effects on sleep :footcite:`KempEtAl2000`. This
+    study of Temazepam effects on sleep `KempEtAl2000`. This
     corresponds to a set of 22 subjects. Subjects had mild difficulty falling
     asleep but were otherwise healthy.
 
     See more details in the `physionet website
     <https://physionet.org/physiobank/database/sleep-edfx/>`_
-    :footcite:`GoldbergerEtAl2000`.
+    `GoldbergerEtAl2000`.
 
     Parameters
     ----------

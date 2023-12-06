@@ -64,7 +64,7 @@ class InverseOperator(dict):
 
     @property
     def info(self):
-        """`mne.Info` attached to the inverse operator."""
+        """`Info` attached to the inverse operator."""
         ...
 
 def read_inverse_operator(fname, *, verbose=None):
@@ -209,10 +209,10 @@ def apply_inverse(
     lambda2 : float
         The regularization parameter.
     method : "MNE" | "dSPM" | "sLORETA" | "eLORETA"
-        Use minimum norm :footcite:`HamalainenIlmoniemi1994`,
-        dSPM (default) :footcite:`DaleEtAl2000`,
-        sLORETA :footcite:`Pascual-Marqui2002`, or
-        eLORETA :footcite:`Pascual-Marqui2011`.
+        Use minimum norm `HamalainenIlmoniemi1994`,
+        dSPM (default) `DaleEtAl2000`,
+        sLORETA `Pascual-Marqui2002`, or
+        eLORETA `Pascual-Marqui2011`.
 
     pick_ori : None | "normal" | "vector"
 
@@ -293,7 +293,7 @@ def apply_inverse(
             loose-orientation inverses and ``False`` for free- and
             fixed-orientation inverses. See below.
 
-    The eLORETA paper :footcite:`Pascual-Marqui2011` defines how to compute
+    The eLORETA paper `Pascual-Marqui2011` defines how to compute
     inverses for fixed- and
     free-orientation inverses. In the free orientation case, the X/Y/Z
     orientation triplet for each location is effectively multiplied by a
@@ -674,7 +674,7 @@ def apply_inverse_cov(
     ✨ Added in version 0.20
 
     This code is based on the original research code from
-    :footcite:`Sabbagh2020` and has been useful to correct for individual field
+    `Sabbagh2020` and has been useful to correct for individual field
     spread using source localization in the context of predictive modeling.
 
     References
@@ -704,11 +704,11 @@ def make_inverse_operator(
         Specifies the channels to include. Bad channels (in ``info['bads']``)
         are not used.
     forward : instance of Forward
-        Forward operator. See `mne.make_forward_solution` to create the operator.
+        Forward operator. See `make_forward_solution` to create the operator.
     noise_cov : instance of Covariance
-        The noise covariance matrix. See `mne.compute_raw_covariance` and
-        `mne.compute_covariance` to compute the noise covariance matrix on
-        `mne.io.Raw` and `mne.Epochs` respectively.
+        The noise covariance matrix. See `compute_raw_covariance` and
+        `compute_covariance` to compute the noise covariance matrix on
+        `Raw` and `Epochs` respectively.
 
     loose : float | 'auto' | dict
         Value that weights the source variances of the dipole components
@@ -759,7 +759,7 @@ def make_inverse_operator(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -835,7 +835,7 @@ def make_inverse_operator(
     and without this information.
 
     For depth weighting, 0.8 is generally good for MEG, and between 2 and 5
-    is good for EEG, see :footcite:t:`LinEtAl2006a`.
+    is good for EEG, see t:`LinEtAl2006a`.
 
     References
     ----------

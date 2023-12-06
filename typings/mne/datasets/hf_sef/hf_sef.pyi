@@ -11,7 +11,7 @@ def data_path(
     """Get path to local copy of the high frequency SEF dataset.
 
     Gets a local copy of the high frequency SEF MEG dataset
-    :footcite:`NurminenEtAl2017`.
+    `NurminenEtAl2017`.
 
     Parameters
     ----------

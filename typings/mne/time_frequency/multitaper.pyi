@@ -46,7 +46,7 @@ def dpss_windows(
 
     Notes
     -----
-    Tridiagonal form of DPSS calculation from :footcite:`Slepian1978`.
+    Tridiagonal form of DPSS calculation from `Slepian1978`.
 
     References
     ----------
@@ -73,7 +73,7 @@ def psd_array_multitaper(
     """Compute power spectral density (PSD) using a multi-taper method.
 
     The power spectral density is computed with DPSS
-    tapers :footcite:p:`Slepian1978`.
+    tapers p:`Slepian1978`.
 
     Parameters
     ----------
@@ -172,9 +172,9 @@ def tfr_array_multitaper(
 ):
     """Compute Time-Frequency Representation (TFR) using DPSS tapers.
 
-    Same computation as `mne.time_frequency.tfr_multitaper`, but operates on
-    `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` or
-    `mne.Evoked` objects.
+    Same computation as `tfr_multitaper`, but operates on
+    `NumPy arrays <numpy.ndarray>` instead of `Epochs` or
+    `Evoked` objects.
 
     Parameters
     ----------
@@ -211,8 +211,7 @@ def tfr_array_multitaper(
         - if `int`, returns ``tfr[..., ::decim]``.
         - if `slice`, returns ``tfr[..., decim]``.
 
-        💡
-            Decimation is done after convolutions and may create aliasing
+        💡 Decimation is done after convolutions and may create aliasing
             artifacts.
     output : str, default 'complex'
 
@@ -315,15 +314,13 @@ def tfr_array_multitaper(
     is unique about multitaper methods — namely their ability to improve accuracy /
     reduce noise in the power estimates by using several (orthogonal) tapers.
 
-    ⛔️
-
-        In `mne.time_frequency.tfr_array_multitaper` and
-        `mne.time_frequency.tfr_multitaper`, ``time_bandwidth`` defines the
+    ⛔️ In `tfr_array_multitaper` and
+        `tfr_multitaper`, ``time_bandwidth`` defines the
         product of the temporal window length with the *full* frequency bandwidth
         For example, a full bandwidth of 4 Hz at a frequency of interest of 10 Hz
         will "smear" the frequency estimate between 8 Hz and 12 Hz.
 
-        This is not the case for `mne.time_frequency.psd_array_multitaper` where
+        This is not the case for `psd_array_multitaper` where
         the argument ``bandwidth`` defines the *half* frequency bandwidth. In the
         example above, the half-frequency bandwidth is 2 Hz.
 

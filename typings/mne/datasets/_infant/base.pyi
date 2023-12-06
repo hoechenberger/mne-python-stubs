@@ -25,7 +25,7 @@ def fetch_infant_template(age, subjects_dir=..., *, verbose=...):
     Notes
     -----
     If you use these templates in your work, please cite
-    :footcite:`OReillyEtAl2021` and :footcite:`RichardsEtAl2016`.
+    `OReillyEtAl2021` and `RichardsEtAl2016`.
 
     ✨ Added in version 0.23
 

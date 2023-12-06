@@ -10,7 +10,7 @@ from _typeshed import Incomplete
 class EMS(TransformerMixin, EstimatorMixin):
     """Transformer to compute event-matched spatial filters.
 
-    This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
+    This version of EMS `SchurgerEtAl2013` operates on the entire
     time course. No time
     window needs to be specified. The result is a spatial filter at each
     time point and a corresponding time course. Intuitively, the result
@@ -74,7 +74,7 @@ def compute_ems(
 ):
     """Compute event-matched spatial filter on epochs.
 
-    This version of EMS :footcite:`SchurgerEtAl2013` operates on the entire
+    This version of EMS `SchurgerEtAl2013` operates on the entire
     time course. No time
     window needs to be specified. The result is a spatial filter at each
     time point and a corresponding time course. Intuitively, the result
@@ -105,7 +105,7 @@ def compute_ems(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.

@@ -56,11 +56,11 @@ def make_forward_solution(
             Support for ``'fsaverage'`` argument.
     src : path-like | instance of SourceSpaces
         Either a path to a source space file or a loaded or generated
-        `mne.SourceSpaces`.
+        `SourceSpaces`.
     bem : path-like | ConductorModel
         Filename of the BEM (e.g., ``"sample-5120-5120-5120-bem-sol.fif"``) to
-        use, or a loaded `mne.bem.ConductorModel`. See
-        `mne.make_bem_model` and `mne.make_bem_solution` to create a
+        use, or a loaded `ConductorModel`. See
+        `make_bem_model` and `make_bem_solution` to create a
         `mne.bem.ConductorModel`.
     meg : bool
         If True (default), include MEG computations.
@@ -103,8 +103,7 @@ def make_forward_solution(
     To create a fixed-orientation forward solution, use this function
     followed by `mne.convert_forward_solution`.
 
-    💡
-        If the BEM solution was computed with `OpenMEEG <https://openmeeg.github.io>`__
+    💡 If the BEM solution was computed with `OpenMEEG <https://openmeeg.github.io>`__
         in `mne.make_bem_solution`, then OpenMEEG will automatically
         be used to compute the forward solution.
 

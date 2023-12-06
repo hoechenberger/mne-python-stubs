@@ -64,7 +64,7 @@ class ICA(ContainsMixin):
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -73,12 +73,12 @@ class ICA(ContainsMixin):
         to set additional parameters. Specifically, if you want Extended
         Infomax, set ``method='infomax'`` and ``fit_params=dict(extended=True)``
         (this also works for ``method='picard'``). Defaults to ``'fastica'``.
-        For reference, see :footcite:`Hyvarinen1999,BellSejnowski1995,LeeEtAl1999,AblinEtAl2018`.
+        For reference, see `Hyvarinen1999,BellSejnowski1995,LeeEtAl1999,AblinEtAl2018`.
     fit_params : dict | None
         Additional parameters passed to the ICA estimator as specified by
         ``method``. Allowed entries are determined by the various algorithm
-        implementations: see `sklearn.decomposition.FastICA`,
-        `picard.picard`, `mne.preprocessing.infomax`.
+        implementations: see `FastICA`,
+        `picard`, `infomax`.
     max_iter : int | 'auto'
         Maximum number of iterations during fit. If ``'auto'``, it
         will set maximum iterations to ``1000`` for ``'fastica'``
@@ -154,9 +154,9 @@ class ICA(ContainsMixin):
         default, replacing the current ``max_iter=200``.
 
     🎭 Changed in version 0.23
-        Warn if `mne.Epochs` were baseline-corrected.
+        Warn if `Epochs` were baseline-corrected.
 
-    💡 If you intend to fit ICA on `mne.Epochs`, it is  recommended to
+    💡 If you intend to fit ICA on `Epochs`, it is  recommended to
               high-pass filter, but **not** baseline correct the data for good
               ICA performance. A warning will be emitted otherwise.
 
@@ -166,7 +166,7 @@ class ICA(ContainsMixin):
 
     ICA `fit` in MNE proceeds in two steps:
 
-    1. :term:`Whitening <whitening>` the data by means of a pre-whitening step
+    1. `Whitening <whitening>` the data by means of a pre-whitening step
        (using ``noise_cov`` if provided, or the standard deviation of each
        channel type) and then principal component analysis (PCA).
     2. Passing the ``n_components`` largest-variance components to the ICA
@@ -210,8 +210,8 @@ class ICA(ContainsMixin):
               ii) additional noise reduction, it is a matter of current debate
               whether pre-ICA dimensionality reduction could decrease the
               reliability and stability of the ICA, at least for EEG data and
-              especially during preprocessing :footcite:`ArtoniEtAl2018`.
-              (But see also :footcite:`Montoya-MartinezEtAl2017` for a
+              especially during preprocessing `ArtoniEtAl2018`.
+              (But see also `Montoya-MartinezEtAl2017` for a
               possibly confounding effect of the different whitening/sphering
               methods used in this paper (ZCA vs. PCA).)
               On the other hand, for rank-deficient data such as EEG data after
@@ -235,8 +235,8 @@ class ICA(ContainsMixin):
     enhancing reproducibility and stability of results; use Extended Infomax
     via ``method='infomax', fit_params=dict(extended=True)``. Allowed entries
     in ``fit_params`` are determined by the various algorithm implementations:
-    see `sklearn.decomposition.FastICA`, `picard.picard`,
-    `mne.preprocessing.infomax`.
+    see `FastICA`, `picard`,
+    `infomax`.
 
     💡 Picard can be used to solve the same problems as FastICA,
               Infomax, and extended Infomax, but typically converges faster
@@ -316,7 +316,7 @@ class ICA(ContainsMixin):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -327,7 +327,7 @@ class ICA(ContainsMixin):
             the first sample and to the last sample, respectively.
 
             💡 These parameters only have an effect if ``inst`` is
-                      `mne.io.Raw` data.
+                      `Raw` data.
         decim : int | None
             Increment for selecting only each n-th sampling point. If ``None``,
             all samples  between ``start`` and ``stop`` (inclusive) are used.
@@ -338,8 +338,8 @@ class ICA(ContainsMixin):
             removed before fitting the ICA.
 
             💡 These parameters only have an effect if ``inst`` is
-                      `mne.io.Raw` data. For `mne.Epochs`, perform PTP
-                      rejection via `mne.Epochs.drop_bad`.
+                      `Raw` data. For `Epochs`, perform PTP
+                      rejection via `drop_bad`.
 
             Valid keys are all channel types present in the data. Values must
             be integers or floats.
@@ -357,7 +357,7 @@ class ICA(ContainsMixin):
             Length of data chunks for artifact rejection in seconds.
 
             💡 This parameter only has an effect if ``inst`` is
-                      `mne.io.Raw` data.
+                      `Raw` data.
 
         reject_by_annotation : bool
             Whether to omit bad segments from the data before fitting. If ``True``
@@ -540,7 +540,7 @@ class ICA(ContainsMixin):
     ):
         """Detect ECG related components.
 
-        Cross-trial phase statistics :footcite:`DammersEtAl2008` or Pearson
+        Cross-trial phase statistics `DammersEtAl2008` or Pearson
         correlation can be used for detection.
 
         💡 If no ECG channel is available, routine attempts to create
@@ -572,7 +572,7 @@ class ICA(ContainsMixin):
             High pass frequency.
         method : 'ctps' | 'correlation'
             The method used for detection. If ``'ctps'``, cross-trial phase
-            statistics :footcite:`DammersEtAl2008` are used to detect
+            statistics `DammersEtAl2008` are used to detect
             ECG-related components. See Notes.
 
         reject_by_annotation : bool
@@ -668,8 +668,7 @@ class ICA(ContainsMixin):
             - If ``'auto'``, defaults to 3.0 if ``measure`` is ``'zscore'`` and
               0.9 if ``measure`` is ``'correlation'``.
 
-             ⛔️
-                 If ``method`` is ``'together'``, the iterative z-score method
+             ⛔️ If ``method`` is ``'together'``, the iterative z-score method
                  is always used.
         start : int | float | None
             First sample to include. If float, data will be interpreted as
@@ -737,8 +736,8 @@ class ICA(ContainsMixin):
         logic here is similar to an EOG/ECG, with reference components
         replacing the EOG/ECG channels. Recommended procedure is to perform ICA
         separately on reference channels, extract them using
-        `mne.preprocessing.ICA.get_sources`, and then append them to the
-        inst using `mne.io.Raw.add_channels`, preferably with the prefix
+        `get_sources`, and then append them to the
+        inst using `add_channels`, preferably with the prefix
         ``REF_ICA`` so that they can be automatically detected.
 
         With ``'together'``, thresholding is based on adaptative z-scoring.
@@ -751,7 +750,7 @@ class ICA(ContainsMixin):
           threshold on the correlation between 0 and 1.
 
         Validation and further documentation for this technique can be found
-        in :footcite:`HannaEtAl2020`.
+        in `HannaEtAl2020`.
 
         ✨ Added in version 0.18
 
@@ -774,9 +773,9 @@ class ICA(ContainsMixin):
     ):
         """Detect muscle related components.
 
-        Detection is based on :footcite:`DharmapraniEtAl2016` which uses
+        Detection is based on `DharmapraniEtAl2016` which uses
         data from a subject who has been temporarily paralyzed
-        :footcite:`WhithamEtAl2007`. The criteria are threefold:
+        `WhithamEtAl2007`. The criteria are threefold:
         1) Positive log-log spectral slope from 7 to 45 Hz
         2) Peripheral component power (farthest away from the vertex)
         3) A single focal point measured by low spatial smoothness
@@ -808,7 +807,7 @@ class ICA(ContainsMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -999,7 +998,7 @@ class ICA(ContainsMixin):
         Notes
         -----
         💡 Applying ICA may introduce a DC shift. If you pass
-                  baseline-corrected `mne.Epochs` or `mne.Evoked` data,
+                  baseline-corrected `Epochs` or `Evoked` data,
                   the baseline period of the cleaned data may not be of
                   zero mean anymore. If you require baseline-corrected
                   data, apply baseline correction again after cleaning
@@ -1120,7 +1119,7 @@ class ICA(ContainsMixin):
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -1151,7 +1150,7 @@ class ICA(ContainsMixin):
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1212,7 +1211,7 @@ class ICA(ContainsMixin):
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -1261,11 +1260,11 @@ class ICA(ContainsMixin):
         show : bool
             Show the figure if ``True``.
         image_args : dict | None
-            Dictionary of arguments to pass to `mne.viz.plot_epochs_image`
+            Dictionary of arguments to pass to `plot_epochs_image`
             in interactive mode. Ignored if ``inst`` is not supplied. If ``None``,
             nothing is passed. Defaults to ``None``.
         psd_args : dict | None
-            Dictionary of arguments to pass to `mne.Epochs.compute_psd` in
+            Dictionary of arguments to pass to `compute_psd` in
             interactive  mode. Ignored if ``inst`` is not supplied. If ``None``,
             nothing is passed. Defaults to ``None``.
 
@@ -1319,9 +1318,8 @@ class ICA(ContainsMixin):
         inst : instance of Epochs or Raw
             The data to use in plotting properties.
 
-            💡
-               You can interactively cycle through topographic maps for different
-               channel types by pressing :kbd:`T`.
+            💡 You can interactively cycle through topographic maps for different
+               channel types by pressing `T`.
         picks : int | list of int | slice | None
             Indices of the independent components (ICs) to visualize.
             If an integer, represents the index of the IC to pick.
@@ -1348,8 +1346,7 @@ class ICA(ContainsMixin):
             Whether to use a logarithmic frequency axis to plot the spectrum.
             Defaults to ``False``.
 
-            💡
-               You can interactively toggle this setting by pressing :kbd:`L`.
+            💡 You can interactively toggle this setting by pressing `L`.
 
             ✨ Added in version 1.1
         topomap_args : dict | None
@@ -1359,7 +1356,7 @@ class ICA(ContainsMixin):
             Dictionary of arguments to ``plot_epochs_image``. If None, doesn't pass
             any additional arguments. Defaults to None.
         psd_args : dict | None
-            Dictionary of arguments to `mne.Epochs.compute_psd`. If
+            Dictionary of arguments to `compute_psd`. If
             ``None``, doesn't pass any additional arguments. Defaults to ``None``.
         figsize : array-like, shape (2,) | None
             Allows to control size of the figure. If None, the figure size
@@ -1439,12 +1436,12 @@ class ICA(ContainsMixin):
             IC: ``ICA001``. ``None`` will pick all independent components in the order
             fitted.
         start, stop : float | int | None
-           If ``inst`` is a `mne.io.Raw` or an `mne.Evoked` object, the first and
+           If ``inst`` is a `Raw` or an `Evoked` object, the first and
            last time point (in seconds) of the data to plot. If ``inst`` is a
-           `mne.io.Raw` object, ``start=None`` and ``stop=None`` will be
+           `Raw` object, ``start=None`` and ``stop=None`` will be
            translated into ``start=0.`` and ``stop=3.``, respectively. For
-           `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
-           signal. If ``inst`` is an `mne.Epochs` object, specifies the index of
+           `Evoked`, ``None`` refers to the beginning and end of the evoked
+           signal. If ``inst`` is an `Epochs` object, specifies the index of
            the first and last epoch to show.
         title : str | None
             The window title. If None a default is provided.
@@ -1459,7 +1456,7 @@ class ICA(ContainsMixin):
 
         show_scrollbars : bool
             Whether to show scrollbars when the plot is initialized. Can be toggled
-            after initialization by pressing :kbd:`z` ("zen mode") while the plot
+            after initialization by pressing `z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
             ✨ Added in version 0.19.0
@@ -1536,7 +1533,7 @@ class ICA(ContainsMixin):
         `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
         and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
         based on `matplotlib`, and the other is based on
-        :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
+        `PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
         context manager `mne.viz.use_browser_backend`, you can set it for the
         duration of a Python session using `mne.viz.set_browser_backend`, and you
         can set the default for your computer via
@@ -1624,9 +1621,9 @@ class ICA(ContainsMixin):
         Parameters
         ----------
         inst : instance of Raw or Evoked
-            The signal to plot. If `mne.io.Raw`, the raw data per channel type is displayed
+            The signal to plot. If `Raw`, the raw data per channel type is displayed
             before and after cleaning. A second panel with the RMS for MEG sensors and the
-            :term:`GFP` for EEG sensors is displayed. If `mne.Evoked`, butterfly traces for
+            `GFP` for EEG sensors is displayed. If `Evoked`, butterfly traces for
             signals before and after cleaning will be superimposed.
         exclude : array-like of int | None (default)
             The components marked for exclusion. If ``None`` (default), the components
@@ -1636,13 +1633,13 @@ class ICA(ContainsMixin):
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels that were included during fitting.
         start, stop : float | None
            The first and last time point (in seconds) of the data to plot. If
-           ``inst`` is a `mne.io.Raw` object, ``start=None`` and ``stop=None``
+           ``inst`` is a `Raw` object, ``start=None`` and ``stop=None``
            will be translated into ``start=0.`` and ``stop=3.``, respectively. For
-           `mne.Evoked`, ``None`` refers to the beginning and end of the evoked
+           `Evoked`, ``None`` refers to the beginning and end of the evoked
            signal.
 
         title : str | None

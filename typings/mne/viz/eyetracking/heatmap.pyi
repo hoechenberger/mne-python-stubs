@@ -18,7 +18,7 @@ def plot_gaze(
     Parameters
     ----------
     epochs : instance of Epochs
-        The `mne.Epochs` object containing eyegaze channels.
+        The `Epochs` object containing eyegaze channels.
     width : int
         The width dimension of the plot canvas. For example, if the eyegaze data units
         are pixels, and the participant screen resolution was 1920x1080, then the width
@@ -32,7 +32,7 @@ def plot_gaze(
         deviation in pixels). If ``None``, no smoothing is applied. Default is 25.
 
     cmap : matplotlib colormap | str | None
-            The `matplotlib.colors.Colormap` to use. Defaults to ``None``, which
+            The `Colormap` to use. Defaults to ``None``, which
             will use the matplotlib default colormap.
     alpha : float
         The opacity of the heatmap (default is 1).
@@ -43,7 +43,7 @@ def plot_gaze(
         ``None`` for either entry will set the corresponding boundary at the
         min/max of the data. Defaults to ``(None, None)``.
     axes : instance of Axes | None
-        The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
+        The axes to plot to. If ``None``, a new `Figure`
         will be created. Default is ``None``.
     show : bool
         Show the figure if ``True``.

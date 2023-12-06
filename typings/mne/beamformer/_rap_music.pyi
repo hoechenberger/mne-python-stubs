@@ -20,7 +20,7 @@ def rap_music(
     """RAP-MUSIC source localization method.
 
     Compute Recursively Applied and Projected MUltiple SIgnal Classification
-    (RAP-MUSIC) :footcite:`MosherLeahy1999,MosherLeahy1996` on evoked data.
+    (RAP-MUSIC) `MosherLeahy1999,MosherLeahy1996` on evoked data.
 
     💡 The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.
@@ -79,7 +79,7 @@ def trap_music(
     """TRAP-MUSIC source localization method.
 
     Compute Truncated Recursively Applied and Projected MUltiple SIgnal Classification
-    (TRAP-MUSIC) :footcite:`Makela2018` on evoked data.
+    (TRAP-MUSIC) `Makela2018` on evoked data.
 
     💡 The goodness of fit (GOF) of all the returned dipoles is the
               same and corresponds to the GOF of the full set of dipoles.

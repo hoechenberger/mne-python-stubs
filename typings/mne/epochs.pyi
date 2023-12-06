@@ -85,10 +85,9 @@ class BaseEpochs(
     EpochAnnotationsMixin,
     SpectrumMixin,
 ):
-    """Abstract base class for `mne.Epochs`-type classes.
+    """Abstract base class for `Epochs`-type classes.
 
-    💡
-        This class should not be instantiated directly via
+    💡 This class should not be instantiated directly via
         ``mne.BaseEpochs(...)``. Instead, use one of the functions listed in
         the See Also section below.
 
@@ -102,18 +101,18 @@ class BaseEpochs(
         of shape (n_epochs, n_channels, n_times).
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
     event_id : int | list of int | dict | None
-        The id of the :term:`events` to consider. If dict, the keys can later be
-        used to access associated :term:`events`. Example:
+        The id of the `events` to consider. If dict, the keys can later be
+        used to access associated `events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
-        string. If a list, all :term:`events` with the IDs specified in the list
-        are used. If None, all :term:`events` will be used and a dict is created
+        string. If a list, all `events` with the IDs specified in the list
+        are used. If None, all `events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
     tmin, tmax : float
@@ -143,13 +142,13 @@ class BaseEpochs(
         time point zero.
 
     raw : Raw object
-        An instance of `mne.io.Raw`.
+        An instance of `Raw`.
     picks : str | array-like | slice | None
         Channels to include. Slices and lists of integers will be interpreted as
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -237,8 +236,7 @@ class BaseEpochs(
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        💡
-           If none of the event ids are found in the data, an error will be
+        💡 If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
     preload_at_end : bool
 
@@ -273,7 +271,7 @@ class BaseEpochs(
     event_repeated : str
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
         (default), to raise an error, 'drop' to only retain the row occurring
-        first in the :term:`events`, or ``'merge'`` to combine the coinciding
+        first in the `events`, or ``'merge'`` to combine the coinciding
         events (=duplicates) into a new event (see Notes for details).
 
         ✨ Added in version 0.19
@@ -472,7 +470,7 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -487,9 +485,9 @@ class BaseEpochs(
 
         by_event_type : bool
             When ``False`` (the default) all epochs are processed together and a single
-            `mne.Evoked` object is returned. When ``True``, epochs are first
+            `Evoked` object is returned. When ``True``, epochs are first
             grouped by event type (as specified using the ``event_id`` parameter) and a
-            list is returned containing a separate `mne.Evoked` object for each
+            list is returned containing a separate `Evoked` object for each
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
@@ -501,7 +499,7 @@ class BaseEpochs(
         evoked : instance of Evoked | list of Evoked
             The averaged epochs.
             When ``by_event_type=True`` was specified, a list is returned containing a
-            separate `mne.Evoked` object for each event type. The list has the
+            separate `Evoked` object for each event type. The list has the
             same order as the event types as specified in the ``event_id``
             dictionary.
 
@@ -537,16 +535,16 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
 
         by_event_type : bool
             When ``False`` (the default) all epochs are processed together and a single
-            `mne.Evoked` object is returned. When ``True``, epochs are first
+            `Evoked` object is returned. When ``True``, epochs are first
             grouped by event type (as specified using the ``event_id`` parameter) and a
-            list is returned containing a separate `mne.Evoked` object for each
+            list is returned containing a separate `Evoked` object for each
             event type. The ``.comment`` attribute is set to the label of the event
             type.
 
@@ -558,7 +556,7 @@ class BaseEpochs(
         std_err : instance of Evoked | list of Evoked
             The standard error over epochs.
             When ``by_event_type=True`` was specified, a list is returned containing a
-            separate `mne.Evoked` object for each event type. The list has the
+            separate `Evoked` object for each event type. The list has the
             same order as the event types as specified in the ``event_id``
             dictionary.
         """
@@ -610,7 +608,7 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -627,8 +625,7 @@ class BaseEpochs(
                      emg=1e-3, ref_meg=1e-12, misc=1e-3, stim=1,
                      resp=1, chpi=1e-4, whitened=1e2)
 
-            💡
-                A particular scaling value ``s`` corresponds to half of the visualized
+            💡 A particular scaling value ``s`` corresponds to half of the visualized
                 signal range around zero (i.e. from ``0`` to ``+s`` or from ``0`` to
                 ``-s``). For example, the default scaling of ``20e-6`` (20µV) for EEG
                 signals means that the visualized range will be 40 µV (20 µV in the
@@ -641,12 +638,12 @@ class BaseEpochs(
             The title of the window. If None, the event names (from
             ``epochs.event_id``) will be displayed. Defaults to None.
         events : bool | array, shape (n_events, 3)
-            Events to show with vertical bars. You can use `mne.viz.plot_events`
+            Events to show with vertical bars. You can use `plot_events`
             as a legend for the colors. By default, the coloring scheme is the
             same. ``True`` plots ``epochs.events``. Defaults to ``False`` (do not
             plot events).
 
-            ⛔️  If the epochs have been resampled, the events no longer
+            ⛔️ If the epochs have been resampled, the events no longer
                 align with the data.
 
             ✨ Added in version 0.14.0
@@ -656,7 +653,7 @@ class BaseEpochs(
                 The new equivalent is ``events=False``.
 
         event_color : color object | dict | None
-            Color(s) to use for :term:`events`. To show all :term:`events` in the same
+            Color(s) to use for `events`. To show all `events` in the same
             color, pass any matplotlib-compatible color. To color events differently,
             pass a `dict` that maps event names or integer event numbers to colors
             (must include entries for *all* events, or include a "fallback" entry with
@@ -701,14 +698,14 @@ class BaseEpochs(
 
         show_scrollbars : bool
             Whether to show scrollbars when the plot is initialized. Can be toggled
-            after initialization by pressing :kbd:`z` ("zen mode") while the plot
+            after initialization by pressing `z` ("zen mode") while the plot
             window is focused. Default is ``True``.
 
             ✨ Added in version 0.19.0
 
         show_scalebars : bool
             Whether to show scale bars when the plot is initialized. Can be toggled
-            after initialization by pressing :kbd:`s` while the plot window is focused.
+            after initialization by pressing `s` while the plot window is focused.
             Default is ``True``.
 
             ✨ Added in version 0.24.0
@@ -805,7 +802,7 @@ class BaseEpochs(
         `raw.plot()<mne.io.Raw.plot>`, `epochs.plot()<mne.Epochs.plot>`,
         and `ica.plot_sources()<mne.preprocessing.ICA.plot_sources>`). One is
         based on `matplotlib`, and the other is based on
-        :doc:`PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
+        `PyQtGraph<pyqtgraph:index>`. You can set the backend temporarily with the
         context manager `mne.viz.use_browser_backend`, you can set it for the
         duration of a Python session using `mne.viz.set_browser_backend`, and you
         can set the default for your computer via
@@ -1066,7 +1063,7 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1118,13 +1115,13 @@ class BaseEpochs(
             If None, "RdBu_r" is used, unless the data is all positive, in which
             case "Reds" is used.
         fig : Figure | None
-            `matplotlib.figure.Figure` instance to draw the image to.
+            `Figure` instance to draw the image to.
             Figure must contain the correct number of axes for drawing the epochs
             image, the evoked response, and a colorbar (depending on values of
             ``evoked`` and ``colorbar``). If ``None`` a new figure is created.
             Defaults to ``None``.
         axes : list of Axes | dict of list of Axes | None
-            List of `matplotlib.axes.Axes` objects in which to draw the
+            List of `Axes` objects in which to draw the
             image, evoked response, and colorbar (in that order). Length of list
             must be 1, 2, or 3 (depending on values of ``colorbar`` and ``evoked``
             parameters). If a `dict`, each entry must be a list of Axes
@@ -1136,7 +1133,7 @@ class BaseEpochs(
             Times (in seconds) at which to draw a line on the corresponding row of
             the image (e.g., a reaction time associated with each epoch). Note that
             ``overlay_times`` should be ordered to correspond with the
-            `mne.Epochs` object (i.e., ``overlay_times[0]`` corresponds to
+            `Epochs` object (i.e., ``overlay_times[0]`` corresponds to
             ``epochs[0]``, etc).
 
         combine : None | str | callable
@@ -1158,7 +1155,7 @@ class BaseEpochs(
         group_by : None | dict
             Specifies which channels are aggregated into a single figure, with
             aggregation method determined by the ``combine`` parameter. If not
-            ``None``, one `matplotlib.figure.Figure` is made per dict
+            ``None``, one `Figure` is made per dict
             entry; the dict key will be used as the figure title and the dict
             values must be lists of picks (either channel names or integer indices
             of ``epochs.ch_names``). For example::
@@ -1171,9 +1168,9 @@ class BaseEpochs(
         evoked : bool
             Draw the ER[P/F] below the image or not.
         ts_args : None | dict
-            Arguments passed to a call to `mne.viz.plot_compare_evokeds` to style
+            Arguments passed to a call to `plot_compare_evokeds` to style
             the evoked plot below the image. Defaults to an empty dictionary,
-            meaning `mne.viz.plot_compare_evokeds` will be called with default
+            meaning `plot_compare_evokeds` will be called with default
             parameters.
         title : None | str
             If `str`, will be plotted as figure title. Otherwise, the
@@ -1194,7 +1191,7 @@ class BaseEpochs(
         You can control how channels are aggregated into one figure or plotted in
         separate figures through a combination of the ``picks``, ``group_by``, and
         ``combine`` parameters. If ``group_by`` is a `dict`, the result is
-        one `matplotlib.figure.Figure` per dictionary key (for any valid
+        one `Figure` per dictionary key (for any valid
         values of ``picks`` and ``combine``). If ``group_by`` is ``None``, the
         number and content of the figures generated depends on the values of
         ``picks`` and ``combine``, as summarized in this table:
@@ -1276,14 +1273,14 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
         item : slice | array-like | str | list | None
             The items to get. See `mne.Epochs.__getitem__` for
             a description of valid options. This can be substantially faster
-            for obtaining an ndarray than `mne.Epochs.__getitem__`
+            for obtaining an ndarray than `__getitem__`
             for repeated access on large Epochs objects.
             None (default) is an alias for ``slice(None)``.
 
@@ -1293,7 +1290,7 @@ class BaseEpochs(
             Specify the unit(s) that the data should be returned in. If
             ``None`` (default), the data is returned in the
             channel-type-specific default units, which are SI units (see
-            `units` and :term:`data channels`). If a string, must be a
+            `units` and `data channels`). If a string, must be a
             sub-multiple of SI units that will be used to scale the data from
             all channels of the type associated with that unit. This only works
             if the data contains one channel type that has a unit (unitless
@@ -1323,8 +1320,7 @@ class BaseEpochs(
             when ``item is None``, ``picks is None``, ``units is None``, and data are
             preloaded.
 
-            ⛔️
-               Using ``copy=False`` and then modifying the returned ``data`` will in
+            ⛔️ Using ``copy=False`` and then modifying the returned ``data`` will in
                turn modify the Epochs object. Use with caution!
 
             🎭 Changed in version 1.7
@@ -1378,13 +1374,13 @@ class BaseEpochs(
             A function to be applied to the channels. The first argument of
             fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  if ``channel_wise=True`` and ``(len(picks), n_times)`` otherwise.
-            The function must return an `numpy.ndarray` shaped like its input.
+            The function must return an `ndarray` shaped like its input.
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -1547,8 +1543,7 @@ class BaseEpochs(
         Supported formats:
             - EEGLAB (``.set``, uses `eeglabio`)
 
-        ⛔️
-            Since we are exporting to external formats, there's no guarantee that all
+        ⛔️ Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
         Parameters
@@ -1599,7 +1594,7 @@ class BaseEpochs(
         during a recording, they could be compensated for (to some extent) in
         the equalization process. This method thus seeks to reduce any of
         those effects by minimizing the differences in the times of the events
-        within a `mne.Epochs` instance. For example, if one event type
+        within a `Epochs` instance. For example, if one event type
         occurred at time points ``[1, 2, 3, 4, 120, 121]`` and the another one
         at ``[3.5, 4.5, 120.5, 121.5]``, this method would remove the events at
         times ``[1, 2]`` for the first event type – and not the events at times
@@ -1611,7 +1606,7 @@ class BaseEpochs(
             The event types to equalize.
 
             If ``None`` (default), equalize the counts of **all** event types
-            present in the `mne.Epochs` instance.
+            present in the `Epochs` instance.
 
             If a list, each element can either be a string (event name) or a
             list of strings. In the case where one of the entries is a list of
@@ -1622,7 +1617,7 @@ class BaseEpochs(
             counts to equalize, i.e., passing ``dict(A=1, B=2)`` will have the
             same effect as passing ``['A', 'B']``. This is useful if you intend
             to pass an ``event_id`` dictionary that was used when creating
-            `mne.Epochs`.
+            `Epochs`.
 
             In the case where partial matching is used (using ``/`` in
             the event names), the event types will be matched according to the
@@ -1687,8 +1682,8 @@ class BaseEpochs(
 
         method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`.
             Default is ``'multitaper'``.
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
@@ -1701,7 +1696,7 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -1734,8 +1729,8 @@ class BaseEpochs(
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1801,7 +1796,7 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -1811,8 +1806,8 @@ class BaseEpochs(
 
         method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `Epochs` or `Evoked` data.
         average : bool
             If False, the PSDs of all channels is displayed. No averaging
             is done and parameters area_mode and area_alpha are ignored. When
@@ -1852,7 +1847,7 @@ class BaseEpochs(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1871,8 +1866,8 @@ class BaseEpochs(
 
             ✨ Added in version 0.24.0
         ax : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
         show : bool
             Show the figure if ``True``.
         n_jobs : int | None
@@ -1893,8 +1888,8 @@ class BaseEpochs(
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1905,7 +1900,7 @@ class BaseEpochs(
         -----
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-        of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
+        of `Raw`, `Epochs`, or `Evoked`).
         """
         ...
 
@@ -1935,7 +1930,7 @@ class BaseEpochs(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -2033,31 +2028,30 @@ def make_metadata(
     around time-locked "events of interest") and collates information about
     any other events that occurred within those time windows. The information
     is returned as a `pandas.DataFrame`, suitable for use as
-    `mne.Epochs` metadata: one row per time-locked event, and columns
+    `Epochs` metadata: one row per time-locked event, and columns
     indicating presence or absence and latency of each ancillary event type.
 
     The function will also return a new ``events`` array and ``event_id``
     dictionary that correspond to the generated metadata, which together can then be
-    readily fed into `mne.Epochs`.
+    readily fed into `Epochs`.
 
     Parameters
     ----------
     events : array, shape (m, 3)
-        The :term:`events array <events>`. By default, the returned metadata
-        `pandas.DataFrame` will have as many rows as the events array.
+        The `events array <events>`. By default, the returned metadata
+        `DataFrame` will have as many rows as the events array.
         To create rows for only a subset of events, pass the ``row_events``
         parameter.
     event_id : dict
         A mapping from event names (keys) to event IDs (values). The event
         names will be incorporated as columns of the returned metadata
-        `pandas.DataFrame`.
+        `DataFrame`.
     tmin, tmax : float | None
         Start and end of the time interval for metadata generation in seconds, relative
         to the time-locked event of the respective time window (the "row events").
 
-        💡
-           If you are planning to attach the generated metadata to
-           `mne.Epochs` and intend to include only events that fall inside
+        💡 If you are planning to attach the generated metadata to
+           `Epochs` and intend to include only events that fall inside
            your epochs time interval, pass the same ``tmin`` and ``tmax``
            values here as you use for your epochs.
 
@@ -2066,8 +2060,7 @@ def make_metadata(
         greatly, but each trial starts with a known event (e.g., a visual cue or
         fixation).
 
-        💡
-           If ``tmin=None``, the first time window for metadata generation starts with
+        💡 If ``tmin=None``, the first time window for metadata generation starts with
            the first row event. If ``tmax=None``, the last time window for metadata
            generation ends with the last event in ``events``.
 
@@ -2083,13 +2076,12 @@ def make_metadata(
         ``event_id``. If ``None`` (default), rows are created for **all** event types
         present in ``event_id``.
     keep_first : str | list of str | None
-        Specify subsets of :term:`hierarchical event descriptors` (HEDs,
-        inspired by :footcite:`BigdelyShamloEtAl2013`) matching events of which
+        Specify subsets of `hierarchical event descriptors` (HEDs,
+        inspired by `BigdelyShamloEtAl2013`) matching events of which
         the **first occurrence** within each time window shall be stored in
         addition to the original events.
 
-        💡
-           There is currently no way to retain **all** occurrences of a
+        💡 There is currently no way to retain **all** occurrences of a
            repeated event. The ``keep_first`` parameter can be used to specify
            subsets of HEDs, effectively creating a new event type that is the
            union of all events types described by the matching HED pattern.
@@ -2108,8 +2100,7 @@ def make_metadata(
         ``keep_first=['response', 'stimulus']``. If ``None`` (default), no
         event aggregation will take place and no new columns will be created.
 
-        💡
-           By default, this function will always retain  the first instance
+        💡 By default, this function will always retain  the first instance
            of any event in each time window. For example, if a time window
            contains two ``'response'`` events, the generated ``response``
            column will automatically refer to the first of the two events. In
@@ -2154,7 +2145,7 @@ def make_metadata(
     Notes
     -----
     The time window used for metadata generation need not correspond to the
-    time window used to create the `mne.Epochs`, to which the metadata will
+    time window used to create the `Epochs`, to which the metadata will
     be attached; it may well be much shorter or longer, or not overlap at all,
     if desired. This can be useful, for example, to include events that
     occurred before or after an epoch, e.g. during the inter-trial interval.
@@ -2176,21 +2167,21 @@ class Epochs(BaseEpochs):
     ----------
 
     raw : Raw object
-        An instance of `mne.io.Raw`.
+        An instance of `Raw`.
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
 
     event_id : int | list of int | dict | None
-        The id of the :term:`events` to consider. If dict, the keys can later be
-        used to access associated :term:`events`. Example:
+        The id of the `events` to consider. If dict, the keys can later be
+        used to access associated `events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
-        string. If a list, all :term:`events` with the IDs specified in the list
-        are used. If None, all :term:`events` will be used and a dict is created
+        string. If a list, all `events` with the IDs specified in the list
+        are used. If None, all `events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
     tmin, tmax : float
@@ -2223,7 +2214,7 @@ class Epochs(BaseEpochs):
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all channels. Note that channels in
         ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -2316,8 +2307,7 @@ class Epochs(BaseEpochs):
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        💡
-           If none of the event ids are found in the data, an error will be
+        💡 If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
     reject_by_annotation : bool
@@ -2340,7 +2330,7 @@ class Epochs(BaseEpochs):
     event_repeated : str
         How to handle duplicates in ``events[:, 0]``. Can be ``'error'``
         (default), to raise an error, 'drop' to only retain the row occurring
-        first in the :term:`events`, or ``'merge'`` to combine the coinciding
+        first in the `events`, or ``'merge'`` to combine the coinciding
         events (=duplicates) into a new event (see Notes for details).
 
         ✨ Added in version 0.19
@@ -2378,9 +2368,9 @@ class Epochs(BaseEpochs):
             If epoch didn't contain enough data names of channels that exceeded
             the amplitude threshold
         - 'EQUALIZED_COUNTS'
-            See `mne.Epochs.equalize_event_counts`
+            See `equalize_event_counts`
         - 'USER'
-            For user-defined reasons (see `mne.Epochs.drop`).
+            For user-defined reasons (see `drop`).
     filename : str
         The filename of the object.
     times :  ndarray
@@ -2415,15 +2405,15 @@ class Epochs(BaseEpochs):
     ``[[0, 0, 1], [0, 0, 2]]``, the "merge" behavior will update both event_id
     and events to be: ``{'aud/vis': 3}`` and ``[[0, 0, 3]]`` respectively.
 
-    There is limited support for `mne.Annotations` in the
-    `mne.Epochs` class. Currently annotations that are present in the
-    `mne.io.Raw` object will be preserved in the resulting
-    `mne.Epochs` object, but:
+    There is limited support for `Annotations` in the
+    `Epochs` class. Currently annotations that are present in the
+    `Raw` object will be preserved in the resulting
+    `Epochs` object, but:
 
     1. It is not yet possible to add annotations
        to the Epochs object programmatically (via code) or interactively
        (through the plot window)
-    2. Concatenating `mne.Epochs` objects
+    2. Concatenating `Epochs` objects
        that contain annotations is not supported, and any annotations will
        be dropped when concatenating.
     3. Annotations will be lost on save.
@@ -2469,8 +2459,8 @@ class EpochsArray(BaseEpochs):
         structure.
 
     events : array of int, shape (n_events, 3)
-        The array of :term:`events`. The first column contains the event time in
-        samples, with :term:`first_samp` included. The third column contains the
+        The array of `events`. The first column contains the event time in
+        samples, with `first_samp` included. The third column contains the
         event id.
         If some events don't match the events of interest as specified by
         ``event_id``, they will be marked as ``IGNORED`` in the drop log.
@@ -2479,11 +2469,11 @@ class EpochsArray(BaseEpochs):
         Start time before event. If nothing provided, defaults to 0.
 
     event_id : int | list of int | dict | None
-        The id of the :term:`events` to consider. If dict, the keys can later be
-        used to access associated :term:`events`. Example:
+        The id of the `events` to consider. If dict, the keys can later be
+        used to access associated `events`. Example:
         dict(auditory=1, visual=3). If int, a dict will be created with the id as
-        string. If a list, all :term:`events` with the IDs specified in the list
-        are used. If None, all :term:`events` will be used and a dict is created
+        string. If a list, all `events` with the IDs specified in the list
+        are used. If None, all `events` will be used and a dict is created
         with string integer names corresponding to the event id integers.
 
     reject : dict | None
@@ -2571,8 +2561,7 @@ class EpochsArray(BaseEpochs):
         Default is ``'raise'``. If ``'warn'``, it will proceed but
         warn; if ``'ignore'``, it will proceed silently.
 
-        💡
-           If none of the event ids are found in the data, an error will be
+        💡 If none of the event ids are found in the data, an error will be
            automatically generated irrespective of this parameter.
 
     metadata : instance of pandas.DataFrame | None
@@ -2823,7 +2812,7 @@ def bootstrap(epochs, random_state=None):
     random_state : None | int | instance of ~numpy.random.RandomState
         A seed for the NumPy random number generator (RNG). If ``None`` (default),
         the seed will be  obtained from the operating system
-        (see  `numpy.random.RandomState` for details), meaning it will most
+        (see  `RandomState` for details), meaning it will most
         likely produce different output every time this function or method is run.
         To achieve reproducible results, pass a value here to explicitly initialize
         the RNG with a defined state.
@@ -2838,15 +2827,15 @@ def bootstrap(epochs, random_state=None):
 def concatenate_epochs(
     epochs_list, add_offset: bool = True, *, on_mismatch: str = "raise", verbose=None
 ):
-    """Concatenate a list of `mne.Epochs` into one `mne.Epochs` object.
+    """Concatenate a list of `Epochs` into one `Epochs` object.
 
-    💡 Unlike `mne.concatenate_raws`, this function does **not**
+    💡 Unlike `concatenate_raws`, this function does **not**
               modify any of the input data.
 
     Parameters
     ----------
     epochs_list : list
-        List of `mne.Epochs` instances to concatenate (in that order).
+        List of `Epochs` instances to concatenate (in that order).
     add_offset : bool
         If True, a fixed offset is added to the event times from different
         Epochs sets, such that they are easy to distinguish after the
@@ -2914,7 +2903,7 @@ def average_movements(
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.
@@ -2923,7 +2912,7 @@ def average_movements(
         Origin of internal and external multipolar moment space in meters.
         The default is ``'auto'``, which means ``(0., 0., 0.)`` when
         ``coord_frame='meg'``, and a head-digitization-based
-        origin fit using `mne.bem.fit_sphere_to_headshape`
+        origin fit using `fit_sphere_to_headshape`
         when ``coord_frame='head'``. If automatic fitting fails (e.g., due
         to having too few digitization points),
         consider separately calling the fitting function with different

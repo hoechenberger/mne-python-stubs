@@ -56,8 +56,7 @@ class SourceSpaces(list):
     space information, one entry in the list per source space type. See
     Notes for details.
 
-    ⛔️
-        This class should not be created or modified by the end user. Use
+    ⛔️ This class should not be created or modified by the end user. Use
         `mne.setup_source_space`, `mne.setup_volume_source_space`,
         or `mne.read_source_spaces` to create `SourceSpaces`.
 
@@ -216,13 +215,13 @@ class SourceSpaces(list):
             to the high-resolution volume.
         shape : tuple of int
             The shape of the subsampled grid.
-        mri_ras_t : instance of `mne.transforms.Transform`
+        mri_ras_t : instance of `Transform`
             The transformation from MRI surface RAS (``FIFF.FIFFV_COORD_MRI``)
             to MRI scanner RAS (``FIFF.FIFFV_MNE_COORD_RAS``).
-        src_mri_t : instance of `mne.transforms.Transform`
+        src_mri_t : instance of `Transform`
             The transformation from subsampled source space voxel to MRI
             surface RAS.
-        vox_mri_t : instance of `mne.transforms.Transform`
+        vox_mri_t : instance of `Transform`
             The transformation from the original MRI voxel
             (``FIFF.FIFFV_MNE_COORD_MRI_VOXEL``) space to MRI surface RAS.
         mri_volume_name : str
@@ -603,9 +602,9 @@ def setup_volume_source_space(
         None (the default) uses a head-digitization fit.
     bem : path-like | None | ConductorModel
         Define source space bounds using a BEM file (specifically the inner
-        skull surface) or a `mne.bem.ConductorModel` for a 1-layer of 3-layers
-        BEM. See `mne.make_bem_model` and `mne.make_bem_solution` to
-        create a `mne.bem.ConductorModel`. If provided, ``surface`` must be
+        skull surface) or a `ConductorModel` for a 1-layer of 3-layers
+        BEM. See `make_bem_model` and `make_bem_solution` to
+        create a `ConductorModel`. If provided, ``surface`` must be
         None.
     surface : path-like | dict | None
         Define source space bounds using a FreeSurfer surface file. Can
@@ -836,7 +835,7 @@ def compute_distance_to_sensors(src, info, picks=None, trans=None, verbose=None)
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick good data channels. Note that channels
         in ``info['bads']`` *will be included* if their names or indices are
         explicitly provided.

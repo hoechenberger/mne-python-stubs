@@ -130,7 +130,7 @@ def extract_chpi_locs_ctf(raw, verbose=None):
     - ``HLC003[123]\\\\*`` - rpa
 
     This extracts these positions for use with
-    `mne.chpi.compute_head_pos`.
+    `compute_head_pos`.
 
     ✨ Added in version 0.20
     """
@@ -221,8 +221,8 @@ def compute_head_pos(
     chpi_locs : dict
         The time-varying cHPI coils locations, with entries
         "times", "rrs", "moments", and "gofs".
-        Typically obtained by `mne.chpi.compute_chpi_locs` or
-        `mne.chpi.extract_chpi_locs_ctf`.
+        Typically obtained by `compute_chpi_locs` or
+        `extract_chpi_locs_ctf`.
     dist_limit : float
         Minimum distance (m) to accept for coil position fitting.
     gof_limit : float
@@ -388,7 +388,7 @@ def compute_chpi_amplitudes(
     2. The reciprocal of the smallest difference between HPI and line freqs.
           Ensures that neighboring frequencies can be disambiguated.
 
-    The output is meant to be used with `mne.chpi.compute_chpi_locs`.
+    The output is meant to be used with `compute_chpi_locs`.
 
     ✨ Added in version 0.20
     """

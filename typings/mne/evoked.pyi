@@ -177,7 +177,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -186,7 +186,7 @@ class Evoked(
             Specify the unit(s) that the data should be returned in. If
             ``None`` (default), the data is returned in the
             channel-type-specific default units, which are SI units (see
-            `units` and :term:`data channels`). If a string, must be a
+            `units` and `data channels`). If a string, must be a
             sub-multiple of SI units that will be used to scale the data from
             all channels of the type associated with that unit. This only works
             if the data contains one channel type that has a unit (unitless
@@ -239,13 +239,13 @@ class Evoked(
             A function to be applied to the channels. The first argument of
             fun has to be a timeseries (`numpy.ndarray`). The function must
             operate on an array of shape ``(n_times,)``  because it will apply channel-wise.
-            The function must return an `numpy.ndarray` shaped like its input.
+            The function must return an `ndarray` shaped like its input.
         picks : str | array-like | slice | None
             Channels to include. Slices and lists of integers will be interpreted as
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -363,8 +363,7 @@ class Evoked(
         Supported formats:
             - MFF (``.mff``, uses `mne.export.export_evokeds_mff`)
 
-        ⛔️
-            Since we are exporting to external formats, there's no guarantee that all
+        ⛔️ Since we are exporting to external formats, there's no guarantee that all
             the info will be preserved in the external format. See Notes for details.
 
         Parameters
@@ -446,7 +445,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -558,7 +557,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -631,7 +630,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -739,7 +738,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -936,7 +935,7 @@ class Evoked(
         sensors : bool | str
             Whether to add markers for sensor locations. If `str`, should be a
             valid matplotlib format string (e.g., ``'r+'`` for red plusses, see the
-            Notes section of `matplotlib.axes.Axes.plot`). If ``True`` (the
+            Notes section of `plot`). If ``True`` (the
             default), black circles will be used.
 
         show_names : bool | callable
@@ -980,7 +979,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1045,7 +1044,7 @@ class Evoked(
             all-positive or all-negative, and ``'RdBu_r'`` is used otherwise.
             ``'interactive'`` is equivalent to ``(None, True)``. Defaults to ``None``.
 
-            ⛔️  Interactive mode works smoothly only for a small amount
+            ⛔️ Interactive mode works smoothly only for a small amount
                 of topomaps. Interactive mode is disabled by default for more than
                 2 topomaps.
 
@@ -1077,8 +1076,8 @@ class Evoked(
             If ``None`` and ``scalings=None`` the unit is automatically determined, otherwise the label will be "AU" indicating arbitrary units.
             Default is ``None``.
         axes : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of ``times`` provided (unless ``times`` is ``None``).Default is ``None``.
         time_unit : str
             The units for the time axis, can be "ms" or "s" (default).
 
@@ -1115,7 +1114,7 @@ class Evoked(
         When ``time=="interactive"``, the figure will publish and subscribe to the
         following UI events:
 
-        * `mne.viz.ui_events.TimeChange` whenever a new time is selected.
+        * `TimeChange` whenever a new time is selected.
         """
         ...
 
@@ -1238,7 +1237,7 @@ class Evoked(
         """Plot whitened evoked response.
 
         Plots the whitened evoked response and the whitened GFP as described in
-        :footcite:`EngemannGramfort2015`. This function is especially useful for
+        `EngemannGramfort2015`. This function is especially useful for
         investigating noise covariance properties to determine if data are
         properly whitened (e.g., achieving expected values in line with model
         assumptions, see Notes below).
@@ -1270,7 +1269,7 @@ class Evoked(
                 two projectors the returned value will be 66.
             ``'full'``
                 The rank is assumed to be full, i.e. equal to the
-                number of good channels. If a `mne.Covariance` is passed, this can
+                number of good channels. If a `Covariance` is passed, this can
                 make sense if it has been (possibly improperly) regularized without
                 taking into account the true data rank.
             `dict`
@@ -1302,7 +1301,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1391,7 +1390,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1484,7 +1483,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1596,7 +1595,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels. Note that channels
             in ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -1704,8 +1703,8 @@ class Evoked(
 
         method : ``'welch'`` | ``'multitaper'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`.
             Default is ``'multitaper'``.
         fmin, fmax : float
             The lower- and upper-bound on frequencies of interest. Default is ``fmin=0, fmax=np.inf`` (spans all frequencies present in the data).
@@ -1718,7 +1717,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -1751,8 +1750,8 @@ class Evoked(
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1818,7 +1817,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick good data channels (excluding reference
             MEG channels). Note that channels in ``info['bads']`` *will be included* if
             their names or indices are explicitly provided.
@@ -1828,8 +1827,8 @@ class Evoked(
 
         method : ``'welch'`` | ``'multitaper'`` | ``'auto'``
             Spectral estimation method. ``'welch'`` uses Welch's
-            method :footcite:p:`Welch1967`, ``'multitaper'`` uses DPSS
-            tapers :footcite:p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `mne.Epochs` or `mne.Evoked` data.
+            method p:`Welch1967`, ``'multitaper'`` uses DPSS
+            tapers p:`Slepian1978`. ``'auto'`` (default) uses Welch's method for continuous data and multitaper for `Epochs` or `Evoked` data.
         average : bool
             If False, the PSDs of all channels is displayed. No averaging
             is done and parameters area_mode and area_alpha are ignored. When
@@ -1869,7 +1868,7 @@ class Evoked(
             The sphere parameters to use for the head outline. Can be array-like of
             shape (4,) to give the X/Y/Z origin and radius in meters, or a single float
             to give just the radius (origin assumed 0, 0, 0). Can also be an instance
-            of a spherical `mne.bem.ConductorModel` to use the origin and
+            of a spherical `ConductorModel` to use the origin and
             radius from that object. If ``'auto'`` the sphere is fit to digitization
             points. If ``'eeglab'`` the head circle is defined by EEG electrodes
             ``'Fpz'``, ``'Oz'``, ``'T7'``, and ``'T8'`` (if ``'Fpz'`` is not present,
@@ -1888,8 +1887,8 @@ class Evoked(
 
             ✨ Added in version 0.24.0
         ax : instance of Axes | list of Axes | None
-            The axes to plot to. If ``None``, a new `matplotlib.figure.Figure`
-            will be created with the correct number of axes. If `matplotlib.axes.Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
+            The axes to plot to. If ``None``, a new `Figure`
+            will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the number of channel types present in the object..Default is ``None``.
         show : bool
             Show the figure if ``True``.
         n_jobs : int | None
@@ -1910,8 +1909,8 @@ class Evoked(
             function (e.g., ``n_fft, n_overlap, n_per_seg, average, window``
             for Welch method, or
             ``bandwidth, adaptive, low_bias, normalization`` for multitaper
-            method). See `mne.time_frequency.psd_array_welch` and
-            `mne.time_frequency.psd_array_multitaper` for details.
+            method). See `psd_array_welch` and
+            `psd_array_multitaper` for details.
 
         Returns
         -------
@@ -1922,7 +1921,7 @@ class Evoked(
         -----
         This method exists to support legacy code; for new code the preferred
         idiom is ``inst.compute_psd().plot()`` (where ``inst`` is an instance
-        of `mne.io.Raw`, `mne.Epochs`, or `mne.Evoked`).
+        of `Raw`, `Epochs`, or `Evoked`).
         """
         ...
 
@@ -1950,7 +1949,7 @@ class Evoked(
             channel indices. In lists, channel *type* strings (e.g., ``['meg',
             'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
             ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-            string values "all" to pick all channels, or "data" to pick :term:`data
+            string values "all" to pick all channels, or "data" to pick `data
             channels`. None (default) will pick all channels. Note that channels in
             ``info['bads']`` *will be included* if their names or indices are
             explicitly provided.
@@ -2091,14 +2090,13 @@ class EvokedArray(Evoked):
 def combine_evoked(all_evoked, weights):
     """Merge evoked data by weighted addition or subtraction.
 
-    Each `mne.Evoked` in ``all_evoked`` should have the same channels and the
+    Each `Evoked` in ``all_evoked`` should have the same channels and the
     same time instants. Subtraction can be performed by passing
     ``weights=[1, -1]``.
 
-    ⛔️
-        Other than cases like simple subtraction mentioned above (where all
+    ⛔️ Other than cases like simple subtraction mentioned above (where all
         weights are -1 or 1), if you provide numeric weights instead of using
-        ``'equal'`` or ``'nave'``, the resulting `mne.Evoked` object's
+        ``'equal'`` or ``'nave'``, the resulting `Evoked` object's
         ``.nave`` attribute (which is used to scale noise covariance when
         applying the inverse operator) may not be suitable for inverse imaging.
 
@@ -2110,7 +2108,7 @@ def combine_evoked(all_evoked, weights):
         The weights to apply to the data of each evoked instance, or a string
         describing the weighting strategy to apply: ``'nave'`` computes
         sum-to-one weights proportional to each object's ``nave`` attribute;
-        ``'equal'`` weights each `mne.Evoked` by ``1 / len(all_evoked)``.
+        ``'equal'`` weights each `Evoked` by ``1 / len(all_evoked)``.
 
     Returns
     -------
@@ -2163,7 +2161,7 @@ def read_evokeds(
 
         If ``None`` (default), do not apply baseline correction.
 
-        💡 Note that if the read  `mne.Evoked` objects have already
+        💡 Note that if the read  `Evoked` objects have already
                   been baseline-corrected, the data retrieved from disk will
                   **always** be baseline-corrected (in fact, only the
                   baseline-corrected version of the data will be saved, so
@@ -2193,8 +2191,8 @@ def read_evokeds(
     Returns
     -------
     evoked : Evoked or list of Evoked
-        The evoked dataset(s); one `mne.Evoked` if ``condition`` is an
-        integer or string; or a list of `mne.Evoked` if ``condition`` is
+        The evoked dataset(s); one `Evoked` if ``condition`` is an
+        integer or string; or a list of `Evoked` if ``condition`` is
         ``None`` or a list.
 
     See Also
@@ -2204,7 +2202,7 @@ def read_evokeds(
     Notes
     -----
     🎭 Changed in version 0.23
-        If the read `mne.Evoked` objects had been baseline-corrected before
+        If the read `Evoked` objects had been baseline-corrected before
         saving, this will be reflected in their ``baseline`` attribute after
         reading.
     """
@@ -2253,7 +2251,7 @@ def write_evokeds(
     -----
     🎭 Changed in version 0.23
         Information on baseline correction will be stored with each individual
-        `mne.Evoked` object, and will be restored when reading the data again
+        `Evoked` object, and will be restored when reading the data again
         via `mne.read_evokeds`.
     """
     ...

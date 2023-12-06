@@ -130,7 +130,7 @@ for stub_path in stub_paths:
             obj.body[0].value.value = expanded_docstring
 
             # FIXME We do have a docstring, but sometimes the AST doesn't
-            # contain the method body?! So we add an ellipsis here manually
+            # contain the body?! So we add an ellipsis here manually
             if len(obj.body) == 1:
                 print(
                     f"⛑️  Fixing empty body for {obj_type} "
@@ -178,27 +178,74 @@ for stub_path in stub_paths:
                     continue
 
     # Clean the stub file contents
+    # This includes replacing the Sphinx roles and directivees, which are not standard
+    # reST.
+    SPHINX_ROLES = (
+        "attr",
+        "class",
+        "doc",
+        "eq",
+        "exc",
+        "file",
+        "footcite",
+        "footcite:t",
+        "func",
+        "gh",
+        "kbd",
+        "meth",
+        "mod",
+        "newcontrib",
+        "py:mod",
+        "ref",
+        "samp",
+        "term",
+    )
+
+    SPHINX_DIRECTIVES_REPLACE_MAP = {
+        "warning": "⛔️",
+        "Warning": "⛔️",
+        "note": "💡",
+        "versionadded": "✨ Added in version",
+        "versionchanged": "🎭 Changed in version",
+    }
+
     print(f"🧽 Cleaning stub file: {stub_path}")
+
     unparsed = ast.unparse(module_ast)
+    unparsed_cleaned = unparsed
+
+    # Drop the Sphinx roles
+    for sphinx_role in SPHINX_ROLES:
+        unparsed_cleaned = unparsed_cleaned.replace(f":{sphinx_role}:", "")
+
+    # Replace directives
+    for sphinx_directive, replacement in SPHINX_DIRECTIVES_REPLACE_MAP.items():
+        unparsed_cleaned = re.sub(
+            pattern=f"\.\. {sphinx_directive}::\s*",
+            repl=f"{replacement} ",
+            string=unparsed_cleaned,
+        )
+
+    # Replace shortened cross-references
+    # `~foo.bar` -> `bar`
+    unparsed_cleaned = re.sub(
+        pattern=r"`~[\w.]*\.(\w+)`",
+        repl=r"`\1`",
+        string=unparsed_cleaned,
+    )
+
+    # Remove imports of the verbose function, which is not needed as the stubs don't
+    # contain the @verbose decorator
     unparsed_cleaned = (
-        unparsed.replace(": Incomplete | None=", "=")
-        .replace(", verbose as verbose,", ",")
+        unparsed_cleaned.replace(", verbose as verbose,", ",")
         .replace(", verbose as verbose", "")
         .replace("import verbose as verbose,", "import")
         .replace("from ..utils import verbose as verbose", "")
         .replace("from ...utils import verbose as verbose", "")
-        .replace("`~", "`")
-        .replace(":class:", "")
-        .replace(":meth:", "")
-        .replace(":func:", "")
-        .replace(":mod:", "")
-        .replace(":ref:", "")
-        .replace(".. warning::", "⛔️")
-        .replace(".. Warning::", "⛔️")
-        .replace(".. note::", "💡")
-        .replace(".. versionadded::", "✨ Added in version")
-        .replace(".. versionchanged::", "🎭 Changed in version")
     )
+
+    # Remove unhelpful "Inccomplete | None" annotations
+    unparsed_cleaned = unparsed_cleaned.replace(": Incomplete | None=", "=")
 
     # Write modified stub to disk
     print(f"💾 Writing stub file to disk: {stub_path}")

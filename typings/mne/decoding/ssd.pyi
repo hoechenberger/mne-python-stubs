@@ -14,10 +14,10 @@ class SSD(BaseEstimator, TransformerMixin):
     SSD seeks to maximize the power at a frequency band of interest while
     simultaneously minimizing it at the flanking (surrounding) frequency bins
     (considered noise). It extremizes the covariance matrices associated with
-    signal and noise :footcite:`NikulinEtAl2011`.
+    signal and noise `NikulinEtAl2011`.
 
     SSD can either be used as a dimensionality reduction method or a
-    ‘denoised’ low rank factorization method :footcite:`HaufeEtAl2014b`.
+    ‘denoised’ low rank factorization method `HaufeEtAl2014b`.
 
     Parameters
     ----------
@@ -42,7 +42,7 @@ class SSD(BaseEstimator, TransformerMixin):
     sort_by_spectral_ratio : bool (default True)
         If set to True, the components are sorted according to the spectral
         ratio.
-        See Eq. (24) in :footcite:`NikulinEtAl2011`.
+        See Eq. (24) in `NikulinEtAl2011`.
     return_filtered : bool (default False)
         If return_filtered is True, data is bandpassed and projected onto the
         SSD components.
@@ -150,7 +150,7 @@ class SSD(BaseEstimator, TransformerMixin):
         """Get the spectal signal-to-noise ratio for each spatial filter.
 
         Spectral ratio measure for best n_components selection
-        See :footcite:`NikulinEtAl2011`, Eq. (24).
+        See `NikulinEtAl2011`, Eq. (24).
 
         Parameters
         ----------
@@ -180,7 +180,7 @@ class SSD(BaseEstimator, TransformerMixin):
         This procedure will reconstruct M/EEG signals from which the dynamics
         described by the excluded components is subtracted
         (denoised by low-rank factorization).
-        See :footcite:`HaufeEtAl2014b` for more information.
+        See `HaufeEtAl2014b` for more information.
 
         💡 Unlike in other classes with an apply method,
            only NumPy arrays are supported (not instances of MNE objects).

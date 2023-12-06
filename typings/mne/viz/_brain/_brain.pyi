@@ -34,8 +34,7 @@ from _typeshed import Incomplete
 class Brain:
     """Class for visualizing a brain.
 
-    ⛔️
-       The API for this class is not currently complete. We suggest using
+    ⛔️ The API for this class is not currently complete. We suggest using
        `mne.viz.plot_source_estimates` with the PyVista backend
        enabled to obtain a ``Brain`` instance.
 
@@ -146,10 +145,10 @@ class Brain:
     -----
     The figure will publish and subscribe to the following UI events:
 
-    * `mne.viz.ui_events.TimeChange`
-    * `mne.viz.ui_events.PlaybackSpeed`
-    * `mne.viz.ui_events.ColormapRange`, ``kind="distributed_source_power"``
-    * `mne.viz.ui_events.VertexSelect`
+    * `TimeChange`
+    * `PlaybackSpeed`
+    * `ColormapRange`, ``kind="distributed_source_power"``
+    * `VertexSelect`
 
     This table shows the capabilities of each Brain backend ("✓" for full
     support, and "-" for partial support):
@@ -555,7 +554,7 @@ class Brain:
                 space resolution, which is often something like 7 or 5 mm,
                 without resampling.
             - ``'blending'`` : str
-                Can be "mip" (default) for :term:`maximum intensity projection` or
+                Can be "mip" (default) for `maximum intensity projection` or
                 "composite" for composite blending using alpha values.
             - ``'alpha'`` : float | None
                 Alpha for the volumetric rendering. Defaults are 0.4 for vector source
@@ -796,10 +795,10 @@ class Brain:
             Labeled regions of interest to plot. See
             `mne.get_montage_volume_labels`
             for one way to determine regions of interest. Regions can also be
-            chosen from the :term:`FreeSurfer LUT`.
+            chosen from the `FreeSurfer LUT`.
         colors : list | matplotlib-style color | None
             A list of anything matplotlib accepts: string, RGB, hex, etc.
-            (default :term:`FreeSurfer LUT` colors).
+            (default `FreeSurfer LUT` colors).
 
         alpha : float in [0, 1]
             Alpha level to control opacity.
@@ -1213,7 +1212,7 @@ class Brain:
         Notes
         -----
         The builtin string views are the following perspectives, based on the
-        :term:`RAS` convention. If not otherwise noted, the view will have the
+        `RAS` convention. If not otherwise noted, the view will have the
         top of the brain (superior, +Z) in 3D space shown upward in the 2D
         perspective:
 
@@ -1383,10 +1382,9 @@ class Brain:
         The movie is created through the `imageio` module. The format is
         determined by the extension, and additional options can be specified
         through keyword arguments that depend on the format, see
-        :doc:`imageio's format page <imageio:formats/index>`.
+        `imageio's format page <imageio:formats/index>`.
 
-        ⛔️
-            This method assumes that time is specified in seconds when adding
+        ⛔️ This method assumes that time is specified in seconds when adding
             data. If time is specified in milliseconds this will result in
             movies 1000 times longer than expected.
 

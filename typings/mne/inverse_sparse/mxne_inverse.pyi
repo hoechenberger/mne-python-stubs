@@ -69,8 +69,8 @@ def mixed_norm(
 ):
     """Mixed-norm estimate (MxNE) and iterative reweighted MxNE (irMxNE).
 
-    Compute L1/L2 mixed-norm solution :footcite:`GramfortEtAl2012` or L0.5/L2
-    :footcite:`StrohmeierEtAl2016` mixed-norm solution on evoked data.
+    Compute L1/L2 mixed-norm solution `GramfortEtAl2012` or L0.5/L2
+    `StrohmeierEtAl2016` mixed-norm solution on evoked data.
 
     Parameters
     ----------
@@ -84,7 +84,7 @@ def mixed_norm(
         Regularization parameter. If float it should be in the range [0, 100):
         0 means no regularization, 100 would give 0 active dipole.
         If ``'sure'`` (default), the SURE method from
-        :footcite:`DeledalleEtAl2014` will be used.
+        `DeledalleEtAl2014` will be used.
 
         🎭 Changed in version 0.24
           The default was changed to ``'sure'``.
@@ -166,7 +166,7 @@ def mixed_norm(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`
@@ -274,7 +274,7 @@ def tf_mixed_norm(
 
     Compute L1/L2 + L1 mixed-norm solution on time-frequency
     dictionary. Works with evoked data
-    :footcite:`GramfortEtAl2013b,GramfortEtAl2011`.
+    `GramfortEtAl2013b,GramfortEtAl2011`.
 
     Parameters
     ----------
@@ -328,14 +328,14 @@ def tf_mixed_norm(
         Length of the STFT window in samples (must be a multiple of 4).
         If an array is passed, multiple TF dictionaries are used (each having
         its own wsize and tstep) and each entry of wsize must be a multiple
-        of 4. See :footcite:`BekhtiEtAl2016`.
+        of 4. See `BekhtiEtAl2016`.
     tstep : int or array-like
         Step between successive windows in samples (must be a multiple of 2,
         a divider of wsize and smaller than wsize/2) (default: wsize/2).
         If an array is passed, multiple TF dictionaries are used (each having
         its own wsize and tstep), and each entry of tstep must be a multiple
         of 2 and divide the corresponding entry of wsize. See
-        :footcite:`BekhtiEtAl2016`.
+        `BekhtiEtAl2016`.
     window : float or (float, float)
         Length of time window used to take care of edge artifacts in seconds.
         It can be one float or float if the values are different for left
@@ -377,7 +377,7 @@ def tf_mixed_norm(
             two projectors the returned value will be 66.
         ``'full'``
             The rank is assumed to be full, i.e. equal to the
-            number of good channels. If a `mne.Covariance` is passed, this can
+            number of good channels. If a `Covariance` is passed, this can
             make sense if it has been (possibly improperly) regularized without
             taking into account the true data rank.
         `dict`

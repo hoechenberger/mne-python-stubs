@@ -16,10 +16,10 @@ def tfr_array_stockwell(
 ):
     """Compute power and intertrial coherence using Stockwell (S) transform.
 
-    Same computation as `mne.time_frequency.tfr_stockwell`, but operates on
-    `NumPy arrays <numpy.ndarray>` instead of `mne.Epochs` objects.
+    Same computation as `tfr_stockwell`, but operates on
+    `NumPy arrays <numpy.ndarray>` instead of `Epochs` objects.
 
-    See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
+    See `Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
 
     Parameters
@@ -89,10 +89,10 @@ def tfr_stockwell(
 ):
     """Compute Time-Frequency Representation (TFR) using Stockwell Transform.
 
-    Same computation as `mne.time_frequency.tfr_array_stockwell`, but operates
-    on `mne.Epochs` objects instead of `NumPy arrays <numpy.ndarray>`.
+    Same computation as `tfr_array_stockwell`, but operates
+    on `Epochs` objects instead of `NumPy arrays <numpy.ndarray>`.
 
-    See :footcite:`Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
+    See `Stockwell2007,MoukademEtAl2014,WheatEtAl2010,JonesEtAl2006`
     for more information.
 
     Parameters

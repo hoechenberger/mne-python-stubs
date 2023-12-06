@@ -9,7 +9,7 @@ class Layout:
     """Sensor layouts.
 
     Layouts are typically loaded from a file using
-    `mne.channels.read_layout`. Only use this class directly if you're
+    `read_layout`. Only use this class directly if you're
     constructing a new layout.
 
     Parameters
@@ -202,7 +202,7 @@ def make_grid_layout(info, picks=None, n_col=None):
         channel indices. In lists, channel *type* strings (e.g., ``['meg',
         'eeg']``) will pick channels of those types, channel *name* strings (e.g.,
         ``['MEG0111', 'MEG2623']`` will pick the given channels. Can also be the
-        string values "all" to pick all channels, or "data" to pick :term:`data
+        string values "all" to pick all channels, or "data" to pick `data
         channels`. None (default) will pick all good misc channels.
     n_col : int | None
         Number of columns to generate. If None, a square grid will be produced.
