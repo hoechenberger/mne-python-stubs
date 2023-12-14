@@ -629,7 +629,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         picks=None,
         average: bool = False,
         dB: bool = True,
-        amplitude: str = "auto",
+        amplitude=None,
         xscale: str = "linear",
         ci: str = "sd",
         ci_alpha: float = 0.3,
@@ -664,42 +664,43 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
 
             🎭 Changed in version 1.5
                 In version 1.5, the default behavior changed so that all
-                `data channels` (not just "good" data channels) are shown
-                by default.
+                `data channels` (not just "good" data channels) are shown by
+                default.
         average : bool
-            Whether to average across channels before plotting. If ``True``,
-            interactive plotting of scalp topography is disabled, and
-            parameters ``ci`` and ``ci_alpha`` control the style of the
-            confidence band around the mean. Default is ``False``.
+            Whether to average across channels before plotting. If ``True``, interactive
+            plotting of scalp topography is disabled, and parameters ``ci`` and
+            ``ci_alpha`` control the style of the confidence band around the mean.
+            Default is ``False``.
         dB : bool
             Whether to plot on a decibel-like scale. If ``True``, plots
             10 × log₁₀(spectral power).
         amplitude : bool | 'auto'
             Whether to plot an amplitude spectrum (``True``) or power spectrum
-            (``False``). If ``'auto'``, will plot a power spectrum when
-            ``dB=True`` and an amplitude spectrum otherwise. Default is
-            ``'auto'``.
+            (``False``). If ``'auto'``, will plot a power spectrum when ``dB=True`` and
+            an amplitude spectrum otherwise. Default is ``'auto'``.
+
+                🎭 Changed in version 1.8
+                    In version 1.8, the value ``amplitude="auto"`` will be removed. The
+                    default value will change to ``amplitude=False``.
         xscale : 'linear' | 'log'
             Scale of the frequency axis. Default is ``'linear'``.
         ci : float | 'sd' | 'range' | None
-            Type of confidence band drawn around the mean when
-            ``average=True``. If ``'sd'`` the band spans ±1 standard deviation
-            across channels. If ``'range'`` the band spans the range across
-            channels at each frequency. If a `float`, it indicates the
-            (bootstrapped) confidence interval to display, and must satisfy
-            ``0 < ci <= 100``. If ``None``, no band is drawn. Default is
-            ``sd``.
+            Type of confidence band drawn around the mean when ``average=True``. If
+            ``'sd'`` the band spans ±1 standard deviation across channels. If
+            ``'range'`` the band spans the range across channels at each frequency. If a
+            `float`, it indicates the (bootstrapped) confidence interval to
+            display, and must satisfy ``0 < ci <= 100``. If ``None``, no band is drawn.
+            Default is ``sd``.
         ci_alpha : float
-            Opacity of the confidence band. Must satisfy
-            ``0 <= ci_alpha <= 1``. Default is 0.3.
+            Opacity of the confidence band. Must satisfy ``0 <= ci_alpha <= 1``. Default
+            is 0.3.
         color : str | tuple
             A matplotlib-compatible color to use. Has no effect when
             spatial_colors=True.
         alpha : float | None
             Opacity of the spectrum line(s). If `float`, must satisfy
             ``0 <= alpha <= 1``. If ``None``, opacity will be ``1`` when
-            ``average=True`` and ``0.1`` when ``average=False``. Default is
-            ``None``.
+            ``average=True`` and ``0.1`` when ``average=False``. Default is ``None``.
         spatial_colors : bool
             Whether to color spectrum lines by channel location. Ignored if
             ``average=True``.
@@ -723,8 +724,8 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
             include all channels (including "bad" channels, if any).
 
             🎭 Changed in version 1.5
-                In version 1.5, the default behavior changed from
-                ``exclude='bads'`` to ``exclude=()``.
+                In version 1.5, the default behavior changed from ``exclude='bads'`` to
+                ``exclude=()``.
         axes : instance of Axes | list of Axes | None
             The axes to plot to. If ``None``, a new `Figure`
             will be created with the correct number of axes. If `Axes` are provided (either as a single instance or a `list` of axes), the number of axes provided must match the length of ``bands``.Default is ``None``.
@@ -734,8 +735,7 @@ class BaseSpectrum(ContainsMixin, UpdateChannelsMixin):
         Returns
         -------
         fig : instance of matplotlib.figure.Figure
-            Figure with spectra plotted in separate subplots for each channel
-            type.
+            Figure with spectra plotted in separate subplots for each channel type.
         """
         ...
 

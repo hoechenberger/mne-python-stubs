@@ -259,6 +259,10 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config) -> None:
     """Print the module-level timings."""
     ...
 
+def pytest_report_header(config, startdir):
+    """Add information to the pytest run header."""
+    ...
+
 def numba_conditional(monkeypatch, request) -> Generator[Incomplete, None, None]:
     """Test both code paths on machines that have Numba."""
     ...

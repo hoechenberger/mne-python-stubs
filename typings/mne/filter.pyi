@@ -340,11 +340,10 @@ def filter_data(
         ✨ Added in version 0.15
 
     pad : str
-        The type of padding to use. Supports all `numpy.pad` ``mode``
-        options. Can also be ``"reflect_limited"``, which pads with a
-        reflected version of each vector mirrored on the first and last values
+        The type of padding to use. Supports
+        all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+        pads with a reflected version of each vector mirrored on the first and last values
         of the vector, followed by zeros.
-
         Only used for ``method='fir'``.
         The default is ``'reflect_limited'``.
 
@@ -735,11 +734,10 @@ def notch_filter(
         ✨ Added in version 0.15
 
     pad : str
-        The type of padding to use. Supports all `numpy.pad` ``mode``
-        options. Can also be ``"reflect_limited"``, which pads with a
-        reflected version of each vector mirrored on the first and last values
+        The type of padding to use. Supports
+        all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+        pads with a reflected version of each vector mirrored on the first and last values
         of the vector, followed by zeros.
-
         Only used for ``method='fir'``.
         The default is ``'reflect_limited'``.
 
@@ -788,12 +786,13 @@ def resample(
     x,
     up: float = 1.0,
     down: float = 1.0,
-    npad: int = 100,
-    axis: int = -1,
-    window: str = "boxcar",
-    n_jobs=None,
-    pad: str = "reflect_limited",
     *,
+    axis: int = -1,
+    window: str = "auto",
+    n_jobs=None,
+    pad: str = "auto",
+    npad: int = 100,
+    method: str = "fft",
     verbose=None,
 ):
     """Resample an array.
@@ -808,30 +807,45 @@ def resample(
         Factor to upsample by.
     down : float
         Factor to downsample by.
-
-    npad : int | str
-        Amount to pad the start and end of the data.
-        Can also be ``"auto"`` to use a padding that will result in
-        a power-of-two size (can be much faster).
     axis : int
         Axis along which to resample (default is the last axis).
 
     window : str | tuple
-        Frequency-domain window to use in resampling.
-        See `scipy.signal.resample`.
+        When ``method="fft"``, this is the *frequency-domain* window to use in resampling,
+        and should be the same length as the signal; see `scipy.signal.resample`
+        for details. When ``method="polyphase"``, this is the *time-domain* linear-phase
+        window to use after upsampling the signal; see `scipy.signal.resample_poly`
+        for details. The default ``"auto"`` will use ``"boxcar"`` for ``method="fft"`` and
+        ``("kaiser", 5.0)`` for ``method="polyphase"``.
 
     n_jobs : int | str
         Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
         is installed properly.
+        ``n_jobs='cuda'`` is only supported when ``method="fft"``.
 
     pad : str
-        The type of padding to use. Supports all `numpy.pad` ``mode``
-        options. Can also be ``"reflect_limited"``, which pads with a
-        reflected version of each vector mirrored on the first and last values
+        The type of padding to use. When ``method="fft"``, supports
+        all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+        pads with a reflected version of each vector mirrored on the first and last values
         of the vector, followed by zeros.
-        The default is ``'reflect_limited'``.
+        When ``method="polyphase"``, supports all modes of `scipy.signal.upfirdn`.
+        The default ("auto") means ``'reflect_limited'`` for ``method='fft'`` and
+        ``'reflect'`` for ``method='polyphase'``.
 
         ✨ Added in version 0.15
+
+    npad : int | str
+        Amount to pad the start and end of the data. Can also be ``"auto"`` to use a padding
+        that will result in a power-of-two size (can be much faster).
+
+        Only used when ``method="fft"``.
+
+    method : str
+        Resampling method to use. Can be ``"fft"`` (default) or ``"polyphase"``
+        to use FFT-based on polyphase FIR resampling, respectively. These wrap to
+        `scipy.signal.resample` and `scipy.signal.resample_poly`, respectively.
+
+        ✨ Added in version 1.7
 
     verbose : bool | str | int | None
         Control verbosity of the logging output. If ``None``, use the default
@@ -846,16 +860,12 @@ def resample(
 
     Notes
     -----
-    This uses (hopefully) intelligent edge padding and frequency-domain
-    windowing improve scipy.signal.resample's resampling method, which
+    When using ``method="fft"`` (default),
+    this uses (hopefully) intelligent edge padding and frequency-domain
+    windowing improve `scipy.signal.resample`'s resampling method, which
     we have adapted for our use here. Choices of npad and window have
     important consequences, and the default choices should work well
     for most natural signals.
-
-    Resampling arguments are broken into "up" and "down" components for future
-    compatibility in case we decide to use an upfirdn implementation. The
-    current implementation is functionally equivalent to passing
-    up=up/down and down=1.
     """
     ...
 
@@ -1075,11 +1085,10 @@ class FilterMixin:
             ✨ Added in version 0.16.
 
         pad : str
-            The type of padding to use. Supports all `numpy.pad` ``mode``
-            options. Can also be ``"reflect_limited"``, which pads with a
-            reflected version of each vector mirrored on the first and last values
+            The type of padding to use. Supports
+            all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+            pads with a reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
-
             Only used for ``method='fir'``.
 
         verbose : bool | str | int | None
@@ -1138,11 +1147,12 @@ class FilterMixin:
     def resample(
         self,
         sfreq,
+        *,
         npad: str = "auto",
-        window: str = "boxcar",
+        window: str = "auto",
         n_jobs=None,
         pad: str = "edge",
-        *,
+        method: str = "fft",
         verbose=None,
     ):
         """Resample data.
@@ -1158,27 +1168,36 @@ class FilterMixin:
             New sample rate to use.
 
         npad : int | str
-            Amount to pad the start and end of the data.
-            Can also be ``"auto"`` to use a padding that will result in
-            a power-of-two size (can be much faster).
+            Amount to pad the start and end of the data. Can also be ``"auto"`` to use a padding
+            that will result in a power-of-two size (can be much faster).
 
         window : str | tuple
-            Frequency-domain window to use in resampling.
-            See `scipy.signal.resample`.
+            When ``method="fft"``, this is the *frequency-domain* window to use in resampling,
+            and should be the same length as the signal; see `scipy.signal.resample`
+            for details. When ``method="polyphase"``, this is the *time-domain* linear-phase
+            window to use after upsampling the signal; see `scipy.signal.resample_poly`
+            for details. The default ``"auto"`` will use ``"boxcar"`` for ``method="fft"`` and
+            ``("kaiser", 5.0)`` for ``method="polyphase"``.
 
         n_jobs : int | str
             Number of jobs to run in parallel. Can be ``'cuda'`` if ``cupy``
             is installed properly.
 
         pad : str
-            The type of padding to use. Supports all `numpy.pad` ``mode``
-            options. Can also be ``"reflect_limited"``, which pads with a
-            reflected version of each vector mirrored on the first and last values
+            The type of padding to use. When ``method="fft"``, supports
+            all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+            pads with a reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
-            The default is ``'edge'``, which pads with the edge values of each
-            vector.
+            When ``method="polyphase"``, supports all modes of `scipy.signal.upfirdn`.
 
             ✨ Added in version 0.15
+
+        method : str
+            Resampling method to use. Can be ``"fft"`` (default) or ``"polyphase"``
+            to use FFT-based on polyphase FIR resampling, respectively. These wrap to
+            `scipy.signal.resample` and `scipy.signal.resample_poly`, respectively.
+
+            ✨ Added in version 1.7
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default

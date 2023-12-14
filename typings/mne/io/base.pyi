@@ -660,11 +660,10 @@ class BaseRaw(
             ✨ Added in version 0.16.
 
         pad : str
-            The type of padding to use. Supports all `numpy.pad` ``mode``
-            options. Can also be ``"reflect_limited"``, which pads with a
-            reflected version of each vector mirrored on the first and last values
+            The type of padding to use. Supports
+            all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+            pads with a reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
-
             Only used for ``method='fir'``.
 
         verbose : bool | str | int | None
@@ -842,11 +841,10 @@ class BaseRaw(
             ✨ Added in version 0.15
 
         pad : str
-            The type of padding to use. Supports all `numpy.pad` ``mode``
-            options. Can also be ``"reflect_limited"``, which pads with a
-            reflected version of each vector mirrored on the first and last values
+            The type of padding to use. Supports
+            all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+            pads with a reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
-
             Only used for ``method='fir'``.
             The default is ``'reflect_limited'``.
 
@@ -897,12 +895,14 @@ class BaseRaw(
     def resample(
         self,
         sfreq,
+        *,
         npad: str = "auto",
-        window: str = "boxcar",
+        window: str = "auto",
         stim_picks=None,
         n_jobs=None,
         events=None,
-        pad: str = "reflect_limited",
+        pad: str = "auto",
+        method: str = "fft",
         verbose=None,
     ):
         """Resample all channels.
@@ -933,13 +933,18 @@ class BaseRaw(
             New sample rate to use.
 
         npad : int | str
-            Amount to pad the start and end of the data.
-            Can also be ``"auto"`` to use a padding that will result in
-            a power-of-two size (can be much faster).
+            Amount to pad the start and end of the data. Can also be ``"auto"`` to use a padding
+            that will result in a power-of-two size (can be much faster).
+
+            Only used when ``method="fft"``.
 
         window : str | tuple
-            Frequency-domain window to use in resampling.
-            See `scipy.signal.resample`.
+            When ``method="fft"``, this is the *frequency-domain* window to use in resampling,
+            and should be the same length as the signal; see `scipy.signal.resample`
+            for details. When ``method="polyphase"``, this is the *time-domain* linear-phase
+            window to use after upsampling the signal; see `scipy.signal.resample_poly`
+            for details. The default ``"auto"`` will use ``"boxcar"`` for ``method="fft"`` and
+            ``("kaiser", 5.0)`` for ``method="polyphase"``.
         stim_picks : list of int | None
             Stim channels. These channels are simply subsampled or
             supersampled (without applying any filtering). This reduces
@@ -956,13 +961,22 @@ class BaseRaw(
             modified, but a new array is returned with the raw instead.
 
         pad : str
-            The type of padding to use. Supports all `numpy.pad` ``mode``
-            options. Can also be ``"reflect_limited"``, which pads with a
-            reflected version of each vector mirrored on the first and last values
+            The type of padding to use. When ``method="fft"``, supports
+            all `numpy.pad` ``mode`` options. Can also be ``"reflect_limited"``, which
+            pads with a reflected version of each vector mirrored on the first and last values
             of the vector, followed by zeros.
-            The default is ``'reflect_limited'``.
+            When ``method="polyphase"``, supports all modes of `scipy.signal.upfirdn`.
+            The default ("auto") means ``'reflect_limited'`` for ``method='fft'`` and
+            ``'reflect'`` for ``method='polyphase'``.
 
             ✨ Added in version 0.15
+
+        method : str
+            Resampling method to use. Can be ``"fft"`` (default) or ``"polyphase"``
+            to use FFT-based on polyphase FIR resampling, respectively. These wrap to
+            `scipy.signal.resample` and `scipy.signal.resample_poly`, respectively.
+
+            ✨ Added in version 1.7
 
         verbose : bool | str | int | None
             Control verbosity of the logging output. If ``None``, use the default

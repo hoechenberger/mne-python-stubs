@@ -296,8 +296,20 @@ class Annotations:
         """
         ...
 
-    def to_data_frame(self):
+    def to_data_frame(self, time_format: str = "datetime"):
         """Export annotations in tabular structure as a pandas DataFrame.
+
+        Parameters
+        ----------
+
+        time_format : str | None
+            Desired time format. If ``None``, no conversion is applied, and time values
+            remain as float values in seconds. If ``'ms'``, time values will be rounded
+            to the nearest millisecond and converted to integers. If ``'timedelta'``,
+            time values will be converted to `pandas.Timedelta` values. If ``'datetime'``, time values will be converted to `pandas.Timestamp` values, relative to ``raw.info['meas_date']`` and offset by ``raw.first_samp``.
+            Default is ``None``.
+
+            ✨ Added in version 1.7
 
         Returns
         -------

@@ -58,6 +58,7 @@ class _PyVistaRenderer(_AbstractRenderer, metaclass=abc.ABCMeta):
     tube_n_sides: int
     antialias: Incomplete
     depth_peeling: Incomplete
+    multi_samples: Incomplete
     smooth_shading: Incomplete
     figure: Incomplete
     plotter: Incomplete
